@@ -1,4 +1,14 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Text;
+using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber;
+using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using GAZT.Manager;
+using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -7,10 +17,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeMobileNumberPageView : ContentPage
     {
+
         #region Variable
         private double width = 0;
         private double height = 0;
         ChangeMobileNumberPageViewModel viewModel;
+        ObservableCollection<InternationalMobileData> mobileData = null;
+
         #endregion
         #region Constructor
         public ChangeMobileNumberPageView()
@@ -22,6 +35,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
+            viewModel.TxtCountryCode = "+966";
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IntnlCodes.Margin = new Thickness(0);
+                ArIntnlCodes.Margin = new Thickness(0);
+
+            }
+            else
+            {
+                IntnlCodes.Margin = new Thickness(5, -12, 10, -12);
+                ArIntnlCodes.Margin = new Thickness(15, -12, 10, -12);
+            }
+
             viewModel.OnPageLoad();
         }
         #endregion
@@ -68,7 +94,101 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber
             ChangeAeroIcon();
             // Task.Delay(20000);
             viewModel.NewMobile =string.Empty;
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IntnlCodes.Margin = new Thickness(0);
+                ArIntnlCodes.Margin = new Thickness(0);
+
+            }
+            else
+            {
+                IntnlCodes.Margin = new Thickness(5, -12, 10, -12);
+                ArIntnlCodes.Margin = new Thickness(15, -12, 10, -12);
+            }
+
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
+            {
+                if(App.IsArabic)
+                {
+                    ArIntnlCodes.Text = arg;
+                }
+                else
+                {
+                    IntnlCodes.Text = arg;
+                }
+           
+               
+                viewModel.TxtCountryCode = arg;
+            });
+            try
+            {
+                mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+
         }
+        private void MobileCodes_Clicked(object sender, EventArgs e)
+        {
+
+            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
+
+        }
+
+        private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            StringBuilder Message = new StringBuilder();
+            PopUp popUp = new PopUp();
+            if (!string.IsNullOrEmpty(MobileNumber.Text))
+            {
+               
+                if (MobileNumber.Text.Substring(0, 1) == "0")
+                {
+                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
+                }
+                if (MobileNumber.Text.Length < 9)
+                {
+                    if (Message.Length > 0)
+                    {
+                        Message.Append(Environment.NewLine);
+                    }
+                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                }
+                if (Message.Length > 0)
+                {
+                    popUp.Message = Message.ToString();
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    NewMobileNumberLayout.HasError = true;
+                    MobileNumber.Text = string.Empty;
+                }
+                else
+                {
+                    NewMobileNumberLayout.HasError = false;
+                }
+            }
+            else
+            {
+                Message.Append(AppResources.EnterValidMobileNumber);
+                popUp.Message = Message.ToString();
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+            }
+        }
+
         #endregion
     }
 }

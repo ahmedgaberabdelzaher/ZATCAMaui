@@ -119,20 +119,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
                     {
                         viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
                         viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
-                        var MobileNumber = viewModel.OTPSentOnThis;
-                        MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(3, 9);
+                        var MobileNumber = viewModel.OTPSentOnThisMobileNumber;
+                        //MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(3, 9);
                         firstDigits = MobileNumber.Substring(0, 2);
                         lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
                         if (Device.RuntimePlatform == Device.iOS)
                         {
-                            MobileNumber = "9665" + MobileNumber + "+";
+                           // MobileNumber = "9665" + MobileNumber + "+";
                         }
                         else
                         {
-                            MobileNumber = "+9665" + MobileNumber;
+                            //MobileNumber = "+9665" + MobileNumber;
                         }
-                        string _mobileNumber = App.TP.NewMobile.Substring(8, 4);
-                        viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                        //string _mobileNumber = App.TP.NewMobile.Substring(8, 4);
+                        //viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                         var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
                         var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
                         var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");

@@ -404,7 +404,10 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Invalid password</value>
   </data>
   <data name="EnterNewMobileNumber" xml:space="preserve">
-    <value>Enter your 8 digit mobile number</value>
+    <value>Enter your mobile number</value>
+  </data>
+      <data name="EnterMobileNumber" xml:space="preserve">
+    <value>Please enter mobile number</value>
   </data>
   <data name="EnterValidMobileNumber" xml:space="preserve">
     <value>Please enter valid mobile number</value>
@@ -458,7 +461,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>National ID</value>
   </data>
   <data name="VerificationCode" xml:space="preserve">
-    <value>Verification code</value>
+    <value>Verification Code</value>
   </data>
   <data name="SelectPasswordUserName" xml:space="preserve">
     <value>Select password/username</value>
@@ -2285,6 +2288,10 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZMobilenumberhastostartwithnumber5" xml:space="preserve">
     <value>Mobile number has to start with number 5</value>
+    <comment>Sign Up</comment>
+  </data>
+      <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">
+    <value>Mobile number should not start with zero</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZMobilenumberlengthcannotbelessthan9digits" xml:space="preserve">
@@ -4271,7 +4278,53 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="FORM5ZakatRulesConditions" xml:space="preserve">
     <value>Zakat Rules and Conditions</value>
   </data>
+      <data name="InternationalCountryCode" xml:space="preserve">
+    <value>Country Code</value>
+  </data>
+       <data name="InternationalCodeSearch" xml:space="preserve">
+    <value>Search Country code</value>
+  </data>
+      <data name="CountryText" xml:space="preserve">
+    <value>Country</value>
+  </data>    
+      <data name="SearchText" xml:space="preserve">
+    <value>Search</value>
+  </data>        
   <data name="String1" xml:space="preserve">
     <value />
   </data>
+
+  <data name="UnlockAccountRetriveLoginData" xml:space="preserve">
+    <value>Retrieve Login Data</value>
+  </data>
+  <data name="UnlockAccountEnterTIN" xml:space="preserve">
+    <value>Please enter taxpayer identification number(TIN) to verify identity</value>
+  </data>
+  <data name="UnlockAccountVerify" xml:space="preserve">
+    <value>Verify</value>
+  </data>
+  <data name="UnlockAccountResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="EnterVerificationCodeSentToMobile" xml:space="preserve">
+    <value>Please enter verification code sent to your mobile</value>
+  </data>
+  <data name="UnlockAccountCreateNewPassword" xml:space="preserve">
+    <value>Please create a new password</value>
+  </data>
+  <data name="UnlockAccountPasswordChangedSuccessfully" xml:space="preserve">
+    <value>Dear Taxpayer,
+The account was unlocked, and the password reset for TIN xxxxxx successfully.</value>
+  </data>
+  <data name="AccountUnlocked" xml:space="preserve">
+    <value>Account Unlocked</value>
+  </data>
+  <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
+    <value>Kindly complete the required fields to be able to proceed.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  
+    
 </root>

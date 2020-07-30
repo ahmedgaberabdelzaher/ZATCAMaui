@@ -1,0 +1,938 @@
+﻿using System;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using EGAZT.Models;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZT.Manager;
+using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
+using Xamarin.Forms;
+
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
+{
+    public class UnlockAccountTINPageViewModel: ViewModelBase
+    {
+        public ICommand OnContinueButtonClick { get; set; } 
+        public ICommand OnBackButtonClick { get; set; }
+        public ICommand OnResendButtonClick { get; set; }
+        public int currentStep { get; set; }
+        public ICommand VerifyTINBtnClicked { get; set; }
+        public Command ConfirmOtpBtnClicked { get; set; }
+        public ICommand ConfirmPasswordBtnClicked { get; set; }
+        public Command OnSubmitClicked { get; set; }
+        public Command OnResendOTPClicked { get; set; }
+
+        CancellationTokenSource _CancellationTokenSource;
+        int TotalSec;
+        public bool StopTimer = false;
+        public int currentAttempts = 0;
+        public int totalAttempts = 0;
+
+        bool isValiedOTP = false;
+        public int numberOfSeconds = 120;
+
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private bool _isTinContentViewVisible = false;
+        public bool IsTinContentViewVisible
+        {
+            get
+            {
+                return _isTinContentViewVisible;
+            }
+            set
+            {
+                _isTinContentViewVisible = value;
+                RaisePropertyChanged("IsTinContentViewVisible");
+            }
+        }
+
+        private bool _isOTPContentViewVisible = false;
+        public bool IsOTPContentViewVisible
+        {
+            get
+            {
+                return _isOTPContentViewVisible;
+            }
+            set
+            {
+                _isOTPContentViewVisible = value;
+                RaisePropertyChanged("IsOTPContentViewVisible");
+            }
+        }
+
+        private bool _isChangePasswordViewVisible = false;
+        public bool IsChangePasswordViewVisible
+        {
+            get
+            {
+                return _isChangePasswordViewVisible;
+            }
+            set
+            {
+                _isChangePasswordViewVisible = value;
+                RaisePropertyChanged("IsChangePasswordViewVisible");
+            }
+        }
+
+        private bool _isAccountUnlockedSuccessViewVisible = false;
+        public bool IsAccountUnlockedSuccessViewVisible
+        {
+            get
+            {
+                return _isAccountUnlockedSuccessViewVisible;
+            }
+            set
+            {
+                _isAccountUnlockedSuccessViewVisible = value;
+                RaisePropertyChanged("IsAccountUnlockedSuccessViewVisible");
+            }
+        }
+
+        private string _verifyButtonText = string.Empty;
+        public string VerifyButtonText
+        {
+            get
+            {
+                return _verifyButtonText;
+            }
+            set
+            {
+                _verifyButtonText = value;
+                RaisePropertyChanged("VerifyButtonText");
+            }
+        }
+
+        private Color _verifybuttonDisableColor = Color.FromHex("#d99b29");
+        public Color VerifyButtonDisableColor
+        {
+            get
+            {
+                return _verifybuttonDisableColor;
+            }
+            set
+            {
+                _verifybuttonDisableColor = value;
+                RaisePropertyChanged("VerifyButtonDisableColor");
+            }
+        }
+
+        private string _txtTIN;
+        public string TxtTIN
+        {
+            get
+            {
+                return _txtTIN;
+            }
+            set
+            {
+                _txtTIN = value;
+                RaisePropertyChanged("TxtTIN");
+            }
+        }
+
+        private string _otpFirstDigit;
+        public string OtpFirstDigit
+        {
+            get
+            {
+                return _otpFirstDigit;
+            }
+            set
+            {
+                _otpFirstDigit = value;
+                RaisePropertyChanged("OtpFirstDigit");
+            }
+        }
+
+        private string _otpSecondDigit;
+        public string OtpSecondDigit
+        {
+            get
+            {
+                return _otpSecondDigit;
+            }
+            set
+            {
+                _otpSecondDigit = value;
+                RaisePropertyChanged("OtpSecondDigit");
+            }
+        }
+
+        private string _otpThirdDigit;
+        public string OtpThirdDigit
+        {
+            get
+            {
+                return _otpThirdDigit;
+            }
+            set
+            {
+                _otpThirdDigit = value;
+                RaisePropertyChanged("OtpThirdDigit");
+            }
+        }
+
+        private string _otpFourthDigit;
+        public string OtpFourthDigit
+        {
+            get
+            {
+                return _otpFourthDigit;
+            }
+            set
+            {
+                _otpFourthDigit = value;
+                RaisePropertyChanged("OtpFourthDigit");
+            }
+        }
+
+        private bool _isPasswordEncripted = true;
+        public bool IsPasswordEncripted
+        {
+            get
+            {
+                return _isPasswordEncripted;
+            }
+            set
+            {
+                _isPasswordEncripted = value;
+                RaisePropertyChanged("IsPasswordEncripted");
+            }
+        }
+        private bool _isConfirmPasswordEncripted = true;
+        public bool IsConfirmPasswordEncripted
+        {
+            get
+            {
+                return _isConfirmPasswordEncripted;
+            }
+            set
+            {
+                _isConfirmPasswordEncripted = value;
+                RaisePropertyChanged("IsConfirmPasswordEncripted");
+            }
+        }
+
+        private bool _framePasswordError = false;
+        public bool FramePasswordError
+        {
+            get
+            {
+                return _framePasswordError;
+            }
+            set
+            {
+                _framePasswordError = value;
+                RaisePropertyChanged("FramePasswordError");
+            }
+        }
+        private bool _frameConfirmPasswordError = false;
+        public bool FrameConfirmPasswordError
+        {
+            get
+            {
+                return _frameConfirmPasswordError;
+            }
+            set
+            {
+                _frameConfirmPasswordError = value;
+                RaisePropertyChanged("FrameConfirmPasswordError");
+            }
+        }
+
+        private string _password = string.Empty;
+        public string Password
+        {
+            get
+            {
+                return _password;
+            }
+            set
+            {
+                _password = value;
+                RaisePropertyChanged("Password");
+            }
+        }
+
+        private string _confirmPassword = string.Empty;
+        public string ConfirmPassword
+        {
+            get
+            {
+                return _confirmPassword;
+            }
+            set
+            {
+                _confirmPassword = value;
+                RaisePropertyChanged("ConfirmPassword");
+            }
+        }
+
+        private string _mobileNumberMasked;
+        public string MobileNumberMasked
+        {
+            get
+            {
+                return _mobileNumberMasked;
+            }
+            set
+            {
+                _mobileNumberMasked = value;
+                RaisePropertyChanged("MobileNumberMasked");
+            }
+        }
+
+        private string _passwordChangedSuccessfully;
+        public string PasswordChangedSuccessfully
+        {
+            get
+            {
+                return _passwordChangedSuccessfully;
+            }
+            set
+            {
+                _passwordChangedSuccessfully = value;
+                RaisePropertyChanged("PasswordChangedSuccessfully");
+            }
+        }
+
+        private UnlockAccountModel _unlockAccountModel;
+        public UnlockAccountModel UnlockAccountModel
+        {
+            get
+            {
+                return _unlockAccountModel;
+            }
+            set
+            {
+                _unlockAccountModel = value;
+                RaisePropertyChanged("UnlockAccountModel");
+            }
+        }
+
+        private UnlockAccountModelOtp _unlockAccountModelOtp;
+        public UnlockAccountModelOtp UnlockAccountModelOtp
+        {
+            get
+            {
+                return _unlockAccountModelOtp;
+            }
+            set
+            {
+                _unlockAccountModelOtp = value;
+                RaisePropertyChanged("UnlockAccountModelOtp");
+            }
+        }
+
+        private UnlockAccountModelChangePassword _unlockAccountModelChangePassword;
+        public UnlockAccountModelChangePassword UnlockAccountModelChangePassword
+        {
+            get
+            {
+                return _unlockAccountModelChangePassword;
+            }
+            set
+            {
+                _unlockAccountModelChangePassword = value;
+                RaisePropertyChanged("UnlockAccountModelChangePassword");
+            }
+        }
+
+        private UnlockAccountResponseModel _unlockAccountModelResponse;
+        public UnlockAccountResponseModel UnlockAccountModelResponse
+        {
+            get
+            {
+                return _unlockAccountModelResponse;
+            }
+            set
+            {
+                _unlockAccountModelResponse = value;
+                RaisePropertyChanged("UnlockAccountModelResponse");
+            }
+        }
+
+        private Color _continueButtonnBackroundColor = Color.FromHex("#d99b29");
+        public Color ContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _continueButtonnBackroundColor;
+            }
+            set
+            {
+                _continueButtonnBackroundColor = value;
+                RaisePropertyChanged("ContinueButtonnBackroundColor");
+            }
+        }
+
+        private bool _isContinueButtonEnable = false;
+        public bool IsContinueButtonEnable
+        {
+            get
+            {
+                return _isContinueButtonEnable;
+            }
+            set
+            {
+                _isContinueButtonEnable = value;
+                if (_isContinueButtonEnable)
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#d99b29");
+                }
+                else
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }
+                RaisePropertyChanged("IsContinueButtonEnable");
+            }
+        }
+
+        private bool _isResendOTPEnabled = false;
+        public bool IsResendOTPEnabled
+        {
+            get
+            {
+                return _isResendOTPEnabled;
+            }
+            set
+            {
+                _isResendOTPEnabled = value;
+                OnResendOTPClicked.ChangeCanExecute();
+                RaisePropertyChanged("IsResendOTPEnabled");
+            }
+        }
+
+        bool CanExecuteResendOTPClickCommand(object arg)
+        {
+            return _isResendOTPEnabled;
+        }
+
+        bool CanExecuteSubmitClickCommand(object arg)
+        {
+            return _isVerifyOTPEnabled;
+        }
+
+        private bool _isVerifyOTPEnabled = true;
+        public bool IsVerifyOTPEnabled
+        {
+            get
+            {
+                return _isVerifyOTPEnabled;
+            }
+            set
+            {
+                _isVerifyOTPEnabled = value;
+                ConfirmOtpBtnClicked.ChangeCanExecute();
+                RaisePropertyChanged("IsVerifyOTPEnabled");
+            }
+        }
+
+        private bool _isOTPEntryEnable = true;
+        public bool IsOTPEntryEnable
+        {
+            get
+            {
+                return _isOTPEntryEnable;
+            }
+            set
+            {
+                _isOTPEntryEnable = value;
+                RaisePropertyChanged(() => IsOTPEntryEnable);
+            }
+        }
+        private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
+        public Color ButtonDisableColor
+        {
+            get
+            {
+                return _buttonDisableColor;
+            }
+            set
+            {
+                _buttonDisableColor = value;
+                RaisePropertyChanged("ButtonDisableColor");
+            }
+        }
+
+        private string _oTPValidDuration;
+        public string OTPValidDuration
+        {
+            get
+            {
+                return _oTPValidDuration;
+            }
+            set
+            {
+                _oTPValidDuration = value;
+                if (_oTPValidDuration.Equals(" 00:00"))
+                {
+                    ButtonDisableColor = Color.FromHex("#d99b29");
+                    IsResendOTPEnabled = true;
+                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    IsVerifyOTPEnabled = false;
+                    IsOTPEntryEnable = false;
+                }
+                RaisePropertyChanged("OTPValidDuration");
+            }
+        }
+
+        #region ConstructorF
+        /// <summary>
+        /// Initializes a new instance for the <see cref="UnlockAccountTINPageViewModel" /> class.
+        /// </summary>
+        public UnlockAccountTINPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            _dialogService = dialogService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+
+
+            _CancellationTokenSource = new CancellationTokenSource();
+
+            IsContinueButtonEnable = false;
+            IsLoading = false;
+            EnableTINView();
+            VerifyTINBtnClicked = new Command(this.VerifyTinBtnCommand);
+            ConfirmPasswordBtnClicked = new Command(this.ConfirmPasswordBtnCommand);
+            OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
+            ConfirmOtpBtnClicked = new Command(this.ConfirmOtpBtnCommand, CanExecuteSubmitClickCommand);
+
+            UnlockAccountModel = new UnlockAccountModel();
+            UnlockAccountModelOtp = new UnlockAccountModelOtp();
+            UnlockAccountModelChangePassword = new UnlockAccountModelChangePassword();
+        }
+       
+        #endregion
+
+        public void EnableTINView()
+        {
+            TxtTIN = string.Empty;
+
+            IsTinContentViewVisible = true;
+            IsOTPContentViewVisible = false;
+            IsChangePasswordViewVisible = false;
+            IsAccountUnlockedSuccessViewVisible = false;
+        }
+
+        public void EnableOtpView()
+        {
+            currentAttempts = 0;
+            MobileNumberMasked = AppResources.MobileNumber + " " + UnlockAccountModelResponse.D.MobileNo;
+            StopTimer = true;
+
+            IsVerifyOTPEnabled = true;
+            IsResendOTPEnabled = false;
+            IsOTPEntryEnable = true;
+
+            VerifyButtonDisableColor = Color.FromHex("#d99b29");
+            ButtonDisableColor = Color.FromHex("#9EA4A9");
+
+            OtpFirstDigit = string.Empty;
+            OtpSecondDigit = string.Empty;
+            OtpThirdDigit = string.Empty;
+            OtpFourthDigit = string.Empty;
+
+            TimerStart(numberOfSeconds);
+
+            IsTinContentViewVisible = false;
+            IsOTPContentViewVisible = true;
+            IsChangePasswordViewVisible = false;
+            IsAccountUnlockedSuccessViewVisible = false;
+        }
+
+        public void EnableChangePasswordView()
+        {
+            Password = string.Empty;
+            ConfirmPassword = string.Empty;
+
+            IsTinContentViewVisible = false;
+            IsOTPContentViewVisible = false;
+            IsChangePasswordViewVisible = true;
+            IsAccountUnlockedSuccessViewVisible = false;
+        }
+
+        public void EnableAccountUnlockedView()
+        {
+            IsTinContentViewVisible = false;
+            IsOTPContentViewVisible = false;
+            IsChangePasswordViewVisible = false;
+            IsAccountUnlockedSuccessViewVisible = true;
+        }
+
+        public async Task ValidateTINNumberSendOtp(string tin)
+        {
+           
+        }
+
+        public void TimerStart(int Seconds)
+        {
+           try
+            {
+                IsVerifyOTPEnabled = true;
+
+                CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
+                TotalSec = Seconds;
+                CancellationTokenSource CTS = _CancellationTokenSource;
+
+                Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+                {
+                    if (App.IsComingFromSleepMode)
+                    {
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                            App.IsComingFromSleepMode = false;
+                            // StopTimer = true;
+                        }
+                        else
+                        {
+                            TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                            App.IsComingFromSleepMode = false;
+                            StopTimer = true;
+                            // TimerStart(TotalSec);
+                        }
+                    }
+                    if (CTS.IsCancellationRequested)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        if (TotalSec == 0)
+                        {
+                            IsVerifyOTPEnabled = false;
+                            return false;
+                        }
+                        else if (!StopTimer)
+                        {
+                            IsVerifyOTPEnabled = false;
+                            return false;
+                        }
+                        else
+                        {
+
+                        }
+                        if (TotalSec < 0)
+                        {
+                            OTPValidDuration = " 0:00";
+                            ButtonDisableColor = Color.FromHex("#d99b29");
+                            IsResendOTPEnabled = true;
+                            VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                            IsVerifyOTPEnabled = false;
+                            IsOTPEntryEnable = false;
+                            return false;
+                        }
+                        TotalSec = TotalSec - 1;
+                        numberOfSeconds = TotalSec;
+                        TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
+                        OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
+                       
+                        return true;
+                    }
+                });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void TimerStop()
+        {
+            Interlocked.Exchange(ref _CancellationTokenSource, new CancellationTokenSource()).Cancel();
+        }
+
+        public async void VerifyTinBtnCommand()
+        {
+            try
+            {
+                IsLoading = true;
+                UnlockAccountModel.Tin = TxtTIN;
+                //Action for validating TIN and sending OTP
+                UnlockAccountModel.Action = "01";
+                UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccount(UnlockAccountModel);
+                totalAttempts = Convert.ToInt16(UnlockAccountModelResponse.D.Attempts);
+                numberOfSeconds = 120;
+                IsLoading = false;
+                EnableOtpView();
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void ConfirmOtpBtnCommand(object obj)
+        {
+            string otp = OtpFirstDigit + OtpSecondDigit + OtpThirdDigit + OtpFourthDigit;
+
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder();
+            StringBuilder PopMsg = new StringBuilder();
+            bool IsAllValid = true;
+
+            if (string.IsNullOrEmpty(OtpFirstDigit) || string.IsNullOrEmpty(OtpSecondDigit) || string.IsNullOrEmpty(OtpThirdDigit) || string.IsNullOrEmpty(OtpFourthDigit))
+            {
+                IsAllValid = false;
+                PopMsg.Append(AppResources.AccountUnlockedCompleteRequiedFields);
+            }
+            else
+            {
+                IsAllValid = true;
+            }
+
+            if (IsAllValid == false)
+            {
+                if (PopMsg.Length > 0)
+                {
+                    popUp.Message = PopMsg.ToString();
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                }
+            }
+            else
+            {
+                currentAttempts++;
+                try
+                {
+
+                    IsLoading = true;
+                    UnlockAccountModelOtp.Tin = UnlockAccountModel.Tin;
+                    UnlockAccountModelOtp.Action = "02";
+                    UnlockAccountModelOtp.Otp = otp;
+                    UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccountOtp(UnlockAccountModelOtp);
+                    IsLoading = false;
+                    EnableChangePasswordView();
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    });
+                }
+            }
+        }
+
+        public async void ExecuteResendOTPClickCommand(object obj)
+        {
+            IsResendOTPEnabled = false;
+            ButtonDisableColor = Color.FromHex("#9EA4A9");
+            VerifyButtonDisableColor = Color.FromHex("#d99b29");
+            IsVerifyOTPEnabled = true;
+            IsOTPEntryEnable = true;
+            //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+            numberOfSeconds = 120;
+
+            VerifyTinBtnCommand();
+        }
+
+        public async void ConfirmPasswordBtnCommand()
+        {
+            StringBuilder PopMsg = new StringBuilder();
+            bool IsAllValid = true;
+
+            if (string.IsNullOrEmpty(Password))
+            {
+                FramePasswordError = true;
+                if (PopMsg.Length > 0)
+                {
+                    PopMsg.Append(Environment.NewLine);
+                    PopMsg.Append(Environment.NewLine);
+                    PopMsg.Append(AppResources.ZZPasswordregulationsforSignup);
+                }
+                else
+                {
+                    PopMsg.Append(AppResources.ZZPasswordregulationsforSignup);
+                }
+                IsAllValid = false;
+            }
+            else
+            {
+                FramePasswordError = false;
+                bool IsValidPass = UtilityManager.IsPasswordValid(Password);
+                if (!IsValidPass)
+                {
+                    FramePasswordError = true;
+                    //frmPass.HasError = true;
+                    if (PopMsg.Length > 0)
+                    {
+                        PopMsg.Append(Environment.NewLine);
+                        PopMsg.Append(Environment.NewLine);
+                        PopMsg.Append(AppResources.ZZPasswordregulationsforSignup);
+                    }
+                    else
+                    {
+                        PopMsg.Append(AppResources.ZZPasswordregulationsforSignup);
+                    }
+                    IsAllValid = false;
+                }
+                else
+                {
+                    FramePasswordError = false;
+                    // frmPass.HasError = false;
+                }
+                if (Password != ConfirmPassword)
+                {
+                    FramePasswordError = true;
+                    //frmPass.HasError = true;
+                    if (PopMsg.Length > 0)
+                    {
+                        PopMsg.Append(Environment.NewLine);
+                        PopMsg.Append(Environment.NewLine);
+                        PopMsg.Append(AppResources.ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup);
+                    }
+                    else
+                    {
+                        PopMsg.Append(AppResources.ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup);
+                    }
+                    IsAllValid = false;
+                }
+                else
+                {
+                    FrameConfirmPasswordError = false;
+                    //  frmCfrmPass.HasError = false;
+                }
+            }
+
+            //if (IsAllValid == true)
+            //{
+            //    await SetRequestObjectFirst();
+            //    //viewModel.CreateGaZTAccount();
+            //}
+
+            if(IsAllValid == false)
+            {
+                if (PopMsg.Length > 0)
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = PopMsg.ToString();
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                }
+            }
+            else
+            {
+                try
+                {
+                    IsLoading = true;
+                    UnlockAccountModelChangePassword.Tin = UnlockAccountModel.Tin;
+                    UnlockAccountModelChangePassword.Action = "03";
+                    UnlockAccountModelChangePassword.NewPassword = Password;
+                    UnlockAccountModelChangePassword.ConfirmPassword = ConfirmPassword;
+                    UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccountChangePassword(UnlockAccountModelChangePassword);
+                    PasswordChangedSuccessfully = AppResources.UnlockAccountPasswordChangedSuccessfully;
+                    PasswordChangedSuccessfully = PasswordChangedSuccessfully.Replace("xxxxxx", UnlockAccountModelChangePassword.Tin);
+
+                    IsLoading = false;
+
+                    await PopupNavigation.Instance.PopAsync();
+                    _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    });
+                }
+            }
+            
+        }
+    }
+}

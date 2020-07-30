@@ -13,7 +13,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
 {
     public class ChangeMobileNumberPageViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
+        public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnVerifyButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
@@ -29,7 +29,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
             {
                 _NewMobile = value;
                 if (!String.IsNullOrWhiteSpace(_NewMobile) || !String.IsNullOrEmpty(_NewMobile))
-                    if (_NewMobile.Length == 14)
+                    if (_NewMobile.Length == 15)
                         IsVerifyEnabled = true;
                 RaisePropertyChanged("NewMobile");
             }
@@ -112,6 +112,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                 RaisePropertyChanged("NewMobileNumberEnglishLayout");
             }
         }
+        private string _txtCountryCode = string.Empty;
+        public string TxtCountryCode
+        {
+            get
+            {
+                return _txtCountryCode;
+            }
+            set
+            {
+
+                _txtCountryCode = value;
+                RaisePropertyChanged("TxtCountryCode");
+            }
+        }
         private string _countryCode = "";
         public string CountryCode
         {
@@ -186,8 +200,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                                             (AppResources.Alerts, AppResources.ChangeEmailDiscardSave,
                                                 AppResources.ZZZYesText, AppResources.ZZZNoText);
 
-
-
                         if (result == true)
                         {
 
@@ -234,13 +246,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                     try
                     {
                         bool response = false;
-                        var mobileNumber = "+9665" + NewMobile;
+                        //var mobileNumber = "+9665" + NewMobile;
+                        var mobileNumber = TxtCountryCode + NewMobile;
                         if (App.IsArabic)
                         {
-                            mobileNumber = "9665" + NewMobile + "+";
+                             mobileNumber = TxtCountryCode + NewMobile;
+                            //mobileNumber = "9665" + NewMobile + "+";
                         }
-                        string MobileNumber = "+9665" + NewMobile;
-                        bool isValidMobileNumber = IsValidMobileNumber(NewMobile);
+                        //string newCountryCodeString = TxtCountryCode.Replace("+", "00");
+                        string MobileNumber = TxtCountryCode + NewMobile;
+                        //string MobileNumber = "+9665" + NewMobile;
+                       bool isValidMobileNumber = IsValidMobileNumber(NewMobile);
                         bool isNewMobileNumberSameAsOldMobileNumber;
                         if (Device.RuntimePlatform == Device.Android)
                         {
@@ -313,17 +329,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
         {
             if (Device.RuntimePlatform == Device.iOS)
             {
-                CountryCode = "+9665";
+               // CountryCode = "+9665";
             }
             else
             {
                 if (App.IsArabic)
                 {
-                    CountryCode = "9665+";
+                   // CountryCode = "9665+";
                 }
                 else
                 {
-                    CountryCode = "+9665";
+                    //CountryCode = "+9665";
                 }
             }
             TaxPayerProfile = App.TP;
@@ -345,14 +361,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
        }
         public bool IsValidMobileNumber(string mobileNumber)
         {
-            if (!string.IsNullOrEmpty(mobileNumber)  && mobileNumber.Length == 8)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+           // if (!string.IsNullOrEmpty(mobileNumber)  && mobileNumber.Length == 15)
+            //{
+               return true;
+            //}
+            //else
+            //{
+              //  return false;
+            //}
         }
         public async Task PopToRootPage()
         {

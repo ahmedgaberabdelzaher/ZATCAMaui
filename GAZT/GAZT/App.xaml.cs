@@ -99,8 +99,17 @@ namespace EGAZT
         public static string VATRegistrationSuccessfullPageView = "VATRegistrationSuccessfullPageView";
         public static string VATIndividualSignupTnCPageView = "VATIndividualSignupTnCPageView";
         public static string FinancialDetailAttachmentPopupPageView = "FinancialDetailAttachmentPopupPageView";
+
+        public static string InternationalMobileNumberCodePages = "InternationalMobileNumberCodePages";
+        public static string InternationalCodeSearchPage = "InternationalCodeSearchPage";
+
         public static string FileAttachmentPopUpPageView = "FileAttachmentPopUpPageView";
         public static string NewAccountPopUpPageView = "NewAccountPopUpPageView";
+
+        public static string UnlockAccountTINPageView = "UnlockAccountTINPageView";
+        public static string UnlockAccountChangePasswordPageView = "UnlockAccountChangePasswordPageView";
+        public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
+
         public static string ForgotPasswordPageView = "ForgotPasswordPageView";
         #endregion
 
@@ -109,7 +118,8 @@ namespace EGAZT
         public static string fontFamilyLight = null;
         public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
-        public static bool  IsJailBrokenDevice = false;
+        public static bool IsJailBrokenDevice = false;
+        // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;//true
         public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
@@ -398,11 +408,11 @@ namespace EGAZT
         }
         public static void InitializeAppDynamics()
         {
-            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
-            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
-            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
-            config.CollectorURL = "https://eum.gazt.gov.sa:443";
-            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
+            //var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
+            //config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+            //AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+            //config.CollectorURL = "https://eum.gazt.gov.sa:443";
+            //AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
         public static async void DisplayProgressView()
         {
