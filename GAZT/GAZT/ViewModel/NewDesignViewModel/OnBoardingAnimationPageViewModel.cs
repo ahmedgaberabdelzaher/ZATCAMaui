@@ -212,10 +212,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
         private void MoveToNextPage()
         {
-            _navigationService.NavigateTo(App.SFLoginPageView);
+           _navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
 
             //Application.Current.MainPage.Navigation.PopAsync();
         }
+
 
         #endregion
     }
