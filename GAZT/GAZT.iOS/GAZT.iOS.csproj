@@ -1032,4 +1032,40 @@
   <ItemGroup>
     <BundleResource Include="Resources\ministryJustice%403x%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\inbox_onboarding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\inbox_onboarding%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\inbox_onboarding%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\returnsubmission_onboarding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\returnsubmission_onboarding%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\returnsubmission_onboarding%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\paymentmethod_onboarding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\paymentmethod_onboarding%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\paymentmethod_onboarding%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\committments_onboarding.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\committments_onboarding%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\committments_onboarding%403x.png" />
+  </ItemGroup>
 </Project>
