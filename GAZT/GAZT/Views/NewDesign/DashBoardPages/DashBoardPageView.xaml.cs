@@ -93,5 +93,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
 
         #endregion
+
+        private void TappedOnMyBills(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TappedOnMyReturns(object sender, EventArgs e)
+        {
+
+        }
     }
 }

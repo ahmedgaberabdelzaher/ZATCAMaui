@@ -88,6 +88,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("MyBillsChartModels");
             }
         }
+
+        private string _billCount;
+        public string BillCount
+        {
+            get
+            {
+                return this._billCount;
+            }
+            set
+            {
+                this._billCount = value;
+                this.RaisePropertyChanged("BillCount");
+            }
+        }
         public ObservableCollection<OverduePaymentAndUnSubmittedReturn> Bills
         {
             get
@@ -441,8 +455,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
                         MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
-                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
-                        ColorsChild.Add(System.Drawing.Color.FromArgb(0, 100, 80));
+                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
+                        BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
+                        ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
 
                     }
                     //Partially Paid Bills
@@ -475,9 +490,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(PartiallyPaidBillCountAndAmount);
 
-                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#D99A29") });
-
-                        ColorsChild.Add(System.Drawing.Color.FromArgb(217, 154, 41));
+                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#E39800") });
+                        BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PartiallyPaidBillCountAndAmount.BillCount)).ToString();
+                        ColorsChild.Add(System.Drawing.Color.FromArgb(227, 152, 0));
                     }
                     //Unpaid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].UpbillsTot != null)
@@ -509,9 +524,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(UnPaidBillCountAndAmount);
 
-                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
+                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#EC0000") });
+                        BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(UnPaidBillCountAndAmount.BillCount)).ToString();
+                        ColorsChild.Add(System.Drawing.Color.FromArgb(236,0,0));
 
-                        ColorsChild.Add(System.Drawing.Color.FromArgb(170, 12, 25));
                     }
 
                     if (Colors == null)
