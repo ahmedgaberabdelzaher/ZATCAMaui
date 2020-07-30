@@ -41,6 +41,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public int currentAttempts = 0;
         public int StartPage = 1;
         public bool IsPasswordCardSelected = true;
+        public bool IsAPICalledSuccessfully = true;
         int TotalSec;
         public int numberOfSeconds = 120;
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
@@ -1042,12 +1043,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if(!string.IsNullOrEmpty(IDNumber))
                         {
-                            StartPage = StartPage + 1;
-                            
-
-                            DefaultCardLayoutVisibility = false;
-                            UserIDLayoutVisibility = false;
-                            VerificationCodeVisibility = true;
                             SendOTPToRegisterMobileNumber();
                         }
                         else
@@ -1061,10 +1056,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (!string.IsNullOrEmpty(EnteredOTP))
                         {
-                            StartPage = StartPage + 1;
-                            VerificationCodeVisibility = false;
                             ValidateOTP();
-                            PasswordLayoutVisibility = true;
+                          
                         }
                         else
                         {
@@ -1078,9 +1071,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if(NewPassword.Equals(ConfirmPassword))
                             {
-                                StartPage = StartPage + 1;
                                 ChangePassword();
-                                RecoverPasswordLayout = true;
+                               
                                 // PasswordLayoutVisibility = true;
                             }
                             else
@@ -1100,7 +1092,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 else
                 {
                     SendUserNameToRegidteredEmail();
-                    RecoverUserNameLayout = true;
+                   
                 }
                
 
@@ -1144,7 +1136,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _navigationService.GoBack();
             });
 
-            OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
+
+            OnResendOTPClicked = new Command(() =>
+            {
+                SendOTPToRegisterMobileNumber();
+            });
+
+           // OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
 
         }
         #endregion Constructor
@@ -1356,32 +1354,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         string lang = UtilityManager.GetLanguageParameter();
                         forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(lang, idNumber);
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        //if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
-                        //{
-                        //    Device.BeginInvokeOnMainThread(() =>
-                        //    {
-                        //        // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
-                        //        MainPageLayoutVisibility = false;
-                        //        OTPLayoutVisibility = true;
-                        //        ButtonDisableColor = Color.FromHex("#9EA4A9");
-                        //        VerifyButtonDisableColor = Color.FromHex("#005e4b");
-                        //        IsResendOTPEnabled = false;
-                        //        IsVerifyOTPEnabled = true;
-                        //        IsOTPEntryEnable = true;
-                        //        string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
-                        //        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                        //        numberOfSeconds = 120;
-                        //        TimerStart(numberOfSeconds);
-                        //    });
-                        //}
-                        //else
-                        //{
-                        //    Device.BeginInvokeOnMainThread(async () =>
-                        //    {
-                        //        await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
-                        //    });
-                        //}
-                    }
+                        if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
+                        {
+                            IsAPICalledSuccessfully = true;
+
+                            StartPage = StartPage + 1;
+                            DefaultCardLayoutVisibility = false;
+                            UserIDLayoutVisibility = false;
+                            VerificationCodeVisibility = true;
+
+                            countDownSeconds = 120;
+
+                            //    Device.BeginInvokeOnMainThread(() =>
+                            //    {
+                            //        // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
+                            //        MainPageLayoutVisibility = false;
+                            //        OTPLayoutVisibility = true;
+                            //        ButtonDisableColor = Color.FromHex("#9EA4A9");
+                            //        VerifyButtonDisableColor = Color.FromHex("#005e4b");
+                            //        IsResendOTPEnabled = false;
+                            //        IsVerifyOTPEnabled = true;
+                            //        IsOTPEntryEnable = true;
+                            //        string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
+                            //        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            //        numberOfSeconds = 120;
+                            //        TimerStart(numberOfSeconds);
+                            //    });
+                            //}
+                            //else
+                            //{
+                            //    Device.BeginInvokeOnMainThread(async () =>
+                            //    {
+                            //        await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
+                            //    });
+                        }
+                        else
+                        {
+                            IsAPICalledSuccessfully = false;
+                        }
+                        }
                     catch (Exception ex)
                     {
                     }
@@ -1458,6 +1469,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("01"))
                         {
+                            StartPage = StartPage + 1;
+                            VerificationCodeVisibility = false;
+                            PasswordLayoutVisibility = true;
+
+                            IsAPICalledSuccessfully = true;
+
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
@@ -1468,6 +1485,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("42"))
                         {
+                            IsAPICalledSuccessfully = true;
+
+                            StartPage = StartPage + 1;
+                            VerificationCodeVisibility = false;
+                            PasswordLayoutVisibility = true;
+
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 string messagefordialogue = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;
@@ -1512,6 +1535,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
+                        IsAPICalledSuccessfully = false;
+
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
@@ -1579,6 +1604,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                     if (forgotPassword.d != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                     {
+                        IsAPICalledSuccessfully = true;
+                        RecoverUserNameLayout = true;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             //await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
@@ -1592,6 +1619,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
+                        IsAPICalledSuccessfully = false;
+
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
@@ -1666,6 +1695,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                             if (forgotPassword != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                             {
+                                StartPage = StartPage + 1;
+                                RecoverPasswordLayout = true;
                                 // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
                                 NewPasswordLayoutVisibility = false;
                                 OTPLayoutVisibility = false;
@@ -1754,11 +1785,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             TINs = Tins;
                             if (Tins.Count != 0 && SelectedTinId == null)
                             {
+                                IsAPICalledSuccessfully = true;
+
                                 IsVisibleTinIds = true;
                                 SelectedTinId = TINs[0];
                             }
                             else
                             {
+                                IsAPICalledSuccessfully = false;
+
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     IsVisibleTinIds = false;
@@ -1773,6 +1808,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         catch (Exception e)
                         {
+                            IsAPICalledSuccessfully = false;
+
                             IsVisibleTinIds = false;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -1977,18 +2014,27 @@ RecoverUserNameLayout = false;
             UserIDLayoutVisibility = true;
 DefaultCardLayoutVisibility = true;
             UserNameLayoutVisibility = true;
+            IDNumber = string.Empty;
+            OTPFirstDigit = string.Empty;
+            OTPSecondDigit = string.Empty;
+            OTPThirdDigit = string.Empty;
+            OTPFourthDigit = string.Empty;
+            IsAPICalledSuccessfully = false;
+
+
         }
 
-       public void SetOTP()
+
+        public void SetOTP()
         {
-            if (App.IsArabic)
-            {
-                EnteredOTP = OTPFourthDigit + OTPThirdDigit + OTPSecondDigit + OTPFirstDigit;
-            }
-            else
-            {
+            //if (App.IsArabic)
+            //{
+            //    EnteredOTP = OTPFourthDigit + OTPThirdDigit + OTPSecondDigit + OTPFirstDigit;
+            //}
+            //else
+            //{
                 EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
-            }
+            //}
         }
 
 
