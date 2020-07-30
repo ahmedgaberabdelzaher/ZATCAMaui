@@ -247,8 +247,8 @@ HeaderTextColor="White"
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
                                             <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                                <custom:CustomLabel Text="SADAD Number" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <custom:CustomLabel Text="SADAD Number" Style="{StaticResource ValueLabelBlack}" />
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <custom:CustomLabel Text="{Binding Vtref}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>

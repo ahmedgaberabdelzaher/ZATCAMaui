@@ -275,10 +275,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _myBills = value;
-                RaisePropertyChanged("MyBills");
+                if(_myBills!=null)
+                {
+
+                    if (_myBills.Count != 0)
+                    {
+                        double Amount = 0.00;
+                        foreach (var item in MyBills)
+                        {
+                            if (item.TestDueAmount != null)
+                            {
+                                Amount = Amount + Convert.ToDouble(item.TestDueAmount);
+                            }
+                        }
+                        //\\AmountLabel = Math.Round(count, 2).ToString();
+                        AmountLabel = Amount.ToString();
+                    }
+                    else
+                    {
+                        AmountLabel = string.Empty;
+                    }
+
+                }
+                    // _listToDisplay.Sum(x => x.)
+                    RaisePropertyChanged("MyBills");
             }
-        }    
-  
+        }
+        private string _amountLabel=string.Empty;
+        public string AmountLabel
+        {
+            get
+            {
+                return _amountLabel;
+            }
+            set
+            {
+                _amountLabel = value;
+              
+             
+                RaisePropertyChanged("AmountLabel");
+            }
+        }
         private List<MyBills> _myBillsPaid;
         public List<MyBills> MyBillsPaid
         {

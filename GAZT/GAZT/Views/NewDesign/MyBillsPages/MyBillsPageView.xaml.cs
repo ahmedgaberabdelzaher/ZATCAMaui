@@ -1,6 +1,7 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Models;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -24,6 +25,12 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+            Bills.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            };
         }
 
         private void SetLTR()
@@ -63,6 +70,26 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                    ChipModel selectedReturntype = (ChipModel)e.AddedItem;
             ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
             viewModel.SelectedChipFilterItem = selectedReturntype;
+        }
+
+        private async void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+            var dataItem = e.Item as MyBills;
+            await Clipboard.SetTextAsync(dataItem.VTRE2);
+            if (Clipboard.HasText)
+            {
+                var text = await Clipboard.GetTextAsync();
+                viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
+                
+            }
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
     }
 }

@@ -99,7 +99,7 @@
                   
                     <syncfusion:SfPicker x:Name="TaxTypePicker"
                     HeaderHeight="55"
-                    ShowHeader="true"
+                    
                     HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
 HeaderTextColor="White"
                                              ShowColumnHeader="False"
@@ -108,7 +108,7 @@ HeaderTextColor="White"
                                             HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
-                     BackgroundColor="#EAF7CC"
+                     BackgroundColor="White"
                     UnSelectedItemTextColor="#006450"
                                 SelectedItemFontSize="15"
                                            
@@ -116,10 +116,11 @@ HeaderTextColor="White"
                      DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                    PickerHeight="250"
                     PickerWidth="300"
+                                         ShowHeader="False" ShowFooter="False"
                                              HeaderFontSize="14"
                     OKButtonTextColor="#006450"
                     CancelButtonTextColor="#006450"
-                        ShowFooter="True" 
+                        
                                     OKButtonBackgroundColor="#EAF7CC"
                                     CancelButtonBackgroundColor="#EAF7CC"
                                              FooterHeight="46"
@@ -129,7 +130,7 @@ HeaderTextColor="White"
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
                 </Grid>
-                <custom:CustomLabel Text="60,0000 SAR" Style="{StaticResource CaptionLabelGrey}"/>
+                <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
                 <StackLayout Margin="0,8,0,8" >
                     <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                    
                                          ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="AliceBlue"    SelectionChanged="chipgroup_SelectionChanged">
@@ -156,7 +157,7 @@ HeaderTextColor="White"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                  BackgroundColor="White"     
-            SeparatorVisibility="None"
+            SeparatorVisibility="None" ItemTapped="Bills_ItemTapped"
             >
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -212,11 +213,11 @@ HeaderTextColor="White"
                                             </Grid.ColumnDefinitions>
                                             <Label Grid.Row="0" Grid.Column="0" Text="{Binding TestDueAmount}" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
                                             <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                                <Label Text="SADAD Number" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <Label Text="{Binding VTRE2}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                                <Label Text="Due Date" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <Label Text="{Binding Faednar}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
                                         </Grid>

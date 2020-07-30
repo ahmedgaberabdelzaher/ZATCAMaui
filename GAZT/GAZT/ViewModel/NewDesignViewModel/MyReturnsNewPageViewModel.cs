@@ -22,6 +22,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnVerifyButtonClicked { get; set; }
         public MyReturnsRootObject MyReturns { get; set; }
+        public ICommand OnBackButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
         #region Property
         public List<ReturnTypes> _returnTypeForFilter;
@@ -49,7 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _selectedChipFilterItem = value;
                 if (_selectedChipFilterItem != null)
                 {
-                    //FilterIfTypeAndStausFilterSelected();
+                    FilterIfTypeAndStausFilterSelected();
                 }
                 RaisePropertyChanged("SelectedChipFilterItem");
             }
@@ -93,27 +94,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_selectedReturnTypeForFilter != null)
                 {
                     FilterLabelText = _selectedReturnTypeForFilter.TaxType;
-                    if (_selectedReturnTypeForFilter.Id == "00")
-                    {
-                        FilterAllData();
-                    }
-                    if (_selectedReturnTypeForFilter.Id == "01")
-                    {
-                        FilterZakatData();
-                    }
-                    if (_selectedReturnTypeForFilter.Id == "02")
-                    {
-                        FilterVatData();
-                    }
-                    if (_selectedReturnTypeForFilter.Id == "03")
-                    {
-                        FilterETData();
-                        FilterETData();
-                    }
-                    if (_selectedReturnTypeForFilter.Id == "04")
-                    {
-                        FilterETData();
-                    }
+                    FilterOnBasisOfTaxType();
 
                 }
 
@@ -399,7 +380,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _listToDisplay = value;
-                RaisePropertyChanged("ListToDisplay");
+                if(_listToDisplay!=null)
+                {
+                    if (_listToDisplay.Count != 0)
+                    {
+                       // _listToDisplay.Sum(x => x.)
+                    }
+
+                }
+                    //Sum(emp => emp.Salary);
+                    RaisePropertyChanged("ListToDisplay");
             }
         }
         private List<MyReturnsResult> _returnsZakatSubmited = null;
@@ -951,6 +941,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
 
         }
         #endregion
@@ -1538,7 +1532,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             }
         }
-
+        public void FilterIfTypeAndStausFilterSelected()
+        {
+            if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+            {
+                FilterOnBasisOfTaxType();
+                ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                //ListToDisplay = new ObservableCollection<MyBills>(MyBills.Where(x => x. == Enum.GetName(typeof(BillStatus), 0)).ToList());
+            }
+            if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+            {
+               
+                FilterOnBasisOfTaxType();
+                ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.StatusTxt != "X") );
+            }
+            
+            if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+            {
+                FilterOnBasisOfTaxType();
+                ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.StatusTxt == "X"));
+            }
+        }
         public void PopulateReturnTypeList()
             {
             try
@@ -1574,7 +1588,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                };
         }
-
+        public void FilterOnBasisOfTaxType()
+        {
+            if (_selectedReturnTypeForFilter.Id == "00")
+            {
+                FilterAllData();
+            }
+            if (_selectedReturnTypeForFilter.Id == "01")
+            {
+                FilterZakatData();
+            }
+            if (_selectedReturnTypeForFilter.Id == "02")
+            {
+                FilterVatData();
+            }
+            if (_selectedReturnTypeForFilter.Id == "03")
+            {
+                FilterETData();
+                FilterETData();
+            }
+            if (_selectedReturnTypeForFilter.Id == "04")
+            {
+                FilterETData();
+            }
+        }
         #endregion
 
 
