@@ -8,17 +8,18 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 {
     public partial class TINDeregistrationPageView : ContentPage
     {
-        TINDeregistrationPageViewModel viewModel;
+        //TINDeregistrationPageViewModel viewModel;
+       
 
         public TINDeregistrationPageView()
         {
             InitializeComponent();
 
-            viewModel = App.Locator.TINDeregistrationPageView;
+            //viewModel = App.Locator.TINDeregistrationPageView;
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            this.BindingContext = viewModel;
+            //this.BindingContext = viewModel;
         }
 
         private void SetLTR()
