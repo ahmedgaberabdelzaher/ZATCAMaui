@@ -4,6 +4,7 @@ using GAZT;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Timers;
+using System;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
@@ -95,7 +96,17 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             }
         }
 
-       
+        private void OnPasswordCardClicked(object sender, EventArgs e)
+        {
+            viewModel.SetPasswordCardLayoutVisibility();
+        }
+
+
+        private void OnUserNameCardClicked(object sender, EventArgs e)
+        {
+            viewModel.SetUserNameCardVisibility();
+        }
+
 
     }
 }

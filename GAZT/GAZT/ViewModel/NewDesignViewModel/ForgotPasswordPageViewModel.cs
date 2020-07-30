@@ -1102,17 +1102,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnUserNameCardClicked = new Command(() =>
             {
-                IsPasswordCardSelected = false;
-                ForgotUserNameCardLayoutVisibility = true;
-                UserNameLayoutVisibility = false;
+                SetUserNameCardVisibility();
 
             });
 
             OnPasswordCardClicked = new Command(() =>
             {
-                IsPasswordCardSelected = true;
-                ForgotUserNameCardLayoutVisibility = false;
-                UserNameLayoutVisibility = true;
+                SetPasswordCardLayoutVisibility();
 
             });
 
@@ -1147,6 +1143,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         #endregion Constructor
         #region Method
+
+
+        public void SetPasswordCardLayoutVisibility()
+        {
+            IsPasswordCardSelected = true;
+            ForgotUserNameCardLayoutVisibility = false;
+            UserNameLayoutVisibility = true;
+
+        }
+
+        public void SetUserNameCardVisibility()
+        {
+            IsPasswordCardSelected = false;
+            ForgotUserNameCardLayoutVisibility = true;
+            UserNameLayoutVisibility = false;
+        }
         bool CanExecuteSubmitClickCommand(object arg)
         {
             return _isVerifyOTPEnabled;
