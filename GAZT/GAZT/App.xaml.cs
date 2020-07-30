@@ -1,5 +1,6 @@
 using CommonServiceLocator;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
 using GalaSoft.MvvmLight.Views;
@@ -178,7 +179,7 @@ namespace EGAZT
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
             VATDeclaration vAT = null;
-            CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
             //CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
             //new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

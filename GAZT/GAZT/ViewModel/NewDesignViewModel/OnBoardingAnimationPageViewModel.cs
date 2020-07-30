@@ -17,12 +17,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
     /// ViewModel for on-boarding gradient page with animation.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class GAZTNewDesignOnBoardingAnimationPageViewModel : ViewModelBase
+    public class GAZTNewDesignOnBoardingAnimationPageViewModel : BaseViewModel
     {
         #region Fields
-
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
         private ObservableCollection<Boarding> boardings;
 
@@ -39,42 +36,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         /// <summary>
         /// Initializes a new instance for the <see cref="OnBoardingAnimationPageViewModel" /> class.
         /// </summary>
-        public GAZTNewDesignOnBoardingAnimationPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public GAZTNewDesignOnBoardingAnimationPageViewModel(INavigationService navigationService, IDialogService dialogService): base (navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
             this.SkipCommand = new Command(this.Skip);
             this.NextCommand = new Command(this.Next);
             this.Boardings = new ObservableCollection<Boarding>
             {
                 new Boarding()
                 {
-                    ImagePath = "ReSchedule.png",
-                    Header = "COMMITMENTS",
-                    Content = "easy information on your obligations (payments and returns)",
+                    ImagePath = "committments_onboarding.png",
+                    Header = "Commitments",
+                    Content = "Don't miss any obligation with the new commitments calendar",
                     RotatorItem = new WalkthroughItemPage()
                 },
                 new Boarding()
                 {
-                    ImagePath = "ViewMode.png",
-                    Header = "RETURNS",
+                    ImagePath = "returnsubmission_onboarding.png",
+                    Header = "Return Submission",
                     Content = "VAT, ZAKAT and other return submissions made easy",
                     RotatorItem = new WalkthroughItemPage()
                 },
                 new Boarding()
                 {
-                    ImagePath = "TimeZone.png",
-                    Header = "CORRESPONDENCE",
-                    Content = "keep track of your communication with GAZT",
+                    ImagePath = "paymentmethod_onboarding.png",
+                    Header = "New Payment Methods",
+                    Content = "Make all your transactions fast and simple with MADA & Apple Pay",
+                    RotatorItem = new WalkthroughItemPage()
+                },
+                new Boarding()
+                {
+                    ImagePath = "inbox_onboarding.png",
+                    Header = "Inbox & Notifications",
+                    Content = "Make all your transactions fast and simple with MADA & Apple Pay",
                     RotatorItem = new WalkthroughItemPage()
                 }
             };
@@ -219,7 +212,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
         private void MoveToNextPage()
         {
-            _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+            _navigationService.NavigateTo(App.SFLoginPageView);
 
             //Application.Current.MainPage.Navigation.PopAsync();
         }
