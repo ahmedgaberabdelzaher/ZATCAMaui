@@ -109,7 +109,7 @@ namespace EGAZT
         public static string fontFamilyLight = null;
         public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
-        public static bool IsJailBrokenDevice = false;
+        public static bool  IsJailBrokenDevice = false;
         public static bool PreviousIsArabic = true;//true
         public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
@@ -154,7 +154,7 @@ namespace EGAZT
 
             AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }
 
-            InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
+            InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             }  
             try
             {
                 CreateClientHandler();
@@ -398,11 +398,11 @@ namespace EGAZT
         }
         public static void InitializeAppDynamics()
         {
-            //var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
-            //config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
-            //AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
-            //config.CollectorURL = "https://eum.gazt.gov.sa:443";
-            //AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
+            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
+            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+            config.CollectorURL = "https://eum.gazt.gov.sa:443";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
         public static async void DisplayProgressView()
         {
