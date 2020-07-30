@@ -19,6 +19,9 @@ using UIKit;
 using Xamarin;
 using Xamarin.Forms;
 using AppDynamics.Agent;
+using Syncfusion.SfRotator.XForms.iOS;
+using Syncfusion.XForms.iOS.Graphics;
+using Syncfusion.XForms.iOS.Buttons;
 
 namespace GAZT.iOS
 {
@@ -75,6 +78,10 @@ namespace GAZT.iOS
 
             // Add the below line if you are using SfCircularProgressBar.  
             Syncfusion.XForms.iOS.ProgressBar.SfCircularProgressBarRenderer.Init();
+
+            SfRotatorRenderer.Init();
+            SfButtonRenderer.Init();
+            SfGradientViewRenderer.Init();
 
             Distribute.DontCheckForUpdatesInDebug();
             Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
