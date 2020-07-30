@@ -224,7 +224,7 @@ HeaderTextColor="White"
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <!--<Label Grid.Row="0" Grid.Column="0" Text="{Binding TestDueAmount}" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding TestDueAmount}" VerticalOptions="CenterAndExpand"  >
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" Text="{Binding TestDueAmount}" VerticalOptions="CenterAndExpand"  >
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding TestDueAmount}" Style="{StaticResource SectionTitleBlackBold}" ></Span>
