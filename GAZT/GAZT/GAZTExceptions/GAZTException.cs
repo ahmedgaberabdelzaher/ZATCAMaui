@@ -228,4 +228,14 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+
+    public class GAZTUnlockAccountException : GAZTException
+    {
+        public GAZTUnlockAccountException()
+        {
+        }
+        public GAZTUnlockAccountException(string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
 }

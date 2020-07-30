@@ -962,7 +962,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
                 App.TP = new TaxPayerProfile();
                 App.TP = TPProfile;
-                App.TP.Userid = TPProfile.Tin;
+                App.TP.Userid = App.LoginDataRetrieved.TIN;
             }
 
             String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;

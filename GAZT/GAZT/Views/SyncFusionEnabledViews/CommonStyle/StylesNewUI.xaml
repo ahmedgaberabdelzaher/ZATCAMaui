@@ -10,7 +10,7 @@
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
-    xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
     
     
     <!--Vat New UI-->
@@ -312,6 +312,46 @@
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="Opacity" Value=".2" />
     </Style>
+
+
+    <!--Styles for Onboarding-->
+
+    <Style x:Key="SfButtonStyleForOnbBoarding" TargetType="buttons:SfButton">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+        <Setter Property="Margin" Value="0,10,0,24"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="WidthRequest" Value="245"/>
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+        <Setter Property="BackgroundColor" Value="#d99a29"/>
+        <!--Value="{StaticResource Gray-White}"/>-->
+        <Setter Property="TextColor" Value="White"/>
+    </Style>
+
+    <Style x:Key="SfLabelStyleForOnboarding" TargetType="Label">
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="LineHeight" Value="{OnPlatform Android=1.25,Default=-1}"/>
+        <Setter Property="TextColor" Value="White"/>
+    </Style>
+
+    <Style x:Key="SfGradientStyleForOnbBoarding" TargetType="gradient:SfGradientView">
+        <Setter Property="BackgroundBrush">
+            <Setter.Value>
+                <gradient:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="1,1">
+                    <gradient:SfLinearGradientBrush.GradientStops>
+                        <gradient:SfGradientStop Color="Red" Offset="0.0" />
+                        <gradient:SfGradientStop Color="{StaticResource Primary}" Offset="0.0" />
+                    </gradient:SfLinearGradientBrush.GradientStops>
+                </gradient:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Styles for Onboarding-->
+
 
 
 </ResourceDictionary>

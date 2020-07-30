@@ -147,9 +147,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        
 
-      
+        private string _txtCountryCode = string.Empty;
+        public string TxtCountryCode
+        {
+            get
+            {
+                return _txtCountryCode;
+            }
+            set
+            {
+
+                _txtCountryCode = value;
+                RaisePropertyChanged("TxtCountryCode");
+            }
+        }
+
 
         private bool _frameIDError = false;
         public bool FrameIDError
@@ -652,9 +665,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _mobileNumber = value;
-                if (_mobileNumber != null)
+                if (_mobileNumber != null && _mobileNumber.Length > 1)
                 {
-                    if (_mobileNumber.Length == 9)
+                    if (_mobileNumber.Length >= 9 )
                     {
                         string mystring = _mobileNumber.Substring(_mobileNumber.Length - 4);
                      EncriptedMobileNumber ="xxxxxx" + mystring;
@@ -1315,7 +1328,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             { }
         }
 
-                    public async Task OnPageLoad()
+  public async Task OnPageLoad()
         {
            // TimerStart(120);
                 currentStep = 1;
@@ -2065,6 +2078,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
+                string newCountryCodeString = TxtCountryCode.Replace("+", "00");
 
                 VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
                 {
@@ -2080,14 +2094,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //Region = SelectedRegion.Land1,
                     Region = _Region,
                     //Country = SelectedGCCCountry.CountryCode,
-                    Country = _Country,
+                    Country = string.Empty,
+                    MobileCountry = _Country,
+
                     Building = BuildingNumber,
                     Floor = UnitNumber,
                     Street = Neighborhood,
                     Begda = "/Date(1593139376000)/",
                     Endda = "/Date(253402251010000)/",
                     Email = Email,
-                    Mobile = "00966" + MobileNumber,
+                    Mobile = newCountryCodeString + MobileNumber,
+                    //Mobile = "00966" + MobileNumber,
                     CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
                     Birthdt = Bdt,//"/Date(1577846576000)/",
                     //Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
@@ -2285,9 +2302,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     }
                 }
+                string newCountryCodeString = TxtCountryCode.Replace("+", "00");
+
                 string submitValue;
                 submitValue = "";
-            VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
+                VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
                 {
                     Type = "1",
                     IdType = SelectedIdType.ID,//"ZS0018",
@@ -2300,7 +2319,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //Region = SelectedRegion.Land1,
                     Region = _Region,
                     //Country = SelectedGCCCountry.CountryCode,
-                    Country = _Country,
+                     Country = string.Empty,
+                    MobileCountry = _Country,
                     //Building = BuildingNumber,
                     //Floor = "",
                     //Street = "",
@@ -2310,7 +2330,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 Begda = "/Date(1593139376000)/",
                     Endda = "/Date(253402251010000)/",
                     Email = Email,
-                    Mobile = "00966" + MobileNumber,
+                    Mobile = newCountryCodeString + MobileNumber,
+                  //  Mobile = "00966" + MobileNumber,
                     CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
                     Birthdt = Bdt,//"/Date(1577846576000)/",
                     //Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",

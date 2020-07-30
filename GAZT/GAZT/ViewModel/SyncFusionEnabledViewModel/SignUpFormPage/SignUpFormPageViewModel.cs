@@ -448,6 +448,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
                 RaisePropertyChanged("TxtEmailAddress");
             }
         }
+        private string _txtCountryCode = string.Empty;
+        public string TxtCountryCode
+        {
+            get
+            {
+                return _txtCountryCode;
+            }
+            set
+            {
+
+                _txtCountryCode = value;
+                RaisePropertyChanged("TxtCountryCode");
+            }
+        }
         private string _txtMobileNumber = string.Empty;
         public string TxtMobileNumber
         {

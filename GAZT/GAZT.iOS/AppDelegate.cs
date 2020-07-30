@@ -60,6 +60,8 @@ namespace GAZT.iOS
             SfCalendarRenderer.Init();
             new SfBusyIndicatorRenderer();
             SfCardLayoutRenderer.Init();
+            new Syncfusion.SfNavigationDrawer.XForms.iOS.SfNavigationDrawerRenderer();
+
             new SfRotator();
             SfListViewRenderer.Init();
             SfEffectsViewRenderer.Init();  //Initialize only when effects view is added to Listview.

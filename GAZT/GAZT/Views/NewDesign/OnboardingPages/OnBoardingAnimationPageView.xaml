@@ -5,14 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behavior="clr-namespace:GAZT.SyncFusionEnabledBehaviors.Behaviors"
     xmlns:rotator="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
-    xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate x:Key="ItemTemplate">
                 <ContentPresenter Content="{Binding RotatorItem}" />
@@ -27,13 +27,15 @@
                 <RowDefinition Height="70" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
+                
             </Grid.RowDefinitions>
 
             <!--  Gradient view  -->
-            <gradient:SfGradientView Grid.RowSpan="4" Style="{StaticResource SfGradientViewStyle}" />
+            <gradient:SfGradientView Grid.RowSpan="4" Style="{StaticResource SfGradientStyleForOnbBoarding}" />
+            
 
             <!--  Skip button  -->
-            <button:SfButton
+            <buttons:SfButton
                 x:Name="SkipButton"
                 Grid.Row="0"
                 Margin="{core:OnPlatformOrientationThickness AndroidPhonePortrait='0,10,10,0',
@@ -43,12 +45,12 @@
                 BackgroundColor="Transparent"
                 Command="{Binding SkipCommand}"
                 CornerRadius="20"
-                FontFamily="{StaticResource Montserrat-SemiBold}"
+                FontFamily="{StaticResource SSTArBold}"
                 HeightRequest="40"
                 HorizontalOptions="End"
                 IsVisible="{Binding IsSkipButtonVisible}"
                 Text="Skip"
-                TextColor="{x:StaticResource Gray-White}"
+                TextColor="{x:StaticResource NeutralGreay}"
                 VerticalOptions="StartAndExpand"
                 WidthRequest="80" />
             
@@ -79,15 +81,16 @@
                 <rotator:SfRotator.Behaviors>
                     <behavior:SfRotatorBehavior />
                 </rotator:SfRotator.Behaviors>
+                
             </rotator:SfRotator>
 
             <!--  Next button  -->
-            <button:SfButton
+            <buttons:SfButton
                 x:Name="NextButtonText"
                 Grid.Row="3"
                 Command="{Binding NextCommand}"
                 CommandParameter="{x:Reference Rotator}"
-                Style="{StaticResource SfButtonStyle}"
+                Style="{StaticResource SfButtonStyleForOnbBoarding}"
                 Text="{Binding NextButtonText}" />
         </Grid>
     </ContentPage.Content>

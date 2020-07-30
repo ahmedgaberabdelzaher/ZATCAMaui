@@ -14,7 +14,7 @@ namespace GAZT.Droid
 {
 	
 	
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
 	public partial class Resource
 	{
 		
@@ -26223,64 +26223,67 @@ namespace GAZT.Droid
 			public const int tooltip_frame_light = 2131165695;
 			
 			// aapt resource value: 0x7F070200
-			public const int user = 2131165696;
-			
-			// aapt resource value: 0x7F070212
-			public const int vatEstablishment_G = 2131165714;
+			public const int unlockaccount_clock = 2131165696;
 			
 			// aapt resource value: 0x7F070201
-			public const int vat_ic_individaualregistration = 2131165697;
-			
-			// aapt resource value: 0x7F070202
-			public const int vat_ic_location = 2131165698;
-			
-			// aapt resource value: 0x7F070203
-			public const int vat_ic_phone = 2131165699;
-			
-			// aapt resource value: 0x7F070204
-			public const int vat_ic_success = 2131165700;
-			
-			// aapt resource value: 0x7F070205
-			public const int vat_ic_taxpayerDetail = 2131165701;
-			
-			// aapt resource value: 0x7F070206
-			public const int vat_new_Establishment_G = 2131165702;
-			
-			// aapt resource value: 0x7F070207
-			public const int vat_new_Establishment_W = 2131165703;
-			
-			// aapt resource value: 0x7F070208
-			public const int vat_new_Iconawesomephonealt = 2131165704;
-			
-			// aapt resource value: 0x7F070209
-			public const int vat_new_Iconawesomeusercircle = 2131165705;
-			
-			// aapt resource value: 0x7F07020A
-			public const int vat_new_Iconioniciosstats = 2131165706;
-			
-			// aapt resource value: 0x7F07020B
-			public const int vat_new_Iconmetrolocation = 2131165707;
-			
-			// aapt resource value: 0x7F07020C
-			public const int vat_new_individual = 2131165708;
-			
-			// aapt resource value: 0x7F07020D
-			public const int vat_new_individual_G = 2131165709;
-			
-			// aapt resource value: 0x7F07020E
-			public const int vat_tile_IbanCard_background = 2131165710;
-			
-			// aapt resource value: 0x7F07020F
-			public const int vat_tile_IbanCard_background_white = 2131165711;
-			
-			// aapt resource value: 0x7F070210
-			public const int vat_tile_listofsignup = 2131165712;
-			
-			// aapt resource value: 0x7F070211
-			public const int vat_tile_listofsignup_W = 2131165713;
+			public const int user = 2131165697;
 			
 			// aapt resource value: 0x7F070213
-			public const int ViewMode = 2131165715;
+			public const int vatEstablishment_G = 2131165715;
+			
+			// aapt resource value: 0x7F070202
+			public const int vat_ic_individaualregistration = 2131165698;
+			
+			// aapt resource value: 0x7F070203
+			public const int vat_ic_location = 2131165699;
+			
+			// aapt resource value: 0x7F070204
+			public const int vat_ic_phone = 2131165700;
+			
+			// aapt resource value: 0x7F070205
+			public const int vat_ic_success = 2131165701;
+			
+			// aapt resource value: 0x7F070206
+			public const int vat_ic_taxpayerDetail = 2131165702;
+			
+			// aapt resource value: 0x7F070207
+			public const int vat_new_Establishment_G = 2131165703;
+			
+			// aapt resource value: 0x7F070208
+			public const int vat_new_Establishment_W = 2131165704;
+			
+			// aapt resource value: 0x7F070209
+			public const int vat_new_Iconawesomephonealt = 2131165705;
+			
+			// aapt resource value: 0x7F07020A
+			public const int vat_new_Iconawesomeusercircle = 2131165706;
+			
+			// aapt resource value: 0x7F07020B
+			public const int vat_new_Iconioniciosstats = 2131165707;
+			
+			// aapt resource value: 0x7F07020C
+			public const int vat_new_Iconmetrolocation = 2131165708;
+			
+			// aapt resource value: 0x7F07020D
+			public const int vat_new_individual = 2131165709;
+			
+			// aapt resource value: 0x7F07020E
+			public const int vat_new_individual_G = 2131165710;
+			
+			// aapt resource value: 0x7F07020F
+			public const int vat_tile_IbanCard_background = 2131165711;
+			
+			// aapt resource value: 0x7F070210
+			public const int vat_tile_IbanCard_background_white = 2131165712;
+			
+			// aapt resource value: 0x7F070211
+			public const int vat_tile_listofsignup = 2131165713;
+			
+			// aapt resource value: 0x7F070212
+			public const int vat_tile_listofsignup_W = 2131165714;
+			
+			// aapt resource value: 0x7F070214
+			public const int ViewMode = 2131165716;
 			
 			static Drawable()
 			{

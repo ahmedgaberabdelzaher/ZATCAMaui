@@ -18,6 +18,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
     public class VATRegistrationPageViewModel : ViewModelBase
     {
+        string idnumber { get; set; }
         public int DefaultMonth;
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -145,11 +146,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _iDNumberMandatoryVisibility = value;
+                if(_iDNumberMandatoryVisibility)
+                {
+                    IDNumberVisibility = false; 
+                }
+                else
+                {
+                    IDNumberVisibility = true; 
+                }
 
                 RaisePropertyChanged("IDNumberMandatoryVisibility");
             }
         }
+        private bool _iDNumberVisibility = true;
+        public bool IDNumberVisibility
+        {
+            get
+            {
+                return _iDNumberVisibility;
+            }
+            set
+            {
+                _iDNumberVisibility = value;
 
+                RaisePropertyChanged("IDNumberVisibility");
+            }
+        }
         private bool _dOBNonMandatoryVisibility = false;
         public bool DOBNonMandatoryVisibility
         {
@@ -639,6 +661,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _sliderLable1EligibilityText = value;
+                
                 RaisePropertyChanged("SliderLable1EligibilityText");
             }
         }
@@ -1497,7 +1520,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 //Step 4
 
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
-                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = TypeFR;
+                if(SelectedIdTypeFR!=null )
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Idnumber = IdnumberFR;
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Firstnm = FirstnmFR;
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Lastnm = LastnmFR;
@@ -1781,14 +1805,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             if (vATRegistration.d.CONTACT_PERSONSet != null)
                             {
                                 GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
-                              // VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = TypeFR;
-                                IdnumberFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
+                                //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
+                                idnumber = string.Empty;
+                                 idnumber = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
                                 FirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
                                 LastnmFR= vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm ;
                                 MobNumberFR= vATRegistration.d.CONTACTDTSet.results[0].MobNumber ;
                                 SmtpAddrFR= vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr ;
 
-                                //SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
+                                SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
+                              
 
                             }
 
@@ -1904,7 +1930,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             }
 
 
-
+                            IdnumberFR = idnumber;
 
                         }
                         else

@@ -1,0 +1,67 @@
+﻿using System;
+using System.Linq;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using Xamarin.Forms;
+
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
+{
+    public class UnlockAccountSuccessPageViewModel:ViewModelBase
+    {
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+
+        private string _passwordChangedSuccessfully;
+        public string PasswordChangedSuccessfully
+        {
+            get
+            {
+                return _passwordChangedSuccessfully;
+            }
+            set
+            {
+                _passwordChangedSuccessfully = value;
+                RaisePropertyChanged("PasswordChangedSuccessfully");
+            }
+        }
+
+        #region ConstructorF
+        /// <summary>
+        /// Initializes a new instance for the <see cref="UnlockAccountTINPageViewModel" /> class.
+        /// </summary>
+        public UnlockAccountSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            _dialogService = dialogService;
+
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+        }
+
+        public void PopToRootPage()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
+                _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                _navigation.NavigationStack.ToList().Clear();
+            });
+        }
+
+        #endregion
+    }
+}

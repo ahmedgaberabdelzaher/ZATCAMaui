@@ -99,8 +99,17 @@ namespace EGAZT
         public static string VATRegistrationSuccessfullPageView = "VATRegistrationSuccessfullPageView";
         public static string VATIndividualSignupTnCPageView = "VATIndividualSignupTnCPageView";
         public static string FinancialDetailAttachmentPopupPageView = "FinancialDetailAttachmentPopupPageView";
+
+        public static string InternationalMobileNumberCodePages = "InternationalMobileNumberCodePages";
+        public static string InternationalCodeSearchPage = "InternationalCodeSearchPage";
+
         public static string FileAttachmentPopUpPageView = "FileAttachmentPopUpPageView";
         public static string NewAccountPopUpPageView = "NewAccountPopUpPageView";
+
+        public static string UnlockAccountTINPageView = "UnlockAccountTINPageView";
+        public static string UnlockAccountChangePasswordPageView = "UnlockAccountChangePasswordPageView";
+        public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
+
         public static string ForgotPasswordPageView = "ForgotPasswordPageView";
         #endregion
 
@@ -110,6 +119,7 @@ namespace EGAZT
         public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
         public static bool IsJailBrokenDevice = false;
+        // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;//true
         public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
@@ -154,7 +164,7 @@ namespace EGAZT
 
             AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }
 
-            InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
+            InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             }  
             try
             {
                 CreateClientHandler();

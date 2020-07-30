@@ -1,9 +1,11 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using GAZT;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
@@ -328,6 +330,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 viewModel._navigationService.NavigateTo(App.ForgotPasswordPageView);
                             }
 
+                            if (data == "navigateToUnlockAccountPage")
+                            {
+                                hybridWebView.Opacity = 0;
+                                await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
+                            }
+
                             if (data == "error")
                             {
                                 hybridWebView.Opacity = 0;
@@ -347,7 +355,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 ////hybridWebView.RefreshCommand();
 
                                 // LogoffUser();
-
+                                //Please complete registration process on Portal to Login into the app.
                                 // Test code for implementing the VAT Registration
                                 if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app." || App.LoginDataRetrieved.AppMsg == "الرجاء اكمال التسجيل من خلال الموقع الإلكتروني للدخول للتطبيق")
                                 {

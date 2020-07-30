@@ -235,6 +235,11 @@ namespace EGAZT.Droid.CustomRenderer
                 _hybridWebView.InvokeAction("navigateToForgotUsernamePage");
             }
 
+            if (url.ToString().Contains("IsRstPw=Y"))
+            {
+                _hybridWebView.InvokeAction("navigateToUnlockAccountPage");
+            }
+
             if (url.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
             {
                 App.IsLoginCalled = true;

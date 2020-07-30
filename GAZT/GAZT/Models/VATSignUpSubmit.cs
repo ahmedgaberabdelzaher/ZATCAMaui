@@ -11,6 +11,7 @@ namespace EGAZT.Models
         public string PostCode1 { get; set; }
         public string City1 { get; set; }
         public string Country { get; set; }
+        public string MobileCountry { get; set; }
         public string Region { get; set; }
         public string Building { get; set; }
         public string Floor { get; set; }
