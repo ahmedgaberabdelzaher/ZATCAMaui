@@ -537,6 +537,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         public void EnableTINView()
         {
             TxtTIN = string.Empty;
+
             IsTinContentViewVisible = true;
             IsOTPContentViewVisible = false;
             IsChangePasswordViewVisible = false;
@@ -551,7 +552,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
             IsVerifyOTPEnabled = true;
             IsResendOTPEnabled = false;
-            IsVerifyOTPEnabled = true;
+            IsOTPEntryEnable = true;
 
             VerifyButtonDisableColor = Color.FromHex("#d99b29");
             ButtonDisableColor = Color.FromHex("#9EA4A9");
