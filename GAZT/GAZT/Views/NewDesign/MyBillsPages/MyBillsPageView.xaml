@@ -111,7 +111,7 @@
 HeaderTextColor="White"
                                              ShowColumnHeader="False"
                     ColumnHeaderHeight="46"
-                    PickerMode="Default"
+                    PickerMode="Dialog"
                                             HeaderBackgroundColor="#006450"
                     BorderColor="Black"
                      BackgroundColor="White" 
