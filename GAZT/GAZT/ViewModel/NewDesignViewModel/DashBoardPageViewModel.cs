@@ -448,17 +448,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             PaidBillsAmountstr = "0" + PaidBillsAmountstr;
                         }
                         string TotalPaidAmount = PaidBillsAmountstr;
+                        try
+                        {
+                            Device.BeginInvokeOnMainThread(() => {
 
-                        PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
-                        PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
-                        PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
+                                PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
+                                PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
+                                PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
 
-                        SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
-                        MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
-                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
-                        BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
-                        ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
+                                SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
+                                MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
 
+                                MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
+                                BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
+                                ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
+
+                            });
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
+                      
+                     
                     }
                     //Partially Paid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].PrbillsTot != null)
