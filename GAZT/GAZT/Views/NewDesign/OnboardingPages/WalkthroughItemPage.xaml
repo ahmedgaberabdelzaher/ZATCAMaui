@@ -8,7 +8,7 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -37,13 +37,13 @@
             <!--  Label to display header  -->
             <Label
                 Margin="0,30,0,8"
-                FontFamily="{StaticResource Montserrat-SemiBold}"
+                FontFamily="{StaticResource SSTArabicMedium}"
                 FontSize="14"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 Opacity="{OnPlatform Default=0,
                                      UWP=1}"
-                Style="{StaticResource LabelStyle}"
+                Style="{StaticResource SfLabelStyleForOnboarding}"
                 Text="{Binding Header}"
                 TranslationY="{OnPlatform Default=60,
                                           UWP=0}"
@@ -51,12 +51,12 @@
 
             <!--  Label to display content  -->
             <Label
-                FontFamily="{StaticResource Montserrat-Medium}"
+                FontFamily="{StaticResource SSTArabicMedium}"
                 FontSize="16"
                 HorizontalOptions="Center"
                 Opacity="{OnPlatform Default=0,
                                      UWP=1}"
-                Style="{StaticResource LabelStyle}"
+                Style="{StaticResource SfLabelStyleForOnboarding}"
                 Text="{Binding Content}"
                 TranslationY="{OnPlatform Default=60,
                                           UWP=0}" />
