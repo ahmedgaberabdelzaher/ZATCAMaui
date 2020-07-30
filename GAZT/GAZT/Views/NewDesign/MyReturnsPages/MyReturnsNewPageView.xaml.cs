@@ -22,6 +22,16 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
            viewModel.OnPageLoad();
             viewModel.PopulateReturnTypeList();
             viewModel.PopulateDataInChips();
+            ListView_Returns.ItemTapped += (sender, e) =>
+            {
+                MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
+                viewModel.SelectedListItem = SelectedItem;
+               
+                if (e.Item == null)
+                {
+                    return;
+                } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            };
         }
 
         private void SetLTR()

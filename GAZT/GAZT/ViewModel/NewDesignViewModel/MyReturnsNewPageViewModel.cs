@@ -37,6 +37,95 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _returnTypeForFilter = value;
                 RaisePropertyChanged("ReturnTypeForFilter");
             }
+        } 
+        public bool _isListVisible;
+        public bool IsListVisible
+        {
+            get
+            {
+                return _isListVisible;
+            }
+            set
+            {
+                _isListVisible = value;
+                RaisePropertyChanged("IsListVisible");
+            }
+        }
+        public bool _setNoDataLabelVisibilityALL;
+        public bool SetNoDataLabelVisibilityALL
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityALL;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityALL = value;
+                RaisePropertyChanged("SetNoDataLabelVisibilityALL");
+            }
+        }
+        private MyReturnsResult _selectedListItem = null;
+        public MyReturnsResult SelectedListItem
+        {
+            get
+            {
+                return _selectedListItem;
+            }
+            set
+            {
+                _selectedListItem = value;
+                
+                if (_selectedListItem != null)
+                {
+
+                    if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
+                    {
+                        //zakat
+                       
+                            if (_selectedListItem.Fbtyp.Equals("FZ12"))
+                            {
+                                App.IsZakatLoadingFromMyReturns = true;
+                                _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, _selectedListItem.Fbguid);
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                });
+                            }
+                    }
+
+                    if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
+                    {
+                        //Vat
+                        GetVATAllReturnsAsync(_selectedListItem);
+                    }
+                    if (_selectedListItem.TaxType.Equals("ETAX") )
+                    {
+                        //ET
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                        });
+
+                    }
+                    if (_selectedListItem.TaxType.Equals("WHTX"))
+                    {
+                        //WT
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                        });
+
+                    }
+                }
+                //if (SelectedListItem != null)
+                //{
+                //    GetVATAllReturnsAsync(SelectedItem);
+                //}
+                RaisePropertyChanged("SelectedListItem");
+            }
         }
         public ChipModel _selectedChipFilterItem = null;
         public ChipModel SelectedChipFilterItem
@@ -380,16 +469,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _listToDisplay = value;
-                if(_listToDisplay!=null)
+                if (_listToDisplay != null)
                 {
                     if (_listToDisplay.Count != 0)
                     {
-                       // _listToDisplay.Sum(x => x.)
+
+                        IsListVisible = true;
+                        SetNoDataLabelVisibilityALL = false;
+                    }
+                    else
+                    {
+                        IsListVisible = false;
+                        SetNoDataLabelVisibilityALL = true;
                     }
 
                 }
-                    //Sum(emp => emp.Salary);
-                    RaisePropertyChanged("ListToDisplay");
+                else
+                {
+                    IsListVisible = false;
+                    SetNoDataLabelVisibilityALL = true;
+
+                }
+                //Sum(emp => emp.Salary);
+                RaisePropertyChanged("ListToDisplay");
             }
         }
         private List<MyReturnsResult> _returnsZakatSubmited = null;
@@ -1562,7 +1664,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                       new ReturnTypes {Id = "01",TaxType = AppResources.ZAKATReturns},
                                             new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
                                             new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
-                                            new ReturnTypes {Id = "04",TaxType = AppResources.WHTreturns},
+                                            new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
 
 
             };

@@ -6,7 +6,7 @@
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              mc:Ignorable="d"
              x:Class="EGAZT.Views.NewDesign.MyReturnsNewPages.GAZTNewDesignMyReturnsNewPageView"
              FlowDirection="RightToLeft"    
@@ -60,7 +60,7 @@
                         </Grid>
                     </yummy:PancakeView>
                 </StackLayout>
-
+                
             </Grid>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
@@ -91,7 +91,7 @@
 
                     <syncfusion:SfPicker x:Name="TaxTypePicker"
                     HeaderHeight="55"
-                    ShowHeader="true"
+                    
                     HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
 HeaderTextColor="White"
                                              ShowColumnHeader="False"
@@ -99,11 +99,12 @@ HeaderTextColor="White"
                     PickerMode="Dialog"
                                             HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
-                    BorderColor="Black"
-                     BackgroundColor="#EAF7CC"
+
                     UnSelectedItemTextColor="#006450"
+                                          BorderColor="Black"
+                     BackgroundColor="White"
                                 SelectedItemFontSize="15"
-                                           
+                            ShowFooter="False"               
                    ItemHeight="40"
                      DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                    PickerHeight="250"
@@ -111,7 +112,7 @@ HeaderTextColor="White"
                                              HeaderFontSize="14"
                     OKButtonTextColor="#006450"
                     CancelButtonTextColor="#006450"
-                        ShowFooter="True" 
+                        ShowHeader="False"
                                     OKButtonBackgroundColor="#EAF7CC"
                                     CancelButtonBackgroundColor="#EAF7CC"
                                              FooterHeight="46"
@@ -123,7 +124,7 @@ HeaderTextColor="White"
                 </Grid>
                 <!--custom:RoundCornersEffect.CornerRadius="14" SelectionChanged="DDlIDType_SelectionChanged" OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"-->
 
-                <custom:CustomLabel Text="60,0000 SAR" Style="{StaticResource CaptionLabelGrey}"/>
+                <!--<custom:CustomLabel Text="60,0000 SAR" Style="{StaticResource CaptionLabelGrey}"/>-->
                 <StackLayout Margin="0,8,0,8" HorizontalOptions="StartAndExpand">
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                         <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" Margin="0"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    ChipPadding="0" 
@@ -131,7 +132,7 @@ HeaderTextColor="White"
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
                                     <StackLayout Margin="0" Padding="0">
-                                        <buttons:SfChip Margin="0" HeightRequest="40" WidthRequest="115" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontSize="12" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
+                                        <buttons:SfChip Margin="0" HeightRequest="40" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontSize="12" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
                                     </StackLayout>
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>
@@ -143,9 +144,9 @@ HeaderTextColor="White"
             <StackLayout Grid.Row="1">
        
 
-                <ListView  x:Name="Bills" 
+                <ListView  x:Name="ListView_Returns" 
            ItemsSource="{Binding ListToDisplay,Mode=TwoWay}"
-                                           IsVisible="{Binding SetNoDataLabelVisibilityALLList}"
+                                           IsVisible="{Binding IsListVisible}"
                                   VerticalScrollBarVisibility="Never"    
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -262,8 +263,30 @@ HeaderTextColor="White"
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                
+                <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.ZZZReturnsNotFound}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}"/>
+                <!--IsLoading-->
             </StackLayout>
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                        TextColor="#006450"/>
+                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -290,10 +290,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         //\\AmountLabel = Math.Round(count, 2).ToString();
                         AmountLabel = Amount.ToString();
+                        IsListVisible = true;
+                        isNoDataLableVisible = false;
                     }
                     else
                     {
                         AmountLabel = string.Empty;
+                        IsListVisible = false;
+                        isNoDataLableVisible = true;
                     }
 
                 }
@@ -380,7 +384,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _setNoDataLabelVisibility = value;
                 RaisePropertyChanged("SetNoDataLabelVisibility");
             }
+        } 
+        private bool _isListVisible = false;
+        public bool IsListVisible
+        {
+            get
+            {
+                return _isListVisible;
+            }
+            set
+            {
+                _isListVisible = value;
+                RaisePropertyChanged("IsListVisible");
+            }
+        } 
+        private bool _isNoDataLableVisible = false;
+        public bool isNoDataLableVisible
+        {
+            get
+            {
+                return _isNoDataLableVisible;
+            }
+            set
+            {
+                _isNoDataLableVisible = value;
+                RaisePropertyChanged("isNoDataLableVisible");
+            }
         }
+
         private ObservableCollection<MyBills> _myBillsOriginal;
         public ObservableCollection<MyBills> MyBillsOriginal
         {
@@ -526,54 +557,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         MyBills = new ObservableCollection<MyBills>();
                         MyBills = myBills;
                         MyBillsOriginal = myBills;
-                        MyBillsPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
-                        MyBillsUnPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
-                        MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
-                        ObservableCollection<MyBillsChartModel> myBillsChartModels = new ObservableCollection<MyBillsChartModel>();
-                        GroupValue = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count;
-                        int iBillsCount = -1;
-                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count) > 0)
-                        {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
-                            ColorsChild.Add(System.Drawing.Color.FromArgb(0, 100, 80));
-                            SetNoDataLabelVisibilityPAID = false;
-                            SetNoDataLabelVisibilityPAIDList = true;
-                        }
-                        else
-                        {
-                            // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
-                            SetNoDataLabelVisibilityPAID = true;
-                            SetNoDataLabelVisibilityPAIDList = false;
-                        }
-                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
-                        {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
-                            ColorsChild.Add(System.Drawing.Color.FromArgb(170, 12, 25));
-                            SetNoDataLabelVisibilityUNPAID = false;
-                            SetNoDataLabelVisibilityUNPAIDList = true;
-                        }
-                        else
-                        {
-                            //  myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
-                            SetNoDataLabelVisibilityUNPAID = true;
-                            SetNoDataLabelVisibilityUNPAIDList = false;
-                        }
-                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
-                        {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#D99A29") });
-                            //ColorsChild.Add(System.Drawing.Color.FromArgb(243, 108, 33));
-                            ColorsChild.Add(System.Drawing.Color.FromArgb(217, 154, 41));
-                            SetNoDataLabelVisibilityPPAID = false;
-                            SetNoDataLabelVisibilityPPAIDList = true;
-                        }
-                        else
-                        {
-                            // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
-                            SetNoDataLabelVisibilityPPAID = true;
-                            SetNoDataLabelVisibilityPPAIDList = false;
-                        }
-                        Colors = ColorsChild;
-                        ListMyBillsChartModel = myBillsChartModels;
+                        //MyBillsPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
+                        //MyBillsUnPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
+                        //MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
+                        //ObservableCollection<MyBillsChartModel> myBillsChartModels = new ObservableCollection<MyBillsChartModel>();
+                        //GroupValue = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count;
+                        //int iBillsCount = -1;
+                        //if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count) > 0)
+                        //{
+                        //    myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
+                        //    ColorsChild.Add(System.Drawing.Color.FromArgb(0, 100, 80));
+                        //    SetNoDataLabelVisibilityPAID = false;
+                        //    SetNoDataLabelVisibilityPAIDList = true;
+                        //}
+                        //else
+                        //{
+                        //    // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
+                        //    SetNoDataLabelVisibilityPAID = true;
+                        //    SetNoDataLabelVisibilityPAIDList = false;
+                        //}
+                        //if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
+                        //{
+                        //    myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
+                        //    ColorsChild.Add(System.Drawing.Color.FromArgb(170, 12, 25));
+                        //    SetNoDataLabelVisibilityUNPAID = false;
+                        //    SetNoDataLabelVisibilityUNPAIDList = true;
+                        //}
+                        //else
+                        //{
+                        //    //  myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
+                        //    SetNoDataLabelVisibilityUNPAID = true;
+                        //    SetNoDataLabelVisibilityUNPAIDList = false;
+                        //}
+                        //if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
+                        //{
+                        //    myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#D99A29") });
+                        //    //ColorsChild.Add(System.Drawing.Color.FromArgb(243, 108, 33));
+                        //    ColorsChild.Add(System.Drawing.Color.FromArgb(217, 154, 41));
+                        //    SetNoDataLabelVisibilityPPAID = false;
+                        //    SetNoDataLabelVisibilityPPAIDList = true;
+                        //}
+                        //else
+                        //{
+                        //    // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
+                        //    SetNoDataLabelVisibilityPPAID = true;
+                        //    SetNoDataLabelVisibilityPPAIDList = false;
+                        //}
+                        //Colors = ColorsChild;
+                        //ListMyBillsChartModel = myBillsChartModels;
                         SelcectedBillsIndex = 0;
                         int milliseconds = 1000;
                         Thread.Sleep(milliseconds);
@@ -655,7 +686,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                       new ReturnTypes {Id = "01",TaxType = AppResources.ZZZAKAT},
                                             new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
                                             new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
-                                            new ReturnTypes {Id = "04",TaxType = AppResources.WHTreturns},
+                                            new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
             };
                 ReturnTypeForFilter = new List<ReturnTypes>();
                 ReturnTypeForFilter = ReturnTypesList;
@@ -679,154 +710,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
               
                };
         }
-        private ObservableCollection<MyBills> UpdateDueAmount(ObservableCollection<MyBills> myBills)
-        {
-            for (int i = 0; i < myBills.Count; i++)
-            {
-                if (myBills[i].TestDueAmount.Contains("."))
-                {
-                    string[] Amount = new String[2];
-                    Amount = myBills[i].TestDueAmount.Split('.');
-                    double testDueAmount = Convert.ToDouble(Amount[0]);
-                    string _testDueAmount = testDueAmount.ToString("#,##0");
-                    _testDueAmount = _testDueAmount + "." + Amount[1];
-                    myBills[i].TestDueAmount = _testDueAmount;
-                }
-                else
-                {
-                    double testDueAmount = Convert.ToDouble(myBills[i].TestDueAmount);
-                    string _testDueAmount = testDueAmount.ToString("#,##0");
-                    myBills[i].TestDueAmount = _testDueAmount;
-                }
-
-                //Caltype here tells if the date is Hijiri
-                //Incase of the Hijri Date we are converting into Gregorian and displaying it to the user
-                if (myBills[i].CalTyp == "H")
-                {
-                    string[] _dueDateTemp = new String[2];
-
-                    if (myBills[i].Faednar.Contains("T"))
-                    {
-                        _dueDateTemp = myBills[i].Faednar.Split('T');
-                        myBills[i].Faednar = Convert.ToDateTime(_dueDateTemp[0]).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
-
-                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                        DateTime dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-
-                        GregorianCalendar hjCalendar = new GregorianCalendar();
-                        int year = hjCalendar.GetYear(dateStart);
-                        int month = hjCalendar.GetMonth(dateStart);
-                        int day = hjCalendar.GetDayOfMonth(dateStart);
-                        string dateStr = string.Format("{0}/{1}/{2}", day, month, year);
-
-                        myBills[i].Faednar = dateStr;
-
-                        string dt = string.Empty;
-                        string[] dts = null;
-
-                        dts = myBills[i].Faednar.Split('/');
-                        dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                        myBills[i].Faednar = dt;
-                    }
-                    else
-                    {
-                        //myBills[i].Faednar = Convert.ToDateTime(myBills[i].Faednar).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
-                        DateTime dateStart = new DateTime();
-
-
-                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
-
-                        if (App.IsArabic)
-                        {
-
-                            dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                        }
-                        else
-                        {
-
-                            dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                        }
-
-
-                        GregorianCalendar hjCalendar = new GregorianCalendar();
-                        int year = hjCalendar.GetYear(dateStart);
-                        int month = hjCalendar.GetMonth(dateStart);
-                        int day = hjCalendar.GetDayOfMonth(dateStart);
-
-                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-                        myBills[i].Faednar = dateStr;
-
-                        string dt = string.Empty;
-                        string[] dts = null;
-
-                        dts = myBills[i].Faednar.Split('/');
-                        dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                        myBills[i].Faednar = dt;
-
-
-                    }
-                }
-
-                if (myBills[i].Faednar.Contains("T") && myBills[i].CalTyp == "G")
-                {
-                    try
-                    {
-                        string[] _dueDate = new String[2];
-                        _dueDate = myBills[i].Faednar.Split('T');
-
-                        myBills[i].Faednar = Convert.ToDateTime(_dueDate[0]).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-
-                        string dt = string.Empty;
-                        string[] dts = null;
-
-                        dts = myBills[i].Faednar.Split('/');
-                        dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                        myBills[i].Faednar = dt;
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                }
-                else if (myBills[i].CalTyp == "G")
-                {
-
-                    DateTime dateStart = new DateTime();
-                    CultureInfo cultureInfo = new CultureInfo("en-us");
-
-                    if (App.IsArabic)
-                    {
-
-                        dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                    }
-                    else
-                    {
-
-                        dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                    }
-
-                    //myBills[i].Faednar = Convert.ToDateTime(myBills[i].Faednar).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-
-                    GregorianCalendar hjCalendar = new GregorianCalendar();
-                    int year = hjCalendar.GetYear(dateStart);
-                    int month = hjCalendar.GetMonth(dateStart);
-                    int day = hjCalendar.GetDayOfMonth(dateStart);
-                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-
-                    myBills[i].Faednar = dateStr;
-
-                    string dt = string.Empty;
-                    string[] dts = null;
-
-                    dts = myBills[i].Faednar.Split('/');
-                    dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    myBills[i].Faednar = dt;
-                }
-            }
-            return myBills;
-        }
+       
         public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -915,6 +799,153 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        //private ObservableCollection<MyBills> UpdateDueAmount(ObservableCollection<MyBills> myBills)
+        //{
+        //    for (int i = 0; i < myBills.Count; i++)
+        //    {
+        //        if (myBills[i].TestDueAmount.Contains("."))
+        //        {
+        //            string[] Amount = new String[2];
+        //            Amount = myBills[i].TestDueAmount.Split('.');
+        //            double testDueAmount = Convert.ToDouble(Amount[0]);
+        //            string _testDueAmount = testDueAmount.ToString("#,##0");
+        //            _testDueAmount = _testDueAmount + "." + Amount[1];
+        //            myBills[i].TestDueAmount = _testDueAmount;
+        //        }
+        //        else
+        //        {
+        //            double testDueAmount = Convert.ToDouble(myBills[i].TestDueAmount);
+        //            string _testDueAmount = testDueAmount.ToString("#,##0");
+        //            myBills[i].TestDueAmount = _testDueAmount;
+        //        }
 
+        //        //Caltype here tells if the date is Hijiri
+        //        //Incase of the Hijri Date we are converting into Gregorian and displaying it to the user
+        //        if (myBills[i].CalTyp == "H")
+        //        {
+        //            string[] _dueDateTemp = new String[2];
+
+        //            if (myBills[i].Faednar.Contains("T"))
+        //            {
+        //                _dueDateTemp = myBills[i].Faednar.Split('T');
+        //                myBills[i].Faednar = Convert.ToDateTime(_dueDateTemp[0]).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
+
+        //                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+        //                DateTime dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+
+        //                GregorianCalendar hjCalendar = new GregorianCalendar();
+        //                int year = hjCalendar.GetYear(dateStart);
+        //                int month = hjCalendar.GetMonth(dateStart);
+        //                int day = hjCalendar.GetDayOfMonth(dateStart);
+        //                string dateStr = string.Format("{0}/{1}/{2}", day, month, year);
+
+        //                myBills[i].Faednar = dateStr;
+
+        //                string dt = string.Empty;
+        //                string[] dts = null;
+
+        //                dts = myBills[i].Faednar.Split('/');
+        //                dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+        //                myBills[i].Faednar = dt;
+        //            }
+        //            else
+        //            {
+        //                //myBills[i].Faednar = Convert.ToDateTime(myBills[i].Faednar).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
+        //                DateTime dateStart = new DateTime();
+
+
+        //                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+
+        //                if (App.IsArabic)
+        //                {
+
+        //                    dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+        //                }
+        //                else
+        //                {
+
+        //                    dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+        //                }
+
+
+        //                GregorianCalendar hjCalendar = new GregorianCalendar();
+        //                int year = hjCalendar.GetYear(dateStart);
+        //                int month = hjCalendar.GetMonth(dateStart);
+        //                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+        //                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+        //                myBills[i].Faednar = dateStr;
+
+        //                string dt = string.Empty;
+        //                string[] dts = null;
+
+        //                dts = myBills[i].Faednar.Split('/');
+        //                dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+        //                myBills[i].Faednar = dt;
+
+
+        //            }
+        //        }
+
+        //        if (myBills[i].Faednar.Contains("T") && myBills[i].CalTyp == "G")
+        //        {
+        //            try
+        //            {
+        //                string[] _dueDate = new String[2];
+        //                _dueDate = myBills[i].Faednar.Split('T');
+
+        //                myBills[i].Faednar = Convert.ToDateTime(_dueDate[0]).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+
+        //                string dt = string.Empty;
+        //                string[] dts = null;
+
+        //                dts = myBills[i].Faednar.Split('/');
+        //                dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+        //                myBills[i].Faednar = dt;
+        //            }
+        //            catch (Exception ex)
+        //            {
+
+        //            }
+        //        }
+        //        else if (myBills[i].CalTyp == "G")
+        //        {
+
+        //            DateTime dateStart = new DateTime();
+        //            CultureInfo cultureInfo = new CultureInfo("en-us");
+
+        //            if (App.IsArabic)
+        //            {
+
+        //                dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+        //            }
+        //            else
+        //            {
+
+        //                dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+        //            }
+
+        //            //myBills[i].Faednar = Convert.ToDateTime(myBills[i].Faednar).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+
+        //            GregorianCalendar hjCalendar = new GregorianCalendar();
+        //            int year = hjCalendar.GetYear(dateStart);
+        //            int month = hjCalendar.GetMonth(dateStart);
+        //            int day = hjCalendar.GetDayOfMonth(dateStart);
+        //            string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+
+        //            myBills[i].Faednar = dateStr;
+
+        //            string dt = string.Empty;
+        //            string[] dts = null;
+
+        //            dts = myBills[i].Faednar.Split('/');
+        //            dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+        //            myBills[i].Faednar = dt;
+        //        }
+        //    }
+        //    return myBills;
+        //}
     }
 }

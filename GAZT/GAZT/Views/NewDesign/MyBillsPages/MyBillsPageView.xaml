@@ -111,19 +111,19 @@ HeaderTextColor="White"
                      BackgroundColor="White"
                     UnSelectedItemTextColor="#006450"
                                 SelectedItemFontSize="15"
-                                           
+                                           ShowFooter="False"
                    ItemHeight="40"
                      DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                    PickerHeight="250"
                     PickerWidth="300"
-                                         ShowHeader="False" ShowFooter="False"
-                                             HeaderFontSize="14"
+                                         ShowHeader="False" 
+                                             
                     OKButtonTextColor="#006450"
                     CancelButtonTextColor="#006450"
                         
                                     OKButtonBackgroundColor="#EAF7CC"
                                     CancelButtonBackgroundColor="#EAF7CC"
-                                             FooterHeight="46"
+                                    
                                          SelectionChanged="TaxTypePicker_SelectionChanged">
                         <syncfusion:SfPicker.Behaviors>
                             <custom1:SfPickerBehavior />
@@ -132,16 +132,19 @@ HeaderTextColor="White"
                 </Grid>
                 <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
                 <StackLayout Margin="0,8,0,8" >
-                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                    
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                    
                                          ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="AliceBlue"    SelectionChanged="chipgroup_SelectionChanged">
-                        <buttons:SfChipGroup.ItemTemplate>
-                            <DataTemplate >
-                                <StackLayout>
-                                    <buttons:SfChip HeightRequest="40" WidthRequest="90" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontSize="12" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
-                                </StackLayout>
-                            </DataTemplate>
-                        </buttons:SfChipGroup.ItemTemplate>
-                    </buttons:SfChipGroup>
+                            <buttons:SfChipGroup.ItemTemplate>
+                                <DataTemplate >
+                                    <StackLayout>
+                                        <buttons:SfChip HeightRequest="40" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontSize="12" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </buttons:SfChipGroup.ItemTemplate>
+                        </buttons:SfChipGroup>
+                    </ScrollView>
+                  
                 </StackLayout>
             </StackLayout>
                 <StackLayout Grid.Row="1">
@@ -151,7 +154,7 @@ HeaderTextColor="White"
 
                 <ListView  x:Name="Bills" 
            ItemsSource="{Binding MyBills,Mode=TwoWay}"
-                                           IsVisible="{Binding SetNoDataLabelVisibilityALLList}"
+                                           IsVisible="{Binding IsListVisible}"
                                   VerticalScrollBarVisibility="Never"    
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -228,7 +231,10 @@ HeaderTextColor="White"
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.NoBillsAvailable}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isNoDataLableVisible}"/>
+             
             </StackLayout>
-            </Grid>
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
