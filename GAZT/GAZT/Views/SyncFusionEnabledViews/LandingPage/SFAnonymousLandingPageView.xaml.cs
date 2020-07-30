@@ -51,7 +51,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 }
 
 
-                //A On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                //A On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSa(true);
 
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;

@@ -3,12 +3,17 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Timers;
+using System;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignForgotPasswordPageView : ContentPage
     {
+        
+        private string _LblCountDownTimer;
+
         GAZTNewDesignForgotPasswordPageViewModel viewModel;
         List<BorderlessEntry> labels;
         public GAZTNewDesignForgotPasswordPageView()
@@ -21,11 +26,13 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             SetLTR();
             viewModel.StartPage = 1;
 
+            
             labels = new List<BorderlessEntry>();
-            labels.Add(label1);
-            labels.Add(label2);
-            labels.Add(label3);
-            labels.Add(label4);
+
+            labels.Add(OTPFirstDigit);
+            labels.Add(OTPSecondDigit);
+            labels.Add(OTPThirdDigit);
+            labels.Add(OTPFourthDigit);
 
         }
 
@@ -89,6 +96,16 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             }
         }
 
+        private void OnPasswordCardClicked(object sender, EventArgs e)
+        {
+            viewModel.SetPasswordCardLayoutVisibility();
+        }
+
+
+        private void OnUserNameCardClicked(object sender, EventArgs e)
+        {
+            viewModel.SetUserNameCardVisibility();
+        }
 
 
     }
