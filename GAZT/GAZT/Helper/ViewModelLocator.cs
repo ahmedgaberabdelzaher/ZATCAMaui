@@ -152,7 +152,7 @@ namespace EGAZT
 
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
-            //SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
+            SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
 
             #endregion
 
@@ -1496,20 +1496,20 @@ namespace EGAZT
             }
         }
 
-        //public TINDeregistrationPageViewModel TINDeregistrationPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<TINDeregistrationPageViewModel>();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
+        public TINDeregistrationPageViewModel TINDeregistrationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TINDeregistrationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
     }
 }

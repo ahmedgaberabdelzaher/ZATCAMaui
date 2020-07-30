@@ -158,7 +158,7 @@
 
                                <cards:SfCardView Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
                                      <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                       <Image x:Name="re_Property_Tile"  Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                       <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationCloseAllOutlets}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
                                                            Margin="20,0,20,20" TextColor="White" >
                                             <custom:CustomLabel.GestureRecognizers>
@@ -169,7 +169,7 @@
                                 </cards:SfCardView>
                                 <cards:SfCardView Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
                                      <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                       <Image  Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                       <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationTransferAllOutletsToSingle}" Style="{StaticResource CaptionLabelBlack}"
                                                            HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" VerticalTextAlignment="Start" HorizontalTextAlignment="Start"
                                                            Margin="20,0,20,20" TextColor="Black" >
