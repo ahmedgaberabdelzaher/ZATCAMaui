@@ -49,7 +49,7 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             AppResources.Culture = ci;
            
             this.FlowDirection = FlowDirection.RightToLeft;
-            viewModel.LanguageText = AppResources.ZZZSetToArabic;
+            viewModel.LanguageText = AppResources.ZZZSetToEnglish;
         }
         public void SetLTRDirection()
         {
@@ -57,7 +57,8 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
             this.FlowDirection = FlowDirection.LeftToRight;
-            viewModel.LanguageText= AppResources.ZZZSetToEnglish;
+
+            viewModel.LanguageText = AppResources.ZZZSetToArabic;
         }
     }
 }
