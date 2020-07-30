@@ -1001,41 +1001,70 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnContinueClick = new Command(() =>
             {
-                if(IsPasswordCardSelected == true)
+                if(StartPage == 2)
                 {
-                    StartPage = StartPage + 1;
-                    if (StartPage == 2)
-                    {
-                        DefaultCardLayoutVisibility = false;
-                        UserIDLayoutVisibility = false;
-                        VerificationCodeVisibility = true;
-                        SendOTPToRegisterMobileNumber();
+                    SetOTP();
+                }
 
+                if (IsPasswordCardSelected == true)
+                {
+
+                    if (StartPage == 1)
+                    {
+                        if(!string.IsNullOrEmpty(IDNumber))
+                        {
+                            StartPage = StartPage + 1;
+                            
+
+                            DefaultCardLayoutVisibility = false;
+                            UserIDLayoutVisibility = false;
+                            VerificationCodeVisibility = true;
+                            SendOTPToRegisterMobileNumber();
+                        }
+                        else
+                        {
+                           _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                        }
+
+
+                    }
+                    else if (StartPage == 2)
+                    {
+                        if (!string.IsNullOrEmpty(EnteredOTP))
+                        {
+                            StartPage = StartPage + 1;
+                            VerificationCodeVisibility = false;
+                            ValidateOTP();
+                            PasswordLayoutVisibility = true;
+                        }
+                        else
+                        {
+                          _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+
+                        }
                     }
                     else if (StartPage == 3)
                     {
+                        if (!string.IsNullOrEmpty(NewPassword) && !string.IsNullOrEmpty(ConfirmPassword))
+                        {
+                            if(NewPassword.Equals(ConfirmPassword))
+                            {
+                                StartPage = StartPage + 1;
+                                ChangePassword();
+                                RecoverPasswordLayout = true;
+                                // PasswordLayoutVisibility = true;
+                            }
+                            else
+                            {
+                                _dialogService.ShowMessageBox(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch, AppResources.Information);
+                            }
 
-                        VerificationCodeVisibility = false;
-                       // EnteredOTP = string.Empty;
-                        //if(App.IsArabic)
-                        //{
-                       // EnteredOTP = OTPFourthDigit + OTPThirdDigit + OTPSecondDigit + OTPFirstDigit;
+                        }
+                        else
+                        {
+                        _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
 
-                        //}
-                        //else
-                        //{
-                        //    EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
-                        //}
-
-                        ValidateOTP();
-                        PasswordLayoutVisibility = true;
-
-                    }
-                    else if (StartPage == 4)
-                    {
-                        ChangePassword();
-                        RecoverPasswordLayout = true;
-                        // PasswordLayoutVisibility = true;
+                        }
                     }
 
                 }
@@ -1910,13 +1939,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void ClearData()
         {
-    //        PasswordLayoutVisibility = false;
-    //VerificationCodeVisibility = false;
-    //        UserIDLayoutVisibility = false;
-    //        DefaultCardLayoutVisibility = false;
-    //        UserNameLayoutVisibility = false;
-    //        ForgotUserNameCardLayoutVisibility = false;
+
+            PasswordLayoutVisibility = false;
+RecoverUserNameLayout = false;
+            RecoverPasswordLayout = false;
+            VerificationCodeVisibility = false;
+            ForgotUserNameCardLayoutVisibility = false;
+            UserIDLayoutVisibility = true;
+DefaultCardLayoutVisibility = true;
+            UserNameLayoutVisibility = true;
         }
+
+       public void SetOTP()
+        {
+            if (App.IsArabic)
+            {
+                EnteredOTP = OTPFourthDigit + OTPThirdDigit + OTPSecondDigit + OTPFirstDigit;
+            }
+            else
+            {
+                EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
+            }
+        }
+               
         #endregion
 
 
