@@ -97,7 +97,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private void TappedOnMyBills(object sender, EventArgs e)
         {
-
+            BillInfo billInfo = new BillInfo();
+            billInfo.BillTypeName = "Paid";
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
 
         private void TappedOnMyReturns(object sender, EventArgs e)
@@ -134,19 +136,23 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private void paidClicked(object sender, EventArgs e)
         {
-            //BillInfo billInfo = new BillInfo();
-            //billInfo= viewModel.SegregatedBillTypeCorrepsondingCountAndAmount
-            //_navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+            BillInfo billInfo = new BillInfo();
+            billInfo.BillTypeName = "Paid";
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
 
         private void partiallyClicked(object sender, EventArgs e)
         {
-
+            BillInfo billInfo = new BillInfo();
+            billInfo.BillTypeName = "Partial";
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
 
         private void unPaidClicked(object sender, EventArgs e)
         {
-
+            BillInfo billInfo = new BillInfo();
+            billInfo.BillTypeName = "Unpaid";
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
     }
 }
