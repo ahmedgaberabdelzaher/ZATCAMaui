@@ -55,6 +55,7 @@
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.0" />
     <PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
     <PackageReference Include="AppDynamics.Agent" Version="2020.4.0" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="18.1.0.55" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="LogInView.cs" />
@@ -72,6 +73,8 @@
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
     <Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
     <Folder Include="Views\SyncFusionEnabledViews\VATLookUpPages\" />
+    <Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
+    <Folder Include="ViewModel\SyncFusionEnabledViewModel\UnlockAccount\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -113,6 +116,9 @@
     </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\PropertyRegistrationPage.xaml.cs">
       <DependentUpon>PropertyRegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountTINPageView.xaml.cs">
+      <DependentUpon>UnlockAccountTINPageView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

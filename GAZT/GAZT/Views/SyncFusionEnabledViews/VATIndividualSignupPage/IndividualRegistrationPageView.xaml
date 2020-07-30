@@ -47,9 +47,6 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                  
-
-                    
 
                     <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   BackgroundColor="White" RowSpacing="0" >
@@ -808,13 +805,27 @@
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>
 
-                                                        <inputLayout:SfTextInputLayout x:Name="FrmMobileNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
+                                                        <!--<inputLayout:SfTextInputLayout x:Name="FrmMobileNumber" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameMobileNumberError}" >
-                                                            
-                                                            <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                                                <custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>
-                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}"   x:Name="EntryMobileNumber" Placeholder="{x:Static local:AppResources.ZZMobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged"  FontFamily="{StaticResource SSTArLight}" Unfocused="EntryMobileNumber_Unfocused_1"  Keyboard="Telephone" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameMobileNumberError}" >-->
+                                                            <Frame BorderColor="LightGray"  Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">
+                                                            <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
+                                                                    <Image HorizontalOptions="Start" Rotation="270" >
+                                                                    <Image.Source>
+                                                                     <FontImageSource FontFamily="UserIconFont" Color="Black" Size="18"
+                                                                         Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                                    </Image.Source>
+                                                                        <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="CountryCodes_Clicked"/>
+                                                                </Image.GestureRecognizers>
+                                                                </Image>
+                                                                <custom:CustomButton HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black"
+                                                                 Text="{Binding TxtCountryCode}" x:Name="IntnlCodes" Clicked="CountryCodes_Clicked"
+                                                                 BackgroundColor="Transparent" >
+                                                                </custom:CustomButton>
+                                                                <!--<custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
+                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}"  x:Name="EntryMobileNumber" Placeholder="{x:Static local:AppResources.ZZMobileNumber}"   HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False" MaxLength="15"   FontFamily="{StaticResource SSTArLight}"
+                                                                                        Unfocused="EntryMobileNumber_Unfocused"  Keyboard="Telephone" TextColor="Black"  FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                                                     <Entry.Behaviors>
                                                                         <custom1:OnlyNumericValuesBehaviour/>
@@ -822,8 +833,16 @@
                                                                 </custom:BorderlessEntry>
 
                                                             </StackLayout>
-
-                                                        </inputLayout:SfTextInputLayout>
+                                                                </Frame>
+                                                               <!--   </inputLayout:SfTextInputLayout>-->
+                                                              <!--<custom:BorderlessEntry  FontFamily="{StaticResource SSTArLight}" x:Name="EntryMobileNumber" TextColor="Black" Text="1234" Placeholder="{x:Static local:AppResources.ZZMobileNumber}"    Unfocused="EntryMobileNumber_Unfocused_1"  FontSize="Small" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                <Entry.Behaviors>
+                                                        <custom1:OnlyNumericValuesBehaviour/>
+                                                    </Entry.Behaviors>
+                                                            </custom:BorderlessEntry>-->
+                                                       
+                                                      
+                                                          
                                                     </StackLayout>
                                                 </Grid>
                                             </ScrollView>

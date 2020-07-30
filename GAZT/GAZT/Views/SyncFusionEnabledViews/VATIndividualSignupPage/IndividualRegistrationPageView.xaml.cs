@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -31,6 +32,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
     {
         private static int CurrentView;
         IndividualRegistrationPageViewModel viewModel;
+        ObservableCollection<InternationalMobileData> mobileData = null;
+
         public IndividualRegistrationPageView()
         {
             InitializeComponent();
@@ -46,8 +49,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             
             viewModel.IndividualRegistrationView = true;
             SetLTR();
+
+            viewModel.TxtCountryCode = "+966";
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IntnlCodes.Margin = new Thickness(0);
+            }
+            else
+            {
+                IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
+            }
             viewModel.currentStep = 1;
-          viewModel.NationalAddressView = false;
+            viewModel.NationalAddressView = false;
             viewModel.ContactInformationView = false;
             viewModel.SummeryView = false;
             viewModel.PasswordView = false;
@@ -132,8 +145,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
 
             }*/
-    #region
-    private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
+        #region
+        private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
@@ -420,14 +433,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
-      ValidateIDNumber();
+                ValidateIDNumber();
         }
-
-
-      
-
-
-
 
 
         public async void ValidateIDNumber()
@@ -710,10 +717,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         //}
 
-        private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
+ 
 
         private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
         {
@@ -728,6 +732,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void btnDate_Clicked(object sender, EventArgs e)
         {
             SignUpDOB.IsOpen = true;
+        }
+        private  void CountryCodes_Clicked(object sender, EventArgs e)
+        {
+
+
+            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
+
+
         }
 
         private void LIssuedBy_Clicked(object sender, EventArgs e)
@@ -1098,6 +1110,29 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
+            {
+                IntnlCodes.Text = arg;
+                viewModel.TxtCountryCode = arg;
+            });
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IntnlCodes.Margin = new Thickness(0);
+            }
+            else
+            {
+                IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
+            }
+            try
+            {
+                mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
 
         }
 
@@ -1191,17 +1226,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void EntryMobileNumber_Unfocused_1(object sender, FocusEventArgs e)
+        private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
         {
+
+            StringBuilder Message = new StringBuilder();
+            PopUp popUp = new PopUp();
             if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
             {
-                StringBuilder Message = new StringBuilder();
-                PopUp popUp = new PopUp();
-                if (EntryMobileNumber.Text.Substring(0, 1) != "5")
+                if (EntryMobileNumber.Text.Substring(0, 1) == "0")
                 {
-                    Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
+                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
                 }
-                if (EntryMobileNumber.Text.Length != 9)
+                if (EntryMobileNumber.Text.Length < 9)
                 {
                     if (Message.Length > 0)
                     {
@@ -1229,9 +1265,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 else
                 {
+                   
                     //FrmMobileNumber.HasError = false;
                     viewModel.FrameMobileNumberError = false;
                 }
+            }
+            else
+            {
+                Message.Append(AppResources.EnterMobileNumber);
+                popUp.Message = Message.ToString();
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
         }
 

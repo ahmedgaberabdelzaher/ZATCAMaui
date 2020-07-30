@@ -405,6 +405,9 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>رمز مرور خاطئ</value>
   </data>
+   <data name="EnterMobileNumber" xml:space="preserve">
+    <value>الرجاء إدخال رقم الجوال</value>
+  </data>
   <data name="EnterNewMobileNumber" xml:space="preserve">
     <value>ادخل رقم الجوال المكون من ٨ ارقام</value>
   </data>
@@ -3853,6 +3856,7 @@
     <value>غير خاضع</value>
     <comment>VatRegistration</comment>
   </data>
+
   <data name="ZZZZEligibilitylableTestvr" xml:space="preserve">
     <value>تسجيل إختياري</value>
     <comment>VatRegistration</comment>
@@ -4248,4 +4252,49 @@
   <data name="FORM5ZakatRulesConditions" xml:space="preserve">
     <value>Zakat Rules and Conditions</value>
   </data>
+  <data name="InternationalCountryCode" xml:space="preserve">
+    <value>رمز الدولة</value>
+  </data>
+       <data name="InternationalCountryCodeSearch" xml:space="preserve">
+    <value>البحث عن رمز الدولة</value>
+  </data>    
+   <data name="CountryText" xml:space="preserve">
+    <value>الدولة</value>
+  </data>    
+      <data name="SearchText" xml:space="preserve">
+    <value>البحث</value>
+  </data>    
+          <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">
+    <value> رقم الهاتف المحمول يجب أن لا يبدأ بصفر</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="UnlockAccountRetriveLoginData" xml:space="preserve">
+    <value>استعادة بيانات الدخول</value>
+  </data>
+  <data name="UnlockAccountEnterTIN" xml:space="preserve">
+    <value>يرجى ادخال الرقم المميز للتحقق من￼هوية المكلف</value>
+  </data>
+  <data name="UnlockAccountVerify" xml:space="preserve">
+    <value>تحقق</value>
+  </data>
+ <data name="UnlockAccountResetPassword" xml:space="preserve">
+    <value>المرور كلمة ت</value>
+  </data>
+  <data name="EnterVerificationCodeSentToMobile" xml:space="preserve">
+    <value>يرجى إدخال رمز التحقق المرسل إلى هاتفك المحمول</value>
+  </data>
+  <data name="UnlockAccountCreateNewPassword" xml:space="preserve">
+    <value>يرجى إنشاء كلمة مرور جديدة</value>
+  </data>
+  <data name="UnlockAccountPasswordChangedSuccessfully" xml:space="preserve">
+    <value>عزيزي المكلف ،￼￼￼ تم إعادة فتح الحساب وتعيين كلمة المرور بنجاح للرقم المميز xxxxxx.</value>
+  </data>
+ <data name="AccountUnlocked" xml:space="preserve">
+    <value>تم فتح الحساب</value>
+ </data>
+ <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
+    <value>الرجاء إكمال الحقول المطلوبة</value>
+  </data>
+    
+    
 </root>

@@ -76,7 +76,7 @@
                 
                 
                <!--Establishment signup block-->
-                    <!--<Grid Padding="0">
+                    <Grid Padding="0">
                        
                         <Image x:Name="image_estimated_tile" Grid.Row="0" Grid.Column="0"   Source="{Binding ImageEstimatedTile}" Aspect="AspectFill"/>
                         <Frame CornerRadius="5" Margin="5" BackgroundColor="Transparent"  HeightRequest="100">
@@ -100,7 +100,7 @@
                           
                         </Frame>
                             
-                    </Grid>-->
+                    </Grid>
                     <!--Establishment signup block-->
                 </StackLayout>
         </yummy:PancakeView>
