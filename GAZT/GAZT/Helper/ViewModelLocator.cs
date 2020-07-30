@@ -1458,7 +1458,7 @@ namespace EGAZT
             navigationService.Configure(App.UnlockAccountTINPageView, typeof(UnlockAccountTINPageView));
             navigationService.Configure(App.UnlockAccountSuccessPageView, typeof(UnlockAccountSuccessPageView));
             
-                            navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
+             navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
 
             navigationService.Configure(App.InternationalCodeSearchPage, typeof(InternationalCodeSearchPage));
 

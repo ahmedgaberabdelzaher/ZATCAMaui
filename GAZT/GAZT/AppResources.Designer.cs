@@ -7253,5 +7253,83 @@ namespace EGAZT {
                 return ResourceManager.GetString("AccountUnlockedCompleteRequiedFields", resourceCulture);
             }
         }
+        
+        public static string SelectTheOptionAndCompleteDetails {
+            get {
+                return ResourceManager.GetString("SelectTheOptionAndCompleteDetails", resourceCulture);
+            }
+        }
+        
+        public static string Corporate {
+            get {
+                return ResourceManager.GetString("Corporate", resourceCulture);
+            }
+        }
+        
+        public static string UserName_ {
+            get {
+                return ResourceManager.GetString("UserName ", resourceCulture);
+            }
+        }
+        
+        public static string CreateASecurePassword {
+            get {
+                return ResourceManager.GetString("CreateASecurePassword", resourceCulture);
+            }
+        }
+        
+        public static string AtLeastEightCharactersLong {
+            get {
+                return ResourceManager.GetString("AtLeastEightCharactersLong", resourceCulture);
+            }
+        }
+        
+        public static string EnglishCaptialAndSmallLetters {
+            get {
+                return ResourceManager.GetString("EnglishCaptialAndSmallLetters", resourceCulture);
+            }
+        }
+        
+        public static string RecoverUserName {
+            get {
+                return ResourceManager.GetString("RecoverUserName", resourceCulture);
+            }
+        }
+        
+        public static string UsernameSentToTheRegisteredEmailEndMobileNumber {
+            get {
+                return ResourceManager.GetString("UsernameSentToTheRegisteredEmailEndMobileNumber", resourceCulture);
+            }
+        }
+        
+        public static string CheckEmail {
+            get {
+                return ResourceManager.GetString("CheckEmail", resourceCulture);
+            }
+        }
+        
+        public static string RecoverPassword {
+            get {
+                return ResourceManager.GetString("RecoverPassword", resourceCulture);
+            }
+        }
+        
+        public static string NewPasswordUpdatedSuccessfully {
+            get {
+                return ResourceManager.GetString("NewPasswordUpdatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string NumbersAndSymbols {
+            get {
+                return ResourceManager.GetString("NumbersAndSymbols", resourceCulture);
+            }
+        }
+        
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
     }
 }

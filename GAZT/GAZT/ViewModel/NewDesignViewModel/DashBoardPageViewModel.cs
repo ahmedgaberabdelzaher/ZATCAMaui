@@ -459,10 +459,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
                                 MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
 
-                                MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
-                                BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
-                                ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
 
+                                //MyBillsChartModel MyBillsChartModel = new MyBillsChartModel();
+                                //MyBillsChartModel.BillCount = PaidBillCountAndAmount.BillCount;
+                                //MyBillsChartModel.BillType = PaidBillCountAndAmount.BillTypeName;
+                                //MyBillsChartModel.BillType = PaidBillCountAndAmount.BillTypeName;
+
+
+                                try
+                                {
+                                    MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
+                                    BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
+                                    ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
+
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+                              
                             });
                         }
                         catch(Exception ex)
