@@ -4295,6 +4295,28 @@
  <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
     <value>الرجاء إكمال الحقول المطلوبة</value>
   </data>
-    
-    
+    <data name="TinDeregistration" xml:space="preserve">
+    <value>TIN Deregistration</value>
+  </data>
+ <data name="TinDeregistrationReason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="TinDeregistrationSelectReason" xml:space="preserve">
+    <value>Select Reason for Deregistration</value>
+  </data>
+  <data name="TinDeregistrationQuestionOutlets" xml:space="preserve">
+    <value>What do you want to do with active outlets?</value>
+  </data>
+   <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
+    <value>Close all Outlets</value>
+  </data>
+  <data name="TinDeregistrationTransferAllOutletsToSingle" xml:space="preserve">
+    <value>Transfer all Outlets to a Single Transferee</value>
+  </data>
+  <data name="TinDeregistrationCloseOutletsIndividually" xml:space="preserve">
+    <value>Close/Transfer Outlets Invidually</value>
+  </data>
+  <data name="TinDeregistrationDate" xml:space="preserve">
+    <value>Deregistration Date</value>
+  </data>
 </root>

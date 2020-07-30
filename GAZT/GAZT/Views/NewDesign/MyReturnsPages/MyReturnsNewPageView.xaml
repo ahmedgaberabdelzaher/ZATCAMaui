@@ -11,7 +11,6 @@
              x:Class="EGAZT.Views.NewDesign.MyReturnsNewPages.GAZTNewDesignMyReturnsNewPageView"
              FlowDirection="RightToLeft" 
               xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
         <ResourceDictionary>

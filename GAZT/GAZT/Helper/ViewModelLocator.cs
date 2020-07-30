@@ -123,7 +123,9 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
 using System;
+
 #endregion
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 
 namespace EGAZT
 {
@@ -146,6 +148,11 @@ namespace EGAZT
             SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignDashBoardPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
+            // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
+
+            SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
+            SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
+            SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
 
             #endregion
 
@@ -219,7 +226,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
             #endregion
         }
-      
+
         #region NewDesignViewModel
 
         public GAZTNewDesignOnBoardingAnimationPageViewModel GAZTNewDesignOnBoardingAnimationPageView
@@ -400,20 +407,6 @@ namespace EGAZT
         //    return navigationService;
         //}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         #region OldDesignViewModel
         public StyleTestUIPageViewModel StyleTestUIPageView
         {
@@ -428,6 +421,8 @@ namespace EGAZT
                     return null;
                 }
             }
+
+
         }
         public PdfViewModel pdfView
         {
@@ -1485,5 +1480,36 @@ namespace EGAZT
             return navigationService;
         }
         #endregion
+
+        public ZakatDeregistrationPageViewModel ZakatDeregistrationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatDeregistrationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public TINDeregistrationPageViewModel TINDeregistrationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TINDeregistrationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
     }
 }

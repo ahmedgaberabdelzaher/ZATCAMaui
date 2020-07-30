@@ -169,8 +169,7 @@ HeaderTextColor="White"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                  BackgroundColor="White"     
-            SeparatorVisibility="None" ItemTapped="Bills_ItemTapped"
-            >
+            SeparatorVisibility="None" ItemTapped="Bills_ItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

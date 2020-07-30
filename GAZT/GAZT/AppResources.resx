@@ -4293,7 +4293,6 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="String1" xml:space="preserve">
     <value />
   </data>
-
   <data name="UnlockAccountRetriveLoginData" xml:space="preserve">
     <value>Retrieve Login Data</value>
   </data>
@@ -4325,6 +4324,29 @@ The account was unlocked, and the password reset for TIN xxxxxx successfully.</v
   <data name="String1" xml:space="preserve">
     <value />
   </data>
-  
-    
+   <data name="TinDeregistration" xml:space="preserve">
+    <value>TIN Deregistration</value>
+  </data>
+    <data name="TinDeregistrationReason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="TinDeregistrationSelectReason" xml:space="preserve">
+    <value>Select Reason for Deregistration</value>
+  </data>
+  <data name="TinDeregistrationQuestionOutlets" xml:space="preserve">
+    <value>What do you want to do with active outlets?</value>
+  </data>
+   <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
+    <value>Close all Outlets</value>
+  </data>
+  <data name="TinDeregistrationTransferAllOutletsToSingle" xml:space="preserve">
+    <value>Transfer all Outlets to a Single Transferee</value>
+  </data>
+  <data name="TinDeregistrationCloseOutletsIndividually" xml:space="preserve">
+    <value>Close/Transfer Outlets Invidually</value>
+  </data>
+  <data name="TinDeregistrationDate" xml:space="preserve">
+    <value>Deregistration Date</value>
+  </data>
+ 
 </root>
