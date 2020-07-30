@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static EGAZT.ViewModel.NewDesignViewModel.GAZTNewDesignDashBoardPageViewModel;
 
 namespace EGAZT.Views.NewDesign.DashBoardPages
 {
@@ -100,6 +101,50 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
 
         private void TappedOnMyReturns(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 3);
+        }
+
+        private void TappedOnSignleReturns(object sender, EventArgs e)
+        {
+            string controltype = sender.GetType().ToString();
+
+                Syncfusion.XForms.Cards.SfCardView arrowImage = sender as Syncfusion.XForms.Cards.SfCardView;
+            ReturnTypeAndCorrepsondingCount BModel = (ReturnTypeAndCorrepsondingCount)arrowImage.BindingContext;
+                if (BModel.ReturnTypeName == AppResources.Submitted)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Submitted + " from Dashboard");
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 0);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                }
+                if (BModel.ReturnTypeName == AppResources.UnSubmitted)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.UnSubmitted + " from Dashboard");
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 1);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                }
+                if (BModel.ReturnTypeName == AppResources.OverDue)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.OverDue + " from Dashboard");
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                }
+           
+        }
+
+        private void paidClicked(object sender, EventArgs e)
+        {
+            //BillInfo billInfo = new BillInfo();
+            //billInfo= viewModel.SegregatedBillTypeCorrepsondingCountAndAmount
+            //_navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+        }
+
+        private void partiallyClicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void unPaidClicked(object sender, EventArgs e)
         {
 
         }

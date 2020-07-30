@@ -871,7 +871,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        _navigationService.NavigateTo(App.SFLandingPageView);
                     });
 
                     //if (App.IsOTPByPassed == true)
