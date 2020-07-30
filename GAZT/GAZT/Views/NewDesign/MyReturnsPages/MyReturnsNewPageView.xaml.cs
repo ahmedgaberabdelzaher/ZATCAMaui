@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Models;
+using System;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -78,18 +79,34 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
         private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
-            TaxTypePicker.SelectedItem = selectedReturntype;//Fbnum
-            viewModel.SelectedReturnTypeForFilter = selectedReturntype;
+            try
+            {
+                ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
+                TaxTypePicker.SelectedItem = selectedReturntype;//Fbnum
+                viewModel.SelectedReturnTypeForFilter = selectedReturntype;
+
+            }
+            catch (Exception ex)
+            { 
+            
+            }
             //viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
             //viewModel.TxtFBnum = selectedfbnum.Fbnum;
         }
 
         private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         {
-            ChipModel selectedReturntype = (ChipModel)e.AddedItem;
-            ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
-            viewModel.SelectedChipFilterItem = selectedReturntype;
+            try
+            {
+                ChipModel selectedReturntype = (ChipModel)e.AddedItem;
+                ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
+                viewModel.SelectedChipFilterItem = selectedReturntype;
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+            
         }
     }
 }

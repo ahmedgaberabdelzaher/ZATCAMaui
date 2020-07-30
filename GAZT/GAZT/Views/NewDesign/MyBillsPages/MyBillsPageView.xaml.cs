@@ -87,37 +87,60 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
         private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
-            TaxTypePicker.SelectedItem = selectedReturntype;//Fbnum
-            viewModel.SelectedReturnTypeForFilter = selectedReturntype;
+            try
+            {
+                ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
+                TaxTypePicker.SelectedItem = selectedReturntype;//Fbnum
+                viewModel.SelectedReturnTypeForFilter = selectedReturntype;
+            }
+            catch(Exception ex)
+            { 
+            
+            }
+            
         }
 
         private void chipgroup_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         {
-          //  ChipModel SelectedChipFilterItem
+            try
+            {
+                //ChipModel SelectedChipFilterItem
                    ChipModel selectedReturntype = (ChipModel)e.AddedItem;
-            ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
-            viewModel.SelectedChipFilterItem = selectedReturntype;
+                ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
+                viewModel.SelectedChipFilterItem = selectedReturntype;
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+          //
         }
 
         private async void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(() =>
+        {try
             {
-                viewModel.IsLoading = true;
-            });
-            var dataItem = e.Item as MyBills;
-            await Clipboard.SetTextAsync(dataItem.VTRE2);
-            if (Clipboard.HasText)
-            {
-                var text = await Clipboard.GetTextAsync();
-                viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
-                
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                var dataItem = e.Item as MyBills;
+                await Clipboard.SetTextAsync(dataItem.VTRE2);
+                if (Clipboard.HasText)
+                {
+                    var text = await Clipboard.GetTextAsync();
+                    viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
+
+                }
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+            catch (Exception ex)
+            { 
+            
+            }
+            
         }
     }
 }

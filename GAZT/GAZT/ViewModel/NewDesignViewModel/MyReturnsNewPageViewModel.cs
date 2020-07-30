@@ -1497,6 +1497,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsVisibleWHOverDue = false;
                     IsVisibleWHOverDueLabel = true;
                     // OverDueWHReturnsCount = AppResources.ZZWithholding + "(0)";
+              
                 }
                 if (ReturnsWHSubmitedChild.Count > 0)
                 {
@@ -1636,25 +1637,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public void FilterIfTypeAndStausFilterSelected()
         {
-            if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+            try
             {
-                FilterOnBasisOfTaxType();
-                ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
-                //ListToDisplay = new ObservableCollection<MyBills>(MyBills.Where(x => x. == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+                {
+                    FilterOnBasisOfTaxType();
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                    //ListToDisplay = new ObservableCollection<MyBills>(MyBills.Where(x => x. == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                }
+                if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+                {
+
+                    FilterOnBasisOfTaxType();
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.StatusTxt != "X"));
+                }
+
+                if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+                {
+                    FilterOnBasisOfTaxType();
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.StatusTxt == "X"));
+                }
             }
-            if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
-            {
-               
-                FilterOnBasisOfTaxType();
-                ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.StatusTxt != "X") );
+            catch (Exception ex)
+            { }
             }
-            
-            if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
-            {
-                FilterOnBasisOfTaxType();
-                ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.StatusTxt == "X"));
-            }
-        }
         public void PopulateReturnTypeList()
             {
             try
