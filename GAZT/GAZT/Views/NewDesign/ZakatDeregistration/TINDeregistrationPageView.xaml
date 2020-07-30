@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:GAZT" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="EGAZT.Views.NewDesign.ZakatDeregistration.TINDeregistrationPageView"
+             NavigationPage.HasNavigationBar="false"
+             BackgroundImageSource="partials_background.png" xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+
+                    </Grid.RowDefinitions>
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                  Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+
+                            <Grid.RowDefinitions>
+                                <!--<RowDefinition Height="10*" />-->
+                                <RowDefinition Height="90*" />
+                                <RowDefinition Height="10*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="0" BackgroundColor="White"/>
+                        </Grid>
+                    </yummy:PancakeView>
+                    <Grid Padding="0,10,0,10" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.TinDeregistration}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                        <Label Grid.Row="0" Grid.Column="0" IsVisible="true"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" TextColor="White" Text="{StaticResource Close}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                        </Label>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+       <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid Margin="20,10,20,20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                 <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="1"/>
+                    </Grid.RowDefinitions>
+                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource SectionTitleBlack}" />
+                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationSelectReason}" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}"/>
+                    <BoxView Grid.Row="2" Grid.Column="0" BackgroundColor="{StaticResource NeutralGreay}" HeightRequest="1"/>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="1"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource CaptionLabelGrey}" />     
+                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                            <custom:BorderlessEntry Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                                    TextColor="#bbbbbb" BackgroundColor="Aqua" HorizontalOptions="StartAndExpand">
+                            </custom:BorderlessEntry>
+                             <inputLayout:SfTextInputLayout.TrailingView>
+                              <Image HorizontalOptions="FillAndExpand" Rotation="270" Aspect="AspectFit" HeightRequest="20" WidthRequest="40">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
+                                                 Glyph="{x:Static FontImage:IconFonts.LessThan}" />
+                                    </Image.Source>
+                                </Image>
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+                    </StackLayout>
+
+                    <custom:CustomButton BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" x:Name="btnID"  FontSize="Small"  Margin="0,30,0,0"/>
+
+                    <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
+                            HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
+                            HeaderTextColor="White"
+                            UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndexFR}"
+                            ColumnHeaderHeight="46"
+                            PickerMode="Dialog"
+                            HeaderBackgroundColor="#006450"
+                            SelectedItemTextColor="#006450"
+                            BorderColor="Black"
+                                        OKButtonTextColor="#006450"      
+                                        CancelButtonTextColor="#006450"
+                                        ShowColumnHeader="False"
+                                        ShowFooter="True"
+                                        OKButtonBackgroundColor="#EAF7CC"
+                                        CancelButtonBackgroundColor="#EAF7CC"
+                                        BackgroundColor="#EAF7CC"
+                            ItemHeight="40"
+                            DisplayMemberPath="Name" ItemsSource="{Binding IdTypeListFR}" Margin="10,0,10,0"
+                            PickerHeight="200"
+                            PickerWidth="270"
+                            FooterHeight="46">
+
+                         <!--DisplayMemberPath="Name" ItemsSource="{Binding IdTypeListFR}"  SelectionChanged="DDlIDType_SelectionChanged" Margin="10,0,10,0"
+                            PickerHeight="200"
+                            PickerWidth="270"
+                            FooterHeight="46" OkButtonClicked="DDlIDTypeFR_OkButtonClicked"  CancelButtonClicked="DDlIDTypeFR_CancelButtonClicked">-->
+
+                        <syncfusion:SfPicker.Behaviors>
+                            <custom1:SfPickerBehavior />
+                        </syncfusion:SfPicker.Behaviors>
+                    </syncfusion:SfPicker>
+
+                </Grid>
+
+                 <Grid BackgroundColor="Transparent" Padding="0,0,0,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                               <cards:SfCardView Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                       <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationCloseAllOutlets}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                           Margin="20,0,20,20" TextColor="White" >
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnCloseAllOutletsClicked}"></TapGestureRecognizer>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
+                                      </Grid>
+                                </cards:SfCardView>
+                                <cards:SfCardView Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                       <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationTransferAllOutletsToSingle}" Style="{StaticResource CaptionLabelBlack}"
+                                                           HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" VerticalTextAlignment="Start" HorizontalTextAlignment="Start"
+                                                           Margin="20,0,20,20" TextColor="Black" >
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnPasswordCardClicked}"></TapGestureRecognizer>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
+                                      </Grid>
+                                </cards:SfCardView>
+                               
+                </Grid>
+
+            </Grid>   
+       </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

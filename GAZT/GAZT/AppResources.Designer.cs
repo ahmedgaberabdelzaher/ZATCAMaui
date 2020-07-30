@@ -7254,6 +7254,54 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistration {
+            get {
+                return ResourceManager.GetString("TinDeregistration", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationReason {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReason", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationSelectReason {
+            get {
+                return ResourceManager.GetString("TinDeregistrationSelectReason", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationQuestionOutlets {
+            get {
+                return ResourceManager.GetString("TinDeregistrationQuestionOutlets", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationCloseAllOutlets {
+            get {
+                return ResourceManager.GetString("TinDeregistrationCloseAllOutlets", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationTransferAllOutletsToSingle {
+            get {
+                return ResourceManager.GetString("TinDeregistrationTransferAllOutletsToSingle", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationCloseOutletsIndividually {
+            get {
+                return ResourceManager.GetString("TinDeregistrationCloseOutletsIndividually", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationDate {
+            get {
+                return ResourceManager.GetString("TinDeregistrationDate", resourceCulture);
+            }
+        }
+        
         public static string SelectTheOptionAndCompleteDetails {
             get {
                 return ResourceManager.GetString("SelectTheOptionAndCompleteDetails", resourceCulture);
@@ -7278,6 +7326,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ConfirmPassword {
+            get {
+                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
+            }
+        }
+        
         public static string AtLeastEightCharactersLong {
             get {
                 return ResourceManager.GetString("AtLeastEightCharactersLong", resourceCulture);
@@ -7287,6 +7341,12 @@ namespace EGAZT {
         public static string EnglishCaptialAndSmallLetters {
             get {
                 return ResourceManager.GetString("EnglishCaptialAndSmallLetters", resourceCulture);
+            }
+        }
+        
+        public static string NumbersAndSymbols {
+            get {
+                return ResourceManager.GetString("NumbersAndSymbols", resourceCulture);
             }
         }
         
@@ -7317,18 +7377,6 @@ namespace EGAZT {
         public static string NewPasswordUpdatedSuccessfully {
             get {
                 return ResourceManager.GetString("NewPasswordUpdatedSuccessfully", resourceCulture);
-            }
-        }
-        
-        public static string NumbersAndSymbols {
-            get {
-                return ResourceManager.GetString("NumbersAndSymbols", resourceCulture);
-            }
-        }
-        
-        public static string ConfirmPassword {
-            get {
-                return ResourceManager.GetString("ConfirmPassword", resourceCulture);
             }
         }
     }

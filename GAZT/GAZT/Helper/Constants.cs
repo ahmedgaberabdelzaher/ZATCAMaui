@@ -37,8 +37,8 @@ namespace GAZT.Helper
         public static string LanguageCookieNameForLogin = "langMobile";
 
         #endregion
-       
- //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+
+        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = DevDomainForCookies;
         //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;

@@ -123,7 +123,9 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
 using System;
+
 #endregion
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 
 namespace EGAZT
 {
@@ -146,6 +148,11 @@ namespace EGAZT
             SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignDashBoardPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
+            // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
+
+            SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
+            SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
+            SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
 
             #endregion
 
@@ -219,7 +226,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
             #endregion
         }
-      
+
         #region NewDesignViewModel
 
         public GAZTNewDesignOnBoardingAnimationPageViewModel GAZTNewDesignOnBoardingAnimationPageView
@@ -400,20 +407,6 @@ namespace EGAZT
         //    return navigationService;
         //}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         #region OldDesignViewModel
         public StyleTestUIPageViewModel StyleTestUIPageView
         {
@@ -428,6 +421,8 @@ namespace EGAZT
                     return null;
                 }
             }
+
+
         }
         public PdfViewModel pdfView
         {
@@ -1381,7 +1376,24 @@ namespace EGAZT
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
-            //SYNCFUSION INTEGRATION
+
+            #region NewDesign
+
+            navigationService.Configure(App.GAZTNewDesignOnBoardingAnimationPageView, typeof(GAZTNewDesignOnBoardingAnimationPageView));
+            navigationService.Configure(App.GAZTNewDesignVATReturnUpdatedUIPageView, typeof(GAZTNewDesignVATReturnUpdatedUIPageView));
+            navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageView));
+            navigationService.Configure(App.GAZTNewDesignForgotPasswordPageView, typeof(GAZTNewDesignForgotPasswordPageView));
+            navigationService.Configure(App.GAZTNewDesignMyBillsPageView, typeof(GAZTNewDesignMyBillsPageView));
+            navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
+            navigationService.Configure(App.GAZTNewDesignMyReturnsNewPageView, typeof(GAZTNewDesignMyReturnsNewPageView));
+
+            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
+            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+
+            #endregion
+
+            #region SYNCFUSION INTEGRATION
+
             navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
             navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
@@ -1457,17 +1469,47 @@ namespace EGAZT
             navigationService.Configure(App.InternationalMobileNumberCodePages, typeof(InternationalMobileNumberCodePages));
             navigationService.Configure(App.UnlockAccountTINPageView, typeof(UnlockAccountTINPageView));
             navigationService.Configure(App.UnlockAccountSuccessPageView, typeof(UnlockAccountSuccessPageView));
-            
-             navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
-
             navigationService.Configure(App.InternationalCodeSearchPage, typeof(InternationalCodeSearchPage));
 
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
 
+            #endregion
+
             return navigationService;
         }
         #endregion
+
+        public ZakatDeregistrationPageViewModel ZakatDeregistrationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatDeregistrationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public TINDeregistrationPageViewModel TINDeregistrationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TINDeregistrationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
     }
 }

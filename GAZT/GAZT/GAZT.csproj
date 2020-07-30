@@ -75,6 +75,8 @@
     <Folder Include="Views\SyncFusionEnabledViews\VATLookUpPages\" />
     <Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\UnlockAccount\" />
+    <Folder Include="Views\NewDesign\ZakatDeregistration\" />
+    <Folder Include="ViewModel\SyncFusionEnabledViewModel\ZakatDeregistration\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

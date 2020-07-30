@@ -2585,7 +2585,6 @@
                     </Grid>
                     <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="White" Padding="0" Margin="15,-15,15,0">
                         <Grid Margin="0,7,0,0">
-
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />

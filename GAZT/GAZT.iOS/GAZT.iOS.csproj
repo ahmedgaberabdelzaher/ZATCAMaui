@@ -61,6 +61,7 @@
     <MtouchLink>None</MtouchLink>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
     <MtouchInterpreter>-all</MtouchInterpreter>
+    <MtouchFastDev>true</MtouchFastDev>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -479,7 +480,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{73C13029-1893-450D-9DFC-78A3896C38DB}</Project>
+      <Project>{9B350CEC-F646-4D16-B1A3-73B40DD7DFE9}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>
@@ -1075,5 +1076,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\committments_onboarding%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\LaunchImage.launchimage\" />
   </ItemGroup>
 </Project>

@@ -32,10 +32,12 @@
 
             <!--  Gradient view  -->
             <gradient:SfGradientView Grid.RowSpan="4" Style="{StaticResource SfGradientStyleForOnbBoarding}" />
-            
 
+
+            <StackLayout Orientation="Horizontal">
             <!--  Skip button  -->
-            <buttons:SfButton
+
+                <buttons:SfButton
                 x:Name="SkipButton"
                 Grid.Row="0"
                 Margin="{core:OnPlatformOrientationThickness AndroidPhonePortrait='0,10,10,0',
@@ -47,13 +49,32 @@
                 CornerRadius="20"
                 FontFamily="{StaticResource SSTArBold}"
                 HeightRequest="40"
-                HorizontalOptions="End"
+                HorizontalOptions="Start"
                 IsVisible="{Binding IsSkipButtonVisible}"
                 Text="Skip"
                 TextColor="{x:StaticResource NeutralGreay}"
                 VerticalOptions="StartAndExpand"
-                WidthRequest="80" />
-            
+                 />
+                
+                <buttons:SfButton
+                x:Name="ChangeLangButton"
+                Grid.Row="0"
+                Margin="{core:OnPlatformOrientationThickness AndroidPhonePortrait='0,10,10,0',
+                                                             AndroidPhoneLandscape='0,10,10,0',
+                                                             iOSPhonePortrait='0,20,10,0',
+                                                             iOSPhoneLandscape='0,10,10,0'}"
+                BackgroundColor="Transparent"
+                CornerRadius="20"
+                FontFamily="{StaticResource SSTArBold}"
+                HeightRequest="40"
+                HorizontalOptions="EndAndExpand"
+                IsVisible="{Binding IsSkipButtonVisible}"
+                Text="{Binding LanguageText}"
+                TextColor="{x:StaticResource NeutralGreay}"
+                VerticalOptions="EndAndExpand"
+                Clicked="ChangeLangButton_Clicked" />
+            </StackLayout>
+
             <Image Source="logo_gazt.png" Aspect="AspectFit" Grid.Row="1"/>
 
             <!--  Rotator used to navigate the view  -->

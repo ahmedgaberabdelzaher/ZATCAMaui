@@ -2,7 +2,6 @@ using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;
-using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
 using GalaSoft.MvvmLight.Views;
 using GAZT.CustomControl;
 using GAZT.Models;
@@ -31,7 +30,12 @@ namespace EGAZT
         public static string GAZTNewDesignMyReturnsNewPageView = "GAZTNewDesignMyReturnsNewPageView";
         public static string GAZTNewDesignOnBoardingAnimationPageView = "GAZTNewDesignOnBoardingAnimationPageView";
         public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";
-    
+        public static string GAZTNewDesignForgotPasswordPageView = "GAZTNewDesignForgotPasswordPageView";
+
+        public static string MyReturnsNewPageView = "MyReturnsNewPageView";
+        public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
+        public static string TINDeregistrationPageView = "TINDeregistrationPageView";
+
         #endregion
 
         #region old view strings
@@ -109,8 +113,6 @@ namespace EGAZT
         public static string UnlockAccountTINPageView = "UnlockAccountTINPageView";
         public static string UnlockAccountChangePasswordPageView = "UnlockAccountChangePasswordPageView";
         public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
-
-        public static string ForgotPasswordPageView = "ForgotPasswordPageView";
         #endregion
 
         public static string fontFamilyBold = null;
@@ -188,10 +190,9 @@ namespace EGAZT
             }
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
+
             VATDeclaration vAT = null;
             CustomNavigation navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
-            //CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
-            //new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
@@ -200,7 +201,6 @@ namespace EGAZT
             InitializeAppDynamics();
 
             MainPage = navigationPage;
-            //  MainPage = new DashBoardPageView();
         }
         public static void CreateClientHandler()
         {
@@ -414,6 +414,7 @@ namespace EGAZT
             //config.CollectorURL = "https://eum.gazt.gov.sa:443";
             //AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
+
         public static async void DisplayProgressView()
         {
             MainThread.BeginInvokeOnMainThread(() =>
@@ -421,6 +422,7 @@ namespace EGAZT
                 PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
             });
         }
+
         public static async void HideProgressView()
         {
             MainThread.BeginInvokeOnMainThread(() =>
