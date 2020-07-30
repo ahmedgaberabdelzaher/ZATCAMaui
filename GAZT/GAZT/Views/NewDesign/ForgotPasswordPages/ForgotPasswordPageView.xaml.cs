@@ -99,12 +99,20 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         private void OnPasswordCardClicked(object sender, EventArgs e)
         {
             viewModel.SetPasswordCardLayoutVisibility();
+            viewModel.PasswordCardBackgroundColor = Color.FromHex("#005e4b");
+            viewModel.UserNameCardBackgroundColor = Color.White;
+            viewModel.PasswordTextColor = Color.White;
+            viewModel.UserNameTextColor = Color.Black;
         }
 
 
         private void OnUserNameCardClicked(object sender, EventArgs e)
         {
             viewModel.SetUserNameCardVisibility();
+            viewModel.PasswordCardBackgroundColor = Color.White;
+            viewModel.UserNameCardBackgroundColor = Color.FromHex("#005e4b");
+            viewModel.PasswordTextColor = Color.Black;
+            viewModel.UserNameTextColor = Color.White;
         }
 
 

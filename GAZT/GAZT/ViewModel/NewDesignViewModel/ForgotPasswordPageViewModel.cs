@@ -353,6 +353,62 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private Color _userNameCardBackgroundColor = Color.White;
+        public Color UserNameCardBackgroundColor
+        {
+            get
+            {
+                return _userNameCardBackgroundColor;
+            }
+            set
+            {
+                _userNameCardBackgroundColor = value;
+                RaisePropertyChanged("UserNameCardBackgroundColor");
+            }
+        }
+
+        private Color _passwordCardBackgroundColor = Color.White;
+        public Color PasswordCardBackgroundColor
+        {
+            get
+            {
+                return _passwordCardBackgroundColor;
+            }
+            set
+            {
+                _passwordCardBackgroundColor = value;
+                RaisePropertyChanged("PasswordCardBackgroundColor");
+            }
+        }
+
+        private Color _userNameTextColor = Color.Black;
+        public Color UserNameTextColor
+        {
+            get
+            {
+                return _userNameTextColor;
+            }
+            set
+            {
+                _userNameTextColor = value;
+                RaisePropertyChanged("UserNameTextColor");
+            }
+        }
+
+        private Color _passwordTextColor = Color.Black;
+        public Color PasswordTextColor
+        {
+            get
+            {
+                return _passwordTextColor;
+            }
+            set
+            {
+                _passwordTextColor = value;
+                RaisePropertyChanged("PasswordTextColor");
+            }
+        }
+
         // New Property Ends
 
 
@@ -1100,18 +1156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
-            OnUserNameCardClicked = new Command(() =>
-            {
-                SetUserNameCardVisibility();
-
-            });
-
-            OnPasswordCardClicked = new Command(() =>
-            {
-                SetPasswordCardLayoutVisibility();
-
-            });
-
+           
 
             OnCorporateCardClicked = new Command(() =>
             {
