@@ -201,7 +201,8 @@ SelectedItemFontAttribute="Bold"
                                                         </DataTrigger>
                                                     </custom:CustomLabel.Triggers>
                                                 </custom:CustomLabel>
-                                                <custom:CustomLabel  Text="{Binding FbtText}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />
+                                                <!--<custom:CustomLabel  Text="{Binding FbtText}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />-->
+                                                <custom:CustomLabel  Text="{Binding RetStatTxt}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />
                                             </StackLayout>
                                             <!--StatusTxt-->
                                             <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
