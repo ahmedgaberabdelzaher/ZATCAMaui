@@ -33,8 +33,7 @@ namespace GAZT.Models
         public string Fbust { get; set; }
         public string CalendarTyp { get; set; }
         private string _statusTxt;
-        public Color TextColorHighlight { get; set; }
-        public Color FrameColorHighlight { get; set; }
+    
         private string _due;
         public string Due 
         {
@@ -45,7 +44,7 @@ namespace GAZT.Models
             { _due = value;
             }
         }
-        public string StatusMessage { get; set; }
+
         public string StatusTxt
         {
             get
@@ -57,20 +56,15 @@ namespace GAZT.Models
                 _statusTxt = value;
                 if(_statusTxt.Equals("Submitted"))
                 {
-                    FrameColorHighlight = Color.FromHex("#E5EFED");
-                    TextColorHighlight = Color.FromHex("#006450");
-                    StatusMessage = EGAZT.AppResources.Submitted;
+                   
+               
                 }
                 if (_statusTxt.Equals("Non Submitted"))
                 {
-                    FrameColorHighlight = Color.FromHex("#F6E6E8");
-                    TextColorHighlight = Color.FromHex("#aa0c19");
-                    StatusMessage = EGAZT.AppResources.UnSubmitted;
+               
                     if (Due.Equals("X"))
                     {
-                        FrameColorHighlight = Color.FromHex("#F5F5F5");
-                        TextColorHighlight = Color.FromHex("#999999");
-                        StatusMessage = EGAZT.AppResources.OverDue;
+                      
                     }
                 }
             } 
@@ -183,5 +177,17 @@ namespace GAZT.Models
     public class MyReturnsRootObject
     {
         public MyReturnsD d { get; set; }
+    }
+    public class ReturnTypes
+    {
+        public string TaxType { get; set; }
+        public string Id { get; set; }
+    }
+    public class ChipModel
+    {
+        public string TemplateType { get; set; }
+        public string Text { get; set; }
+        public ImageSource ImageSource { get; set; }
+  
     }
 }

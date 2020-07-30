@@ -325,7 +325,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             if (data == "navigateToForgotUsernamePage")
                             {
                                 hybridWebView.Opacity = 0;
-                                viewModel._navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
+                                viewModel._navigationService.NavigateTo(App.ForgotPasswordPageView);
                             }
 
                             if (data == "error")

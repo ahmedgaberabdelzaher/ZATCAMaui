@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
+using System.Timers;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -31,7 +31,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public Command OnPasswordCardClicked{ get; set; }
         public Command OnCorporateCardClicked { get; set; }
         public Command OnIndividualOrPersonalBusinessCardClicked { get; set; }
-
+        public Command OnLogInClick { get; set; }
+        public System.Timers.Timer otpTimer;
+        public int countDownSeconds;
         //public ICommand OnLoginPageLinkClicked { get; set; }
         //public ICommand BackButtonClicked { get; set; }
         public ICommand OnContinueClick { get; set; }
@@ -44,6 +46,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
         public bool StopTimer = true;
         #endregion
+
         #region Property
 
         // New Property starts
@@ -88,6 +91,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("PasswordLayoutVisibility");
             }
         }
+
+
+        private bool _recoverUserNameLayout = false;
+        public bool RecoverUserNameLayout
+        {
+            get
+            {
+                return _recoverUserNameLayout;
+            }
+            set
+            {
+                _recoverUserNameLayout = value;
+                RaisePropertyChanged("RecoverUserNameLayout");
+            }
+        }
+
+        private bool _recoverPasswordLayout = false;
+        public bool RecoverPasswordLayout
+        {
+            get
+            {
+                return _recoverPasswordLayout;
+            }
+            set
+            {
+                _recoverPasswordLayout = value;
+                RaisePropertyChanged("RecoverPasswordLayout");
+            }
+        }
+
+
+
+        private string _LblCountDownTimer;
+        public string LblCountDownTimer
+        {
+            get
+            {
+                return _LblCountDownTimer;
+            }
+            set
+            {
+                _LblCountDownTimer = value;
+                RaisePropertyChanged("LblCountDownTimer");
+            }
+        }
+
+
 
         private bool _verificationCodeVisibility = false;
         public bool VerificationCodeVisibility
@@ -283,6 +333,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _enteredOTP = value;
                 RaisePropertyChanged("EnteredOTP");
+            }
+        }
+
+
+        private bool _isResendOTPEnabled = false;
+        public bool IsResendOTPEnabled
+        {
+            get
+            {
+                return _isResendOTPEnabled;
+            }
+            set
+            {
+                _isResendOTPEnabled = value;
+                OnResendOTPClicked.ChangeCanExecute();
+                RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
 
@@ -769,20 +835,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ButtonDisableColor");
             }
         }
-        private bool _isResendOTPEnabled = false;
-        public bool IsResendOTPEnabled
-        {
-            get
-            {
-                return _isResendOTPEnabled;
-            }
-            set
-            {
-                _isResendOTPEnabled = value;
-                OnResendOTPClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsResendOTPEnabled");
-            }
-        }
+       
         private bool _confirmPasswordVisibility = false;
         public bool ConfirmPasswordVisibility
         {
@@ -914,6 +967,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
 
+
+            // Timer            
+            otpTimer = new System.Timers.Timer();
+            otpTimer.Interval = 1000;
+
+            // Event
+            otpTimer.Elapsed += OnCountDownTimedOTPEvent;
+
+            countDownSeconds = 59;
+            LblCountDownTimer = "0." + countDownSeconds.ToString();
+
+            otpTimer.Enabled = true;
+
             //BackButtonClicked = new Xamarin.Forms.Command(() =>
             //{
             //    _navigationService.GoBack();
@@ -964,45 +1030,77 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnContinueClick = new Command(() =>
             {
-                if(IsPasswordCardSelected == true)
+                if(StartPage == 2)
                 {
-                    StartPage = StartPage + 1;
-                    if (StartPage == 2)
-                    {
-                        DefaultCardLayoutVisibility = false;
-                        UserIDLayoutVisibility = false;
-                        VerificationCodeVisibility = true;
-                        SendOTPToRegisterMobileNumber();
+                    SetOTP();
+                }
 
+                if (IsPasswordCardSelected == true)
+                {
+
+                    if (StartPage == 1)
+                    {
+                        if(!string.IsNullOrEmpty(IDNumber))
+                        {
+                            StartPage = StartPage + 1;
+                            
+
+                            DefaultCardLayoutVisibility = false;
+                            UserIDLayoutVisibility = false;
+                            VerificationCodeVisibility = true;
+                            SendOTPToRegisterMobileNumber();
+                        }
+                        else
+                        {
+                           _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                        }
+
+
+                    }
+                    else if (StartPage == 2)
+                    {
+                        if (!string.IsNullOrEmpty(EnteredOTP))
+                        {
+                            StartPage = StartPage + 1;
+                            VerificationCodeVisibility = false;
+                            ValidateOTP();
+                            PasswordLayoutVisibility = true;
+                        }
+                        else
+                        {
+                          _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+
+                        }
                     }
                     else if (StartPage == 3)
                     {
+                        if (!string.IsNullOrEmpty(NewPassword) && !string.IsNullOrEmpty(ConfirmPassword))
+                        {
+                            if(NewPassword.Equals(ConfirmPassword))
+                            {
+                                StartPage = StartPage + 1;
+                                ChangePassword();
+                                RecoverPasswordLayout = true;
+                                // PasswordLayoutVisibility = true;
+                            }
+                            else
+                            {
+                                _dialogService.ShowMessageBox(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch, AppResources.Information);
+                            }
 
-                        VerificationCodeVisibility = false;
-                       // EnteredOTP = string.Empty;
-                        //if(App.IsArabic)
-                        //{
-                       // EnteredOTP = OTPFourthDigit + OTPThirdDigit + OTPSecondDigit + OTPFirstDigit;
+                        }
+                        else
+                        {
+                        _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
 
-                        //}
-                        //else
-                        //{
-                        //    EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
-                        //}
-                        ValidateOTP();
-                        PasswordLayoutVisibility = true;
-
-                    }
-                    else if (StartPage == 4)
-                    {
-                        ChangePassword();
-                        // PasswordLayoutVisibility = true;
+                        }
                     }
 
                 }
                 else
                 {
                     SendUserNameToRegidteredEmail();
+                    RecoverUserNameLayout = true;
                 }
                
 
@@ -1039,8 +1137,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
               
             });
 
-            
+            OnLogInClick = new Command(() =>
+            {
+                RecoverPasswordLayout = false;
+                RecoverUserNameLayout = false;
+                _navigationService.GoBack();
+            });
 
+            OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
 
         }
         #endregion Constructor
@@ -1864,12 +1968,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void ClearData()
         {
-    //        PasswordLayoutVisibility = false;
-    //VerificationCodeVisibility = false;
-    //        UserIDLayoutVisibility = false;
-    //        DefaultCardLayoutVisibility = false;
-    //        UserNameLayoutVisibility = false;
-    //        ForgotUserNameCardLayoutVisibility = false;
+
+            PasswordLayoutVisibility = false;
+RecoverUserNameLayout = false;
+            RecoverPasswordLayout = false;
+            VerificationCodeVisibility = false;
+            ForgotUserNameCardLayoutVisibility = false;
+            UserIDLayoutVisibility = true;
+DefaultCardLayoutVisibility = true;
+            UserNameLayoutVisibility = true;
+        }
+
+       public void SetOTP()
+        {
+            if (App.IsArabic)
+            {
+                EnteredOTP = OTPFourthDigit + OTPThirdDigit + OTPSecondDigit + OTPFirstDigit;
+            }
+            else
+            {
+                EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
+            }
+        }
+
+
+        private void OnCountDownTimedOTPEvent(object sender, ElapsedEventArgs e)
+        {
+            countDownSeconds--;
+
+            if (countDownSeconds <= 9)
+                LblCountDownTimer = "0:0" + countDownSeconds.ToString();
+            else
+                LblCountDownTimer = "0:" + countDownSeconds.ToString();
+
+            // Stop timer
+            if (countDownSeconds == 0)
+            {
+                otpTimer.Stop();
+            }
         }
         #endregion
 
