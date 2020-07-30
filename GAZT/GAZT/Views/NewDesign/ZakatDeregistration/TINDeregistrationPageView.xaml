@@ -150,40 +150,36 @@
 
                 </Grid>
 
-                 <Grid Padding="0,20,0,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                 <Grid BackgroundColor="Transparent" Padding="0,0,0,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <cards:SfCardView Grid.Column="0" HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10">
-                                    <StackLayout Padding="10,0,0,0">
-                                        <Image Margin="0,30,0,0" HorizontalOptions="Start">
-                                            <Image.Source>
-                                                <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
-                                            </Image.Source>
-                                        </Image>
-                                        <custom:CustomLabel Text="Username" Style="{StaticResource CaptionLabelBlack}">
+
+                               <cards:SfCardView Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                       <Image x:Name="re_Property_Tile"  Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationCloseAllOutlets}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                           Margin="20,0,20,20" TextColor="White" >
                                             <custom:CustomLabel.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnUserNameCardClicked}"></TapGestureRecognizer>
+                                                <TapGestureRecognizer Command="{Binding OnCloseAllOutletsClicked}"></TapGestureRecognizer>
                                             </custom:CustomLabel.GestureRecognizers>
                                         </custom:CustomLabel>
-                                    </StackLayout>
+                                      </Grid>
                                 </cards:SfCardView>
-
-                                <cards:SfCardView Grid.Column="1" HasShadow="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}" CornerRadius="10" Padding="10">
-                                    <StackLayout Padding="10,0,0,0">
-                                        <Image Margin="0,30,0,0" HorizontalOptions="Start" Rotation="-45">
-                                            <Image.Source>
-                                                <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Key}"/>
-                                            </Image.Source>
-                                        </Image>
-                                        <custom:CustomLabel Text="Password" Style="{StaticResource CaptionLabelBlack}" TextColor="White" >
+                                <cards:SfCardView Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                       <Image x:Name="re_Property_Tile"  Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationTransferAllOutletsToSingle}" Style="{StaticResource CaptionLabelBlack}"
+                                                           HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" VerticalTextAlignment="Start" HorizontalTextAlignment="Start"
+                                                           Margin="20,0,20,20" TextColor="Black" >
                                             <custom:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OnPasswordCardClicked}"></TapGestureRecognizer>
-                </custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnPasswordCardClicked}"></TapGestureRecognizer>
+                                            </custom:CustomLabel.GestureRecognizers>
                                         </custom:CustomLabel>
-                                    </StackLayout>
+                                      </Grid>
                                 </cards:SfCardView>
+                               
                 </Grid>
 
             </Grid>   
