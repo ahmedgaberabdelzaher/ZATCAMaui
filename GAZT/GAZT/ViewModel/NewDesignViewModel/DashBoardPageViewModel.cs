@@ -450,7 +450,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         string TotalPaidAmount = PaidBillsAmountstr;
                         try
                         {
-                            Device.BeginInvokeOnMainThread(() => {
+                            
 
                                 PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
                                 PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
@@ -463,7 +463,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
                                 ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
 
-                            });
+                           
                         }
                         catch(Exception ex)
                         {
