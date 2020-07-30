@@ -51,7 +51,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 }
 
 
-                //A On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                //A On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSa(true);
 
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
@@ -324,7 +324,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 if (BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", "Real Estate Service Tapped");
-                    viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                    viewModel._navigationService.NavigateTo(App.ForgotPasswordPageView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)

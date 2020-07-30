@@ -44,32 +44,9 @@ namespace GAZT.Models
             { _due = value;
             }
         }
-
-        public string StatusTxt
-        {
-            get
-            {
-                return _statusTxt;
-            }
-            set
-            {
-                _statusTxt = value;
-                if(_statusTxt.Equals("Submitted"))
-                {
-                   
-               
-                }
-                if (_statusTxt.Equals("Non Submitted"))
-                {
-               
-                    if (Due.Equals("X"))
-                    {
-                      
-                    }
-                }
-            } 
-        }
-
+        
+        public string StatusTxt { get; set; }
+       
 
 
 
