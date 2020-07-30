@@ -28,10 +28,10 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             
             labels = new List<BorderlessEntry>();
 
-            labels.Add(label1);
-            labels.Add(label2);
-            labels.Add(label3);
-            labels.Add(label4);
+            labels.Add(OTPFirstDigit);
+            labels.Add(OTPSecondDigit);
+            labels.Add(OTPThirdDigit);
+            labels.Add(OTPFourthDigit);
 
         }
 
