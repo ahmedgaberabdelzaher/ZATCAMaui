@@ -663,19 +663,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Submitted + " from Dashboard");
-                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 0);
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 0);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.ReturnTypeName == AppResources.UnSubmitted)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.UnSubmitted + " from Dashboard");
-                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 1);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.ReturnTypeName == AppResources.OverDue)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.OverDue + " from Dashboard");
-                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
             }
@@ -686,19 +686,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Submitted + " from Dashboard");
-                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView);// , 0);
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView,0);// , 0);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.ReturnTypeName == AppResources.UnSubmitted)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.UnSubmitted + " from Dashboard");
-                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 1);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.ReturnTypeName == AppResources.OverDue)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.OverDue + " from Dashboard");
-                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
             }

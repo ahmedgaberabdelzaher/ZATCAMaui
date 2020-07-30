@@ -7,8 +7,10 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+            xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:EGAZT.CustomControl"
              mc:Ignorable="d" FlowDirection="RightToLeft"    
+              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              x:Class="EGAZT.Views.NewDesign.MyBillsPages.GAZTNewDesignMyBillsPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
@@ -17,7 +19,14 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
+            <!--<DataTemplate x:Key="BillStatusFilterTemplate">
+                <StackLayout>
+                    <buttons:SfChip HeightRequest="40" WidthRequest="120" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ShowIcon="True" ImageSource="{Binding ImageSource}"  ShowCloseButton="False" ShowSelectionIndicator="False" ImageAlignment="Left" />
+                </StackLayout>
+            </DataTemplate>
+            <local1:ChipDataTemplateSelector x:Key="selector" 
+                                          
+                                            SadEmojiTemplate = "{StaticResource BillStatusFilterTemplate}"/>-->
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -70,9 +79,83 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackLayout Spacing="-5" Grid.Row="0">
-                <custom:CustomLabel Text="All Bills" Style="{StaticResource PageTitleBlack}"/>
-                <custom:CustomLabel Text="60,0000 SAR" Style="{StaticResource CaptionLabelGrey}"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
+                        <!--<custom:CustomLabel.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btn_Clicked"/>
+                        </custom:CustomLabel.GestureRecognizers>-->
+                    </custom:CustomLabel>
+                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Rotation="270">
+                        <Image.Source>
+                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralLightGrey}" Size="25"
+                                                    Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                        </Image.Source>
+                    </Image>
+                    <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
+                        <!--Margin="10,0,10,0"-->
+                     
+                    </custom:CustomButton>
+                  
+                    <syncfusion:SfPicker x:Name="TaxTypePicker"
+                    HeaderHeight="55"
+                    
+                    HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+HeaderTextColor="White"
+                                             ShowColumnHeader="False"
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                                            HeaderBackgroundColor="#006450"
+                    BorderColor="Black"
+                     BackgroundColor="White"
+                                SelectedItemFontSize="15"
+                                           ShowFooter="False"
+                                         SelectedItemFontAttribute="Bold"
+                                         SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                         UnSelectedItemTextColor="{StaticResource NeutralBlack}"
+
+                   ItemHeight="40"
+                     DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
+                   PickerHeight="250"
+                    PickerWidth="300"
+                                         ShowHeader="False" 
+                                             
+                    OKButtonTextColor="#006450"
+                    CancelButtonTextColor="#006450"
+                        
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    
+                                         SelectionChanged="TaxTypePicker_SelectionChanged">
+                        <syncfusion:SfPicker.Behaviors>
+                            <custom1:SfPickerBehavior />
+                        </syncfusion:SfPicker.Behaviors>
+                    </syncfusion:SfPicker>
+                </Grid>
+                <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
+                <StackLayout Margin="0,8,0,8" >
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                    
+                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="AliceBlue"    SelectionChanged="chipgroup_SelectionChanged">
+                            <buttons:SfChipGroup.ItemTemplate>
+                                <DataTemplate >
+                                    <StackLayout>
+                                        <buttons:SfChip HeightRequest="40" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontSize="12" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </buttons:SfChipGroup.ItemTemplate>
+                        </buttons:SfChipGroup>
+                    </ScrollView>
+                  
                 </StackLayout>
+            </StackLayout>
                 <StackLayout Grid.Row="1">
                     <!-- My Bills template UI Starts -->
 
@@ -80,13 +163,13 @@
 
                 <ListView  x:Name="Bills" 
            ItemsSource="{Binding MyBills,Mode=TwoWay}"
-                                           IsVisible="{Binding SetNoDataLabelVisibilityALLList}"
+                                           IsVisible="{Binding IsListVisible}"
                                   VerticalScrollBarVisibility="Never"    
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                  BackgroundColor="White"     
-            SeparatorVisibility="None"
+            SeparatorVisibility="None" ItemTapped="Bills_ItemTapped"
             >
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -140,13 +223,23 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding TestDueAmount}" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
-                                            <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                                <Label Text="SADAD Number" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <!--<Label Grid.Row="0" Grid.Column="0" Text="{Binding TestDueAmount}" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding TestDueAmount}" VerticalOptions="CenterAndExpand"  >
+                                                <custom:CustomLabel.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding TestDueAmount}" Style="{StaticResource SectionTitleBlackBold}" ></Span>
+                                                        <Span Text="&#160;" Style="{StaticResource SectionTitleBlackBold}" ></Span>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource SectionTitleBlackBold}" ></Span>
+                                                    </FormattedString>
+                                                </custom:CustomLabel.FormattedText>
+
+                                            </custom:CustomLabel>
+                                                                                        <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                                <Label Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <Label Text="{Binding VTRE2}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                                <Label Text="Due Date" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <Label Text="{Binding Faednar}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
                                         </Grid>
@@ -157,7 +250,10 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.NoBillsAvailable}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding isNoDataLableVisible}"/>
+             
             </StackLayout>
-            </Grid>
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

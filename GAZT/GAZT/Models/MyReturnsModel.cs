@@ -183,4 +183,11 @@ namespace GAZT.Models
         public string TaxType { get; set; }
         public string Id { get; set; }
     }
+    public class ChipModel
+    {
+        public string TemplateType { get; set; }
+        public string Text { get; set; }
+        public ImageSource ImageSource { get; set; }
+  
+    }
 }

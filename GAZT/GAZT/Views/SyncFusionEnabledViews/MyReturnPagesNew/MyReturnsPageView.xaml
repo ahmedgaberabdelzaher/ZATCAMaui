@@ -13,6 +13,7 @@
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:local1="clr-namespace:GAZT.SyncFusionEnabledBehaviors.Behaviors"
+              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage.MyReturnsPageView"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White"  >
