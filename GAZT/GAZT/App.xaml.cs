@@ -17,6 +17,13 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppDynamics.Agent;
+using EGAZT.Views.NewDesign;
+using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
+using EGAZT.Views.SyncFusionEnabledViews;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
+using EGAZT.Views.NewDesign.Template;
+using EGAZT.Views.NewDesign.ZakatDeregistration;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -31,7 +38,7 @@ namespace EGAZT
         public static string GAZTNewDesignMyReturnsNewPageView = "GAZTNewDesignMyReturnsNewPageView";
         public static string GAZTNewDesignOnBoardingAnimationPageView = "GAZTNewDesignOnBoardingAnimationPageView";
         public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";
-    
+
         #endregion
 
         #region old view strings
@@ -113,6 +120,15 @@ namespace EGAZT
         public static string ForgotPasswordPageView = "ForgotPasswordPageView";
         #endregion
 
+
+        //New Design
+        public static string VATReturnUpdatedUIPageView = "VATReturnUpdatedUIPageView";
+        public static string DashBoardPageView = "DashBoardPageView";
+        public static string MyBillsPageView = "MyBillsPageView";
+        public static string MyReturnsNewPageView = "MyReturnsNewPageView";
+        public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
+        public static string TINDeregistrationPageView = "TINDeregistrationPageView";
+
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
@@ -188,8 +204,13 @@ namespace EGAZT
             }
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
+
             VATDeclaration vAT = null;
             CustomNavigation navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView());
+
+            //CustomNavigation navigationPage = new CustomNavigation(new TINDeregistrationPageView()) { BarTextColor = Color.White };
             //CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
             //new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
@@ -414,6 +435,7 @@ namespace EGAZT
             //config.CollectorURL = "https://eum.gazt.gov.sa:443";
             //AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
+
         public static async void DisplayProgressView()
         {
             MainThread.BeginInvokeOnMainThread(() =>
@@ -421,6 +443,7 @@ namespace EGAZT
                 PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
             });
         }
+
         public static async void HideProgressView()
         {
             MainThread.BeginInvokeOnMainThread(() =>

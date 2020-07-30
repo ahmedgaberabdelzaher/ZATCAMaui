@@ -24,5 +24,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.StylesTestUi
             this.BindingContext = viewModel;
             this.FlowDirection = FlowDirection.LeftToRight;
         }
+
     }
 }

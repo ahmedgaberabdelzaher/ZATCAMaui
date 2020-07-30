@@ -102,7 +102,9 @@ namespace EGAZT.Droid.CustomRenderer
                     [GAZT.Helper.Constants.LanguageCookieNameForLogin] = lang,
                 };
 
+                
                 Control.LoadUrl(((HybridWebView)Element).Url, headers);
+                
                 //Control.SetWebViewClient(new JavascriptWebViewClient(this, $"javascript: {JavascriptFunction}"));
                 Control.AddJavascriptInterface(new JSBridge(this), "jsBridge");
             }

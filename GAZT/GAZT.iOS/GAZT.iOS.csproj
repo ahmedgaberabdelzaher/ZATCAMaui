@@ -218,6 +218,9 @@
     <BundleResource Include="Resources\group_114.png" />
     <BundleResource Include="Resources\group_114%402x.png" />
     <BundleResource Include="Resources\group_114%403x.png" />
+    <BundleResource Include="Resources\Entry_DropDown.png" />
+    <BundleResource Include="Resources\Entry_DropDown%402x.png" />
+    <BundleResource Include="Resources\Entry_DropDown%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -479,7 +482,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{73C13029-1893-450D-9DFC-78A3896C38DB}</Project>
+      <Project>{9B350CEC-F646-4D16-B1A3-73B40DD7DFE9}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>

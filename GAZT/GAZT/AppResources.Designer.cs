@@ -7253,5 +7253,53 @@ namespace EGAZT {
                 return ResourceManager.GetString("AccountUnlockedCompleteRequiedFields", resourceCulture);
             }
         }
+        
+        public static string TinDeregistration {
+            get {
+                return ResourceManager.GetString("TinDeregistration", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationReason {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReason", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationSelectReason {
+            get {
+                return ResourceManager.GetString("TinDeregistrationSelectReason", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationQuestionOutlets {
+            get {
+                return ResourceManager.GetString("TinDeregistrationQuestionOutlets", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationCloseAllOutlets {
+            get {
+                return ResourceManager.GetString("TinDeregistrationCloseAllOutlets", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationTransferAllOutletsToSingle {
+            get {
+                return ResourceManager.GetString("TinDeregistrationTransferAllOutletsToSingle", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationCloseOutletsIndividually {
+            get {
+                return ResourceManager.GetString("TinDeregistrationCloseOutletsIndividually", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationDate {
+            get {
+                return ResourceManager.GetString("TinDeregistrationDate", resourceCulture);
+            }
+        }
     }
 }
