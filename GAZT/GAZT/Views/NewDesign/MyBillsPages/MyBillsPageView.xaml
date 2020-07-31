@@ -95,10 +95,11 @@
                     </custom:CustomLabel>
                     <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Rotation="270">
                         <Image.Source>
-                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralLightGrey}" Size="25"
-                                                    Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralLightGrey}"
+                                                    Glyph="{x:Static FontImage:IconFonts.Close}"/>
                         </Image.Source>
                     </Image>
+
                     <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                         <!--Margin="10,0,10,0"-->
                      
