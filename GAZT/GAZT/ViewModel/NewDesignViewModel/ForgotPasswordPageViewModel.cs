@@ -17,7 +17,7 @@ using System.Timers;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-    public class GAZTNewDesignForgotPasswordPageViewModel : ViewModelBase 
+    public class GAZTNewDesignForgotPasswordPageViewModel : ViewModelBase
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public Command OnResendOTPClicked { get; set; }
         public Command OnValidateOTPClicked { get; set; }
         public Command OnUserNameCardClicked { get; set; }
-        public Command OnPasswordCardClicked{ get; set; }
+        public Command OnPasswordCardClicked { get; set; }
         public Command OnCorporateCardClicked { get; set; }
         public Command OnIndividualOrPersonalBusinessCardClicked { get; set; }
         public Command OnLogInClick { get; set; }
@@ -37,7 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //public ICommand OnLoginPageLinkClicked { get; set; }
         //public ICommand BackButtonClicked { get; set; }
         public ICommand OnContinueClick { get; set; }
-        
+
         public int currentAttempts = 0;
         public int StartPage = 1;
         public bool IsPasswordCardSelected = true;
@@ -215,7 +215,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        private bool _userNameLayoutVisibility = true;
+        private bool _userNameLayoutVisibility = false;
         public bool UserNameLayoutVisibility
         {
             get
@@ -231,7 +231,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-        
+
 
         private string _oTPSecondDigit;
         public string OTPSecondDigit
@@ -277,7 +277,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-       
+
 
 
         private string _newPassword = "";
@@ -317,7 +317,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                _defaultCardLayoutVisibility = value;
+                _forgotUserNameCardLayoutVisibility = value;
                 RaisePropertyChanged("ForgotUserNameCardLayoutVisibility");
             }
         }
@@ -633,7 +633,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-       
+
 
         private string _enteredCaptchaValue;
         public string EnteredCaptchaValue
@@ -812,7 +812,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("NavigateToLoginLinkVisibility");
             }
         }
-       
+
         private string _iDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
         public string IDNumberOrCorporateIDOrUserName
         {
@@ -852,7 +852,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ForgotPasswordUserNameChangedMessage");
             }
         }
-       
+
         private bool _isIDTypeVisible = false;
         public bool IsIDTypeVisible
         {
@@ -892,7 +892,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ButtonDisableColor");
             }
         }
-       
+
         private bool _confirmPasswordVisibility = false;
         public bool ConfirmPasswordVisibility
         {
@@ -1009,6 +1009,62 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private Color _corporateCardBackgroundColor = Color.White;
+        public Color CorporateCardBackgroundColor
+        {
+            get
+            {
+                return _corporateCardBackgroundColor;
+            }
+            set
+            {
+                _corporateCardBackgroundColor = value;
+                RaisePropertyChanged(nameof(CorporateCardBackgroundColor));
+            }
+        }
+
+        private Color _individualOrPersonalBusinessCardBackgroundColor = Color.FromHex("#005e4b");
+        public Color IndividualOrPersonalBusinessCardBackgroundColor
+        {
+            get
+            {
+                return _individualOrPersonalBusinessCardBackgroundColor;
+            }
+            set
+            {
+                _individualOrPersonalBusinessCardBackgroundColor = value;
+                RaisePropertyChanged(nameof(IndividualOrPersonalBusinessCardBackgroundColor));
+            }
+        }
+
+        private Color _corporateTextColor = Color.Black;
+        public Color CorporateTextColor
+        {
+            get
+            {
+                return _corporateTextColor;
+            }
+            set
+            {
+                _corporateTextColor = value;
+                RaisePropertyChanged(nameof(CorporateTextColor));
+            }
+        }
+
+        private Color _individualOrPersonalBusinessTextColor = Color.White;
+        public Color IndividualOrPersonalBusinessTextColor
+        {
+            get
+            {
+                return _individualOrPersonalBusinessTextColor;
+            }
+            set
+            {
+                _individualOrPersonalBusinessTextColor = value;
+                RaisePropertyChanged(nameof(IndividualOrPersonalBusinessTextColor));
+            }
+        }
+
         #endregion
         #region Constructor
         public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -1087,7 +1143,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnContinueClick = new Command(() =>
             {
-                if(StartPage == 2)
+                if (StartPage == 2)
                 {
                     SetOTP();
                 }
@@ -1097,13 +1153,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     if (StartPage == 1)
                     {
-                        if(!string.IsNullOrEmpty(IDNumber))
+                        if (!string.IsNullOrEmpty(IDNumber))
                         {
                             SendOTPToRegisterMobileNumber();
                         }
                         else
                         {
-                           _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                            _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
                         }
 
 
@@ -1113,11 +1169,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (!string.IsNullOrEmpty(EnteredOTP))
                         {
                             ValidateOTP();
-                          
+
                         }
                         else
                         {
-                          _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+                            _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
 
                         }
                     }
@@ -1125,10 +1181,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (!string.IsNullOrEmpty(NewPassword) && !string.IsNullOrEmpty(ConfirmPassword))
                         {
-                            if(NewPassword.Equals(ConfirmPassword))
+                            if (NewPassword.Equals(ConfirmPassword))
                             {
                                 ChangePassword();
-                               
+
                                 // PasswordLayoutVisibility = true;
                             }
                             else
@@ -1139,7 +1195,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                        _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+                            _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
 
                         }
                     }
@@ -1148,26 +1204,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 else
                 {
                     SendUserNameToRegidteredEmail();
-                   
-                }
-               
 
-                
+                }
+
+
+
             });
 
 
-           
+
 
             OnCorporateCardClicked = new Command(() =>
             {
-                
+                CorporateCardBackgroundColor = Color.FromHex("#005e4b");
+                CorporateTextColor = Color.White;
+                IndividualOrPersonalBusinessCardBackgroundColor = Color.White;
+                IndividualOrPersonalBusinessTextColor = Color.Black;
 
             });
 
 
             OnIndividualOrPersonalBusinessCardClicked = new Command(() =>
             {
-              
+                IndividualOrPersonalBusinessCardBackgroundColor = Color.FromHex("#005e4b");
+                IndividualOrPersonalBusinessTextColor = Color.White;
+                CorporateCardBackgroundColor = Color.White;
+                CorporateTextColor = Color.Black;
             });
 
             OnLogInClick = new Command(() =>
@@ -1183,7 +1245,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 SendOTPToRegisterMobileNumber();
             });
 
-           // OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
+            // OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
 
         }
         #endregion Constructor
@@ -1449,7 +1511,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             IsAPICalledSuccessfully = false;
                         }
-                        }
+                    }
                     catch (Exception ex)
                     {
                     }
@@ -2064,13 +2126,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
 
             PasswordLayoutVisibility = false;
-RecoverUserNameLayout = false;
+            RecoverUserNameLayout = false;
             RecoverPasswordLayout = false;
             VerificationCodeVisibility = false;
             ForgotUserNameCardLayoutVisibility = false;
             UserIDLayoutVisibility = true;
-DefaultCardLayoutVisibility = true;
-            UserNameLayoutVisibility = true;
+            DefaultCardLayoutVisibility = true;
+            UserNameLayoutVisibility = false;
             IDNumber = string.Empty;
             OTPFirstDigit = string.Empty;
             OTPSecondDigit = string.Empty;
@@ -2090,7 +2152,7 @@ DefaultCardLayoutVisibility = true;
             //}
             //else
             //{
-                EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
+            EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
             //}
         }
 

@@ -28,8 +28,8 @@
 
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="90*" />
-                <RowDefinition Height="10*" />
+                <RowDefinition Height="85*" />
+                <RowDefinition Height="15*" />
             </Grid.RowDefinitions>
 
             <Grid x:Name="HomeView" Grid.Row="0" RowSpacing="0"  Margin="0" Padding="0,15,0,0">

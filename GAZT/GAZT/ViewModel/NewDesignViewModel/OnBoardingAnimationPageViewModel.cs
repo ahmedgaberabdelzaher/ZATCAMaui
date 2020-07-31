@@ -23,9 +23,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
         private ObservableCollection<Boarding> boardings;
 
-        private string nextButtonText = "NEXT";
+        private string nextButtonText = AppResources.ZZNext;
 
-        private string _LanguageText = "ENGLISH";
+        private string _LanguageText = AppResources.ZZZSetToEnglish;
 
         private bool isSkipButtonVisible = true;
 
