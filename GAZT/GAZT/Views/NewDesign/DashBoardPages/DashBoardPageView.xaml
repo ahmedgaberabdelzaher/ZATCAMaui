@@ -583,7 +583,7 @@
 
             <!--Menu Ends-->
 
-            <StackLayout Grid.Row="1"  x:Name="stackMenu" >
+            <StackLayout Grid.Row="1"  x:Name="stackMenu" BackgroundColor="White">
                 <yummy:PancakeView x:Name="Tabbar" BorderColor="DarkGray" BorderThickness="1" CornerRadius="12,12,0,0" BackgroundColor="White" Padding="20,0,20,20">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -603,6 +603,9 @@
                                     <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.HomeOutline}"/>
                                 </Image.Source>
                             </Image>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnHomeTapped"/>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <StackLayout Grid.Column="1">
                             <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">

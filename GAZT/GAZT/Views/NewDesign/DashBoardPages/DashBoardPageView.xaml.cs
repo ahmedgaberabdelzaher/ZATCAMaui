@@ -44,13 +44,23 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         #region Method
 
+        private void OnHomeTapped(object sender, EventArgs e)
+        {
+            MenuView.IsVisible = false;
+            HomeView.IsVisible = true;
+            HomeIndicator.BackgroundColor = Color.DarkGreen;
+            MenuIndicator.BackgroundColor = Color.White;
+            Tabbar.BorderColor = Color.DarkGray;
+            stackMenu.BackgroundColor = Color.White;
+        }
+
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             HomeView.IsVisible = false;
             MenuView.IsVisible = true;
             HomeIndicator.BackgroundColor = Color.White;
             MenuIndicator.BackgroundColor = Color.DarkGreen;
-            Tabbar.BorderColor = Color.Transparent;
+            stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
         }
 
         protected override void OnAppearing()
