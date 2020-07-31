@@ -203,14 +203,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             try
             {
-                if (GetDashboardDataTask != null)
-                    GetDashboardDataTask.Wait();
-
-                if (GetBillsTask != null)
-                    GetBillsTask.Wait();
-
-                if (GetReturnsTask != null)
-                    GetReturnsTask.Wait();
+                await Task.WhenAll(GetDashboardDataTask, GetBillsTask, GetReturnsTask);
             }
             catch (AggregateException ae)
             {
