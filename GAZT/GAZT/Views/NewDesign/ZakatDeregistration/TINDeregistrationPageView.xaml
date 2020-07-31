@@ -7,7 +7,7 @@
              BackgroundImageSource="partials_background.png" xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms">
+             xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:local="clr-namespace:EGAZT.Helper" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,6 +15,39 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        <ResourceDictionary>
+			<DataTemplate x:Key="selectedItemListView">
+				<ViewCell>
+					<cards:SfCardView Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                            <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                            <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                Margin="20,0,20,20" TextColor="White" >
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnCloseAllOutletsClicked}"></TapGestureRecognizer>
+                                </custom:CustomLabel.GestureRecognizers>
+                            </custom:CustomLabel>
+                            </Grid>
+                    </cards:SfCardView>
+				</ViewCell>
+			</DataTemplate>
+			<DataTemplate x:Key="unselectedItemListView">
+				<ViewCell>
+					<cards:SfCardView Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                            <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                            <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnCloseAllOutletsClicked}"></TapGestureRecognizer>
+                                </custom:CustomLabel.GestureRecognizers>
+                            </custom:CustomLabel>
+                            </Grid>
+                    </cards:SfCardView>
+				</ViewCell>
+			</DataTemplate>
+			<local:SelectedItemLVDataTemplateSelector x:Key="selectedItemLVDataTemplateSelector" SelectedItemTemplated="{StaticResource selectedItemListView}" NotSelectedItemTemplated="{StaticResource unselectedItemListView}" />
+		</ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -70,6 +103,7 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
@@ -150,38 +184,32 @@
 
                 </Grid>
 
-                 <Grid BackgroundColor="Transparent" Padding="0,0,0,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                 <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="SfListView" SelectionMode="Single" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding OutletDecisionOptions}" ItemTemplate="{StaticResource selectedItemLVDataTemplateSelector}">
+                        <listView:SfListView.LayoutManager>
+                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+                        </listView:SfListView.LayoutManager>
+                 </listView:SfListView>
 
-                               <cards:SfCardView Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
-                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                       <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationCloseAllOutlets}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                                           Margin="20,0,20,20" TextColor="White" >
-                                            <custom:CustomLabel.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnCloseAllOutletsClicked}"></TapGestureRecognizer>
-                                            </custom:CustomLabel.GestureRecognizers>
-                                        </custom:CustomLabel>
-                                      </Grid>
-                                </cards:SfCardView>
-                                <cards:SfCardView Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
-                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                       <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationTransferAllOutletsToSingle}" Style="{StaticResource CaptionLabelBlack}"
-                                                           HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" VerticalTextAlignment="Start" HorizontalTextAlignment="Start"
-                                                           Margin="20,0,20,20" TextColor="Black" >
-                                            <custom:CustomLabel.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnPasswordCardClicked}"></TapGestureRecognizer>
-                                            </custom:CustomLabel.GestureRecognizers>
-                                        </custom:CustomLabel>
-                                      </Grid>
-                                </cards:SfCardView>
-                               
-                </Grid>
-
+                <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource CaptionLabelGrey}" />     
+                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                            <custom:BorderlessEntry Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"
+                                                    TextColor="#bbbbbb" BackgroundColor="Aqua" HorizontalOptions="StartAndExpand">
+                            </custom:BorderlessEntry>
+                             <inputLayout:SfTextInputLayout.TrailingView>
+                              <Image HorizontalOptions="FillAndExpand" Aspect="AspectFit" HeightRequest="20" WidthRequest="40">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
+                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                    </Image.Source>
+                                </Image>
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+                    </StackLayout>
             </Grid>   
        </ScrollView>
     </ContentPage.Content>

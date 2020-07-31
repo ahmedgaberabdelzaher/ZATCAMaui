@@ -22,14 +22,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         private void SetLTR()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
         public void ChangeAeroIcon()
         {
-            if (App.IsArabic)
+            if (!App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
             }
