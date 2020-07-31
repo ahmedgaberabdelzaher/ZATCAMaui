@@ -413,7 +413,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         public static string ConfirmPassword {
             get {
@@ -467,7 +467,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Corporate.
         /// </summary>
         public static string Corporate {
             get {
@@ -642,7 +642,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Email Sent.
         /// </summary>
         public static string EmailSent {
             get {
@@ -1794,11 +1794,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commitments.
+        /// </summary>
+        public static string NDCommitments {
+            get {
+                return ResourceManager.GetString("NDCommitments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Countinue.
         /// </summary>
         public static string NDCountinue {
             get {
                 return ResourceManager.GetString("NDCountinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t miss any obligation with the new commitments calendar.
+        /// </summary>
+        public static string NDDontMissObligation {
+            get {
+                return ResourceManager.GetString("NDDontMissObligation", resourceCulture);
             }
         }
         
@@ -1830,6 +1848,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inbox &amp; Notifications.
+        /// </summary>
+        public static string NDInboxnNotification {
+            get {
+                return ResourceManager.GetString("NDInboxnNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make all your transactions fast and simple with MADA &amp; Apple Pay.
+        /// </summary>
+        public static string NDMakeTransactionsFast {
+            get {
+                return ResourceManager.GetString("NDMakeTransactionsFast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Moblie Number xxxxxxx388.
         /// </summary>
         public static string NDMoblieNumber {
@@ -1839,11 +1875,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A new and easy way to communicate.
+        /// </summary>
+        public static string NDNewEasyWayToCommunicate {
+            get {
+                return ResourceManager.GetString("NDNewEasyWayToCommunicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Password.
         /// </summary>
         public static string NDNewPassword {
             get {
                 return ResourceManager.GetString("NDNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Payment Methods.
+        /// </summary>
+        public static string NDNewPaymentMethods {
+            get {
+                return ResourceManager.GetString("NDNewPaymentMethods", resourceCulture);
             }
         }
         
@@ -1871,6 +1925,15 @@ namespace EGAZT {
         public static string NDResendVerificationCode {
             get {
                 return ResourceManager.GetString("NDResendVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Submission.
+        /// </summary>
+        public static string NDReturnSubmission {
+            get {
+                return ResourceManager.GetString("NDReturnSubmission", resourceCulture);
             }
         }
         
@@ -1907,6 +1970,15 @@ namespace EGAZT {
         public static string NDUsernameSenttoMobile {
             get {
                 return ResourceManager.GetString("NDUsernameSenttoMobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT, ZAKAT and other return submissions made easy.
+        /// </summary>
+        public static string NDVATZAKATReturnSubmission {
+            get {
+                return ResourceManager.GetString("NDVATZAKATReturnSubmission", resourceCulture);
             }
         }
         

@@ -1962,7 +1962,7 @@
     <value>أقر بأن المعلومات المقدمة في هذا الإقرار دقيقة وصحيحة وكاملة بالمستندات المرفقة، وأنني الشخص المخول بملء هذا الإقرار أو المخول للتوقيع بالنيابة عن المكلف، وأتحمل كامل المسؤولية في حال ثبت خلاف ذلك.</value>
   </data>
   <data name="EmailSent" xml:space="preserve">
-    <value />
+    <value>Email Sent</value>
   </data>
   <data name="ZZOurrecordsindicatethatyouarenotmainly" xml:space="preserve">
     <value>تشير سجلاتنا  بأنك لست مصدّر, وأنه يوجد مبيعات لا تخضع للضريبة بنسبة صفر في حقل الصادرات.</value>
@@ -2783,8 +2783,8 @@
     <value>سوف تستلم تفاصيل المبلغ المستحق على ايميلك المسجل وكذلك في قسم المراسلات الموجود بحسابك على بوابة الهيئة</value>
     <comment>Acknowledgement</comment>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
+  <data name="NDNewPaymentMethods" xml:space="preserve">
+    <value>New Payment Methods</value>
   </data>
   <data name="ZInvalidMobileNoError" xml:space="preserve">
     <value>رقم الجوال غير صحيح</value>
@@ -4397,7 +4397,29 @@
   <data name="NDUsername" xml:space="preserve">
     <value>اسم المستخدم</value>
   </data>
+  <data name="NDCommitments" xml:space="preserve">
+    <value>الالتزامات</value>
+    <comment>new Design OnBoarding Screen</comment>
+  </data>
+  <data name="NDDontMissObligation" xml:space="preserve">
+    <value>لا تفوت أي التزام مع تقويم الالتزامات الجديد</value>
+  </data>
+  <data name="NDReturnSubmission" xml:space="preserve">
+    <value>رفع الاقرارات</value>
+  </data>
   <data name="NDUsernameSenttoMobile" xml:space="preserve">
-    <value>Username sent to the registered email and mobile number</value>
+    <value>اسم المستخدم تم إرساله الى البريد الالكتروني ورقم الجوال المسجل</value>
+  </data>
+  <data name="NDVATZAKATReturnSubmission" xml:space="preserve">
+    <value>VAT, ZAKAT and other return submissions made easy</value>
+  </data>
+  <data name="NDInboxnNotification" xml:space="preserve">
+    <value>الرسائل والتنبيهات</value>
+  </data>
+  <data name="NDMakeTransactionsFast" xml:space="preserve">
+    <value>Make all your transactions fast and simple with MADA &amp; Apple Pay</value>
+  </data>
+  <data name="NDNewEasyWayToCommunicate" xml:space="preserve">
+    <value>جميع الرسائل والتنبيهات في مكان واحد</value>
   </data>
 </root>
