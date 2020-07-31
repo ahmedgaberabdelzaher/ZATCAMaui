@@ -8,7 +8,9 @@
             xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              BackgroundImageSource="partials_background.png"
-             x:Class="EGAZT.Views.NewDesign.ForgotPasswordPages.GAZTNewDesignRecoverUsernamePageView">
+             x:Class="EGAZT.Views.NewDesign.ForgotPasswordPages.GAZTNewDesignRecoverUsernamePageView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

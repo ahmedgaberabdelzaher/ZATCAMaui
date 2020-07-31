@@ -60,13 +60,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
                     Content = AppResources.NDVATZAKATReturnSubmission,
                     RotatorItem = new WalkthroughItemPage()
                 },
-                new Boarding()
-                {
-                    ImagePath = "paymentmethod_onboarding.png",
-                    Header = AppResources.NDNewPaymentMethods,
-                    Content = AppResources.NDMakeTransactionsFast,
-                    RotatorItem = new WalkthroughItemPage()
-                },
+                //new Boarding()
+                //{
+                //    ImagePath = "paymentmethod_onboarding.png",
+                //    Header = AppResources.NDNewPaymentMethods,
+                //    Content = AppResources.NDMakeTransactionsFast,
+                //    RotatorItem = new WalkthroughItemPage()
+                //},
                 new Boarding()
                 {
                     ImagePath = "inbox_onboarding.png",

@@ -8,6 +8,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -23,7 +25,7 @@
         <Grid >
             <Grid.RowDefinitions>
                 <!--  Skip Button  -->
-                <RowDefinition Height="50" />
+                <RowDefinition Height="64" />
                 <RowDefinition Height="70" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
@@ -35,38 +37,30 @@
 
 
             <StackLayout Orientation="Horizontal">
-            <!--  Skip button  -->
+                <!--  Skip button  -->
 
                 <buttons:SfButton
                 x:Name="SkipButton"
                 Grid.Row="0"
-                Margin="{core:OnPlatformOrientationThickness AndroidPhonePortrait='0,10,10,0',
-                                                             AndroidPhoneLandscape='0,10,10,0',
-                                                             iOSPhonePortrait='0,20,10,0',
-                                                             iOSPhoneLandscape='0,10,10,0'}"
+                Margin="10"
                 BackgroundColor="Transparent"
                 Command="{Binding SkipCommand}"
                 CornerRadius="20"
                 FontFamily="{StaticResource SSTArBold}"
-                HeightRequest="40"
                 HorizontalOptions="Start"
                 IsVisible="{Binding IsSkipButtonVisible}"
                 Text="Skip"
                 TextColor="{x:StaticResource NeutralGreay}"
                 VerticalOptions="StartAndExpand"
                  />
-                
+
                 <buttons:SfButton
                 x:Name="ChangeLangButton"
                 Grid.Row="0"
-                Margin="{core:OnPlatformOrientationThickness AndroidPhonePortrait='0,10,10,0',
-                                                             AndroidPhoneLandscape='0,10,10,0',
-                                                             iOSPhonePortrait='0,20,10,0',
-                                                             iOSPhoneLandscape='0,10,10,0'}"
+                Margin="10"
                 BackgroundColor="Transparent"
                 CornerRadius="20"
                 FontFamily="{StaticResource SSTArBold}"
-                HeightRequest="40"
                 HorizontalOptions="EndAndExpand"
                 IsVisible="{Binding IsSkipButtonVisible}"
                 Text="{Binding LanguageText}"
