@@ -171,20 +171,19 @@
                                                     </chart:SfChart.Legend>-->
 
                                                     <chart:SfChart.Series>
-
-
-                                                        <chart:DoughnutSeries x:Name="doughnutSeries" 
-                                              ItemsSource="{Binding MyBillsChartModels}" 
-                                              XBindingPath="BillType" 
-                                              YBindingPath="BillCount" 
-                                                                              TrackColor="{Binding BillColor}"
-                                                                              Color="{Binding BillColor}"
-                                              DoughnutCoefficient="0.9">
-                                                            <chart:DoughnutSeries.ColorModel>
+                                                    <chart:DoughnutSeries x:Name="doughnutSeries" ItemsSource="{Binding MyBillsChartModels}" XBindingPath="BillType" YBindingPath="BillCount" TrackColor="{Binding BillColor}" Color="{Binding BillColor}" DoughnutCoefficient="0.95" CircularCoefficient=".9">
+                                                        <chart:DoughnutSeries.ColorModel>
                                                                 <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding Colors}">
                                                                 </chart:ChartColorModel>
                                                             </chart:DoughnutSeries.ColorModel>
-                                                        </chart:DoughnutSeries>
+
+                                                        <chart:DoughnutSeries.CenterView>
+                                                            <StackLayout HorizontalOptions = "FillAndExpand" VerticalOptions = "FillAndExpand">
+                                                                <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.BillCount}"/>
+                                                            </StackLayout>
+                                                        </chart:DoughnutSeries.CenterView>
+                                                            
+                                                    </chart:DoughnutSeries>
 
 
 
