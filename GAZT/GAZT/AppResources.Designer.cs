@@ -503,7 +503,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Create a Secure Password.
         /// </summary>
         public static string CreateASecurePassword {
             get {
@@ -1785,11 +1785,47 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to At least 8 Characters long.
+        /// </summary>
+        public static string NDAtleast8character {
+            get {
+                return ResourceManager.GetString("NDAtleast8character", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Countinue.
         /// </summary>
         public static string NDCountinue {
             get {
                 return ResourceManager.GetString("NDCountinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English capital and small letters.
+        /// </summary>
+        public static string NDEnglishcapitalandsmallletters {
+            get {
+                return ResourceManager.GetString("NDEnglishcapitalandsmallletters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Your Username.
+        /// </summary>
+        public static string NDEnterYourUsername {
+            get {
+                return ResourceManager.GetString("NDEnterYourUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Number.
+        /// </summary>
+        public static string NDIDNumber {
+            get {
+                return ResourceManager.GetString("NDIDNumber", resourceCulture);
             }
         }
         
@@ -1803,11 +1839,65 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Password.
+        /// </summary>
+        public static string NDNewPassword {
+            get {
+                return ResourceManager.GetString("NDNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numbers and Symbols.
+        /// </summary>
+        public static string NDNumbersAndSymbols {
+            get {
+                return ResourceManager.GetString("NDNumbersAndSymbols", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Enter Verification code sent to your mobile.
+        /// </summary>
+        public static string NDPleaseEnterVerificationSenttomobile {
+            get {
+                return ResourceManager.GetString("NDPleaseEnterVerificationSenttomobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resend Verification Code.
         /// </summary>
         public static string NDResendVerificationCode {
             get {
                 return ResourceManager.GetString("NDResendVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the option and complete the details.
+        /// </summary>
+        public static string NDSelectTheOptionAndCompleteDetails {
+            get {
+                return ResourceManager.GetString("NDSelectTheOptionAndCompleteDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type your ID Number.
+        /// </summary>
+        public static string NDTypeyourIDNumber {
+            get {
+                return ResourceManager.GetString("NDTypeyourIDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string NDUsername {
+            get {
+                return ResourceManager.GetString("NDUsername", resourceCulture);
             }
         }
         
