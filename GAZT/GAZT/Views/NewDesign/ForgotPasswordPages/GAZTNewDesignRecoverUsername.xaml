@@ -8,7 +8,7 @@
             xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              BackgroundImageSource="partials_background.png"
-             x:Class="EGAZT.Views.NewDesign.ForgotPasswordPages.RecoverUsernamePageView">
+             x:Class="EGAZT.Views.NewDesign.ForgotPasswordPages.GAZTNewDesignRecoverUsernamePageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -21,11 +21,11 @@
         <StackLayout Padding="20">
             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <Image Source="Forget_ic_success" Margin="0,0,0,20"/>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.RecoverUserName}" Style="{StaticResource SectionTitleBlack}" TextColor="White" HorizontalTextAlignment="Center" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDUsernameSenttoMobile}" Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White" />
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.RecoverUserName}" Style="{StaticResource SectionTitleBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDUsernameSenttoMobile}" Style="{StaticResource BodyLabelBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
             </StackLayout>
             <StackLayout VerticalOptions="EndAndExpand" Spacing="10">
-                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.LogIn}" Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.LogIn}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnLoginButtonClicked}"/>
                 <buttons:SfButton Text="{x:Static ResourceManager:AppResources.CheckEmail}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent"/>
             </StackLayout>
         </StackLayout>

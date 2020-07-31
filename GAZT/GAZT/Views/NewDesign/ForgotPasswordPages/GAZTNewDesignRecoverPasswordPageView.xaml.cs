@@ -10,11 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RecoverPasswordPageView : ContentPage
+    public partial class GAZTNewDesignRecoverPasswordPageView : ContentPage
     {
-        public RecoverPasswordPageView()
+        public GAZTNewDesignRecoverPasswordPageView()
         {
             InitializeComponent();
+            BindingContext = App.Locator.GAZTNewDesignRecoverPasswordPageViewModel;
         }
     }
 }

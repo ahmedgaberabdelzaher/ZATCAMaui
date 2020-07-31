@@ -139,7 +139,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<IDialogService, DialogService>();
 
             #region NewDesignIOC
-
+            SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
+            SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
             //SimpleIoc.Default.Register<GAZTNewDesignStyleTestUIPageViewModel>();
 
             SimpleIoc.Default.Register<GAZTNewDesignOnBoardingAnimationPageViewModel>();
@@ -1372,6 +1373,36 @@ namespace EGAZT
             }
         }
 
+        public GAZTNewDesignRecoverUsernameViewModel GAZTNewDesignRecoverUsernameViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignRecoverUsernameViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public GAZTNewDesignRecoverPasswordPageViewModel GAZTNewDesignRecoverPasswordPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignRecoverPasswordPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -1470,6 +1501,9 @@ namespace EGAZT
             navigationService.Configure(App.UnlockAccountTINPageView, typeof(UnlockAccountTINPageView));
             navigationService.Configure(App.UnlockAccountSuccessPageView, typeof(UnlockAccountSuccessPageView));
             navigationService.Configure(App.InternationalCodeSearchPage, typeof(InternationalCodeSearchPage));
+
+            navigationService.Configure(App.GAZTNewDesignRecoverUsername, typeof(GAZTNewDesignRecoverUsernamePageView));
+            navigationService.Configure(App.GAZTNewDesignRecoverPasswordPageView, typeof(GAZTNewDesignRecoverPasswordPageView));
 
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
