@@ -35,6 +35,8 @@ namespace EGAZT
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
         public static string TINDeregistrationPageView = "TINDeregistrationPageView";
+        public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
+        public static string GAZTNewDesignRecoverPasswordPageView = nameof(GAZTNewDesignRecoverPasswordPageView);
 
         #endregion
 

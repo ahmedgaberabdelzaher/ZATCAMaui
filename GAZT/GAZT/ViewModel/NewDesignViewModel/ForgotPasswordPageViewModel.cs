@@ -1723,17 +1723,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                     if (forgotPassword.d != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                     {
-                        IsAPICalledSuccessfully = true;
-                        RecoverUserNameLayout = true;
-                        Device.BeginInvokeOnMainThread(async () =>
+                        //IsAPICalledSuccessfully = true;
+                        //RecoverUserNameLayout = true;
+                        Device.BeginInvokeOnMainThread(() =>
                         {
+                            _navigationService.NavigateTo(App.GAZTNewDesignRecoverUsername);
                             //await _dialogService.ShowMessageBox(AppResources.Usernamehasbeensenttoregisteredmobilenumber, AppResources.Information);
                             // _navigationService.GoBack();
-                            MainPageLayoutVisibility = false;
-                            NewPasswordLayoutVisibility = false;
-                            OTPLayoutVisibility = false;
-                            NavigateToLoginLinkVisibility = true;
-                            ForgotPasswordUserNameChangedMessage = AppResources.Usernamehasbeensenttoregisteredmobilenumber;
+                            //MainPageLayoutVisibility = false;
+                            //NewPasswordLayoutVisibility = false;
+                            //OTPLayoutVisibility = false;
+                            //NavigateToLoginLinkVisibility = true;
+                            //ForgotPasswordUserNameChangedMessage = AppResources.Usernamehasbeensenttoregisteredmobilenumber;
                         });
                     }
                     else
