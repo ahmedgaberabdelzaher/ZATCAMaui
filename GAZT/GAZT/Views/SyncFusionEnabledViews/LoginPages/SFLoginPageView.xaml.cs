@@ -1,21 +1,17 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
-using GAZT;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
-using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -671,6 +667,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         }
 
         private void BackButtonClicked(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
+        }
+
+        private void HamburgerMenuClicked(object sender, EventArgs e)
         {
             viewModel._navigationService.GoBack();
         }

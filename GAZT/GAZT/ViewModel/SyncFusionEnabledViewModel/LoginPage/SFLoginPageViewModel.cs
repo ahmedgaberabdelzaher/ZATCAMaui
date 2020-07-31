@@ -36,6 +36,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         public int CurrentAttempt = 0;
         public ICommand BackButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
+
         private DateTime lastTapped;
         #endregion
         #region ConstructorF
@@ -128,6 +129,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
             this.SocialMediaLoginCommand = new Command(this.SocialLoggedIn);
+            this.HamburgerMenuClickedCommand = new Command(this.HamburgerMenuClicked);
+
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
@@ -493,6 +496,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         /// Gets or sets the command that is executed when the social media login button is clicked.
         /// </summary>
         public Command SocialMediaLoginCommand { get; set; }
+        /// <summary>
+        /// Gets or sets the command that is executed when the Hamburger menu button is clicked.
+        /// </summary>
+        public ICommand HamburgerMenuClickedCommand { get; set; }
+
         #endregion
         #region methods
         /// <summary>
@@ -815,6 +823,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         public void BackButtonClick()
         {
             _navigationService.GoBack();
+        }
+
+        private void HamburgerMenuClicked()
+        {
+            //_navigationService.NavigateTo(App.AnonymousMenuOptions);
+            _dialogService.ShowMessage("Anonymous menu will appear", "Menu");
         }
         #endregion
         #region New Authentication
