@@ -49,29 +49,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
                 new Boarding()
                 {
                     ImagePath = "committments_onboarding.png",
-                    Header = "Commitments",
-                    Content = "Don't miss any obligation with the new commitments calendar",
+                    Header = AppResources.NDCommitments,
+                    Content = AppResources.NDDontMissObligation,
                     RotatorItem = new WalkthroughItemPage()
                 },
                 new Boarding()
                 {
                     ImagePath = "returnsubmission_onboarding.png",
-                    Header = "Return Submission",
-                    Content = "VAT, ZAKAT and other return submissions made easy",
+                    Header = AppResources.NDReturnSubmission,
+                    Content = AppResources.NDVATZAKATReturnSubmission,
                     RotatorItem = new WalkthroughItemPage()
                 },
                 new Boarding()
                 {
                     ImagePath = "paymentmethod_onboarding.png",
-                    Header = "New Payment Methods",
-                    Content = "Make all your transactions fast and simple with MADA & Apple Pay",
+                    Header = AppResources.NDNewPaymentMethods,
+                    Content = AppResources.NDMakeTransactionsFast,
                     RotatorItem = new WalkthroughItemPage()
                 },
                 new Boarding()
                 {
                     ImagePath = "inbox_onboarding.png",
-                    Header = "Inbox & Notifications",
-                    Content = "A new and easy to communicate",
+                    Header = AppResources.NDInboxnNotification,
+                    Content = AppResources.NDNewEasyWayToCommunicate,
                     RotatorItem = new WalkthroughItemPage()
                 }
             };
