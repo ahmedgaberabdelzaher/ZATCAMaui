@@ -1080,4 +1080,67 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\LaunchImage.launchimage\" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_selected%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_selected%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_unselected%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_unselected%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Username_unselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_selected%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_selected%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_unselected%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_unselected%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Password_unselected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_oval%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_oval.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check_oval%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\error%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\error%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Forget_ic_success%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Forget_ic_success%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Forget_ic_success.png" />
+  </ItemGroup>
 </Project>
