@@ -1857,6 +1857,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Individual Saudi(Resident).
+        /// </summary>
+        public static string NDIndividualSaudi {
+            get {
+                return ResourceManager.GetString("NDIndividualSaudi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installment Plan.
+        /// </summary>
+        public static string NDInstallmentPlan {
+            get {
+                return ResourceManager.GetString("NDInstallmentPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Make all your transactions fast and simple with MADA &amp; Apple Pay.
         /// </summary>
         public static string NDMakeTransactionsFast {
@@ -1911,6 +1929,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Objections and Reviews.
+        /// </summary>
+        public static string NDObjectionsandReviews {
+            get {
+                return ResourceManager.GetString("NDObjectionsandReviews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Enter Verification code sent to your mobile.
         /// </summary>
         public static string NDPleaseEnterVerificationSenttomobile {
@@ -1920,11 +1947,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refunds.
+        /// </summary>
+        public static string NDRefunds {
+            get {
+                return ResourceManager.GetString("NDRefunds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resend Verification Code.
         /// </summary>
         public static string NDResendVerificationCode {
             get {
                 return ResourceManager.GetString("NDResendVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns.
+        /// </summary>
+        public static string NDReturns {
+            get {
+                return ResourceManager.GetString("NDReturns", resourceCulture);
             }
         }
         
@@ -1943,6 +1988,33 @@ namespace EGAZT {
         public static string NDSelectTheOptionAndCompleteDetails {
             get {
                 return ResourceManager.GetString("NDSelectTheOptionAndCompleteDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string NDSettings {
+            get {
+                return ResourceManager.GetString("NDSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supports.
+        /// </summary>
+        public static string NDSupports {
+            get {
+                return ResourceManager.GetString("NDSupports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tax Management.
+        /// </summary>
+        public static string NDTaxManagement {
+            get {
+                return ResourceManager.GetString("NDTaxManagement", resourceCulture);
             }
         }
         

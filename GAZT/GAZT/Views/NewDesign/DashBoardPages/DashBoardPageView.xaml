@@ -456,103 +456,90 @@
                             <StackLayout Spacing="20" Padding="0,0,0,10">
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image HeightRequest="25">
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.NaturePeople}"/>
-                                        </Image.Source>
+                                    <Image Source="menu_individual" HeightRequest="25">
+                                        
                                     </Image>
-                                    <custom:CustomLabel Text="Individual Saudi(Resident)" Style="{StaticResource CaptionLabelWhite}" />
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIndividualSaudi}" Style="{StaticResource CaptionLabelWhite}" />
                                 </StackLayout>
 
                                 <BoxView  Style="{StaticResource WhiteLineSeperator}"/>
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Calendar}"/>
-                                        </Image.Source>
+                                    <Image Source="menu_calendar">
                                     </Image>
-                                    <custom:CustomLabel Text="Commitments" Style="{StaticResource ButtonLabelWhiteBold}" />
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDCommitments}" Style="{StaticResource ButtonLabelWhiteBold}" />
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image >
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Billboard}"/>
-                                        </Image.Source>
+                                    <Image Source="menu_bill">
                                     </Image>
-                                    <custom:CustomLabel Text="Bills" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronUpCircle}"/>
-                                        </Image.Source>
+                                    <Image Source="menu_return">
+
                                     </Image>
-                                    <custom:CustomLabel Text="Returns" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReturns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
-                                        </Image.Source>
+                                    <Image Source="menu_manage_tax">
+
                                     </Image>
-                                    <custom:CustomLabel Text="Tax Management" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxManagement}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CashRefund}"/>
-                                        </Image.Source>
+                                    <Image Source="menu_refund">
+
                                     </Image>
-                                    <custom:CustomLabel Text="Refunds" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDRefunds}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FloorPlan}"/>
-                                        </Image.Source>
+                                    <Image Source="menu_installment_plan">
+
                                     </Image>
-                                    <custom:CustomLabel Text="Installment Plan" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.React}"/>
-                                        </Image.Source>
+                                    <Image Source="menu_objections">
+
                                     </Image>
-                                    <custom:CustomLabel Text="Objections and Reviews" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDObjectionsandReviews}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_settings">
+
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSettings}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.HelpNetwork}"/>
-                                        </Image.Source>
+                                    <Image Source="menu_help">
+
                                     </Image>
-                                    <custom:CustomLabel Text="Supports" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSupports}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Logout}"/>
-                                        </Image.Source>
+                                    <Image Source="log_out">
+                                        
                                     </Image>
-                                    <custom:CustomLabel Text="Logout" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZLogout}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
@@ -563,12 +550,12 @@
                             <StackLayout  Orientation="Horizontal"  Spacing="10">
                                 <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
 
-                                <Image Source="message" VerticalOptions="Start" HorizontalOptions="EndAndExpand">
+                                <Image Source="message" VerticalOptions="Center" HorizontalOptions="EndAndExpand">
                                     <!--<Image.Source>
                                         <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Inbox}"/>
                                     </Image.Source>-->
                                 </Image>
-                                <Image Source="bell_notification" VerticalOptions="Start">
+                                <Image Source="bell_notification" VerticalOptions="Center">
                                 </Image>
                             </StackLayout >
                             <custom:CustomLabel Grid.Row="0" Text="Zaed Hardy" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />

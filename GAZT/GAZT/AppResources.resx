@@ -4452,4 +4452,29 @@ The account was unlocked, and the password reset for TIN xxxxxx successfully.</v
   <data name="NDVATZAKATReturnSubmission" xml:space="preserve">
     <value>VAT, ZAKAT and other return submissions made easy</value>
   </data>
+  <data name="NDIndividualSaudi" xml:space="preserve">
+    <value>Individual Saudi(Resident)</value>
+    <comment>New Design MenuPage</comment>
+  </data>
+  <data name="NDInstallmentPlan" xml:space="preserve">
+    <value>Installment Plan</value>
+  </data>
+  <data name="NDObjectionsandReviews" xml:space="preserve">
+    <value>Objections and Reviews</value>
+  </data>
+  <data name="NDRefunds" xml:space="preserve">
+    <value>Refunds</value>
+  </data>
+  <data name="NDReturns" xml:space="preserve">
+    <value>Returns</value>
+  </data>
+  <data name="NDSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="NDSupports" xml:space="preserve">
+    <value>Supports</value>
+  </data>
+  <data name="NDTaxManagement" xml:space="preserve">
+    <value>Tax Management</value>
+  </data>
 </root>
