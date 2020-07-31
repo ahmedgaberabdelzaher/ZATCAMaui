@@ -220,7 +220,7 @@
     <value>تم تسديد {} ر.س خلال السنة المالية الحالية</value>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>Log In</value>
+    <value>تسجيل الدخول</value>
   </data>
   <data name="MobileNumber" xml:space="preserve">
     <value>رقم الجوال</value>
@@ -4325,7 +4325,7 @@
     <value>User Name</value>
   </data>
   <data name="CreateASecurePassword" xml:space="preserve">
-    <value>Create a Secure Password</value>
+    <value>إنشاء كلمة مرور آمنة</value>
   </data>
   <data name="AtLeastEightCharactersLong" xml:space="preserve">
     <value>At least 8 Characters long</value>
@@ -4357,12 +4357,33 @@
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value>Select the option and complete details </value>
   </data>
+  <data name="NDAtleast8character" xml:space="preserve">
+    <value>يجب أن لاتقل عن 8 خانات</value>
+  </data>
   <data name="NDCountinue" xml:space="preserve">
     <value>استمر</value>
+  </data>
+  <data name="NDEnglishcapitalandsmallletters" xml:space="preserve">
+    <value>حروف إنجليزية كبيرة وصغيرة</value>
+  </data>
+  <data name="NDEnterYourUsername" xml:space="preserve">
+    <value>Enter Your Username</value>
+  </data>
+  <data name="NDIDNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
   </data>
   <data name="NDMoblieNumber" xml:space="preserve">
     <value>رقم الجوال xxxxxxx388</value>
     <comment>New Design For Forget Password</comment>
+  </data>
+  <data name="NDNewPassword" xml:space="preserve">
+    <value>كلمة المرور الجديدة</value>
+  </data>
+  <data name="NDNumbersAndSymbols" xml:space="preserve">
+    <value>أرقام ورموز</value>
+  </data>
+  <data name="NDPleaseEnterVerificationSenttomobile" xml:space="preserve">
+    <value>Please Enter Verification code sent to your mobile</value>
   </data>
   <data name="NDResendVerificationCode" xml:space="preserve">
     <value>إعادة إرسال رمز التحقق</value>
@@ -4370,7 +4391,10 @@
   <data name="NDSelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value>Select the option and complete the details</value>
   </data>
+  <data name="NDTypeyourIDNumber" xml:space="preserve">
+    <value>Type your ID Number</value>
+  </data>
   <data name="NDUsername" xml:space="preserve">
-    <value>Username</value>
+    <value>اسم المستخدم</value>
   </data>
 </root>

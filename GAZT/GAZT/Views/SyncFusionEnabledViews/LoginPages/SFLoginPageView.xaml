@@ -47,6 +47,15 @@
                 </custom:CustomLabel.GestureRecognizers>
             </custom:CustomLabel>
 
+
+            <Image Source="ic_burger.png" x:Name="HamburgerMenu"
+                       VerticalOptions="Start"
+                HorizontalOptions="EndAndExpand"
+                        Margin="10,30,10,0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
             <!--<custom:CustomLabel Grid.Row="0"
                 x:Name="HamburgerMenu"
                        VerticalOptions="Start"
