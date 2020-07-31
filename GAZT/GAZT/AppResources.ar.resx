@@ -4367,4 +4367,10 @@
   <data name="NDResendVerificationCode" xml:space="preserve">
     <value>إعادة إرسال رمز التحقق</value>
   </data>
+  <data name="NDSelectTheOptionAndCompleteDetails" xml:space="preserve">
+    <value>Select the option and complete the details</value>
+  </data>
+  <data name="NDUsername" xml:space="preserve">
+    <value>Username</value>
+  </data>
 </root>

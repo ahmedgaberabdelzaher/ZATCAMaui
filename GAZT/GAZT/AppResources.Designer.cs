@@ -1812,6 +1812,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the option and complete the details.
+        /// </summary>
+        public static string NDSelectTheOptionAndCompleteDetails {
+            get {
+                return ResourceManager.GetString("NDSelectTheOptionAndCompleteDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string NDUsername {
+            get {
+                return ResourceManager.GetString("NDUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App is facing network issue, please try again later.
         /// </summary>
         public static string NetworkConnectivityIssue {
