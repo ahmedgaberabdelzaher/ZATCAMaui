@@ -84,10 +84,12 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             try
             {
                 await viewModel.LoadDashboardData();
+                Device.BeginInvokeOnMainThread(() => {
+                    viewModel.PopulateBillsInformation();
+                    viewModel.PopulateReturnsInformation();
+                    viewModel.PopualateCommittmentsInformation();
+                });
 
-                viewModel.PopulateBillsInformation();
-                viewModel.PopulateReturnsInformation();
-                viewModel.PopualateCommittmentsInformation();
                // viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch (Exception ex)

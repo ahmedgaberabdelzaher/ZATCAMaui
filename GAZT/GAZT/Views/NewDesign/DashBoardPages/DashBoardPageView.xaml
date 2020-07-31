@@ -59,7 +59,10 @@
                                         <DataTemplate>-->
                                     <!--<StackLayout Orientation="Horizontal" Spacing="10">-->
 
-                                    <CollectionView  x:Name="xBillsAndReturnsCommitments"  ItemsLayout="HorizontalList" HeightRequest="70" ItemsSource="{Binding BillsAndReturnsCommitments}"  HorizontalOptions="FillAndExpand"  BackgroundColor="White">
+                                    <CollectionView  x:Name="xBillsAndReturnsCommitments"  ItemsLayout="HorizontalList" HeightRequest="70" ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White">
+                                        <CollectionView.EmptyView>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center"/>
+                                        </CollectionView.EmptyView>
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
 
