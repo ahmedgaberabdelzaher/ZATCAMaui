@@ -569,6 +569,8 @@
                                         <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Inbox}"/>
                                     </Image.Source>-->
                                 </Image>
+                                <Image Source="bell_notification" VerticalOptions="Start">
+                                </Image>
                             </StackLayout >
                             <custom:CustomLabel Grid.Row="0" Text="Zaed Hardy" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />
                         </StackLayout>

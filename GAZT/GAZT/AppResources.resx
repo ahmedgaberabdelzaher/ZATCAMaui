@@ -214,7 +214,7 @@
     <value>You have paid {} SAR for current fiscal year</value>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>Log in</value>
+    <value />
   </data>
   <data name="MobileNumber" xml:space="preserve">
     <value>Mobile number</value>
@@ -247,7 +247,7 @@
     <value>New mobile number</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>New password</value>
+    <value />
   </data>
   <data name="OverdueReturn" xml:space="preserve">
     <value>Overdue return</value>
@@ -406,7 +406,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="EnterNewMobileNumber" xml:space="preserve">
     <value>Enter your mobile number</value>
   </data>
-      <data name="EnterMobileNumber" xml:space="preserve">
+  <data name="EnterMobileNumber" xml:space="preserve">
     <value>Please enter mobile number</value>
   </data>
   <data name="EnterValidMobileNumber" xml:space="preserve">
@@ -2290,7 +2290,7 @@ Should we require further information, we would be in contact.</value>
     <value>Mobile number has to start with number 5</value>
     <comment>Sign Up</comment>
   </data>
-      <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">
+  <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">
     <value>Mobile number should not start with zero</value>
     <comment>Sign Up</comment>
   </data>
@@ -4278,18 +4278,18 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="FORM5ZakatRulesConditions" xml:space="preserve">
     <value>Zakat Rules and Conditions</value>
   </data>
-      <data name="InternationalCountryCode" xml:space="preserve">
+  <data name="InternationalCountryCode" xml:space="preserve">
     <value>Country Code</value>
   </data>
-       <data name="InternationalCodeSearch" xml:space="preserve">
+  <data name="InternationalCodeSearch" xml:space="preserve">
     <value>Search Country code</value>
   </data>
-      <data name="CountryText" xml:space="preserve">
+  <data name="CountryText" xml:space="preserve">
     <value>Country</value>
-  </data>    
-      <data name="SearchText" xml:space="preserve">
+  </data>
+  <data name="SearchText" xml:space="preserve">
     <value>Search</value>
-  </data>        
+  </data>
   <data name="String1" xml:space="preserve">
     <value />
   </data>
@@ -4321,13 +4321,10 @@ The account was unlocked, and the password reset for TIN xxxxxx successfully.</v
   <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
     <value>Kindly complete the required fields to be able to proceed.</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
-   <data name="TinDeregistration" xml:space="preserve">
+  <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
   </data>
-    <data name="TinDeregistrationReason" xml:space="preserve">
+  <data name="TinDeregistrationReason" xml:space="preserve">
     <value>Reason</value>
   </data>
   <data name="TinDeregistrationSelectReason" xml:space="preserve">
@@ -4336,7 +4333,7 @@ The account was unlocked, and the password reset for TIN xxxxxx successfully.</v
   <data name="TinDeregistrationQuestionOutlets" xml:space="preserve">
     <value>What do you want to do with active outlets?</value>
   </data>
-   <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
+  <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
     <value>Close all Outlets</value>
   </data>
   <data name="TinDeregistrationTransferAllOutletsToSingle" xml:space="preserve">
@@ -4348,15 +4345,53 @@ The account was unlocked, and the password reset for TIN xxxxxx successfully.</v
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>Deregistration Date</value>
   </data>
- 
-    
-    
-    <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">     <value>Select the option and complete details </value>   </data> 
-       <data name="Corporate" xml:space="preserve">     <value>Corporate</value>   </data>  
-         <data name="UserName " xml:space="preserve">     <value>User Name</value>   </data>
-       <data name="CreateASecurePassword" xml:space="preserve">     <value>Create a Secure Password</value>   </data>
-       <data name="NewPassword" xml:space="preserve">     <value>New Password</value>   </data>
-       <data name="ConfirmPassword" xml:space="preserve">     <value>Confirm Password</value>   </data>   <data name="AtLeastEightCharactersLong" xml:space="preserve">     <value>At least 8 Characters long</value>   </data>
-         <data name="EnglishCaptialAndSmallLetters" xml:space="preserve">     <value>English Captial and small letters</value>   </data>
-       <data name="NumbersAndSymbols" xml:space="preserve">     <value>Numbers and Symbols</value>   </data>    <data name="RecoverUserName" xml:space="preserve">     <value>Recover UserName</value>   </data>      <data name="UsernameSentToTheRegisteredEmailEndMobileNumber" xml:space="preserve">     <value> Username sent to the registered email and mobile number</value>   </data>   <data name="LogIn" xml:space="preserve">     <value>Log In</value>   </data>   <data name="CheckEmail" xml:space="preserve">     <value>Check Email</value>   </data>   <data name="RecoverPassword" xml:space="preserve">     <value>Recover Password</value>   </data>   <data name="NewPasswordUpdatedSuccessfully" xml:space="preserve">     <value>New Password updated successfully</value>   </data> 
+  <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Corporate" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UserName " xml:space="preserve">
+    <value />
+  </data>
+  <data name="CreateASecurePassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AtLeastEightCharactersLong" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EnglishCaptialAndSmallLetters" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NumbersAndSymbols" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RecoverUserName" xml:space="preserve">
+    <value />
+  </data>
+  <data name="UsernameSentToTheRegisteredEmailEndMobileNumber" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CheckEmail" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RecoverPassword" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NewPasswordUpdatedSuccessfully" xml:space="preserve">
+    <value />
+  </data>
+  <data name="NDCountinue" xml:space="preserve">
+    <value>Countinue</value>
+  </data>
+  <data name="NDMoblieNumber" xml:space="preserve">
+    <value>Moblie Number xxxxxxx388</value>
+    <comment>New Design For Forget Password</comment>
+  </data>
+  <data name="NDResendVerificationCode" xml:space="preserve">
+    <value>Resend Verification Code</value>
+  </data>
 </root>

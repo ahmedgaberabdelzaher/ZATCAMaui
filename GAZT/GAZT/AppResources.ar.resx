@@ -220,7 +220,7 @@
     <value>تم تسديد {} ر.س خلال السنة المالية الحالية</value>
   </data>
   <data name="LogIn" xml:space="preserve">
-    <value>تسجيل الدخول</value>
+    <value>Log In</value>
   </data>
   <data name="MobileNumber" xml:space="preserve">
     <value>رقم الجوال</value>
@@ -244,7 +244,7 @@
     <value>رقم الجوال الجديد</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>كلمة المرور الجديدة</value>
+    <value>New Password</value>
   </data>
   <data name="OverdueReturn" xml:space="preserve">
     <value>إقرارات متأخرة</value>
@@ -405,7 +405,7 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>رمز مرور خاطئ</value>
   </data>
-   <data name="EnterMobileNumber" xml:space="preserve">
+  <data name="EnterMobileNumber" xml:space="preserve">
     <value>الرجاء إدخال رقم الجوال</value>
   </data>
   <data name="EnterNewMobileNumber" xml:space="preserve">
@@ -3856,7 +3856,6 @@
     <value>غير خاضع</value>
     <comment>VatRegistration</comment>
   </data>
-
   <data name="ZZZZEligibilitylableTestvr" xml:space="preserve">
     <value>تسجيل إختياري</value>
     <comment>VatRegistration</comment>
@@ -4255,16 +4254,16 @@
   <data name="InternationalCountryCode" xml:space="preserve">
     <value>رمز الدولة</value>
   </data>
-       <data name="InternationalCountryCodeSearch" xml:space="preserve">
+  <data name="InternationalCountryCodeSearch" xml:space="preserve">
     <value>البحث عن رمز الدولة</value>
-  </data>    
-   <data name="CountryText" xml:space="preserve">
+  </data>
+  <data name="CountryText" xml:space="preserve">
     <value>الدولة</value>
-  </data>    
-      <data name="SearchText" xml:space="preserve">
+  </data>
+  <data name="SearchText" xml:space="preserve">
     <value>البحث</value>
-  </data>    
-          <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">
+  </data>
+  <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">
     <value> رقم الهاتف المحمول يجب أن لا يبدأ بصفر</value>
     <comment>Sign Up</comment>
   </data>
@@ -4277,7 +4276,7 @@
   <data name="UnlockAccountVerify" xml:space="preserve">
     <value>تحقق</value>
   </data>
- <data name="UnlockAccountResetPassword" xml:space="preserve">
+  <data name="UnlockAccountResetPassword" xml:space="preserve">
     <value>المرور كلمة ت</value>
   </data>
   <data name="EnterVerificationCodeSentToMobile" xml:space="preserve">
@@ -4289,16 +4288,16 @@
   <data name="UnlockAccountPasswordChangedSuccessfully" xml:space="preserve">
     <value>عزيزي المكلف ،￼￼￼ تم إعادة فتح الحساب وتعيين كلمة المرور بنجاح للرقم المميز xxxxxx.</value>
   </data>
- <data name="AccountUnlocked" xml:space="preserve">
+  <data name="AccountUnlocked" xml:space="preserve">
     <value>تم فتح الحساب</value>
- </data>
- <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
+  </data>
+  <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
     <value>الرجاء إكمال الحقول المطلوبة</value>
   </data>
-    <data name="TinDeregistration" xml:space="preserve">
+  <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
   </data>
- <data name="TinDeregistrationReason" xml:space="preserve">
+  <data name="TinDeregistrationReason" xml:space="preserve">
     <value>Reason</value>
   </data>
   <data name="TinDeregistrationSelectReason" xml:space="preserve">
@@ -4307,7 +4306,7 @@
   <data name="TinDeregistrationQuestionOutlets" xml:space="preserve">
     <value>What do you want to do with active outlets?</value>
   </data>
-   <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
+  <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
     <value>Close all Outlets</value>
   </data>
   <data name="TinDeregistrationTransferAllOutletsToSingle" xml:space="preserve">
@@ -4319,51 +4318,26 @@
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>Deregistration Date</value>
   </data>
-    
-     <data name="Corporate" xml:space="preserve">     <value>Corporate</value>   </data>    <data name="UserName " xml:space="preserve">     <value>User Name</value>   </data>   <data name="CreateASecurePassword" xml:space="preserve">     <value>Create a Secure Password</value>   </data>         <data name="NewPassword" xml:space="preserve">     <value>New Password</value>   </data>     <data name="AtLeastEightCharactersLong" xml:space="preserve">     <value>At least 8 Characters long</value>   </data>   <data name="EnglishCaptialAndSmallLetters" xml:space="preserve">     <value>English Captial and small letters</value>   </data>       <data name="RecoverUserName" xml:space="preserve">     <value>Recover UserName</value>   </data>    <data name="UsernameSentToTheRegisteredEmailEndMobileNumber" xml:space="preserve">     <value>Username sent to the registered email and mobile number</value>   </data>   <data name="LogIn" xml:space="preserve">     <value>Log In</value>   </data>   <data name="CheckEmail" xml:space="preserve">     <value>Check Email</value>   </data>  <data name="RecoverPassword" xml:space="preserve">     <value>Recover Password</value>   </data>        <data name="NewPasswordUpdatedSuccessfully" xml:space="preserve">     <value>New Password updated successfully</value>   </data>   <data name="NumbersAndSymbols" xml:space="preserve">     <value>Numbers and Symbols</value>   </data>           <data name="ConfirmPassword" xml:space="preserve">     <value>Confirm Password</value>     </data>
-    
-         <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
-    <value>Select the option and complete details </value>
-  </data> 
-    
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
-  </data>  
-    
-    <data name="UserName " xml:space="preserve">
+  </data>
+  <data name="UserName " xml:space="preserve">
     <value>User Name</value>
   </data>
-    
   <data name="CreateASecurePassword" xml:space="preserve">
     <value>Create a Secure Password</value>
-  </data>
-    
-  <data name="NewPassword" xml:space="preserve">
-    <value>New Password</value>
-  </data>
-    
-  <data name="ConfirmPassword" xml:space="preserve">
-    <value>Confirm Password</value>
   </data>
   <data name="AtLeastEightCharactersLong" xml:space="preserve">
     <value>At least 8 Characters long</value>
   </data>
-    
-    <data name="EnglishCaptialAndSmallLetters" xml:space="preserve">
+  <data name="EnglishCaptialAndSmallLetters" xml:space="preserve">
     <value>English Captial and small letters</value>
   </data>
-    
-  <data name="NumbersAndSymbols" xml:space="preserve">
-    <value>Numbers and Symbols</value>
-  </data>
-   <data name="RecoverUserName" xml:space="preserve">
+  <data name="RecoverUserName" xml:space="preserve">
     <value>Recover UserName</value>
   </data>
-     <data name="UsernameSentToTheRegisteredEmailEndMobileNumber" xml:space="preserve">
+  <data name="UsernameSentToTheRegisteredEmailEndMobileNumber" xml:space="preserve">
     <value> Username sent to the registered email and mobile number</value>
-  </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>Log In</value>
   </data>
   <data name="CheckEmail" xml:space="preserve">
     <value>Check Email</value>
@@ -4373,5 +4347,24 @@
   </data>
   <data name="NewPasswordUpdatedSuccessfully" xml:space="preserve">
     <value>New Password updated successfully</value>
+  </data>
+  <data name="NumbersAndSymbols" xml:space="preserve">
+    <value>Numbers and Symbols</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
+    <value>Select the option and complete details </value>
+  </data>
+  <data name="NDCountinue" xml:space="preserve">
+    <value>استمر</value>
+  </data>
+  <data name="NDMoblieNumber" xml:space="preserve">
+    <value>رقم الجوال xxxxxxx388</value>
+    <comment>New Design For Forget Password</comment>
+  </data>
+  <data name="NDResendVerificationCode" xml:space="preserve">
+    <value>إعادة إرسال رمز التحقق</value>
   </data>
 </root>
