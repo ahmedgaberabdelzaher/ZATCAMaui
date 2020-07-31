@@ -377,7 +377,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Check Email.
         /// </summary>
         public static string CheckEmail {
             get {
@@ -1641,7 +1641,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Log In.
         /// </summary>
         public static string LogIn {
             get {
@@ -1902,6 +1902,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Username sent to the registered email and mobile number.
+        /// </summary>
+        public static string NDUsernameSenttoMobile {
+            get {
+                return ResourceManager.GetString("NDUsernameSenttoMobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App is facing network issue, please try again later.
         /// </summary>
         public static string NetworkConnectivityIssue {
@@ -1956,7 +1965,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to New Password updated successfully.
         /// </summary>
         public static string NewPasswordUpdatedSuccessfully {
             get {
@@ -2307,7 +2316,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Recover Password.
         /// </summary>
         public static string RecoverPassword {
             get {
@@ -2316,7 +2325,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Recover UserName.
         /// </summary>
         public static string RecoverUserName {
             get {
@@ -3028,7 +3037,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to  Username sent to the registered email and mobile number.
         /// </summary>
         public static string UsernameSentToTheRegisteredEmailEndMobileNumber {
             get {

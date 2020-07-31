@@ -4397,4 +4397,7 @@
   <data name="NDUsername" xml:space="preserve">
     <value>اسم المستخدم</value>
   </data>
+  <data name="NDUsernameSenttoMobile" xml:space="preserve">
+    <value>Username sent to the registered email and mobile number</value>
+  </data>
 </root>

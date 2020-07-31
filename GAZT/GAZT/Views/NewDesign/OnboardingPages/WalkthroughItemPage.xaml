@@ -3,7 +3,7 @@
     x:Class="EGAZT.Views.NewDesign.OnboardingPages.WalkthroughItemPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms" xmlns:custom="clr-namespace:GAZT"
     NavigationPage.HasNavigationBar="False">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -35,7 +35,7 @@
                                          Tablet=300}" />
 
             <!--  Label to display header  -->
-            <Label
+            <custom:CustomLabel 
                 Margin="0,30,0,8"
                 FontFamily="{StaticResource SSTArabicMedium}"
                 FontSize="14"
@@ -50,7 +50,7 @@
                 VerticalTextAlignment="Center" />
 
             <!--  Label to display content  -->
-            <Label
+            <custom:CustomLabel 
                 FontFamily="{StaticResource SSTArabicMedium}"
                 FontSize="16"
                 HorizontalOptions="Center"
