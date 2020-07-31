@@ -409,6 +409,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             List<BillTypeCorrepsondingCountAndAmount> SegregatedBillTypeCorrepsondingCountAndAmount = new List<BillTypeCorrepsondingCountAndAmount>();
             ChartColorCollection ColorsChild = new ChartColorCollection();
+            int iBillsCount = 0;
 
             try
             {
@@ -456,7 +457,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
                                 ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
 
-                           
+                                iBillsCount = Convert.ToInt32(BillCount);
+
                         }
                         catch(Exception ex)
                         {
@@ -498,6 +500,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#E39800") });
                         BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PartiallyPaidBillCountAndAmount.BillCount)).ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(227, 152, 0));
+
+                        iBillsCount += Convert.ToInt32(BillCount);
                     }
                     //Unpaid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].UpbillsTot != null)
@@ -533,12 +537,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(UnPaidBillCountAndAmount.BillCount)).ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(236,0,0));
 
+                        iBillsCount += Convert.ToInt32(BillCount);
+
                     }
 
                     if (Colors == null)
                         Colors = new ChartColorCollection();
 
                     Colors = ColorsChild;
+
+                    BillCount = iBillsCount.ToString();
                 }
             }
             catch (Exception ex)
