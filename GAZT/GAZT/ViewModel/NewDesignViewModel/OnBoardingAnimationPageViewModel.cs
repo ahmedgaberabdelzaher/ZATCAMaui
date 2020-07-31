@@ -23,9 +23,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
         private ObservableCollection<Boarding> boardings;
 
-        private string nextButtonText = "NEXT";
+        private string nextButtonText = AppResources.ZZNext;
 
-        private string _LanguageText = "ENGLISH";
+        private string _LanguageText = AppResources.ZZZSetToEnglish;
 
         private bool isSkipButtonVisible = true;
 
@@ -71,7 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
                 {
                     ImagePath = "inbox_onboarding.png",
                     Header = "Inbox & Notifications",
-                    Content = "Make all your transactions fast and simple with MADA & Apple Pay",
+                    Content = "A new and easy to communicate",
                     RotatorItem = new WalkthroughItemPage()
                 }
             };
