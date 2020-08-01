@@ -4477,4 +4477,7 @@ The account was unlocked, and the password reset for TIN xxxxxx successfully.</v
   <data name="NDTaxManagement" xml:space="preserve">
     <value>Tax Management</value>
   </data>
+  <data name="NDTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
 </root>

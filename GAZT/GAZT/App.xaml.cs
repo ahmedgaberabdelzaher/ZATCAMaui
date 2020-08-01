@@ -168,13 +168,14 @@ namespace EGAZT
 
             AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }
 
-            InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             }  
+            InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
             try
             {
                 CreateClientHandler();
             }
             catch (Exception ex)
             {
+
             }
 
             switch (Xamarin.Forms.Device.RuntimePlatform)
