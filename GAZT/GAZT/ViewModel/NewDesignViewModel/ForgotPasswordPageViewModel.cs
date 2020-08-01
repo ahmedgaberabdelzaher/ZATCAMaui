@@ -64,6 +64,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IDNumber");
             }
         }
+        private bool _isTinDopDownVisible;
+        public bool IsTinDopDownVisible
+        {
+            get
+            {
+                return _isTinDopDownVisible;
+            }
+            set
+            {
+                _isTinDopDownVisible = value;
+                RaisePropertyChanged("IsTinDopDownVisible");
+            }
+        }
 
         private string _email;
         public string Email
@@ -225,6 +238,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _userNameLayoutVisibility = value;
+                if (_userNameLayoutVisibility)
+                {
+                    UserIDLayoutVisibility = false;
+                }
+                else
+                {
+                    UserIDLayoutVisibility = true;
+                }
                 RaisePropertyChanged(() => UserNameLayoutVisibility);
             }
         }
@@ -482,6 +503,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _tINs = value;
+                if (_tINs != null)
+                {
+                    if (_tINs.Count > 0)
+                    {
+                        IsTinDopDownVisible = true;
+                    }
+                    else
+                    {
+                        IsTinDopDownVisible = false;
+                    }
+                }
+                else
+                {
+                    IsTinDopDownVisible = false;
+                }
+                    
                 RaisePropertyChanged("TINs");
             }
         }
@@ -537,7 +574,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_selectedTinId != null)
                 {
                     TxtTIN = _selectedTinId.Tin;
-                    App.CurrentDropdownTIN = SelectedTinId;
+                    //App.CurrentDropdownTIN = SelectedTinId;
                     // Password = string.Empty;
                 }
                 RaisePropertyChanged("SelectedTinId");
@@ -1900,15 +1937,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         try
                         {
+                            await Task.Run(() =>
+                            {
+                                IsLoading = true;
+                            });
                             SelectedTinId = null;
-                            Tins = await WebServiceManager.GAZTGetAllTins(IDNumber);
+                            Tins = await WebServiceManager.GAZTGetAllTins(Email);
                             TINs = Tins;
                             if (Tins.Count != 0 && SelectedTinId == null)
                             {
                                 IsAPICalledSuccessfully = true;
 
                                 IsVisibleTinIds = true;
-                                SelectedTinId = TINs[0];
+                                //SelectedTinId = TINs[0];
+                                SelectedTinId = TINs.FirstOrDefault();
                             }
                             else
                             {

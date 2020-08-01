@@ -5,6 +5,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Timers;
 using System;
+using GAZT.Manager;
+using GAZT.Models;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
@@ -115,6 +117,44 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.UserNameTextColor = Color.White;
         }
 
+        private void CustomLabel_Unfocused(object sender, FocusEventArgs e)
+        {
 
+        }
+
+        private async  void Entry_UserName_Unfocused(object sender, FocusEventArgs e)
+        {
+           
+                try
+                {
+                    bool IsValiedEmailAddress = false;
+                string userName = viewModel.Email;
+                    if (!string.IsNullOrEmpty(userName))
+                        IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
+                    if (!IsValiedEmailAddress)
+                    {
+                        viewModel.IsVisibleTinIds = false;
+                    }
+                    await viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
+          
+
+                }
+                catch (Exception ex)
+                {
+                }
+          
+        }
+
+        private void Btn_TinPicker_Clicked(object sender, EventArgs e)
+        {
+            Picker_Tins.IsOpen=true;
+        }
+
+        private void Picker_Tins_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            TIN selectedTinId = (TIN)e.NewValue;
+            Picker_Tins.SelectedItem = selectedTinId;
+            viewModel.SelectedTinId = selectedTinId;
+        }
     }
 }
