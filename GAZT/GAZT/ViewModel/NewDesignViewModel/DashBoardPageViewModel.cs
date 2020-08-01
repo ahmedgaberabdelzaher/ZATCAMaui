@@ -652,6 +652,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             SegregatedReturnTypesAndCorrepsondingCounts = new ObservableCollection<ReturnTypeAndCorrepsondingCount>();
 
                         SegregatedReturnTypesAndCorrepsondingCounts = SegregatedReturnTypeAndCorrepsondingCount;
+
                     }
                 }
             }
