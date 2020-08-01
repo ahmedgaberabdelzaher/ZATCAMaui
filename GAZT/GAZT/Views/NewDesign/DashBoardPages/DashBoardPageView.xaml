@@ -30,8 +30,8 @@
 
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="85*" />
-                <RowDefinition Height="15*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
             <Grid x:Name="HomeView" Grid.Row="0" RowSpacing="0"  Margin="0" Padding="0,15,0,0">
@@ -40,7 +40,7 @@
                     <RowDefinition Height="77*" />
                 </Grid.RowDefinitions>
                 
-                <StackLayout Grid.Row="1" Padding="0">
+                <StackLayout Grid.Row="1" Padding="0" VerticalOptions="FillAndExpand">
                     
                         <StackLayout Padding="0">
                             <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
