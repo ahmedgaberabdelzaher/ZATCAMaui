@@ -127,15 +127,15 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
            
                 try
                 {
-                    bool IsValiedEmailAddress = false;
+                    
                 string userName = viewModel.Email;
                     if (!string.IsNullOrEmpty(userName))
-                        IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
-                    if (!IsValiedEmailAddress)
+                     viewModel.IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
+                    if (!viewModel.IsValiedEmailAddress)
                     {
                         viewModel.IsVisibleTinIds = false;
                     }
-                    await viewModel.SetTinsListLayoutVisibility(IsValiedEmailAddress);
+                    await viewModel.SetTinsListLayoutVisibility(viewModel.IsValiedEmailAddress);
           
 
                 }

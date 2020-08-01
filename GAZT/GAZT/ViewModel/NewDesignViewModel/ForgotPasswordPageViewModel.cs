@@ -64,6 +64,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IDNumber");
             }
         }
+       
+        private bool _isValiedEmailAddress=false;
+        public bool IsValiedEmailAddress
+        {
+            get
+            {
+                return _isValiedEmailAddress;
+            }
+            set
+            {
+                _isValiedEmailAddress = value;
+                RaisePropertyChanged("IsValiedEmailAddress");
+            }
+        }
         private bool _isTinDopDownVisible;
         public bool IsTinDopDownVisible
         {
@@ -1190,13 +1204,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     if (StartPage == 1)
                     {
-                        if (!string.IsNullOrEmpty(IDNumber))
+
+                        if (UserIDLayoutVisibility)
                         {
-                            SendOTPToRegisterMobileNumber();
+                            if (!string.IsNullOrEmpty(IDNumber))
+                            {
+                                SendOTPToRegisterMobileNumber();
+                            }
+                            else
+                            {
+                                _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                            }
                         }
-                        else
+                     
+                        if (UserNameLayoutVisibility)
                         {
-                            _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                            if (IsValiedEmailAddress)
+                            {
+                                if (IsAPICalledSuccessfully)
+                                {
+                                    if (TINs != null && TINs.Count > 0)
+                                    {
+                                        IDNumber = SelectedTinId.Tin;
+                                        SendOTPToRegisterMobileNumber();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                IDNumber = Email;
+                                SendOTPToRegisterMobileNumber();
+                            }
+                            
                         }
 
 
