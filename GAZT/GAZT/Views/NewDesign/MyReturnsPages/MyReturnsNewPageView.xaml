@@ -87,12 +87,11 @@
                             <TapGestureRecognizer Tapped="btn_Clicked"/>
                         </custom:CustomLabel.GestureRecognizers>-->
                     </custom:CustomLabel>
-                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
-                        <Image.Source>
-                            <FontImageSource FontFamily="UserIconFont"  Color="{StaticResource NeutralLightGrey}"
-                                                    Glyph="{x:Static FontImage:IconFonts.ArrowDown}" />
-                        </Image.Source>
-                    </Image>
+                   
+
+                    <Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
+                           Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>
+
                     <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                     <!--Margin="10,0,10,0"-->
                     </custom:CustomButton>
@@ -154,7 +153,6 @@ SelectedItemFontAttribute="Bold"
             </StackLayout>
             <StackLayout Grid.Row="1">
        
-
                 <ListView  x:Name="ListView_Returns" 
            ItemsSource="{Binding ListToDisplay,Mode=TwoWay}"
                                            IsVisible="{Binding IsListVisible}"
