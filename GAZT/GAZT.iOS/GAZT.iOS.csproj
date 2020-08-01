@@ -1377,4 +1377,31 @@
   <ItemGroup>
     <BundleResource Include="Resources\menu_settings%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\submited.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\submited%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\submited%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clockNew%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clockNew%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clockNew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\unsubmitted%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\unsubmitted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\unsubmitted%402x.png" />
+  </ItemGroup>
 </Project>
