@@ -189,21 +189,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 GetBillsTask = Task.Run(async () =>
                 {
-                    var TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-
-                    Bills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempBills);
+                    Bills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
+                    List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                    foreach(OverduePaymentAndUnSubmittedReturn ee in TempBills){
+                        Bills.Add(ee);
+                    }
+                    //Bills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempBills);
+                    System.Diagnostics.Debug.WriteLine("Bills "+ Bills.Count);
                 });
 
                 GetReturnsTask = Task.Run(async () =>
                 {
-                    var TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-
-                    Returns = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempReturns);
+                    Returns = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
+                    List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                    foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
+                    {
+                        Returns.Add(ee);
+                    }
+                    //Returns = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempReturns);
+                    System.Diagnostics.Debug.WriteLine("Returns " + Returns.Count);
                 });
             }
             try
             {
                 await Task.WhenAll(GetDashboardDataTask, GetBillsTask, GetReturnsTask);
+                //await Task.Delay(2000);
+                //PopualateCommittmentsInformation();
             }
             catch (AggregateException ae)
             {

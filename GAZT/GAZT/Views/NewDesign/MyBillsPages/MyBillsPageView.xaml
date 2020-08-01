@@ -95,10 +95,10 @@
                             <TapGestureRecognizer Tapped="btn_Clicked"/>
                         </custom:CustomLabel.GestureRecognizers>-->
                     </custom:CustomLabel>
-                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Rotation="270">
+                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
                         <Image.Source>
                             <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralLightGrey}"
-                                                    Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                                                    Glyph="{x:Static FontImage:IconFonts.ArrowDown}"/>
                         </Image.Source>
                     </Image>
 
