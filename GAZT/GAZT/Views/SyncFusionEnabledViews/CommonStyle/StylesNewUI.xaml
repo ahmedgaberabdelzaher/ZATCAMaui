@@ -340,7 +340,7 @@
     <Style x:Key="SfGradientStyleForOnbBoarding" TargetType="gradient:SfGradientView">
         <Setter Property="BackgroundBrush">
             <Setter.Value>
-                <gradient:SfLinearGradientBrush StartPoint="0.5,0" EndPoint="1,1">
+                <gradient:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <gradient:SfLinearGradientBrush.GradientStops>
                         <gradient:SfGradientStop Color="Red" Offset="0.0" />
                         <gradient:SfGradientStop Color="{StaticResource Primary}" Offset="0.0" />

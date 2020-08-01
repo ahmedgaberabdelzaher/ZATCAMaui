@@ -83,17 +83,23 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             try
             {
+                App.DisplayProgressView();
                 await viewModel.LoadDashboardData();
                 Device.BeginInvokeOnMainThread(() => {
+                    viewModel.BillCount = string.Empty;
+                    viewModel.BillsAndReturnsCommitments = null;
+                  
                     viewModel.PopulateBillsInformation();
                     viewModel.PopulateReturnsInformation();
                     viewModel.PopualateCommittmentsInformation();
+                    App.HideProgressView();
                 });
 
                // viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch (Exception ex)
             {
+                App.HideProgressView();
             }
         }
 
@@ -165,6 +171,28 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             BillInfo billInfo = new BillInfo();
             billInfo.BillTypeName = "Unpaid";
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+        }
+
+        private async void Logout_Tapped(System.Object sender, System.EventArgs e)
+        {
+            if (App.IsArabic)
+            {
+                var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
+                if (!result)
+                {
+                    App.TP = null;
+                    viewModel.LogOut();
+                }
+            }
+            else
+            {
+                var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                if (result)
+                {
+                    App.TP = null;
+                    viewModel.LogOut();
+                }
+            }
         }
     }
 }
