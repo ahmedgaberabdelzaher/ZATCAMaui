@@ -449,7 +449,7 @@
             </Grid>
 
 
-            <Grid Grid.Row="0" IsVisible="False"  x:Name="PurchaseSection">
+            <Grid Grid.Row="0" IsVisible="True"  x:Name="PurchaseSection">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
                     <RowDefinition Height="90*"/>
@@ -489,6 +489,9 @@
                                         <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.Information}"/>
                                     </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnDomesticRatedTapped"/>
+                                    </Image.GestureRecognizers>
                                 </Image>
                                 <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></Label>
                                 <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></Label>
@@ -753,7 +756,7 @@
             </Grid>
 
 
-            <Grid Grid.Row="0" IsVisible="True"  x:Name="SummerySection" Padding="18,0,18,0" RowSpacing="0">
+            <Grid Grid.Row="0" IsVisible="False"  x:Name="SummerySection" Padding="18,0,18,0" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="80*"/>
