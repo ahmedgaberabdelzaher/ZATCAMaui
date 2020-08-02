@@ -7242,6 +7242,18 @@ namespace EGAZT {
             }
         }
         
+        public static string UnlockAccountPasswordsDoesntMatch {
+            get {
+                return ResourceManager.GetString("UnlockAccountPasswordsDoesntMatch", resourceCulture);
+            }
+        }
+        
+        public static string UnlockAccountCompleteRequiredFields {
+            get {
+                return ResourceManager.GetString("UnlockAccountCompleteRequiredFields", resourceCulture);
+            }
+        }
+        
         public static string AccountUnlocked {
             get {
                 return ResourceManager.GetString("AccountUnlocked", resourceCulture);
@@ -7299,6 +7311,36 @@ namespace EGAZT {
         public static string TinDeregistrationDate {
             get {
                 return ResourceManager.GetString("TinDeregistrationDate", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationFathersName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationFathersName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationGrandFathersName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationGrandFathersName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationFamilyName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationFamilyName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationName1 {
+            get {
+                return ResourceManager.GetString("TinDeregistrationName1", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationName2 {
+            get {
+                return ResourceManager.GetString("TinDeregistrationName2", resourceCulture);
             }
         }
         

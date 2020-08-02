@@ -111,7 +111,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 }
                 else
                 {
-                    this.BackgroundImageSource = "sf_LoginBackground.png";
+                    this.BackgroundImageSource = "partials_background.png";
                     //  outerStack.Orientation = StackOrientation.Vertical;
                 }
             }
