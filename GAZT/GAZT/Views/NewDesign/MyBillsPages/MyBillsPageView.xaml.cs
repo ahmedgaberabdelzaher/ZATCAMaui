@@ -27,22 +27,27 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 viewModel.PopulateDataInChips();
                 viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal);
                 viewModel.SelectedChipFilterItem = null;
-                if (billInfo.BillTypeName.Equals("Paid"))
+                if (billInfo != null)
                 {
+                    if (billInfo.BillTypeName.Equals("Paid"))
+                    {
 
-                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Paid")).FirstOrDefault();
-                    viewModel.FilterIfTypeAndStausFilterSelected();
+                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Paid")).FirstOrDefault();
+                        viewModel.FilterIfTypeAndStausFilterSelected();
+                    }
+                    if (billInfo.BillTypeName.Equals("Unpaid"))
+                    {
+                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Unpaid")).FirstOrDefault();
+                        viewModel.FilterIfTypeAndStausFilterSelected();
+                    }
+                    if (billInfo.BillTypeName.Equals("Partial"))
+                    {
+                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Partial")).FirstOrDefault();
+                        viewModel.FilterIfTypeAndStausFilterSelected();
+                    }
+
                 }
-                if (billInfo.BillTypeName.Equals("Unpaid"))
-                {
-                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Unpaid")).FirstOrDefault();
-                    viewModel.FilterIfTypeAndStausFilterSelected();
-                }
-                if (billInfo.BillTypeName.Equals("Partial"))
-                {
-                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Partial")).FirstOrDefault();
-                    viewModel.FilterIfTypeAndStausFilterSelected();
-                }
+
 
             }
             catch(Exception ex)
