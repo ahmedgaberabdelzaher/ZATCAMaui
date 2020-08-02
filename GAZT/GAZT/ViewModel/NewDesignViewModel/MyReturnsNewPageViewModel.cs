@@ -1561,6 +1561,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT" || x.TaxType == "VATX" || x.TaxType == "VTEP" || x.TaxType == "ETAX" || x.TaxType == "WHTX"));
+                    if (_selectedChipFilterItem != null)
+                    {
+                        if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                        }
+                        if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "unsubmitted";
+                                }
+                            }
+                        }
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "overdue";
+                                }
+                            }
+
+                        }
+
+                    }
+
+
                 }
             }
             catch (Exception ex)
@@ -1577,6 +1613,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT"));
+                    if (_selectedChipFilterItem != null)
+                    {
+                        if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                        }
+                        if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "unsubmitted";
+                                }
+                            }
+                        }
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "overdue";
+                                }
+                            }
+
+                        }
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -1594,6 +1664,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "VATX" || x.TaxType == "VTEP"));
+                    if (_selectedChipFilterItem != null)
+                    {
+                        if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                        }
+                        if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "unsubmitted";
+                                }
+                            }
+                        }
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "overdue";
+                                }
+                            }
+
+                        }
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -1611,6 +1715,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ETAX"));
+                    if (_selectedChipFilterItem != null)
+                    {
+                        if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                        }
+                        if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "unsubmitted";
+                                }
+                            }
+                        }
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "overdue";
+                                }
+                            }
+
+                        }
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -1628,6 +1766,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     //AllReturns = MyReturns.d.results;
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "WHTX"));
+                    if (_selectedChipFilterItem != null)
+                    {
+                        if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                        }
+                        if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "unsubmitted";
+                                }
+                            }
+                        }
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "overdue";
+                                }
+                            }
+
+                        }
+
+                    }
                 }
             }
             catch (Exception ex)

@@ -4466,7 +4466,7 @@
   <data name="NDTaxManagement" xml:space="preserve">
     <value>Tax Management</value>
   </data>
-   <data name="NDTotal" xml:space="preserve">
+  <data name="NDTotal" xml:space="preserve">
     <value>الإجمالي</value>
   </data>
   <data name="NDEmail" xml:space="preserve">
@@ -4479,5 +4479,8 @@
   </data>
   <data name="NDReviewBelow" xml:space="preserve">
     <value>Review the Below Details</value>
+  </data>
+  <data name="ZZZZNextCommitments" xml:space="preserve">
+    <value>Next Commitments</value>
   </data>
 </root>

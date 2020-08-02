@@ -29,17 +29,19 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             if(Index == 0)
             {
                 viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted"));
 
             }
             if (Index == 1)
             {
                 viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
-
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted"));
             }
             if (Index == 2)
             {
                 viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
-
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue"));
+              
             }
             ListView_Returns.ItemTapped += (sender, e) =>
             {

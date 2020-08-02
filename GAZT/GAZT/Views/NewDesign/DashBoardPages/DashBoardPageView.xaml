@@ -47,7 +47,7 @@
                             <ScrollView >
                                 <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMyUpcomingCommitments}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNextCommitments}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                         <Image Source="circle_arrow_right.png" HorizontalOptions="EndAndExpand">
                                         <!--    <Image.Source>
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
