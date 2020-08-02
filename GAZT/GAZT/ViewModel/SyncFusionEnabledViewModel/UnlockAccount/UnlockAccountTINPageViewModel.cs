@@ -31,7 +31,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         CancellationTokenSource _CancellationTokenSource;
         int TotalSec;
         public bool StopTimer = false;
-        public int currentAttempts = 0;
         public int totalAttempts = 0;
 
         bool isValiedOTP = false;
@@ -39,6 +38,29 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+
+        private int _currentAttempts = 0;
+        public int currentAttempts
+        {
+            get
+            {
+                return _currentAttempts;
+            }
+            set
+            {
+                _currentAttempts = value;
+                if (_currentAttempts == 5)
+                {
+                    ButtonDisableColor = Color.FromHex("#d99b29");
+                    IsResendOTPEnabled = true;
+                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    IsVerifyOTPEnabled = false;
+                    IsOTPEntryEnable = false;
+                    _currentAttempts = 0;
+                }
+                RaisePropertyChanged("currentAttempts");
+            }
+        }
 
         private bool _isLoading = false;
         public bool IsLoading
@@ -802,18 +824,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             StringBuilder PopMsg = new StringBuilder();
             bool IsAllValid = true;
 
-            if (string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(Password) || string.IsNullOrEmpty(ConfirmPassword))
             {
-                FramePasswordError = true;
+                if (string.IsNullOrEmpty(Password))
+                {
+                    FramePasswordError = true;
+                }
+
+                if (string.IsNullOrEmpty(ConfirmPassword))
+                {
+                    FrameConfirmPasswordError = true;
+                }
+
                 if (PopMsg.Length > 0)
                 {
                     PopMsg.Append(Environment.NewLine);
                     PopMsg.Append(Environment.NewLine);
-                    PopMsg.Append(AppResources.ZZPasswordregulationsforSignup);
+                    PopMsg.Append(AppResources.UnlockAccountPasswordsDoesntMatch);
                 }
                 else
                 {
-                    PopMsg.Append(AppResources.ZZPasswordregulationsforSignup);
+                    PopMsg.Append(AppResources.UnlockAccountPasswordsDoesntMatch);
                 }
                 IsAllValid = false;
             }
@@ -850,11 +881,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     {
                         PopMsg.Append(Environment.NewLine);
                         PopMsg.Append(Environment.NewLine);
-                        PopMsg.Append(AppResources.ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup);
+                        PopMsg.Append(AppResources.UnlockAccountPasswordsDoesntMatch);
                     }
                     else
                     {
-                        PopMsg.Append(AppResources.ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup);
+                        PopMsg.Append(AppResources.UnlockAccountPasswordsDoesntMatch);
                     }
                     IsAllValid = false;
                 }

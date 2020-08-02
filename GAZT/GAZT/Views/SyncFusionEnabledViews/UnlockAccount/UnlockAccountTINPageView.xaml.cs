@@ -81,7 +81,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
 
         void FrmTIN_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            ValidateTinEntryAndVerify();
+            //ValidateTinEntryAndVerify();
         }
 
         void Otp_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)

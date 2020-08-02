@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -36,6 +37,24 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
+        void SfListView_ItemTapped(System.Object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            try
+            {
+                foreach (TINDeregistrationModel tINDeregistrationModel in viewModel.OutletDecisionOptions)
+                {
+                    tINDeregistrationModel.ActiveOutletDecisionOptionsIsSelected = false;
+                }
+
+                var dataItem = e.ItemData as TINDeregistrationModel;
+                dataItem.ActiveOutletDecisionOptionsIsSelected = true;
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }
