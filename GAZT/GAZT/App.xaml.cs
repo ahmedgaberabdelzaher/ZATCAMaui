@@ -1,7 +1,9 @@
 using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.OnboardingPages;
+using EGAZT.Views.NewDesign.VATLookUp;
 using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;
+using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
 using GalaSoft.MvvmLight.Views;
 using GAZT.CustomControl;
 using GAZT.Models;
@@ -31,6 +33,7 @@ namespace EGAZT
         public static string GAZTNewDesignOnBoardingAnimationPageView = "GAZTNewDesignOnBoardingAnimationPageView";
         public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";
         public static string GAZTNewDesignForgotPasswordPageView = "GAZTNewDesignForgotPasswordPageView";
+        public static string VATLookUpNewPageView = "VATLookUpNewPageView";
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";

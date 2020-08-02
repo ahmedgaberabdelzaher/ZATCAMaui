@@ -126,6 +126,7 @@ using System;
 
 #endregion
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
+using EGAZT.Views.NewDesign.VATLookUp;
 
 namespace EGAZT
 {
@@ -154,6 +155,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
+            SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
+            
 
             #endregion
 
@@ -307,6 +310,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyReturnsNewPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+      
+        public VATLookUpNewPageViewModel VATLookUpNewPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATLookUpNewPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1504,7 +1522,8 @@ namespace EGAZT
 
             navigationService.Configure(App.GAZTNewDesignRecoverUsername, typeof(GAZTNewDesignRecoverUsernamePageView));
             navigationService.Configure(App.GAZTNewDesignRecoverPasswordPageView, typeof(GAZTNewDesignRecoverPasswordPageView));
-
+            navigationService.Configure(App.VATLookUpNewPageView, typeof(VATLookUpNewPageView));
+            
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
