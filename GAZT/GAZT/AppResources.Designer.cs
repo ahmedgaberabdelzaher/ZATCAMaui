@@ -1119,7 +1119,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Expenses(SAR).
+        ///   Looks up a localized string similar to Expenses.
         /// </summary>
         public static string FORM5Expenses {
             get {
@@ -1200,7 +1200,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Is the above Registration Details are Correct?.
+        ///   Looks up a localized string similar to Above registration details are Correct.
         /// </summary>
         public static string FORM5IsCorrect {
             get {
@@ -1227,7 +1227,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Net Profit(SAR).
+        ///   Looks up a localized string similar to Net Profit.
         /// </summary>
         public static string FORM5NetProfit {
             get {
@@ -1241,6 +1241,15 @@ namespace EGAZT {
         public static string FORM5NetProfitPer {
             get {
                 return ResourceManager.GetString("FORM5NetProfitPer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No. Of Outlets.
+        /// </summary>
+        public static string FORM5NoOutlet {
+            get {
+                return ResourceManager.GetString("FORM5NoOutlet", resourceCulture);
             }
         }
         
@@ -1295,15 +1304,6 @@ namespace EGAZT {
         public static string FORM5OutletName {
             get {
                 return ResourceManager.GetString("FORM5OutletName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Number Of Outlets.
-        /// </summary>
-        public static string FORM5OutletNum {
-            get {
-                return ResourceManager.GetString("FORM5OutletNum", resourceCulture);
             }
         }
         
@@ -1371,7 +1371,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Revenue(SAR).
+        ///   Looks up a localized string similar to Revenue.
         /// </summary>
         public static string FORM5Revenue {
             get {
@@ -1821,6 +1821,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string NDEmail {
+            get {
+                return ResourceManager.GetString("NDEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English capital and small letters.
         /// </summary>
         public static string NDEnglishcapitalandsmallletters {
@@ -1835,6 +1844,15 @@ namespace EGAZT {
         public static string NDEnterYourUsername {
             get {
                 return ResourceManager.GetString("NDEnterYourUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financial Year.
+        /// </summary>
+        public static string NDFinancialYear {
+            get {
+                return ResourceManager.GetString("NDFinancialYear", resourceCulture);
             }
         }
         
@@ -1979,6 +1997,15 @@ namespace EGAZT {
         public static string NDReturnSubmission {
             get {
                 return ResourceManager.GetString("NDReturnSubmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review the Below Details.
+        /// </summary>
+        public static string NDReviewBelow {
+            get {
+                return ResourceManager.GetString("NDReviewBelow", resourceCulture);
             }
         }
         
