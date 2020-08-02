@@ -4321,6 +4321,21 @@
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>Deregistration Date</value>
   </data>
+   <data name="TinDeregistrationFathersName" xml:space="preserve">
+    <value>Father's Name</value>
+  </data>
+  <data name="TinDeregistrationGrandFathersName" xml:space="preserve">
+    <value>Grand Father's Name</value>
+  </data>
+  <data name="TinDeregistrationFamilyName" xml:space="preserve">
+    <value>Family Name</value>
+  </data>
+  <data name="TinDeregistrationName1" xml:space="preserve">
+    <value>Name 1</value>
+  </data>
+  <data name="TinDeregistrationName2" xml:space="preserve">
+    <value>Name 2</value>
+  </data>
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
   </data>
