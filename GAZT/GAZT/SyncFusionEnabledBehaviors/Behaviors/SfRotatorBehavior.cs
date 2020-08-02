@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
+﻿using EGAZT;
+using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
 using GAZT.Models;
 using Syncfusion.SfRotator.XForms;
 using System;
@@ -45,7 +46,7 @@ namespace GAZT.SyncFusionEnabledBehaviors.Behaviors
                 }
                 else
                 {
-                    viewModel.NextButtonText = "NEXT";
+                    viewModel.NextButtonText = AppResources.ZZNext;
                     viewModel.IsSkipButtonVisible = true;
                 }
 

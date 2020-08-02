@@ -7032,9 +7032,9 @@ namespace EGAZT {
             }
         }
         
-        public static string FORM5OutletNum {
+        public static string FORM5NoOutlet {
             get {
-                return ResourceManager.GetString("FORM5OutletNum", resourceCulture);
+                return ResourceManager.GetString("FORM5NoOutlet", resourceCulture);
             }
         }
         
@@ -7563,6 +7563,24 @@ namespace EGAZT {
         public static string NDTotal {
             get {
                 return ResourceManager.GetString("NDTotal", resourceCulture);
+            }
+        }
+        
+        public static string NDEmail {
+            get {
+                return ResourceManager.GetString("NDEmail", resourceCulture);
+            }
+        }
+        
+        public static string NDFinancialYear {
+            get {
+                return ResourceManager.GetString("NDFinancialYear", resourceCulture);
+            }
+        }
+        
+        public static string NDReviewBelow {
+            get {
+                return ResourceManager.GetString("NDReviewBelow", resourceCulture);
             }
         }
     }

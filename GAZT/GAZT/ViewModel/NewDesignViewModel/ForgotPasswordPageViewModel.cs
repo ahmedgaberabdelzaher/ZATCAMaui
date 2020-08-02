@@ -1321,7 +1321,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                                 else
                                 {
-                                    viewModel.IsTinDopDownVisible = false;
+                                    IsTinDopDownVisible = false;
                                 }
                             }
                             else
