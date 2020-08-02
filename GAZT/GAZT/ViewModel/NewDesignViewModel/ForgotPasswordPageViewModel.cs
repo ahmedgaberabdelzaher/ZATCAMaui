@@ -342,6 +342,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _setIDNumberEnability = false;
+        public bool SetIDNumberEnability
+        {
+            get
+            {
+                return _setIDNumberEnability;
+            }
+            set
+            {
+                _setIDNumberEnability = value;
+                RaisePropertyChanged("SetIDNumberEnability");
+            }
+        }
+
+
+        
+
 
         private bool _forgotUserNameCardLayoutVisibility = false;
         public bool ForgotUserNameCardLayoutVisibility
@@ -1260,8 +1277,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (NewPassword.Equals(ConfirmPassword))
                             {
                                 ChangePassword();
-
-                                // PasswordLayoutVisibility = true;
                             }
                             else
                             {
@@ -2221,7 +2236,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             OTPThirdDigit = string.Empty;
             OTPFourthDigit = string.Empty;
             IsAPICalledSuccessfully = false;
-
+            SetIDNumberEnability = false;
 
         }
 

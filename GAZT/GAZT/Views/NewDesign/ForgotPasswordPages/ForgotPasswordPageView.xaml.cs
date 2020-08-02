@@ -105,6 +105,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.UserNameCardBackgroundColor = Color.White;
             viewModel.PasswordTextColor = Color.White;
             viewModel.UserNameTextColor = Color.Black;
+            viewModel.SetIDNumberEnability = true;// Enabling IDNumber Field as per tapping on Password Tile
         }
 
 
@@ -115,6 +116,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.UserNameCardBackgroundColor = Color.FromHex("#005e4b");
             viewModel.PasswordTextColor = Color.Black;
             viewModel.UserNameTextColor = Color.White;
+            viewModel.SetIDNumberEnability = true;// Enabling IDNumber Field as per tapping on Password Tile
         }
 
         private void CustomLabel_Unfocused(object sender, FocusEventArgs e)
