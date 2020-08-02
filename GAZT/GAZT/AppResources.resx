@@ -4306,7 +4306,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Reset Password</value>
   </data>
   <data name="EnterVerificationCodeSentToMobile" xml:space="preserve">
-    <value>Please enter verification code sent to your mobile</value>
+    <value>Please enter verification code sent to your mobile </value>
   </data>
   <data name="UnlockAccountCreateNewPassword" xml:space="preserve">
     <value>Please create a new password</value>

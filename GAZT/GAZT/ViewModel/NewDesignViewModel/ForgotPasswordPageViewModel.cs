@@ -2322,6 +2322,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsAPICalledSuccessfully = false;
             SetIDNumberEnability = false;
 
+            TxtTIN = string.Empty;
+            if (TINs != null && TINs.Count > 0)
+                TINs.Clear();
+
+
         }
 
 
@@ -2352,8 +2357,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 ContinueButtonEnability = false;
                 IsResendOTPEnabled = true;
-               
-                otpTimer.Stop();
+
+                               otpTimer.Stop();
             }
         }
 
