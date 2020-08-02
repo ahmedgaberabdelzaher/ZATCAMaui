@@ -677,6 +677,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 FilterOnTaxType();
                 MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
             }
+            if (_selectedChipFilterItem.TemplateType.Equals("All"))
+            {
+                FilterOnTaxType();
+                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) ||x.Status== Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+            }
         }
         public void PopulateReturnTypeList()
         {
@@ -708,7 +713,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 new ChipModel(){Text =AppResources.Paid, TemplateType = "Paid", ImageSource="ic_check_circle.png"},
                 new ChipModel(){Text =AppResources.Partial, TemplateType = "Partial",ImageSource = "ic_loading.png"},
                 new ChipModel(){Text =AppResources.UnPaid, TemplateType = "Unpaid",ImageSource = "ic_money.png"},
-              
+                 new ChipModel(){Text =AppResources.All, TemplateType = "All",ImageSource = "ic_money.png"}
+
                };
         }
        
@@ -798,6 +804,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
                 }
             }
+
         }
 
         //private ObservableCollection<MyBills> UpdateDueAmount(ObservableCollection<MyBills> myBills)
