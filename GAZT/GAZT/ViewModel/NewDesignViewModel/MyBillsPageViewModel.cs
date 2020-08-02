@@ -662,21 +662,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public void FilterIfTypeAndStausFilterSelected() 
         {
-            if (_selectedChipFilterItem.TemplateType.Equals("Paid"))
+            if(_selectedChipFilterItem!=null)
             {
-                FilterOnTaxType();
-                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                if (_selectedChipFilterItem.TemplateType.Equals("Paid"))
+                {
+                    FilterOnTaxType();
+                    MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                }
+                if (_selectedChipFilterItem.TemplateType.Equals("Partial"))
+                {
+                    FilterOnTaxType();
+                    MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
+                }
+                if (_selectedChipFilterItem.TemplateType.Equals("Unpaid"))
+                {
+                    FilterOnTaxType();
+                    MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                }
             }
-            if (_selectedChipFilterItem.TemplateType.Equals("Partial"))
-            {
-                FilterOnTaxType();
-                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
-            }
-            if (_selectedChipFilterItem.TemplateType.Equals("Unpaid"))
-            {
-                FilterOnTaxType();
-                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-            }
+           
         }
         public void PopulateReturnTypeList()
         {
@@ -798,6 +802,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
                 }
             }
+            FilterIfTypeAndStausFilterSelected();
+            
+
         }
 
         //private ObservableCollection<MyBills> UpdateDueAmount(ObservableCollection<MyBills> myBills)
