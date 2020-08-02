@@ -8,6 +8,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 {
     public class UnlockAccountSuccessPageViewModel:ViewModelBase
     {
+
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 

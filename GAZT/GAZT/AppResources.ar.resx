@@ -4289,7 +4289,9 @@
     <value>يرجى إنشاء كلمة مرور جديدة</value>
   </data>
   <data name="UnlockAccountPasswordChangedSuccessfully" xml:space="preserve">
-    <value>عزيزي المكلف ،￼￼￼ تم إعادة فتح الحساب وتعيين كلمة المرور بنجاح للرقم المميز xxxxxx.</value>
+    <value>عزيزي المكلف،
+تم إزالة الاغلاق عن الحساب، وتم تغيير كلمة المرور للرقم المميز  xxxxxx بنجاح.
+</value>
   </data>
 
   <data name="AccountUnlocked" xml:space="preserve">
