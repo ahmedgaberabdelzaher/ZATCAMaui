@@ -10946,19 +10946,7 @@ namespace EGAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to Country.
-        /// </summary>
-        public static string ZZZZCountry {
-            get {
-                return ResourceManager.GetString("ZZZZCountry", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create a secure Password.
-        /// </summary>
-        public static string ZZZZCreateasecurePassword {
+        public static string AccountUnlocked {
             get {
                 return ResourceManager.GetString("ZZZZCreateasecurePassword", resourceCulture);
             }

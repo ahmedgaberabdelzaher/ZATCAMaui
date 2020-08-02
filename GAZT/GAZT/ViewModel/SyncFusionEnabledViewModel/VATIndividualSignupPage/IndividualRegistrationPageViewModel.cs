@@ -677,6 +677,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("MobileNumber");
             }
         }
+        private string _mobileCountryCode = string.Empty;
+        public string MobileCountryCode
+        {
+            get
+            {
+                return _mobileCountryCode;
+            }
+            set
+            {
+                _mobileCountryCode = value;
+                RaisePropertyChanged("MobileCountryCode");
+            }
+        }
         private string _encriptedMobileNumber = string.Empty;
         public string EncriptedMobileNumber
         {
@@ -2094,8 +2107,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //Region = SelectedRegion.Land1,
                     Region = _Region,
                     //Country = SelectedGCCCountry.CountryCode,
-                    Country = string.Empty,
-                    MobileCountry = _Country,
+                    Country = _Country,
+                    MobileCountry = MobileCountryCode,
 
                     Building = BuildingNumber,
                     Floor = UnitNumber,
@@ -2319,8 +2332,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //Region = SelectedRegion.Land1,
                     Region = _Region,
                     //Country = SelectedGCCCountry.CountryCode,
-                     Country = string.Empty,
-                    MobileCountry = _Country,
+                     Country = _Country,
+                    MobileCountry = MobileCountryCode,
                     //Building = BuildingNumber,
                     //Floor = "",
                     //Street = "",

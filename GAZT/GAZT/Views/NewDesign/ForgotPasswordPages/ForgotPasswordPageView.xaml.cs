@@ -22,12 +22,13 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         {
 
             InitializeComponent();
+            NavigationPage.SetBackButtonTitle(this, " ");
             viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
             this.BindingContext = viewModel;
             viewModel.ClearData();
             SetLTR();
             viewModel.StartPage = 1;
-            NavigationPage.SetBackButtonTitle(this, " ");
+          
         }
 
        
@@ -176,10 +177,10 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         }
         void ResetPasswordValidationConditions()
         {
-            viewModel.MinEight = Color.DarkGray;
-            viewModel.CapsSmall = Color.DarkGray;
-            viewModel.MaxSixteen = Color.DarkGray;
-            viewModel.NumSymbol = Color.DarkGray;
+            viewModel.MinEight = Color.DarkRed;
+            viewModel.CapsSmall = Color.DarkRed;
+            viewModel.MaxSixteen = Color.DarkRed;
+            viewModel.NumSymbol = Color.DarkRed;
         }
 
     }

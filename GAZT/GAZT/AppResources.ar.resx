@@ -244,7 +244,7 @@
     <value>رقم الجوال الجديد</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>New Password</value>
+    <value>كلمة المرور الجديدة</value>
   </data>
   <data name="OverdueReturn" xml:space="preserve">
     <value>إقرارات متأخرة</value>
@@ -4277,10 +4277,10 @@
     <value>تحقق</value>
   </data>
   <data name="UnlockAccountResetPassword" xml:space="preserve">
-    <value>المرور كلمة ت</value>
+    <value>تعيين كلمة المرور</value>
   </data>
-  <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
-    <value>الرجاء التحقق من الرقم المميز.</value>
+    <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
+    <value>كلمات المرور المدخلة غير متطابقة، يرجى￼ التأكد من أن كلمات المرور التي تم إدخالها متطابقة.</value>
   </data>
   <data name="EnterVerificationCodeSentToMobile" xml:space="preserve">
     <value>يرجى إدخال رمز التحقق المرسل إلى هاتفك المحمول</value>
@@ -4291,6 +4291,7 @@
   <data name="UnlockAccountPasswordChangedSuccessfully" xml:space="preserve">
     <value>عزيزي المكلف ،￼￼￼ تم إعادة فتح الحساب وتعيين كلمة المرور بنجاح للرقم المميز xxxxxx.</value>
   </data>
+
   <data name="AccountUnlocked" xml:space="preserve">
     <value>تم فتح الحساب</value>
   </data>
@@ -4401,7 +4402,7 @@
     <value>أرقام ورموز</value>
   </data>
   <data name="NDPleaseEnterVerificationSenttomobile" xml:space="preserve">
-    <value>Please Enter Verification code sent to your mobile</value>
+    <value>Please enter verification code sent to your mobile</value>
   </data>
   <data name="NDResendVerificationCode" xml:space="preserve">
     <value>إعادة إرسال رمز التحقق</value>

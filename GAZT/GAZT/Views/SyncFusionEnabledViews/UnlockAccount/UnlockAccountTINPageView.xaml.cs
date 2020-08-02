@@ -219,7 +219,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
             else
             {
                 FrmTIN.HasError = true;
-                Messages.Append(AppResources.ZZPleasefillallthemandatoryfields);
+                Messages.Append(AppResources.AccountUnlockedCompleteRequiedFields);
 
                 popUp.Message = Messages.ToString();
                 popUp.IsLinkAvailable = false;
