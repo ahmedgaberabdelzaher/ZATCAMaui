@@ -559,7 +559,18 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSupports}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
-
+                                       <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Account}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TaxpayerProfile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                        <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Label_MyProfile_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                       </StackLayout>
+                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>

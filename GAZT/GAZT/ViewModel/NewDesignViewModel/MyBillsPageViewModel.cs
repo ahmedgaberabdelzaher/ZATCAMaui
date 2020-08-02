@@ -804,6 +804,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
                 }
             }
+            FilterIfTypeAndStausFilterSelected();
+            
 
         }
 

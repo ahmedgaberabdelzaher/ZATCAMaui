@@ -7,6 +7,7 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -876,8 +877,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                     {
 
                                     }
-                                    
-                                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                    await LogOut();
+                                    //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                                     _navigation.NavigationStack.ToList().Clear();
                                 });
                             }
@@ -918,7 +919,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
 
                                             }
 
-                                            _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                            await LogOut();
+                                            //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                                             _navigation.NavigationStack.ToList().Clear();
                                         });
                                     }
@@ -957,7 +959,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                         App.IsSamlApiCalledAndroid = false;
                                         App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
 
-                                        _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                        await LogOut();
+                                        //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                                         _navigation.NavigationStack.ToList().Clear();
                                     });
                                 }
@@ -1015,6 +1018,69 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                     IsLoading = false;
                 });
             }
+        }
+        public async Task LogOut()
+        {
+            await Task.Run(() =>
+            {
+                App.DisplayProgressView();
+            });
+            if (App.TP != null)
+                App.TP = null;
+            if (App.PreviousIsArabic)
+            {
+                String langName = "ar-AE";
+                AppResources.Culture = new CultureInfo(langName);
+            }
+            else
+            {
+                String langName = "en-US";
+                AppResources.Culture = new CultureInfo(langName);
+            }
+
+            try
+            {
+                await WebServiceManager.GAZTLogOff();
+            }
+            catch
+            {
+
+            }
+
+            await Task.Run(() =>
+            {
+                App.HideProgressView();
+            });
+
+            var _navigation = Application.Current.MainPage.Navigation;
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.GAZTNewDesignOnBoardingAnimationPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            App.IsLogOut = true;
+            App.IsLoginCalled = false;
+            App.IsSamlApiCalledAndroid = false;
+
+            try
+            {
+                App.httpClientHandler = new HttpClientHandler();
+                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            _navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+            _navigation.NavigationStack.ToList().Clear();
+            //var _navigation = Application.Current.MainPage.Navigation;
+            //_navigation.PopToRootAsync();
         }
         #endregion
         #region Method
