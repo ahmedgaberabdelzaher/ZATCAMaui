@@ -205,39 +205,40 @@ SelectedItemFontAttribute="Bold"
                                             </StackLayout>
                                             <!--StatusTxt-->
                                             <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                                <yummy:PancakeView    Padding="10,10,10,10"  
+                                                <yummy:PancakeView    Padding="10,10,10,10" 
                                CornerRadius="14"  BorderThickness="1" BackgroundColor="{Binding FrameColorHighlight}"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
                                                     <custom:CustomLabel Text="{Binding statusMessage}" Style="{StaticResource CaptionLabelGrey}" TextColor="{Binding TextColorHighlight}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <custom:CustomLabel.Triggers>
                                                             <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
-                                                            <DataTrigger TargetType="Label" Binding="{Binding StatusTxt}" Value="Submitted">
+                                                            <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="submitted">
                                                                 <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Submitted}" />
                                                             </DataTrigger>
-                                                            <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="Non Submitted">
+                                                            <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="unsubmitted">
                                                                 <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnSubmitted}" />
                                                             </DataTrigger>
                                                             <MultiTrigger TargetType="Label">
                                                                 <MultiTrigger.Conditions>
-                                                                    <BindingCondition Binding="{Binding TaxType}" Value="Non Submitted"/>
-                                                                    <BindingCondition Binding="{Binding Due}" Value="X"/>
+                                                                    <BindingCondition Binding="{Binding StatusMessage}" Value="overdue"/>
+                                                                    <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
                                                                 </MultiTrigger.Conditions>
                                                                 <Setter Property="Text"  Value="{x:Static ResourceManager:AppResources.OverDue}" />
-                                                                <!-- multiple Setter elements are allowed -->
+                                                                 <!--multiple Setter elements are allowed--> 
                                                             </MultiTrigger>
+                                                           
                                                         </custom:CustomLabel.Triggers>
                                                     </custom:CustomLabel>
                                                     <yummy:PancakeView.Triggers>
                                                         <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
-                                                        <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding StatusTxt}" Value="Submitted">
+                                                        <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding StatusMessage}" Value="submitted">
                                                             <Setter Property="BackgroundColor" Value="#E5EFED" />
                                                         </DataTrigger>
-                                                        <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding TaxType}" Value="Non Submitted">
+                                                        <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding StatusMessage}" Value="unsubmitted">
                                                             <Setter Property="BackgroundColor" Value="#F6E6E8" />
                                                         </DataTrigger>
                                                         <MultiTrigger TargetType="yummy:PancakeView">
                                                             <MultiTrigger.Conditions>
-                                                                <BindingCondition Binding="{Binding TaxType}" Value="Non Submitted"/>
-                                                                <BindingCondition Binding="{Binding Due}" Value="X"/>
+                                                                <BindingCondition Binding="{Binding StatusMessage}" Value="overdue"/>
+                                                                <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
                                                             </MultiTrigger.Conditions>
                                                             <Setter Property="BackgroundColor"  Value="#F5F5F5" />
                                                             <!-- multiple Setter elements are allowed -->
