@@ -76,6 +76,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _translateText;
+        public string TranslateText
+        {
+            get
+            {
+                return _translateText;
+            }
+            set
+            {
+                _translateText = value;
+                RaisePropertyChanged("TranslateText");
+            }
+        }
+
         private ObservableCollection<MyBillsChartModel> _MyBillsChartModels = null;
         public ObservableCollection<MyBillsChartModel> MyBillsChartModels
         {

@@ -236,12 +236,12 @@
                                         </Image>
                                                                    
                                     </StackLayout>
-                                    <CollectionView  x:Name="xSegregatedReturnTypesAndCorrepsondingCounts" HeightRequest="120" ItemsLayout="HorizontalList" ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}"   HorizontalOptions="FillAndExpand"  BackgroundColor="White">
+                                    <CollectionView  x:Name="xSegregatedReturnTypesAndCorrepsondingCounts" HeightRequest="110" ItemsLayout="HorizontalList" ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}"   HorizontalOptions="FillAndExpand"  BackgroundColor="White">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
 
                                                 <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                                                    <cards:SfCardView HasShadow="True" WidthRequest="120" HeightRequest="120" BackgroundColor="White" CornerRadius="10" >
+                                                    <cards:SfCardView HasShadow="True" WidthRequest="110" HeightRequest="110" BackgroundColor="White" CornerRadius="10" >
                                                         <StackLayout >
                                                             <Image HorizontalOptions="Start" Margin="5,5,5,0">
                                                                 <!--<Image.Source>
@@ -510,7 +510,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
@@ -518,9 +518,9 @@
                                     </Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxManagement}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CashRefund}"/>
@@ -528,9 +528,9 @@
                                     </Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDRefunds}"  Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FloorPlan}"/>
@@ -538,9 +538,9 @@
                                     </Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.React}"/>
@@ -548,9 +548,9 @@
                                     </Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDObjectionsandReviews}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.HelpNetwork}"/>
@@ -558,8 +558,8 @@
                                     </Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSupports}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
-                                       <StackLayout Orientation="Horizontal" Spacing="20">
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                       <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Account}"/>
@@ -570,7 +570,63 @@
                                         <TapGestureRecognizer Tapped="Label_MyProfile_Tapped"/>
                                     </StackLayout.GestureRecognizers>
                                        </StackLayout>
-                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
+
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Aboutus_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Contactus_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZPrivacyandPolicy}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{Binding TranslateText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChangeLanguage_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+
+
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
