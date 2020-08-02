@@ -321,11 +321,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (BillsAndReturnsCommitments != null)
                 {
                     DateTime Today = DateTime.Now;
-                    var BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitments.Where(a => a.DueDateDateTime.Date <= Today.Date).ToList();
-
+                    var BillsAndReturnsCommitmentsLocal = new List<OverduePaymentAndUnSubmittedReturn>();
+                    var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitments.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
                     try
                     {
-                        var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitments.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
+                       
 
                         if (BillsAndReturnsCommitmentsOverdurItems != null && BillsAndReturnsCommitmentsOverdurItems.Count > 0)
                         {
@@ -634,6 +634,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             SegregatedReturnTypeAndCorrepsondingCount.Add(SubmittedReturnTypeAndCorrepsondingCount);
                         }
 
+                        //Overdue
+                        if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
+                        {
+                            ReturnTypeAndCorrepsondingCount OverdueReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
+
+                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
+                            String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(DueIcrstr))
+                            {
+                                DueIcrstr = "0";
+                            }
+                            else if (DueIcrstr.Substring(0, 1) == ".")
+                            {
+                                DueIcrstr = "0" + DueIcrstr;
+                            }
+                            OverdueReturnTypeAndCorrepsondingCount.ReturnCount = DueIcrstr;
+                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.OverDue;
+
+                            SegregatedReturnTypeAndCorrepsondingCount.Add(OverdueReturnTypeAndCorrepsondingCount);
+                        }
+
                         //UnSubmitted
                         if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
                         {
@@ -655,26 +676,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             SegregatedReturnTypeAndCorrepsondingCount.Add(UnSubmittedReturnTypeAndCorrepsondingCount);
                         }
 
-                        //Overdue
-                        if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
-                        {
-                            ReturnTypeAndCorrepsondingCount OverdueReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
-
-                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
-                            String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
-                            if (string.IsNullOrEmpty(DueIcrstr))
-                            {
-                                DueIcrstr = "0";
-                            }
-                            else if (DueIcrstr.Substring(0, 1) == ".")
-                            {
-                                DueIcrstr = "0" + DueIcrstr;
-                            }
-                            OverdueReturnTypeAndCorrepsondingCount.ReturnCount = DueIcrstr;
-                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.OverDue;
-
-                            SegregatedReturnTypeAndCorrepsondingCount.Add(OverdueReturnTypeAndCorrepsondingCount);
-                        }
+                       
 
                         if (SegregatedReturnTypesAndCorrepsondingCounts == null)
                             SegregatedReturnTypesAndCorrepsondingCounts = new ObservableCollection<ReturnTypeAndCorrepsondingCount>();
