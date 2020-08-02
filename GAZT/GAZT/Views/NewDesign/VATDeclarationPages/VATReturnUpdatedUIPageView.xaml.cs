@@ -1,4 +1,5 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         private void btnprimary_Clicked(object sender, EventArgs e)
         {
 
+        }
+
+        private void OnStandardRatedTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView());
         }
     }
 }
