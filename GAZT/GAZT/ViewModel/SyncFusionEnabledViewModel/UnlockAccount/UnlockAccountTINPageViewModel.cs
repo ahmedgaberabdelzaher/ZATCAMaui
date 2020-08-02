@@ -840,11 +840,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 {
                     PopMsg.Append(Environment.NewLine);
                     PopMsg.Append(Environment.NewLine);
-                    PopMsg.Append(AppResources.UnlockAccountPasswordsDoesntMatch);
+                    PopMsg.Append(AppResources.AccountUnlockedCompleteRequiedFields);
                 }
                 else
                 {
-                    PopMsg.Append(AppResources.UnlockAccountPasswordsDoesntMatch);
+                    PopMsg.Append(AppResources.AccountUnlockedCompleteRequiedFields);
                 }
                 IsAllValid = false;
             }
@@ -887,6 +887,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     {
                         PopMsg.Append(AppResources.UnlockAccountPasswordsDoesntMatch);
                     }
+
                     IsAllValid = false;
                 }
                 else

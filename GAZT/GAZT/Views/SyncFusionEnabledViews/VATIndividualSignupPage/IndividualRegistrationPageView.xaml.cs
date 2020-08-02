@@ -1115,6 +1115,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 IntnlCodes.Text = arg;
                 viewModel.TxtCountryCode = arg;
             });
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
+            {
+
+                viewModel.MobileCountryCode = arg;
+            });
 
             if (Device.RuntimePlatform == Device.Android)
             {

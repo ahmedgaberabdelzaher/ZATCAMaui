@@ -59,13 +59,13 @@
 
                         <Image Source="ic_logo_gazt.png" Grid.Row="0" Grid.Column="1" WidthRequest="40" HeightRequest="40" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 
-                        <custom:CustomLabel Margin="0,25,0,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        <custom:CustomLabel Margin="0,25,0,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Transparent"
                                             Text="{x:Static ResourceManager:AppResources.UnlockAccountResetPassword}" Style="{StaticResource SectionTitleBlack}" />
                         <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSelectTheOptionAndCompleteDetails}" Style="{StaticResource BodyLabelGrey}"/>-->
 
                         <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,0">
                                                             <!--<Label Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>-->
-                                                            <custom:CustomLabel Margin="0,20,0,0"  Grid.Row="0"  Style="{StaticResource CaptionLabelGrey}">
+                                                            <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Style="{StaticResource CaptionLabelGrey}">
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                         <Span  Text="{x:Static custom2:AppResources.TIN}" />
@@ -344,7 +344,7 @@
                             </StackLayout>
                     </Grid>
                 
-                    <buttons:SfButton x:Name="btnConfirmNewPassword" Text="{x:Static custom2:AppResources.Confirm}" Command="{Binding ConfirmPasswordBtnClicked}"  CornerRadius="10"
+                    <buttons:SfButton x:Name="btnConfirmNewPassword" Text="{x:Static custom2:AppResources.Submit}" Command="{Binding ConfirmPasswordBtnClicked}"  CornerRadius="10"
                                       VerticalOptions="End" FontAttributes="Bold" 
                     HeightRequest="48" Margin="0,16,0,60" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
                     BackgroundColor="#d99b29" BorderWidth="0"/>

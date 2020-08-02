@@ -27,7 +27,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AccountCreated
         }
         private void Checked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+            //viewModel._navigationService.NavigateTo(App.SFLoginPageView);
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+            // viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
         }
     }
 }

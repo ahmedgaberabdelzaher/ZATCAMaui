@@ -241,6 +241,10 @@ namespace EGAZT.Droid.CustomRenderer
             {
                 _hybridWebView.InvokeAction("navigateToUnlockAccountPage");
             }
+            if (url.ToString().Contains("IsSIGNUP=Y"))
+            {
+                _hybridWebView.InvokeAction("navigateToVATIndividualSignupPage");
+            }
 
             if (url.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
             {

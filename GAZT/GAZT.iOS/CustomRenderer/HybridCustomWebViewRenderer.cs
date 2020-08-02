@@ -131,6 +131,10 @@ namespace GAZT.iOS.CustomRenderer
                 element.InvokeAction("navigateToUnlockAccountPage");
             }
 
+            if (apiUrl.ToString().Contains("IsSIGNUP=Y"))
+            {
+                element.InvokeAction("navigateToVATIndividualSignupPage");
+            }
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
             {
                 App.IsLoginCalled = true;

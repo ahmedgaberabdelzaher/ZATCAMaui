@@ -10,7 +10,7 @@ using Microsoft.AppCenter.Distribute;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Globalization; 
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;

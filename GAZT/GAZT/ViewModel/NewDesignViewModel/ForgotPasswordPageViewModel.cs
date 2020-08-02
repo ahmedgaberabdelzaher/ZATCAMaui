@@ -1660,7 +1660,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             VerificationCodeVisibility = true;
                              string _mobileNumber  = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                            OTPSentOnThisMobileNumber = AppResources.NDPleaseEnterVerificationSenttomobile + MobileNumber;
+                            OTPSentOnThisMobileNumber = AppResources.MobileNumber + MobileNumber;
                          
                            
 
@@ -2002,11 +2002,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (forgotPassword != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                             {
                                 StartPage = StartPage + 1;
-                                RecoverPasswordLayout = true;
+                              //  RecoverPasswordLayout = true;
                                 // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
                                 NewPasswordLayoutVisibility = false;
                                 OTPLayoutVisibility = false;
-                                NavigateToLoginLinkVisibility = true;
+                                //  NavigateToLoginLinkVisibility = true;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    _navigationService.NavigateTo(App.GAZTNewDesignRecoverPasswordPageView);
+                                });
+
                                 ForgotPasswordUserNameChangedMessage = AppResources.ZZYourPasswordhasbeenChangedsuccessfully;
                                 //  _navigationService.GoBack();
                             }
@@ -2338,7 +2343,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetIDNumberEnability = false;
             PasswordCardBackgroundColor = Color.White;
             UserNameCardBackgroundColor = Color.White;
-
+            Email = string.Empty;
             TxtTIN = string.Empty;
             if (TINs != null && TINs.Count > 0)
                 TINs.Clear();
