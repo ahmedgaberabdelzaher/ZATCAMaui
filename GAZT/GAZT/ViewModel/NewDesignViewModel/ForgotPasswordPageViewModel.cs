@@ -342,6 +342,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _setIDNumberEnability = false;
+        public bool SetIDNumberEnability
+        {
+            get
+            {
+                return _setIDNumberEnability;
+            }
+            set
+            {
+                _setIDNumberEnability = value;
+                RaisePropertyChanged("SetIDNumberEnability");
+            }
+        }
+
+
+        
+
 
         private bool _forgotUserNameCardLayoutVisibility = false;
         public bool ForgotUserNameCardLayoutVisibility
@@ -443,6 +460,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("PasswordTextColor");
             }
         }
+
+
+        private string _oTPSentOnThisMobileNumber = string.Empty;
+        public string OTPSentOnThisMobileNumber
+        {
+            get
+            {
+                return _oTPSentOnThisMobileNumber;
+            }
+            set
+            {
+                _oTPSentOnThisMobileNumber = value;
+                RaisePropertyChanged("OTPSentOnThisMobileNumber");
+            }
+        }
+
+
+        
 
         // New Property Ends
 
@@ -1260,8 +1295,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (NewPassword.Equals(ConfirmPassword))
                             {
                                 ChangePassword();
-
-                                // PasswordLayoutVisibility = true;
                             }
                             else
                             {
@@ -1557,8 +1590,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             DefaultCardLayoutVisibility = false;
                             UserIDLayoutVisibility = false;
                             VerificationCodeVisibility = true;
-
+                             string _mobileNumber  = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
+                            MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            OTPSentOnThisMobileNumber = AppResources.NDPleaseEnterVerificationSenttomobile + MobileNumber;
                             countDownSeconds = 120;
+                            //        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
 
                             //    Device.BeginInvokeOnMainThread(() =>
                             //    {
@@ -2221,7 +2257,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             OTPThirdDigit = string.Empty;
             OTPFourthDigit = string.Empty;
             IsAPICalledSuccessfully = false;
-
+            SetIDNumberEnability = false;
 
         }
 
