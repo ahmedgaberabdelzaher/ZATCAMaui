@@ -61,6 +61,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _iDNumber = value;
+                //if (string.IsNullOrEmpty(IDNumber))
+                //{
+                //    IsTinDopDownVisible = false;
+                //}
                 RaisePropertyChanged("IDNumber");
             }
         }
@@ -835,7 +839,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     ButtonDisableColor = Color.FromHex("#005e4b");
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
-                    IsResendOTPEnabled = true;
+                   // IsResendOTPEnabled = true;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
@@ -1315,6 +1319,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         SendOTPToRegisterMobileNumber();
                                     }
                                 }
+                                else
+                                {
+                                    viewModel.IsTinDopDownVisible = false;
+                                }
                             }
                             else
                             {
@@ -1400,12 +1408,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
+            
             OnResendOTPClicked = new Command(() =>
             {
-                SendOTPToRegisterMobileNumber();
+                if(IsResendOTPEnabled)
+                {
+                    SendOTPToRegisterMobileNumber();
+                }
+              
             });
 
-            // OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
+
+          //  OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
 
         }
         #endregion Constructor
@@ -1635,6 +1649,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
                         {
+                            ContinueButtonEnability = true;
+                            IsResendOTPEnabled = false;
                             StartOTPTimer();
                             IsAPICalledSuccessfully = true;
 
@@ -1645,9 +1661,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                              string _mobileNumber  = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                             OTPSentOnThisMobileNumber = AppResources.NDPleaseEnterVerificationSenttomobile + MobileNumber;
-                            countDownSeconds = 120;
-                            ContinueButtonEnability = true;
-                            IsResendOTPEnabled = false;
+                         
+                           
 
                             //        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
 
@@ -2321,6 +2336,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             IsAPICalledSuccessfully = false;
             SetIDNumberEnability = false;
+            PasswordCardBackgroundColor = Color.White;
+            UserNameCardBackgroundColor = Color.White;
 
             TxtTIN = string.Empty;
             if (TINs != null && TINs.Count > 0)

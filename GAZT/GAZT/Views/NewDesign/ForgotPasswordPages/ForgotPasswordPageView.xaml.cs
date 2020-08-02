@@ -27,9 +27,6 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.ClearData();
             SetLTR();
             viewModel.StartPage = 1;
-
-         
-            CustomNavigation.SetBackButtonTitle(this, " ");
             NavigationPage.SetBackButtonTitle(this, " ");
         }
 
@@ -169,6 +166,14 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             }
         }
 
+        // * Managing Tins drop down visibility
+        void UserNameTextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if(string.IsNullOrEmpty(viewModel.Email))
+            {
+                viewModel.IsTinDopDownVisible = false;
+            }
+        }
         void ResetPasswordValidationConditions()
         {
             viewModel.MinEight = Color.DarkGray;
