@@ -304,6 +304,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                         CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
                         CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
                         CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
+                        CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
+
                         CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
                         CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
                         CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
@@ -448,6 +450,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                 CreateModel.APassword = TxtPassword;
                 CreateModel.ASmsCode = TxtMobileNumberCode;
                 CreateModel.AEmailCode = TxtEmailCode;
+                CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
                 CreateModel.ASubmit = "X";
                 CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
                 string ResultFirstSubmit = await WebServiceManager.GAZTCreateAccountSubmit(CreateModel);

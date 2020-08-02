@@ -24,6 +24,7 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             InitializeComponent();
             
             this.BindingContext = viewModel = App.Locator.GAZTNewDesignOnBoardingAnimationPageView;
+            viewModel.NextButtonText = AppResources.ZZNext;
         }
 
         private void ChangeLangButton_Clicked(object sender, System.EventArgs e)
@@ -40,6 +41,7 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 App.changeFontFamily(App.appObj);
                 SetRTLDirection();
             }
+            viewModel.NextButtonText = AppResources.ZZNext;
         }
 
         public void SetRTLDirection()

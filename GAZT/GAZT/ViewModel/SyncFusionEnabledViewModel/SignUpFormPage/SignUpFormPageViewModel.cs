@@ -239,6 +239,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
                 RaisePropertyChanged("SelectCityList");
             }
         }
+
+        private string _mobileCountryCode = string.Empty;
+        public string MobileCountryCode
+        {
+            get
+            {
+                return _mobileCountryCode;
+            }
+            set
+            {
+                _mobileCountryCode = value;
+                RaisePropertyChanged("MobileCountryCode");
+            }
+        }
+
         private SignupCityResult _selectCityListPrev = null;
         public SignupCityResult SelectCityListPrev
         {

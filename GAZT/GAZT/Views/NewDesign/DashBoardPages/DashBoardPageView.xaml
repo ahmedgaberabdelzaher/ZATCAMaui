@@ -95,7 +95,7 @@
                                                                 </cards:SfCardView.Triggers>
                                                             </cards:SfCardView>
 
-                                                            <StackLayout Padding="10,5,10,5" VerticalOptions="Center">
+                                                            <StackLayout Padding="10,5,10,0" VerticalOptions="Center">
                                                                 <custom:CustomLabel Text="{Binding Incotext}" TextColor="Black" IsVisible="{Binding IsUnSubmittedReturn}" />
 
                                                                 <custom:CustomLabel Text="{Binding Txt50}" TextColor="Black" IsVisible="{Binding IsPaymentOverdue}" />
@@ -490,7 +490,10 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Billboard}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel x:Name="Label_MyBillsMenuItem" Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Label_MyBills"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
@@ -500,7 +503,10 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronUpCircle}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel x:Name="Label_MyRetunsMenuItem" Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 

@@ -89,6 +89,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             var dataItem = e.Item as InternationalMobileData;
             MessagingCenter.Send(this, "SelectedItem", dataItem.Telefto.ToString());
+
+            MessagingCenter.Send(this, "SelectedCountryCode", dataItem.Land1.ToString());
+            Console.WriteLine("MobileCountryCode", dataItem.Land1.ToString());
             PopupNavigation.Instance.PopAsync();
 
         }

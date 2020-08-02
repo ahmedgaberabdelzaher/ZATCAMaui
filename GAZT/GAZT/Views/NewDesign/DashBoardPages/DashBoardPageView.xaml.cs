@@ -194,5 +194,17 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 }
             }
         }
+
+        private void Label_MyBills(object sender, EventArgs e)
+        {
+            BillInfo billInfo = new BillInfo();
+            billInfo.BillTypeName = "All";
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+        }
+
+        private void Label_MyRetuns_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
+        }
     }
 }

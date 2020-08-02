@@ -61,6 +61,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _iDNumber = value;
+                //if (string.IsNullOrEmpty(IDNumber))
+                //{
+                //    IsTinDopDownVisible = false;
+                //}
                 RaisePropertyChanged("IDNumber");
             }
         }
@@ -835,7 +839,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     ButtonDisableColor = Color.FromHex("#005e4b");
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
-                    IsResendOTPEnabled = true;
+                   // IsResendOTPEnabled = true;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
@@ -1315,6 +1319,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         SendOTPToRegisterMobileNumber();
                                     }
                                 }
+                                else
+                                {
+                                    IsTinDopDownVisible = false;
+                                }
                             }
                             else
                             {
@@ -1400,12 +1408,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
+            
             OnResendOTPClicked = new Command(() =>
             {
-                SendOTPToRegisterMobileNumber();
+                if(IsResendOTPEnabled)
+                {
+                    SendOTPToRegisterMobileNumber();
+                }
+              
             });
 
-            // OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
+
+          //  OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
 
         }
         #endregion Constructor
@@ -1635,6 +1649,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
                         {
+                            ContinueButtonEnability = true;
+                            IsResendOTPEnabled = false;
                             StartOTPTimer();
                             IsAPICalledSuccessfully = true;
 
@@ -1644,10 +1660,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             VerificationCodeVisibility = true;
                              string _mobileNumber  = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                            OTPSentOnThisMobileNumber = AppResources.NDPleaseEnterVerificationSenttomobile + MobileNumber;
-                            countDownSeconds = 120;
-                            ContinueButtonEnability = true;
-                            IsResendOTPEnabled = false;
+                            OTPSentOnThisMobileNumber = AppResources.MobileNumber + MobileNumber;
+                         
+                           
 
                             //        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
 
@@ -1987,11 +2002,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (forgotPassword != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                             {
                                 StartPage = StartPage + 1;
-                                RecoverPasswordLayout = true;
+                              //  RecoverPasswordLayout = true;
                                 // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
                                 NewPasswordLayoutVisibility = false;
                                 OTPLayoutVisibility = false;
-                                NavigateToLoginLinkVisibility = true;
+                                //  NavigateToLoginLinkVisibility = true;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    _navigationService.NavigateTo(App.GAZTNewDesignRecoverPasswordPageView);
+                                });
+
                                 ForgotPasswordUserNameChangedMessage = AppResources.ZZYourPasswordhasbeenChangedsuccessfully;
                                 //  _navigationService.GoBack();
                             }
@@ -2321,6 +2341,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             IsAPICalledSuccessfully = false;
             SetIDNumberEnability = false;
+            PasswordCardBackgroundColor = Color.White;
+            UserNameCardBackgroundColor = Color.White;
+            Email = string.Empty;
+            TxtTIN = string.Empty;
+            if (TINs != null && TINs.Count > 0)
+                TINs.Clear();
+
 
         }
 
@@ -2352,8 +2379,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 ContinueButtonEnability = false;
                 IsResendOTPEnabled = true;
-               
-                otpTimer.Stop();
+
+                               otpTimer.Stop();
             }
         }
 

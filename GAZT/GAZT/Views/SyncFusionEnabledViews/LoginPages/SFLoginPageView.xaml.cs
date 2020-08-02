@@ -40,6 +40,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             try
             {
                 InitializeComponent();
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
                 this.BindingContext = viewModel = App.Locator.SFLoginPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
@@ -111,7 +112,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 }
                 else
                 {
-                    this.BackgroundImageSource = "sf_LoginBackground.png";
+                    this.BackgroundImageSource = "partials_background.png";
                     //  outerStack.Orientation = StackOrientation.Vertical;
                 }
             }
@@ -332,6 +333,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 hybridWebView.Opacity = 0;
                                 await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
                             }
+                            if (data == "navigateToVATIndividualSignupPage")
+                            {
+                                hybridWebView.Opacity = 0;
+                                viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+
+                            }
+                            
 
                             if (data == "error")
                             {

@@ -175,7 +175,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             
             Device.BeginInvokeOnMainThread( () =>
             {
-                _navigationService.NavigateTo(App.StyleTestUIPageView);
+                _navigationService.NavigateTo(App.IndividualRegistrationPageView);
+                //_navigationService.NavigateTo(App.StyleTestUIPageView);
                 // IsLoading = false;
             });
         }

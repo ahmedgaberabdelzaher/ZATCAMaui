@@ -52,6 +52,7 @@ namespace GAZT.Models
         public string ACompBaseId { get; set; }
         public string AAgree { get; set; }
         public string AAgreeTm { get; set; }
+        public string ACountry { get; set; }
     }
     public class SignUpModelRootObject
     {

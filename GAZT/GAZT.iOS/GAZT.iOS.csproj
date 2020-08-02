@@ -1404,4 +1404,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\unsubmitted%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\onboarding%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\onboarding%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\onboarding.png" />
+  </ItemGroup>
 </Project>

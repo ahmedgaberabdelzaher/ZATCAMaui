@@ -28,5 +28,6 @@ namespace GAZT.Models
         public string APassword { get; set; }
         public string ASubmit { get; set; }
         public string Fbnum { get; set; }
+        public string ACountry { get; set; }
     }
 }
