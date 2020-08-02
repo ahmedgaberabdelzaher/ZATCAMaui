@@ -4315,7 +4315,6 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Dear Taxpayer,
 The account is now unlocked, and the password reset for TIN xxxxxx successfully.</value>
   </data>
-
   <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
     <value>The entered confirmation password does not match with the original entered password.</value>
   </data>
@@ -4349,7 +4348,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>Deregistration Date</value>
   </data>
-    <data name="TinDeregistrationFathersName" xml:space="preserve">
+  <data name="TinDeregistrationFathersName" xml:space="preserve">
     <value>Father's Name</value>
   </data>
   <data name="TinDeregistrationGrandFathersName" xml:space="preserve">
@@ -4509,5 +4508,8 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="NDReviewBelow" xml:space="preserve">
     <value>Review the Below Details</value>
+  </data>
+  <data name="ZZZZNextCommitments" xml:space="preserve">
+    <value>Next Commitments</value>
   </data>
 </root>

@@ -1677,7 +1677,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile number.
+        ///   Looks up a localized string similar to Mobile Number.
         /// </summary>
         public static string MobileNumber {
             get {
@@ -1956,7 +1956,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Enter Verification code sent to your mobile.
+        ///   Looks up a localized string similar to Please enter verification code sent to your mobile.
         /// </summary>
         public static string NDPleaseEnterVerificationSenttomobile {
             get {
@@ -2064,7 +2064,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username.
+        ///   Looks up a localized string similar to User Name.
         /// </summary>
         public static string NDUsername {
             get {
@@ -2127,7 +2127,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to New Password.
         /// </summary>
         public static string NewPassword {
             get {
@@ -2505,7 +2505,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recover UserName.
+        ///   Looks up a localized string similar to Recover User Name.
         /// </summary>
         public static string RecoverUserName {
             get {
@@ -3126,15 +3126,6 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The entered confirmation password does not match with the original entered password..
-        /// </summary>
-        public static string UnlockAccountCompleteRequiredFields {
-            get {
-                return ResourceManager.GetString("UnlockAccountCompleteRequiredFields", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please create a new password.
         /// </summary>
         public static string UnlockAccountCreateNewPassword {
@@ -3154,7 +3145,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Dear Taxpayer,
-        ///The account was unlocked, and the password reset for TIN xxxxxx successfully..
+        ///The account is now unlocked, and the password reset for TIN xxxxxx successfully..
         /// </summary>
         public static string UnlockAccountPasswordChangedSuccessfully {
             get {
@@ -3163,7 +3154,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kindly complete the required fields to be able to proceed..
+        ///   Looks up a localized string similar to The entered confirmation password does not match with the original entered password..
         /// </summary>
         public static string UnlockAccountPasswordsDoesntMatch {
             get {
@@ -10946,7 +10937,19 @@ namespace EGAZT {
             }
         }
         
-        public static string AccountUnlocked {
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        public static string ZZZZCountry {
+            get {
+                return ResourceManager.GetString("ZZZZCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a secure Password.
+        /// </summary>
+        public static string ZZZZCreateasecurePassword {
             get {
                 return ResourceManager.GetString("ZZZZCreateasecurePassword", resourceCulture);
             }
