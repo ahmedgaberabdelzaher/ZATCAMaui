@@ -4277,9 +4277,9 @@
     <value>تحقق</value>
   </data>
   <data name="UnlockAccountResetPassword" xml:space="preserve">
-    <value>المرور كلمة ت</value>
+    <value>تعيين كلمة المرور</value>
   </data>
-  <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
+    <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
     <value>كلمات المرور المدخلة غير متطابقة، يرجى￼ التأكد من أن كلمات المرور التي تم إدخالها متطابقة.</value>
   </data>
   <data name="EnterVerificationCodeSentToMobile" xml:space="preserve">
@@ -4291,9 +4291,7 @@
   <data name="UnlockAccountPasswordChangedSuccessfully" xml:space="preserve">
     <value>عزيزي المكلف ،￼￼￼ تم إعادة فتح الحساب وتعيين كلمة المرور بنجاح للرقم المميز xxxxxx.</value>
   </data>
-  <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
-    <value>الرجاء التحقق من الرقم المميز.</value>
-  </data>
+
   <data name="AccountUnlocked" xml:space="preserve">
     <value>تم فتح الحساب</value>
   </data>
