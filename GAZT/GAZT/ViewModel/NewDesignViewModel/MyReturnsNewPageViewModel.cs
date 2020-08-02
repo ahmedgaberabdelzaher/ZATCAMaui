@@ -1649,14 +1649,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
 
                     FilterOnBasisOfTaxType();
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.StatusTxt != "X"));
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
+                    if (ListToDisplay != null)
+                    {
+                        foreach (var item in ListToDisplay)
+                        {
+                            item.StatusMessage = "unsubmitted";
+                        }
+                    }
                 }
 
                 if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
                 {
                     FilterOnBasisOfTaxType();
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.StatusTxt == "X"));
-                }
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
+                    
+
+                        if (ListToDisplay != null)
+                        {
+                            foreach (var item in ListToDisplay)
+                            {
+                                item.StatusMessage = "overdue";
+                            }
+                        }
+
+                    }
+               
             }
             catch (Exception ex)
             { }
@@ -1690,9 +1708,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
                {
-                new ChipModel(){Text =AppResources.Submitted, TemplateType = "Submitted", ImageSource="ic_check_circle.png"},
-                new ChipModel(){Text =AppResources.OverDue, TemplateType = "OverDue",ImageSource = "ic_loading.png"},
-                new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "ic_money.png"},
+                new ChipModel(){Text =AppResources.Submitted, TemplateType = "Submitted", ImageSource="submited.png"},
+                new ChipModel(){Text =AppResources.OverDue, TemplateType = "OverDue",ImageSource = "unsubmitted.png"},
+                new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "clockNew.png"},
 
                };
             
