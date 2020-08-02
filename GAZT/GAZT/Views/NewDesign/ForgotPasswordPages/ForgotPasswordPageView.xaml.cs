@@ -7,6 +7,7 @@ using System.Timers;
 using System;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZT.CustomControl;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
@@ -17,7 +18,6 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         private string _LblCountDownTimer;
 
         GAZTNewDesignForgotPasswordPageViewModel viewModel;
-        List<BorderlessEntry> labels;
         public GAZTNewDesignForgotPasswordPageView()
         {
 
@@ -28,68 +28,16 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             SetLTR();
             viewModel.StartPage = 1;
 
-            
-            labels = new List<BorderlessEntry>();
-
-            labels.Add(OTPFirstDigit);
-            labels.Add(OTPSecondDigit);
-            labels.Add(OTPThirdDigit);
-            labels.Add(OTPFourthDigit);
-
+         
+            CustomNavigation.SetBackButtonTitle(this, " ");
+            NavigationPage.SetBackButtonTitle(this, " ");
         }
 
-        private void Editor_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var oldText = e.OldTextValue;
-            var newText = e.NewTextValue;
-
-            Editor editor = sender as Editor;
-
-
-            string editorStr = editor.Text;
-            //if string.length lager than max length
-            if (editorStr.Length > 4)
-            {
-                editor.Text = editorStr.Substring(0, 4);
-            }
-
-            //dismiss keyboard
-            if (editorStr.Length >= 4)
-            {
-                editor.Unfocus();
-            }
-
-            for (int i = 0; i < labels.Count; i++)
-            {
-                Entry lb = labels[i];
-
-                if (i < editorStr.Length)
-                {
-                    lb.Text = editorStr.Substring(i, 1);
-                }
-                else
-                {
-                    lb.Text = "";
-                }
-            }
-        }
-
-
+       
         private void SetLTR()
         {
             if (App.IsArabic)
             {
-                //switch (Xamarin.Forms.Device.RuntimePlatform)
-                //{
-
-                //    case Xamarin.Forms.Device.iOS:
-                //        LandingCreateAccountNote.LineHeight = .6;
-                //        break;
-                //    case Xamarin.Forms.Device.Android:
-                //        LandingCreateAccountNote.LineHeight = 1.25;
-                //        break;
-                //}
-
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
             else
@@ -158,5 +106,76 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             Picker_Tins.SelectedItem = selectedTinId;
             viewModel.SelectedTinId = selectedTinId;
         }
+
+
+        // * Forgot password : OTP Verification :
+        void OtpFirstEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPFirstDigit.Length > 0)
+            {
+                OTPSecondEntry.Focus();
+            }
+        }
+
+        void OtpSecondEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPSecondDigit.Length > 0)
+            {
+                OTPThirdEntry.Focus();
+            }
+        }
+
+        void OtpThirdEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPThirdDigit.Length > 0)
+            {
+                OTPFourthEntry.Focus();
+            }
+        }
+
+        void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+
+        }
+
+        void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+
+        }
+
+
+        // * Password Validation
+        void NewPassword_TextChanged(object sender, FocusEventArgs e)
+        {
+            this.ResetPasswordValidationConditions();
+
+            bool ValidPassword = UtilityManager.ValidateNewPassword(viewModel.NewPassword);
+
+            if (ValidPassword)
+            {
+                viewModel.MinEight = Color.DarkGreen;
+                viewModel.CapsSmall = Color.DarkGreen;
+                viewModel.MaxSixteen = Color.DarkGreen;
+                viewModel.NumSymbol = Color.DarkGreen;
+
+                // check the new and confirm password condition
+            }
+            else
+            {
+                if (UtilityManager.ValidMinEight) { viewModel.MinEight = Color.DarkGreen; }
+                if (UtilityManager.ValidSmallL && UtilityManager.ValidCapsL) { viewModel.CapsSmall = Color.DarkGreen; }
+                if (UtilityManager.ValidMaxSixteen) { viewModel.MaxSixteen = Color.DarkGreen; }
+                if (UtilityManager.ValidNumber && UtilityManager.ValidSymbol) { viewModel.NumSymbol = Color.DarkGreen; }
+            }
+        }
+
+        void ResetPasswordValidationConditions()
+        {
+            viewModel.MinEight = Color.DarkGray;
+            viewModel.CapsSmall = Color.DarkGray;
+            viewModel.MaxSixteen = Color.DarkGray;
+            viewModel.NumSymbol = Color.DarkGray;
+        }
+
     }
 }
