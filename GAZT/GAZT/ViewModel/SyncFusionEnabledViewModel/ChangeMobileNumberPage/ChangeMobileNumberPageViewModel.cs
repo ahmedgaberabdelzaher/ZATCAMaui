@@ -5,7 +5,9 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
+using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -298,8 +300,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                             ClearMobileData();
                             Device.BeginInvokeOnMainThread(async () =>
                             {
+                               
                                 _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo() { _ComingToOTPVerificationScreenFrom = NavigatingFromMobile, NavigateToThisService = String.Empty });
-                              //  _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
+                                //  _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
                             });
                         }
                     }
@@ -325,6 +328,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                 });
             }
         }
+
+       
         public void OnPageLoad()
         {
             if (Device.RuntimePlatform == Device.iOS)
@@ -384,6 +389,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                             break;
                         }
                     }
+                    //_navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
                     _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                     _navigation.NavigationStack.ToList().Clear();
                     //var _navigation = Application.Current.MainPage.Navigation;

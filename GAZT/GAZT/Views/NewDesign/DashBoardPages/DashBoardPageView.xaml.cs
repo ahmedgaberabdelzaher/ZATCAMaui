@@ -125,6 +125,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 3);
         }
 
+   
         private void TappedOnSignleReturns(object sender, EventArgs e)
         {
             string controltype = sender.GetType().ToString();
@@ -205,6 +206,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void Label_MyRetuns_Tapped(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
+        }
+        private void Label_MyProfile_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.TaxPayerProfilePageView);
         }
     }
 }
