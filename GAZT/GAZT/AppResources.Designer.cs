@@ -7242,6 +7242,18 @@ namespace EGAZT {
             }
         }
         
+        public static string UnlockAccountPasswordsDoesntMatch {
+            get {
+                return ResourceManager.GetString("UnlockAccountPasswordsDoesntMatch", resourceCulture);
+            }
+        }
+        
+        public static string UnlockAccountCompleteRequiredFields {
+            get {
+                return ResourceManager.GetString("UnlockAccountCompleteRequiredFields", resourceCulture);
+            }
+        }
+        
         public static string AccountUnlocked {
             get {
                 return ResourceManager.GetString("AccountUnlocked", resourceCulture);

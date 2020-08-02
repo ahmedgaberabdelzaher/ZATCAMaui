@@ -4315,6 +4315,12 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Dear Taxpayer,
 The account was unlocked, and the password reset for TIN xxxxxx successfully.</value>
   </data>
+ <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
+    <value>Kindly complete the required fields to be able to proceed.</value>
+  </data>
+  <data name="UnlockAccountCompleteRequiredFields" xml:space="preserve">
+    <value>The entered confirmation password does not match with the original entered password.</value>
+  </data>
   <data name="AccountUnlocked" xml:space="preserve">
     <value>Account Unlocked</value>
   </data>
