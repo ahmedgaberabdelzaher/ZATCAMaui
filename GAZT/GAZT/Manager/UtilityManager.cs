@@ -24,8 +24,20 @@ namespace GAZT.Manager
         public static string mobileNumberValidation = "^([0-9]{9,9})$";
         public static string EnglishString = "^[a-zA-Z0-9,./+&-]*$";
         public static string IBANValidator = @"^[S][A]\d{22}$";
+
+
+        public static string NewPasswordValidationRegx = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\\]).{8,16}$";
+        public static bool ValidMinEight = false;
+        public static bool ValidCapsL = false;
+        public static bool ValidSmallL = false;
+        public static bool ValidMaxSixteen = false;
+        public static bool ValidNumber = false;
+        public static bool ValidSymbol = false;
+
+
         public static string TPTaxAvalable = string.Empty;
         public static string IsZakatAvailable = string.Empty;
+
         #endregion
         #region Method
         public static bool IsValidEmailAddress(string EmailAddress)
@@ -773,6 +785,83 @@ namespace GAZT.Manager
             return index;
         }
 
+        // * New Password Validation
+        public static bool ValidateNewPassword(string password)
+        {
+            bool valid = Regex.IsMatch(password, NewPasswordValidationRegx);
+            CharValidation(password);
+            return valid;
+        }
+
+        // * Character wise validation
+        private static void CharValidation(string passwordchar)
+        {
+            int validConditions = 0;
+
+            // * Small
+            foreach (char c in passwordchar)
+            {
+                if (c >= 'a' && c <= 'z')
+                {
+                    validConditions++;
+                    break;
+                }
+            }
+            ValidSmallL = NewPasswordValidation(validConditions);
+
+            // * Caps
+            foreach (char c in passwordchar)
+            {
+                if (c >= 'A' && c <= 'Z')
+                {
+                    validConditions++;
+                    break;
+                }
+            }
+            ValidCapsL = NewPasswordValidation(validConditions);
+
+            // * Numbers
+            foreach (char c in passwordchar)
+            {
+                if (c >= '0' && c <= '9')
+                {
+                    validConditions++;
+                    break;
+                }
+            }
+            ValidNumber = NewPasswordValidation(validConditions);
+
+            // * Special Char
+            char[] special = { '!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=' };
+            if (passwordchar.IndexOfAny(special) == -1) validConditions = 0;
+            else validConditions = 1;
+
+            ValidSymbol = NewPasswordValidation(validConditions);
+            ValidMinEight = PasswordMinLValidation(passwordchar.Length);
+            ValidMaxSixteen = PasswordMaxLValidation(passwordchar.Length);
+        }
+
+        // * Password : Number + Symbol + Caps + Small : Validation
+        private static bool NewPasswordValidation(int validConditions)
+        {
+            if (validConditions == 0) return false;
+            else return true;
+        }
+
+        // * Password Length Validation - Min 8
+        private static bool PasswordMinLValidation(int passwordLength)
+        {
+            if (passwordLength >= 8) return true;
+            else return false;
+        }
+
+        // * Password Length Validation - Max 16
+        private static bool PasswordMaxLValidation(int passwordLength)
+        {
+            if (passwordLength >= 8 && passwordLength <= 16) return true;
+            else return false;
+        }
+
     }
    
 
@@ -897,5 +986,9 @@ namespace GAZT.Manager
         Release = 54,
         ReviseDownPayment = 55
     }
+
+
+    
+
 }
 
