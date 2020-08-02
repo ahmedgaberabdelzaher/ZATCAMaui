@@ -82,7 +82,7 @@
                 DotPlacement="None"
                 EnableLooping="False"
                 EnableSwiping="True"
-                HorizontalOptions="FillAndExpand"
+                HorizontalOptions="CenterAndExpand"
                 ItemTemplate="{StaticResource ItemTemplate}"
                 ItemsSource="{Binding Boardings}"
                 NavigationDirection="Horizontal"
