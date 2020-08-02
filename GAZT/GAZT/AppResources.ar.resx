@@ -4447,6 +4447,9 @@
   <data name="NDTaxManagement" xml:space="preserve">
     <value>Tax Management</value>
   </data>
+   <data name="NDTotal" xml:space="preserve">
+    <value>الإجمالي</value>
+  </data>
   <data name="NDEmail" xml:space="preserve">
     <value>Email</value>
     <comment>New Design Form5</comment>

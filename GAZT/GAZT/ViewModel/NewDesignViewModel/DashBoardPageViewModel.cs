@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -180,6 +181,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Task GetBillsTask = null;
             Task GetReturnsTask = null;
 
+            //BillCount = string.Empty;
+
+            //if (BillsAndReturnsCommitments != null)
+            //{
+            //    BillsAndReturnsCommitments.Clear();
+            //}
+
             if (App.TP != null)
             {
                 GetDashboardDataTask = Task.Run(() =>
@@ -313,7 +321,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (BillsAndReturnsCommitments != null)
                 {
                     DateTime Today = DateTime.Now;
-                    var BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitments.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
+                    var BillsAndReturnsCommitmentsLocal = new List<OverduePaymentAndUnSubmittedReturn>();
+                    var BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitments.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
+                    try
+                    {
+                       
+
+                        if (BillsAndReturnsCommitmentsOverdurItems != null && BillsAndReturnsCommitmentsOverdurItems.Count > 0)
+                        {
+                            foreach (OverduePaymentAndUnSubmittedReturn temp in BillsAndReturnsCommitmentsOverdurItems)
+                            {
+                                BillsAndReturnsCommitmentsLocal.Add(temp);
+                            }
+                        }
+
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
                     if (BillsAndReturnsCommitmentsLocal.Count > 3)
                     {
                         if (BillsAndReturnsCommitmentsLocal.Count == 4)
@@ -421,6 +448,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             List<BillTypeCorrepsondingCountAndAmount> SegregatedBillTypeCorrepsondingCountAndAmount = new List<BillTypeCorrepsondingCountAndAmount>();
             ChartColorCollection ColorsChild = new ChartColorCollection();
             int iBillsCount = 0;
+            BillCount = Convert.ToInt32(iBillsCount).ToString();
 
             try
             {
@@ -456,7 +484,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         try
                         {
                             
-
+                                
                                 PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
                                 PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
                                 PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
@@ -606,6 +634,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             SegregatedReturnTypeAndCorrepsondingCount.Add(SubmittedReturnTypeAndCorrepsondingCount);
                         }
 
+                        //Overdue
+                        if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
+                        {
+                            ReturnTypeAndCorrepsondingCount OverdueReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
+
+                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
+                            String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(DueIcrstr))
+                            {
+                                DueIcrstr = "0";
+                            }
+                            else if (DueIcrstr.Substring(0, 1) == ".")
+                            {
+                                DueIcrstr = "0" + DueIcrstr;
+                            }
+                            OverdueReturnTypeAndCorrepsondingCount.ReturnCount = DueIcrstr;
+                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.OverDue;
+
+                            SegregatedReturnTypeAndCorrepsondingCount.Add(OverdueReturnTypeAndCorrepsondingCount);
+                        }
+
                         //UnSubmitted
                         if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
                         {
@@ -627,26 +676,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             SegregatedReturnTypeAndCorrepsondingCount.Add(UnSubmittedReturnTypeAndCorrepsondingCount);
                         }
 
-                        //Overdue
-                        if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
-                        {
-                            ReturnTypeAndCorrepsondingCount OverdueReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
-
-                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
-                            String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
-                            if (string.IsNullOrEmpty(DueIcrstr))
-                            {
-                                DueIcrstr = "0";
-                            }
-                            else if (DueIcrstr.Substring(0, 1) == ".")
-                            {
-                                DueIcrstr = "0" + DueIcrstr;
-                            }
-                            OverdueReturnTypeAndCorrepsondingCount.ReturnCount = DueIcrstr;
-                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.OverDue;
-
-                            SegregatedReturnTypeAndCorrepsondingCount.Add(OverdueReturnTypeAndCorrepsondingCount);
-                        }
+                       
 
                         if (SegregatedReturnTypesAndCorrepsondingCounts == null)
                             SegregatedReturnTypesAndCorrepsondingCounts = new ObservableCollection<ReturnTypeAndCorrepsondingCount>();
@@ -731,6 +761,70 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
             }
             return amountWithComma;
+        }
+
+        public async Task LogOut()
+        {
+            await Task.Run(() =>
+            {
+                App.DisplayProgressView();
+            });
+            if (App.TP != null)
+                App.TP = null;
+            if (App.PreviousIsArabic)
+            {
+                String langName = "ar-AE";
+                AppResources.Culture = new CultureInfo(langName);
+            }
+            else
+            {
+                String langName = "en-US";
+                AppResources.Culture = new CultureInfo(langName);
+            }
+
+            try
+            {
+                await WebServiceManager.GAZTLogOff();
+            }
+            catch
+            {
+
+            }
+
+            await Task.Run(() =>
+            {
+                App.HideProgressView();
+            });
+
+            var _navigation = Application.Current.MainPage.Navigation;
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.GAZTNewDesignOnBoardingAnimationPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            App.IsLogOut = true;
+            App.IsLoginCalled = false;
+            App.IsSamlApiCalledAndroid = false;
+
+            try
+            {
+                App.httpClientHandler = new HttpClientHandler();
+                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            _navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+            _navigation.NavigationStack.ToList().Clear();
+            //var _navigation = Application.Current.MainPage.Navigation;
+            //_navigation.PopToRootAsync();
         }
         #endregion
     }
