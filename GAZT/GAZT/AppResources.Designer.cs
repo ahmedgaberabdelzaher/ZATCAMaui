@@ -7314,6 +7314,36 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationFathersName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationFathersName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationGrandFathersName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationGrandFathersName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationFamilyName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationFamilyName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationName1 {
+            get {
+                return ResourceManager.GetString("TinDeregistrationName1", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationName2 {
+            get {
+                return ResourceManager.GetString("TinDeregistrationName2", resourceCulture);
+            }
+        }
+        
         public static string SelectTheOptionAndCompleteDetails {
             get {
                 return ResourceManager.GetString("SelectTheOptionAndCompleteDetails", resourceCulture);
