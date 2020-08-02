@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -44,6 +45,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 this.BindingContext = viewModel = App.Locator.SFLoginPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
+                CheckFirstTimeorNot();
                 GetDeviceID();
                 viewModel.NavigateToThisService = strNavigateToThisService;
                 string lang = "AR";
@@ -78,6 +80,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             // ParentContainer.RaiseChild(BusyIndicator);
         }
 
+        public void CheckFirstTimeorNot()
+        {
+            Preferences.Set("first_TimeLoging_key", "False");
+            
+        }
         public SFLoginPageView()
         {
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
