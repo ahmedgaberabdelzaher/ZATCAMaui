@@ -77,7 +77,7 @@
                                                                 ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
                                                             <custom:BorderlessEntry x:Name="EntryTIN" Text="{Binding TxtTIN}" Placeholder="{x:Static custom2:AppResources.TIN}" FontSize="Small" TextColor="Black"
-                                                                                    PlaceholderColor="Gray" Keyboard="Telephone" IsSpellCheckEnabled="False" TextChanged="EntryTINNumber_TextChanged"  Unfocused="FrmTIN_Unfocused"
+                                                                                    PlaceholderColor="Gray" Keyboard="Numeric" IsSpellCheckEnabled="False" TextChanged="EntryTINNumber_TextChanged"  Unfocused="FrmTIN_Unfocused"
                                                                                     Focused="FrmTIN_Focused">
                                                                  <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
