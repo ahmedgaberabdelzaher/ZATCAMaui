@@ -69,7 +69,7 @@
                 Clicked="ChangeLangButton_Clicked" />
             </StackLayout>
 
-            <Image Source="logo_gazt.png" Aspect="AspectFit" Grid.Row="1"/>
+            <Image Source="onboarding.png" Aspect="AspectFit" Grid.Row="1"/>
 
             <!--  Rotator used to navigate the view  -->
             <rotator:SfRotator
