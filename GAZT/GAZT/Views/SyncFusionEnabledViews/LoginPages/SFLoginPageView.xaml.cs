@@ -40,6 +40,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             try
             {
                 InitializeComponent();
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
                 this.BindingContext = viewModel = App.Locator.SFLoginPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();

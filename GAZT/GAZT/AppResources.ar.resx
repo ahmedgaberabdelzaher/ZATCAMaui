@@ -4383,7 +4383,7 @@
     <value>أرقام ورموز</value>
   </data>
   <data name="NDPleaseEnterVerificationSenttomobile" xml:space="preserve">
-    <value>Please Enter Verification code sent to your mobile</value>
+    <value>Please enter verification code sent to your mobile</value>
   </data>
   <data name="NDResendVerificationCode" xml:space="preserve">
     <value>إعادة إرسال رمز التحقق</value>

@@ -217,7 +217,7 @@
     <value>Log In</value>
   </data>
   <data name="MobileNumber" xml:space="preserve">
-    <value>Mobile number</value>
+    <value>Mobile Number</value>
   </data>
   <data name="MyBills" xml:space="preserve">
     <value>My Bills</value>
@@ -4370,7 +4370,7 @@ The account was unlocked, and the password reset for TIN xxxxxx successfully.</v
     <value />
   </data>
   <data name="RecoverUserName" xml:space="preserve">
-    <value>Recover UserName</value>
+    <value>Recover User Name</value>
   </data>
   <data name="UsernameSentToTheRegisteredEmailEndMobileNumber" xml:space="preserve">
     <value> Username sent to the registered email and mobile number</value>
@@ -4398,7 +4398,7 @@ The account was unlocked, and the password reset for TIN xxxxxx successfully.</v
     <value>Select the option and complete the details</value>
   </data>
   <data name="NDUsername" xml:space="preserve">
-    <value>Username</value>
+    <value>User Name</value>
   </data>
   <data name="NDAtleast8character" xml:space="preserve">
     <value>At least 8 Characters long</value>
@@ -4419,7 +4419,7 @@ The account was unlocked, and the password reset for TIN xxxxxx successfully.</v
     <value>Numbers and Symbols</value>
   </data>
   <data name="NDPleaseEnterVerificationSenttomobile" xml:space="preserve">
-    <value>Please Enter Verification code sent to your mobile</value>
+    <value>Please enter verification code sent to your mobile</value>
   </data>
   <data name="NDTypeyourIDNumber" xml:space="preserve">
     <value>Type your ID Number</value>
