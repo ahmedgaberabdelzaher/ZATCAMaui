@@ -159,7 +159,7 @@
 
                                     <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
                                         <StackLayout Padding="10">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.All}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center" />
+                                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.All}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center" />-->
                                             <!--<AbsoluteLayout>-->
                                                 <chart:SfChart ChartPadding="15"  BackgroundColor="White" x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" IsVisible="true">
                                                     <!--<chart:SfChart.Legend>
@@ -214,9 +214,9 @@
                                             </AbsoluteLayout>-->
                                             <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                                                 <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
-                                                    <buttons:SfButton WidthRequest="95" HorizontalTextAlignment="Start"  TextColor="{StaticResource NeutralBlack}" Clicked="paidClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.Paid}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20"/>
-                                                    <buttons:SfButton WidthRequest="110" HorizontalTextAlignment="Start" TextColor="{StaticResource NeutralBlack}" Clicked="partiallyClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="partially_clock" ShowIcon="True" Text="Partially" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20"/>
-                                                    <buttons:SfButton WidthRequest="100" HorizontalTextAlignment="Start" TextColor="{StaticResource NeutralBlack}" Clicked="unPaidClicked"    FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.UnPaid}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  BackgroundColor="White" />
+                                                    <buttons:SfButton WidthRequest="95" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" TextColor="{StaticResource NeutralBlack}" Clicked="paidClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.Paid}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20"/>
+                                                    <buttons:SfButton WidthRequest="110" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" TextColor="{StaticResource NeutralBlack}" Clicked="partiallyClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="partially_clock" ShowIcon="True" Text="Partially" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20"/>
+                                                    <buttons:SfButton WidthRequest="100" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" TextColor="{StaticResource NeutralBlack}" Clicked="unPaidClicked"    FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.UnPaid}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  BackgroundColor="White" />
                                                 </StackLayout>
                                             </ScrollView>
                                         </StackLayout>
@@ -603,8 +603,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <!--<ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>-->
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0">
                             <yummy:PancakeView x:Name="HomeIndicator"  BackgroundColor="#005e4b" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
@@ -620,39 +620,42 @@
                                 <TapGestureRecognizer Tapped="OnHomeTapped"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
-                        <StackLayout Grid.Column="1">
+                        <!--<StackLayout Grid.Column="1">
                             <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
                             </yummy:PancakeView>
 
                             <Image Source="timeline.png">
-                                <!--<Image.Source>
+                                --><!--<Image.Source>
                                     <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FilterMenu}"/>
-                                </Image.Source>-->
+                                </Image.Source>--><!--
                             </Image>
-                        </StackLayout>
+                        </StackLayout>-->
                         <StackLayout Grid.Column="2">
                             <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
                             </yummy:PancakeView>
 
+                            <!--<buttons:SfButton  BackgroundColor="{StaticResource Primary}" BackgroundImage="quick_action_2.png" CornerRadius="14" BorderWidth="0"
+                 WidthRequest="20" HeightRequest="20" />-->
+                            
                             <Image Source="quick_action_2.png">
                                 <!--<Image.Source>
                                     <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.LightningBolt}"/>
                                 </Image.Source>-->
                             </Image>
                         </StackLayout>
-                        <StackLayout Grid.Column="3">
+                        <!--<StackLayout Grid.Column="3">
                             <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
                             </yummy:PancakeView>
 
                             <Image Source="chat.png">
-                                <!--<Image.Source>
+                                --><!--<Image.Source>
                                     <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Chat}"/>
-                                </Image.Source>-->
+                                </Image.Source>--><!--
                             </Image>
-                        </StackLayout>
+                        </StackLayout>-->
                         <StackLayout Grid.Column="4">
                             <yummy:PancakeView x:Name="MenuIndicator" BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0" >
 

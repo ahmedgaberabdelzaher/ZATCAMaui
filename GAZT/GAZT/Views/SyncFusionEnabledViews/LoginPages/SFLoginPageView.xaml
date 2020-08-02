@@ -34,7 +34,7 @@
             </Grid.ColumnDefinitions>
 
             <!--<egazt:HybridWebView Grid.Row="0" Opacity="0" x:Name="hybridWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>-->
-            <custom:CustomLabel Grid.Row="0"
+            <!--<custom:CustomLabel Grid.Row="0"
                 x:Name="BackLabel"
                        VerticalOptions="Start"
                 HorizontalOptions="Start"
@@ -45,7 +45,7 @@
                 <custom:CustomLabel.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
                 </custom:CustomLabel.GestureRecognizers>
-            </custom:CustomLabel>
+            </custom:CustomLabel>-->
 
 
             <Image Source="ic_burger.png" x:Name="HamburgerMenu"

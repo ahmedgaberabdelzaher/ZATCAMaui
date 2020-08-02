@@ -1413,4 +1413,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\onboarding.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quickAction2%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quickAction2%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\quickAction2.png" />
+  </ItemGroup>
 </Project>
