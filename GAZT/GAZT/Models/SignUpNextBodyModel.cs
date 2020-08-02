@@ -23,5 +23,6 @@ namespace GAZT.Models
         public string ATin { get; set; }
         public string ALicenceNo { get; set; }
         public string ACityCode { get; set; }
+        public string ACountry { get; set; }
     }
 }

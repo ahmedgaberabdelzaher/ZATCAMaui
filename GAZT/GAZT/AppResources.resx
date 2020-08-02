@@ -247,7 +247,7 @@
     <value>New mobile number</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value />
+    <value>New Password</value>
   </data>
   <data name="OverdueReturn" xml:space="preserve">
     <value>Overdue return</value>

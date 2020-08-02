@@ -333,6 +333,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 hybridWebView.Opacity = 0;
                                 await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
                             }
+                            if (data == "navigateToVATIndividualSignupPage")
+                            {
+                                hybridWebView.Opacity = 0;
+                                viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+
+                            }
+                            
 
                             if (data == "error")
                             {

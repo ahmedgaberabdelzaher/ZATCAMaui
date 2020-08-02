@@ -244,7 +244,7 @@
     <value>رقم الجوال الجديد</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>New Password</value>
+    <value>كلمة المرور الجديدة</value>
   </data>
   <data name="OverdueReturn" xml:space="preserve">
     <value>إقرارات متأخرة</value>
