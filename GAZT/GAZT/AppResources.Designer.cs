@@ -7619,5 +7619,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDReviewBelow", resourceCulture);
             }
         }
+        
+        public static string ZZZZNextCommitments {
+            get {
+                return ResourceManager.GetString("ZZZZNextCommitments", resourceCulture);
+            }
+        }
     }
 }

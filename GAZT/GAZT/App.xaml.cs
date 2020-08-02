@@ -2,6 +2,7 @@ using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;
+using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
 using GalaSoft.MvvmLight.Views;
 using GAZT.CustomControl;
 using GAZT.Models;
@@ -195,7 +196,17 @@ namespace EGAZT
             ActivityIndicatorView = new ActivityIndicatorPageView();
 
             VATDeclaration vAT = null;
-            CustomNavigation navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage;
+            bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
+            if(!hasKey)
+            {
+               navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+            }
+            else
+            {
+                navigationPage = new CustomNavigation(new SFLoginPageView(App.SFLandingPageView)) { BarTextColor = Color.White };
+            }
+            
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);

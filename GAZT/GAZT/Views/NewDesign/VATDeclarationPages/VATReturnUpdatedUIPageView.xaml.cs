@@ -64,5 +64,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView());
         }
+
+        private void OnDomesticRatedTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AdjustmentPopupPageView());
+        }
     }
 }

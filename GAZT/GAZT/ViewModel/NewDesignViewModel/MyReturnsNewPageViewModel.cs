@@ -1594,6 +1594,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
 
+                        if (_selectedChipFilterItem.TemplateType.Equals("All"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "all";
+                                }
+                            }
+
+                        }
+
                     }
 
 
@@ -1641,6 +1656,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 foreach (var item in ListToDisplay)
                                 {
                                     item.StatusMessage = "overdue";
+                                }
+                            }
+
+                        }
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("All"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "all";
                                 }
                             }
 
@@ -1697,6 +1727,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
 
+                        if (_selectedChipFilterItem.TemplateType.Equals("All"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "all";
+                                }
+                            }
+
+                        }
+
                     }
                 }
             }
@@ -1743,6 +1788,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 foreach (var item in ListToDisplay)
                                 {
                                     item.StatusMessage = "overdue";
+                                }
+                            }
+
+                        }
+
+                        if (_selectedChipFilterItem.TemplateType.Equals("All"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "all";
                                 }
                             }
 
@@ -1798,6 +1858,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
 
                         }
+                        if (_selectedChipFilterItem.TemplateType.Equals("All"))
+                        {
+                            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
+
+
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "all";
+                                }
+                            }
+
+                        }
 
                     }
                 }
@@ -1846,7 +1920,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
                     }
-               
+
+                if (_selectedChipFilterItem.TemplateType.Equals("All"))
+                {
+                    FilterOnBasisOfTaxType();
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
+
+
+                    if (ListToDisplay != null)
+                    {
+                        foreach (var item in ListToDisplay)
+                        {
+                            item.StatusMessage = "all";
+                        }
+                    }
+
+                }
+
             }
             catch (Exception ex)
             { }
@@ -1883,7 +1973,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 new ChipModel(){Text =AppResources.Submitted, TemplateType = "Submitted", ImageSource="submited.png"},
                 new ChipModel(){Text =AppResources.OverDue, TemplateType = "OverDue",ImageSource = "unsubmitted.png"},
                 new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "clockNew.png"},
-
+                new ChipModel(){Text =AppResources.All, TemplateType = "All",ImageSource = "clockNew.png"},
                };
             
         }

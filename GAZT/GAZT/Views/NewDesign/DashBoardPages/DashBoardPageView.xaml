@@ -47,7 +47,7 @@
                             <ScrollView >
                                 <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMyUpcomingCommitments}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNextCommitments}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                         <Image Source="circle_arrow_right.png" HorizontalOptions="EndAndExpand">
                                         <!--    <Image.Source>
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
@@ -61,17 +61,17 @@
                                         <DataTemplate>-->
                                     <!--<StackLayout Orientation="Horizontal" Spacing="10">-->
 
-                                    <CollectionView  x:Name="xBillsAndReturnsCommitments"  ItemsLayout="HorizontalList" HeightRequest="70" ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White">
+                                    <CollectionView  x:Name="xBillsAndReturnsCommitments" HeightRequest="74" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White">
                                         <CollectionView.EmptyView>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center"/>
                                         </CollectionView.EmptyView>
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
 
-                                                <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                                                    <cards:SfCardView HasShadow="True" CornerRadius="10" Margin="0,10,0,0">
+                                                <StackLayout Orientation="Horizontal" Margin="5,0,5,0" >
+                                                    <cards:SfCardView HasShadow="True" CornerRadius="10" HeightRequest="62" Margin="0,0,0,0" >
                                                         <StackLayout Orientation="Horizontal">
-                                                            <cards:SfCardView  IsVisible="{Binding IsUnSubmittedReturn}"  HasShadow="True" CornerRadius="14" WidthRequest="64" HeightRequest="64">
+                                                            <cards:SfCardView  IsVisible="{Binding IsUnSubmittedReturn}" Margin="0,0,0,-5" HasShadow="True" CornerRadius="14" WidthRequest="66" HeightRequest="62">
                                                                 <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
                                                                     <custom:CustomLabel Text="{Binding Day}"  Style="{StaticResource CaptionLabelWhite}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                                                                     <custom:CustomLabel Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
@@ -83,7 +83,7 @@
                                                                 </cards:SfCardView.Triggers>
                                                             </cards:SfCardView>
 
-                                                            <cards:SfCardView IsVisible="{Binding IsPaymentOverdue}" HasShadow="True" CornerRadius="14" WidthRequest="64" HeightRequest="64">
+                                                            <cards:SfCardView IsVisible="{Binding IsPaymentOverdue}"  Margin="0,0,0,-5" HasShadow="True" CornerRadius="14" WidthRequest="66" HeightRequest="62">
                                                                 <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
                                                                     <custom:CustomLabel Text="{Binding Day}" Style="{StaticResource CaptionLabelWhite}"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                                                                     <custom:CustomLabel Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
@@ -95,7 +95,7 @@
                                                                 </cards:SfCardView.Triggers>
                                                             </cards:SfCardView>
 
-                                                            <StackLayout Padding="10,5,10,0" VerticalOptions="Center">
+                                                            <StackLayout Padding="10,5,10,-5" VerticalOptions="Center" >
                                                                 <custom:CustomLabel Text="{Binding Incotext}" TextColor="Black" IsVisible="{Binding IsUnSubmittedReturn}" />
 
                                                                 <custom:CustomLabel Text="{Binding Txt50}" TextColor="Black" IsVisible="{Binding IsPaymentOverdue}" />

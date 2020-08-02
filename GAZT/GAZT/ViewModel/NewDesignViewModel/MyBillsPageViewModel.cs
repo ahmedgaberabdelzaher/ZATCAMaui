@@ -662,25 +662,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public void FilterIfTypeAndStausFilterSelected() 
         {
-            if(_selectedChipFilterItem!=null)
+            if (_selectedChipFilterItem.TemplateType.Equals("Paid"))
             {
-                if (_selectedChipFilterItem.TemplateType.Equals("Paid"))
-                {
-                    FilterOnTaxType();
-                    MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
-                }
-                if (_selectedChipFilterItem.TemplateType.Equals("Partial"))
-                {
-                    FilterOnTaxType();
-                    MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
-                }
-                if (_selectedChipFilterItem.TemplateType.Equals("Unpaid"))
-                {
-                    FilterOnTaxType();
-                    MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
-                }
+                FilterOnTaxType();
+                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
             }
-           
+            if (_selectedChipFilterItem.TemplateType.Equals("Partial"))
+            {
+                FilterOnTaxType();
+                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
+            }
+            if (_selectedChipFilterItem.TemplateType.Equals("Unpaid"))
+            {
+                FilterOnTaxType();
+                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+            }
+            if (_selectedChipFilterItem.TemplateType.Equals("All"))
+            {
+                FilterOnTaxType();
+                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) ||x.Status== Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+            }
         }
         public void PopulateReturnTypeList()
         {
@@ -712,7 +713,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 new ChipModel(){Text =AppResources.Paid, TemplateType = "Paid", ImageSource="ic_check_circle.png"},
                 new ChipModel(){Text =AppResources.Partial, TemplateType = "Partial",ImageSource = "ic_loading.png"},
                 new ChipModel(){Text =AppResources.UnPaid, TemplateType = "Unpaid",ImageSource = "ic_money.png"},
-              
+                 new ChipModel(){Text =AppResources.All, TemplateType = "All",ImageSource = "ic_money.png"}
+
                };
         }
        
