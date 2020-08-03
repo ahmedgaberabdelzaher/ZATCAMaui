@@ -52,13 +52,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 var _navigation = Application.Current.MainPage.Navigation;
                 foreach (var item in _navigation.NavigationStack)
                 {
-                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                    if (item.GetType().Name == App.SFLoginPageView)
                     {
                         _navigation.RemovePage(item);
                         break;
                     }
                 }
-                _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                _navigationService.NavigateTo(App.SFLoginPageView);
                 _navigation.NavigationStack.ToList().Clear();
             });
         }
