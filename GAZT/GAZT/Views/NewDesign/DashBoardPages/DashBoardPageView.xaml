@@ -438,11 +438,14 @@
 
                         <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
 
-                        <Image Source="message.png" VerticalOptions="Start" HorizontalOptions="EndAndExpand">
+                        <Image x:Name="Inbox" Source="message.png" VerticalOptions="Start" HorizontalOptions="EndAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Inbox"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
                         </Image>
 
-                        <Image Source="bell_notification.png" VerticalOptions="Start" HorizontalOptions="End">
-                        </Image>
+                        <!--<Image Source="bell_notification.png" VerticalOptions="Start" HorizontalOptions="End">
+                        </Image>-->
 
                     </StackLayout>
 
@@ -650,8 +653,8 @@
                                         <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Inbox}"/>
                                     </Image.Source>-->
                                 </Image>
-                                <Image Source="bell_notification" VerticalOptions="Start">
-                                </Image>
+                                <!--<Image Source="bell_notification" VerticalOptions="Start">
+                                </Image>-->
                             </StackLayout >
                             <custom:CustomLabel Grid.Row="0" Text="{Binding TaxPayerProfile.Name}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />
                         </StackLayout>
@@ -659,7 +662,7 @@
                     </Grid>
                 </ScrollView>
 
-            </Grid>
+z            </Grid>
 
             <!--Menu Ends-->
 
