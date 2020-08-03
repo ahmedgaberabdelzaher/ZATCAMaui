@@ -30,10 +30,8 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                         <StackLayout>
                             
                             <StackLayout Orientation="Horizontal">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30" Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                    </Image.Source>
+                                <Image Source="ic_vat_info">
+                                    
                                 </Image>
                                 <custom:CustomLabel Text="Verify Adjustment Amount" Style="{StaticResource BodyLabelBlack}" CharacterSpacing="0" VerticalOptions="CenterAndExpand"/>
                             </StackLayout>

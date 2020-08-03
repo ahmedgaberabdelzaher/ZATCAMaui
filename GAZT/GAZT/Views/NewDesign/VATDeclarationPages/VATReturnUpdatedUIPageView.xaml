@@ -26,6 +26,16 @@
                 <Setter Property="WidthRequest" Value="10"/>
                 <Setter Property="CornerRadius" Value="5"/>
             </Style>
+
+            <Style TargetType="Frame" x:Key="circleFrame">
+                <Setter Property="BackgroundColor" Value="AliceBlue"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="HasShadow" Value="False"/>
+                <Setter Property="HeightRequest" Value="10"/>
+                <Setter Property="WidthRequest" Value="10"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -234,7 +244,7 @@
             </Grid>
                 
 
-            <Grid Grid.Row="0" IsVisible="False"  x:Name="SalesSection">
+            <Grid Grid.Row="0" IsVisible="True"  x:Name="SalesSection">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="8*"/>
                     <RowDefinition Height="92*"/>
@@ -269,11 +279,8 @@
                                 <ColumnDefinition Width="50*"/>
                             </Grid.ColumnDefinitions>
                             <Label Text="Standard Rated Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Label>
-                            <Image Style="{StaticResource ImageStyleForInputTable}" Grid.Row="0" Grid.Column="1">
-                                <Image.Source>
-                                    <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                </Image.Source>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="0" Grid.Column="1">
+
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnStandardRatedTapped" NumberOfTapsRequired="1"/>
                                     </Image.GestureRecognizers>
@@ -300,11 +307,8 @@
                             </inputLayout:SfTextInputLayout>
 
                             <Label Text="Private HealthCare/Private Education" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></Label>
-                            <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="3" Grid.Column="1">
-                                <Image.Source>
-                                    <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                </Image.Source>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="3" Grid.Column="1">
+                                
                             </Image>
                             <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></Label>
                             <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></Label>
@@ -326,11 +330,7 @@
                             </inputLayout:SfTextInputLayout>
 
                             <Label Text="Zero Rated Domestic Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"></Label>
-                            <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="6" Grid.Column="1">
-                                <Image.Source>
-                                    <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                </Image.Source>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="6" Grid.Column="1">
                             </Image>
                             <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></Label>
                             <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></Label>
@@ -352,11 +352,8 @@
                             </inputLayout:SfTextInputLayout>
 
                             <Label Text="Exports" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"></Label>
-                            <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="9" Grid.Column="1">
-                                <Image.Source>
-                                    <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                </Image.Source>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="9" Grid.Column="1">
+                                
                             </Image>
                             <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></Label>
                             <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></Label>
@@ -378,11 +375,8 @@
                             </inputLayout:SfTextInputLayout>
 
                             <Label Text="Exempt Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></Label>
-                            <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
-                                <Image.Source>
-                                    <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                </Image.Source>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
+                                
                             </Image>
                             <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></Label>
                             <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></Label>
@@ -449,7 +443,7 @@
             </Grid>
 
 
-            <Grid Grid.Row="0" IsVisible="True"  x:Name="PurchaseSection">
+            <Grid Grid.Row="0" IsVisible="False"  x:Name="PurchaseSection">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
                     <RowDefinition Height="90*"/>
@@ -484,11 +478,8 @@
                                     <ColumnDefinition Width="50*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Text="Standard Rated Domestic Purchases" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Label>
-                                <Image Style="{StaticResource ImageStyleForInputTable}" Grid.Row="0" Grid.Column="1">
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                    </Image.Source>
+                                <Image Style="{StaticResource ImageStyleForInputTable}" Grid.Row="0" Grid.Column="1" Source="ic_vat_info">
+
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnDomesticRatedTapped"/>
                                     </Image.GestureRecognizers>
@@ -515,11 +506,8 @@
                                 </inputLayout:SfTextInputLayout>
                                 <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2">
                                     <Label Text="Import Subject to VAT paid at customs" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0"></Label>
-                                    <Image  Style="{StaticResource ImageStyleForInputTable}">
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                        </Image.Source>
+                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
+                                        
                                     </Image>
                                 </StackLayout>
                                 <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></Label>
@@ -542,11 +530,8 @@
                                 </inputLayout:SfTextInputLayout>
                                 <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
                                 <Label Text="Imports Subject to VAT accounted for through the reverse charge mechanism" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" ></Label>
-                                <Image  Style="{StaticResource ImageStyleForInputTable}">
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                    </Image.Source>
+                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
+                                    
                                 </Image>
                                 </StackLayout>
                                 <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></Label>
@@ -569,11 +554,8 @@
                                 </inputLayout:SfTextInputLayout>
 
                                 <Label Text="Zero Rated Purchases" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"></Label>
-                                <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="9" Grid.Column="1">
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                    </Image.Source>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="9" Grid.Column="1">
+                                    
                                 </Image>
                                 <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></Label>
                                 <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></Label>
@@ -595,11 +577,8 @@
                                 </inputLayout:SfTextInputLayout>
 
                                 <Label Text="Exempt Purchases" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></Label>
-                                <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                    </Image.Source>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
+                                    
                                 </Image>
                                 <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></Label>
                                 <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></Label>
@@ -692,11 +671,8 @@
                         <StackLayout Spacing="-5" Padding="0">
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="VAT Credit from Previous Period(s)" Style="{StaticResource BodyLabelBlack}" />
-                            <Image Style="{StaticResource ImageStyleForInputTable}" HorizontalOptions="EndAndExpand">
-                                <Image.Source>
-                                    <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                </Image.Source>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" HorizontalOptions="EndAndExpand">
+
                             </Image>
                             </StackLayout>
                             <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" />
@@ -707,12 +683,9 @@
                             <custom:GAZTBorderlessEntry  Text="500 SAR"     Style="{StaticResource InputTableEntryLayoutStyle}">
                             </custom:GAZTBorderlessEntry>
 
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image>
-                                    <Image.Source>
-                                    <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                </Image.Source>
+                            <inputLayout:SfTextInputLayout.TrailingView >
+                                    <Image Source="ic_vat_info">
+                                    
                                 </Image>
                             </inputLayout:SfTextInputLayout.TrailingView>
 
@@ -723,11 +696,8 @@
                             <StackLayout Spacing="10" Orientation="Horizontal" Padding="5,0,5,0">
                                 <custom:CustomLabel Text="Net VAT" Style="{StaticResource BodyLabelBlack}" />
                                 <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" />
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
-                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                    </Image.Source>
+                                <Image Source="ic_vat_info">
+                                    
                                 </Image>
                             </StackLayout>
                         </Frame>
@@ -823,11 +793,11 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                        </Image.Source>
+                                    <Frame Style="{StaticResource circleFrame}">
+                                    <Image Source="ic_vat_return">
+                                        
                                     </Image>
+                                    </Frame>
                                     <custom:CustomLabel Text="Tax Return Details" Style="{StaticResource SectionTitleBlack}"/>
                                 </StackLayout>
 
@@ -862,11 +832,11 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                        </Image.Source>
+                                    <Frame Style="{StaticResource circleFrame}">
+                                    <Image Source="ic_vat_bill">
+                                        
                                     </Image>
+                                    </Frame>
                                     <custom:CustomLabel Text="VAT on Sales" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                     <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>
                                 </StackLayout>
@@ -895,11 +865,11 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                        </Image.Source>
+                                    <Frame Style="{StaticResource circleFrame}">
+                                    <Image Source="ic_vat_bill">
+                                       
                                     </Image>
+                                    </Frame>
                                     <custom:CustomLabel Text="VAT on Purchases" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                     <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>
                                 </StackLayout>
@@ -927,11 +897,11 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                        </Image.Source>
+                                    <Frame Style="{StaticResource circleFrame}">
+                                    <Image Source="ic_vat_amount">
+                                        
                                     </Image>
+                                    </Frame>
                                     <custom:CustomLabel Text="Total VAT" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                 </StackLayout>
 
@@ -981,7 +951,8 @@
                                 <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
                     </StackLayout>
                         </Frame>
-                </StackLayout>
+                        <Image Source="ic_vat_check"/>
+                    </StackLayout>
                     <Label Text="Summery"  Style="{StaticResource SectionTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                     <Label Text="Review the below information"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
