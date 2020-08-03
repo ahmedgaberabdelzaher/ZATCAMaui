@@ -2,6 +2,7 @@
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,6 +33,17 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 if (App.TP != null)
                     viewModel.TaxPayerProfile = App.TP;
+
+                if (App.IsArabic)
+                {
+                    // viewModel.TranslateText = AppResources.ZZZSetLanguageText;
+                    viewModel.TranslateText = AppResources.ZZZChangetoLanguage;
+                }
+                else
+                {
+                    // viewModel.TranslateText = AppResources.ZZZSetLanguageText;
+                    viewModel.TranslateText = AppResources.ZZZChangetoLanguage;
+                }
 
                 MenuView.IsVisible = false;
                 HomeView.IsVisible = true;
@@ -125,6 +137,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 3);
         }
 
+   
         private void TappedOnSignleReturns(object sender, EventArgs e)
         {
             string controltype = sender.GetType().ToString();
@@ -193,6 +206,72 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.LogOut();
                 }
             }
+        }
+
+        private void Label_MyBills(object sender, EventArgs e)
+        {
+            BillInfo billInfo = new BillInfo();
+            billInfo.BillTypeName = "All";
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+        }
+
+        private void Label_MyRetuns_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
+        }
+        private void Label_MyProfile_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.TaxPayerProfilePageView);
+        }
+
+        private void Aboutus_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.AboutUsPageView);
+        }
+
+        private void Contactus_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.ContactUsPageView);
+        }
+
+        private void PrivacyPolicy_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+        }
+
+        private void ChangeLanguage_Tapped(object sender, EventArgs e)
+        {
+            //if (App.IsArabic)
+            //{
+            //    App.IsArabic = false;
+            //    App.changeFontFamily(App.appObj);
+            //    SetLTRDirection();
+            //}
+            //else
+            //{
+            //    App.IsArabic = true;
+            //    App.changeFontFamily(App.appObj);
+            //    SetRTLDirection();
+            //}
+        }
+
+        public void SetRTLDirection()
+        {
+            String langName = "ar-AE";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+            InitializeComponent();
+            this.FlowDirection = FlowDirection.RightToLeft;
+            viewModel.TranslateText = AppResources.ZZZSetToEnglish;
+        }
+        public void SetLTRDirection()
+        {
+            String langName = "en-US";
+            CultureInfo ci = new CultureInfo(langName);
+            AppResources.Culture = ci;
+            InitializeComponent();
+            this.FlowDirection = FlowDirection.LeftToRight;
+            viewModel.TranslateText = AppResources.ZZZSetToArabic;
         }
     }
 }

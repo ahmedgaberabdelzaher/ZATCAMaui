@@ -7032,9 +7032,9 @@ namespace EGAZT {
             }
         }
         
-        public static string FORM5OutletNum {
+        public static string FORM5NoOutlet {
             get {
-                return ResourceManager.GetString("FORM5OutletNum", resourceCulture);
+                return ResourceManager.GetString("FORM5NoOutlet", resourceCulture);
             }
         }
         
@@ -7242,6 +7242,12 @@ namespace EGAZT {
             }
         }
         
+        public static string UnlockAccountPasswordsDoesntMatch {
+            get {
+                return ResourceManager.GetString("UnlockAccountPasswordsDoesntMatch", resourceCulture);
+            }
+        }
+        
         public static string AccountUnlocked {
             get {
                 return ResourceManager.GetString("AccountUnlocked", resourceCulture);
@@ -7299,6 +7305,36 @@ namespace EGAZT {
         public static string TinDeregistrationDate {
             get {
                 return ResourceManager.GetString("TinDeregistrationDate", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationFathersName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationFathersName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationGrandFathersName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationGrandFathersName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationFamilyName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationFamilyName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationName1 {
+            get {
+                return ResourceManager.GetString("TinDeregistrationName1", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationName2 {
+            get {
+                return ResourceManager.GetString("TinDeregistrationName2", resourceCulture);
             }
         }
         
@@ -7563,6 +7599,30 @@ namespace EGAZT {
         public static string NDTotal {
             get {
                 return ResourceManager.GetString("NDTotal", resourceCulture);
+            }
+        }
+        
+        public static string NDEmail {
+            get {
+                return ResourceManager.GetString("NDEmail", resourceCulture);
+            }
+        }
+        
+        public static string NDFinancialYear {
+            get {
+                return ResourceManager.GetString("NDFinancialYear", resourceCulture);
+            }
+        }
+        
+        public static string NDReviewBelow {
+            get {
+                return ResourceManager.GetString("NDReviewBelow", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZNextCommitments {
+            get {
+                return ResourceManager.GetString("ZZZZNextCommitments", resourceCulture);
             }
         }
     }

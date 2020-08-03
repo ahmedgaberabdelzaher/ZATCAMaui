@@ -54,12 +54,15 @@
                 FontFamily="{StaticResource SSTArabicMedium}"
                 FontSize="16"
                 HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
                 Opacity="{OnPlatform Default=0,
                                      UWP=1}"
                 Style="{StaticResource SfLabelStyleForOnboarding}"
                 Text="{Binding Content}"
                 TranslationY="{OnPlatform Default=60, UWP=0}" 
-                LineHeight=".6"/>
+                LineHeight=".6"
+                VerticalTextAlignment="Center" 
+                />
 
         </StackLayout>
     </ContentView.Content>

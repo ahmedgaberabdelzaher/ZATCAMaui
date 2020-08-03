@@ -47,7 +47,7 @@
                             <ScrollView >
                                 <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMyUpcomingCommitments}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNextCommitments}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                         <Image Source="circle_arrow_right.png" HorizontalOptions="EndAndExpand">
                                         <!--    <Image.Source>
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
@@ -61,17 +61,17 @@
                                         <DataTemplate>-->
                                     <!--<StackLayout Orientation="Horizontal" Spacing="10">-->
 
-                                    <CollectionView  x:Name="xBillsAndReturnsCommitments"  ItemsLayout="HorizontalList" HeightRequest="70" ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White">
+                                    <CollectionView  x:Name="xBillsAndReturnsCommitments" HeightRequest="74" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White">
                                         <CollectionView.EmptyView>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center"/>
                                         </CollectionView.EmptyView>
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
 
-                                                <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                                                    <cards:SfCardView HasShadow="True" CornerRadius="10" Margin="0,10,0,0">
+                                                <StackLayout Orientation="Horizontal" Margin="5,0,5,0" >
+                                                    <cards:SfCardView HasShadow="True" CornerRadius="10" HeightRequest="62" Margin="0,0,0,0" >
                                                         <StackLayout Orientation="Horizontal">
-                                                            <cards:SfCardView  IsVisible="{Binding IsUnSubmittedReturn}"  HasShadow="True" CornerRadius="14" WidthRequest="64" HeightRequest="64">
+                                                            <cards:SfCardView  IsVisible="{Binding IsUnSubmittedReturn}" Margin="0,0,0,-5" HasShadow="True" CornerRadius="14" WidthRequest="66" HeightRequest="62">
                                                                 <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
                                                                     <custom:CustomLabel Text="{Binding Day}"  Style="{StaticResource CaptionLabelWhite}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                                                                     <custom:CustomLabel Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"   VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
@@ -83,7 +83,7 @@
                                                                 </cards:SfCardView.Triggers>
                                                             </cards:SfCardView>
 
-                                                            <cards:SfCardView IsVisible="{Binding IsPaymentOverdue}" HasShadow="True" CornerRadius="14" WidthRequest="64" HeightRequest="64">
+                                                            <cards:SfCardView IsVisible="{Binding IsPaymentOverdue}"  Margin="0,0,0,-5" HasShadow="True" CornerRadius="14" WidthRequest="66" HeightRequest="62">
                                                                 <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
                                                                     <custom:CustomLabel Text="{Binding Day}" Style="{StaticResource CaptionLabelWhite}"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
                                                                     <custom:CustomLabel Text="{Binding Month}" Style="{StaticResource CaptionLabelWhite}"  VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
@@ -95,7 +95,7 @@
                                                                 </cards:SfCardView.Triggers>
                                                             </cards:SfCardView>
 
-                                                            <StackLayout Padding="10,5,10,5" VerticalOptions="Center">
+                                                            <StackLayout Padding="10,5,10,-5" VerticalOptions="Center" >
                                                                 <custom:CustomLabel Text="{Binding Incotext}" TextColor="Black" IsVisible="{Binding IsUnSubmittedReturn}" />
 
                                                                 <custom:CustomLabel Text="{Binding Txt50}" TextColor="Black" IsVisible="{Binding IsPaymentOverdue}" />
@@ -159,7 +159,7 @@
 
                                     <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
                                         <StackLayout Padding="10">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.All}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center" />
+                                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.All}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center" />-->
                                             <!--<AbsoluteLayout>-->
                                                 <chart:SfChart ChartPadding="15"  BackgroundColor="White" x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" IsVisible="true">
                                                     <!--<chart:SfChart.Legend>
@@ -214,9 +214,9 @@
                                             </AbsoluteLayout>-->
                                             <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                                                 <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
-                                                    <buttons:SfButton WidthRequest="95" HorizontalTextAlignment="Start"  TextColor="{StaticResource NeutralBlack}" Clicked="paidClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.Paid}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20"/>
-                                                    <buttons:SfButton WidthRequest="110" HorizontalTextAlignment="Start" TextColor="{StaticResource NeutralBlack}" Clicked="partiallyClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="partially_clock" ShowIcon="True" Text="Partially" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20"/>
-                                                    <buttons:SfButton WidthRequest="100" HorizontalTextAlignment="Start" TextColor="{StaticResource NeutralBlack}" Clicked="unPaidClicked"    FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.UnPaid}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  BackgroundColor="White" />
+                                                    <buttons:SfButton WidthRequest="95" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" TextColor="{StaticResource NeutralBlack}" Clicked="paidClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.Paid}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20"/>
+                                                    <buttons:SfButton WidthRequest="110" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" TextColor="{StaticResource NeutralBlack}" Clicked="partiallyClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="partially_clock" ShowIcon="True" Text="Partially" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20"/>
+                                                    <buttons:SfButton WidthRequest="100" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" TextColor="{StaticResource NeutralBlack}" Clicked="unPaidClicked"    FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.UnPaid}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  BackgroundColor="White" />
                                                 </StackLayout>
                                             </ScrollView>
                                         </StackLayout>
@@ -236,12 +236,12 @@
                                         </Image>
                                                                    
                                     </StackLayout>
-                                    <CollectionView  x:Name="xSegregatedReturnTypesAndCorrepsondingCounts" HeightRequest="120" ItemsLayout="HorizontalList" ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}"   HorizontalOptions="FillAndExpand"  BackgroundColor="White">
+                                    <CollectionView  x:Name="xSegregatedReturnTypesAndCorrepsondingCounts" HeightRequest="110" ItemsLayout="HorizontalList" ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}"   HorizontalOptions="FillAndExpand"  BackgroundColor="White">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
 
                                                 <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                                                    <cards:SfCardView HasShadow="True" WidthRequest="120" HeightRequest="120" BackgroundColor="White" CornerRadius="10" >
+                                                    <cards:SfCardView HasShadow="True" WidthRequest="110" HeightRequest="110" BackgroundColor="White" CornerRadius="10" >
                                                         <StackLayout >
                                                             <Image HorizontalOptions="Start" Margin="5,5,5,0">
                                                                 <!--<Image.Source>
@@ -490,7 +490,10 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Billboard}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel x:Name="Label_MyBillsMenuItem" Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Label_MyBills"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
@@ -500,7 +503,86 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronUpCircle}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel x:Name="Label_MyRetunsMenuItem" Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxManagement}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CashRefund}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDRefunds}"  Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FloorPlan}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.React}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDObjectionsandReviews}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.HelpNetwork}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSupports}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                       <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Account}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TaxpayerProfile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                        <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Label_MyProfile_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                       </StackLayout>
+                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
+
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Aboutus_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
@@ -510,49 +592,40 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxManagement}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Contactus_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CashRefund}"/>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDRefunds}"  Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZPrivacyandPolicy}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FloorPlan}"/>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{Binding TranslateText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChangeLanguage_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.React}"/>
-                                        </Image.Source>
-                                    </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDObjectionsandReviews}" Style="{StaticResource ButtonLabelWhiteBold}"/>
-                                </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.HelpNetwork}"/>
-                                        </Image.Source>
-                                    </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSupports}" Style="{StaticResource ButtonLabelWhiteBold}"/>
-                                </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
@@ -597,8 +670,8 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <!--<ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>-->
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0">
                             <yummy:PancakeView x:Name="HomeIndicator"  BackgroundColor="#005e4b" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
@@ -614,39 +687,42 @@
                                 <TapGestureRecognizer Tapped="OnHomeTapped"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
-                        <StackLayout Grid.Column="1">
+                        <!--<StackLayout Grid.Column="1">
                             <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
                             </yummy:PancakeView>
 
                             <Image Source="timeline.png">
-                                <!--<Image.Source>
+                                --><!--<Image.Source>
                                     <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FilterMenu}"/>
-                                </Image.Source>-->
+                                </Image.Source>--><!--
                             </Image>
-                        </StackLayout>
+                        </StackLayout>-->
                         <StackLayout Grid.Column="2">
                             <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
                             </yummy:PancakeView>
 
+                            <!--<buttons:SfButton  BackgroundColor="{StaticResource Primary}" BackgroundImage="quick_action_2.png" CornerRadius="14" BorderWidth="0"
+                 WidthRequest="20" HeightRequest="20" />-->
+                            
                             <Image Source="quick_action_2.png">
                                 <!--<Image.Source>
                                     <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.LightningBolt}"/>
                                 </Image.Source>-->
                             </Image>
                         </StackLayout>
-                        <StackLayout Grid.Column="3">
+                        <!--<StackLayout Grid.Column="3">
                             <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
                             </yummy:PancakeView>
 
                             <Image Source="chat.png">
-                                <!--<Image.Source>
+                                --><!--<Image.Source>
                                     <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Chat}"/>
-                                </Image.Source>-->
+                                </Image.Source>--><!--
                             </Image>
-                        </StackLayout>
+                        </StackLayout>-->
                         <StackLayout Grid.Column="4">
                             <yummy:PancakeView x:Name="MenuIndicator" BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0" >
 

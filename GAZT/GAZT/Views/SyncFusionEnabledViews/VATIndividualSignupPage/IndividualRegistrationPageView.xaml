@@ -1070,8 +1070,8 @@
                                     </StackLayout>-->
 
 
-                                                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                                                            <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.NewPassword}"  Padding="0,0,0,0"/>-->
+                                                        <!--<StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                                            <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.NewPassword}"  Padding="0,0,0,0"/>
                                                             <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}"   Padding="0,0,0,0" HorizontalOptions="Start" >
 
                                                                 <custom:CustomLabel.FormattedText>
@@ -1098,8 +1098,39 @@
                                                                     </Image>
                                                               </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
-                                                        </StackLayout>
+                                                        </StackLayout>-->
+                                                           <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                                            <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZRepeatPassword}"  Padding="0,0,0,0"/>-->
+                                                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}"   Padding="0,0,0,0" HorizontalOptions="Start" >
 
+                                                                <custom:CustomLabel.FormattedText>
+                                                                    <FormattedString>
+                                                                          <Span Text="{x:Static local:AppResources.NewPassword}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                    </FormattedString>
+                                                                </custom:CustomLabel.FormattedText>
+                                                            </custom:CustomLabel>
+                                                            <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FramePasswordError}"
+                                            ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
+                                                                <custom:BorderlessEntry x:Name="EntryPassword" FontFamily="{StaticResource SSTArLight}" Text="{Binding Password}"
+                                                                                        FontSize="Small" WidthRequest="128" MaxLength="16"
+                                                                        
+                                                                Placeholder="{x:Static local:AppResources.NewPassword}" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                </custom:BorderlessEntry>
+                                                               <inputLayout:SfTextInputLayout.TrailingView>
+                                                                    <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeePassword" >
+                                                                        <Image.Source>
+                                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                                                                Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                                                                        </Image.Source>
+                                                                        <Image.GestureRecognizers>
+                                                                            <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
+                                                                        </Image.GestureRecognizers>
+
+                                                                    </Image>
+                                                               </inputLayout:SfTextInputLayout.TrailingView>    
+                                                            </inputLayout:SfTextInputLayout>
+                                                        </StackLayout>
                                                         <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                                                             <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZRepeatPassword}"  Padding="0,0,0,0"/>-->
                                                             <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}"   Padding="0,0,0,0" HorizontalOptions="Start" >

@@ -244,7 +244,7 @@
     <value>رقم الجوال الجديد</value>
   </data>
   <data name="NewPassword" xml:space="preserve">
-    <value>New Password</value>
+    <value>كلمة المرور الجديدة</value>
   </data>
   <data name="OverdueReturn" xml:space="preserve">
     <value>إقرارات متأخرة</value>
@@ -4122,7 +4122,7 @@
     <value>Electronic Mail</value>
   </data>
   <data name="FORM5Expenses" xml:space="preserve">
-    <value>Expenses(SAR)</value>
+    <value>Expenses</value>
   </data>
   <data name="FORM5FinancialInfo" xml:space="preserve">
     <value>Financial Information</value>
@@ -4150,7 +4150,7 @@
     <comment>FORM5</comment>
   </data>
   <data name="FORM5IsCorrect" xml:space="preserve">
-    <value>Is the above Registration Details are Correct?</value>
+    <value>Above registration details are Correct</value>
   </data>
   <data name="FORM5Item" xml:space="preserve">
     <value>Item</value>
@@ -4159,7 +4159,7 @@
     <value>Main Outlets</value>
   </data>
   <data name="FORM5NetProfit" xml:space="preserve">
-    <value>Net Profit(SAR)</value>
+    <value>Net Profit</value>
   </data>
   <data name="FORM5NetProfitPer" xml:space="preserve">
     <value>Net Profit %</value>
@@ -4182,8 +4182,8 @@
   <data name="FORM5OutletName" xml:space="preserve">
     <value>Outlet Name</value>
   </data>
-  <data name="FORM5OutletNum" xml:space="preserve">
-    <value>Number Of Outlets</value>
+  <data name="FORM5NoOutlet" xml:space="preserve">
+    <value>No. Of Outlets</value>
   </data>
   <data name="FORM5Period" xml:space="preserve">
     <value>Period</value>
@@ -4198,7 +4198,7 @@
     <value>Residency Status</value>
   </data>
   <data name="FORM5Return" xml:space="preserve">
-    <value>Return</value>
+    <value>الاقرارات</value>
   </data>
   <data name="FORM5ReturnDetails" xml:space="preserve">
     <value>Return Details</value>
@@ -4207,7 +4207,7 @@
     <value>Return Declared by Taxpayer</value>
   </data>
   <data name="FORM5Revenue" xml:space="preserve">
-    <value>Revenue(SAR)</value>
+    <value>Revenue</value>
   </data>
   <data name="FORM5SAR" xml:space="preserve">
     <value>SAR</value>
@@ -4277,7 +4277,10 @@
     <value>تحقق</value>
   </data>
   <data name="UnlockAccountResetPassword" xml:space="preserve">
-    <value>المرور كلمة ت</value>
+    <value>تعيين كلمة المرور</value>
+  </data>
+    <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
+    <value>كلمات المرور المدخلة غير متطابقة، يرجى￼ التأكد من أن كلمات المرور التي تم إدخالها متطابقة.</value>
   </data>
   <data name="EnterVerificationCodeSentToMobile" xml:space="preserve">
     <value>يرجى إدخال رمز التحقق المرسل إلى هاتفك المحمول</value>
@@ -4286,8 +4289,11 @@
     <value>يرجى إنشاء كلمة مرور جديدة</value>
   </data>
   <data name="UnlockAccountPasswordChangedSuccessfully" xml:space="preserve">
-    <value>عزيزي المكلف ،￼￼￼ تم إعادة فتح الحساب وتعيين كلمة المرور بنجاح للرقم المميز xxxxxx.</value>
+    <value>عزيزي المكلف،
+تم إزالة الاغلاق عن الحساب، وتم تغيير كلمة المرور للرقم المميز  xxxxxx بنجاح.
+</value>
   </data>
+
   <data name="AccountUnlocked" xml:space="preserve">
     <value>تم فتح الحساب</value>
   </data>
@@ -4317,6 +4323,21 @@
   </data>
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>Deregistration Date</value>
+  </data>
+   <data name="TinDeregistrationFathersName" xml:space="preserve">
+    <value>Father's Name</value>
+  </data>
+  <data name="TinDeregistrationGrandFathersName" xml:space="preserve">
+    <value>Grand Father's Name</value>
+  </data>
+  <data name="TinDeregistrationFamilyName" xml:space="preserve">
+    <value>Family Name</value>
+  </data>
+  <data name="TinDeregistrationName1" xml:space="preserve">
+    <value>Name 1</value>
+  </data>
+  <data name="TinDeregistrationName2" xml:space="preserve">
+    <value>Name 2</value>
   </data>
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
@@ -4383,7 +4404,7 @@
     <value>أرقام ورموز</value>
   </data>
   <data name="NDPleaseEnterVerificationSenttomobile" xml:space="preserve">
-    <value>Please Enter Verification code sent to your mobile</value>
+    <value>Please enter verification code sent to your mobile</value>
   </data>
   <data name="NDResendVerificationCode" xml:space="preserve">
     <value>إعادة إرسال رمز التحقق</value>
@@ -4447,7 +4468,21 @@
   <data name="NDTaxManagement" xml:space="preserve">
     <value>Tax Management</value>
   </data>
-   <data name="NDTotal" xml:space="preserve">
+  <data name="NDTotal" xml:space="preserve">
     <value>الإجمالي</value>
+  </data>
+  <data name="NDEmail" xml:space="preserve">
+    <value>Email</value>
+    <comment>New Design Form5</comment>
+  </data>
+  <data name="NDFinancialYear" xml:space="preserve">
+    <value>Financial Year</value>
+    <comment>New Design Form5</comment>
+  </data>
+  <data name="NDReviewBelow" xml:space="preserve">
+    <value>Review the Below Details</value>
+  </data>
+  <data name="ZZZZNextCommitments" xml:space="preserve">
+    <value>Next Commitments</value>
   </data>
 </root>

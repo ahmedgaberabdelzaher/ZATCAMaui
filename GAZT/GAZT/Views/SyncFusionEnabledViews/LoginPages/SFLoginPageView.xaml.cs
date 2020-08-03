@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -40,9 +41,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             try
             {
                 InitializeComponent();
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
                 this.BindingContext = viewModel = App.Locator.SFLoginPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
+                CheckFirstTimeorNot();
                 GetDeviceID();
                 viewModel.NavigateToThisService = strNavigateToThisService;
                 string lang = "AR";
@@ -77,6 +80,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             // ParentContainer.RaiseChild(BusyIndicator);
         }
 
+        public void CheckFirstTimeorNot()
+        {
+            Preferences.Set("first_TimeLoging_key", "False");
+            
+        }
         public SFLoginPageView()
         {
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
@@ -111,7 +119,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 }
                 else
                 {
-                    this.BackgroundImageSource = "sf_LoginBackground.png";
+                    this.BackgroundImageSource = "partials_background.png";
                     //  outerStack.Orientation = StackOrientation.Vertical;
                 }
             }
@@ -332,6 +340,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 hybridWebView.Opacity = 0;
                                 await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
                             }
+                            if (data == "navigateToVATIndividualSignupPage")
+                            {
+                                hybridWebView.Opacity = 0;
+                                viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+
+                            }
+                            
 
                             if (data == "error")
                             {

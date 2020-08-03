@@ -60,6 +60,8 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+
 using EGAZT.Views.NewDesign.DashBoardPages;
 using EGAZT.Views.NewDesign.ForgotPasswordPages;
 using EGAZT.Views.NewDesign.MyBillsPages;

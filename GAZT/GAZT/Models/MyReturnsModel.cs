@@ -32,24 +32,53 @@ namespace GAZT.Models
         public string Fbsta { get; set; }
         public string Fbust { get; set; }
         public string CalendarTyp { get; set; }
-        private string _statusTxt;
-    
-        private string _due;
         public string Due 
+        {get;set;}
+
+        private string _StatusTxt;
+        public string StatusTxt
         {
             get
-            { return _due; 
+            {
+                return _StatusTxt;
             }
             set
-            { _due = value;
+            {
+                _StatusTxt = value;
+                try
+                {
+                    if (_StatusTxt != null)
+                    {
+                        if (_StatusTxt == "Submitted")
+                        {
+                            StatusMessage = "submitted";
+                        }
+                        if (_StatusTxt == "Non Submitted")
+                        {
+                                StatusMessage = "unsubmitted";
+                           
+                            if (Due != null)
+                            { 
+                            if (Due.Equals('X'))
+                            {
+                                StatusMessage = "overdue";
+                            }
+
+                            }
+                        }
+                    }
+                }
+    
+                catch(Exception ex)
+                {
+
+                }
             }
         }
-        
-        public string StatusTxt { get; set; }
-       
-
-
-
+       public string StatusMessage
+        {
+            get;set;
+        }
         public string Incotyp { get; set; }
         public string Incotext { get; set; }
         private DateTime _abrzu;

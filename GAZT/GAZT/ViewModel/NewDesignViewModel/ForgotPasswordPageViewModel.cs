@@ -61,6 +61,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _iDNumber = value;
+                //if (string.IsNullOrEmpty(IDNumber))
+                //{
+                //    IsTinDopDownVisible = false;
+                //}
                 RaisePropertyChanged("IDNumber");
             }
         }
@@ -227,6 +231,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+        // * OTP Verification Properties
         private string _oTPFirstDigit;
         public string OTPFirstDigit
         {
@@ -240,6 +245,97 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("OTPFirstDigit");
             }
         }
+
+        private string _OTPSecondDigit;
+        public string OTPSecondDigit
+        {
+            get
+            {
+                return _OTPSecondDigit;
+            }
+            set
+            {
+                _OTPSecondDigit = value;
+                RaisePropertyChanged("OTPSecondDigit");
+            }
+        }
+
+        private string _OTPThirdDigit;
+        public string OTPThirdDigit
+        {
+            get
+            {
+                return _OTPThirdDigit;
+            }
+            set
+            {
+                _OTPThirdDigit = value;
+                RaisePropertyChanged("OTPThirdDigit");
+            }
+        }
+
+        private string _OTPFourthDigit;
+        public string OTPFourthDigit
+        {
+            get
+            {
+                return _OTPFourthDigit;
+            }
+            set
+            {
+                _OTPFourthDigit = value;
+                RaisePropertyChanged("OTPFourthDigit");
+            }
+        }
+        // * End
+
+
+
+        // * Password
+        private Color _MinEight;
+        public Color MinEight
+        {
+            get { return _MinEight; }
+            set
+            {
+                _MinEight = value;
+                RaisePropertyChanged("MinEight");
+            }
+        }
+
+        private Color _CapsSmall;
+        public Color CapsSmall
+        {
+            get { return _CapsSmall; }
+            set
+            {
+                _CapsSmall = value;
+                RaisePropertyChanged("CapsSmall");
+            }
+        }
+
+        private Color _MaxSixteen;
+        public Color MaxSixteen
+        {
+            get { return _MaxSixteen; }
+            set
+            {
+                _MaxSixteen = value;
+                RaisePropertyChanged("MaxSixteen");
+            }
+        }
+
+        private Color _NumSymbol;
+        public Color NumSymbol
+        {
+            get { return _NumSymbol; }
+            set
+            {
+                _NumSymbol = value;
+                RaisePropertyChanged("NumSymbol");
+            }
+        }
+        // * End
 
 
         private bool _userNameLayoutVisibility = false;
@@ -264,53 +360,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-
-
-
-
-        private string _oTPSecondDigit;
-        public string OTPSecondDigit
+        private bool _continueButtonEnability = true;
+        public bool ContinueButtonEnability
         {
             get
             {
-                return _oTPSecondDigit;
+                return _continueButtonEnability;
             }
             set
             {
-                _oTPSecondDigit = value;
-                RaisePropertyChanged("OTPSecondDigit");
+                _continueButtonEnability = value;
+               
+                RaisePropertyChanged(() => ContinueButtonEnability);
             }
         }
+        
 
-
-        private string _oTPThirdDigit;
-        public string OTPThirdDigit
-        {
-            get
-            {
-                return _oTPThirdDigit;
-            }
-            set
-            {
-                _oTPThirdDigit = value;
-                RaisePropertyChanged("OTPThirdDigit");
-            }
-        }
-
-
-        private string _oTPFourthDigit;
-        public string OTPFourthDigit
-        {
-            get
-            {
-                return _oTPFourthDigit;
-            }
-            set
-            {
-                _oTPFourthDigit = value;
-                RaisePropertyChanged("OTPFourthDigit");
-            }
-        }
 
 
 
@@ -400,7 +465,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _isResendOTPEnabled = value;
-                OnResendOTPClicked.ChangeCanExecute();
+               // OnResendOTPClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
@@ -774,7 +839,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     ButtonDisableColor = Color.FromHex("#005e4b");
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
-                    IsResendOTPEnabled = true;
+                   // IsResendOTPEnabled = true;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
@@ -1167,17 +1232,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             _dialogService = dialogService;
 
 
-            // Timer            
-            otpTimer = new System.Timers.Timer();
-            otpTimer.Interval = 1000;
-
-            // Event
-            otpTimer.Elapsed += OnCountDownTimedOTPEvent;
-
-            countDownSeconds = 59;
-            LblCountDownTimer = "0." + countDownSeconds.ToString();
-
-            otpTimer.Enabled = true;
+            
 
             //BackButtonClicked = new Xamarin.Forms.Command(() =>
             //{
@@ -1264,6 +1319,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         SendOTPToRegisterMobileNumber();
                                     }
                                 }
+                                else
+                                {
+                                    IsTinDopDownVisible = false;
+                                }
                             }
                             else
                             {
@@ -1349,12 +1408,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
+            
             OnResendOTPClicked = new Command(() =>
             {
-                SendOTPToRegisterMobileNumber();
+                if(IsResendOTPEnabled)
+                {
+                    SendOTPToRegisterMobileNumber();
+                }
+              
             });
 
-            // OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
+
+          //  OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
 
         }
         #endregion Constructor
@@ -1584,6 +1649,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
                         {
+                            ContinueButtonEnability = true;
+                            IsResendOTPEnabled = false;
+                            StartOTPTimer();
                             IsAPICalledSuccessfully = true;
 
                             StartPage = StartPage + 1;
@@ -1592,8 +1660,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             VerificationCodeVisibility = true;
                              string _mobileNumber  = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                            OTPSentOnThisMobileNumber = AppResources.NDPleaseEnterVerificationSenttomobile + MobileNumber;
-                            countDownSeconds = 120;
+                            OTPSentOnThisMobileNumber = AppResources.MobileNumber + MobileNumber;
+                         
+                           
+
                             //        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
 
                             //    Device.BeginInvokeOnMainThread(() =>
@@ -1622,6 +1692,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         else
                         {
                             IsAPICalledSuccessfully = false;
+                            Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
+                                });
                         }
                     }
                     catch (Exception ex)
@@ -1928,11 +2002,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (forgotPassword != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                             {
                                 StartPage = StartPage + 1;
-                                RecoverPasswordLayout = true;
+                              //  RecoverPasswordLayout = true;
                                 // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
                                 NewPasswordLayoutVisibility = false;
                                 OTPLayoutVisibility = false;
-                                NavigateToLoginLinkVisibility = true;
+                                //  NavigateToLoginLinkVisibility = true;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    _navigationService.NavigateTo(App.GAZTNewDesignRecoverPasswordPageView);
+                                });
+
                                 ForgotPasswordUserNameChangedMessage = AppResources.ZZYourPasswordhasbeenChangedsuccessfully;
                                 //  _navigationService.GoBack();
                             }
@@ -2252,12 +2331,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             DefaultCardLayoutVisibility = true;
             UserNameLayoutVisibility = false;
             IDNumber = string.Empty;
+
+
             OTPFirstDigit = string.Empty;
             OTPSecondDigit = string.Empty;
             OTPThirdDigit = string.Empty;
             OTPFourthDigit = string.Empty;
+
+
             IsAPICalledSuccessfully = false;
             SetIDNumberEnability = false;
+            PasswordCardBackgroundColor = Color.White;
+            UserNameCardBackgroundColor = Color.White;
+            Email = string.Empty;
+            TxtTIN = string.Empty;
+            if (TINs != null && TINs.Count > 0)
+                TINs.Clear();
+
 
         }
 
@@ -2287,8 +2377,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             // Stop timer
             if (countDownSeconds == 0)
             {
-                otpTimer.Stop();
+                ContinueButtonEnability = false;
+                IsResendOTPEnabled = true;
+
+                               otpTimer.Stop();
             }
+        }
+
+        public void StartOTPTimer()
+        {
+            // Timer            
+            otpTimer = new System.Timers.Timer();
+            otpTimer.Interval = 1000;
+
+            // Event
+            otpTimer.Elapsed += OnCountDownTimedOTPEvent;
+
+            countDownSeconds = 120;
+            LblCountDownTimer = "0." + countDownSeconds.ToString();
+
+            otpTimer.Enabled = true;
         }
         #endregion
 

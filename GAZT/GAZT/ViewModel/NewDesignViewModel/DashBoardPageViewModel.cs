@@ -76,6 +76,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _translateText;
+        public string TranslateText
+        {
+            get
+            {
+                return _translateText;
+            }
+            set
+            {
+                _translateText = value;
+                RaisePropertyChanged("TranslateText");
+            }
+        }
+
         private ObservableCollection<MyBillsChartModel> _MyBillsChartModels = null;
         public ObservableCollection<MyBillsChartModel> MyBillsChartModels
         {
@@ -493,7 +507,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
 
                                 MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#00674E") });
-                                BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
+                                BillCount = PaidBillCountAndAmount.BillCount.ToString();
+                            // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PaidBillCountAndAmount.BillCount)).ToString();
                                 ColorsChild.Add(System.Drawing.Color.FromArgb(0, 103, 78));
 
                                 iBillsCount = Convert.ToInt32(BillCount);
@@ -537,7 +552,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(PartiallyPaidBillCountAndAmount);
 
                         MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#E39800") });
-                        BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PartiallyPaidBillCountAndAmount.BillCount)).ToString();
+                        BillCount = PartiallyPaidBillCountAndAmount.BillCount.ToString();
+                        // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(PartiallyPaidBillCountAndAmount.BillCount)).ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(227, 152, 0));
 
                         iBillsCount += Convert.ToInt32(BillCount);
@@ -573,7 +589,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(UnPaidBillCountAndAmount);
 
                         MyBillsChartModels.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#EC0000") });
-                        BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(UnPaidBillCountAndAmount.BillCount)).ToString();
+                        BillCount = UnPaidBillCountAndAmount.BillCount.ToString();
+                        // BillCount = (Convert.ToInt32(BillCount) + Convert.ToInt32(UnPaidBillCountAndAmount.BillCount)).ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(236,0,0));
 
                         iBillsCount += Convert.ToInt32(BillCount);

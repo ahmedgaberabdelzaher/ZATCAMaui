@@ -102,7 +102,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage
             String langName = "ar-AE";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-            InitializeComponent();
+          //  InitializeComponent();
             this.FlowDirection = FlowDirection.RightToLeft;
             viewModel.TranslateText = AppResources.ZZZSetToEnglish;
         }
@@ -111,7 +111,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage
             String langName = "en-US";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-            InitializeComponent();
+           // InitializeComponent();
             this.FlowDirection = FlowDirection.LeftToRight;
             viewModel.TranslateText = AppResources.ZZZSetToArabic;
         }
