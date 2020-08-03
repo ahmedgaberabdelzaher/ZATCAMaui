@@ -4279,7 +4279,7 @@
   <data name="UnlockAccountResetPassword" xml:space="preserve">
     <value>تعيين كلمة المرور</value>
   </data>
-    <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
+  <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
     <value>كلمات المرور المدخلة غير متطابقة، يرجى￼ التأكد من أن كلمات المرور التي تم إدخالها متطابقة.</value>
   </data>
   <data name="EnterVerificationCodeSentToMobile" xml:space="preserve">
@@ -4293,7 +4293,6 @@
 تم إزالة الاغلاق عن الحساب، وتم تغيير كلمة المرور للرقم المميز  xxxxxx بنجاح.
 </value>
   </data>
-
   <data name="AccountUnlocked" xml:space="preserve">
     <value>تم فتح الحساب</value>
   </data>
@@ -4324,7 +4323,7 @@
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>Deregistration Date</value>
   </data>
-   <data name="TinDeregistrationFathersName" xml:space="preserve">
+  <data name="TinDeregistrationFathersName" xml:space="preserve">
     <value>Father's Name</value>
   </data>
   <data name="TinDeregistrationGrandFathersName" xml:space="preserve">
@@ -4483,6 +4482,6 @@
     <value>Review the Below Details</value>
   </data>
   <data name="ZZZZNextCommitments" xml:space="preserve">
-    <value>Next Commitments</value>
+    <value>الالتزامات القادمة</value>
   </data>
 </root>

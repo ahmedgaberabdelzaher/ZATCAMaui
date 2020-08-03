@@ -273,5 +273,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             this.FlowDirection = FlowDirection.LeftToRight;
             viewModel.TranslateText = AppResources.ZZZSetToArabic;
         }
+
+        private void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+        }
     }
 }

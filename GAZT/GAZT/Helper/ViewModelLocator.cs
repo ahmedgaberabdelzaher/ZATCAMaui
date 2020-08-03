@@ -319,7 +319,6 @@ namespace EGAZT
                 }
             }
         }
-      
         public VATLookUpNewPageViewModel VATLookUpNewPageView
         {
             get
