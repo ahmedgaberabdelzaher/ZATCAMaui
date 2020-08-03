@@ -4465,7 +4465,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Return Submission</value>
   </data>
   <data name="NDUsernameSenttoMobile" xml:space="preserve">
-    <value>Username sent to the registered email and mobile number</value>
+    <value>Username sent to mobile number</value>
   </data>
   <data name="NDVATZAKATReturnSubmission" xml:space="preserve">
     <value>VAT, ZAKAT and other return submissions made easy</value>
