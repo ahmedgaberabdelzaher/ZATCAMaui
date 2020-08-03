@@ -1656,6 +1656,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             IsAPICalledSuccessfully = true;
 
                             //StartPage = StartPage + 1;
+                            StartPage = 2;
+
                             DefaultCardLayoutVisibility = false;
                             UserIDLayoutVisibility = false;
                             VerificationCodeVisibility = true;
@@ -2382,6 +2384,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 int countDownSecondsL = countDownSeconds - 60;
                 LblCountDownTimer = "1:" + countDownSecondsL.ToString();
+
                 if (countDownSecondsL <= 9)
                     LblCountDownTimer = "1:0" + countDownSecondsL.ToString();
             }
