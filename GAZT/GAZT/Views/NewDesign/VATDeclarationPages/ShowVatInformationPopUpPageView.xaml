@@ -30,10 +30,8 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                     <Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Image>
-                            <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30" Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                            </Image.Source>
+                                <Image Source="ic_vat_info">
+
                         </Image>
                         <custom:CustomLabel Text="Amount" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
@@ -45,10 +43,8 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
             <Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Image>
-                            <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30" Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                            </Image.Source>
+                                <Image Source="ic_vat_info">
+
                         </Image>
                         <custom:CustomLabel Text="Adjustments" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
