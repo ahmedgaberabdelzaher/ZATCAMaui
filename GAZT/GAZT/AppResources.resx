@@ -450,7 +450,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   </data>
   <data name="Company" xml:space="preserve">
     <value>Corporate</value>
-  </data> 
+  </data>
   <data name="ForgotUsername" xml:space="preserve">
     <value>Forgot username</value>
   </data>
@@ -4515,7 +4515,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="ZZZZNextCommitments" xml:space="preserve">
     <value>Next Commitments</value>
   </data>
-   <data name="ZZZZPleaseSelect" xml:space="preserve">
+  <data name="ZZZZPleaseSelect" xml:space="preserve">
     <value>Please Select</value>
+  </data>
+  <data name="NDSkip" xml:space="preserve">
+    <value>Skip</value>
   </data>
 </root>

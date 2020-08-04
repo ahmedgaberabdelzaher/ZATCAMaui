@@ -4299,7 +4299,6 @@
   <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
     <value>الرجاء التحقق من الرقم المميز.</value>
   </data>
-    
   <data name="UnlockAccountPasswordsSecurityPolicy" xml:space="preserve">
     <value>كلمة المرور المدخلة غير متوافقة مع قواعد إنشاء كلمة المرور، ان لا تقل عن 8 احرف ولا تزيد عن 16 ، تحتوي على احرف كبيرة وصغيرة وأرقام ورموز.</value>
   </data>
@@ -4327,7 +4326,7 @@
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>Deregistration Date</value>
   </data>
-   <data name="TinDeregistrationFathersName" xml:space="preserve">
+  <data name="TinDeregistrationFathersName" xml:space="preserve">
     <value>Father's Name</value>
   </data>
   <data name="TinDeregistrationGrandFathersName" xml:space="preserve">
@@ -4490,5 +4489,8 @@
   </data>
   <data name="ZZZZPleaseSelect" xml:space="preserve">
     <value>Please Select</value>
+  </data>
+  <data name="NDSkip" xml:space="preserve">
+    <value>تخطى</value>
   </data>
 </root>

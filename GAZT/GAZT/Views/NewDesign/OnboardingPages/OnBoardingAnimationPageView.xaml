@@ -9,6 +9,7 @@
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
     ios:Page.UseSafeArea="False"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
@@ -47,7 +48,7 @@
                 FontFamily="{StaticResource SSTArBold}"
                 HorizontalOptions="Start"
                 IsVisible="{Binding IsSkipButtonVisible}"
-                Text="Skip"
+                Text="{x:Static ResourceManager:AppResources.NDSkip}"
                 TextColor="{x:StaticResource NeutralGreay}"
                 VerticalOptions="StartAndExpand"
                  />
