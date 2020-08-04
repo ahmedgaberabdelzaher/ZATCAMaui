@@ -68,8 +68,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IDNumber");
             }
         }
-       
-        private bool _isValiedEmailAddress=false;
+
+        private bool _isValiedEmailAddress = false;
         public bool IsValiedEmailAddress
         {
             get
@@ -370,11 +370,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _continueButtonEnability = value;
-               
+
                 RaisePropertyChanged(() => ContinueButtonEnability);
             }
         }
-        
+
 
 
 
@@ -422,7 +422,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        
+
 
 
         private bool _forgotUserNameCardLayoutVisibility = false;
@@ -465,7 +465,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _isResendOTPEnabled = value;
-               // OnResendOTPClicked.ChangeCanExecute();
+                // OnResendOTPClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
@@ -542,7 +542,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        
+
 
         // New Property Ends
 
@@ -632,7 +632,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     IsTinDopDownVisible = false;
                 }
-                    
+
                 RaisePropertyChanged("TINs");
             }
         }
@@ -839,7 +839,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     ButtonDisableColor = Color.FromHex("#005e4b");
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
-                   // IsResendOTPEnabled = true;
+                    // IsResendOTPEnabled = true;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
@@ -1232,7 +1232,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             _dialogService = dialogService;
 
 
-            
+
 
             //BackButtonClicked = new Xamarin.Forms.Command(() =>
             //{
@@ -1306,7 +1306,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
                             }
                         }
-                     
+
                         if (UserNameLayoutVisibility)
                         {
                             if (IsValiedEmailAddress)
@@ -1329,7 +1329,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IDNumber = Email;
                                 SendOTPToRegisterMobileNumber();
                             }
-                            
+
                         }
 
 
@@ -1408,18 +1408,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
-            
+
             OnResendOTPClicked = new Command(() =>
             {
-                if(IsResendOTPEnabled)
+                if (IsResendOTPEnabled)
                 {
+                    StartPage = 2;
                     SendOTPToRegisterMobileNumber();
                 }
-              
+
             });
 
 
-          //  OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
+            //  OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
 
         }
         #endregion Constructor
@@ -1654,15 +1655,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             StartOTPTimer();
                             IsAPICalledSuccessfully = true;
 
-                            StartPage = StartPage + 1;
+                            //StartPage = StartPage + 1;
+                            StartPage = 2;
+
                             DefaultCardLayoutVisibility = false;
                             UserIDLayoutVisibility = false;
                             VerificationCodeVisibility = true;
-                             string _mobileNumber  = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
+                            string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                             OTPSentOnThisMobileNumber = AppResources.MobileNumber + MobileNumber;
-                         
-                           
+
+
 
                             //        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
 
@@ -2002,7 +2005,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (forgotPassword != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                             {
                                 StartPage = StartPage + 1;
-                              //  RecoverPasswordLayout = true;
+                                //  RecoverPasswordLayout = true;
                                 // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
                                 NewPasswordLayoutVisibility = false;
                                 OTPLayoutVisibility = false;
@@ -2369,10 +2372,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             countDownSeconds--;
 
-            if (countDownSeconds <= 9)
+            /*if (countDownSeconds <= 9)
                 LblCountDownTimer = "0:0" + countDownSeconds.ToString();
             else
+                LblCountDownTimer = "0:" + countDownSeconds.ToString();*/
+
+
+            if (countDownSeconds <= 9)
+                LblCountDownTimer = "0:0" + countDownSeconds.ToString();
+            else if (countDownSeconds > 60)
+            {
+                int countDownSecondsL = countDownSeconds - 60;
+                LblCountDownTimer = "1:" + countDownSecondsL.ToString();
+
+                if (countDownSecondsL <= 9)
+                    LblCountDownTimer = "1:0" + countDownSecondsL.ToString();
+            }
+            else
                 LblCountDownTimer = "0:" + countDownSeconds.ToString();
+
 
             // Stop timer
             if (countDownSeconds == 0)
@@ -2380,7 +2398,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 ContinueButtonEnability = false;
                 IsResendOTPEnabled = true;
 
-                               otpTimer.Stop();
+                otpTimer.Stop();
             }
         }
 
