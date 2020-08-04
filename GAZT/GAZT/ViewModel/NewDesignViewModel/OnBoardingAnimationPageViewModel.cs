@@ -229,9 +229,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         /// Invoked when the Done button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void Next(object obj)
+        private void Next()
         {
-            var itemCount = (obj as SfRotator).ItemsSource.Count();
+            var itemCount = Boardings.Count();
             if (this.ValidateAndUpdateSelectedIndex(itemCount))
             {
                 this.MoveToNextPage();
