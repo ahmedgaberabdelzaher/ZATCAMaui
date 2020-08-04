@@ -261,6 +261,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
             }
         }
 
+        public void test()
+        {
+            this.Boardings = new ObservableCollection<Boarding>
+            {
+                new Boarding()
+                {
+                    ImagePath = "committments_onboarding.png",
+                    Header = AppResources.NDCommitments,
+                    Content = AppResources.NDDontMissObligation,
+                    RotatorItem = new WalkthroughItemPage()
+                },
+                new Boarding()
+                {
+                    ImagePath = "returnsubmission_onboarding.png",
+                    Header = AppResources.NDReturnSubmission,
+                    Content = AppResources.NDVATZAKATReturnSubmission,
+                    RotatorItem = new WalkthroughItemPage()
+                },
+                //new Boarding()
+                //{
+                //    ImagePath = "paymentmethod_onboarding.png",
+                //    Header = AppResources.NDNewPaymentMethods,
+                //    Content = AppResources.NDMakeTransactionsFast,
+                //    RotatorItem = new WalkthroughItemPage()
+                //},
+                new Boarding()
+                {
+                    ImagePath = "inbox_onboarding.png",
+                    Header = AppResources.NDInboxnNotification,
+                    Content = AppResources.NDNewEasyWayToCommunicate,
+                    RotatorItem = new WalkthroughItemPage()
+                }
+            };
+
+            // Set bindingcontext to content view.5
+            foreach (var boarding in this.Boardings)
+            {
+                boarding.RotatorItem.BindingContext = boarding;
+            }
+        }
+
         private void MoveToNextPage()
         {
            _navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);

@@ -63,11 +63,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
             }
         }
 
-        private async void TappedOnTinContentBackButton(object sender, EventArgs e)
+        private void TappedOnTinContentBackButton(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
-            viewModel._navigationService.GoBack();
+            Device.BeginInvokeOnMainThread(()=>
+            {
+                MessagingCenter.Send("UnlockAccountBackButtonClicked", "UnlockAccountBackButtonClicked");
+                PopupNavigation.Instance.PopAsync();
+                //viewModel._navigationService.GoBack();
+            });
         }
+
+
 
         private void TappedOnOtpContentBackButton(object sender, EventArgs e)
         {
