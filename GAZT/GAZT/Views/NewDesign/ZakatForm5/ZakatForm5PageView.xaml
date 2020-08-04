@@ -38,7 +38,7 @@
                 <ScrollView Grid.Row="1">
                     <StackLayout>
                     <!--Start Of Basic Information View-->
-                    <StackLayout x:Name="BasicInformation">
+                    <StackLayout x:Name="BasicInformation" IsVisible="False">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5BasicInformation}" Style="{StaticResource PageTitleBlack}" />
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" Style="{StaticResource ValueLabelGrey}" />
                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
@@ -748,6 +748,770 @@
 
                             </StackLayout>
                             <!--On Buy and Sell Clicked ends-->
+
+                            <!--On Labour Occupancy clicked Starts-->
+                            <StackLayout x:Name="LabourOccupancy">
+                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <custom:CustomLabel Text="Arabic Name" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <StackLayout Padding="10" Spacing="15">
+                                            
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Arabic Name" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="No. Of Labors" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="02" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Revenue" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.FORM5Expenses}" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Image Source="ic_vat_info" >
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+
+                                            </Grid>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Net Profit" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </border:SfBorder>
+
+
+                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <custom:CustomLabel Text="Skin Care non-medical skin" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <StackLayout Padding="10" Spacing="15">
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel WidthRequest="130" Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Skin Care non-medical skin" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="No. Of Labors" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="02" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Revenue" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.FORM5Expenses}" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Image Source="ic_vat_info" >
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+
+                                            </Grid>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Net Profit" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </border:SfBorder>
+                            </StackLayout>
+                            <!--On Labour Occupancy Cliked ends-->
+
+                            <!--On Industry clicked Starts-->
+                            <StackLayout x:Name="Industry">
+                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <custom:CustomLabel Text="Dairy Factory" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <StackLayout Padding="10" Spacing="15">
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Dairy Factory" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0" ColumnSpacing="0" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*"/>
+                                                    <ColumnDefinition Width="10*"/>
+                                                    <ColumnDefinition Width="40*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text="Total funding from Government" Style="{StaticResource ValueLabelGrey}"/>
+
+                                                <StackLayout  Grid.Row="0" Grid.Column="1">
+                                                    <Image Margin="0,10,0,0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                            </Grid>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Declared Capital" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*"/>
+                                                    <ColumnDefinition Width="50*"/>
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="0">
+                                                    <custom:CustomLabel Text="Profit" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Image HorizontalOptions="Start" VerticalOptions="Start" Margin="0,10,0,0" Source="ic_vat_info">
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="90000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                            </Grid>
+
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Sales" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="0.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </border:SfBorder>
+
+                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <custom:CustomLabel Text="Production belts and shoes and bags" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <StackLayout Padding="10" Spacing="15">
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel WidthRequest="150" Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Production belts and shoes and bags" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0" ColumnSpacing="0" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*"/>
+                                                    <ColumnDefinition Width="10*"/>
+                                                    <ColumnDefinition Width="40*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text="Total funding from Government" Style="{StaticResource ValueLabelGrey}"/>
+
+                                                <StackLayout  Grid.Row="0" Grid.Column="1">
+                                                    <Image Margin="0,10,0,0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Text="6000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                            </Grid>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Declared Capital" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="92000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*"/>
+                                                    <ColumnDefinition Width="50*"/>
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="0">
+                                                    <custom:CustomLabel Text="Profit" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Image HorizontalOptions="Start" VerticalOptions="Start" Margin="0,10,0,0" Source="ic_vat_info">
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="90000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                            </Grid>
+
+
+                                            <Grid RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="40*"/>
+                                                    <ColumnDefinition Width="60*"/>
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="0">
+                                                    <custom:CustomLabel Text="Sales" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Image HorizontalOptions="Start" VerticalOptions="Start" Margin="0,10,0,0" Source="ic_vat_info">
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="90000000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                            </Grid>
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </border:SfBorder>
+
+                            </StackLayout>
+                            <!--On Industry clicked Ends-->
+
+                            <!--On Contracting clicked Starts-->
+                            <StackLayout x:Name="Contracting">
+                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <custom:CustomLabel Text="Maintenance Est." Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <StackLayout Padding="10" Spacing="15">
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Maintenance Est." Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*"/>
+                                                    
+                                                    <ColumnDefinition Width="50*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackLayout HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Orientation="Horizontal" >
+                                                    <custom:CustomLabel Text="Government Cont. Profits" Style="{StaticResource ValueLabelGrey}" />
+
+                                                <Image  Source="ic_vat_info"  VerticalOptions="Start" HorizontalOptions="Start" Margin="0,5,0,0">
+
+                                                </Image>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                </StackLayout>
+                                            </Grid>
+
+                                            <Grid RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*"/>
+
+                                                    <ColumnDefinition Width="50*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackLayout HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Orientation="Horizontal" >
+                                                    <custom:CustomLabel Text="Profit From Civil Contracting" Style="{StaticResource ValueLabelGrey}" />
+
+                                                    <Image  Source="ic_vat_info"  VerticalOptions="Start" HorizontalOptions="Start" Margin="0,5,0,0">
+
+                                                    </Image>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Applicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                    <custom:CustomLabel Text="2000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                </StackLayout>
+                                            </Grid>
+
+                                            <Grid RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*"/>
+
+                                                    <ColumnDefinition Width="50*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackLayout HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Orientation="Horizontal" >
+                                                    <custom:CustomLabel Text="Other Profit" Style="{StaticResource ValueLabelGrey}" />
+
+                                                    <Image  Source="ic_vat_info"  VerticalOptions="Start" HorizontalOptions="Start" Margin="0,10,0,0">
+
+                                                    </Image>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                    <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                </StackLayout>
+                                            </Grid>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Activity total Profits" Style="{StaticResource ValueLabelGrey}" />
+                                                <custom:CustomLabel Text="90000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:CustomLabel Text="No. Of Labours" Style="{StaticResource ValueLabelGrey}" />
+                                                <Image Source="ic_vat_info">
+                                                    
+                                                </Image>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Capital" Style="{StaticResource ValueLabelGrey}" />
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="60000.00 SAR " Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </border:SfBorder>
+                            </StackLayout>
+                            <!--On Contracting clicked Ends-->
+
+                            <!--On Invest and Real Est. Clicked Starts-->
+                            <StackLayout x:Name="RealEstateOffice">
+                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <custom:CustomLabel Text="Real Estate Office" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <StackLayout Padding="10" Spacing="15">
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Real Estate Office" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="City" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Riyadh" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Revenue" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.FORM5Expenses}" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Image Source="ic_vat_info" >
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+
+                                            </Grid>
+                                            
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Net Profit" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+                                                    
+                                                </Image>
+                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </border:SfBorder>
+                            </StackLayout>
+                            <!--On Invest and Real Est. Clicked Ends-->
+                            
+                            <!--On Hotels Clicked Starts-->
+                            <StackLayout x:Name="Hotels">
+                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <custom:CustomLabel Text="Lounge Travelers" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <StackLayout Padding="10" Spacing="15">
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Lounge Travelers" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="No. Of Rooms/Units" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="0" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Room Rates" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+                                                    
+                                                </Image>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Additional Room Rate" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Service Fees" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="5%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Occupancy Rate" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="20%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="City" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="Riyadh" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Is it owned by you?" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="No" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Revenue" Style="{StaticResource ValueLabelGrey}"/>
+                                                
+                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.FORM5Expenses}" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Image Source="ic_vat_info" >
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                            </Grid>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Net Profit" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </border:SfBorder>
+                            </StackLayout>
+                            <!--On Hotels Clicked Ends-->
+
+                            <!--On Education & Health Clicked Starts-->
+                            <StackLayout x:Name="EducationAndHealth">
+                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <custom:CustomLabel Text="Medical Clinic" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <StackLayout Padding="10" Spacing="15">
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Medical Clinic" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Value of Subsidy From Government" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="900000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.FORM5Expenses}" Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Image Source="ic_vat_info" >
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                        </Grid>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info">
+                                                    
+                                                </Image>
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </border:SfBorder>
+                            </StackLayout>
+                            <!--On Education & Health Clicked Ends-->
+
+                            <!--Poultry & Fish Fram Activities Clcked Starts-->
+                            <StackLayout x:Name="PoultryAndFishFram">
+                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <custom:CustomLabel Text="Rabbits Farm" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                        </StackLayout>
+
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <StackLayout Padding="10" Spacing="15">
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="Rabbits Farm" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="Declared Capital" Style="{StaticResource ValueLabelGrey}"/>
+                                                <custom:CustomLabel Text="900000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <Grid Padding="0" RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Spacing="0" Orientation="Horizontal">
+                                                    <custom:CustomLabel  Text="Increase in Capital" Style="{StaticResource ValueLabelGrey}" />
+                                                    <Image Source="ic_vat_info" Margin="0,10,0,0"   VerticalOptions="Start">
+
+                                                    </Image>
+                                                </StackLayout>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+
+                                            </Grid>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:CustomLabel  Text="Capital rate" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info" >
+
+                                                </Image>
+                                                <custom:CustomLabel Text="0.00" HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:CustomLabel  Text="Profits" Style="{StaticResource ValueLabelGrey}"/>
+                                                <Image Source="ic_vat_info" >
+
+                                                </Image>
+                                                <custom:CustomLabel Text="200.00 SAR" HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </border:SfBorder>
+                            </StackLayout>
+                            <!--Poultry & Fish Fram Activities Clcked Ends-->
                         </StackLayout>
                         
                         <!--End of Financial Information-->

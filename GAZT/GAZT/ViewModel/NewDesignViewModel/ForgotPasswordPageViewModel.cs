@@ -48,6 +48,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public int MaximumUserNameCharacter { get; set; } = 10;
 
         public bool IsUserNameCardTapped { get; set; } = false;
+        public bool IsPasswordCardTapped { get; set; } = false;
         public bool StopTimer = true;
         #endregion
 
@@ -1327,7 +1328,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetOTP();
                 }
 
-                if (IsPasswordCardSelected == true)
+                if (IsPasswordCardTapped == true)
                 {
 
                     if (StartPage == 1)
@@ -1407,7 +1408,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
 
                 }
-                else
+                else if(IsUserNameCardTapped == true)
                 {
                     if(!string.IsNullOrEmpty(IDNumber)) 
                     {
@@ -1418,6 +1419,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
                     }
 
+
+                }
+                else if(IsUserNameCardTapped == false && IsPasswordCardTapped == false)
+                {
+                    _dialogService.ShowMessageBox(AppResources.ZZZZPleaseSelect, AppResources.Information);
+
+                }
+                else
+                {
 
                 }
 

@@ -38,7 +38,6 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
                 Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                 Navigation.RemovePage(pg);
         }
