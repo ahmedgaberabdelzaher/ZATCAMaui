@@ -16,7 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate x:Key="ItemTemplate">
+            <DataTemplate x:Key="ItemTemplate" x:Name="ItemTemplate">
                 <ContentPresenter Content="{Binding RotatorItem}" />
             </DataTemplate>
         </ResourceDictionary>
@@ -40,7 +40,7 @@
                 <!--  Skip button  -->
 
                 <buttons:SfButton
-                x:Name="SkipButton"
+                
                 Grid.Row="0"
                 Margin="10"
                 BackgroundColor="Transparent"
@@ -55,7 +55,7 @@
                  />
 
                 <buttons:SfButton
-                x:Name="ChangeLangButton"
+              
                 Grid.Row="0"
                 Margin="10"
                 BackgroundColor="Transparent"

@@ -49,9 +49,14 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             String langName = "ar-AE";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-           
+            //InitializeComponent();
             this.FlowDirection = FlowDirection.RightToLeft;
             viewModel.LanguageText = AppResources.ZZZSetToEnglish;
+            viewModel.test();
+
+            viewModel._navigationService.GoBack();
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+
         }
         public void SetLTRDirection()
         {
@@ -59,8 +64,11 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
             this.FlowDirection = FlowDirection.LeftToRight;
-
+            //InitializeComponent();
             viewModel.LanguageText = AppResources.ZZZSetToArabic;
+            viewModel.test();
+            viewModel._navigationService.GoBack();
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
         }
     }
 }
