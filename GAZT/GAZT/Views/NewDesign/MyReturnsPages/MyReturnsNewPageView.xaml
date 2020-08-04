@@ -119,7 +119,7 @@
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
                                     <StackLayout Margin="0" Padding="0">
-                                        <buttons:SfChip Margin="0" WidthRequest="100" HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
+                                        <buttons:SfChip Margin="0"  HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
                                     </StackLayout>
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>
