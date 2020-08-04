@@ -247,6 +247,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _oTPFirstDigit = value;
+                if(!string.IsNullOrEmpty(OTPFirstDigit))
+                {
+                   bool isNumberEntered =  CheckOnlyNumber(OTPFirstDigit[0]);
+                    if(!isNumberEntered)
+                    {
+                        OTPFirstDigit = string.Empty;
+                    }
+                }
+                
                 RaisePropertyChanged("OTPFirstDigit");
             }
         }
@@ -261,6 +270,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _OTPSecondDigit = value;
+                if (!string.IsNullOrEmpty(OTPSecondDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPSecondDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPSecondDigit = string.Empty;
+                    }
+                }
                 RaisePropertyChanged("OTPSecondDigit");
             }
         }
@@ -275,6 +292,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _OTPThirdDigit = value;
+                if (!string.IsNullOrEmpty(OTPThirdDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPThirdDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPThirdDigit = string.Empty;
+                    }
+                }
                 RaisePropertyChanged("OTPThirdDigit");
             }
         }
@@ -289,6 +314,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _OTPFourthDigit = value;
+                if (!string.IsNullOrEmpty(OTPFourthDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPFourthDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPFourthDigit = string.Empty;
+                    }
+                }
                 RaisePropertyChanged("OTPFourthDigit");
             }
         }
@@ -2437,6 +2470,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             LblCountDownTimer = "0." + countDownSeconds.ToString();
 
             otpTimer.Enabled = true;
+        }
+
+        private bool CheckOnlyNumber(char letter)
+        {
+            if ((letter >= 48 && letter <= 57))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         #endregion
 
