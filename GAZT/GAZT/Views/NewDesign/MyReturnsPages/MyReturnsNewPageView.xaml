@@ -31,7 +31,7 @@
             <Grid>
 
                 <StackLayout>
-                    <Grid Padding="0,5,0,5">
+                    <Grid Padding="15,5,15,5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -42,11 +42,28 @@
                         </Grid.ColumnDefinitions>
 
                         <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+
+
+                            <Image Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeftwhite">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <StackLayout Spacing="15" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2" >
+                            <Image Source="search">
+
+                            </Image>
+                            <Image Source="filter">
+
+                            </Image>
+                        </StackLayout>
+                        <!--                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                             <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer      Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
                             </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                        </custom:CustomLabel>-->
+                    
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
@@ -90,10 +107,13 @@
                             <TapGestureRecognizer Tapped="btn_Clicked"/>
                         </custom:CustomLabel.GestureRecognizers>-->
                     </custom:CustomLabel>
-                   
 
-                    <Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
-                           Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>
+                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+
+                    </Image>
+
+                    <!--<Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
+                           Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>-->
 
                     <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                     <!--Margin="10,0,10,0"-->
@@ -119,7 +139,7 @@
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
                                     <StackLayout Margin="0" Padding="0">
-                                        <buttons:SfChip Margin="0" WidthRequest="100" HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
+                                        <buttons:SfChip Margin="0"  HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
                                     </StackLayout>
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>

@@ -4280,7 +4280,7 @@
     <value>تعيين كلمة المرور</value>
   </data>
   <data name="UnlockAccountPasswordsDoesntMatch" xml:space="preserve">
-    <value>كلمات المرور المدخلة غير متطابقة، يرجى￼ التأكد من أن كلمات المرور التي تم إدخالها متطابقة.</value>
+    <value>كلمات المرور المدخلة غير متطابقة ، يرجى التأكد من ان كلمات المرور التى تم إدخالها متطابقة.</value>
   </data>
   <data name="EnterVerificationCodeSentToMobile" xml:space="preserve">
     <value>يرجى إدخال رمز التحقق المرسل إلى هاتفك المحمول</value>
@@ -4297,7 +4297,7 @@
     <value>تم فتح الحساب</value>
   </data>
   <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
-    <value>الرجاء إكمال الحقول المطلوبة</value>
+    <value>الرجاء التحقق من الرقم المميز.</value>
   </data>
   <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
@@ -4323,7 +4323,7 @@
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>Deregistration Date</value>
   </data>
-  <data name="TinDeregistrationFathersName" xml:space="preserve">
+   <data name="TinDeregistrationFathersName" xml:space="preserve">
     <value>Father's Name</value>
   </data>
   <data name="TinDeregistrationGrandFathersName" xml:space="preserve">
@@ -4409,7 +4409,7 @@
     <value>إعادة إرسال رمز التحقق</value>
   </data>
   <data name="NDSelectTheOptionAndCompleteDetails" xml:space="preserve">
-    <value>Select the option and complete the details</value>
+    <value>قم بالاختيار واكمل التفاصيل المطلوبة</value>
   </data>
   <data name="NDTypeyourIDNumber" xml:space="preserve">
     <value>ادخل رقم الهوية</value>

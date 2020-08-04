@@ -450,7 +450,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   </data>
   <data name="Company" xml:space="preserve">
     <value>Corporate</value>
-  </data>
+  </data> 
   <data name="ForgotUsername" xml:space="preserve">
     <value>Forgot username</value>
   </data>
