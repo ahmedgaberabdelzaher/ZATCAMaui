@@ -840,8 +840,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             _navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
             _navigation.NavigationStack.ToList().Clear();
-            //var _navigation = Application.Current.MainPage.Navigation;
-            //_navigation.PopToRootAsync();
         }
         #endregion
     }

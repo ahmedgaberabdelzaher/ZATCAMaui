@@ -16,8 +16,11 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
     {
         GAZTNewDesignMyBillsPageViewModel viewModel;
         public GAZTNewDesignMyBillsPageView(BillInfo billInfo = null)
-        {//MyBillsPageViewModel
+        {
             InitializeComponent();
+            
+          //  App.DisplayProgressView();
+
             viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
             this.BindingContext = viewModel;
             try
@@ -29,32 +32,31 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 viewModel.SelectedChipFilterItem = null;
                 if (billInfo != null)
                 {
-                    if (billInfo.BillTypeName.Equals("Paid"))
+                    if (billInfo.BillTypeName.Equals(AppResources.Paid))
                     {
-
-                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Paid")).FirstOrDefault();
+                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.Paid)).FirstOrDefault();
                         viewModel.FilterIfTypeAndStausFilterSelected();
                     }
-                    if (billInfo.BillTypeName.Equals("Unpaid"))
+                    if (billInfo.BillTypeName.Equals(AppResources.UnPaid))
                     {
-                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Unpaid")).FirstOrDefault();
+                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
                         viewModel.FilterIfTypeAndStausFilterSelected();
                     }
-                    if (billInfo.BillTypeName.Equals("Partial"))
+                    if (billInfo.BillTypeName.Equals(AppResources.PartiallyPaid))
                     {
-                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Partial")).FirstOrDefault();
+                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.PartiallyPaid)).FirstOrDefault();
                         viewModel.FilterIfTypeAndStausFilterSelected();
                     }
-
+                    ChipGroup_statusFilter.SelectedItem = viewModel.SelectedChipFilterItem;
+                    viewModel.SelectionColor = Color.AliceBlue;
                 }
-
 
             }
             catch(Exception ex)
             { 
             
             }
-                        ChangeAeroIcon();
+            ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
@@ -64,6 +66,9 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 if (e.Item == null) return;
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
+
+          //  App.HideProgressView();
+
         }
 
         private void SetLTR()
@@ -95,8 +100,10 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             try
             {
                 ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
-                TaxTypePicker.SelectedItem = selectedReturntype;//Fbnum
-                viewModel.SelectedReturnTypeForFilter = selectedReturntype;
+                TaxTypePicker.SelectedItem = selectedReturntype;
+                viewModel.SelectedTaxTypeForFilter = selectedReturntype;
+                ChipGroup_statusFilter.SelectedItem = null;
+                viewModel.SelectedChipFilterItem = null;          
             }
             catch(Exception ex)
             { 
@@ -109,10 +116,10 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         {
             try
             {
-                //ChipModel SelectedChipFilterItem
-                   ChipModel selectedReturntype = (ChipModel)e.AddedItem;
-                ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
+                ChipModel selectedReturntype = (ChipModel)e.AddedItem;
+                ChipGroup_statusFilter.SelectedItem = selectedReturntype;
                 viewModel.SelectedChipFilterItem = selectedReturntype;
+                viewModel.SelectionColor = Color.AliceBlue;
             }
             catch (Exception ex)
             { 
@@ -133,7 +140,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 if (Clipboard.HasText)
                 {
                     var text = await Clipboard.GetTextAsync();
-                    viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
+                    await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
 
                 }
                 Device.BeginInvokeOnMainThread(() =>

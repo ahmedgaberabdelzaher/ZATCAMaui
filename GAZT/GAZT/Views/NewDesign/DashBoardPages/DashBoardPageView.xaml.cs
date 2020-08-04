@@ -79,7 +79,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             base.OnAppearing();
 
-            SetLTR();
             App.IsComingFromSleepMode = false;
 
             MenuView.IsVisible = false;
@@ -127,19 +126,25 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private void TappedOnMyBills(object sender, EventArgs e)
         {
+           // App.DisplayProgressView();
             BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = "Paid";
+            billInfo.BillTypeName = AppResources.All;
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+
+
         }
 
         private void TappedOnMyReturns(object sender, EventArgs e)
         {
+            //App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 3);
         }
 
    
         private void TappedOnSignleReturns(object sender, EventArgs e)
         {
+           // App.DisplayProgressView();
+
             string controltype = sender.GetType().ToString();
 
                 Syncfusion.XForms.Cards.SfCardView arrowImage = sender as Syncfusion.XForms.Cards.SfCardView;
@@ -167,34 +172,42 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private void paidClicked(object sender, EventArgs e)
         {
+           // App.DisplayProgressView();
+
             BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = "Paid";
+            billInfo.BillTypeName = AppResources.Paid;
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
 
         private void partiallyClicked(object sender, EventArgs e)
         {
+          //  App.DisplayProgressView();
+
             BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = "Partial";
+            billInfo.BillTypeName = AppResources.PartiallyPaid;
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
 
         private void unPaidClicked(object sender, EventArgs e)
         {
+         //   App.DisplayProgressView();
+
             BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = "Unpaid";
+            billInfo.BillTypeName = AppResources.UnPaid;
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
 
         private async void Logout_Tapped(System.Object sender, System.EventArgs e)
         {
+        //    App.DisplayProgressView();
+
             if (App.IsArabic)
             {
                 var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
                 if (!result)
                 {
                     App.TP = null;
-                    viewModel.LogOut();
+                    await viewModel.LogOut();
                 }
             }
             else
@@ -203,56 +216,67 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 if (result)
                 {
                     App.TP = null;
-                    viewModel.LogOut();
+                    await viewModel.LogOut();
                 }
             }
         }
 
         private void Label_MyBills(object sender, EventArgs e)
         {
+       //     App.DisplayProgressView();
+
             BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = "All";
+            billInfo.BillTypeName = AppResources.All;
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
 
         private void Label_MyRetuns_Tapped(object sender, EventArgs e)
         {
+     //       App.DisplayProgressView();
+
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
         }
         private void Label_MyProfile_Tapped(object sender, EventArgs e)
         {
+   //         App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.TaxPayerProfilePageView);
         }
 
         private void Aboutus_Tapped(object sender, EventArgs e)
         {
+     //       App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.AboutUsPageView);
         }
 
         private void Contactus_Tapped(object sender, EventArgs e)
         {
+      //      App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.ContactUsPageView);
         }
 
         private void PrivacyPolicy_Tapped(object sender, EventArgs e)
         {
+    //        App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
         }
 
         private void ChangeLanguage_Tapped(object sender, EventArgs e)
         {
-            //if (App.IsArabic)
-            //{
-            //    App.IsArabic = false;
-            //    App.changeFontFamily(App.appObj);
-            //    SetLTRDirection();
-            //}
-            //else
-            //{
-            //    App.IsArabic = true;
-            //    App.changeFontFamily(App.appObj);
-            //    SetRTLDirection();
-            //}
+    //        App.DisplayProgressView();
+            if (App.IsArabic)
+            {
+                App.IsArabic = false;
+                App.changeFontFamily(App.appObj);
+                SetLTRDirection();
+            }
+            else
+            {
+                App.IsArabic = true;
+                App.changeFontFamily(App.appObj);
+                SetRTLDirection();
+            }
+
+            OnAppearing();
         }
 
         public void SetRTLDirection()
@@ -260,7 +284,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             String langName = "ar-AE";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-            InitializeComponent();
+            //InitializeComponent();
             this.FlowDirection = FlowDirection.RightToLeft;
             viewModel.TranslateText = AppResources.ZZZSetToEnglish;
         }
@@ -269,13 +293,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             String langName = "en-US";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-            InitializeComponent();
+            //InitializeComponent();
             this.FlowDirection = FlowDirection.LeftToRight;
             viewModel.TranslateText = AppResources.ZZZSetToArabic;
         }
 
         private void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)
         {
+         //   App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
         }
     }

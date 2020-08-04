@@ -15,6 +15,9 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
         public GAZTNewDesignMyReturnsNewPageView(int Index)
         {
             InitializeComponent();
+            
+           // App.DisplayProgressView();
+
             viewModel = App.Locator.GAZTNewDesignMyReturnsNewPageView;
             this.BindingContext = viewModel;
             ChangeAeroIcon();
@@ -53,6 +56,8 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     return;
                 } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
+
+          //  App.HideProgressView();
         }
 
         private void SetLTR()

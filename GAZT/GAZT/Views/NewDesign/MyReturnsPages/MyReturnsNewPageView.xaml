@@ -5,14 +5,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              mc:Ignorable="d"
              x:Class="EGAZT.Views.NewDesign.MyReturnsNewPages.GAZTNewDesignMyReturnsNewPageView"
-             FlowDirection="RightToLeft" 
-              xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             FlowDirection="RightToLeft"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -96,37 +99,11 @@
                     <!--Margin="10,0,10,0"-->
                     </custom:CustomButton>
 
-                    <syncfusion:SfPicker x:Name="TaxTypePicker"
-                    HeaderHeight="55"
-                    
-                    HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
-HeaderTextColor="White"
-                                             ShowColumnHeader="False"
-                    ColumnHeaderHeight="46"
-                    PickerMode="Dialog"
-                                            HeaderBackgroundColor="#006450"
-                    
-
-                    
-                                          BorderColor="Black"
-                     BackgroundColor="White"
-                                SelectedItemFontSize="15"
-                            ShowFooter="False"               
-                   ItemHeight="40"
-                     DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                   PickerHeight="250"
-SelectedItemFontAttribute="Bold"
-                                         SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                         UnSelectedItemTextColor="{StaticResource NeutralBlack}"
-                    PickerWidth="300"
-                                             HeaderFontSize="14"
-                    OKButtonTextColor="#006450"
-                    CancelButtonTextColor="#006450"
-                        ShowHeader="False"
-                                    OKButtonBackgroundColor="#EAF7CC"
-                                    CancelButtonBackgroundColor="#EAF7CC"
-                                             FooterHeight="46"
-                                         SelectionChanged="TaxTypePicker_SelectionChanged">
+                    <syncfusion:SfPicker x:Name="TaxTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
+                    ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                    ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
+                    PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                    FooterHeight="46" SelectionChanged="TaxTypePicker_SelectionChanged">
                         <syncfusion:SfPicker.Behaviors>
                             <custom1:SfPickerBehavior />
                         </syncfusion:SfPicker.Behaviors>
@@ -142,7 +119,7 @@ SelectedItemFontAttribute="Bold"
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
                                     <StackLayout Margin="0" Padding="0">
-                                        <buttons:SfChip Margin="0" HeightRequest="40" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontSize="12" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
+                                        <buttons:SfChip Margin="0" WidthRequest="100" HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Style="{StaticResource CaptionButtonBlack}"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
                                     </StackLayout>
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>
@@ -205,8 +182,7 @@ SelectedItemFontAttribute="Bold"
                                             </StackLayout>
                                             <!--StatusTxt-->
                                             <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                                <yummy:PancakeView    Padding="10,10,10,10" 
-                               CornerRadius="14"  BorderThickness="1" BackgroundColor="{Binding FrameColorHighlight}"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                                <yummy:PancakeView  Padding="10,10,10,10" CornerRadius="14"  HeightRequest="24" BorderThickness="1" BackgroundColor="{Binding FrameColorHighlight}"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
                                                     <custom:CustomLabel Text="{Binding statusMessage}" Style="{StaticResource CaptionLabelGrey}" TextColor="{Binding TextColorHighlight}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <custom:CustomLabel.Triggers>
                                                             <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->

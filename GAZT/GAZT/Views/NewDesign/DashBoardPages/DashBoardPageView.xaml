@@ -174,15 +174,6 @@
                                             <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.All}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center" />-->
                                             <!--<AbsoluteLayout>-->
                                             <chart:SfChart ChartPadding="15"  BackgroundColor="White" x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" IsVisible="true">
-                                                <!--<chart:SfChart.Legend>
-                                                        <chart:ChartLegend IconHeight="14" IconWidth="14" Margin="0,0,0,5"   OverflowMode="Wrap" DockPosition="Top" ToggleSeriesVisibility="False"  >
-                                                            <chart:ChartLegend.LabelStyle>
-
-                                                                <chart:ChartLegendLabelStyle FontFamily="{StaticResource SSTArabicMedium}"/>
-
-                                                            </chart:ChartLegend.LabelStyle>
-                                                        </chart:ChartLegend>
-                                                    </chart:SfChart.Legend>-->
 
                                                 <chart:SfChart.Series>
                                                     <chart:DoughnutSeries x:Name="doughnutSeries" ItemsSource="{Binding MyBillsChartModels}" XBindingPath="BillType" YBindingPath="BillCount" TrackColor="{Binding BillColor}" Color="{Binding BillColor}" DoughnutCoefficient="0.95" CircularCoefficient=".9">
@@ -225,10 +216,10 @@
                                             <!--<custom:CustomLabel Text="{Binding BillCount}"  Style="{StaticResource PageTitleBlack}" AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="HeightProportional"/>
                                             </AbsoluteLayout>-->
                                             <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                                                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
-                                                    <buttons:SfButton WidthRequest="95" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" TextColor="{StaticResource NeutralBlack}" Clicked="paidClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.Paid}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20"/>
-                                                    <buttons:SfButton WidthRequest="110" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" TextColor="{StaticResource NeutralBlack}" Clicked="partiallyClicked" FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="partially_clock" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.PartiallyPaid}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20"/>
-                                                    <buttons:SfButton WidthRequest="100" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" TextColor="{StaticResource NeutralBlack}" Clicked="unPaidClicked"    FontFamily="{StaticResource SSTArRoman}" FontSize="12" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.UnPaid}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  BackgroundColor="White" />
+                                                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                                    <buttons:SfButton WidthRequest="95" HeightRequest="32" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="paidClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.Paid}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20" VerticalTextAlignment="Center"/>
+                                                    <buttons:SfButton WidthRequest="110" HeightRequest="32"  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue"  Clicked="partiallyClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="partially_clock" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.PartiallyPaid}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20" VerticalTextAlignment="Center"/>
+                                                    <buttons:SfButton WidthRequest="100" HeightRequest="32" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="unPaidClicked"    Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.UnPaid}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" />
                                                 </StackLayout>
                                             </ScrollView>
                                         </StackLayout>
@@ -252,13 +243,11 @@
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
 
-                                                <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                                                    <cards:SfCardView HasShadow="True" WidthRequest="110" HeightRequest="110" BackgroundColor="White" CornerRadius="10" >
-                                                        <StackLayout >
-                                                            <Image HorizontalOptions="Start" Margin="5,5,5,0">
-                                                                <!--<Image.Source>
-                                                                    <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CheckAll}"/>
-                                                                </Image.Source>-->
+                                                <StackLayout Orientation="Horizontal" Margin="8,0,8,0">
+                                                    <cards:SfCardView HasShadow="True" WidthRequest="120" HeightRequest="120" BackgroundColor="White" CornerRadius="8" >
+                                                        <StackLayout VerticalOptions="Center" Margin="16">
+                                                            <Image HorizontalOptions="Start">
+                                                               
                                                                 <Image.Triggers>
                                                                     <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference ReturnTypeName},  Path=Text}" Value="{x:Static ResourceManager:AppResources.Submitted}">
                                                                         <Setter Property="Source" Value="submited.png" />
@@ -271,7 +260,7 @@
                                                                     </DataTrigger>
                                                                 </Image.Triggers>
                                                             </Image>
-                                                            <StackLayout Padding="5,0,0,0" >
+                                                            <StackLayout Spacing="1">
                                                                 <custom:CustomLabel  Text="{Binding ReturnCount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center"/>
                                                                 <custom:CustomLabel x:Name="ReturnTypeName" Text="{Binding ReturnTypeName}" Style="{StaticResource ValueLabelBlack}"   VerticalOptions="Center"/>
                                                             </StackLayout>
