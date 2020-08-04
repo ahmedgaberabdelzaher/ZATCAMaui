@@ -23,12 +23,22 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         private void OnLogInClicked(object sender, EventArgs e)
         {
 
+            viewModel._navigationService.GoBack();
             //viewModel._navigationService.NavigateTo(App.SFLoginPageView);
-            for (int index = Navigation.NavigationStack.Count - 1 ; index > 1; index--)
-            {
-                Page pg = Navigation.NavigationStack[index];
+
+            //for (int index = Navigation.NavigationStack.Count - 1 ; index > 1; index--)
+            //{
+            //    Page pg = Navigation.NavigationStack[index];
+            //    Navigation.RemovePage(pg);
+            //}
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            
+                Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                 Navigation.RemovePage(pg);
-            }
         }
 
     }
