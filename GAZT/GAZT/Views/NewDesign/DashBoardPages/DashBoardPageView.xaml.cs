@@ -29,6 +29,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
+                SetLTR();
                 if (viewModel != null)
                 {
                     viewModel.MenuViewVisible = false;
@@ -59,7 +60,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
 
         #region Method
-
+        
         private void OnHomeTapped(object sender, EventArgs e)
         {
             viewModel.MenuViewVisible = false;
@@ -96,7 +97,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            viewModel.IsLoading = false;
             App.IsComingFromSleepMode = false;
             if (viewModel != null)
             {
@@ -109,6 +110,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 await LoadData();
                 viewModel.IsLoading = false;
             });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+          
+        
         }
         private async Task LoadData()
         {
@@ -144,24 +153,45 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         #endregion
 
-        private void TappedOnMyBills(object sender, EventArgs e)
+        private async  void TappedOnMyBills(object sender, EventArgs e)
         {
-           // App.DisplayProgressView();
-            BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = AppResources.All;
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+
+                BillInfo billInfo = new BillInfo();
+                billInfo.BillTypeName = AppResources.All;
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+
+            });
+            // App.DisplayProgressView();
 
 
         }
 
-        private void TappedOnMyReturns(object sender, EventArgs e)
+        private async  void TappedOnMyReturns(object sender, EventArgs e)
         {
             //App.DisplayProgressView();
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 3);
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 3);
+
+            });
+          
         }
 
    
-        private void TappedOnSignleReturns(object sender, EventArgs e)
+        private async  void TappedOnSignleReturns(object sender, EventArgs e)
         {
            // App.DisplayProgressView();
 
@@ -171,50 +201,111 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             ReturnTypeAndCorrepsondingCount BModel = (ReturnTypeAndCorrepsondingCount)arrowImage.BindingContext;
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+
+                });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+
+
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Submitted + " from Dashboard");
                     viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 0);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+                });
                 }
                 if (BModel.ReturnTypeName == AppResources.UnSubmitted)
                 {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+
+                });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.UnSubmitted + " from Dashboard");
                     viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 1);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+                });
                 }
                 if (BModel.ReturnTypeName == AppResources.OverDue)
+                {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+
+                });
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.OverDue + " from Dashboard");
                     viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+                });
+              
                 }
            
         }
 
-        private void paidClicked(object sender, EventArgs e)
+        private async void paidClicked(object sender, EventArgs e)
         {
-           // App.DisplayProgressView();
+            // App.DisplayProgressView();
 
-            BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = AppResources.Paid;
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+            await Task.Run(() =>
+            {
+               viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+
+                BillInfo billInfo = new BillInfo();
+                billInfo.BillTypeName = AppResources.Paid;
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+
+            });
+
         }
 
-        private void partiallyClicked(object sender, EventArgs e)
+        private async  void partiallyClicked(object sender, EventArgs e)
         {
-          //  App.DisplayProgressView();
+            //  App.DisplayProgressView();
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
 
-            BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = AppResources.PartiallyPaid;
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+
+                BillInfo billInfo = new BillInfo();
+                billInfo.BillTypeName = AppResources.PartiallyPaid;
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+
+            });
         }
 
-        private void unPaidClicked(object sender, EventArgs e)
+        private async  void unPaidClicked(object sender, EventArgs e)
         {
          //   App.DisplayProgressView();
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
 
-            BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = AppResources.UnPaid;
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+
+
+                BillInfo billInfo = new BillInfo();
+                billInfo.BillTypeName = AppResources.UnPaid;
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+
+            });
         }
 
         private async void Logout_Tapped(System.Object sender, System.EventArgs e)
@@ -241,24 +332,46 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
         }
 
-        private void Label_MyBills(object sender, EventArgs e)
+        private async  void Label_MyBills(object sender, EventArgs e)
         {
-       //     App.DisplayProgressView();
+            //     App.DisplayProgressView();
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
 
-            BillInfo billInfo = new BillInfo();
-            billInfo.BillTypeName = AppResources.All;
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+
+                BillInfo billInfo = new BillInfo();
+                billInfo.BillTypeName = AppResources.All;
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
+
+            });
+          
         }
 
-        private void Label_MyRetuns_Tapped(object sender, EventArgs e)
+        private async  void Label_MyRetuns_Tapped(object sender, EventArgs e)
         {
-     //       App.DisplayProgressView();
+     //       App.DisplayProgressView();   await Task.Run(() =>
+          
 
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
+          
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
+
+            });
         }
         private void Label_MyProfile_Tapped(object sender, EventArgs e)
         {
    //         App.DisplayProgressView();
+
             viewModel._navigationService.NavigateTo(App.TaxPayerProfilePageView);
         }
 
@@ -282,58 +395,79 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private void ChangeLanguage_Tapped(object sender, EventArgs e)
         {
-    //        App.DisplayProgressView();
-            if (App.IsArabic)
+            try
             {
-                App.IsArabic = false;
-                App.changeFontFamily(App.appObj);
-                SetLTRDirection();
-            }
-            else
-            {
-                App.IsArabic = true;
-                App.changeFontFamily(App.appObj);
-                SetRTLDirection();
-            }
+                //        App.DisplayProgressView();
+                if (App.IsArabic)
+                {
+                    App.IsArabic = false;
+                    App.changeFontFamily(App.appObj);
+                    SetLTRDirection();
+                }
+                else
+                {
+                    App.IsArabic = true;
+                    App.changeFontFamily(App.appObj);
+                    SetRTLDirection();
+                }
 
-            OnAppearing();
+                OnAppearing();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         public void SetRTLDirection()
         {
-            String langName = "ar-AE";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-           // InitializeComponent();
-            this.FlowDirection = FlowDirection.RightToLeft;
-            viewModel.TranslateText = AppResources.ZZZSetToEnglish;
+            try
+            {
+                String langName = "ar-AE";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                // InitializeComponent();
+                this.FlowDirection = FlowDirection.RightToLeft;
+                viewModel.TranslateText = AppResources.ZZZSetToEnglish;
 
-            viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
-            viewModel.BillString = AppResources.Bills;
-            viewModel.ReturnString = AppResources.NDReturns;
+                viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+                viewModel.BillString = AppResources.Bills;
+                viewModel.ReturnString = AppResources.NDReturns;
 
-            viewModel.PaidString = AppResources.Paid;
-            viewModel.UnPaidString = AppResources.UnPaid;
-            viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
-            viewModel.TotalString = AppResources.NDTotal;
+                viewModel.PaidString = AppResources.Paid;
+                viewModel.UnPaidString = AppResources.UnPaid;
+                viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+                viewModel.TotalString = AppResources.NDTotal;
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
         public void SetLTRDirection()
         {
-            String langName = "en-US";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-            //InitializeComponent();
-            this.FlowDirection = FlowDirection.LeftToRight;
-            viewModel.TranslateText = AppResources.ZZZSetToArabic;
+            try
+            {
+                String langName = "en-US";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                //InitializeComponent();
+                this.FlowDirection = FlowDirection.LeftToRight;
+                viewModel.TranslateText = AppResources.ZZZSetToArabic;
 
-            viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
-            viewModel.BillString = AppResources.Bills;
-            viewModel.ReturnString = AppResources.NDReturns;
+                viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+                viewModel.BillString = AppResources.Bills;
+                viewModel.ReturnString = AppResources.NDReturns;
 
-            viewModel.PaidString = AppResources.Paid;
-            viewModel.UnPaidString = AppResources.UnPaid;
-            viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
-            viewModel.TotalString = AppResources.NDTotal;
+                viewModel.PaidString = AppResources.Paid;
+                viewModel.UnPaidString = AppResources.UnPaid;
+                viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+                viewModel.TotalString = AppResources.NDTotal;
+            }
+            catch(Exception ex)
+            {
+
+            }
             
         }
 

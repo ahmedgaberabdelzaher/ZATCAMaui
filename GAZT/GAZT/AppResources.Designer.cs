@@ -7248,6 +7248,12 @@ namespace EGAZT {
             }
         }
         
+        public static string UnlockAccountPasswordsSecurityPolicy {
+            get {
+                return ResourceManager.GetString("UnlockAccountPasswordsSecurityPolicy", resourceCulture);
+            }
+        }
+        
         public static string AccountUnlocked {
             get {
                 return ResourceManager.GetString("AccountUnlocked", resourceCulture);

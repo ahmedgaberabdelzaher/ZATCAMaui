@@ -860,11 +860,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     {
                         PopMsg.Append(Environment.NewLine);
                         PopMsg.Append(Environment.NewLine);
-                        PopMsg.Append(AppResources.ZZPasswordregulationsforSignup);
+                        PopMsg.Append(AppResources.UnlockAccountPasswordsSecurityPolicy);
                     }
                     else
                     {
-                        PopMsg.Append(AppResources.ZZPasswordregulationsforSignup);
+                        PopMsg.Append(AppResources.UnlockAccountPasswordsSecurityPolicy);
                     }
                     IsAllValid = false;
                 }
