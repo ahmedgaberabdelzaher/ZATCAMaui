@@ -82,6 +82,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.MenuViewVisible = true;
             viewModel.HomeViewVisible = false;
             viewModel.HomeIndicatorColor = Color.White;
+
             viewModel.MenuIndicatorColor = Color.DarkGreen;
             viewModel.StackMenuColor = Color.Transparent;
             viewModel.TabbarColor = Color.Transparent;
