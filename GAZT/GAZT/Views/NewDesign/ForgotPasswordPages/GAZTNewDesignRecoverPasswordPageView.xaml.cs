@@ -18,6 +18,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             InitializeComponent();
             viewModel = App.Locator.GAZTNewDesignRecoverPasswordPageViewModel;
             this.BindingContext = viewModel;
+            NavigationPage.SetHasBackButton(this, false);
+
         }
 
         private void OnLogInClicked(object sender, EventArgs e)

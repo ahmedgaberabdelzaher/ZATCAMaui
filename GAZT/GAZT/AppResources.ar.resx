@@ -4354,19 +4354,19 @@
     <value>English Captial and small letters</value>
   </data>
   <data name="RecoverUserName" xml:space="preserve">
-    <value>Recover UserName</value>
+    <value>استرجاع اسم المستخدم</value>
   </data>
   <data name="UsernameSentToTheRegisteredEmailEndMobileNumber" xml:space="preserve">
-    <value> Username sent to the registered email and mobile number</value>
+    <value>تم ارسال اسم المستخدم للجوال والبريد الالكتروني المسجل لدينا</value>
   </data>
   <data name="CheckEmail" xml:space="preserve">
-    <value>Check Email</value>
+    <value>راجع البريد الالكتروني</value>
   </data>
   <data name="RecoverPassword" xml:space="preserve">
-    <value>Recover Password</value>
+    <value>استرجاع كلمة المرور</value>
   </data>
   <data name="NewPasswordUpdatedSuccessfully" xml:space="preserve">
-    <value>New Password updated successfully</value>
+    <value>تم استرجاع كلمة المرور بنجاح</value>
   </data>
   <data name="NumbersAndSymbols" xml:space="preserve">
     <value>Numbers and Symbols</value>
@@ -4483,5 +4483,8 @@
   </data>
   <data name="ZZZZNextCommitments" xml:space="preserve">
     <value>الالتزامات القادمة</value>
+  </data>
+  <data name="ZZZZPleaseSelect" xml:space="preserve">
+    <value>Please Select</value>
   </data>
 </root>

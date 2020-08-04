@@ -1376,7 +1376,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    if(!string.IsNullOrEmpty(IDNumber))
+                    if(!string.IsNullOrEmpty(IDNumber)) 
                     {
                         SendUserNameToRegidteredEmail();
                     }
@@ -2371,6 +2371,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             if (TINs != null && TINs.Count > 0)
                 TINs.Clear();
 
+            NewPassword = string.Empty;
+            ConfirmPassword = string.Empty;
 
         }
 

@@ -7625,5 +7625,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZNextCommitments", resourceCulture);
             }
         }
+        
+        public static string ZZZZPleaseSelect {
+            get {
+                return ResourceManager.GetString("ZZZZPleaseSelect", resourceCulture);
+            }
+        }
     }
 }

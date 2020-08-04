@@ -23,6 +23,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, " ");
+
             viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
             this.BindingContext = viewModel;
             viewModel.ClearData();
