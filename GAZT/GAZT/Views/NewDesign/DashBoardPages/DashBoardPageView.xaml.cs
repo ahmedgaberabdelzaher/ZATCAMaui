@@ -29,7 +29,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
-
+                if (viewModel != null)
+                {
+                    viewModel.MenuViewVisible = false;
+                    viewModel.HomeViewVisible = true;
+                }
 
                 if (App.TP != null)
                     viewModel.TaxPayerProfile = App.TP;
@@ -45,8 +49,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.TranslateText = AppResources.ZZZChangetoLanguage;
                 }
 
-                MenuView.IsVisible = false;
-                HomeView.IsVisible = true;
+                viewModel.MenuViewVisible = false;
+                viewModel.HomeViewVisible = true;
             }
             catch(Exception ex)
             {
@@ -58,21 +62,35 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private void OnHomeTapped(object sender, EventArgs e)
         {
-            MenuView.IsVisible = false;
-            HomeView.IsVisible = true;
-            HomeIndicator.BackgroundColor = Color.DarkGreen;
-            MenuIndicator.BackgroundColor = Color.White;
-            Tabbar.BorderColor = Color.DarkGray;
-            stackMenu.BackgroundColor = Color.White;
+            viewModel.MenuViewVisible = false;
+            viewModel.HomeViewVisible = true;
+            viewModel.HomeIndicatorColor = Color.DarkGreen;
+            viewModel.MenuIndicatorColor = Color.White;
+            viewModel.TabbarColor = Color.DarkGray;
+            viewModel.StackMenuColor= Color.White;
+
+            //MenuView.IsVisible = false;
+            //HomeView.IsVisible = true;
+            //HomeIndicator.BackgroundColor = Color.DarkGreen;
+            //MenuIndicator.BackgroundColor = Color.White;
+            //Tabbar.BorderColor = Color.DarkGray;
+            //stackMenu.BackgroundColor = Color.White;
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            HomeView.IsVisible = false;
-            MenuView.IsVisible = true;
-            HomeIndicator.BackgroundColor = Color.White;
-            MenuIndicator.BackgroundColor = Color.DarkGreen;
-            stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
+            viewModel.MenuViewVisible = true;
+            viewModel.HomeViewVisible = false;
+            viewModel.HomeIndicatorColor = Color.White;
+
+            viewModel.MenuIndicatorColor = Color.DarkGreen;
+            viewModel.StackMenuColor = Color.Transparent;
+            viewModel.TabbarColor = Color.Transparent;
+            //HomeView.IsVisible = false;
+            //MenuView.IsVisible = true;
+            //HomeIndicator.BackgroundColor = Color.White;
+            //MenuIndicator.BackgroundColor = Color.DarkGreen;
+            //stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
         }
 
         protected override void OnAppearing()
@@ -80,9 +98,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             base.OnAppearing();
 
             App.IsComingFromSleepMode = false;
-
-            MenuView.IsVisible = false;
-            HomeView.IsVisible = true;            
+            if (viewModel != null)
+            {
+                viewModel.MenuViewVisible = false;
+                viewModel.HomeViewVisible = true;
+            }
 
             Task.Run(async () =>
             {
@@ -284,9 +304,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             String langName = "ar-AE";
             CultureInfo ci = new CultureInfo(langName);
             AppResources.Culture = ci;
-            //InitializeComponent();
+           // InitializeComponent();
             this.FlowDirection = FlowDirection.RightToLeft;
             viewModel.TranslateText = AppResources.ZZZSetToEnglish;
+
+            viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+            viewModel.BillString = AppResources.Bills;
+            viewModel.ReturnString = AppResources.NDReturns;
+
+            viewModel.PaidString = AppResources.Paid;
+            viewModel.UnPaidString = AppResources.UnPaid;
+            viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+            viewModel.TotalString = AppResources.NDTotal;
         }
         public void SetLTRDirection()
         {
@@ -296,6 +325,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             //InitializeComponent();
             this.FlowDirection = FlowDirection.LeftToRight;
             viewModel.TranslateText = AppResources.ZZZSetToArabic;
+
+            viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+            viewModel.BillString = AppResources.Bills;
+            viewModel.ReturnString = AppResources.NDReturns;
+
+            viewModel.PaidString = AppResources.Paid;
+            viewModel.UnPaidString = AppResources.UnPaid;
+            viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+            viewModel.TotalString = AppResources.NDTotal;
+            
         }
 
         private void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)

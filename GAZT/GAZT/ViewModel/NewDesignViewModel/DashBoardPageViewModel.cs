@@ -22,6 +22,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private ICommand EserviceCommand { get; set; }
         private GAZT.Models.TaxPayerProfile _TaxPayerProfile = App.TP;
+
+        private bool _menuViewVisible = false;
+        private bool _homeViewVisible = true;
+        private Color _homeIndicatorColor = Color.FromHex("#005e4b");
+        private Color _menuIndicatorColor = Color.White;
+        private Color _tabbarColor = Color.DarkGray;
+        private Color _stackMenuColor;
+        private string _NextCommitmentsString = AppResources.ZZZZNextCommitments;
+        private string _ReturnString = AppResources.NDReturns;
+        private string _BillString = AppResources.Bills;
+        private string _PaidString = AppResources.Paid;
+        private string _PartiallyPaidString = AppResources.PartiallyPaid;
+        private string _UnPaidString = AppResources.UnPaid;
+        private string _TotalString = AppResources.NDTotal;
+
+
+
+
         private Dashboard DashboardData = null;
         private CalendarEventCollection _CommittmentsSchedule = null;
         private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _BillsAndReturnsCommitments = null;
@@ -117,6 +135,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("BillCount");
             }
         }
+
+
         public ObservableCollection<OverduePaymentAndUnSubmittedReturn> Bills
         {
             get
@@ -178,6 +198,188 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("TaxPayerProfile");
             }
         }
+
+     
+        public bool MenuViewVisible
+        {
+            get
+            {
+                return _menuViewVisible;
+            }
+            set
+            {
+                this._menuViewVisible = value;
+                this.RaisePropertyChanged("MenuViewVisible");
+            }
+        }
+
+
+       
+        public bool HomeViewVisible
+        {
+            get
+            {
+                return _homeViewVisible;
+            }
+            set
+            {
+                this._homeViewVisible = value;
+                this.RaisePropertyChanged("HomeViewVisible");
+            }
+        }
+
+        
+        public Color HomeIndicatorColor
+        {
+            get
+            {
+                return _homeIndicatorColor;
+            }
+            set
+            {
+                this._homeIndicatorColor = value;
+                this.RaisePropertyChanged("HomeIndicatorColor");
+            }
+        }
+
+ 
+        public Color MenuIndicatorColor
+        {
+            get
+            {
+                return _menuIndicatorColor;
+            }
+            set
+            {
+                this._menuIndicatorColor = value;
+                this.RaisePropertyChanged("MenuIndicatorColor");
+            }
+        }
+
+     
+        public Color TabbarColor
+        {
+            get
+            {
+                return _tabbarColor;
+            }
+            set
+            {
+                this._tabbarColor = value;
+                this.RaisePropertyChanged("TabbarColor");
+            }
+        }
+       
+        public Color StackMenuColor
+        {
+            get
+            {
+                return _stackMenuColor;
+            }
+            set
+            {
+                this._stackMenuColor = value;
+                this.RaisePropertyChanged("StackMenuColor");
+            }
+        }
+
+
+        public string NextCommitmentsString
+        {
+            get
+            {
+                return _NextCommitmentsString;
+            }
+            set
+            {
+                this._NextCommitmentsString = value;
+                this.RaisePropertyChanged("NextCommitmentsString");
+            }
+        }
+
+        public string ReturnString
+        {
+            get
+            {
+                return _ReturnString;
+            }
+            set
+            {
+                this._ReturnString = value;
+                this.RaisePropertyChanged("ReturnString");
+            }
+        }
+
+        public string PaidString
+        {
+            get
+            {
+                return _PaidString;
+            }
+            set
+            {
+                this._PaidString = value;
+                this.RaisePropertyChanged("PaidString");
+            }
+        }
+        public string PartiallyPaidString
+        {
+            get
+            {
+                return _PartiallyPaidString;
+            }
+            set
+            {
+                this._PartiallyPaidString = value;
+                this.RaisePropertyChanged("PartiallyPaidString");
+            }
+        }
+        public string UnPaidString
+        {
+            get
+            {
+                return _UnPaidString;
+            }
+            set
+            {
+                this._UnPaidString = value;
+                this.RaisePropertyChanged("UnPaidString");
+            }
+        }
+        public string BillString
+        {
+            get
+            {
+                return _BillString;
+            }
+            set
+            {
+                this._BillString = value;
+                this.RaisePropertyChanged("BillString");
+            }
+        }
+
+        public string TotalString
+        {
+            get
+            {
+                return _TotalString;
+            }
+            set
+            {
+                this._TotalString = value;
+                this.RaisePropertyChanged("TotalString");
+            }
+        }
+
+
+        //MenuView.IsVisible = false;
+        //    HomeView.IsVisible = true;
+        //    HomeIndicator.BackgroundColor = Color.DarkGreen;
+        //    MenuIndicator.BackgroundColor = Color.White;
+        //    Tabbar.BorderColor = Color.DarkGray;
+        //    stackMenu.BackgroundColor = Color.White;
+
         #endregion
 
         #region Constructor
@@ -603,6 +805,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Colors = ColorsChild;
 
                     BillCount = iBillsCount.ToString();
+
                 }
             }
             catch (Exception ex)
