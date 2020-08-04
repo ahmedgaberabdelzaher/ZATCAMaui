@@ -36,7 +36,7 @@
             <Grid>
 
                 <StackLayout>
-                    <Grid Padding="0,5,0,5">
+                    <Grid Padding="15,5,15,5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -47,11 +47,27 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.MyBills}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
-                        <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
+                            <Image Source="search">
+                                
+                            </Image>
+                            <Image Source="filter">
+
+                            </Image>
+                        </StackLayout>
+
+<!--                        <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer      Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
-                        </Label>
+                        </Label>-->
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
@@ -92,9 +108,12 @@
                     </Grid.ColumnDefinitions>
                     <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                     </custom:CustomLabel>
-                   
-                    <Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
-                           Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>
+
+                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                        
+                    </Image>
+<!--                    <Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
+                           Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>-->
 
                     <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                    
@@ -114,7 +133,8 @@
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
                                     <StackLayout>
-                                        <buttons:SfChip WidthRequest="100" HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{Binding Text}" BackgroundColor="White" Style="{StaticResource CaptionButtonBlack}"  ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="True" SelectionIndicatorColor="AliceBlue"  ShowIcon="True" CornerRadius="20" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                        <!--<buttons:SfChip WidthRequest="100" HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{Binding Text}" BackgroundColor="White" Style="{StaticResource CaptionButtonBlack}"  ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="True" SelectionIndicatorColor="AliceBlue"  ShowIcon="True" CornerRadius="20" VerticalTextAlignment="Center" VerticalOptions="Center"/>-->
+                                        <buttons:SfChip  Text="{Binding Text}" ShowIcon="True" ImageSource="{Binding ImageSource}" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" BackgroundColor="White"  Style="{StaticResource CaptionButtonBlack}"/>
                                     </StackLayout>
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>

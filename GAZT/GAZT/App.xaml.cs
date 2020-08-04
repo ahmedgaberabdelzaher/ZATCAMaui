@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using EGAZT.Views.NewDesign.Template;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -219,7 +220,8 @@ namespace EGAZT
 
             InitializeAppDynamics();
 
-            MainPage = navigationPage;
+            //            MainPage = navigationPage;
+            MainPage = new DashboardMenuPageView();
         }
         public static void CreateClientHandler()
         {
