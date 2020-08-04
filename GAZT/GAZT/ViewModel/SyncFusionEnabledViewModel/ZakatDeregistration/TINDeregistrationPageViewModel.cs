@@ -114,6 +114,66 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        public ObservableCollection<TINDeregistrationSummaryModel> _tinDeregistrationSummaryReasonData { get; set; }
+        public ObservableCollection<TINDeregistrationSummaryModel> TinDeregistrationSummaryReasonData
+        {
+            get
+            {
+                return _tinDeregistrationSummaryReasonData;
+            }
+
+            set
+            {
+                if (_tinDeregistrationSummaryReasonData == value)
+                {
+                    return;
+                }
+
+                _tinDeregistrationSummaryReasonData = value;
+                RaisePropertyChanged("TinDeregistrationSummaryReasonData");
+            }
+        }
+
+        public ObservableCollection<TINDeregistrationSummaryModel> _tinDeregistrationSummaryOutletData { get; set; }
+        public ObservableCollection<TINDeregistrationSummaryModel> TinDeregistrationSummaryOutletData
+        {
+            get
+            {
+                return _tinDeregistrationSummaryOutletData;
+            }
+
+            set
+            {
+                if (_tinDeregistrationSummaryOutletData == value)
+                {
+                    return;
+                }
+
+                _tinDeregistrationSummaryOutletData = value;
+                RaisePropertyChanged("TinDeregistrationSummaryOutletData");
+            }
+        }
+
+        public ObservableCollection<TINDeregistrationSummaryModel> _tinDeregistrationSummaryDeclarationData { get; set; }
+        public ObservableCollection<TINDeregistrationSummaryModel> TinDeregistrationSummaryDeclarationData
+        {
+            get
+            {
+                return _tinDeregistrationSummaryDeclarationData;
+            }
+
+            set
+            {
+                if (_tinDeregistrationSummaryDeclarationData == value)
+                {
+                    return;
+                }
+
+                _tinDeregistrationSummaryDeclarationData = value;
+                RaisePropertyChanged("TinDeregistrationSummaryDeclarationData");
+            }
+        }
+
         #endregion
 
         public TINDeregistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -138,6 +198,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             TinDeregistrationModel = new TINDeregistrationModel();
             AddOutletDecisionOptions();
             PopulateAttachmentsListViewTemplate();
+            PopulateSummaryReasonData();
+            PopulateSummaryDeclarationData();
         }
 
         public void AddOutletDecisionOptions()
@@ -169,7 +231,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = true;
-
         }
 
         public async void ReasonContinueBtnClicked()
@@ -201,39 +262,100 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
                 FieldSubTitle = AppResources.TinDeregistration20MB,
-                IsAttachmentAttached = false
+                AttachmentName = "File1.pdf",
+                IsAttachmentAttached = true
             });
             AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfLicneseAfterClosing,
                 FieldSubTitle = AppResources.TinDeregistration20MB,
-                IsAttachmentAttached = false
+                AttachmentName = "File2.pdf",
+                IsAttachmentAttached = true
             });
             AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfCRAfterClosing,
                 FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                AttachmentName = string.Empty,
                 IsAttachmentAttached = false
             });
             AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
                 FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                AttachmentName = string.Empty,
                 IsAttachmentAttached = false
             });
             AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
                 FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                AttachmentName = string.Empty,
                 IsAttachmentAttached = false
             });
             AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractAfterClosing,
                 FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                AttachmentName = string.Empty,
                 IsAttachmentAttached = false
             });
         }
+        #endregion
+
+        #region Summary View
+        public void PopulateSummaryReasonData()
+        {
+            TinDeregistrationSummaryReasonData = new ObservableCollection<TINDeregistrationSummaryModel>();
+            TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationReason,
+                SummaryData = "Bankruptcy",
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationQuestionOutlets,
+                SummaryData = AppResources.TinDeregistrationCloseAllOutlets,
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationDate,
+                SummaryData = "04 August 2020",
+                IsEditVisible = true
+            });
+        }
+
+        public void PopulateSummaryDeclarationData()
+        {
+            TinDeregistrationSummaryDeclarationData = new ObservableCollection<TINDeregistrationSummaryModel>();
+            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationContactPersonName,
+                SummaryData = "Hardy",
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationDesignation,
+                SummaryData = "Senior Director",
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.MobileNumber,
+                SummaryData = "+966 551 234 567",
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.ZZDateofBirth,
+                SummaryData = "07 June 1995",
+                IsEditVisible = true
+            });
+        }
+
         #endregion
     }
 }

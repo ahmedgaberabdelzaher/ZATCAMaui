@@ -543,8 +543,7 @@
                  <buttons:SfButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnContinueOutletConfirmation" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                </Grid>
-
-               <Grid IsVisible="false" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <Grid IsVisible="false" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
@@ -612,7 +611,7 @@
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             </Grid>
-                <Grid IsVisible="true" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <Grid IsVisible="false" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
@@ -717,7 +716,129 @@
                             </StackLayout>
                          </Grid>
                      </Grid>
+               <Grid IsVisible="true" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="1"/>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZSummary}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource SectionTitleBlack}" />
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                        <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <StackLayout Padding="0">
+                            <Grid Padding="15" RowSpacing="0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                </Frame> 
+                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
+                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                    <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                </StackLayout>
+                            </Grid>
+
+                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                             <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryReaonListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding TinDeregistrationSummaryReasonData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                                <listView:SfListView.ItemTemplate>
+                                    <DataTemplate>
+					                        <Grid Padding="0" RowSpacing="0">
+                                                <Grid.RowDefinitions >
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                </StackLayout>
+                                            </Grid>
+			                        </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+                              </listView:SfListView>
+                        </StackLayout>
+                    </border:SfBorder >
+                     <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <StackLayout Padding="0">
+                            <Grid Padding="15" RowSpacing="0" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                </Frame> 
+                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
+                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                    <Label Text="Hardy Store" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                </StackLayout>
+                            </Grid>
+
+                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                             <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryReaonListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                                <listView:SfListView.ItemTemplate>
+                                    <DataTemplate>
+					                        <Grid Padding="0" RowSpacing="0">
+                                                <Grid.RowDefinitions >
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                                                    <Label Text="{Binding FieldTitle}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                    <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                </StackLayout>
+                                            </Grid>
+			                        </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+                              </listView:SfListView>
+                        </StackLayout>
+                    </border:SfBorder >
+                    </Grid>
+                 <buttons:SfButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnContinueReviewInformation" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                   Style="{StaticResource PrimaryButtonStyle}"/>
                </Grid>
+
+           </Grid>
             
        </ScrollView>
     </ContentPage.Content>
