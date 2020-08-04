@@ -45,6 +45,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         int TotalSec;
         public int numberOfSeconds = 120;
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
+        public int MaximumUserNameCharacter { get; set; } = 10;
+
+        public bool IsUserNameCardTapped { get; set; } = false;
         public bool StopTimer = true;
         #endregion
 
@@ -60,11 +63,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+
                 _iDNumber = value;
-                //if (string.IsNullOrEmpty(IDNumber))
-                //{
-                //    IsTinDopDownVisible = false;
-                //}
+                if (IsUserNameCardTapped == true && IDNumber.Length > MaximumUserNameCharacter)
+                {
+                    IDNumber = IDNumber.Substring(0, IDNumber.Length-1);
+                }
+                
                 RaisePropertyChanged("IDNumber");
             }
         }
@@ -1392,20 +1397,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnCorporateCardClicked = new Command(() =>
             {
+                MaximumUserNameCharacter = 60;
                 CorporateCardBackgroundColor = Color.FromHex("#005e4b");
                 CorporateTextColor = Color.White;
                 IndividualOrPersonalBusinessCardBackgroundColor = Color.White;
                 IndividualOrPersonalBusinessTextColor = Color.Black;
+                IDNumber = string.Empty;
 
             });
 
 
             OnIndividualOrPersonalBusinessCardClicked = new Command(() =>
             {
+                MaximumUserNameCharacter = 10;
                 IndividualOrPersonalBusinessCardBackgroundColor = Color.FromHex("#005e4b");
                 IndividualOrPersonalBusinessTextColor = Color.White;
                 CorporateCardBackgroundColor = Color.White;
                 CorporateTextColor = Color.Black;
+                IDNumber = string.Empty;
             });
 
             OnLogInClick = new Command(() =>
@@ -1939,11 +1948,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     else
                     {
                         IsAPICalledSuccessfully = false;
-
+                        IDNumber = string.Empty;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
                         });
+
                     }
                 });
                 await Task.Run(async () =>

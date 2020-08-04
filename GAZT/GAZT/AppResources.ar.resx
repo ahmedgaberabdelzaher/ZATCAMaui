@@ -4375,7 +4375,7 @@
     <value>Confirm Password</value>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
-    <value>Select the option and complete details </value>
+    <value>قم بالاختيار واكمل التفاصيل المطلوبة </value>
   </data>
   <data name="NDAtleast8character" xml:space="preserve">
     <value>يجب أن لاتقل عن 8 خانات</value>
@@ -4387,7 +4387,7 @@
     <value>حروف إنجليزية كبيرة وصغيرة</value>
   </data>
   <data name="NDEnterYourUsername" xml:space="preserve">
-    <value>Enter Your Username</value>
+    <value>اسم المستخدم</value>
   </data>
   <data name="NDIDNumber" xml:space="preserve">
     <value>رقم الهوية</value>
@@ -4412,7 +4412,7 @@
     <value>Select the option and complete the details</value>
   </data>
   <data name="NDTypeyourIDNumber" xml:space="preserve">
-    <value>Type your ID Number</value>
+    <value>ادخل رقم الهوية</value>
   </data>
   <data name="NDUsername" xml:space="preserve">
     <value>اسم المستخدم</value>

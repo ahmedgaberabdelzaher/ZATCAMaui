@@ -47,17 +47,27 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
         private void OnPasswordCardClicked(object sender, EventArgs e)
         {
+            viewModel.IsUserNameCardTapped = false;
             viewModel.SetPasswordCardLayoutVisibility();
             viewModel.PasswordCardBackgroundColor = Color.FromHex("#005e4b");
             viewModel.UserNameCardBackgroundColor = Color.White;
             viewModel.PasswordTextColor = Color.White;
             viewModel.UserNameTextColor = Color.Black;
             viewModel.SetIDNumberEnability = true;// Enabling IDNumber Field as per tapping on Password Tile
+
+            // Managing UserName tile
+            viewModel.MaximumUserNameCharacter = 10;
+            viewModel.CorporateCardBackgroundColor = Color.White;
+            viewModel.CorporateTextColor = Color.Black;
+            viewModel.IndividualOrPersonalBusinessCardBackgroundColor = Color.FromHex("#005e4b");
+            viewModel.IndividualOrPersonalBusinessTextColor = Color.White;
+
         }
 
 
         private void OnUserNameCardClicked(object sender, EventArgs e)
         {
+            viewModel.IsUserNameCardTapped = true;
             viewModel.SetUserNameCardVisibility();
             viewModel.PasswordCardBackgroundColor = Color.White;
             viewModel.UserNameCardBackgroundColor = Color.FromHex("#005e4b");
