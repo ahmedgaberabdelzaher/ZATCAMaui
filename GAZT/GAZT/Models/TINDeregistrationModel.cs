@@ -14,4 +14,15 @@ namespace EGAZT.Models
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
 
     }
+
+    public class TinDeregestrationAttachmentsModel
+    {
+        public TinDeregestrationAttachmentsModel()
+        {
+        }
+
+        public string FieldTitle { get; set; }
+        public string FieldSubTitle { get; set; }
+        public bool IsAttachmentAttached { get; set; }
+    }
 }

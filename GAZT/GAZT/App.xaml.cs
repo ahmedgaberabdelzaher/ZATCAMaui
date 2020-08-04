@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using EGAZT.Views.NewDesign.ZakatDeregistration;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -202,16 +203,17 @@ namespace EGAZT
             VATDeclaration vAT = null;
             CustomNavigation navigationPage;
             bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
-            if(!hasKey)
+            if (!hasKey)
             {
-               navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
             }
             else
             {
                 navigationPage = new CustomNavigation(new SFLoginPageView(App.SFLandingPageView)) { BarTextColor = Color.White };
             }
-            
+
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new TINDeregistrationPageView()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();

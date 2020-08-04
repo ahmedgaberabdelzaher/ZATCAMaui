@@ -167,6 +167,14 @@
         <Setter Property="Margin" Value="0" />
     </Style>
 
+    <Style x:Key="NeutralGrayOpacity90BoxView" TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Opacity" Value=".9" />
+    </Style>
+
     <Style x:Key="InputTableBoxViewStacklayoutStyle" TargetType="StackLayout">
         <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
     </Style>
