@@ -16,9 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate x:Key="ItemTemplate" x:Name="ItemTemplate">
-                <ContentPresenter Content="{Binding RotatorItem}" />
-            </DataTemplate>
+           
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -73,7 +71,7 @@
 
             <!--  Rotator used to navigate the view  -->
             <rotator:SfRotator
-                x:Name="Rotator"
+               
                 Grid.Row="2"
                 Margin="{x:OnIdiom Phone='15,0,15,0',
                                    Desktop='0',
@@ -101,10 +99,10 @@
 
             <!--  Next button  -->
             <buttons:SfButton
-                x:Name="NextButtonText"
+               
                 Grid.Row="3"
                 Command="{Binding NextCommand}"
-                CommandParameter="{x:Reference Rotator}"
+                
                 Style="{StaticResource SfButtonStyleForOnbBoarding}"
                 Text="{Binding NextButtonText}" />
         </Grid>

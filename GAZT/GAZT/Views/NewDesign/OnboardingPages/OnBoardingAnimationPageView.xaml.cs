@@ -58,6 +58,31 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             }
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                if (App.IsArabic)
+                {
+                    App.IsArabic = false;
+                    App.changeFontFamily(App.appObj);
+                    SetLTRDirection();
+                }
+                else
+                {
+                    App.IsArabic = true;
+                    App.changeFontFamily(App.appObj);
+                    SetRTLDirection();
+                }
+                viewModel.NextButtonText = AppResources.ZZNext;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public void SetRTLDirection()
         {
             try
@@ -65,13 +90,14 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 String langName = "ar-AE";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
-                //InitializeComponent();
                 this.FlowDirection = FlowDirection.RightToLeft;
                 viewModel.LanguageText = AppResources.ZZZSetToEnglish;
                 viewModel.test();
+                InitializeComponent();
+                
 
-                viewModel._navigationService.GoBack();
-                viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+                //viewModel._navigationService.GoBack();
+                //viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
             }
             catch(Exception ex)
             {
@@ -87,11 +113,12 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.LeftToRight;
-                //InitializeComponent();
                 viewModel.LanguageText = AppResources.ZZZSetToArabic;
                 viewModel.test();
-                viewModel._navigationService.GoBack();
-                viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+                InitializeComponent();
+               
+                //viewModel._navigationService.GoBack();
+                //viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
             }
             catch(Exception ex)
             {
