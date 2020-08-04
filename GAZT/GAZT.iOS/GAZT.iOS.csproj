@@ -219,6 +219,7 @@
     <BundleResource Include="Resources\group_114.png" />
     <BundleResource Include="Resources\group_114%402x.png" />
     <BundleResource Include="Resources\group_114%403x.png" />
+    <Compile Include="CustomRenderer\AutoFillOtpEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
