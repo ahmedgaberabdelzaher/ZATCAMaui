@@ -25,8 +25,15 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             
             this.BindingContext = viewModel = App.Locator.GAZTNewDesignOnBoardingAnimationPageView;
             viewModel.NextButtonText = AppResources.ZZNext;
+            SetLTR();
         }
-
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         private void ChangeLangButton_Clicked(object sender, System.EventArgs e)
         {
             try
