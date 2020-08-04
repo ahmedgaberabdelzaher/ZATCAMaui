@@ -1366,7 +1366,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             else
                             {
                                 IDNumber = Email;
-                                SendOTPToRegisterMobileNumber();
+                                if(!string.IsNullOrEmpty(Email))
+                                {
+                                    SendOTPToRegisterMobileNumber();
+                                }
+                                else
+                                {
+                                    _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                                }
                             }
 
                         }
