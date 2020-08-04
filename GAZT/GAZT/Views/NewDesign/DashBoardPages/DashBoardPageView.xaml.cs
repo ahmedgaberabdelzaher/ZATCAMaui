@@ -29,6 +29,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
+                SetLTR();
                 if (viewModel != null)
                 {
                     viewModel.MenuViewVisible = false;
@@ -59,7 +60,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
 
         #region Method
-
+        
         private void OnHomeTapped(object sender, EventArgs e)
         {
             viewModel.MenuViewVisible = false;
@@ -394,58 +395,79 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         private void ChangeLanguage_Tapped(object sender, EventArgs e)
         {
-    //        App.DisplayProgressView();
-            if (App.IsArabic)
+            try
             {
-                App.IsArabic = false;
-                App.changeFontFamily(App.appObj);
-                SetLTRDirection();
-            }
-            else
-            {
-                App.IsArabic = true;
-                App.changeFontFamily(App.appObj);
-                SetRTLDirection();
-            }
+                //        App.DisplayProgressView();
+                if (App.IsArabic)
+                {
+                    App.IsArabic = false;
+                    App.changeFontFamily(App.appObj);
+                    SetLTRDirection();
+                }
+                else
+                {
+                    App.IsArabic = true;
+                    App.changeFontFamily(App.appObj);
+                    SetRTLDirection();
+                }
 
-            OnAppearing();
+                OnAppearing();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         public void SetRTLDirection()
         {
-            String langName = "ar-AE";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-           // InitializeComponent();
-            this.FlowDirection = FlowDirection.RightToLeft;
-            viewModel.TranslateText = AppResources.ZZZSetToEnglish;
+            try
+            {
+                String langName = "ar-AE";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                // InitializeComponent();
+                this.FlowDirection = FlowDirection.RightToLeft;
+                viewModel.TranslateText = AppResources.ZZZSetToEnglish;
 
-            viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
-            viewModel.BillString = AppResources.Bills;
-            viewModel.ReturnString = AppResources.NDReturns;
+                viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+                viewModel.BillString = AppResources.Bills;
+                viewModel.ReturnString = AppResources.NDReturns;
 
-            viewModel.PaidString = AppResources.Paid;
-            viewModel.UnPaidString = AppResources.UnPaid;
-            viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
-            viewModel.TotalString = AppResources.NDTotal;
+                viewModel.PaidString = AppResources.Paid;
+                viewModel.UnPaidString = AppResources.UnPaid;
+                viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+                viewModel.TotalString = AppResources.NDTotal;
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
         public void SetLTRDirection()
         {
-            String langName = "en-US";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-            //InitializeComponent();
-            this.FlowDirection = FlowDirection.LeftToRight;
-            viewModel.TranslateText = AppResources.ZZZSetToArabic;
+            try
+            {
+                String langName = "en-US";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                //InitializeComponent();
+                this.FlowDirection = FlowDirection.LeftToRight;
+                viewModel.TranslateText = AppResources.ZZZSetToArabic;
 
-            viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
-            viewModel.BillString = AppResources.Bills;
-            viewModel.ReturnString = AppResources.NDReturns;
+                viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
+                viewModel.BillString = AppResources.Bills;
+                viewModel.ReturnString = AppResources.NDReturns;
 
-            viewModel.PaidString = AppResources.Paid;
-            viewModel.UnPaidString = AppResources.UnPaid;
-            viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
-            viewModel.TotalString = AppResources.NDTotal;
+                viewModel.PaidString = AppResources.Paid;
+                viewModel.UnPaidString = AppResources.UnPaid;
+                viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+                viewModel.TotalString = AppResources.NDTotal;
+            }
+            catch(Exception ex)
+            {
+
+            }
             
         }
 
