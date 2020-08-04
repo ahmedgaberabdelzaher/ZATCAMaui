@@ -1603,7 +1603,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 foreach (var item in ListToDisplay)
                                 {
-                                    item.StatusMessage = "all";
+                                    if(item.StatusTxt == "Non Submitted")
+                                    {
+                                        item.StatusMessage = "unsubmitted";
+
+                                    }
+                                    if (item.StatusTxt == "Non Submitted" && item.Due == "X")
+                                    {
+                                        item.StatusMessage = "overdue";
+                                    }
+                                    if (item.StatusTxt == "Submitted")
+                                    {
+                                        item.StatusMessage = "submitted";
+                                    }
+                                   
+
+
                                 }
                             }
 
@@ -1670,7 +1685,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 foreach (var item in ListToDisplay)
                                 {
-                                    item.StatusMessage = "all";
+                                    if (item.StatusTxt == "Non Submitted")
+                                    {
+                                        item.StatusMessage = "unsubmitted";
+
+                                    }
+                                    if (item.StatusTxt == "Non Submitted" && item.Due == "X")
+                                    {
+                                        item.StatusMessage = "overdue";
+                                    }
+                                    if (item.StatusTxt == "Submitted")
+                                    {
+                                        item.StatusMessage = "submitted";
+                                    }
+
+
+
                                 }
                             }
 
@@ -1736,7 +1766,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 foreach (var item in ListToDisplay)
                                 {
-                                    item.StatusMessage = "all";
+                                    if (item.StatusTxt == "Non Submitted")
+                                    {
+                                        item.StatusMessage = "unsubmitted";
+
+                                    }
+                                    if (item.StatusTxt == "Non Submitted" && item.Due == "X")
+                                    {
+                                        item.StatusMessage = "overdue";
+                                    }
+                                    if (item.StatusTxt == "Submitted")
+                                    {
+                                        item.StatusMessage = "submitted";
+                                    }
+
+
+
                                 }
                             }
 
@@ -1802,7 +1847,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 foreach (var item in ListToDisplay)
                                 {
-                                    item.StatusMessage = "all";
+                                    if (item.StatusTxt == "Non Submitted")
+                                    {
+                                        item.StatusMessage = "unsubmitted";
+
+                                    }
+                                    if (item.StatusTxt == "Non Submitted" && item.Due == "X")
+                                    {
+                                        item.StatusMessage = "overdue";
+                                    }
+                                    if (item.StatusTxt == "Submitted")
+                                    {
+                                        item.StatusMessage = "submitted";
+                                    }
+
+
+
                                 }
                             }
 
@@ -1867,7 +1927,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 foreach (var item in ListToDisplay)
                                 {
-                                    item.StatusMessage = "all";
+                                    if (item.StatusTxt == "Non Submitted")
+                                    {
+                                        item.StatusMessage = "unsubmitted";
+
+                                    }
+                                    if (item.StatusTxt == "Non Submitted" && item.Due == "X")
+                                    {
+                                        item.StatusMessage = "overdue";
+                                    }
+                                    if (item.StatusTxt == "Submitted")
+                                    {
+                                        item.StatusMessage = "submitted";
+                                    }
+
+
+
                                 }
                             }
 
@@ -1931,7 +2006,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         foreach (var item in ListToDisplay)
                         {
-                            item.StatusMessage = "all";
+                            if (item.StatusTxt == "Non Submitted")
+                            {
+                                item.StatusMessage = "unsubmitted";
+
+                            }
+                            if (item.StatusTxt == "Non Submitted" && item.Due == "X")
+                            {
+                                item.StatusMessage = "overdue";
+                            }
+                            if (item.StatusTxt == "Submitted")
+                            {
+                                item.StatusMessage = "submitted";
+                            }
+
+
+
                         }
                     }
 

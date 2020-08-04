@@ -33,7 +33,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <Grid x:Name="HomeView" Grid.Row="0" RowSpacing="0"  Margin="0" Padding="0,15,0,0">
+            <Grid IsVisible="{Binding HomeViewVisible}" Grid.Row="0" RowSpacing="0"  Margin="0" Padding="0,15,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="23*" />
                     <RowDefinition Height="77*" />
@@ -46,7 +46,7 @@
                             <ScrollView >
                                 <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNextCommitments}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                         <Image Source="circle_arrow_right.png" HorizontalOptions="EndAndExpand">
                                             <!--    <Image.Source>
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
@@ -60,7 +60,7 @@
                                         <DataTemplate>-->
                                     <!--<StackLayout Orientation="Horizontal" Spacing="10">-->
 
-                                    <CollectionView  x:Name="xBillsAndReturnsCommitments" HeightRequest="80" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White">
+                                    <CollectionView HeightRequest="80" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White">
                                         <CollectionView.EmptyView>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center"/>
                                         </CollectionView.EmptyView>
@@ -156,7 +156,7 @@
                                     <!--End Horizontal List View-->
 
                                     <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="{Binding BillString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                         <Image Source="circle_arrow_right.png" HorizontalOptions="EndAndExpand">
                                             <!--                                            <Image.Source>
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
@@ -173,10 +173,10 @@
                                         <StackLayout Padding="10">
                                             <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.All}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center" />-->
                                             <!--<AbsoluteLayout>-->
-                                            <chart:SfChart ChartPadding="15"  BackgroundColor="White" x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" IsVisible="true">
+                                            <chart:SfChart ChartPadding="15"  BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" IsVisible="true">
 
                                                 <chart:SfChart.Series>
-                                                    <chart:DoughnutSeries x:Name="doughnutSeries" ItemsSource="{Binding MyBillsChartModels}" XBindingPath="BillType" YBindingPath="BillCount" TrackColor="{Binding BillColor}" Color="{Binding BillColor}" DoughnutCoefficient="0.95" CircularCoefficient=".9">
+                                                    <chart:DoughnutSeries  x:Name="doughnutSeries"  ItemsSource="{Binding MyBillsChartModels}" XBindingPath="BillType" YBindingPath="BillCount" TrackColor="{Binding BillColor}" Color="{Binding BillColor}" DoughnutCoefficient="0.95" CircularCoefficient=".9">
                                                         <chart:DoughnutSeries.ColorModel>
                                                             <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding Colors}">
                                                             </chart:ChartColorModel>
@@ -184,14 +184,14 @@
 
                                                         <chart:DoughnutSeries.CenterView>
                                                             <StackLayout HorizontalOptions = "FillAndExpand" VerticalOptions = "FillAndExpand">
-                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTotal}" FontSize="12" Style="{StaticResource CaptionLabelBlack}"/>
+                                                                <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.TotalString}" FontSize="12" Style="{StaticResource CaptionLabelBlack}"/>
                                                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=doughnutSeries},Path=BindingContext.BillCount}" FontSize="28"/>
                                                             </StackLayout>
                                                         </chart:DoughnutSeries.CenterView>
 
                                                     </chart:DoughnutSeries>
 
-                                                    <!--<chart:PieSeries  x:Name="pieSeries" EnableSmartLabels="True" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="False" ItemsSource="{Binding MyBillsChartModels,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
+                                                    <!--<chart:PieSeries   EnableSmartLabels="True" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="False" ItemsSource="{Binding MyBillsChartModels,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
                                                         <chart:PieSeries.ColorModel>
                                                             <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding Colors}">
                                                             </chart:ChartColorModel>
@@ -216,10 +216,10 @@
                                             <!--<custom:CustomLabel Text="{Binding BillCount}"  Style="{StaticResource PageTitleBlack}" AbsoluteLayout.LayoutBounds=".5,.5,.1,.1" AbsoluteLayout.LayoutFlags="HeightProportional"/>
                                             </AbsoluteLayout>-->
                                             <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                                                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                                                    <buttons:SfButton WidthRequest="95" HeightRequest="32" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="paidClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="Paid_check.png"  ShowIcon="True" Text="{x:Static ResourceManager:AppResources.Paid}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20" VerticalTextAlignment="Center"/>
-                                                    <buttons:SfButton WidthRequest="110" HeightRequest="32"  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue"  Clicked="partiallyClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="partially_clock" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.PartiallyPaid}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20" VerticalTextAlignment="Center"/>
-                                                    <buttons:SfButton WidthRequest="100" HeightRequest="32" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="unPaidClicked"    Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{x:Static ResourceManager:AppResources.UnPaid}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" />
+                                                <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                                                    <buttons:SfButton HeightRequest="32" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="paidClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="Paid_check.png"  ShowIcon="True" Text="{Binding PaidString}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                                    <buttons:SfButton HeightRequest="32"  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue"  Clicked="partiallyClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="partially_clock" ShowIcon="True" Text="{Binding PartiallyPaidString}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                                    <buttons:SfButton HeightRequest="32" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="unPaidClicked"    Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{Binding UnPaidString}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
                                                 </StackLayout>
                                             </ScrollView>
                                         </StackLayout>
@@ -228,7 +228,7 @@
                                     <!--End Horizontal List View-->
 
                                     <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReturns}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="{Binding ReturnString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                         <Image Source="circle_arrow_right.png" HorizontalOptions="EndAndExpand">
                                             <!--                                            <Image.Source>
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
@@ -239,7 +239,7 @@
                                         </Image>
 
                                     </StackLayout>
-                                    <CollectionView  x:Name="xSegregatedReturnTypesAndCorrepsondingCounts" HeightRequest="110" ItemsLayout="HorizontalList" ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}"   HorizontalOptions="FillAndExpand"  BackgroundColor="White">
+                                    <CollectionView   HeightRequest="110" ItemsLayout="HorizontalList" ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}"   HorizontalOptions="FillAndExpand"  BackgroundColor="White">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
 
@@ -439,7 +439,7 @@
 
                         <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
 
-                        <Image x:Name="Inbox" Source="message.png" VerticalOptions="Start" HorizontalOptions="EndAndExpand">
+                        <Image  Source="message.png" VerticalOptions="Start" HorizontalOptions="EndAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Inbox"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
@@ -464,7 +464,7 @@
 
             <!--Menu Starts-->
 
-            <Grid x:Name="MenuView">
+            <Grid IsVisible="{Binding MenuViewVisible}">
                 <ScrollView>
                     <Grid  Grid.Row="0" >
 
@@ -490,7 +490,7 @@
                                     <Image Source="menu_bill">
 
                                     </Image>
-                                    <custom:CustomLabel x:Name="Label_MyBillsMenuItem" Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyBills"/>
                                     </StackLayout.GestureRecognizers>
@@ -501,7 +501,7 @@
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel x:Name="Label_MyRetunsMenuItem" Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -657,8 +657,8 @@
 
             <!--Menu Ends-->
 
-            <StackLayout Grid.Row="1"  x:Name="stackMenu">
-                <yummy:PancakeView x:Name="Tabbar" VerticalOptions="EndAndExpand" BorderColor="DarkGray" BorderThickness="1" CornerRadius="12,12,0,0" BackgroundColor="White" Padding="20,0,20,20">
+            <StackLayout Grid.Row="1"   BackgroundColor="{Binding StackMenuColor}">
+                <yummy:PancakeView  VerticalOptions="EndAndExpand" BorderColor="{Binding TabbarColor}"  BorderThickness="1" CornerRadius="12,12,0,0" BackgroundColor="White" Padding="20,0,20,20">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -668,7 +668,7 @@
                             <ColumnDefinition Width="*"/>-->
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0">
-                            <yummy:PancakeView x:Name="HomeIndicator"  BackgroundColor="#005e4b" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+                            <yummy:PancakeView  BackgroundColor="{Binding HomeIndicatorColor}"  Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
                             </yummy:PancakeView>
 
@@ -722,7 +722,7 @@
                             </Image>
                         </StackLayout>-->
                         <StackLayout Grid.Column="4">
-                            <yummy:PancakeView x:Name="MenuIndicator" BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0" >
+                            <yummy:PancakeView  BackgroundColor="{Binding MenuIndicatorColor}" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0" >
 
                             </yummy:PancakeView>
 

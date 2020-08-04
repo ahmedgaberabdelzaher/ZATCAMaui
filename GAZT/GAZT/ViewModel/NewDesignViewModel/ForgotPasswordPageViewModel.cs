@@ -45,6 +45,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         int TotalSec;
         public int numberOfSeconds = 120;
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
+        public int MaximumUserNameCharacter { get; set; } = 10;
+
+        public bool IsUserNameCardTapped { get; set; } = false;
         public bool StopTimer = true;
         #endregion
 
@@ -60,11 +63,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+
                 _iDNumber = value;
-                //if (string.IsNullOrEmpty(IDNumber))
-                //{
-                //    IsTinDopDownVisible = false;
-                //}
+                if (IsUserNameCardTapped == true && IDNumber.Length > MaximumUserNameCharacter)
+                {
+                    IDNumber = IDNumber.Substring(0, IDNumber.Length-1);
+                }
+                
                 RaisePropertyChanged("IDNumber");
             }
         }
@@ -1371,7 +1376,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    SendUserNameToRegidteredEmail();
+                    if(!string.IsNullOrEmpty(IDNumber))
+                    {
+                        SendUserNameToRegidteredEmail();
+                    }
+                    else
+                    {
+                        _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+                    }
+
 
                 }
 
@@ -1384,20 +1397,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnCorporateCardClicked = new Command(() =>
             {
+                MaximumUserNameCharacter = 60;
                 CorporateCardBackgroundColor = Color.FromHex("#005e4b");
                 CorporateTextColor = Color.White;
                 IndividualOrPersonalBusinessCardBackgroundColor = Color.White;
                 IndividualOrPersonalBusinessTextColor = Color.Black;
+                IDNumber = string.Empty;
 
             });
 
 
             OnIndividualOrPersonalBusinessCardClicked = new Command(() =>
             {
+                MaximumUserNameCharacter = 10;
                 IndividualOrPersonalBusinessCardBackgroundColor = Color.FromHex("#005e4b");
                 IndividualOrPersonalBusinessTextColor = Color.White;
                 CorporateCardBackgroundColor = Color.White;
                 CorporateTextColor = Color.Black;
+                IDNumber = string.Empty;
             });
 
             OnLogInClick = new Command(() =>
@@ -1457,37 +1474,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             await SendOTPToRegisterMobileNumber();
         }
-        public async Task OnPageLoad()
+        public void OnPageLoad()
         {
-            IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
-            string lang = UtilityManager.GetLanguageParameter();
-            try
-            {
-                StringBuilder captcha = GetCaptcha();
-                Captcha = captcha.ToString();
-                List<ForgotUserNamePassword> list = new List<ForgotUserNamePassword>
-            {
-                new ForgotUserNamePassword{ id = "1" , TaxPayerType = AppResources.Individual},
-                new ForgotUserNamePassword{ id = "2" , TaxPayerType = AppResources.Company}
-            };
-                TaxpayerTypeList = list;
-                List<ForgotCredentialType> forgotCredentialListlist = new List<ForgotCredentialType>
-            {
-                new ForgotCredentialType{ id = "1" , CredentialType = AppResources.ForgotUsername},
-                new ForgotCredentialType{ id = "2" , CredentialType = AppResources.ForgotPassword}
-            };
-                ForgotTypeList = forgotCredentialListlist;
-                if (ForgotTypeList != null && ForgotTypeList.Count != 0)
-                {
-                    SelectedForgotType = ForgotTypeList.Where(x => x.id == "2").FirstOrDefault();
-                    ForgotTypeIndex = 1;
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            VerifyButtonDisableColor = Color.FromHex("#005e4b");
-            IsVerifyOTPEnabled = true;
+            PasswordTextColor = Color.Black;
+            UserNameTextColor = Color.Black;
+            //IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+            //string lang = UtilityManager.GetLanguageParameter();
+            //try
+            //{
+            //    StringBuilder captcha = GetCaptcha();
+            //    Captcha = captcha.ToString();
+            //    List<ForgotUserNamePassword> list = new List<ForgotUserNamePassword>
+            //{
+            //    new ForgotUserNamePassword{ id = "1" , TaxPayerType = AppResources.Individual},
+            //    new ForgotUserNamePassword{ id = "2" , TaxPayerType = AppResources.Company}
+            //};
+            //    TaxpayerTypeList = list;
+            //    List<ForgotCredentialType> forgotCredentialListlist = new List<ForgotCredentialType>
+            //{
+            //    new ForgotCredentialType{ id = "1" , CredentialType = AppResources.ForgotUsername},
+            //    new ForgotCredentialType{ id = "2" , CredentialType = AppResources.ForgotPassword}
+            //};
+            //    ForgotTypeList = forgotCredentialListlist;
+            //    if (ForgotTypeList != null && ForgotTypeList.Count != 0)
+            //    {
+            //        SelectedForgotType = ForgotTypeList.Where(x => x.id == "2").FirstOrDefault();
+            //        ForgotTypeIndex = 1;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+            //VerifyButtonDisableColor = Color.FromHex("#005e4b");
+            //IsVerifyOTPEnabled = true;
         }
         private void SetLayoutVisibilityForSelectedForgotType()
         {
@@ -1663,7 +1682,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             VerificationCodeVisibility = true;
                             string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                            OTPSentOnThisMobileNumber = AppResources.MobileNumber + MobileNumber;
+                            OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
 
 
 
@@ -1929,11 +1948,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     else
                     {
                         IsAPICalledSuccessfully = false;
-
+                        IDNumber = string.Empty;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
                         });
+
                     }
                 });
                 await Task.Run(async () =>
