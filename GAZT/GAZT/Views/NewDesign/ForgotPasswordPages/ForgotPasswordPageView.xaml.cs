@@ -26,6 +26,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
             this.BindingContext = viewModel;
             viewModel.ClearData();
+            viewModel.OnPageLoad();
             SetLTR();
             viewModel.StartPage = 1;
           

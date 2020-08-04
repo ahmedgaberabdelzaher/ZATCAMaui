@@ -1371,7 +1371,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    SendUserNameToRegidteredEmail();
+                    if(!string.IsNullOrEmpty(IDNumber))
+                    {
+                        SendUserNameToRegidteredEmail();
+                    }
+                    else
+                    {
+                        _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+                    }
+
 
                 }
 
@@ -1457,37 +1465,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             await SendOTPToRegisterMobileNumber();
         }
-        public async Task OnPageLoad()
+        public void OnPageLoad()
         {
-            IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
-            string lang = UtilityManager.GetLanguageParameter();
-            try
-            {
-                StringBuilder captcha = GetCaptcha();
-                Captcha = captcha.ToString();
-                List<ForgotUserNamePassword> list = new List<ForgotUserNamePassword>
-            {
-                new ForgotUserNamePassword{ id = "1" , TaxPayerType = AppResources.Individual},
-                new ForgotUserNamePassword{ id = "2" , TaxPayerType = AppResources.Company}
-            };
-                TaxpayerTypeList = list;
-                List<ForgotCredentialType> forgotCredentialListlist = new List<ForgotCredentialType>
-            {
-                new ForgotCredentialType{ id = "1" , CredentialType = AppResources.ForgotUsername},
-                new ForgotCredentialType{ id = "2" , CredentialType = AppResources.ForgotPassword}
-            };
-                ForgotTypeList = forgotCredentialListlist;
-                if (ForgotTypeList != null && ForgotTypeList.Count != 0)
-                {
-                    SelectedForgotType = ForgotTypeList.Where(x => x.id == "2").FirstOrDefault();
-                    ForgotTypeIndex = 1;
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            VerifyButtonDisableColor = Color.FromHex("#005e4b");
-            IsVerifyOTPEnabled = true;
+            PasswordTextColor = Color.Black;
+            UserNameTextColor = Color.Black;
+            //IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+            //string lang = UtilityManager.GetLanguageParameter();
+            //try
+            //{
+            //    StringBuilder captcha = GetCaptcha();
+            //    Captcha = captcha.ToString();
+            //    List<ForgotUserNamePassword> list = new List<ForgotUserNamePassword>
+            //{
+            //    new ForgotUserNamePassword{ id = "1" , TaxPayerType = AppResources.Individual},
+            //    new ForgotUserNamePassword{ id = "2" , TaxPayerType = AppResources.Company}
+            //};
+            //    TaxpayerTypeList = list;
+            //    List<ForgotCredentialType> forgotCredentialListlist = new List<ForgotCredentialType>
+            //{
+            //    new ForgotCredentialType{ id = "1" , CredentialType = AppResources.ForgotUsername},
+            //    new ForgotCredentialType{ id = "2" , CredentialType = AppResources.ForgotPassword}
+            //};
+            //    ForgotTypeList = forgotCredentialListlist;
+            //    if (ForgotTypeList != null && ForgotTypeList.Count != 0)
+            //    {
+            //        SelectedForgotType = ForgotTypeList.Where(x => x.id == "2").FirstOrDefault();
+            //        ForgotTypeIndex = 1;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+            //VerifyButtonDisableColor = Color.FromHex("#005e4b");
+            //IsVerifyOTPEnabled = true;
         }
         private void SetLayoutVisibilityForSelectedForgotType()
         {
@@ -1663,7 +1673,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             VerificationCodeVisibility = true;
                             string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                             MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                            OTPSentOnThisMobileNumber = AppResources.MobileNumber + MobileNumber;
+                            OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
 
 
 
