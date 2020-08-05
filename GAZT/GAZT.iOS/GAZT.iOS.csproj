@@ -1588,4 +1588,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\close%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newui_ic_pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newui_ic_pdf%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newui_ic_pdf%403x.png" />
+  </ItemGroup>
 </Project>
