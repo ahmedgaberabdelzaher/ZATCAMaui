@@ -594,7 +594,7 @@
 
                 </Grid>
                 <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                                      ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="attachmentsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
 					                <StackLayout Spacing="2">
