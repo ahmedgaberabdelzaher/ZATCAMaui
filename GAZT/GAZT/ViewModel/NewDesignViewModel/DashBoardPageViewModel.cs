@@ -1172,7 +1172,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             }
 
-            _navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+            //_navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+             
+             await _navigation.PopToRootAsync();
             _navigation.NavigationStack.ToList().Clear();
         }
         #endregion
