@@ -761,7 +761,7 @@
                             </Grid>
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryReaonListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                             <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding TinDeregistrationSummaryReasonData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
