@@ -23,6 +23,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, " ");
+
             viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
             this.BindingContext = viewModel;
             viewModel.ClearData();
@@ -48,6 +49,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         private void OnPasswordCardClicked(object sender, EventArgs e)
         {
             viewModel.IsUserNameCardTapped = false;
+            viewModel.IsPasswordCardTapped = true;
+            
             viewModel.SetPasswordCardLayoutVisibility();
             viewModel.PasswordCardBackgroundColor = Color.FromHex("#005e4b");
             viewModel.UserNameCardBackgroundColor = Color.White;
@@ -68,6 +71,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         private void OnUserNameCardClicked(object sender, EventArgs e)
         {
             viewModel.IsUserNameCardTapped = true;
+            viewModel.IsPasswordCardTapped = false;
             viewModel.SetUserNameCardVisibility();
             viewModel.PasswordCardBackgroundColor = Color.White;
             viewModel.UserNameCardBackgroundColor = Color.FromHex("#005e4b");

@@ -229,9 +229,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         /// Invoked when the Done button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void Next(object obj)
+        private void Next()
         {
-            var itemCount = (obj as SfRotator).ItemsSource.Count();
+            var itemCount = Boardings.Count();
             if (this.ValidateAndUpdateSelectedIndex(itemCount))
             {
                 this.MoveToNextPage();
@@ -258,6 +258,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
             {
                 App.IsArabic = true;
                 App.changeFontFamily(App.appObj);              
+            }
+        }
+
+        public void test()
+        {
+            this.Boardings = new ObservableCollection<Boarding>
+            {
+                new Boarding()
+                {
+                    ImagePath = "committments_onboarding.png",
+                    Header = AppResources.NDCommitments,
+                    Content = AppResources.NDDontMissObligation,
+                    RotatorItem = new WalkthroughItemPage()
+                },
+                new Boarding()
+                {
+                    ImagePath = "returnsubmission_onboarding.png",
+                    Header = AppResources.NDReturnSubmission,
+                    Content = AppResources.NDVATZAKATReturnSubmission,
+                    RotatorItem = new WalkthroughItemPage()
+                },
+                //new Boarding()
+                //{
+                //    ImagePath = "paymentmethod_onboarding.png",
+                //    Header = AppResources.NDNewPaymentMethods,
+                //    Content = AppResources.NDMakeTransactionsFast,
+                //    RotatorItem = new WalkthroughItemPage()
+                //},
+                new Boarding()
+                {
+                    ImagePath = "inbox_onboarding.png",
+                    Header = AppResources.NDInboxnNotification,
+                    Content = AppResources.NDNewEasyWayToCommunicate,
+                    RotatorItem = new WalkthroughItemPage()
+                }
+            };
+
+            // Set bindingcontext to content view.5
+            foreach (var boarding in this.Boardings)
+            {
+                boarding.RotatorItem.BindingContext = boarding;
             }
         }
 

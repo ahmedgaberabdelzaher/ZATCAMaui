@@ -41,7 +41,7 @@ namespace GAZT.SyncFusionEnabledBehaviors.Behaviors
                 var viewModel = rotator.BindingContext as GAZTNewDesignOnBoardingAnimationPageViewModel;
                 if (selectedIndex == itemsCount - 1)
                 {
-                    viewModel.NextButtonText = "DONE";
+                    viewModel.NextButtonText = AppResources.ZZZZContinue;
                     viewModel.IsSkipButtonVisible = false;
                 }
                 else

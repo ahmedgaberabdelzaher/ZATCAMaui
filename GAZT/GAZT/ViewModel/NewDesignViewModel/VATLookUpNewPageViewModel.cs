@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
+using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
     public class VATLookUpNewPageViewModel : BaseViewModel
     {
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        bool isMendatoryDataEntered = true;
+
         #region proprety
         private List<VATParameterType> _parameterTypeList;
         public List<VATParameterType> ParameterTypeList
@@ -160,9 +165,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TxtSearchParameter");
             }
         }
+        private bool _isNameVisible = false;
+        public bool IsNameVisible
+        {
+            get
+            {
+                return _isNameVisible;
+            }
+            set
+            {
+                _isNameVisible = value;
+                RaisePropertyChanged("IsNameVisible");
+            }
+        }
+        private string _lookUpButtonText = "";
+        public string LookUpButtonText
+        {
+            get
+            {
+                return _lookUpButtonText;
+            }
+            set
+            {
+                _lookUpButtonText = value;
+                RaisePropertyChanged("LookUpButtonText");
+            }
+        }
         #endregion
         public VATLookUpNewPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
         }
 
         #region Methods
@@ -204,7 +245,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 SetPlaceholderText();
             }
         }
-
         private void SetPlaceholderText()
         {
             IsTooltipEnableVisible = true;
@@ -223,6 +263,78 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATACCOrCRNOOrVATCER = AppResources.PleaseentertheVATCertificateNocomposedof15digits;
                 MaxDigids = "15";
             }
+        }
+        private void ValidateFormData()
+        {
+            try
+            {
+                if (SelectedParameterType != null)
+                {
+                    if (LookupNumber != null && LookupNumber != "")
+                    {
+                        if (SelectedParameterType.id.Equals("3"))
+                        {
+                            if (LookupNumber.Length != 15)
+                            {
+                                isMendatoryDataEntered = false;
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
+                                });
+                                return;
+                            }
+                        }
+                        else if (SelectedParameterType.id.Equals("2"))
+                        {
+                            if (LookupNumber.Length != 10)
+                            {
+                                isMendatoryDataEntered = false;
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
+                                });
+                                return;
+                            }
+                        }
+                        else if (SelectedParameterType.id.Equals("4"))
+                        {
+                            if (LookupNumber.Length != 15)
+                            {
+                                isMendatoryDataEntered = false;
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
+                                });
+                                return;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        isMendatoryDataEntered = false;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            isMendatoryDataEntered = false;
+                            _dialogService.ShowMessageBox(AppResources.ZPleaseenterthecorrespondingnumber, AppResources.Information);
+                        });
+                        return;
+                    }
+                }
+                else
+                {
+                    isMendatoryDataEntered = false;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        _dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
+                    });
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                isMendatoryDataEntered = false;
+            }
+            //_dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
         }
         #endregion
     }

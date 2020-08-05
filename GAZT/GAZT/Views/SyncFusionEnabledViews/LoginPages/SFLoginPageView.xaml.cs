@@ -66,6 +66,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                     PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
+
+
+                MessagingCenter.Subscribe<string>(this, "UnlockAccountBackButtonClicked", message => {
+                    Console.WriteLine("UnlockAccountBackButtonClicked");
+                    OnAppearing();
+                });
+
                 DependencyService.Get<IStatusBar>().HideStatusBar();
 
                 App.ArePreLoginLangCookiesSet = false;
@@ -152,6 +159,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             viewModel.Password = string.Empty;
             viewModel.Email = string.Empty;
         }
+
+
         protected async override void OnAppearing()
         {
             base.OnAppearing();
@@ -181,6 +190,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 //else
                 //{
                 //}
+
+               
 
                 viewModel.IsVisibleTinIds = false;
 
@@ -344,7 +355,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             {
                                 hybridWebView.Opacity = 0;
                                 viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
-
                             }
                             
 
@@ -443,7 +453,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                                 }
 
-                                viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
                                 _navigation.NavigationStack.ToList().Clear();
 
                             }

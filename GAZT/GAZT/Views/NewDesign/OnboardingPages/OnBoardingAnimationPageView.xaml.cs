@@ -25,42 +25,105 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             
             this.BindingContext = viewModel = App.Locator.GAZTNewDesignOnBoardingAnimationPageView;
             viewModel.NextButtonText = AppResources.ZZNext;
+            SetLTR();
         }
-
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         private void ChangeLangButton_Clicked(object sender, System.EventArgs e)
         {
-            if (App.IsArabic)
+            try
             {
-                App.IsArabic = false;
-                App.changeFontFamily(App.appObj);
-                SetLTRDirection();
+                if (App.IsArabic)
+                {
+                    App.IsArabic = false;
+                    App.changeFontFamily(App.appObj);
+                    SetLTRDirection();
+                }
+                else
+                {
+                    App.IsArabic = true;
+                    App.changeFontFamily(App.appObj);
+                    SetRTLDirection();
+                }
+                viewModel.NextButtonText = AppResources.ZZNext;
             }
-            else
+            catch(Exception ex)
             {
-                App.IsArabic = true;
-                App.changeFontFamily(App.appObj);
-                SetRTLDirection();
+
             }
-            viewModel.NextButtonText = AppResources.ZZNext;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                if (App.IsArabic)
+                {
+                    App.IsArabic = false;
+                    App.changeFontFamily(App.appObj);
+                    SetRTLDirection(); 
+                }
+                else
+                {
+                    App.IsArabic = true;
+                    App.changeFontFamily(App.appObj);
+                    SetLTRDirection();
+                }
+                viewModel.NextButtonText = AppResources.ZZNext;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void SetRTLDirection()
         {
-            String langName = "ar-AE";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-           
-            this.FlowDirection = FlowDirection.RightToLeft;
-            viewModel.LanguageText = AppResources.ZZZSetToEnglish;
+            try
+            {
+                String langName = "ar-AE";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                this.FlowDirection = FlowDirection.RightToLeft;
+                viewModel.LanguageText = AppResources.ZZZSetToEnglish;
+                viewModel.test();
+                InitializeComponent();
+                
+
+                //viewModel._navigationService.GoBack();
+                //viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+            }
+            catch(Exception ex)
+            {
+
+            }
+
         }
         public void SetLTRDirection()
         {
-            String langName = "en-US";
-            CultureInfo ci = new CultureInfo(langName);
-            AppResources.Culture = ci;
-            this.FlowDirection = FlowDirection.LeftToRight;
+            try
+            {
+                String langName = "en-US";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                this.FlowDirection = FlowDirection.LeftToRight;
+                viewModel.LanguageText = AppResources.ZZZSetToArabic;
+                viewModel.test();
+                InitializeComponent();
+               
+                //viewModel._navigationService.GoBack();
+                //viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+            }
+            catch(Exception ex)
+            {
 
-            viewModel.LanguageText = AppResources.ZZZSetToArabic;
+            }
         }
     }
 }

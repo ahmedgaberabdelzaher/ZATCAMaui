@@ -21,14 +21,14 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                 <Image Source="Forget_ic_success" Margin="0,0,0,20"/>
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.RecoverUserName}" Style="{StaticResource SectionTitleBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDUsernameSenttoMobile}" Style="{StaticResource BodyLabelBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDUsernameSenttoMobile}" Style="{StaticResource BodyLabelBlack}" TextColor="White"  HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center"/>
             </StackLayout>
             <StackLayout VerticalOptions="EndAndExpand" Spacing="10">
                 <buttons:SfButton Text="{x:Static ResourceManager:AppResources.LogIn}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnLoginButtonClicked}"/>
-                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.CheckEmail}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent"/>
+                <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.CheckEmail}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent"/>-->
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

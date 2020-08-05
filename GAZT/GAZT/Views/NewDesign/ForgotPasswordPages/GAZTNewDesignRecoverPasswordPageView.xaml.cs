@@ -18,6 +18,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             InitializeComponent();
             viewModel = App.Locator.GAZTNewDesignRecoverPasswordPageViewModel;
             this.BindingContext = viewModel;
+            NavigationPage.SetHasBackButton(this, false);
+
         }
 
         private void OnLogInClicked(object sender, EventArgs e)
@@ -36,7 +38,6 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
                 Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                 Navigation.RemovePage(pg);
         }

@@ -16,6 +16,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         {
             InitializeComponent();
             BindingContext = App.Locator.GAZTNewDesignRecoverUsernameViewModel;
+            NavigationPage.SetHasBackButton(this, false);
+
         }
     }
 }

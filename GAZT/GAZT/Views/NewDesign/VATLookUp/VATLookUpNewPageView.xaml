@@ -11,7 +11,8 @@
              BackgroundImageSource="partials_background.png"
              FlowDirection="LeftToRight"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              x:Class="EGAZT.Views.NewDesign.VATLookUp.VATLookUpNewPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -19,9 +20,15 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="Android, UWP">0</On>
+            <On Platform="iOS">0,20,0,0</On>
+        </OnPlatform>
+    </ContentPage.Padding>
+
      <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid>
@@ -42,7 +49,8 @@
                                Text="{x:Static ResourceManager:AppResources.MyBills}"
                                Style="{StaticResource SectionTitleWhiteBold}"
                                HorizontalOptions="Center"/>
-                        <Label Grid.Row="0" Grid.Column="0"
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
                                IsVisible="{Binding IsBackStepButtonVisible}"
                                Style="{StaticResource IconLabelStyle}"
                                Text="{DynamicResource StyleReverseBack}"
@@ -97,7 +105,7 @@
                                    Text="{StaticResource Back}"
                                    Rotation="270"/>
 
-                            <Image Grid.Column="2" IsVisible="False">
+                            <Image Grid.Column="2" IsVisible="false">
                                 <Image.Source>
                                     <FontImageSource Color="White"
                                                      FontFamily="UserIconFont"
@@ -137,7 +145,10 @@
                              <RowDefinition Height="auto" />
                          </Grid.RowDefinitions>
 
-                        <control:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.IDNumber}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
+                        <control:CustomLabel Grid.Row="0"
+                                             Text="{x:Static ResourceManager:AppResources.IDNumber}"
+                                             Padding="0,0,0,0"
+                                             Style="{StaticResource CaptionLabelGrey}"/>
 
                         <inputLayout:SfTextInputLayout Grid.Row="1"
                                                         Margin="0,-6,0,-6" 
@@ -167,13 +178,11 @@
                                             ShowColumnHeader="False"
                                             ColumnHeaderHeight="46"
                                             PickerMode="Dialog"
-                                            HeaderBackgroundColor="#006450"
-                  
+                                            HeaderBackgroundColor="#006450"              
                                             BorderColor="Black"
                                             BackgroundColor="#EAF7CC"
                                             UnSelectedItemTextColor="{StaticResource NeutralBlack}"
                                             SelectedItemFontSize="15"
-                                            
                                             ItemHeight="40"
                                             SelectedItemTextColor="{StaticResource NeutralBlack}"
                                             DisplayMemberPath="ParameterType"
@@ -231,8 +240,10 @@
 
                             <border:SfBorder Grid.Row="3"
                                              Margin="0,10,0,10"
+                                             IsVisible="{Binding IsNameVisible}"
                                              Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Orientation="Horizontal"
+                                             IsVisible="{Binding IsNameVisible}"
                                              Padding="15,10,15,10">
                                     <Label Text="TAX Payer Name" Style="{StaticResource ValueLabelGrey}"
                                            HorizontalOptions="Start"/>
@@ -256,8 +267,8 @@
             <StackLayout Grid.Row="1"
                          HorizontalOptions="Center"
                          Padding="10,5,10,10" >
-                <buttons:SfButton x:Name="btnprimary"
-                                  Text="Search VAT"
+                <buttons:SfButton x:Name="btnSearch"
+                                  Text="{Binding LookUpButtonText}"
                                   Clicked="btnSubmit_Clicked"
                                   Style="{StaticResource PrimaryButtonStyle}"/>
             </StackLayout>
