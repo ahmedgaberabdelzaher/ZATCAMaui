@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using Xamarin.Forms;
@@ -19,6 +20,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
         }
 
         private void SetLTR()
@@ -42,20 +48,26 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         void SfListView_ItemTapped(System.Object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-            try
-            {
-                foreach (TINDeregistrationModel tINDeregistrationModel in viewModel.OutletDecisionOptions)
-                {
-                    tINDeregistrationModel.ActiveOutletDecisionOptionsIsSelected = false;
-                }
+            //try
+            //{
+            //    foreach (TINDeregistrationModel tINDeregistrationModel in viewModel.OutletDecisionOptions)
+            //    {
+            //        tINDeregistrationModel.ActiveOutletDecisionOptionsIsSelected = false;
+            //    }
 
-                var dataItem = e.ItemData as TINDeregistrationModel;
-                dataItem.ActiveOutletDecisionOptionsIsSelected = true;
-            }
-            catch (Exception ex)
-            {
+            //    var dataItem = e.ItemData as TINDeregistrationModel;
+            //    dataItem.ActiveOutletDecisionOptionsIsSelected = true;
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
+            //}
+        }
+
+        void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
+            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
         }
     }
 }
