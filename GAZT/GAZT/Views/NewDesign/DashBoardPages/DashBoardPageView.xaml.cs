@@ -437,6 +437,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.UnPaidString = AppResources.UnPaid;
                 viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
                 viewModel.TotalString = AppResources.NDTotal;
+                viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
+                viewModel.Rotation = 180;
             }
             catch(Exception ex)
             {
@@ -462,6 +464,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.UnPaidString = AppResources.UnPaid;
                 viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
                 viewModel.TotalString = AppResources.NDTotal;
+                viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
+                viewModel.Rotation = 0;
             }
             catch(Exception ex)
             {

@@ -94,6 +94,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private string _welcomeText;
+        public string WelcomeText
+        {
+            get
+            {
+                return _welcomeText;
+            }
+            set
+            {
+                _welcomeText = value;
+                RaisePropertyChanged("WelcomeText");
+            }
+        }
+
+        private int _rotation=0;
+        public int Rotation
+        {
+            get
+            {
+                return _rotation;
+            }
+            set
+            {
+                _rotation = value;
+                RaisePropertyChanged("Rotation");
+            }
+        }
+
         private string _translateText;
         public string TranslateText
         {
