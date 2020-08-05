@@ -25,7 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
         private string nextButtonText = AppResources.ZZNext;
 
-        private string _LanguageText = AppResources.ZZZSetToEnglish;
+        private string _LanguageText = "Set To English";// AppResources.ZZZSetToEnglish;
 
         private bool isSkipButtonVisible = true;
 

@@ -80,11 +80,12 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
         {
             try
             {
-                viewModel.LanguageText = AppResources.ZZZSetToEnglish;
                 String langName = "ar-AE";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.RightToLeft;
+                viewModel.LanguageText = "Set To English";//AppResources.ZZZSetToEnglish;
+
                 viewModel.test();
                 InitializeComponent();
                 
@@ -102,12 +103,12 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
         {
             try
             {
-                viewModel.LanguageText = AppResources.ZZZSetToArabic;
                 String langName = "en-US";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.LeftToRight;
-              
+                viewModel.LanguageText = "تعيين إلى العربية";// AppResources.ZZZSetToArabic;
+
                 viewModel.test();
                 InitializeComponent();
                
