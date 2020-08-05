@@ -130,6 +130,7 @@ using System;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.VATLookUp;
 using EGAZT.Views.NewDesign.TaxpayersCertificatesPages;
+using EGAZT.Views.NewDesign.ZakatForm5;
 
 namespace EGAZT
 {
@@ -1559,7 +1560,9 @@ namespace EGAZT
             navigationService.Configure(App.GAZTNewDesignRecoverPasswordPageView, typeof(GAZTNewDesignRecoverPasswordPageView));
             navigationService.Configure(App.VATLookUpNewPageView, typeof(VATLookUpNewPageView));
             navigationService.Configure(App.TaxpayersCertificatesPageView, typeof(TaxpayersCertificatesPageView));
-            
+
+            navigationService.Configure(App.GAZTForm5PageView, typeof(ZakatForm5PageView));
+
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
