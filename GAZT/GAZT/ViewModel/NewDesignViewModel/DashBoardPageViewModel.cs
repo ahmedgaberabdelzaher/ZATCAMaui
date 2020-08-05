@@ -137,6 +137,109 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+
+        private string _nDCommitments = AppResources.NDCommitments;
+        public string NDCommitments
+        {
+            get
+            {
+                return this._nDCommitments;
+            }
+            set
+            {
+                this._nDCommitments = value;
+                this.RaisePropertyChanged("NDCommitments");
+            }
+        }
+
+
+        private string _zBills = AppResources.Bills;
+        public string ZBills
+        {
+            get
+            {
+                return this._zBills;
+            }
+            set
+            {
+                this._zBills = value;
+                this.RaisePropertyChanged("ZBills");
+            }
+        }
+
+
+        private string _returns = AppResources.Returns;
+        public string Return
+        {
+            get
+            {
+                return this._returns;
+            }
+            set
+            {
+                this._returns = value;
+                this.RaisePropertyChanged("Return");
+            }
+        }
+
+        private string _aboutUs = AppResources.ZZZAboutUs;
+        public string AboutUs
+        {
+            get
+            {
+                return this._aboutUs;
+            }
+            set
+            {
+                this._aboutUs = value;
+                this.RaisePropertyChanged("AboutUs");
+            }
+        }
+
+        private string _contactus = AppResources.ZZZContactus;
+        public string Contactus
+        {
+            get
+            {
+                return this._contactus;
+            }
+            set
+            {
+                this._contactus = value;
+                this.RaisePropertyChanged("Contactus");
+            }
+        }
+
+
+        private string _privacyandPolicy = AppResources.ZZZPrivacyandPolicy;
+        public string PrivacyandPolicy
+        {
+            get
+            {
+                return this._privacyandPolicy;
+            }
+            set
+            {
+                this._privacyandPolicy = value;
+                this.RaisePropertyChanged("PrivacyandPolicy");
+            }
+        }
+
+        private string _logout = AppResources.ZLogout;
+        public string Logout
+        {
+            get
+            {
+                return this._logout;
+            }
+            set
+            {
+                this._logout = value;
+                this.RaisePropertyChanged("Logout");
+            }
+        }
+
+
         public ObservableCollection<OverduePaymentAndUnSubmittedReturn> Bills
         {
             get
@@ -1041,8 +1144,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             }
 
-            //_navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-            await _navigation.PopToRootAsync();
+            _navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
             _navigation.NavigationStack.ToList().Clear();
         }
         #endregion

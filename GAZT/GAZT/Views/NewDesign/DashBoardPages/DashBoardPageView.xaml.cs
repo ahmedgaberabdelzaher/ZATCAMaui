@@ -402,12 +402,29 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
                     SetLTRDirection();
+                    viewModel.NDCommitments = AppResources.NDCommitments;
+                    viewModel.ZBills = AppResources.Bills;
+                    viewModel.Return = AppResources.Returns;
+
+                    viewModel.AboutUs = AppResources.ZZZAboutUs;
+                    viewModel.Contactus = AppResources.ZZZContactus;
+                    viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
+                    viewModel.Logout = AppResources.ZLogout;
                 }
                 else
                 {
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     SetRTLDirection();
+
+                    viewModel.NDCommitments = AppResources.NDCommitments;
+                    viewModel.ZBills = AppResources.Bills;
+                    viewModel.Return = AppResources.Returns;
+
+                    viewModel.AboutUs = AppResources.ZZZAboutUs;
+                    viewModel.Contactus = AppResources.ZZZContactus;
+                    viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
+                    viewModel.Logout = AppResources.ZLogout;
                 }
 
                 OnAppearing();

@@ -484,7 +484,7 @@
                                     <Image Source="menu_calendar">
  
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDCommitments}" Style="{StaticResource ButtonLabelWhiteBold}" />
+                                    <custom:CustomLabel Text="{Binding NDCommitments}" Style="{StaticResource ButtonLabelWhiteBold}" />
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
@@ -492,7 +492,7 @@
                                     <Image Source="menu_bill">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{Binding ZBills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyBills"/>
                                     </StackLayout.GestureRecognizers>
@@ -503,7 +503,7 @@
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{Binding Return}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -579,7 +579,7 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{Binding AboutUs}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Aboutus_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -592,7 +592,7 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{Binding Contactus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Contactus_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -605,7 +605,7 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZPrivacyandPolicy}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{Binding PrivacyandPolicy}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -631,7 +631,7 @@
                                     <Image Source="log_out">
 
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZLogout}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{Binding Logout}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Logout_Tapped"/>
                                     </StackLayout.GestureRecognizers>
