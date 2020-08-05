@@ -9,6 +9,7 @@
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
     ios:Page.UseSafeArea="False"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
@@ -16,9 +17,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate x:Key="ItemTemplate" x:Name="ItemTemplate">
-                <ContentPresenter Content="{Binding RotatorItem}" />
-            </DataTemplate>
+           
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -49,7 +48,7 @@
                 FontFamily="{StaticResource SSTArBold}"
                 HorizontalOptions="Start"
                 IsVisible="{Binding IsSkipButtonVisible}"
-                Text="Skip"
+                Text="{x:Static ResourceManager:AppResources.NDSkip}"
                 TextColor="{x:StaticResource NeutralGreay}"
                 VerticalOptions="StartAndExpand"
                  />
@@ -73,7 +72,7 @@
 
             <!--  Rotator used to navigate the view  -->
             <rotator:SfRotator
-                x:Name="Rotator"
+               
                 Grid.Row="2"
                 Margin="{x:OnIdiom Phone='15,0,15,0',
                                    Desktop='0',
@@ -101,10 +100,10 @@
 
             <!--  Next button  -->
             <buttons:SfButton
-                x:Name="NextButtonText"
+               
                 Grid.Row="3"
                 Command="{Binding NextCommand}"
-                CommandParameter="{x:Reference Rotator}"
+                
                 Style="{StaticResource SfButtonStyleForOnbBoarding}"
                 Text="{Binding NextButtonText}" />
         </Grid>

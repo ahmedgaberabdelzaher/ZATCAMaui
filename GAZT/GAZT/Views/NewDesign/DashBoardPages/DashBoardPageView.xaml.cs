@@ -97,10 +97,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.IsLoading = false;
             App.IsComingFromSleepMode = false;
             if (viewModel != null)
             {
+                viewModel.IsLoading = false;
                 viewModel.MenuViewVisible = false;
                 viewModel.HomeViewVisible = true;
             }
@@ -108,16 +108,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             Task.Run(async () =>
             {
                 await LoadData();
-                viewModel.IsLoading = false;
+
+                if(viewModel!=null)
+                    viewModel.IsLoading = false;
             });
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-
-          
-        
         }
         private async Task LoadData()
         {
