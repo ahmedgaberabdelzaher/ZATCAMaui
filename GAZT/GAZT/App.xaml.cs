@@ -210,7 +210,7 @@ namespace EGAZT
             }
             else
             {
-                navigationPage = new CustomNavigation(new SFLoginPageView(App.SFLandingPageView)) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
