@@ -21,6 +21,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Xamarin.Forms;
+using ZakatForm5Model;
 using static GAZT.ErrorMessage;
 namespace GAZT.Manager
 {
@@ -1113,7 +1114,31 @@ namespace GAZT.Manager
                             string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"].ToString();
                             if (GAZTValidateOTPResponseJToken == "Details Changed Successfully" || GAZTValidateOTPResponseJToken.ToString() == "تم تغيير التفاصيل بنجاح")
                             {
-                                TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);                             }                             else                             {                                 throw new Exception(AppResources.Invalidverificationcodeentered);                             }                         }                         else                         {                         }                     }                     return TP;                 }                 catch (Exception ex)                 {                     if (string.Equals(ex.Message, AppResources.Invalidverificationcodeentered))                     {                         throw new Exception(AppResources.InvalidEmail);                     }                     else                     {                         throw new Exception(AppResources.NetworkConnectivityIssue);                     }                 }             }
+                                TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.Invalidverificationcodeentered);
+                            }
+                        }
+                        else
+                        {
+                        }
+                    }
+                    return TP;
+                }
+                catch (Exception ex)
+                {
+                    if (string.Equals(ex.Message, AppResources.Invalidverificationcodeentered))
+                    {
+                        throw new Exception(AppResources.InvalidEmail);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
+                }
+            }
             else
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
@@ -6654,6 +6679,77 @@ namespace GAZT.Manager
         //        throw new InternetException(AppResources.ZZInternetConnectionMessage);
         //    }
         //}
+        #endregion
+
+
+        #region Form5
+        #region ZakatForm5
+
+        public static ZakatForm5Data GAZTZakatForm5Data(string lang)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ZakatForm5Data ZakatForm5DataResult = new ZakatForm5Data();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTZakatForm5 + "Langz='" + lang + "',OfficerUidz=''" + "',ObjSubmitz='" + "" + "',Approvez='" + "" + "',Rejectz='" + "" + "',CreateTxAssesz='" +""+ "',Euser='"+"00000000000000000000"+"'" +
+                        "',Fbguid='" + App.LoginDataRetrieved.FbGuid + "')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
+
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTZakatForm5Response = client.GetAsync(uri).Result;
+                    if (GAZTZakatForm5Response != null)
+                    {
+                        if (GAZTZakatForm5Response.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTZakatForm5Response.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String GAZTZakatForm5ResponseJSON = GAZTZakatForm5Response.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTZakatForm5ResponseJSON))
+                        {
+                            //Assign Values
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.ZNoICRAvailable);
+                        }
+                    }
+                    return ZakatForm5DataResult;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        #endregion
+
+
         #endregion
     }
 }

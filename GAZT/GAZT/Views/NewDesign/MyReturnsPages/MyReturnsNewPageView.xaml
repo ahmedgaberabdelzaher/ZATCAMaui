@@ -133,8 +133,8 @@
 
                 <!--<custom:CustomLabel Text="60,0000 SAR" Style="{StaticResource CaptionLabelGrey}"/>-->
                 <StackLayout Margin="0,8,0,8" HorizontalOptions="Center" Spacing="2">
-                    <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">-->
-                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" Margin="0"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    ChipPadding="0" Padding="0"  ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" ChipBorderWidth="1"    SelectionChanged="ChipGroup_statusFilter_SelectionChanged">
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" Margin="0"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    ChipPadding="1" Padding="0"  ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" ChipBorderWidth="1"    SelectionChanged="ChipGroup_statusFilter_SelectionChanged">
                         <buttons:SfChipGroup.ItemTemplate>
                             <DataTemplate >
                                 <StackLayout Margin="0" Padding="0" Spacing="2">
@@ -144,7 +144,7 @@
                         </buttons:SfChipGroup.ItemTemplate>
                     </buttons:SfChipGroup>
 
-                    <!--</ScrollView>-->
+                    </ScrollView>
                 </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="1">

@@ -20,9 +20,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         #region Commands
         public ICommand ReasonContinueBtnTapped { get; set; }
+        public ICommand OutletContinueBtnTapped { get; set; }
+        public ICommand AttachmentsContinueBtnTapped { get; set; }
+        public ICommand DeclarationContinueBtnTapped { get; set; }
+        public ICommand SummaryContinueBtnTapped { get; set; }
         #endregion
 
         #region Properties
+
+        private bool _isBackButtonVisible = true;
+        public bool IsBackButtonVisible
+        {
+            get
+            {
+                return _isBackButtonVisible;
+            }
+            set
+            {
+                _isBackButtonVisible = value;
+                RaisePropertyChanged("IsBackButtonVisible");
+            }
+        }
 
         private bool _isReasonViewEnabled = true;
         public bool IsReasonViewEnabled
@@ -49,6 +67,48 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _isOutletViewEnabled = value;
                 RaisePropertyChanged("IsOutletViewEnabled");
+            }
+        }
+
+        private bool _isAttachmentsViewEnabled = true;
+        public bool IsAttachmentsViewEnabled
+        {
+            get
+            {
+                return _isAttachmentsViewEnabled;
+            }
+            set
+            {
+                _isAttachmentsViewEnabled = value;
+                RaisePropertyChanged("IsAttachmentsViewEnabled");
+            }
+        }
+
+        private bool _isDeclarationViewEnabled = true;
+        public bool IsDeclarationViewEnabled
+        {
+            get
+            {
+                return _isDeclarationViewEnabled;
+            }
+            set
+            {
+                _isDeclarationViewEnabled = value;
+                RaisePropertyChanged("IsDeclarationViewEnabled");
+            }
+        }
+
+        private bool _isSummaryViewEnabled = true;
+        public bool IsSummaryViewEnabled
+        {
+            get
+            {
+                return _isSummaryViewEnabled;
+            }
+            set
+            {
+                _isSummaryViewEnabled = value;
+                RaisePropertyChanged("IsSummaryViewEnabled");
             }
         }
 
@@ -174,6 +234,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        private int _selectedOutletOptionIndex;
+        public int SelectedOutletOptionIndex
+        {
+            get
+            {
+                return _selectedOutletOptionIndex;
+            }
+            set
+            {
+                _selectedOutletOptionIndex = value;
+                RaisePropertyChanged("SelectedOutletOptionIndex");
+            }
+        }
+
+        private TINDeregistrationModel _selectedOutletOption;
+        public TINDeregistrationModel SelectedOutletOption
+        {
+            get
+            {
+                return _selectedOutletOption;
+            }
+            set
+            {
+                _selectedOutletOption = value;
+                //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
+                RaisePropertyChanged("SelectedOutletOption");
+            }
+        }
+
         #endregion
 
         public TINDeregistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -194,12 +283,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             });
 
             ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
+            OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
+            AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
+            DeclarationContinueBtnTapped = new Command(this.DeclarationContinueBtnClicked);
+            SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
 
             TinDeregistrationModel = new TINDeregistrationModel();
+            SelectedOutletOption = new TINDeregistrationModel();
+
             AddOutletDecisionOptions();
             PopulateAttachmentsListViewTemplate();
             PopulateSummaryReasonData();
             PopulateSummaryDeclarationData();
+            EnableReasonView();
         }
 
         public void AddOutletDecisionOptions()
@@ -224,13 +320,51 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableReasonView()
         {
+            SelectedOutletOption = OutletDecisionOptions[0];
+            SelectedOutletOptionIndex = 0;
+            IsBackButtonVisible = false;
             IsReasonViewEnabled = true;
+            IsOutletViewEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsSummaryViewEnabled = false;
         }
 
         public void EnableOutletDetaislView()
         {
+            IsBackButtonVisible = true;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = true;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsSummaryViewEnabled = false;
+        }
+
+        public void EnableAttachmentsView()
+        {
+            IsReasonViewEnabled = false;
+            IsOutletViewEnabled = false;
+            IsAttachmentsViewEnabled = true;
+            IsDeclarationViewEnabled = false;
+            IsSummaryViewEnabled = false;
+        }
+
+        public void EnableDeclarationView()
+        {
+            IsReasonViewEnabled = false;
+            IsOutletViewEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = true;
+            IsSummaryViewEnabled = false;
+        }
+
+        public void EnableSummaryView()
+        {
+            IsReasonViewEnabled = false;
+            IsOutletViewEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsSummaryViewEnabled = true;
         }
 
         public async void ReasonContinueBtnClicked()
@@ -253,6 +387,90 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        public async void OutletContinueBtnClicked()
+        {
+            try
+            {
+                EnableAttachmentsView();
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void AttachmentsContinueBtnClicked()
+        {
+            try
+            {
+                EnableDeclarationView();
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void DeclarationContinueBtnClicked()
+        {
+            try
+            {
+                EnableSummaryView();
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void SummaryContinueBtnClicked()
+        {
+            try
+            {
+                //Display Success Screen
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        //OutletContinueButtonTapped
+        //AttachmentsContinueButtonTapped
+        //DeclarationContinueButtonTapped
+        //SummaryContinueButtonTapped
 
         #region Attachments View
         public void PopulateAttachmentsListViewTemplate()

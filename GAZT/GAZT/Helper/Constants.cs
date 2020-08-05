@@ -176,5 +176,11 @@ namespace GAZT.Helper
         #region GAZTUnlock Account
         public static string GAZTUnlockAccountAllOperations = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_UNLOCK_USER_SRV/HeaderSet";
         #endregion
+
+        #region Form5
+        #endregion
+        #region ZakatForm5
+        public static string GAZTZakatForm5 = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_RET_F05_ZKTE_SRV/ZKTE_HEADERSet(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz=''";
+        #endregion
     }
 }

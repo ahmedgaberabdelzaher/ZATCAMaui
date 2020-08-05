@@ -2883,11 +2883,11 @@
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZSetToArabic" xml:space="preserve">
-    <value>Set To Arabic</value>
+    <value>Set To English</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZSetToEnglish" xml:space="preserve">
-    <value>تغيير الى الإنجليزية</value>
+    <value>تعيين إلى العربية</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZNoDataAvailable" xml:space="preserve">

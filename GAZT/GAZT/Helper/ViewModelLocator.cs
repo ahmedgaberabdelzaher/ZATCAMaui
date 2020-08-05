@@ -155,11 +155,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
 
+           
+
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
-            
+
+            SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
 
             #endregion
 
@@ -286,6 +289,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatForm5PageViewModel ZakatForm5PageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatForm5PageViewModel>();
                 }
                 catch (Exception ex)
                 {
