@@ -152,7 +152,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             viewModel.Name = "";
             viewModel.IsNameVisible = false;
             viewModel.LookupNumber = "";
-            viewModel.LookUpButtonText = "Search VAT";
+            viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
         }
         private async void btnSubmit_Clicked(object sender, EventArgs e)
         {
@@ -188,7 +188,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                                     viewModel.NameOrNoResultLabel = AppResources.Name;
                                     viewModel.Name = vatLookUp.d.results[0].Name;
                                     viewModel.IsNameVisible = true;
-                                    viewModel.LookUpButtonText = "Search New VAT";
+                                    viewModel.LookUpButtonText = AppResources.ZVATLookUpNewSearchButtonText;
                                 }
                                 else
                                 {

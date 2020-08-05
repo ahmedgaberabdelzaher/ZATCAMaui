@@ -3415,6 +3415,10 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Registration Verification Service</value>
     <comment>Vat Lookup</comment>
   </data>
+  <data name="ZZZVatLookUpTitleNew" xml:space="preserve">
+    <value>VAT Verification</value>
+    <comment>Vat Lookup</comment>
+  </data>
   <data name="ZZZCRValidateMessg" xml:space="preserve">
     <value>Please note that this CR/Licence/Contract is already registered with another taxpayer in GAZT, 
             please correct the ID if wrongly input or proceed further with this Licence Number. 
@@ -3739,6 +3743,15 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   </data>
   <data name="ZVATStartsWithVAlidation" xml:space="preserve">
     <value>VAT number starts with 3</value>
+  </data>
+  <data name="ZVATLookUpTitleSub" xml:space="preserve">
+    <value>Please follow the steps</value>
+  </data>
+  <data name="ZVATLookUpSearchButtonText" xml:space="preserve">
+    <value>Search VAT</value>
+  </data>
+  <data name="ZVATLookUpNewSearchButtonText" xml:space="preserve">
+    <value>New VAT Search</value>
   </data>
   <data name="ZNameVAlidation" xml:space="preserve">
     <value>Name cannot contain numbers or special characters</value>
