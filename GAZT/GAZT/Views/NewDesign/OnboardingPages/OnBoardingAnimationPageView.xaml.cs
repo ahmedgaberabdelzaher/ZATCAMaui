@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
         {
             try
             {
-                viewModel.LanguageText = AppResources.ZZZSetToArabic;
+                viewModel.LanguageText = AppResources.ZZZSetToEnglish;
                 String langName = "ar-AE";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
@@ -102,7 +102,7 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
         {
             try
             {
-                viewModel.LanguageText = AppResources.ZZZSetToEnglish;
+                viewModel.LanguageText = AppResources.ZZZSetToArabic;
                 String langName = "en-US";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
