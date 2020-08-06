@@ -57,7 +57,7 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid Padding="15">
+        <!--<Grid Padding="15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -103,7 +103,7 @@
             </StackLayout>
             <StackLayout Grid.Row="1">
 
-                <!--<ListView  x:Name="ListView_Returns" 
+                --><!--<ListView  x:Name="ListView_Returns" 
            ItemsSource="{Binding ListToDisplay,Mode=TwoWay}"
                                            IsVisible="{Binding IsListVisible}"
                                   VerticalScrollBarVisibility="Never"    
@@ -199,7 +199,7 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>-->
+                </ListView>--><!--
                 <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.ZZZReturnsNotFound}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}"/>
             </StackLayout>
 
@@ -219,10 +219,10 @@
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                         TextColor="#006450"/>
-                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                        --><!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"--><!--
                     </StackLayout>
                 </StackLayout>
             </Grid>
-        </Grid>
+        </Grid>-->
     </ContentPage.Content>
 </ContentPage>
