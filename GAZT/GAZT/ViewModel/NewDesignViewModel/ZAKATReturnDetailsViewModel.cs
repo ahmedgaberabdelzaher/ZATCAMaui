@@ -16,9 +16,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
+        public ICommand OnSubmitButtonClicked { get; set; }
+
+        
 
         #region Property
-        
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -32,6 +35,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
+
+        
 
         private ZakatReturnDetailsD _zakatReturnDetail;
         public ZakatReturnDetailsD ZakatReturnDetail
@@ -80,6 +85,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             //{
             //    _navigationService.GoBack();
+            //});
+
+
+            //OnSubmitButtonClicked = new Command(async () =>
+            //{
+            //    try
+            //    {
+            //        bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
+            //        if (IsValueChange)
+            //        {
+            //            if (CheckBoxStatus)
+            //            {
+            //                // SetUpdatedDataToZAKATEstimated();
+            //                // AssignAttachmentToPostDataObject();
+            //                string PostOperationID = "05";
+            //                await SubmitZakatReturn(PostOperationID, "");
+            //                CheckBoxStatus = false;
+            //            }
+            //            else
+            //            {
+            //                Device.BeginInvokeOnMainThread(async () => {
+            //                    await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+            //                });
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Device.BeginInvokeOnMainThread(async () => {
+            //                await _dialogService.ShowMessageBox(AppResources.ZZNochangesmadeFormcannotbesubmitted, AppResources.Alerts);
+            //            });
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        IsLoading = false;
+            //    }
             //});
 
         }
@@ -196,6 +237,154 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     
                 });
             }
+        }
+
+
+        private async Task SubmitZakatReturn(String PostOperation, string InvFlag)
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    WebServiceManager.ErrorMessage = string.Empty;
+                    if (PostOperation.Equals("66") || PostOperation.Equals("65"))
+                    {
+                      //  _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
+                        if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                        {
+                           // HideDisclaimer();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () => {
+                                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                                {
+                                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                }
+                                else
+                                {
+                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                }
+                            });
+                        }
+                    }
+                    else
+                    {
+                        //ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(zakatReturnDetailsD);
+                        //  zakatReturnDetailsD.d.Cpamt = SalesDetailsList[7].InformationFromPartie.Replace(",", "");
+                      //  _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, PostOperation);
+                        if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                        {
+                            //HideDisclaimer();
+                            //Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
+                            ////  IsCurrentZAKATTaxLess = existingZakatBase >= Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
+                            //if (existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt))
+                            //{
+                            //    IsCurrentZAKATTaxLess = true;
+                            //}
+                            //else
+                            //{
+                            //    IsCurrentZAKATTaxLess = false;
+                            //}
+                            AssignCalculatedValueAfterSubmission();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () => {
+                                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                                {
+                                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                }
+                                else
+                                {
+                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                }
+                            });
+                        }
+                    }
+                    if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                    {
+                        if (PostOperation.Equals("66") || PostOperation.Equals("65"))
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                               // HideAllButton();
+                                await _dialogService.ShowMessageBox(AppResources.ZZReturnSubmittedSuccessfully, AppResources.Information);
+                                // IsComingFromSalesDetailsPage = true;
+                                //_navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
+                            });
+                        }
+                        if (PostOperation.Equals("05"))
+                        {
+                            //if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) >= existingZakatBase)//existingZakatBase
+                            //{
+                            //    Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
+                            //    ShowOnlyInfoIcon();
+                            //    ShowConfirmButton();
+                            //    SetSalesDetailsData(_zakatReturnDetails);
+                            //    HideDisclaimer();
+                            //}
+                            //else
+                            //{
+                            //    ShowDisclaimer();
+                            //    SetChangedValueToUploadAttachment();
+                            //    bool ISAllRequiredDocumentUploadedwithReason = IsAllRequiredAttachmentUploaded();
+                            //    if (ISAllRequiredDocumentUploadedwithReason)
+                            //    {
+                            //        Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
+                            //        ShowConfirmButton();
+                            //        SetSalesDetailsData(_zakatReturnDetails);
+                            //        // ShowEditIcon();// Commented 
+                            //        ShowOnlyInfoIcon();
+                            //        HideDisclaimer();
+                            //    }
+                            //    else
+                            //    {
+                            //        Device.BeginInvokeOnMainThread(async () => {
+                            //            await _dialogService.ShowMessageBox(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason, AppResources.Information);
+                            //        });
+                            //    }
+                            //}
+                        }
+                    }
+                    else
+                    {
+                    }
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                    });
+                }
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+        }
+
+        private void AssignCalculatedValueAfterSubmission()
+        {
+            //zakatReturnDetailsD.d.Zbamt = _zakatReturnDetails.d.Zbamt;
+            //zakatReturnDetailsD.d.Zkamt = _zakatReturnDetails.d.Zkamt;
         }
         #endregion
 

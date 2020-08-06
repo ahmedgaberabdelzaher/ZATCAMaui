@@ -85,7 +85,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (_selectedListItem.Fbtyp.Equals("FZ12"))
                             {
                                 App.IsZakatLoadingFromMyReturns = true;
-                                _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, _selectedListItem.Fbguid);
+                                _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
                             }
                             else
                             {
