@@ -371,6 +371,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                 {
                 }
             });
+
             OnSubmitButtonClicked = new Command(async () =>
             {
                 try
@@ -556,6 +557,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
             {
             }
         }
+
         private async Task SubmitZakatReturn(String PostOperation, string InvFlag)
         {
             await Task.Run(() =>
@@ -696,6 +698,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                 IsLoading = false;
             });
         }
+
         public void SetUpdatedDataToZAKATEstimated(int selectedIndex)
         {
             try
