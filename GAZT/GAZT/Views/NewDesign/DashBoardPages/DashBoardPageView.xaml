@@ -578,7 +578,7 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSupports}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
-                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Account}"/>
@@ -589,7 +589,7 @@
                                         <TapGestureRecognizer Tapped="Label_MyProfile_Tapped"/>
                                     </StackLayout.GestureRecognizers>
                                        </StackLayout>
-                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
