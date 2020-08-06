@@ -7,6 +7,8 @@
              xmlns:ResourceManager="clr-namespace:EGAZT"
              BackgroundImageSource="partials_background"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.ZAKATReturnDetailsView"
@@ -38,7 +40,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid BindingContext="{Binding ZakatReturnDetail}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -46,7 +48,7 @@
             
 
             <yummy:PancakeView Grid.Row="1"  Style="{StaticResource MainPage}">
-                <Grid>
+                <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="80*"/>
                         <RowDefinition Height="20*"/>
@@ -72,18 +74,18 @@
 
                         <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                        <StackLayout Padding="10" Spacing="10">
+                        <StackLayout Padding="10" Spacing="10" BindingContext="{Binding ZakatReturnDetail}">
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="Fiscal Year" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Text="2018" Style="{StaticResource HorizontalEnd}" />
+                                <custom:CustomLabel Text="{x:Static local:AppResources.FiscalYear}" Style="{StaticResource ValueLabelGrey}"/>
+                                <custom:CustomLabel Text="{Binding Persl}" Style="{StaticResource HorizontalEnd}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="Financial Period" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Text="2018 - 2019" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel Text="{x:Static local:AppResources.FinancialPeriodFrom}" Style="{StaticResource ValueLabelGrey}"/>
+                                <custom:CustomLabel x:Name="date"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="Return Reference Number" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Text="1234567890" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>
+                                <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
@@ -105,18 +107,42 @@
 
                         <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                        <StackLayout Padding="10" Spacing="10">
+                        <StackLayout Padding="10" Spacing="10" BindingContext="{Binding ZakatReturnDetail}">
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="Estimated Sales Fiscal Year" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="100,000.00 SAR" Style="{StaticResource HorizontalEnd}"/>
+                                <custom:CustomLabel Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Style="{StaticResource HorizontalEnd}">
+                                             <Label.FormattedText>
+                                    <FormattedString>
+                                      <Span Text="{Binding Estsl}"/>
+                                          <Span Text=" "/>
+                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                        </custom:CustomLabel>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="Capital Amount" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Text="500,000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel Text="{x:Static local:AppResources.Capital}" Style="{StaticResource ValueLabelGrey}"/>
+                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                     <Label.FormattedText>
+                                    <FormattedString>
+                                      <Span Text="{Binding Cpamt}" />
+                                          <Span Text=" "/>
+                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                </custom:CustomLabel>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="Zakat Base" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Text="1000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel Text="{x:Static local:AppResources.ZakatBase}" Style="{StaticResource ValueLabelGrey}"/>
+                                <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                    <Label.FormattedText>
+                                    <FormattedString>
+                                      <Span Text="{Binding Zbamt}"/>
+                                          <Span Text=" "/>
+                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                </custom:CustomLabel>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
@@ -125,8 +151,16 @@
 
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="AliceBlue" HasShadow="False" Padding="10">
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="Zakat Amount" Style="{StaticResource ValueLabelBlack}"/>
-                                <custom:CustomLabel Text="1,000.00 SAR" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand"/>
+                                <custom:CustomLabel Text="{x:Static local:AppResources.ZakatAmount}" Style="{StaticResource ValueLabelBlack}"/>
+                                <custom:CustomLabel  Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand">
+                                    <Label.FormattedText>
+                                    <FormattedString>
+                                      <Span Text="{Binding Zkamt}"/>
+                                          <Span Text=" "/>
+                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                                </custom:CustomLabel>
                             </StackLayout>
                         </border:SfBorder>
 

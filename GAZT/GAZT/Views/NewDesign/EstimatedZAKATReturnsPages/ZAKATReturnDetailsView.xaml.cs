@@ -12,7 +12,25 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             viewModel = App.Locator.ZAKATReturnDetailsView;
+            this.BindingContext = viewModel;
+            SetLTR();
+
             viewModel.OnPageLoad(fbguid);
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            date.Text = viewModel.Abrzu;
+        }
+        
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
 
     }

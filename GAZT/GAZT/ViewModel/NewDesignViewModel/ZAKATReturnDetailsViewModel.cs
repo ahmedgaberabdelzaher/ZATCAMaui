@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -67,6 +68,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        private string _abrzu;
+        public string Abrzu
+        {
+            get
+            {
+                return _abrzu;
+            }
+            set
+            {
+                _abrzu = value;
+                RaisePropertyChanged("Abrzu");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -150,7 +165,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         //SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
 
-                        //Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
+                        Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
                        
                     }
                     else
