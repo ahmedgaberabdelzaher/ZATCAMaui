@@ -21,17 +21,21 @@
         <StackLayout HorizontalOptions="CenterAndExpand">
 
             
-                <Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
+<!--                <Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnClose"/>
                     </Image.GestureRecognizers>
-                </Image>
-            
+                </Image>-->
 
-            <custom:CustomLabel Text="Attachments" Style="{StaticResource SectionTitleBlack}"/>
+
+            <custom:CustomLabel Text="Attachments" Style="{StaticResource SectionTitleBlack}">
+                <custom:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAttachmentTapped"/>
+                </custom:CustomLabel.GestureRecognizers>
+            </custom:CustomLabel>
 
             <custom:CustomLabel Text="Create Notes" Style="{StaticResource SectionTitleBlack}"/>
 

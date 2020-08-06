@@ -12,22 +12,16 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MorePopUpPageView : PopupPage
+    public partial class FileAttachmentPopupPageView : PopupPage
     {
-        public MorePopUpPageView()
+        public FileAttachmentPopupPageView()
         {
             InitializeComponent();
         }
 
-        private void OnClose(object sender, EventArgs e)
+        private void OnClosedTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PopAsync();
-        }
-
-        private void OnAttachmentTapped(object sender, EventArgs e)
-        {
-            PopupNavigation.Instance.PopAsync();
-            PopupNavigation.Instance.PushAsync(new FileAttachmentPopupPageView());
         }
     }
 }
