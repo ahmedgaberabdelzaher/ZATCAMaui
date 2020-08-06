@@ -67,7 +67,7 @@
                     </Grid.RowDefinitions>
                     <yummy:PancakeView Grid.Row="1" BackgroundColor="White" CornerRadius="15,15,0,0" Padding="18,0,18,0">
                         <StackLayout>
-                            <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="1" HorizontalOptions="StartAndExpand" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}">
+                            <Label  Grid.Row="0" Grid.Column="1" Margin="0" HorizontalOptions="StartAndExpand" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}">
 
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackStepClicked}" />
@@ -303,6 +303,8 @@
                 
                 <StackLayout Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsVATReturnsView}" x:Name="VATReturnsSection" BackgroundColor="White" >
 
+                    
+                    
                 <Label Text="VAT Return Form"  Style="{StaticResource SectionTitleBlack}" />
                 <Label Text="Complete the below details"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
                 <BoxView Style="{StaticResource lineSeperator}"/>
