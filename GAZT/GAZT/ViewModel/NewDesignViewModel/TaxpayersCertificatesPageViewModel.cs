@@ -132,7 +132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("CertificateListToDisplay");
             }
         }
-        private bool _isNoDataLabelVisible = false;
+        private bool _isNoDataLabelVisible = true;
         public bool IsNoDataLabelVisible
         {
             get
@@ -145,7 +145,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
         }
-        private bool _isCertificateListVisible = true;
+        private bool _isCertificateListVisible = false;
         public bool IsCertificateListVisible
         {
             get
@@ -257,28 +257,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 CertificateListToET = new List<Result>();
                 CertificateListToAll = new List<Result>();
                 allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                PopToRootPage();
                 bool Flag = false;
                 if (allCertificate != null)
                 {
                     if (allCertificate.ZakatSet != null && allCertificate.ZakatSet.results != null && allCertificate.ZakatSet.results.Count > 0)
                     {
                         CertificateListToZAKAT = allCertificate.ZakatSet.results;
-                        //CertificateListZakat = allCertificate.ZakatSet.results;
-                        //SelectedTab = 0;
-                        //Flag = true;
-                        //IsCertificateAvailableZakat = true;
-                        //SetNoDataLabelVisibilityZakat = false;     foreach (var Item in CertificateListToZAKAT)
                         foreach (var Item in CertificateListToZAKAT)
                         {
                             CertificateListToAll.Add(Item);
                         }
                       
-                    }
-                    else
-                    {
-                        //IsCertificateAvailableZakat = false;
-                        //SetNoDataLabelVisibilityZakat = true;
                     }
                     if (allCertificate.VATSet != null && allCertificate.VATSet.results != null && allCertificate.VATSet.results.Count > 0)
                     {
@@ -287,20 +277,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             CertificateListToAll.Add(Item);
                         }
-                      
-                        //  SetCertificateListViewVisibility();
-                        //CertificateListVAT = allCertificate.VATSet.results;
-                        //if (Flag == false)
-                        //{
-                        //    SelectedTab = 1;
-                        //}
-                        //IsCertificateAvailableVAT = true;
-                        //SetNoDataLabelVisibilityVAT = false;
-                    }
-                    else
-                    {
-                        //IsCertificateAvailableVAT = false;
-                        //SetNoDataLabelVisibilityVAT = true;
                     }
                     if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
                     {
@@ -310,16 +286,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             CertificateListToAll.Add(Item);
                         }
                     }
-                    else
-                    {
-                        //    IsCertificateAvailableET = false;
-                        //    SetNoDataLabelVisibilityET = true;
-                    }
                  SelectedTaxTypeForFilter = TaxTypeForFilter.Where(x => x.Id == "00").FirstOrDefault();
                 }
                 else
                 {
-
+                    
                 }
             }
             catch (InternetException ex)
@@ -328,12 +299,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _navigationService.GoBack();
             }
             catch (Exception ex)
-            { 
-            
+            {
+                _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
             }
-            //CertificateType = AppResources.ExciseCertificates;
-            //CertificateType = AppResources.ZakatCertificates;
-            //CertificateType = AppResources.VATCertificates;
         }
         public void FilterCertificateOnBasisOfType()
         {
@@ -345,7 +313,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (SelectedTaxTypeForFilter.Id.Equals("00"))
                         {
-                            //CertificateListToDisplay
                        
                             CertificateListToDisplay =new ObservableCollection<Result>(CertificateListToAll);
                         }
@@ -388,8 +355,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         new ReturnTypes {Id = "03",TaxType = AppResources.ExciseCertificates},
                         //new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
                 };
-               // SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
-
             }
             catch (Exception ex)
             {
@@ -409,14 +374,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (pdfUrl != null)
                     {
-                        //Uri uri = new Uri(pdfUrl);
-                        //Device.OpenUri(uri);
-                        // _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
                         _navigationService.NavigateTo(App.PdfView, pdfUrl);
                     }
                     else
                     {
-                        //pop that certificate is not available
+                     
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             IsLoading = false;
@@ -432,7 +394,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        //pop that certificate is not available
+                       
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             IsLoading = false;
