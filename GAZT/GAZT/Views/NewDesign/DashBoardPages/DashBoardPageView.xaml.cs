@@ -494,11 +494,36 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)
         {
          //   App.DisplayProgressView();
-            viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+            viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
         }
-        void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
+       private async  void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
+
+            });
+           
+        }
+
+        private async  void TaxpayerCertificate_Tapped(object sender, EventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
+
+            });
+           
         }
     }
 }
