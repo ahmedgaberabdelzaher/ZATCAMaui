@@ -133,6 +133,7 @@ using EGAZT.Views.NewDesign.TaxpayersCertificatesPages;
 using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
+using EGAZT.Views.NewDesign.VATDeRegistration;
 
 namespace EGAZT
 {
@@ -166,6 +167,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
+            SimpleIoc.Default.Register<VATDeRegistrationDetailsPageViewModel>();
+            SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
 
             SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
 
@@ -403,7 +406,34 @@ namespace EGAZT
                 }
             }
         }
-
+        public VATDeRegistrationDetailsPageViewModel VATDeRegistrationDetailsPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATDeRegistrationDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public VATDeRegistrationInstructionsPageViewModel VATDeRegistrationInstructionsPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATDeRegistrationInstructionsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         #endregion
 
         //private INavigationService CreateNavigationService()
@@ -1613,6 +1643,9 @@ namespace EGAZT
             navigationService.Configure(App.GAZTNewDesignRecoverPasswordPageView, typeof(GAZTNewDesignRecoverPasswordPageView));
             navigationService.Configure(App.VATLookUpNewPageView, typeof(VATLookUpNewPageView));
             navigationService.Configure(App.TaxpayersCertificatesPageView, typeof(TaxpayersCertificatesPageView));
+
+           navigationService.Configure(App.VATDeregistrationDetailsPage, typeof(VATDeregistrationDetailsPage));
+            navigationService.Configure(App.VATDeregistrationInstructionsPage, typeof(VATDeregistrationInstructionsPage));
 
             navigationService.Configure(App.GAZTForm5PageView, typeof(ZakatForm5PageView));
             navigationService.Configure(App.ZAKATReturnDetailsView, typeof(ZAKATReturnDetailsView));

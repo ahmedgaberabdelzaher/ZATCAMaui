@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:custom="clr-namespace:GAZT"
+                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                  xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+                  xmlns:local="clr-namespace:EGAZT.CustomControl"
+                          xmlns:ResourceManager="clr-namespace:EGAZT"
+                               xmlns:custom2="clr-namespace:EGAZT"
+
+                  x:Class="EGAZT.Views.NewDesign.VATDeRegistration.VATDeregistrationInstructionsPage">
+    
+         <yummy:PancakeView BackgroundColor="Transparent" CornerRadius="32,32,0,0" Padding="0" Margin="0,0,0,0">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                  Padding="0,15,0,0" BackgroundColor="White">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="80*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"  Margin="0" 
+                  Padding="15,15,15,0" BackgroundColor="White" RowSpacing="0" >
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="100*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <WebView x:Name="TCWebView" HeightRequest="200" WidthRequest="300" HorizontalOptions="FillAndExpand" />
+                </Grid>-->
+                 <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" Grid.Row="1" Grid.Column="1">
+                    <StackLayout Padding="15">
+                        <Label  Text="What will be your total VAT taxable sales value in upcoming 12 months?"   VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}"></Label>            
+                      
+                    </StackLayout>
+                </border:SfBorder >
+                <StackLayout Grid.Row="2" Grid.Column="0"  Margin="0,0,0,0" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
+                    <!--<CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
+                    </CheckBox>
+                    <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZIagreeontermsAndconditions}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>-->
+                    <StackLayout BackgroundColor="White" HeightRequest="70" Margin="0,0,0,0" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="Center">
+                        <!--<buttons:SfCheckBox x:Name="checkBox"  VerticalOptions="Center" IsChecked="{Binding IschkTAndC}" LineBreakMode="WordWrap" Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />-->
+                        <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
+                        </CheckBox>
+                        <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZIagreeontermsAndconditions}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Start" HorizontalTextAlignment="Center" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
+                    </StackLayout>
+                    <buttons:SfButton x:Name="MainButtonName" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource SSTArabicMedium}"   Margin="0"
+                 CornerRadius="0"
+                    HeightRequest="56"
+                    
+                    Style="{StaticResource SfButtonStyle}" 
+                    Text="VAT DeRegistration"
+                    IsEnabled="{Binding IsButtonEnabled}"
+                    Command="{Binding OnSubmitClicked}" 
+                      VerticalOptions="End" FontAttributes="Bold" 
+                                      FontSize="15"   Grid.ColumnSpan="2"  BackgroundColor="#d49504" /> <!--Clicked="btnContinue_Clicked"-->
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="White" Padding="0" Margin="15,-15,15,0">
+                    <Grid Margin="0,7,0,0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="20*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Instructions &amp; Conditions" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                    </Grid>
+                </StackLayout>
+                
+            </Grid>
+        </yummy:PancakeView>
+</pages:PopupPage>
+
