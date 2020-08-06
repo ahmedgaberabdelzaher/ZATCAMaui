@@ -48,7 +48,6 @@ namespace EGAZT
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
         public static string GAZTNewDesignRecoverPasswordPageView = nameof(GAZTNewDesignRecoverPasswordPageView);
         public static string GAZTForm5PageView = "GAZTFORM5ageView";
-        public static string TaxpayerCorrespondancePageView= "TaxpayerCorrespondancePageView";
 
         #endregion
 
