@@ -31,13 +31,15 @@ namespace EGAZT.Views.NewDesign.VATLookUp
 
             ChangeAeroIcon();
             SetLTR();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+        
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
             viewModel.IsTooltipEnableVisible = false;
             viewModel.TxtSearchParameter = string.Empty;
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
+            viewModel.LookUpButtonText = "Search VAT";
         }
         private void ValidateFormData()
         {
@@ -145,7 +147,13 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
+        private void ResetFormData()
+        {
+            viewModel.Name = "";
+            viewModel.IsNameVisible = false;
+            viewModel.LookupNumber = "";
+            viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
+        }
         private async void btnSubmit_Clicked(object sender, EventArgs e)
         {
             isMandatoryDataEntered = true;
@@ -158,6 +166,11 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             {
                 try
                 {
+                    if (!string.IsNullOrEmpty(viewModel.Name))
+                    {
+                        ResetFormData();
+                        return;
+                    }
                     ValidateFormData();
 
                     if (isMandatoryDataEntered)
@@ -174,6 +187,8 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                                 {
                                     viewModel.NameOrNoResultLabel = AppResources.Name;
                                     viewModel.Name = vatLookUp.d.results[0].Name;
+                                    viewModel.IsNameVisible = true;
+                                    viewModel.LookUpButtonText = AppResources.ZVATLookUpNewSearchButtonText;
                                 }
                                 else
                                 {
@@ -317,6 +332,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             VATParameterType vATParameterType = (VATParameterType)e.NewValue;
             PPicker.SelectedItem = vATParameterType;
             viewModel.SelectedParameterType = vATParameterType;
+            //PPicker.IsOpen = false;
         }
     }
 }

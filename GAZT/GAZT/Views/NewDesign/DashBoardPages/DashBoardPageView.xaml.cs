@@ -97,10 +97,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.IsLoading = false;
             App.IsComingFromSleepMode = false;
             if (viewModel != null)
             {
+                viewModel.IsLoading = false;
                 viewModel.MenuViewVisible = false;
                 viewModel.HomeViewVisible = true;
             }
@@ -108,16 +108,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             Task.Run(async () =>
             {
                 await LoadData();
-                viewModel.IsLoading = false;
+
+                if(viewModel!=null)
+                    viewModel.IsLoading = false;
             });
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-
-          
-        
         }
         private async Task LoadData()
         {
@@ -403,12 +402,29 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
                     SetLTRDirection();
+                    viewModel.NDCommitments = AppResources.NDCommitments;
+                    viewModel.ZBills = AppResources.Bills;
+                    viewModel.Return = AppResources.Returns;
+
+                    viewModel.AboutUs = AppResources.ZZZAboutUs;
+                    viewModel.Contactus = AppResources.ZZZContactus;
+                    viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
+                    viewModel.Logout = AppResources.ZLogout;
                 }
                 else
                 {
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     SetRTLDirection();
+
+                    viewModel.NDCommitments = AppResources.NDCommitments;
+                    viewModel.ZBills = AppResources.Bills;
+                    viewModel.Return = AppResources.Returns;
+
+                    viewModel.AboutUs = AppResources.ZZZAboutUs;
+                    viewModel.Contactus = AppResources.ZZZContactus;
+                    viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
+                    viewModel.Logout = AppResources.ZLogout;
                 }
 
                 OnAppearing();
@@ -438,6 +454,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.UnPaidString = AppResources.UnPaid;
                 viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
                 viewModel.TotalString = AppResources.NDTotal;
+                viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
+                viewModel.Rotation = 180;
             }
             catch(Exception ex)
             {
@@ -463,6 +481,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.UnPaidString = AppResources.UnPaid;
                 viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
                 viewModel.TotalString = AppResources.NDTotal;
+                viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
+                viewModel.Rotation = 0;
             }
             catch(Exception ex)
             {
@@ -475,6 +495,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
          //   App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+        }
+        void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
         }
     }
 }

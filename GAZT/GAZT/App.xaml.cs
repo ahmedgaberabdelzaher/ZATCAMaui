@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using EGAZT.Views.NewDesign.ZakatDeregistration;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -36,12 +37,17 @@ namespace EGAZT
         public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";
         public static string GAZTNewDesignForgotPasswordPageView = "GAZTNewDesignForgotPasswordPageView";
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
+        public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
+
+        
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
         public static string TINDeregistrationPageView = "TINDeregistrationPageView";
+        public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
         public static string GAZTNewDesignRecoverPasswordPageView = nameof(GAZTNewDesignRecoverPasswordPageView);
+        public static string GAZTForm5PageView = "GAZTFORM5ageView";
 
         #endregion
 
@@ -171,9 +177,21 @@ namespace EGAZT
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
             Xamarin.Forms.Device.SetFlags(new[] { "Expander_Experimental" });
-            AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }
+            AppResources.Culture = CultureInfo.CurrentUICulture;
+            if (PreviousIsArabic)
+            {
+                String langName = "ar-AE";//"en-US";// "ar-AE";
+                ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+            }
 
-            InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
+            InitializeComponent();
+            onFontFamilyChanged();
+            if (PreviousIsArabic)
+            {
+                IsArabic = true;
+            }
+
             try
             {
                 CreateClientHandler();
@@ -202,16 +220,17 @@ namespace EGAZT
             VATDeclaration vAT = null;
             CustomNavigation navigationPage;
             bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
-            if(!hasKey)
+            if (!hasKey)
             {
-               navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
             }
             else
             {
-                navigationPage = new CustomNavigation(new SFLoginPageView(App.SFLandingPageView)) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
             }
-            
+
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new TINDeregistrationPageView()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();

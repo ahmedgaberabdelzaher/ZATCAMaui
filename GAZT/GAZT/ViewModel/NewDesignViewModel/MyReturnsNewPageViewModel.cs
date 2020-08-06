@@ -2035,14 +2035,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
             try
             {
-                List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>{
-           new ReturnTypes {Id = "00",TaxType = AppResources.All},
-                      new ReturnTypes {Id = "01",TaxType = AppResources.ZAKATReturns},
-                                            new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
-                                            new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
-                                            new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
-
-
+                List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>
+                {
+                    new ReturnTypes {Id = "00",TaxType = AppResources.All},
+                    new ReturnTypes {Id = "01",TaxType = AppResources.ZAKATReturns},
+                    new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
+                    new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
+                    new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
             };
                 ReturnTypeForFilter = new List<ReturnTypes>();
                 ReturnTypeForFilter = ReturnTypesList;
@@ -2063,7 +2062,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 new ChipModel(){Text =AppResources.Submitted, TemplateType = "Submitted", ImageSource="submited.png"},
                 new ChipModel(){Text =AppResources.OverDue, TemplateType = "OverDue",ImageSource = "unsubmitted.png"},
                 new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "clockNew.png"},
-                new ChipModel(){Text =AppResources.All, TemplateType = "All",ImageSource = "clockNew.png"},
+                //new ChipModel(){Text =AppResources.All, TemplateType = "All",ImageSource = "clockNew.png"},
                };
             
         }

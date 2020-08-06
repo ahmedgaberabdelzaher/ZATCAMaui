@@ -44,7 +44,7 @@
                         <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
 
-                            <Image Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeftwhite">
+                        <Image Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeftwhite">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
                             </Image.GestureRecognizers>
@@ -63,7 +63,7 @@
                                 <TapGestureRecognizer      Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>-->
-                    
+
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
@@ -82,12 +82,12 @@
                         </Grid>
                     </yummy:PancakeView>
                 </StackLayout>
-                
+
             </Grid>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-      
+
         <Grid Padding="15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -116,7 +116,7 @@
                            Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>-->
 
                     <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
-                    <!--Margin="10,0,10,0"-->
+                        <!--Margin="10,0,10,0"-->
                     </custom:CustomButton>
 
                     <syncfusion:SfPicker x:Name="TaxTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
@@ -132,24 +132,23 @@
                 <!--custom:RoundCornersEffect.CornerRadius="14" SelectionChanged="DDlIDType_SelectionChanged" OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"-->
 
                 <!--<custom:CustomLabel Text="60,0000 SAR" Style="{StaticResource CaptionLabelGrey}"/>-->
-                <StackLayout Margin="0,8,0,8" HorizontalOptions="StartAndExpand">
+                <StackLayout Margin="0,8,0,8" HorizontalOptions="Center" Spacing="2">
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" Margin="0"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    ChipPadding="0" 
-                                       Padding="0"  ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="AliceBlue"    SelectionChanged="ChipGroup_statusFilter_SelectionChanged">
-                            <buttons:SfChipGroup.ItemTemplate>
-                                <DataTemplate >
-                                    <StackLayout Margin="0" Padding="0">
-                                        <buttons:SfChip Margin="0"  HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </buttons:SfChipGroup.ItemTemplate>
-                        </buttons:SfChipGroup>
+                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" Margin="0"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    ChipPadding="1" Padding="0"  ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" ChipBorderWidth="1"    SelectionChanged="ChipGroup_statusFilter_SelectionChanged">
+                        <buttons:SfChipGroup.ItemTemplate>
+                            <DataTemplate >
+                                <StackLayout Margin="0" Padding="0" Spacing="2">
+                                    <buttons:SfChip Margin="0"  HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </buttons:SfChipGroup.ItemTemplate>
+                    </buttons:SfChipGroup>
 
                     </ScrollView>
-                                    </StackLayout>
+                </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="1">
-       
+
                 <ListView  x:Name="ListView_Returns" 
            ItemsSource="{Binding ListToDisplay,Mode=TwoWay}"
                                            IsVisible="{Binding IsListVisible}"
@@ -218,9 +217,9 @@
                                                                     <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
                                                                 </MultiTrigger.Conditions>
                                                                 <Setter Property="Text"  Value="{x:Static ResourceManager:AppResources.OverDue}" />
-                                                                 <!--multiple Setter elements are allowed--> 
+                                                                <!--multiple Setter elements are allowed-->
                                                             </MultiTrigger>
-                                                           
+
                                                         </custom:CustomLabel.Triggers>
                                                     </custom:CustomLabel>
                                                     <yummy:PancakeView.Triggers>
@@ -263,7 +262,7 @@
                                                 <StackLayout HorizontalOptions="Start">
                                                     <custom:CustomLabel HorizontalTextAlignment="Start" FlowDirection="LeftToRight"  Text="{Binding FormatedSingleDueDate}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
-                                                
+
                                             </StackLayout>
                                         </Grid>
 

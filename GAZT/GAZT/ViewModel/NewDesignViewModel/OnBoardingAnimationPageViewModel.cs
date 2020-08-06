@@ -25,7 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
         private string nextButtonText = AppResources.ZZNext;
 
-        private string _LanguageText = AppResources.ZZZSetToEnglish;
+        private string _LanguageText = "Set To English";// AppResources.ZZZSetToEnglish;
 
         private bool isSkipButtonVisible = true;
 
@@ -304,7 +304,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
         private void MoveToNextPage()
         {
-           _navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+           _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
 
             //Application.Current.MainPage.Navigation.PopAsync();
         }

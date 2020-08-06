@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EGAZT.ViewModel.NewDesignViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,69 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatForm5PageView : ContentPage
     {
+        ZakatForm5PageViewModel viewModel;
+
         public ZakatForm5PageView()
         {
             InitializeComponent();
+            viewModel = App.Locator.ZakatForm5PageView;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            App.IsComingFromSleepMode = false;
+            if (viewModel != null)
+            {
+                viewModel.IsLoading = false;
+                
+            }
+
+            Task.Run(async () =>
+            {
+                await LoadData();
+
+                if (viewModel != null)
+                    viewModel.IsLoading = false;
+            });
+        }
+
+        private async Task LoadData()
+        {
+            try
+            {
+                App.DisplayProgressView();
+                await viewModel.LoadZakatForm5Data();
+                Device.BeginInvokeOnMainThread(() => {
+                   
+                    App.HideProgressView();
+                });
+
+               
+            }
+            catch (Exception ex)
+            {
+                App.HideProgressView();
+            }
+        }
+
+        private void SetLTR()
+        {
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+        public void ChangeAeroIcon()
+        {
+            if (!App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
     }
 }

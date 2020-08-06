@@ -663,6 +663,15 @@
   <data name="VATLookup" xml:space="preserve">
     <value>بحث التسجيل في ضريبة القيمة المضافة</value>
   </data>
+  <data name="ZVATLookUpTitleSub" xml:space="preserve">
+    <value>Please follow the steps</value>
+  </data>
+  <data name="ZVATLookUpSearchButtonText" xml:space="preserve">
+    <value>Search VAT</value>
+  </data>
+  <data name="ZVATLookUpNewSearchButtonText" xml:space="preserve">
+    <value>New VAT Search</value>
+  </data>
   <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>إجمالي الإقرارات المقدمة</value>
   </data>
@@ -2883,11 +2892,11 @@
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZSetToArabic" xml:space="preserve">
-    <value>Set To Arabic</value>
+    <value>Set To English</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZSetToEnglish" xml:space="preserve">
-    <value>تغيير الى الإنجليزية</value>
+    <value>تعيين إلى العربية</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZNoDataAvailable" xml:space="preserve">
@@ -3275,6 +3284,10 @@
     <comment>Vat Lookup</comment>
   </data>
   <data name="ZZZVatLookUpTitleTextNew" xml:space="preserve">
+    <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZVatLookUpTitleNew" xml:space="preserve">
     <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
     <comment>Vat Lookup</comment>
   </data>
@@ -4299,7 +4312,6 @@
   <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
     <value>الرجاء التحقق من الرقم المميز.</value>
   </data>
-    
   <data name="UnlockAccountPasswordsSecurityPolicy" xml:space="preserve">
     <value>كلمة المرور المدخلة غير متوافقة مع قواعد إنشاء كلمة المرور، ان لا تقل عن 8 احرف ولا تزيد عن 16 ، تحتوي على احرف كبيرة وصغيرة وأرقام ورموز.</value>
   </data>
@@ -4327,7 +4339,7 @@
   <data name="TinDeregistrationDate" xml:space="preserve">
     <value>Deregistration Date</value>
   </data>
-   <data name="TinDeregistrationFathersName" xml:space="preserve">
+  <data name="TinDeregistrationFathersName" xml:space="preserve">
     <value>Father's Name</value>
   </data>
   <data name="TinDeregistrationGrandFathersName" xml:space="preserve">
@@ -4342,6 +4354,69 @@
   <data name="TinDeregistrationName2" xml:space="preserve">
     <value>Name 2</value>
   </data>
+  <data name="TinDeregistrationOutletDetails" xml:space="preserve">
+    <value>Outlet Details</value>
+  </data>
+  <data name="TinDeregistrationOutletReviewMessage" xml:space="preserve">indere
+    <value>Review the outlets that will be deregistered</value>
+  </data>
+  <data name="TinDeregistrationOutletNumber" xml:space="preserve">
+    <value>Outlet Number</value>
+  </data>
+  <data name="TinDeregistrationOutletCommercialName" xml:space="preserve">
+    <value>Commercial Name</value>
+  </data>
+  <data name="TinDeregistrationPermitType" xml:space="preserve">
+    <value>Permit Type</value>
+  </data>
+  <data name="TinDeregistrationPermitNumber" xml:space="preserve">
+    <value>Permit Number</value>
+  </data>
+ <data name="TinDeregistrationValidFrom" xml:space="preserve">
+    <value>Valid From</value>
+  </data>
+ <data name="TinDeregistrationDeregReason" xml:space="preserve">
+    <value>Deregistration Reason</value>
+  </data>
+  
+  <data name="TinDeregistrationProvideSuportingDocuments" xml:space="preserve">
+    <value>Provide the supporting documents</value>
+  </data>
+   <data name="TinDeregistrationAttachmentCopyOfDeclaringBankruptcy" xml:space="preserve">
+    <value>Attachments - Copy of Declaring Bankruptcy(Mandatory)</value>
+  </data>
+  <data name="TinDeregistrationAttachmentCopyOfLicneseAfterClosing" xml:space="preserve">
+    <value>Attachments - Copy of License After Closing/Update(Mandatory)</value>
+  </data>
+   <data name="TinDeregistrationAttachmentCopyOfCRAfterClosing" xml:space="preserve">
+    <value>Attachments - Copy of CR After Closing/Update(Mandatory)</value>
+  </data>
+  <data name="TinDeregistrationAttachmentOwnershipSellingAgreement" xml:space="preserve">
+    <value>Attachments - Ownership Selling/Transfer Agreement</value>
+  </data>
+  <data name="TinDeregistrationAttachmentCopyOfPartnersDecision" xml:space="preserve">
+    <value>Attachments - Copy of Partners Decision</value>
+  </data>
+  <data name="TinDeregistrationAttachmentCopyOfContractAfterClosing" xml:space="preserve">
+    <value>Attachments - Copy of Contract After Closing/Update</value>
+  </data>
+  <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
+    <value>Upload your Document</value>
+  </data>
+  <data name="TinDeregistration20MB" xml:space="preserve">
+    <value>20MB</value>
+  </data>
+   <data name="TinDeregistration50MBMax" xml:space="preserve">
+    <value>50MB Max</value>
+  </data>
+  
+  <data name="TinDeregistrationContactPersonName" xml:space="preserve">
+    <value>Contact Person Name</value>
+  </data> 
+   <data name="TinDeregistrationDesignation" xml:space="preserve">
+    <value>Designation</value>
+  </data> 
+  
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
   </data>
@@ -4490,5 +4565,8 @@
   </data>
   <data name="ZZZZPleaseSelect" xml:space="preserve">
     <value>Please Select</value>
+  </data>
+  <data name="NDSkip" xml:space="preserve">
+    <value>تخطى</value>
   </data>
 </root>

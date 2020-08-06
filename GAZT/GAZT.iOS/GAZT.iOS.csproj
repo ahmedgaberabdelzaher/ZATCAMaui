@@ -220,6 +220,9 @@
     <BundleResource Include="Resources\group_114%402x.png" />
     <BundleResource Include="Resources\group_114%403x.png" />
     <Compile Include="CustomRenderer\AutoFillOtpEntryRenderer.cs" />
+    <BundleResource Include="Resources\establishments.png" />
+    <BundleResource Include="Resources\establishments%402x.png" />
+    <BundleResource Include="Resources\establishments%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1584,5 +1587,14 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\close%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newui_ic_pdf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newui_ic_pdf%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newui_ic_pdf%403x.png" />
   </ItemGroup>
 </Project>

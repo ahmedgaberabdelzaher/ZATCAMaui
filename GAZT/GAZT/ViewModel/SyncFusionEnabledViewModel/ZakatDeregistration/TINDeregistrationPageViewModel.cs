@@ -4,6 +4,8 @@ using System.Windows.Input;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
@@ -16,25 +18,98 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand GoBackClick { get; set; }
         #endregion
 
-        public TINDeregistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
-        {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
-            {
-                _navigationService.GoBack();
-            });
+        #region Commands
+        public ICommand ReasonContinueBtnTapped { get; set; }
+        public ICommand OutletContinueBtnTapped { get; set; }
+        public ICommand AttachmentsContinueBtnTapped { get; set; }
+        public ICommand DeclarationContinueBtnTapped { get; set; }
+        public ICommand SummaryContinueBtnTapped { get; set; }
+        #endregion
 
-            TinDeregistrationModel = new TINDeregistrationModel();
-            AddOutletDecisionOptions();
+        #region Properties
+
+        private bool _isBackButtonVisible = true;
+        public bool IsBackButtonVisible
+        {
+            get
+            {
+                return _isBackButtonVisible;
+            }
+            set
+            {
+                _isBackButtonVisible = value;
+                RaisePropertyChanged("IsBackButtonVisible");
+            }
+        }
+
+        private bool _isReasonViewEnabled = true;
+        public bool IsReasonViewEnabled
+        {
+            get
+            {
+                return _isReasonViewEnabled;
+            }
+            set
+            {
+                _isReasonViewEnabled = value;
+                RaisePropertyChanged("IsReasonViewEnabled");
+            }
+        }
+
+        private bool _isOutletViewEnabled = true;
+        public bool IsOutletViewEnabled
+        {
+            get
+            {
+                return _isOutletViewEnabled;
+            }
+            set
+            {
+                _isOutletViewEnabled = value;
+                RaisePropertyChanged("IsOutletViewEnabled");
+            }
+        }
+
+        private bool _isAttachmentsViewEnabled = true;
+        public bool IsAttachmentsViewEnabled
+        {
+            get
+            {
+                return _isAttachmentsViewEnabled;
+            }
+            set
+            {
+                _isAttachmentsViewEnabled = value;
+                RaisePropertyChanged("IsAttachmentsViewEnabled");
+            }
+        }
+
+        private bool _isDeclarationViewEnabled = true;
+        public bool IsDeclarationViewEnabled
+        {
+            get
+            {
+                return _isDeclarationViewEnabled;
+            }
+            set
+            {
+                _isDeclarationViewEnabled = value;
+                RaisePropertyChanged("IsDeclarationViewEnabled");
+            }
+        }
+
+        private bool _isSummaryViewEnabled = true;
+        public bool IsSummaryViewEnabled
+        {
+            get
+            {
+                return _isSummaryViewEnabled;
+            }
+            set
+            {
+                _isSummaryViewEnabled = value;
+                RaisePropertyChanged("IsSummaryViewEnabled");
+            }
         }
 
         public TINDeregistrationModel tinDeregistrationModel { get; set; }
@@ -57,6 +132,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        public ObservableCollection<TINDeregistrationModel> c { get; set; }
+
         public ObservableCollection<TINDeregistrationModel> outletDecisionOptions { get; set; }
         public ObservableCollection<TINDeregistrationModel> OutletDecisionOptions
         {
@@ -77,8 +154,149 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public ObservableCollection<TINDeregistrationModel> c { get; set; }
+        public ObservableCollection<TinDeregestrationAttachmentsModel> attachmentsListViewData { get; set; }
+        public ObservableCollection<TinDeregestrationAttachmentsModel> AttachmentsListViewData
+        {
+            get
+            {
+                return attachmentsListViewData;
+            }
 
+            set
+            {
+                if (attachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                attachmentsListViewData = value;
+                RaisePropertyChanged("AttachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<TINDeregistrationSummaryModel> _tinDeregistrationSummaryReasonData { get; set; }
+        public ObservableCollection<TINDeregistrationSummaryModel> TinDeregistrationSummaryReasonData
+        {
+            get
+            {
+                return _tinDeregistrationSummaryReasonData;
+            }
+
+            set
+            {
+                if (_tinDeregistrationSummaryReasonData == value)
+                {
+                    return;
+                }
+
+                _tinDeregistrationSummaryReasonData = value;
+                RaisePropertyChanged("TinDeregistrationSummaryReasonData");
+            }
+        }
+
+        public ObservableCollection<TINDeregistrationSummaryModel> _tinDeregistrationSummaryOutletData { get; set; }
+        public ObservableCollection<TINDeregistrationSummaryModel> TinDeregistrationSummaryOutletData
+        {
+            get
+            {
+                return _tinDeregistrationSummaryOutletData;
+            }
+
+            set
+            {
+                if (_tinDeregistrationSummaryOutletData == value)
+                {
+                    return;
+                }
+
+                _tinDeregistrationSummaryOutletData = value;
+                RaisePropertyChanged("TinDeregistrationSummaryOutletData");
+            }
+        }
+
+        public ObservableCollection<TINDeregistrationSummaryModel> _tinDeregistrationSummaryDeclarationData { get; set; }
+        public ObservableCollection<TINDeregistrationSummaryModel> TinDeregistrationSummaryDeclarationData
+        {
+            get
+            {
+                return _tinDeregistrationSummaryDeclarationData;
+            }
+
+            set
+            {
+                if (_tinDeregistrationSummaryDeclarationData == value)
+                {
+                    return;
+                }
+
+                _tinDeregistrationSummaryDeclarationData = value;
+                RaisePropertyChanged("TinDeregistrationSummaryDeclarationData");
+            }
+        }
+
+        private int _selectedOutletOptionIndex;
+        public int SelectedOutletOptionIndex
+        {
+            get
+            {
+                return _selectedOutletOptionIndex;
+            }
+            set
+            {
+                _selectedOutletOptionIndex = value;
+                RaisePropertyChanged("SelectedOutletOptionIndex");
+            }
+        }
+
+        private TINDeregistrationModel _selectedOutletOption;
+        public TINDeregistrationModel SelectedOutletOption
+        {
+            get
+            {
+                return _selectedOutletOption;
+            }
+            set
+            {
+                _selectedOutletOption = value;
+                //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
+                RaisePropertyChanged("SelectedOutletOption");
+            }
+        }
+
+        #endregion
+
+        public TINDeregistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
+            });
+
+            ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
+            OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
+            AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
+            DeclarationContinueBtnTapped = new Command(this.DeclarationContinueBtnClicked);
+            SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
+
+            TinDeregistrationModel = new TINDeregistrationModel();
+            SelectedOutletOption = new TINDeregistrationModel();
+
+            AddOutletDecisionOptions();
+            PopulateAttachmentsListViewTemplate();
+            PopulateSummaryReasonData();
+            PopulateSummaryDeclarationData();
+            EnableReasonView();
+        }
 
         public void AddOutletDecisionOptions()
         {
@@ -99,5 +317,263 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 ActiveOutletDecisionOptionsIsSelected = false
             });
         }
+
+        public void EnableReasonView()
+        {
+            SelectedOutletOption = OutletDecisionOptions[0];
+            SelectedOutletOptionIndex = 0;
+            IsBackButtonVisible = false;
+            IsReasonViewEnabled = true;
+            IsOutletViewEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsSummaryViewEnabled = false;
+        }
+
+        public void EnableOutletDetaislView()
+        {
+            IsBackButtonVisible = true;
+            IsReasonViewEnabled = false;
+            IsOutletViewEnabled = true;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsSummaryViewEnabled = false;
+        }
+
+        public void EnableAttachmentsView()
+        {
+            IsReasonViewEnabled = false;
+            IsOutletViewEnabled = false;
+            IsAttachmentsViewEnabled = true;
+            IsDeclarationViewEnabled = false;
+            IsSummaryViewEnabled = false;
+        }
+
+        public void EnableDeclarationView()
+        {
+            IsReasonViewEnabled = false;
+            IsOutletViewEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = true;
+            IsSummaryViewEnabled = false;
+        }
+
+        public void EnableSummaryView()
+        {
+            IsReasonViewEnabled = false;
+            IsOutletViewEnabled = false;
+            IsAttachmentsViewEnabled = false;
+            IsDeclarationViewEnabled = false;
+            IsSummaryViewEnabled = true;
+        }
+
+        public async void ReasonContinueBtnClicked()
+        {
+            try
+            {
+                EnableOutletDetaislView();
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void OutletContinueBtnClicked()
+        {
+            try
+            {
+                EnableAttachmentsView();
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void AttachmentsContinueBtnClicked()
+        {
+            try
+            {
+                EnableDeclarationView();
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void DeclarationContinueBtnClicked()
+        {
+            try
+            {
+                EnableSummaryView();
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void SummaryContinueBtnClicked()
+        {
+            try
+            {
+                //Display Success Screen
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        //OutletContinueButtonTapped
+        //AttachmentsContinueButtonTapped
+        //DeclarationContinueButtonTapped
+        //SummaryContinueButtonTapped
+
+        #region Attachments View
+        public void PopulateAttachmentsListViewTemplate()
+        {
+            AttachmentsListViewData = new ObservableCollection<TinDeregestrationAttachmentsModel>();
+            AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+            {
+                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
+                FieldSubTitle = AppResources.TinDeregistration20MB,
+                AttachmentName = "File1.pdf",
+                IsAttachmentAttached = true
+            });
+            AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+            {
+                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfLicneseAfterClosing,
+                FieldSubTitle = AppResources.TinDeregistration20MB,
+                AttachmentName = "File2.pdf",
+                IsAttachmentAttached = true
+            });
+            AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+            {
+                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfCRAfterClosing,
+                FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                AttachmentName = string.Empty,
+                IsAttachmentAttached = false
+            });
+            AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+            {
+                FieldTitle = AppResources.TinDeregistrationAttachmentOwnershipSellingAgreement,
+                FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                AttachmentName = string.Empty,
+                IsAttachmentAttached = false
+            });
+            AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+            {
+                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfPartnersDecision,
+                FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                AttachmentName = string.Empty,
+                IsAttachmentAttached = false
+            });
+            AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
+            {
+                FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfContractAfterClosing,
+                FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                AttachmentName = string.Empty,
+                IsAttachmentAttached = false
+            });
+        }
+        #endregion
+
+        #region Summary View
+        public void PopulateSummaryReasonData()
+        {
+            TinDeregistrationSummaryReasonData = new ObservableCollection<TINDeregistrationSummaryModel>();
+            TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationReason,
+                SummaryData = "Bankruptcy",
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationQuestionOutlets,
+                SummaryData = AppResources.TinDeregistrationCloseAllOutlets,
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationDate,
+                SummaryData = "04 August 2020",
+                IsEditVisible = true
+            });
+        }
+
+        public void PopulateSummaryDeclarationData()
+        {
+            TinDeregistrationSummaryDeclarationData = new ObservableCollection<TINDeregistrationSummaryModel>();
+            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationContactPersonName,
+                SummaryData = "Hardy",
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.TinDeregistrationDesignation,
+                SummaryData = "Senior Director",
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.MobileNumber,
+                SummaryData = "+966 551 234 567",
+                IsEditVisible = true
+            });
+            TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
+            {
+                SummaryTitle = AppResources.ZZDateofBirth,
+                SummaryData = "07 June 1995",
+                IsEditVisible = true
+            });
+        }
+
+        #endregion
     }
 }

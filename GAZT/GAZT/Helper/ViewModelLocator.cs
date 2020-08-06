@@ -129,6 +129,9 @@ using System;
 #endregion
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.VATLookUp;
+using EGAZT.Views.NewDesign.TaxpayersCertificatesPages;
+using EGAZT.Views.NewDesign.ZakatForm5;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace EGAZT
 {
@@ -154,11 +157,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
 
+           
+
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
-            
+
+            SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
 
             #endregion
 
@@ -230,6 +236,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<FinancialDetailAttachmentPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
+            SimpleIoc.Default.Register<TaxpayersCertificatesPageViewModel>();
+            SimpleIoc.Default.Register<ZAKATReturnDetailsViewModel>();
+            
             #endregion
         }
 
@@ -242,6 +251,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignOnBoardingAnimationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        } 
+        public TaxpayersCertificatesPageViewModel TaxpayersCertificatesPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxpayersCertificatesPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -270,6 +293,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZakatForm5PageViewModel ZakatForm5PageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatForm5PageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1422,6 +1460,22 @@ namespace EGAZT
             }
         }
 
+        public ZAKATReturnDetailsViewModel ZAKATReturnDetailsView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZAKATReturnDetailsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        
+
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -1524,10 +1578,16 @@ namespace EGAZT
             navigationService.Configure(App.GAZTNewDesignRecoverUsername, typeof(GAZTNewDesignRecoverUsernamePageView));
             navigationService.Configure(App.GAZTNewDesignRecoverPasswordPageView, typeof(GAZTNewDesignRecoverPasswordPageView));
             navigationService.Configure(App.VATLookUpNewPageView, typeof(VATLookUpNewPageView));
+            navigationService.Configure(App.TaxpayersCertificatesPageView, typeof(TaxpayersCertificatesPageView));
+
+            navigationService.Configure(App.GAZTForm5PageView, typeof(ZakatForm5PageView));
+            navigationService.Configure(App.ZAKATReturnDetailsView, typeof(ZAKATReturnDetailsView));
+
             
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
+
 
             #endregion
 

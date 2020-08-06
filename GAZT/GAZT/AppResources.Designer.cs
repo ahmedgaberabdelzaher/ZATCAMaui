@@ -5694,6 +5694,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZZVatLookUpTitleNew {
+            get {
+                return ResourceManager.GetString("ZZZVatLookUpTitleNew", resourceCulture);
+            }
+        }
+        
         public static string ZZZCRValidateMessg {
             get {
                 return ResourceManager.GetString("ZZZCRValidateMessg", resourceCulture);
@@ -6237,6 +6243,24 @@ namespace EGAZT {
         public static string ZVATStartsWithVAlidation {
             get {
                 return ResourceManager.GetString("ZVATStartsWithVAlidation", resourceCulture);
+            }
+        }
+        
+        public static string ZVATLookUpTitleSub {
+            get {
+                return ResourceManager.GetString("ZVATLookUpTitleSub", resourceCulture);
+            }
+        }
+        
+        public static string ZVATLookUpSearchButtonText {
+            get {
+                return ResourceManager.GetString("ZVATLookUpSearchButtonText", resourceCulture);
+            }
+        }
+        
+        public static string ZVATLookUpNewSearchButtonText {
+            get {
+                return ResourceManager.GetString("ZVATLookUpNewSearchButtonText", resourceCulture);
             }
         }
         
@@ -7344,6 +7368,126 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationOutletDetails {
+            get {
+                return ResourceManager.GetString("TinDeregistrationOutletDetails", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationOutletReviewMessage {
+            get {
+                return ResourceManager.GetString("TinDeregistrationOutletReviewMessage", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationOutletNumber {
+            get {
+                return ResourceManager.GetString("TinDeregistrationOutletNumber", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationOutletCommercialName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationOutletCommercialName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationPermitType {
+            get {
+                return ResourceManager.GetString("TinDeregistrationPermitType", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationPermitNumber {
+            get {
+                return ResourceManager.GetString("TinDeregistrationPermitNumber", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationValidFrom {
+            get {
+                return ResourceManager.GetString("TinDeregistrationValidFrom", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationDeregReason {
+            get {
+                return ResourceManager.GetString("TinDeregistrationDeregReason", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationProvideSuportingDocuments {
+            get {
+                return ResourceManager.GetString("TinDeregistrationProvideSuportingDocuments", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentCopyOfDeclaringBankruptcy {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentCopyOfDeclaringBankruptcy", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentCopyOfLicneseAfterClosing {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentCopyOfLicneseAfterClosing", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentCopyOfCRAfterClosing {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentCopyOfCRAfterClosing", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentOwnershipSellingAgreement {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentOwnershipSellingAgreement", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentCopyOfPartnersDecision {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentCopyOfPartnersDecision", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentCopyOfContractAfterClosing {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentCopyOfContractAfterClosing", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentUploadYourDocument {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentUploadYourDocument", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistration20MB {
+            get {
+                return ResourceManager.GetString("TinDeregistration20MB", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistration50MBMax {
+            get {
+                return ResourceManager.GetString("TinDeregistration50MBMax", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationContactPersonName {
+            get {
+                return ResourceManager.GetString("TinDeregistrationContactPersonName", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationDesignation {
+            get {
+                return ResourceManager.GetString("TinDeregistrationDesignation", resourceCulture);
+            }
+        }
+        
         public static string SelectTheOptionAndCompleteDetails {
             get {
                 return ResourceManager.GetString("SelectTheOptionAndCompleteDetails", resourceCulture);
@@ -7635,6 +7779,12 @@ namespace EGAZT {
         public static string ZZZZPleaseSelect {
             get {
                 return ResourceManager.GetString("ZZZZPleaseSelect", resourceCulture);
+            }
+        }
+        
+        public static string NDSkip {
+            get {
+                return ResourceManager.GetString("NDSkip", resourceCulture);
             }
         }
     }

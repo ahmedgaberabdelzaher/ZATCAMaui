@@ -25,14 +25,7 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             
             this.BindingContext = viewModel = App.Locator.GAZTNewDesignOnBoardingAnimationPageView;
             viewModel.NextButtonText = AppResources.ZZNext;
-            SetLTR();
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
+            
         }
         private void ChangeLangButton_Clicked(object sender, System.EventArgs e)
         {
@@ -67,13 +60,13 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 {
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
-                    SetLTRDirection();
+                    SetRTLDirection(); 
                 }
                 else
                 {
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
-                    SetRTLDirection();
+                    SetLTRDirection();
                 }
                 viewModel.NextButtonText = AppResources.ZZNext;
             }
@@ -91,7 +84,8 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.RightToLeft;
-                viewModel.LanguageText = AppResources.ZZZSetToEnglish;
+                viewModel.LanguageText = "Set To English";//AppResources.ZZZSetToEnglish;
+
                 viewModel.test();
                 InitializeComponent();
                 
@@ -113,7 +107,8 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.LeftToRight;
-                viewModel.LanguageText = AppResources.ZZZSetToArabic;
+                viewModel.LanguageText = "تعيين إلى العربية";// AppResources.ZZZSetToArabic;
+
                 viewModel.test();
                 InitializeComponent();
                
