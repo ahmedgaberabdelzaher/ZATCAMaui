@@ -1,8 +1,17 @@
 ﻿using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZT.Manager;
+using GAZT.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -11,9 +20,141 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
         #region Fields
         public ICommand OnBackButtonClicked { get; set; }
+        CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
+        CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
+        CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
 
         #endregion
+        #region Properties
+        private string _filterLabelText;
+        public string FilterLabelText
+        {
+            get
+            {
+                return _filterLabelText;
+            }
+            set
+            {
+                _filterLabelText = value;
+                RaisePropertyChanged("FilterLabelText");
+            }
+        }
+        private List<CorrespondanceModel> _listVATCorrespondance = null;
+        public List<CorrespondanceModel> ListVATCorrespondance
+        {
+            get
+            {
+                return _listVATCorrespondance;
+            }
+            set
+            {
+                _listVATCorrespondance = value;
+                RaisePropertyChanged("ListVATCorrespondance");
+            }
+        } 
+        private List<CorrespondanceModel> _listAllCorrespondance = null;
+        public List<CorrespondanceModel> ListAllCorrespondance
+        {
+            get
+            {
+                return _listAllCorrespondance;
+            }
+            set
+            {
+                _listAllCorrespondance = value;
+                RaisePropertyChanged("ListAllCorrespondance");
+            }
+        }
+        private List<CorrespondanceModel> _listZAKATCorrespondance = null;
+        public List<CorrespondanceModel> ListZAKATCorrespondance
+        {
+            get
+            {
+                return _listZAKATCorrespondance;
+            }
+            set
+            {
+                _listZAKATCorrespondance = value;
+                RaisePropertyChanged("ListZAKATCorrespondance");
+            }
+        }
+        private List<CorrespondanceModel> _listETCorrespondance = null;
+        public List<CorrespondanceModel> ListETCorrespondance
+        {
+            get
+            {
+                return _listETCorrespondance;
+            }
+            set
+            {
+                _listETCorrespondance = value;
+                RaisePropertyChanged("ListETCorrespondance");
+            }
+        }
+        public ReturnTypes _selectedDropdownItem;
+        public ReturnTypes SelectedDropdownItem
+        {
+            get
+            {
+                return _selectedDropdownItem;
+            }
+            set
+            {
+                _selectedDropdownItem = value;
+                if (_selectedDropdownItem != null)
+                {
+                    FilterLabelText = _selectedDropdownItem.TaxType;
+                    if (_selectedDropdownItem.Id.Equals("00"))
+                        {
+                        SetAllCorrespondancedata();
+                    }
+                    //FilterOnBasisOfTaxType();
 
+                }
+
+                RaisePropertyChanged("SelectedDropdownItem");
+            }
+        }
+        private bool _isLoading=false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+        private List<ReturnTypes> _filterListForDropDown;
+        public List<ReturnTypes> FilterListForDropDown
+        {
+            get
+            {
+                return _filterListForDropDown;
+            }
+            set
+            {
+                _filterListForDropDown = value;
+                RaisePropertyChanged("FilterListForDropDown");
+            }
+        }
+        private ObservableCollection<CorrespondanceModel> _listToDisplay;
+        public ObservableCollection<CorrespondanceModel> ListToDisplay
+        {
+            get
+            {
+                return _listToDisplay;
+            }
+            set
+            {
+                _listToDisplay = value;
+                RaisePropertyChanged("ListToDisplay");
+            }
+        }
+        #endregion
 
 
         #region Constructor
@@ -27,8 +168,340 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Method
-     
-    
+        public async Task onPageLoad()
+        {
+            ListToDisplay = new ObservableCollection<CorrespondanceModel>();
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(() =>
+                {
+                    ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
+                    VATCorres = WebServiceManager.GAZTGetVATCorrespondece();
+                    ETCorres = WebServiceManager.GAZTGetETCorrespondece();
+                    PopToRootPage();
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+        }
+        public void SetData()
+        {
+            try
+            {
+                ListAllCorrespondance = new List<CorrespondanceModel>();
+                List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
+                // Assigning data in the list
+                if (ZakatCorres != null && ZakatCorres.d.results.Count > 0)
+                {
+                    foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
+                    {
+                        CorrespondanceModel childZakat = new CorrespondanceModel();
+                        childZakat.Title = itemZakat.Descript;
+                        childZakat.RefNumber = itemZakat.LetterNum;
+                        if (itemZakat.LetterNum != null)
+                            childZakat.Cokey = itemZakat.Cokey;
+                        childZakat.Coitm = itemZakat.Coitm;
+                        childZakat.Ctime = itemZakat.Ctime;
+                        childZakat.Cdate = itemZakat.Cdate;
+                        if (itemZakat.Copri != null)
+                        {
+                            childZakat.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Copri + @"""");
+                        }
+                        if (itemZakat.Coidt != null)
+                        {
+                            childZakat.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
+                        }
+                        childZakat.Cotype = itemZakat.Cotyp;
+                        childZakat.Vkont = itemZakat.Vkont;
+                        childZakat.Gpart = itemZakat.Gpart;
+                        childZakat.Begdaz = itemZakat.Begdaz;
+                        childZakat.Enddaz = itemZakat.Enddaz;
+                        DateTime? BegDate = DateTime.Now;
+                        if (itemZakat.Cdate != null)
+                        {
+                            BegDate = childZakat.Cdate;
+                        }
+                        if (itemZakat.Zzfav == "1")
+                        {
+                            childZakat.IsFav = true;
+                            childZakat.FavImg = "ic_star.png";
+                        }
+                        else
+                        {
+                            childZakat.IsFav = false;
+                            childZakat.FavImg = "ic_star_border.png";
+                        }
+                        string StartDate = string.Empty;
+                        string time = string.Empty;
+                        if (App.IsArabic)
+                        {
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                if (childZakat.Ctime != null)
+                                {
+                                    time = childZakat.Ctime;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
+                                }
+                                StartDate = String.Concat(StartDate, time);
+                            }
+                        }
+                        else
+                        {
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
+                                if (childZakat.Ctime != null)
+                                {
+                                    time = childZakat.Ctime;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
+                                }
+                                StartDate = StartDate + "  " + time;
+                            }
+                        }
+                        childZakat.DateAndTime = StartDate;
+                        ZakatCo.Add(childZakat);
+                    }
+                    ListZAKATCorrespondance = ZakatCo;
+                    ListAllCorrespondance = ListAllCorrespondance.Union(ListZAKATCorrespondance).ToList();
+                }
+                else
+                {
+                }
+                PopToRootPage();
+                // Assigning data in the list
+                if (VATCorres != null && VATCorres.d.results.Count > 0)
+                {
+                    List<CorrespondanceModel> VATCo = new List<CorrespondanceModel>();
+                    foreach (CorrespondenceResult itemVAT in VATCorres.d.results)
+                    {
+                        CorrespondanceModel childVAT = new CorrespondanceModel();
+                        childVAT.Title = itemVAT.Descript;
+                        childVAT.RefNumber = itemVAT.LetterNum;
+                        childVAT.Cokey = itemVAT.Cokey;
+                        childVAT.Coitm = itemVAT.Coitm;
+                        childVAT.Cdate = itemVAT.Cdate;
+                        childVAT.Ctime = itemVAT.Ctime;
+                        if (itemVAT.Copri != null)
+                        {
+                            childVAT.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Copri + @"""");
+                        }
+                        if (itemVAT.Coidt != null)
+                        {
+                            childVAT.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemVAT.Coidt + @"""");
+                        }
+                        childVAT.Cotype = itemVAT.Cotyp;
+                        childVAT.Vkont = itemVAT.Vkont;
+                        childVAT.Gpart = itemVAT.Gpart;
+                        childVAT.Begdaz = itemVAT.Begdaz;
+                        childVAT.Enddaz = itemVAT.Enddaz;
+                        DateTime? BegDate = DateTime.Now;
+                        if (itemVAT.Cdate != null)
+                        {
+                            BegDate = childVAT.Cdate;
+                        }
+                        if (itemVAT.Zzfav == "1")
+                        {
+                            childVAT.IsFav = true;
+                            childVAT.FavImg = "ic_star.png";
+                        }
+                        else
+                        {
+                            childVAT.IsFav = false;
+                            childVAT.FavImg = "ic_star_border.png";
+                        }
+                        string StartDate = string.Empty;
+                        string time = string.Empty;
+                        if (App.IsArabic)
+                        {
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                if (childVAT.Ctime != null)
+                                {
+                                    time = childVAT.Ctime;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
+                                }
+                                StartDate = String.Concat(StartDate, time);
+                            }
+                        }
+                        else
+                        {
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                if (childVAT.Ctime != null)
+                                {
+                                    time = childVAT.Ctime;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
+                                }
+                                StartDate = StartDate + "  " + time;
+                            }
+                        }
+                        childVAT.DateAndTime = StartDate;
+                        VATCo.Add(childVAT);
+                    }
+                    ListVATCorrespondance = VATCo;
+                    ListAllCorrespondance = ListAllCorrespondance.Union(ListVATCorrespondance).ToList();
+                }
+                else
+                {
+                }
+                // Assigning data in the list
+                if (ETCorres != null && ETCorres.d.results.Count > 0)
+                {
+                    List<CorrespondanceModel> ETCo = new List<CorrespondanceModel>();
+                    foreach (CorrespondenceResult itemET in ETCorres.d.results)
+                    {
+                        CorrespondanceModel childET = new CorrespondanceModel();
+                        childET.Title = itemET.Descript;
+                        childET.RefNumber = itemET.LetterNum;
+                        if (itemET.LetterNum != null)
+                            childET.Cokey = itemET.Cokey;
+                        childET.Coitm = itemET.Coitm;
+                        childET.Ctime = itemET.Ctime;
+                        childET.Cdate = itemET.Cdate;
+                        if (itemET.Copri != null)
+                        {
+                            childET.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Copri + @"""");
+                        }
+                        if (itemET.Coidt != null)
+                        {
+                            childET.StartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemET.Coidt + @"""");
+                        }
+                        childET.Cotype = itemET.Cotyp;
+                        childET.Vkont = itemET.Vkont;
+                        childET.Gpart = itemET.Gpart;
+                        childET.Begdaz = itemET.Begdaz;
+                        childET.Enddaz = itemET.Enddaz;
+                        DateTime? BegDate = DateTime.Now;
+                        if (itemET.Cdate != null)
+                        {
+                            BegDate = childET.Cdate;
+                        }
+                        if (itemET.Zzfav == "1")
+                        {
+                            childET.IsFav = true;
+                            childET.FavImg = "ic_star.png";
+                        }
+                        else
+                        {
+                            childET.IsFav = false;
+                            childET.FavImg = "ic_star_border.png";
+                        }
+                        string StartDate = string.Empty;
+                        string time = string.Empty;
+                        if (App.IsArabic)
+                        {
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                if (childET.Ctime != null)
+                                {
+                                    time = childET.Ctime;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
+                                }
+                                StartDate = String.Concat(StartDate, time);
+                            }
+                        }
+                        else
+                        {
+                            if (BegDate != null)
+                            {
+                                StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                if (childET.Ctime != null)
+                                {
+                                    time = childET.Ctime;
+                                    time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
+                                }
+                                StartDate = StartDate + time;
+                            }
+                        }
+                        childET.DateAndTime = StartDate;
+                        ETCo.Add(childET);
+                    }
+                    ListETCorrespondance = ETCo;
+                    ListAllCorrespondance = ListAllCorrespondance.Union(ListETCorrespondance).ToList();
+                }
+                else
+                {
+
+                }
+                SelectedDropdownItem = FilterListForDropDown.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public void PopulateFilterDropdownList()
+        {
+            try
+            {
+                List<ReturnTypes> FilterList = new List<ReturnTypes>
+                {
+                    new ReturnTypes {Id = "00",TaxType = AppResources.ZZCorrespondence},
+                    //new ReturnTypes {Id = "01",TaxType = AppResources.ZAKATReturns},
+                   
+            };
+                FilterListForDropDown = new List<ReturnTypes>();
+                FilterListForDropDown = FilterList;
+         
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public void SetAllCorrespondancedata()
+        {
+  
+            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance) ;
+        }
         #endregion
     }
 }

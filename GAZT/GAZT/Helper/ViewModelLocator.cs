@@ -157,6 +157,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<GAZTNewDesignDashBoardPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
             SimpleIoc.Default.Register<TaxpayerCorrespondancePageViewModel>();
+            SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
 
            
@@ -259,7 +260,8 @@ namespace EGAZT
                     return null;
                 }
             }
-        }  
+        }   
+
         public TaxpayerCorrespondancePageViewModel TaxpayerCorrespondancePageView
         {
             get
@@ -267,6 +269,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<TaxpayerCorrespondancePageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }   
+        public TaxpayerCorrespondanceDetailPageViewModel TaxpayerCorrespondanceDetailPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxpayerCorrespondanceDetailPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1507,6 +1523,7 @@ namespace EGAZT
             navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
             navigationService.Configure(App.GAZTNewDesignMyReturnsNewPageView, typeof(GAZTNewDesignMyReturnsNewPageView));
             navigationService.Configure(App.TaxpayerCorrespondancePageView, typeof(TaxpayerCorrespondancePageView));
+            navigationService.Configure(App.TaxpayerCorrespondanceDetailPageView, typeof(TaxpayerCorrespondanceDetailPageView));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
