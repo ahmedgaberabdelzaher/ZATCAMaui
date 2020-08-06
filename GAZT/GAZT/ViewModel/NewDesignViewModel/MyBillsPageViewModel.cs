@@ -51,7 +51,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     FilterIfTypeAndStausFilterSelected();
                 }
-                RaisePropertyChanged("SelectedChipFilterItem");
+                RaisePropertyChanged(nameof(SelectedChipFilterItem));
             }
         }
 
