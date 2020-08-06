@@ -131,6 +131,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.VATLookUp;
 using EGAZT.Views.NewDesign.TaxpayersCertificatesPages;
 using EGAZT.Views.NewDesign.ZakatForm5;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace EGAZT
 {
@@ -236,6 +237,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
             SimpleIoc.Default.Register<TaxpayersCertificatesPageViewModel>();
+            SimpleIoc.Default.Register<ZAKATReturnDetailsViewModel>();
+            
             #endregion
         }
 
@@ -1457,6 +1460,22 @@ namespace EGAZT
             }
         }
 
+        public ZAKATReturnDetailsViewModel ZAKATReturnDetailsView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZAKATReturnDetailsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        
+
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -1562,10 +1581,13 @@ namespace EGAZT
             navigationService.Configure(App.TaxpayersCertificatesPageView, typeof(TaxpayersCertificatesPageView));
 
             navigationService.Configure(App.GAZTForm5PageView, typeof(ZakatForm5PageView));
+            navigationService.Configure(App.ZAKATReturnDetailsView, typeof(ZAKATReturnDetailsView));
 
+            
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
+
 
             #endregion
 
