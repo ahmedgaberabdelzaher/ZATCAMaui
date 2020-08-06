@@ -258,7 +258,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 });
                 await Task.Run(async () =>
                 {
-                   ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
                     PopToRootPage();
                     if(zakatReturnDetails != null && zakatReturnDetails.d != null)
                     {
