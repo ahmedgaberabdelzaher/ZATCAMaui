@@ -97,6 +97,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>SyncfusionControl.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml.cs">
+      <DependentUpon>MorePopUpPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFAnonymousLandingPageView.xaml.cs">
       <DependentUpon>SFAnonymousLandingPageView.xamll</DependentUpon>
     </Compile>
@@ -159,6 +162,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\AdjustmentPopupPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationPopUpPageView.xaml">

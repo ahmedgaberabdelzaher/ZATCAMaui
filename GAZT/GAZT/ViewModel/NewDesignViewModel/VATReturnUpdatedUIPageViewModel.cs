@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using EGAZT.Views.NewDesign.VATDeclarationPages;
+using GalaSoft.MvvmLight.Views;
+using Rg.Plugins.Popup.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -246,8 +248,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ContinueText = "Continue";
 
             OnMoreClicked = new Xamarin.Forms.Command(() =>
-            { 
-
+            {
+                PopupNavigation.Instance.PushAsync(new MorePopUpPageView());
             });
 
             onCountinueClicked = new Xamarin.Forms.Command(() =>
@@ -292,17 +294,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     case 2:IsSummeryView = false;
                         IsVATReturnsView = true;
                              fourthBox= Color.FromHex("#EBEBEB");
-                        OuterFrame= Color.FromHex("#EBEBEB");
+                        OuterFrame = Color.Transparent;
                         break;
                     case 1: IsVATReturnsView = false;
                         IsTaxpayerView = true;
-                        thirdBox = Color.FromHex("#EBEBEB"); 
-                        secOuterFrame= Color.FromHex("#EBEBEB");
+                        thirdBox = Color.FromHex("#EBEBEB");
+                        secOuterFrame = Color.Transparent;
                         break;
                     case 0: IsTaxpayerView = false;
                         IsInstrunctionView = true;
                        secBox = Color.FromHex("#EBEBEB");
-                        innerFrame=Color.FromHex("#EBEBEB"); ;
+                        innerFrame=Color.Transparent ;
                         break;
 //                    case 0: IsSaleView = false;
                         IsInstrunctionView = true;
