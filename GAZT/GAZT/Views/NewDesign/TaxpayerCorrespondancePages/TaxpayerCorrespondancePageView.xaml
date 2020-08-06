@@ -57,8 +57,8 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <!--<Grid Padding="15">
-            <Grid.RowDefinitions>
+        <Grid Padding="15">
+            <!--<Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -222,7 +222,7 @@
                         --><!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"--><!--
                     </StackLayout>
                 </StackLayout>
-            </Grid>
-        </Grid>-->
+            </Grid>-->
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
