@@ -37,6 +37,9 @@ namespace EGAZT
         public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";
         public static string GAZTNewDesignForgotPasswordPageView = "GAZTNewDesignForgotPasswordPageView";
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
+        public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
+
+        
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
@@ -44,6 +47,7 @@ namespace EGAZT
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
         public static string GAZTNewDesignRecoverPasswordPageView = nameof(GAZTNewDesignRecoverPasswordPageView);
+        public static string GAZTForm5PageView = "GAZTFORM5ageView";
 
         #endregion
 
@@ -173,9 +177,21 @@ namespace EGAZT
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
             Xamarin.Forms.Device.SetFlags(new[] { "Expander_Experimental" });
-            AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }
+            AppResources.Culture = CultureInfo.CurrentUICulture;
+            if (PreviousIsArabic)
+            {
+                String langName = "ar-AE";//"en-US";// "ar-AE";
+                ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+            }
 
-            InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
+            InitializeComponent();
+            onFontFamilyChanged();
+            if (PreviousIsArabic)
+            {
+                IsArabic = true;
+            }
+
             try
             {
                 CreateClientHandler();
@@ -210,7 +226,7 @@ namespace EGAZT
             }
             else
             {
-                navigationPage = new CustomNavigation(new SFLoginPageView(App.SFLandingPageView)) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };

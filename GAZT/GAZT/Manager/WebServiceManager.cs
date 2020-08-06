@@ -6685,7 +6685,7 @@ namespace GAZT.Manager
         #region Form5
         #region ZakatForm5
 
-        public static ZakatForm5Data GAZTZakatForm5Data(string lang)
+        public static async Task<ZakatForm5Data> GAZTZakatForm5Data(string lang)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -6694,12 +6694,12 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTZakatForm5 + "Langz='" + lang + "',OfficerUidz=''" + "',ObjSubmitz='" + "" + "',Approvez='" + "" + "',Rejectz='" + "" + "',CreateTxAssesz='" +""+ "',Euser='"+"00000000000000000000"+"'" +
+                    String url = Constants.Z_RET_F05_ZKTE + "Langz='" + lang + "',OfficerUidz='" +""+"',ObjSubmitz='" + "" + "',Approvez='" + "" + "',Rejectz='" + "" + "',CreateTxAssesz='" +""+ "',Euser='"+"00000000000000000000" +
                         "',Fbguid='" + App.LoginDataRetrieved.FbGuid + "')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTZakatForm5Response = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTZakatForm5Response = await client.GetAsync(uri);
                     if (GAZTZakatForm5Response != null)
                     {
                         if (GAZTZakatForm5Response.StatusCode == HttpStatusCode.Unauthorized)
@@ -6723,10 +6723,16 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
+                        
                         String GAZTZakatForm5ResponseJSON = GAZTZakatForm5Response.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTZakatForm5ResponseJSON))
                         {
-                            //Assign Values
+
+                            ZakatForm5DataResult = JsonConvert.DeserializeObject<ZakatForm5Data>(GAZTZakatForm5ResponseJSON);
+                            if (ZakatForm5DataResult == null)
+                            {
+                                throw new Exception(AppResources.NoTINsAvailable);
+                            }
                         }
                         else
                         {

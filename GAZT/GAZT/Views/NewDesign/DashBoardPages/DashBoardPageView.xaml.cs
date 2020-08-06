@@ -496,5 +496,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
          //   App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
         }
+        void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
+        }
     }
 }

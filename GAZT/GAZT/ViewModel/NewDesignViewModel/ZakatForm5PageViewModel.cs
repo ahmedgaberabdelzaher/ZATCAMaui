@@ -15,24 +15,16 @@ using ZakatForm5Model;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-     public class ZakatForm5PageViewModel : ViewModelBase
+     public class ZakatForm5PageViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
+        
 
-        private bool _isLoading = false;
-        public bool IsLoading
+        #region Constructor
+        public ZakatForm5PageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
         }
+        #endregion
+        
 
         public ZakatForm5Data _zakatForm5DataResult;
         public ZakatForm5Data ZakatForm5DataResult
@@ -62,8 +54,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        public string PerslText;
+        public string _perslText
+        {
+            get
+            {
+                return _perslText;
+            }
+            set
+            {
+                _perslText = value;
+                RaisePropertyChanged("PerslText");
+            }
+        }
+
+
+
         #region Method
-        public void onPageLoad()
+
+
+        
+        public async Task LoadZakatForm5Data()
         {
             IsLoading = true;
             ZakatForm5DataResult = null;
@@ -73,7 +85,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    ZakatForm5DataResult = WebServiceManager.GAZTZakatForm5Data(lang);
+                   var ZakatForm5DataResult = await WebServiceManager.GAZTZakatForm5Data(lang);
 
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 

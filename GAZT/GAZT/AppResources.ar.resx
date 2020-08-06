@@ -663,6 +663,15 @@
   <data name="VATLookup" xml:space="preserve">
     <value>بحث التسجيل في ضريبة القيمة المضافة</value>
   </data>
+  <data name="ZVATLookUpTitleSub" xml:space="preserve">
+    <value>Please follow the steps</value>
+  </data>
+  <data name="ZVATLookUpSearchButtonText" xml:space="preserve">
+    <value>Search VAT</value>
+  </data>
+  <data name="ZVATLookUpNewSearchButtonText" xml:space="preserve">
+    <value>New VAT Search</value>
+  </data>
   <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>إجمالي الإقرارات المقدمة</value>
   </data>
@@ -3275,6 +3284,10 @@
     <comment>Vat Lookup</comment>
   </data>
   <data name="ZZZVatLookUpTitleTextNew" xml:space="preserve">
+    <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZVatLookUpTitleNew" xml:space="preserve">
     <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
     <comment>Vat Lookup</comment>
   </data>

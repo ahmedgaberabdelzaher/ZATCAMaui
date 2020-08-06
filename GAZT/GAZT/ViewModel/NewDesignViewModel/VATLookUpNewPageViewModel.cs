@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
 using Xamarin.Forms;
@@ -12,6 +13,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         bool isMendatoryDataEntered = true;
+        public ICommand OnBackButtonClicked { get; set; }
 
         #region proprety
         private List<VATParameterType> _parameterTypeList;
@@ -204,6 +206,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                ResetFormData();
+                _navigationService.GoBack();
+            });
         }
 
         #region Methods
@@ -335,6 +342,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 isMendatoryDataEntered = false;
             }
             //_dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
+        }
+        private void ResetFormData()
+        {
+            Name = "";
+            IsNameVisible = false;
+            LookupNumber = "";
+            LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
         }
         #endregion
     }

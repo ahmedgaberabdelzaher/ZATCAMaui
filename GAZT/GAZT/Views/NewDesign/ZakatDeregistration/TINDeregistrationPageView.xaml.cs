@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
+using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -68,6 +70,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+        }
+
+        private void btnExporter_Clicked(object sender, EventArgs e)
+        {
+            VATRegistrationDetails vatReg = null;
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
+        }
+
+        void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            TinDeregestrationAttachmentsModel selectedItem = e.AddedItems[0] as TinDeregestrationAttachmentsModel;
+            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(selectedItem);
+            btnExporter_Clicked(null,null);
         }
     }
 }

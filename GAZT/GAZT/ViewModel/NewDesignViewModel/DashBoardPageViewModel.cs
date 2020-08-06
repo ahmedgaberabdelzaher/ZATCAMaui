@@ -1147,15 +1147,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 App.HideProgressView();
             });
 
-            var _navigation = Application.Current.MainPage.Navigation;
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.GAZTNewDesignOnBoardingAnimationPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
+            //var _navigation = Application.Current.MainPage.Navigation;
+            //foreach (var item in _navigation.NavigationStack)
+            //{
+            //    if (item.GetType().Name == App.GAZTNewDesignOnBoardingAnimationPageView)
+            //    {
+            //        _navigation.RemovePage(item);
+            //        break;
+            //    }
+            //}
 
             App.IsLogOut = true;
             App.IsLoginCalled = false;
@@ -1172,8 +1172,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             }
 
-            _navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-            _navigation.NavigationStack.ToList().Clear();
+            //_navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+
+            // await _navigation.PopToRootAsync();
+            //_navigation.NavigationStack.ToList().Clear();
+            _navigationService.GoBack();
         }
         #endregion
     }

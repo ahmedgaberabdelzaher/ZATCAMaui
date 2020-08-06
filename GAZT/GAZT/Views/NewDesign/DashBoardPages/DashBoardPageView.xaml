@@ -27,7 +27,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
 
-        <Grid RowSpacing="0" x:Name="Maingrid">
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
@@ -47,7 +47,7 @@
                                 <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                        <Image Source="circle_arrow_right.png" Rotation="{Binding Rotation}" HorizontalOptions="EndAndExpand">
+                                        <Image Source="circle_arrow_right.png" HorizontalOptions="EndAndExpand">
                                             <!--    <Image.Source>
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
                                             </Image.Source>-->
@@ -140,7 +140,7 @@
                                                                 <!--<custom:CustomLabel Text="200,000,00 SAR" TextColor="Black"  />-->
                                                             </StackLayout>
 
-                                                            <Image Source="circle_arrow_right.png" Rotation="{Binding Rotation}" HorizontalOptions="EndAndExpand" Margin="10,0">
+                                                            <Image Source="circle_arrow_right.png" HorizontalOptions="EndAndExpand" Margin="10,0">
                                                                 <!--                                                                <Image.Source>
                                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRight}"/>
                                                                 </Image.Source>-->
@@ -157,7 +157,7 @@
 
                                     <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
                                         <custom:CustomLabel Text="{Binding BillString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
-                                        <Image Source="circle_arrow_right.png" Rotation="{Binding Rotation}" HorizontalOptions="EndAndExpand">
+                                        <Image Source="circle_arrow_right.png" HorizontalOptions="EndAndExpand">
                                             <!--                                            <Image.Source>
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
                                             </Image.Source>-->
@@ -450,11 +450,9 @@
 
                     </StackLayout>
 
-                    <custom:CustomLabel  HorizontalTextAlignment="Start" Style="{StaticResource SectionTitleWhiteBold}" BindingContext="{Binding TaxPayerProfile}"  Margin="0,10,0,10" VerticalOptions="Center">
+                    <custom:CustomLabel  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" BindingContext="{Binding TaxPayerProfile}"  Margin="0,10,0,10" VerticalOptions="Center">
                         <custom:CustomLabel.FormattedText >
                             <FormattedString>
-                                <Span Text="{Binding Source={x:Reference Name=Maingrid},Path=BindingContext.WelcomeText}"/>
-                                <Span Text=" "/>
                                 <Span Text="{Binding Name}"/>
                             </FormattedString>
                         </custom:CustomLabel.FormattedText>
@@ -484,7 +482,7 @@
                                     <Image Source="menu_calendar">
  
                                     </Image>
-                                    <custom:CustomLabel Text="{Binding NDCommitments}" Style="{StaticResource ButtonLabelWhiteBold}" />
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDCommitments}" Style="{StaticResource ButtonLabelWhiteBold}" />
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
@@ -492,7 +490,7 @@
                                     <Image Source="menu_bill">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="{Binding ZBills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyBills"/>
                                     </StackLayout.GestureRecognizers>
@@ -503,9 +501,20 @@
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="{Binding Return}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZVatLookUpTitleTextNew}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="VATLookUp_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -579,7 +588,7 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{Binding AboutUs}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Aboutus_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -592,7 +601,7 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{Binding Contactus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Contactus_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -605,7 +614,7 @@
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
                                         </Image.Source>
                                     </Image>
-                                    <custom:CustomLabel Text="{Binding PrivacyandPolicy}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZPrivacyandPolicy}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -631,7 +640,7 @@
                                     <Image Source="log_out">
 
                                     </Image>
-                                    <custom:CustomLabel Text="{Binding Logout}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZLogout}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Logout_Tapped"/>
                                     </StackLayout.GestureRecognizers>

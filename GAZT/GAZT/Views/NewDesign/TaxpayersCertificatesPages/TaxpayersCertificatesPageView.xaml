@@ -140,8 +140,8 @@
                                             <ColumnDefinition Width="15*"/>
                                             <ColumnDefinition Width="85*"/>
                                         </Grid.ColumnDefinitions>
-                                        <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-3">
-                                            <custom:CustomLabel Text="{Binding Descript}" LineHeight=".7" Style="{StaticResource CaptionLabelBlack}" VerticalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" />
+                                        <StackLayout Grid.Row="0" Grid.Column="1">
+                                            <custom:CustomLabel Text="{Binding Descript}" Style="{StaticResource CaptionLabelBlack}" VerticalOptions="CenterAndExpand"/>
                                             <!--<Label Text=" Date" Style="{StaticResource CaptionLabelGrey}" />-->
                                         </StackLayout>
                                         <Image Source="newui_ic_pdf.png" Grid.Row="0" Grid.Column="0" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0"/>
