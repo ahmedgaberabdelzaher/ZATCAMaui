@@ -65,8 +65,37 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="White" CornerRadius="15,15,0,0" Padding="18,0,18,0">
+                        <StackLayout>
+                            <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="1" HorizontalOptions="StartAndExpand" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}">
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackStepClicked}" />
+                                </Label.GestureRecognizers>
+                            
+                            </Label>
+                            <StackLayout Orientation="Horizontal">
+                              <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="0,15,0,0">
+                                    <Frame Padding="0" CornerRadius="15" BackgroundColor="{TemplateBinding BindingContext.OuterFrame}">
+                                        <StackLayout Orientation="Horizontal" Padding="0">
+                                            <Frame Padding="0" CornerRadius="15" BackgroundColor="{TemplateBinding BindingContext.secOuterFrame}">
+                                                <StackLayout Orientation="Horizontal" Padding="0">
+                                                    <Frame Padding="0" CornerRadius="15" BackgroundColor="{TemplateBinding BindingContext.innerFrame}">
+                                                        <StackLayout Orientation="Horizontal" Padding="0">
+                                                            <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
+                                                            <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{TemplateBinding BindingContext.secBox}"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                    <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{TemplateBinding BindingContext.thirdBox}"/>
+                                                </StackLayout>
+                                            </Frame>
+                                            <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{TemplateBinding BindingContext.fourthBox}"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            <Image Margin="0,6,0,0" Source="ic_vat_check"/>
+                            </StackLayout>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
 
                             <Grid.RowDefinitions>
@@ -79,8 +108,10 @@
                         Grid.Column="0"
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
+
+                        </StackLayout>
                     </yummy:PancakeView>
-                    <Grid Padding="0,10,0,10" Grid.Row="0">
+                    <Grid Padding="15,10,15,10" Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -91,16 +122,35 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0"   Text="VAT Return" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
-                        <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+
+                        <StackLayout Grid.Row="0" Grid.Column="0">
+                            <Image IsVisible="{Binding IsBackBtnVisible}" Source="arrowLeftwhite" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                <!--                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
+                                </Image.GestureRecognizers>-->
+                            </Image>
+                        </StackLayout>
+
+                        <StackLayout  Grid.Row="0" Grid.Column="2">
+                            <StackLayout Spacing="3" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Rotation="90">
+                            <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
+                                <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
+                                <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="White"/>
+                            </StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnMoreClicked}"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <!--<Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
-                        </Label>
-                        <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" TextColor="White" Text="{StaticResource Close}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-                            <!--<Label.GestureRecognizers>
+                        </Label>-->
+<!--                        <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" TextColor="White" Text="{StaticResource Close}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer  Tapped="onMoreOptionClicked"></TapGestureRecognizer>
-                            </Label.GestureRecognizers>-->
-                        </Label>
+                            </Label.GestureRecognizers>
+                        </Label>-->
                     </Grid>
 
                
@@ -112,7 +162,8 @@
     <ContentPage.Content>
             <Grid Padding="0,0,0,0" RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="88*"/>
+                    <RowDefinition Height="78*"/>
+                <RowDefinition Height="10*"/>
                 <RowDefinition Height="12*"/>
 
                 <!--                <RowDefinition Height="78*"/>
@@ -120,12 +171,12 @@
 
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" IsVisible="False"  x:Name="InstrunctionSection">
+            <Grid Grid.Row="0" IsVisible="{Binding IsInstrunctionView}"  x:Name="InstrunctionSection" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="8*"/>
-                    <RowDefinition Height="92*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="85*"/>
                 </Grid.RowDefinitions>
-                <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0" Padding="15" BackgroundColor="White" RowSpacing="0" >
+                <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Margin="0" BackgroundColor="White" RowSpacing="0" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                         <StackLayout BackgroundColor="White">
 
@@ -236,18 +287,512 @@
                 </Grid>
 
 
-                <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,10">
-                    <Label Text="{x:Static custom2:AppResources.ZInstructions}"  Margin="18,0,18,0"  Style="{StaticResource SectionTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                    <Label Text="{x:Static custom2:AppResources.ZVatReadInstructions}" Margin="18,-5,18,0" BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}"/>
-                    <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
+                <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,0" Spacing="0">
+
+                    <Label Text="{x:Static custom2:AppResources.ZInstructions}"  Style="{StaticResource SectionTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <Label Text="{x:Static custom2:AppResources.ZVatReadInstructions}" BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}"/>
+                    <BoxView Style="{StaticResource lineSeperator}"/>
                 </StackLayout>
             </Grid>
                 
+            <StackLayout Grid.Row="0" IsVisible="{Binding IsTaxpayerView}"  x:Name="TaxpayerDetails" Grid.RowSpan="2">
+                <Label Text="Taxpayer Details"  Style="{StaticResource SectionTitleBlack}" />
+                <Label Text="Complete the below details"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
+                <BoxView Style="{StaticResource lineSeperator}"/>
+            </StackLayout>
+                
+                <StackLayout Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsVATReturnsView}" x:Name="VATReturnsSection" BackgroundColor="White" >
 
-            <Grid Grid.Row="0" IsVisible="True"  x:Name="SalesSection">
+                <Label Text="VAT Return Form"  Style="{StaticResource SectionTitleBlack}" />
+                <Label Text="Complete the below details"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
+                <BoxView Style="{StaticResource lineSeperator}"/>
+                <!--VAT On Sales Starts-->
+                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <Expander>
+                        <Expander.Header>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <custom:CustomLabel Text="VAT on Sales" Style="{StaticResource SectionTitleBlack}"/>
+                                <Image Source="arrowDropdown" HorizontalOptions="EndAndExpand">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image"
+                                                 Binding="{Binding Source={RelativeSource AncestorType={x:Type Expander}}, Path=IsExpanded}" Value="true">
+                                            <Setter Property="Rotation" Value="180"/>
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </StackLayout>
+                        </Expander.Header>
+                        <StackLayout Spacing="0">
+                            <BoxView Style="{StaticResource lineSeperator}"/>
+                            <ScrollView VerticalScrollBarVisibility="Never" BackgroundColor="White">
+                                <StackLayout>
+                                    
+                                        <Grid Style="{StaticResource InputTableGridStyle}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="Standard Rated Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="0" Grid.Column="1">
+
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnStandardRatedTapped" NumberOfTapsRequired="1"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></Label>
+                                            <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></Label>
+
+
+                                            <inputLayout:SfTextInputLayout   Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                            </inputLayout:SfTextInputLayout>
+                                            <inputLayout:SfTextInputLayout   Grid.Row="2" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+
+                                            <Label Text="Private HealthCare/Private Education" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="3" Grid.Column="1">
+
+                                            </Image>
+                                            <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></Label>
+                                            <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></Label>
+
+
+                                            <inputLayout:SfTextInputLayout   Grid.Row="5" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+                                            <inputLayout:SfTextInputLayout   Grid.Row="5" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+
+                                            <Label Text="Zero Rated Domestic Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="6" Grid.Column="1">
+                                            </Image>
+                                            <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></Label>
+                                            <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></Label>
+
+
+                                            <inputLayout:SfTextInputLayout   Grid.Row="8" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+                                            <inputLayout:SfTextInputLayout   Grid.Row="8" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+
+                                            <Label Text="Exports" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="9" Grid.Column="1">
+
+                                            </Image>
+                                            <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></Label>
+                                            <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></Label>
+
+
+                                            <inputLayout:SfTextInputLayout   Grid.Row="11" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+                                            <inputLayout:SfTextInputLayout   Grid.Row="11" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+
+                                            <Label Text="Exempt Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
+
+                                            </Image>
+                                            <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></Label>
+                                            <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></Label>
+
+
+                                            <inputLayout:SfTextInputLayout   Grid.Row="14" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+                                            <inputLayout:SfTextInputLayout   Grid.Row="14" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+
+                                            <BoxView Style="{StaticResource InputTableBoxViewStyle}" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" />
+
+                                            <Label Text="Total Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold"  Margin="10,0,10,0" Grid.Row="16" Grid.Column="0" ></Label>
+
+                                            <StackLayout Grid.Row="17" Grid.Column="0"  Margin="10,0,10,0">
+                                                <Label Text="Amount" Style="{StaticResource ValueLabelBlack}" Margin="0,0,0,-9"  ></Label>
+                                                <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" ></Label>
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Row="17" Grid.Column="1" Margin="10,0,10,0">
+                                                <Label Text="Amount" Style="{StaticResource ValueLabelBlack}" Margin="0,0,0,-9" ></Label>
+                                                <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}"  FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" ></Label>
+                                            </StackLayout>
+
+                                            <!--<Label Text="Amount" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="0" ></Label>
+                        <Label Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="0" ></Label>
+
+                        <Label Text="Adjustment" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="1" ></Label>
+                        <Label Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="1" ></Label>-->
+
+                                            <yummy:PancakeView  Grid.Row="18" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ADD8E6" Padding="0,0,0,0"  Margin="0,0,0,0">
+                                                <StackLayout  Padding="0" Margin="10,0,10,0">
+                                                    <Label Text="VAT Amount" Style="{StaticResource ValueLabelBlack}" Margin="0,0,0,-9"  ></Label>
+                                                    <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold"></Label>
+                                                </StackLayout>
+                                            </yummy:PancakeView>
+
+                                        </Grid>
+
+                                    <StackLayout HeightRequest="2" BackgroundColor="White" HorizontalOptions="FillAndExpand">
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
+                        </StackLayout>
+                    </Expander>
+                </border:SfBorder>
+                <!--VAT On Sales Ends-->
+
+                <!--VAT On Purchases Starts-->
+                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <Expander>
+                        <Expander.Header>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <custom:CustomLabel Text="VAT On Purchase" Style="{StaticResource SectionTitleBlack}"/>
+                                <Image Source="arrowDropdown" HorizontalOptions="EndAndExpand">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image"
+                                                 Binding="{Binding Source={RelativeSource AncestorType={x:Type Expander}}, Path=IsExpanded}" Value="true">
+                                            <Setter Property="Rotation" Value="180"/>
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </StackLayout>
+                        </Expander.Header>
+                        <StackLayout Spacing="0">
+                            <BoxView Style="{StaticResource lineSeperator}"/>
+                            <StackLayout>
+                            <ScrollView VerticalScrollBarVisibility="Never" Padding="0,10,0,0" BackgroundColor="White">
+                            <StackLayout>
+                                
+                                    <Grid Style="{StaticResource InputTableGridStyle}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="50*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="Standard Rated Domestic Purchases" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0"></Label>
+                                            <Image Style="{StaticResource ImageStyleForInputTable}" Source="ic_vat_info">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnDomesticRatedTapped"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </StackLayout>
+                                        
+                                        
+                                        <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></Label>
+                                        <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></Label>
+
+
+                                        <inputLayout:SfTextInputLayout   Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                        </inputLayout:SfTextInputLayout>
+                                        <inputLayout:SfTextInputLayout   Grid.Row="2" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+                                        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2">
+                                            <Label Text="Import Subject to VAT paid at customs" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0"></Label>
+                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
+
+                                            </Image>
+                                        </StackLayout>
+                                        <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></Label>
+                                        <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></Label>
+
+
+                                        <inputLayout:SfTextInputLayout   Grid.Row="5" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+                                        <inputLayout:SfTextInputLayout   Grid.Row="5" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+                                        <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                            <Label Text="Imports Subject to VAT accounted for through the reverse charge mechanism" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" ></Label>
+                                            <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
+
+                                            </Image>
+                                        </StackLayout>
+                                        <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></Label>
+                                        <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></Label>
+
+
+                                        <inputLayout:SfTextInputLayout   Grid.Row="8" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+                                        <inputLayout:SfTextInputLayout   Grid.Row="8" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+
+                                        <Label Text="Zero Rated Purchases" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                                        <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="9" Grid.Column="1">
+
+                                        </Image>
+                                        <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></Label>
+                                        <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></Label>
+
+
+                                        <inputLayout:SfTextInputLayout   Grid.Row="11" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+                                        <inputLayout:SfTextInputLayout   Grid.Row="11" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+
+                                        <Label Text="Exempt Purchases" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                                        <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
+
+                                        </Image>
+                                        <Label Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></Label>
+                                        <Label Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></Label>
+
+
+                                        <inputLayout:SfTextInputLayout   Grid.Row="14" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+                                        <inputLayout:SfTextInputLayout   Grid.Row="14" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                            <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                            </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+
+                                        <BoxView Style="{StaticResource InputTableBoxViewStyle}" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" />
+
+                                        <Label Text="Total Purchases" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold"  Margin="10,0,10,0" Grid.Row="16" Grid.Column="0" ></Label>
+
+                                        <StackLayout Grid.Row="17" Grid.Column="0"  Margin="10,0,10,0">
+                                            <Label Text="Amount" Style="{StaticResource ValueLabelBlack}" Margin="0,0,0,-9"  ></Label>
+                                            <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Row="17" Grid.Column="1" Margin="10,0,10,0">
+                                            <Label Text="Amount" Style="{StaticResource ValueLabelBlack}" Margin="0,0,0,-9" ></Label>
+                                            <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}"  FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" ></Label>
+                                        </StackLayout>
+
+                                        <!--<Label Text="Amount" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="0" ></Label>
+                        <Label Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="0" ></Label>
+
+                        <Label Text="Adjustment" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="1" ></Label>
+                        <Label Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="1" ></Label>-->
+
+                                        <yummy:PancakeView  Grid.Row="18" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ADD8E6" Padding="0,0,0,0"  Margin="0,0,0,0">
+                                            <StackLayout  Padding="0" Margin="10,0,10,0">
+                                                <Label Text="VAT Amount on Purchases" Style="{StaticResource ValueLabelBlack}" Margin="0,0,0,-9"  ></Label>
+                                                <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold"></Label>
+                                            </StackLayout>
+                                        </yummy:PancakeView>
+
+                                    </Grid>
+
+                                
+                            </StackLayout>
+                        </ScrollView>
+                            </StackLayout>
+                        </StackLayout>
+                    </Expander>
+                </border:SfBorder>
+                <!--VAT On Purchases Ends-->
+                
+               <!--Total VAT Starts-->
+                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <Expander IsExpanded="True">
+                        <Expander.Header>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <custom:CustomLabel Text="Total VAT" Style="{StaticResource SectionTitleBlack}"/>
+                                <Image Source="arrowDropdown" HorizontalOptions="EndAndExpand">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image"
+                                                 Binding="{Binding Source={RelativeSource AncestorType={x:Type Expander}}, Path=IsExpanded}" Value="true">
+                                            <Setter Property="Rotation" Value="180"/>
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                            </StackLayout>
+                        </Expander.Header>
+                        <StackLayout Spacing="0">
+                            <BoxView Style="{StaticResource lineSeperator}"/>
+                            <StackLayout Spacing="0">
+                                <ScrollView Padding="10" VerticalScrollBarVisibility="Never" BackgroundColor="White">
+                                    <StackLayout >
+                                        <StackLayout Spacing="-5" Padding="0">
+                                            <custom:CustomLabel Text="Total VAT due for current Period" Style="{StaticResource BodyLabelBlack}" />
+                                            <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" />
+                                        </StackLayout>
+
+                                        <StackLayout Spacing="-5" Padding="0">
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:CustomLabel Text="VAT Credit from Previous Period(s)" Style="{StaticResource BodyLabelBlack}" />
+                                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" HorizontalOptions="EndAndExpand">
+
+                                                </Image>
+                                            </StackLayout>
+                                            <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" />
+                                        </StackLayout>
+                                        <StackLayout Spacing="-5">
+                                            <custom:CustomLabel Text="Corrections from Previous period (between SAR = 500.0)" Style="{StaticResource CaptionLabelGrey}" />
+                                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                <custom:GAZTBorderlessEntry  Text="500 SAR"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                </custom:GAZTBorderlessEntry>
+
+                                                <inputLayout:SfTextInputLayout.TrailingView >
+                                                    <Image Source="ic_vat_info">
+
+                                                    </Image>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+
+                                        <Frame  BackgroundColor="LightBlue" Padding="10" CornerRadius="15" Margin="0">
+                                            <StackLayout Spacing="10" Orientation="Horizontal" Padding="5,0,5,0">
+                                                <custom:CustomLabel Text="Net VAT" Style="{StaticResource BodyLabelBlack}" />
+                                                <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" />
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </ScrollView>
+                            </StackLayout>
+                        </StackLayout>
+                    </Expander>
+                </border:SfBorder>
+                <!--Total VAT Ends-->
+                
+                
+                <!--View On Hold-->
+            <Grid  IsVisible="False"   x:Name="SalesSection">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="8*"/>
-                    <RowDefinition Height="92*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="85*"/>
                 </Grid.RowDefinitions>
                 
                 <ScrollView  Grid.Row="1" VerticalScrollBarVisibility="Never" Margin="0,-10,0,0" BackgroundColor="White">
@@ -432,9 +977,24 @@
                     </StackLayout>
                     </StackLayout>
                 </ScrollView>
-                <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,10">
-                    <Label Text="VAT On Sales"  Margin="18,0,18,0"  Style="{StaticResource SectionTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                    <Label Text="Complete the below details" Margin="18,-5,18,0" BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}"/>
+                <StackLayout Grid.Row="0" BackgroundColor="White" Padding="18,0,18,0" Margin="0,-17,0,0" Spacing="0">
+
+                    <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
+                        <Frame Padding="0" CornerRadius="15" BackgroundColor="{StaticResource Primary}">
+                            <StackLayout Orientation="Horizontal" Padding="0">
+                                <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
+                                <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
+                            </StackLayout>
+                        </Frame>
+                        <BoxView Style="{StaticResource boxIndicator}" />
+                            
+                        <BoxView Style="{StaticResource boxIndicator}"/>
+                        <BoxView Style="{StaticResource boxIndicator}"/>
+                    </StackLayout>
+
+                    <Label Text="VAT On Sales"  Style="{StaticResource SectionTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <Label Text="Complete the below details"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
+
                     <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                 </StackLayout>
                 <!--<StackLayout Grid.Row="1" BackgroundColor="White">
@@ -442,11 +1002,10 @@
                 </StackLayout>-->
             </Grid>
 
-
-            <Grid Grid.Row="0" IsVisible="False"  x:Name="PurchaseSection">
+            <Grid  IsVisible="False"  x:Name="PurchaseSection">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="85*"/>
                 </Grid.RowDefinitions>
 
                 <ScrollView  Grid.Row="1" VerticalScrollBarVisibility="Never" Margin="0,0,0,0" BackgroundColor="White">
@@ -640,6 +1199,8 @@
                             <StackLayout Orientation="Horizontal" Padding="0">
                                 <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
                                 <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
+
+                                <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
                             </StackLayout>
                         </Frame>
                         <BoxView Style="{StaticResource boxIndicator}"/>
@@ -654,8 +1215,7 @@
                 </StackLayout>-->
             </Grid>
 
-
-            <Grid Grid.Row="0" IsVisible="False"  x:Name="TotalVatSection" Padding="18,0,18,0" RowSpacing="0">
+            <Grid IsVisible="False" x:Name="TotalVatSection" Padding="18,0,18,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="80*"/>
@@ -715,6 +1275,8 @@
                                     </StackLayout>
                                 </Frame>
                                 <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
+                            
+                        <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
                             </StackLayout>
                         </Frame>
                         <BoxView Style="{StaticResource boxIndicator}"/>
@@ -724,9 +1286,10 @@
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
                 </StackLayout>
             </Grid>
-
-
-            <Grid Grid.Row="0" IsVisible="False"  x:Name="SummerySection" Padding="18,0,18,0" RowSpacing="0">
+                <!--Views On Hold-->
+            </StackLayout>
+        
+            <Grid Grid.Row="0" IsVisible="{Binding IsSummeryView}"  x:Name="SummerySection" RowSpacing="0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="80*"/>
@@ -934,25 +1497,7 @@
 
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,0" Spacing="0">
-                    <StackLayout Orientation="Horizontal" Margin="0,15,0,0">
-                        <Frame Padding="0" CornerRadius="15" BackgroundColor="{StaticResource Primary}">
-                            <StackLayout Orientation="Horizontal">
-                            <Frame Padding="0" CornerRadius="15" BackgroundColor="{StaticResource Primary}">
-                            <StackLayout Orientation="Horizontal">
-                                <Frame Padding="0" CornerRadius="15" BackgroundColor="{StaticResource Primary}">
-                                    <StackLayout Orientation="Horizontal" Padding="0">
-                                        <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
-                                        <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
-                                    </StackLayout>
-                                </Frame>
-                                <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
-                            </StackLayout>
-                        </Frame>
-                                <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
-                    </StackLayout>
-                        </Frame>
-                        <Image Source="ic_vat_check"/>
-                    </StackLayout>
+                    
                     <Label Text="Summery"  Style="{StaticResource SectionTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                     <Label Text="Review the below information"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
@@ -960,11 +1505,14 @@
             </Grid>
 
 
-            <StackLayout BackgroundColor="White" Grid.Row="1" Margin="0,0,0,0"  VerticalOptions="FillAndExpand">
                 
-                <buttons:SfButton x:Name="btnprimary"  VerticalOptions="CenterAndExpand" Margin="10,0,10,0"  Text="Continue" Style="{StaticResource PrimaryButtonStyle}"/>
+                
+                
+            <StackLayout BackgroundColor="White" Grid.Row="2" Margin="0,0,0,0"  VerticalOptions="FillAndExpand">
 
-                <buttons:SfButton Text="Carried Credit Details" TextColor="{StaticResource NewDullOrangeColor}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,10"/>
+                <buttons:SfButton x:Name="btnprimary"  VerticalOptions="CenterAndExpand" Margin="10,0,10,0"  Text="{Binding ContinueText}" Command="{Binding onCountinueClicked}" Style="{StaticResource PrimaryButtonStyle}"/>
+
+                <buttons:SfButton Text="{Binding CreditDetailsText}" TextColor="{StaticResource NewDullOrangeColor}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,10"/>
             </StackLayout>
          
         </Grid>
