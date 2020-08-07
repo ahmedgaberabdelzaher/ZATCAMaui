@@ -52,250 +52,211 @@
 
                         <StackLayout Spacing="15" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2" >
                             <Image Source="search">
-
                             </Image>
                             <Image Source="filter">
-
                             </Image>
                         </StackLayout>
-                        <!--                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                            <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer      Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
-                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>-->
-
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
-
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
                             <Grid.RowDefinitions>
-                                <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
-
                             </Grid.RowDefinitions>
-                            <ContentPresenter VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Grid.Column="0"
-                        Grid.Row="0" BackgroundColor="White"/>
+                            <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
                 </StackLayout>
-
             </Grid>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
 
-        <Grid Padding="15">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackLayout Spacing="-5" Grid.Row="0">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="30"/>
-                    </Grid.ColumnDefinitions>
-                    <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
-                        <!--<custom:CustomLabel.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="btn_Clicked"/>
-                        </custom:CustomLabel.GestureRecognizers>-->
-                    </custom:CustomLabel>
+        <StackLayout>
 
-                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+            <Grid Padding="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Spacing="-5" Grid.Row="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
+                        </custom:CustomLabel>
 
-                    </Image>
+                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
 
-                    <!--<Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
-                           Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>-->
+                        </Image>
 
-                    <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
-                        <!--Margin="10,0,10,0"-->
-                    </custom:CustomButton>
+                        <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
+                        </custom:CustomButton>
 
-                    <syncfusion:SfPicker x:Name="TaxTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
-                    ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                    ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                    PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
-                    FooterHeight="46" SelectionChanged="TaxTypePicker_SelectionChanged">
-                        <syncfusion:SfPicker.Behaviors>
-                            <custom1:SfPickerBehavior />
-                        </syncfusion:SfPicker.Behaviors>
-                    </syncfusion:SfPicker>
-                </Grid>
-                <!--custom:RoundCornersEffect.CornerRadius="14" SelectionChanged="DDlIDType_SelectionChanged" OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"-->
+                        <syncfusion:SfPicker x:Name="TaxTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                        ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
+                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        FooterHeight="46" SelectionChanged="TaxTypePicker_SelectionChanged">
+                            <syncfusion:SfPicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </syncfusion:SfPicker.Behaviors>
+                        </syncfusion:SfPicker>
+                    </Grid>
 
-                <!--<custom:CustomLabel Text="60,0000 SAR" Style="{StaticResource CaptionLabelGrey}"/>-->
-                <StackLayout Margin="0,8,0,8" HorizontalOptions="Center" Spacing="2">
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" Margin="0"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    ChipPadding="1" Padding="0"  ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" ChipBorderWidth="1"    SelectionChanged="ChipGroup_statusFilter_SelectionChanged">
-                        <buttons:SfChipGroup.ItemTemplate>
-                            <DataTemplate >
-                                <StackLayout Margin="0" Padding="0" Spacing="2">
-                                    <buttons:SfChip Margin="0"  HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
-                                </StackLayout>
-                            </DataTemplate>
-                        </buttons:SfChipGroup.ItemTemplate>
-                    </buttons:SfChipGroup>
 
+                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" ChipBackgroundColor="Transparent" ChipPadding="1" ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" ChipBorderWidth="1" SelectionChanged="ChipGroup_statusFilter_SelectionChanged" HorizontalOptions="Start">
+                            <buttons:SfChipGroup.ItemTemplate>
+                                <DataTemplate >
+
+                                    <buttons:SfChip HeightRequest="32" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ImageSource="{Binding ImageSource}" ShowCloseButton="False" ImageAlignment="Left" ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue" ShowIcon="True" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+
+                                </DataTemplate>
+                            </buttons:SfChipGroup.ItemTemplate>
+                        </buttons:SfChipGroup>
+
+                        
                     </ScrollView>
                 </StackLayout>
-            </StackLayout>
-            <StackLayout Grid.Row="1">
 
-                <ListView  x:Name="ListView_Returns" 
-           ItemsSource="{Binding ListToDisplay,Mode=TwoWay}"
-                                           IsVisible="{Binding IsListVisible}"
-                                  VerticalScrollBarVisibility="Never"    
-          HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-                 BackgroundColor="White"     
-            SeparatorVisibility="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <border:SfBorder   Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <StackLayout Padding="0">
-                                        <Grid  Padding="15" RowSpacing="0" >
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
-                                                <custom:CustomLabel  Text="" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}">
-                                                    <custom:CustomLabel.Triggers>
-                                                        <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
-                                                        <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="ITAX">
-                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZAKATReturns}" />
-                                                        </DataTrigger>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="ZAKT">
-                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZAKATReturns}" />
-                                                        </DataTrigger>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="VATX">
-                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VatReturns}" />
-                                                        </DataTrigger>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="VTEP">
-                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VatReturns}" />
-                                                        </DataTrigger>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="ETAX">
-                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ETReturns}" />
-                                                        </DataTrigger>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="WHTX">
-                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.WHTreturns}" />
-                                                        </DataTrigger>
-                                                    </custom:CustomLabel.Triggers>
-                                                </custom:CustomLabel>
-                                                <!--<custom:CustomLabel  Text="{Binding FbtText}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />-->
-                                                <custom:CustomLabel  Text="{Binding RetStatTxt}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />
-                                            </StackLayout>
-                                            <!--StatusTxt-->
-                                            <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                                <yummy:PancakeView  Padding="10,10,10,10" CornerRadius="14"  HeightRequest="24" BorderThickness="1" BackgroundColor="{Binding FrameColorHighlight}"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                                    <custom:CustomLabel Text="{Binding statusMessage}" Style="{StaticResource CaptionLabelGrey}" TextColor="{Binding TextColorHighlight}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout Grid.Row="1">
+
+                    <ListView  x:Name="ListView_Returns" ItemsSource="{Binding ListToDisplay,Mode=TwoWay}" IsVisible="{Binding IsListVisible}" VerticalScrollBarVisibility="Never"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" BackgroundColor="White" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <border:SfBorder   Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <StackLayout Padding="0">
+                                            <Grid  Padding="15" RowSpacing="0" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                                    <custom:CustomLabel  Text="" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}">
                                                         <custom:CustomLabel.Triggers>
                                                             <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
-                                                            <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="submitted">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Submitted}" />
+                                                            <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="ITAX">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZAKATReturns}" />
                                                             </DataTrigger>
-                                                            <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="unsubmitted">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnSubmitted}" />
+                                                            <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="ZAKT">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZAKATReturns}" />
                                                             </DataTrigger>
-                                                            <MultiTrigger TargetType="Label">
+                                                            <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="VATX">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VatReturns}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="VTEP">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VatReturns}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="ETAX">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ETReturns}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="Label" Binding="{Binding TaxType}" Value="WHTX">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.WHTreturns}" />
+                                                            </DataTrigger>
+                                                        </custom:CustomLabel.Triggers>
+                                                    </custom:CustomLabel>
+                                                    <!--<custom:CustomLabel  Text="{Binding FbtText}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />-->
+                                                    <custom:CustomLabel  Text="{Binding RetStatTxt}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand"   />
+                                                </StackLayout>
+                                                <!--StatusTxt-->
+                                                <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                    <yummy:PancakeView  Padding="10,10,10,10" CornerRadius="14"  HeightRequest="24" BorderThickness="1" BackgroundColor="{Binding FrameColorHighlight}"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                                        <custom:CustomLabel Text="{Binding statusMessage}" Style="{StaticResource CaptionLabelGrey}" TextColor="{Binding TextColorHighlight}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                            <custom:CustomLabel.Triggers>
+                                                                <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
+                                                                <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="submitted">
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Submitted}" />
+                                                                </DataTrigger>
+                                                                <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="unsubmitted">
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnSubmitted}" />
+                                                                </DataTrigger>
+                                                                <MultiTrigger TargetType="Label">
+                                                                    <MultiTrigger.Conditions>
+                                                                        <BindingCondition Binding="{Binding StatusMessage}" Value="overdue"/>
+                                                                        <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
+                                                                    </MultiTrigger.Conditions>
+                                                                    <Setter Property="Text"  Value="{x:Static ResourceManager:AppResources.OverDue}" />
+                                                                    <!--multiple Setter elements are allowed-->
+                                                                </MultiTrigger>
+
+                                                            </custom:CustomLabel.Triggers>
+                                                        </custom:CustomLabel>
+                                                        <yummy:PancakeView.Triggers>
+                                                            <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
+                                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding StatusMessage}" Value="submitted">
+                                                                <Setter Property="BackgroundColor" Value="#E5EFED" />
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding StatusMessage}" Value="unsubmitted">
+                                                                <Setter Property="BackgroundColor" Value="#F6E6E8" />
+                                                            </DataTrigger>
+                                                            <MultiTrigger TargetType="yummy:PancakeView">
                                                                 <MultiTrigger.Conditions>
                                                                     <BindingCondition Binding="{Binding StatusMessage}" Value="overdue"/>
                                                                     <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
                                                                 </MultiTrigger.Conditions>
-                                                                <Setter Property="Text"  Value="{x:Static ResourceManager:AppResources.OverDue}" />
-                                                                <!--multiple Setter elements are allowed-->
+                                                                <Setter Property="BackgroundColor"  Value="#F5F5F5" />
+                                                                <!-- multiple Setter elements are allowed -->
                                                             </MultiTrigger>
-
-                                                        </custom:CustomLabel.Triggers>
-                                                    </custom:CustomLabel>
-                                                    <yummy:PancakeView.Triggers>
-                                                        <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
-                                                        <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding StatusMessage}" Value="submitted">
-                                                            <Setter Property="BackgroundColor" Value="#E5EFED" />
-                                                        </DataTrigger>
-                                                        <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding StatusMessage}" Value="unsubmitted">
-                                                            <Setter Property="BackgroundColor" Value="#F6E6E8" />
-                                                        </DataTrigger>
-                                                        <MultiTrigger TargetType="yummy:PancakeView">
-                                                            <MultiTrigger.Conditions>
-                                                                <BindingCondition Binding="{Binding StatusMessage}" Value="overdue"/>
-                                                                <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
-                                                            </MultiTrigger.Conditions>
-                                                            <Setter Property="BackgroundColor"  Value="#F5F5F5" />
-                                                            <!-- multiple Setter elements are allowed -->
-                                                        </MultiTrigger>
-                                                    </yummy:PancakeView.Triggers>
-                                                </yummy:PancakeView>
-                                            </StackLayout>
-                                        </Grid>
-                                        <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                                        <Grid Padding="10,10,10,10" RowSpacing="15"  >
-                                            <Grid.RowDefinitions >
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1.1*"/>
-                                                <ColumnDefinition Width="1*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <!--<Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
-                                            <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <custom:CustomLabel Text="{Binding Vtref}" Style="{StaticResource ValueLabelBlack}" />
-                                            </StackLayout>
-                                            <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                                <custom:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <StackLayout HorizontalOptions="Start">
-                                                    <custom:CustomLabel HorizontalTextAlignment="Start" FlowDirection="LeftToRight"  Text="{Binding FormatedSingleDueDate}" Style="{StaticResource ValueLabelBlack}" />
+                                                        </yummy:PancakeView.Triggers>
+                                                    </yummy:PancakeView>
                                                 </StackLayout>
+                                            </Grid>
+                                            <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                                            <Grid Padding="10,10,10,10" RowSpacing="15"  >
+                                                <Grid.RowDefinitions >
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1.1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <!--<Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
+                                                <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <custom:CustomLabel Text="{Binding Vtref}" Style="{StaticResource ValueLabelBlack}" />
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
+                                                    <custom:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <StackLayout HorizontalOptions="Start">
+                                                        <custom:CustomLabel HorizontalTextAlignment="Start" FlowDirection="LeftToRight"  Text="{Binding FormatedSingleDueDate}" Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
 
-                                            </StackLayout>
-                                        </Grid>
+                                                </StackLayout>
+                                            </Grid>
 
-                                    </StackLayout>
-                                </border:SfBorder >
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.ZZZReturnsNotFound}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}"/>
-                <!--IsLoading-->
-            </StackLayout>
+                                        </StackLayout>
+                                    </border:SfBorder >
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.ZZZReturnsNotFound}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}"/>
 
-            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
-                                         
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                        TextColor="#006450"/>
-                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+
+                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                     </StackLayout>
-                </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="#006450"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
             </Grid>
-        </Grid>
+
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
