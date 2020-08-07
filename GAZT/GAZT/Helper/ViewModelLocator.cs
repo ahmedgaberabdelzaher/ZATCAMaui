@@ -134,6 +134,8 @@ using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
 using EGAZT.Views.NewDesign.VATDeRegistration;
+using EGAZT.Views.NewDesign.ZAKATObjectionPages;
+using EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 
 namespace EGAZT
 {
@@ -171,6 +173,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
 
             SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
+
+            SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
 
             #endregion
 
@@ -427,6 +431,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<VATDeRegistrationInstructionsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public NewZakatObjectionPageViewModel NewZakatObjectionPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NewZakatObjectionPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1554,6 +1573,7 @@ namespace EGAZT
             navigationService.Configure(App.GAZTNewDesignMyReturnsNewPageView, typeof(GAZTNewDesignMyReturnsNewPageView));
             navigationService.Configure(App.TaxpayerCorrespondancePageView, typeof(TaxpayerCorrespondancePageView));
             navigationService.Configure(App.TaxpayerCorrespondanceDetailPageView, typeof(TaxpayerCorrespondanceDetailPageView));
+            navigationService.Configure(App.NewZakatObjectionPageView, typeof(NewZakatObjectionPageView));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));

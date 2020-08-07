@@ -53,6 +53,7 @@ namespace EGAZT
         public static string GAZTForm5PageView = "GAZTFORM5ageView";
         public static string TaxpayerCorrespondancePageView = "TaxpayerCorrespondancePageView";
         public static string TaxpayerCorrespondanceDetailPageView = "TaxpayerCorrespondanceDetailPageView";
+        public static string NewZakatObjectionPageView = "NewZakatObjectionPageView";
         //test
         #endregion
 
