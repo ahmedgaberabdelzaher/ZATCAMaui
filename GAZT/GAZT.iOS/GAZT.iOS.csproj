@@ -1597,4 +1597,31 @@
   <ItemGroup>
     <BundleResource Include="Resources\newui_ic_pdf%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_details.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_details%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_details%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_manageTax.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_manageTax%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_manageTax%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_copy%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zakat_copy%402x.png" />
+  </ItemGroup>
 </Project>

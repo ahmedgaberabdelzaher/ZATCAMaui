@@ -18,11 +18,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnSubmitButtonClicked { get; set; }
-
-        
+//============================start===================================================
+        public ICommand OnSubmitClicked { get; set; }
+        public ICommand OnEditClicked { get; set; }
 
         #region Property
 
+        private bool _isEditVisible = true;
+        public bool isEditVisible
+        {
+            get
+            {
+                return _isEditVisible;
+            }
+            set
+            {
+                _isEditVisible = value;
+                RaisePropertyChanged("isEditVisible");
+            }
+        }
+
+        private bool _isLabelVisible = false;
+        public bool isLabelVisible
+        {
+            get
+            {
+                return _isLabelVisible;
+            }
+            set
+            {
+                _isLabelVisible = value;
+                RaisePropertyChanged("isLabelVisible");
+            }
+        }
+//============================end=================================================================
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -97,8 +126,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            //OnBackButtonClicked = new Xamarin.Forms.Command(() =>
-            //{
+//=======================start==================================================
+            isLabelVisible = false;
+            isEditVisible = true;
+
+            OnSubmitClicked = new Xamarin.Forms.Command(() =>
+            {
+                isEditVisible = false;
+                isLabelVisible = true;
+            });
+
+            OnEditClicked = new Xamarin.Forms.Command(() =>
+            {
+                isLabelVisible = false;
+                isEditVisible = true;
+            });
+//=========================end=====================================================
+            // OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            // {
             //    _navigationService.GoBack();
             //});
 

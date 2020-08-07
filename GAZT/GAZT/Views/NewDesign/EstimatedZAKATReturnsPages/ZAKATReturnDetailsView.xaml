@@ -7,7 +7,7 @@
              xmlns:ResourceManager="clr-namespace:EGAZT"
              BackgroundImageSource="partials_background"
              xmlns:custom="clr-namespace:GAZT"
-             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+             xmlns:local="clr-namespace:EGAZT;assembly=GAZT"
 
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
@@ -56,20 +56,23 @@
 
                     <ScrollView Grid.Row="0">
                     <StackLayout>
-            
-                
-            <custom:CustomLabel Text="Zakat" Style="{StaticResource PageTitleBlack}" />
 
-                <!--Start of Return Details-->
+                            <StackLayout Orientation="Horizontal">
+                            <custom:CustomLabel Text="Zakat" Style="{StaticResource PageTitleBlack}" />
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                <buttons:SfButton  HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="unsubmitted.png"  ShowIcon="True" Text="Unsubmited" BackgroundColor="{StaticResource NeutralLightGrey}" CornerRadius="20" TextColor="Gray" VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                            <!--Start of Return Details-->
                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal" Padding="10">
-                            <Image>
-                                <Image.Source>
-                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                </Image.Source>
-                            </Image>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
+                                    <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
+                                       
+                                            <Image Source="ic_vat_return">
+                                            </Image>
+                                       
+
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
                         </StackLayout>
 
                         <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -96,11 +99,8 @@
                 <!--Start of Zakat Calculation-->
                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal" Padding="10">
-                            <Image>
-                                <Image.Source>
-                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                </Image.Source>
+                                    <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
+                                        <Image Source="zakat_manageTax">
                             </Image>
                             <custom:CustomLabel Text="Zakat Calculation" Style="{StaticResource SectionTitleBlack}"/>
                         </StackLayout>
@@ -167,17 +167,20 @@
 
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
-                                <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                        </Image.Source>
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
+                                        <Image Source="zakat_details" >
                                     </Image>
                                     <custom:CustomLabel Text="Sales Details" Style="{StaticResource SectionTitleBlack}"/>
-                                </StackLayout>
+
+                                        <custom:CustomLabel IsVisible="{Binding isLabelVisible}" HorizontalOptions="EndAndExpand" Text="Edit" Style="{StaticResource ValueLabelBlack}" TextColor="{StaticResource Primary}">
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnEditClicked}"/>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
+                                    </StackLayout>
                                 <BoxView Style="{StaticResource lineSeperator}"/>
 
-                                <StackLayout Spacing="15" Padding="10">
+                                <StackLayout Spacing="0" Padding="10,10,10,0">
                                     <Grid RowSpacing="0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -188,7 +191,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                            <custom:CustomLabel Text="Total VAT Series" Style="{StaticResource SectionTitleBlack}"/>
+                                            <custom:CustomLabel Text="Total VAT Series" Style="{StaticResource ValueLabelBlack}"/>
 
                                             <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
 
@@ -196,8 +199,8 @@
                                         </StackLayout>
                                         <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
                                             <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
-                              
-                                            <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                 <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                 </custom:GAZTBorderlessEntry>
 
@@ -207,12 +210,12 @@
 
                                             </inputLayout:SfTextInputLayout>
 
-                                            <custom:CustomLabel Text="500 SAR" IsVisible="False" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                         </StackLayout>
                                         <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
                                             <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
-                                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                 <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                 </custom:GAZTBorderlessEntry>
 
@@ -221,10 +224,347 @@
                                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                             </inputLayout:SfTextInputLayout>
-                                            <custom:CustomLabel Text="500 SAR" IsVisible="False" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                         </StackLayout>
                                     </Grid>
+                                    <!---->
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                <custom:CustomLabel Text="Average Number of Labour" Style="{StaticResource ValueLabelBlack}"/>
+
+                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+
+                                                </Image>
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
+                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
+                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                <custom:CustomLabel Text="Impost Value" Style="{StaticResource ValueLabelBlack}"/>
+
+                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+
+                                                </Image>
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
+                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
+                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                <custom:CustomLabel Text="Impose from point of Sales" Style="{StaticResource ValueLabelBlack}"/>
+
+                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+
+                                                </Image>
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
+                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+
+                                                <inputLayout:SfTextInputLayout  IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
+                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                <custom:CustomLabel Text="Contact from ETIMAD System" Style="{StaticResource ValueLabelBlack}"/>
+
+                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+
+                                                </Image>
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
+                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
+                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                <custom:CustomLabel Text="Export Value" Style="{StaticResource ValueLabelBlack}"/>
+
+                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+
+                                                </Image>
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
+                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
+                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                <custom:CustomLabel Text="Purchase Value" Style="{StaticResource ValueLabelBlack}"/>
+
+                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+
+                                                </Image>
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
+                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
+                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            </StackLayout>
+                                        </Grid>
+
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                <custom:CustomLabel Text="Capital Amount" Style="{StaticResource ValueLabelBlack}"/>
+
+                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+
+                                                </Image>
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
+                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+
+                                            </StackLayout>
+                                            <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
+                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            </StackLayout>
+                                        </Grid>
+
+
+                                        <!---->
                                 </StackLayout>
+                                    <StackLayout BackgroundColor="AliceBlue" Padding="10">
+                                        <custom:CustomLabel Text="Estimated Sales for the Fiscal Year" Style="{StaticResource BodyLabelBlack}"/>
+                                        <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource SectionTitleBlack}"/>                                        
+                                    </StackLayout>                                
+                                
                             </StackLayout>
                         </border:SfBorder>
 
@@ -232,7 +572,7 @@
                 </ScrollView>
 
                     <StackLayout Grid.Row="1" BackgroundColor="White">
-                        <buttons:SfButton x:Name="btnprimary" Text="Submit" Style="{StaticResource PrimaryButtonStyle}"/>
+                        <buttons:SfButton x:Name="btnprimary" Text="Submit" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnSubmitClicked}"/>
                         <custom:CustomLabel Margin="0,10,0,0" Text="Change to Account Basis" Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalTextAlignment="Center" />
                     </StackLayout>
                 </Grid>
@@ -255,6 +595,18 @@
                     <Image IsVisible="{Binding IsBackBtnVisible}" Source="arrowLeftwhite" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
 
                     </Image>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnBackButtonClicked}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Row="0" Grid.Column="2" IsVisible="{Binding isLabelVisible}">
+                    <Image IsVisible="{Binding IsBackBtnVisible}" Source="close" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+
+                    </Image>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnBackButtonClicked}"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
 
             </Grid>

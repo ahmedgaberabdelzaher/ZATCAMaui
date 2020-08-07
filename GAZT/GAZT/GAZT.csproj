@@ -78,7 +78,6 @@
     <Folder Include="Views\NewDesign\ZakatDeregistration\" />
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\ZakatDeregistration\" />
     <Folder Include="Views\NewDesign\VATLookUp\" />
-    <Folder Include="Views\NewDesign\EstimatedZAKATReturnsPages\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -141,6 +140,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\ZakatReturnDetailsSuccessfullPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\ForgotPasswordPages\RecoverPasswordPageView.xaml">
