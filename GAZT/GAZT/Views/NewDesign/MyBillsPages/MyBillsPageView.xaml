@@ -5,7 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -21,14 +21,6 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <!--<DataTemplate x:Key="BillStatusFilterTemplate">
-                <StackLayout>
-                    <buttons:SfChip HeightRequest="40" WidthRequest="120" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ShowIcon="True" ImageSource="{Binding ImageSource}"  ShowCloseButton="False" ShowSelectionIndicator="False" ImageAlignment="Left" />
-                </StackLayout>
-            </DataTemplate>
-            <local1:ChipDataTemplateSelector x:Key="selector" 
-                                          
-                                            SadEmojiTemplate = "{StaticResource BillStatusFilterTemplate}"/>-->
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -56,37 +48,23 @@
 
                         <StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
                             <Image Source="search">
-                                
+
                             </Image>
                             <Image Source="filter">
 
                             </Image>
                         </StackLayout>
-
-<!--                        <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer      Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </Label>-->
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
-
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
                             <Grid.RowDefinitions>
-                                <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
-
                             </Grid.RowDefinitions>
-                            <ContentPresenter VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Grid.Column="0"
-                        Grid.Row="0" BackgroundColor="White"/>
+                            <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
                 </StackLayout>
-
             </Grid>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
@@ -109,43 +87,29 @@
                     <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                     </custom:CustomLabel>
 
-                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
-                        
-                    </Image>
-<!--                    <Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
-                           Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>-->
-
-                    <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
-                   
-                    </custom:CustomButton>
+                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"></Image>
+                    <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"></custom:CustomButton>
 
                     <syncfusion:SfPicker x:Name="TaxTypePicker"  HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding TaxTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="TaxTypePicker_SelectionChanged">
                         <syncfusion:SfPicker.Behaviors>
-                            <custom1:SfPickerBehavior />
+                            <customcontrol:SfPickerBehavior />
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
                 </Grid>
                 <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
-                <StackLayout Margin="0,8,0,8" HorizontalOptions="Center" Spacing="2">
-                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    
-                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" SelectionChanged="chipgroup_SelectionChanged" VerticalOptions="Center" ChipPadding="1">
-                            <buttons:SfChipGroup.ItemTemplate>
-                                <DataTemplate >
-                                    <StackLayout Margin="0" Padding="0" Spacing="2">
-                                        <buttons:SfChip HorizontalOptions="Start" HeightRequest="32"  BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{Binding Text}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" TextColor="{StaticResource NeutralBlack}"  BackgroundColor="White"  ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True" CornerRadius="20" VerticalTextAlignment="Center" VerticalOptions="Center"/>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </buttons:SfChipGroup.ItemTemplate>
-                        </buttons:SfChipGroup>
-                    </ScrollView>
-
-                </StackLayout>
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" SelectionChanged="chipgroup_SelectionChanged" VerticalOptions="Center" ChipPadding="1">
+                        <buttons:SfChipGroup.ItemTemplate>
+                            <DataTemplate >
+                                <StackLayout Margin="0" Padding="0" Spacing="2">
+                                    <buttons:SfChip HeightRequest="32"  BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{Binding Text}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" TextColor="{StaticResource NeutralBlack}"  BackgroundColor="White"  ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True" CornerRadius="20" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </buttons:SfChipGroup.ItemTemplate>
+                    </buttons:SfChipGroup>
+                </ScrollView>
             </StackLayout>
             <StackLayout Grid.Row="1">
-                <!-- My Bills template UI Starts -->
-
-                <!-- My Bills template UI Ends  ItemTapped="Bills_ItemTapped" -->
 
                 <ListView  x:Name="Bills" ItemsSource="{Binding MyBills,Mode=TwoWay}" IsVisible="{Binding IsListVisible}" VerticalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand" HasUnevenRows="True" BackgroundColor="White" SeparatorVisibility="None" ItemTapped="Bills_ItemTapped">
@@ -200,7 +164,6 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <!--<Label Grid.Row="0" Grid.Column="0" Text="{Binding TestDueAmount}" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" Text="{Binding TestDueAmount}" VerticalOptions="CenterAndExpand"  >
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
