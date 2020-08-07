@@ -102,6 +102,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
         private string _email;
         public string Email
         {
@@ -115,6 +116,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("Email");
             }
         }
+        private bool _Enabled;
+        public bool Enabled
+        {
+            get { return _Enabled; }
+            set
+            {
+                _Enabled = value;
+                RaisePropertyChanged("Enabled");
+            }
+        }
+
 
         private bool _passwordLayoutVisibility = false;
         public bool PasswordLayoutVisibility
@@ -1708,6 +1720,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await Task.Run(() =>
                 {
                     IsLoading = true;
+                    Enabled = false;
                 });
                 await Task.Run(async () =>
                 {

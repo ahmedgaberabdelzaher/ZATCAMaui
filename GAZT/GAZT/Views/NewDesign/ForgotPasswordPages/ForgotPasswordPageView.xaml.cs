@@ -204,6 +204,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
             // Reset values
             viewModel.currentAttempts = 0;
+            viewModel.Enabled = true;
         }
 
     }
