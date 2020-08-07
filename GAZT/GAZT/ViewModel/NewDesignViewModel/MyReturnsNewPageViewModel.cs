@@ -2060,8 +2060,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
                {
                 new ChipModel(){Text =AppResources.Submitted, TemplateType = "Submitted", ImageSource="submited.png"},
-                new ChipModel(){Text =AppResources.OverDue, TemplateType = "OverDue",ImageSource = "unsubmitted.png"},
-                new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "clockNew.png"},
+                new ChipModel(){Text =AppResources.OverDue, TemplateType = "OverDue",ImageSource = "clockNew.png"},
+                new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "unsubmitted.png"},
                 //new ChipModel(){Text =AppResources.All, TemplateType = "All",ImageSource = "clockNew.png"},
                };
             

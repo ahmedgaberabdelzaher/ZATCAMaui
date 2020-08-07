@@ -15,7 +15,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignDashBoardPageView : ContentPage
     {
-
         #region Variable
         GAZTNewDesignDashBoardPageViewModel viewModel;
         #endregion
@@ -26,7 +25,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 InitializeComponent();
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-                
+
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
                 SetLTR();
@@ -53,46 +52,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.MenuViewVisible = false;
                 viewModel.HomeViewVisible = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
         }
 
         #region Method
-        
-        private void OnHomeTapped(object sender, EventArgs e)
-        {
-            viewModel.MenuViewVisible = false;
-            viewModel.HomeViewVisible = true;
-            viewModel.HomeIndicatorColor = Color.DarkGreen;
-            viewModel.MenuIndicatorColor = Color.White;
-            viewModel.TabbarColor = Color.DarkGray;
-            viewModel.StackMenuColor= Color.White;
-
-            //MenuView.IsVisible = false;
-            //HomeView.IsVisible = true;
-            //HomeIndicator.BackgroundColor = Color.DarkGreen;
-            //MenuIndicator.BackgroundColor = Color.White;
-            //Tabbar.BorderColor = Color.DarkGray;
-            //stackMenu.BackgroundColor = Color.White;
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            viewModel.MenuViewVisible = true;
-            viewModel.HomeViewVisible = false;
-            viewModel.HomeIndicatorColor = Color.White;
-
-            viewModel.MenuIndicatorColor = Color.DarkGreen;
-            viewModel.StackMenuColor = Color.Transparent;
-            viewModel.TabbarColor = Color.Transparent;
-            //HomeView.IsVisible = false;
-            //MenuView.IsVisible = true;
-            //HomeIndicator.BackgroundColor = Color.White;
-            //MenuIndicator.BackgroundColor = Color.DarkGreen;
-            //stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
-        }
 
         protected override void OnAppearing()
         {
@@ -109,7 +75,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 await LoadData();
 
-                if(viewModel!=null)
+                if (viewModel != null)
                     viewModel.IsLoading = false;
             });
         }
@@ -124,17 +90,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 App.DisplayProgressView();
                 await viewModel.LoadDashboardData();
-                Device.BeginInvokeOnMainThread(() => {
+                Device.BeginInvokeOnMainThread(() =>
+                {
                     viewModel.BillCount = string.Empty;
                     viewModel.BillsAndReturnsCommitments = null;
-                  
+
                     viewModel.PopulateBillsInformation();
                     viewModel.PopulateReturnsInformation();
                     viewModel.PopualateCommittmentsInformation();
                     App.HideProgressView();
                 });
 
-               // viewModel.PopulateeServicesApplicableToTheTaxPayer();
+                // viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch (Exception ex)
             {
@@ -152,7 +119,38 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         #endregion
 
-        private async  void TappedOnMyBills(object sender, EventArgs e)
+        private void OnHomeTapped(object sender, EventArgs e)
+        {
+            viewModel.MenuViewVisible = false;
+            viewModel.HomeViewVisible = true;
+            viewModel.HomeIndicatorColor = Color.DarkGreen;
+            viewModel.MenuIndicatorColor = Color.White;
+            viewModel.TabbarColor = Color.DarkGray;
+            viewModel.StackMenuColor = Color.White;
+
+            //MenuView.IsVisible = false;
+            //HomeView.IsVisible = true;
+            //HomeIndicator.BackgroundColor = Color.DarkGreen;
+            //MenuIndicator.BackgroundColor = Color.White;
+            //Tabbar.BorderColor = Color.DarkGray;
+            //stackMenu.BackgroundColor = Color.White;
+        }
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            viewModel.MenuViewVisible = true;
+            viewModel.HomeViewVisible = false;
+            viewModel.HomeIndicatorColor = Color.White;
+
+            viewModel.MenuIndicatorColor = Color.DarkGreen;
+            viewModel.StackMenuColor = Color.Transparent;
+            viewModel.TabbarColor = Color.Transparent;
+            //HomeView.IsVisible = false;
+            //MenuView.IsVisible = true;
+            //HomeIndicator.BackgroundColor = Color.White;
+            //MenuIndicator.BackgroundColor = Color.DarkGreen;
+            //stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
+        }
+        private async void TappedOnMyBills(object sender, EventArgs e)
         {
             await Task.Run(() =>
             {
@@ -171,8 +169,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
 
         }
-
-        private async  void TappedOnMyReturns(object sender, EventArgs e)
+        private async void TappedOnMyReturns(object sender, EventArgs e)
         {
             //App.DisplayProgressView();
             await Task.Run(() =>
@@ -186,20 +183,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 3);
 
             });
-          
-        }
 
-   
-        private async  void TappedOnSignleReturns(object sender, EventArgs e)
+        }
+        private async void TappedOnSignleReturns(object sender, EventArgs e)
         {
-           // App.DisplayProgressView();
+            // App.DisplayProgressView();
 
             string controltype = sender.GetType().ToString();
 
-                Syncfusion.XForms.Cards.SfCardView arrowImage = sender as Syncfusion.XForms.Cards.SfCardView;
+            Syncfusion.XForms.Cards.SfCardView arrowImage = sender as Syncfusion.XForms.Cards.SfCardView;
             ReturnTypeAndCorrepsondingCount BModel = (ReturnTypeAndCorrepsondingCount)arrowImage.BindingContext;
-                if (BModel.ReturnTypeName == AppResources.Submitted)
-                {
+            if (BModel.ReturnTypeName == AppResources.Submitted)
+            {
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
@@ -214,9 +209,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
                 });
-                }
-                if (BModel.ReturnTypeName == AppResources.UnSubmitted)
-                {
+            }
+            if (BModel.ReturnTypeName == AppResources.UnSubmitted)
+            {
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
@@ -230,9 +225,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
                 });
-                }
-                if (BModel.ReturnTypeName == AppResources.OverDue)
-                {
+            }
+            if (BModel.ReturnTypeName == AppResources.OverDue)
+            {
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
@@ -245,18 +240,17 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
                 });
-              
-                }
-           
-        }
 
+            }
+
+        }
         private async void paidClicked(object sender, EventArgs e)
         {
             // App.DisplayProgressView();
 
             await Task.Run(() =>
             {
-               viewModel.IsLoading = true;
+                viewModel.IsLoading = true;
 
             });
             Device.BeginInvokeOnMainThread(() =>
@@ -269,8 +263,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
 
         }
-
-        private async  void partiallyClicked(object sender, EventArgs e)
+        private async void partiallyClicked(object sender, EventArgs e)
         {
             //  App.DisplayProgressView();
             await Task.Run(() =>
@@ -287,10 +280,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
         }
-
-        private async  void unPaidClicked(object sender, EventArgs e)
+        private async void unPaidClicked(object sender, EventArgs e)
         {
-         //   App.DisplayProgressView();
+            //   App.DisplayProgressView();
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
@@ -306,10 +298,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
         }
-
         private async void Logout_Tapped(System.Object sender, System.EventArgs e)
         {
-        //    App.DisplayProgressView();
+            //    App.DisplayProgressView();
 
             if (App.IsArabic)
             {
@@ -330,8 +321,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 }
             }
         }
-
-        private async  void Label_MyBills(object sender, EventArgs e)
+        private async void Label_MyBills(object sender, EventArgs e)
         {
             //     App.DisplayProgressView();
             await Task.Run(() =>
@@ -347,15 +337,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
 
             });
-          
+
         }
-
-        private async  void Label_MyRetuns_Tapped(object sender, EventArgs e)
+        private async void Label_MyRetuns_Tapped(object sender, EventArgs e)
         {
-     //       App.DisplayProgressView();   await Task.Run(() =>
-          
+            //       App.DisplayProgressView();   await Task.Run(() =>
 
-          
+
+
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
@@ -369,29 +358,25 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void Label_MyProfile_Tapped(object sender, EventArgs e)
         {
-   //         App.DisplayProgressView();
+            //         App.DisplayProgressView();
 
             viewModel._navigationService.NavigateTo(App.TaxPayerProfilePageView);
         }
-
         private void Aboutus_Tapped(object sender, EventArgs e)
         {
-     //       App.DisplayProgressView();
+            //       App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.AboutUsPageView);
         }
-
         private void Contactus_Tapped(object sender, EventArgs e)
         {
-      //      App.DisplayProgressView();
+            //      App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.ContactUsPageView);
         }
-
         private void PrivacyPolicy_Tapped(object sender, EventArgs e)
         {
-    //        App.DisplayProgressView();
+            //        App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
         }
-
         private void ChangeLanguage_Tapped(object sender, EventArgs e)
         {
             try
@@ -429,12 +414,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 OnAppearing();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
         }
-
         public void SetRTLDirection()
         {
             try
@@ -457,7 +441,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 180;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -484,19 +468,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 0;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-            
-        }
 
+        }
         private void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)
         {
-         //   App.DisplayProgressView();
+            //   App.DisplayProgressView();
             viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
         }
-       private async  void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
+        private async void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
         {
             await Task.Run(() =>
             {
@@ -508,10 +491,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);
 
             });
-           
-        }
 
-        private async  void TaxpayerCertificate_Tapped(object sender, EventArgs e)
+        }
+        private async void TaxpayerCertificate_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() =>
             {
@@ -523,7 +505,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
 
             });
-           
+
         }
     }
 }
