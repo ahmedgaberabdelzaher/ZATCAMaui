@@ -29,6 +29,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private Color _menuIndicatorColor = Color.White;
         private Color _tabbarColor = Color.DarkGray;
         private Color _stackMenuColor;
+
         private string _NextCommitmentsString = AppResources.ZZZZNextCommitments;
         private string _ReturnString = AppResources.NDReturns;
         private string _BillString = AppResources.Bills;
@@ -36,10 +37,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private string _PartiallyPaidString = AppResources.PartiallyPaid;
         private string _UnPaidString = AppResources.UnPaid;
         private string _TotalString = AppResources.NDTotal;
-
-
-
-
         private Dashboard DashboardData = null;
         private CalendarEventCollection _CommittmentsSchedule = null;
         private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _BillsAndReturnsCommitments = null;
@@ -164,8 +161,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-
-
         private string _nDCommitments = AppResources.NDCommitments;
         public string NDCommitments
         {
@@ -180,7 +175,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-
         private string _zBills = AppResources.Bills;
         public string ZBills
         {
@@ -194,7 +188,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("ZBills");
             }
         }
-
 
         private string _returns = AppResources.Returns;
         public string Return
@@ -238,7 +231,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-
         private string _privacyandPolicy = AppResources.ZZZPrivacyandPolicy;
         public string PrivacyandPolicy
         {
@@ -267,7 +259,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-
         public ObservableCollection<OverduePaymentAndUnSubmittedReturn> Bills
         {
             get
@@ -279,8 +270,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._Bills = value;
                 this.RaisePropertyChanged("Bills");
             }
-        }
-        
+        }        
         public ObservableCollection<ReturnTypeAndCorrepsondingCount> SegregatedReturnTypesAndCorrepsondingCounts
         {
             get
@@ -328,9 +318,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._TaxPayerProfile = value;
                 this.RaisePropertyChanged("TaxPayerProfile");
             }
-        }
-
-     
+        }     
         public bool MenuViewVisible
         {
             get
@@ -342,10 +330,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._menuViewVisible = value;
                 this.RaisePropertyChanged("MenuViewVisible");
             }
-        }
-
-
-       
+        }       
         public bool HomeViewVisible
         {
             get
@@ -357,9 +342,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._homeViewVisible = value;
                 this.RaisePropertyChanged("HomeViewVisible");
             }
-        }
-
-        
+        }        
         public Color HomeIndicatorColor
         {
             get
@@ -371,9 +354,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._homeIndicatorColor = value;
                 this.RaisePropertyChanged("HomeIndicatorColor");
             }
-        }
-
- 
+        } 
         public Color MenuIndicatorColor
         {
             get
@@ -386,8 +367,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("MenuIndicatorColor");
             }
         }
-
-     
         public Color TabbarColor
         {
             get
@@ -399,8 +378,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._tabbarColor = value;
                 this.RaisePropertyChanged("TabbarColor");
             }
-        }
-       
+        }       
         public Color StackMenuColor
         {
             get
@@ -413,8 +391,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("StackMenuColor");
             }
         }
-
-
         public string NextCommitmentsString
         {
             get
@@ -427,7 +403,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("NextCommitmentsString");
             }
         }
-
         public string ReturnString
         {
             get
@@ -440,7 +415,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("ReturnString");
             }
         }
-
         public string PaidString
         {
             get
@@ -489,7 +463,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("BillString");
             }
         }
-
         public string TotalString
         {
             get
@@ -502,14 +475,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this.RaisePropertyChanged("TotalString");
             }
         }
-
-
-        //MenuView.IsVisible = false;
-        //    HomeView.IsVisible = true;
-        //    HomeIndicator.BackgroundColor = Color.DarkGreen;
-        //    MenuIndicator.BackgroundColor = Color.White;
-        //    Tabbar.BorderColor = Color.DarkGray;
-        //    stackMenu.BackgroundColor = Color.White;
 
         #endregion
 
@@ -527,14 +492,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Task GetDashboardDataTask = null;
             Task GetBillsTask = null;
             Task GetReturnsTask = null;
-
-            //BillCount = string.Empty;
-
-            //if (BillsAndReturnsCommitments != null)
-            //{
-            //    BillsAndReturnsCommitments.Clear();
-            //}
-
+          
             if (App.TP != null)
             {
                 GetDashboardDataTask = Task.Run(() =>
@@ -1113,7 +1071,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             return amountWithComma;
         }
-
         public async Task LogOut()
         {
             await Task.Run(() =>
