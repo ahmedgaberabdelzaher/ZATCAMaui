@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace ZakatForm5Model
 {
-    public partial class ZakatForm5DataResult
+    public partial class ZakatForm5Data
     {
-        public ZakatForm5Data ZakatForm5DataSet { get; set; }
+        public ZakatForm5DataResult D { get; set; }
     }
 
-    public partial class ZakatForm5Data
+    public partial class ZakatForm5DataResult
     {
         public Metadata Metadata { get; set; }
         public string AttenbChk { get; set; }
@@ -180,7 +180,7 @@ namespace ZakatForm5Model
         public string Ofbnum { get; set; }
         public string OfficerUidz { get; set; }
         public string Omode { get; set; }
-        public long? PeriodKeyz { get; set; }
+        public string PeriodKeyz { get; set; }
         public string PerslText { get; set; }
         public string PortalUsrz { get; set; }
         public string RegIdz { get; set; }
@@ -268,7 +268,7 @@ namespace ZakatForm5Model
         public long? TincrnoInd { get; set; }
         public string Tin { get; set; }
         public string ContractingName { get; set; }
-        public long? MocContractor { get; set; }
+        public string MocContractor { get; set; }
         public string ContractDtTp { get; set; }
         public string OriginalValFg { get; set; }
         public string ContractDur { get; set; }
@@ -402,7 +402,7 @@ namespace ZakatForm5Model
         public string IntrPurchase { get; set; }
         public string ForgPurchase { get; set; }
         public string PerSalesGain { get; set; }
-        public long? Persl { get; set; }
+        public string Persl { get; set; }
         public string PerslDesc { get; set; }
         public string ImportTot { get; set; }
         public string Import3RdParty { get; set; }
@@ -430,11 +430,11 @@ namespace ZakatForm5Model
 
     public enum ASitedocs { Empty, The000 };
 
-    public enum MainInd { DeptOfZakatIncomeTax };
+    public enum MainInd { DeptOfZakatIncomeTax, Empty };
 
-    public enum OutletTp { Main };
+    public enum OutletTp { Main, رئيسي };
 
     public enum Waers { Sar };
 
-    public enum Isamend { N, Y };
+    public enum Isamend { Empty, N };
 }

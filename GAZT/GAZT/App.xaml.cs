@@ -22,6 +22,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 
+
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
 {
@@ -44,6 +45,8 @@ namespace EGAZT
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
         public static string TINDeregistrationPageView = "TINDeregistrationPageView";
+        public static string VATDeregistrationDetailsPage = "VATDeregistrationDetailsPage";
+        public static string VATDeregistrationInstructionsPage = "VATDeregistrationInstructionsPage";
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
         public static string GAZTNewDesignRecoverPasswordPageView = nameof(GAZTNewDesignRecoverPasswordPageView);
@@ -222,6 +225,7 @@ namespace EGAZT
             VATDeclaration vAT = null;
             CustomNavigation navigationPage;
             bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
+
             if (!hasKey)
             {
                 navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
