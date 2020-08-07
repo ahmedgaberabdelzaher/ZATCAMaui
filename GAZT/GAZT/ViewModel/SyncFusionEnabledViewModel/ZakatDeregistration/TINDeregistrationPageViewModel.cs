@@ -18,7 +18,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        public ICommand GoBackClick { get; set; }
+        public ICommand GoBackBtnTapped { get; set; }
+        public ICommand CloseBtnTapped { get; set; }
+
         #endregion
 
         #region Commands
@@ -31,7 +33,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         #region Properties
 
-        private bool _isBackButtonVisible = true;
+        public enum ProcessStep
+        {
+            Step1 = 0,
+            Step2, Step3, Step4, Step5, Step6
+        }
+
+        private ProcessStep _currentStep { get; set; }
+        public ProcessStep CurrentStep
+        {
+            get
+            {
+                return _currentStep;
+            }
+            set
+            {
+                _currentStep = value;
+                RaisePropertyChanged("CurrentStep");
+            }
+        }
+
+        private bool _isBackButtonVisible { get; set; }
         public bool IsBackButtonVisible
         {
             get
@@ -309,11 +331,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+
+            CloseBtnTapped = new Command(async () =>
             {
-                _navigationService.GoBack();
+                //
             });
 
+            GoBackBtnTapped = new Command(this.GoBackBtnClicked);
             ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
             OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
             AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
@@ -352,6 +376,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableReasonView()
         {
+            CurrentStep = ProcessStep.Step1;
             SelectedOutletOption = OutletDecisionOptions[0];
             SelectedOutletOptionIndex = 0;
             IsBackButtonVisible = false;
@@ -364,6 +389,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableOutletDetaislView()
         {
+            CurrentStep = ProcessStep.Step2;
             IsBackButtonVisible = true;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = true;
@@ -374,6 +400,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableAttachmentsView()
         {
+            CurrentStep = ProcessStep.Step3;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = true;
@@ -383,6 +410,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableDeclarationView()
         {
+            CurrentStep = ProcessStep.Step4;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
@@ -392,11 +420,55 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableSummaryView()
         {
+            CurrentStep = ProcessStep.Step5;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = true;
+        }
+
+        public void GoBackBtnClicked()
+        {
+            try
+            {
+                switch(CurrentStep)
+                {
+                    case ProcessStep.Step2:
+                    {
+                        EnableReasonView();
+                        break;
+                    }
+                    case ProcessStep.Step3:
+                    {
+                        EnableOutletDetaislView();
+                        break;
+                    }
+                    case ProcessStep.Step4:
+                    {
+                        EnableAttachmentsView();
+                        break;
+                    }
+                    case ProcessStep.Step5:
+                    {
+                        EnableDeclarationView();
+                        break;
+                    }
+                }
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
         }
 
         public async void ReasonContinueBtnClicked()
