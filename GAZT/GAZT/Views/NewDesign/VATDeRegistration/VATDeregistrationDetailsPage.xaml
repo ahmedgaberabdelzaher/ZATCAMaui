@@ -407,10 +407,10 @@
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
 
-                                    <border:SfBorder    Style="{StaticResource GreyBorderFrame}">
+                                    <border:SfBorder  Style="{StaticResource GreyBorderFrame}">
                     <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
                         <Grid >
-                        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="0">
+                        <Image Grid.Row="0" Grid.Column="0" >
                             <Image.Source>
                                 <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="Small"
                                              Glyph="{x:Static FontImage:IconFonts.Information}"/>
