@@ -9,8 +9,17 @@
                   xmlns:local="clr-namespace:EGAZT.CustomControl"
                           xmlns:ResourceManager="clr-namespace:EGAZT"
                                xmlns:custom2="clr-namespace:EGAZT"
-
+                           xmlns:FontImage="clr-namespace:MVP.FontIcons"
                   x:Class="EGAZT.Views.NewDesign.VATDeRegistration.VATDeregistrationInstructionsPage">
+        <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+    </ContentPage.Resources>
     
          <yummy:PancakeView BackgroundColor="Transparent" CornerRadius="32,32,0,0" Padding="0" Margin="0,0,0,0">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
@@ -32,10 +41,19 @@
                     </Grid.ColumnDefinitions>
                     <WebView x:Name="TCWebView" HeightRequest="200" WidthRequest="300" HorizontalOptions="FillAndExpand" />
                 </Grid>-->
-                 <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" Grid.Row="1" Grid.Column="1">
-                    <StackLayout Padding="15">
-                        <Label  Text="What will be your total VAT taxable sales value in upcoming 12 months?"   VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}"></Label>            
-                      
+                 <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" Grid.Row="1" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal" Padding="15">
+<Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.Information}"/>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="TIN Number" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Vertical" >
+                            <Label Text="3101503102" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+
+                        </StackLayout>                      
                     </StackLayout>
                 </border:SfBorder >
                 <StackLayout Grid.Row="2" Grid.Column="0"  Margin="0,0,0,0" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
@@ -48,31 +66,13 @@
                         </CheckBox>
                         <custom:CustomLabel Text="{x:Static custom2:AppResources.ZZIagreeontermsAndconditions}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Start" HorizontalTextAlignment="Center" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
                     </StackLayout>
-                    <buttons:SfButton x:Name="MainButtonName" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource SSTArabicMedium}"   Margin="0"
-                 CornerRadius="0"
-                    HeightRequest="56"
-                    
-                    Style="{StaticResource SfButtonStyle}" 
-                    Text="VAT DeRegistration"
-                    IsEnabled="{Binding IsButtonEnabled}"
-                    Command="{Binding OnSubmitClicked}" 
-                      VerticalOptions="End" FontAttributes="Bold" 
-                                      FontSize="15"   Grid.ColumnSpan="2"  BackgroundColor="#d49504" /> <!--Clicked="btnContinue_Clicked"-->
+               <buttons:SfButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnContinueSummary" Command="{Binding SummaryContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                   Style="{StaticResource PrimaryButtonStyle}"/> <!--Clicked="btnContinue_Clicked"-->
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="White" Padding="0" Margin="15,-15,15,0">
-                    <Grid Margin="0,7,0,0">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Instructions &amp; Conditions" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                    </Grid>
+                        <Label Text="Instructions &amp; Conditions"  VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                   
                 </StackLayout>
                 
             </Grid>
