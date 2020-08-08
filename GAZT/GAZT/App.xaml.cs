@@ -21,6 +21,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
+using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -224,11 +225,11 @@ namespace EGAZT
             bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
             if (!hasKey)
             {
-                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new TaxpayerCorrespondanceDetailPageView()) { BarTextColor = Color.White };
             }
             else
             {
-                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new TaxpayerCorrespondanceDetailPageView()) { BarTextColor = Color.White };
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
