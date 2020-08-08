@@ -29,6 +29,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
+            if (CorrModel != null)
+            {
+                viewModel.CorrespondenceTitle = CorrModel.Title;
+                viewModel.CorrespondenceDateTime = CorrModel.DateAndTime;
+            }
             try
             {
                 CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
@@ -44,6 +49,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                         //Attachment_Label.GestureRecognizers.Clear();
                         //Attachment_Label.TextColor = Color.FromHex("#A9A9A9");
                         //viewModel.IsAttachmentEnabled = false;
+                        viewModel.IsAttachmentEnabled = false;
                     }
                 }
                 PopToRootPage();
@@ -72,7 +78,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     var htmlSource = new HtmlWebViewSource();
                     htmlSource.Html = newHTMLForFonts;
                     htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
-                 //   CorWebView.Source = htmlSource;
+                    CorWebView.Source = htmlSource;
                 }
                 else
                 {
@@ -80,7 +86,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     var htmlSource = new HtmlWebViewSource();
                     htmlSource.Html = newHTMLForFonts;
                     htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
-                  //  CorWebView.Source = htmlSource;
+                    CorWebView.Source = htmlSource;
                 }
             }
             if (CorrModel != null)

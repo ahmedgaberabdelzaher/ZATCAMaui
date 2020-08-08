@@ -5,6 +5,7 @@ using GAZT.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -26,6 +27,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _correspondenceTitle = value;
                 RaisePropertyChanged("CorrespondenceTitle");
+            }
+        }
+        private string _correspondenceDateTime = string.Empty;
+        public string CorrespondenceDateTime
+        {
+            get
+            {
+                return _correspondenceDateTime;
+            }
+            set
+            {
+                _correspondenceDateTime = value;
+                RaisePropertyChanged("CorrespondenceDateTime");
             }
         }
         private CorrespondanceModel _correspondenceD = null;
@@ -124,6 +138,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public async void ShowPdf(string pdfUrl)
         {
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
             if (pdfUrl != null)
             {
                 _navigationService.NavigateTo(App.PdfView, pdfUrl);
@@ -133,9 +151,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //pop that certificate is not available
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                   IsLoading = false;
                     await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 });
             }
+            await Task.Run(() =>
+            {
+               IsLoading = false;
+            });
             //}
         }
     }

@@ -32,6 +32,17 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+           //     ImageBackArrow.Rotation = 0;
+
+                Image_backArrow.Rotation = 0;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+              //  viewModel.RotationForImageInArabic = 180;
+                Image_backArrow.Rotation = 180;
+             //   ImageBackArrow.Rotation = 180;
+
             }
         }
         public void ChangeAeroIcon()
@@ -49,15 +60,23 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
         {
             base.OnAppearing();
          
-            try
+            try 
             {
+                 await  Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
                 await viewModel.onPageLoad();
                 viewModel.SetData();
-              //  viewModel.SetAllCorrespondancedata();
-  ;            }
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+                //  viewModel.SetAllCorrespondancedata();
+                ;            }
             catch (Exception ex)
             {
-
+                viewModel.IsLoading = true;
             }
         }
 
@@ -80,5 +99,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
 
             }
         }
+
+        private void ListView_Correspondance_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+            CorrespondanceModel Correspondence = ((Xamarin.Forms.ListView)sender).SelectedItem as CorrespondanceModel;
+            viewModel.ShowCorrespondenceDetails(Correspondence);
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+        }
+      
+        
     }
 }
