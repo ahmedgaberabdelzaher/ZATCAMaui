@@ -79,6 +79,7 @@
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\ZakatDeregistration\" />
     <Folder Include="Views\NewDesign\VATLookUp\" />
     <Folder Include="Views\NewDesign\EstimatedZAKATReturnsPages\" />
+    <Folder Include="Views\NewDesign\VATDeRegistration\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -127,6 +128,15 @@
     <Compile Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountTINPageView.xaml.cs">
       <DependentUpon>UnlockAccountTINPageView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewDesign\VATDeRegistration\VATDeRegistrationDetailsPage.xaml.cs">
+      <DependentUpon>VATDeregistrationDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDesign\VATDeRegistration\VATDeRegistrationInstructionsPage.xaml.cs">
+      <DependentUpon>VATDeregistrationInstructionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDesign\VATDeRegistration\VATDeregistrationDetailsPage.xaml.cs">
+      <DependentUpon>VATDeregistrationDetailsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="AppResources.resx">
@@ -143,6 +153,9 @@
     <EmbeddedResource Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\ZakatReturnDetailsSuccessfullPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\ForgotPasswordPages\RecoverPasswordPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -155,9 +168,6 @@
     <EmbeddedResource Update="Views\NewDesign\MyReturnsPages\MyReturnsNewPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondanceDetailPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondancePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -165,9 +175,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\AdjustmentPopupPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\FileAttachmentPopupPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml">
@@ -189,6 +196,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\ZakatForm5\ZakatForm5PageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\ZAKATObjectionPages\NewZakatObjectionPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\ZAKATObjectionPages\ZakatObjectionSuccessfullPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml">

@@ -84,20 +84,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    string lang = UtilityManager.GetLanguageParameter();
-                   var ZakatForm5DataResult = await WebServiceManager.GAZTZakatForm5Data(lang);
+
+                    ZakatForm5DataResult ZakatForm5DataResult = await WebServiceManager.GAZTZakatForm5Data();
 
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (ZakatForm5DataResult != null)
                     {
-                        
 
-                        
+                        //Bind values to UI
+                        PerslText = ZakatForm5DataResult.PerslText;
+
+                        IsLoading = false;
+
                     }
                     else
                     {
                         isNoDataLableVisible = true;
+                        IsLoading = false;
                     }
                 }
                 catch (Exception e)

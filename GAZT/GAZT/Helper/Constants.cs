@@ -38,10 +38,10 @@ namespace GAZT.Helper
 
         #endregion
 
-        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = DevDomainForCookies;
-        //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
+        /* public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+         public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+         public static string DomainUrlForCookies = DevDomainForCookies;
+         public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
 
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
@@ -180,7 +180,7 @@ namespace GAZT.Helper
         #region Form5
         #endregion
         #region ZakatForm5
-        public static string Z_RET_F05_ZKTE = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_RET_F05_ZKTE_SRV/ZKTE_HEADERSet(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',";
+        public static string Z_RET_F05_ZKTE = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_RET_F05_ZKTE_SRV/ZKTE_HEADERSet";
         #endregion
     }
 }

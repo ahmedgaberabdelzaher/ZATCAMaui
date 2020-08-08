@@ -4441,7 +4441,16 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
    <data name="TinDeregistrationDesignation" xml:space="preserve">
     <value>Designation</value>
   </data> 
-
+  <data name="TinDeregistrationSuccess" xml:space="preserve">
+    <value>Your TIN Deregistration is submitted successfully</value>
+  </data> 
+   <data name="TinDeregistrationDownloadConfirmation" xml:space="preserve">
+    <value>Download Confirmation</value>
+  </data> 
+  <data name="TinDeregistrationRegistrationDetails" xml:space="preserve">
+    <value>Registration Details</value>
+  </data> 
+      
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
   </data>

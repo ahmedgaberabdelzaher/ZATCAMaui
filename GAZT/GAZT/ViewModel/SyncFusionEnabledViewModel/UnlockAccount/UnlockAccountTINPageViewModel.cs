@@ -51,7 +51,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 _currentAttempts = value;
                 if (_currentAttempts == 5)
                 {
-                    ButtonDisableColor = Color.FromHex("#d99b29");
+                    ButtonDisableColor = Color.FromHex("#006450");
                     IsResendOTPEnabled = true;
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
                     IsVerifyOTPEnabled = false;
@@ -226,7 +226,59 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _otpFourthDigit = value;
+
                 RaisePropertyChanged("OtpFourthDigit");
+
+                if (_otpFourthDigit.Length > 0)
+                {
+                    if(IsOtpAPICalled == false)
+                    {
+                        IsOtpAPICalled = true;
+                        ConfirmOtpBtnCommand(string.Empty);
+                    }
+                }
+            }
+        }
+
+        private bool _isOtpAPICalled = false;
+        public bool IsOtpAPICalled
+        {
+            get
+            {
+                return _isOtpAPICalled;
+            }
+            set
+            {
+                _isOtpAPICalled = value;
+                RaisePropertyChanged("IsOtpAPICalled");
+            }
+        }
+
+        private string _prevOtp;
+        public string PrevOtp
+        {
+            get
+            {
+                return _prevOtp;
+            }
+            set
+            {
+                _prevOtp = value;
+                RaisePropertyChanged("PrevOtp");
+            }
+        }
+
+        private string _newOtp;
+        public string NewOtp
+        {
+            get
+            {
+                return _newOtp;
+            }
+            set
+            {
+                _newOtp = value;
+                RaisePropertyChanged("PrevOtp");
             }
         }
 
@@ -485,7 +537,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 RaisePropertyChanged(() => IsOTPEntryEnable);
             }
         }
-        private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
+        private Color _buttonDisableColor = Color.FromHex("#999999");
         public Color ButtonDisableColor
         {
             get
@@ -511,7 +563,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = Color.FromHex("#d99b29");
+                    ButtonDisableColor = Color.FromHex("#006450");
                     IsResendOTPEnabled = true;
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
                     IsVerifyOTPEnabled = false;
@@ -538,6 +590,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 throw new ArgumentNullException("dialogService");
             }
 
+            OtpFirstDigit = string.Empty;
+            OtpSecondDigit = string.Empty;
+            OtpThirdDigit = string.Empty;
+            OtpFourthDigit = string.Empty;
 
             _CancellationTokenSource = new CancellationTokenSource();
 
@@ -559,7 +615,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         public void EnableTINView()
         {
             TxtTIN = string.Empty;
-
+            IsOtpAPICalled = false;
+            OtpFirstDigit = string.Empty;
+            OtpSecondDigit = string.Empty;
+            OtpThirdDigit = string.Empty;
+            OtpFourthDigit = string.Empty;
+           
             IsTinContentViewVisible = true;
             IsOTPContentViewVisible = false;
             IsChangePasswordViewVisible = false;
@@ -577,7 +638,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             IsOTPEntryEnable = true;
 
             VerifyButtonDisableColor = Color.FromHex("#d99b29");
-            ButtonDisableColor = Color.FromHex("#9EA4A9");
+            ButtonDisableColor = Color.FromHex("#999999");
 
             OtpFirstDigit = string.Empty;
             OtpSecondDigit = string.Empty;
@@ -667,7 +728,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         if (TotalSec < 0)
                         {
                             OTPValidDuration = " 0:00";
-                            ButtonDisableColor = Color.FromHex("#d99b29");
+                            ButtonDisableColor = Color.FromHex("#006450");
                             IsResendOTPEnabled = true;
                             VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
                             IsVerifyOTPEnabled = false;
@@ -698,14 +759,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         {
             try
             {
-                IsLoading = true;
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+                
                 UnlockAccountModel.Tin = TxtTIN;
                 //Action for validating TIN and sending OTP
                 UnlockAccountModel.Action = "01";
                 UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccount(UnlockAccountModel);
                 totalAttempts = Convert.ToInt16(UnlockAccountModelResponse.D.Attempts);
                 numberOfSeconds = 120;
-                IsLoading = false;
+
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
                 EnableOtpView();
 
             }
@@ -713,7 +783,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = false;
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    });
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
@@ -721,7 +794,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    IsLoading = false;
+                    App.HideProgressView();
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
@@ -730,85 +803,101 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
         public async void ConfirmOtpBtnCommand(object obj)
         {
-            string otp = OtpFirstDigit + OtpSecondDigit + OtpThirdDigit + OtpFourthDigit;
-
-            PopUp popUp = new PopUp();
-            StringBuilder Messages = new StringBuilder();
-            StringBuilder PopMsg = new StringBuilder();
-            bool IsAllValid = true;
-
-            if (string.IsNullOrEmpty(OtpFirstDigit) || string.IsNullOrEmpty(OtpSecondDigit) || string.IsNullOrEmpty(OtpThirdDigit) || string.IsNullOrEmpty(OtpFourthDigit))
+            try
             {
-                IsAllValid = false;
-                PopMsg.Append(AppResources.AccountUnlockedCompleteRequiedFields);
-            }
-            else
-            {
-                IsAllValid = true;
-            }
+                string otp = OtpFirstDigit + OtpSecondDigit + OtpThirdDigit + OtpFourthDigit;
 
-            if (IsAllValid == false)
-            {
-                if (PopMsg.Length > 0)
+                PopUp popUp = new PopUp();
+                StringBuilder Messages = new StringBuilder();
+                StringBuilder PopMsg = new StringBuilder();
+                bool IsAllValid = true;
+
+                if (string.IsNullOrEmpty(OtpFirstDigit) || string.IsNullOrEmpty(OtpSecondDigit) || string.IsNullOrEmpty(OtpThirdDigit) || string.IsNullOrEmpty(OtpFourthDigit))
                 {
-                    popUp.Message = PopMsg.ToString();
-                    popUp.IsLinkAvailable = false;
-                    if (App.IsArabic)
+                    IsAllValid = false;
+                    PopMsg.Append(AppResources.AccountUnlockedCompleteRequiedFields);
+                }
+                else
+                {
+                    IsAllValid = true;
+                }
+
+                if (IsAllValid == false)
+                {
+                    if (PopMsg.Length > 0)
                     {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
+                        popUp.Message = PopMsg.ToString();
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+
+                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     }
-                    else
+                }
+                else
+                {
+                    currentAttempts++;
+                    try
                     {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
+                        App.DisplayProgressView();
+                        UnlockAccountModelOtp.Tin = UnlockAccountModel.Tin;
+                        UnlockAccountModelOtp.Action = "02";
+                        UnlockAccountModelOtp.Otp = otp;
+                        UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccountOtp(UnlockAccountModelOtp);
+                        App.HideProgressView();
 
-                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        OtpFirstDigit = string.Empty;
+                        OtpSecondDigit = string.Empty;
+                        OtpThirdDigit = string.Empty;
+                        OtpFourthDigit = string.Empty;
+
+                        EnableChangePasswordView();
+                    }
+                    catch (GAZTUnlockAccountException ex)
+                    {
+                        IsOtpAPICalled = false;
+                        App.HideProgressView();
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            IsOtpAPICalled = false;
+                            App.HideProgressView();
+                            await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            IsOtpAPICalled = false;
+                            App.HideProgressView();
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        });
+                    }
                 }
             }
-            else
+            catch(Exception ex)
             {
-                currentAttempts++;
-                try
-                {
-
-                    IsLoading = true;
-                    UnlockAccountModelOtp.Tin = UnlockAccountModel.Tin;
-                    UnlockAccountModelOtp.Action = "02";
-                    UnlockAccountModelOtp.Otp = otp;
-                    UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccountOtp(UnlockAccountModelOtp);
-                    IsLoading = false;
-                    EnableChangePasswordView();
-                }
-                catch (GAZTUnlockAccountException ex)
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    });
-                }
-                catch (Exception ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    });
-                }
+                IsOtpAPICalled = false;
+                Console.WriteLine(ex.Message);
             }
         }
 
         public async void ExecuteResendOTPClickCommand(object obj)
         {
             IsResendOTPEnabled = false;
-            ButtonDisableColor = Color.FromHex("#9EA4A9");
+            ButtonDisableColor = Color.FromHex("#999999");
             VerifyButtonDisableColor = Color.FromHex("#d99b29");
             IsVerifyOTPEnabled = true;
             IsOTPEntryEnable = true;
@@ -927,7 +1016,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 try
                 {
-                    IsLoading = true;
+                    //App.DisplayProgressView();
                     UnlockAccountModelChangePassword.Tin = UnlockAccountModel.Tin;
                     UnlockAccountModelChangePassword.Action = "03";
                     UnlockAccountModelChangePassword.NewPassword = Password;
@@ -936,14 +1025,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     PasswordChangedSuccessfully = AppResources.UnlockAccountPasswordChangedSuccessfully;
                     PasswordChangedSuccessfully = PasswordChangedSuccessfully.Replace("xxxxxx", UnlockAccountModelChangePassword.Tin);
 
-                    IsLoading = false;
+                    await Task.Run(() =>
+                     {
+                         App.HideProgressView();
+                     });
 
-                    await PopupNavigation.Instance.PopAsync();
-                    _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
+                    Device.BeginInvokeOnMainThread(async ()=> {
+
+                        await PopupNavigation.Instance.PopAsync();
+                        _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
+                    });
+
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    IsLoading = false;
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    });
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
 
                 }
@@ -951,7 +1050,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        IsLoading = false;
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
                         await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                     });
                 }
@@ -959,7 +1061,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        IsLoading = false;
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     });
                 }

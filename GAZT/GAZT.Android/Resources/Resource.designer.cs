@@ -26506,6 +26506,15 @@ namespace GAZT.Droid
 			// aapt resource value: 0x7F07024D
 			public const int ViewMode = 2131165773;
 			
+			// aapt resource value: 0x7F07024E
+			public const int zakat_copy = 2131165774;
+			
+			// aapt resource value: 0x7F07024F
+			public const int zakat_details = 2131165775;
+			
+			// aapt resource value: 0x7F070250
+			public const int zakat_manageTax = 2131165776;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

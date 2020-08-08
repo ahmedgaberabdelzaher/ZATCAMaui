@@ -133,6 +133,10 @@ using EGAZT.Views.NewDesign.TaxpayersCertificatesPages;
 using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.TaxpayerCorrespondancePages;
+using EGAZT.Views.NewDesign.VATDeRegistration;
+using EGAZT.Views.NewDesign.ZAKATObjectionPages;
+using EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
+using EGAZT.Views.NewDesign.ZakatDeregistration;
 
 namespace EGAZT
 {
@@ -160,14 +164,20 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
 
-           
+
 
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
+            SimpleIoc.Default.Register<VATDeRegistrationDetailsPageViewModel>();
+            SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
+
+            SimpleIoc.Default.Register<VATDeregistrationSuccessPageViewModel>();
 
             SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
+
+            SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
 
             #endregion
 
@@ -230,7 +240,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATRegistrationSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<InternationalMobileNumberCodePagesViewModel>();
 
-
+            //AttachmentPopupPageView
             SimpleIoc.Default.Register<VATRealEstateServicesPageViewModel>();
             SimpleIoc.Default.Register<PropertyRegistrationPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
@@ -241,7 +251,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
             SimpleIoc.Default.Register<TaxpayersCertificatesPageViewModel>();
             SimpleIoc.Default.Register<ZAKATReturnDetailsViewModel>();
-            
+
+
+
+            SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
+            SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
+            SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
+            SimpleIoc.Default.Register<TINDeregestrationSuccessPageViewModel>();
+
             #endregion
         }
 
@@ -260,7 +277,7 @@ namespace EGAZT
                     return null;
                 }
             }
-        }   
+        }
 
         public TaxpayerCorrespondancePageViewModel TaxpayerCorrespondancePageView
         {
@@ -275,7 +292,7 @@ namespace EGAZT
                     return null;
                 }
             }
-        }   
+        }
         public TaxpayerCorrespondanceDetailPageViewModel TaxpayerCorrespondanceDetailPageView
         {
             get
@@ -289,7 +306,8 @@ namespace EGAZT
                     return null;
                 }
             }
-        } 
+        }
+
         public TaxpayersCertificatesPageViewModel TaxpayersCertificatesPageView
         {
             get
@@ -403,7 +421,62 @@ namespace EGAZT
                 }
             }
         }
-
+        public VATDeRegistrationDetailsPageViewModel VATDeregistrationDetailsPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATDeRegistrationDetailsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public VATDeRegistrationInstructionsPageViewModel VATDeregistrationInstructionsPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATDeRegistrationInstructionsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public VATDeregistrationSuccessPageViewModel VATDeregistrationSuccessPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATDeregistrationSuccessPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public NewZakatObjectionPageViewModel NewZakatObjectionPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NewZakatObjectionPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         #endregion
 
         //private INavigationService CreateNavigationService()
@@ -1462,6 +1535,21 @@ namespace EGAZT
             }
         }
 
+        public TINDeregestrationSuccessPageViewModel TINDeregestrationSuccessPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TINDeregestrationSuccessPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         public GAZTNewDesignRecoverUsernameViewModel GAZTNewDesignRecoverUsernameViewModel
         {
             get
@@ -1506,7 +1594,7 @@ namespace EGAZT
                 }
             }
         }
-        
+
 
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
@@ -1524,6 +1612,7 @@ namespace EGAZT
             navigationService.Configure(App.GAZTNewDesignMyReturnsNewPageView, typeof(GAZTNewDesignMyReturnsNewPageView));
             navigationService.Configure(App.TaxpayerCorrespondancePageView, typeof(TaxpayerCorrespondancePageView));
             navigationService.Configure(App.TaxpayerCorrespondanceDetailPageView, typeof(TaxpayerCorrespondanceDetailPageView));
+            navigationService.Configure(App.NewZakatObjectionPageView, typeof(NewZakatObjectionPageView));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
@@ -1614,14 +1703,13 @@ namespace EGAZT
             navigationService.Configure(App.VATLookUpNewPageView, typeof(VATLookUpNewPageView));
             navigationService.Configure(App.TaxpayersCertificatesPageView, typeof(TaxpayersCertificatesPageView));
 
+            navigationService.Configure(App.VATDeregistrationDetailsPage, typeof(VATDeregistrationDetailsPage));
+            navigationService.Configure(App.VATDeregistrationInstructionsPage, typeof(VATDeregistrationInstructionsPage));
+            navigationService.Configure(App.VATDeregistrationSuccessPage, typeof(VATDeregistrationSuccessPage));
+
             navigationService.Configure(App.GAZTForm5PageView, typeof(ZakatForm5PageView));
             navigationService.Configure(App.ZAKATReturnDetailsView, typeof(ZAKATReturnDetailsView));
-
-            
-            SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
-            SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
-            SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
-
+            navigationService.Configure(App.TINDeregestrationSuccessPageView, typeof(TINDeregestrationSuccessPageView));
 
             #endregion
 

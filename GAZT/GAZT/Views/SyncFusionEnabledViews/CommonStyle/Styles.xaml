@@ -6,6 +6,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
@@ -283,5 +284,11 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="TextColor" Value="{DynamicResource Gray-900}"/>
         <Setter Property="LineHeight" Value="{OnPlatform Default=1.25, iOS=-1}"/>
+    </Style>
+
+    <Style TargetType="yummy:PancakeView" x:Key="CommonTopCurves">
+        <Setter Property="CornerRadius" Value="15,15,0,0"/>
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="Padding"  Value="20,20,20,20"/>
     </Style>
 </ResourceDictionary>

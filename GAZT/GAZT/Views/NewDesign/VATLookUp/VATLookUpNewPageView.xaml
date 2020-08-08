@@ -97,7 +97,7 @@
                                    HorizontalOptions="Center"
                                    />
 
-                            <Label Grid.Column="0"
+                            <!--<Label Grid.Column="0"
                                    x:Name="Image_backArrow"
                                    Grid.Row="0"
                                    Margin="10,0,10,0"
@@ -109,7 +109,7 @@
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
                                 </Label.GestureRecognizers>
-                            </Label>
+                            </Label>-->
 
                             <Image Grid.Column="2" IsVisible="false">
                                 <Image.Source>
@@ -131,6 +131,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
@@ -165,6 +166,7 @@
                                                         ErrorColor="#B00020"
                                                         HasError="False">
                                             <control:BorderlessEntry  Text="{Binding TxtSearchParameter}"
+                                                                      x:Name="SearchParameterEnter"
                                                                       Placeholder="{x:Static ResourceManager:AppResources.TINS}"
                                                                       TextColor="#bbbbbb" >
                                             </control:BorderlessEntry>
@@ -223,6 +225,8 @@
                                                                        HasError="False">
                                             <control:BorderlessEntry Text="{Binding LookupNumber}"
                                                                      MaxLength="{Binding MaxDigids}"
+                                                                     IsReadOnly="{Binding IsNameVisible}"
+                                                                     x:Name="entryNumber"
                                                                      Placeholder="{x:Static ResourceManager:AppResources.NDTypeyourIDNumber}"
                                                                      TextColor="#bbbbbb" >
                                             </control:BorderlessEntry>
@@ -271,6 +275,14 @@
 
             </StackLayout>
             <StackLayout Grid.Row="1"
+                         HorizontalOptions="Center"
+                         Padding="10,5,10,10" >
+                <buttons:SfButton x:Name="btnScan"
+                                  Text="Scan QRCode"
+                                  Clicked="btnScan_ClickedAsync"
+                                  Style="{StaticResource PrimaryButtonStyle}"/>
+            </StackLayout>
+            <StackLayout Grid.Row="2"
                          HorizontalOptions="Center"
                          Padding="10,5,10,20" >
                 <buttons:SfButton x:Name="btnSearch"

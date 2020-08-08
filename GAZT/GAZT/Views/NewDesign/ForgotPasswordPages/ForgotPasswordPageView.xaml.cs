@@ -198,5 +198,14 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.NumSymbol = Color.DarkRed;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Reset values
+            viewModel.currentAttempts = 0;
+            viewModel.Enabled = true;
+        }
+
     }
 }
