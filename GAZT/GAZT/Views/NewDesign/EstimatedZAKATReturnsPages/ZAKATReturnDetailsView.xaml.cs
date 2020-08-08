@@ -15,21 +15,21 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             this.BindingContext = viewModel;
             SetLTR();
 
-//            viewModel.OnPageLoad(fbguid);
+          viewModel.OnPageLoad(fbguid);
 
         }
 
         protected override void OnAppearing()
         {
-  //          base.OnAppearing();
-    //        date.Text = viewModel.Abrzu;
+
+        date.Text = viewModel.Abrzu;
         }
         
         private void SetLTR()
         {
             if (!App.IsArabic)
             {
-     //           this.FlowDirection = FlowDirection.LeftToRight;
+           this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
 

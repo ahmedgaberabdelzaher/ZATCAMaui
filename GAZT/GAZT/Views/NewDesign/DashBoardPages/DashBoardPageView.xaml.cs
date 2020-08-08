@@ -20,7 +20,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         #endregion
 
         public GAZTNewDesignDashBoardPageView()
-        {
+             {
             try
             {
                 InitializeComponent();
