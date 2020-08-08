@@ -407,19 +407,21 @@
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
 
-                                    <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                    <border:SfBorder    Style="{StaticResource GreyBorderFrame}">
                     <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                        <Image>
+                        <Grid >
+                        <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="0">
                             <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="Small"
                                              Glyph="{x:Static FontImage:IconFonts.Information}"/>
                             </Image.Source>
                         </Image>
-                        <Label Text="Information" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                        <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Text="Information" Style="{StaticResource ValueLabelBlack}" FontSize="Micro" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
                      
-                            <Label Text="3101503102" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-
+                            <Label Grid.Row="1" Grid.ColumnSpan="6" HorizontalTextAlignment="Start"  Text="I hereby certify that iam authorised to complete this form for the taxable person and that all information contained is correct" Style="{StaticResource ValueLabelGrey}" FontSize="Micro" HorizontalOptions="Start"/>
+                            </Grid>
                     </StackLayout>
+
                 </border:SfBorder>
                                 <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnDeclarationContinue"
                                    Command="{Binding DeclarationContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"

@@ -296,17 +296,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             EnableReasonView();
                             break;
                         }
+                
                     case ProcessStep.Step3:
-                        {
-                            EnableOutletDetaislView();
-                            break;
-                        }
-                    case ProcessStep.Step4:
                         {
                             EnableAttachmentsView();
                             break;
                         }
-                    case ProcessStep.Step5:
+                    case ProcessStep.Step4:
                         {
                             EnableDeclarationView();
                             break;
