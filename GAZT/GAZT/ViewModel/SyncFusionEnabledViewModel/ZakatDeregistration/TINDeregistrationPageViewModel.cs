@@ -3,12 +3,14 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
@@ -29,6 +31,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand AttachmentsContinueBtnTapped { get; set; }
         public ICommand DeclarationContinueBtnTapped { get; set; }
         public ICommand SummaryContinueBtnTapped { get; set; }
+        public ICommand OnTinRegisrtationReasonDateTapped { get; set; }
+        public ICommand OnTinRegistrationReasonTapped { get; set; }
+
         #endregion
 
         #region Properties
@@ -343,7 +348,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
             DeclarationContinueBtnTapped = new Command(this.DeclarationContinueBtnClicked);
             SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
-
+            OnTinRegisrtationReasonDateTapped = new Command(this.OnTinRegisrtationReasonDateClicked);
+            OnTinRegistrationReasonTapped = new Command(this.OnTinRegisrtationReasonClicked);
             TinDeregistrationModel = new TINDeregistrationModel();
             SelectedOutletOption = new TINDeregistrationModel();
 
@@ -557,6 +563,57 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 //Display Success Screen
                 _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView);
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void OnTinRegisrtationReasonClicked()
+        {
+            try
+            {
+                ObservableCollection<string> reasonData = new ObservableCollection<string>();
+                reasonData.Add(AppResources.TinDeregistrationReasonBankruptcy);
+                reasonData.Add(AppResources.TinDeregistrationReasonDeath);
+                reasonData.Add(AppResources.TinDeregistrationReasonLiquidation);
+                reasonData.Add(AppResources.TinDeregistrationReasonEstablishmentToCompany);
+
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(reasonData));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        public async void OnTinRegisrtationReasonDateClicked()
+        {
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView());
             }
             catch (GAZTUnlockAccountException ex)
             {

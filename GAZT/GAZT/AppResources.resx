@@ -4346,6 +4346,18 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationReason" xml:space="preserve">
     <value>Reason</value>
   </data>
+   <data name="TinDeregistrationReasonBankruptcy" xml:space="preserve">
+    <value>Bankruptcy</value>
+  </data>
+  <data name="TinDeregistrationReasonDeath" xml:space="preserve">
+    <value>Death</value>
+  </data>
+   <data name="TinDeregistrationReasonLiquidation" xml:space="preserve">
+    <value>Liquidation</value>
+  </data>
+  <data name="TinDeregistrationReasonEstablishmentToCompany" xml:space="preserve">
+    <value>Establishment to Company</value>
+  </data>
   <data name="TinDeregistrationSelectReason" xml:space="preserve">
     <value>Select Reason for Deregistration</value>
   </data>

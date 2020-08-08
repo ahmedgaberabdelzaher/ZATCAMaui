@@ -126,7 +126,7 @@
                                     </StackLayout>
 
                                     <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
+                                            <TapGestureRecognizer Command="{Binding OnTinRegistrationReasonTapped}" ></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
 
                                 </StackLayout>
@@ -206,7 +206,7 @@
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                    <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <Label Text="DD/MM/YYYY" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <Image Margin="5,0">
                                             <Image.Source>
@@ -217,7 +217,7 @@
                                     </StackLayout>
 
                                     <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
+                                            <TapGestureRecognizer Command="{Binding OnTinRegisrtationReasonDateTapped}" ></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </border:SfBorder >

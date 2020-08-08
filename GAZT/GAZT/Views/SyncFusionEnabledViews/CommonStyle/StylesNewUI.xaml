@@ -6,7 +6,8 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms">
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" >
     
     
     <!--Vat New UI-->
@@ -202,6 +203,57 @@
         <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
     </Style>
 
+    <!--Calendar Picker Styles-->
+    <Style x:Key="CalendarPickerStyle" TargetType="custom1:CustomDatePicker">
+        <Setter Property="SelectedItemTextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="HeaderBackgroundColor" Value="Transparent"/>
+        <Setter Property="SelectionBackgroundColor"  Value="{StaticResource NeutralGreay}"/>
+        <Setter Property="ShowFooter" Value="False"/>
+        <Setter Property="ShowHeader" Value="False"/>
+        <Setter Property="ShowColumnHeader" Value="True"/>
+        <Setter Property="ColumnHeaderBackgroundColor" Value="Transparent"/>
+        <Setter Property="ColumnHeaderHeight" Value="40"/>
+        <Setter Property="PickerMode" Value="Default"/>
+        <Setter Property="ShowHeader" Value="False"/>
+        <Setter Property="ColumnHeaderFontFamily" Value="{StaticResource SSTArRoman}"/>
+        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}"/>
+        <Setter Property="ColumnHeaderFontAttribute" Value="Bold"/>
+        <Setter Property="ColumnHeaderFontSize" Value="16"/>
+        <Setter Property="UnSelectedItemFontFamily" Value="{StaticResource SSTArRoman}"/>
+        <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}"/>
+        <Setter Property="SelectedItemFontFamily" Value="{StaticResource SSTArabicMedium}"/>
+        <Setter Property="SelectedItemFontSize" Value="16"/>
+        <Setter Property="BorderColor" Value="Transparent"/>
+        <Setter Property="HeightRequest" Value="250"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+    </Style>
+
+    <!--Picker Style-->
+    <Style x:Key="PickerStyle" TargetType="syncfusion:SfPicker">
+        <Setter Property="SelectedItemTextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="HeaderBackgroundColor" Value="Transparent"/>
+        <Setter Property="SelectionBackgroundColor"  Value="{StaticResource NeutralGreay}"/>
+        <Setter Property="ShowFooter" Value="False"/>
+        <Setter Property="ShowHeader" Value="False"/>
+        <Setter Property="ShowColumnHeader" Value="True"/>
+        <Setter Property="ColumnHeaderBackgroundColor" Value="Transparent"/>
+        <Setter Property="ColumnHeaderHeight" Value="0"/>
+        <Setter Property="PickerMode" Value="Default"/>
+        <Setter Property="ShowHeader" Value="False"/>
+        <Setter Property="ColumnHeaderFontFamily" Value="{StaticResource SSTArRoman}"/>
+        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}"/>
+        <Setter Property="ColumnHeaderFontAttribute" Value="Bold"/>
+        <Setter Property="ColumnHeaderFontSize" Value="16"/>
+        <Setter Property="UnSelectedItemFontFamily" Value="{StaticResource SSTArRoman}"/>
+        <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}"/>
+        <Setter Property="SelectedItemFontFamily" Value="{StaticResource SSTArabicMedium}"/>
+        <Setter Property="SelectedItemFontSize" Value="16"/>
+        <Setter Property="BorderColor" Value="Transparent"/>
+        <Setter Property="HeightRequest" Value="200"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+    </Style>
 
     <!--Button-->
 
@@ -384,6 +436,6 @@
 
     <!--Styles for Onboarding-->
 
-
+    
 
 </ResourceDictionary>

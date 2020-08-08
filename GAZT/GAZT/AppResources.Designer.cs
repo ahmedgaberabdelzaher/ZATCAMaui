@@ -7302,6 +7302,30 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationReasonBankruptcy {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReasonBankruptcy", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationReasonDeath {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReasonDeath", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationReasonLiquidation {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReasonLiquidation", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationReasonEstablishmentToCompany {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReasonEstablishmentToCompany", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationSelectReason {
             get {
                 return ResourceManager.GetString("TinDeregistrationSelectReason", resourceCulture);

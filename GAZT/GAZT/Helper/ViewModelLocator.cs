@@ -137,6 +137,9 @@ using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZAKATObjectionPages;
 using EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
+using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.GenericPickers;
 
 namespace EGAZT
 {
@@ -172,6 +175,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
             SimpleIoc.Default.Register<VATDeRegistrationDetailsPageViewModel>();
             SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
+            SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
+            SimpleIoc.Default.Register<PickerPageViewModel>();
 
             SimpleIoc.Default.Register<VATDeregistrationSuccessPageViewModel>();
 
@@ -1747,5 +1752,34 @@ namespace EGAZT
             }
         }
 
+        public CalendarPickerPageViewModel CalendarPickerPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CalendarPickerPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public PickerPageViewModel PickerPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<PickerPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        //
     }
 }
