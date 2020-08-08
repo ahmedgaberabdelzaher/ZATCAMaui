@@ -21,7 +21,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 //============================start===================================================
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnEditClicked { get; set; }
-
+        public string Fbguid { get; set; }
+        
         #region Property
 
         private bool _isEditVisible = true;
@@ -111,6 +112,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("Abrzu");
             }
         }
+
+        private string _releaseOrBillDetailsButtonText;
+        public string ReleaseOrBillDetailsButtonText
+        {
+            get
+            {
+                return _releaseOrBillDetailsButtonText;
+            }
+            set
+            {
+                _releaseOrBillDetailsButtonText = value;
+                RaisePropertyChanged("ReleaseOrBillDetailsButtonText");
+            }
+        }
+
+
         #endregion
 
         #region Constructor
@@ -207,7 +224,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         ZakatReturnDetail = zakatReturnDetails.d;
                         GetUpdatedDataAfterAddingComma();
 
-                        //SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                        SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         //SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
 
                         Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
@@ -446,6 +463,196 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //zakatReturnDetailsD.d.Zbamt = _zakatReturnDetails.d.Zbamt;
             //zakatReturnDetailsD.d.Zkamt = _zakatReturnDetails.d.Zkamt;
         }
+
+
+        public async Task OnReleaseOrBillsClicked()
+        {
+            if (ZakatReturnDetails.d.Statusz.Equals("E0001") || ZakatReturnDetails.d.Statusz.Equals("IP011"))
+            {// Call the Post API to release and if response is true then set the Button Name as bills and after tapping on that user needs to be navigated to Bills page 
+                await ReleaseEstimateZakatReturn();
+            }
+            else if (ZakatReturnDetails.d.Statusz.Equals("IP014"))// E002 means Tax officer has released the return
+            {
+                //IsAmendButtonPressed = true;
+                //_navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+            }
+            else if (ZakatReturnDetails.d.Statusz.Equals("E0002"))// E002 means Tax officer has released the return
+            {
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+            }
+            else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
+            {
+               // AmedmentButtonVisibility = true;
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+            }
+            else if (ZakatReturnDetails.d.Statusz.Equals("E0004") || ZakatReturnDetails.d.Statusz.Equals("E0003"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
+            {
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+            }
+            else if (ZakatReturnDetails.d.Statusz.Equals(""))
+            {
+               // SalesDetailsAndReleaseButtonVisibility = false;
+            }
+            else
+            {
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+            }
+        }
+
+
+
+        public async Task ReleaseEstimateZakatReturn()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    try
+                    {
+                        GetUpdatedDataAfterRemovingComma();
+                        ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, "59");
+                        if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                        {
+                            try
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZNotification);
+                                });
+                                //Device.BeginInvokeOnMainThread(async () =>
+                                //{
+                                //    _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZSUCCESS);
+                                //});
+                                // 
+                            }
+                            catch (Exception ex)
+                            {
+                            }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                //if (WebServiceManager.ErrorMessage.Equals(""))// message is always coming in english from the server
+                                //{
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    //if (App.IsArabic)
+                                    //{
+                                    //    await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
+                                    //    _navigationService.GoBack();
+                                    //    WebServiceManager.ErrorMessage = string.Empty;
+                                    //}
+                                    //else
+                                    //{
+                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                    //}
+                                });
+                                //}
+                            }
+                            catch (Exception ex)
+                            {
+                            }
+                            //Device.BeginInvokeOnMainThread(async () => {
+                            //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
+                            //    _navigationService.GoBack();
+                            //});
+                        }
+                        ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                        PopToRootPage();
+                        //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                        if (zakatReturnDetails != null)
+                        {
+                            ZakatReturnDetails = zakatReturnDetails;
+                            if (zakatReturnDetails.d != null)
+                            {
+                                ZakatReturnDetail = zakatReturnDetails.d;
+                                GetUpdatedDataAfterAddingComma();
+                               
+                            }
+                        }
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+        private void GetUpdatedDataAfterRemovingComma()
+        {
+            if (ZakatReturnDetails != null)
+            {
+                ZakatReturnDetails.d.Estsl = ZakatReturnDetails.d.Estsl.Replace(",", "");
+                ZakatReturnDetails.d.Cpamt = ZakatReturnDetails.d.Cpamt.Replace(",", "");
+                ZakatReturnDetails.d.Zbamt = ZakatReturnDetails.d.Zbamt.Replace(",", "");
+                ZakatReturnDetails.d.Zkamt = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+            }
+        }
+
+
+        private void SetReleaseOrBillDetailsButtonText(string ButtonStatus)
+        {
+            try
+            {
+                if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("IP011"))
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.Release;
+                }
+                else if (ButtonStatus.Equals("IP014"))
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0002"))// E0002 if return  released by GAZT officer 
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//When the Return is already Amended by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0005"))//In Processing
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0011"))//In Processing
+                {
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals(""))//In Processing
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+
+
         #endregion
 
     }

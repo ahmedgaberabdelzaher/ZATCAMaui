@@ -426,6 +426,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
             {
             }
         }
+
         public async Task ReleaseEstimateZakatReturn()
         {
             try
