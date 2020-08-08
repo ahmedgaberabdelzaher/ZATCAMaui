@@ -4449,8 +4449,20 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data> 
   <data name="TinDeregistrationRegistrationDetails" xml:space="preserve">
     <value>Registration Details</value>
+  </data>
+   <data name="VATDeregistration" xml:space="preserve">
+    <value>VAT Deregistration</value>
+  </data>  
+  <data name="VATDeregistrationInstructions" xml:space="preserve">
+    <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.
+
+Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields and attachments have been completed.
+
+Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
   </data> 
-      
+  <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
+    <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
+  </data>    
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
   </data>

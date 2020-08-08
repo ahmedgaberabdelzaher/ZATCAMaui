@@ -7506,6 +7506,24 @@ namespace EGAZT {
             }
         }
         
+        public static string VATDeregistration {
+            get {
+                return ResourceManager.GetString("VATDeregistration", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationInstructions {
+            get {
+                return ResourceManager.GetString("VATDeregistrationInstructions", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationAgreeTermsConditions {
+            get {
+                return ResourceManager.GetString("VATDeregistrationAgreeTermsConditions", resourceCulture);
+            }
+        }
+        
         public static string SelectTheOptionAndCompleteDetails {
             get {
                 return ResourceManager.GetString("SelectTheOptionAndCompleteDetails", resourceCulture);

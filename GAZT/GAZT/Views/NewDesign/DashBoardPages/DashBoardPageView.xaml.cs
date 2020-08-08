@@ -1,5 +1,7 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.VATDeRegistration;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -506,6 +508,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
 
+        }
+
+        private async void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+            });
         }
     }
 }

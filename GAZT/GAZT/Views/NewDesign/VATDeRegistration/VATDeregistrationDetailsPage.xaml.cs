@@ -22,6 +22,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+        }
 
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {

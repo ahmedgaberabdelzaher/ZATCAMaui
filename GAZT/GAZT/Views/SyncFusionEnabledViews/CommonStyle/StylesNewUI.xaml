@@ -19,6 +19,7 @@
     <Color x:Key="SuccessColor">#95D600</Color>
     <Color x:Key="ErrorColor">#AA0C19</Color>
     <Color x:Key="warningColor">#E39800</Color>
+    <Color x:Key="NewDarkGreenColor">#006450</Color>
     
     <!--Vat New UI-->
 
@@ -184,6 +185,17 @@
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Opacity" Value=".9" />
+    </Style>
+
+    <Style x:Key="NeutralGrayBoxViewDrag" TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="HeightRequest" Value="5" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="Start" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Opacity" Value=".9" />
+        <Setter Property="CornerRadius" Value="2.5" />
+        <Setter Property="WidthRequest" Value="36" />
     </Style>
 
     <Style x:Key="InputTableBoxViewStacklayoutStyle" TargetType="StackLayout">

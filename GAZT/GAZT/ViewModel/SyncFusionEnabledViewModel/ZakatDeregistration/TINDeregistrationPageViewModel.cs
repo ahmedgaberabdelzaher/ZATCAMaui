@@ -334,7 +334,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             CloseBtnTapped = new Command(async () =>
             {
-                //
+                //_navigationService.GoBack();
             });
 
             GoBackBtnTapped = new Command(this.GoBackBtnClicked);
