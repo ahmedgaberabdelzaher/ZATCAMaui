@@ -4436,6 +4436,9 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
     <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
   </data>     
+      <data name="VATDeregistrationDeclarationAgreement" xml:space="preserve">
+    <value>I hereby certify that iam authorised to complete this form for the taxable person and that all information contained is correct.</value>
+  </data>  
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
   </data>

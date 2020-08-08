@@ -275,7 +275,7 @@
                  </listView:SfListView>
 
                   <Label Text="{x:Static custom2:AppResources.VATRAttachment}" Grid.Row="4"  Style="{StaticResource GAZTCaptionBlackLabel}"/>
-                                                    <inputLayout:SfTextInputLayout Grid.Row="5" Grid.ColumnSpan="2" Margin="0,-6,0,-6" 
+                                                    <inputLayout:SfTextInputLayout Grid.Row="5" Grid.ColumnSpan="2" Margin="12,-6,0,-6" 
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                                         <StackLayout Orientation="Horizontal" Grid.ColumnSpan="2">
@@ -291,6 +291,7 @@
                                                                 </Image.Source>
                                                               
                                                             </Image>
+
                                                         </StackLayout>
                                                     </inputLayout:SfTextInputLayout>
 
@@ -357,11 +358,11 @@
                                 </StackLayout>
                             </border:SfBorder >
                     </StackLayout>
-                                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand">
+                                <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="CenterAndExpand">
                                                                      <StackLayout Grid.Row="1" Grid.Column="0" >
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
-                                <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" WidthRequest="180"
+                                <inputLayout:SfTextInputLayout  Margin="-2,-6,0,6" WidthRequest="140"
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
@@ -371,13 +372,13 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
                                                  <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
+                                <custom:CustomLabel Margin="30,0,0,0" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="Start"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
-                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="30,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
-                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="150">
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
                                         
-                                        <Label Text="YYYY/MM/DD" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="YYYY/MM/DD" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -408,8 +409,19 @@
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
-
-                                    <border:SfBorder Margin="0,10,0,20"  Style="{StaticResource GreyBorderFrame}">
+                                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
+                <StackLayout Margin="8">
+                    <StackLayout Orientation="Horizontal" Spacing="0">
+                       <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
+                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource ValueLabelBlack}"/>
+                    </StackLayout>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationAgreement}" HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}" />
+                
+                </StackLayout>
+            </border:SfBorder>
+                                    <!--<border:SfBorder Margin="0,10,0,20"  Style="{StaticResource GreyBorderFrame}">
                     <StackLayout Orientation="Horizontal" Padding="15,10,15,20">
                         <Grid ColumnSpacing="0">
                            <Image Grid.Row="0" Grid.Column="0" Source="information.png" Margin="5,0" WidthRequest="15" HeightRequest="15"
@@ -425,7 +437,7 @@
                             </Grid>
                     </StackLayout>
 
-                </border:SfBorder>
+                </border:SfBorder>-->
                                 <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnDeclarationContinue"
                                    Command="{Binding DeclarationContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
@@ -470,10 +482,11 @@
                                 <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
                                 </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
+                                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"   Source="details"/>
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="Deregistration Details" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    <Label Text="Deregistration Details" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
+                                <Button Grid.Row="0" Grid.Column="2" Text="Edit" FontFamily="SSTBold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#006450"/>
                             </Grid>
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
@@ -491,10 +504,10 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
-                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
-                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                 </StackLayout>
                                             </Grid>
 			                        </DataTemplate>
@@ -517,10 +530,12 @@
                                 <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
                                 </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
+                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_attachment"/>
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="Attachments" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    <Label Text="Attachments" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
+                                <Button Grid.Row="0" Grid.Column="2" Text="Edit" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+
                             </Grid>
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
@@ -538,10 +553,10 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0">
-                                                    <Label Text="{Binding FieldTitle}" Style="{StaticResource BodyLabelGrey}"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    <Label Text="{Binding FieldTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                 </StackLayout>
                                             </Grid>
 			                        </DataTemplate>
@@ -564,10 +579,12 @@
                                 <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
                                 </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
+                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="declaration"/>
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="Declaration" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    <Label Text="Declaration" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
+                                   <Button Grid.Row="0" Grid.Column="2"  Text="Edit" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+
                             </Grid>
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
@@ -585,10 +602,10 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0">
-                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                                 </StackLayout>
                                             </Grid>
 			                        </DataTemplate>

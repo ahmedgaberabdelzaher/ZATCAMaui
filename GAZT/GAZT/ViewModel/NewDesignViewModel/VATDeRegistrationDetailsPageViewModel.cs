@@ -19,7 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnContinueButtonClick { get; set; }
         public ICommand GoBackBtnTapped { get; set; }
-
+        public ICommand CloseBtnTapped { get; set; }
         public ICommand GoBackClick { get; set; }
         #endregion
 
@@ -338,6 +338,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _navigationService.GoBack();
             });
+            CloseBtnTapped = new Command(async () =>
+            {
+                _navigationService.GoBack();
+            });
 
             OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
             {
@@ -588,7 +592,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void PopulateAttachmentsListViewTemplate()
         {
             AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
-
+  
             AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
             {
                 FieldTitle = "Attachment",
