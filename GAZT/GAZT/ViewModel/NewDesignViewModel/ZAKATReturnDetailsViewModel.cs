@@ -132,14 +132,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnSubmitClicked = new Xamarin.Forms.Command(() =>
             {
-                isEditVisible = false;
-                isLabelVisible = true;
+                //isEditVisible = false;
+                //isLabelVisible = true;
             });
 
             OnEditClicked = new Xamarin.Forms.Command(() =>
             {
-                isLabelVisible = false;
-                isEditVisible = true;
+                //isLabelVisible = false;
+                //isEditVisible = true;
             });
 //=========================end=====================================================
             // OnBackButtonClicked = new Xamarin.Forms.Command(() =>

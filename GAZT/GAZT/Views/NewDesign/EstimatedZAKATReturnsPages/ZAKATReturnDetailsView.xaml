@@ -150,7 +150,7 @@
                 <!--End of Zakat Calculation-->
 
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="AliceBlue" HasShadow="False" Padding="10">
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" BindingContext="{Binding ZakatReturnDetail}">
                                 <custom:CustomLabel Text="{x:Static local:AppResources.ZakatAmount}" Style="{StaticResource ValueLabelBlack}"/>
                                 <custom:CustomLabel  Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand">
                                     <Label.FormattedText>
@@ -180,7 +180,7 @@
                                     </StackLayout>
                                 <BoxView Style="{StaticResource lineSeperator}"/>
 
-                                <StackLayout Spacing="0" Padding="10,10,10,0">
+                                <StackLayout Spacing="0" Padding="10,10,10,0"  BindingContext="{Binding ZakatReturnDetail}">
                                     <Grid RowSpacing="0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -197,11 +197,12 @@
 
                                             </Image>
                                         </StackLayout>
+
                                         <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
-                                            <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                            <Label Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="{Binding TvtslI}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                 </custom:GAZTBorderlessEntry>
 
                                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -210,13 +211,14 @@
 
                                             </inputLayout:SfTextInputLayout>
 
-                                            <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            <custom:CustomLabel Text="{Binding TvtslI}"  IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                         </StackLayout>
+
                                         <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
-                                            <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                            <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}"></Label>
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                <custom:GAZTBorderlessEntry  Text="{Binding TvtslE}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                 </custom:GAZTBorderlessEntry>
 
                                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -224,7 +226,7 @@
                                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                             </inputLayout:SfTextInputLayout>
-                                            <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            <custom:CustomLabel Text="{Binding TvtslE}" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                         </StackLayout>
                                     </Grid>
                                     <!---->
@@ -245,10 +247,10 @@
                                                 </Image>
                                             </StackLayout>
                                             <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
-                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding LabnoI}"    Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -257,13 +259,13 @@
 
                                                 </inputLayout:SfTextInputLayout>
 
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding LabnoI}"   IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
-                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}"></Label>
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding LabnoE}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -271,7 +273,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding LabnoE}" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
                                         </Grid>
 
@@ -292,10 +294,10 @@
                                                 </Image>
                                             </StackLayout>
                                             <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
-                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding ImpvalI}"   Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -304,13 +306,13 @@
 
                                                 </inputLayout:SfTextInputLayout>
 
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding ImpvalI}" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
-                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}"></Label>
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding ImpvalE}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -318,7 +320,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding ImpvalE}" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
                                         </Grid>
 
@@ -339,10 +341,10 @@
                                                 </Image>
                                             </StackLayout>
                                             <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
-                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
 
                                                 <inputLayout:SfTextInputLayout  IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding PtoslI}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -351,11 +353,11 @@
 
                                                 </inputLayout:SfTextInputLayout>
 
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding PtoslI}"  IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
-                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}"></Label>
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
@@ -386,10 +388,10 @@
                                                 </Image>
                                             </StackLayout>
                                             <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
-                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding EtimadI}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -398,11 +400,11 @@
 
                                                 </inputLayout:SfTextInputLayout>
 
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding EtimadI}" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
-                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}"></Label>
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
@@ -433,10 +435,10 @@
                                                 </Image>
                                             </StackLayout>
                                             <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
-                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry Text="{Binding ExamtI}"    Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -449,7 +451,7 @@
 
                                             </StackLayout>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
-                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}"></Label>
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
@@ -480,10 +482,10 @@
                                                 </Image>
                                             </StackLayout>
                                             <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
-                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding PramtI}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -492,13 +494,13 @@
 
                                                 </inputLayout:SfTextInputLayout>
 
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding PramtI}" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
-                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}"></Label>
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding PramtE}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -506,7 +508,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding PramtE}" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
                                         </Grid>
 
@@ -527,10 +529,10 @@
                                                 </Image>
                                             </StackLayout>
                                             <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
-                                                <Label Text="Info for the related Parties" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding Cpamt}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -539,13 +541,13 @@
 
                                                 </inputLayout:SfTextInputLayout>
 
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding Cpamt}" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1">
-                                                <Label Text="Estimated Sales" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                                <Label Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}"></Label>
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding Cpamt}"     Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -553,7 +555,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="500 SAR" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding Cpamt}" IsVisible="{Binding isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
                                         </Grid>
 
