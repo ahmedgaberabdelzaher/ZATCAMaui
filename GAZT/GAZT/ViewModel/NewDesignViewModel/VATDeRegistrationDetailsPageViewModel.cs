@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Plugin.FilePicker;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -34,6 +36,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Step2, Step3, Step4, Step5, Step6
         }
 
+
         private ProcessStep _currentStep { get; set; }
         public ProcessStep CurrentStep
         {
@@ -48,6 +51,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        byte[] attachment;
+
+        private string _attachmentName = "";
+        public string AttachmentName
+        {
+            get
+            {
+                return _attachmentName;
+            }
+            set
+            {
+                _attachmentName = value;
+                RaisePropertyChanged("AttachmentName");
+            }
+        }
 
         private bool _isReasonViewEnabled = true;
         public bool IsReasonViewEnabled
@@ -167,6 +185,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("OutletDecisionOptions");
             }
         }
+        public VATDeregistrationModel vatDeregistrationModel { get; set; }
+        public VATDeregistrationModel VATDeregistrationModel
+        {
+            get
+            {
+                return vatDeregistrationModel;
+            }
+
+            set
+            {
+                vatDeregistrationModel = value;
+                RaisePropertyChanged("VATDeregistrationModel");
+            }
+        }
+
         public ObservableCollection<VATDeregistrationModel> outletDocumentOptions { get; set; }
         public ObservableCollection<VATDeregistrationModel> OutletDocumentOptions
         {
@@ -244,6 +277,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
             }
         }
+
+        private VATDeregistrationModel _selectedOutletOption;
+        public VATDeregistrationModel SelectedOutletOption
+        {
+            get
+            {
+                return _selectedOutletOption;
+            }
+            set
+            {
+                _selectedOutletOption = value;
+                //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
+                RaisePropertyChanged("SelectedOutletOption");
+            }
+        }
+        private VATDeregistrationModel _selectedDocumentOption;
+        public VATDeregistrationModel SelectedDocumentOption
+        {
+            get
+            {
+                return _selectedDocumentOption;
+            }
+            set
+            {
+                _selectedDocumentOption = value;
+                //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
+                RaisePropertyChanged("SelectedDocumentOption");
+            }
+        }
+
+        private VATDeregistrationAttachmentsModel _selectedAttachment { get; set; }
+        public VATDeregistrationAttachmentsModel SelectedAttachment
+        {
+            get
+            {
+                return _selectedAttachment;
+            }
+            set
+            {
+                _selectedAttachment = value;
+                RaisePropertyChanged("SelectedAttachment");
+            }
+        }
+
+
         public VATDeRegistrationDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -266,9 +344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 TitleText = "Button New";
 
             });
-
-
-            EnableReasonView();
+       
             //EnableAttachmentsView();
             GoBackBtnTapped = new Command(this.GoBackBtnClicked);
 
@@ -283,6 +359,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             PopulateAttachmentsListViewTemplate();
             PopulateSummaryReasonData();
             PopulateSummaryDeclarationData();
+
+            VATDeregistrationModel = new VATDeregistrationModel();
+
+            SelectedOutletOption = new VATDeregistrationModel();
+
+            SelectedDocumentOption = new VATDeregistrationModel();
+
+            EnableReasonView();
 
         }
         public void GoBackBtnClicked()
@@ -431,6 +515,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             try
             {
                 //Display Success Screen
+                _navigationService.NavigateTo(App.VATDeregistrationSuccessPage);
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -448,7 +533,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void EnableReasonView()
         {
             CurrentStep = ProcessStep.Step1;
-
+            if (OutletDecisionOptions != null)
+            {
+                SelectedOutletOption = OutletDecisionOptions[0];
+            }
             SelectedOutletOptionIndex = 0;
             IsReasonViewEnabled = true;
             IsOutletViewEnabled = false;
@@ -462,7 +550,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void EnableAttachmentsView()
         {
             CurrentStep = ProcessStep.Step2;
-
+            if (OutletDocumentOptions != null)
+            {
+                SelectedDocumentOption = OutletDocumentOptions[0];
+            }
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = true;
@@ -533,28 +624,127 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>();
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
+                SummaryTitle = "ID Type",
+                SummaryData = "National ID",
+                IsEditVisible = true
+            });
+            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+            {
+                SummaryTitle = "ID Number",
+                SummaryData = "Q12345678",
+                IsEditVisible = true
+            });
+            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+            {
+                SummaryTitle = "Date of Birth",
+                SummaryData = "8 August 2020",
+                IsEditVisible = true
+            });
+            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+            {
                 SummaryTitle = AppResources.TinDeregistrationContactPersonName,
                 SummaryData = "Hardy",
                 IsEditVisible = true
             });
-            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+        }
+
+                
+        public async Task AddAttachmentEx()
+        {
+            try
             {
-                SummaryTitle = AppResources.TinDeregistrationDesignation,
-                SummaryData = "Senior Director",
-                IsEditVisible = true
-            });
-            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+                try
+                {
+                    string[] filetypes;
+                    filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
+                    var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+
+                    if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
+                    {
+                        attachment = fileData.DataArray;
+                        AttachmentName = fileData.FileName;
+                        SelectedAttachment.AttachmentName = AttachmentName;
+                        SelectedAttachment.IsAttachmentAttached = true;
+                        AttachmentsListViewData.RemoveAt(SelectedOutletOptionIndex);
+                        AttachmentsListViewData.Insert(SelectedOutletOptionIndex, SelectedAttachment);
+
+                        //if (fileData.FileName.Contains("."))
+                        //{
+                        //    string Extention = fileData.FileName.Split('.')[1];
+                        //    if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"
+                        //        || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx"
+                        //        || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
+                        //    {
+                        //        if (TotalAttachmentSize <= 300)
+                        //        {
+                        //            AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
+                        //            decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
+
+                        //            if (Convert.ToDecimal(AttachmentSize) <= 5)
+                        //            {
+                        //                if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
+                        //                {
+                        //                    bool IsAttachmentPresent = false;
+
+                        //                    if (IsAttachmentPresent == false)
+                        //                    {
+                        //                        string attachmentType = UtilityManager.GetContentType(Extention);
+                        //                    }
+                        //                    else
+                        //                    {
+                        //                        AttachmentName = string.Empty;
+
+                        //                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                        //                    }
+                        //                }
+                        //                else
+                        //                {
+                        //                    AttachmentName = string.Empty;
+
+                        //                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                        //                }
+                        //            }
+                        //            else
+                        //            {
+                        //                AttachmentName = string.Empty;
+
+                        //                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                        //            }
+                        //        }
+                        //        else
+                        //        {
+                        //            AttachmentName = string.Empty;
+
+                        //            await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        AttachmentName = string.Empty;
+
+                        //        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    AttachmentName = string.Empty;
+
+                        //    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                        //}
+                    }
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
+            }
+            catch (Exception ex)
             {
-                SummaryTitle = AppResources.MobileNumber,
-                SummaryData = "+966 551 234 567",
-                IsEditVisible = true
-            });
-            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
-            {
-                SummaryTitle = AppResources.ZZDateofBirth,
-                SummaryData = "07 June 1995",
-                IsEditVisible = true
-            });
+                Console.WriteLine(ex.Message);
+            }
         }
 
         #endregion

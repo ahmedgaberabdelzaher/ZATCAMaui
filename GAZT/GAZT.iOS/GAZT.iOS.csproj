@@ -224,6 +224,9 @@
     <BundleResource Include="Resources\establishments.png" />
     <BundleResource Include="Resources\establishments%402x.png" />
     <BundleResource Include="Resources\establishments%403x.png" />
+    <BundleResource Include="Resources\information.png" />
+    <BundleResource Include="Resources\information%402x.png" />
+    <BundleResource Include="Resources\information%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
