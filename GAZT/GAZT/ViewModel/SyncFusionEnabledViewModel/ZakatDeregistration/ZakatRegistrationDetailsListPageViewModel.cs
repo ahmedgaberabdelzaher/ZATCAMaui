@@ -15,6 +15,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public ZakatRegistrationDetailsListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            IsArabic = App.IsArabic;
             PopulateZakatRegListData();
         }
 
@@ -30,6 +31,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _zakatRegListData = value;
                 RaisePropertyChanged("ZakatRegListData");
+            }
+        }
+
+        private bool _isArabic = true;
+        public bool IsArabic
+        {
+            get
+            {
+                return _isArabic;
+            }
+            set
+            {
+                _isArabic = value;
+                RaisePropertyChanged("IsArabic");
             }
         }
 

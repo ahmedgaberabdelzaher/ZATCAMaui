@@ -35,6 +35,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
         public void ChangeAeroIcon()
         {
