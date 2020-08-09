@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
@@ -73,5 +74,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             viewModel.SetEditImage();
         }
 
+        private void OnInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp());
+        }
     }
 }

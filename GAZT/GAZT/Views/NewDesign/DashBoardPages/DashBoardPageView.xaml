@@ -662,7 +662,9 @@
                                 <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
 
                                 <Image Source="message" VerticalOptions="Start" HorizontalOptions="EndAndExpand" >
-
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Inbox"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
                                 </Image>
                                 <!--<Image Source="bell_notification" VerticalOptions="Start">
                                 </Image>-->
