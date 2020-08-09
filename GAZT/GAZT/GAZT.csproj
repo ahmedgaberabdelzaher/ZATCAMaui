@@ -78,7 +78,6 @@
     <Folder Include="Views\NewDesign\ZakatDeregistration\" />
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\ZakatDeregistration\" />
     <Folder Include="Views\NewDesign\VATLookUp\" />
-    <Folder Include="Views\NewDesign\EstimatedZAKATReturnsPages\" />
     <Folder Include="Views\NewDesign\VATDeRegistration\" />
     <Folder Include="Views\NewDesign\GenericPickers\" />
     <Folder Include="ViewModel\NewDesignViewModel\GenericPickers\" />
@@ -154,6 +153,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentPopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\ZakatReturnDetailsSuccessfullPageView.xaml">
