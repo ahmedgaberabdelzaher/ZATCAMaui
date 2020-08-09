@@ -38,11 +38,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
         }
+
         void OnDeleteAttachmentClicked()
         {
 
         }
-
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {

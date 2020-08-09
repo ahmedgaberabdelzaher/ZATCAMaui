@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -8,6 +9,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -16,13 +18,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        public ICommand OnBackButtonClicked { get; set; }
-        public ICommand OnSubmitButtonClicked { get; set; }
 //============================start===================================================
         public ICommand OnSubmitClicked { get; set; }
+        public ICommand OnConfirmClicked { get; set; }
+        public ICommand OnBackButtonClicked { get; set; }
+
+        
+
         public ICommand OnEditClicked { get; set; }
         public string Fbguid { get; set; }
-        
+        public bool IsCurrentZAKATTaxLess = false;
+        public const string SubmitPostOperation = "05";
+        public const string ConfirmPostOperationWithoutObjection = "65";
+        public const string ConfirmPostOperationWithObjection = "66";
+        public string Estsl { get; set; }
+        public double existingZakatBase = 0.00;
+        public ZakatReturnDetailsD ZakatReturnDetailToCompare { get; set; }
+
         #region Property
 
         private bool _isEditVisible = true;
@@ -140,7 +152,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ReleaseOrBillDetailsButtonText");
             }
         }
-
+        
         private string _totalVATSalesEditImageSource;
         public string TotalVATSalesEditImageSource
         {
@@ -277,22 +289,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnSubmitClicked = new Xamarin.Forms.Command(() =>
             {
-                isEditVisible = false;
-                UnSetEditImage();
-                isLabelVisible = true;
+            //bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
+            //    if (IsValueChange)
+            //    {
+                     SubmitReturn();
+                    UnSetEditImage();
+                    isEditVisible = false;
+                    isLabelVisible = true;
+                //}
+                //else
+                //{
+                //        // Show error message
+                //}
+             
             });
 
+
+            OnConfirmClicked = new Xamarin.Forms.Command(async() =>
+                {
+                    string PostOperationID = GetConfirmOperationId();
+                    await ConfirmClicked(PostOperationID);
+                });
             OnEditClicked = new Xamarin.Forms.Command(() =>
             {
                 isLabelVisible = false;
                 isEditVisible = true;
                 SetEditImage();
             });
-//=========================end=====================================================
-            // OnBackButtonClicked = new Xamarin.Forms.Command(() =>
-            // {
-            //    _navigationService.GoBack();
-            //});
+            //=========================end=====================================================
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
 
 
             //OnSubmitButtonClicked = new Command(async () =>
@@ -352,12 +380,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         ZakatReturnDetails = zakatReturnDetails;
                         ZakatReturnDetail = zakatReturnDetails.d;
+                        ZakatReturnDetailToCompare = ZakatReturnDetail;
+                        existingZakatBase = Convert.ToDouble(ZakatReturnDetails.d.Zkamt);
                         GetUpdatedDataAfterAddingComma();
+
+                        DateTime _abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
+                        DateTime _abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+                        Abrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + AppResources.To + " " + _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         //SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
 
-                        Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
+                       // Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
                        
                     }
                     else
@@ -710,7 +745,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 ZakatReturnDetail = zakatReturnDetails.d;
                                 GetUpdatedDataAfterAddingComma();
-                               
+                                SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                             }
                         }
                     }
@@ -844,6 +879,138 @@ public void SetEditImage()
             TotalVATSalesEditImageSource = "";
 
         }
+
+        //if(existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt))
+        //                    {
+        //                        IsCurrentZAKATTaxLess = true;
+        //                    }
+        //                    else
+        //                    {
+        //                        IsCurrentZAKATTaxLess = false;
+        //                    }
+
+        //To Return th epost operation as per objection and without objection
+private string GetConfirmOperationId()
+        {
+            if (IsCurrentZAKATTaxLess)
+            {
+                return "66";// For Amendment
+            }
+            else
+            {
+                return "65";// For Objection
+            }
+        }
+
+
+        private ZakatReturnDetails GetPostDataAfterRemovingComma(ZakatReturnDetails zakatReturnDetails)
+        {
+            zakatReturnDetails.d.TvtslI = ZakatReturnDetail.TvtslI.Replace(",", "");
+            zakatReturnDetails.d.TvtslE = ZakatReturnDetail.TvtslE.Replace(",", "");
+            zakatReturnDetails.d.LabnoI = ZakatReturnDetail.LabnoI.Replace(",", "");
+            zakatReturnDetails.d.LabnoE = ZakatReturnDetail.LabnoE.Replace(",", "");
+            zakatReturnDetails.d.ImpvalI = ZakatReturnDetail.ImpvalI.Replace(",", "");
+            zakatReturnDetails.d.ImpvalE = ZakatReturnDetail.ImpvalE.Replace(",", "");
+            zakatReturnDetails.d.PtoslI = ZakatReturnDetail.PtoslI.Replace(",", "");
+            zakatReturnDetails.d.Sumcnt = ZakatReturnDetail.Sumcnt.Replace(",", "");
+            zakatReturnDetails.d.EtimadI = ZakatReturnDetail.EtimadI.Replace(",", "");
+            zakatReturnDetails.d.Sumcnt = ZakatReturnDetail.Sumcnt.Replace(",", "");
+            zakatReturnDetails.d.ExamtI = ZakatReturnDetail.ExamtI.Replace(",", "");
+            zakatReturnDetails.d.Sumcnt = ZakatReturnDetail.Sumcnt.Replace(",", "");
+            zakatReturnDetails.d.PramtI = ZakatReturnDetail.PramtI.Replace(",", "");
+            zakatReturnDetails.d.PramtE = ZakatReturnDetail.PramtE.Replace(",", "");
+            zakatReturnDetails.d.Cpamt = ZakatReturnDetail.Cpamt.Replace(",", "");
+            zakatReturnDetails.d.Estsl = ZakatReturnDetail.Estsl.Replace(",", "");
+            zakatReturnDetails.d.Zbamt = ZakatReturnDetail.Zbamt.Replace(",", "");
+            zakatReturnDetails.d.Zkamt = ZakatReturnDetail.Zkamt.Replace(",", "");
+            return zakatReturnDetails;
+        }
+
+        public async Task SubmitReturn()
+        {
+            ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+            //  zakatReturnDetailsD.d.Cpamt = SalesDetailsList[7].InformationFromPartie.Replace(",", "");
+            _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, SubmitPostOperation);
+            if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+            {
+               
+                Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
+                //  IsCurrentZAKATTaxLess = existingZakatBase >= Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
+                if (existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt))
+                {
+                    IsCurrentZAKATTaxLess = true;
+                }
+                else
+                {
+                    IsCurrentZAKATTaxLess = false;
+                }
+                AssignCalculatedValueAfterSubmission();
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () => {
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                    {
+                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                        _navigationService.GoBack();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                    }
+                });
+            }
+        }
+
+        public async Task ConfirmClicked(string PostOperation)
+        {
+            _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, PostOperation);
+            if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+            {
+               // HideDisclaimer();
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () => {
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                    {
+                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                        _navigationService.GoBack();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                    }
+                });
+            }
+        }
+
+        private bool GetEstimatedZAKATValueChangeStatus()
+        {
+            if( ZakatReturnDetailToCompare.TvtslI.Equals(ZakatReturnDetail.TvtslI)
+                && ZakatReturnDetailToCompare.LabnoI.Equals(ZakatReturnDetail.LabnoI)
+                && ZakatReturnDetailToCompare.ImpvalI.Equals(ZakatReturnDetail.ImpvalI)
+                && ZakatReturnDetailToCompare.PtoslI.Equals(ZakatReturnDetail.PtoslI)
+                && ZakatReturnDetailToCompare.EtimadI.Equals(ZakatReturnDetail.EtimadI)
+                && ZakatReturnDetailToCompare.PramtI.Equals(ZakatReturnDetail.PramtI)
+                && ZakatReturnDetailToCompare.Cpamt.Equals(ZakatReturnDetail.Cpamt))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+       
 
         #endregion
 

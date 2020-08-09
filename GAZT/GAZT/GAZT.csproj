@@ -139,6 +139,9 @@
     <Compile Update="Views\NewDesign\VATDeRegistration\VATDeregistrationDetailsPage.xaml.cs">
       <DependentUpon>VATDeregistrationDetailsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationDetailsListPageView.xaml.cs">
+      <DependentUpon>ZakatRegistrationDetailsListPageView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="AppResources.resx">

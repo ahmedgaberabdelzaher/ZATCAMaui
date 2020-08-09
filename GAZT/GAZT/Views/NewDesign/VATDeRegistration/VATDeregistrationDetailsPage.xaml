@@ -32,7 +32,7 @@
                         <RowDefinition Height="Auto"/>
 
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView Grid.Row="1" BackgroundColor="White" CornerRadius="15,15,0,0" Padding="0">
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="White" VerticalOptions="Fill" Margin="0,10,0,-30" CornerRadius="15,15,0,0" Padding="0">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   Padding="0,0,0,0" x:Name="VATRMainGrid">
 
@@ -57,7 +57,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.TinDeregistration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VATDeregistration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
@@ -104,7 +104,7 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="1"/>
                     </Grid.RowDefinitions>
-                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Deregistartion Details" HorizontalOptions="StartAndExpand"
+                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Deregistration Details" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
                     <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="Complete Below Information" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
@@ -167,6 +167,9 @@
                                         </Image>
 
                                     </StackLayout>
+                                      <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
 
                                 </StackLayout>
                             </border:SfBorder >
@@ -295,10 +298,10 @@
                                                         </StackLayout>
                                                     </inputLayout:SfTextInputLayout>
 
-                 <buttons:SfButton Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
+                 <buttons:SfButton Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,16,0,36" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
-
+                
             </Grid>
               <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
@@ -352,7 +355,7 @@
                                         </StackLayout>
 
                                     <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
+                                            <TapGestureRecognizer Command="{Binding OnVatRegisrtationIDClicked}" ></TapGestureRecognizer>
                                         </StackLayout.GestureRecognizers>
 
                                 </StackLayout>
@@ -389,7 +392,7 @@
                                         </StackLayout>
 
                                         <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
+                                             <TapGestureRecognizer Command="{Binding OnVatRegistrationDateTapped}" ></TapGestureRecognizer>
                                          </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
@@ -416,7 +419,7 @@
                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
                             Style="{StaticResource ValueLabelBlack}"/>
                     </StackLayout>
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationAgreement}" HorizontalOptions="StartAndExpand"
+                    <Label Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationAgreement}" HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}" />
                 
                 </StackLayout>

@@ -3,11 +3,13 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -24,6 +26,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Commands
+        public ICommand OnVatRegistrationReasonTapped { get; set; }
+        public ICommand OnVatRegistrationDateTapped { get; set; }
+
         public ICommand ReasonContinueBtnTapped { get; set; }
         public ICommand AttachmentsContinueBtnTapped { get; set; }
         public ICommand DeclarationContinueBtnTapped { get; set; }
@@ -321,6 +326,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _isBackButtonVisible { get; set; }
+        public bool IsBackButtonVisible
+        {
+            get
+            {
+                return _isBackButtonVisible;
+            }
+            set
+            {
+                _isBackButtonVisible = value;
+                RaisePropertyChanged("IsBackButtonVisible");
+            }
+        }
 
         public VATDeRegistrationDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -357,6 +375,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
             DeclarationContinueBtnTapped = new Command(this.DeclarationContinueBtnClicked);
             SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
+            OnVatRegistrationReasonTapped = new Command(this.OnVatRegistrationReasonClicked);
+            OnVatRegistrationDateTapped = new Command(this.OnVatRegistrationReasonDateClicked);
 
             AddOutletDecisionOptions();
             AddOutletDocumentOptions();
@@ -397,6 +417,67 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                 }
 
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void OnVatRegistrationReasonClicked()
+        {
+            try
+            {
+                ObservableCollection<string> reasonData = new ObservableCollection<string>();
+                if (SelectedOutletOption.ActiveOutletDecisionOptions.Contains("De-Registration of VAT Account"))
+                {
+                    
+                    reasonData.Add(AppResources.VatDeregistrationofVATReason1);
+                    reasonData.Add(AppResources.VatDeregistrationofVATReason2);
+                    
+                }
+                else
+                {
+                    reasonData.Add(AppResources.VatDeregistrationofReturnReason1);
+                    reasonData.Add(AppResources.VatDeregistrationofReturnReason2);
+                    reasonData.Add(AppResources.VatDeregistrationofReturnReason3);
+                    reasonData.Add(AppResources.VatDeregistrationofReturnReason4);
+                }
+
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(reasonData));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        public async void OnVatRegistrationReasonDateClicked()
+        {
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView());
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -541,6 +622,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 SelectedOutletOption = OutletDecisionOptions[0];
             }
+            IsBackButtonVisible = false;
             SelectedOutletOptionIndex = 0;
             IsReasonViewEnabled = true;
             IsOutletViewEnabled = false;
@@ -549,8 +631,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsSummaryViewEnabled = false;
         }
 
-   
-
         public void EnableAttachmentsView()
         {
             CurrentStep = ProcessStep.Step2;
@@ -558,6 +638,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 SelectedDocumentOption = OutletDocumentOptions[0];
             }
+            IsBackButtonVisible = true;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = true;
