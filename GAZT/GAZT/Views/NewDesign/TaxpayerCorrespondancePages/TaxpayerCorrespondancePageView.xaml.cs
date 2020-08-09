@@ -59,7 +59,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     Resources["StyleReverseBack"] = App.Current.Resources["Back"];
                     Resources["ImageReverse"] = Resources["ArrowImageForEnglishStyle"];
                 }
-
+                  
             }
             catch(Exception ex)
             { 

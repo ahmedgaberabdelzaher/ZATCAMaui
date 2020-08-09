@@ -191,6 +191,30 @@ namespace EGAZT
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
             Xamarin.Forms.Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
+            bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
+            if (hasLanguageKey)
+            {
+                var LanguageKey = Preferences.Get("Preferences_DefaultLanguage", "");
+                {
+                    if (LanguageKey != null)
+                    {
+                        if (LanguageKey.Equals("Ar"))
+                        {
+                            PreviousIsArabic = true;
+                        }
+                        if (LanguageKey.Equals("En"))
+                        {
+                            PreviousIsArabic = false;
+                        }
+                    }
+
+                }
+            }
+            else
+            {
+                PreviousIsArabic = true;
+            }
+
             if (PreviousIsArabic)
             {
                 String langName = "ar-AE";//"en-US";// "ar-AE";
@@ -203,6 +227,10 @@ namespace EGAZT
             if (PreviousIsArabic)
             {
                 IsArabic = true;
+            }
+            else
+            {
+                IsArabic = false;
             }
 
             try
@@ -279,6 +307,22 @@ namespace EGAZT
             PreviousIsArabic = App.IsArabic;
             app.onFontFamilyChanged();
             App.IsArabic = PreviousIsArabic;
+            try
+            {
+                if (App.IsArabic)
+                {
+                    Preferences.Set("Preferences_DefaultLanguage", "Ar");
+                }
+                else
+                {
+                    Preferences.Set("Preferences_DefaultLanguage", "En");
+                }
+            }
+            catch(Exception ex)
+            {
+                Preferences.Set("Preferences_DefaultLanguage", "Ar");
+            }
+             
         }
         public void onFontFamilyChanged()
         {
