@@ -491,7 +491,7 @@
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return"></Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDReturns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped"/>
                                     </StackLayout.GestureRecognizers>

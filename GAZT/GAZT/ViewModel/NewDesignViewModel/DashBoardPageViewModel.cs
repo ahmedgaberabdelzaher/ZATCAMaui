@@ -353,6 +353,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 this._homeViewVisible = value;
+               if(_homeViewVisible!=null)
+                {
+                    if (_homeViewVisible)
+                    {
+                        _homeIndicatorColor = Color.FromHex("#005e4b");
+                        MenuIndicatorColor = Color.White;
+                    }
+
+                }
                 this.RaisePropertyChanged("HomeViewVisible");
             }
         }        

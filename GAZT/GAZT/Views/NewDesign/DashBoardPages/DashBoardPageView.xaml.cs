@@ -106,9 +106,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             try
             {
-                App.DisplayProgressView();
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+
+                });
                 await viewModel.LoadDashboardData();
-                Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread( () =>
                 {
                     viewModel.BillCount = string.Empty;
                     viewModel.BillsAndReturnsCommitments = null;
@@ -116,14 +120,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.PopulateBillsInformation();
                     viewModel.PopulateReturnsInformation();
                     viewModel.PopualateCommittmentsInformation();
-                    App.HideProgressView();
+                  
+                        viewModel.IsLoading = false;
+
                 });
 
                 // viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch (Exception ex)
             {
-                App.HideProgressView();
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+
+                });
             }
         }
 
@@ -405,6 +415,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
                     SetLTRDirection();
+                    var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+                    Navigation.InsertPageBefore(vUpdatedPage, this);
+                    Navigation.PopAsync();
                     viewModel.NDCommitments = AppResources.NDCommitments;
                     viewModel.ZBills = AppResources.Bills;
                     viewModel.Return = AppResources.Returns;
@@ -419,7 +432,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     SetRTLDirection();
-
+                    var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+                    Navigation.InsertPageBefore(vUpdatedPage, this);
+                    Navigation.PopAsync();
                     viewModel.NDCommitments = AppResources.NDCommitments;
                     viewModel.ZBills = AppResources.Bills;
                     viewModel.Return = AppResources.Returns;
