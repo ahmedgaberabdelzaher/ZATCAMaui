@@ -1,9 +1,9 @@
 ﻿using System;
 namespace EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel
 {
-    public class CalendarPickerPageViewModel
+    public class CalendarPickerPageViewModels
     {
-        public CalendarPickerPageViewModel()
+        public CalendarPickerPageViewModels()
         {
         }
     }
