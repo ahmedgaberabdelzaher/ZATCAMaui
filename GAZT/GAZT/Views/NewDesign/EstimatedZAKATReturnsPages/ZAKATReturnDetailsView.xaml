@@ -12,7 +12,8 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.ZAKATReturnDetailsView"
-             Title="Return Details">
+             Title="Return Details"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -198,9 +199,7 @@
                                             <custom:CustomLabel Text="Total VAT Series" Style="{StaticResource ValueLabelBlack}"/>
 
                                             <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="OnInfoClicked"/>
-                                                </Image.GestureRecognizers>
+
                                             </Image>
                                         </StackLayout>
 
@@ -630,6 +629,8 @@
 
                     <StackLayout Grid.Row="1" BackgroundColor="White">
                         <buttons:SfButton x:Name="btnprimary" Text="Submit" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnSubmitClicked}"/>
+                        <buttons:SfButton  Text="Confirm and Pay" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnConfirmClicked}"/>
+
                         <custom:CustomLabel Margin="0,10,0,0" Text="Change to Account Basis" Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalTextAlignment="Center" />
                     </StackLayout>
                 </Grid>

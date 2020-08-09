@@ -60,7 +60,7 @@ namespace EGAZT
         public static string NewZakatObjectionPageView = "NewZakatObjectionPageView";
         //test
         public static string AttachmentPopupPageView = "AttachmentPopupPageView";
-
+        public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
         #endregion
 
         #region old view strings

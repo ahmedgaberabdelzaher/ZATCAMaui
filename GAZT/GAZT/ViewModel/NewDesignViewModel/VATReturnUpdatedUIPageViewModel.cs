@@ -18,6 +18,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Property
 
+        public bool _isBtnVisible;
+        public bool isBtnVisible
+        {
+            get
+            {
+                return _isBtnVisible;
+            }
+            set
+            {
+                _isBtnVisible = value;
+                RaisePropertyChanged("isBtnVisible");
+            }
+        }
+
+        public bool _isCheckVisible;
+        public bool isCheckVisible
+        {
+            get
+            {
+                return _isCheckVisible;
+            }
+            set
+            {
+                _isCheckVisible = value;
+                RaisePropertyChanged("isCheckVisible");
+            }
+        }
+
         public Color _OuterFrame;
         public Color OuterFrame
         {
@@ -245,6 +273,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             secBox=thirdBox=fourthBox = Color.FromHex("#EBEBEB");
 
             IsTaxpayerView = IsVATReturnsView= IsSaleView = IsPurchaseView = IsTotalVatView = IsSummeryView = false;
+            isBtnVisible=isCheckVisible = false;
             ContinueText = "Continue";
 
             OnMoreClicked = new Xamarin.Forms.Command(() =>
@@ -271,14 +300,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         case 2:
                             IsVATReturnsView = false;
                             IsSummeryView = true;
-                        OuterFrame= Color.FromHex("#006450");
+                        isBtnVisible=isCheckVisible = true;
+                        CreditDetailsText = "Confrim and Generate SADAD Bill";
+                        OuterFrame = Color.FromHex("#006450");
                         fourthBox = Color.FromHex("#006450");
                         break;
-//                        case 3:
-                         IsTotalVatView = false;
-                            IsSummeryView = true;
+
+                        //case 3:
+                        navigationService.NavigateTo(App.VATReturnSuccessfullPageView);
                         //ContinueText = "Confirm and Carry Forward";
-                            CreditDetailsText = "Confirm and Request Refund";
+//                            CreditDetailsText = "Confirm and Request Refund";
                         break;
                     }
 
@@ -291,7 +322,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 switch (CurrentView)
                 {
-                    case 2:IsSummeryView = false;
+                    case 2:
+                        isBtnVisible=isCheckVisible = IsSummeryView = false;
                         IsVATReturnsView = true;
                              fourthBox= Color.FromHex("#EBEBEB");
                         OuterFrame = Color.Transparent;
