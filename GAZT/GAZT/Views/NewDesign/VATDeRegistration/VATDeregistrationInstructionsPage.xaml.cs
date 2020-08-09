@@ -13,7 +13,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         public VATDeregistrationInstructionsPage()
         {
             InitializeComponent();
-            viewModel = App.Locator.VATDeRegistrationInstructionsPage;
+            viewModel = App.Locator.VATDeregistrationInstructionsPage;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             this.FlowDirection = FlowDirection.LeftToRight;

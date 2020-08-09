@@ -22,7 +22,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
-
+using EGAZT.Views.NewDesign.VATDeRegistration;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -41,13 +41,15 @@ namespace EGAZT
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
 
-
-
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
         public static string TINDeregistrationPageView = "TINDeregistrationPageView";
         public static string VATDeregistrationDetailsPage = "VATDeregistrationDetailsPage";
         public static string VATDeregistrationInstructionsPage = "VATDeregistrationInstructionsPage";
+        public static string VATDeregistrationSuccessPage = "VATDeregistrationSuccessPage";
+        public static string CalendarPickerPageView = "CalendarPickerPageView";
+        public static string PickerPageView = "PickerPageView";
+
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
         public static string GAZTNewDesignRecoverPasswordPageView = nameof(GAZTNewDesignRecoverPasswordPageView);

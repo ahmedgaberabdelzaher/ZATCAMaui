@@ -80,6 +80,8 @@
     <Folder Include="Views\NewDesign\VATLookUp\" />
     <Folder Include="Views\NewDesign\EstimatedZAKATReturnsPages\" />
     <Folder Include="Views\NewDesign\VATDeRegistration\" />
+    <Folder Include="Views\NewDesign\GenericPickers\" />
+    <Folder Include="ViewModel\NewDesignViewModel\GenericPickers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
