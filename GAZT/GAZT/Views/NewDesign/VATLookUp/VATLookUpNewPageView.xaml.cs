@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net.Http;
-using System.Resources;
-using System.Threading.Tasks;
-using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
-using GAZT.Manager;
 using GAZT.Models;
-using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-using ZXing.Net.Mobile.Forms;
-//using Syncfusion.BarcodeReader.OPX;
-//using Syncfusion.Pdf.Parsing;
+
 
 namespace EGAZT.Views.NewDesign.VATLookUp
 {
@@ -56,6 +44,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -66,35 +55,6 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
-        }
-
-        private async void btnSubmit_Clicked(object sender, EventArgs e)
-        {
-            isMandatoryDataEntered = true;
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
-
-            await Task.Run(async () =>
-            {
-                if (!string.IsNullOrEmpty(viewModel.Name))
-                {
-                    viewModel.ResetFormData();
-                    return;
-                }
-                viewModel.ValidateFormData();
-                if (isMandatoryDataEntered)
-                {
-                    viewModel.getBarcodeData();
-                }
-
-            });
-
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
         }
         
         void PPicker_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -129,27 +89,6 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             PPicker.SelectedItem = vATParameterType;
             viewModel.SelectedParameterType = vATParameterType;
         }
-
-        private void btnScan_ClickedAsync(System.Object sender, System.EventArgs e)
-        {
-            ZXingScannerPage scanPage = new ZXingScannerPage();
-            Navigation.PushAsync(scanPage);
-
-            string id = string.Empty;
-            string _language = "A";
-            scanPage.OnScanResult += (result) =>
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Navigation.PopAsync();
-                    entryNumber.Text = result.Text;
-                    id = result.Text;
-                    viewModel.SelectedParameterType = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
-                    SearchParameterEnter.Text = AppResources.ZVATLookupIDTaxpayerTinType1;
-                    viewModel.getBarcodeData();
-
-                });
-            };
-        }
+ 
     }
 }

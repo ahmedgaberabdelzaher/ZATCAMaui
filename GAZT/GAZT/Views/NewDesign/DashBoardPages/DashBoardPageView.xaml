@@ -518,16 +518,36 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
-                                 <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                <StackLayout Orientation="Horizontal" Spacing="20" IsVisible="{Binding IsVatRegistrationTileVisible}">
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="Vat Deregistration" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationTile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="VatRegistrationTile_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsVatRegistrationTileVisible}"/>
+                              <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+
+                                    </Image>
+                                    <custom:CustomLabel  Text="VAT Deregistration" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                 <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                 <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
@@ -662,9 +682,7 @@
                                 <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
 
                                 <Image Source="message" VerticalOptions="Start" HorizontalOptions="EndAndExpand" >
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Inbox"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
+
                                 </Image>
                                 <!--<Image Source="bell_notification" VerticalOptions="Start">
                                 </Image>-->

@@ -33,6 +33,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             if (App.IsArabic)
             {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }

@@ -318,7 +318,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._TaxPayerProfile = value;
                 this.RaisePropertyChanged("TaxPayerProfile");
             }
-        }     
+        }
+        private bool _isVatRegistrationTileVisible = false;
+        public bool IsVatRegistrationTileVisible
+        {
+            get
+            {
+                return _isVatRegistrationTileVisible;
+            }
+            set
+            {
+                _isVatRegistrationTileVisible = value;
+                RaisePropertyChanged("IsVatRegistrationTileVisible");
+            }
+        }
         public bool MenuViewVisible
         {
             get

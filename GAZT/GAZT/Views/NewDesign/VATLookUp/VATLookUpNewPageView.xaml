@@ -166,7 +166,6 @@
                                                         ErrorColor="#B00020"
                                                         HasError="False">
                                             <control:BorderlessEntry  Text="{Binding TxtSearchParameter}"
-                                                                      x:Name="SearchParameterEnter"
                                                                       Placeholder="{x:Static ResourceManager:AppResources.TINS}"
                                                                       TextColor="#bbbbbb" >
                                             </control:BorderlessEntry>
@@ -212,41 +211,41 @@
                                         </syncfusion:SfPicker>
 
                              <StackLayout Grid.Row="2">
-                                        <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}"
-                                                              Padding="0,0,0,0"
-                                                              Style="{StaticResource CaptionLabelGrey}"/>
-                                        <inputLayout:SfTextInputLayout x:Name="frmLookupNumner"
-                                                                       Margin="0,-6,0,-6" 
-										                               ContainerType="Outlined"
-                                                                       UnfocusedColor="#B1B1B1"
-										                               OutlineCornerRadius="8"
-                                                                       FocusedColor="#005e4b"
-                                                                       ErrorColor="#B00020"
-                                                                       HasError="False">
-                                            <control:BorderlessEntry Text="{Binding LookupNumber}"
-                                                                     MaxLength="{Binding MaxDigids}"
-                                                                     IsReadOnly="{Binding IsNameVisible}"
-                                                                     x:Name="entryNumber"
-                                                                     Placeholder="{x:Static ResourceManager:AppResources.NDTypeyourIDNumber}"
-                                                                     TextColor="#bbbbbb" >
-                                            </control:BorderlessEntry>
-                                            <inputLayout:SfTextInputLayout.TrailingView >
-                                                <Label HorizontalOptions="End"
-                                                       IsEnabled="{Binding IsTooltipEnableVisible}"
-                                                       IsVisible="{Binding IsTooltipEnableVisible}"
-                                                       Margin="0,0,0,4"
-                                                       FontSize="Title"
-                                                       VerticalOptions="Center"
-                                                       Style="{StaticResource IconLabelStyle}"
-                                                       TextColor="#005e4b"
-                                                       Text="{StaticResource Help}"  >
-                                                    <Label.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                                    </Label.GestureRecognizers>
-                                                </Label>
-                                            </inputLayout:SfTextInputLayout.TrailingView>
-                                        </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
+                                    <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}"
+                                                            Padding="0,0,0,0"
+                                                            Style="{StaticResource CaptionLabelGrey}"/>
+                                    <inputLayout:SfTextInputLayout x:Name="frmLookupNumner"
+                                                                    Margin="0,-6,0,-6" 
+										                            ContainerType="Outlined"
+                                                                    UnfocusedColor="#B1B1B1"
+										                            OutlineCornerRadius="8"
+                                                                    FocusedColor="#005e4b"
+                                                                    ErrorColor="#B00020"
+                                                                    HasError="False">
+                                        <control:BorderlessEntry Text="{Binding LookupNumber}"
+                                                                    MaxLength="{Binding MaxDigids}"
+                                                                    IsReadOnly="{Binding IsNameVisible}"
+                                                                     
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.NDTypeyourIDNumber}"
+                                                                    TextColor="#bbbbbb" >
+                                        </control:BorderlessEntry>
+                                        <inputLayout:SfTextInputLayout.TrailingView >
+                                            <Label HorizontalOptions="End"
+                                                    IsEnabled="{Binding IsTooltipEnableVisible}"
+                                                    IsVisible="{Binding IsTooltipEnableVisible}"
+                                                    Margin="0,0,0,4"
+                                                    FontSize="Title"
+                                                    VerticalOptions="Center"
+                                                    Style="{StaticResource IconLabelStyle}"
+                                                    TextColor="#005e4b"
+                                                    Text="{StaticResource Help}"  >
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
 
                             <border:SfBorder Grid.Row="3"
                                              Margin="0,10,0,10"
@@ -259,8 +258,7 @@
                                            HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand"
                                                  Orientation="Horizontal" >
-                                        <Label x:Name="lbResult"
-                                               Text="{Binding Name}"
+                                        <Label Text="{Binding Name}"
                                                Style="{StaticResource ValueLabelBlack}"
                                                HorizontalOptions="Start"/>
 
@@ -279,7 +277,7 @@
                          Padding="10,5,10,10" >
                 <buttons:SfButton x:Name="btnScan"
                                   Text="Scan QRCode"
-                                  Clicked="btnScan_ClickedAsync"
+                                  Command="{Binding OnScanButtonClicked}"
                                   Style="{StaticResource PrimaryButtonStyle}"/>
             </StackLayout>
             <StackLayout Grid.Row="2"
@@ -287,7 +285,7 @@
                          Padding="10,5,10,20" >
                 <buttons:SfButton x:Name="btnSearch"
                                   Text="{Binding LookUpButtonText}"
-                                  Clicked="btnSubmit_Clicked"
+                                  Command="{Binding OnSearchButtonClicked}"
                                   Style="{StaticResource PrimaryButtonStyle}"/>
             </StackLayout>
 

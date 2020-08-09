@@ -177,6 +177,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
             SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
             SimpleIoc.Default.Register<PickerPageViewModel>();
+            SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
 
             SimpleIoc.Default.Register<VATDeregistrationSuccessPageViewModel>();
 
@@ -256,8 +257,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
             SimpleIoc.Default.Register<TaxpayersCertificatesPageViewModel>();
             SimpleIoc.Default.Register<ZAKATReturnDetailsViewModel>();
-
-
+            SimpleIoc.Default.Register<TINDeregistrationPageView>();
+            SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageView>();
 
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
@@ -1715,6 +1716,8 @@ namespace EGAZT
             navigationService.Configure(App.GAZTForm5PageView, typeof(ZakatForm5PageView));
             navigationService.Configure(App.ZAKATReturnDetailsView, typeof(ZAKATReturnDetailsView));
             navigationService.Configure(App.TINDeregestrationSuccessPageView, typeof(TINDeregestrationSuccessPageView));
+            navigationService.Configure(App.TINDeregistrationPageView, typeof(TINDeregistrationPageView));
+            navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
 
             #endregion
 
@@ -1780,6 +1783,19 @@ namespace EGAZT
                 }
             }
         }
-        //
+        public ZakatRegistrationDetailsListPageViewModel ZakatRegistrationDetailsListPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatRegistrationDetailsListPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
     }
 }
