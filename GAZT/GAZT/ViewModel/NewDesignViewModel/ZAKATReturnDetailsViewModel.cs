@@ -796,9 +796,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     UnSetEditImage();
                     isLabelVisible = true;
                     IsEditTextVisible = false;
+
+
+
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
-                else if (ButtonStatus.Equals("E0011"))//In Processing
+                else if (ButtonStatus.Equals("E0011"))
                 {
                     isEditVisible = true;
                     SetEditImage();
