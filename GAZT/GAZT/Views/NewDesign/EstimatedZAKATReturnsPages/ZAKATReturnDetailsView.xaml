@@ -173,9 +173,9 @@
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
                                         <Image Source="zakat_details" >
                                     </Image>
-                                    <custom:CustomLabel Text="Sales Details" Style="{StaticResource SectionTitleBlack}"/>
+                                    <custom:CustomLabel Text="Sales Details" Style="{StaticResource SectionTitleBlack}"/><!--{ Binding IsEditTextVisible}-->
 
-                                        <custom:CustomLabel IsVisible="{ Binding IsEditTextVisible}" HorizontalOptions="EndAndExpand" Text="Edit" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
+                                        <custom:CustomLabel IsVisible="{Binding IsEditTextVisible}" HorizontalOptions="EndAndExpand" Text="Edit" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnEditClicked"/>
                                             </custom:CustomLabel.GestureRecognizers>
@@ -215,7 +215,7 @@
 
                                             </inputLayout:SfTextInputLayout>
 
-                                            <custom:CustomLabel Text="{Binding TvtslI}"   IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNewReturn}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            <custom:CustomLabel Text="{Binding TvtslI}"   IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                         </StackLayout>
 
