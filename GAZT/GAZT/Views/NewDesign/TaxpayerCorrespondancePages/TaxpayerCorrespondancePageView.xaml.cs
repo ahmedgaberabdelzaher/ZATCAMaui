@@ -47,14 +47,25 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
         }
         public void ChangeAeroIcon()
         {
-            if (App.IsArabic)
+            try
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                if (App.IsArabic)
+                {
+                    Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                    Resources["ImageReverse"] = Resources["ArrowImageForArabicStyle"];
+                }
+                else
+                {
+                    Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                    Resources["ImageReverse"] = Resources["ArrowImageForEnglishStyle"];
+                }
+
             }
-            else
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            catch(Exception ex)
+            { 
+            
             }
+
         }
         protected async override void OnAppearing()
         {

@@ -11,9 +11,17 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-
-        </ResourceDictionary>
+            
+            </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -133,7 +141,7 @@
                                         </StackLayout>
                                         <!--<Label  Grid.Row="0" Margin="10,0,0,0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"   Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
                                         </Label>-->
-                                        <Image  x:Name="ImageBackArrow" Grid.Row="0"  Grid.Column="1" Rotation="{Binding RotationForImageInArabic}"  Source="{Binding FavImg}" HorizontalOptions="End" VerticalOptions="Center"/>
+                                        <Image  x:Name="ImageBackArrow" Style="{DynamicResource ImageReverse}" Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="End" VerticalOptions="Center"/>
 
                                     </Grid>
                                 </border:SfBorder>
