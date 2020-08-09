@@ -84,7 +84,7 @@
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static local:AppResources.FinancialPeriodFrom}" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel x:Name="date"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.Abrzu}"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>

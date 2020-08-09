@@ -72,4 +72,11 @@ namespace EGAZT.Models
         public string SummaryData { get; set; }
         public bool IsEditVisible { get; set; }
     }
+
+    public class ZakatDeregistrationDetailsListModel
+    {
+        public string ZDTitle { get; set; }
+        public string ZDImageSource { get; set; }
+    }
+    
 }

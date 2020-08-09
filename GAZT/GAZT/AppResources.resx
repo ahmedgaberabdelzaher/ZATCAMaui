@@ -4462,6 +4462,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationRegistrationDetails" xml:space="preserve">
     <value>Registration Details</value>
   </data>
+  <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
+    <value>Outlets</value>
+  </data>
    <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
   </data>  
@@ -4478,7 +4481,24 @@ Applicant should ensure that there is no pending return filing or any outstandin
       <data name="VATDeregistrationDeclarationAgreement" xml:space="preserve">
     <value>I hereby certify that iam authorised to complete this form for the taxable person and that all information contained is correct.</value>
   </data>  
-    
+     <data name="VatDeregistrationofVATReason1" xml:space="preserve">
+    <value>Total value of VAT eligible supplies falls below mandatory registration threshold (375,000 SAR)</value>
+  </data>
+         <data name="VatDeregistrationofVATReason2" xml:space="preserve">
+    <value>Others (please specify)</value>
+  </data>
+       <data name="VatDeregistrationofReturnReason1" xml:space="preserve">
+    <value>Temporary suspension of economic activities due to accidents catastrophes or other external events </value>
+  </data>
+         <data name="VatDeregistrationofReturnReason2" xml:space="preserve">
+    <value>Business Seasonality</value>
+  </data>
+             <data name="VatDeregistrationofReturnReason3" xml:space="preserve">
+    <value>Legal orders for temporary suspension of economic activities</value>
+  </data>
+             <data name="VatDeregistrationofReturnReason4" xml:space="preserve">
+    <value>Others (please specify)</value>
+  </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
   </data>

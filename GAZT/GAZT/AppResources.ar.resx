@@ -4319,7 +4319,7 @@
     <value>TIN Deregistration</value>
   </data>
   <data name="TinDeregistrationReason" xml:space="preserve">
-    <value>Reason</value>
+    <value>الأسباب</value>
   </data>
   <data name="TinDeregistrationReasonBankruptcy" xml:space="preserve">
     <value>Bankruptcy</value>
@@ -4334,22 +4334,22 @@
     <value>Establishment to Company</value>
   </data>
   <data name="TinDeregistrationSelectReason" xml:space="preserve">
-    <value>Select Reason for Deregistration</value>
+    <value>حدد سبب ايقاف التسجيل</value>
   </data>
   <data name="TinDeregistrationQuestionOutlets" xml:space="preserve">
-    <value>What do you want to do with active outlets?</value>
+    <value>ما هو الإجراء الذي تود إتخاذه حيال هذا الفرع المفعل؟</value>
   </data>
   <data name="TinDeregistrationCloseAllOutlets" xml:space="preserve">
-    <value>Close all Outlets</value>
+    <value>إغلاق الفرع</value>
   </data>
   <data name="TinDeregistrationTransferAllOutletsToSingle" xml:space="preserve">
-    <value>Transfer all Outlets to a Single Transferee</value>
+    <value>نقل ملكية الفرع لمكلف آخر</value>
   </data>
   <data name="TinDeregistrationCloseOutletsIndividually" xml:space="preserve">
-    <value>Close/Transfer Outlets Invidually</value>
+    <value>إغلاق / نقل ملكية الترخيص لمكلف آخر</value>
   </data>
   <data name="TinDeregistrationDate" xml:space="preserve">
-    <value>Deregistration Date</value>
+    <value>تاريخ الإيقاف / الشطب</value>
   </data>
   <data name="TinDeregistrationFathersName" xml:space="preserve">
     <value>Father's Name</value>
@@ -4367,53 +4367,55 @@
     <value>Name 2</value>
   </data>
   <data name="TinDeregistrationOutletDetails" xml:space="preserve">
-    <value>Outlet Details</value>
+    <value>معلومات الفرع</value>
   </data>
   <data name="TinDeregistrationOutletReviewMessage" xml:space="preserve">indere
-    <value>Review the outlets that will be deregistered</value>
+    <value>مراجعة معلومات الفرع الذي سيتم إلغاء تسجيله</value>
   </data>
   <data name="TinDeregistrationOutletNumber" xml:space="preserve">
-    <value>Outlet Number</value>
+    <value>رقم الفرع</value>
   </data>
   <data name="TinDeregistrationOutletCommercialName" xml:space="preserve">
-    <value>Commercial Name</value>
+    <value>الاسم التجاري</value>
   </data>
   <data name="TinDeregistrationPermitType" xml:space="preserve">
-    <value>Permit Type</value>
+    <value>نوع الترخيص</value>
   </data>
   <data name="TinDeregistrationPermitNumber" xml:space="preserve">
-    <value>Permit Number</value>
+    <value>رقم الترخيص</value>
   </data>
  <data name="TinDeregistrationValidFrom" xml:space="preserve">
-    <value>Valid From</value>
+    <value>صالحة من</value>
   </data>
  <data name="TinDeregistrationDeregReason" xml:space="preserve">
-    <value>Deregistration Reason</value>
+    <value>سبب الإيقاف</value>
   </data>
-  
+  <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
+    <value>Outlets</value>
+  </data>
   <data name="TinDeregistrationProvideSuportingDocuments" xml:space="preserve">
-    <value>Provide the supporting documents</value>
+    <value>يرجى تقديم نسخة من الوثائق التالية</value>
   </data>
    <data name="TinDeregistrationAttachmentCopyOfDeclaringBankruptcy" xml:space="preserve">
-    <value>Attachments - Copy of Declaring Bankruptcy(Mandatory)</value>
+    <value>نسخة من حكم الإفلاس</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfLicneseAfterClosing" xml:space="preserve">
-    <value>Attachments - Copy of License After Closing/Update(Mandatory)</value>
+    <value>نسخة من الترخيص بعد إغلاق / تحديث</value>
   </data>
    <data name="TinDeregistrationAttachmentCopyOfCRAfterClosing" xml:space="preserve">
-    <value>Attachments - Copy of CR After Closing/Update(Mandatory)</value>
+    <value>نسخة من السجل التجاري بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentOwnershipSellingAgreement" xml:space="preserve">
-    <value>Attachments - Ownership Selling/Transfer Agreement</value>
+    <value>عقد مبايعة نقل الملكية</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfPartnersDecision" xml:space="preserve">
-    <value>Attachments - Copy of Partners Decision</value>
+    <value>نسخة من قرار الشركاء</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfContractAfterClosing" xml:space="preserve">
-    <value>Attachments - Copy of Contract After Closing/Update</value>
+    <value>نسخة من العقد بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
-    <value>Upload your Document</value>
+    <value>رفع المرفقات</value>
   </data>
   <data name="TinDeregistration20MB" xml:space="preserve">
     <value>20MB</value>
@@ -4426,16 +4428,16 @@
     <value>Contact Person Name</value>
   </data> 
    <data name="TinDeregistrationDesignation" xml:space="preserve">
-    <value>Designation</value>
+    <value>الصفة</value>
   </data> 
   <data name="TinDeregistrationSuccess" xml:space="preserve">
-    <value>Your TIN Deregistration is submitted successfully</value>
+    <value>تم استلام طلب إيقاف تسجيل الرقم المميز بنجاح</value>
   </data> 
    <data name="TinDeregistrationDownloadConfirmation" xml:space="preserve">
-    <value>Download Confirmation</value>
+    <value>تحميل إشعار تسليم الطلب</value>
   </data> 
   <data name="TinDeregistrationRegistrationDetails" xml:space="preserve">
-    <value>Registration Details</value>
+    <value>تفاصيل التسجيل</value>
   </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
@@ -4450,7 +4452,25 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>     
       <data name="VATDeregistrationDeclarationAgreement" xml:space="preserve">
     <value>I hereby certify that iam authorised to complete this form for the taxable person and that all information contained is correct.</value>
-  </data>  
+  </data> 
+         <data name="VatDeregistrationofVATReason1" xml:space="preserve">
+    <value>Total value of VAT eligible supplies falls below mandatory registration threshold (375,000 SAR)</value>
+  </data>
+         <data name="VatDeregistrationofVATReason2" xml:space="preserve">
+    <value>Others(please specify)</value>
+  </data>
+           <data name="VatDeregistrationofReturnReason1" xml:space="preserve">
+    <value>Temporary suspension of economic activities due to accidents catastrophes or other external events </value>
+  </data>
+         <data name="VatDeregistrationofReturnReason2" xml:space="preserve">
+    <value>Business Seasonality</value>
+  </data>
+             <data name="VatDeregistrationofReturnReason3" xml:space="preserve">
+    <value>Legal orders for temporary suspension of economic activities</value>
+  </data>
+             <data name="VatDeregistrationofReturnReason4" xml:space="preserve">
+    <value>Others (please specify)</value>
+  </data>
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
   </data>
