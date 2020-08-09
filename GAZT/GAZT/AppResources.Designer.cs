@@ -7542,6 +7542,162 @@ namespace EGAZT {
             }
         }
         
+        public static string VATDeregistrationInstructionsTitle {
+            get {
+                return ResourceManager.GetString("VATDeregistrationInstructionsTitle", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationReasonType1 {
+            get {
+                return ResourceManager.GetString("VATDeregistrationReasonType1", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationReasonType2 {
+            get {
+                return ResourceManager.GetString("VATDeregistrationReasonType2", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationDocumentType1 {
+            get {
+                return ResourceManager.GetString("VATDeregistrationDocumentType1", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationDocumentType2 {
+            get {
+                return ResourceManager.GetString("VATDeregistrationDocumentType2", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationDocumentType3 {
+            get {
+                return ResourceManager.GetString("VATDeregistrationDocumentType3", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationDocumentType4 {
+            get {
+                return ResourceManager.GetString("VATDeregistrationDocumentType4", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregAttachmentTitle {
+            get {
+                return ResourceManager.GetString("VatDeregAttachmentTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregAttachmentInputTitle {
+            get {
+                return ResourceManager.GetString("VatDeregAttachmentInputTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregAttachmentInputTitle2 {
+            get {
+                return ResourceManager.GetString("VatDeregAttachmentInputTitle2", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregAttachmentInputsize {
+            get {
+                return ResourceManager.GetString("VatDeregAttachmentInputsize", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregAttachmentInputsizeLarge {
+            get {
+                return ResourceManager.GetString("VatDeregAttachmentInputsizeLarge", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregAttachmentInputPlaceholder {
+            get {
+                return ResourceManager.GetString("VatDeregAttachmentInputPlaceholder", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregDocumentselectionTitle {
+            get {
+                return ResourceManager.GetString("VatDeregDocumentselectionTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregDeclarationTitle {
+            get {
+                return ResourceManager.GetString("VatDeregDeclarationTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregDeclarationSubtitle {
+            get {
+                return ResourceManager.GetString("VatDeregDeclarationSubtitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregIDType {
+            get {
+                return ResourceManager.GetString("VatDeregIDType", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregIDNumber {
+            get {
+                return ResourceManager.GetString("VatDeregIDNumber", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregDOBTitle {
+            get {
+                return ResourceManager.GetString("VatDeregDOBTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregContactPerson {
+            get {
+                return ResourceManager.GetString("VatDeregContactPerson", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregSummaryTitle {
+            get {
+                return ResourceManager.GetString("VatDeregSummaryTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregSummarySubTitle {
+            get {
+                return ResourceManager.GetString("VatDeregSummarySubTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregDetailsTitle {
+            get {
+                return ResourceManager.GetString("VatDeregDetailsTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregReasonTitle {
+            get {
+                return ResourceManager.GetString("VatDeregReasonTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregDocumentTitle {
+            get {
+                return ResourceManager.GetString("VatDeregDocumentTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregConfirmTitle {
+            get {
+                return ResourceManager.GetString("VatDeregConfirmTitle", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistrationInstructions {
             get {
                 return ResourceManager.GetString("VATDeregistrationInstructions", resourceCulture);
@@ -7593,6 +7749,24 @@ namespace EGAZT {
         public static string VatDeregistrationofReturnReason4 {
             get {
                 return ResourceManager.GetString("VatDeregistrationofReturnReason4", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregistrationApplicationNumber {
+            get {
+                return ResourceManager.GetString("VatDeregistrationApplicationNumber", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregistrationRegistrationServices {
+            get {
+                return ResourceManager.GetString("VatDeregistrationRegistrationServices", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregistrationSubmitSuccessful {
+            get {
+                return ResourceManager.GetString("VatDeregistrationSubmitSuccessful", resourceCulture);
             }
         }
         

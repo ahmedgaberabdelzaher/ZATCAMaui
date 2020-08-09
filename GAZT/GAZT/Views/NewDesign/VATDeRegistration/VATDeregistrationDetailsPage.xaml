@@ -57,7 +57,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.TinDeregistration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VATDeregistration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
@@ -104,7 +104,7 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="1"/>
                     </Grid.RowDefinitions>
-                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Deregistartion Details" HorizontalOptions="StartAndExpand"
+                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Deregistration Details" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
                     <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="Complete Below Information" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
@@ -355,7 +355,7 @@
                                         </StackLayout>
 
                                     <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
+                                            <TapGestureRecognizer Command="{Binding OnVatRegisrtationIDClicked}" ></TapGestureRecognizer>
                                         </StackLayout.GestureRecognizers>
 
                                 </StackLayout>
