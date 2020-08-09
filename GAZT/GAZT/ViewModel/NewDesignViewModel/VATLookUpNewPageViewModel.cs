@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -271,7 +275,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 MaxDigids = "15";
             }
         }
-        private void ValidateFormData()
+        public void ValidateFormData()
         {
             try
             {
@@ -343,12 +347,142 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             //_dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
         }
-        private void ResetFormData()
+        public void ResetFormData()
         {
             Name = "";
             IsNameVisible = false;
             LookupNumber = "";
             LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
+        }
+        public async void getBarcodeData()
+        {
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    //isMandatoryDataEntered = true;
+                    string _language = "A"; //UtilityManager.GetLanguageParameter();
+
+                    GAZT.Models.VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id,LookupNumber);
+                    if (vatLookUp != null)
+                    {
+                        if (vatLookUp.d != null)
+                        {
+                            if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
+                            {
+                                NameOrNoResultLabel = AppResources.Name;
+                                Name = vatLookUp.d.results[0].Name;
+                                IsNameVisible = true;
+                                LookUpButtonText = AppResources.ZVATLookUpNewSearchButtonText;
+                            }
+                            else
+                            {
+                                NameOrNoResultLabel = "";
+                                Name = "";
+                                IsNameVisible = false;
+                                LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+
+                                    if (string.Compare(vatLookUp.d.results[0].Description, "Vat number is not equal to 15") == 0)
+                                    {
+                                        await _dialogService.ShowMessageBox(AppResources.ZZZVatnumberisnotequalto15, AppResources.ZError);
+                                    }
+                                    else if (string.Compare(vatLookUp.d.results[0].Description, "Invalid VAT number provided") == 0)
+                                    {
+                                        await _dialogService.ShowMessageBox(AppResources.ZZZInvalidVATnumberprovided, AppResources.ZError);
+                                    }
+                                    else if (string.Compare(vatLookUp.d.results[0].Description, "Tin is not Active") == 0)
+                                    {
+                                        await _dialogService.ShowMessageBox(AppResources.ZZZTinisnotActive, AppResources.ZError);
+                                    }
+                                    else if (string.Compare(vatLookUp.d.results[0].Description, "Invalid TIN") == 0)
+                                    {
+                                        await _dialogService.ShowMessageBox(AppResources.ZInvalidTinNumber, AppResources.ZError);
+                                    }
+                                    else if (string.Compare(vatLookUp.d.results[0].Description, "No Data found against given parameters") == 0)
+                                    {
+                                        await _dialogService.ShowMessageBox(AppResources.ZZZNoDatafoundagainstgivenparameters, AppResources.ZError);
+                                    }
+                                    else if (string.Compare(vatLookUp.d.results[0].Description, "No VAT Certificate Found") == 0)
+                                    {
+                                        await _dialogService.ShowMessageBox(AppResources.ZZZNoVATCertificateFound, AppResources.ZError);
+                                    }
+                                    else if (string.Compare(vatLookUp.d.results[0].Description, "Account is deregistered") == 0)
+                                    {
+                                        await _dialogService.ShowMessageBox(AppResources.ZZZAccountisderegistered, AppResources.ZError);
+                                    }
+
+                                    else
+                                    {
+                                        await _dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                                    }
+
+                                });
+                            }
+                        }
+                        else
+                        {
+                            Name = vatLookUp.d.results[0].Name;
+                            NameOrNoResultLabel = AppResources.Nodataavailable;
+                        }
+                    }
+                }
+                catch (GAZTException gex)
+                {
+                    // Handle the GAZT custom exception.
+                    string MessageForTheUser = gex.Message;
+                    if (gex is GAZTInvalidDataException)
+                    {
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
+                    if (gex is GAZTNetworkConnectivityIssueException)
+                    {
+                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                    }
+                    else if (gex is GAZTInternetException)
+                    {
+                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                    }
+                    else if (gex is GAZTSessionExpiredException)
+                    {
+                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                    }
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+
+                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //viewModel._navigationService.GoBack();
+                    });
+                }
+                catch (HttpRequestException ex)
+                {
+                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+
+                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //  viewModel._navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+
+                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //  viewModel._navigationService.GoBack();
+                    });
+                }
+
+
+
+            });
         }
         #endregion
     }
