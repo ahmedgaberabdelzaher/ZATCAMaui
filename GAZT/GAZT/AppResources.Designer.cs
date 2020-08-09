@@ -7560,6 +7560,42 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregistrationofVATReason1 {
+            get {
+                return ResourceManager.GetString("VatDeregistrationofVATReason1", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregistrationofVATReason2 {
+            get {
+                return ResourceManager.GetString("VatDeregistrationofVATReason2", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregistrationofReturnReason1 {
+            get {
+                return ResourceManager.GetString("VatDeregistrationofReturnReason1", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregistrationofReturnReason2 {
+            get {
+                return ResourceManager.GetString("VatDeregistrationofReturnReason2", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregistrationofReturnReason3 {
+            get {
+                return ResourceManager.GetString("VatDeregistrationofReturnReason3", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregistrationofReturnReason4 {
+            get {
+                return ResourceManager.GetString("VatDeregistrationofReturnReason4", resourceCulture);
+            }
+        }
+        
         public static string SelectTheOptionAndCompleteDetails {
             get {
                 return ResourceManager.GetString("SelectTheOptionAndCompleteDetails", resourceCulture);
