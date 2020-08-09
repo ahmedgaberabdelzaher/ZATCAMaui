@@ -194,7 +194,9 @@
                                             <custom:CustomLabel Text="Total VAT Series" Style="{StaticResource ValueLabelBlack}"/>
 
                                             <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnInfoClicked"/>
+                                                </Image.GestureRecognizers>
                                             </Image>
                                         </StackLayout>
                                         <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0">
