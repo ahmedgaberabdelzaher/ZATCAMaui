@@ -22,6 +22,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+        }
 
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
@@ -41,8 +46,21 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            VATDeregistrationAttachmentsModel selectedItem = e.AddedItems[0] as VATDeregistrationAttachmentsModel;
-            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(selectedItem);
+            // VATDeregistrationAttachmentsModel selectedItem = e.AddedItems[0] as VATDeregistrationAttachmentsModel;
+            // viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(selectedItem);
+            viewModel.SelectedAttachment = e.AddedItems[0] as VATDeregistrationAttachmentsModel;
+            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
+
+            if (viewModel.SelectedAttachment.IsAttachmentAttached == true)
+            {
+                viewModel.SelectedAttachment.AttachmentName = string.Empty;
+                viewModel.SelectedAttachment.IsAttachmentAttached = false;
+            }
+            else
+            {
+                attachmentsListView.SelectedItems.Clear();
+                viewModel.AddAttachmentEx();
+            }
         }
 
         void btnReasonContinue_Clicked(System.Object sender, System.EventArgs e)

@@ -61,10 +61,17 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 await viewModel.OnReleaseOrBillsClicked();
             }
 
-
-
-
+           
 
         }
+        private void OnEditClicked(object sender, EventArgs e)
+        {
+
+            viewModel.isLabelVisible = false;
+            viewModel.isEditVisible = true;
+            viewModel.IsEditTextVisible = true;
+            viewModel.SetEditImage();
+        }
+
     }
 }

@@ -22,7 +22,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            
         }
 
         protected override void OnAppearing()

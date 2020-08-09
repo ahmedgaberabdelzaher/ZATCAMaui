@@ -42,7 +42,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             viewModel.TxtSearchParameter = string.Empty;
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
-            viewModel.LookUpButtonText = "Search VAT";
+            viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
         }
         private void ValidateFormData()
         {
@@ -197,6 +197,8 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                                 {
                                     viewModel.NameOrNoResultLabel = "";
                                     viewModel.Name = "";
+                                    viewModel.IsNameVisible = false;
+                                    viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
 
@@ -369,11 +371,15 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                                 {
                                     viewModel.NameOrNoResultLabel = AppResources.Name;
                                     viewModel.Name = vatLookUp.d.results[0].Name;
+                                    viewModel.IsNameVisible = true;
+                                    viewModel.LookUpButtonText = AppResources.ZVATLookUpNewSearchButtonText;
                                 }
                                 else
                                 {
                                     viewModel.NameOrNoResultLabel = "";
                                     viewModel.Name = "";
+                                    viewModel.IsNameVisible = false;
+                                    viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
 
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {

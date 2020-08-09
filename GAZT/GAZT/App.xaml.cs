@@ -41,14 +41,14 @@ namespace EGAZT
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
 
-
-
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
         public static string TINDeregistrationPageView = "TINDeregistrationPageView";
         public static string VATDeregistrationDetailsPage = "VATDeregistrationDetailsPage";
         public static string VATDeregistrationInstructionsPage = "VATDeregistrationInstructionsPage";
         public static string VATDeregistrationSuccessPage = "VATDeregistrationSuccessPage";
+        public static string CalendarPickerPageView = "CalendarPickerPageView";
+        public static string PickerPageView = "PickerPageView";
 
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
