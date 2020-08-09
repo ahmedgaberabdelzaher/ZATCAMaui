@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.VATDeRegistration;
+using EGAZT.Views.NewDesign.ZakatDeregistration;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -520,6 +521,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             Device.BeginInvokeOnMainThread(() =>
             {
                 PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+            });
+        }
+
+        private async void TinRegistrationDetails_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.ZakatRegistrationDetailsListPageView);
             });
         }
     }

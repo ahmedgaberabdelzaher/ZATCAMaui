@@ -7530,6 +7530,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationRegistrationOutlets {
+            get {
+                return ResourceManager.GetString("TinDeregistrationRegistrationOutlets", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistration {
             get {
                 return ResourceManager.GetString("VATDeregistration", resourceCulture);

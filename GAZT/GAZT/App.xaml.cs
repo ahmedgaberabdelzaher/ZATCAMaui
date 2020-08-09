@@ -49,6 +49,7 @@ namespace EGAZT
         public static string VATDeregistrationSuccessPage = "VATDeregistrationSuccessPage";
         public static string CalendarPickerPageView = "CalendarPickerPageView";
         public static string PickerPageView = "PickerPageView";
+        public static string ZakatRegistrationDetailsListPageView = "ZakatRegistrationDetailsListPageView";
 
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
@@ -244,7 +245,7 @@ namespace EGAZT
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-            //CustomNavigation navigationPage = new CustomNavigation(new TINDeregistrationPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new ZakatRegistrationDetailsListPageView()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();

@@ -33,7 +33,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             if (App.IsArabic)
             {
-                this.FlowDirection = FlowDirection.LeftToRight;
+                this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
         public void ChangeAeroIcon()

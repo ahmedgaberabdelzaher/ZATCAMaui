@@ -4462,6 +4462,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationRegistrationDetails" xml:space="preserve">
     <value>Registration Details</value>
   </data>
+  <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
+    <value>Outlets</value>
+  </data>
    <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
   </data>  
