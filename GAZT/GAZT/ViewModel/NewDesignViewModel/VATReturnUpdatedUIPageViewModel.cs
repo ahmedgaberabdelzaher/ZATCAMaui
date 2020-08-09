@@ -306,14 +306,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         fourthBox = Color.FromHex("#006450");
                         break;
 
-                        //case 3:
+                        case 3:
                         navigationService.NavigateTo(App.VATReturnSuccessfullPageView);
                         //ContinueText = "Confirm and Carry Forward";
 //                            CreditDetailsText = "Confirm and Request Refund";
                         break;
                     }
 
-                    if (CurrentView < 2)
+                    if (CurrentView < 3)
                         CurrentView++;
                     
             });

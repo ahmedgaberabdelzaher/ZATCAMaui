@@ -1601,7 +1601,7 @@
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,0" Spacing="0">
 
-                    <custom:CustomLabel Text="Summery"  Style="{StaticResource SectionTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <custom:CustomLabel Text="Summary"  Style="{StaticResource SectionTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                     <custom:CustomLabel Text="Review the below information"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
                 </StackLayout>
