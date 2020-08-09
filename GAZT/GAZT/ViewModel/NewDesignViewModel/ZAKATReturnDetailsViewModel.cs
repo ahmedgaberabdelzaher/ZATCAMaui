@@ -21,8 +21,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 //============================start===================================================
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnConfirmClicked { get; set; }
+        public ICommand OnBackButtonClicked { get; set; }
 
         
+
         public ICommand OnEditClicked { get; set; }
         public string Fbguid { get; set; }
         public bool IsCurrentZAKATTaxLess = false;
@@ -285,12 +287,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 //=======================start==================================================
            
 
-            OnSubmitClicked = new Xamarin.Forms.Command(async() =>
+            OnSubmitClicked = new Xamarin.Forms.Command(() =>
             {
             //bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
             //    if (IsValueChange)
             //    {
-                    await SubmitReturn();
+                     SubmitReturn();
                     UnSetEditImage();
                     isEditVisible = false;
                     isLabelVisible = true;
@@ -314,11 +316,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 isEditVisible = true;
                 SetEditImage();
             });
-//=========================end=====================================================
-            // OnBackButtonClicked = new Xamarin.Forms.Command(() =>
-            // {
-            //    _navigationService.GoBack();
-            //});
+            //=========================end=====================================================
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
 
 
             //OnSubmitButtonClicked = new Command(async () =>
