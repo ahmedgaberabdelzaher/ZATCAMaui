@@ -23,7 +23,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         protected override void OnAppearing()
         {
 
-        date.Text = viewModel.Abrzu;
+        //date.Text = viewModel.Abrzu;
         }
         
         private void SetLTR()
