@@ -183,7 +183,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
 
             SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
-
+            SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
             #endregion
 
             #region OldIOC
@@ -1618,7 +1618,7 @@ namespace EGAZT
             navigationService.Configure(App.TaxpayerCorrespondancePageView, typeof(TaxpayerCorrespondancePageView));
             navigationService.Configure(App.TaxpayerCorrespondanceDetailPageView, typeof(TaxpayerCorrespondanceDetailPageView));
             navigationService.Configure(App.NewZakatObjectionPageView, typeof(NewZakatObjectionPageView));
-
+            navigationService.Configure(App.VATReturnSuccessfullPageView, typeof(VATReturnSuccessfullPageView));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
 
@@ -1773,6 +1773,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<PickerPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public VATReturnSuccessfullPageViewModel VATReturnSuccessfullPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATReturnSuccessfullPageViewModel>();
                 }
                 catch (Exception ex)
                 {
