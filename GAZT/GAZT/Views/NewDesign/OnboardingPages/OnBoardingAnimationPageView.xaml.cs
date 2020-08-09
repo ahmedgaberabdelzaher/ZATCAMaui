@@ -58,13 +58,13 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
             {
                 if (App.IsArabic)
                 {
-                    App.IsArabic = false;
+                   // App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
                     SetRTLDirection(); 
                 }
                 else
                 {
-                    App.IsArabic = true;
+                  //  App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     SetLTRDirection();
                 }
