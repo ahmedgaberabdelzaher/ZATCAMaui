@@ -73,7 +73,12 @@
     <Style x:Key="InputTableGridStyle" TargetType="Grid">
         <Setter Property="Margin" Value="0,10,0,0" />
     </Style>
-
+    <Style x:Key="ArrowImageForArabicStyle" TargetType="Grid">
+        <Setter Property="Rotation" Value="180" />
+    </Style>
+    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Grid">
+        <Setter Property="Rotation" Value="0" />
+    </Style>
     <Style x:Key="InputTableFrameStyle" TargetType="Frame">
         <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="Padding" Value="0" />
