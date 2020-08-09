@@ -21,7 +21,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 //============================start===================================================
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnEditClicked { get; set; }
-
+        public string Fbguid { get; set; }
+        
         #region Property
 
         private bool _isEditVisible = true;
@@ -63,6 +64,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private bool _isEditTextVisible = true;
+        public bool IsEditTextVisible
+        {
+            get
+            {
+                return _isEditTextVisible;
+            }
+            set
+            {
+                _isEditTextVisible = value;
+                RaisePropertyChanged("IsEditTextVisible");
             }
         }
 
@@ -111,6 +126,137 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("Abrzu");
             }
         }
+
+        private string _releaseOrBillDetailsButtonText;
+        public string ReleaseOrBillDetailsButtonText
+        {
+            get
+            {
+                return _releaseOrBillDetailsButtonText;
+            }
+            set
+            {
+                _releaseOrBillDetailsButtonText = value;
+                RaisePropertyChanged("ReleaseOrBillDetailsButtonText");
+            }
+        }
+
+        private string _totalVATSalesEditImageSource;
+        public string TotalVATSalesEditImageSource
+        {
+            get
+            {
+                return _totalVATSalesEditImageSource;
+            }
+            set
+            {
+                _totalVATSalesEditImageSource = value;
+                RaisePropertyChanged("TotalVATSalesEditImageSource");
+            }
+        }
+
+        private string _averageNumberOfLabourEditImageSource;
+        public string AverageNumberOfLabourEditImageSource
+        {
+            get
+            {
+                return _averageNumberOfLabourEditImageSource;
+            }
+            set
+            {
+                _averageNumberOfLabourEditImageSource = value;
+                RaisePropertyChanged("AverageNumberOfLabourEditImageSource");
+            }
+        }
+
+        private string _importValueEditImageSource;
+        public string ImportValueEditImageSource
+        {
+            get
+            {
+                return _importValueEditImageSource;
+            }
+            set
+            {
+                _importValueEditImageSource = value;
+                RaisePropertyChanged("ImportValueEditImageSource");
+            }
+        }
+
+
+        private string _importFromPointOfSalesEditImageSource;
+        public string ImportFromPointOfSalesEditImageSource
+        {
+            get
+            {
+                return _importFromPointOfSalesEditImageSource;
+            }
+            set
+            {
+                _importFromPointOfSalesEditImageSource = value;
+                RaisePropertyChanged("ImportFromPointOfSalesEditImageSource");
+            }
+        }
+
+        private string _contactFromETIMADSystemEditImageSource;
+        public string ContactFromETIMADSystemEditImageSource
+        {
+            get
+            {
+                return _contactFromETIMADSystemEditImageSource;
+            }
+            set
+            {
+                _contactFromETIMADSystemEditImageSource = value;
+                RaisePropertyChanged("ContactFromETIMADSystemEditImageSource");
+            }
+        }
+
+        private string _exportValueEditImageSource;
+        public string ExportValueEditImageSource
+        {
+            get
+            {
+                return _exportValueEditImageSource;
+            }
+            set
+            {
+                _exportValueEditImageSource = value;
+                RaisePropertyChanged("ExportValueEditImageSource");
+            }
+        }
+
+        private string _purchaseValueEditImageSource;
+        public string PurchaseValueEditImageSource
+        {
+            get
+            {
+                return _purchaseValueEditImageSource;
+            }
+            set
+            {
+                _purchaseValueEditImageSource = value;
+                RaisePropertyChanged("PurchaseValueEditImageSource");
+            }
+        }
+
+
+        private string _capitalAmountEditImageSource;
+        public string CapitalAmountEditImageSource
+        {
+            get
+            {
+                return _capitalAmountEditImageSource;
+            }
+            set
+            {
+                _capitalAmountEditImageSource = value;
+                RaisePropertyChanged("CapitalAmountEditImageSource");
+            }
+        }
+
+
+
         #endregion
 
         #region Constructor
@@ -127,12 +273,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
 //=======================start==================================================
-            isLabelVisible = false;
-            isEditVisible = true;
+           
 
             OnSubmitClicked = new Xamarin.Forms.Command(() =>
             {
                 isEditVisible = false;
+                UnSetEditImage();
                 isLabelVisible = true;
             });
 
@@ -140,6 +286,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 isLabelVisible = false;
                 isEditVisible = true;
+                SetEditImage();
             });
 //=========================end=====================================================
             // OnBackButtonClicked = new Xamarin.Forms.Command(() =>
@@ -207,7 +354,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         ZakatReturnDetail = zakatReturnDetails.d;
                         GetUpdatedDataAfterAddingComma();
 
-                        //SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                        SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         //SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
 
                         Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
@@ -446,6 +593,258 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //zakatReturnDetailsD.d.Zbamt = _zakatReturnDetails.d.Zbamt;
             //zakatReturnDetailsD.d.Zkamt = _zakatReturnDetails.d.Zkamt;
         }
+
+
+        public async Task OnReleaseOrBillsClicked()
+        {
+            if (ZakatReturnDetails.d.Statusz.Equals("E0001") || ZakatReturnDetails.d.Statusz.Equals("IP011"))
+            {// Call the Post API to release and if response is true then set the Button Name as bills and after tapping on that user needs to be navigated to Bills page 
+                await ReleaseEstimateZakatReturn();
+               
+            }
+            else if (ZakatReturnDetails.d.Statusz.Equals("IP014"))// E002 means Tax officer has released the return
+            {
+                //IsAmendButtonPressed = true;
+                //_navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+            }
+            else if (ZakatReturnDetails.d.Statusz.Equals("E0002"))// E002 means Tax officer has released the return
+            {
+                isEditVisible = true;
+                SetEditImage();
+                isLabelVisible = false;
+                IsEditTextVisible = false;
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+            }
+            else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
+            {
+               // AmedmentButtonVisibility = true;
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+            }
+            else if (ZakatReturnDetails.d.Statusz.Equals("E0004") || ZakatReturnDetails.d.Statusz.Equals("E0003"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
+            {
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+            }
+            else if (ZakatReturnDetails.d.Statusz.Equals(""))
+            {
+               // SalesDetailsAndReleaseButtonVisibility = false;
+            }
+            else
+            {
+                _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+            }
+        }
+
+
+
+        public async Task ReleaseEstimateZakatReturn()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    try
+                    {
+                        GetUpdatedDataAfterRemovingComma();
+                        ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, "59");
+                        if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                        {
+                            try
+                            {
+                                //Layout visibiliy changed after releasing the ICR
+                                isEditVisible = false;
+                                UnSetEditImage();
+                                isLabelVisible = true;
+                                IsEditTextVisible = false;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZNotification);
+                                });
+                               
+                            }
+                            catch (Exception ex)
+                            {
+                            }
+                        }
+                        else
+                        {
+                            try
+                            {
+                                //if (WebServiceManager.ErrorMessage.Equals(""))// message is always coming in english from the server
+                                //{
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    //if (App.IsArabic)
+                                    //{
+                                    //    await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
+                                    //    _navigationService.GoBack();
+                                    //    WebServiceManager.ErrorMessage = string.Empty;
+                                    //}
+                                    //else
+                                    //{
+                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                    //}
+                                });
+                                //}
+                            }
+                            catch (Exception ex)
+                            {
+                            }
+                            //Device.BeginInvokeOnMainThread(async () => {
+                            //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
+                            //    _navigationService.GoBack();
+                            //});
+                        }
+                        ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                        PopToRootPage();
+                        //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                        if (zakatReturnDetails != null)
+                        {
+                            ZakatReturnDetails = zakatReturnDetails;
+                            if (zakatReturnDetails.d != null)
+                            {
+                                ZakatReturnDetail = zakatReturnDetails.d;
+                                GetUpdatedDataAfterAddingComma();
+                               
+                            }
+                        }
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+        private void GetUpdatedDataAfterRemovingComma()
+        {
+            if (ZakatReturnDetails != null)
+            {
+                ZakatReturnDetails.d.Estsl = ZakatReturnDetails.d.Estsl.Replace(",", "");
+                ZakatReturnDetails.d.Cpamt = ZakatReturnDetails.d.Cpamt.Replace(",", "");
+                ZakatReturnDetails.d.Zbamt = ZakatReturnDetails.d.Zbamt.Replace(",", "");
+                ZakatReturnDetails.d.Zkamt = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+            }
+        }
+
+
+        private void SetReleaseOrBillDetailsButtonText(string ButtonStatus)
+        {
+            try
+            {
+
+
+                if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("IP011"))
+                {
+                    isEditVisible = false;
+                    UnSetEditImage();
+                    isLabelVisible = true;
+                    IsEditTextVisible = false;
+                    ReleaseOrBillDetailsButtonText = AppResources.Release;
+                }
+                else if (ButtonStatus.Equals("IP014"))
+                {
+                    isEditVisible = true;
+                    SetEditImage();
+                    isLabelVisible = false;
+                    IsEditTextVisible = false;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0002"))// E0002 if return  released by GAZT officer 
+                {
+                    isEditVisible = true;
+                    isLabelVisible = false;
+                    IsEditTextVisible = false;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
+                {
+                    isEditVisible = true;
+                    SetEditImage();
+                    isLabelVisible = false;
+                    IsEditTextVisible = false;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//When the Return is already Amended by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
+                {
+                    isEditVisible = false;
+                    UnSetEditImage();
+                    isLabelVisible = true;
+                    IsEditTextVisible = false;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0005"))//In Processing
+                {
+                    isEditVisible = false;
+                    UnSetEditImage();
+                    isLabelVisible = true;
+                    IsEditTextVisible = false;
+
+
+
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals("E0011"))
+                {
+                    isEditVisible = true;
+                    SetEditImage();
+                    isLabelVisible = false;
+                    IsEditTextVisible = false;
+                    ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+                }
+                else if (ButtonStatus.Equals(""))//In Processing
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+public void SetEditImage()
+        {
+            CapitalAmountEditImageSource = "ic_edit_gray.png";//"ic_Edit_red.png";
+            PurchaseValueEditImageSource = "ic_edit_gray.png";
+            ExportValueEditImageSource = "ic_edit_gray.png";
+            ContactFromETIMADSystemEditImageSource = "ic_edit_gray.png";
+            ImportFromPointOfSalesEditImageSource = "ic_edit_gray.png";
+            ImportValueEditImageSource = "ic_edit_gray.png";
+            AverageNumberOfLabourEditImageSource = "ic_edit_gray.png";
+            TotalVATSalesEditImageSource = "ic_edit_gray.png";
+
+        }
+
+        public void UnSetEditImage()
+        {
+            CapitalAmountEditImageSource = "";//"ic_Edit_red.png";
+            PurchaseValueEditImageSource = "";
+            ExportValueEditImageSource = "";
+            ContactFromETIMADSystemEditImageSource = "";
+            ImportFromPointOfSalesEditImageSource = "";
+            ImportValueEditImageSource = "";
+            AverageNumberOfLabourEditImageSource = "";
+            TotalVATSalesEditImageSource = "";
+
+        }
+
         #endregion
 
     }

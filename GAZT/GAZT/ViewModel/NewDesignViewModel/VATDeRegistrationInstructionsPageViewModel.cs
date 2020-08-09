@@ -2,6 +2,9 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -13,6 +16,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         #endregion
+
+        public ICommand VATDeregistrationClicked { get; set; }
 
         public VATDeRegistrationInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -30,6 +35,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _navigationService.GoBack();
             });
+
+            VATDeregistrationClicked = new Command(this.VATDeregistrationTapped);
+        }
+
+        public async void VATDeregistrationTapped()
+        {
+            try
+            {
+                await PopupNavigation.Instance.PopAsync();
+                _navigationService.NavigateTo(App.VATDeregistrationDetailsPage);
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
         }
     }
 }

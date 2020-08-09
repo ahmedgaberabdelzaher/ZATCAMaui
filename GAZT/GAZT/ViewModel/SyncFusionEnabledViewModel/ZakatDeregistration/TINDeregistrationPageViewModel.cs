@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
+using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Plugin.FilePicker;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
@@ -15,7 +20,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        public ICommand GoBackClick { get; set; }
+        public ICommand GoBackBtnTapped { get; set; }
+        public ICommand CloseBtnTapped { get; set; }
+
         #endregion
 
         #region Commands
@@ -24,11 +31,34 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand AttachmentsContinueBtnTapped { get; set; }
         public ICommand DeclarationContinueBtnTapped { get; set; }
         public ICommand SummaryContinueBtnTapped { get; set; }
+        public ICommand OnTinRegisrtationReasonDateTapped { get; set; }
+        public ICommand OnTinRegistrationReasonTapped { get; set; }
+
         #endregion
 
         #region Properties
 
-        private bool _isBackButtonVisible = true;
+        public enum ProcessStep
+        {
+            Step1 = 0,
+            Step2, Step3, Step4, Step5, Step6
+        }
+
+        private ProcessStep _currentStep { get; set; }
+        public ProcessStep CurrentStep
+        {
+            get
+            {
+                return _currentStep;
+            }
+            set
+            {
+                _currentStep = value;
+                RaisePropertyChanged("CurrentStep");
+            }
+        }
+
+        private bool _isBackButtonVisible { get; set; }
         public bool IsBackButtonVisible
         {
             get
@@ -122,11 +152,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
-                if (tinDeregistrationModel == value)
-                {
-                    return;
-                }
-
                 tinDeregistrationModel = value;
                 RaisePropertyChanged("TinDeregistrationModel");
             }
@@ -144,11 +169,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
-                if (outletDecisionOptions == value)
-                {
-                    return;
-                }
-
                 outletDecisionOptions = value;
                 RaisePropertyChanged("OutletDecisionOptions");
             }
@@ -164,11 +184,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
-                if (attachmentsListViewData == value)
-                {
-                    return;
-                }
-
                 attachmentsListViewData = value;
                 RaisePropertyChanged("AttachmentsListViewData");
             }
@@ -184,11 +199,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
-                if (_tinDeregistrationSummaryReasonData == value)
-                {
-                    return;
-                }
-
+               
                 _tinDeregistrationSummaryReasonData = value;
                 RaisePropertyChanged("TinDeregistrationSummaryReasonData");
             }
@@ -204,11 +215,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
-                if (_tinDeregistrationSummaryOutletData == value)
-                {
-                    return;
-                }
-
+                
                 _tinDeregistrationSummaryOutletData = value;
                 RaisePropertyChanged("TinDeregistrationSummaryOutletData");
             }
@@ -224,11 +231,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             set
             {
-                if (_tinDeregistrationSummaryDeclarationData == value)
-                {
-                    return;
-                }
-
+                
                 _tinDeregistrationSummaryDeclarationData = value;
                 RaisePropertyChanged("TinDeregistrationSummaryDeclarationData");
             }
@@ -263,6 +266,62 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        public decimal _attachmentSize = 0;
+        public decimal AttachmentSize
+        {
+            get
+            {
+                return _attachmentSize;
+            }
+            set
+            {
+                _attachmentSize = value;
+                RaisePropertyChanged("AttachmentSize");
+            }
+        }
+        public decimal _totalAttachmentSize = 0;
+        public decimal TotalAttachmentSize
+        {
+            get
+            {
+                return _totalAttachmentSize;
+            }
+            set
+            {
+                _totalAttachmentSize = value;
+                RaisePropertyChanged("TotalAttachmentSize");
+            }
+        }
+
+        private string _attachmentName = "";
+        public string AttachmentName
+        {
+            get
+            {
+                return _attachmentName;
+            }
+            set
+            {
+                _attachmentName = value;
+                RaisePropertyChanged("AttachmentName");
+            }
+        }
+        byte[] attachment;
+
+        private TinDeregestrationAttachmentsModel _selectedAttachment { get; set; }
+        public TinDeregestrationAttachmentsModel SelectedAttachment
+        {
+            get
+            {
+                return _selectedAttachment;
+            }
+            set
+            {
+                _selectedAttachment = value;
+                RaisePropertyChanged("SelectedAttachment");
+            }
+        }
+
         #endregion
 
         public TINDeregistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -277,17 +336,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+
+            CloseBtnTapped = new Command(async () =>
             {
-                _navigationService.GoBack();
+                //_navigationService.GoBack();
             });
 
+            GoBackBtnTapped = new Command(this.GoBackBtnClicked);
             ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
             OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
             AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
             DeclarationContinueBtnTapped = new Command(this.DeclarationContinueBtnClicked);
             SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
-
+            OnTinRegisrtationReasonDateTapped = new Command(this.OnTinRegisrtationReasonDateClicked);
+            OnTinRegistrationReasonTapped = new Command(this.OnTinRegisrtationReasonClicked);
             TinDeregistrationModel = new TINDeregistrationModel();
             SelectedOutletOption = new TINDeregistrationModel();
 
@@ -320,6 +382,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableReasonView()
         {
+            CurrentStep = ProcessStep.Step1;
             SelectedOutletOption = OutletDecisionOptions[0];
             SelectedOutletOptionIndex = 0;
             IsBackButtonVisible = false;
@@ -332,6 +395,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableOutletDetaislView()
         {
+            CurrentStep = ProcessStep.Step2;
             IsBackButtonVisible = true;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = true;
@@ -342,6 +406,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableAttachmentsView()
         {
+            CurrentStep = ProcessStep.Step3;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = true;
@@ -351,6 +416,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableDeclarationView()
         {
+            CurrentStep = ProcessStep.Step4;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
@@ -360,11 +426,55 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void EnableSummaryView()
         {
+            CurrentStep = ProcessStep.Step5;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = true;
+        }
+
+        public void GoBackBtnClicked()
+        {
+            try
+            {
+                switch(CurrentStep)
+                {
+                    case ProcessStep.Step2:
+                    {
+                        EnableReasonView();
+                        break;
+                    }
+                    case ProcessStep.Step3:
+                    {
+                        EnableOutletDetaislView();
+                        break;
+                    }
+                    case ProcessStep.Step4:
+                    {
+                        EnableAttachmentsView();
+                        break;
+                    }
+                    case ProcessStep.Step5:
+                    {
+                        EnableDeclarationView();
+                        break;
+                    }
+                }
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
         }
 
         public async void ReasonContinueBtnClicked()
@@ -452,6 +562,58 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             try
             {
                 //Display Success Screen
+                _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView);
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async void OnTinRegisrtationReasonClicked()
+        {
+            try
+            {
+                ObservableCollection<string> reasonData = new ObservableCollection<string>();
+                reasonData.Add(AppResources.TinDeregistrationReasonBankruptcy);
+                reasonData.Add(AppResources.TinDeregistrationReasonDeath);
+                reasonData.Add(AppResources.TinDeregistrationReasonLiquidation);
+                reasonData.Add(AppResources.TinDeregistrationReasonEstablishmentToCompany);
+
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(reasonData));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        public async void OnTinRegisrtationReasonDateClicked()
+        {
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView());
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -480,15 +642,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfDeclaringBankruptcy,
                 FieldSubTitle = AppResources.TinDeregistration20MB,
-                AttachmentName = "File1.pdf",
-                IsAttachmentAttached = true
+                AttachmentName = string.Empty,
+                IsAttachmentAttached = false
             });
             AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
             {
                 FieldTitle = AppResources.TinDeregistrationAttachmentCopyOfLicneseAfterClosing,
                 FieldSubTitle = AppResources.TinDeregistration20MB,
-                AttachmentName = "File2.pdf",
-                IsAttachmentAttached = true
+                AttachmentName = string.Empty,
+                IsAttachmentAttached = false
             });
             AttachmentsListViewData.Add(new TinDeregestrationAttachmentsModel
             {
@@ -575,5 +737,103 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
         #endregion
+
+        public async Task AddAttachmentEx()
+        {
+            try
+            {
+                try
+                {
+                    string[] filetypes;
+                    filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
+                    var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+
+                    if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
+                    {
+                        attachment = fileData.DataArray;
+                        AttachmentName = fileData.FileName;
+                        SelectedAttachment.AttachmentName = AttachmentName;
+                        SelectedAttachment.IsAttachmentAttached = true;
+                        AttachmentsListViewData.RemoveAt(SelectedOutletOptionIndex);
+                        AttachmentsListViewData.Insert(SelectedOutletOptionIndex, SelectedAttachment);
+
+                        //if (fileData.FileName.Contains("."))
+                        //{
+                        //    string Extention = fileData.FileName.Split('.')[1];
+                        //    if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"
+                        //        || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx"
+                        //        || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
+                        //    {
+                        //        if (TotalAttachmentSize <= 300)
+                        //        {
+                        //            AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
+                        //            decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
+
+                        //            if (Convert.ToDecimal(AttachmentSize) <= 5)
+                        //            {
+                        //                if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
+                        //                {
+                        //                    bool IsAttachmentPresent = false;
+
+                        //                    if (IsAttachmentPresent == false)
+                        //                    {
+                        //                        string attachmentType = UtilityManager.GetContentType(Extention);
+                        //                    }
+                        //                    else
+                        //                    {
+                        //                        AttachmentName = string.Empty;
+
+                        //                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                        //                    }
+                        //                }
+                        //                else
+                        //                {
+                        //                    AttachmentName = string.Empty;
+
+                        //                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                        //                }
+                        //            }
+                        //            else
+                        //            {
+                        //                AttachmentName = string.Empty;
+
+                        //                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                        //            }
+                        //        }
+                        //        else
+                        //        {
+                        //            AttachmentName = string.Empty;
+
+                        //            await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        AttachmentName = string.Empty;
+
+                        //        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    AttachmentName = string.Empty;
+
+                        //    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                        //}
+                    }
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

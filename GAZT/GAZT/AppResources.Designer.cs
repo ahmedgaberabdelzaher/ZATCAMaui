@@ -7302,6 +7302,30 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationReasonBankruptcy {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReasonBankruptcy", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationReasonDeath {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReasonDeath", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationReasonLiquidation {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReasonLiquidation", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationReasonEstablishmentToCompany {
+            get {
+                return ResourceManager.GetString("TinDeregistrationReasonEstablishmentToCompany", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationSelectReason {
             get {
                 return ResourceManager.GetString("TinDeregistrationSelectReason", resourceCulture);
@@ -7485,6 +7509,48 @@ namespace EGAZT {
         public static string TinDeregistrationDesignation {
             get {
                 return ResourceManager.GetString("TinDeregistrationDesignation", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationSuccess {
+            get {
+                return ResourceManager.GetString("TinDeregistrationSuccess", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationDownloadConfirmation {
+            get {
+                return ResourceManager.GetString("TinDeregistrationDownloadConfirmation", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationRegistrationDetails {
+            get {
+                return ResourceManager.GetString("TinDeregistrationRegistrationDetails", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistration {
+            get {
+                return ResourceManager.GetString("VATDeregistration", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationInstructions {
+            get {
+                return ResourceManager.GetString("VATDeregistrationInstructions", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationAgreeTermsConditions {
+            get {
+                return ResourceManager.GetString("VATDeregistrationAgreeTermsConditions", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregistrationDeclarationAgreement {
+            get {
+                return ResourceManager.GetString("VATDeregistrationDeclarationAgreement", resourceCulture);
             }
         }
         

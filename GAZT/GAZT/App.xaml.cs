@@ -14,14 +14,15 @@ using Microsoft.AppCenter.Distribute;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
-using System.Globalization; 
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
-
+using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
+using EGAZT.Views.NewDesign.VATDeRegistration;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -40,13 +41,15 @@ namespace EGAZT
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
 
-        
-
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
         public static string TINDeregistrationPageView = "TINDeregistrationPageView";
         public static string VATDeregistrationDetailsPage = "VATDeregistrationDetailsPage";
         public static string VATDeregistrationInstructionsPage = "VATDeregistrationInstructionsPage";
+        public static string VATDeregistrationSuccessPage = "VATDeregistrationSuccessPage";
+        public static string CalendarPickerPageView = "CalendarPickerPageView";
+        public static string PickerPageView = "PickerPageView";
+
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
         public static string GAZTNewDesignRecoverPasswordPageView = nameof(GAZTNewDesignRecoverPasswordPageView);
@@ -55,6 +58,8 @@ namespace EGAZT
         public static string TaxpayerCorrespondanceDetailPageView = "TaxpayerCorrespondanceDetailPageView";
         public static string NewZakatObjectionPageView = "NewZakatObjectionPageView";
         //test
+        public static string AttachmentPopupPageView = "AttachmentPopupPageView";
+
         #endregion
 
         #region old view strings
@@ -132,6 +137,8 @@ namespace EGAZT
         public static string UnlockAccountTINPageView = "UnlockAccountTINPageView";
         public static string UnlockAccountChangePasswordPageView = "UnlockAccountChangePasswordPageView";
         public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
+        public static string TINDeregestrationSuccessPageView = "TINDeregestrationSuccessPageView";
+
         #endregion
 
         public static string fontFamilyBold = null;

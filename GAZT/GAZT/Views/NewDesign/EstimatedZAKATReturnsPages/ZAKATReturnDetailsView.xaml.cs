@@ -14,24 +14,64 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             InitializeComponent();
             viewModel = App.Locator.ZAKATReturnDetailsView;
             this.BindingContext = viewModel;
+            viewModel.Fbguid = fbguid;
             SetLTR();
 
-//            viewModel.OnPageLoad(fbguid);
+          viewModel.OnPageLoad(fbguid);
 
         }
 
         protected override void OnAppearing()
         {
-  //          base.OnAppearing();
-    //        date.Text = viewModel.Abrzu;
+
+        date.Text = viewModel.Abrzu;
         }
         
         private void SetLTR()
         {
             if (!App.IsArabic)
             {
-     //           this.FlowDirection = FlowDirection.LeftToRight;
+           this.FlowDirection = FlowDirection.LeftToRight;
             }
+        }
+        protected async void OnReleaseBillsButtonClicked(object sender, EventArgs e)
+        {
+            if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
+            {
+                if (App.IsArabic)
+                {
+                    var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZCancel, AppResources.ZZZOkayText);
+                    if (!result)
+                    {
+                        await viewModel.OnReleaseOrBillsClicked();
+                    }
+
+                }
+                else
+                {
+                    var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZZOkayText, AppResources.ZZCancel);
+                    if (result)
+                    {
+                        await viewModel.OnReleaseOrBillsClicked();
+                    }
+
+                }
+            }
+            else
+            {
+                await viewModel.OnReleaseOrBillsClicked();
+            }
+
+           
+
+        }
+        private void OnEditClicked(object sender, EventArgs e)
+        {
+
+            viewModel.isLabelVisible = false;
+            viewModel.isEditVisible = true;
+            viewModel.IsEditTextVisible = true;
+            viewModel.SetEditImage();
         }
 
         private void OnInfoClicked(object sender, EventArgs e)

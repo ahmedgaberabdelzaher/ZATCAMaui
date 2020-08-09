@@ -19,7 +19,7 @@
                     <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Source="partials_background" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
                     <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Padding="40" VerticalOptions="CenterAndExpand">
-                        <Image Source="vat_ic_success.png"   Aspect="AspectFit"/>
+                        <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
                         <Label Text="{x:Static custom2:AppResources.AccountUnlocked}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
                         <Label Text="{Binding PasswordChangedSuccessfully}"  FontFamily="{StaticResource SSTArabicMedium}"
                                TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>

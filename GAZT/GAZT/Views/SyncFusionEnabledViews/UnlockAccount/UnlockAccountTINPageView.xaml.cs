@@ -3,27 +3,32 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
+using GAZTeServicesApp.Controls;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
 {
-    public partial class UnlockAccountTINPageView : PopupPage
+    public partial class UnlockAccountTINPageView:PopupPage
     {
         UnlockAccountTINPageViewModel viewModel;
+        private bool isConfirmOtpCalled = false;
 
         public UnlockAccountTINPageView()
         {
             InitializeComponent();
+
             viewModel = App.Locator.UnlockAccountTINPageViewModel;
             this.BindingContext = viewModel;
             
             SetLTR();
             ChangeAeroIcon();
+            OtpGAZTDarkGrayLabelStyleFourthEntry.Text = string.Empty;
             viewModel.EnableTINView();
         }
 
@@ -107,7 +112,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
 
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
-
+            
         }
 
         void btnConfirmOtp_Clicked(System.Object sender, System.EventArgs e)
@@ -123,7 +128,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
             }
             else
             {
-
                 if (EntryTIN.Text.Substring(0, 1) != "3")
                 {
                     if (EntryTIN.Text.Length != 10)
@@ -176,7 +180,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
             }
         }
 
-        private void ValidateTinEntryAndVerify(bool isVerifyBtnClicked = false)
+        private async void ValidateTinEntryAndVerify(bool isVerifyBtnClicked = false)
         {
             PopUp popUp = new PopUp();
             StringBuilder Messages = new StringBuilder();
@@ -218,6 +222,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
                     FrmTIN.HasError = false;
                     if(isVerifyBtnClicked == true)
                     {
+                        await Task.Run(() =>
+                        {
+                            OtpFirstEntry.Unfocus();
+                        });
+                        
                         viewModel.VerifyTinBtnCommand();
                     }
                 }
@@ -269,9 +278,39 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
             }
         }
 
-        void OtpGAZTDarkGrayLabelStyleFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        public void OtpGAZTDarkGrayLabelStyleFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
+            if (viewModel.OtpFourthDigit.Length > 0)
+            {
+                OtpGAZTDarkGrayLabelStyleFourthEntry.Unfocus();
+            }
 
+            //try
+            //{
+            //    if(e.NewTextValue != null)
+            //    {
+            //        if(e.NewTextValue.Length == 0)
+            //        {
+            //            isConfirmOtpCalled = false;
+            //        }
+            //    }
+
+            //    if(e.NewTextValue != null && e.OldTextValue != null)
+            //    {
+
+            //        if (e.NewTextValue.Length >= 1 && e.OldTextValue.Length == 0 && isConfirmOtpCalled == false)
+            //        {
+            //            isConfirmOtpCalled = true;
+            //            await viewModel.ConfirmOtpBtnCommand(null);
+            //        }
+            //    }
+
+
+            //}
+            //catch(Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
         }
     }
 }

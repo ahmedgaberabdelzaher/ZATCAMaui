@@ -4310,7 +4310,7 @@
     <value>تم فتح الحساب</value>
   </data>
   <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
-    <value>الرجاء التحقق من الرقم المميز.</value>
+    <value>الرجاء إكمال الحقول المطلوبة</value>
   </data>
   <data name="UnlockAccountPasswordsSecurityPolicy" xml:space="preserve">
     <value>كلمة المرور المدخلة غير متوافقة مع قواعد إنشاء كلمة المرور، ان لا تقل عن 8 احرف ولا تزيد عن 16 ، تحتوي على احرف كبيرة وصغيرة وأرقام ورموز.</value>
@@ -4320,6 +4320,18 @@
   </data>
   <data name="TinDeregistrationReason" xml:space="preserve">
     <value>Reason</value>
+  </data>
+  <data name="TinDeregistrationReasonBankruptcy" xml:space="preserve">
+    <value>Bankruptcy</value>
+  </data>
+  <data name="TinDeregistrationReasonDeath" xml:space="preserve">
+    <value>Death</value>
+  </data>
+   <data name="TinDeregistrationReasonLiquidation" xml:space="preserve">
+    <value>Liquidation</value>
+  </data>
+  <data name="TinDeregistrationReasonEstablishmentToCompany" xml:space="preserve">
+    <value>Establishment to Company</value>
   </data>
   <data name="TinDeregistrationSelectReason" xml:space="preserve">
     <value>Select Reason for Deregistration</value>
@@ -4416,7 +4428,29 @@
    <data name="TinDeregistrationDesignation" xml:space="preserve">
     <value>Designation</value>
   </data> 
-  
+  <data name="TinDeregistrationSuccess" xml:space="preserve">
+    <value>Your TIN Deregistration is submitted successfully</value>
+  </data> 
+   <data name="TinDeregistrationDownloadConfirmation" xml:space="preserve">
+    <value>Download Confirmation</value>
+  </data> 
+  <data name="TinDeregistrationRegistrationDetails" xml:space="preserve">
+    <value>Registration Details</value>
+  </data>
+  <data name="VATDeregistration" xml:space="preserve">
+    <value>VAT Deregistration</value>
+  </data> 
+   <data name="VATDeregistrationInstructions" xml:space="preserve">
+    <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.
+Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields and attachments have been completed.
+Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
+  </data>
+  <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
+    <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
+  </data>     
+      <data name="VATDeregistrationDeclarationAgreement" xml:space="preserve">
+    <value>I hereby certify that iam authorised to complete this form for the taxable person and that all information contained is correct.</value>
+  </data>  
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
   </data>

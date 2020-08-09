@@ -72,17 +72,21 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
         }
 
-        private void btnExporter_Clicked(object sender, EventArgs e)
-        {
-            VATRegistrationDetails vatReg = null;
-            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
-        }
-
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            TinDeregestrationAttachmentsModel selectedItem = e.AddedItems[0] as TinDeregestrationAttachmentsModel;
-            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(selectedItem);
-            btnExporter_Clicked(null,null);
+            viewModel.SelectedAttachment = e.AddedItems[0] as TinDeregestrationAttachmentsModel;
+            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
+
+            if(viewModel.SelectedAttachment.IsAttachmentAttached == true)
+            {
+                viewModel.SelectedAttachment.AttachmentName = string.Empty;
+                viewModel.SelectedAttachment.IsAttachmentAttached = false;
+            }
+            else
+            {
+                attachmentsListView.SelectedItems.Clear();
+                viewModel.AddAttachmentEx();
+            }
         }
     }
 }
