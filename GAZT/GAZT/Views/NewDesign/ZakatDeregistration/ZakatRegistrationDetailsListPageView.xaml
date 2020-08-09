@@ -48,10 +48,18 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="true" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image x:Name="BackButtonImg" Grid.Row="0" Grid.Column="0" IsVisible="true" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
+                            <Image.Triggers>
+                                 <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsArabic}" Value="true">
+                                    <Setter Property="Rotation" Value="180" />
+                                </DataTrigger>
+                                 <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsArabic}" Value="false">
+                                    <Setter Property="Rotation" Value="0" />
+                                </DataTrigger>
+                            </Image.Triggers>
                         </Image>
                     </Grid>
                 </Grid>
@@ -80,8 +88,16 @@
                                         <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label Text="{Binding ZDTitle}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start" FontFamily="{StaticResource SSTArBold}" VerticalOptions="Center" />
                                         </StackLayout>
-                                        <Image Margin="10,5,10,0" Grid.Row="0" Grid.Column="2" Source="arrowDropdown" Rotation="270" WidthRequest="20" HeightRequest="20"
+                                        <Image x:Name="ListViewArrow" Margin="10,5,10,0" Grid.Row="0" Grid.Column="2" Source="arrowDropdown" Rotation="270" WidthRequest="20" HeightRequest="20"
                                         HorizontalOptions="End" VerticalOptions="Center">
+                                             <Image.Triggers>
+                                                 <DataTrigger TargetType="Image" Binding="{Binding IsArabic}" Value="true">
+                                                    <Setter Property="Rotation" Value="180" />
+                                                </DataTrigger>
+                                                 <DataTrigger TargetType="Image" Binding="{Binding IsArabic}" Value="false">
+                                                    <Setter Property="Rotation" Value="0" />
+                                                </DataTrigger>
+                                            </Image.Triggers>
                                         </Image>
                                     </Grid>
                                 </border:SfBorder>

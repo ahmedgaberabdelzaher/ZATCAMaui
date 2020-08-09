@@ -10,6 +10,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
     {
         ZakatRegistrationDetailsListPageViewModel viewModel;
 
+        
+
         public ZakatRegistrationDetailsListPageView()
         {
             InitializeComponent();

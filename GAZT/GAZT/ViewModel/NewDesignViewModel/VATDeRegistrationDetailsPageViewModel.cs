@@ -326,6 +326,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _isBackButtonVisible { get; set; }
+        public bool IsBackButtonVisible
+        {
+            get
+            {
+                return _isBackButtonVisible;
+            }
+            set
+            {
+                _isBackButtonVisible = value;
+                RaisePropertyChanged("IsBackButtonVisible");
+            }
+        }
 
         public VATDeRegistrationDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -609,6 +622,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 SelectedOutletOption = OutletDecisionOptions[0];
             }
+            IsBackButtonVisible = false;
             SelectedOutletOptionIndex = 0;
             IsReasonViewEnabled = true;
             IsOutletViewEnabled = false;
@@ -617,8 +631,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsSummaryViewEnabled = false;
         }
 
-   
-
         public void EnableAttachmentsView()
         {
             CurrentStep = ProcessStep.Step2;
@@ -626,6 +638,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 SelectedDocumentOption = OutletDocumentOptions[0];
             }
+            IsBackButtonVisible = true;
             IsReasonViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = true;

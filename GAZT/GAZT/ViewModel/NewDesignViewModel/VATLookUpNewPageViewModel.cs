@@ -9,6 +9,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
+using ZXing.Net.Mobile.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -16,8 +17,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        bool isMendatoryDataEntered = true;
+        bool isMandatoryDataEntered = true;
         public ICommand OnBackButtonClicked { get; set; }
+        public ICommand OnSearchButtonClicked { get; set; }
+        public ICommand OnScanButtonClicked { get; set; }
 
         #region proprety
         private List<VATParameterType> _parameterTypeList;
@@ -215,6 +218,58 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 ResetFormData();
                 _navigationService.GoBack();
             });
+            OnSearchButtonClicked = new Xamarin.Forms.Command(async () =>
+            {
+                isMandatoryDataEntered = true;
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                await Task.Run(async () =>
+                {
+                    if (!string.IsNullOrEmpty(Name))
+                    {
+                        ResetFormData();
+                        return;
+                    }
+                    ValidateFormData();
+                    if (isMandatoryDataEntered)
+                    {
+                        getBarcodeData();
+                    }
+
+                });
+
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            });
+            OnScanButtonClicked = new Xamarin.Forms.Command(async () =>
+            {
+                ZXingScannerPage scanPage = new ZXingScannerPage();
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Application.Current.MainPage.Navigation.PushAsync(scanPage);
+                });
+
+                string id = string.Empty;
+                string _language = "A";
+                scanPage.OnScanResult += (result) =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                        LookupNumber = result.Text;
+                        id = result.Text;
+                        SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
+                        TxtSearchParameter = AppResources.ZVATLookupIDTaxpayerTinType1;
+                        getBarcodeData();
+
+                    });
+                };
+            });
         }
 
         #region Methods
@@ -287,7 +342,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (LookupNumber.Length != 15)
                             {
-                                isMendatoryDataEntered = false;
+                                isMandatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                     _dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
@@ -299,7 +354,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (LookupNumber.Length != 10)
                             {
-                                isMendatoryDataEntered = false;
+                                isMandatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                     _dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
@@ -311,7 +366,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (LookupNumber.Length != 15)
                             {
-                                isMendatoryDataEntered = false;
+                                isMandatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                     _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
@@ -322,10 +377,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        isMendatoryDataEntered = false;
+                        isMandatoryDataEntered = false;
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            isMendatoryDataEntered = false;
+                            isMandatoryDataEntered = false;
                             _dialogService.ShowMessageBox(AppResources.ZPleaseenterthecorrespondingnumber, AppResources.Information);
                         });
                         return;
@@ -333,7 +388,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    isMendatoryDataEntered = false;
+                    isMandatoryDataEntered = false;
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         _dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
@@ -343,7 +398,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-                isMendatoryDataEntered = false;
+                isMandatoryDataEntered = false;
             }
             //_dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
         }
