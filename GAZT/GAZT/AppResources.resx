@@ -4446,6 +4446,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
    <data name="TinDeregistration50MBMax" xml:space="preserve">
     <value>50MB Max</value>
   </data>
+  <data name="TinDeregistrationEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   
    <data name="TinDeregistrationContactPersonName" xml:space="preserve">
     <value>Contact Person Name</value>

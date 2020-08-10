@@ -7500,6 +7500,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationEdit {
+            get {
+                return ResourceManager.GetString("TinDeregistrationEdit", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationContactPersonName {
             get {
                 return ResourceManager.GetString("TinDeregistrationContactPersonName", resourceCulture);

@@ -4,18 +4,25 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using GalaSoft.MvvmLight.Views;
+using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
     public class ZakatRegistrationDetailsListPageViewModel : BaseViewModel
     {
         #region Variable
-        public ICommand GoBackClick { get; set; }
+        public ICommand GoBackBtnTapped { get; set; }
         #endregion
 
         public ZakatRegistrationDetailsListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             IsArabic = App.IsArabic;
+
+            GoBackBtnTapped = new Command(async () =>
+            {
+                _navigationService.GoBack();
+            });
+
             PopulateZakatRegListData();
         }
 
