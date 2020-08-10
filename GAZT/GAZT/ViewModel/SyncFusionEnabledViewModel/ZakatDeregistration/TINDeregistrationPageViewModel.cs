@@ -321,6 +321,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("SelectedAttachment");
             }
         }
+        public ObservableCollection<VATDeregistrationSummaryModel> _vatDeregistrationSummaryDeclarationData { get; set; }
+        public ObservableCollection<VATDeregistrationSummaryModel> VATDeregistrationSummaryDeclarationData
+        {
+            get
+            {
+                return _vatDeregistrationSummaryDeclarationData;
+            }
+
+            set
+            {
+                if (_vatDeregistrationSummaryDeclarationData == value)
+                {
+                    return;
+                }
+
+                _vatDeregistrationSummaryDeclarationData = value;
+                RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
+            }
+        }
 
         #endregion
 
