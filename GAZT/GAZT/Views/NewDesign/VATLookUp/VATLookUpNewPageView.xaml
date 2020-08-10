@@ -276,7 +276,7 @@
                          HorizontalOptions="Center"
                          Padding="10,5,10,10" >
                 <buttons:SfButton x:Name="btnScan"
-                                  Text="Scan QRCode"
+                                  Text="{x:Static ResourceManager:AppResources.ZQRScanner}"
                                   Command="{Binding OnScanButtonClicked}"
                                   Style="{StaticResource PrimaryButtonStyle}"/>
             </StackLayout>
