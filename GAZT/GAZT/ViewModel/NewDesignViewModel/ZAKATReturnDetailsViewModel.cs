@@ -33,7 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public const string ConfirmPostOperationWithObjection = "66";
         public string Estsl { get; set; }
         public double existingZakatBase = 0.00;
-        public ZakatReturnDetailsD ZakatReturnDetailToCompare { get; set; }
+        public ZakatReturnDetailsD ZakatReturnDetailToCompare = new ZakatReturnDetailsD();
 
         #region Property
 
@@ -289,19 +289,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnSubmitClicked = new Xamarin.Forms.Command(() =>
             {
-            //bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
-            //    if (IsValueChange)
-            //    {
-                     SubmitReturn();
+            bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
+            if (IsValueChange)
+            {
+                SubmitReturn();
                     UnSetEditImage();
                     isEditVisible = false;
                     isLabelVisible = true;
-                //}
-                //else
-                //{
-                //        // Show error message
-                //}
-             
+                }
+                else
+                {
+                    // Show error message
+                }
+
             });
 
 
