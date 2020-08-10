@@ -4967,6 +4967,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zakat.
+        /// </summary>
+        public static string ZakatnewUi {
+            get {
+                return ResourceManager.GetString("ZakatnewUi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ZAKAT Returns.
         /// </summary>
         public static string ZAKATReturns {

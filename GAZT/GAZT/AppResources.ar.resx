@@ -4631,7 +4631,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>أرقام ورموز</value>
   </data>
   <data name="NDPleaseEnterVerificationSenttomobile" xml:space="preserve">
-    <value>Please enter verification code sent to your mobile</value>
+    <value>الرجاء إدخال رمز التحقق المرسل الى رقم جوالك</value>
   </data>
   <data name="NDResendVerificationCode" xml:space="preserve">
     <value>إعادة إرسال رمز التحقق</value>
@@ -4883,5 +4883,9 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="AllReturns" xml:space="preserve">
     <value>جميع الاقرارات</value>
     <comment>My Returns</comment>
+  </data>
+  <data name="ZakatnewUi" xml:space="preserve">
+    <value>الزكاة</value>
+    <comment>RetunBills</comment>
   </data>
 </root>

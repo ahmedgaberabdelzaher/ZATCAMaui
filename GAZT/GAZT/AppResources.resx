@@ -4909,4 +4909,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>All Returns</value>
     <comment>My Returns</comment>
   </data>
+  <data name="ZakatnewUi" xml:space="preserve">
+    <value>Zakat</value>
+    <comment>RetunBills</comment>
+  </data>
 </root>
