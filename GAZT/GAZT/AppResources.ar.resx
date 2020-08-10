@@ -4714,7 +4714,6 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDSkip" xml:space="preserve">
     <value>تخطى</value>
   </data>
-<<<<<<< HEAD
   <data name="AllBills" xml:space="preserve">
     <value>جميع الفواتير</value>
     <comment>Bills</comment>
@@ -4722,6 +4721,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="Partiallynewui" xml:space="preserve">
     <value>مسددة جزئياً</value>
     <comment>Bills</comment>
+        </data>
      <data name="ZakatInstalmetPlan" xml:space="preserve">
     <value>Instalment Plans</value>
   </data>
