@@ -1648,4 +1648,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\vat_user%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add_plus%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add_plus%402x.png" />
+  </ItemGroup>
 </Project>
