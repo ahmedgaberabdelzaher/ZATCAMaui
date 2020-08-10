@@ -18,6 +18,90 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Property
 
+        public Color _BoxSevenFrame;
+        public Color BoxSevenFrame
+        {
+            get
+            {
+                return _BoxSevenFrame;
+            }
+            set
+            {
+                _BoxSevenFrame = value;
+                RaisePropertyChanged("BoxSevenFrame");
+            }
+        }
+
+        public Color _BoxSixFrame;
+        public Color BoxSixFrame
+        {
+            get
+            {
+                return _BoxSixFrame;
+            }
+            set
+            {
+                _BoxSixFrame = value;
+                RaisePropertyChanged("BoxSixFrame");
+            }
+        }
+
+        public Color _BoxFiveFrame;
+        public Color BoxFiveFrame
+        {
+            get
+            {
+                return _BoxFiveFrame;
+            }
+            set
+            {
+                _BoxFiveFrame = value;
+                RaisePropertyChanged("BoxFiveFrame");
+            }
+        }
+
+        public Color _sevenbox;
+        public Color sevenbox
+        {
+            get
+            {
+                return _sevenbox;
+            }
+            set
+            {
+                _sevenbox = value;
+                RaisePropertyChanged("sevenbox");
+            }
+        }
+
+        public Color _sixbox;
+        public Color sixbox
+        {
+            get
+            {
+                return _sixbox;
+            }
+            set
+            {
+                _sixbox = value;
+                RaisePropertyChanged("sixbox");
+            }
+        }
+
+        public Color _fivebox;
+        public Color fivebox
+        {
+            get
+            {
+                return _fivebox;
+            }
+            set
+            {
+                _fivebox = value;
+                RaisePropertyChanged("fivebox");
+            }
+        }
+
         public bool _isBtnVisible;
         public bool isBtnVisible
         {
@@ -270,7 +354,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             IsInstrunctionView = true;
 
-            secBox=thirdBox=fourthBox = Color.FromHex("#EBEBEB");
+            secBox=thirdBox=fourthBox=fivebox=sixbox=sevenbox = Color.FromHex("#EBEBEB");
 
             IsTaxpayerView = IsVATReturnsView= IsSaleView = IsPurchaseView = IsTotalVatView = IsSummeryView = false;
             isBtnVisible=isCheckVisible = false;
@@ -299,31 +383,71 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         break;
                         case 2:
                             IsVATReturnsView = false;
-                            IsSummeryView = true;
-                        isBtnVisible=isCheckVisible = true;
-                        CreditDetailsText = "Confrim and Generate SADAD Bill";
+                            IsSaleView = true;
+                        
                         OuterFrame = Color.FromHex("#006450");
                         fourthBox = Color.FromHex("#006450");
                         break;
 
                         case 3:
-                        navigationService.NavigateTo(App.VATReturnSuccessfullPageView);
+                        IsPurchaseView = true;
+                        IsSaleView = false;
+                        fivebox= Color.FromHex("#006450");
+                        BoxFiveFrame = Color.FromHex("#006450");
                         //ContinueText = "Confirm and Carry Forward";
-//                            CreditDetailsText = "Confirm and Request Refund";
+                        //                            CreditDetailsText = "Confirm and Request Refund";
                         break;
-                    }
 
-                    if (CurrentView < 3)
+                    case 4:IsTotalVatView = true;
+                        IsPurchaseView = false;
+                      sixbox= Color.FromHex("#006450");
+                        BoxSixFrame= Color.FromHex("#006450");
+                        isBtnVisible =  true;
+                        CreditDetailsText = "Carried Credit Details";
+                        break;
+                    case 5: IsSummeryView = isCheckVisible = true;
+                        IsTotalVatView = false;
+                        sevenbox= Color.FromHex("#006450");
+                        BoxSevenFrame= Color.FromHex("#006450");
+                        CreditDetailsText = "Confrim and Generate SADAD Bill";
+                        break;
+
+                    case 6: navigationService.NavigateTo(App.VATReturnSuccessfullPageView);
+                        break;
+                }
+
+                    if (CurrentView < 6)
                         CurrentView++;
                     
             });
 
             OnBackStepClicked = new Xamarin.Forms.Command(() =>
             {
+                if (CurrentView > 0)
+                    CurrentView--;
                 switch (CurrentView)
                 {
+                    case 5:
+                        isCheckVisible = IsSummeryView = false;
+                        IsTotalVatView = true;
+                        sevenbox= Color.FromHex("#EBEBEB");
+                        BoxSevenFrame= Color.Transparent;
+                        CreditDetailsText = "Carried Credit Details";
+                        break;
+                    case 4:
+                        isBtnVisible = IsTotalVatView = false;
+                        IsPurchaseView = true;
+                        sixbox= Color.FromHex("#EBEBEB");
+                        BoxSixFrame= Color.Transparent;
+                        
+                        break;
+                    case 3:IsPurchaseView = false;
+                        IsSaleView = true;
+                        fivebox= Color.FromHex("#EBEBEB");
+                        BoxFiveFrame=Color.Transparent;
+                        break;
                     case 2:
-                        isBtnVisible=isCheckVisible = IsSummeryView = false;
+                        IsSaleView = false;
                         IsVATReturnsView = true;
                              fourthBox= Color.FromHex("#EBEBEB");
                         OuterFrame = Color.Transparent;
@@ -345,10 +469,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     default: CurrentView = 0;
                         break;
                 }
-
-                if(CurrentView>0)
-                CurrentView--;
-                
             });
         }
         #endregion

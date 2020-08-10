@@ -26455,8 +26455,8 @@ namespace GAZT.Droid
 			// aapt resource value: 0x7F07023A
 			public const int user_profile = 2131165754;
 			
-			// aapt resource value: 0x7F07024E
-			public const int vatEstablishment_G = 2131165774;
+			// aapt resource value: 0x7F07024F
+			public const int vatEstablishment_G = 2131165775;
 			
 			// aapt resource value: 0x7F07023D
 			public const int vat_ic_individaualregistration = 2131165757;
@@ -26509,17 +26509,20 @@ namespace GAZT.Droid
 			// aapt resource value: 0x7F07024D
 			public const int vat_tile_listofsignup_W = 2131165773;
 			
-			// aapt resource value: 0x7F07024F
-			public const int ViewMode = 2131165775;
+			// aapt resource value: 0x7F07024E
+			public const int vat_user = 2131165774;
 			
 			// aapt resource value: 0x7F070250
-			public const int zakat_copy = 2131165776;
+			public const int ViewMode = 2131165776;
 			
 			// aapt resource value: 0x7F070251
-			public const int zakat_details = 2131165777;
+			public const int zakat_copy = 2131165777;
 			
 			// aapt resource value: 0x7F070252
-			public const int zakat_manageTax = 2131165778;
+			public const int zakat_details = 2131165778;
+			
+			// aapt resource value: 0x7F070253
+			public const int zakat_manageTax = 2131165779;
 			
 			static Drawable()
 			{

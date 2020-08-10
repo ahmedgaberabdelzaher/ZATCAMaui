@@ -1637,4 +1637,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\zakat_copy%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_user%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_user%403x.png" />
+  </ItemGroup>
 </Project>

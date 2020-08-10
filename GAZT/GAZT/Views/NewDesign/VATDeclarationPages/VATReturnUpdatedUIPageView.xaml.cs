@@ -69,5 +69,29 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             PopupNavigation.Instance.PushAsync(new AdjustmentPopupPageView());
         }
+
+        private void OnInCTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new InstructionPopUp());
+        }
+
+        private void OnSummaryInCTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new SummaryInstruction());
+        }
+
+        private void OnYesTapped(object sender, EventArgs e)
+        {
+            NoImg.Source = "";
+            YesImg.Source = "";
+  //          YesLbl.
+        }
+
+        private void OnNoTapped(object sender, EventArgs e)
+        {
+            NoImg.Source = "";
+            YesImg.Source = "";
+//            NoLbl.TextColor = "";
+        }
     }
 }
