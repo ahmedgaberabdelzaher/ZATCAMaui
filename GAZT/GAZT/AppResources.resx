@@ -4746,5 +4746,159 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="Partiallynewui" xml:space="preserve">
     <value>Partially</value>
     <comment>Bills</comment>
+     </data>
+     <data name="ZakatInstalmetPlan" xml:space="preserve">
+    <value>Instalment Plans</value>
+  </data>
+    <data name="ZakatInstalmetSelectType" xml:space="preserve">
+    <value>Select Type</value>
+  </data>
+     <data name="ZakatInstalmetSelectTypeZakat" xml:space="preserve">
+    <value>Zakat / IncomeTax</value>
+  </data> 
+    <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
+    <value>VAT</value>
+  </data>
+     <data name="ZakatInstalmetChooseTaxTypeText" xml:space="preserve">
+    <value>Choose the Tax type to request a instalment plan</value>
+  </data>
+     <data name="ZakatInstalmet" xml:space="preserve">
+    <value>Choose the Tax type to request a instalment plan</value>
+  </data>
+     <data name="ZakatInstalmetDownPaymentAmount" xml:space="preserve">
+    <value>Down Payment Amount</value>
+  </data>
+     <data name="ZakatInstalmetFrequency" xml:space="preserve">
+    <value>Frequency</value>
+  </data>
+     <data name="ZakatInstalmentAgrement" xml:space="preserve">
+    <value>Instalment Agreement</value>
+  </data>
+     <data name="ZakatInstalmentSchedule" xml:space="preserve">
+    <value>Instalment Schedule</value>
+  </data>
+  <data name="ZakatInstalmetNumberOfInstalments" xml:space="preserve">
+    <value>Number of Instalments</value>
+  </data>
+    <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
+    <value>Periodic Instalment</value>
+  </data>
+    <data name="ZakatInstalmetRequestInstalmentPlan" xml:space="preserve">
+    <value>Request Instalment Plan</value>
+  </data>
+     <data name="ZakatInstalmetRequestInstalmentDesc" xml:space="preserve">
+    <value>Set up your instalment plan details</value>
+  </data>
+    <data name="ZakatInstalmetTotalAmount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+    <data name="ZakatInstalmetHalfYearly" xml:space="preserve">
+    <value>Half Yearly</value>
+  </data>
+     <data name="ZakatInstalmetMonthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+     <data name="ZakatInstalmetQuarterly" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+     <data name="ZakatInstalmetYearly" xml:space="preserve">
+    <value>Yearly</value>
+  </data>
+     <data name="ZakatInstalmetContinue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+   <data name="ZakatInstalmentAttachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="ZakatInstalmentPleaseProvideWithSupportingDocuments" xml:space="preserve">
+    <value>Please provide with the supporting documentation</value>
+  </data>
+  <data name="ZakatInstalmentSetupyourinstalmentplandetails" xml:space="preserve">
+    <value>Set up your instalment plan details</value>
+  </data>
+  <data name="ZakatInstalment20MB" xml:space="preserve">
+    <value>20MB</value>
+  </data>
+  <data name="ZakatInstalmentAttachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="ZakatInstalmentBankStatementsForLast3Months" xml:space="preserve">
+    <value>Bank Statements for the last 3 months</value>
+  </data>
+  <data name="ZakatInstalmentFinancialStatementsForLastThreeYears" xml:space="preserve">
+    <value>Financial Statements for the Last 3 years</value>
+  </data>
+    <data name="ZakatInstallmentPageAmendment" xml:space="preserve">
+    <value>Amendment by GAZT</value>
+  </data>
+  <data name="ZakatInstallmentPageTitle" xml:space="preserve">
+    <value>Request Installment Plan</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
+    <value>Search Reference Number</value>
+  </data>
+  <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
+    <value>Select Bills</value>
+  </data>
+  <data name="ZakatSelectBillsPageViewSelectBillsGray" xml:space="preserve">
+    <value>Select the SADAD bills you wish to include in the instalment agreement</value>
+  </data>
+     <data name="ZakatBillAmount" xml:space="preserve">
+    <value>Due Amount</value>
+  </data>
+    <data name="ZakatInstalmentDownloadConfirmation" xml:space="preserve">
+    <value>Download Confirmation</value>
+  </data>
+  <data name="ZakatInstalmentGoToDashboard" xml:space="preserve">
+    <value>Go to Dashboard</value>
+  </data>
+  <data name="ZakatInstalmentReferenceNumber" xml:space="preserve">
+    <value>Reference Number</value>
+  </data>
+  <data name="ZakatInstalmentRequestInstalmentPlan" xml:space="preserve">
+    <value>Request Instalment Plan</value>
+  </data>
+  <data name="ZakatInstalmentYourVatInstalmentPlanIsSuccessfullySubmitted" xml:space="preserve">
+    <value>Your VAT Instalment Plan is successfully submitted</value>
+  </data>
+    <data name="ZakatInstallmentPlanSummaryReview" xml:space="preserve">
+    <value>Review the below information</value>
+  </data>
+  <data name="ZakatInstallmentSummaryEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ZakatInstallmentSummaryBillType" xml:space="preserve">
+    <value>Bill Type</value>
+  </data>
+  <data name="ZakatInstallmentSummarySadadNumber" xml:space="preserve">
+    <value>SADAD Number</value>
+  </data>
+  <data name="ZakatInstallmentSummaryTaxPeriod" xml:space="preserve">
+    <value>Tax Period</value>
+  </data>
+    <data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
+    <value>Penalty</value>
+  </data>
+  <data name="ZakatInstallmentPlanZakatIncometax" xml:space="preserve">
+    <value>Zakat/IncomeTax</value>
+</data>
+ <data name="VATAmountDue" xml:space="preserve">
+    <value>Amount Due</value>
+  </data>
+     <data name="ZZZZPleaseSelectZakatType" xml:space="preserve">
+    <value>Instalment Requested for</value>
+  </data>
+     <data name="ZZZZPleaseSelectZakatSubType" xml:space="preserve">
+    <value>Reason for requesting Instalment</value>
+  </data>
+    <data name="ZakatInstalmentDownPaymentAmountPayable" xml:space="preserve">
+    <value>Down Payment Amount Payable</value>
+  </data>
+  <data name="ZakatInstalmentsSadadNumber" xml:space="preserve">
+    <value>SADAD Number</value>
+  </data>
+  <data name="ZakatInstalmetDetails" xml:space="preserve">
+    <value>Display Installment Details</value>
   </data>
 </root>

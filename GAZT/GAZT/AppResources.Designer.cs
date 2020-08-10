@@ -12191,5 +12191,311 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
             }
         }
+        
+        public static string ZakatInstalmetPlan {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetPlan", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetSelectType {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetSelectType", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetSelectTypeZakat {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetSelectTypeZakat", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetSelectTypeVAT {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetSelectTypeVAT", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetChooseTaxTypeText {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetChooseTaxTypeText", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmet {
+            get {
+                return ResourceManager.GetString("ZakatInstalmet", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetDownPaymentAmount {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetDownPaymentAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetFrequency {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetFrequency", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentAgrement {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentAgrement", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentSchedule {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentSchedule", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetNumberOfInstalments {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetNumberOfInstalments", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetPeriodicInstalment {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetPeriodicInstalment", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetRequestInstalmentPlan {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetRequestInstalmentPlan", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetRequestInstalmentDesc {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetRequestInstalmentDesc", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetTotalAmount {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetTotalAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetHalfYearly {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetHalfYearly", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetMonthly {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetMonthly", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetQuarterly {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetQuarterly", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetYearly {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetYearly", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetContinue {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetContinue", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentAttachments {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentAttachments", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentPleaseProvideWithSupportingDocuments {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentPleaseProvideWithSupportingDocuments", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentSetupyourinstalmentplandetails {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentSetupyourinstalmentplandetails", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalment20MB {
+            get {
+                return ResourceManager.GetString("ZakatInstalment20MB", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentAttachment {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentAttachment", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentBankStatementsForLast3Months {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentBankStatementsForLast3Months", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentFinancialStatementsForLastThreeYears {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentFinancialStatementsForLastThreeYears", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstallmentPageAmendment {
+            get {
+                return ResourceManager.GetString("ZakatInstallmentPageAmendment", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstallmentPageTitle {
+            get {
+                return ResourceManager.GetString("ZakatInstallmentPageTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZakatSelectBillsPageViewPlaceholder {
+            get {
+                return ResourceManager.GetString("ZakatSelectBillsPageViewPlaceholder", resourceCulture);
+            }
+        }
+        
+        public static string ZakatSelectBillsPageViewSelectBills {
+            get {
+                return ResourceManager.GetString("ZakatSelectBillsPageViewSelectBills", resourceCulture);
+            }
+        }
+        
+        public static string ZakatSelectBillsPageViewSelectBillsGray {
+            get {
+                return ResourceManager.GetString("ZakatSelectBillsPageViewSelectBillsGray", resourceCulture);
+            }
+        }
+        
+        public static string ZakatBillAmount {
+            get {
+                return ResourceManager.GetString("ZakatBillAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentDownloadConfirmation {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentDownloadConfirmation", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentGoToDashboard {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentGoToDashboard", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentReferenceNumber {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentReferenceNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentRequestInstalmentPlan {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentRequestInstalmentPlan", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentYourVatInstalmentPlanIsSuccessfullySubmitted {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentYourVatInstalmentPlanIsSuccessfullySubmitted", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstallmentPlanSummaryReview {
+            get {
+                return ResourceManager.GetString("ZakatInstallmentPlanSummaryReview", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstallmentSummaryEdit {
+            get {
+                return ResourceManager.GetString("ZakatInstallmentSummaryEdit", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstallmentSummaryBillType {
+            get {
+                return ResourceManager.GetString("ZakatInstallmentSummaryBillType", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstallmentSummarySadadNumber {
+            get {
+                return ResourceManager.GetString("ZakatInstallmentSummarySadadNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstallmentSummaryTaxPeriod {
+            get {
+                return ResourceManager.GetString("ZakatInstallmentSummaryTaxPeriod", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstallmentAgreementPenalty {
+            get {
+                return ResourceManager.GetString("ZakatInstallmentAgreementPenalty", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstallmentPlanZakatIncometax {
+            get {
+                return ResourceManager.GetString("ZakatInstallmentPlanZakatIncometax", resourceCulture);
+            }
+        }
+        
+        public static string VATAmountDue {
+            get {
+                return ResourceManager.GetString("VATAmountDue", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZPleaseSelectZakatType {
+            get {
+                return ResourceManager.GetString("ZZZZPleaseSelectZakatType", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZPleaseSelectZakatSubType {
+            get {
+                return ResourceManager.GetString("ZZZZPleaseSelectZakatSubType", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentDownPaymentAmountPayable {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentDownPaymentAmountPayable", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentsSadadNumber {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentsSadadNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetDetails {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetDetails", resourceCulture);
+            }
+        }
     }
 }
