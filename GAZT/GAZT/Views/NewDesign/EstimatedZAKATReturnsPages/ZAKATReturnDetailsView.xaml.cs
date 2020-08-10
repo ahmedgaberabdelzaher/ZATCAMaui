@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
@@ -23,7 +24,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         protected override void OnAppearing()
         {
 
-        date.Text = viewModel.Abrzu;
+        //date.Text = viewModel.Abrzu;
         }
         
         private void SetLTR()
@@ -61,10 +62,21 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 await viewModel.OnReleaseOrBillsClicked();
             }
 
+           
 
+        }
+        private void OnEditClicked(object sender, EventArgs e)
+        {
 
+            viewModel.isLabelVisible = false;
+            viewModel.isEditVisible = true;
+            viewModel.IsEditTextVisible = true;
+            viewModel.SetEditImage();
+        }
 
-
+        private void OnInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp());
         }
     }
 }

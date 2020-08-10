@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Shapes;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -26,6 +27,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #endregion
         #region Properties
+        public List<ChipModel>  _selectedChipFilterItemList = null;
+        public List<ChipModel> SelectedChipFilterItemList
+        {
+            get
+            {
+                return _selectedChipFilterItemList;
+            }
+            set
+            {
+                _selectedChipFilterItemList = value;
+                if (_selectedChipFilterItemList != null)
+                {
+                   // FilterIfTypeAndStausFilterSelected();
+                }
+                RaisePropertyChanged("SelectedChipFilterItemList");
+            }
+        }
+        public ObservableCollection<ChipModel> _chipDataFilterlist = null;
+        public ObservableCollection<ChipModel> ChipDataFilterlist
+        {
+            get
+            {
+                return _chipDataFilterlist;
+            }
+            set
+            {
+                _chipDataFilterlist = value;
+                RaisePropertyChanged("ChipDataFilterlist");
+            }
+        }
+
         private string _filterLabelText;
         public string FilterLabelText
         {
@@ -39,6 +71,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("FilterLabelText");
             }
         }
+        //private Xamarin.Forms.Shapes.RotateTransform  _rotationForImageInArabic = 0;
+        //    public Xamarin.Forms.Shapes.RotateTransform RotationForImageInArabic
+        //{
+        //    get
+        //    {
+        //        return _rotationForImageInArabic;
+        //    }
+        //    set
+        //    {
+        //        _rotationForImageInArabic = value;
+        //        RaisePropertyChanged("RotationForImageInArabic");
+        //    }
+        //}
         private List<CorrespondanceModel> _listVATCorrespondance = null;
         public List<CorrespondanceModel> ListVATCorrespondance
         {
@@ -91,6 +136,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ListETCorrespondance");
             }
         }
+   
         public ReturnTypes _selectedDropdownItem;
         public ReturnTypes SelectedDropdownItem
         {
@@ -242,7 +288,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         else
                         {
                             childZakat.IsFav = false;
-                            childZakat.FavImg = "ic_star_border.png";
+                            childZakat.FavImg = "arrowRight.png";
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -332,7 +378,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         else
                         {
                             childVAT.IsFav = false;
-                            childVAT.FavImg = "ic_star_border.png";
+                            childVAT.FavImg =  "arrowRight.png";
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -421,7 +467,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         else
                         {
                             childET.IsFav = false;
-                            childET.FavImg = "ic_star_border.png";
+                            childET.FavImg = "arrowRight.png";
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
@@ -497,11 +543,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             }
         }
+        public void PopulateDataInChips()
+        {
+            ChipDataFilterlist = new ObservableCollection<ChipModel>()
+            {
+                new ChipModel(){Text =AppResources.ZZFavoriteAscending, TemplateType = AppResources.ZZFavoriteAscending, ImageSource="ic_star_border.png"},
+                               //new ChipModel(){Text =AppResources.All, TemplateType = AppResources.All,ImageSource = "ic_money.png"}
+            };
+        }
         public void SetAllCorrespondancedata()
         {
   
             ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance) ;
         }
-        #endregion
+        public async void ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _navigationService.NavigateTo(App.TaxpayerCorrespondanceDetailPageView, CorresModel);
+                });
+                //  _navigationService.NavigateTo(App.PdfView, pdfUrl);
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+        }
+        public void FilterOnbasisOfChipSelectedItem()
+        {
+            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance);
+            if (SelectedChipFilterItemList != null)
+                foreach (var Item in SelectedChipFilterItemList)
+                {
+                    if (Item.TemplateType.Equals(AppResources.ZZFavoriteAscending)) 
+                    {
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.Where(x => x.IsFav==true).ToList());
+                    }
+                }
+
+        }
+            #endregion
+        }
     }
-}

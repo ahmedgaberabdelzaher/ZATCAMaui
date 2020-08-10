@@ -810,6 +810,7 @@ namespace GAZT.Manager
             ValidSmallL = NewPasswordValidation(validConditions);
 
             // * Caps
+            validConditions = 0;
             foreach (char c in passwordchar)
             {
                 if (c >= 'A' && c <= 'Z')
@@ -821,6 +822,7 @@ namespace GAZT.Manager
             ValidCapsL = NewPasswordValidation(validConditions);
 
             // * Numbers
+            validConditions = 0;
             foreach (char c in passwordchar)
             {
                 if (c >= '0' && c <= '9')
@@ -844,8 +846,14 @@ namespace GAZT.Manager
         // * Password : Number + Symbol + Caps + Small : Validation
         private static bool NewPasswordValidation(int validConditions)
         {
-            if (validConditions == 0) return false;
-            else return true;
+            if (validConditions == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         // * Password Length Validation - Min 8

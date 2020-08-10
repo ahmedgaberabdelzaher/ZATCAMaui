@@ -318,7 +318,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._TaxPayerProfile = value;
                 this.RaisePropertyChanged("TaxPayerProfile");
             }
-        }     
+        }
+        private bool _isVatRegistrationTileVisible = false;
+        public bool IsVatRegistrationTileVisible
+        {
+            get
+            {
+                return _isVatRegistrationTileVisible;
+            }
+            set
+            {
+                _isVatRegistrationTileVisible = value;
+                RaisePropertyChanged("IsVatRegistrationTileVisible");
+            }
+        }
         public bool MenuViewVisible
         {
             get
@@ -340,6 +353,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 this._homeViewVisible = value;
+               if(_homeViewVisible!=null)
+                {
+                    if (_homeViewVisible)
+                    {
+                        _homeIndicatorColor = Color.FromHex("#005e4b");
+                        MenuIndicatorColor = Color.White;
+                    }
+
+                }
                 this.RaisePropertyChanged("HomeViewVisible");
             }
         }        

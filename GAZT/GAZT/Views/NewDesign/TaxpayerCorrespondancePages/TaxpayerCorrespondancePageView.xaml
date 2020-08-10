@@ -11,9 +11,17 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-
-        </ResourceDictionary>
+            
+            </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -32,7 +40,7 @@
 
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZZCorrespondence}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" x:Name="Image_BacKIcon" Rotation="{Binding RotationForImageInArabic}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
                             </Image.GestureRecognizers>
@@ -57,12 +65,12 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid Padding="15">
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Spacing="-5" Grid.Row="0">
+            <StackLayout Spacing="-5" Grid.Row="0" Padding="15,15,15,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -87,23 +95,28 @@
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
                 </Grid>
-                <!--<StackLayout Margin="0,8,0,8" HorizontalOptions="Center" Spacing="2">
-                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <buttons:SfChipGroup  x:Name="ChipGroup_statusFilter" Type="Choice" Margin="0"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    ChipPadding="1" Padding="0"  ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" ChipBorderWidth="1"    >--><!--SelectionChanged="ChipGroup_statusFilter_SelectionChanged"--><!--
-                            <buttons:SfChipGroup.ItemTemplate>
-                                <DataTemplate >
-                                    <StackLayout Margin="0" Padding="0" Spacing="2">
-                                        <buttons:SfChip Margin="0"  HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </buttons:SfChipGroup.ItemTemplate>
-                        </buttons:SfChipGroup>
-                    </ScrollView>
-                </StackLayout>-->
-            </StackLayout>
-            <StackLayout Grid.Row="1">
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Filter"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}"  VerticalOptions="Center" SelectionChanging="ChipGroup_statusFilter_SelectionChanged">
+                        <!--SelectionChanged="chipgroup_SelectionChanged" ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1"  -->
+                        <buttons:SfChipGroup.ItemTemplate>
+                            <DataTemplate >
+                                <StackLayout Margin="0" Padding="0" Orientation="Horizontal" Spacing="2" >
+                                    <!--<Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25" ></Image>
+                                    <Label Text="{Binding Text}" HorizontalOptions="Center"/>-->
 
-                <ListView  x:Name="ListView_Returns" 
+
+
+                                    <buttons:SfChip   BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{Binding Text}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" TextColor="{StaticResource NeutralBlack}"  BackgroundColor="White"  ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True" CornerRadius="20" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </buttons:SfChipGroup.ItemTemplate>
+                    </buttons:SfChipGroup>
+                </ScrollView>
+               
+            </StackLayout>
+            <StackLayout Grid.Row="1" Padding="15,0,15,15">
+
+                <ListView  x:Name="ListView_Correspondance" 
            ItemsSource="{Binding ListToDisplay,Mode=TwoWay}"
                                            IsVisible="{Binding IsListVisible}"
                                   VerticalScrollBarVisibility="Never"    
@@ -111,7 +124,7 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                  BackgroundColor="White"     
-            SeparatorVisibility="None">
+            SeparatorVisibility="None" ItemTapped="ListView_Correspondance_ItemTapped">
                     <x:Arguments>
                         <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
                     </x:Arguments>
@@ -133,7 +146,7 @@
                                         </StackLayout>
                                         <!--<Label  Grid.Row="0" Margin="10,0,0,0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"   Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
                                         </Label>-->
-                                        <Image  Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="End" VerticalOptions="Center"/>
+                                        <Image  x:Name="ImageBackArrow" Style="{DynamicResource ImageReverse}" Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="End" VerticalOptions="Center"/>
 
                                     </Grid>
                                 </border:SfBorder>
@@ -144,7 +157,7 @@
                 <!--<custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.ZZZReturnsNotFound}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}"/>-->
             </StackLayout>
             <!--"{Binding IsLoading}"-->
-            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="False">
+            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -159,7 +172,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                        TextColor="#006450"/>
+                                         TextColor="#D99A29"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

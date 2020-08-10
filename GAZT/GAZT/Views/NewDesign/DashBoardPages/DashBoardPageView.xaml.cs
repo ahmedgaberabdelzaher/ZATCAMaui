@@ -1,5 +1,8 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.VATDeRegistration;
+using EGAZT.Views.NewDesign.ZakatDeregistration;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -78,6 +81,21 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 if (viewModel != null)
                     viewModel.IsLoading = false;
             });
+            try
+            {
+                if (App.LoginDataRetrieved.VtReg == null)
+                { 
+                    viewModel.IsVatRegistrationTileVisible = true;
+                }
+                else if (App.LoginDataRetrieved.VtReg != "X")
+                {
+                    viewModel.IsVatRegistrationTileVisible = true;
+                }
+            }
+            catch
+            {
+                viewModel.IsVatRegistrationTileVisible = true;
+            }
         }
 
         protected override void OnDisappearing()
@@ -88,9 +106,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             try
             {
-                App.DisplayProgressView();
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+
+                });
                 await viewModel.LoadDashboardData();
-                Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread( () =>
                 {
                     viewModel.BillCount = string.Empty;
                     viewModel.BillsAndReturnsCommitments = null;
@@ -98,14 +120,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.PopulateBillsInformation();
                     viewModel.PopulateReturnsInformation();
                     viewModel.PopualateCommittmentsInformation();
-                    App.HideProgressView();
+                  
+                        viewModel.IsLoading = false;
+
                 });
 
                 // viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch (Exception ex)
             {
-                App.HideProgressView();
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+
+                });
             }
         }
 
@@ -387,6 +415,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
                     SetLTRDirection();
+                    var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+                    Navigation.InsertPageBefore(vUpdatedPage, this);
+                    Navigation.PopAsync();
                     viewModel.NDCommitments = AppResources.NDCommitments;
                     viewModel.ZBills = AppResources.Bills;
                     viewModel.Return = AppResources.Returns;
@@ -401,7 +432,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     SetRTLDirection();
-
+                    var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
+                    Navigation.InsertPageBefore(vUpdatedPage, this);
+                    Navigation.PopAsync();
                     viewModel.NDCommitments = AppResources.NDCommitments;
                     viewModel.ZBills = AppResources.Bills;
                     viewModel.Return = AppResources.Returns;
@@ -436,7 +469,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 viewModel.PaidString = AppResources.Paid;
                 viewModel.UnPaidString = AppResources.UnPaid;
-                viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+                viewModel.PartiallyPaidString = AppResources.Partiallynewui;
                 viewModel.TotalString = AppResources.NDTotal;
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 180;
@@ -463,7 +496,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 viewModel.PaidString = AppResources.Paid;
                 viewModel.UnPaidString = AppResources.UnPaid;
-                viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+                viewModel.PartiallyPaidString = AppResources.Partiallynewui;
                 viewModel.TotalString = AppResources.NDTotal;
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 0;
@@ -506,6 +539,46 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
 
+        }
+
+        private async void VATDeregistrationDetails_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+            });
+        }
+
+        private async void TinRegistrationDetails_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.ZakatRegistrationDetailsListPageView);
+            });
+        }
+
+        private async  void VatRegistrationTile_Tapped(object sender, EventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+
+            });
         }
     }
 }

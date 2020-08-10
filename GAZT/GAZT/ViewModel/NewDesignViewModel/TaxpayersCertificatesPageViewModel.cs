@@ -19,7 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
-        bool isMendatoryDataEntered = true;
+ 
 
         #region proprety
         public AllCertificate allCertificate { get; set; }

@@ -224,6 +224,18 @@
     <BundleResource Include="Resources\establishments.png" />
     <BundleResource Include="Resources\establishments%402x.png" />
     <BundleResource Include="Resources\establishments%403x.png" />
+    <BundleResource Include="Resources\information.png" />
+    <BundleResource Include="Resources\information%402x.png" />
+    <BundleResource Include="Resources\information%403x.png" />
+    <BundleResource Include="Resources\details.png" />
+    <BundleResource Include="Resources\details%402x.png" />
+    <BundleResource Include="Resources\details%403x.png" />
+    <BundleResource Include="Resources\declaration.png" />
+    <BundleResource Include="Resources\declaration%402x.png" />
+    <BundleResource Include="Resources\declaration%403x.png" />
+    <BundleResource Include="Resources\deregistration.png" />
+    <BundleResource Include="Resources\deregistration%402x.png" />
+    <BundleResource Include="Resources\deregistration%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1624,5 +1636,23 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\zakat_copy%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_user%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_user%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add_plus%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_add_plus%402x.png" />
   </ItemGroup>
 </Project>

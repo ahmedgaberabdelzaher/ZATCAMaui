@@ -23,7 +23,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
+            viewModel.SelectedChipFilterItemList = new List<ChipModel>();
             viewModel.PopulateFilterDropdownList();
+            viewModel.PopulateDataInChips();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
         }
@@ -32,32 +34,62 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+           //     ImageBackArrow.Rotation = 0;
+
+                Image_backArrow.Rotation = 0;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+              //  viewModel.RotationForImageInArabic = 180;
+                Image_backArrow.Rotation = 180;
+             //   ImageBackArrow.Rotation = 180;
+
             }
         }
         public void ChangeAeroIcon()
         {
-            if (App.IsArabic)
+            try
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                if (App.IsArabic)
+                {
+                    Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                    Resources["ImageReverse"] = Resources["ArrowImageForArabicStyle"];
+                }
+                else
+                {
+                    Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                    Resources["ImageReverse"] = Resources["ArrowImageForEnglishStyle"];
+                }
+                  
             }
-            else
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            catch(Exception ex)
+            { 
+            
             }
+
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
          
-            try
+            try 
             {
+                 await  Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
                 await viewModel.onPageLoad();
                 viewModel.SetData();
-              //  viewModel.SetAllCorrespondancedata();
-  ;            }
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+                //  viewModel.SetAllCorrespondancedata();
+                ;            }
             catch (Exception ex)
             {
-
+                viewModel.IsLoading = true;
             }
         }
 
@@ -79,6 +111,36 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             {
 
             }
+        }
+
+        private void ListView_Correspondance_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+            CorrespondanceModel Correspondence = ((Xamarin.Forms.ListView)sender).SelectedItem as CorrespondanceModel;
+            viewModel.ShowCorrespondenceDetails(Correspondence);
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+        }
+
+     
+
+        private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
+        {
+
+            //List<ReturnTypes>  selectedReturntype = (ReturnTypes)e.NewValue;
+            ChipModel addeditemtype = (ChipModel)e.AddedItem;
+            ChipModel removedItem = (ChipModel)e.RemovedItem;
+
+            if (addeditemtype != null)
+            {
+                viewModel.SelectedChipFilterItemList.Add(addeditemtype);
+            }
+            if (removedItem != null)
+            {
+                viewModel.SelectedChipFilterItemList.Remove(removedItem);
+            }
+            viewModel.FilterOnbasisOfChipSelectedItem();
+            //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
+            //viewModel.SelectedChipFilterItem = selectedReturntype;
         }
     }
 }
