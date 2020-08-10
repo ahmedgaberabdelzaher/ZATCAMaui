@@ -469,7 +469,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 viewModel.PaidString = AppResources.Paid;
                 viewModel.UnPaidString = AppResources.UnPaid;
-                viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+                viewModel.PartiallyPaidString = AppResources.Partiallynewui;
                 viewModel.TotalString = AppResources.NDTotal;
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 180;
@@ -496,7 +496,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 viewModel.PaidString = AppResources.Paid;
                 viewModel.UnPaidString = AppResources.UnPaid;
-                viewModel.PartiallyPaidString = AppResources.PartiallyPaid;
+                viewModel.PartiallyPaidString = AppResources.Partiallynewui;
                 viewModel.TotalString = AppResources.NDTotal;
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 0;

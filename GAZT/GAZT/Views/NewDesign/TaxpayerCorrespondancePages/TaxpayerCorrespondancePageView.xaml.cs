@@ -23,7 +23,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
+            viewModel.SelectedChipFilterItemList = new List<ChipModel>();
             viewModel.PopulateFilterDropdownList();
+            viewModel.PopulateDataInChips();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
         }
@@ -118,7 +120,27 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             viewModel.ShowCorrespondenceDetails(Correspondence);
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
         }
-      
-        
+
+     
+
+        private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
+        {
+
+            //List<ReturnTypes>  selectedReturntype = (ReturnTypes)e.NewValue;
+            ChipModel addeditemtype = (ChipModel)e.AddedItem;
+            ChipModel removedItem = (ChipModel)e.RemovedItem;
+
+            if (addeditemtype != null)
+            {
+                viewModel.SelectedChipFilterItemList.Add(addeditemtype);
+            }
+            if (removedItem != null)
+            {
+                viewModel.SelectedChipFilterItemList.Remove(removedItem);
+            }
+            viewModel.FilterOnbasisOfChipSelectedItem();
+            //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
+            //viewModel.SelectedChipFilterItem = selectedReturntype;
+        }
     }
 }

@@ -21,13 +21,17 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-        }       
+        }
 
         private void SetLTR()
         {
             if (App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
 

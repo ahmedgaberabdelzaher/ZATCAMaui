@@ -29,7 +29,6 @@
                             <Grid.RowDefinitions>
                                 <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
-                                
                             </Grid.RowDefinitions>
                             <ContentPresenter VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
@@ -48,18 +47,18 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                        <Image x:Name="BackButtonImg" Grid.Row="0" Grid.Column="0" IsVisible="true" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image Grid.Row="0" Grid.Column="0" Rotation="0" IsVisible="true" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
-                            <Image.Triggers>
-                                 <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsArabic}" Value="true">
+                            <!--<Image.Triggers>
+                                 <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsArabic}" Value="false">
                                     <Setter Property="Rotation" Value="180" />
                                 </DataTrigger>
-                                 <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsArabic}" Value="false">
+                                 <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsArabic}" Value="true">
                                     <Setter Property="Rotation" Value="0" />
                                 </DataTrigger>
-                            </Image.Triggers>
+                            </Image.Triggers>-->
                         </Image>
                     </Grid>
                 </Grid>
@@ -91,10 +90,10 @@
                                         <Image x:Name="ListViewArrow" Margin="10,5,10,0" Grid.Row="0" Grid.Column="2" Source="arrowDropdown" Rotation="270" WidthRequest="20" HeightRequest="20"
                                         HorizontalOptions="End" VerticalOptions="Center">
                                              <Image.Triggers>
-                                                 <DataTrigger TargetType="Image" Binding="{Binding IsArabic}" Value="true">
+                                                 <DataTrigger TargetType="Image" Binding="{Binding IsArabic}" Value="false">
                                                     <Setter Property="Rotation" Value="180" />
                                                 </DataTrigger>
-                                                 <DataTrigger TargetType="Image" Binding="{Binding IsArabic}" Value="false">
+                                                 <DataTrigger TargetType="Image" Binding="{Binding IsArabic}" Value="true">
                                                     <Setter Property="Rotation" Value="0" />
                                                 </DataTrigger>
                                             </Image.Triggers>

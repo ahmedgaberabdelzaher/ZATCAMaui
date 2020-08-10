@@ -41,7 +41,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.Returns}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDReturns}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
 
                         <Image Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeftwhite">
@@ -50,12 +50,12 @@
                             </Image.GestureRecognizers>
                         </Image>
 
-                        <StackLayout Spacing="15" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2" >
+                        <!--<StackLayout Spacing="15" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0" Grid.Column="2" >
                             <Image Source="search">
                             </Image>
                             <Image Source="filter">
                             </Image>
-                        </StackLayout>
+                        </StackLayout>-->
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
@@ -219,8 +219,8 @@
                                                     <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="1.1*"/>
-                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <!--<Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
                                                 <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
