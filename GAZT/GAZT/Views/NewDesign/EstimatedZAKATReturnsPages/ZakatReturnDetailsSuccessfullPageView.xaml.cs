@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +14,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
     public partial class ZakatReturnDetailsSuccessfullPageView : ContentPage
     {
         ZakatReturnDetailsSuccessfullPageViewModel viewModel;
-        public ZakatReturnDetailsSuccessfullPageView()
+        public ZakatReturnDetailsSuccessfullPageView(ZakatReturnDetailsD ZakatReturnDetail)
         {
             InitializeComponent();
             viewModel = App.Locator.ZakatReturnDetailsSuccessfullPageView;

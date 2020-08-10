@@ -23,6 +23,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnConfirmClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnEditClicked { get; set; }
+        public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
+
         public string Fbguid { get; set; }
         public bool IsCurrentZAKATTaxLess = false;
         public const string SubmitPostOperation = "05";
@@ -321,7 +323,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ICRStatus");
             }
         }
-        
+
+
+        private bool _changeFromEstimateTAccountringBasisButtonVisibility = false;
+        public bool ChangeFromEstimateTAccountringBasisButtonVisibility
+        {
+            get
+            {
+                return _changeFromEstimateTAccountringBasisButtonVisibility;
+            }
+            set
+            {
+                _changeFromEstimateTAccountringBasisButtonVisibility = value;
+                RaisePropertyChanged("ChangeFromEstimateTAccountringBasisButtonVisibility");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -376,6 +392,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
+            OnChangeFromEstimateToAccountingBasisButtonClicked = new Xamarin.Forms.Command(async () =>
+            {
+                try
+                {
+                    await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
+                }
+                catch (Exception ex)
+                {
+                }
+            });
             //OnSubmitButtonClicked = new Command(async () =>
             //{
             //    try
@@ -427,8 +453,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
                 await Task.Run(async () =>
                 {
-                  
-                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                      ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
                     ZakatReturnDetails obj = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
 
                     ZakatReturnDetailToCompare = obj.d;
@@ -448,7 +473,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                        //SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
+                        SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
 
                        // Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
                        
@@ -737,7 +762,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView);
+                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                     }
                 else
                 {
@@ -1079,6 +1104,19 @@ private string GetConfirmOperationId()
             isEditVisible = false;
             isLabelVisible = false;
             IsEditTextVisible = false;
+            SetSubmitButtonVisibility = false;
+        }
+
+        public void SetChangeFromEstimateTAccountringBasisButtonVisibility(string ButtonStatus)
+        {
+            if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("E0002") || ButtonStatus.Equals("E0003") || ButtonStatus.Equals("E0004"))
+            {
+                ChangeFromEstimateTAccountringBasisButtonVisibility = true;
+            }
+            else
+            {
+                ChangeFromEstimateTAccountringBasisButtonVisibility = false;
+            }
         }
         #endregion
 
