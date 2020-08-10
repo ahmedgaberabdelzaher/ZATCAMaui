@@ -35,8 +35,8 @@
 
             <Grid IsVisible="{Binding HomeViewVisible}" Grid.Row="0" RowSpacing="0"  Margin="0" Padding="0,15,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="23*" />
-                    <RowDefinition Height="77*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="1" Padding="0" VerticalOptions="FillAndExpand">
@@ -741,14 +741,25 @@
 
                             </yummy:PancakeView>
 
-                            <!--<buttons:SfButton  BackgroundColor="{StaticResource Primary}" BackgroundImage="quick_action_2.png" CornerRadius="14" BorderWidth="0"
-                 WidthRequest="20" HeightRequest="20" />-->
+                            <!--<buttons:SfButton
+                                BackgroundColor="{StaticResource Primary}"
+                                BackgroundImage="quick_action_2.png"
+                                CornerRadius="12"
+                                BorderWidth="0"
+                                HorizontalOptions="Center"
+                                WidthRequest="24" HeightRequest="24" />-->
 
-                            <Image Source="quick_action_2.png">
+                            <Image Source="quick_action_2.png"
+                                   BackgroundColor="{StaticResource Primary}"
+                                   WidthRequest="30"
+                                   HeightRequest="30"
+                                   HorizontalOptions="Center"
+                                   custom:RoundCornersEffect.CornerRadius="15">      
                                 <!--<Image.Source>
-                                    <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.LightningBolt}"/>
+                                    <FontImageSource Color="Green" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.LightningBolt}"/>
                                 </Image.Source>-->
                             </Image>
+
                         </StackLayout>
                         <!--<StackLayout Grid.Column="3">
                             <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
