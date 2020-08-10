@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:models="clr-namespace:EGAZT.Models"
+             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             ios:Page.UseSafeArea="true"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage"
+             BackgroundImageSource="partials_background.png">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:EstablishmentTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <yummy:PancakeView BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0" CornerRadius="{OnPlatform Android='15,15,0,0', iOS='15'}" Padding="0">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0" Spacing="0">
+                    <ContentPresenter VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"  BackgroundColor="White"/>
+                </StackLayout>
+            </yummy:PancakeView>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="10" Padding="20,15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" ColumnSpacing="0" RowSpacing="10" Padding="0,15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="15*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="arrowLeftwhite.png" BackgroundColor="Black" />
+                <Image Grid.Column="1" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
+                <Image Grid.Column="2" Source="close.png" BackgroundColor="Black"/>
+            </Grid>
+            <!--<StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="5">
+                <BoxView BackgroundColor="Green" HeightRequest="16" WidthRequest="16" CornerRadius="8" />
+                <BoxView BackgroundColor="WhiteSmoke" HeightRequest="16" WidthRequest="16" CornerRadius="8" />
+                <BoxView BackgroundColor="WhiteSmoke" HeightRequest="16" WidthRequest="16" CornerRadius="8" />
+                <BoxView BackgroundColor="WhiteSmoke" HeightRequest="16" WidthRequest="16" CornerRadius="8" />
+            </StackLayout>-->
+            <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" />
+            <ScrollView Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                <Grid>
+                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">
+                        <custom:CustomLabel Text="Registration/Taxpayer type" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
+                        <custom:CustomLabel Text="Complete the below details" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
+                        <custom:CustomLabel Text="Taxpayer Details" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
+                        <custom:CustomLabel Text="Outlets" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
+                        <custom:CustomLabel Text="Financial Details" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}">
+                        <custom:CustomLabel Text="Declaration" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <buttons:SfButton Grid.Row="3" Style="{StaticResource PrimaryButtonStyle}" Text="Next" Command="{Binding OnNextButtonClick}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

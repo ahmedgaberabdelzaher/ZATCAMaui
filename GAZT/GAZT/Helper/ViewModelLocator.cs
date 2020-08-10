@@ -140,6 +140,7 @@ using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.GenericPickers;
+using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 
 namespace EGAZT
 {
@@ -185,6 +186,7 @@ namespace EGAZT
 
             SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
             SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
+            SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
             #endregion
 
             #region OldIOC
@@ -478,6 +480,20 @@ namespace EGAZT
                     return ServiceLocator.Current.GetInstance<NewZakatObjectionPageViewModel>();
                 }
                 catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public EstablishmentRegistrationPageViewModel EstablishmentRegistrationPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EstablishmentRegistrationPageViewModel>();
+                }
+                catch (Exception)
                 {
                     return null;
                 }
@@ -1718,6 +1734,7 @@ namespace EGAZT
             navigationService.Configure(App.TINDeregestrationSuccessPageView, typeof(TINDeregestrationSuccessPageView));
             navigationService.Configure(App.TINDeregistrationPageView, typeof(TINDeregistrationPageView));
             navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
+            navigationService.Configure(App.EstablishmentRegistrationPage, typeof(EstablishmentRegistrationPage));
 
             #endregion
 
