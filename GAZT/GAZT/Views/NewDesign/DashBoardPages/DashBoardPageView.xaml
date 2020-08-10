@@ -749,16 +749,16 @@
                                 HorizontalOptions="Center"
                                 WidthRequest="24" HeightRequest="24" />-->
 
-                            <Image Source="quick_action_2.png"
+                            <!--<Image Source="quick_action_2.png"
                                    BackgroundColor="{StaticResource Primary}"
                                    WidthRequest="30"
                                    HeightRequest="30"
                                    HorizontalOptions="Center"
-                                   custom:RoundCornersEffect.CornerRadius="15">      
+                                   custom:RoundCornersEffect.CornerRadius="15">-->      
                                 <!--<Image.Source>
                                     <FontImageSource Color="Green" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.LightningBolt}"/>
                                 </Image.Source>-->
-                            </Image>
+                            <!--</Image>-->
 
                         </StackLayout>
                         <!--<StackLayout Grid.Column="3">
