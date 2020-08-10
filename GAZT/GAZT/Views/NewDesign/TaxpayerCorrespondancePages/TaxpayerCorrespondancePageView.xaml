@@ -95,19 +95,24 @@
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
                 </Grid>
-                <!--<StackLayout Margin="0,8,0,8" HorizontalOptions="Center" Spacing="2">
-                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <buttons:SfChipGroup  x:Name="ChipGroup_statusFilter" Type="Choice" Margin="0"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    ChipPadding="1" Padding="0"  ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" ChipBorderWidth="1"    >--><!--SelectionChanged="ChipGroup_statusFilter_SelectionChanged"--><!--
-                            <buttons:SfChipGroup.ItemTemplate>
-                                <DataTemplate >
-                                    <StackLayout Margin="0" Padding="0" Spacing="2">
-                                        <buttons:SfChip Margin="0"  HeightRequest="32" HorizontalOptions="Start" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </buttons:SfChipGroup.ItemTemplate>
-                        </buttons:SfChipGroup>
-                    </ScrollView>
-                </StackLayout>-->
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Filter"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}"  VerticalOptions="Center" SelectionChanging="ChipGroup_statusFilter_SelectionChanged">
+                        <!--SelectionChanged="chipgroup_SelectionChanged" ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1"  -->
+                        <buttons:SfChipGroup.ItemTemplate>
+                            <DataTemplate >
+                                <StackLayout Margin="0" Padding="0" Orientation="Horizontal" Spacing="2" >
+                                    <!--<Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25" ></Image>
+                                    <Label Text="{Binding Text}" HorizontalOptions="Center"/>-->
+
+
+
+                                    <buttons:SfChip   BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{Binding Text}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" TextColor="{StaticResource NeutralBlack}"  BackgroundColor="White"  ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True" CornerRadius="20" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </buttons:SfChipGroup.ItemTemplate>
+                    </buttons:SfChipGroup>
+                </ScrollView>
+               
             </StackLayout>
             <StackLayout Grid.Row="1" Padding="15,0,15,15">
 

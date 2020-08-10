@@ -353,7 +353,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 TaxTypeForFilter = new List<ReturnTypes>
                 {
-                        new ReturnTypes {Id = "00",TaxType = AppResources.All},
+                        new ReturnTypes {Id = "00",TaxType = AppResources.AllBills},
                         new ReturnTypes {Id = "01",TaxType = AppResources.ZZZAKAT},
                         new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
                         new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
@@ -373,7 +373,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
                 new ChipModel(){Text =AppResources.Paid, TemplateType = AppResources.Paid, ImageSource="Paid_check.png"},
-                new ChipModel(){Text =AppResources.PartiallyPaid, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"},
+                new ChipModel(){Text =AppResources.Partiallynewui, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"},
                 new ChipModel(){Text =AppResources.UnPaid, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"}
                 //new ChipModel(){Text =AppResources.All, TemplateType = AppResources.All,ImageSource = "ic_money.png"}
             };

@@ -140,6 +140,8 @@ using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.GenericPickers;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
+using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 
 namespace EGAZT
 {
@@ -185,6 +187,11 @@ namespace EGAZT
 
             SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
             SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
+            #endregion
+
+            #region NewDesignRelease2IOC
+            SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
+
             #endregion
 
             #region OldIOC
@@ -1625,6 +1632,12 @@ namespace EGAZT
 
             #endregion
 
+            #region NewDesignRelease2
+
+            navigationService.Configure(App.ZakatInstalmentPlanPageView, typeof(ZakatInstalmentPlanPageView));
+
+            #endregion
+
             #region SYNCFUSION INTEGRATION
 
             navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
@@ -1725,6 +1738,23 @@ namespace EGAZT
         }
         #endregion
 
+        #region Release2 ZakatInstalmentPlan
+
+        public ZakatInstalmentPlanViewModel ZakatInstalmentPlanPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        #endregion
         public ZakatDeregistrationPageViewModel ZakatDeregistrationPageView
         {
             get

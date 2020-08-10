@@ -63,6 +63,12 @@ namespace EGAZT
         public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
         #endregion
 
+        #region new design views Release2
+
+        public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";
+
+        #endregion
+
         #region old view strings
         public static string SFLandingPageView = "SFLandingPageView";
         public static string SFOptionsPageView = "SFOptionsPageView";
