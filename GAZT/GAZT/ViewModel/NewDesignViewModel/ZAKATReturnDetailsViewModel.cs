@@ -737,9 +737,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
-                    await _dialogService.ShowMessage("Returns Amended Successfully", AppResources.Information);
-
-                }
+                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView);
+                    }
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () => {
@@ -1064,6 +1063,8 @@ private string GetConfirmOperationId()
             isEditVisible = false;
             isLabelVisible = true;
             IsEditTextVisible = true;
+            SetSubmitButtonVisibility = false;
+            SetConfirmButtonVisibility = true;
         }
 
         private void SetLayoutVisibilityAfterSuccessfulConfirmation()
