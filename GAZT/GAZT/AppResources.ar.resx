@@ -664,13 +664,13 @@
     <value>بحث التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="ZVATLookUpTitleSub" xml:space="preserve">
-    <value>Please follow the steps</value>
+    <value>اتبع الخطوات التالية</value>
   </data>
   <data name="ZVATLookUpSearchButtonText" xml:space="preserve">
-    <value>Search VAT</value>
+    <value>تحقق</value>
   </data>
   <data name="ZVATLookUpNewSearchButtonText" xml:space="preserve">
-    <value>New VAT Search</value>
+    <value>تحقق</value>
   </data>
   <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>إجمالي الإقرارات المقدمة</value>
@@ -796,7 +796,7 @@
     <value>الرجاء إختيار نوع المعرف</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
-    <value>نوع البحث  </value>
+    <value>نوع البحث</value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
     <value>الرقم الضريبي</value>
@@ -3289,6 +3289,10 @@
   </data>
   <data name="ZZZVatLookUpTitleNew" xml:space="preserve">
     <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZTaxPayerName" xml:space="preserve">
+    <value>اسم المكلف</value>
     <comment>Vat Lookup</comment>
   </data>
   <data name="ZStepsTitleScanNew" xml:space="preserve">

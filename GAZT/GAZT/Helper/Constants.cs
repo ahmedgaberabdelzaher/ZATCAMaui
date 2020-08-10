@@ -181,6 +181,7 @@ namespace GAZT.Helper
         #endregion
         #region ZakatForm5
         public static string Z_RET_F05_ZKTE = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_RET_F05_ZKTE_SRV/ZKTE_HEADERSet";
+        public static string Z_ZKTE_SUMMARY = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ZKTE_SUMMARY_SRV/HeadSet";
         #endregion
     }
 }

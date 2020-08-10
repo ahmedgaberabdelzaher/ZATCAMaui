@@ -125,7 +125,7 @@
                     </ScrollView>
                 </StackLayout>
 
-                <StackLayout Grid.Row="1">
+                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand">
 
                     <ListView  x:Name="ListView_Returns" ItemsSource="{Binding ListToDisplay,Mode=TwoWay}" IsVisible="{Binding IsListVisible}" VerticalScrollBarVisibility="Never"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" BackgroundColor="White" SeparatorVisibility="None">
                         <ListView.ItemTemplate>
