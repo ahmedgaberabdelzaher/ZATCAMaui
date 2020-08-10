@@ -254,7 +254,7 @@
                                 <StackLayout Orientation="Horizontal"
                                              IsVisible="{Binding IsNameVisible}"
                                              Padding="15,10,15,10">
-                                    <Label Text="TAX Payer Name" Style="{StaticResource ValueLabelGrey}"
+                                    <Label Text="{x:Static ResourceManager:AppResources.ZZTaxPayerName}" Style="{StaticResource ValueLabelGrey}"
                                            HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand"
                                                  Orientation="Horizontal" >
