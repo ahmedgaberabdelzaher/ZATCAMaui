@@ -497,7 +497,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
-                        {
+                          {
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
