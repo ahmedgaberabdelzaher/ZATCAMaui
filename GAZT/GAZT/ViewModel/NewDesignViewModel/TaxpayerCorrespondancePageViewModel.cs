@@ -27,6 +27,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #endregion
         #region Properties
+        public List<ChipModel>  _selectedChipFilterItemList = null;
+        public List<ChipModel> SelectedChipFilterItemList
+        {
+            get
+            {
+                return _selectedChipFilterItemList;
+            }
+            set
+            {
+                _selectedChipFilterItemList = value;
+                if (_selectedChipFilterItemList != null)
+                {
+                   // FilterIfTypeAndStausFilterSelected();
+                }
+                RaisePropertyChanged("SelectedChipFilterItemList");
+            }
+        }
+        public ObservableCollection<ChipModel> _chipDataFilterlist = null;
+        public ObservableCollection<ChipModel> ChipDataFilterlist
+        {
+            get
+            {
+                return _chipDataFilterlist;
+            }
+            set
+            {
+                _chipDataFilterlist = value;
+                RaisePropertyChanged("ChipDataFilterlist");
+            }
+        }
+
         private string _filterLabelText;
         public string FilterLabelText
         {
@@ -512,6 +543,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             }
         }
+        public void PopulateDataInChips()
+        {
+            ChipDataFilterlist = new ObservableCollection<ChipModel>()
+            {
+                new ChipModel(){Text =AppResources.ZZFavoriteAscending, TemplateType = AppResources.ZZFavoriteAscending, ImageSource="ic_star_border.png"},
+                               //new ChipModel(){Text =AppResources.All, TemplateType = AppResources.All,ImageSource = "ic_money.png"}
+            };
+        }
         public void SetAllCorrespondancedata()
         {
   
@@ -535,6 +574,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 IsLoading = true;
             });
+        }
+        public void FilterOnbasisOfChipSelectedItem()
+        {
+            ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance);
+            if (SelectedChipFilterItemList != null)
+                foreach (var Item in SelectedChipFilterItemList)
+                {
+                    if (Item.TemplateType.Equals(AppResources.ZZFavoriteAscending)) 
+                    {
+                        ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.Where(x => x.IsFav==true).ToList());
+                    }
+                }
+
         }
             #endregion
         }
