@@ -497,7 +497,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
-                        {
+                          {
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
@@ -954,8 +954,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>
                 {
-                    new ReturnTypes {Id = "00",TaxType = AppResources.All},
-                    new ReturnTypes {Id = "01",TaxType = AppResources.ZAKATReturns},
+                    new ReturnTypes {Id = "00",TaxType = AppResources.AllReturns},
+                    new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
                     new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
                     new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
                     new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},

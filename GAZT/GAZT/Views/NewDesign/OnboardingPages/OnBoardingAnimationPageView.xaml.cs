@@ -85,7 +85,6 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 AppResources.Culture = ci;
                 this.FlowDirection = FlowDirection.RightToLeft;
                 viewModel.LanguageText = "Set To English";//AppResources.ZZZSetToEnglish;
-
                 viewModel.test();
                 InitializeComponent();
                 

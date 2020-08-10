@@ -21,7 +21,8 @@
     <Color x:Key="ErrorColor">#AA0C19</Color>
     <Color x:Key="warningColor">#E39800</Color>
     <Color x:Key="NewDarkGreenColor">#006450</Color>
-    
+     <Color x:Key="LightGreen">#006450</Color>
+
     <!--Vat New UI-->
 
     <!-- SST Arabic Bold.ttf -->
@@ -436,6 +437,12 @@
 
     <!--Styles for Onboarding-->
 
-    
+    <!--#Styles for New Design-->
+
+     <Style x:Key="SfStyleForZakatPlanGreen" TargetType="Frame">
+       
+        <Setter Property="BackgroundColor" Value="{StaticResource LightGreen}"/>
+
+       </Style>
 
 </ResourceDictionary>

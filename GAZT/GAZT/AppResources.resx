@@ -3419,6 +3419,10 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Verification</value>
     <comment>Vat Lookup</comment>
   </data>
+  <data name="ZZTaxPayerName" xml:space="preserve">
+    <value>Tax Payer Name</value>
+    <comment>Vat Lookup</comment>
+  </data>
   <data name="ZZZCRValidateMessg" xml:space="preserve">
     <value>Please note that this CR/Licence/Contract is already registered with another taxpayer in GAZT, 
             please correct the ID if wrongly input or proceed further with this Licence Number. 
@@ -4346,13 +4350,13 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationReason" xml:space="preserve">
     <value>Reason</value>
   </data>
-   <data name="TinDeregistrationReasonBankruptcy" xml:space="preserve">
+  <data name="TinDeregistrationReasonBankruptcy" xml:space="preserve">
     <value>Bankruptcy</value>
   </data>
   <data name="TinDeregistrationReasonDeath" xml:space="preserve">
     <value>Death</value>
   </data>
-   <data name="TinDeregistrationReasonLiquidation" xml:space="preserve">
+  <data name="TinDeregistrationReasonLiquidation" xml:space="preserve">
     <value>Liquidation</value>
   </data>
   <data name="TinDeregistrationReasonEstablishmentToCompany" xml:space="preserve">
@@ -4391,7 +4395,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationName2" xml:space="preserve">
     <value>Name 2</value>
   </data>
-   <data name="TinDeregistrationOutletDetails" xml:space="preserve">
+  <data name="TinDeregistrationOutletDetails" xml:space="preserve">
     <value>Outlet Details</value>
   </data>
   <data name="TinDeregistrationOutletReviewMessage" xml:space="preserve">
@@ -4409,23 +4413,22 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationPermitNumber" xml:space="preserve">
     <value>Permit Number</value>
   </data>
- <data name="TinDeregistrationValidFrom" xml:space="preserve">
+  <data name="TinDeregistrationValidFrom" xml:space="preserve">
     <value>Valid From</value>
   </data>
- <data name="TinDeregistrationDeregReason" xml:space="preserve">
+  <data name="TinDeregistrationDeregReason" xml:space="preserve">
     <value>Deregistration Reason</value>
   </data>
-    
   <data name="TinDeregistrationProvideSuportingDocuments" xml:space="preserve">
     <value>Provide the supporting documents</value>
   </data>
-   <data name="TinDeregistrationAttachmentCopyOfDeclaringBankruptcy" xml:space="preserve">
+  <data name="TinDeregistrationAttachmentCopyOfDeclaringBankruptcy" xml:space="preserve">
     <value>Attachments - Copy of Declaring Bankruptcy(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentCopyOfLicneseAfterClosing" xml:space="preserve">
     <value>Attachments - Copy of License After Closing/Update(Mandatory)</value>
   </data>
-   <data name="TinDeregistrationAttachmentCopyOfCRAfterClosing" xml:space="preserve">
+  <data name="TinDeregistrationAttachmentCopyOfCRAfterClosing" xml:space="preserve">
     <value>Attachments - Copy of CR After Closing/Update(Mandatory)</value>
   </data>
   <data name="TinDeregistrationAttachmentOwnershipSellingAgreement" xml:space="preserve">
@@ -4443,116 +4446,106 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistration20MB" xml:space="preserve">
     <value>20MB</value>
   </data>
-   <data name="TinDeregistration50MBMax" xml:space="preserve">
+  <data name="TinDeregistration50MBMax" xml:space="preserve">
     <value>50MB Max</value>
   </data>
-  <data name="TinDeregistrationEdit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  
-   <data name="TinDeregistrationContactPersonName" xml:space="preserve">
+  <data name="TinDeregistrationContactPersonName" xml:space="preserve">
     <value>Contact Person Name</value>
-  </data> 
-   <data name="TinDeregistrationDesignation" xml:space="preserve">
+  </data>
+  <data name="TinDeregistrationDesignation" xml:space="preserve">
     <value>Designation</value>
-  </data> 
+  </data>
   <data name="TinDeregistrationSuccess" xml:space="preserve">
     <value>Your TIN Deregistration is submitted successfully</value>
-  </data> 
-   <data name="TinDeregistrationDownloadConfirmation" xml:space="preserve">
+  </data>
+  <data name="TinDeregistrationDownloadConfirmation" xml:space="preserve">
     <value>Download Confirmation</value>
-  </data> 
+  </data>
   <data name="TinDeregistrationRegistrationDetails" xml:space="preserve">
     <value>Registration Details</value>
   </data>
   <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
     <value>Outlets</value>
   </data>
-   <data name="VATDeregistration" xml:space="preserve">
+  <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
-  </data>  
-       <data name="VATDeregistrationInstructionsTitle" xml:space="preserve">
+  </data>
+  <data name="VATDeregistrationInstructionsTitle" xml:space="preserve">
     <value>Instructions &amp; Conditions</value>
-  </data>  
-    <data name="VATDeregistrationReasonType1" xml:space="preserve">
+  </data>
+  <data name="VATDeregistrationReasonType1" xml:space="preserve">
     <value>De-Registration of VAT account</value>
-  </data>  
-     <data name="VATDeregistrationReasonType2" xml:space="preserve">
+  </data>
+  <data name="VATDeregistrationReasonType2" xml:space="preserve">
     <value>VAT Return Filing Obligation Suspension</value>
-  </data>  
-         <data name="VATDeregistrationDocumentType1" xml:space="preserve">
+  </data>
+  <data name="VATDeregistrationDocumentType1" xml:space="preserve">
     <value>Income Statement</value>
-  </data>  
-         <data name="VATDeregistrationDocumentType2" xml:space="preserve">
+  </data>
+  <data name="VATDeregistrationDocumentType2" xml:space="preserve">
     <value>Audited Reports</value>
-  </data>  
-         <data name="VATDeregistrationDocumentType3" xml:space="preserve">
+  </data>
+  <data name="VATDeregistrationDocumentType3" xml:space="preserve">
     <value>Official Contracts</value>
-  </data> 
-         <data name="VATDeregistrationDocumentType4" xml:space="preserve">
+  </data>
+  <data name="VATDeregistrationDocumentType4" xml:space="preserve">
     <value>Other Documents</value>
-  </data> 
-    <data name="VatDeregAttachmentTitle" xml:space="preserve">
+  </data>
+  <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>Attachments</value>
-  </data> 
-<data name="VatDeregAttachmentInputTitle" xml:space="preserve">
+  </data>
+  <data name="VatDeregAttachmentInputTitle" xml:space="preserve">
     <value>Attachments-Audited Reports</value>
-  </data> 
-    <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
+  </data>
+  <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
     <value>New Attachment(Optional)</value>
-  </data> 
-        <data name="VatDeregAttachmentInputsize" xml:space="preserve">
+  </data>
+  <data name="VatDeregAttachmentInputsize" xml:space="preserve">
     <value>20MB</value>
   </data>
-        <data name="VatDeregAttachmentInputsizeLarge" xml:space="preserve">
+  <data name="VatDeregAttachmentInputsizeLarge" xml:space="preserve">
     <value>50MB (max)</value>
   </data>
-         <data name="VatDeregAttachmentInputPlaceholder" xml:space="preserve">
+  <data name="VatDeregAttachmentInputPlaceholder" xml:space="preserve">
     <value>Please upload your document</value>
   </data>
-        <data name="VatDeregDocumentselectionTitle" xml:space="preserve">
+  <data name="VatDeregDocumentselectionTitle" xml:space="preserve">
     <value>Select the type of document</value>
   </data>
-            <data name="VatDeregDeclarationTitle" xml:space="preserve">
+  <data name="VatDeregDeclarationTitle" xml:space="preserve">
     <value>Declaration</value>
   </data>
- <data name="VatDeregDeclarationSubtitle" xml:space="preserve">
+  <data name="VatDeregDeclarationSubtitle" xml:space="preserve">
     <value>Complete the below details</value>
   </data>
-     <data name="VatDeregIDType" xml:space="preserve">
+  <data name="VatDeregIDType" xml:space="preserve">
     <value>ID Type</value>
   </data>
-      <data name="VatDeregIDNumber" xml:space="preserve">
+  <data name="VatDeregIDNumber" xml:space="preserve">
     <value>ID Number</value>
   </data>
-       <data name="VatDeregDOBTitle" xml:space="preserve">
+  <data name="VatDeregDOBTitle" xml:space="preserve">
     <value>Date of Birth</value>
   </data>
-        <data name="VatDeregContactPerson" xml:space="preserve">
+  <data name="VatDeregContactPerson" xml:space="preserve">
     <value>Contact Person Name</value>
   </data>
-        <data name="VatDeregSummaryTitle" xml:space="preserve">
+  <data name="VatDeregSummaryTitle" xml:space="preserve">
     <value>Summary</value>
   </data>
-      <data name="VatDeregSummarySubTitle" xml:space="preserve">
+  <data name="VatDeregSummarySubTitle" xml:space="preserve">
     <value>Review the below information</value>
   </data>
-     <data name="VatDeregSummarySubTitle" xml:space="preserve">
-    <value>Review the below information</value>
-  </data>
-     <data name="VatDeregDetailsTitle" xml:space="preserve">
+  <data name="VatDeregDetailsTitle" xml:space="preserve">
     <value>Deregistration details</value>
   </data>
-     <data name="VatDeregDetailsTitle" xml:space="preserve">
-    <value>Deregistration details</value>
-  </data>
-      <data name="VatDeregReasonTitle" xml:space="preserve">
+  <data name="VatDeregReasonTitle" xml:space="preserve">
     <value>Reason</value>
   </data>
-     <data name="VatDeregDocumentTitle" xml:space="preserve">
+  <data name="VatDeregDocumentTitle" xml:space="preserve">
     <value>Document Type</value>
   </data>
-    <data name="VatDeregConfirmTitle" xml:space="preserve">
+  <data name="VatDeregConfirmTitle" xml:space="preserve">
     <value>Document Type</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
@@ -4561,38 +4554,38 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
 Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields and attachments have been completed.
 
 Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
-  </data> 
+  </data>
   <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
     <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
-  </data>  
-      <data name="VATDeregistrationDeclarationAgreement" xml:space="preserve">
+  </data>
+  <data name="VATDeregistrationDeclarationAgreement" xml:space="preserve">
     <value>I hereby certify that iam authorised to complete this form for the taxable person and that all information contained is correct.</value>
-  </data>  
-     <data name="VatDeregistrationofVATReason1" xml:space="preserve">
+  </data>
+  <data name="VatDeregistrationofVATReason1" xml:space="preserve">
     <value>Total value of VAT eligible supplies falls below mandatory registration threshold (&lt;375,000 SAR)</value>
   </data>
-         <data name="VatDeregistrationofVATReason2" xml:space="preserve">
+  <data name="VatDeregistrationofVATReason2" xml:space="preserve">
     <value>Others (please specify)</value>
   </data>
-       <data name="VatDeregistrationofReturnReason1" xml:space="preserve">
+  <data name="VatDeregistrationofReturnReason1" xml:space="preserve">
     <value>Temporary suspension of economic activities due to accidents , catastrophes or other external events </value>
   </data>
-         <data name="VatDeregistrationofReturnReason2" xml:space="preserve">
+  <data name="VatDeregistrationofReturnReason2" xml:space="preserve">
     <value>Business Seasonality</value>
   </data>
-    <data name="VatDeregistrationofReturnReason3" xml:space="preserve">
+  <data name="VatDeregistrationofReturnReason3" xml:space="preserve">
     <value>Legal orders for temporary suspension of economic activities</value>
   </data>
-   <data name="VatDeregistrationofReturnReason4" xml:space="preserve">
+  <data name="VatDeregistrationofReturnReason4" xml:space="preserve">
     <value>Others (please specify)</value>
   </data>
-      <data name="VatDeregistrationApplicationNumber" xml:space="preserve">
+  <data name="VatDeregistrationApplicationNumber" xml:space="preserve">
     <value>Application Number</value>
   </data>
-       <data name="VatDeregistrationRegistrationServices" xml:space="preserve">
+  <data name="VatDeregistrationRegistrationServices" xml:space="preserve">
     <value>VAT Registration Services</value>
   </data>
-        <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
+  <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>VAT Deregistration submitted successfully</value>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
@@ -4749,5 +4742,175 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDSkip" xml:space="preserve">
     <value>Skip</value>
+  </data>
+  <data name="AllBills" xml:space="preserve">
+    <value>All Bills</value>
+    <comment>Bills</comment>
+  </data>
+  <data name="Partiallynewui" xml:space="preserve">
+    <value>Partially</value>
+    <comment>Bills</comment>
+  </data>
+  <data name="ZakatInstalmetPlan" xml:space="preserve">
+    <value>Instalment Plans</value>
+  </data>
+  <data name="ZakatInstalmetSelectType" xml:space="preserve">
+    <value>Select Type</value>
+  </data>
+  <data name="ZakatInstalmetSelectTypeZakat" xml:space="preserve">
+    <value>Zakat / IncomeTax</value>
+  </data>
+  <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
+    <value>VAT</value>
+  </data>
+  <data name="ZakatInstalmetChooseTaxTypeText" xml:space="preserve">
+    <value>Choose the Tax type to request a instalment plan</value>
+  </data>
+  <data name="ZakatInstalmet" xml:space="preserve">
+    <value>Choose the Tax type to request a instalment plan</value>
+  </data>
+  <data name="ZakatInstalmetDownPaymentAmount" xml:space="preserve">
+    <value>Down Payment Amount</value>
+  </data>
+  <data name="ZakatInstalmetFrequency" xml:space="preserve">
+    <value>Frequency</value>
+  </data>
+  <data name="ZakatInstalmentAgrement" xml:space="preserve">
+    <value>Instalment Agreement</value>
+  </data>
+  <data name="ZakatInstalmentSchedule" xml:space="preserve">
+    <value>Instalment Schedule</value>
+  </data>
+  <data name="ZakatInstalmetNumberOfInstalments" xml:space="preserve">
+    <value>Number of Instalments</value>
+  </data>
+  <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
+    <value>Periodic Instalment</value>
+  </data>
+  <data name="ZakatInstalmetRequestInstalmentPlan" xml:space="preserve">
+    <value>Request Instalment Plan</value>
+  </data>
+  <data name="ZakatInstalmetRequestInstalmentDesc" xml:space="preserve">
+    <value>Set up your instalment plan details</value>
+  </data>
+  <data name="ZakatInstalmetTotalAmount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="ZakatInstalmetHalfYearly" xml:space="preserve">
+    <value>Half Yearly</value>
+  </data>
+  <data name="ZakatInstalmetMonthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="ZakatInstalmetQuarterly" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+  <data name="ZakatInstalmetYearly" xml:space="preserve">
+    <value>Yearly</value>
+  </data>
+  <data name="ZakatInstalmetContinue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="ZakatInstalmentAttachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="ZakatInstalmentPleaseProvideWithSupportingDocuments" xml:space="preserve">
+    <value>Please provide with the supporting documentation</value>
+  </data>
+  <data name="ZakatInstalmentSetupyourinstalmentplandetails" xml:space="preserve">
+    <value>Set up your instalment plan details</value>
+  </data>
+  <data name="ZakatInstalment20MB" xml:space="preserve">
+    <value>20MB</value>
+  </data>
+  <data name="ZakatInstalmentAttachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="ZakatInstalmentBankStatementsForLast3Months" xml:space="preserve">
+    <value>Bank Statements for the last 3 months</value>
+  </data>
+  <data name="ZakatInstalmentFinancialStatementsForLastThreeYears" xml:space="preserve">
+    <value>Financial Statements for the Last 3 years</value>
+  </data>
+  <data name="ZakatInstallmentPageAmendment" xml:space="preserve">
+    <value>Amendment by GAZT</value>
+  </data>
+  <data name="ZakatInstallmentPageTitle" xml:space="preserve">
+    <value>Request Installment Plan</value>
+    <comment>Title</comment>
+  </data>
+  <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
+    <value>Search Reference Number</value>
+  </data>
+  <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
+    <value>Select Bills</value>
+  </data>
+  <data name="ZakatSelectBillsPageViewSelectBillsGray" xml:space="preserve">
+    <value>Select the SADAD bills you wish to include in the instalment agreement</value>
+  </data>
+  <data name="ZakatBillAmount" xml:space="preserve">
+    <value>Due Amount</value>
+  </data>
+  <data name="ZakatInstalmentDownloadConfirmation" xml:space="preserve">
+    <value>Download Confirmation</value>
+  </data>
+  <data name="ZakatInstalmentGoToDashboard" xml:space="preserve">
+    <value>Go to Dashboard</value>
+  </data>
+  <data name="ZakatInstalmentReferenceNumber" xml:space="preserve">
+    <value>Reference Number</value>
+  </data>
+  <data name="ZakatInstalmentRequestInstalmentPlan" xml:space="preserve">
+    <value>Request Instalment Plan</value>
+  </data>
+  <data name="ZakatInstalmentYourVatInstalmentPlanIsSuccessfullySubmitted" xml:space="preserve">
+    <value>Your VAT Instalment Plan is successfully submitted</value>
+  </data>
+  <data name="ZakatInstallmentPlanSummaryReview" xml:space="preserve">
+    <value>Review the below information</value>
+  </data>
+  <data name="ZakatInstallmentSummaryEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ZakatInstallmentSummaryBillType" xml:space="preserve">
+    <value>Bill Type</value>
+  </data>
+  <data name="ZakatInstallmentSummarySadadNumber" xml:space="preserve">
+    <value>SADAD Number</value>
+  </data>
+  <data name="ZakatInstallmentSummaryTaxPeriod" xml:space="preserve">
+    <value>Tax Period</value>
+  </data>
+  <data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
+    <value>Penalty</value>
+  </data>
+  <data name="ZakatInstallmentPlanZakatIncometax" xml:space="preserve">
+    <value>Zakat/IncomeTax</value>
+  </data>
+  <data name="VATAmountDue" xml:space="preserve">
+    <value>Amount Due</value>
+  </data>
+  <data name="ZZZZPleaseSelectZakatType" xml:space="preserve">
+    <value>Instalment Requested for</value>
+  </data>
+  <data name="ZZZZPleaseSelectZakatSubType" xml:space="preserve">
+    <value>Reason for requesting Instalment</value>
+  </data>
+  <data name="ZakatInstalmentDownPaymentAmountPayable" xml:space="preserve">
+    <value>Down Payment Amount Payable</value>
+  </data>
+  <data name="ZakatInstalmentsSadadNumber" xml:space="preserve">
+    <value>SADAD Number</value>
+  </data>
+  <data name="ZakatInstalmetDetails" xml:space="preserve">
+    <value>Display Installment Details</value>
+  </data>
+  <data name="AllReturns" xml:space="preserve">
+    <value>All Returns</value>
+    <comment>My Returns</comment>
+  </data>
+  <data name="ZakatnewUi" xml:space="preserve">
+    <value>Zakat</value>
+    <comment>RetunBills</comment>
   </data>
 </root>

@@ -61,6 +61,15 @@ namespace EGAZT
         //test
         public static string AttachmentPopupPageView = "AttachmentPopupPageView";
         public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
+        public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
+
+        
+        #endregion
+
+        #region new design views Release2
+
+        public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";
+
         #endregion
 
         #region old view strings

@@ -8,6 +8,7 @@ using System;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZT.CustomControl;
+using MVP.FontIcons;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
@@ -198,6 +199,37 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.NumSymbol = Color.DarkRed;
         }
 
+
+        // * New Password - Confirm New Password : Show / Hide
+        void OnNewPasswordTapped(object sender, EventArgs args)
+        {
+            if (NewPassword.IsPassword == true)
+            {
+                NewPassword.IsPassword = false;
+                NewPasswordIcon.Glyph = IconFonts.Eye;
+            }
+            else
+            {
+                NewPassword.IsPassword = true;
+                NewPasswordIcon.Glyph = IconFonts.EyeOff;
+            }
+        }
+
+        void OnConfirmNewPasswordTapped(object sender, EventArgs args)
+        {
+            if (ConfirmNewPassword.IsPassword == true)
+            {
+                ConfirmNewPassword.IsPassword = false;
+                ConfirmNewPasswordIcon.Glyph = IconFonts.Eye;
+            }
+            else
+            {
+                ConfirmNewPassword.IsPassword = true;
+                ConfirmNewPasswordIcon.Glyph = IconFonts.EyeOff;
+            }
+        }
+
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -205,6 +237,9 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             // Reset values
             viewModel.currentAttempts = 0;
             viewModel.Enabled = true;
+
+            NewPasswordIcon.Glyph = IconFonts.EyeOff;
+            ConfirmNewPasswordIcon.Glyph = IconFonts.EyeOff;
         }
 
     }

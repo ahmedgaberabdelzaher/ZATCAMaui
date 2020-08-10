@@ -16,6 +16,18 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
         public WalkthroughItemPage()
         {
             InitializeComponent();
+            SetLTR();
+        }
+        private void SetLTR()
+        {
+            if (App.IsArabic)
+            {
+                this.FlowDirection = Xamarin.Forms.FlowDirection.RightToLeft;
+            }
+            else
+            {
+                this.FlowDirection = Xamarin.Forms.FlowDirection.LeftToRight; 
+            }
         }
     }
 }

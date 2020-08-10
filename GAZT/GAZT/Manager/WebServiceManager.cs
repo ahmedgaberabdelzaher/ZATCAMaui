@@ -1,5 +1,6 @@
 ﻿using EGAZT;
 using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Helper;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;

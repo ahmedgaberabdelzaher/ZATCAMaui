@@ -141,6 +141,8 @@ using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.GenericPickers;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
+using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 
 namespace EGAZT
 {
@@ -187,6 +189,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
             SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
+            SimpleIoc.Default.Register<ZakatReturnDetailsSuccessfullPageViewModel>();
+
+            
+            #endregion
+
+            #region NewDesignRelease2IOC
+            SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
+
             #endregion
 
             #region OldIOC
@@ -1618,6 +1628,23 @@ namespace EGAZT
         }
 
 
+        public ZakatReturnDetailsSuccessfullPageViewModel ZakatReturnDetailsSuccessfullPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatReturnDetailsSuccessfullPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        
+
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -1638,6 +1665,12 @@ namespace EGAZT
             navigationService.Configure(App.VATReturnSuccessfullPageView, typeof(VATReturnSuccessfullPageView));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+
+            #endregion
+
+            #region NewDesignRelease2
+
+            navigationService.Configure(App.ZakatInstalmentPlanPageView, typeof(ZakatInstalmentPlanPageView));
 
             #endregion
 
@@ -1735,13 +1768,32 @@ namespace EGAZT
             navigationService.Configure(App.TINDeregistrationPageView, typeof(TINDeregistrationPageView));
             navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
             navigationService.Configure(App.EstablishmentRegistrationPage, typeof(EstablishmentRegistrationPage));
+            navigationService.Configure(App.ZakatReturnDetailsSuccessfullPageView, typeof(ZakatReturnDetailsSuccessfullPageView));
 
+            
             #endregion
 
             return navigationService;
         }
         #endregion
 
+        #region Release2 ZakatInstalmentPlan
+
+        public ZakatInstalmentPlanViewModel ZakatInstalmentPlanPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        #endregion
         public ZakatDeregistrationPageViewModel ZakatDeregistrationPageView
         {
             get
