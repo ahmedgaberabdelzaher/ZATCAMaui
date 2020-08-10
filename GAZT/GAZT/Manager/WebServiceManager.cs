@@ -1,5 +1,6 @@
 ﻿using EGAZT;
 using EGAZT.Models;
+using EGAZT.Models.Form5Models;
 using GAZT.Helper;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
@@ -6695,10 +6696,10 @@ namespace GAZT.Manager
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     char lang = GetLangZParameter();
-                   
-                     string url = Constants.Z_RET_F05_ZKTE+"(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='00000000000000000000',Fbguid='005056B1F8FB1EEAB680B9ED5E358961')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
 
-                      client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    // string url = Constants.Z_RET_F05_ZKTE+ "(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='00000000000000000000',Fbguid='005056B1F8FB1EEAB6DD318DF02E9AE6')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
+                    string url = Constants.Z_RET_F05_ZKTE + "(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='00000000000000000000',Fbguid='" + App.LoginDataRetrieved.FbGuid + "')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTZakatForm5Response = await client.GetAsync(uri);
@@ -6756,7 +6757,84 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+
+
+//        public static async Task<ZakatForm5SummaryResult> GAZTZakatForm5DataSummary()
+//        {
+//            if (CrossConnectivity.Current.IsConnected)
+//            {
+//                ZakatForm5SummaryResult ZakatForm5SummaryResultSet = new ZakatForm5SummaryResult();
+//                string NewToken = string.Empty;​
+//                try
+//                {
+//                    HttpClient client = new HttpClient(App.httpClientHandler);
+//                    string url = string.Empty;
+//                    //  string url = Constants.Z_ZKTE_SUMMARY + "(Fbnum='23000381329',Flag='X')?$expand = headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";​
+//                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+//​
+//                    var uri = new Uri(url);
+//                    HttpResponseMessage GAZTZakatForm5SummaryResponse = await client.GetAsync(uri);
+//                    if (GAZTZakatForm5SummaryResponse != null)
+//                    {
+//                        if (GAZTZakatForm5SummaryResponse.StatusCode == HttpStatusCode.Unauthorized)
+//                        {
+//                            App.IsSessionExpired = true;
+//                            return null;
+//                        }
+//                        HttpHeaders headers = GAZTZakatForm5SummaryResponse.Headers;
+//                        IEnumerable<string> values;
+//                        if (headers.TryGetValues("token", out values))
+//                        {
+//                            NewToken = values.First();
+//                            App.IsSessionExpired = false;
+//                        }
+//                        if ((!string.IsNullOrEmpty(NewToken)))
+//                        {
+//                            if ((0 == String.Compare(NewToken, "Token has expired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+//                            {
+//                                App.IsSessionExpired = true;
+//                                return null;
+//                            }
+//                            App.Token = NewToken;
+//                        }
+//​
+//                        String GAZTZakatForm5SummaryResponseJSON = GAZTZakatForm5SummaryResponse.Content.ReadAsStringAsync().Result;
+//                        if (!string.IsNullOrEmpty(GAZTZakatForm5SummaryResponseJSON))
+//                        {
+//                            GAZTZakatForm5SummaryResponseJSON = JObject.Parse(GAZTZakatForm5SummaryResponseJSON)["d"].ToString();
+//​
+//                            ZakatForm5SummaryResultSet = JsonConvert.DeserializeObject<ZakatForm5SummaryResult>(GAZTZakatForm5SummaryResponseJSON);
+//                            if (ZakatForm5SummaryResultSet == null)
+//                            {
+//                                throw new Exception(AppResources.NoTINsAvailable);
+//                            }
+//                        }
+//                        else
+//                        {
+//                            throw new Exception(AppResources.ZNoICRAvailable);
+//                        }
+//                    }
+//                    return ZakatForm5SummaryResultSet;
+//                }
+//                catch (Exception ex)
+//                {
+//                    Console.WriteLine(ex);
+//                    App.IsSessionExpired = true;
+//                    return null;
+//                }
+//            }
+//            else
+//            {
+//                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+//            }
+//        }
+
+
+
         #endregion
+
+
 
 
         #endregion
