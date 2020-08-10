@@ -36,6 +36,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 {
                     viewModel.MenuViewVisible = false;
                     viewModel.HomeViewVisible = true;
+                    viewModel.IsVatRegistrationTileVisible = false;
                 }
 
                 if (App.TP != null)
