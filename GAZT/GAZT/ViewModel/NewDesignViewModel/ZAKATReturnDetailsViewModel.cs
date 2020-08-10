@@ -338,6 +338,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ChangeFromEstimateTAccountringBasisButtonVisibility");
             }
         }
+
+        private bool _confirmAndGenerateSADADBillLabelVisibility = false;
+        public bool ConfirmAndGenerateSADADBillLabelVisibility
+        {
+            get
+            {
+                return _confirmAndGenerateSADADBillLabelVisibility;
+            }
+            set
+            {
+                _confirmAndGenerateSADADBillLabelVisibility = value;
+                RaisePropertyChanged("ConfirmAndGenerateSADADBillLabelVisibility");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -565,16 +579,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetEditImage();
                     isLabelVisible = false;
                     IsEditTextVisible = false;
-                    _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                 }
                 else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
                 {
                     // AmedmentButtonVisibility = true;
-                    _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0004") || ZakatReturnDetails.d.Statusz.Equals("E0003"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
-                    _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    });
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals(""))
                 {
@@ -582,7 +599,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
+                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                 }
             });
 
@@ -762,8 +779,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
-                    }
+                    Device.BeginInvokeOnMainThread(async () => {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+                    });
+                }
                 else
                 {
                     Device.BeginInvokeOnMainThread(async () => {
@@ -1090,6 +1110,8 @@ private string GetConfirmOperationId()
             IsEditTextVisible = true;
             SetSubmitButtonVisibility = false;
             SetConfirmButtonVisibility = true;
+            ConfirmAndGenerateSADADBillLabelVisibility = true;
+            ChangeFromEstimateTAccountringBasisButtonVisibility = false;
         }
 
         private void SetLayoutVisibilityAfterSuccessfulConfirmation()

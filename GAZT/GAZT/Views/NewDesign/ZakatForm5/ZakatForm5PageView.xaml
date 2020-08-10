@@ -28,22 +28,24 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <yummy:PancakeView CornerRadius="15,15,0,0" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White">
-            <Grid>
+            <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="10*" />
-                    <RowDefinition Height="80*" />
-                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
-                <ScrollView Grid.Row="1">
-                    <StackLayout>
-                    <!--Start Of Basic Information View-->
-                    <StackLayout x:Name="BasicInformation" IsVisible="True">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5BasicInformation}" Style="{StaticResource PageTitleBlack}" />
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" Style="{StaticResource ValueLabelGrey}" />
-                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
 
-                        <!--Start of Return Details-->
+                    <!--Start Of Basic Information View-->
+                    <Grid Grid.Row="1" x:Name="BasicInformation" IsVisible="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                        
+                        <ScrollView Grid.Row="1">
+                        <StackLayout>
+                            <!--Start of Return Details-->
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
@@ -182,23 +184,28 @@
                             <CheckBox IsChecked="True" IsEnabled="False"/>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5IsCorrect}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
+                    
+                            
+                        </StackLayout>
+                    </ScrollView>
+                    <StackLayout Grid.Row="0" BackgroundColor="White">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5BasicInformation}" Style="{StaticResource PageTitleBlack}" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" Style="{StaticResource ValueLabelGrey}" />
+                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
                     </StackLayout>
+                </Grid>
                     <!--End of Basic Information View-->
                     
                     <!--Start of Financial Information-->
-                        <StackLayout x:Name="FinancialInformation" IsVisible="True">
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5FinancialInfo}" Style="{StaticResource PageTitleBlack}" />
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" Style="{StaticResource ValueLabelGrey}" />
-                            <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
+                        <Grid Grid.Row="1" x:Name="FinancialInformation" IsVisible="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
                             
-                            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                                <StackLayout Orientation="Horizontal" Padding="10">
-                                    <buttons:SfButton TextColor="{StaticResource Primary}" BackgroundColor="AliceBlue" CornerRadius="20" BorderWidth="1" BorderColor="AliceBlue" Text="{x:Static ResourceManager:AppResources.FORM5Cabs}" />
-                                    <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="Professionals" />
-                                    <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="Sell Buy" />
-                                    <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="Labor Occupation" />
-                                </StackLayout>
-                            </ScrollView>
+                    <ScrollView Grid.Row="1">
+                        <StackLayout>
+
                             <!--On Cabs Clicked Starts-->
                             <StackLayout x:Name="Cabs">
                             <!--Start of General taxi Office-->
@@ -1725,15 +1732,39 @@
                                 </border:SfBorder>
                             </StackLayout>
                             <!--On Additional Info Clicked Ends-->
+                    
+                            
                         </StackLayout>
+                    </ScrollView>
+                    
+                            <StackLayout Grid.Row="0" BackgroundColor="White">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5FinancialInfo}" Style="{StaticResource PageTitleBlack}" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" Style="{StaticResource ValueLabelGrey}" />
+                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
+
+
+                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <buttons:SfButton TextColor="{StaticResource Primary}" BackgroundColor="AliceBlue" CornerRadius="20" BorderWidth="1" BorderColor="AliceBlue" Text="{x:Static ResourceManager:AppResources.FORM5Cabs}" />
+                                <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="Professionals" />
+                                <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="Sell Buy" />
+                                <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="Labor Occupation" />
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+
+                </Grid>
                     <!--End of Financial Information-->
 
                         <!--Start of Zakat Estimation-->
-                        <StackLayout x:Name="ZakatEstimation" IsVisible="True">
-                            <custom:CustomLabel Text="Zakat Estimation" Style="{StaticResource PageTitleBlack}" />
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" Style="{StaticResource ValueLabelGrey}" />
-                            <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
+                        <Grid Grid.Row="1" x:Name="ZakatEstimation" IsVisible="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
+                    <ScrollView Grid.Row="1">
+                        <StackLayout>
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="10">
@@ -1759,9 +1790,7 @@
                                 </StackLayout>
                             </border:SfBorder>
 
-
-                            <ScrollView>
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+     <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <Expander>
                                         <Expander.Header>
                                             <StackLayout Orientation="Horizontal" Padding="10">
@@ -2013,11 +2042,18 @@
                                         </StackLayout>
                                     </Expander>
                                 </border:SfBorder>
+                        </StackLayout> 
                             </ScrollView>
-                        </StackLayout>
-                        <!--End of Zakat Estimation-->
+
+                    <StackLayout Grid.Row="0" BackgroundColor="White">
+                        <custom:CustomLabel Text="Zakat Estimation" Style="{StaticResource PageTitleBlack}" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" Style="{StaticResource ValueLabelGrey}" />
+                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
                     </StackLayout>
-                </ScrollView>
+                </Grid>
+                        <!--End of Zakat Estimation-->
+
+                
                 
                 
                 

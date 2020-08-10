@@ -19,6 +19,10 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
         {
             InitializeComponent();
             viewModel = App.Locator.ZakatForm5PageView;
+            this.BindingContext = viewModel;
+            //viewModel.z = true;
+            //viewModel.IsNoDataLabelVisible = false;
+            IntialiseAsync();
         }
 
         protected override void OnAppearing()
@@ -49,13 +53,27 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 Device.BeginInvokeOnMainThread(() => {
                    
                     App.HideProgressView();
-                });
+                    });
 
                
             }
             catch (Exception ex)
             {
                 App.HideProgressView();
+            }
+        }
+        public async Task IntialiseAsync()
+        {
+            try
+            {
+                await viewModel.LoadZakatForm5Data();
+                if (viewModel.ZakatForm5DataResult != null )
+                {
+                   // BPicker.SelectedIndex = 14;
+                }
+            }
+            catch (Exception e)
+            {
             }
         }
 

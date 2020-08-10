@@ -3419,6 +3419,10 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Verification</value>
     <comment>Vat Lookup</comment>
   </data>
+   <data name="ZZTaxPayerName" xml:space="preserve">
+    <value>Tax Payer Name</value>
+    <comment>Vat Lookup</comment>
+  </data>
   <data name="ZZZCRValidateMessg" xml:space="preserve">
     <value>Please note that this CR/Licence/Contract is already registered with another taxpayer in GAZT, 
             please correct the ID if wrongly input or proceed further with this Licence Number. 
