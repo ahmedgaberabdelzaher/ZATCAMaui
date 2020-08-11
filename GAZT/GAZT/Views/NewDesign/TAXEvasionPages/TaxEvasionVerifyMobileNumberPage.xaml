@@ -13,7 +13,7 @@
                  xmlns:FontImage="clr-namespace:MVP.FontIcons"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-                 xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
+                 xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
                  x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionVerifyMobileNumberPage">
         <ContentPage.Resources>
             <ResourceDictionary>
@@ -132,7 +132,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0">
+                    <StackLayout Grid.Row="0" Padding="10">
                         <control:CustomLabel Text="{Binding PageTitle}"
                                              Style="{StaticResource SectionTitleBlack}" />
                         <control:CustomLabel Text="{Binding PageTitleTag}"
@@ -143,12 +143,11 @@
                     
                     <!--Input For Mobile Number-->
                     <StackLayout Grid.Row="1" Padding="10" IsVisible="{Binding IsShowMobileInput}"> 
-                        <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}"
+                        <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.MobileNumber}"
                                                                 Padding="0,0,0,0"
                                                                 Style="{StaticResource CaptionLabelGrey}"/>
                         
-                        <inputLayout:SfTextInputLayout  Hint="Hint"
-                                                        HorizontalOptions="FillAndExpand"
+                        <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand"
                                                         ContainerType="Outlined"
                                                         x:Name="frmMobile"
                                                         LeadingViewPosition="Inside"
@@ -157,20 +156,23 @@
                                                         FocusedColor="#005e4b"
                                                         ErrorColor="#B00020">
                             <inputLayout:SfTextInputLayout.LeadingView>
+
                                 <Label FlowDirection="LeftToRight"
-                                        Margin="0,0,10,0"
+                                        Margin="0"
                                         x:Name="mobileNumberPrefix"
-                                        Text="+966 |"
-                                        TextColor="#D99A29"
+                                        Text="+966  |"
+                                        WidthRequest="80"
+                                        TextColor="Gray"
                                         FontSize="Medium"
                                         VerticalTextAlignment="Center"
                                         HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center"></Label>
+                                
                             </inputLayout:SfTextInputLayout.LeadingView>
                             <control:BorderlessEntry x:Name="Mobile_Entry"
                                                         Text="{Binding MobileNumber}"
                                                         Unfocused="Mobile_Entry_Unfocused"
-                                                        FontSize="Small"
+                                                        FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
                                                         TextColor="White"
                                                         PlaceholderColor="Gray"

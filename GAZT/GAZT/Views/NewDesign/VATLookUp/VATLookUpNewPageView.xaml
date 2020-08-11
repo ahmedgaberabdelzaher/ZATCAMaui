@@ -187,8 +187,9 @@
                                             PickerMode="Dialog"
                                             HeaderBackgroundColor="#006450"              
                                             BorderColor="Black"
-                                            BackgroundColor="#EAF7CC"
+                                            BackgroundColor="white"
                                             UnSelectedItemTextColor="{StaticResource NeutralBlack}"
+                                            SelectedItemFontAttribute="Bold"
                                             SelectedItemFontSize="15"
                                             ItemHeight="40"
                                             SelectedItemTextColor="{StaticResource NeutralBlack}"
@@ -228,6 +229,9 @@
                                                                      
                                                                     Placeholder="{x:Static ResourceManager:AppResources.NDTypeyourIDNumber}"
                                                                     TextColor="#bbbbbb" >
+                                             <Entry.Behaviors>
+                                                <custom1:OnlyNumericValuesBehaviour/>
+                                            </Entry.Behaviors>
                                         </control:BorderlessEntry>
                                         <inputLayout:SfTextInputLayout.TrailingView >
                                             <Label HorizontalOptions="End"

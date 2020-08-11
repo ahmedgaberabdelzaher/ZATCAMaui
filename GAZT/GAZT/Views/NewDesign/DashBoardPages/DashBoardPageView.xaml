@@ -502,9 +502,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return">
-
-                                    </Image>
+                                    <Image Source="menu_return"> </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZVatLookUpTitleTextNew}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="VATLookUp_Tapped" />
@@ -666,6 +664,19 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return"></Image>
+                                    <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
+                                        <Label.FormattedText>
+                                        <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.AppVersion}"/>
+                                            <Span Text="&#160;&#160;"/>
+                                            <Span  Text="{Binding AppVersion}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                    </custom:CustomLabel>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">

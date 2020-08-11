@@ -65,8 +65,8 @@ namespace EGAZT
         public static string AttachmentPopupPageView = "AttachmentPopupPageView";
         public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
+        public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
 
-        
         #endregion
 
         #region new design views Release2

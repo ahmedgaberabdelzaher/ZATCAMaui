@@ -127,9 +127,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             IsShowMobileInput = true;
             IsShowOTPInput = false;
 
-            SendOTPCommand = new Xamarin.Forms.Command(() =>
+            SendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
-                ShowOTPForm();
+                await sendOTPAsync();
             });
             ResendOTPCommand = new Xamarin.Forms.Command(() =>
             {
