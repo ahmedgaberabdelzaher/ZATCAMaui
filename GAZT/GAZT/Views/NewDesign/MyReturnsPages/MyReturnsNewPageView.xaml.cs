@@ -64,12 +64,12 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
         {
             if (!App.IsArabic)
             {
-                Image_backArrow.Rotation = 0;
+      
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
             else
             {
-                Image_backArrow.Rotation = 180;
+   
                 this.FlowDirection = FlowDirection.RightToLeft;
 
             }
@@ -79,10 +79,12 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

@@ -22,6 +22,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
@@ -44,7 +52,7 @@
                         <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDReturns}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
 
-                        <Image Grid.Row="0" Grid.Column="0"  x:Name="Image_backArrow" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeftwhite">
+                        <Image Grid.Row="0" Grid.Column="0"  x:Name="Image_backArrow" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
                             </Image.GestureRecognizers>
@@ -91,7 +99,7 @@
                         <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                         </custom:CustomLabel>
 
-                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
 
                         </Image>
 
