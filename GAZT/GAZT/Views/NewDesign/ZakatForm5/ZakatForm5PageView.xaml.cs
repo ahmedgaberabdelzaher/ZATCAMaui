@@ -1,4 +1,5 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -94,6 +95,11 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
+        }
+
+        private void OnInfoTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new DummyPopUp());
         }
     }
 }
