@@ -4892,4 +4892,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>المفضلة</value>
     <comment>Inbox</comment>
   </data>
+  <data name="Hello" xml:space="preserve">
+    <value>مرحباً</value>
+    <comment>DashBoard</comment>
+  </data>
 </root>
