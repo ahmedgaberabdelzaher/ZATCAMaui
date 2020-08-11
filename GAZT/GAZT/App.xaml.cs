@@ -24,6 +24,7 @@ using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZakatForm5;
+using EGAZT.Views.NewDesign.TAXEvasionPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -41,6 +42,7 @@ namespace EGAZT
         public static string GAZTNewDesignForgotPasswordPageView = "GAZTNewDesignForgotPasswordPageView";
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
+        public static string TaxEvasionVerifyMobileNumberPage = "TaxEvasionVerifyMobileNumberPage";
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";

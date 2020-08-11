@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,13 +9,15 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxEvasionVerifyMobileNumberPage : ContentPage
     {
-        TaxEvasionReportMobilePageViewModel viewModel;
+        TaxEvasionVerifyMobileViewModel viewModel;
         public TaxEvasionVerifyMobileNumberPage()
         {
             InitializeComponent();
 
-            viewModel = App.Locator.TaxEvasionReportPhonePageView;
+            viewModel = App.Locator.TaxEvasionVerifyMobileNumberPage;
             this.BindingContext = viewModel;
+
+            viewModel.ShowMobileForm();
         }
 
         private void SetLTR()
@@ -67,6 +69,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
 
+        }
+
+        void Mobile_Entry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
         }
     }
 }
