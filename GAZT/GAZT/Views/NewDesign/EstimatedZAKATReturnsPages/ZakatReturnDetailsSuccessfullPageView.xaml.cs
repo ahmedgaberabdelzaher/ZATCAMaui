@@ -19,9 +19,18 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             InitializeComponent();
             viewModel = App.Locator.ZakatReturnDetailsSuccessfullPageView;
             this.BindingContext = viewModel;
+            NavigationPage.SetHasBackButton(this, false);
+            SetLTR();
             viewModel.OnPageLoad(ZakatReturnDetail);
         }
 
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

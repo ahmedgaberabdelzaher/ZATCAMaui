@@ -32,11 +32,12 @@
                 <Grid HorizontalOptions="FillAndExpand"
                       VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80*"/>
-                                                <RowDefinition Height="20*"/>
+                        <RowDefinition Height="75*"/>
+                                                <RowDefinition Height="25*"/>
 
                     </Grid.RowDefinitions>
-                     <StackLayout Spacing="0" Grid.Row="0">
+                    <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="0">
+                     <StackLayout Spacing="0" >
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
                             <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
 
@@ -72,13 +73,14 @@
                         </border:SfBorder>
                        
                     </StackLayout>
+                         </ScrollView>
                 <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="10">
-                     <buttons:SfButton Text="invoice" Style="{StaticResource PrimaryButtonStyle}"/>
-                        <custom:CustomLabel Text="Returns" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}">
-                              <custom:CustomLabel.GestureRecognizers>
+                     <buttons:SfButton Text="invoice" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnInvoiceClicked}"/>
+                        <Label Text="Returns" TextColor="{StaticResource NewDullOrangeColor}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}">
+                              <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnReturnClicked"/>
-                                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                                            </Label.GestureRecognizers>
+                        </Label>
                 </StackLayout>
                 </Grid>
                    

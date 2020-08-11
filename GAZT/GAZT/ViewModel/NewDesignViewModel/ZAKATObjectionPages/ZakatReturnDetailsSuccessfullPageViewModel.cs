@@ -16,7 +16,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        public ICommand OnSubmitClicked { get; set; }
+        public ICommand OnInvoiceClicked { get; set; }
         string Cokey = "";
         string Cotyp = "";
         #endregion
@@ -111,10 +111,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
             _dialogService = dialogService;
 
-            OnSubmitClicked = new Xamarin.Forms.Command(() =>
+           
+            OnInvoiceClicked = new Xamarin.Forms.Command(() =>
             {
-                
+                OnDownLoadInvoiceClicked();
             });
+            
         }
         #endregion
 
@@ -142,10 +144,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
                             EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
                             if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel)) ;
-                              //  IsrefreshEnabled = true;
+                            //  IsrefreshEnabled = true;
                             //  RefreshIconImageSource = "ic_refresh.png";
                             //else
                             //    IsrefreshEnabled = false;
+                            ReferenceNumber = EstimatedZAKATSADADNumber.Sopbel;
+                            SADADNumber = EstimatedZAKATSADADNumber.Sadadid;
+                            ZAKATAmount = EstimatedZAKATSADADNumber.Stotamt;
                         }
                         else
                         {
@@ -154,11 +159,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = false;
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = true;
                             EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+
+                            ReferenceNumber = EstimatedZAKATSADADNumber.Sopbel;
+                            SADADNumber = EstimatedZAKATSADADNumber.Sadadid;
+                            ZAKATAmount = EstimatedZAKATSADADNumber.Stotamt;
+
                            // if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel)) ;
-//IsrefreshEnabled = true;
-                            //    RefreshIconImageSource = "ic_refresh.png";
-                            //else
-                            //    IsrefreshEnabled = false;
+                           //IsrefreshEnabled = true;
+                           //    RefreshIconImageSource = "ic_refresh.png";
+                           //else
+                           //    IsrefreshEnabled = false;
                         }
                         GetUpdatedDataAfterAddingComma();
                     }
@@ -185,6 +195,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             {
                 IsLoading = false;
             });
+        }
+
+        protected void OnDownLoadInvoiceClicked()
+        {
+            GetPdfUrl();
+        }
+
+        public void GetPdfUrl()
+        {
+            String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='" + Cotyp + "')/$value?saml2=enabled";
+            // string url =  await  WebServiceManager.GAZTEstimatedZAKATReturnInvoicePdf(Cokey);
+            ShowPdf(url);
+        }
+
+        public async void ShowPdf(string pdfUrl)
+        {
+            if (pdfUrl != null)
+            {
+                _navigationService.NavigateTo(App.PdfView, pdfUrl);
+            }
+            else
+            {
+                //pop that certificate is not available
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                });
+            }
         }
 
         private void GetUpdatedDataAfterAddingComma()
