@@ -48,6 +48,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Public Properties
+
+        private string _appVersion = App.AppVersion;
+        public string AppVersion
+        {
+            get
+            {
+                return _appVersion;
+            }
+            set
+            {
+                _appVersion = value;
+                RaisePropertyChanged("AppVersion");
+            }
+        }
+
         public CalendarEventCollection CommittmentsSchedule
         {
             get
