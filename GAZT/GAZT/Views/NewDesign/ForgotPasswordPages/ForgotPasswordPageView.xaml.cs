@@ -212,6 +212,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             if(string.IsNullOrEmpty(viewModel.Email))
             {
                 viewModel.IsTinDopDownVisible = false;
+                viewModel.UserNameLabelText = AppResources.IDNumber;
             }
         }
         void ResetPasswordValidationConditions()

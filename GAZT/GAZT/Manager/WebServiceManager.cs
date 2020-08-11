@@ -1,5 +1,6 @@
 ﻿using EGAZT;
 using EGAZT.Models;
+using EGAZT.Models.Form5Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Helper;
 using GAZT.Models;
@@ -6744,6 +6745,80 @@ namespace GAZT.Manager
                         }
                     }
                     return ZakatForm5DataResultSet;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+
+
+
+        public static async Task<ZakatForm5SummaryResult> GAZTZakatForm5DataSummary()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ZakatForm5SummaryResult ZakatForm5SummaryResultSet = new ZakatForm5SummaryResult();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    // string url = Constants.Z_ZKTE_SUMMARY + "(Fbnum='23000381329',Flag='X')?$expand = headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
+                    string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ZKTE_SUMMARY_SRV/HeadSet(Fbnum='23001410241',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTZakatForm5SummaryResponse = await client.GetAsync(uri);
+                    if (GAZTZakatForm5SummaryResponse != null)
+                    {
+                        if (GAZTZakatForm5SummaryResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTZakatForm5SummaryResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String GAZTZakatForm5SummaryResponseJSON = GAZTZakatForm5SummaryResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTZakatForm5SummaryResponseJSON))
+                        {
+                            GAZTZakatForm5SummaryResponseJSON = JObject.Parse(GAZTZakatForm5SummaryResponseJSON)["d"].ToString();
+
+                            ZakatForm5SummaryResultSet = JsonConvert.DeserializeObject<ZakatForm5SummaryResult>(GAZTZakatForm5SummaryResponseJSON);
+                            if (ZakatForm5SummaryResultSet == null)
+                            {
+                                throw new Exception(AppResources.NoTINsAvailable);
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.ZNoICRAvailable);
+                        }
+                    }
+                    return ZakatForm5SummaryResultSet;
                 }
                 catch (Exception ex)
                 {
