@@ -425,12 +425,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             OnEditClicked = new Xamarin.Forms.Command(() =>
             {
-                isLabelVisible = false;
-                isEditVisible = true;
-                IsEditTextVisible = false;
-                SetSubmitButtonVisibility = true;
-                SetConfirmButtonVisibility = false;
-                SetEditImage();
+              
+                Device.BeginInvokeOnMainThread(async () => {
+                    isLabelVisible = false;
+                    isEditVisible = true;
+                    IsEditTextVisible = false;
+                    SetSubmitButtonVisibility = true;
+                    SetConfirmButtonVisibility = false;
+                    SetEditImage();
+                });
             });
             //=========================end=====================================================
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
@@ -615,6 +618,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     //IsAmendButtonPressed = true;
                     //_navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0002"))// E002 means Tax officer has released the return
                 {
@@ -622,12 +627,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetEditImage();
                     isLabelVisible = false;
                     IsEditTextVisible = false;
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    });
                 }
                 else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
                 {
                     // AmedmentButtonVisibility = true;
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    });
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0004") || ZakatReturnDetails.d.Statusz.Equals("E0003"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
@@ -642,7 +653,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    });
                 }
             });
 
@@ -1136,7 +1150,7 @@ private string GetConfirmOperationId()
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0002"))// Status when the return released by GAZT officer
             {
                 ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Paid";
+                ICRStatus = "Build";
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0001"))// UnSubmitted
             {
