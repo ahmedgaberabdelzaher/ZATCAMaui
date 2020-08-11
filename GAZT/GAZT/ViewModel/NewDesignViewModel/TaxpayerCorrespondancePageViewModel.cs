@@ -174,6 +174,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
+        private bool _isListVisible = false;
+        public bool IsListVisible
+        {
+            get
+            {
+                return _isListVisible;
+            }
+            set
+            {
+                _isListVisible = value;
+                RaisePropertyChanged("IsListVisible");
+            }
+        }
+        private bool _isNoDataLableVisible = true;
+        public bool IsNoDataLableVisible
+        {
+            get
+            {
+                return _isNoDataLableVisible;
+            }
+            set
+            {
+                _isNoDataLableVisible = value;
+                RaisePropertyChanged("IsNoDataLableVisible");
+            }
+        }
         private List<ReturnTypes> _filterListForDropDown;
         public List<ReturnTypes> FilterListForDropDown
         {
@@ -197,6 +223,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _listToDisplay = value;
+                if (_listToDisplay != null)
+                {
+                    if (_listToDisplay.Count > 0)
+                    {
+                        IsListVisible = true;
+                        IsNoDataLableVisible = false;
+                    }
+                    else
+                    {
+                        IsListVisible = false;
+                        IsNoDataLableVisible = true;
+                    }
+                }
+                else
+                {
+                    IsListVisible = false;
+                    IsNoDataLableVisible = true;
+
+                }
                 RaisePropertyChanged("ListToDisplay");
             }
         }
@@ -547,7 +592,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
-                new ChipModel(){Text =AppResources.ZZFavoriteAscending, TemplateType = AppResources.ZZFavoriteAscending, ImageSource="ic_star_border.png"},
+                new ChipModel(){Text =AppResources.Favorite, TemplateType = AppResources.ZZFavoriteAscending, ImageSource="ic_star_border.png"},
                                //new ChipModel(){Text =AppResources.All, TemplateType = AppResources.All,ImageSource = "ic_money.png"}
             };
         }

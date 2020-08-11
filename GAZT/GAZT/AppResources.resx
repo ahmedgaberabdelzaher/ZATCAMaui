@@ -4913,4 +4913,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Zakat</value>
     <comment>RetunBills</comment>
   </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Favorite</value>
+    <comment>Inbox</comment>
+  </data>
 </root>
