@@ -321,7 +321,7 @@
                                                VerticalOptions="StartAndExpand"
                                                Margin="0,50,0,0"
                                                BackgroundColor="Transparent"
-                                               TextColor="{StaticResource NewDarkBlueGreenColor}"/>
+                                               TextColor="#999999"/>
                         </StackLayout>
 
                 <!--Continue button-->

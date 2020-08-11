@@ -18,6 +18,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         public ICommand SendOTPCommand { get; set; }
         public ICommand ResendOTPCommand { get; set; }
 
+        public TaxEvasionVerifySmsResponseModel taxEvasionVerifySmsResponseModel;
+
         #region proprety
         private bool _isLoading = false;
         public bool IsLoading
@@ -110,8 +112,166 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 RaisePropertyChanged("MobileNumberPrefix");
             }
         }
-        #endregion
-        public TaxEvasionVerifyMobileViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        // * OTP Verification Properties
+        private string _oTPFirstDigit;
+        public string OTPFirstDigit
+        {
+            get
+            {
+                return _oTPFirstDigit;
+            }
+            set
+            {
+                _oTPFirstDigit = value;
+                if (!string.IsNullOrEmpty(OTPFirstDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPFirstDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPFirstDigit = string.Empty;
+                    }
+                }
+
+                RaisePropertyChanged("OTPFirstDigit");
+            }
+        }
+
+        private string _OTPSecondDigit;
+        public string OTPSecondDigit
+        {
+            get
+            {
+                return _OTPSecondDigit;
+            }
+            set
+            {
+                _OTPSecondDigit = value;
+                if (!string.IsNullOrEmpty(OTPSecondDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPSecondDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPSecondDigit = string.Empty;
+                    }
+                }
+                RaisePropertyChanged("OTPSecondDigit");
+            }
+        }
+
+        private string _OTPThirdDigit;
+        public string OTPThirdDigit
+        {
+            get
+            {
+                return _OTPThirdDigit;
+            }
+            set
+            {
+                _OTPThirdDigit = value;
+                if (!string.IsNullOrEmpty(OTPThirdDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPThirdDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPThirdDigit = string.Empty;
+                    }
+                }
+                RaisePropertyChanged("OTPThirdDigit");
+            }
+        }
+
+        private string _OTPFourthDigit;
+        public string OTPFourthDigit
+        {
+            get
+            {
+                return _OTPFourthDigit;
+            }
+            set
+            {
+                _OTPFourthDigit = value;
+                if (!string.IsNullOrEmpty(OTPFourthDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPFourthDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPFourthDigit = string.Empty;
+                    }
+                }
+                RaisePropertyChanged("OTPFourthDigit");
+            }
+        }
+        // * End
+        private string _enteredOTP = string.Empty;
+        public string EnteredOTP
+        {
+            get
+            {
+                return _enteredOTP;
+            }
+            set
+            {
+                _enteredOTP = value;
+                RaisePropertyChanged("EnteredOTP");
+            }
+        }
+        private string _oTPSentOnThisMobileNumber = string.Empty;
+        public string OTPSentOnThisMobileNumber
+        {
+            get
+            {
+                return _oTPSentOnThisMobileNumber;
+            }
+            set
+            {
+                _oTPSentOnThisMobileNumber = value;
+                RaisePropertyChanged("OTPSentOnThisMobileNumber");
+            }
+        }
+        //timer
+        
+        private string _lblCountDownTimer = string.Empty;
+        public string LblCountDownTimer
+        {
+            get
+            {
+                return _lblCountDownTimer;
+            }
+            set
+            {
+                _lblCountDownTimer = value;
+                RaisePropertyChanged("LblCountDownTimer");
+            }
+        }
+        private bool _isResendOTPEnabled = false;
+        public bool IsResendOTPEnabled
+        {
+            get
+            {
+                return _isResendOTPEnabled;
+            }
+            set
+            {
+                _isResendOTPEnabled = value;
+                RaisePropertyChanged("IsResendOTPEnabled");
+            }
+        }
+        private bool _isTimerCancel = false;
+        public bool IsTimerCancel
+        {
+            get
+            {
+                return _isTimerCancel;
+            }
+            set
+            {
+            _isTimerCancel = value;
+                RaisePropertyChanged("IsTimerCancel");
+            }
+        }
+    //end timer
+    #endregion
+    public TaxEvasionVerifyMobileViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
@@ -133,143 +293,316 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             });
             ResendOTPCommand = new Xamarin.Forms.Command(() =>
             {
+                IsTimerCancel = true;
                 ShowMobileForm();
             });
         }
 
 
-        #region Methods
-        public void ShowMobileForm()
+#region Methods
+    public void ShowMobileForm()
+    {
+        IsShowMobileInput = true;
+        IsShowOTPInput = false;
+        PageTitle = AppResources.ZTEReportReportScreenTitle;
+        PageTitleTag = AppResources.EnterNewMobileNumber;
+    }
+    private void ShowOTPForm()
+    {
+        IsShowMobileInput = false;
+        IsShowOTPInput = true;
+        PageTitle = AppResources.VerificationCode;
+        PageTitleTag = AppResources.NDPleaseEnterVerificationSenttomobile;
+        IsTimerCancel = false;
+        StartTimer(0,2,0);
+    }
+    private bool CheckOnlyNumber(char letter)
+    {
+        if ((letter >= 48 && letter <= 57))
         {
-            IsShowMobileInput = true;
-            IsShowOTPInput = false;
-            PageTitle = AppResources.ZTEReportReportScreenTitle;
-            PageTitleTag = AppResources.EnterNewMobileNumber;
+            return true;
         }
-        public void ShowOTPForm()
+        else
         {
-            IsShowMobileInput = false;
-            IsShowOTPInput = true;
-            PageTitle = AppResources.VerificationCode;
-            PageTitleTag = AppResources.NDPleaseEnterVerificationSenttomobile;
+            return false;
         }
+    }
 
-        public async Task sendOTPAsync()
+    private async Task sendOTPAsync()
+    {
+        try
         {
-            try
+
+            ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
+            tesmobnoscreen.tes = "1";
+            tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
+
+            if (MobileNumber.Length == 9)
             {
+                tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
 
-                ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
-                tesmobnoscreen.tes = "1";
-                tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
+                TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+                taxEvasionSendSmsModel.mobile = tesmobnoscreen.MobileNumber;
 
-                if (MobileNumber.Length == 9)
+                try
                 {
-                    tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
-
-                    TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
-                    taxEvasionSendSmsModel.mobile = tesmobnoscreen.MobileNumber;
-
-                    try
+                    await Task.Run(() =>
                     {
-                        await Task.Run(() =>
+                        IsLoading = true;
+                    });
+
+                    TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    if (taxEvasionSendSmsResponseModel.Status == true)
+                    {
+                        App.TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
+                        App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
+                        App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
+                        OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
+
+                        ShowOTPForm();
+                        //_navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
-                            IsLoading = true;
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         });
+                    }
+                }
+                catch (GAZTException gex)
+                {
+                    // Handle the GAZT custom exception.
+                    string MessageForTheUser = gex.Message;
+                    if (gex is GAZTInvalidDataException)
+                    {
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
 
-                        TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
+                    if (gex is GAZTNetworkConnectivityIssueException)
+                    {
+                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                    }
+                    else if (gex is GAZTInternetException)
+                    {
+                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                    }
+                    else if (gex is GAZTSessionExpiredException)
+                    {
+                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                    }
 
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
                         await Task.Run(() =>
                         {
                             IsLoading = false;
                         });
 
-                        if (taxEvasionSendSmsResponseModel.Status == true)
+                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //viewModel._navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Task.Run(() =>
                         {
-                            App.TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
-                            App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
-                            App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
+                            IsLoading = false;
+                        });
 
-                            ShowOTPForm();
-                            //_navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        //viewModel._navigationService.GoBack();
+                    });
+                }
+
+
+            }
+        }
+        catch (InternetException ex)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+
+                await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+        catch (Exception ex)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+    }
+
+    private void StartTimer(int h, int m, int sec)
+        {
+            int hour = h;
+            int mins = m;
+            int counter = sec;
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                if (IsTimerCancel)
+                {
+                    return false;
+                }
+                else
+                {
+                Device.BeginInvokeOnMainThread(() =>
+                    {
+                        counter = counter - 1;
+                        if (counter < 0)
+                        {
+                            counter = 59;
+                            mins = mins - 1;
+                            if (mins < 0)
+                            {
+                                mins = 59;
+                                hour = hour - 1;
+                                if (hour < 0)
+                                {
+                                    hour = 0;
+                                    mins = 0;
+                                    counter = 0;
+                                }
+                            }
                         }
-                        else
+
+                        LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
+                    });
+                    if (hour == 0 && mins == 0 && counter == 0)
+                    {
+                        IsResendOTPEnabled = true;
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            });
+
+        }
+
+    public async void VerifyOTP()
+    {
+        EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
+        if (string.IsNullOrEmpty(EnteredOTP))
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessageBox(AppResources.ZZPleaseenteraccessCode, AppResources.Information);
+            });
+        }
+        else
+        {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                try
+                {
+                    TaxEvasionVerifySmsModel taxEvasionVerifySmsModel = new TaxEvasionVerifySmsModel();
+                    taxEvasionVerifySmsModel.key = App.TaxEvasionUserData.LoginKey;
+                    taxEvasionVerifySmsModel.code = EnteredOTP;
+
+                    taxEvasionVerifySmsResponseModel = await WebServiceManager.GAZTTaxEvasionVerifySms(taxEvasionVerifySmsModel, MobileNumber);
+
+                    if (taxEvasionVerifySmsResponseModel.Status == true)
+                    {
+                        TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+                        taxEvasionSendSmsModel.mobile = MobileNumber;
+
+                        try
+                        {
+                            TaxEvasionUserRegistrationResponseModel taxEvasionUserRegistrationResponseModel = await WebServiceManager.GAZTTaxEvasionGetUserByMobile(taxEvasionSendSmsModel);
+                            App.TaxEvasionUserData = taxEvasionUserRegistrationResponseModel.Data;
+
+                            if (taxEvasionUserRegistrationResponseModel.Status == true)
+                            {
+                                //await navigateToListPage();
+                            }
+                        }
+                        catch (Exception ex)
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
+
+                                _navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
                             });
                         }
                     }
-                    catch (GAZTException gex)
+                    else
                     {
-                        // Handle the GAZT custom exception.
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTInvalidDataException)
-                        {
-                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                        }
-
-                        if (gex is GAZTNetworkConnectivityIssueException)
-                        {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
-                        else if (gex is GAZTSessionExpiredException)
-                        {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                        }
-
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            //viewModel._navigationService.GoBack();
-                        });
+                        await _dialogService.ShowMessageBox(taxEvasionVerifySmsResponseModel.SmsResponse.Message, AppResources.Information);
                     }
-                    catch (Exception ex)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
-
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            //viewModel._navigationService.GoBack();
-                        });
-                    }
-
-
                 }
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
+                catch (GAZTException gex)
                 {
+                    // Handle the GAZT custom exception.
+                    string MessageForTheUser = gex.Message;
+                    if (gex is GAZTInvalidDataException)
+                    {
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
+                    if (gex is GAZTNetworkConnectivityIssueException)
+                    {
+                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                    }
+                    else if (gex is GAZTInternetException)
+                    {
+                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                    }
+                    else if (gex is GAZTSessionExpiredException)
+                    {
+                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                    }
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
 
-                    await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            catch (Exception ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
+                        if (ex.Message.Contains("The entered code is incorrect") || ex.Message.Contains("الرمز المدخل غير صحيح"))
+                        {
+                            await _dialogService.ShowMessage(AppResources.InvalidOTP, AppResources.Information);
+                        }
+                        else
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        }
+                    });
+                }
+    
         }
-
-        #endregion
     }
+    #endregion
+}
 }

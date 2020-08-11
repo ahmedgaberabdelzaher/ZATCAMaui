@@ -39,31 +39,31 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         // * Forgot password : OTP Verification :
         void OtpFirstEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            //if (viewModel.OTPFirstDigit.Length > 0)
-            //{
-            //    OTPSecondEntry.Focus();
-            //}
+            if (viewModel.OTPFirstDigit.Length > 0)
+            {
+                OTPSecondEntry.Focus();
+            }
         }
 
         void OtpSecondEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            //if (viewModel.OTPSecondDigit.Length > 0)
-            //{
-            //    OTPThirdEntry.Focus();
-            //}
+            if (viewModel.OTPSecondDigit.Length > 0)
+            {
+                OTPThirdEntry.Focus();
+            }
         }
 
         void OtpThirdEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            //if (viewModel.OTPThirdDigit.Length > 0)
-            //{
-            //    OTPFourthEntry.Focus();
-            //}
+            if (viewModel.OTPThirdDigit.Length > 0)
+            {
+                OTPFourthEntry.Focus();
+            }
         }
 
         void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-
+            viewModel.VerifyOTP();
         }
 
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
