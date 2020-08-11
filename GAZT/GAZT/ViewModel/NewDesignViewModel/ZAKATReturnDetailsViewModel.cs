@@ -352,6 +352,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ConfirmAndGenerateSADADBillLabelVisibility");
             }
         }
+
+
+        private bool _setReadOnlyToTotalVATSales = false;
+        public bool SetReadOnlyToTotalVATSales
+        {
+            get
+            {
+                return _setReadOnlyToTotalVATSales;
+            }
+            set
+            {
+                _setReadOnlyToTotalVATSales = value;
+                RaisePropertyChanged("SetReadOnlyToTotalVATSales");
+            }
+        }
+
+        private bool _setReadOnlyToOtherThanTotalVATSales = true;
+        public bool SetReadOnlyToOtherThanTotalVATSales
+        {
+            get
+            {
+                return _setReadOnlyToOtherThanTotalVATSales;
+            }
+            set
+            {
+                _setReadOnlyToOtherThanTotalVATSales = value;
+                RaisePropertyChanged("SetReadOnlyToOtherThanTotalVATSales");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -397,6 +427,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 isLabelVisible = false;
                 isEditVisible = true;
+                IsEditTextVisible = false;
+                SetSubmitButtonVisibility = true;
+                SetConfirmButtonVisibility = false;
                 SetEditImage();
             });
             //=========================end=====================================================
@@ -488,9 +521,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
-
+                     bool isThresholdValueLessThanTotalVATSales =  IsThresholdValueLessThanTotalVATSales();
+                        if(isThresholdValueLessThanTotalVATSales)
+                        {
+                            SetReadOnlyToOtherThanTotalVATSales = true;
+                            SetReadOnlyToTotalVATSales = false;
+                        }
+                        else
+                        {
+                            SetReadOnlyToOtherThanTotalVATSales = false;
+                            SetReadOnlyToTotalVATSales = true;
+                        }
                        // Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
-                       
+
                     }
                     else
                     {
@@ -1097,8 +1140,8 @@ private string GetConfirmOperationId()
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0001"))// UnSubmitted
             {
-                ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Paid";
+                ICRStatusImage = "unsubmitted.png";
+                ICRStatus = "UnSubmitted";
             }
         }
        
@@ -1138,6 +1181,22 @@ private string GetConfirmOperationId()
             else
             {
                 ChangeFromEstimateTAccountringBasisButtonVisibility = false;
+            }
+        }
+
+
+        public bool IsThresholdValueLessThanTotalVATSales()
+        {
+            double d = Convert.ToDouble(ZakatReturnDetails.d.TvtslI);
+            double d1 = Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value);
+            bool IsThresholdGreaterLessVATAmount = d1 < d;
+            if (Convert.ToDouble(ZakatReturnDetails.d.TvtslE) > Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         #endregion

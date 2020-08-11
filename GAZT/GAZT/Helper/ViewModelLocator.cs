@@ -143,6 +143,8 @@ using EGAZT.ViewModel.NewDesignViewModel.GenericPickers;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
+using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
+using EGAZT.Views.NewDesign.TAXEvasionPages;
 
 namespace EGAZT
 {
@@ -185,6 +187,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATDeregistrationSuccessPageViewModel>();
 
             SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
+
+            SimpleIoc.Default.Register<TaxEvasionVerifyMobileViewModel>();
 
             SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
             SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
@@ -504,6 +508,20 @@ namespace EGAZT
                     return ServiceLocator.Current.GetInstance<EstablishmentRegistrationPageViewModel>();
                 }
                 catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionVerifyMobileViewModel TaxEvasionVerifyMobileNumberPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionVerifyMobileViewModel>();
+                }
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1720,7 +1738,7 @@ namespace EGAZT
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
             navigationService.Configure(App.TaxEvasionRegistrationPageView, typeof(TaxEvasionRegistrationPageView));
             navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
-            navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
+            //navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
             navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
             navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
             navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
@@ -1770,7 +1788,7 @@ namespace EGAZT
             //navigationService.Configure(App.EstablishmentRegistrationPage, typeof(EstablishmentRegistrationPage));
             navigationService.Configure(App.ZakatReturnDetailsSuccessfullPageView, typeof(ZakatReturnDetailsSuccessfullPageView));
 
-            
+            navigationService.Configure(App.TaxEvasionVerifyMobileNumberPage, typeof(TaxEvasionVerifyMobileNumberPage));
             #endregion
 
             return navigationService;

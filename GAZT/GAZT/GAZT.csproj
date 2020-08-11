@@ -87,6 +87,7 @@
     <Folder Include="Views\NewDesign\ZakatInstalmentPlan\" />
     <Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />
     <Folder Include="Models\ZakatInstalationModels\" />
+    <Folder Include="ViewModel\NewDesignViewModel\TaxEvasionViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -215,6 +216,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\Template\DashboardMenuPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\ZakatForm5\ZakatForm5PageView.xaml">

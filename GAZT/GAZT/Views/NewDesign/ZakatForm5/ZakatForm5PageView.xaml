@@ -9,6 +9,8 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             xmlns:models="clr-namespace:EGAZT.Models"
+             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
@@ -25,6 +27,14 @@
                 <Setter Property="WidthRequest" Value="10"/>
                 <Setter Property="CornerRadius" Value="5"/>
             </Style>
+            <converters:ZakatForm5TabEnumToVisibilityConverter x:Key="enumToVisibilityConverter"/>
+            <Style TargetType="buttons:SfButton" x:Key="BackgroundWhiteBtn">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="20"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -38,7 +48,7 @@
 
 
                     <!--Start Of Basic Information View-->
-                    <Grid Grid.Row="1" x:Name="BasicInformation" IsVisible="True">
+                <Grid Grid.Row="1" x:Name="BasicInformation" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.BasicInformation}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
@@ -67,11 +77,11 @@
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFinancialYear}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="year 2018 Gregorian" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding FinancialYear}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Period}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="01 Jan 2018 - 31 Dec 2018" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -95,23 +105,23 @@
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Taxpayer}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Smoke TP Kiran" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Branch}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Riyadh Branch" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Branch}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="lorem ipsum" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Address}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="lorem.ipsum@yahoo.com" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding UserEmail}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="(00966)123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding MobileNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -134,7 +144,7 @@
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NoOutlet}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding NumberOfOutlet}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -145,11 +155,11 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5ResidencyStatus}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="Resident (Living in Saudi Arabia)" Style="{StaticResource ValueLabelBlack}"  HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Residency_Status}" Style="{StaticResource ValueLabelBlack}"  HorizontalTextAlignment="End"/>
                                     </Grid>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5MainOutlet}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Lorem" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding MainOutlet}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -160,7 +170,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5AccountingMethod}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" HorizontalTextAlignment="End" Text="Accrual (estimated)" Style="{StaticResource ValueLabelBlack}" />
+                                            <custom:CustomLabel Grid.Column="1" HorizontalTextAlignment="End" Text="{Binding AccountMethod}" Style="{StaticResource ValueLabelBlack}" />
                                     </Grid>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -171,11 +181,11 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5FinancialPeriodEnd}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="LD-12" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding FinancialPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </Grid>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5CalendarType}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Gregorian" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Calendar_Type}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -198,8 +208,9 @@
                     <!--End of Basic Information View-->
                     
                     <!--Start of Financial Information-->
-                        <Grid Grid.Row="1" x:Name="FinancialInformation" IsVisible="False">
-                    <Grid.RowDefinitions>
+                <Grid Grid.Row="1" x:Name="FinancialInformation" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.FinancialInformation}}">
+                    
+                            <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
@@ -236,7 +247,9 @@
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5OccupancyRate}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Image Source="ic_vat_info">
-                                                
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnInfoTapped"/>
+                                                    </Image.GestureRecognizers> 
                                             </Image>
                                             <custom:CustomLabel Text="50%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
@@ -1750,6 +1763,13 @@
                                 <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="Professionals" />
                                 <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="Sell Buy" />
                                 <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="Labor Occupation" />
+                                <buttons:SfButton Text="Industry" Style="{StaticResource BackgroundWhiteBtn}"/>
+                                <buttons:SfButton Text="Contracting Co." Style="{StaticResource BackgroundWhiteBtn}"/>
+                                <buttons:SfButton Text="Invest and Real Est" Style="{StaticResource BackgroundWhiteBtn}"/>
+                                <buttons:SfButton Text="Hotels" Style="{StaticResource BackgroundWhiteBtn}"/>
+                                <buttons:SfButton Text="Education and Health" Style="{StaticResource BackgroundWhiteBtn}"/>
+                                <buttons:SfButton Text="Poultry and Fish Fram Activities" Style="{StaticResource BackgroundWhiteBtn}"/>
+                                <buttons:SfButton Text="Cars" Style="{StaticResource BackgroundWhiteBtn}"/>
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>
@@ -1758,7 +1778,7 @@
                     <!--End of Financial Information-->
 
                     <!--Start of Zakat Estimation-->
-                    <Grid Grid.Row="1" x:Name="ZakatEstimation" IsVisible="False">
+                <Grid Grid.Row="1" x:Name="ZakatEstimation" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.ZakatEstimation}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
@@ -2073,7 +2093,11 @@
                     </Grid.ColumnDefinitions>
                     <Image Grid.Row="0" Grid.Column="1" Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Center" HorizontalOptions="Center"/>
 
-                        <Label Grid.Row="0" Grid.Column="0" x:Name="Image_backArrow" Margin="0,0,10,0" HorizontalOptions="Start" VerticalOptions="Center"   Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}"/>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" x:Name="Image_backArrow" Margin="0,0,10,0" HorizontalOptions="Start" VerticalOptions="Center"   Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}">
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnBackButtonClick}"/>
+                            </custom:CustomLabel.GestureRecognizers>
+                        </custom:CustomLabel>
 
                         <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="EndAndExpand" >
                         <Image.Source>
@@ -2081,7 +2105,8 @@
                         </Image.Source>
                     </Image>
                 </Grid>
-                    <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                    <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" />
+                    <!--<StackLayout Orientation="Horizontal" Margin="0,5,0,0">
                         <Frame Padding="0" CornerRadius="15" BackgroundColor="{StaticResource Primary}">
                         <StackLayout Orientation="Horizontal" Padding="0">
                         <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
@@ -2089,10 +2114,10 @@
                         </StackLayout>
                         </Frame>
                         <BoxView Style="{StaticResource boxIndicator}"/>
-                    </StackLayout>
+                    </StackLayout>-->
                 </StackLayout>
                 <StackLayout Grid.Row="2" BackgroundColor="White">
-                    <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.ZZNext}" Style="{StaticResource PrimaryButtonStyle}"/>
+                    <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.ZZNext}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
                 </StackLayout>
             </Grid>
         </yummy:PancakeView>
