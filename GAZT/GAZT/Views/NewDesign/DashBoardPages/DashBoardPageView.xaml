@@ -744,13 +744,13 @@
 
                             </yummy:PancakeView>
 
-                            <!--<buttons:SfButton
+                            <buttons:SfButton
                                 BackgroundColor="{StaticResource Primary}"
                                 BackgroundImage="quick_action_2.png"
                                 CornerRadius="12"
                                 BorderWidth="0"
                                 HorizontalOptions="Center"
-                                WidthRequest="24" HeightRequest="24" />-->
+                                WidthRequest="24" HeightRequest="24" />
 
                             <!--<Image Source="quick_action_2.png"
                                    BackgroundColor="{StaticResource Primary}"
