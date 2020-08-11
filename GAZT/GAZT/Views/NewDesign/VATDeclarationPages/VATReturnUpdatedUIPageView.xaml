@@ -6,21 +6,26 @@
              xmlns:custom2="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:models="clr-namespace:EGAZT.Models"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"
+            xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.GAZTNewDesignVATReturnUpdatedUIPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
             <Style TargetType="BoxView" x:Key="boxIndicator">
                 <Setter Property="BackgroundColor" Value="{StaticResource NeutralLightGrey}"/>
                 <Setter Property="HeightRequest" Value="10"/>
@@ -48,7 +53,9 @@
                 <Setter Property="HeightRequest" Value="48" />
                 <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
             </Style>
-            
+
+            <converters:VATReturnUpdatedUITabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -77,15 +84,18 @@
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
 
-                        <StackLayout Orientation="Horizontal" BackgroundColor="White" Grid.Row="0" >
+                        <StackLayout Orientation="Horizontal" BackgroundColor="White" Grid.Row="0" VerticalOptions="CenterAndExpand" >
                             
                             <Label Padding="0,15,0,0" Margin="0" HorizontalOptions="Start" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackStepClicked}" />
                                 </Label.GestureRecognizers>
                             </Label>
-                            
-                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+
+
+                                <commonView:PageIndicatorView Margin="0,15,0,0" Grid.Row="0" Grid.Column="0" MaxNum="{TemplateBinding BindingContext.MaxIndex}" MinNum="{TemplateBinding BindingContext.CurrentIndex}" Completed="{TemplateBinding BindingContext.MarkComplete}" VerticalOptions="CenterAndExpand"/>
+
+                            <!-- <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                 <Grid BackgroundColor="White" Margin="0,15,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="10"/>
@@ -126,7 +136,7 @@
                                 
                                 <Image Margin="0,6,0,0" IsVisible="{TemplateBinding BindingContext.isCheckVisible}" Source="ic_vat_check"/>
                             
-                            </StackLayout>
+                            </StackLayout>-->
                         </StackLayout>
                     </Grid>
                 </yummy:PancakeView>
@@ -184,7 +194,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
- <Grid Grid.Row="0" IsVisible="{Binding IsInstrunctionView}"  x:Name="InstrunctionSection">
+            <Grid Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.Instrunction}}"  x:Name="InstrunctionSection">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
@@ -227,7 +237,7 @@
                 </StackLayout>
             </Grid>
 
-            <Grid Grid.Row="0" Margin="0,-15,0,0" IsVisible="{Binding IsTaxpayerView}" RowSpacing="0"  x:Name="TaxpayerDetails">
+            <Grid Grid.Row="0" Margin="0,-15,0,0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.TaxpayerDetails}}" RowSpacing="0"  x:Name="TaxpayerDetails">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -386,7 +396,7 @@
                 </StackLayout>
             </Grid>
 
-            <Grid Grid.Row="0" Margin="0,-15,0,0" IsVisible="{Binding IsVATReturnsView}" x:Name="VATReturnsSection" BackgroundColor="White" >
+            <Grid Grid.Row="0" Margin="0,-15,0,0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.VATReturns}}" x:Name="VATReturnsSection" BackgroundColor="White" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
@@ -904,7 +914,7 @@
                 <!--Views On Hold-->
             </Grid>
 
-            <Grid Grid.Row="0" IsVisible="{Binding IsSaleView}" RowSpacing="0"  x:Name="SalesSection">
+            <Grid Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.Sales}}" RowSpacing="0"  x:Name="SalesSection">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
@@ -1122,7 +1132,7 @@
             </Grid>
 
 
-            <Grid Grid.Row="0" IsVisible="{Binding IsPurchaseView}" Margin="0,-15,0,0" x:Name="PurchaseSection" RowSpacing="0">
+            <Grid Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.Purchase}}" Margin="0,-15,0,0" x:Name="PurchaseSection" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
@@ -1308,7 +1318,7 @@
             </Grid>
 
 
-            <Grid Grid.Row="0" IsVisible="{Binding IsTotalVatView}" x:Name="TotalVatSection" Margin="0,-15,0,0" RowSpacing="0">
+            <Grid Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.TotalVat}}" x:Name="TotalVatSection" Margin="0,-15,0,0" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
@@ -1365,7 +1375,7 @@
                 </StackLayout>
             </Grid>
 
-            <Grid Grid.Row="0" IsVisible="{Binding IsSummeryView}"  x:Name="SummerySection" RowSpacing="0" >
+            <Grid Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.Summery}}"  x:Name="SummerySection" RowSpacing="0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20*"/>
                     <RowDefinition Height="80*"/>
