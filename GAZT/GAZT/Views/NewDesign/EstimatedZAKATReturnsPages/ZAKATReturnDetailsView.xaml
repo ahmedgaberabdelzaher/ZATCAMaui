@@ -51,8 +51,8 @@
             <yummy:PancakeView Grid.Row="1"  Style="{StaticResource MainPage}">
                 <Grid x:Name="MainGrid">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="80*"/>
-                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
