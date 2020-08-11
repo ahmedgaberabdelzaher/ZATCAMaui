@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAZT", "GAZT.csproj", "{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAZT", "GAZT.csproj", "{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAZT.Android", "..\GAZT.Android\GAZT.Android.csproj", "{8E6B5B57-597B-40B4-8D8F-864F8C99B112}"
 EndProject

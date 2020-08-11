@@ -4920,5 +4920,41 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="Hello" xml:space="preserve">
     <value>Hello</value>
     <comment>DashBoard</comment>
+   </data>
+  <data name="VATRefund" xml:space="preserve">
+    <value>VAT Refund</value>
+  </data>
+    <data name="VATRefundDetails" xml:space="preserve">
+    <value>Refund Details</value>
+  </data>
+  <data name="VATRefundsRequest" xml:space="preserve">
+    <value>Refund Request</value>
+  </data>
+  <data name="VATRefundsReassesmentAmount" xml:space="preserve">
+    <value>Reassesment Amount</value>
+  </data>
+  <data name="VATRefundsTotalOffset" xml:space="preserve">
+    <value>Total Offset</value>
+  </data>
+  <data name="VATRefundsNetCreditBalance" xml:space="preserve">
+    <value>Net Credit Balance</value>
+  </data>
+   <data name="VATRefundsRequestDate" xml:space="preserve">
+    <value>Request Date</value>
+  </data>
+    <data name="VATRefundsStatusRefunded" xml:space="preserve">
+    <value>Refunded</value>
+  </data>
+  <data name="VATRefundsStatusInProcess" xml:space="preserve">
+    <value>In Process</value>
+  </data>
+   <data name="VATRefundAmounts" xml:space="preserve">
+    <value>Refund Amounts</value>
+  </data>
+   <data name="VATRefundsAlRajhiBank" xml:space="preserve">
+    <value>Al Rajhi Bank</value>
+  </data>
+   <data name="VATRefundsLastStatusChange" xml:space="preserve">
+    <value>Last Status Change</value>
   </data>
 </root>

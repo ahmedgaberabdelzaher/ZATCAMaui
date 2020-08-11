@@ -238,6 +238,29 @@
     <BundleResource Include="Resources\deregistration.png" />
     <BundleResource Include="Resources\deregistration%402x.png" />
     <BundleResource Include="Resources\deregistration%403x.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\add%402x.png" />
+    <BundleResource Include="Resources\add%403x.png" />
+    <BundleResource Include="Resources\amount.png" />
+    <BundleResource Include="Resources\amount%402x.png" />
+    <BundleResource Include="Resources\amount%403x.png" />
+    <BundleResource Include="Resources\Entry_DropDown.png" />
+    <BundleResource Include="Resources\Entry_DropDown%402x.png" />
+    <BundleResource Include="Resources\Entry_DropDown%403x.png" />
+    <BundleResource Include="Resources\negative.png" />
+    <BundleResource Include="Resources\negative%402x.png" />
+    <BundleResource Include="Resources\negative%403x.png" />
+    <BundleResource Include="Resources\positive.png" />
+    <BundleResource Include="Resources\positive%402x.png" />
+    <BundleResource Include="Resources\positive%403x.png" />
+    <BundleResource Include="Resources\ReSchedule.png" />
+    <BundleResource Include="Resources\return_vatRefunds.png" />
+    <BundleResource Include="Resources\return_vatRefunds%402x.png" />
+    <BundleResource Include="Resources\return_vatRefunds%403x.png" />
+    <BundleResource Include="Resources\TermsAndConditionsARiOS.html" />
+    <BundleResource Include="Resources\TimeZone.png" />
+    <BundleResource Include="Resources\vat_new_individual._Wpng.png" />
+    <BundleResource Include="Resources\ViewMode.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
