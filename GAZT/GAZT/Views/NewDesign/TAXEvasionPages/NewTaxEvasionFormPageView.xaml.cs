@@ -15,6 +15,14 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         public NewTaxEvasionFormPageView()
         {
             InitializeComponent();
+            BindingContext = App.Locator.NewTaxEvasionFormPageView;
         }
+
+        #region Method
+        private void RegionBtnClicked(object sender, EventArgs e)
+        {
+            RegionPicker.IsOpen = true;
+        }
+        #endregion
     }
 }

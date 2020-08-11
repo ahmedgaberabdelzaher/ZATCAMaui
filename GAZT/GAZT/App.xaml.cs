@@ -23,7 +23,6 @@ using Xamarin.Forms.Xaml;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using EGAZT.Views.NewDesign.VATDeRegistration;
-using EGAZT.Views.NewDesign.ZakatForm5;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -63,8 +62,8 @@ namespace EGAZT
         public static string AttachmentPopupPageView = "AttachmentPopupPageView";
         public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
+        public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
 
-        
         #endregion
 
         #region new design views Release2
