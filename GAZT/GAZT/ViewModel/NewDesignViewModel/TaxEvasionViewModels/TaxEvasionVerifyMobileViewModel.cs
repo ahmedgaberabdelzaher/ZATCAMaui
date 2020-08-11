@@ -494,6 +494,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
         }
 
+    private void ClearOTPForm()
+    {
+            OTPFirstDigit = null;
+            OTPSecondDigit = null;
+            OTPThirdDigit = null;
+            OTPFourthDigit = null;
+        }
     public async void VerifyOTP()
     {
         EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
@@ -531,6 +538,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                             if (taxEvasionUserRegistrationResponseModel.Status == true)
                             {
+                                ClearOTPForm();
                                 //await navigateToListPage();
                             }
                         }
@@ -542,13 +550,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 {
                                     IsLoading = false;
                                 });
-
-                                _navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
+                                ClearOTPForm();
+                                //_navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
                             });
                         }
                     }
                     else
                     {
+                        ClearOTPForm();
                         await _dialogService.ShowMessageBox(taxEvasionVerifySmsResponseModel.SmsResponse.Message, AppResources.Information);
                     }
                 }
@@ -579,6 +588,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                             IsLoading = false;
                         });
                         await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        ClearOTPForm();
                     });
                 }
                 catch (Exception ex)
@@ -598,6 +608,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         {
                             await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         }
+                        ClearOTPForm();
                     });
                 }
     
