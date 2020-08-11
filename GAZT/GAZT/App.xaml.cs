@@ -290,8 +290,7 @@ namespace EGAZT
             dialogService.Initialize(navigationPage);
             InitializeAppDynamics();
 
-            //MainPage = navigationPage;
-            MainPage = new ZakatForm5PageView();
+            MainPage = navigationPage;
         }
         public static void CreateClientHandler()
         {
