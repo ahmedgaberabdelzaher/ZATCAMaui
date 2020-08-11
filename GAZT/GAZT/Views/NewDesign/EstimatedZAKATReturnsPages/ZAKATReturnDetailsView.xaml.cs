@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
@@ -13,6 +14,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             viewModel = App.Locator.ZAKATReturnDetailsView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             viewModel.Fbguid = fbguid;
             SetLTR();
