@@ -116,6 +116,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("Email");
             }
         }
+
+        private string _userNameLabelText = AppResources.IDNumber;
+        public string UserNameLabelText
+        {
+            get
+            {
+                return _userNameLabelText;
+            }
+            set
+            {
+                _userNameLabelText = value;
+                RaisePropertyChanged("UserNameLabelText");
+            }
+        }
+        
         private bool _Enabled;
         public bool Enabled
         {
@@ -506,6 +521,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+        private string _continueORConfirmButtonText = AppResources.ZZZZContinue;
+        public string ContinueORConfirmButtonText
+        {
+            get
+            {
+                return _continueORConfirmButtonText;
+            }
+            set
+            {
+                _continueORConfirmButtonText = value;
+                RaisePropertyChanged("ContinueORConfirmButtonText");
+            }
+        }
+        
         private bool _isResendOTPEnabled = false;
         public bool IsResendOTPEnabled
         {
@@ -2187,7 +2216,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (Tins.Count != 0 && SelectedTinId == null)
                             {
                                 IsAPICalledSuccessfully = true;
-
+                                UserNameLabelText = AppResources.UserName;
                                 IsVisibleTinIds = true;
                                 //SelectedTinId = TINs[0];
                                 SelectedTinId = TINs.FirstOrDefault();

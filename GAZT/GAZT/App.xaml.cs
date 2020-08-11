@@ -148,7 +148,7 @@ namespace EGAZT
         public static string UnlockAccountChangePasswordPageView = "UnlockAccountChangePasswordPageView";
         public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
         public static string TINDeregestrationSuccessPageView = "TINDeregestrationSuccessPageView";
-
+        public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
         #endregion
 
         public static string fontFamilyBold = null;

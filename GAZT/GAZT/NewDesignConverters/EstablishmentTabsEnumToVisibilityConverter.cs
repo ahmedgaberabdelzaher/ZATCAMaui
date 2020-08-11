@@ -13,6 +13,7 @@ namespace EGAZT.NewDesignConverters
             EstablishmentRegistrationTabsEnum _value = (EstablishmentRegistrationTabsEnum)value;
             EstablishmentRegistrationTabsEnum _parameter = (EstablishmentRegistrationTabsEnum)parameter;
             isVisible = _value == _parameter;
+            System.Diagnostics.Debug.WriteLine("_value {0} _parameter {1} isVisible {2} ", _value, _parameter, isVisible);
             return isVisible;
         }
 

@@ -66,6 +66,18 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.IndividualOrPersonalBusinessCardBackgroundColor = Color.FromHex("#005e4b");
             viewModel.IndividualOrPersonalBusinessTextColor = Color.White;
 
+
+            viewModel.Email = string.Empty;
+            viewModel.TxtTIN = string.Empty;
+            if (viewModel.TINs != null && viewModel.TINs.Count > 0)
+                viewModel.TINs.Clear();
+            viewModel.IDNumber = string.Empty;
+            viewModel.UserNameLabelText = AppResources.IDNumber;
+
+            viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
+
+
+
         }
 
 
@@ -79,6 +91,17 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.PasswordTextColor = Color.Black;
             viewModel.UserNameTextColor = Color.White;
             viewModel.SetIDNumberEnability = true;// Enabling IDNumber Field as per tapping on Password Tile
+
+
+            viewModel.Email = string.Empty;
+            viewModel.TxtTIN = string.Empty;
+            if (viewModel.TINs != null && viewModel.TINs.Count > 0)
+                viewModel.TINs.Clear();
+            viewModel.IDNumber = string.Empty;
+            viewModel.UserNameLabelText = AppResources.IDNumber;
+            viewModel.ContinueORConfirmButtonText = AppResources.Confirm;
+
+
         }
 
         private void CustomLabel_Unfocused(object sender, FocusEventArgs e)

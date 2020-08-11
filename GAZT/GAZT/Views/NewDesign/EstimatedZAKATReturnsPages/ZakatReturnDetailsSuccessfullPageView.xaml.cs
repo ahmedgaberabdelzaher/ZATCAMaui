@@ -19,6 +19,18 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             InitializeComponent();
             viewModel = App.Locator.ZakatReturnDetailsSuccessfullPageView;
             this.BindingContext = viewModel;
+            viewModel.OnPageLoad(ZakatReturnDetail);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+            Navigation.RemovePage(pg);
+        }
+        private void OnReturnClicked(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
         }
     }
 }

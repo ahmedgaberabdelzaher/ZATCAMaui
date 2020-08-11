@@ -67,7 +67,7 @@ namespace EGAZT.Views.NewDesign.Common
         private static void UpdatePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var Controls = bindable as PageIndicatorView;
-            //System.Diagnostics.Debug.WriteLine("UpdatePropertyChanged with MinNum {0} MaxNum {1} Completed {2}", Controls.MinNum, Controls.MaxNum, Controls.Completed);
+            System.Diagnostics.Debug.WriteLine("UpdatePropertyChanged with MinNum {0} MaxNum {1} Completed {2}", Controls.MinNum, Controls.MaxNum, Controls.Completed);
             var children = Controls?.Children;
             //System.Diagnostics.Debug.WriteLine("Children Counts {0} and boxes {1} ", children?.Count(), children?.Where(item => item is BoxView).Count());
             for (int index = 0; index < Controls.MinNum; index++)
