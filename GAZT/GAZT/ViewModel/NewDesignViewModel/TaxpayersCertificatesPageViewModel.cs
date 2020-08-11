@@ -281,7 +281,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (allCertificate.ExciseSet != null && allCertificate.ExciseSet.results != null && allCertificate.ExciseSet.results.Count > 0)
                     {
                         CertificateListToET = allCertificate.ExciseSet.results;
-                        foreach (var Item in CertificateListToVAT)
+                        foreach (var Item in CertificateListToET)
                         {
                             CertificateListToAll.Add(Item);
                         }

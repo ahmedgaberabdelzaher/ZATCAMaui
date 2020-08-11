@@ -352,6 +352,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ConfirmAndGenerateSADADBillLabelVisibility");
             }
         }
+
+
+        private bool _setReadOnlyToTotalVATSales = false;
+        public bool SetReadOnlyToTotalVATSales
+        {
+            get
+            {
+                return _setReadOnlyToTotalVATSales;
+            }
+            set
+            {
+                _setReadOnlyToTotalVATSales = value;
+                RaisePropertyChanged("SetReadOnlyToTotalVATSales");
+            }
+        }
+
+        private bool _setReadOnlyToOtherThanTotalVATSales = true;
+        public bool SetReadOnlyToOtherThanTotalVATSales
+        {
+            get
+            {
+                return _setReadOnlyToOtherThanTotalVATSales;
+            }
+            set
+            {
+                _setReadOnlyToOtherThanTotalVATSales = value;
+                RaisePropertyChanged("SetReadOnlyToOtherThanTotalVATSales");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -395,9 +425,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             OnEditClicked = new Xamarin.Forms.Command(() =>
             {
-                isLabelVisible = false;
-                isEditVisible = true;
-                SetEditImage();
+              
+                Device.BeginInvokeOnMainThread(async () => {
+                    isLabelVisible = false;
+                    isEditVisible = true;
+                    IsEditTextVisible = false;
+                    SetSubmitButtonVisibility = true;
+                    SetConfirmButtonVisibility = false;
+                    SetEditImage();
+                });
             });
             //=========================end=====================================================
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
@@ -488,9 +524,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
-
+                     bool isThresholdValueLessThanTotalVATSales =  IsThresholdValueLessThanTotalVATSales();
+                        if(isThresholdValueLessThanTotalVATSales)
+                        {
+                            SetReadOnlyToOtherThanTotalVATSales = true;
+                            SetReadOnlyToTotalVATSales = false;
+                        }
+                        else
+                        {
+                            SetReadOnlyToOtherThanTotalVATSales = false;
+                            SetReadOnlyToTotalVATSales = true;
+                        }
                        // Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
-                       
+
                     }
                     else
                     {
@@ -572,6 +618,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     //IsAmendButtonPressed = true;
                     //_navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0002"))// E002 means Tax officer has released the return
                 {
@@ -579,12 +627,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SetEditImage();
                     isLabelVisible = false;
                     IsEditTextVisible = false;
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    });
                 }
                 else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
                 {
                     // AmedmentButtonVisibility = true;
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    });
                 }
                 else if (ZakatReturnDetails.d.Statusz.Equals("E0004") || ZakatReturnDetails.d.Statusz.Equals("E0003"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
@@ -599,7 +653,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    });
                 }
             });
 
@@ -1093,12 +1150,12 @@ private string GetConfirmOperationId()
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0002"))// Status when the return released by GAZT officer
             {
                 ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Paid";
+                ICRStatus = "Build";
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0001"))// UnSubmitted
             {
-                ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Paid";
+                ICRStatusImage = "unsubmitted.png";
+                ICRStatus = "UnSubmitted";
             }
         }
        
@@ -1138,6 +1195,22 @@ private string GetConfirmOperationId()
             else
             {
                 ChangeFromEstimateTAccountringBasisButtonVisibility = false;
+            }
+        }
+
+
+        public bool IsThresholdValueLessThanTotalVATSales()
+        {
+            double d = Convert.ToDouble(ZakatReturnDetails.d.TvtslI);
+            double d1 = Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value);
+            bool IsThresholdGreaterLessVATAmount = d1 < d;
+            if (Convert.ToDouble(ZakatReturnDetails.d.TvtslE) > Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         #endregion

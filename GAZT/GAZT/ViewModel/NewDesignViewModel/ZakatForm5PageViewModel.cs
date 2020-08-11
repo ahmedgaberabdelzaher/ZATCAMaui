@@ -577,7 +577,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         FinancialYear = ZakatForm5DataResult.PerslText;
 
                         // Period = String.Format("{0:ddd, MMM d, yyyy}", ZakatForm5DataResult.AFromDt) + " - " + String.Format("{0:ddd, MMM d, yyyy}", ZakatForm5DataResult.AToDt);
-                        Period = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd MMMM yyyy", new CultureInfo("en-US")) + " - " + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd MMMM yyyy", new CultureInfo("en-US"));
+                        Period = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd MMM yyyy", new CultureInfo("en-US")) + " - " + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
                         // Period = String.Format("{dd MMM yyyy}", DateTime.Now.ToString(ZakatForm5DataResult.AFromDt)) + " - " + String.Format("{dd MMM yyyy}", DateTime.Now.ToString(ZakatForm5DataResult.AToDt));
                         //var dates = DateTime.Now.ToString(ZakatForm5DataResult.AFromDt) ;
                         //  var newDAte = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
@@ -671,19 +671,109 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             Minerals = ZakatForm5DataResult.SCH_GP12.results;
                         }
                         //   var AdditionalInfo = ZakatForm5DataResult..Results.ToList();
-                           NoOFEntityList.Add("Additional Information");
+
+                        //Additional Information
+                        NoOFEntityList.Add("Additional Information");
+                        //Share in Persons Companies
+
+                        var OtherCompanyCheck = ZakatForm5DataResult.APlShareChk;
+                        var OtherCompanyShare = ZakatForm5DataResult.APlShare.ToString();
+                        var ZakatBase = ZakatForm5DataResult.ACapital.ToString();
+
+
+
+                        //Declaration
+                        var NoOfBranch = ZakatForm5DataResult.ANoBranches.ToString();
+                        var NoofEmp = ZakatForm5DataResult.ANoEmp.ToString();
+                        var YearRent = ZakatForm5DataResult.AAnnualRent.ToString();
+                        var TotalAnnualSalary = ZakatForm5DataResult.ATotAnnualSal.ToString();
+
+                        //Zakat Details
+                        var Zakatable = ZakatForm5DataResult.AZakat.ToString();
+                        var Zakat = ZakatForm5DataResult.AZakat51.ToString();
+                        var ZakatPaid = ZakatForm5DataResult.AReleaseOfContract.ToString();
+                        var NewTaxAmt = ZakatForm5DataResult.ANetTaxableAmount.ToString();
+
 
                         // Zakat Estimation API Call
 
-                        //ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await WebServiceManager.GAZTZakatForm5DataSummary();
+                        ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await WebServiceManager.GAZTZakatForm5DataSummary();
 
-                        //if (ZakatForm5DataResult != null)
-                        //{
+                        if (ZakatForm5DataResult != null)
+                        {
+
+                            // information
+                            var ReferenceNumber = ZakatForm5SummaryDataResult.Fbnum.ToString();
+                            /// use same period property for which is used in Basic Information section.
+
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Cabs GP1
+
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP01Set.results;
+
+                            }
+
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Professionals
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP02Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Sell & Buy
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP03Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Labour Occup.
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP04Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Industry
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP05Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Contracting CO.
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP06Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Invst & Real Estate
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP07Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Hotels
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP08Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Edu. & Health
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP09Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Poultry and Fish Farms Activities
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP10Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Cars
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP11Set.results;
+                            }
+                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            {
+                                //Minerls
+                                var CabSummary = ZakatForm5SummaryDataResult.SchGP12Set.results;
+                            }
 
 
-                        //}
+                        }
 
-                            IsLoading = false;
+                        IsLoading = false;
 
                     }
                     else

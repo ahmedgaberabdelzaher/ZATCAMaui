@@ -508,10 +508,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
 
         }
-        private void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)
         {
             //   App.DisplayProgressView();
-            viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
+
+            });
+           
         }
         private async void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
         {
