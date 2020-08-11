@@ -1,4 +1,5 @@
-﻿using EGAZT.Models.Form5Models;
+﻿using EGAZT.Models;
+using EGAZT.Models.Form5Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using ZakatForm5Model;
 
@@ -18,11 +20,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 {
      public class ZakatForm5PageViewModel : BaseViewModel
     {
-        
+
+        #region Variable
+        private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.BasicInformation;
+        public ZakatForm5TabEnum currentTab
+        {
+            get => _currentTab;
+            private set
+            {
+                _currentTab = value;
+                RaisePropertyChanged(nameof(currentTab));
+                CurrentIndex = (int)_currentTab;
+                RaisePropertyChanged(nameof(CurrentIndex));
+            }
+        }
+        private int _currenrIndex = 1;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                if (_currenrIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+            }
+        }
+        public bool MarkComplete { get; private set; } = false;
+        public int MaxIndex { get; private set; } = 3;
+        #endregion
+
+
+        #region Commands
+        public ICommand OnNextButtonClick { get; private set; }
+        public ICommand OnBackButtonClick { get; private set; }
+        #endregion
 
         #region Constructor
         public ZakatForm5PageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            OnNextButtonClick = new Command(() => navigateToNext());
+            OnBackButtonClick = new Command(() => navigateBack());
         }
         #endregion
         
@@ -708,6 +749,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        private void navigateToNext()
+        {
+            switch (currentTab)
+            {
+                case ZakatForm5TabEnum.BasicInformation:
+                   currentTab = ZakatForm5TabEnum.FinancialInformation;
+                    break;
+
+                case ZakatForm5TabEnum.FinancialInformation: currentTab = ZakatForm5TabEnum.ZakatEstimation;
+                    break;
+            }
+        }
+
+        private void navigateBack()
+        {
+            switch (currentTab)
+            {
+                case ZakatForm5TabEnum.FinancialInformation: 
+                    currentTab = ZakatForm5TabEnum.BasicInformation;
+                    break;
+                case ZakatForm5TabEnum.ZakatEstimation:
+                    currentTab = ZakatForm5TabEnum.FinancialInformation;
+                    break;
+            }
+        }
         #endregion
     }
 }

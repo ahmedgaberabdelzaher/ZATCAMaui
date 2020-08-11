@@ -23,6 +23,7 @@ using Xamarin.Forms.Xaml;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using EGAZT.Views.NewDesign.VATDeRegistration;
+using EGAZT.Views.NewDesign.ZakatForm5;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -289,7 +290,8 @@ namespace EGAZT
             dialogService.Initialize(navigationPage);
             InitializeAppDynamics();
 
-            MainPage = navigationPage;
+            //MainPage = navigationPage;
+            MainPage = new ZakatForm5PageView();
         }
         public static void CreateClientHandler()
         {
