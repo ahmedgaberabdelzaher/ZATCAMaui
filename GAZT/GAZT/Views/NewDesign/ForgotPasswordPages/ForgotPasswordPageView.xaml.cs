@@ -74,6 +74,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.IDNumber = string.Empty;
             viewModel.UserNameLabelText = AppResources.IDNumber;
 
+            viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
+
 
 
         }
@@ -97,6 +99,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
                 viewModel.TINs.Clear();
             viewModel.IDNumber = string.Empty;
             viewModel.UserNameLabelText = AppResources.IDNumber;
+            viewModel.ContinueORConfirmButtonText = AppResources.Confirm;
+
 
         }
 

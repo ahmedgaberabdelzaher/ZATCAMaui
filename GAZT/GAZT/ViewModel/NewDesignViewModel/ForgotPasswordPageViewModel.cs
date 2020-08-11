@@ -521,6 +521,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+        private string _continueORConfirmButtonText = AppResources.ZZZZContinue;
+        public string ContinueORConfirmButtonText
+        {
+            get
+            {
+                return _continueORConfirmButtonText;
+            }
+            set
+            {
+                _continueORConfirmButtonText = value;
+                RaisePropertyChanged("ContinueORConfirmButtonText");
+            }
+        }
+        
         private bool _isResendOTPEnabled = false;
         public bool IsResendOTPEnabled
         {
