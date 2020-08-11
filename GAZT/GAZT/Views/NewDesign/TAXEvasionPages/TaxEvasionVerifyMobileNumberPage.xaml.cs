@@ -63,7 +63,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            viewModel.VerifyOTP();
+            if (viewModel.OTPFourthDigit.Length > 0)
+            {
+                viewModel.VerifyOTP();
+            }
         }
 
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
