@@ -17,6 +17,7 @@
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
+             FlowDirection="RightToLeft"
              x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.GAZTNewDesignVATReturnUpdatedUIPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -291,36 +292,36 @@
 
                                         </Image>
                                     </Frame>-->
-                                    <custom:CustomLabel Text="Tax Return Details" Style="{StaticResource SectionTitleBlack}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTaxReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
                                 <StackLayout Padding="10">
 
-                        <custom:CustomLabel Text="Return Type" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturnType}" Style="{StaticResource ValueLabelGrey}"/>
 
                             <custom:CustomLabel Margin="0,-10,0,0" Text="Value Added Tax - Quarterly"     Style="{StaticResource ValueLabelBlack}">
                             </custom:CustomLabel>
 
-                        <custom:CustomLabel Text="VAT Return" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturnReferenceNo}" Style="{StaticResource ValueLabelGrey}"/>
                         <custom:CustomLabel  Text="New" Margin="0,-10,0,0" Style="{StaticResource ValueLabelBlack}" HeightRequest="48">
                             </custom:CustomLabel>
                        
                              <custom:CustomLabel  Margin="0,-30,0,0" Text="Return Reference No."     Style="{StaticResource ValueLabelBlack}">
                             </custom:CustomLabel>
-                        
 
-                        <custom:CustomLabel Text="TAX Period" Style="{StaticResource ValueLabelGrey}"/>
+
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource ValueLabelGrey}"/>
                              <custom:CustomLabel  Margin="0,-10,0,0" Text="Quarter 2 - 2020" Style="{StaticResource ValueLabelBlack}">
                             </custom:CustomLabel>
-     
 
-                        <custom:CustomLabel Text="Period From" Style="{StaticResource ValueLabelGrey}"/>
+
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatPeriodFrom}" Style="{StaticResource ValueLabelGrey}"/>
                              <custom:CustomLabel  Margin="0,-10,0,0" Text="01-April-2020" Style="{StaticResource ValueLabelBlack}">
                             </custom:CustomLabel>
-                        
 
-                        <custom:CustomLabel Text="Period To" Style="{StaticResource ValueLabelGrey}"/>
+
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatPeriodTo}" Style="{StaticResource ValueLabelGrey}"/>
                              <custom:CustomLabel  Margin="0,-10,0,0" Text="30-June-2020" Style="{StaticResource ValueLabelBlack}">
                             </custom:CustomLabel>
                                 </StackLayout>
@@ -335,34 +336,34 @@
 
                                         </Image>
                                     </Frame>-->
-                                    <custom:CustomLabel Text="Taxpayer Inforamtion" Style="{StaticResource SectionTitleBlack}" />
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTaxpayerInformation}" Style="{StaticResource SectionTitleBlack}" />
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                 <StackLayout Padding="10">
-                                   
-                                <custom:CustomLabel Text="TIN" Style="{StaticResource ValueLabelGrey}"/>
+
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" Style="{StaticResource ValueLabelGrey}"/>
 
                                 <custom:CustomLabel Margin="0,-10,0,0" Text="3100108091" Style="{StaticResource ValueLabelBlack}">
                                 </custom:CustomLabel>
 
 
-                                <custom:CustomLabel Text="VAT Account Number" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVATAccountNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                 <custom:CustomLabel Margin="0,-10,0,0" Text="3100108091000003" Style="{StaticResource ValueLabelBlack}">
                                 </custom:CustomLabel>
 
 
-                                <custom:CustomLabel Text="Identification Number" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatIdentificationNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                 <custom:CustomLabel  Margin="0,-10,0,0" Text="1007293549" Style="{StaticResource ValueLabelBlack}">
                                 </custom:CustomLabel>
 
 
-                                <custom:CustomLabel Text="Taxpayer Name" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTaxpayersName}" Style="{StaticResource ValueLabelGrey}"/>
                                 <custom:CustomLabel Margin="0,-10,0,0" Text="Zaed" Style="{StaticResource ValueLabelBlack}">
                                 </custom:CustomLabel>
 
-                                <custom:CustomLabel Text="Address" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource ValueLabelGrey}"/>
                                 <custom:CustomLabel Margin="0,-10,0,0" Text="Address line1 Address line 2" Style="{StaticResource ValueLabelBlack}" BackgroundColor="White">
                                 </custom:CustomLabel>
                                 </StackLayout>
@@ -390,7 +391,7 @@
 
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" >
-                    <custom:CustomLabel Text="Taxpayer Details"  Style="{StaticResource PageTitleBlack}" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}"  Style="{StaticResource PageTitleBlack}" />
                     <custom:CustomLabel Text="Complete the below details"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,8"/>
                 </StackLayout>
@@ -403,7 +404,7 @@
                 </Grid.RowDefinitions>
                 <ScrollView Grid.Row="1">
                     <StackLayout BackgroundColor="White">
-                        <custom:CustomLabel Text="Do you have sales or purchases subject to 15% VAT as per the transitional provisions or Sales, purchases, imports and adjustments subject to 5% VAT that you would like to declare in this period?*" Style="{StaticResource CaptionLabelBlack}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDoyouhavesalesorpurchasessubjectto5VAT}" Style="{StaticResource CaptionLabelBlack}"/>
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -412,14 +413,14 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0">
                                 <Image x:Name="YesImg" Source="re_Tile_Background" />
-                                <custom:CustomLabel x:Name="YesLbl"  Text="Yes" TextColor="White" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center" Margin="10,0,0,0"/>
+                                <custom:CustomLabel x:Name="YesLbl"  Text="{x:Static ResourceManager:AppResources.ZZZYesText}" TextColor="White" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center" Margin="10,0,0,0"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnYesTapped"/>
                                 </Grid.GestureRecognizers>
                             </Grid>
                             <Grid Grid.Column="1">
                                 <Image x:Name="NoImg"  Source="re_Property_Tile_Background_White"  />
-                                <custom:CustomLabel x:Name="NoLbl" Text="No" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center" Margin="10,0,0,0"/>
+                                <custom:CustomLabel x:Name="NoLbl" Text="{x:Static ResourceManager:AppResources.ZZZNoText}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center" Margin="10,0,0,0"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnNoTapped"/>
                                 </Grid.GestureRecognizers>
@@ -430,7 +431,7 @@
                             <Expander>
                                 <Expander.Header>
                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                        <custom:CustomLabel Text="VAT on Sales" Style="{StaticResource SectionTitleBlack}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" Style="{StaticResource SectionTitleBlack}"/>
                                         <Image Source="arrowDropdown" HorizontalOptions="EndAndExpand">
                                             <Image.Triggers>
                                                 <DataTrigger TargetType="Image"
@@ -475,7 +476,7 @@
                                                 <ColumnDefinition Width="50*"/>
                                                 <ColumnDefinition Width="50*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Text="Standard Rated Sales" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatStandardRatedSales}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                             <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="0" Grid.Column="1">
 
                                                 <Image.GestureRecognizers>
@@ -483,8 +484,8 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
 
-                                            <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></custom:CustomLabel>
-                                            <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></custom:CustomLabel>
 
 
                                             <inputLayout:SfTextInputLayout   Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -500,14 +501,14 @@
                                             </inputLayout:SfTextInputLayout>
 
                                             <!---->
-                                            <custom:CustomLabel Text="Standard Rated Sales(15%)" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZVatStandardRatedSales15}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                             <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="3" Grid.Column="1">
 
                                             </Image>
 
 
-                                            <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></custom:CustomLabel>
-                                            <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></custom:CustomLabel>
 
                                             <inputLayout:SfTextInputLayout   Grid.Row="5" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
                                                 <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource DefaultEntry}">
@@ -520,11 +521,11 @@
                                                 </custom:GAZTBorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                             <!--One Added as of now-->
-                                            <custom:CustomLabel Text="Sales Subject to VAT at (5%)" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttoVATat5}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                             <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="6" Grid.Column="1"></Image>
 
-                                            <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
-                                            <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
 
 
                                             <inputLayout:SfTextInputLayout   Grid.Row="8" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -538,13 +539,13 @@
 
                                             <!---->
 
-                                            <custom:CustomLabel Text="Private HealthCare/Private Education" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatPrivateHealthcare}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                             <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="9" Grid.Column="1">
 
                                             </Image>
 
-                                            <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></custom:CustomLabel>
-                                            <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></custom:CustomLabel>
 
 
                                             <inputLayout:SfTextInputLayout   Grid.Row="11" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -556,12 +557,12 @@
                                                 </custom:GAZTBorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
 
-                                            <custom:CustomLabel Text="Zero Rated Domestic Sales" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatZerorateddomesticsales}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                             <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
                                             </Image>
 
-                                            <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></custom:CustomLabel>
-                                            <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></custom:CustomLabel>
                                             <inputLayout:SfTextInputLayout   Grid.Row="14" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
                                                 <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource DefaultEntry}">
                                                 </custom:GAZTBorderlessEntry>
@@ -571,13 +572,13 @@
                                                 </custom:GAZTBorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
 
-                                            <custom:CustomLabel Text="Exports" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatExports}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                             <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="15" Grid.Column="1">
 
                                             </Image>
 
-                                            <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="0"></custom:CustomLabel>
-                                            <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="1"></custom:CustomLabel>
                                             <inputLayout:SfTextInputLayout   Grid.Row="17" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
                                                 <custom:GAZTBorderlessEntry  Text="500"     Style="{StaticResource DefaultEntry}">
                                                 </custom:GAZTBorderlessEntry>
@@ -587,13 +588,13 @@
                                                 </custom:GAZTBorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
 
-                                            <custom:CustomLabel Text="Exempt Sales" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatExemptsales}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                             <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="18" Grid.Column="1">
 
                                             </Image>
 
-                                            <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="19" Grid.Column="0"></custom:CustomLabel>
-                                            <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="19" Grid.Column="1"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="19" Grid.Column="0"></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="19" Grid.Column="1"></custom:CustomLabel>
 
 
                                             <inputLayout:SfTextInputLayout   Grid.Row="20" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -607,15 +608,15 @@
 
                                             <BoxView Style="{StaticResource InputTableBoxViewStyle}" Grid.Row="21" Grid.Column="0" Grid.ColumnSpan="2" />
 
-                                            <custom:CustomLabel Text="Total Sales" Style="{StaticResource ValueLabelBlack}"  Margin="10,0,10,0" Grid.Row="22" Grid.Column="0" ></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTotalSales}" Style="{StaticResource ValueLabelBlack}"  Margin="10,0,10,0" Grid.Row="22" Grid.Column="0" ></custom:CustomLabel>
 
                                             <StackLayout Grid.Row="23" Grid.Column="0"  Margin="10,0,10,0">
-                                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
                                                 <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
                                             </StackLayout>
 
                                             <StackLayout Grid.Row="23" Grid.Column="1" Margin="10,0,10,0">
-                                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9" ></custom:CustomLabel>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9" ></custom:CustomLabel>
                                                 <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
                                             </StackLayout>
 
@@ -901,7 +902,7 @@
 
                 </ScrollView>
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,0,0,8">
-                    <Label Text="VAT Return Form"  Style="{StaticResource PageTitleBlack}" />
+                    <Label Text="{x:Static custom2:AppResources.ZZVATReturnForm}"  Style="{StaticResource PageTitleBlack}" />
                     <Label Text="Complete the below details" Margin="0,-8,0,0"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}"/>
                 </StackLayout>
@@ -954,7 +955,7 @@
                                     <ColumnDefinition Width="50*"/>
                                     <ColumnDefinition Width="50*"/>
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel Text="Standard Rated Sales" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatStandardRatedSales}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                 <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="0" Grid.Column="1">
 
                                     <Image.GestureRecognizers>
@@ -962,8 +963,8 @@
                                     </Image.GestureRecognizers>
                                 </Image>
 
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></custom:CustomLabel>
 
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -979,14 +980,14 @@
                                 </inputLayout:SfTextInputLayout>
 
                                 <!---->
-                                <custom:CustomLabel Text="Standard Rated Sales(15%)" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZVatStandardRatedSales15}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                 <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="3" Grid.Column="1">
 
                                 </Image>
 
 
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></custom:CustomLabel>
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="5" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
@@ -999,11 +1000,11 @@
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                                 <!--One Added as of now-->
-                                <custom:CustomLabel Text="Sales Subject to VAT at (5%)" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttoVATat5}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                 <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="6" Grid.Column="1"></Image>
 
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
 
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="8" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -1017,13 +1018,13 @@
 
                                 <!---->
                                 <StackLayout Orientation="Horizontal" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
-                                    <custom:CustomLabel Text="Private HealthCare/Private Education" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatPrivateHealthcare}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
                                     <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" HorizontalOptions="EndAndExpand">
 
                                     </Image>
                                 </StackLayout>
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></custom:CustomLabel>
 
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="11" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -1035,12 +1036,12 @@
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
 
-                                <custom:CustomLabel Text="Zero Rated Domestic Sales" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatZerorateddomesticsales}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                 <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
                                 </Image>
 
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></custom:CustomLabel>
                                 <inputLayout:SfTextInputLayout   Grid.Row="14" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
                                     </custom:BorderlessEntry>
@@ -1050,13 +1051,13 @@
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
 
-                                <custom:CustomLabel Text="Exports" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatExports}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                 <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="15" Grid.Column="1">
 
                                 </Image>
 
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="1"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="1"></custom:CustomLabel>
                                 <inputLayout:SfTextInputLayout   Grid.Row="17" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
                                     </custom:BorderlessEntry>
@@ -1066,13 +1067,13 @@
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
 
-                                <custom:CustomLabel Text="Exempt Sales" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatExemptsales}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
                                 <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="18" Grid.Column="1">
 
                                 </Image>
 
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="19" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="19" Grid.Column="1"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="19" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="19" Grid.Column="1"></custom:CustomLabel>
 
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="20" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -1086,15 +1087,15 @@
 
                                 <BoxView Style="{StaticResource InputTableBoxViewStyle}" Grid.Row="21" Grid.Column="0" Grid.ColumnSpan="2" />
 
-                                <custom:CustomLabel Text="Total Sales" Style="{StaticResource ValueLabelBlack}"  Margin="10,0,10,0" Grid.Row="22" Grid.Column="0" ></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTotalSales}" Style="{StaticResource ValueLabelBlack}"  Margin="10,0,10,0" Grid.Row="22" Grid.Column="0" ></custom:CustomLabel>
 
                                 <StackLayout Grid.Row="23" Grid.Column="0"  Margin="10,0,10,0">
-                                    <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
                                     <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
                                 </StackLayout>
 
                                 <StackLayout Grid.Row="23" Grid.Column="1" Margin="10,0,10,0">
-                                    <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9" ></custom:CustomLabel>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9" ></custom:CustomLabel>
                                     <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
                                 </StackLayout>
 
@@ -1121,8 +1122,8 @@
                 </ScrollView>
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,0" Spacing="0">
 
-                    <custom:CustomLabel Text="VAT On Sales"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                    <custom:CustomLabel Text="Complete the below details"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationSubtitle}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
 
                     <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                 </StackLayout>
@@ -1161,13 +1162,34 @@
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50*"/>
                                     <ColumnDefinition Width="50*"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                                    <custom:CustomLabel Text="Standard Rated Domestic Purchases" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatStandardrateddomesticpurchases}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
                                     <Image Style="{StaticResource ImageStyleForInputTable}" Source="ic_vat_info">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnDomesticRatedTapped" />
@@ -1176,8 +1198,8 @@
                                 </StackLayout>
 
 
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="1"></custom:CustomLabel>
 
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -1192,19 +1214,27 @@
                                     </custom:BorderlessEntry>
 
                                 </inputLayout:SfTextInputLayout>
-                                <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2">
-                                    <custom:CustomLabel Text="Import Subject to VAT paid at customs" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
-                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
 
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZVatStandardrateddomesticpurchases15}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
+                                    <Image Style="{StaticResource ImageStyleForInputTable}" Source="ic_vat_info">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnDomesticRatedTapped" />
+                                        </Image.GestureRecognizers>
                                     </Image>
                                 </StackLayout>
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></custom:CustomLabel>
+
+
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="4" Grid.Column="1"></custom:CustomLabel>
 
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="5" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
                                     </custom:BorderlessEntry>
+
+
 
                                 </inputLayout:SfTextInputLayout>
                                 <inputLayout:SfTextInputLayout   Grid.Row="5" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -1212,19 +1242,26 @@
                                     </custom:BorderlessEntry>
 
                                 </inputLayout:SfTextInputLayout>
-                                <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                                    <custom:CustomLabel Text="Imports Subject to VAT accounted for through the reverse charge mechanism" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" ></custom:CustomLabel>
-                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
 
+                                <StackLayout Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZPurchasessubjecttoVATat5}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
+                                    <Image Style="{StaticResource ImageStyleForInputTable}" Source="ic_vat_info">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnDomesticRatedTapped" />
+                                        </Image.GestureRecognizers>
                                     </Image>
                                 </StackLayout>
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
+
+
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="7" Grid.Column="1"></custom:CustomLabel>
 
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="8" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
                                     </custom:BorderlessEntry>
+
+
 
                                 </inputLayout:SfTextInputLayout>
                                 <inputLayout:SfTextInputLayout   Grid.Row="8" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -1233,12 +1270,17 @@
 
                                 </inputLayout:SfTextInputLayout>
 
-                                <custom:CustomLabel Text="Zero Rated Purchases" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
-                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="9" Grid.Column="1">
 
-                                </Image>
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></custom:CustomLabel>
+
+
+                                <StackLayout Orientation="Horizontal" Grid.Row="9" Grid.ColumnSpan="2">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatImportsVatPaidatcustoms}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
+                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
+
+                                    </Image>
+                                </StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="10" Grid.Column="1"></custom:CustomLabel>
 
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="11" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -1252,12 +1294,15 @@
 
                                 </inputLayout:SfTextInputLayout>
 
-                                <custom:CustomLabel Text="Exempt Purchases" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
-                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
 
-                                </Image>
-                                <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></custom:CustomLabel>
-                                <custom:CustomLabel Text="Adjustment" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></custom:CustomLabel>
+                                <StackLayout Orientation="Horizontal" Grid.Row="12" Grid.ColumnSpan="2">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZImportssubjecttoVATpaidatcustoms15}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
+                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
+
+                                    </Image>
+                                </StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="13" Grid.Column="1"></custom:CustomLabel>
 
 
                                 <inputLayout:SfTextInputLayout   Grid.Row="14" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -1271,17 +1316,141 @@
 
                                 </inputLayout:SfTextInputLayout>
 
-                                <BoxView Style="{StaticResource InputTableBoxViewStyle}" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" />
+                                <StackLayout Orientation="Horizontal" Grid.Row="15" Grid.ColumnSpan="2">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZImportssubjecttoVATpaidatcustoms5}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
+                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
 
-                                <custom:CustomLabel Text="Total Purchases" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="16" Grid.Column="0" ></custom:CustomLabel>
+                                    </Image>
+                                </StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="16" Grid.Column="1"></custom:CustomLabel>
 
-                                <StackLayout Grid.Row="17" Grid.Column="0"  Margin="10,0,10,0">
-                                    <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
+
+                                <inputLayout:SfTextInputLayout   Grid.Row="17" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout   Grid.Row="17" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+
+
+                                <StackLayout Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatImportsSubjectToVatAccounted}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" ></custom:CustomLabel>
+                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
+
+                                    </Image>
+                                </StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="19" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="19" Grid.Column="1"></custom:CustomLabel>
+
+
+                                <inputLayout:SfTextInputLayout   Grid.Row="20" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout   Grid.Row="20" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+
+                                <StackLayout Grid.Row="21" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" ></custom:CustomLabel>
+                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
+
+                                    </Image>
+                                </StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="22" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="22" Grid.Column="1"></custom:CustomLabel>
+
+
+                                <inputLayout:SfTextInputLayout   Grid.Row="23" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout   Grid.Row="23" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+
+
+                                <StackLayout Grid.Row="24" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" ></custom:CustomLabel>
+                                    <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}">
+
+                                    </Image>
+                                </StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}"  Margin="10,0,10,-8" Grid.Row="25" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="25" Grid.Column="1"></custom:CustomLabel>
+
+
+                                <inputLayout:SfTextInputLayout   Grid.Row="26" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout   Grid.Row="26" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatZeroRatedPurchases}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="27" Grid.Column="1">
+
+                                </Image>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="28" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="28" Grid.Column="1"></custom:CustomLabel>
+
+
+                                <inputLayout:SfTextInputLayout   Grid.Row="29" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout   Grid.Row="29" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatExemptPurchases}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="30" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" Grid.Row="30" Grid.Column="1">
+
+                                </Image>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="31" Grid.Column="0"></custom:CustomLabel>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="31" Grid.Column="1"></custom:CustomLabel>
+
+
+                                <inputLayout:SfTextInputLayout   Grid.Row="32" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout   Grid.Row="32" Grid.Column="1"  Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:BorderlessEntry  Text="500"     Style="{StaticResource EntryHeight48}">
+                                    </custom:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+
+                                <BoxView Style="{StaticResource InputTableBoxViewStyle}" Grid.Row="33" Grid.Column="0" Grid.ColumnSpan="2" />
+
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTotalPurchases}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="34" Grid.Column="0" ></custom:CustomLabel>
+
+                                <StackLayout Grid.Row="35" Grid.Column="0"  Margin="10,0,10,0">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
                                     <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
                                 </StackLayout>
 
-                                <StackLayout Grid.Row="17" Grid.Column="1" Margin="10,0,10,0">
-                                    <custom:CustomLabel Text="Amount" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9" ></custom:CustomLabel>
+                                <StackLayout Grid.Row="35" Grid.Column="1" Margin="10,0,10,0">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9" ></custom:CustomLabel>
                                     <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
                                 </StackLayout>
 
@@ -1291,7 +1460,7 @@
                         <custom:CustomLabel Text="Adjustment" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="1" ></custom:CustomLabel>
                         <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="18" Grid.Column="1" ></custom:CustomLabel>-->
 
-                                <yummy:PancakeView  Grid.Row="18" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ADD8E6" Padding="0,0,0,0"  Margin="0,0,0,0">
+                                <yummy:PancakeView  Grid.Row="36" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ADD8E6" Padding="0,0,0,0"  Margin="0,0,0,0">
                                     <StackLayout  Padding="0,0,0,8" Margin="10,0,10,0">
                                         <custom:CustomLabel Text="VAT Amount on Purchases" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
                                         <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
@@ -1307,9 +1476,9 @@
                     </StackLayout>
                 </ScrollView>
                 <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,8"  Spacing="0">
-                    
-                    <custom:CustomLabel Text="VAT On Purchase"  Style="{StaticResource PageTitleBlack}"/>
-                    <custom:CustomLabel Text="Complete the below details"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
+
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}"  Style="{StaticResource PageTitleBlack}"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationSubtitle}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                 </StackLayout>
                 <!--<StackLayout Grid.Row="1" BackgroundColor="White">
@@ -1327,13 +1496,13 @@
                 <ScrollView  Grid.Row="1" VerticalScrollBarVisibility="Never" Margin="0,0,0,0" BackgroundColor="White">
                     <StackLayout >
                         <StackLayout Spacing="-5" Padding="0">
-                            <custom:CustomLabel Text="Total VAT due for current Period" Style="{StaticResource BodyLabelBlack}" />
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTotalVATdueforcurrentperiod}" Style="{StaticResource BodyLabelBlack}" />
                             <custom:CustomLabel Text="500.00 SAR" Style="{StaticResource SectionTitleBlack}" />
                         </StackLayout>
 
                         <StackLayout Spacing="-5" Padding="0">
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="VAT Credit from Previous Period(s)" Style="{StaticResource BodyLabelBlack}" />
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatcreditcarriedforward}" Style="{StaticResource BodyLabelBlack}" />
                                 <Image Source="ic_vat_info" Style="{StaticResource ImageStyleForInputTable}" HorizontalOptions="EndAndExpand">
 
                                 </Image>
@@ -1370,7 +1539,7 @@
                 <StackLayout Grid.Row="0" BackgroundColor="White" Spacing="0">
                     
                     <custom:CustomLabel Text="Total VAT"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                    <custom:CustomLabel Text="Complete the below details"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationSubtitle}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
                 </StackLayout>
             </Grid>
@@ -1447,22 +1616,22 @@
 
                                         </Image>
                                     </Frame>
-                                    <custom:CustomLabel Text="Tax Return Details" Style="{StaticResource SectionTitleBlack}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTaxReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Return Type" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturnType}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="VAT Return" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Return Reference Num" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturnReferenceNo}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Tax Period" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource ValueLabelGrey}"/>
                                         <StackLayout Spacing="0" HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel Text="01st Jan 2019" Style="{StaticResource ValueLabelBlack}" />
                                             <custom:CustomLabel Text="-31st Dec 2019" Style="{StaticResource ValueLabelBlack}" />
@@ -1470,7 +1639,7 @@
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="VAT Account Number" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -1486,23 +1655,23 @@
 
                                         </Image>
                                     </Frame>
-                                    <custom:CustomLabel Text="VAT on Sales" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
-                                    <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
+                                    <!--<custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>-->
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Amount" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Adjustments" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="VAT on Sales" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
@@ -1519,23 +1688,23 @@
 
                                         </Image>
                                     </Frame>
-                                    <custom:CustomLabel Text="VAT on Purchases" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
-                                    <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
+                                    <!--<custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>-->
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Amount" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Adjustments" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="VAT on Purchases" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>

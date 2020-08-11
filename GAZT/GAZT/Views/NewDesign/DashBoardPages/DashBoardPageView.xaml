@@ -515,7 +515,7 @@
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.MyCertificate}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Certificates}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TaxpayerCertificate_Tapped" />
                                     </StackLayout.GestureRecognizers>
