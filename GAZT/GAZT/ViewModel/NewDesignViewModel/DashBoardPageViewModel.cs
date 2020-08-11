@@ -231,6 +231,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _setMyCommitmentsCollectionVisibility = false;
+        public bool SetMyCommitmentsCollectionVisibility
+        {
+            get
+            {
+                return this._setMyCommitmentsCollectionVisibility;
+            }
+            set
+            {
+                this._setMyCommitmentsCollectionVisibility = value;
+                this.RaisePropertyChanged("SetMyCommitmentsCollectionVisibility");
+            }
+        }
+
+        private bool _setNoCommitmentsAvailableLabelVisibility = true;
+        public bool SetNoCommitmentsAvailableLabelVisibility
+        {
+            get
+            {
+                return this._setNoCommitmentsAvailableLabelVisibility;
+            }
+            set
+            {
+                this._setNoCommitmentsAvailableLabelVisibility = value;
+                this.RaisePropertyChanged("SetNoCommitmentsAvailableLabelVisibility");
+            }
+        }
+
         private string _privacyandPolicy = AppResources.ZZZPrivacyandPolicy;
         public string PrivacyandPolicy
         {
@@ -710,6 +738,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(i => DateTime.Parse(i.DueDate)).ToList();
 
                     BillsAndReturnsCommitments = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)BillsAndReturnsCommitmentsLocal);
+                    if(BillsAndReturnsCommitments != null && BillsAndReturnsCommitments.Count > 0)
+                    {
+                        SetNoCommitmentsAvailableLabelVisibility = false;
+                        SetMyCommitmentsCollectionVisibility = true;
+                    }
+                    else
+                    {
+                        SetNoCommitmentsAvailableLabelVisibility = true;
+                        SetMyCommitmentsCollectionVisibility = false;
+                    }
                 }
             }
             catch (AggregateException ae)
