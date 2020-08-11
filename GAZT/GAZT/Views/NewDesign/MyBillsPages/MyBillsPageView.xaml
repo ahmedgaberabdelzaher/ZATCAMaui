@@ -40,7 +40,7 @@
 
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
+                        <Image Grid.Row="0" Grid.Column="0" x:Name="Image_backArrow" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
                             </Image.GestureRecognizers>
@@ -155,7 +155,7 @@
                                             </StackLayout>
                                         </Grid>
                                         <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                                        <Grid Padding="10,10,10,10" RowSpacing="15" >
+                                        <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="15" >
                                             <Grid.RowDefinitions >
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
