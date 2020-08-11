@@ -60,10 +60,13 @@
                                         <DataTemplate>-->
                                     <!--<StackLayout Orientation="Horizontal" Spacing="10">-->
 
-                                    <CollectionView HeightRequest="80" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White" HorizontalScrollBarVisibility="Never">
-                                        <CollectionView.EmptyView>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center"/>
-                                        </CollectionView.EmptyView>
+
+                                    <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
+ 
+                                    <CollectionView HeightRequest="80" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
+                                        <!--<CollectionView.EmptyView>
+                                            <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"/>
+                                        </CollectionView.EmptyView>-->
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
 
