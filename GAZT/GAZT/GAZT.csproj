@@ -83,7 +83,6 @@
     <Folder Include="ViewModel\NewDesignViewModel\GenericPickers\" />
     <Folder Include="Views\NewDesign\TAXEvasionPages\" />
     <Folder Include="Views\NewDesign\EstablishmentRegistrationPages\" />
-    <Folder Include="NewDesignConverters\" />
     <Folder Include="Views\NewDesign\Common\" />
     <Folder Include="Views\NewDesign\ZakatInstalmentPlan\" />
     <Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />

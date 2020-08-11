@@ -3,6 +3,8 @@ using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
+using EGAZT.Models;
+using Syncfusion.GridCommon;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -15,6 +17,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         
 
         int CurrentView;
+
+        #region Variable
+
+        private VATReturnUpdatedUITabEnum _currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+        public VATReturnUpdatedUITabEnum currentTab
+        {
+            get => _currentTab;
+            private set
+            {
+                _currentTab = value;
+                RaisePropertyChanged(nameof(currentTab));
+                CurrentIndex = (int)_currentTab;
+                RaisePropertyChanged(nameof(CurrentIndex));
+            }
+        }
+
+        private int _currenrIndex = 1;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                if (_currenrIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+            }
+        }
+        public bool MarkComplete { get; private set; } = false;
+        public int MaxIndex { get; private set; } = 7;
+#endregion
 
         #region Property
 
@@ -367,7 +403,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             onCountinueClicked = new Xamarin.Forms.Command(() =>
             {
-                    switch (CurrentView)
+
+                switch (currentTab)
+                {
+                    case VATReturnUpdatedUITabEnum.Instrunction:
+                        currentTab = VATReturnUpdatedUITabEnum.TaxpayerDetails;
+                        break;
+
+                    case VATReturnUpdatedUITabEnum.TaxpayerDetails:
+                        currentTab = VATReturnUpdatedUITabEnum.VATReturns;
+                        break;
+                    case VATReturnUpdatedUITabEnum.VATReturns: currentTab = VATReturnUpdatedUITabEnum.Sales;
+                        break;
+
+                    case VATReturnUpdatedUITabEnum.Sales: currentTab = VATReturnUpdatedUITabEnum.Purchase;
+                        break;
+
+                    case VATReturnUpdatedUITabEnum.Purchase:
+                        currentTab = VATReturnUpdatedUITabEnum.TotalVat;
+                        break;
+
+                    case VATReturnUpdatedUITabEnum.TotalVat: 
+                        currentTab = VATReturnUpdatedUITabEnum.Summery;
+                        break;
+
+                    case VATReturnUpdatedUITabEnum.Summery: 
+//                        currentTab = VATReturnUpdatedUITabEnum.Summery;
+                        break;
+                }
+
+/*                    switch (CurrentView)
                     {
                         case 0:
                             IsInstrunctionView = false;
@@ -417,58 +482,84 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
 
                     if (CurrentView < 6)
-                        CurrentView++;
+                        CurrentView++;*/
                     
             });
 
             OnBackStepClicked = new Xamarin.Forms.Command(() =>
             {
-                if (CurrentView > 0)
-                    CurrentView--;
-                switch (CurrentView)
+                switch (currentTab)
                 {
-                    case 5:
-                        isCheckVisible = IsSummeryView = false;
-                        IsTotalVatView = true;
-                        sevenbox= Color.FromHex("#EBEBEB");
-                        BoxSevenFrame= Color.Transparent;
-                        CreditDetailsText = "Carried Credit Details";
+                    case VATReturnUpdatedUITabEnum.TaxpayerDetails:
+                        currentTab = VATReturnUpdatedUITabEnum.Instrunction;
                         break;
-                    case 4:
-                        isBtnVisible = IsTotalVatView = false;
-                        IsPurchaseView = true;
-                        sixbox= Color.FromHex("#EBEBEB");
-                        BoxSixFrame= Color.Transparent;
-                        
+                    case VATReturnUpdatedUITabEnum.VATReturns:
+                        currentTab = VATReturnUpdatedUITabEnum.TaxpayerDetails;
                         break;
-                    case 3:IsPurchaseView = false;
-                        IsSaleView = true;
-                        fivebox= Color.FromHex("#EBEBEB");
-                        BoxFiveFrame=Color.Transparent;
-                        break;
-                    case 2:
-                        IsSaleView = false;
-                        IsVATReturnsView = true;
-                             fourthBox= Color.FromHex("#EBEBEB");
-                        OuterFrame = Color.Transparent;
-                        break;
-                    case 1: IsVATReturnsView = false;
-                        IsTaxpayerView = true;
-                        thirdBox = Color.FromHex("#EBEBEB");
-                        secOuterFrame = Color.Transparent;
-                        break;
-                    case 0: IsTaxpayerView = false;
-                        IsInstrunctionView = true;
-                       secBox = Color.FromHex("#EBEBEB");
-                        innerFrame=Color.Transparent ;
-                        break;
-//                    case 0: IsSaleView = false;
-                        IsInstrunctionView = true;
 
+                    case VATReturnUpdatedUITabEnum.Sales:
+                        currentTab = VATReturnUpdatedUITabEnum.VATReturns;
                         break;
-                    default: CurrentView = 0;
+
+                    case VATReturnUpdatedUITabEnum.Purchase:
+                        currentTab = VATReturnUpdatedUITabEnum.Sales;
+                        break;
+
+                    case VATReturnUpdatedUITabEnum.TotalVat:
+                        currentTab = VATReturnUpdatedUITabEnum.Purchase;
+                        break;
+
+                    case VATReturnUpdatedUITabEnum.Summery:
+                         currentTab = VATReturnUpdatedUITabEnum.TotalVat;
                         break;
                 }
+
+                /*                if (CurrentView > 0)
+                                    CurrentView--;
+                                switch (CurrentView)
+                                {
+                                    case 5:
+                                        isCheckVisible = IsSummeryView = false;
+                                        IsTotalVatView = true;
+                                        sevenbox= Color.FromHex("#EBEBEB");
+                                        BoxSevenFrame= Color.Transparent;
+                                        CreditDetailsText = "Carried Credit Details";
+                                        break;
+                                    case 4:
+                                        isBtnVisible = IsTotalVatView = false;
+                                        IsPurchaseView = true;
+                                        sixbox= Color.FromHex("#EBEBEB");
+                                        BoxSixFrame= Color.Transparent;
+
+                                        break;
+                                    case 3:IsPurchaseView = false;
+                                        IsSaleView = true;
+                                        fivebox= Color.FromHex("#EBEBEB");
+                                        BoxFiveFrame=Color.Transparent;
+                                        break;
+                                    case 2:
+                                        IsSaleView = false;
+                                        IsVATReturnsView = true;
+                                             fourthBox= Color.FromHex("#EBEBEB");
+                                        OuterFrame = Color.Transparent;
+                                        break;
+                                    case 1: IsVATReturnsView = false;
+                                        IsTaxpayerView = true;
+                                        thirdBox = Color.FromHex("#EBEBEB");
+                                        secOuterFrame = Color.Transparent;
+                                        break;
+                                    case 0: IsTaxpayerView = false;
+                                        IsInstrunctionView = true;
+                                       secBox = Color.FromHex("#EBEBEB");
+                                        innerFrame=Color.Transparent ;
+                                        break;
+                //                    case 0: IsSaleView = false;
+                                        IsInstrunctionView = true;
+
+                                        break;
+                                    default: CurrentView = 0;
+                                        break;
+                                }*/
             });
         }
         #endregion

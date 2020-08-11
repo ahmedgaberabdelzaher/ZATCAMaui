@@ -51,9 +51,9 @@ namespace EGAZT.Views.NewDesign.Common
                 Controls.Children.Add(new BoxView()
                 {
                     BackgroundColor = Color.WhiteSmoke,
-                    HeightRequest = 16,
-                    WidthRequest = 16,
-                    CornerRadius = 8,
+                    HeightRequest = 10,
+                    WidthRequest = 10,
+                    CornerRadius = 5,
                 });
             }
             Image completeMark = new Image()
