@@ -115,7 +115,7 @@
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
 
-                                    <buttons:SfChip HeightRequest="32" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ImageSource="{Binding ImageSource}" ShowCloseButton="False" ImageAlignment="Left" ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue" ShowIcon="True" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <buttons:SfChip  BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ImageSource="{Binding ImageSource}" ShowCloseButton="False" ImageAlignment="Left" ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue" ShowIcon="True" VerticalTextAlignment="Center" VerticalOptions="Center"/>
 
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>
