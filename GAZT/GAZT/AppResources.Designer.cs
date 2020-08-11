@@ -921,6 +921,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Favorite.
+        /// </summary>
+        public static string Favorite {
+            get {
+                return ResourceManager.GetString("Favorite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachment.
         /// </summary>
         public static string FDAAttachment {
@@ -1520,6 +1529,15 @@ namespace EGAZT {
         public static string FORM5ZakatRulesConditions {
             get {
                 return ResourceManager.GetString("FORM5ZakatRulesConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello.
+        /// </summary>
+        public static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
             }
         }
         

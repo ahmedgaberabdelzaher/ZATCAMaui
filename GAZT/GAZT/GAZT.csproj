@@ -87,6 +87,7 @@
     <Folder Include="Views\NewDesign\ZakatInstalmentPlan\" />
     <Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />
     <Folder Include="Models\ZakatInstalationModels\" />
+    <Folder Include="ViewModel\NewDesignViewModel\TaxEvasionViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

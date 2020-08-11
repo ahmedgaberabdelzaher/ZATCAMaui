@@ -75,7 +75,13 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         {
             if (!App.IsArabic)
             {
+
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+           
+                this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
         public void ChangeAeroIcon()
@@ -83,10 +89,12 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

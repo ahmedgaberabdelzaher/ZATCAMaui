@@ -77,11 +77,11 @@
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFinancialYear}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="year 2018 Gregorian" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding FinancialYear}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Period}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="01 Jan 2018 - 31 Dec 2018" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -105,23 +105,23 @@
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Taxpayer}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Smoke TP Kiran" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Branch}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Riyadh Branch" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Branch}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="lorem ipsum" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Address}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="lorem.ipsum@yahoo.com" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding UserEmail}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="(00966)123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding MobileNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -144,7 +144,7 @@
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NoOutlet}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding NumberOfOutlet}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -155,11 +155,11 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5ResidencyStatus}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="Resident (Living in Saudi Arabia)" Style="{StaticResource ValueLabelBlack}"  HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Residency_Status}" Style="{StaticResource ValueLabelBlack}"  HorizontalTextAlignment="End"/>
                                     </Grid>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5MainOutlet}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Lorem" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding MainOutlet}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -170,7 +170,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5AccountingMethod}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" HorizontalTextAlignment="End" Text="Accrual (estimated)" Style="{StaticResource ValueLabelBlack}" />
+                                            <custom:CustomLabel Grid.Column="1" HorizontalTextAlignment="End" Text="{Binding AccountMethod}" Style="{StaticResource ValueLabelBlack}" />
                                     </Grid>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -181,11 +181,11 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5FinancialPeriodEnd}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="LD-12" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding FinancialPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </Grid>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5CalendarType}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Gregorian" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Calendar_Type}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
