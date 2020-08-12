@@ -440,6 +440,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                 });
             }
         }
+
         public void ClearData()
         {
             SalesType = string.Empty;
