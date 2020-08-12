@@ -22,11 +22,20 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         public AttachmentPopUp(ZakatReturnDetailsD ZakatReturnDetail)
         {
             InitializeComponent();
+            viewModel = App.Locator.AttachmentPopUp;
+            this.BindingContext = viewModel;
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
-
+            viewModel.OnPageLoad();
+            SetLTR();
     }
-
-    private void OnCloseTapped(object sender, EventArgs e)
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+        private void OnCloseTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PopAsync();
         }

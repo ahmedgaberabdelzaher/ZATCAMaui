@@ -97,6 +97,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Method
+
+        public void OnPageLoad()
+        {
+            ZakatAttachment ZakatAttachment1 = new ZakatAttachment();
+            ZakatAttachment1.Filename = "ABC.pdf";
+            ZakatAttachment ZakatAttachment2 = new ZakatAttachment();
+            ZakatAttachment2.Filename = "XYZ.pdf";
+            ObservableCollection<ZakatAttachment> list = new ObservableCollection<ZakatAttachment>();
+            list.Add(ZakatAttachment1);
+            list.Add(ZakatAttachment2);
+            ZakatReturnAttachmentsList = list;
+        }
         public async Task AddAttachment()
         {
             try
