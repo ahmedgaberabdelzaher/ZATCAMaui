@@ -4957,4 +4957,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
    <data name="VATRefundsLastStatusChange" xml:space="preserve">
     <value>Last Status Change</value>
   </data>
+  <data name="VATRefundsLastStatusChange" xml:space="preserve">
+    <value>Last Status Change</value>
+  </data>
+  <data name="VATRefundsRequestSuccess" xml:space="preserve">
+    <value>Your VAT Refund Request is successful</value>
+  </data>
 </root>

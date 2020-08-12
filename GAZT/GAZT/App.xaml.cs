@@ -157,6 +157,7 @@ namespace EGAZT
         public static string VATRefundsListPageView = "VATRefundsListPageView";
         public static string VATRefundDetailsPageView = "VATRefundDetailsPageView";
         public static string VATRefundsNewRequestPageView = "VATRefundsNewRequestPageView";
+        public static string VATRefundsSuccessPageView = "VATRefundsSuccessPageView";
 
         #endregion
 
@@ -293,7 +294,7 @@ namespace EGAZT
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-            //CustomNavigation navigationPage = new CustomNavigation(new VATRefundsListPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new VATRefundsSuccessPageView()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();

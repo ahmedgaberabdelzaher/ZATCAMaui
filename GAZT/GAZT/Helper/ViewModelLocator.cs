@@ -287,7 +287,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATRefundListPageViewModel>();
             SimpleIoc.Default.Register<VATRefundDetailsPageViewModel>();
             SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
-
+            SimpleIoc.Default.Register<VATRefundsSuccessPageView>();
+            
             #endregion
         }
 
@@ -1712,7 +1713,22 @@ namespace EGAZT
             }
         }
 
+        public VATRefundsSuccessPageViewModel VATRefundsSuccessPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATRefundsSuccessPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
+        //
         public ZakatReturnDetailsSuccessfullPageViewModel ZakatReturnDetailsSuccessfullPageView
         {
             get
@@ -1860,6 +1876,7 @@ namespace EGAZT
             navigationService.Configure(App.VATRefundsListPageView, typeof(VATRefundsListPageView));
             navigationService.Configure(App.VATRefundDetailsPageView, typeof(VATRefundDetailsPageView));
             navigationService.Configure(App.VATRefundsNewRequestPageView, typeof(VATRefundsNewRequestPageView));
+            navigationService.Configure(App.VATRefundsSuccessPageView, typeof(VATRefundsSuccessPageView));
 
             #endregion
 
