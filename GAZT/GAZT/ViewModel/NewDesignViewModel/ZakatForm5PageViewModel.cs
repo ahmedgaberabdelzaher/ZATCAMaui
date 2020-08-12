@@ -53,6 +53,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public int MaxIndex { get; private set; } = 3;
         #endregion
 
+        #region Property
+        public string _nextText = AppResources.ZZNext;
+        public string NextText
+        {
+            get
+            {
+                return _nextText;
+            }
+            set
+            {
+                _nextText = value;
+                RaisePropertyChanged("NextText");
+            }
+        }
+        #endregion
 
         #region Commands
         public ICommand OnNextButtonClick { get; private set; }
@@ -1126,7 +1141,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                    currentTab = ZakatForm5TabEnum.FinancialInformation;
                     break;
 
-                case ZakatForm5TabEnum.FinancialInformation: currentTab = ZakatForm5TabEnum.ZakatEstimation;
+                case ZakatForm5TabEnum.FinancialInformation: 
+                    currentTab = ZakatForm5TabEnum.ZakatEstimation;
+                    NextText = "Finish";
                     break;
             }
         }
@@ -1140,6 +1157,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     break;
                 case ZakatForm5TabEnum.ZakatEstimation:
                     currentTab = ZakatForm5TabEnum.FinancialInformation;
+                    NextText = AppResources.ZZNext;
                     break;
             }
         }

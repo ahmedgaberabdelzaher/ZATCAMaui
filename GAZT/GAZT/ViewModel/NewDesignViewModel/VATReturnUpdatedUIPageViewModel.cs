@@ -62,7 +62,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public int MaxIndex { get; private set; } = 7;
         #endregion
 
-        #region Property
+       
+
+        private bool _isUnFocusedTextBox = false;
+        public bool IsUnFocusedTextBox
+        {
+            get
+            {
+                return _isUnFocusedTextBox;
+            }
+            set
+            {
+                _isUnFocusedTextBox = value;
+                RaisePropertyChanged("IsUnFocusedTextBox");
+            }
+        }
+
+        private bool _isMainButtonEnabled = false;
+        public bool IsMainButtonEnabled
+        {
+            get
+            {
+                return _isMainButtonEnabled;
+            }
+            set
+            {
+                _isMainButtonEnabled = value;
+                RaisePropertyChanged("IsMainButtonEnabled");
+            }
+        }
+
 
         private VATDeclaration _vATDeclarationData;
         public VATDeclaration VATDeclarationData
@@ -75,6 +104,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _vATDeclarationData = value;
                 RaisePropertyChanged("VATDeclarationData");
+            }
+        }
+        private bool _isControlEnabledForEntry = false;
+        public bool IsControlEnabledForEntry
+        {
+            get
+            {
+                return _isControlEnabledForEntry;
+            }
+            set
+            {
+                _isControlEnabledForEntry = value;
+                RaisePropertyChanged("IsControlEnabledForEntry");
             }
         }
         private string _taxpayerPeriodFromDate;
@@ -590,6 +632,150 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("Preperiodcorr");
             }
         }
+
+
+        public string _stdsalesVat15 = "0.00";
+        public string StdsalesVat15
+        {
+            get
+            {
+                return _stdsalesVat15;
+            }
+            set
+            {
+                _stdsalesVat15 = value;
+                RaisePropertyChanged("StdsalesVat15");
+            }
+        }
+
+        public string _stdsalesVat5 = "0.00";
+        public string StdsalesVat5
+        {
+            get
+            {
+                return _stdsalesVat5;
+            }
+            set
+            {
+                _stdsalesVat5 = value;
+                RaisePropertyChanged("StdsalesVat5");
+            }
+        }
+
+
+        public string _stdpurchasesVat15 = "0.00";
+        public string StdpurchasesVat15
+        {
+            get
+            {
+                return _stdpurchasesVat15;
+            }
+            set
+            {
+                _stdpurchasesVat15 = value;
+                RaisePropertyChanged("StdpurchasesVat15");
+            }
+        }
+
+        public string _stdpurchasesVat5 = "0.00";
+        public string StdpurchasesVat5
+        {
+            get
+            {
+                return _stdpurchasesVat5;
+            }
+            set
+            {
+                _stdpurchasesVat5 = value;
+                RaisePropertyChanged("StdpurchasesVat5");
+            }
+        }
+
+
+        public string _importspaidVat15 = "0.00";
+        public string ImportspaidVat15
+        {
+            get
+            {
+                return _importspaidVat15;
+            }
+            set
+            {
+                _importspaidVat15 = value;
+                RaisePropertyChanged("ImportspaidVat15");
+            }
+        }
+
+
+        public string _importspaidVat5 = "0.00";
+        public string ImportspaidVat5
+        {
+            get
+            {
+                return _importspaidVat5;
+            }
+            set
+            {
+                _importspaidVat5 = value;
+                RaisePropertyChanged("ImportspaidVat5");
+            }
+        }
+
+
+        public string _importsaccVat15 = "0.00";
+        public string ImportsaccVat15
+        {
+            get
+            {
+                return _importsaccVat15;
+            }
+            set
+            {
+                _importsaccVat15 = value;
+                RaisePropertyChanged("ImportsaccVat15");
+            }
+        }
+
+        public string _importsaccVat5 = "0.00";
+        public string ImportsaccVat5
+        {
+            get
+            {
+                return _importsaccVat5;
+            }
+            set
+            {
+                _importsaccVat5 = value;
+                RaisePropertyChanged("ImportsaccVat5");
+            }
+        }
+
+
+      
+
+        #region  Color Property
+        private Color _entryVatAmountTextColor;
+        public Color EntryVatAmountTextColor
+        {
+            get
+            {
+                return _entryVatAmountTextColor;
+            }
+            set
+            {
+                _entryVatAmountTextColor = value;
+                if (_entryVatAmountTextColor == Color.FromHex("#ff0000"))
+                {
+                    IsMainButtonEnabled = false;
+                }
+                else
+                {
+                    IsMainButtonEnabled = true;
+                }
+                RaisePropertyChanged("EntryVatAmountTextColor");
+            }
+        }
+
         public bool _isGreaterThanFiveT;
         public bool IsGreaterThanFiveT
         {
@@ -1336,6 +1522,65 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ContinueText");
             }
         }
+
+
+        private string _yesBackgroundImage;
+        public string YesBackgroundImage
+        {
+            get
+            {
+                return _yesBackgroundImage;
+            }
+            set
+            {
+                _yesBackgroundImage = value;
+                RaisePropertyChanged("YesBackgroundImage");
+            }
+        }
+
+        private string _noBackgroundImage;
+        public string NoBackgroundImage
+        {
+            get
+            {
+                return _noBackgroundImage;
+            }
+            set
+            {
+                _noBackgroundImage = value;
+                RaisePropertyChanged("NoBackgroundImage");
+            }
+        }
+
+        private Color _yesLabelColor;
+        public Color YesLabelColor
+        {
+            get
+            {
+                return _yesLabelColor;
+            }
+            set
+            {
+                _yesLabelColor = value;
+                RaisePropertyChanged("YesLabelColor");
+            }
+        }
+
+        private Color _noLabelColor;
+        public Color NoLabelColor
+        {
+            get
+            {
+                return _noLabelColor;
+            }
+            set
+            {
+                _noLabelColor = value;
+                RaisePropertyChanged("NoLabelColor");
+            }
+        }
+
+
         #endregion
 
         #region Constructor
@@ -1524,7 +1769,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         #endregion
 
-        #region Method
+       
 
         public async Task pageLoad()
         {
@@ -2779,7 +3024,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZVATForwardButton);
             }
         }
-        #endregion
+        
 
 
 
