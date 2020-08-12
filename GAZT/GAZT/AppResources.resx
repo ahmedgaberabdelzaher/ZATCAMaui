@@ -4913,4 +4913,66 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Zakat</value>
     <comment>RetunBills</comment>
   </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Favourite</value>
+    <comment>Inbox</comment>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello</value>
+    <comment>DashBoard</comment>
+  </data>
+  <data name="VATRefund" xml:space="preserve">
+    <value>VAT Refund</value>
+  </data>
+  <data name="VATRefundDetails" xml:space="preserve">
+    <value>Refund Details</value>
+  </data>
+  <data name="VATRefundsRequest" xml:space="preserve">
+    <value>Refund Request</value>
+  </data>
+  <data name="VATRefundsReassesmentAmount" xml:space="preserve">
+    <value>Reassesment Amount</value>
+  </data>
+  <data name="VATRefundsTotalOffset" xml:space="preserve">
+    <value>Total Offset</value>
+  </data>
+  <data name="VATRefundsNetCreditBalance" xml:space="preserve">
+    <value>Net Credit Balance</value>
+  </data>
+  <data name="VATRefundsRequestDate" xml:space="preserve">
+    <value>Request Date</value>
+  </data>
+  <data name="VATRefundsStatusRefunded" xml:space="preserve">
+    <value>Refunded</value>
+  </data>
+  <data name="VATRefundsStatusInProcess" xml:space="preserve">
+    <value>In Process</value>
+  </data>
+  <data name="VATRefundAmounts" xml:space="preserve">
+    <value>Refund Amounts</value>
+  </data>
+  <data name="VATRefundsAlRajhiBank" xml:space="preserve">
+    <value>Al Rajhi Bank</value>
+  </data>
+  <data name="VATRefundsLastStatusChange" xml:space="preserve">
+    <value>Last Status Change</value>
+  </data>
+  <data name="VATRefundsRequestSuccess" xml:space="preserve">
+    <value>Your VAT Refund Request is successful</value>
+  </data>
+  <data name="ContractObjectNo" xml:space="preserve">
+    <value>Contract Object No.</value>
+  </data>
+  <data name="FormBundleNo" xml:space="preserve">
+    <value>Form Bundle No.</value>
+  </data>
+  <data name="NDEntervaliduserid" xml:space="preserve">
+    <value>Please enter a valid User ID</value>
+  </data>
+  <data name="NDInvalidverificationcodeentered" xml:space="preserve">
+    <value>Invalid verification code entered</value>
+  </data>
+  <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
+    <value>Please enter confirmation code sent to your mobile number</value>
+  </data>
 </root>

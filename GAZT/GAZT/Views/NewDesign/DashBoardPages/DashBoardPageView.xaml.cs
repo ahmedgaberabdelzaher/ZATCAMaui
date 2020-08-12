@@ -404,7 +404,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void PrivacyPolicy_Tapped(object sender, EventArgs e)
         {
             //        App.DisplayProgressView();
-            viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+            // viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+            viewModel._navigationService.NavigateTo(App.GAZTForm5PageView);
         }
         private void ChangeLanguage_Tapped(object sender, EventArgs e)
         {
@@ -508,10 +509,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
 
         }
-        private void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped_Inbox(object sender, EventArgs e)
         {
             //   App.DisplayProgressView();
-            viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
+
+            });
+           
         }
         private async void VATLookUp_Tapped(System.Object sender, System.EventArgs e)
         {

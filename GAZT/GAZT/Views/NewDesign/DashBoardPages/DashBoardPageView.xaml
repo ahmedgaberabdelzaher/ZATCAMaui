@@ -60,10 +60,13 @@
                                         <DataTemplate>-->
                                     <!--<StackLayout Orientation="Horizontal" Spacing="10">-->
 
-                                    <CollectionView HeightRequest="80" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White" HorizontalScrollBarVisibility="Never">
-                                        <CollectionView.EmptyView>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center"/>
-                                        </CollectionView.EmptyView>
+
+                                    <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"  IsVisible="{Binding SetNoCommitmentsAvailableLabelVisibility}"/>
+ 
+                                    <CollectionView HeightRequest="80" ItemsLayout="HorizontalList"  ItemsSource="{Binding BillsAndReturnsCommitments}" HorizontalOptions="FillAndExpand"  BackgroundColor="White" HorizontalScrollBarVisibility="Never" IsVisible="{Binding SetMyCommitmentsCollectionVisibility}">
+                                        <!--<CollectionView.EmptyView>
+                                            <Label Text="{x:Static ResourceManager:AppResources.NoAppointmentText}" FlowDirection="RightToLeft" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Center"/>
+                                        </CollectionView.EmptyView>-->
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
 
@@ -214,9 +217,9 @@
                                             </AbsoluteLayout>-->
                                             <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">-->
                                             <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                                <buttons:SfButton HeightRequest="32" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="paidClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="Paid_check.png"  ShowIcon="True" Text="{Binding PaidString}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
-                                                <buttons:SfButton HeightRequest="32"  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue"  Clicked="partiallyClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="partially_clock" ShowIcon="True" Text="{Binding PartiallyPaidString}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
-                                                <buttons:SfButton HeightRequest="32" HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="unPaidClicked"    Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{Binding UnPaidString}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
+                                                <buttons:SfButton  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="paidClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="Paid_check.png"  ShowIcon="True" Text="{Binding PaidString}" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White"  CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                                <buttons:SfButton   HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue"  Clicked="partiallyClicked" Style="{StaticResource CaptionButtonBlack}" ImageSource="partially_clock" ShowIcon="True" Text="{Binding PartiallyPaidString}" BorderColor = "LightGray" BorderWidth="1"  BackgroundColor="White" CornerRadius="20" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                                <buttons:SfButton  HorizontalTextAlignment="Start" PressedBackgroundColor="AliceBlue" Clicked="unPaidClicked"    Style="{StaticResource CaptionButtonBlack}" ImageSource="ic_unpaid" ShowIcon="True" Text="{Binding UnPaidString}" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  VerticalTextAlignment="Center" BackgroundColor="White" HorizontalOptions="Start"/>
                                             </StackLayout>
                                             <!--</ScrollView>-->
                                         </StackLayout>
@@ -448,7 +451,7 @@
                     <custom:CustomLabel  HorizontalTextAlignment="Start" Style="{StaticResource PageTitleWhite}" BindingContext="{Binding TaxPayerProfile}"  Margin="0,10,0,10" VerticalOptions="Center">
                         <custom:CustomLabel.FormattedText >
                             <FormattedString>
-                        <Span Text="{x:Static ResourceManager:AppResources.ZZZWelcome}" />
+                                <Span Text="{x:Static ResourceManager:AppResources.Hello}" />
                                 <!--Commented line because X:Refrence Maingrid is not available -->
                                 <!--<Span Text="{Binding Source={x:Reference Name=Maingrid},Path=BindingContext.WelcomeText}"/>-->
                                 <Span Text=" "/>
@@ -499,9 +502,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return">
-
-                                    </Image>
+                                    <Image Source="menu_return"> </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZVatLookUpTitleTextNew}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="VATLookUp_Tapped" />
@@ -512,7 +513,7 @@
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.MyCertificate}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Certificates}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TaxpayerCertificate_Tapped" />
                                     </StackLayout.GestureRecognizers>
@@ -528,7 +529,7 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsVatRegistrationTileVisible}"/>
-                              <StackLayout Orientation="Horizontal" Spacing="20">
+                              <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
                                     </Image>
@@ -547,7 +548,7 @@
                                         <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
                                 <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
@@ -663,6 +664,19 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return"></Image>
+                                    <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
+                                        <Label.FormattedText>
+                                        <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.AppVersion}"/>
+                                            <Span Text="&#160;&#160;"/>
+                                            <Span  Text="{Binding AppVersion}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                    </custom:CustomLabel>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
@@ -741,13 +755,13 @@
 
                             </yummy:PancakeView>
 
-                            <!--<buttons:SfButton
+                            <buttons:SfButton
                                 BackgroundColor="{StaticResource Primary}"
                                 BackgroundImage="quick_action_2.png"
                                 CornerRadius="12"
                                 BorderWidth="0"
                                 HorizontalOptions="Center"
-                                WidthRequest="24" HeightRequest="24" />-->
+                                WidthRequest="24" HeightRequest="24" />
 
                             <!--<Image Source="quick_action_2.png"
                                    BackgroundColor="{StaticResource Primary}"

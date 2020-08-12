@@ -23,6 +23,9 @@ using Xamarin.Forms.Xaml;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using EGAZT.Views.NewDesign.VATDeRegistration;
+using EGAZT.Views.NewDesign.ZakatForm5;
+using EGAZT.Views.NewDesign.TAXEvasionPages;
+using EGAZT.Views.NewDesign.VATRefunds;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -40,6 +43,7 @@ namespace EGAZT
         public static string GAZTNewDesignForgotPasswordPageView = "GAZTNewDesignForgotPasswordPageView";
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
+        public static string TaxEvasionVerifyMobileNumberPage = "TaxEvasionVerifyMobileNumberPage";
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
@@ -62,7 +66,8 @@ namespace EGAZT
         public static string AttachmentPopupPageView = "AttachmentPopupPageView";
         public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
-
+        public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
+        public static string AttachmentPopUp = "AttachmentPopUp";
         
         #endregion
 
@@ -149,6 +154,12 @@ namespace EGAZT
         public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
         public static string TINDeregestrationSuccessPageView = "TINDeregestrationSuccessPageView";
         public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
+
+        public static string VATRefundsListPageView = "VATRefundsListPageView";
+        public static string VATRefundDetailsPageView = "VATRefundDetailsPageView";
+        public static string VATRefundsNewRequestPageView = "VATRefundsNewRequestPageView";
+        public static string VATRefundsSuccessPageView = "VATRefundsSuccessPageView";
+
         #endregion
 
         public static string fontFamilyBold = null;
@@ -266,6 +277,8 @@ namespace EGAZT
                     break;
             }
 
+            IsArabic = false;
+
             ActivityIndicatorView = new ActivityIndicatorPageView();
 
             VATDeclaration vAT = null;
@@ -282,7 +295,7 @@ namespace EGAZT
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-            //CustomNavigation navigationPage = new CustomNavigation(new ZakatRegistrationDetailsListPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new VATRefundsSuccessPageView()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
@@ -328,11 +341,11 @@ namespace EGAZT
                     Preferences.Set("Preferences_DefaultLanguage", "En");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Preferences.Set("Preferences_DefaultLanguage", "Ar");
             }
-             
+
         }
         public void onFontFamilyChanged()
         {

@@ -440,6 +440,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contract Object No..
+        /// </summary>
+        public static string ContractObjectNo {
+            get {
+                return ResourceManager.GetString("ContractObjectNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contracts to be approved.
         /// </summary>
         public static string ContractsToBeApproved {
@@ -917,6 +926,15 @@ namespace EGAZT {
         public static string FAPImporter {
             get {
                 return ResourceManager.GetString("FAPImporter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Favourite.
+        /// </summary>
+        public static string Favorite {
+            get {
+                return ResourceManager.GetString("Favorite", resourceCulture);
             }
         }
         
@@ -1524,6 +1542,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Form Bundle No..
+        /// </summary>
+        public static string FormBundleNo {
+            get {
+                return ResourceManager.GetString("FormBundleNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello.
+        /// </summary>
+        public static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome,.
         /// </summary>
         public static string Hi {
@@ -1857,6 +1893,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid User ID.
+        /// </summary>
+        public static string NDEntervaliduserid {
+            get {
+                return ResourceManager.GetString("NDEntervaliduserid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter Your Username.
         /// </summary>
         public static string NDEnterYourUsername {
@@ -1907,6 +1952,15 @@ namespace EGAZT {
         public static string NDInstallmentPlan {
             get {
                 return ResourceManager.GetString("NDInstallmentPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid verification code entered.
+        /// </summary>
+        public static string NDInvalidverificationcodeentered {
+            get {
+                return ResourceManager.GetString("NDInvalidverificationcodeentered", resourceCulture);
             }
         }
         
@@ -2429,6 +2483,15 @@ namespace EGAZT {
         public static string Pleasechangepassword {
             get {
                 return ResourceManager.GetString("Pleasechangepassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter confirmation code sent to your mobile number.
+        /// </summary>
+        public static string Pleaseenterconfirmationcodesenttoyourmobilenumber {
+            get {
+                return ResourceManager.GetString("Pleaseenterconfirmationcodesenttoyourmobilenumber", resourceCulture);
             }
         }
         
@@ -4054,6 +4117,123 @@ namespace EGAZT {
         public static string VATREditAccount {
             get {
                 return ResourceManager.GetString("VATREditAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Refund.
+        /// </summary>
+        public static string VATRefund {
+            get {
+                return ResourceManager.GetString("VATRefund", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refund Amounts.
+        /// </summary>
+        public static string VATRefundAmounts {
+            get {
+                return ResourceManager.GetString("VATRefundAmounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refund Details.
+        /// </summary>
+        public static string VATRefundDetails {
+            get {
+                return ResourceManager.GetString("VATRefundDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Al Rajhi Bank.
+        /// </summary>
+        public static string VATRefundsAlRajhiBank {
+            get {
+                return ResourceManager.GetString("VATRefundsAlRajhiBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Status Change.
+        /// </summary>
+        public static string VATRefundsLastStatusChange {
+            get {
+                return ResourceManager.GetString("VATRefundsLastStatusChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net Credit Balance.
+        /// </summary>
+        public static string VATRefundsNetCreditBalance {
+            get {
+                return ResourceManager.GetString("VATRefundsNetCreditBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reassesment Amount.
+        /// </summary>
+        public static string VATRefundsReassesmentAmount {
+            get {
+                return ResourceManager.GetString("VATRefundsReassesmentAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refund Request.
+        /// </summary>
+        public static string VATRefundsRequest {
+            get {
+                return ResourceManager.GetString("VATRefundsRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Date.
+        /// </summary>
+        public static string VATRefundsRequestDate {
+            get {
+                return ResourceManager.GetString("VATRefundsRequestDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your VAT Refund Request is successful.
+        /// </summary>
+        public static string VATRefundsRequestSuccess {
+            get {
+                return ResourceManager.GetString("VATRefundsRequestSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In Process.
+        /// </summary>
+        public static string VATRefundsStatusInProcess {
+            get {
+                return ResourceManager.GetString("VATRefundsStatusInProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refunded.
+        /// </summary>
+        public static string VATRefundsStatusRefunded {
+            get {
+                return ResourceManager.GetString("VATRefundsStatusRefunded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Offset.
+        /// </summary>
+        public static string VATRefundsTotalOffset {
+            get {
+                return ResourceManager.GetString("VATRefundsTotalOffset", resourceCulture);
             }
         }
         

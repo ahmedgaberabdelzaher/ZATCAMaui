@@ -83,11 +83,14 @@
     <Folder Include="ViewModel\NewDesignViewModel\GenericPickers\" />
     <Folder Include="Views\NewDesign\TAXEvasionPages\" />
     <Folder Include="Views\NewDesign\EstablishmentRegistrationPages\" />
-    <Folder Include="NewDesignConverters\" />
     <Folder Include="Views\NewDesign\Common\" />
     <Folder Include="Views\NewDesign\ZakatInstalmentPlan\" />
     <Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />
     <Folder Include="Models\ZakatInstalationModels\" />
+    <Folder Include="ViewModel\NewDesignViewModel\TaxEvasionViewModels\" />
+    <Folder Include="Views\NewDesign\VATRefunds\" />
+    <Folder Include="ViewModel\NewDesignViewModel\VATRefunds\" />
+    <Folder Include="Models\VATRefunds\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -148,6 +151,12 @@
     <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationDetailsListPageView.xaml.cs">
       <DependentUpon>ZakatRegistrationDetailsListPageView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewDesign\VATRefunds\VATRefundsListPageView.xaml.cs">
+      <DependentUpon>VATRefundsListPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDesign\VATRefunds\VATRefundsNewRequestPageView.xaml.cs">
+      <DependentUpon>VATRefundsNewRequestPageView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="AppResources.resx">
@@ -200,6 +209,12 @@
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\NewAccountPopPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\RefundAccountPopupPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationPopUpPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -216,6 +231,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\Template\DashboardMenuPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\ZakatForm5\ZakatForm5PageView.xaml">

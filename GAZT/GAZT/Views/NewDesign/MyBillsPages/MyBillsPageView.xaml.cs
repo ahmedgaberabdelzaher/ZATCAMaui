@@ -35,12 +35,12 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     if (billInfo.BillTypeName.Equals(AppResources.Paid))
                     {
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.Paid)).FirstOrDefault();
-                        viewModel.FilterIfTypeAndStausFilterSelected();
+                       
                     }
                     if (billInfo.BillTypeName.Equals(AppResources.UnPaid))
                     {
-                        viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
-                        viewModel.FilterIfTypeAndStausFilterSelected();
+                       // viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
+                       
                     }
                     if (billInfo.BillTypeName.Equals(AppResources.PartiallyPaid))
                     {
@@ -75,7 +75,13 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         {
             if (!App.IsArabic)
             {
+
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+           
+                this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
         public void ChangeAeroIcon()
@@ -83,10 +89,12 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
@@ -102,8 +110,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
                 TaxTypePicker.SelectedItem = selectedReturntype;
                 viewModel.SelectedTaxTypeForFilter = selectedReturntype;
-                ChipGroup_statusFilter.SelectedItem = null;
-                viewModel.SelectedChipFilterItem = null;          
+               // ChipGroup_statusFilter.SelectedItem = null;
+                //viewModel.SelectedChipFilterItem = null;          
             }
             catch(Exception ex)
             { 
@@ -119,7 +127,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
                 ChipGroup_statusFilter.SelectedItem = selectedReturntype;
                 viewModel.SelectedChipFilterItem = selectedReturntype;
-                viewModel.SelectionColor = Color.AliceBlue;
+                //viewModel.SelectionColor = Color.AliceBlue;
             }
             catch (Exception ex)
             { 

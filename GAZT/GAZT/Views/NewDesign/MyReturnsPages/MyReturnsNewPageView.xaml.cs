@@ -32,18 +32,18 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             if(Index == 0)
             {
                 viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted"));
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
 
             }
             if (Index == 1)
             {
                 viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted"));
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
             }
             if (Index == 2)
             {
                 viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue"));
+                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
               
             }
             ListView_Returns.ItemTapped += (sender, e) =>
@@ -64,7 +64,14 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
         {
             if (!App.IsArabic)
             {
+      
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+   
+                this.FlowDirection = FlowDirection.RightToLeft;
+
             }
         }
         public void ChangeAeroIcon()
@@ -72,10 +79,12 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

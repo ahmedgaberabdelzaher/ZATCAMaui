@@ -630,7 +630,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         public void EnableOtpView()
         {
             currentAttempts = 0;
-            MobileNumberMasked = AppResources.MobileNumber + " " + UnlockAccountModelResponse.D.MobileNo;
+            MobileNumberMasked = UnlockAccountModelResponse.D.MobileNo;
             StopTimer = true;
 
             IsVerifyOTPEnabled = true;

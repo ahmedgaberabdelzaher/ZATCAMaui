@@ -50,6 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_selectedChipFilterItem != null)
                 {
                     FilterIfTypeAndStausFilterSelected();
+                    
                 }
                 RaisePropertyChanged("SelectedChipFilterItem");
             }
@@ -98,6 +99,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     FilterLabelText = _SelectedTaxTypeForFilter.TaxType;
                     FilterOnTaxType(MyBillsOriginal);
+                    FilterIfTypeAndStausFilterSelected();
+
                 }
                 RaisePropertyChanged("SelectedTaxTypeForFilter");
             }
@@ -465,6 +468,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
                 }
             }
+
         }
 
         public void FilterIfTypeAndStausFilterSelected()

@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using EGAZT.Models.VATRefunds;
+using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
+using Syncfusion.ListView.XForms;
+using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+
+namespace EGAZT.Views.NewDesign.VATRefunds
+{
+    public partial class VATRefundsListPageView : ContentPage
+    {
+        VATRefundListPageViewModel viewModel;
+        public VATRefundsListPageView()
+        {
+            InitializeComponent();
+
+            viewModel = App.Locator.VATRefundsListPageView;
+            ChangeAeroIcon();
+            SetLTR();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            this.BindingContext = viewModel;
+        }
+        private void SetLTR()
+        {
+            //if (App.IsArabic)
+            //{
+                this.FlowDirection = FlowDirection.LeftToRight;
+            //}
+        }
+        public void ChangeAeroIcon()
+        {
+            if (!App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
+        void vatRefundDetailsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            try
+            {
+                VATRefundsModel selectedItem = e.AddedItems[0] as VATRefundsModel;
+                selectedItem.IsNewRequest = false;
+
+                viewModel._navigationService.NavigateTo(App.VATRefundDetailsPageView, selectedItem);
+                var view = sender as SfListView;
+                view.SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        void NewRefundRequest_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView, viewModel.VATRefundsModel);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}

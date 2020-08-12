@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
@@ -13,7 +14,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             viewModel = App.Locator.ZAKATReturnDetailsView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            viewModel.ClearData();
             viewModel.Fbguid = fbguid;
             SetLTR();
 
@@ -72,11 +75,18 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             viewModel.isEditVisible = true;
             viewModel.IsEditTextVisible = true;
             viewModel.SetEditImage();
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+
+        }
+
+        private void OnEditButtonClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
         private void OnInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp());
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
     }
 }

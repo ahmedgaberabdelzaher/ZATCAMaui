@@ -36,13 +36,13 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 this.FlowDirection = FlowDirection.LeftToRight;
            //     ImageBackArrow.Rotation = 0;
 
-                Image_backArrow.Rotation = 0;
+    
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
               //  viewModel.RotationForImageInArabic = 180;
-                Image_backArrow.Rotation = 180;
+ 
              //   ImageBackArrow.Rotation = 180;
 
             }
@@ -123,10 +123,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
 
      
 
-        private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
+        private async  void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
         {
-
-            //List<ReturnTypes>  selectedReturntype = (ReturnTypes)e.NewValue;
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
             ChipModel addeditemtype = (ChipModel)e.AddedItem;
             ChipModel removedItem = (ChipModel)e.RemovedItem;
 
@@ -139,6 +141,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 viewModel.SelectedChipFilterItemList.Remove(removedItem);
             }
             viewModel.FilterOnbasisOfChipSelectedItem();
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+            //List<ReturnTypes>  selectedReturntype = (ReturnTypes)e.NewValue;
+          
             //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
             //viewModel.SelectedChipFilterItem = selectedReturntype;
         }

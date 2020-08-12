@@ -22,6 +22,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
@@ -44,7 +52,7 @@
                         <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDReturns}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
 
-                        <Image Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeftwhite">
+                        <Image Grid.Row="0" Grid.Column="0"   IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
                             </Image.GestureRecognizers>
@@ -91,7 +99,7 @@
                         <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
                         </custom:CustomLabel>
 
-                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
+                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center">
 
                         </Image>
 
@@ -111,11 +119,14 @@
 
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
 
-                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" ChipBackgroundColor="Transparent" ChipPadding="1" ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource Primary}" ChipBorderWidth="1" SelectionChanged="ChipGroup_statusFilter_SelectionChanged" HorizontalOptions="Start">
+                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" ChipBackgroundColor="Transparent"  ItemsSource="{Binding ChipDataFilterlist}"   SelectionChanged="ChipGroup_statusFilter_SelectionChanged" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" >
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
-
-                                    <buttons:SfChip HeightRequest="32" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ImageSource="{Binding ImageSource}" ShowCloseButton="False" ImageAlignment="Left" ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue" ShowIcon="True" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                                    <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
+                                        <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
+                                        <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
+                                    </StackLayout>
+                                    <!--<buttons:SfChip  BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ImageSource="{Binding ImageSource}" ShowCloseButton="False" ImageAlignment="Left" ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue" ShowIcon="True" VerticalTextAlignment="Center" VerticalOptions="Center"/>-->
 
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>
@@ -213,7 +224,7 @@
                                                 </StackLayout>
                                             </Grid>
                                             <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-                                            <Grid Padding="10,10,10,10" RowSpacing="15"  >
+                                            <Grid Padding="10,10,10,10" RowSpacing="15" ColumnSpacing="15" >
                                                 <Grid.RowDefinitions >
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
@@ -224,8 +235,8 @@
                                                 </Grid.ColumnDefinitions>
                                                 <!--<Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
                                                 <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding Vtref}" Style="{StaticResource ValueLabelBlack}" />
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FormBundleNo}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
                                                     <custom:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
