@@ -4966,11 +4966,28 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="FormBundleNo" xml:space="preserve">
     <value>Form Bundle No.</value>
   </data>
+  <data name="NDBillDate" xml:space="preserve">
+    <value>Bill Date</value>
+  </data>
+  <data name="NDDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="NDEntervaliduserid" xml:space="preserve">
     <value>Please enter a valid User ID</value>
   </data>
   <data name="NDInvalidverificationcodeentered" xml:space="preserve">
     <value>Invalid verification code entered</value>
+  </data>
+  <data name="NDPeriod" xml:space="preserve">
+    <value>Period</value>
+    <comment>Bills Returns </comment>
+  </data>
+  <data name="NDReturnNumber" xml:space="preserve">
+    <value>Return Number</value>
+  </data>
+  <data name="NDReturnType" xml:space="preserve">
+    <value>Return Type</value>
+    <comment>Bills Returns</comment>
   </data>
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
     <value>Please enter confirmation code sent to your mobile number</value>

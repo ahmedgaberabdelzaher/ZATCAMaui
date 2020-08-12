@@ -171,6 +171,8 @@
                                             <Grid.RowDefinitions >
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="auto"/>
@@ -186,14 +188,24 @@
                                                 </custom:CustomLabel.FormattedText>
 
                                             </custom:CustomLabel>
-                                            <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                            
+                                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
+                                                <Label Text="{x:Static ResourceManager:AppResources.NDPeriod}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" />
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5" Grid.ColumnSpan="2">
                                                 <Label Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <Label Text="{Binding VTRE2}" Style="{StaticResource ValueLabelBlack}" />
+                                            </StackLayout> 
+                                            <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
+                                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDBillDate}"  Style="{StaticResource CaptionLabelGrey}"/>
+                                                <custom:CustomLabel Text="{Binding Faednar}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
-                                            <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                                <Label Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding Faednar}" Style="{StaticResource ValueLabelBlack}" />
-                                            </StackLayout>
+                                            <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <custom:CustomLabel Text="{Binding FormatedFaedn}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight"/>
+                                            </StackLayout> 
+
                                         </Grid>
 
                                     </StackLayout>
