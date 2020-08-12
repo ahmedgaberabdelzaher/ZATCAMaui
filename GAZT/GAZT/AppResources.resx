@@ -4914,7 +4914,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <comment>RetunBills</comment>
   </data>
   <data name="Favorite" xml:space="preserve">
-    <value>Favorite</value>
+    <value>Favourite</value>
     <comment>Inbox</comment>
   </data>
   <data name="Hello" xml:space="preserve">
