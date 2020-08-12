@@ -174,8 +174,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                                                                                      //_estimateZakatAttachment.Erfdt = "/Date(" + unixTime + ")/";// need to
                                                     //SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
                                                     //ZakatReturnAttachmentsList = CloneAttachmmentListInLocalList(SelectedSalesDetails.estimateZakatAttachment);
+
+
                                                     //IsValueChanged();// 1584987294.32348//1584987210.06955
-                                                                     // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
+                                                    // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
                                                 }
                                                 else
                                                 {
