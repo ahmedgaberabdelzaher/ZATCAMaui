@@ -88,6 +88,9 @@
     <Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />
     <Folder Include="Models\ZakatInstalationModels\" />
     <Folder Include="ViewModel\NewDesignViewModel\TaxEvasionViewModels\" />
+    <Folder Include="Views\NewDesign\VATRefunds\" />
+    <Folder Include="ViewModel\NewDesignViewModel\VATRefunds\" />
+    <Folder Include="Models\VATRefunds\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -147,6 +150,12 @@
     </Compile>
     <Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationDetailsListPageView.xaml.cs">
       <DependentUpon>ZakatRegistrationDetailsListPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDesign\VATRefunds\VATRefundsListPageView.xaml.cs">
+      <DependentUpon>VATRefundsListPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDesign\VATRefunds\VATRefundsNewRequestPageView.xaml.cs">
+      <DependentUpon>VATRefundsNewRequestPageView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
