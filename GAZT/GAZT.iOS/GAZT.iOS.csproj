@@ -1116,9 +1116,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\committments_onboarding%403x.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets.xcassets\LaunchImage.launchimage\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BundleResource Include="Resources\Username_selected%402x.png" />
   </ItemGroup>
@@ -1703,5 +1701,14 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_company%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowLeft%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowLeft%402x.png" />
   </ItemGroup>
 </Project>
