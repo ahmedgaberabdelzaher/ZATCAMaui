@@ -1827,9 +1827,99 @@
                                             </StackLayout>
                                         </Expander.Header>
                                         <StackLayout>
+                                        <!--Cabs-->
+                                        <StackLayout Padding="10" IsVisible="{Binding CabsSummaryIsVisible}">
                                             <BoxView Style="{StaticResource lineSeperator}"/>
-                                            <!--Sell and Buy-->
-                                            <StackLayout Padding="10">
+
+                                            <StackLayout Spacing="15">
+                                                <custom:CustomLabel Text="Cabs" Style="{StaticResource SectionTitleBlack}"/>
+
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding CabsSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding CabsSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Zakat Payable" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding CabsSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding CabsSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <!--Professionals-->
+                                        <StackLayout Padding="10" IsVisible="{Binding ProfessionalsSummaryIsVisible}">
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
+
+                                            <StackLayout Spacing="15">
+                                                <custom:CustomLabel Text="Professionals" Style="{StaticResource SectionTitleBlack}"/>
+
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ProfessionalsSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ProfessionalsSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Zakat Payable" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ProfessionalsSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ProfessionalsSummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <!--Sell and Buy-->
+                                        <StackLayout Padding="10" IsVisible="{Binding Sell_BuySummaryIsVisible}">
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
 
                                                 <StackLayout Spacing="15">
                                                     <custom:CustomLabel Text="Sell And Buy" Style="{StaticResource SectionTitleBlack}"/>
@@ -1842,11 +1932,11 @@
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Column="0" Spacing="-8">
                                                                 <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding Sell_BuySummary[0].ActivityCapitalTp}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Column="1" Spacing="-8">
                                                                 <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding Sell_BuySummary[0].ActivityCapitalRr}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
@@ -1859,11 +1949,11 @@
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Column="0" Spacing="-8">
                                                                 <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding Sell_BuySummary[0].ExternalImportTp}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Column="1" Spacing="-8">
                                                                 <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding Sell_BuySummary[0].ExternalImportRr}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
@@ -1876,11 +1966,11 @@
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Column="0" Spacing="-8">
                                                                 <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding Sell_BuySummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Column="1" Spacing="-8">
                                                                 <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding Sell_BuySummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
@@ -1893,11 +1983,11 @@
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Column="0" Spacing="-8">
                                                                 <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding Sell_BuySummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Column="1" Spacing="-8">
                                                                 <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding Sell_BuySummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
@@ -1905,9 +1995,10 @@
 
                                             </StackLayout>
 
-                                            <BoxView Style="{StaticResource lineSeperator}"/>
+                                            
                                             <!--Labor Occupancy-->
-                                            <StackLayout Padding="10">
+                                        <StackLayout Padding="10"  IsVisible="{Binding LabourOccupSummaryIsVisble}">
+                                            <BoxView Style="{StaticResource lineSeperator}"/>
 
                                                 <StackLayout Spacing="15">
                                                     <custom:CustomLabel Text="Labor Occupancy" Style="{StaticResource SectionTitleBlack}"/>
@@ -1920,31 +2011,15 @@
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Column="0" Spacing="-8">
                                                                 <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="1" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding LabourOccupSummary[0].NoLaboursTp}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Column="1" Spacing="-8">
                                                                 <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="320" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding LabourOccupSummary[0].NoLaboursRr}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
-                                                    <StackLayout>
-                                                        <custom:CustomLabel Text="Total External Imports" Style="{StaticResource ValueLabelBlack}"/>
-                                                        <Grid ColumnSpacing="0" >
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <StackLayout Grid.Column="0" Spacing="-8">
-                                                                <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
-                                                            </StackLayout>
-                                                            <StackLayout Grid.Column="1" Spacing="-8">
-                                                                <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
-                                                            </StackLayout>
-                                                        </Grid>
-                                                    </StackLayout>
+                                                   
                                                     <StackLayout>
                                                         <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
                                                         <Grid ColumnSpacing="0" >
@@ -1954,11 +2029,11 @@
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Column="0" Spacing="-8">
                                                                 <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding LabourOccupSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Column="1" Spacing="-8">
                                                                 <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding LabourOccupSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
@@ -1971,11 +2046,11 @@
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Column="0" Spacing="-8">
                                                                 <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding LabourOccupSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Column="1" Spacing="-8">
                                                                 <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding LabourOccupSummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
@@ -1983,46 +2058,380 @@
 
                                             </StackLayout>
 
+                                        <!--Industry-->
+                                        <StackLayout Padding="10"  IsVisible="{Binding IndustrySummaryIsVisible}">
                                             <BoxView Style="{StaticResource lineSeperator}"/>
-                                            <!--Industry-->
-                                            <StackLayout Padding="10">
+
+                                            <StackLayout Spacing="15">
+                                                <custom:CustomLabel Text="Industry" Style="{StaticResource SectionTitleBlack}"/>
+
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding IndustrySummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding IndustrySummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Zakat Payable" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding IndustrySummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding IndustrySummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <!--Contracting Co -->
+                                        <StackLayout Padding="10"  IsVisible="{Binding ContractingSummaryIsVisible}">
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
+
+                                            <StackLayout Spacing="15">
+                                                <custom:CustomLabel Text="Contracting Co" Style="{StaticResource SectionTitleBlack}"/>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Govenment Contract Profits" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].GovtContractProfTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].GovtContractProfRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Profit from Civil Contracting(SAR)" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].CivilContrRevTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].CivilContrRevRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="No of Labours" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].NoLaboursTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].NoLaboursRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Zakat Payable" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding ContractingSummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <!--Invest and Real Estate-->
+                                        <StackLayout Padding="10"  IsVisible="{Binding InvstRealEstSummaryIsVisible}">
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
+
+                                            <StackLayout Spacing="15">
+                                                <custom:CustomLabel Text="Invest and Real Est" Style="{StaticResource SectionTitleBlack}"/>
+
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding InvstRealEstSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding InvstRealEstSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Zakat Payable" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding InvstRealEstSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding InvstRealEstSummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <!--Hotels-->
+                                        <StackLayout Padding="10"  IsVisible="{Binding HotelsSummaryIsVisible}">
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
+
+                                            <StackLayout Spacing="15">
+                                                <custom:CustomLabel Text="Hotels" Style="{StaticResource SectionTitleBlack}"/>
+
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding HotelsSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding HotelsSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Zakat Payable" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding HotelsSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding HotelsSummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+
+                                        <!--edu and Health-->
+                                        <StackLayout Padding="10"  IsVisible="{Binding Edu_HealthSummaryIsVisible}">
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
+
+                                            <StackLayout Spacing="15">
+                                                <custom:CustomLabel Text="Edu and Health" Style="{StaticResource SectionTitleBlack}"/>
+
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding Edu_HealthSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding Edu_HealthSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Zakat Payable" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding Edu_HealthSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding Edu_HealthSummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <!--Poultry and fish farm activities-->
+                                        <StackLayout Padding="10"  IsVisible="{Binding Poultry_FishFarmSummaryIsVisible}">
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
+
+                                            <StackLayout Spacing="15">
+                                                <custom:CustomLabel Text="Poultry and Fish Farm activities" Style="{StaticResource SectionTitleBlack}"/>
+
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding Poultry_FishFarmSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding Poultry_FishFarmSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Zakat Payable" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding Poultry_FishFarmSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding Poultry_FishFarmSummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <!--Cars-->
+                                        <StackLayout Padding="10"  IsVisible="{Binding CarsSummaryIsVisible}">
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
+
+                                            <StackLayout Spacing="15">
+                                                <custom:CustomLabel Text="Cars" Style="{StaticResource SectionTitleBlack}"/>
+
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding CarsSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding CarsSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <custom:CustomLabel Text="Zakat Payable" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <Grid ColumnSpacing="0" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0" Spacing="-8">
+                                                            <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding CarsSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" Spacing="-8">
+                                                            <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding CarsSummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                        </StackLayout>
+
+                                        <!--Minerals-->
+                                        <StackLayout Padding="10"  IsVisible="{Binding MineralsSummaryIsVisible}">
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
 
                                                 <StackLayout Spacing="15">
-                                                    <custom:CustomLabel Text="Industry" Style="{StaticResource SectionTitleBlack}"/>
-                                                    <StackLayout>
-                                                        <custom:CustomLabel Text="Number of Labors" Style="{StaticResource ValueLabelBlack}"/>
-                                                        <Grid ColumnSpacing="0">
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <StackLayout Grid.Column="0" Spacing="-8">
-                                                                <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="1" Style="{StaticResource SectionTitleBlack}"/>
-                                                            </StackLayout>
-                                                            <StackLayout Grid.Column="1" Spacing="-8">
-                                                                <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="320" Style="{StaticResource SectionTitleBlack}"/>
-                                                            </StackLayout>
-                                                        </Grid>
-                                                    </StackLayout>
-                                                    <StackLayout>
-                                                        <custom:CustomLabel Text="Total External Imports" Style="{StaticResource ValueLabelBlack}"/>
-                                                        <Grid ColumnSpacing="0" >
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*"/>
-                                                                <ColumnDefinition Width="*"/>
-                                                            </Grid.ColumnDefinitions>
-                                                            <StackLayout Grid.Column="0" Spacing="-8">
-                                                                <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
-                                                            </StackLayout>
-                                                            <StackLayout Grid.Column="1" Spacing="-8">
-                                                                <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
-                                                            </StackLayout>
-                                                        </Grid>
-                                                    </StackLayout>
+                                                    <custom:CustomLabel Text="Minerals" Style="{StaticResource SectionTitleBlack}"/>
+                                                    
+                                                   
                                                     <StackLayout>
                                                         <custom:CustomLabel Text="Activity Profit" Style="{StaticResource ValueLabelBlack}"/>
                                                         <Grid ColumnSpacing="0" >
@@ -2032,11 +2441,11 @@
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Column="0" Spacing="-8">
                                                                 <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding MineralsSummary[0].ActivityProfitTp}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Column="1" Spacing="-8">
                                                                 <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding MineralsSummary[0].ActivityProfitRr}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
@@ -2049,11 +2458,11 @@
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Column="0" Spacing="-8">
                                                                 <custom:CustomLabel Text="Return Declared By Taxpayer" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="00.00" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding MineralsSummary[0].ZakatBaseTp}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                             <StackLayout Grid.Column="1" Spacing="-8">
                                                                 <custom:CustomLabel Text="Zakat Rules and Conditions" Style="{StaticResource CaptionLabelGrey}"/>
-                                                                <custom:CustomLabel Text="10000.00 SAR" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding MineralsSummary[0].ZakatBaseRr}" Style="{StaticResource SectionTitleBlack}"/>
                                                             </StackLayout>
                                                         </Grid>
                                                     </StackLayout>
