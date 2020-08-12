@@ -68,7 +68,7 @@
                             </StackLayout>
                         </StackLayout>
                     </border:SfBorder>
-                    <buttons:SfButton Text="View Bill" Style="{StaticResource PrimaryButtonStyle}"/>
+                    <buttons:SfButton Text="View Bill" Style="{StaticResource PrimaryButtonStyle}" Clicked="SfButton_Clicked"/>
                     <custom:CustomLabel Text="Go To Dashboard" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}"/>
                 </StackLayout>
                 </ScrollView>
