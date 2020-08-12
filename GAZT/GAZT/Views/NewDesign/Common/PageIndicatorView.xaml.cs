@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.Common
@@ -8,81 +10,134 @@ namespace EGAZT.Views.NewDesign.Common
     public partial class PageIndicatorView : StackLayout
     {
         #region BindableProperties
-        public static readonly BindableProperty MinNumProperty = BindableProperty.Create(propertyName: nameof(MinNum),
+        public static readonly BindableProperty DotSizeProperty = BindableProperty.Create(propertyName: nameof(DotSize),
                returnType: typeof(int),
                declaringType: typeof(PageIndicatorView),
-               defaultValue: 0,
-               propertyChanged: UpdatePropertyChanged);
-        public int MinNum
+               defaultValue: 16);
+        public int DotSize
         {
-            get { return (int)GetValue(MinNumProperty); }
-            set { SetValue(MinNumProperty, value); }
+            get { return (int)GetValue(DotSizeProperty); }
+            set { SetValue(DotSizeProperty, value); }
         }
+
+        public static readonly BindableProperty MarkSizeProperty = BindableProperty.Create(propertyName: nameof(MarkSize),
+               returnType: typeof(int),
+               declaringType: typeof(PageIndicatorView),
+               defaultValue: 24);
+        public int MarkSize
+        {
+            get { return (int)GetValue(MarkSizeProperty); }
+            set { SetValue(MarkSizeProperty, value); }
+        }
+
 
         public static readonly BindableProperty MaxNumProperty = BindableProperty.Create(propertyName: nameof(MaxNum),
                returnType: typeof(int),
                declaringType: typeof(PageIndicatorView),
-               defaultValue: 0,
-               propertyChanged: MaxNumPropertyChanged);
+               defaultValue: 0);
         public int MaxNum
         {
             get { return (int)GetValue(MaxNumProperty); }
             set { SetValue(MaxNumProperty, value); }
         }
 
+        public static readonly BindableProperty MinNumProperty = BindableProperty.CreateAttached(propertyName: nameof(MinNum),
+               returnType: typeof(int),
+               declaringType: typeof(PageIndicatorView),
+               defaultValue: 0);
+        public int MinNum
+        {
+            get { return (int)GetValue(MinNumProperty); }
+            set { SetValue(MinNumProperty, value); }
+        }
+
         public static readonly BindableProperty CompletedProperty = BindableProperty.Create(propertyName: nameof(Completed),
                returnType: typeof(bool),
                declaringType: typeof(PageIndicatorView),
-               defaultValue: false,
-               propertyChanged: UpdatePropertyChanged);
+               defaultValue: false);
         public bool Completed
         {
             get { return (bool)GetValue(CompletedProperty); }
             set { SetValue(CompletedProperty, value); }
         }
 
-
-        private static void MaxNumPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var Controls = bindable as PageIndicatorView;
-            //System.Diagnostics.Debug.WriteLine("MaxNumPropertyChanged with MinNum {0} MaxNum {1} Completed {2}", Controls.MinNum, Controls.MaxNum, Controls.Completed);
-            for (int i = 1; i <= Controls.MaxNum; i++)
-            {
-                Controls.Children.Add(new BoxView()
-                {
-                    BackgroundColor = Color.WhiteSmoke,
-                    HeightRequest = 16,
-                    WidthRequest = 16,
-                    CornerRadius = 8,
-                });
-            }
-            Image completeMark = new Image()
-            {
-                Source = "ic_vat_check.png",
-                IsVisible = false
-            };
-            Controls.Children.Add(completeMark);
-        }
-
-        private static void UpdatePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            var Controls = bindable as PageIndicatorView;
-            System.Diagnostics.Debug.WriteLine("UpdatePropertyChanged with MinNum {0} MaxNum {1} Completed {2}", Controls.MinNum, Controls.MaxNum, Controls.Completed);
-            var children = Controls?.Children;
-            //System.Diagnostics.Debug.WriteLine("Children Counts {0} and boxes {1} ", children?.Count(), children?.Where(item => item is BoxView).Count());
-            for (int index = 0; index < Controls.MinNum; index++)
-            {
-                if (children[index] is BoxView)
-                {
-                    (children[index] as BoxView).BackgroundColor = Color.Green;
-                }
-            }
-            children[Controls.MaxNum].IsVisible = Controls.Completed;
-        }
         #endregion
         public PageIndicatorView()
         {
             InitializeComponent();
+        }
+
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == MarkSizeProperty.PropertyName)
+            {
+                MinimumHeightRequest = MarkSize;
+            }
+            if (propertyName == MaxNumProperty.PropertyName)
+            {
+                for (int i = 1; i <= MaxNum; i++)
+                {
+                    Children.Add(new BoxView()
+                    {
+                        ClassId = i.ToString(),
+                        BackgroundColor = Color.FromHex("#EBEBEB"),
+                        HeightRequest = DotSize,
+                        WidthRequest = DotSize,
+                        CornerRadius = DotSize / 2,
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center
+                    });
+                    Children.Add(new BoxView()
+                    {
+                        BackgroundColor = Color.Transparent,
+                        Margin = new Thickness(-DotSize / 2, 0),
+                        HeightRequest = DotSize,
+                        WidthRequest = DotSize + 5,
+                        HorizontalOptions = LayoutOptions.Fill,
+                        VerticalOptions = LayoutOptions.Center
+                    });
+                }
+                Image completeMark = new Image()
+                {
+                    Source = "ic_vat_check.png",
+                    Margin = new Thickness(5, 0),
+                    IsVisible = false,
+                    HeightRequest = MarkSize,
+                    WidthRequest = MarkSize,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center
+                };
+                Children.Add(completeMark);
+            }
+            if (propertyName == MinNumProperty.PropertyName)
+            {
+                int counter = 0, childCounter = 0;
+                Children.Where(c => c is BoxView).ToList().ForEach(box =>
+                {
+                    if (!string.IsNullOrEmpty(box.ClassId))
+                    {
+                        if (counter < MinNum)
+                        {
+                            box.BackgroundColor = Color.FromHex("#006450");
+                            if (childCounter - 1 > 0)
+                                Children[childCounter - 1].BackgroundColor = Color.FromHex("#006450");
+                        }
+                        else
+                        {
+                            box.BackgroundColor = Color.FromHex("#EBEBEB");
+                            Children[childCounter - 1].BackgroundColor = Color.Transparent;
+                        }
+                        counter++;
+                    }
+
+                    childCounter++;
+                });
+            }
+            if (propertyName == CompletedProperty.PropertyName)
+            {
+                Children.LastOrDefault().IsVisible = Completed;
+            }
         }
     }
 }
