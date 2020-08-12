@@ -1929,6 +1929,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid verification code entered.
+        /// </summary>
+        public static string NDInvalidverificationcodeentered {
+            get {
+                return ResourceManager.GetString("NDInvalidverificationcodeentered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Make all your transactions fast and simple with MADA &amp; Apple Pay.
         /// </summary>
         public static string NDMakeTransactionsFast {
@@ -2447,6 +2456,15 @@ namespace EGAZT {
         public static string Pleasechangepassword {
             get {
                 return ResourceManager.GetString("Pleasechangepassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter confirmation code sent to your mobile number.
+        /// </summary>
+        public static string Pleaseenterconfirmationcodesenttoyourmobilenumber {
+            get {
+                return ResourceManager.GetString("Pleaseenterconfirmationcodesenttoyourmobilenumber", resourceCulture);
             }
         }
         
@@ -5707,7 +5725,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter a valid User ID.
+        ///   Looks up a localized string similar to The entered information does not exist in the system.
         /// </summary>
         public static string ZPleaseEnterAValidUserID {
             get {

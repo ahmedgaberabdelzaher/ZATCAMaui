@@ -4935,4 +4935,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsRequestSuccess" xml:space="preserve">
     <value>Your VAT Refund Request is successful</value>
   </data>
+  <data name="NDInvalidverificationcodeentered" xml:space="preserve">
+    <value>قمت بإدخال رمز التحقق بشكل خاطئ</value>
+  </data>
+  <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
+    <value>الرجاء إدخال رقم التحقق المرسل الى جوالك لاستعادة كلمة المرور</value>
+  </data>
 </root>
