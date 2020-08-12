@@ -124,7 +124,7 @@
                                 <DataTemplate >
                                     <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
                                         <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
-                                        <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
                                     </StackLayout>
                                     <!--<buttons:SfChip  BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ImageSource="{Binding ImageSource}" ShowCloseButton="False" ImageAlignment="Left" ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue" ShowIcon="True" VerticalTextAlignment="Center" VerticalOptions="Center"/>-->
 
@@ -235,8 +235,8 @@
                                                 </Grid.ColumnDefinitions>
                                                 <!--<Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
                                                 <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding Vtref}" Style="{StaticResource ValueLabelBlack}" />
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FormBundleNo}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
                                                     <custom:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>

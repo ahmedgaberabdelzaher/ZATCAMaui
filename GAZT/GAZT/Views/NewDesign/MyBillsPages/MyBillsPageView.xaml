@@ -111,7 +111,7 @@
                             <DataTemplate >
                                 <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
                                     <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
-                                    <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand"/>
+                                    <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
                                 </StackLayout>
                                 <!--<StackLayout Margin="0" Padding="0" Spacing="2">
                                     <buttons:SfChip   BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" Text="{Binding Text}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" TextColor="{StaticResource NeutralBlack}"  BackgroundColor="White"  ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True" CornerRadius="20" VerticalTextAlignment="Center" VerticalOptions="Center"/>
