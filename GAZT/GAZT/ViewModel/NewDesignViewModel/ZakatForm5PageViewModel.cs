@@ -547,6 +547,265 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #endregion
 
+        #region Zakat Estimation
+
+        public string _referenceNumber;
+        public string ReferenceNumber
+        {
+            get => _referenceNumber;
+
+            set
+            {
+                _referenceNumber = value;
+                RaisePropertyChanged(() => ReferenceNumber);
+            }
+        }
+
+        /// <summary>
+        ///  Cabs List
+        /// </summary>
+
+        private List<Result_> _cabsSummaryList;
+        public List<Result_> CabsSummary
+        {
+            get
+            {
+                return _cabsSummaryList;
+            }
+            set
+            {
+                _cabsSummaryList = value;
+                RaisePropertyChanged("CabsSummary");
+            }
+        }
+
+        public bool CabsSummaryIsVisible { get; private set; }
+
+
+        /// <summary>
+        ///  Professionals List
+        /// </summary>
+
+        private List<Result_12> _professionalsSummaryList;
+        public List<Result_12> ProfessionalsSummary
+        {
+            get
+            {
+                return _professionalsSummaryList;
+            }
+            set
+            {
+                _professionalsSummaryList = value;
+                RaisePropertyChanged("ProfessionalsSummary");
+            }
+        }
+
+        public bool ProfessionalsSummaryIsVisible { get; private set; }
+
+        /// <summary>
+        ///  Sell & Buy List
+        /// </summary>
+
+        private List<Result_13> _sell_BuySummaryList;
+        public List<Result_13> Sell_BuySummary
+        {
+            get
+            {
+                return _sell_BuySummaryList;
+            }
+            set
+            {
+                _sell_BuySummaryList = value;
+                RaisePropertyChanged("Sell_BuySummary");
+            }
+        }
+
+        public bool Sell_BuySummaryIsVisible { get; private set; }
+
+        /// <summary>
+        ///  Labour Occup List
+        /// </summary>
+
+        private List<Result_2> _labourOccupSummaryList;
+        public List<Result_2> LabourOccupSummary
+        {
+            get
+            {
+                return _labourOccupSummaryList;
+            }
+            set
+            {
+                _labourOccupSummaryList = value;
+                RaisePropertyChanged("LabourOccupSummary");
+            }
+        }
+
+        public bool LabourOccupSummaryIsVisble { get; private set; }
+
+        /// <summary>
+        ///  Industry List
+        /// </summary>
+
+        private List<Result_14> _industrySummaryList;
+        public List<Result_14> IndustrySummary
+        {
+            get
+            {
+                return _industrySummaryList;
+            }
+            set
+            {
+                _industrySummaryList = value;
+                RaisePropertyChanged("IndustrySummary");
+            }
+        }
+
+        public bool IndustrySummaryIsVisible { get; private set; }
+
+        /// <summary>
+        ///  Contracting CO. List
+        /// </summary>
+
+        private List<Result_11> _contractingListSummary;
+        public List<Result_11> ContractingSummary
+        {
+            get
+            {
+                return _contractingListSummary;
+            }
+            set
+            {
+                _contractingListSummary = value;
+                RaisePropertyChanged("ContractingSummary");
+            }
+        }
+
+        public bool ContractingSummaryIsVisible { get; private set; }
+
+        /// <summary>
+        ///  Invst & Real Estate List
+        /// </summary>
+
+        private List<Result_3> _invstRealEstSummaryList;
+        public List<Result_3> InvstRealEstSummary
+        {
+            get
+            {
+                return _invstRealEstSummaryList;
+            }
+            set
+            {
+                _invstRealEstSummaryList = value;
+                RaisePropertyChanged("InvstRealEstSummary");
+            }
+        }
+
+        public bool InvstRealEstSummaryIsVisible { get; private set; }
+
+        /// <summary>
+        ///  Hotels List
+        /// </summary>
+
+        private List<Result_7> _hotelsSummaryList;
+        public List<Result_7> HotelsSummary
+        {
+            get
+            {
+                return _hotelsSummaryList;
+            }
+            set
+            {
+                _hotelsSummaryList = value;
+                RaisePropertyChanged("HotelsSummary");
+            }
+        }
+
+        public bool HotelsSummaryIsVisible { get; private set; }
+
+        /// <summary>
+        ///  Edu. & Health List
+        /// </summary>
+
+        private List<Result_4> _edu_HealthSummaryList;
+        public List<Result_4> Edu_HealthSummary
+        {
+            get
+            {
+                return _edu_HealthSummaryList;
+            }
+            set
+            {
+                _edu_HealthSummaryList = value;
+                RaisePropertyChanged("Edu_HealthSummary");
+            }
+        }
+
+        public bool Edu_HealthSummaryIsVisible { get; private set; }
+
+        /// <summary>
+        ///  Poultry and Fish Farms Activities List
+        /// </summary>
+
+        private List<Result_5> _poultry_FishFarmSummaryList;
+        public List<Result_5> Poultry_FishFarmSummary
+        {
+            get
+            {
+                return _poultry_FishFarmSummaryList;
+            }
+            set
+            {
+                _poultry_FishFarmSummaryList = value;
+                RaisePropertyChanged("Poultry_FishFarmSummary");
+            }
+        }
+
+        public bool Poultry_FishFarmSummaryIsVisible { get; private set; }
+
+        /// <summary>
+        ///  Cars List
+        /// </summary>
+
+        private List<Result_8> _carsSummaryList;
+        public List<Result_8> CarsSummary
+        {
+            get
+            {
+                return _carsSummaryList;
+            }
+            set
+            {
+                _carsSummaryList = value;
+                RaisePropertyChanged("CarsSummary");
+            }
+        }
+
+        public bool CarsSummaryIsVisible { get; private set; }
+
+        /// <summary>
+        ///  Minerals List
+        /// </summary>
+
+        private List<Result_6> _mineralsSummaryList;
+        public List<Result_6> MineralsSummary
+        {
+            get
+            {
+                return _mineralsSummaryList;
+            }
+            set
+            {
+                _mineralsSummaryList = value;
+                RaisePropertyChanged("MineralsSummary");
+            }
+        }
+
+        public bool MineralsSummaryIsVisible { get; private set; }
+
+        #endregion
+
+
+
         #region Method
 
 
@@ -615,57 +874,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         Cabs = ZakatForm5DataResult.SCH_GP01.results;
                         }
 
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP02.results.Any())
                         {
                             NoOFEntityList.Add("Professionals");
                              Professionals = ZakatForm5DataResult.SCH_GP02.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP03.results.Any())
                         {
                             NoOFEntityList.Add("Sell & Buy");
                              Sell_Buy = ZakatForm5DataResult.SCH_GP03.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP04.results.Any())
                         {
                             NoOFEntityList.Add("Labour Occup.");
                             LabourOccup = ZakatForm5DataResult.SCH_GP04.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP05.results.Any())
                         {
                             NoOFEntityList.Add("Industry");
                             Industry = ZakatForm5DataResult.SCH_GP05.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP06.results.Any())
                         {
                             NoOFEntityList.Add("Contracting CO.");
                             Contracting = ZakatForm5DataResult.SCH_GP06.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP07.results.Any())
                         {
                             NoOFEntityList.Add("Invst & Real Estate");
                             InvstRealEst = ZakatForm5DataResult.SCH_GP07.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP08.results.Any())
                         {
                             NoOFEntityList.Add("Hotels");
                             Hotels = ZakatForm5DataResult.SCH_GP08.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP09.results.Any())
                         {
                             NoOFEntityList.Add("Edu. & Health");
                             Edu_Health = ZakatForm5DataResult.SCH_GP09.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP10.results.Any())
                         {
                             NoOFEntityList.Add("Poultry and Fish Farms Activities");
                             Poultry_FishFarm = ZakatForm5DataResult.SCH_GP10.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP11.results.Any())
                         {
                             NoOFEntityList.Add("Cars");
                             Cars = ZakatForm5DataResult.SCH_GP11.results;
                         }
-                        if (ZakatForm5DataResult.SCH_GP01.results.Count() != 0)
+                        if (ZakatForm5DataResult.SCH_GP12.results.Any())
                         {
                             NoOFEntityList.Add("Minerals");
                             Minerals = ZakatForm5DataResult.SCH_GP12.results;
@@ -703,72 +962,91 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
 
                             // information
-                            var ReferenceNumber = ZakatForm5SummaryDataResult.Fbnum.ToString();
+                           ReferenceNumber = ZakatForm5SummaryDataResult.Fbnum.ToString();
                             /// use same period property for which is used in Basic Information section.
 
                             if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
                             {
                                 //Cabs GP1
-
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP01Set.results;
+                                 CabsSummary = ZakatForm5SummaryDataResult.SchGP01Set.results;
+                                CabsSummaryIsVisible = true;
 
                             }
 
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            if (ZakatForm5SummaryDataResult.SchGP02Set.results.Any())
                             {
                                 //Professionals
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP02Set.results;
+                                ProfessionalsSummary = ZakatForm5SummaryDataResult.SchGP02Set.results;
+                                ProfessionalsSummaryIsVisible = true;
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            if (ZakatForm5SummaryDataResult.SchGP03Set.results.Any())
                             {
                                 //Sell & Buy
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP03Set.results;
+                                Sell_BuySummary = ZakatForm5SummaryDataResult.SchGP03Set.results;
+                                Sell_BuySummaryIsVisible = true;
+
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            if (ZakatForm5SummaryDataResult.SchGP04Set.results.Any())
                             {
                                 //Labour Occup.
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP04Set.results;
+                                LabourOccupSummary = ZakatForm5SummaryDataResult.SchGP04Set.results;
+                                LabourOccupSummaryIsVisble = true;
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            if (ZakatForm5SummaryDataResult.SchGP05Set.results.Any())
                             {
                                 //Industry
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP05Set.results;
+                                IndustrySummary = ZakatForm5SummaryDataResult.SchGP05Set.results;
+                                IndustrySummaryIsVisible = true;
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            if (ZakatForm5SummaryDataResult.SchGP06Set.results.Any())
                             {
                                 //Contracting CO.
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP06Set.results;
+                                ContractingSummary = ZakatForm5SummaryDataResult.SchGP06Set.results;
+                                ContractingSummaryIsVisible = true;
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            if (ZakatForm5SummaryDataResult.SchGP07Set.results.Any())
                             {
                                 //Invst & Real Estate
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP07Set.results;
+                                InvstRealEstSummary = ZakatForm5SummaryDataResult.SchGP07Set.results;
+                                InvstRealEstSummaryIsVisible = true;
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                          
+                            if (ZakatForm5SummaryDataResult.SchGP08Set.results.Any())
                             {
                                 //Hotels
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP08Set.results;
+                                HotelsSummary = ZakatForm5SummaryDataResult.SchGP08Set.results;
+                                HotelsSummaryIsVisible = true;
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                            if (ZakatForm5SummaryDataResult.SchGP09Set.results.Any())
                             {
                                 //Edu. & Health
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP09Set.results;
+                                Edu_HealthSummary = ZakatForm5SummaryDataResult.SchGP09Set.results;
+                                Edu_HealthSummaryIsVisible = true;
+
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                        
+                            if (ZakatForm5SummaryDataResult.SchGP10Set.results.Any())
                             {
                                 //Poultry and Fish Farms Activities
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP10Set.results;
+                                Poultry_FishFarmSummary = ZakatForm5SummaryDataResult.SchGP10Set.results;
+                                Poultry_FishFarmSummaryIsVisible = true;
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                          
+                            if (ZakatForm5SummaryDataResult.SchGP11Set.results.Any())
                             {
                                 //Cars
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP11Set.results;
+                                CarsSummary = ZakatForm5SummaryDataResult.SchGP11Set.results;
+                                CarsSummaryIsVisible = true;
                             }
-                            if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
+                           
+                            
+                            if (ZakatForm5SummaryDataResult.SchGP12Set.results.Any())
                             {
                                 //Minerls
-                                var CabSummary = ZakatForm5SummaryDataResult.SchGP12Set.results;
+                                MineralsSummary = ZakatForm5SummaryDataResult.SchGP12Set.results;
+                                MineralsSummaryIsVisible = true;
                             }
+                            
 
 
                         }

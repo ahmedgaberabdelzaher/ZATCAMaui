@@ -40,6 +40,11 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             PopupNavigation.Instance.PopAsync();
         }
 
+        private async void OnAttachmentClicked(object sender, EventArgs e)
+        {
+          await  viewModel.AddAttachment();
+        }
+        
         private async void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
         {
             Image deleteImage = sender as Image;
