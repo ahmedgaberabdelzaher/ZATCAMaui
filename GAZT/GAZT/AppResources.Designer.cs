@@ -440,6 +440,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contract Object No..
+        /// </summary>
+        public static string ContractObjectNo {
+            get {
+                return ResourceManager.GetString("ContractObjectNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contracts to be approved.
         /// </summary>
         public static string ContractsToBeApproved {
@@ -921,7 +930,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Favorite.
+        ///   Looks up a localized string similar to Favourite.
         /// </summary>
         public static string Favorite {
             get {
@@ -1533,6 +1542,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Form Bundle No..
+        /// </summary>
+        public static string FormBundleNo {
+            get {
+                return ResourceManager.GetString("FormBundleNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello.
         /// </summary>
         public static string Hello {
@@ -1871,6 +1889,15 @@ namespace EGAZT {
         public static string NDEnglishcapitalandsmallletters {
             get {
                 return ResourceManager.GetString("NDEnglishcapitalandsmallletters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid User ID.
+        /// </summary>
+        public static string NDEntervaliduserid {
+            get {
+                return ResourceManager.GetString("NDEntervaliduserid", resourceCulture);
             }
         }
         
