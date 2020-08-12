@@ -1808,7 +1808,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             IsAPICalledSuccessfully = false;
                             Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
+                                    await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
                                 });
                         }
                     }
@@ -2043,7 +2043,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         IDNumber = string.Empty;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
+                            await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
                         });
 
                     }

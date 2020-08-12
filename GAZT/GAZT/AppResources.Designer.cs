@@ -921,7 +921,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Favorite.
+        ///   Looks up a localized string similar to Favourite.
         /// </summary>
         public static string Favorite {
             get {
@@ -1871,6 +1871,15 @@ namespace EGAZT {
         public static string NDEnglishcapitalandsmallletters {
             get {
                 return ResourceManager.GetString("NDEnglishcapitalandsmallletters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid User ID.
+        /// </summary>
+        public static string NDEntervaliduserid {
+            get {
+                return ResourceManager.GetString("NDEntervaliduserid", resourceCulture);
             }
         }
         
