@@ -712,7 +712,7 @@
     <value>نوع الضريبة</value>
   </data>
   <data name="ZPleaseEnterAValidUserID" xml:space="preserve">
-    <value>المعلومات المدخلة غير متوفرة في النظام</value>
+    <value>الرجاء إدخال معرف مستخدم صالح</value>
   </data>
   <data name="ZFicalYear" xml:space="preserve">
     <value>Fical Year</value>
@@ -4896,7 +4896,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
- <data name="VATRefund" xml:space="preserve">
+  <data name="VATRefund" xml:space="preserve">
     <value>VAT Refund</value>
   </data>
   <data name="VATRefundDetails" xml:space="preserve">
@@ -4914,25 +4914,40 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsNetCreditBalance" xml:space="preserve">
     <value>Net Credit Balance</value>
   </data>
-   <data name="VATRefundsRequestDate" xml:space="preserve">
+  <data name="VATRefundsRequestDate" xml:space="preserve">
     <value>Request Date</value>
   </data>
-    <data name="VATRefundsStatusRefunded" xml:space="preserve">
+  <data name="VATRefundsStatusRefunded" xml:space="preserve">
     <value>Refunded</value>
   </data>
   <data name="VATRefundsStatusInProcess" xml:space="preserve">
     <value>In Process</value>
   </data>
-   <data name="VATRefundAmounts" xml:space="preserve">
+  <data name="VATRefundAmounts" xml:space="preserve">
     <value>Refund Amounts</value>
   </data>
-   <data name="VATRefundsAlRajhiBank" xml:space="preserve">
+  <data name="VATRefundsAlRajhiBank" xml:space="preserve">
     <value>Al Rajhi Bank</value>
   </data>
-   <data name="VATRefundsLastStatusChange" xml:space="preserve">
+  <data name="VATRefundsLastStatusChange" xml:space="preserve">
     <value>Last Status Change</value>
   </data>
-   <data name="VATRefundsRequestSuccess" xml:space="preserve">
+  <data name="VATRefundsRequestSuccess" xml:space="preserve">
     <value>Your VAT Refund Request is successful</value>
+  </data>
+  <data name="ContractObjectNo" xml:space="preserve">
+    <value>Contract Object No.</value>
+  </data>
+  <data name="FormBundleNo" xml:space="preserve">
+    <value>Form Bundle No.</value>
+  </data>
+  <data name="NDEntervaliduserid" xml:space="preserve">
+    <value>الرجاء إدخال معرف مستخدم صالح</value>
+  </data>
+  <data name="NDInvalidverificationcodeentered" xml:space="preserve">
+    <value>قمت بإدخال رمز التحقق بشكل خاطئ</value>
+  </data>
+  <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
+    <value>الرجاء إدخال رقم التحقق المرسل الى جوالك لاستعادة كلمة المرور</value>
   </data>
 </root>

@@ -102,7 +102,7 @@
                             <DataTemplate >
                                 <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
                                     <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
-                                   <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="Center"/>
+                                    <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="Center" Style="{StaticResource CaptionLabelBlack}"/>
 
 
 

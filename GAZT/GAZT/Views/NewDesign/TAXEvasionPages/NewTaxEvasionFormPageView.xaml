@@ -34,13 +34,10 @@
             </Style>
 
             <Style TargetType="Frame" x:Key="circleFrame">
-                <Setter Property="BackgroundColor" Value="AliceBlue"/>
+                <Setter Property="BackgroundColor" Value="LightGreen"/>
                 <Setter Property="Padding" Value="10"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="CornerRadius" Value="50"/>
                 <Setter Property="HasShadow" Value="False"/>
-                <Setter Property="HeightRequest" Value="48"/>
-                <Setter Property="WidthRequest" Value="48"/>
             </Style>
             <converters:NewTaxEvasionTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
         </ResourceDictionary>
@@ -242,7 +239,7 @@
                                 </custom:BorderlessEntry>
 
                                 <inputLayout:SfTextInputLayout.TrailingView >
-                                    <Image Source="close.png"/>
+                                    <Image Source="closeGrey.png"/>
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
 
@@ -289,7 +286,7 @@
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="16">
                                         <Frame Style="{StaticResource circleFrame}">
-                                            <Image Source="vat_user">
+                                            <Image Source="ic_company.png">
 
                                             </Image>
                                         </Frame>
@@ -336,7 +333,7 @@
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="16">
                                         <Frame Style="{StaticResource circleFrame}">
-                                            <Image Source="vat_user">
+                                            <Image Source="zakat_details">
 
                                             </Image>
                                         </Frame>

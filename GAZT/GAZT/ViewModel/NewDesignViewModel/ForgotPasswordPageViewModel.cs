@@ -1430,7 +1430,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+                            _dialogService.ShowMessageBox(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber, AppResources.Information);
 
                         }
                     }
@@ -1808,7 +1808,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             IsAPICalledSuccessfully = false;
                             Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
+                                    await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
                                 });
                         }
                     }
@@ -1934,7 +1934,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     //await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.ZError);
-                                    await _dialogService.ShowMessageBox(AppResources.ZZZWrongverificationcode, AppResources.ZError);
+                                    await _dialogService.ShowMessageBox(AppResources.NDInvalidverificationcodeentered, AppResources.ZError);
                                 });
                             }
                             else if (currentAttempts == 2)
@@ -2043,7 +2043,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         IDNumber = string.Empty;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
+                            await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
                         });
 
                     }

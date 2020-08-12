@@ -404,7 +404,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void PrivacyPolicy_Tapped(object sender, EventArgs e)
         {
             //        App.DisplayProgressView();
-            viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+            // viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
+            viewModel._navigationService.NavigateTo(App.GAZTForm5PageView);
         }
         private void ChangeLanguage_Tapped(object sender, EventArgs e)
         {

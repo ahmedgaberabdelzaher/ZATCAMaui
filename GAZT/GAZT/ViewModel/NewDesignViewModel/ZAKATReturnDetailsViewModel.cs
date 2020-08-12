@@ -1177,13 +1177,15 @@ private string GetConfirmOperationId()
         }
 
 
-        private void ClearData()
+        public void ClearData()
         {
             UnSetEditImage();
             isEditVisible = false;
             isLabelVisible = false;
             IsEditTextVisible = false;
             SetSubmitButtonVisibility = false;
+            ConfirmAndGenerateSADADBillLabelVisibility = false;
+            SetConfirmButtonVisibility = false;
         }
 
         public void SetChangeFromEstimateTAccountringBasisButtonVisibility(string ButtonStatus)
