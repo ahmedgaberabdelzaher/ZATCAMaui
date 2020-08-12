@@ -440,6 +440,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contract Object No..
+        /// </summary>
+        public static string ContractObjectNo {
+            get {
+                return ResourceManager.GetString("ContractObjectNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contracts to be approved.
         /// </summary>
         public static string ContractsToBeApproved {
@@ -1529,6 +1538,15 @@ namespace EGAZT {
         public static string FORM5ZakatRulesConditions {
             get {
                 return ResourceManager.GetString("FORM5ZakatRulesConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Form Bundle No..
+        /// </summary>
+        public static string FormBundleNo {
+            get {
+                return ResourceManager.GetString("FormBundleNo", resourceCulture);
             }
         }
         

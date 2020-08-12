@@ -4935,6 +4935,12 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsRequestSuccess" xml:space="preserve">
     <value>Your VAT Refund Request is successful</value>
   </data>
+  <data name="ContractObjectNo" xml:space="preserve">
+    <value>Contract Object No.</value>
+  </data>
+  <data name="FormBundleNo" xml:space="preserve">
+    <value>Form Bundle No.</value>
+  </data>
   <data name="NDEntervaliduserid" xml:space="preserve">
     <value>الرجاء إدخال معرف مستخدم صالح</value>
   </data>
