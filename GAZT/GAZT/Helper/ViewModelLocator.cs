@@ -288,7 +288,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATRefundDetailsPageViewModel>();
             SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
             SimpleIoc.Default.Register<VATRefundsSuccessPageView>();
+            SimpleIoc.Default.Register<AttachmentPopUpViewModel>();
+
             
+
             #endregion
         }
 
@@ -1744,7 +1747,22 @@ namespace EGAZT
             }
         }
 
+        public AttachmentPopUpViewModel AttachmentPopUp
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AttachmentPopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
+        
 
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
@@ -1765,6 +1783,8 @@ namespace EGAZT
             navigationService.Configure(App.NewZakatObjectionPageView, typeof(NewZakatObjectionPageView));
             navigationService.Configure(App.VATReturnSuccessfullPageView, typeof(VATReturnSuccessfullPageView));
             navigationService.Configure(App.NewTaxEvasionFormPageView, typeof(Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormPageView));
+            navigationService.Configure(App.AttachmentPopUp, typeof(AttachmentPopUp));
+
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
 
@@ -1878,6 +1898,7 @@ namespace EGAZT
             navigationService.Configure(App.VATRefundsNewRequestPageView, typeof(VATRefundsNewRequestPageView));
             navigationService.Configure(App.VATRefundsSuccessPageView, typeof(VATRefundsSuccessPageView));
 
+            
             #endregion
 
             return navigationService;
