@@ -40,7 +40,7 @@
       "minimum-system-version": "12.0",
       "orientation": "landscape",
       "extent": "full-screen",
-      "filename": "2688-x-1242.png",
+      "filename": "splash-screen-new-landscape_2688x1242.png",
       "size": "896x414",
       "subtype": "1792",
       "scale": "3x",
@@ -50,7 +50,6 @@
       "minimum-system-version": "12.0",
       "orientation": "landscape",
       "extent": "full-screen",
-      "filename": "1792-x-828.png",
       "size": "597.3x276",
       "subtype": "2688",
       "scale": "3x",
@@ -60,7 +59,7 @@
       "minimum-system-version": "11.0",
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "1125-x-2436.png",
+      "filename": "splash-screen-new-1125x2436.png",
       "size": "375x812",
       "subtype": "2436h",
       "scale": "3x",
@@ -70,7 +69,6 @@
       "minimum-system-version": "11.0",
       "orientation": "landscape",
       "extent": "full-screen",
-      "filename": "2436-x-1125.png",
       "size": "812x375",
       "subtype": "2436h",
       "scale": "3x",
@@ -80,7 +78,7 @@
       "minimum-system-version": "8.0",
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "1242-x-2208.png",
+      "filename": "splash-screen-new-1242x2208.png",
       "size": "414x736",
       "subtype": "736h",
       "scale": "3x",
@@ -90,7 +88,6 @@
       "minimum-system-version": "8.0",
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "750-x-1334.png",
       "size": "375x667",
       "subtype": "667h",
       "scale": "2x",
@@ -100,7 +97,7 @@
       "minimum-system-version": "8.0",
       "orientation": "landscape",
       "extent": "full-screen",
-      "filename": "2208-x-1242.png",
+      "filename": "LaunchImage-1242@3x~iphone6s-landscape_2208x1242.png",
       "size": "736x414",
       "subtype": "736h",
       "scale": "3x",
@@ -110,7 +107,7 @@
       "minimum-system-version": "7.0",
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "2048X2732.png",
+      "filename": "splash-screen-new-2048x2732.png",
       "size": "1024x1366",
       "scale": "2x",
       "idiom": "ipad"
@@ -119,7 +116,6 @@
       "minimum-system-version": "7.0",
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "640-x-960.png",
       "size": "320x480",
       "scale": "2x",
       "idiom": "iphone"
@@ -128,7 +124,6 @@
       "minimum-system-version": "7.0",
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "640x1136.png",
       "size": "320x568",
       "subtype": "retina4",
       "scale": "2x",
@@ -138,7 +133,7 @@
       "minimum-system-version": "7.0",
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "768-x1024.png",
+      "filename": "splash-screen-new-768x1024.png",
       "size": "768x1024",
       "scale": "1x",
       "idiom": "ipad"
@@ -147,7 +142,7 @@
       "minimum-system-version": "7.0",
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "1536-x2048.png",
+      "filename": "splash-screen-new-1536x2048.png",
       "size": "768x1024",
       "scale": "2x",
       "idiom": "ipad"
@@ -156,7 +151,6 @@
       "minimum-system-version": "7.0",
       "orientation": "landscape",
       "extent": "full-screen",
-      "filename": "1024x768.png",
       "size": "1024x768",
       "scale": "1x",
       "idiom": "ipad"
@@ -165,7 +159,6 @@
       "minimum-system-version": "7.0",
       "orientation": "landscape",
       "extent": "full-screen",
-      "filename": "2048-x1536.png",
       "size": "1024x768",
       "scale": "2x",
       "idiom": "ipad"
@@ -173,7 +166,6 @@
     {
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "320X480.png",
       "size": "320x480",
       "scale": "1x",
       "idiom": "iphone"
@@ -181,7 +173,6 @@
     {
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "640-x-960-1.png",
       "size": "320x480",
       "scale": "2x",
       "idiom": "iphone"
@@ -189,7 +180,6 @@
     {
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "640x1136-1.png",
       "size": "320x568",
       "subtype": "retina4",
       "scale": "2x",
@@ -198,7 +188,6 @@
     {
       "orientation": "portrait",
       "extent": "to-status-bar",
-      "filename": "768x1004.png",
       "size": "768x1004",
       "scale": "1x",
       "idiom": "ipad"
@@ -206,7 +195,7 @@
     {
       "orientation": "portrait",
       "extent": "to-status-bar",
-      "filename": "1536X2008.png",
+      "filename": "splash-screen-new-1.png",
       "size": "768x1004",
       "scale": "2x",
       "idiom": "ipad"
@@ -214,7 +203,7 @@
     {
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "768-x1024-1.png",
+      "filename": "splash-screen-new-2.png",
       "size": "768x1024",
       "scale": "1x",
       "idiom": "ipad"
@@ -222,7 +211,6 @@
     {
       "orientation": "portrait",
       "extent": "full-screen",
-      "filename": "1536-x2048-1.png",
       "size": "768x1024",
       "scale": "2x",
       "idiom": "ipad"
@@ -230,7 +218,7 @@
     {
       "orientation": "landscape",
       "extent": "to-status-bar",
-      "filename": "1024X748.png",
+      "filename": "splash-screen-new-Landscape_-1.png",
       "size": "1024x748",
       "scale": "1x",
       "idiom": "ipad"
@@ -238,7 +226,7 @@
     {
       "orientation": "landscape",
       "extent": "to-status-bar",
-      "filename": "2048X1496.png",
+      "filename": "LaunchImage-Landscape@2x~ipad_2048x1496.png",
       "size": "1024x748",
       "scale": "2x",
       "idiom": "ipad"
@@ -246,7 +234,6 @@
     {
       "orientation": "landscape",
       "extent": "full-screen",
-      "filename": "1024x768-1.png",
       "size": "1024x768",
       "scale": "1x",
       "idiom": "ipad"
@@ -254,7 +241,7 @@
     {
       "orientation": "landscape",
       "extent": "full-screen",
-      "filename": "2048-x1536-1.png",
+      "filename": "splash-screen-new-Landscape_2048x1536.png",
       "size": "1024x768",
       "scale": "2x",
       "idiom": "ipad"
