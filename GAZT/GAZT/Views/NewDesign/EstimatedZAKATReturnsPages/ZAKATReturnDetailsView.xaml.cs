@@ -78,7 +78,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private void OnInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp());
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
     }
 }
