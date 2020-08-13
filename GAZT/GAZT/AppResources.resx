@@ -4995,10 +4995,16 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDAllcertificates" xml:space="preserve">
     <value>All certificates</value>
   </data>
+  <data name="NDCount" xml:space="preserve">
+    <value>Count</value>
+  </data>
+  <data name="NDInbox" xml:space="preserve">
+    <value>Inbox</value>
+  </data>
   <data name="NDReferenceNumber" xml:space="preserve">
     <value>Reference Number</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
-    <value>Type your reference number</value>
+    <value>Type your Reference Number</value>
   </data>
 </root>
