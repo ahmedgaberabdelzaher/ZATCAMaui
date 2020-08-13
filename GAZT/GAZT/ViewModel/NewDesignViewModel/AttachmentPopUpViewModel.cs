@@ -236,7 +236,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                     {
                                                         AttachmentName = string.Empty;
                                                         await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                                                        //IsLoading = false;
+                                                        IsLoading = false;
                                                     });
                                                 }
                                             }
@@ -246,7 +246,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                 {
                                                     AttachmentName = string.Empty;
                                                     await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
-                                                    //IsLoading = false;
+                                                    IsLoading = false;
                                                 });
                                             }
                                         }
@@ -256,7 +256,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             {
                                                 AttachmentName = string.Empty;
                                                 await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
-                                                //IsLoading = false;
+                                                IsLoading = false;
                                             });
                                         }
                                     }
@@ -266,7 +266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         {
                                             AttachmentName = string.Empty;
                                             await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                            //IsLoading = false;
+                                            IsLoading = false;
                                         });
                                     }
                                 }
@@ -275,7 +275,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
                                         await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
-                                        //IsLoading = false;
+                                        IsLoading = false;
                                         AttachmentName = string.Empty;
                                     });
                                 }
@@ -283,7 +283,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             else
                             {
                                 AttachmentName = string.Empty;
-                                //IsLoading = false;
+                                IsLoading = false;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
@@ -299,13 +299,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 AttachmentName = string.Empty;
                                 await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                //IsLoading = false;
+                                IsLoading = false;
                             });
                         }
                     }
                     catch (InternetException ex)
                     {
-                        //IsLoading = false;
+                        IsLoading = false;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -314,7 +314,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
                 await Task.Run(() =>
                 {
-                    //IsLoading = false;
+                    IsLoading = false;
                 });
             }
             catch (Exception ex)

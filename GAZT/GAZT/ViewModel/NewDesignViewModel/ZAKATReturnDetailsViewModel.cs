@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,7 +26,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnEditClicked { get; set; }
         public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
-
+        List<EstimateZakatAttachment> EstimateZakatAttachmentList = new List<EstimateZakatAttachment>();
         public string Fbguid { get; set; }
         public bool IsCurrentZAKATTaxLess = false;
         public const string SubmitPostOperation = "05";
@@ -405,6 +407,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
             if (IsValueChange)
             {
+                    SetUpdatedDataToZAKATEstimated();
+                    AddAttachmetToPostData();
+
                 SubmitReturn();
                    
                 }
@@ -595,8 +600,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
       
         private void AssignCalculatedValueAfterSubmission()
         {
-            //zakatReturnDetailsD.d.Zbamt = _zakatReturnDetails.d.Zbamt;
-            //zakatReturnDetailsD.d.Zkamt = _zakatReturnDetails.d.Zkamt;
+            ZakatReturnDetails.d.Zbamt = _zakatReturnDetails.d.Zbamt;
+            ZakatReturnDetails.d.Zkamt = _zakatReturnDetails.d.Zkamt;
         }
 
 
@@ -1246,6 +1251,29 @@ private string GetConfirmOperationId()
 
 
         }
+
+        private void SetAttachmenToZAKATEstimated()
+        {
+
+        }
+
+        private void AddAttachmetToPostData()
+        {
+            for (int i = 0; i < AttachmentPopUpViewModel.SalesDetailList.Count; i++)
+            {
+                for(int j = 0; j < AttachmentPopUpViewModel.SalesDetailList[i].estimateZakatAttachment.Count;j++)
+                {
+                    EstimateZakatAttachmentList.Add(AttachmentPopUpViewModel.SalesDetailList[i].estimateZakatAttachment[j]); 
+                }
+            }
+
+            AttachSet attachSet = new AttachSet();
+            attachSet.results = EstimateZakatAttachmentList;
+            ZakatReturnDetails.d.AttachSet = attachSet;
+
+        }
+
+
         #endregion
 
     }
