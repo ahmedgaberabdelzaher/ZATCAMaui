@@ -188,9 +188,12 @@
                                                                 <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                                                 <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="submitted">
                                                                     <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Submitted}" />
+                                                                    <Setter Property="TextColor" Value="#006450" />
                                                                 </DataTrigger>
                                                                 <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="unsubmitted">
                                                                     <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnSubmitted}" />
+                                                                    <Setter Property="TextColor" Value="
+#999999" />
                                                                 </DataTrigger>
                                                                 <MultiTrigger TargetType="Label">
                                                                     <MultiTrigger.Conditions>
@@ -198,6 +201,7 @@
                                                                         <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
                                                                     </MultiTrigger.Conditions>
                                                                     <Setter Property="Text"  Value="{x:Static ResourceManager:AppResources.OverDue}" />
+                                                                    <Setter Property="TextColor"  Value="#aa0c19" />
                                                                     <!--multiple Setter elements are allowed-->
                                                                 </MultiTrigger>
 
@@ -209,14 +213,14 @@
                                                                 <Setter Property="BackgroundColor" Value="#E5EFED" />
                                                             </DataTrigger>
                                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding StatusMessage}" Value="unsubmitted">
-                                                                <Setter Property="BackgroundColor" Value="#F6E6E8" />
+                                                                <Setter Property="BackgroundColor" Value="#F5F5F5"/> 
                                                             </DataTrigger>
                                                             <MultiTrigger TargetType="yummy:PancakeView">
                                                                 <MultiTrigger.Conditions>
                                                                     <BindingCondition Binding="{Binding StatusMessage}" Value="overdue"/>
                                                                     <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
                                                                 </MultiTrigger.Conditions>
-                                                                <Setter Property="BackgroundColor"  Value="#F5F5F5" />
+                                                                <Setter Property="BackgroundColor"  Value="#F6E6E8" />
                                                                 <!-- multiple Setter elements are allowed -->
                                                             </MultiTrigger>
                                                         </yummy:PancakeView.Triggers>

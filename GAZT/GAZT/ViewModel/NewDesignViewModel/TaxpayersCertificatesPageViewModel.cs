@@ -349,7 +349,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 TaxTypeForFilter = new List<ReturnTypes>
                 {
-                        new ReturnTypes {Id = "00",TaxType = AppResources.All},
+                        new ReturnTypes {Id = "00",TaxType = AppResources.NDAllcertificates},
                         new ReturnTypes {Id = "01",TaxType = AppResources.ZakatCertificates},
                         new ReturnTypes {Id = "02",TaxType = AppResources.VATCertificates},
                         new ReturnTypes {Id = "03",TaxType = AppResources.ExciseCertificates},

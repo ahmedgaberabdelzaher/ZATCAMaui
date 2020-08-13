@@ -52,17 +52,19 @@ namespace GAZT.Models
                         if (_StatusTxt == "Submitted")
                         {
                             StatusMessage = "submitted";
+            
                         }
                         if (_StatusTxt == "Non Submitted")
                         {
                                 StatusMessage = "unsubmitted";
-                           
+                       
                             if (Due != null)
                             { 
                             if (Due.Equals('X'))
                             {
                                 StatusMessage = "overdue";
-                            }
+                               
+                                }
 
                             }
                         }
@@ -75,6 +77,7 @@ namespace GAZT.Models
                 }
             }
         }
+   
        public string StatusMessage
         {
             get;set;

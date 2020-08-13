@@ -4967,4 +4967,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
     <value>الرجاء إدخال رقم التحقق المرسل الى جوالك لاستعادة كلمة المرور</value>
   </data>
+  <data name="NDAllcertificates" xml:space="preserve">
+    <value>جميع الشهادات</value>
+    <comment>Certificate</comment>
+  </data>
 </root>
