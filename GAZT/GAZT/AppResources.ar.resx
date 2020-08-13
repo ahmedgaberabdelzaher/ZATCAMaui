@@ -4971,4 +4971,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>جميع الشهادات</value>
     <comment>Certificate</comment>
   </data>
+  <data name="NDReferenceNumber" xml:space="preserve">
+    <value>الرقم التسلسلي</value>
+  </data>
+  <data name="NDTypeYourReferenceNumber" xml:space="preserve">
+    <value>ادخل الرقم التسلسلي</value>
+  </data>
 </root>

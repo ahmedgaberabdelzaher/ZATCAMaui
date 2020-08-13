@@ -2073,6 +2073,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reference Number.
+        /// </summary>
+        public static string NDReferenceNumber {
+            get {
+                return ResourceManager.GetString("NDReferenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refunds.
         /// </summary>
         public static string NDRefunds {
@@ -2195,6 +2204,15 @@ namespace EGAZT {
         public static string NDTypeyourIDNumber {
             get {
                 return ResourceManager.GetString("NDTypeyourIDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type your reference number.
+        /// </summary>
+        public static string NDTypeYourReferenceNumber {
+            get {
+                return ResourceManager.GetString("NDTypeYourReferenceNumber", resourceCulture);
             }
         }
         

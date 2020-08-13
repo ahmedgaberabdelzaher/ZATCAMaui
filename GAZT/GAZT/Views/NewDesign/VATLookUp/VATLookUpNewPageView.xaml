@@ -212,7 +212,7 @@
                                         </syncfusion:SfPicker>
 
                              <StackLayout Grid.Row="2">
-                                    <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}"
+                                <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}"
                                                             Padding="0,0,0,0"
                                                             Style="{StaticResource CaptionLabelGrey}"/>
                                     <inputLayout:SfTextInputLayout x:Name="frmLookupNumner"
@@ -227,7 +227,7 @@
                                                                     MaxLength="{Binding MaxDigids}"
                                                                     IsReadOnly="{Binding IsNameVisible}"
                                                                      
-                                                                    Placeholder="{x:Static ResourceManager:AppResources.NDTypeyourIDNumber}"
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.NDTypeYourReferenceNumber}"
                                                                     TextColor="#bbbbbb" >
                                              <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
