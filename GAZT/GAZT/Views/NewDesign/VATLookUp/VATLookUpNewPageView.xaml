@@ -166,7 +166,7 @@
                                                         ErrorColor="#B00020"
                                                         HasError="False">
                                             <control:BorderlessEntry  Text="{Binding TxtSearchParameter}"
-                                                                      Placeholder="{x:Static ResourceManager:AppResources.TINS}"
+                                                                     Style="{StaticResource DefaultEntry}"   
                                                                       TextColor="#bbbbbb" >
                                             </control:BorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
@@ -212,7 +212,7 @@
                                         </syncfusion:SfPicker>
 
                              <StackLayout Grid.Row="2">
-                                    <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}"
+                                <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}"
                                                             Padding="0,0,0,0"
                                                             Style="{StaticResource CaptionLabelGrey}"/>
                                     <inputLayout:SfTextInputLayout x:Name="frmLookupNumner"
@@ -226,8 +226,8 @@
                                         <control:BorderlessEntry Text="{Binding LookupNumber}"
                                                                     MaxLength="{Binding MaxDigids}"
                                                                     IsReadOnly="{Binding IsNameVisible}"
-                                                                     
-                                                                    Placeholder="{x:Static ResourceManager:AppResources.NDTypeyourIDNumber}"
+                                                                     Style="{StaticResource DefaultEntry}"  
+                                                                    Placeholder="{x:Static ResourceManager:AppResources.NDTypeYourReferenceNumber}"
                                                                     TextColor="#bbbbbb" >
                                              <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>

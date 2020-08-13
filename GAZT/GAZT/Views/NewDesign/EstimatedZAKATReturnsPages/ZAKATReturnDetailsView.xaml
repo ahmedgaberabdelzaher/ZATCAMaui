@@ -233,9 +233,9 @@
                                             <custom:CustomLabel Text="{Binding TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                         </StackLayout>
 
-                                        <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TotalVATSalesEditImageSource}"  HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
+                                        <Image Grid.Row="3" Grid.Column="1"  Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TotalVATSalesEditImageSource}"  HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                             <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnEditButtonClicked"/>
+                        <TapGestureRecognizer Tapped="OnTotalVATSaleEditImageClicked"/>
                     </Image.GestureRecognizers>
                                             </Image>
                                     </Grid>
@@ -294,7 +294,7 @@
 
                                             <Image Grid.Row="3" Grid.Column="1" Source= "{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.AverageNumberOfLabourEditImageSource}" HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                             <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnEditButtonClicked"/>
+                        <TapGestureRecognizer Tapped="OnAverageNumberLabourEditImageClicked"/>
                     </Image.GestureRecognizers>
                                             </Image>
                                         </Grid>
@@ -351,7 +351,7 @@
                                             </StackLayout>
                                              <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImportValueEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                             <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnEditButtonClicked"/>
+                        <TapGestureRecognizer Tapped="OnImportValueEditImageClicked"/>
                     </Image.GestureRecognizers>
                                             </Image>
                                         </Grid>
@@ -409,7 +409,7 @@
                                             </StackLayout>
                                              <Image Grid.Row="3" Grid.Column="1"  Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImportFromPointOfSalesEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                             <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnEditButtonClicked"/>
+                        <TapGestureRecognizer Tapped="OnImportFromPointOfSalesEditImageClicked"/>
                     </Image.GestureRecognizers>
                                             </Image>
                                         </Grid>
@@ -465,7 +465,7 @@
                                             </StackLayout>
                                             <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ContactFromETIMADSystemEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                             <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnEditButtonClicked"/>
+                        <TapGestureRecognizer Tapped="OnContactFromETIMADSystemEditImageClicked"/>
                     </Image.GestureRecognizers>
                                          </Image>       
                                         </Grid>
@@ -520,7 +520,7 @@
                                             </StackLayout>
                                             <Image Grid.Row="3" Grid.Column="1" Source= "{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ExportValueEditImageSource}"  HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                             <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnEditButtonClicked"/>
+                        <TapGestureRecognizer Tapped="OnExportValueEditImageClicked"/>
                     </Image.GestureRecognizers>
                                          </Image>       
                                         </Grid>
@@ -574,7 +574,7 @@
                                             </StackLayout>
                                              <Image Grid.Row="3" Grid.Column="1" Source= "{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.PurchaseValueEditImageSource}" HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                             <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnEditButtonClicked"/>
+                        <TapGestureRecognizer Tapped="OnPurchaseValueEditImageClicked"/>
                     </Image.GestureRecognizers>
                                          </Image>    
                                         </Grid>
@@ -627,7 +627,7 @@
                                             </StackLayout>
                                              <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.CapitalAmountEditImageSource}" HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                             <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnEditButtonClicked"/>
+                        <TapGestureRecognizer Tapped="OnCapitalAmountEditImageClicked"/>
                     </Image.GestureRecognizers>
                                          </Image>    
                                         </Grid>

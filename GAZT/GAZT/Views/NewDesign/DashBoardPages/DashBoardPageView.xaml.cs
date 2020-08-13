@@ -61,7 +61,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             }
         }
-
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+             
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         #region Method
 
         protected override void OnAppearing()
@@ -97,6 +108,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 viewModel.IsVatRegistrationTileVisible = true;
             }
+            ChangeArrowDirection();
         }
 
         protected override void OnDisappearing()
@@ -592,5 +604,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
         }
+
+        private async void VATRefundRequest_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
+
+            });
+        }
+        protected override bool OnBackButtonPressed() => true;
     }
 }

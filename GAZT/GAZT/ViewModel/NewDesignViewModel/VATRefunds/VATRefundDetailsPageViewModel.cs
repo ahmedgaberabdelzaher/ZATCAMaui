@@ -164,6 +164,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        public string _status { get; set; }
+        public string Status
+        {
+            get
+            {
+                return _status;
+            }
+
+            set
+            {
+
+                _status = value;
+                RaisePropertyChanged("Status");
+            }
+        }
+
         public VATRefundDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -206,6 +222,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VATRefundsModel = vATRefundsModel;
             VATReturns = new ObservableCollection<VATRefundsReturnsModel>();
             VATReturns = vATRefundsModel.VATReturns;
+            Status = VATRefundsModel.Status;
         }
     }
 }
