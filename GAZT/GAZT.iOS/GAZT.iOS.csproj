@@ -1116,7 +1116,6 @@
   <ItemGroup>
     <BundleResource Include="Resources\committments_onboarding%403x.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <BundleResource Include="Resources\Username_selected%402x.png" />
   </ItemGroup>
@@ -1710,5 +1709,50 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\arrowLeft%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_selected_tile%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_selected_tile%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_selected_tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_unselected_tile%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_unselected_tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_unselected_tile%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Green_Key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Green_Key%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Green_Key%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\showPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\showPassword%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\showPassword%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hidePassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hidePassword%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hidePassword%403x.png" />
   </ItemGroup>
 </Project>

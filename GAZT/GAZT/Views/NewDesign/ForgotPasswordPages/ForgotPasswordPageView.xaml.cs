@@ -15,7 +15,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignForgotPasswordPageView : ContentPage
     {
-        
+
         private string _LblCountDownTimer;
 
         GAZTNewDesignForgotPasswordPageViewModel viewModel;
@@ -31,10 +31,10 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.OnPageLoad();
             SetLTR();
             viewModel.StartPage = 1;
-          
+
         }
 
-       
+
         private void SetLTR()
         {
             if (App.IsArabic)
@@ -49,22 +49,25 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
         private void OnPasswordCardClicked(object sender, EventArgs e)
         {
+
             viewModel.IsUserNameCardTapped = false;
             viewModel.IsPasswordCardTapped = true;
-            
+
             viewModel.SetPasswordCardLayoutVisibility();
-            viewModel.PasswordCardBackgroundColor = Color.FromHex("#005e4b");
-            viewModel.UserNameCardBackgroundColor = Color.White;
+            viewModel.PasswordCardBackgroundImg = "FP_selected_tile";
+            viewModel.UserNameCardBackgroundImg = "FP_unselected_tile";
             viewModel.PasswordTextColor = Color.White;
             viewModel.UserNameTextColor = Color.Black;
             viewModel.SetIDNumberEnability = true;// Enabling IDNumber Field as per tapping on Password Tile
 
             // Managing UserName tile
             viewModel.MaximumUserNameCharacter = 10;
-            viewModel.CorporateCardBackgroundColor = Color.White;
+            viewModel.CorporateCardBackgroundImg = "FP_unselected_tile";
             viewModel.CorporateTextColor = Color.Black;
-            viewModel.IndividualOrPersonalBusinessCardBackgroundColor = Color.FromHex("#005e4b");
+            viewModel.IndividualOrPersonalBusinessCardBackgroundImg = "FP_selected_tile";
             viewModel.IndividualOrPersonalBusinessTextColor = Color.White;
+            viewModel.UserIcon = "vat_user";
+            viewModel.PasswordIcon = "password_key";
 
 
             viewModel.Email = string.Empty;
@@ -86,8 +89,10 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.IsUserNameCardTapped = true;
             viewModel.IsPasswordCardTapped = false;
             viewModel.SetUserNameCardVisibility();
-            viewModel.PasswordCardBackgroundColor = Color.White;
-            viewModel.UserNameCardBackgroundColor = Color.FromHex("#005e4b");
+            viewModel.PasswordCardBackgroundImg = "FP_unselected_tile";
+            viewModel.UserNameCardBackgroundImg = "FP_selected_tile";
+            viewModel.UserIcon = "user_profile";
+            viewModel.PasswordIcon = "Green_Key";
             viewModel.PasswordTextColor = Color.Black;
             viewModel.UserNameTextColor = Color.White;
             viewModel.SetIDNumberEnability = true;// Enabling IDNumber Field as per tapping on Password Tile
@@ -109,32 +114,32 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
         }
 
-        private async  void Entry_UserName_Unfocused(object sender, FocusEventArgs e)
+        private async void Entry_UserName_Unfocused(object sender, FocusEventArgs e)
         {
-           
-                try
-                {
-                    
-                string userName = viewModel.Email;
-                    if (!string.IsNullOrEmpty(userName))
-                     viewModel.IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
-                    if (!viewModel.IsValiedEmailAddress)
-                    {
-                        viewModel.IsVisibleTinIds = false;
-                    }
-                    await viewModel.SetTinsListLayoutVisibility(viewModel.IsValiedEmailAddress);
-          
 
-                }
-                catch (Exception ex)
+            try
+            {
+
+                string userName = viewModel.Email;
+                if (!string.IsNullOrEmpty(userName))
+                    viewModel.IsValiedEmailAddress = UtilityManager.IsValidEmailAddress(userName);
+                if (!viewModel.IsValiedEmailAddress)
                 {
+                    viewModel.IsVisibleTinIds = false;
                 }
-          
+                await viewModel.SetTinsListLayoutVisibility(viewModel.IsValiedEmailAddress);
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+
         }
 
         private void Btn_TinPicker_Clicked(object sender, EventArgs e)
         {
-            Picker_Tins.IsOpen=true;
+            Picker_Tins.IsOpen = true;
         }
 
         private void Picker_Tins_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -190,26 +195,26 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
             if (ValidPassword)
             {
-                viewModel.MinEight = Color.DarkGreen;
-                viewModel.CapsSmall = Color.DarkGreen;
-                viewModel.MaxSixteen = Color.DarkGreen;
-                viewModel.NumSymbol = Color.DarkGreen;
+                viewModel.MinEight = "check_oval";
+                viewModel.CapsSmall = "check_oval";
+                viewModel.MaxSixteen = "check_oval";
+                viewModel.NumSymbol = "check_oval";
 
                 // check the new and confirm password condition
             }
             else
             {
-                if (UtilityManager.ValidMinEight) { viewModel.MinEight = Color.DarkGreen; }
-                if (UtilityManager.ValidSmallL && UtilityManager.ValidCapsL) { viewModel.CapsSmall = Color.DarkGreen; }
-                if (UtilityManager.ValidMaxSixteen) { viewModel.MaxSixteen = Color.DarkGreen; }
-                if (UtilityManager.ValidNumber && UtilityManager.ValidSymbol) { viewModel.NumSymbol = Color.DarkGreen; }
+                if (UtilityManager.ValidMinEight) { viewModel.MinEight = "check_oval"; }
+                if (UtilityManager.ValidSmallL && UtilityManager.ValidCapsL) { viewModel.CapsSmall = "check_oval"; }
+                if (UtilityManager.ValidMaxSixteen) { viewModel.MaxSixteen = "check_oval"; }
+                if (UtilityManager.ValidNumber && UtilityManager.ValidSymbol) { viewModel.NumSymbol = "check_oval"; }
             }
         }
 
         // * Managing Tins drop down visibility
         void UserNameTextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            if(string.IsNullOrEmpty(viewModel.Email))
+            if (string.IsNullOrEmpty(viewModel.Email))
             {
                 viewModel.IsTinDopDownVisible = false;
                 viewModel.UserNameLabelText = AppResources.IDNumber;
@@ -217,10 +222,10 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
         }
         void ResetPasswordValidationConditions()
         {
-            viewModel.MinEight = Color.DarkRed;
-            viewModel.CapsSmall = Color.DarkRed;
-            viewModel.MaxSixteen = Color.DarkRed;
-            viewModel.NumSymbol = Color.DarkRed;
+            viewModel.MinEight = "error";
+            viewModel.CapsSmall = "error";
+            viewModel.MaxSixteen = "error";
+            viewModel.NumSymbol = "error";
         }
 
 
@@ -230,12 +235,12 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             if (NewPassword.IsPassword == true)
             {
                 NewPassword.IsPassword = false;
-                NewPasswordIcon.Glyph = IconFonts.Eye;
+                NewPasswordIcon.Source = "showPassword";
             }
             else
             {
                 NewPassword.IsPassword = true;
-                NewPasswordIcon.Glyph = IconFonts.EyeOff;
+                NewPasswordIcon.Source = "hidePassword";
             }
         }
 
@@ -244,12 +249,12 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             if (ConfirmNewPassword.IsPassword == true)
             {
                 ConfirmNewPassword.IsPassword = false;
-                ConfirmNewPasswordIcon.Glyph = IconFonts.Eye;
+                ConfirmNewPasswordIcon.Source = "showPassword";
             }
             else
             {
                 ConfirmNewPassword.IsPassword = true;
-                ConfirmNewPasswordIcon.Glyph = IconFonts.EyeOff;
+                ConfirmNewPasswordIcon.Source = "hidePassword";
             }
         }
 
@@ -262,8 +267,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.currentAttempts = 0;
             viewModel.Enabled = true;
 
-            NewPasswordIcon.Glyph = IconFonts.EyeOff;
-            ConfirmNewPasswordIcon.Glyph = IconFonts.EyeOff;
+            NewPasswordIcon.Source = "hidePassword";
+            ConfirmNewPasswordIcon.Source = "hidePassword";
         }
 
     }

@@ -68,9 +68,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _iDNumber = value;
                 if (IsUserNameCardTapped == true && IDNumber.Length > MaximumUserNameCharacter)
                 {
-                    IDNumber = IDNumber.Substring(0, IDNumber.Length-1);
+                    IDNumber = IDNumber.Substring(0, IDNumber.Length - 1);
                 }
-                
+
                 RaisePropertyChanged("IDNumber");
             }
         }
@@ -130,7 +130,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("UserNameLabelText");
             }
         }
-        
+
         private bool _Enabled;
         public bool Enabled
         {
@@ -275,15 +275,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _oTPFirstDigit = value;
-                if(!string.IsNullOrEmpty(OTPFirstDigit))
+                if (!string.IsNullOrEmpty(OTPFirstDigit))
                 {
-                   bool isNumberEntered =  CheckOnlyNumber(OTPFirstDigit[0]);
-                    if(!isNumberEntered)
+                    bool isNumberEntered = CheckOnlyNumber(OTPFirstDigit[0]);
+                    if (!isNumberEntered)
                     {
                         OTPFirstDigit = string.Empty;
                     }
                 }
-                
+
                 RaisePropertyChanged("OTPFirstDigit");
             }
         }
@@ -358,8 +358,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
         // * Password
-        private Color _MinEight;
-        public Color MinEight
+        private string _MinEight;
+        public string MinEight
         {
             get { return _MinEight; }
             set
@@ -369,8 +369,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _CapsSmall;
-        public Color CapsSmall
+        private string _CapsSmall;
+        public string CapsSmall
         {
             get { return _CapsSmall; }
             set
@@ -380,8 +380,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _MaxSixteen;
-        public Color MaxSixteen
+        private string _MaxSixteen;
+        public string MaxSixteen
         {
             get { return _MaxSixteen; }
             set
@@ -391,8 +391,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _NumSymbol;
-        public Color NumSymbol
+        private string _NumSymbol;
+        public string NumSymbol
         {
             get { return _NumSymbol; }
             set
@@ -534,7 +534,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ContinueORConfirmButtonText");
             }
         }
-        
+
         private bool _isResendOTPEnabled = false;
         public bool IsResendOTPEnabled
         {
@@ -550,31 +550,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _userNameCardBackgroundColor = Color.White;
-        public Color UserNameCardBackgroundColor
+        private string _userNameCardBackgroundImg = "FP_unselected_tile";
+        public string UserNameCardBackgroundImg
         {
             get
             {
-                return _userNameCardBackgroundColor;
+                return _userNameCardBackgroundImg;
             }
             set
             {
-                _userNameCardBackgroundColor = value;
-                RaisePropertyChanged("UserNameCardBackgroundColor");
+                _userNameCardBackgroundImg = value;
+                RaisePropertyChanged("UserNameCardBackgroundImg");
             }
         }
 
-        private Color _passwordCardBackgroundColor = Color.White;
-        public Color PasswordCardBackgroundColor
+        private string _userIcon = "vat_user";
+        public string UserIcon
         {
             get
             {
-                return _passwordCardBackgroundColor;
+                return _userIcon;
             }
             set
             {
-                _passwordCardBackgroundColor = value;
-                RaisePropertyChanged("PasswordCardBackgroundColor");
+                _userIcon = value;
+                RaisePropertyChanged("UserIcon");
+            }
+        }
+
+        private string _passwordCardBackgroundImg = "FP_unselected_tile";
+        public string PasswordCardBackgroundImg
+        {
+            get
+            {
+                return _passwordCardBackgroundImg;
+            }
+            set
+            {
+                _passwordCardBackgroundImg = value;
+                RaisePropertyChanged("PasswordCardBackgroundImg");
+            }
+        }
+
+        private string _passwordIcon = "Green_Key";
+        public string PasswordIcon
+        {
+            get
+            {
+                return _passwordIcon;
+            }
+            set
+            {
+                _passwordIcon = value;
+                RaisePropertyChanged("PasswordIcon");
             }
         }
 
@@ -1240,31 +1268,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _corporateCardBackgroundColor = Color.White;
-        public Color CorporateCardBackgroundColor
+        private string _corporateCardBackgroundImg = "FP_unselected_tile";
+        public string CorporateCardBackgroundImg
         {
             get
             {
-                return _corporateCardBackgroundColor;
+                return _corporateCardBackgroundImg;
             }
             set
             {
-                _corporateCardBackgroundColor = value;
-                RaisePropertyChanged(nameof(CorporateCardBackgroundColor));
+                _corporateCardBackgroundImg = value;
+                RaisePropertyChanged(nameof(CorporateCardBackgroundImg));
             }
         }
 
-        private Color _individualOrPersonalBusinessCardBackgroundColor = Color.FromHex("#005e4b");
-        public Color IndividualOrPersonalBusinessCardBackgroundColor
+        private string _individualOrPersonalBusinessCardBackgroundImg = "FP_unselected_tile";
+        public string IndividualOrPersonalBusinessCardBackgroundImg
         {
             get
             {
-                return _individualOrPersonalBusinessCardBackgroundColor;
+                return _individualOrPersonalBusinessCardBackgroundImg;
             }
             set
             {
-                _individualOrPersonalBusinessCardBackgroundColor = value;
-                RaisePropertyChanged(nameof(IndividualOrPersonalBusinessCardBackgroundColor));
+                _individualOrPersonalBusinessCardBackgroundImg = value;
+                RaisePropertyChanged(nameof(IndividualOrPersonalBusinessCardBackgroundImg));
             }
         }
 
@@ -1407,7 +1435,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             else
                             {
                                 IDNumber = Email;
-                                if(!string.IsNullOrEmpty(Email))
+                                if (!string.IsNullOrEmpty(Email))
                                 {
                                     SendOTPToRegisterMobileNumber();
                                 }
@@ -1456,9 +1484,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
 
                 }
-                else if(IsUserNameCardTapped == true)
+                else if (IsUserNameCardTapped == true)
                 {
-                    if(!string.IsNullOrEmpty(IDNumber)) 
+                    if (!string.IsNullOrEmpty(IDNumber))
                     {
                         SendUserNameToRegidteredEmail();
                     }
@@ -1469,7 +1497,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
                 }
-                else if(IsUserNameCardTapped == false && IsPasswordCardTapped == false)
+                else if (IsUserNameCardTapped == false && IsPasswordCardTapped == false)
                 {
                     _dialogService.ShowMessageBox(AppResources.ZZZZPleaseSelect, AppResources.Information);
 
@@ -1489,9 +1517,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             OnCorporateCardClicked = new Command(() =>
             {
                 MaximumUserNameCharacter = 60;
-                CorporateCardBackgroundColor = Color.FromHex("#005e4b");
+                CorporateCardBackgroundImg = "FP_selected_tile";
                 CorporateTextColor = Color.White;
-                IndividualOrPersonalBusinessCardBackgroundColor = Color.White;
+                IndividualOrPersonalBusinessCardBackgroundImg = "FP_unselected_tile";
                 IndividualOrPersonalBusinessTextColor = Color.Black;
                 IDNumber = string.Empty;
 
@@ -1501,9 +1529,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             OnIndividualOrPersonalBusinessCardClicked = new Command(() =>
             {
                 MaximumUserNameCharacter = 10;
-                IndividualOrPersonalBusinessCardBackgroundColor = Color.FromHex("#005e4b");
+                IndividualOrPersonalBusinessCardBackgroundImg = "FP_selected_tile";
                 IndividualOrPersonalBusinessTextColor = Color.White;
-                CorporateCardBackgroundColor = Color.White;
+                CorporateCardBackgroundImg = "FP_unselected_tile";
                 CorporateTextColor = Color.Black;
                 IDNumber = string.Empty;
             });
@@ -1807,9 +1835,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             IsAPICalledSuccessfully = false;
                             Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
-                                });
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
+                            });
                         }
                     }
                     catch (Exception ex)
@@ -2456,8 +2484,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             IsAPICalledSuccessfully = false;
             SetIDNumberEnability = false;
-            PasswordCardBackgroundColor = Color.White;
-            UserNameCardBackgroundColor = Color.White;
+            PasswordCardBackgroundImg = "FP_selected_tile";
+            PasswordIcon = "password_key";
+            UserNameCardBackgroundImg = "FP_unselected_tile";
+            UserIcon = "vat_user";
             Email = string.Empty;
             TxtTIN = string.Empty;
             if (TINs != null && TINs.Count > 0)
