@@ -119,7 +119,7 @@
 
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
 
-                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" ChipBackgroundColor="Transparent"  ItemsSource="{Binding ChipDataFilterlist}"   SelectionChanged="ChipGroup_statusFilter_SelectionChanged" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" >
+                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" ChipBackgroundColor="Transparent"  ItemsSource="{Binding ChipDataFilterlist}"   SelectionChanged="ChipGroup_statusFilter_SelectionChanged" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" Margin="0,10,0,0" >
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
                                     <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >

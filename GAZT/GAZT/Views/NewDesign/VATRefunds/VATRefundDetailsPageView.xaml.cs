@@ -44,7 +44,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             try
             {
-               
+                viewModel._navigationService.NavigateTo(App.VATRefundsSuccessPageView);
             }
             catch (Exception ex)
             {
@@ -52,6 +52,4 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
         }
     }
-
-
 }

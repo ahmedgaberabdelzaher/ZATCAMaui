@@ -43,17 +43,17 @@
                         <border:SfBorder   Margin="0,0,0,8"  Style="{StaticResource GreyBorderFrame}">
                    
                             <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                                <Label  Text="{x:Static ResourceManager:AppResources.ZReferenceNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                                <Label  Text="Reference Number" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start" VerticalOptions="Center"/>
                                 <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                 <Label Text="1234567890" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
                             </StackLayout>
 
                            </StackLayout>
                          </border:SfBorder>
-                         <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,0"  x:Name="btnDownloadConfirmation" Command="{Binding RegistrationDownloadConfirmationBtnTapped}" Text="{x:Static ResourceManager:AppResources.NDRefunds}"
+                         <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,0"  x:Name="btnDownloadConfirmation" Clicked="btnGoToDasboard_Clicked" Text="{x:Static ResourceManager:AppResources.NDRefunds}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                         
-                         <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,16"  x:Name="btnRegistrationDetails" Command="{Binding RegistrationDetailsBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
+                         <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,16"  x:Name="btnGoToDasboard" Clicked="btnGoToDasboard_Clicked" Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
                                    Style="{StaticResource NoBackgroundButtonStyle}" TextColor="#d49504"/>
                     </StackLayout>
                     </yummy:PancakeView>

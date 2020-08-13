@@ -1731,6 +1731,22 @@ namespace EGAZT
             }
         }
 
+        public VATRefundsInstructionsPageViewModel VATRefundsInstructionsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATRefundsInstructionsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
         //
         public ZakatReturnDetailsSuccessfullPageViewModel ZakatReturnDetailsSuccessfullPageView
         {
@@ -1897,6 +1913,7 @@ namespace EGAZT
             navigationService.Configure(App.VATRefundDetailsPageView, typeof(VATRefundDetailsPageView));
             navigationService.Configure(App.VATRefundsNewRequestPageView, typeof(VATRefundsNewRequestPageView));
             navigationService.Configure(App.VATRefundsSuccessPageView, typeof(VATRefundsSuccessPageView));
+            navigationService.Configure(App.VATRefundsInstructionsPageView, typeof(VATRefundsInstructionsPageView));
 
             
             #endregion
