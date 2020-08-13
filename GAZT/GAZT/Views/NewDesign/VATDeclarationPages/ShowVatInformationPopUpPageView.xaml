@@ -26,7 +26,7 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <custom:CustomLabel Grid.Row="0" Text="{Binding MainString}" Style="{StaticResource SectionTitleBlack}"/>
-                <ListView  x:Name="ICRList"
+                <ListView  x:Name="InformationList"
                            Grid.Row="1"
            ItemsSource="{Binding HeaderWithInfoList}"
           HorizontalOptions="FillAndExpand"
