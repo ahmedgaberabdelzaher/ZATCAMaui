@@ -501,6 +501,19 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
+                                
+                                 <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+
+                                    </Image>
+                                    <custom:CustomLabel  Text="VAT Refund Request" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="VATRefundRequest_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
+
+
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return"> </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZVatLookUpTitleTextNew}" Style="{StaticResource ButtonLabelWhiteBold}"/>

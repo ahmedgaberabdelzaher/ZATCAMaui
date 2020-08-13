@@ -60,7 +60,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 throw new ArgumentNullException("dialogService");
             }
 
-            CloseBtnTapped = new Command(async () =>
+            GoBackBtnTapped = new Command(async () =>
             {
                 _navigationService.GoBack();
             });

@@ -594,7 +594,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool CabsSummaryIsVisible { get; private set; }
+        public bool CabsSummaryIsVisible { get;  set; }
 
 
         /// <summary>
@@ -615,7 +615,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool ProfessionalsSummaryIsVisible { get; private set; }
+        public bool ProfessionalsSummaryIsVisible { get;  set; }
 
         /// <summary>
         ///  Sell & Buy List
@@ -635,7 +635,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool Sell_BuySummaryIsVisible { get; private set; }
+        public bool Sell_BuySummaryIsVisible { get;  set; }
 
         /// <summary>
         ///  Labour Occup List
@@ -655,7 +655,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool LabourOccupSummaryIsVisble { get; private set; }
+        public bool LabourOccupSummaryIsVisble { get;  set; }
 
         /// <summary>
         ///  Industry List
@@ -675,7 +675,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool IndustrySummaryIsVisible { get; private set; }
+        public bool IndustrySummaryIsVisible { get;  set; }
 
         /// <summary>
         ///  Contracting CO. List
@@ -695,7 +695,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool ContractingSummaryIsVisible { get; private set; }
+        public bool ContractingSummaryIsVisible { get;  set; }
 
         /// <summary>
         ///  Invst & Real Estate List
@@ -715,7 +715,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool InvstRealEstSummaryIsVisible { get; private set; }
+        public bool InvstRealEstSummaryIsVisible { get;  set; }
 
         /// <summary>
         ///  Hotels List
@@ -735,7 +735,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool HotelsSummaryIsVisible { get; private set; }
+        public bool HotelsSummaryIsVisible { get;  set; }
 
         /// <summary>
         ///  Edu. & Health List
@@ -755,7 +755,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool Edu_HealthSummaryIsVisible { get; private set; }
+        public bool Edu_HealthSummaryIsVisible { get;  set; }
 
         /// <summary>
         ///  Poultry and Fish Farms Activities List
@@ -775,7 +775,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool Poultry_FishFarmSummaryIsVisible { get; private set; }
+        public bool Poultry_FishFarmSummaryIsVisible { get;  set; }
 
         /// <summary>
         ///  Cars List
@@ -795,7 +795,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool CarsSummaryIsVisible { get; private set; }
+        public bool CarsSummaryIsVisible { get;  set; }
 
         /// <summary>
         ///  Minerals List
@@ -815,7 +815,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool MineralsSummaryIsVisible { get; private set; }
+        public bool MineralsSummaryIsVisible { get;  set; }
 
         #endregion
 

@@ -261,6 +261,12 @@
     <BundleResource Include="Resources\TimeZone.png" />
     <BundleResource Include="Resources\vat_new_individual._Wpng.png" />
     <BundleResource Include="Resources\ViewMode.png" />
+    <BundleResource Include="Resources\unselected171x136.png" />
+    <BundleResource Include="Resources\unselected171x136%402x.png" />
+    <BundleResource Include="Resources\unselected171x136%403x.png" />
+    <BundleResource Include="Resources\selected171x136.png" />
+    <BundleResource Include="Resources\selected171x136%402x.png" />
+    <BundleResource Include="Resources\selected171x136%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
