@@ -605,6 +605,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
 
             });
-        }   
+        }
+        protected override bool OnBackButtonPressed() => true;
     }
 }
