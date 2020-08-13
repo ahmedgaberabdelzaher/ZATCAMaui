@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -76,6 +80,51 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         void Mobile_Entry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            StringBuilder Message = new StringBuilder();
+            PopUp popUp = new PopUp();
+            if (!string.IsNullOrEmpty(viewModel.MobileNumber))
+            {
+
+                if (viewModel.MobileNumber.Substring(0, 1) == "0")
+                {
+                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
+                }
+                if (viewModel.MobileNumber.Length < 9)
+                {
+                    if (Message.Length > 0)
+                    {
+                        Message.Append(Environment.NewLine);
+                    }
+                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                }
+                if (Message.Length > 0)
+                {
+                    popUp.Message = Message.ToString();
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    frmMobile.HasError = true;
+                    viewModel.MobileNumber = string.Empty;
+                }
+                else
+                {
+                    frmMobile.HasError = false;
+                }
+            }
+            else
+            {
+                Message.Append(AppResources.EnterMobileNumber);
+                popUp.Message = Message.ToString();
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            }
         }
     }
 }

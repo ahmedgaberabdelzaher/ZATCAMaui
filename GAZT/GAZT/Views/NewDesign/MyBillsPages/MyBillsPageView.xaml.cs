@@ -39,7 +39,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     }
                     if (billInfo.BillTypeName.Equals(AppResources.UnPaid))
                     {
-                       // viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
+                      viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
                        
                     }
                     if (billInfo.BillTypeName.Equals(AppResources.PartiallyPaid))
