@@ -29,11 +29,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _currenrIndex = value;
                 RaisePropertyChanged(nameof(CurrentIndex));
-                if (_currenrIndex == MaxIndex)
-                {
-                    MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
-                }
+                MarkComplete = _currenrIndex == MaxIndex;
+                RaisePropertyChanged(nameof(MarkComplete));
             }
         }
         public bool MarkComplete { get; private set; } = false;
@@ -42,12 +39,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Commands
         public ICommand OnNextButtonClick { get; private set; }
+        public ICommand OnPreButtonClick { get; private set; }
         #endregion
 
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnNextButtonClick = new Command(() => navigateToNext());
+            OnPreButtonClick = new Command(() => navigateToPre());
         }
         #endregion
 
@@ -69,6 +68,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
+            }
+        }
+        private void navigateToPre()
+        {
+            if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+            {
+                currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+            }
+            else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
+            {
+                currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
+            }
+            else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
+            {
+                currentTab = EstablishmentRegistrationTabsEnum.Outlets;
+            }
+            else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
+            {
+                currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
             }
         }
         #endregion

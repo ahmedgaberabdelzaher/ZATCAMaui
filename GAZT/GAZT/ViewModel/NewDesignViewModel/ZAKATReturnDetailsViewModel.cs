@@ -949,6 +949,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     isLabelVisible = false;
                     IsEditTextVisible = false;
                     SetSubmitButtonVisibility = true;
+                    SetEditImage();
                     SetConfirmButtonVisibility = false;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
@@ -1214,6 +1215,36 @@ private string GetConfirmOperationId()
             {
                 return false;
             }
+        }
+
+        // Setting the updated value to the post object
+       private void SetUpdatedDataToZAKATEstimated()
+        {
+            ZakatReturnDetails.d.TvtslI = ZakatReturnDetail.TvtslI; 
+            ZakatReturnDetails.d.TvtslResn = AttachmentPopUpViewModel.SalesDetailList[0].ChangeReason;
+
+            ZakatReturnDetails.d.LabnoI = ZakatReturnDetail.LabnoI;
+            ZakatReturnDetails.d.LabnoResn = AttachmentPopUpViewModel.SalesDetailList[1].ChangeReason;
+
+            ZakatReturnDetails.d.ImpvalI = ZakatReturnDetail.ImpvalI;
+            ZakatReturnDetails.d.ImpvalResn = AttachmentPopUpViewModel.SalesDetailList[2].ChangeReason;
+
+            ZakatReturnDetails.d.PtoslI = ZakatReturnDetail.PtoslI;
+            ZakatReturnDetails.d.PtoslResn = AttachmentPopUpViewModel.SalesDetailList[3].ChangeReason;
+
+            ZakatReturnDetails.d.EtimadI = ZakatReturnDetail.EtimadI;
+            ZakatReturnDetails.d.PtoslResn = AttachmentPopUpViewModel.SalesDetailList[4].ChangeReason;
+
+            ZakatReturnDetails.d.ExamtI = ZakatReturnDetail.ExamtI;
+            ZakatReturnDetails.d.PtoslResn = AttachmentPopUpViewModel.SalesDetailList[5].ChangeReason;
+
+            ZakatReturnDetails.d.PramtI = ZakatReturnDetail.PramtI;
+            ZakatReturnDetails.d.CpamtResn = AttachmentPopUpViewModel.SalesDetailList[5].ChangeReason;
+
+            ZakatReturnDetails.d.Cpamt = ZakatReturnDetail.Cpamt;
+            ZakatReturnDetails.d.CpamtResn = AttachmentPopUpViewModel.SalesDetailList[5].ChangeReason;
+
+
         }
         #endregion
 

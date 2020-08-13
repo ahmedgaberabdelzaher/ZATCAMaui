@@ -68,7 +68,7 @@ namespace EGAZT
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
         public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
         public static string AttachmentPopUp = "AttachmentPopUp";
-        
+
         #endregion
 
         #region new design views Release2
@@ -155,6 +155,7 @@ namespace EGAZT
         public static string TINDeregestrationSuccessPageView = "TINDeregestrationSuccessPageView";
         public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
 
+        public static string VATRefundsSuccessPageView = "VATRefundsSuccessPageView";
         public static string VATRefundsListPageView = "VATRefundsListPageView";
         public static string VATRefundDetailsPageView = "VATRefundDetailsPageView";
         public static string VATRefundsNewRequestPageView = "VATRefundsNewRequestPageView";
@@ -163,6 +164,8 @@ namespace EGAZT
         
 
 
+        public static string VATRefundsInstructionsPageView = "VATRefundsInstructionsPageView";
+        //VATRefundsListPageView
         #endregion
 
         public static string fontFamilyBold = null;
@@ -216,6 +219,7 @@ namespace EGAZT
             Xamarin.Forms.Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
             bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
+
             if (hasLanguageKey)
             {
                 var LanguageKey = Preferences.Get("Preferences_DefaultLanguage", "");
@@ -280,8 +284,6 @@ namespace EGAZT
                     break;
             }
 
-            IsArabic = false;
-
             ActivityIndicatorView = new ActivityIndicatorPageView();
 
             VATDeclaration vAT = null;
@@ -298,7 +300,7 @@ namespace EGAZT
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-            //CustomNavigation navigationPage = new CustomNavigation(new VATRefundsSuccessPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new VATRefundsListPageView()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();

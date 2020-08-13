@@ -119,14 +119,14 @@
 
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
 
-                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" ChipBackgroundColor="Transparent"  ItemsSource="{Binding ChipDataFilterlist}"   SelectionChanged="ChipGroup_statusFilter_SelectionChanged" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" >
+                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" ChipBackgroundColor="Transparent"  ItemsSource="{Binding ChipDataFilterlist}"   SelectionChanged="ChipGroup_statusFilter_SelectionChanged" HorizontalOptions="Start"  SelectedChipBackgroundColor="#F9F0DF" ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" Margin="0,10,0,0" >
                             <buttons:SfChipGroup.ItemTemplate>
                                 <DataTemplate >
                                     <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
                                         <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
                                         <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
                                     </StackLayout>
-                                    <!--<buttons:SfChip  BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ImageSource="{Binding ImageSource}" ShowCloseButton="False" ImageAlignment="Left" ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue" ShowIcon="True" VerticalTextAlignment="Center" VerticalOptions="Center"/>-->
+                                    <!--<buttons:SfChip  BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" "#F9F0DF"  "#E5EFED"  FontFamily="{StaticResource SSTArRoman}" FontSize="12"  Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ImageSource="{Binding ImageSource}" ShowCloseButton="False" ImageAlignment="Left" ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue" ShowIcon="True" VerticalTextAlignment="Center" VerticalOptions="Center"/>-->
 
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>
@@ -188,9 +188,12 @@
                                                                 <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                                                 <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="submitted">
                                                                     <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Submitted}" />
+                                                                    <Setter Property="TextColor" Value="#006450" />
                                                                 </DataTrigger>
                                                                 <DataTrigger TargetType="Label" Binding="{Binding StatusMessage}" Value="unsubmitted">
                                                                     <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnSubmitted}" />
+                                                                    <Setter Property="TextColor" Value="
+#999999" />
                                                                 </DataTrigger>
                                                                 <MultiTrigger TargetType="Label">
                                                                     <MultiTrigger.Conditions>
@@ -198,6 +201,7 @@
                                                                         <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
                                                                     </MultiTrigger.Conditions>
                                                                     <Setter Property="Text"  Value="{x:Static ResourceManager:AppResources.OverDue}" />
+                                                                    <Setter Property="TextColor"  Value="#aa0c19" />
                                                                     <!--multiple Setter elements are allowed-->
                                                                 </MultiTrigger>
 
@@ -209,14 +213,14 @@
                                                                 <Setter Property="BackgroundColor" Value="#E5EFED" />
                                                             </DataTrigger>
                                                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding StatusMessage}" Value="unsubmitted">
-                                                                <Setter Property="BackgroundColor" Value="#F6E6E8" />
+                                                                <Setter Property="BackgroundColor" Value="#F5F5F5"/> 
                                                             </DataTrigger>
                                                             <MultiTrigger TargetType="yummy:PancakeView">
                                                                 <MultiTrigger.Conditions>
                                                                     <BindingCondition Binding="{Binding StatusMessage}" Value="overdue"/>
                                                                     <!--<BindingCondition Binding="{Binding Due}" Value="X"/>-->
                                                                 </MultiTrigger.Conditions>
-                                                                <Setter Property="BackgroundColor"  Value="#F5F5F5" />
+                                                                <Setter Property="BackgroundColor"  Value="#F6E6E8" />
                                                                 <!-- multiple Setter elements are allowed -->
                                                             </MultiTrigger>
                                                         </yummy:PancakeView.Triggers>
@@ -228,17 +232,43 @@
                                                 <Grid.RowDefinitions >
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <!--<Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
-                                                <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FormBundleNo}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZReturnPeriod}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <custom:CustomLabel Text="{Binding FormatedAbrzu}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" />
+                                                        <custom:CustomLabel Text="-" Style="{StaticResource ValueLabelBlack}" />
+                                                        <custom:CustomLabel HorizontalOptions="StartAndExpand" Text="{Binding FormatedAbrzo}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+
+                                                </StackLayout> 
+                                                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReturnType}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <custom:CustomLabel Text="{Binding FbtText}" Style="{StaticResource ValueLabelBlack}" />
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDDescription}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <custom:CustomLabel Text="{Binding TaxPeriod}" Style="{StaticResource ValueLabelBlack}" />
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
+                                                    <custom:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDPeriod}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                        <custom:CustomLabel HorizontalTextAlignment="Start" FlowDirection="LeftToRight"  Text="{Binding Persl}" Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                
+                                                <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
+                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDReturnNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                                                     <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
+                                                <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
                                                     <custom:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.DueDate}" Style="{StaticResource CaptionLabelGrey}"/>
                                                     <StackLayout HorizontalOptions="Start">
                                                         <custom:CustomLabel HorizontalTextAlignment="Start" FlowDirection="LeftToRight"  Text="{Binding FormatedSingleDueDate}" Style="{StaticResource ValueLabelBlack}" />

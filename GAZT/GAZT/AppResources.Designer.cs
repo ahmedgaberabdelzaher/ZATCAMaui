@@ -1839,11 +1839,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All certificates.
+        /// </summary>
+        public static string NDAllcertificates {
+            get {
+                return ResourceManager.GetString("NDAllcertificates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to At least 8 Characters long.
         /// </summary>
         public static string NDAtleast8character {
             get {
                 return ResourceManager.GetString("NDAtleast8character", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bill Date.
+        /// </summary>
+        public static string NDBillDate {
+            get {
+                return ResourceManager.GetString("NDBillDate", resourceCulture);
             }
         }
         
@@ -1857,11 +1875,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Count.
+        /// </summary>
+        public static string NDCount {
+            get {
+                return ResourceManager.GetString("NDCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Countinue.
         /// </summary>
         public static string NDCountinue {
             get {
                 return ResourceManager.GetString("NDCountinue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string NDDescription {
+            get {
+                return ResourceManager.GetString("NDDescription", resourceCulture);
             }
         }
         
@@ -1925,6 +1961,15 @@ namespace EGAZT {
         public static string NDIDNumber {
             get {
                 return ResourceManager.GetString("NDIDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inbox.
+        /// </summary>
+        public static string NDInbox {
+            get {
+                return ResourceManager.GetString("NDInbox", resourceCulture);
             }
         }
         
@@ -2028,11 +2073,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Period.
+        /// </summary>
+        public static string NDPeriod {
+            get {
+                return ResourceManager.GetString("NDPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter verification code sent to your mobile.
         /// </summary>
         public static string NDPleaseEnterVerificationSenttomobile {
             get {
                 return ResourceManager.GetString("NDPleaseEnterVerificationSenttomobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reference Number.
+        /// </summary>
+        public static string NDReferenceNumber {
+            get {
+                return ResourceManager.GetString("NDReferenceNumber", resourceCulture);
             }
         }
         
@@ -2055,6 +2118,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return Number.
+        /// </summary>
+        public static string NDReturnNumber {
+            get {
+                return ResourceManager.GetString("NDReturnNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Returns.
         /// </summary>
         public static string NDReturns {
@@ -2069,6 +2141,15 @@ namespace EGAZT {
         public static string NDReturnSubmission {
             get {
                 return ResourceManager.GetString("NDReturnSubmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Type.
+        /// </summary>
+        public static string NDReturnType {
+            get {
+                return ResourceManager.GetString("NDReturnType", resourceCulture);
             }
         }
         
@@ -2141,6 +2222,15 @@ namespace EGAZT {
         public static string NDTypeyourIDNumber {
             get {
                 return ResourceManager.GetString("NDTypeyourIDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type your Reference Number.
+        /// </summary>
+        public static string NDTypeYourReferenceNumber {
+            get {
+                return ResourceManager.GetString("NDTypeYourReferenceNumber", resourceCulture);
             }
         }
         

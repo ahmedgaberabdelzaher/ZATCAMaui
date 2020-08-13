@@ -35,7 +35,7 @@
         <Grid ColumnSpacing="0" RowSpacing="10" Padding="20,15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="24"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
@@ -45,17 +45,15 @@
                     <ColumnDefinition Width="70*"/>
                     <ColumnDefinition Width="15*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="arrowLeftwhite.png" BackgroundColor="Black" />
+                <Image Grid.Column="0" Source="arrowLeftwhite.png" BackgroundColor="Black" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
                 <Image Grid.Column="1" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
                 <Image Grid.Column="2" Source="close.png" BackgroundColor="Black"/>
             </Grid>
-            <!--<StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="5">
-                <BoxView BackgroundColor="Green" HeightRequest="16" WidthRequest="16" CornerRadius="8" />
-                <BoxView BackgroundColor="WhiteSmoke" HeightRequest="16" WidthRequest="16" CornerRadius="8" />
-                <BoxView BackgroundColor="WhiteSmoke" HeightRequest="16" WidthRequest="16" CornerRadius="8" />
-                <BoxView BackgroundColor="WhiteSmoke" HeightRequest="16" WidthRequest="16" CornerRadius="8" />
-            </StackLayout>-->
-            <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" />
+            <commonView:PageIndicatorView Grid.Row="1" MarkSize="24" DotSize="12" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" MinimumHeightRequest="25" />
             <ScrollView Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
                 <Grid>
                     <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">

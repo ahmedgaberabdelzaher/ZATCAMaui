@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -261,6 +261,12 @@
     <BundleResource Include="Resources\TimeZone.png" />
     <BundleResource Include="Resources\vat_new_individual._Wpng.png" />
     <BundleResource Include="Resources\ViewMode.png" />
+    <BundleResource Include="Resources\unselected171x136.png" />
+    <BundleResource Include="Resources\unselected171x136%402x.png" />
+    <BundleResource Include="Resources\unselected171x136%403x.png" />
+    <BundleResource Include="Resources\selected171x136.png" />
+    <BundleResource Include="Resources\selected171x136%402x.png" />
+    <BundleResource Include="Resources\selected171x136%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -314,27 +320,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App_icon_1024.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-2.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-768x1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-1125x2436.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-1242x2208.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-1536x2048.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-2048x2732.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\LaunchImage-1242%403x~iphone6s-landscape_2208x1242.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -348,12 +334,6 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-landscape_2688x1242.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-750x1334.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-1536x2048-1.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x1136.png">
@@ -384,6 +364,33 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x1136-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1125x2436.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1242x2208.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\750x1334.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\768x1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1536x2048.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1536x2008.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\768x1024-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1536x2048-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\2048x2732.png">
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
@@ -1116,7 +1123,6 @@
   <ItemGroup>
     <BundleResource Include="Resources\committments_onboarding%403x.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <BundleResource Include="Resources\Username_selected%402x.png" />
   </ItemGroup>
@@ -1710,5 +1716,50 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\arrowLeft%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_selected_tile%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_selected_tile%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_selected_tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_unselected_tile%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_unselected_tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\FP_unselected_tile%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Green_Key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Green_Key%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Green_Key%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\showPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\showPassword%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\showPassword%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hidePassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hidePassword%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hidePassword%403x.png" />
   </ItemGroup>
 </Project>

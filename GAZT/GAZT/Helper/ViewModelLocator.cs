@@ -1750,6 +1750,22 @@ namespace EGAZT
             }
         }
 
+        public VATRefundsInstructionsPageViewModel VATRefundsInstructionsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATRefundsInstructionsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
         //
         public ZakatReturnDetailsSuccessfullPageViewModel ZakatReturnDetailsSuccessfullPageView
         {
@@ -1920,6 +1936,7 @@ namespace EGAZT
             navigationService.Configure(App.GAZTNewDesignShowVatInformationPopUpPageView, typeof(GAZTNewDesignShowVatInformationPopUpPageView));
 
           
+            navigationService.Configure(App.VATRefundsInstructionsPageView, typeof(VATRefundsInstructionsPageView));
 
 
             #endregion

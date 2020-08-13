@@ -4941,14 +4941,47 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="FormBundleNo" xml:space="preserve">
     <value>Form Bundle No.</value>
   </data>
+  <data name="NDBillDate" xml:space="preserve">
+    <value>تاريخ الفاتورة</value>
+  </data>
+  <data name="NDDescription" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
   <data name="NDEntervaliduserid" xml:space="preserve">
     <value>الرجاء إدخال معرف مستخدم صالح</value>
   </data>
   <data name="NDInvalidverificationcodeentered" xml:space="preserve">
     <value>قمت بإدخال رمز التحقق بشكل خاطئ</value>
   </data>
+  <data name="NDPeriod" xml:space="preserve">
+    <value>الفترة</value>
+    <comment>Bills Returns </comment>
+  </data>
+  <data name="NDReturnNumber" xml:space="preserve">
+    <value>رقم الإقرار</value>
+  </data>
+  <data name="NDReturnType" xml:space="preserve">
+    <value>نوع الإقرار</value>
+    <comment>Bills Returns</comment>
+  </data>
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
     <value>الرجاء إدخال رقم التحقق المرسل الى جوالك لاستعادة كلمة المرور</value>
+  </data>
+  <data name="NDAllcertificates" xml:space="preserve">
+    <value>جميع الشهادات</value>
+    <comment>Certificate</comment>
+  </data>
+  <data name="NDCount" xml:space="preserve">
+    <value>العدد</value>
+  </data>
+  <data name="NDInbox" xml:space="preserve">
+    <value>الصندوق الوارد</value>
+  </data>
+  <data name="NDReferenceNumber" xml:space="preserve">
+    <value>الرقم التسلسلي</value>
+  </data>
+  <data name="NDTypeYourReferenceNumber" xml:space="preserve">
+    <value>ادخل الرقم التسلسلي</value>
   </data>
   <data name="ZAdjustment" xml:space="preserve">
     <value>Adjustment</value>

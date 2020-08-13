@@ -38,13 +38,32 @@ namespace EGAZT.Models
                 _TestDueAmount = value;
             }
         }
+        public string Period { get; set; }
         public string Txt30 { get; set; }
         public string Faednar { get; set; } //DueDate
-        public string FAEDN { get; set; } //DueDate
-
+       // public string Faedn { get; set; } //DueDate
+        
         public string StatusImage { get; set; }
         public string Colorcode { get; set; }
-      
+       // FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+        public DateTime _faedn ;
+        public DateTime Faedn
+        {
+            get
+            {
+
+                return _faedn;
+            }
+            set
+            {
+                _faedn = value;
+                if (_faedn != null)
+                {
+                    FormatedFaedn = _faedn.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                }
+            }
+        }
+        public string FormatedFaedn { get; set; }
         private string _status = string.Empty;
         public string Status {
             get

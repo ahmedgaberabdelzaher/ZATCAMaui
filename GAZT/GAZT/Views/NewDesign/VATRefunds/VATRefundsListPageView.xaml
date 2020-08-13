@@ -35,7 +35,7 @@
 
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
                             </Image.GestureRecognizers>
                         </Image>
 
@@ -122,15 +122,24 @@
                                                 <Label  Text="{Binding Title}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                                 <Label Text="{Binding RefernceNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                                             </StackLayout>
-                                            <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
-                                                <yummy:PancakeView Padding="10,10,10,10" CornerRadius="14"  HeightRequest="20"  BorderThickness="1" BackgroundColor="#E5EFED"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                             <yummy:PancakeView Grid.Row="0" Grid.Column="1" Padding="10,10,10,10" CornerRadius="14" WidthRequest="60"  HeightRequest="20" Opacity=".2"  BorderThickness="1" BackgroundColor="{StaticResource Primary}" VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                                <yummy:PancakeView.Triggers>
+                                                        <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
+                                                        <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusRefunded}">
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusInProcess}">
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+                                                        </DataTrigger>
+                                                    </yummy:PancakeView.Triggers>
+                                              </yummy:PancakeView>
+                                            <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" >
                                                     <Label Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <Label.Triggers>
                                                             <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                                             <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusRefunded}">
                                                                 <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusRefunded}" />
                                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
-
                                                             </DataTrigger>
                                                             <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusInProcess}">
                                                                 <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusInProcess}" />
@@ -138,7 +147,6 @@
                                                             </DataTrigger>
                                                         </Label.Triggers>
                                                     </Label>
-                                                </yummy:PancakeView>
                                             </StackLayout>
                                         </Grid>
                                         <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
