@@ -392,6 +392,15 @@
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x1136-1.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1125x2436.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1242x2208.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\750x1334.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\768x1024.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1536x2048.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1536x2008.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\768x1024-1.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1536x2048-1.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\2048x2732.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
