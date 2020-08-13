@@ -166,7 +166,7 @@
                                                         ErrorColor="#B00020"
                                                         HasError="False">
                                             <control:BorderlessEntry  Text="{Binding TxtSearchParameter}"
-                                                                      Placeholder="{x:Static ResourceManager:AppResources.TINS}"
+                                                                     Style="{StaticResource DefaultEntry}"   
                                                                       TextColor="#bbbbbb" >
                                             </control:BorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
@@ -226,7 +226,7 @@
                                         <control:BorderlessEntry Text="{Binding LookupNumber}"
                                                                     MaxLength="{Binding MaxDigids}"
                                                                     IsReadOnly="{Binding IsNameVisible}"
-                                                                     
+                                                                     Style="{StaticResource DefaultEntry}"  
                                                                     Placeholder="{x:Static ResourceManager:AppResources.NDTypeYourReferenceNumber}"
                                                                     TextColor="#bbbbbb" >
                                              <Entry.Behaviors>
