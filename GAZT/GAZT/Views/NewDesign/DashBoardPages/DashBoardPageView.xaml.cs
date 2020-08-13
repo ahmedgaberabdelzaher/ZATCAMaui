@@ -61,7 +61,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             }
         }
-
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+             
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         #region Method
 
         protected override void OnAppearing()

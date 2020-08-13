@@ -278,7 +278,7 @@ namespace EGAZT
                     break;
             }
 
-            IsArabic = false;
+           // IsArabic = false;
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
 
