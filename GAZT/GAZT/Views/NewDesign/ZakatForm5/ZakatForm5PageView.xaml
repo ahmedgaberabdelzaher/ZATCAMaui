@@ -216,10 +216,26 @@
                     </Grid.RowDefinitions>
                             
                     <ScrollView Grid.Row="1">
+                       
                         <StackLayout>
-
-                            <!--On Cabs Clicked Starts-->
+                                <!--On Cabs Clicked Starts-->
                             <StackLayout x:Name="Cabs">
+
+                                <ListView  x:Name="CarList" 
+           ItemsSource="{Binding Cabs}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                    <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                </x:Arguments>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
                             <!--Start of General taxi Office-->
                             
 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -230,19 +246,20 @@
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                             </Image.Source>
                                         </Image>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GenTaxiOffice}" Style="{StaticResource SectionTitleBlack}"/>
-                                    </StackLayout>
+                                      <!--   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GenTaxiOffice}" Style="{StaticResource SectionTitleBlack}"/> -->
+                                           <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}"/>
+                                      </StackLayout>
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                     <StackLayout Padding="10" Spacing="10">
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NumOfCars}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                                                <custom:CustomLabel Text="{Binding NoOfCars}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5AvgDailyIncome}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="900000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding AgvDlyIncome, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5OccupancyRate}" Style="{StaticResource ValueLabelGrey}"/>
@@ -251,18 +268,18 @@
                                                         <TapGestureRecognizer Tapped="OnInfoTapped"/>
                                                     </Image.GestureRecognizers> 
                                             </Image>
-                                            <custom:CustomLabel Text="50%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                                                <custom:CustomLabel Text="{Binding OccRate, StringFormat='{0:F2} %'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NetProfitPer}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Image Source="ic_vat_info">
                                                 </Image>
-                                            <custom:CustomLabel Text="50%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                                                <custom:CustomLabel Text="{Binding NetPftPer, StringFormat='{0:F2} %'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
 
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="900.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Revenue, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                         
                                         <Grid RowSpacing="0">
@@ -280,9 +297,9 @@
 
                                                     </Image>
                                                 </StackLayout>
-                                                
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                             
                                         </Grid>
                                         <StackLayout Orientation="Horizontal">
@@ -290,18 +307,38 @@
                                                 <Image Source="ic_vat_info">
                                                 
                                             </Image>
-                                            <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding NetPft, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
                             <!--End of General taxi Office-->
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
                         </StackLayout>
-                        <!--On Cabs Clicked Ends-->
+                            <!--On Cabs Clicked Ends-->
 
                             <!--On Professionals Clicked starts-->
                             <StackLayout x:Name="Professionals">
-                                <!--Start Of Land Travel Starts-->
+
+                                <ListView  x:Name="ProfessionalsList" 
+           ItemsSource="{Binding Professionals}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <!--Start Of Land Travel Starts-->
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="10">
@@ -310,7 +347,7 @@
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                             </Image.Source>
                                         </Image>
-                                        <custom:CustomLabel Text="Land Travel Tickets" Style="{StaticResource SectionTitleBlack}"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}"/>
                                     </StackLayout>
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -318,7 +355,7 @@
                                     <StackLayout Padding="10" Spacing="10">
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="0.0 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                                                <custom:CustomLabel Text="{Binding Revenue, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
 
                                             <Grid RowSpacing="0">
@@ -337,8 +374,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -347,7 +384,7 @@
                                                 <Image Source="ic_vat_info">
 
                                             </Image>
-                                            <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                                                <custom:CustomLabel Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
 
                                     </StackLayout>
@@ -355,163 +392,33 @@
                             </border:SfBorder>
 
 <!--End Of Land Travel-->
-<!--Start of Motor Cycles Rentals-->
-                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                                <StackLayout>
-                                    <StackLayout Orientation="Horizontal" Padding="10">
-                                        <Image>
-                                            <Image.Source>
-                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                            </Image.Source>
-                                        </Image>
-                                        <custom:CustomLabel Text="Motor Cycles Rentals" Style="{StaticResource SectionTitleBlack}"/>
-                                    </StackLayout>
-
-                                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-
-                                    <StackLayout Padding="10" Spacing="10">
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="0.0 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                        </StackLayout>
-
-                                            <Grid RowSpacing="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="40*"/>
-                                                    <ColumnDefinition Width="60*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.FORM5Expenses}" Style="{StaticResource ValueLabelGrey}"/>
-                                                    <Image Source="ic_vat_info" >
-
-                                                    </Image>
-                                                </StackLayout>
-
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="90000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-
-                                            </Grid>
-
-                                            <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" Style="{StaticResource ValueLabelGrey}"/>
-                                                <Image Source="ic_vat_info">
-
-                                            </Image>
-                                            <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                        </StackLayout>
-
-                                    </StackLayout>
-                                </StackLayout>
-                            </border:SfBorder>
-                            <!--End of Motor Cycle Rentals-->
-                        </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
                             <!--On Professionals Clicked ends-->
 
                             <!--On Buy and Sell Clicked Starts-->
                             <StackLayout x:Name="BuyAndSell">
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <StackLayout>
-                                        <StackLayout Orientation="Horizontal" Padding="10">
-                                        <Image>
-                                            <Image.Source>
-                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                            </Image.Source>
-                                        </Image>
-                                            <custom:CustomLabel Text="Artificial limbs and Compensatory device" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
-                                        </StackLayout>
-                                        
-                                        <BoxView Style="{StaticResource lineSeperator}" />
 
-                                        <StackLayout Padding="10" Spacing="15">
-                                            
-                                            <StackLayout  Orientation="Horizontal">
-                                                <custom:CustomLabel Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Artificial limbs and Compensatory device" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                <ListView  x:Name="BuyAndSellList" 
+           ItemsSource="{Binding Sell_Buy}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
 
-                                            <StackLayout Orientation="Horizontal">
-                                                <custom:CustomLabel Text="Capital" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-
-                                            <Grid RowSpacing="0" ColumnSpacing="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="40*"/>
-                                                    <ColumnDefinition Width="10*"/>
-                                                    <ColumnDefinition Width="40*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text="Value of supply cont." Style="{StaticResource ValueLabelGrey}"/>
-
-                                                <StackLayout  Grid.Row="0" Grid.Column="1">
-                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
-                                                    
-                                                </Image>
-                                                </StackLayout>
-                                                
-                                                    <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="Not Applicable" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-
-                                            </Grid>
-
-                                            <StackLayout Orientation="Horizontal">
-                                                <custom:CustomLabel Text="Profit Ratio" Style="{StaticResource ValueLabelGrey}"/>
-                                                <Image Source="ic_vat_info">
-                                                    
-                                                </Image>
-                                                <custom:CustomLabel Text="05%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal">
-                                                <custom:CustomLabel Text="Sales" Style="{StaticResource ValueLabelGrey}"/>
-                                                <Image Source="ic_vat_info">
-
-                                                </Image>
-                                                <custom:CustomLabel Text="200.0 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-
-                                            <StackLayout Orientation="Horizontal">
-                                                <custom:CustomLabel Text="Sales profit Ratio" Style="{StaticResource ValueLabelGrey}"/>
-                                                <Image Source="ic_vat_info">
-
-                                                </Image>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-                                        </StackLayout>
-
-                                        <BoxView Style="{StaticResource lineSeperator}" />
-
-                                        <StackLayout Padding="10" Spacing="10">
-                                            <StackLayout Orientation="Horizontal">
-                                                <custom:CustomLabel Text="Do you have Imports" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="No" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-                                        </StackLayout>
-                                        
-                                        <BoxView Style="{StaticResource lineSeperator}" />
-
-                                        <Grid Padding="10" ColumnSpacing="10">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="90*"/>
-                                                <ColumnDefinition Width="10*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0" Text="Do you have Internal Procurement from Saudi?" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="No" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                        </Grid>
-
-                                    </StackLayout>
-                                </border:SfBorder>
-
-
-
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Image>
@@ -519,7 +426,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Sell Travel Tickets Sea and Land Agency" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -528,12 +435,12 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Sell Travel Tickets Sea and Land Agency" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Capital" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="9000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Capital, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
@@ -554,8 +461,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="Applicable" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="90000.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding SuppCon, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -564,7 +471,7 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="05%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ProfitRatio, StringFormat='{0:F2}%'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout Orientation="Horizontal">
@@ -572,7 +479,7 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="200.0 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout Orientation="Horizontal">
@@ -580,7 +487,7 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="30%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding SalePrfRatio, StringFormat='{0:F2}%'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
                                         </StackLayout>
 
@@ -589,7 +496,7 @@
                                         <StackLayout Padding="10" Spacing="15">
                                             <StackLayout Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Do you have Imports?" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Yes" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding IsImport}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <custom:CustomLabel Text="Import Details" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
@@ -612,8 +519,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="Applicable" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Imp_IsGeneralApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding GenTrade, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -635,8 +542,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="Applicable" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="10000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Imp_IsLiveLihoodsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding Livelihoods, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -658,8 +565,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="Applicable" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="9000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Imp_IsLivestockApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding LiveStkAnimals, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -668,7 +575,7 @@
                                         <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="LightSkyBlue">
                                             
                                                 <custom:CustomLabel Text="Total of Imports" Style="{StaticResource ValueLabelBlack}"/>
-                                                <custom:CustomLabel Text="10009200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold"/>
+                                                            <custom:CustomLabel Text="{Binding ExtnProc, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold"/>
                                             
                                         </StackLayout>
 
@@ -679,7 +586,7 @@
                                                 <ColumnDefinition Width="10*"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="Do you have Internal Procurement from Saudi?" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" Text="Yes" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Column="1" Text="{Binding IsProcurement}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
 
                                         
@@ -703,8 +610,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="Applicable" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="1000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Pro_IsGeneralApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding GenTradeI, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -726,8 +633,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="Not Applicable" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="0.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Pro_IsLiveLihoodsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding LivelihoodsI, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -749,8 +656,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="Applicable" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="2000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Pro_IsLivestockApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding LiveStkAnimalsI, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -760,19 +667,39 @@
                                         <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="LightSkyBlue" Spacing="0">
 
                                             <custom:CustomLabel Text="Total of Procurement" Style="{StaticResource ValueLabelBlack}" />
-                                            <custom:CustomLabel Text="100009000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold"/>
+                                                            <custom:CustomLabel Text="{Binding IntnProc, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold"/>
 
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
 
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
 
                             </StackLayout>
                             <!--On Buy and Sell Clicked ends-->
 
                             <!--On Labour Occupancy clicked Starts-->
                             <StackLayout x:Name="LabourOccupancy">
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <ListView  x:Name="LabourOccupList" 
+           ItemsSource="{Binding LabourOccup}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+
+                                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Image>
@@ -780,7 +707,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Arabic Name" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -789,11 +716,11 @@
                                             
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Arabic Name" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
-                                                <custom:CustomLabel Text="No. Of Labors" Style="{StaticResource ValueLabelGrey}"/>
+                                                                <custom:CustomLabel Text="{Binding NoOfLabour}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
@@ -805,7 +732,7 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Revenue}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <Grid RowSpacing="0">
@@ -824,8 +751,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpensesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -834,7 +761,7 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding NetProfit, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                         </StackLayout>
@@ -843,81 +770,33 @@
                                 </border:SfBorder>
 
 
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <StackLayout>
-                                        <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
-                                            <custom:CustomLabel Text="Skin Care non-medical skin" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
-                                        </StackLayout>
-
-                                        <BoxView Style="{StaticResource lineSeperator}" />
-
-                                        <StackLayout Padding="10" Spacing="15">
-
-                                            <StackLayout  Orientation="Horizontal">
-                                                <custom:CustomLabel WidthRequest="130" Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Skin Care non-medical skin" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-
-                                            <StackLayout  Orientation="Horizontal">
-                                                <custom:CustomLabel Text="No. Of Labors" Style="{StaticResource ValueLabelGrey}"/>
-                                                <Image Source="ic_vat_info">
-
-                                                </Image>
-                                                <custom:CustomLabel Text="02" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-
-                                            <StackLayout  Orientation="Horizontal">
-                                                <custom:CustomLabel Text="Revenue" Style="{StaticResource ValueLabelGrey}"/>
-                                                <Image Source="ic_vat_info">
-
-                                                </Image>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-
-                                            <Grid RowSpacing="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-                                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.FORM5Expenses}" Style="{StaticResource ValueLabelGrey}"/>
-                                                    <Image Source="ic_vat_info" >
-
-                                                    </Image>
-                                                </StackLayout>
-
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-
-                                            </Grid>
-
-                                            <StackLayout  Orientation="Horizontal">
-                                                <custom:CustomLabel Text="Net Profit" Style="{StaticResource ValueLabelGrey}"/>
-                                                <Image Source="ic_vat_info">
-
-                                                </Image>
-                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-
-                                        </StackLayout>
-
-                                    </StackLayout>
-                                </border:SfBorder>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                               
                             </StackLayout>
                             <!--On Labour Occupancy Cliked ends-->
 
-                            <!--On Industry clicked Starts-->
+                           <!--On Industry clicked Starts-->
                             <StackLayout x:Name="Industry">
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                <ListView  x:Name="IndustryList" 
+           ItemsSource="{Binding Industry}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Image>
@@ -925,7 +804,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Dairy Factory" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -934,7 +813,7 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Dairy Factory" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0" >
@@ -955,7 +834,7 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Text="{Binding FundingTot}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -964,7 +843,7 @@
                                                 <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding CapitalStr}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
@@ -984,7 +863,7 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="90000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="{Binding Profit, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -994,115 +873,38 @@
                                                 <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="0.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel  Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
                                         </StackLayout>
 
                                     </StackLayout>
                                 </border:SfBorder>
 
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <StackLayout>
-                                        <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
-                                            <custom:CustomLabel Text="Production belts and shoes and bags" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
-                                        </StackLayout>
-
-                                        <BoxView Style="{StaticResource lineSeperator}" />
-
-                                        <StackLayout Padding="10" Spacing="15">
-
-                                            <StackLayout  Orientation="Horizontal">
-                                                <custom:CustomLabel WidthRequest="150" Text="Outlet Name" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Production belts and shoes and bags" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-
-                                            <Grid RowSpacing="0" ColumnSpacing="0" >
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="50*"/>
-                                                    <ColumnDefinition Width="10*"/>
-                                                    <ColumnDefinition Width="40*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text="Total funding from Government" Style="{StaticResource ValueLabelGrey}"/>
-
-                                                <StackLayout  Grid.Row="0" Grid.Column="1">
-                                                    <Image Margin="0,10,0,0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
-
-                                                    </Image>
-                                                </StackLayout>
-
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Text="6000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-
-                                            </Grid>
-
-                                            <StackLayout  Orientation="Horizontal">
-                                                <custom:CustomLabel Text="Declared Capital" Style="{StaticResource ValueLabelGrey}"/>
-                                                <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
-
-                                                </Image>
-                                                <custom:CustomLabel Text="92000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
-
-                                            <Grid RowSpacing="0" ColumnSpacing="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="50*"/>
-                                                    <ColumnDefinition Width="50*"/>
-                                                </Grid.ColumnDefinitions>
-
-
-                                                <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="0">
-                                                    <custom:CustomLabel Text="Profit" Style="{StaticResource ValueLabelGrey}"/>
-                                                    <Image HorizontalOptions="Start" VerticalOptions="Start" Margin="0,10,0,0" Source="ic_vat_info">
-
-                                                    </Image>
-                                                </StackLayout>
-
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="90000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-
-                                            </Grid>
-
-
-                                            <Grid RowSpacing="0" ColumnSpacing="0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="40*"/>
-                                                    <ColumnDefinition Width="60*"/>
-                                                </Grid.ColumnDefinitions>
-
-
-                                                <StackLayout Orientation="Horizontal"  Grid.Row="0" Grid.Column="0">
-                                                    <custom:CustomLabel Text="Sales" Style="{StaticResource ValueLabelGrey}"/>
-                                                    <Image HorizontalOptions="Start" VerticalOptions="Start" Margin="0,10,0,0" Source="ic_vat_info">
-
-                                                    </Image>
-                                                </StackLayout>
-
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="90000000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-
-                                            </Grid>
-                                        </StackLayout>
-
-                                    </StackLayout>
-                                </border:SfBorder>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
 
                             </StackLayout>
                             <!--On Industry clicked Ends-->
 
-                            <!--On Contracting clicked Starts-->
+                               <!--On Contracting clicked Starts-->
                             <StackLayout x:Name="Contracting">
+                                <ListView  x:Name="ContractingList" 
+           ItemsSource="{Binding Contracting}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
@@ -1111,7 +913,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Maintenance Est." Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -1120,7 +922,7 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Maintenance Est." Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
@@ -1142,8 +944,8 @@
                                                 </Image>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                    <custom:CustomLabel Text="{Binding IsGovenmentApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                    <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                                 </StackLayout>
                                             </Grid>
 
@@ -1167,7 +969,7 @@
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
                                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Applicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                    <custom:CustomLabel Text="2000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                    <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                                 </StackLayout>
                                             </Grid>
 
@@ -1191,13 +993,13 @@
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
                                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                    <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                    <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                                 </StackLayout>
                                             </Grid>
 
                                             <StackLayout Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Activity total Profits" Style="{StaticResource ValueLabelGrey}" />
-                                                <custom:CustomLabel Text="90000000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout Orientation="Horizontal">
@@ -1213,17 +1015,40 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="60000.00 SAR " Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
+
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
                             </StackLayout>
+                                            
                             <!--On Contracting clicked Ends-->
 
-                            <!--On Invest and Real Est. Clicked Starts-->
+                             <!--On Invest and Real Est. Clicked Starts-->
                             <StackLayout x:Name="RealEstateOffice">
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                <ListView  x:Name="InvstRealEstList" 
+           ItemsSource="{Binding InvstRealEst}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Image>
@@ -1231,7 +1056,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Real Estate Office" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -1240,17 +1065,17 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Real Estate Office" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="City" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Riyadh" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding City}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Revenue" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Revenue}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <Grid RowSpacing="0">
@@ -1269,8 +1094,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpencesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
                                             </Grid>
                                             
@@ -1279,17 +1104,39 @@
                                                 <Image Source="ic_vat_info">
                                                     
                                                 </Image>
-                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding NetPft, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
+
+
+                                </ViewCell>
+                                </DataTemplate>
+                                </ListView.ItemTemplate>
+                                </ListView>
                             </StackLayout>
                             <!--On Invest and Real Est. Clicked Ends-->
-                            
-                            <!--On Hotels Clicked Starts-->
+
+                             <!--On Hotels Clicked Starts-->
                             <StackLayout x:Name="Hotels">
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                <ListView  x:Name="HotelsList" 
+           ItemsSource="{Binding Hotels}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Image>
@@ -1297,7 +1144,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Lounge Travelers" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -1306,12 +1153,12 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Lounge Travelers" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="No. Of Rooms/Units" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="0" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding NoOfRooms}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
@@ -1319,14 +1166,14 @@
                                                 <Image Source="ic_vat_info">
                                                     
                                                 </Image>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding RoomRate}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Additional Room Rate" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding AddRoomRate}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
@@ -1334,7 +1181,7 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="5%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ServicFee, StringFormat='{0:F2}%'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
@@ -1342,7 +1189,7 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="20%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding OccRate, StringFormat='{0:F2}%'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
@@ -1350,7 +1197,7 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="Riyadh" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding City}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
@@ -1358,13 +1205,13 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="No" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding IsOwned}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Revenue" Style="{StaticResource ValueLabelGrey}"/>
-                                                
-                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                                                <custom:CustomLabel Text="{Binding Revenue, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <Grid RowSpacing="0">
@@ -1383,8 +1230,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                             </Grid>
 
                                             <StackLayout  Orientation="Horizontal">
@@ -1392,17 +1239,40 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding NetProfit, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
+
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </StackLayout>
                             <!--On Hotels Clicked Ends-->
 
-                            <!--On Education & Health Clicked Starts-->
+                             <!--On Education & Health Clicked Starts-->
                             <StackLayout x:Name="EducationAndHealth">
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                <ListView  x:Name="EducationAndHealthList" 
+           ItemsSource="{Binding Edu_Health}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+
+
+                                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Image>
@@ -1410,7 +1280,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Medical Clinic" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -1419,17 +1289,17 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Medical Clinic" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Value of Subsidy From Government" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="900000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding SubsidyVal, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Revenue}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <Grid RowSpacing="0">
@@ -1448,8 +1318,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                         </Grid>
 
                                             <StackLayout Orientation="Horizontal">
@@ -1457,17 +1327,38 @@
                                                 <Image Source="ic_vat_info">
                                                     
                                                 </Image>
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding NetPft, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
-                            </StackLayout>
+
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            
+                        </StackLayout>
                             <!--On Education & Health Clicked Ends-->
 
                             <!--Poultry & Fish Fram Activities Clcked Starts-->
                             <StackLayout x:Name="PoultryAndFishFram">
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <ListView  x:Name="PoultryAndFishFramList" 
+           ItemsSource="{Binding Poultry_FishFarm}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Image>
@@ -1475,7 +1366,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Rabbits Farm" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -1484,12 +1375,12 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Rabbits Farm" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Declared Capital" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="900000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Capital, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <Grid Padding="0" RowSpacing="0">
@@ -1508,8 +1399,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsIncCapApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding IncrInCap}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -1518,7 +1409,7 @@
                                                 <Image Source="ic_vat_info" >
 
                                                 </Image>
-                                                <custom:CustomLabel Text="0.00" HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding CapitalRate}" HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout Orientation="Horizontal">
@@ -1526,17 +1417,38 @@
                                                 <Image Source="ic_vat_info" >
 
                                                 </Image>
-                                                <custom:CustomLabel Text="200.00 SAR" HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Profits, StringFormat='{0:F2} SAR'}" HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
+
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </StackLayout>
                             <!--Poultry & Fish Fram Activities Clcked Ends-->
                             
-                            <!--Cars Clicked Starts-->
+                           <!--Cars Clicked Starts-->
                             <StackLayout x:Name="Cars">
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                <ListView  x:Name="CarsList" 
+           ItemsSource="{Binding Cars}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Image>
@@ -1544,7 +1456,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Car Agency" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -1553,43 +1465,63 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Car Agency" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Share Capital" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="900000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ShareCap, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal" Spacing="-5">
                                                 <custom:CustomLabel Text="Internal Procurement from Saudi" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="200000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding IntrPurchase, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Imports" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ForgPurchase}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Sales" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Percentage Sales Gain" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="01%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding PerSalesGain, StringFormat='{0:F2}%'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
                             </StackLayout>
                             <!--Cars Clicked Ends-->
 
-                            <!--On Minerals Clicked Starts-->
+                             <!--On Minerals Clicked Starts-->
                             <StackLayout x:Name="Minerals">
-                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                                <ListView  x:Name="MineralsList" 
+           ItemsSource="{Binding Minerals}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+             BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                                    <x:Arguments>
+                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                    </x:Arguments>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Image>
@@ -1597,7 +1529,7 @@
                                                     <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <custom:CustomLabel Text="Gold Sales" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -1606,41 +1538,45 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Outlet Name" WidthRequest="150" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="Gold Sales" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Share Capital" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="900000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ShareCap, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal" Spacing="-5">
                                                 <custom:CustomLabel Text="Internal Procurement from Saudi" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="200000000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding IntrPurchase, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Imports" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding ForgPurchase}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Sales" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="200.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="Percentage Sales Gain" Style="{StaticResource ValueLabelGrey}"/>
-                                                <custom:CustomLabel Text="01%" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding PerSalesGain, StringFormat='{0:F2}%'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
+                                </ViewCell>
+                                </DataTemplate>
+                                </ListView.ItemTemplate>
+                                </ListView>
                             </StackLayout>
                             <!--On Minerals Clicked Ends-->
                             
-                            <!--On Additional Info Clicked Starts-->
+                           <!--On Additional Info Clicked Starts-->
                             <StackLayout x:Name="AdditionalInfo">
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
@@ -1673,9 +1609,9 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsOtherComShareApp}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding OtherCompanyShare}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -1684,7 +1620,7 @@
                                                 <Image Source="ic_vat_info" >
 
                                                 </Image>
-                                                <custom:CustomLabel Text="0.00" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding ZakatBase}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
@@ -1710,7 +1646,7 @@
                                                 <Image Source="ic_vat_info" >
 
                                                 </Image>
-                                                <custom:CustomLabel Text="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding NoOfBranch}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout Orientation="Horizontal">
@@ -1722,7 +1658,7 @@
                                                 </StackLayout>
 
 
-                                                <custom:CustomLabel Text="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding NoofEmp}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </StackLayout>
 
@@ -1731,7 +1667,7 @@
                                                 <Image Source="ic_vat_info" >
 
                                                 </Image>
-                                                <custom:CustomLabel Text="500000.00 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding YearRent, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
@@ -1739,7 +1675,7 @@
                                                 <Image Source="ic_vat_info" >
 
                                                 </Image>
-                                                <custom:CustomLabel Text="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Text="{Binding TotalAnnualSalary}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
@@ -1828,7 +1764,7 @@
                                         </Expander.Header>
                                         <StackLayout>
                                         <!--Cabs-->
-                                        <StackLayout Padding="10" IsVisible="{Binding CabsSummaryIsVisible}">
+                                        <StackLayout Padding="10" >
                                             <BoxView Style="{StaticResource lineSeperator}"/>
 
                                             <StackLayout Spacing="15">
@@ -2483,10 +2419,6 @@
                 </Grid>
                     <!--End of Zakat Estimation-->
 
-                
-                
-                
-                
                 
                 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,10">
