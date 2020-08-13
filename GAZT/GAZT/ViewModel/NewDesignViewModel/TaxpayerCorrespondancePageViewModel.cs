@@ -97,6 +97,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ListVATCorrespondance");
             }
         } 
+        private string _CountLabel = null;
+        public string CountLabel
+        {
+            get
+            {
+                return _CountLabel;
+            }
+            set
+            {
+                _CountLabel = value;
+                RaisePropertyChanged("CountLabel");
+            }
+        }
+        private int _Count = 0;
+        public int Count
+        {
+            get
+            {
+                return _Count;
+            }
+            set
+            {
+                _Count = value;
+                RaisePropertyChanged("Count");
+            }
+        }
         private List<CorrespondanceModel> _listAllCorrespondance = null;
         public List<CorrespondanceModel> ListAllCorrespondance
         {
@@ -223,10 +249,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _listToDisplay = value;
+                Count = 0;
                 if (_listToDisplay != null)
                 {
+
                     if (_listToDisplay.Count > 0)
                     {
+                        Count = _listToDisplay.Count;
+                        CountLabel = Count.ToString();
                         IsListVisible = true;
                         IsNoDataLableVisible = false;
                     }
@@ -234,10 +264,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         IsListVisible = false;
                         IsNoDataLableVisible = true;
+
+                        Count = _listToDisplay.Count;
+                        CountLabel = Count.ToString();
                     }
                 }
                 else
                 {
+                    Count = _listToDisplay.Count;
+                    CountLabel = Count.ToString();
                     IsListVisible = false;
                     IsNoDataLableVisible = true;
 
