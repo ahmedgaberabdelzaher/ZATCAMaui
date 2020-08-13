@@ -1875,6 +1875,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Count.
+        /// </summary>
+        public static string NDCount {
+            get {
+                return ResourceManager.GetString("NDCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Countinue.
         /// </summary>
         public static string NDCountinue {
@@ -1952,6 +1961,15 @@ namespace EGAZT {
         public static string NDIDNumber {
             get {
                 return ResourceManager.GetString("NDIDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inbox.
+        /// </summary>
+        public static string NDInbox {
+            get {
+                return ResourceManager.GetString("NDInbox", resourceCulture);
             }
         }
         
@@ -2208,7 +2226,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type your reference number.
+        ///   Looks up a localized string similar to Type your Reference Number.
         /// </summary>
         public static string NDTypeYourReferenceNumber {
             get {

@@ -38,7 +38,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZZCorrespondence}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDInbox}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
                         <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource ImageReverse}" >
                             <Image.GestureRecognizers>
@@ -95,7 +95,7 @@
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
                 </Grid>
-                <custom:CustomLabel Text="{Binding CountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
+                <custom:CustomLabel Margin="5,0,0,0" Text="{Binding CountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                     <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Filter"  Margin="0,10,0,0" HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" VerticalOptions="Center" SelectionChanging="ChipGroup_statusFilter_SelectionChanged" SelectedChipTextColor="{StaticResource Secondary}">
                         <!--SelectionChanged="chipgroup_SelectionChanged" ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1"  -->

@@ -256,7 +256,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (_listToDisplay.Count > 0)
                     {
                         Count = _listToDisplay.Count;
-                        CountLabel = Count.ToString();
+                        CountLabel =AppResources.NDCount+": "+ Count.ToString();
                         IsListVisible = true;
                         IsNoDataLableVisible = false;
                     }
