@@ -28,7 +28,7 @@
                         <StackLayout>
                         <custom:CustomLabel Text="Write Your Objection Reason" Style="{StaticResource CaptionLabelGrey}"/>
                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                <custom:GAZTBorderlessEntry  Style="{StaticResource InputTableEntryLayoutStyle}">
+                                <custom:GAZTBorderlessEntry Text="{Binding ObjectionReason}"  Style="{StaticResource InputTableEntryLayoutStyle}">
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
