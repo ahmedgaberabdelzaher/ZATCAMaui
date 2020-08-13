@@ -592,5 +592,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
         }
+
+        private async void VATRefundRequest_Tapped(object sender, EventArgs e)
+        {
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
+
+            });
+        }   
     }
 }

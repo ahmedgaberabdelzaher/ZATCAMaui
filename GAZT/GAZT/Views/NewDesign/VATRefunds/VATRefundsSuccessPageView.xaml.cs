@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -36,6 +37,24 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
+        }
+
+        void btnGoToDasboard_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+                _navigation.PopToRootAsync();
+            });
+        }
+
+        void btnRefunds_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+                _navigation.PopToRootAsync();
+            });
         }
     }
 }
