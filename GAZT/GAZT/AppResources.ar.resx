@@ -4950,4 +4950,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="Pleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
     <value>الرجاء إدخال رقم التحقق المرسل الى جوالك لاستعادة كلمة المرور</value>
   </data>
+  <data name="ZAdjustment" xml:space="preserve">
+    <value>Adjustment</value>
+  </data>
+  <data name="ZDone" xml:space="preserve">
+    <value>Done</value>
+  </data>
 </root>

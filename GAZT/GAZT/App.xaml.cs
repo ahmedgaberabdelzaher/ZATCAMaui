@@ -159,6 +159,9 @@ namespace EGAZT
         public static string VATRefundDetailsPageView = "VATRefundDetailsPageView";
         public static string VATRefundsNewRequestPageView = "VATRefundsNewRequestPageView";
         public static string VATRefundsSuccessPageView = "VATRefundsSuccessPageView";
+        public static string GAZTNewDesignShowVatInformationPopUpPageView = "GAZTNewDesignShowVatInformationPopUpPageView";
+        
+
 
         #endregion
 

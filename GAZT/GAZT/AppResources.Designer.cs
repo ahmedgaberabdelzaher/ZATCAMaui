@@ -4715,6 +4715,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adjustment.
+        /// </summary>
+        public static string ZAdjustment {
+            get {
+                return ResourceManager.GetString("ZAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zakat amount.
         /// </summary>
         public static string ZakatAmount {
@@ -5395,6 +5404,15 @@ namespace EGAZT {
         public static string ZDescription {
             get {
                 return ResourceManager.GetString("ZDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        public static string ZDone {
+            get {
+                return ResourceManager.GetString("ZDone", resourceCulture);
             }
         }
         
