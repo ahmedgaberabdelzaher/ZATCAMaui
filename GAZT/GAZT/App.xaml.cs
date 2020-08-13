@@ -68,7 +68,7 @@ namespace EGAZT
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
         public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
         public static string AttachmentPopUp = "AttachmentPopUp";
-        
+
         #endregion
 
         #region new design views Release2
@@ -214,6 +214,7 @@ namespace EGAZT
             Xamarin.Forms.Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
             bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
+
             if (hasLanguageKey)
             {
                 var LanguageKey = Preferences.Get("Preferences_DefaultLanguage", "");
@@ -277,8 +278,6 @@ namespace EGAZT
                     }
                     break;
             }
-
-           // IsArabic = false;
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
 

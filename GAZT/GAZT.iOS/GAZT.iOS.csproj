@@ -322,9 +322,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App_icon_1024.png">
       <Visible>false</Visible>
     </ImageAsset>
-
-   
-
+    
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\LaunchImage-1242%403x~iphone6s-landscape_2208x1242.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -340,8 +338,22 @@
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-landscape_2688x1242.png">
       <Visible>false</Visible>
     </ImageAsset>
-    
-        <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x960.png">
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x1136.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Landscape_1024x768.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Landscape_1024x768-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Landscape_2048x1536.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\landscape_2436x1125.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x960.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\768x1004.png">

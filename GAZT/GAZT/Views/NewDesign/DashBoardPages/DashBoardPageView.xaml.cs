@@ -108,6 +108,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 viewModel.IsVatRegistrationTileVisible = true;
             }
+            ChangeArrowDirection();
         }
 
         protected override void OnDisappearing()
