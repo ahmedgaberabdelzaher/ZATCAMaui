@@ -2514,7 +2514,7 @@
                         </Image.Source>
                     </Image>
                 </Grid>
-                    <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}"  />
+                    <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" />
                     <!--<StackLayout Orientation="Horizontal" Margin="0,5,0,0">
                         <Frame Padding="0" CornerRadius="15" BackgroundColor="{StaticResource Primary}">
                         <StackLayout Orientation="Horizontal" Padding="0">
