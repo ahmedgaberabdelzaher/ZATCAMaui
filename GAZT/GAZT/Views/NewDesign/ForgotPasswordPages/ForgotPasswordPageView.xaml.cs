@@ -11,7 +11,7 @@ using GAZT.CustomControl;
 using MVP.FontIcons;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
-{
+{//TEAST
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignForgotPasswordPageView : ContentPage
     {

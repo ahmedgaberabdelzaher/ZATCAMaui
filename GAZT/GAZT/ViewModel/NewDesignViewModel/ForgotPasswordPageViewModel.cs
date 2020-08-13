@@ -16,7 +16,7 @@ using Xamarin.Forms;
 using System.Timers;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
-{
+{//TEST
     public class GAZTNewDesignForgotPasswordPageViewModel : ViewModelBase
     {
         #region Variable
