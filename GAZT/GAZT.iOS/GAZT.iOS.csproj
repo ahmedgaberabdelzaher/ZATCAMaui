@@ -320,9 +320,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App_icon_1024.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-2.png">
       <Visible>false</Visible>
     </ImageAsset>
