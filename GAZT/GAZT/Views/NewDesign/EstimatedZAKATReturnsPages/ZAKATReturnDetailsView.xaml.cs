@@ -10,12 +10,15 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
     public partial class ZAKATReturnDetailsView : ContentPage
     {
         ZAKATReturnDetailsViewModel viewModel;
+        public static string salesType;
+        public static bool IsGoingFirstTimeOnAttachmentPage;
         public ZAKATReturnDetailsView(string fbguid)
         {
             InitializeComponent();
             viewModel = App.Locator.ZAKATReturnDetailsView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            IsGoingFirstTimeOnAttachmentPage = true;
             viewModel.ClearData();
             viewModel.Fbguid = fbguid;
             SetLTR();
@@ -73,16 +76,64 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
             viewModel.isLabelVisible = false;
             viewModel.isEditVisible = true;
-            viewModel.IsEditTextVisible = true;
+            viewModel.IsEditTextVisible = false;
+            viewModel.SetSubmitButtonVisibility = true;
+            viewModel.SetConfirmButtonVisibility = false;
             viewModel.SetEditImage();
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+          //  PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
 
         }
 
-        private void OnEditButtonClicked(object sender, EventArgs e)
+        private void OnTotalVATSaleEditImageClicked(object sender, EventArgs e)
         {
+            salesType = "TotalVATSales";
             PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
+
+        private void OnAverageNumberLabourEditImageClicked(object sender, EventArgs e)
+        {
+            salesType = "AverageNumberLabour";
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+        }
+
+        private void OnImportValueEditImageClicked(object sender, EventArgs e)
+        {
+            salesType = "ImportValue";
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+        }
+
+        private void OnImportFromPointOfSalesEditImageClicked(object sender, EventArgs e)
+        {
+            salesType = "ImportFromPointOfSales";
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+        }
+
+        private void OnContactFromETIMADSystemEditImageClicked(object sender, EventArgs e)
+        {
+            salesType = "ContactFromETIMADSystem";
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+        }
+
+        private void OnExportValueEditImageClicked(object sender, EventArgs e)
+        {
+            salesType = "ExportValue";
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+        }
+
+        private void OnPurchaseValueEditImageClicked(object sender, EventArgs e)
+        {
+            salesType = "PurchaseValue";
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+        }
+
+        private void OnCapitalAmountEditImageClicked(object sender, EventArgs e)
+        {
+            salesType = "CapitalAmount";
+            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+        }
+
+
+
 
         private void OnInfoClicked(object sender, EventArgs e)
         {

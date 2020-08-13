@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -19,8 +21,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //============================start===================================================
         public ICommand OnAttachmentClicked { get; set; }
         public ZakatReturnDetailsD ZakatReturnDetail;
+        public static List<SalesDetails> SalesDetailList = new List<SalesDetails>();
         byte[] attachment;
-
+        int SelectedSalesTypeIndex;
         #region Property
 
 
@@ -73,6 +76,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("AttachmentName");
             }
         }
+
+
+        private string _objectionReason = "";
+        public string ObjectionReason
+        {
+            get
+            {
+                return _objectionReason;
+            }
+            set
+            {
+                _objectionReason = value;
+                
+                RaisePropertyChanged("ObjectionReason");
+            }
+        }
+        
+
+
         #endregion
 
         #region Constructor
@@ -100,14 +122,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void OnPageLoad()
         {
-            ZakatAttachment ZakatAttachment1 = new ZakatAttachment();
-            ZakatAttachment1.Filename = "ABC.pdf";
-            ZakatAttachment ZakatAttachment2 = new ZakatAttachment();
-            ZakatAttachment2.Filename = "XYZ.pdf";
-            ObservableCollection<ZakatAttachment> list = new ObservableCollection<ZakatAttachment>();
-            list.Add(ZakatAttachment1);
-            list.Add(ZakatAttachment2);
-            ZakatReturnAttachmentsList = list;
+            if(ZAKATReturnDetailsView.IsGoingFirstTimeOnAttachmentPage)
+            {
+                GetSalesTypeObjectList();
+                ZAKATReturnDetailsView.IsGoingFirstTimeOnAttachmentPage = false;
+            }
+
+
+            SelectedSalesTypeIndex = GetSelectedSalesTypeIndex();
+            if(SalesDetailList[SelectedSalesTypeIndex] != null)
+            {
+                ObjectionReason = SalesDetailList[SelectedSalesTypeIndex].ChangeReason;
+
+                if(SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.Count > 0)
+                {
+                    ZakatReturnAttachmentsList = CloneAttachmmentListInLocalList(SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment);
+                }
+                else
+                {
+                    ZakatReturnAttachmentsList = null;
+                }
+            }
+            else
+            {
+                ObjectionReason = string.Empty;
+                ZakatReturnAttachmentsList = null;
+            }
+
+
+            //ZakatAttachment ZakatAttachment1 = new ZakatAttachment();
+
+            //ZakatAttachment1.Filename = "ABC.pdf";
+            //ZakatAttachment ZakatAttachment2 = new ZakatAttachment();
+            //ZakatAttachment2.Filename = "XYZ.pdf";
+            //ObservableCollection<ZakatAttachment> list = new ObservableCollection<ZakatAttachment>();
+            //list.Add(ZakatAttachment1);
+            //list.Add(ZakatAttachment2);
+            //ZakatReturnAttachmentsList = list;
         }
         public async Task AddAttachment()
         {
@@ -172,8 +223,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                     unixTime = unixTime.Replace(",", "");
                                                     _estimateZakatAttachment.Erfdt = "" + "/Date(" + unixTime + ")/";// need to
                                                                                                                      //_estimateZakatAttachment.Erfdt = "/Date(" + unixTime + ")/";// need to
-                                                    //SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
-                                                    //ZakatReturnAttachmentsList = CloneAttachmmentListInLocalList(SelectedSalesDetails.estimateZakatAttachment);
+                                                    SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.Add(_estimateZakatAttachment);
+                                                    ZakatReturnAttachmentsList = CloneAttachmmentListInLocalList(SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment);
 
 
                                                     //IsValueChanged();// 1584987294.32348//1584987210.06955
@@ -349,7 +400,140 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
         }
 
+        private ObservableCollection<ZakatAttachment> CloneAttachmmentListInLocalList(ObservableCollection<EstimateZakatAttachment> estimateZakatAttachment)
+        {
+            ObservableCollection<ZakatAttachment> _estimateZakatAttachment = new ObservableCollection<ZakatAttachment>();
+            foreach (EstimateZakatAttachment obj in estimateZakatAttachment)
+            {
+                ZakatAttachment _zakatAttachment = new ZakatAttachment();
+                try
+                {
+                    //  public Metadata3 __metadata { get; set; }
+                    _zakatAttachment.RetGuid = obj.RetGuid;
+                    _zakatAttachment.Seqno = obj.Seqno;
+                    _zakatAttachment.Dotyp = obj.Dotyp;
+                    _zakatAttachment.Doguid = obj.Doguid;
+                    _zakatAttachment.AttBy = obj.AttBy;
+                    _zakatAttachment.Filename = obj.Filename;
+                    _zakatAttachment.FileExtn = obj.FileExtn;
+                    _zakatAttachment.Mimetype = obj.Mimetype;
+                    _zakatAttachment.ByPusr = obj.ByPusr;
+                    _zakatAttachment.Erfdt = obj.Erfdt;
+                    _zakatAttachment.DataVersion = obj.
+                        DataVersion;
+                    _zakatAttachment.DocUrl = obj.DocUrl;
+                    _zakatAttachment.OutletRef = obj.OutletRef;
+                    string unixDate = GetUnixDate(_zakatAttachment.Erfdt);
+                    double unixTime = Convert.ToDouble(unixDate);
+                    DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+                    long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
+                    DateTime dt = new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
+                    TimeZone localZone = TimeZone.CurrentTimeZone;
+                    string standardName = localZone.DaylightName;
+                    _zakatAttachment.UploadededDateToShow = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘UTC’ ‘zzz’");
+                    string uploadedDate = _zakatAttachment.UploadededDateToShow;
+                    uploadedDate = uploadedDate.Replace("’", "");
+                    uploadedDate = uploadedDate.Replace("‘", "");
+                    uploadedDate = uploadedDate.Replace("UTC", "GMT");
+                    _zakatAttachment.UploadededDateToShow = uploadedDate;
+                    _estimateZakatAttachment.Add(_zakatAttachment);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return _estimateZakatAttachment;
+        }
 
+        private string GetUnixDate(string _erfdt)
+        {
+            int startIndex = 6;
+            int lengthOfCharacter = _erfdt.Length - 8;
+            string unixDateTime = _erfdt.Substring(startIndex, lengthOfCharacter);
+            return unixDateTime;
+        }
+        // Creating a list object to contain the Sales Type object
+        public void GetSalesTypeObjectList()
+        {
+            List<SalesDetails> salesDetailList = new List<SalesDetails>();
+            SalesDetails toatalVATSales = new SalesDetails();
+            SalesDetails averageNumberOfLabour = new SalesDetails();
+            SalesDetails importValue = new SalesDetails();
+            SalesDetails importFromPointOfSales = new SalesDetails();
+            SalesDetails contactFromETIMADSystem = new SalesDetails();
+            SalesDetails exportValue = new SalesDetails();
+            SalesDetails purchaseValue = new SalesDetails();
+            SalesDetails capitalAmount = new SalesDetails();
+
+            ObservableCollection<EstimateZakatAttachment> _estimateZakatAttachment1 = new ObservableCollection<EstimateZakatAttachment>();
+            ObservableCollection<EstimateZakatAttachment> _estimateZakatAttachment2 = new ObservableCollection<EstimateZakatAttachment>();
+            ObservableCollection<EstimateZakatAttachment> _estimateZakatAttachment3 = new ObservableCollection<EstimateZakatAttachment>();
+            ObservableCollection<EstimateZakatAttachment> _estimateZakatAttachment4 = new ObservableCollection<EstimateZakatAttachment>(); 
+            ObservableCollection<EstimateZakatAttachment> _estimateZakatAttachment5 = new ObservableCollection<EstimateZakatAttachment>();
+            ObservableCollection<EstimateZakatAttachment> _estimateZakatAttachment6 = new ObservableCollection<EstimateZakatAttachment>();
+            ObservableCollection<EstimateZakatAttachment> _estimateZakatAttachment7 = new ObservableCollection<EstimateZakatAttachment>();
+            ObservableCollection<EstimateZakatAttachment> _estimateZakatAttachment8 = new ObservableCollection<EstimateZakatAttachment>();
+            toatalVATSales.estimateZakatAttachment = _estimateZakatAttachment1;
+            toatalVATSales.estimateZakatAttachment = _estimateZakatAttachment2;
+            toatalVATSales.estimateZakatAttachment = _estimateZakatAttachment3;
+            toatalVATSales.estimateZakatAttachment = _estimateZakatAttachment4;
+            toatalVATSales.estimateZakatAttachment = _estimateZakatAttachment5;
+            toatalVATSales.estimateZakatAttachment = _estimateZakatAttachment6;
+            toatalVATSales.estimateZakatAttachment = _estimateZakatAttachment7;
+            toatalVATSales.estimateZakatAttachment = _estimateZakatAttachment8;
+
+
+            salesDetailList.Add(toatalVATSales);
+            salesDetailList.Add(averageNumberOfLabour);
+            salesDetailList.Add(importValue);
+            salesDetailList.Add(importFromPointOfSales);
+            salesDetailList.Add(contactFromETIMADSystem);
+            salesDetailList.Add(exportValue);
+            salesDetailList.Add(purchaseValue);
+            salesDetailList.Add(capitalAmount);
+            SalesDetailList = salesDetailList;
+
+        }
+
+        private int GetSelectedSalesTypeIndex()
+        {
+            if(ZAKATReturnDetailsView.salesType.Equals("TotalVATSales"))
+            {
+                return 0;
+            }
+            else if(ZAKATReturnDetailsView.salesType.Equals("AverageNumberLabour"))
+            {
+                return 1;
+            }
+            else if (ZAKATReturnDetailsView.salesType.Equals("ImportValue"))
+            {
+                return 2;
+            }
+            else if (ZAKATReturnDetailsView.salesType.Equals("AverageNumberLabour"))
+            {
+                return 3;
+            }
+            else if (ZAKATReturnDetailsView.salesType.Equals("ContactFromETIMADSystem"))
+            {
+                return 4;
+            }
+            else if (ZAKATReturnDetailsView.salesType.Equals("ExportValue"))
+            {
+                return 5;
+            }
+            else if (ZAKATReturnDetailsView.salesType.Equals("PurchaseValue"))
+            {
+                return  6;
+            }
+            else if (ZAKATReturnDetailsView.salesType.Equals("CapitalAmount"))
+            {
+                return 7;
+            }
+            else
+            {
+                return 0;
+            }
+        }
         #endregion
 
     }
