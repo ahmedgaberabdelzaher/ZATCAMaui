@@ -5188,4 +5188,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="FORMZakatDetails" xml:space="preserve">
     <value>تفاصيل الزكاة</value>
   </data>
+  <data name="NDTaxEvasion" xml:space="preserve">
+    <value>التهرب الضريبي</value>
+    <comment>Tax Evasion</comment>
+  </data>
 </root>
