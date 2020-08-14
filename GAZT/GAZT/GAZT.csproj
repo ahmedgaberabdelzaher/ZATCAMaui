@@ -110,6 +110,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>SyncfusionControl.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml.cs">
+      <DependentUpon>UpdatePasswordPopUp.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml.cs">
       <DependentUpon>MorePopUpPageView.xaml</DependentUpon>
     </Compile>
@@ -202,7 +205,28 @@
     <EmbeddedResource Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondancePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\EamilUpdatedSuccessFully.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\MoblieNumberUpdatedSuccessFully.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\PasswordUpdatedSuccessFully.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\TaxpayerProfilePageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\UpdateEmailPopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\UpdateMobilePopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\VerificationPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\TaxpayersCertificatesPages\TaxpayersCertificatesPageView.xaml">

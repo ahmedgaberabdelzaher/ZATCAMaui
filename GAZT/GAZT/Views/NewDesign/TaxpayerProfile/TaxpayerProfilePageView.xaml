@@ -54,8 +54,12 @@
                     
                     <StackLayout Orientation="Horizontal">
                     <custom:CustomLabel Text="Mobile Number" Style="{StaticResource CaptionLabelGrey}"/>
-                        <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
+                            <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnMobileEditTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
 
                     <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="5,0,0,0">
 
@@ -73,8 +77,12 @@
 
                     <StackLayout Orientation="Horizontal">
                         <custom:CustomLabel Text="Email" Style="{StaticResource CaptionLabelGrey}"/>
-                        <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
+                            <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnEmailEditTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
                         <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
 
 
@@ -85,7 +93,11 @@
 
                         <StackLayout Orientation="Horizontal">
                             <custom:CustomLabel Text="Password" Style="{StaticResource CaptionLabelGrey}"/>
-                            <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand"/>
+                            <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnPasswordEditTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
                         </StackLayout>
                         <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
 
@@ -118,7 +130,7 @@
                     </Image>
                 </StackLayout>
             </Grid>
-
+  
         </Grid>
     </ContentPage.Content>
 </ContentPage>

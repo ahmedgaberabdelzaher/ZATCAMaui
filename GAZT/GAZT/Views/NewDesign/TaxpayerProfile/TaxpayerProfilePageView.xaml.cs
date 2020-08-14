@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,21 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         public TaxpayerProfilePageView()
         {
             InitializeComponent();
+        }
+
+        private void OnMobileEditTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new UpdateMobilePopUp());
+        }
+
+        private void OnEmailEditTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new UpdateEmailPopUp());
+        }
+
+        private void OnPasswordEditTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new UpdatePasswordPopUp());
         }
     }
 }
