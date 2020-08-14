@@ -26,6 +26,7 @@ using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
+using EGAZT.Views.NewDesign.TaxpayerProfile;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -306,7 +307,8 @@ namespace EGAZT
             dialogService.Initialize(navigationPage);
             InitializeAppDynamics();
 
-            MainPage = navigationPage;
+            //MainPage = navigationPage;
+            MainPage = new TaxpayerProfilePageView();
         }
         public static void CreateClientHandler()
         {

@@ -27,33 +27,32 @@
             
             <StackLayout x:Name="UpdateEmail" IsVisible="True">
                 <Image Margin="24,16,0,8" HorizontalOptions="Start" Source="arrowLeft.png"/>
-                <BoxView Style="{StaticResource lineSeperator}"/>
+                <BoxView Style="{StaticResource lineSeperator}" BackgroundColor="{StaticResource NeutralLightGrey}"/>
                 <StackLayout Padding="24,16,24,0">
                     <custom:CustomLabel Text="Update Email" Style="{StaticResource SectionTitleBlackBold}"/>
 
                     <custom:CustomLabel Text="Current Email" Style="{StaticResource CaptionLabelGrey}"/>
 
-                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
+                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
-
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy@gmail.com"  HeightRequest="51" Keyboard="Email" >
+                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy@gmail.com" Keyboard="Email" >
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
 
                     <custom:CustomLabel Text="New Email" Style="{StaticResource CaptionLabelGrey}"/>
-                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
+                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
 
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy123@gmail.com"  HeightRequest="51" Keyboard="Email" >
+                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy123@gmail.com" Keyboard="Email" >
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
                     <custom:CustomLabel Text="Confirm Email" Style="{StaticResource CaptionLabelGrey}"/>
-                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
+                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
 
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy123@gmail.com"  HeightRequest="51" Keyboard="Email" >
+                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy123@gmail.com" Keyboard="Email" >
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>
