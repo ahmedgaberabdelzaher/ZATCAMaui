@@ -35,7 +35,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //}
 
 
-        private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.FinancialInformation;
+        private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.BasicInformation;
         public ZakatForm5TabEnum currentTab
         {
             get => _currentTab;
