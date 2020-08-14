@@ -90,8 +90,8 @@
                                         <StackLayout Padding="0" Spacing="0">
                                             <StackLayout Orientation="Horizontal" Padding="17,16,17,16">
                                                 <StackLayout Spacing="-10">
-                                                    <custom:CustomLabel Text="Zayad Corporation" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                    <custom:CustomLabel Text="00894790088" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
+                                                    <custom:CustomLabel Text="{Binding CompanyName}" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                    <custom:CustomLabel Text="{Binding TicketId}" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
                                                 </StackLayout>
                                                 <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
                                                     <buttons:SfButton  Text="Open" HeightRequest="32" TextColor="{StaticResource Primary}" Padding="12,0,12,0" CornerRadius="15" BackgroundColor="{StaticResource LightGreenColor}"/>
@@ -101,8 +101,8 @@
                                             <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                             <StackLayout Padding="17,16,17,16" Spacing="0">
-                                                <custom:CustomLabel Text="Report Date" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
-                                                <custom:CustomLabel Text="06th May 2020" Style="{StaticResource ValueLabelBlack}"  VerticalOptions="CenterAndExpand"  />
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTEReportReportDate}" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
+                                                <custom:CustomLabel  FlowDirection="LeftToRight" Text="{Binding CreatedAt}" Style="{StaticResource ValueLabelBlack}"  VerticalOptions="CenterAndExpand"  />
                                             </StackLayout>
                                         </StackLayout>
                                     </border:SfBorder>
