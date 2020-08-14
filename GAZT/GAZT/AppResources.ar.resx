@@ -4989,4 +4989,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ZDone" xml:space="preserve">
     <value>Done</value>
   </data>
+  <data name="NDTPActive" xml:space="preserve">
+    <value>نشط</value>
+    <comment>Taxpayer Profile</comment>
+  </data>
 </root>
