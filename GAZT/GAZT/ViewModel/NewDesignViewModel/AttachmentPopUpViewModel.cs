@@ -20,6 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         //============================start===================================================
         public ICommand OnAttachmentClicked { get; set; }
+        public ICommand OnSaveButtonClick { get; set; }
         public ZakatReturnDetailsD ZakatReturnDetail;
         public static List<SalesDetails> SalesDetailList = new List<SalesDetails>();
         byte[] attachment;
@@ -92,7 +93,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
                 }
-                
+
+
                 RaisePropertyChanged("ObjectionReason");
             }
         }
@@ -119,6 +121,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
 
             });
+
+            OnSaveButtonClick = new Xamarin.Forms.Command(() =>
+            {
+                if (!string.IsNullOrEmpty(ObjectionReason))
+                {
+                    SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
+                   // _navigationService.GoBack();
+
+                }
+                else
+                {
+
+                }
+            });
+
+            
         }
         #endregion
 
@@ -177,7 +195,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 attachment = fileData.DataArray;
                 await Task.Run(() =>
                 {
-                   // IsLoading = true;
+                    IsLoading = true;
                 });
                 await Task.Run(async () =>
                 {

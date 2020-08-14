@@ -5013,6 +5013,205 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ZDone" xml:space="preserve">
     <value>Done</value>
   </data>
+  <data name="FORM5ActivityTotalProfits" xml:space="preserve">
+    <value>Activity total Profits</value>
+  </data>
+  <data name="FORM5AdditionalRoomRate" xml:space="preserve">
+    <value>Additional Room Rate</value>
+  </data>
+  <data name="FORM5Capital" xml:space="preserve">
+    <value>Capital</value>
+  </data>
+  <data name="FORM5CapitalRate" xml:space="preserve">
+    <value>Capital rate</value>
+  </data>
+  <data name="FORM5Cars" xml:space="preserve">
+    <value>Cars</value>
+  </data>
+  <data name="FORM5City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="FORM5ContractingCo" xml:space="preserve">
+    <value>Contracting Co</value>
+  </data>
+  <data name="FORM5DeclaredCapital" xml:space="preserve">
+    <value>Declared Capital</value>
+  </data>
+  <data name="FORM5DoInternalProcurementFromSaudi" xml:space="preserve">
+    <value>Do you have Internal Procurement from Saudi?</value>
+  </data>
+  <data name="FORM5DoYouHaveImports" xml:space="preserve">
+    <value>Do you have Imports?</value>
+  </data>
+  <data name="FORM5EduAndHealth" xml:space="preserve">
+    <value>Edu and Health</value>
+  </data>
+  <data name="FORM5EstimationDetails" xml:space="preserve">
+    <value>Estimation Details</value>
+  </data>
+  <data name="FORM5GovernmentContractProfile" xml:space="preserve">
+    <value>Government Contract Profits</value>
+  </data>
+  <data name="FORM5GovrnmentCont|Profits" xml:space="preserve">
+    <value>Government Cont. Profits</value>
+  </data>
+  <data name="FORM5Hotels" xml:space="preserve">
+    <value>Hotels</value>
+  </data>
+  <data name="FORM5ImortsForLiveAnimals" xml:space="preserve">
+    <value>Imports for Livestock and Animals</value>
+  </data>
+  <data name="FORM5ImporDetails" xml:space="preserve">
+    <value>Import Details</value>
+  </data>
+  <data name="FORM5Imports" xml:space="preserve">
+    <value>Imports</value>
+  </data>
+  <data name="FORM5ImportsForGeneralTrading" xml:space="preserve">
+    <value>Imports for General Trading</value>
+  </data>
+  <data name="FORM5ImportsForLivelihoods" xml:space="preserve">
+    <value>Imports for Livelihoods</value>
+  </data>
+  <data name="FORM5IncreaseInCapital" xml:space="preserve">
+    <value>Increase in Capital</value>
+  </data>
+  <data name="FORM5Industry" xml:space="preserve">
+    <value>Industry</value>
+  </data>
+  <data name="FORM5InternalProcurementFromSaudi" xml:space="preserve">
+    <value>Internal Procurement from Saudi</value>
+  </data>
+  <data name="FORM5InvestAndRealEst" xml:space="preserve">
+    <value>Invest and Real Est</value>
+  </data>
+  <data name="FORM5IsItOwedbyYou" xml:space="preserve">
+    <value>Is it owned by you?</value>
+  </data>
+  <data name="FORM5LabourOccupancy" xml:space="preserve">
+    <value>Labor Occupancy</value>
+  </data>
+  <data name="FORM5Minerals" xml:space="preserve">
+    <value>Minerals</value>
+  </data>
+  <data name="FORM5NoofBranch" xml:space="preserve">
+    <value>No. of Branch</value>
+  </data>
+  <data name="FORM5NoofEmployeesOrLabours" xml:space="preserve">
+    <value>No. Of Employees or Labours</value>
+  </data>
+  <data name="FORM5NoofLabours" xml:space="preserve">
+    <value>No. Of Labours</value>
+  </data>
+  <data name="FORM5NoofRoomsPerUnits" xml:space="preserve">
+    <value>No. Of Rooms/Units</value>
+  </data>
+  <data name="FORM5OccupationRate" xml:space="preserve">
+    <value>Occupancy Rate</value>
+  </data>
+  <data name="FORM5OtherProfit" xml:space="preserve">
+    <value>Other Profit</value>
+  </data>
+  <data name="FORM5Outlet" xml:space="preserve">
+    <value>Outlet</value>
+    <comment>FORM5</comment>
+  </data>
+  <data name="FORM5PercentageSalesGain" xml:space="preserve">
+    <value>Percentage Sales Gain</value>
+  </data>
+  <data name="FORM5PoultryAndFish" xml:space="preserve">
+    <value>Poultry and Fish Farm activities</value>
+  </data>
+  <data name="FORM5ProcurementDetails" xml:space="preserve">
+    <value>Procurement Details</value>
+  </data>
+  <data name="FORM5Professionals" xml:space="preserve">
+    <value>Professionals</value>
+  </data>
+  <data name="FORM5Profit" xml:space="preserve">
+    <value>Profit</value>
+  </data>
+  <data name="FORM5ProfitFromCivilContracting" xml:space="preserve">
+    <value>Profit From Civil Contracting</value>
+  </data>
+  <data name="FORM5ProfitFromCivilCoSAR" xml:space="preserve">
+    <value>Profit from Civil Contracting(SAR)</value>
+  </data>
+  <data name="FORM5ProfitRatio" xml:space="preserve">
+    <value>Profit Ratio</value>
+  </data>
+  <data name="FORM5Profits" xml:space="preserve">
+    <value>Profits</value>
+  </data>
+  <data name="FORM5RefrenceNo" xml:space="preserve">
+    <value>Refrence Number</value>
+  </data>
+  <data name="FORM5RoomRates" xml:space="preserve">
+    <value>Room Rates</value>
+  </data>
+  <data name="FORM5Sales" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="FORM5SalesProfitRatio" xml:space="preserve">
+    <value>Sales profit Ratio</value>
+  </data>
+  <data name="FORM5SellAndBuy" xml:space="preserve">
+    <value>Sell And Buy</value>
+  </data>
+  <data name="FORM5ServiceFees" xml:space="preserve">
+    <value>Service Fees</value>
+  </data>
+  <data name="FORM5ShareCapital" xml:space="preserve">
+    <value>Share Capital</value>
+  </data>
+  <data name="FORM5SharesInOtherCompany" xml:space="preserve">
+    <value>Shares in other Companies?</value>
+  </data>
+  <data name="FORM5SharesInPersonsCompany" xml:space="preserve">
+    <value>Share in Persons Company</value>
+  </data>
+  <data name="FORM5TotalfundGovenment" xml:space="preserve">
+    <value>Total funding from Government</value>
+  </data>
+  <data name="FORM5TotalofAnnualSalary" xml:space="preserve">
+    <value>Total of Annual Salary</value>
+  </data>
+  <data name="FORM5TotalofImports" xml:space="preserve">
+    <value>Total of Imports</value>
+  </data>
+  <data name="FORM5TotalofProcurement" xml:space="preserve">
+    <value>Total of Procurement</value>
+  </data>
+  <data name="FORM5ValueofSubsityfromGov" xml:space="preserve">
+    <value>Value of Subsidy From Government</value>
+  </data>
+  <data name="FORM5ValueSuppCount" xml:space="preserve">
+    <value>Value of supply cont.</value>
+  </data>
+  <data name="FORM5AdditionalInfo" xml:space="preserve">
+    <value>Additional Information</value>
+  </data>
+  <data name="FORM5ActivityCapital" xml:space="preserve">
+    <value>Activity Capital</value>
+  </data>
+  <data name="FORM5NewTaxAmt" xml:space="preserve">
+    <value>New Taxable Amount</value>
+  </data>
+  <data name="FORM5TotalExternalImports" xml:space="preserve">
+    <value>Total External Imports</value>
+  </data>
+  <data name="FORM5Zakat" xml:space="preserve">
+    <value>Zakat</value>
+  </data>
+  <data name="FORM5Zakatable" xml:space="preserve">
+    <value>Zakatable</value>
+  </data>
+  <data name="FORM5ZakatPaidReleaseCo" xml:space="preserve">
+    <value>Zakat Paid for Release of Contract</value>
+  </data>
+  <data name="FORMZakatDetails" xml:space="preserve">
+    <value>Zakat Details</value>
+  </data>
   <data name="NDTPActive" xml:space="preserve">
     <value>Active</value>
     <comment>Taxpayer Profile</comment>
