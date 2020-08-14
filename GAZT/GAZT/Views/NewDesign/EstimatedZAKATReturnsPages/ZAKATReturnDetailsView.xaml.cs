@@ -18,6 +18,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             viewModel = App.Locator.ZAKATReturnDetailsView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            if(AttachmentPopUpViewModel.SalesDetailList != null)
+            AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
             viewModel.ClearData();
             viewModel.Fbguid = fbguid;
@@ -132,7 +134,30 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
+        private async void OnConfirmClicked(object sender, EventArgs e)
+        {
+            string PostOperationID = viewModel.GetConfirmOperationId();
+            if (App.IsArabic)
+            {
+                var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZCancel, AppResources.ZZZOkayText);
+                if (!result)
+                {
+                    await viewModel.ConfirmClicked(PostOperationID);
+                }
 
+            }
+            else
+            {
+                var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZZOkayText, AppResources.ZZCancel);
+                if (result)
+                {
+                    await viewModel.ConfirmClicked(PostOperationID);
+                }
+
+            }
+
+        }
+        
 
 
         private void OnInfoClicked(object sender, EventArgs e)

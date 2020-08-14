@@ -264,7 +264,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         LookupNumber = result.Text;
                         id = result.Text;
                         SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
-                        TxtSearchParameter = AppResources.ZVATLookupIDTaxpayerTinType1;
+                      //  TxtSearchParameter = SelectedParameterType.ParameterType.First();
                         getBarcodeData();
 
                     });

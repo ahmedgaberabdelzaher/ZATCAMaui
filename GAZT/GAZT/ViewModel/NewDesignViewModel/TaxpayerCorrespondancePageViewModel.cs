@@ -97,7 +97,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ListVATCorrespondance");
             }
         } 
-        private string _CountLabel = null;
+        private string _CountLabel = AppResources.NDCount;
         public string CountLabel
         {
             get
@@ -250,6 +250,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _listToDisplay = value;
                 Count = 0;
+                CountLabel = AppResources.NDCount + ": " + Count.ToString();
                 if (_listToDisplay != null)
                 {
 

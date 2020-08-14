@@ -68,7 +68,7 @@
                         <Grid HorizontalOptions="FillAndExpand"
                               VerticalOptions="FillAndExpand"
                               Margin="0" 
-                              Padding="0,15,0,0"
+                              Padding="0,0,0,0"
                               BackgroundColor="White"
                               x:Name="VATRMainGrid">
 
@@ -278,20 +278,26 @@
             </StackLayout>
             <StackLayout Grid.Row="1"
                          HorizontalOptions="Center"
-                         Padding="10,5,10,10" >
+                         Padding="10,5,10,10"
+                         BackgroundColor="White">
                 <buttons:SfButton x:Name="btnScan"
                                   Text="{x:Static ResourceManager:AppResources.ZQRScanner}"
                                   Command="{Binding OnScanButtonClicked}"
                                   Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton x:Name="btnSearch"
+                                  Text="{Binding LookUpButtonText}"
+                                  Command="{Binding OnSearchButtonClicked}"
+                                  Style="{StaticResource PrimaryButtonStyle}"/>
+
             </StackLayout>
-            <StackLayout Grid.Row="2"
+            <!--<StackLayout Grid.Row="2"
                          HorizontalOptions="Center"
                          Padding="10,5,10,20" >
                 <buttons:SfButton x:Name="btnSearch"
                                   Text="{Binding LookUpButtonText}"
                                   Command="{Binding OnSearchButtonClicked}"
                                   Style="{StaticResource PrimaryButtonStyle}"/>
-            </StackLayout>
+            </StackLayout>-->
 
             <!--Loading layout-->
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
