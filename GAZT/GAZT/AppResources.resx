@@ -5007,4 +5007,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
     <value>Type your Reference Number</value>
   </data>
+  <data name="ZAdjustment" xml:space="preserve">
+    <value>Adjustment</value>
+  </data>
+  <data name="ZDone" xml:space="preserve">
+    <value>Done</value>
+  </data>
 </root>
