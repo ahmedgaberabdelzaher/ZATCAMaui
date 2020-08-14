@@ -13,8 +13,8 @@
                  xmlns:FontImage="clr-namespace:MVP.FontIcons"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-                 xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-                 x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionVerifyMobileNumberPage">
+                 xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionVerifyMobileNumberPage">
         <ContentPage.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
@@ -126,28 +126,29 @@
             </ControlTemplate>
         </ContentPage.ControlTemplate>
         <ContentPage.Content>
+        <Grid>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0" Padding="10">
-                        <control:CustomLabel Text="{Binding PageTitle}"
+                <StackLayout Grid.Row="0" Padding="10">
+                    <control:CustomLabel Text="{Binding PageTitle}"
                                              Style="{StaticResource SectionTitleBlack}" />
-                        <control:CustomLabel Text="{Binding PageTitleTag}"
+                    <control:CustomLabel Text="{Binding PageTitleTag}"
                                              Style="{StaticResource BodyLabelGrey}"/>
-                        <BoxView BackgroundColor="{StaticResource NeutralGreay}"
+                    <BoxView BackgroundColor="{StaticResource NeutralGreay}"
                                      HeightRequest="1"/>
-                    </StackLayout>
-                    
-                    <!--Input For Mobile Number-->
-                    <StackLayout Grid.Row="1" Padding="10" IsVisible="{Binding IsShowMobileInput}"> 
-                        <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.MobileNumber}"
+                </StackLayout>
+
+                <!--Input For Mobile Number-->
+                <StackLayout Grid.Row="1" Padding="10" IsVisible="{Binding IsShowMobileInput}">
+                    <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.MobileNumber}"
                                                                 Padding="0,0,0,0"
                                                                 Style="{StaticResource CaptionLabelGrey}"/>
-                        
-                        <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand"
+
+                    <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand"
                                                         ContainerType="Outlined"
                                                         x:Name="frmMobile"
                                                         LeadingViewPosition="Inside"
@@ -155,9 +156,9 @@
                                                         OutlineCornerRadius="8"
                                                         FocusedColor="#005e4b"
                                                         ErrorColor="#B00020">
-                            <inputLayout:SfTextInputLayout.LeadingView>
+                        <inputLayout:SfTextInputLayout.LeadingView>
 
-                                <Label FlowDirection="LeftToRight"
+                            <Label FlowDirection="LeftToRight"
                                         Margin="0"
                                         x:Name="mobileNumberPrefix"
                                         Text="+966  |"
@@ -167,9 +168,9 @@
                                         VerticalTextAlignment="Center"
                                         HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center"></Label>
-                                
-                            </inputLayout:SfTextInputLayout.LeadingView>
-                            <control:BorderlessEntry x:Name="Mobile_Entry"
+
+                        </inputLayout:SfTextInputLayout.LeadingView>
+                        <control:BorderlessEntry x:Name="Mobile_Entry"
                                                         Text="{Binding MobileNumber}"
                                                         Unfocused="Mobile_Entry_Unfocused"
                                                         FontSize="Medium"
@@ -178,36 +179,36 @@
                                                         PlaceholderColor="Gray"
                                                         Keyboard="Telephone"
                                                         MaxLength="9">
-                                <Entry.Behaviors>
-                                    <custom1:OnlyNumericValuesBehaviour/>
-                                </Entry.Behaviors>
-                            </control:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
-                        
-                    </StackLayout>
+                            <Entry.Behaviors>
+                                <custom1:OnlyNumericValuesBehaviour/>
+                            </Entry.Behaviors>
+                        </control:BorderlessEntry>
+                    </inputLayout:SfTextInputLayout>
 
-                    <!--Input for OTP Verification--> 
-                    <StackLayout Grid.Row="1" Padding="0,15,0,0" IsVisible="{Binding IsShowOTPInput}">
-                            <custom:CustomLabel Text="{Binding OTPSentOnThisMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>
-                                
-                                    <Grid ColumnSpacing="20" Padding="30,20,30,20" FlowDirection="LeftToRight">
+                </StackLayout>
 
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
+                <!--Input for OTP Verification-->
+                <StackLayout Grid.Row="1" Padding="0,15,0,0" IsVisible="{Binding IsShowOTPInput}">
+                    <custom:CustomLabel Text="{Binding OTPSentOnThisMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>
+
+                    <Grid ColumnSpacing="20" Padding="30,20,30,20" FlowDirection="LeftToRight">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
 
-                                        <!--First OTP Digit Start-->
-                                        <inputLayout:SfTextInputLayout
+                        <!--First OTP Digit Start-->
+                        <inputLayout:SfTextInputLayout
                                             Grid.Column="0"
                                             ContainerType="Outlined"
                                             UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8"
                                             FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                            <custom:BorderlessEntry
+                            <custom:BorderlessEntry
                                                 x:Name="OTPFirstEntry"
                                                 FontAttributes="Bold"
                                                 FontSize="Small"
@@ -220,21 +221,21 @@
                                                 Keyboard="Numeric"
                                                 MaxLength="1"
                                                 TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                                <custom:BorderlessEntry.Behaviors>
-                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
-                                                </custom:BorderlessEntry.Behaviors>
-                                            </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
-                                        <!--First OTP Digit End-->
+                                <custom:BorderlessEntry.Behaviors>
+                                    <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
+                                </custom:BorderlessEntry.Behaviors>
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <!--First OTP Digit End-->
 
-                                        <!--Second OTP Digit Start-->
-                                        <inputLayout:SfTextInputLayout
+                        <!--Second OTP Digit Start-->
+                        <inputLayout:SfTextInputLayout
                                             Grid.Column="1"
                                             ContainerType="Outlined"
                                             UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8"
                                             FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                            <custom:BorderlessEntry
+                            <custom:BorderlessEntry
                                                 x:Name="OTPSecondEntry"
                                                 FontAttributes="Bold"
                                                 FontSize="Small"
@@ -247,21 +248,21 @@
                                                 Keyboard="Numeric"
                                                 MaxLength="1"
                                                 TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                                <custom:BorderlessEntry.Behaviors>
-                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
-                                                </custom:BorderlessEntry.Behaviors>
-                                            </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
-                                        <!--Second OTP Digit End-->
+                                <custom:BorderlessEntry.Behaviors>
+                                    <local:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
+                                </custom:BorderlessEntry.Behaviors>
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <!--Second OTP Digit End-->
 
-                                        <!--Third OTP Digit Start-->
-                                        <inputLayout:SfTextInputLayout
+                        <!--Third OTP Digit Start-->
+                        <inputLayout:SfTextInputLayout
                                             Grid.Column="2"
                                             ContainerType="Outlined"
                                             UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8"
                                             FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                            <custom:BorderlessEntry
+                            <custom:BorderlessEntry
                                                 x:Name="OTPThirdEntry"
                                                 FontAttributes="Bold"
                                                 FontSize="Small"
@@ -274,21 +275,21 @@
                                                 Keyboard="Numeric"
                                                 MaxLength="1"
                                                 TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                                <custom:BorderlessEntry.Behaviors>
-                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
-                                                </custom:BorderlessEntry.Behaviors>
-                                            </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
-                                        <!--Third OTP Digit End-->
+                                <custom:BorderlessEntry.Behaviors>
+                                    <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
+                                </custom:BorderlessEntry.Behaviors>
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <!--Third OTP Digit End-->
 
-                                        <!--Fourth OTP Digit Start-->
-                                        <inputLayout:SfTextInputLayout
+                        <!--Fourth OTP Digit Start-->
+                        <inputLayout:SfTextInputLayout
                                             Grid.Column="3"
                                             ContainerType="Outlined"
                                             UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8"
                                             FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                            <custom:BorderlessEntry
+                            <custom:BorderlessEntry
                                                 x:Name="OTPFourthEntry"
                                                 FontAttributes="Bold"
                                                 FontSize="Small"
@@ -302,37 +303,48 @@
                                                 MaxLength="1"
                                                 TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand"
                                                 Unfocused="OtpFourthEntry_Unfocused">
-                                            </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
-                                        <!--Fourth OTP Digit End-->
+                            </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <!--Fourth OTP Digit End-->
 
-                                    </Grid>
+                    </Grid>
 
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                                <Image Source="clock">
-                                </Image>
-                                <custom:CustomLabel  Text="{Binding LblCountDownTimer}"
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Image Source="clock">
+                        </Image>
+                        <custom:CustomLabel  Text="{Binding LblCountDownTimer}"
                                                      Style="{StaticResource CaptionLabelGrey}"
                                                      VerticalOptions="Center" />
-                            </StackLayout>
-                            <buttons:SfButton  Command="{Binding ResendOTPCommand}"
+                    </StackLayout>
+                    <buttons:SfButton  Command="{Binding ResendOTPCommand}"
                                                IsEnabled="{Binding IsResendOTPEnabled}"
                                                Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
                                                VerticalOptions="StartAndExpand"
                                                Margin="0,50,0,0"
                                                BackgroundColor="Transparent"
                                                TextColor="#999999"/>
-                        </StackLayout>
+                </StackLayout>
 
                 <!--Continue button-->
-                    <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"      
+                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"      
                                       Command="{Binding SendOTPCommand}"
                                       Grid.Row="2"
                                       HorizontalOptions="FillAndExpand"
                                       IsVisible="{Binding IsShowMobileInput}"
                                       Margin="10,5,10,20"
                                       Style="{StaticResource PrimaryButtonStyle}"/>
-                
+
             </Grid>
+            <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="#006450"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+          
         </ContentPage.Content>
     </ContentPage>

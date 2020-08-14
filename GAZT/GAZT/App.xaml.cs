@@ -26,6 +26,7 @@ using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
+using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -74,6 +75,7 @@ namespace EGAZT
         #region new design views Release2
 
         public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";
+        public static string TaxEvasionMyReportsListPageView = "TaxEvasionMyReportsListPageView";
 
         #endregion
 
@@ -291,11 +293,11 @@ namespace EGAZT
 
             if (!hasKey)
             {
-                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new TaxEvasionMyReportsListPageView()) { BarTextColor = Color.White };
             }
             else
             {
-                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new TaxEvasionMyReportsListPageView()) { BarTextColor = Color.White };
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };

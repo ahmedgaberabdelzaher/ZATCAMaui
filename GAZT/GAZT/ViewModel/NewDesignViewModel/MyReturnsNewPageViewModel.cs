@@ -38,7 +38,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ReturnTypeForFilter");
             }
         } 
-        public bool _isListVisible;
+        public bool _isListVisible=false;
         public bool IsListVisible
         {
             get
@@ -51,7 +51,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsListVisible");
             }
         }
-        public bool _setNoDataLabelVisibilityALL;
+        public bool _setNoDataLabelVisibilityALL=true;
         public bool SetNoDataLabelVisibilityALL
         {
             get

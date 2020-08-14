@@ -20,6 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         //============================start===================================================
         public ICommand OnAttachmentClicked { get; set; }
+        public ICommand OnSaveButtonClick { get; set; }
         public ZakatReturnDetailsD ZakatReturnDetail;
         public static List<SalesDetails> SalesDetailList = new List<SalesDetails>();
         byte[] attachment;
@@ -88,7 +89,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _objectionReason = value;
-                
+                if(!string.IsNullOrEmpty(ObjectionReason))
+                {
+                    SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
+                }
+
+
                 RaisePropertyChanged("ObjectionReason");
             }
         }
@@ -115,6 +121,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
 
             });
+
+            OnSaveButtonClick = new Xamarin.Forms.Command(() =>
+            {
+                if (!string.IsNullOrEmpty(ObjectionReason))
+                {
+                    SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
+                   // _navigationService.GoBack();
+
+                }
+                else
+                {
+
+                }
+            });
+
+            
         }
         #endregion
 
@@ -124,6 +146,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if(ZAKATReturnDetailsView.IsGoingFirstTimeOnAttachmentPage)
             {
+                ZakatReturnAttachmentsList = new ObservableCollection<ZakatAttachment>();
                 GetSalesTypeObjectList();
                 ZAKATReturnDetailsView.IsGoingFirstTimeOnAttachmentPage = false;
             }
@@ -172,7 +195,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 attachment = fileData.DataArray;
                 await Task.Run(() =>
                 {
-                   // IsLoading = true;
+                    IsLoading = true;
                 });
                 await Task.Run(async () =>
                 {
@@ -194,7 +217,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         if (attachment.Length < 5242880)
                                         {
-                                            if (ZakatReturnAttachmentsList.Count < 5)
+                                            if (true)//ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count < 5
                                             {
                                                 AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, ZakatReturnDetail.ReturnId, "Z12L", ContentType);
                                                 PopToRootPage();
@@ -236,7 +259,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                     {
                                                         AttachmentName = string.Empty;
                                                         await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                                                        //IsLoading = false;
+                                                        IsLoading = false;
                                                     });
                                                 }
                                             }
@@ -246,7 +269,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                 {
                                                     AttachmentName = string.Empty;
                                                     await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
-                                                    //IsLoading = false;
+                                                    IsLoading = false;
                                                 });
                                             }
                                         }
@@ -256,7 +279,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             {
                                                 AttachmentName = string.Empty;
                                                 await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
-                                                //IsLoading = false;
+                                                IsLoading = false;
                                             });
                                         }
                                     }
@@ -266,7 +289,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         {
                                             AttachmentName = string.Empty;
                                             await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                            //IsLoading = false;
+                                            IsLoading = false;
                                         });
                                     }
                                 }
@@ -275,7 +298,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
                                         await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
-                                        //IsLoading = false;
+                                        IsLoading = false;
                                         AttachmentName = string.Empty;
                                     });
                                 }
@@ -283,7 +306,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             else
                             {
                                 AttachmentName = string.Empty;
-                                //IsLoading = false;
+                                IsLoading = false;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
@@ -299,13 +322,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 AttachmentName = string.Empty;
                                 await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                //IsLoading = false;
+                                IsLoading = false;
                             });
                         }
                     }
                     catch (InternetException ex)
                     {
-                        //IsLoading = false;
+                        IsLoading = false;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -314,7 +337,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
                 await Task.Run(() =>
                 {
-                    //IsLoading = false;
+                    IsLoading = false;
                 });
             }
             catch (Exception ex)
@@ -378,6 +401,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
                             {
+                                AttachmentPopUpViewModel.SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.RemoveAt(i);
                                 ZakatReturnAttachmentsList.RemoveAt(i);
                             //    SelectedSalesDetails.estimateZakatAttachment.RemoveAt(i);
                             }

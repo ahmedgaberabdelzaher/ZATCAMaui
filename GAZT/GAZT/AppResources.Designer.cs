@@ -1029,11 +1029,47 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activity Capital.
+        /// </summary>
+        public static string FORM5ActivityCapital {
+            get {
+                return ResourceManager.GetString("FORM5ActivityCapital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activity Profit.
         /// </summary>
         public static string FORM5ActivityProfit {
             get {
                 return ResourceManager.GetString("FORM5ActivityProfit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity total Profits.
+        /// </summary>
+        public static string FORM5ActivityTotalProfits {
+            get {
+                return ResourceManager.GetString("FORM5ActivityTotalProfits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Additional Information.
+        /// </summary>
+        public static string FORM5AdditionalInfo {
+            get {
+                return ResourceManager.GetString("FORM5AdditionalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Additional Room Rate.
+        /// </summary>
+        public static string FORM5AdditionalRoomRate {
+            get {
+                return ResourceManager.GetString("FORM5AdditionalRoomRate", resourceCulture);
             }
         }
         
@@ -1128,6 +1164,51 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Capital.
+        /// </summary>
+        public static string FORM5Capital {
+            get {
+                return ResourceManager.GetString("FORM5Capital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capital rate.
+        /// </summary>
+        public static string FORM5CapitalRate {
+            get {
+                return ResourceManager.GetString("FORM5CapitalRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cars.
+        /// </summary>
+        public static string FORM5Cars {
+            get {
+                return ResourceManager.GetString("FORM5Cars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        public static string FORM5City {
+            get {
+                return ResourceManager.GetString("FORM5City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contracting Co.
+        /// </summary>
+        public static string FORM5ContractingCo {
+            get {
+                return ResourceManager.GetString("FORM5ContractingCo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dear.
         /// </summary>
         public static string FORM5Dear {
@@ -1146,11 +1227,56 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Declared Capital.
+        /// </summary>
+        public static string FORM5DeclaredCapital {
+            get {
+                return ResourceManager.GetString("FORM5DeclaredCapital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have Internal Procurement from Saudi?.
+        /// </summary>
+        public static string FORM5DoInternalProcurementFromSaudi {
+            get {
+                return ResourceManager.GetString("FORM5DoInternalProcurementFromSaudi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have Imports?.
+        /// </summary>
+        public static string FORM5DoYouHaveImports {
+            get {
+                return ResourceManager.GetString("FORM5DoYouHaveImports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edu and Health.
+        /// </summary>
+        public static string FORM5EduAndHealth {
+            get {
+                return ResourceManager.GetString("FORM5EduAndHealth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Electronic Mail.
         /// </summary>
         public static string FORM5ElectronicMail {
             get {
                 return ResourceManager.GetString("FORM5ElectronicMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estimation Details.
+        /// </summary>
+        public static string FORM5EstimationDetails {
+            get {
+                return ResourceManager.GetString("FORM5EstimationDetails", resourceCulture);
             }
         }
         
@@ -1218,11 +1344,119 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Government Contract Profits.
+        /// </summary>
+        public static string FORM5GovernmentContractProfile {
+            get {
+                return ResourceManager.GetString("FORM5GovernmentContractProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Government Cont. Profits.
+        /// </summary>
+        public static string FORM5GovrnmentCont_Profits {
+            get {
+                return ResourceManager.GetString("FORM5GovrnmentCont|Profits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hotels.
+        /// </summary>
+        public static string FORM5Hotels {
+            get {
+                return ResourceManager.GetString("FORM5Hotels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports for Livestock and Animals.
+        /// </summary>
+        public static string FORM5ImortsForLiveAnimals {
+            get {
+                return ResourceManager.GetString("FORM5ImortsForLiveAnimals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Details.
+        /// </summary>
+        public static string FORM5ImporDetails {
+            get {
+                return ResourceManager.GetString("FORM5ImporDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports.
+        /// </summary>
+        public static string FORM5Imports {
+            get {
+                return ResourceManager.GetString("FORM5Imports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports for General Trading.
+        /// </summary>
+        public static string FORM5ImportsForGeneralTrading {
+            get {
+                return ResourceManager.GetString("FORM5ImportsForGeneralTrading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports for Livelihoods.
+        /// </summary>
+        public static string FORM5ImportsForLivelihoods {
+            get {
+                return ResourceManager.GetString("FORM5ImportsForLivelihoods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Increase in Capital.
+        /// </summary>
+        public static string FORM5IncreaseInCapital {
+            get {
+                return ResourceManager.GetString("FORM5IncreaseInCapital", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Individual Activity Details.
         /// </summary>
         public static string FORM5IndividualActiDetails {
             get {
                 return ResourceManager.GetString("FORM5IndividualActiDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Industry.
+        /// </summary>
+        public static string FORM5Industry {
+            get {
+                return ResourceManager.GetString("FORM5Industry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internal Procurement from Saudi.
+        /// </summary>
+        public static string FORM5InternalProcurementFromSaudi {
+            get {
+                return ResourceManager.GetString("FORM5InternalProcurementFromSaudi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invest and Real Est.
+        /// </summary>
+        public static string FORM5InvestAndRealEst {
+            get {
+                return ResourceManager.GetString("FORM5InvestAndRealEst", resourceCulture);
             }
         }
         
@@ -1245,6 +1479,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Is it owned by you?.
+        /// </summary>
+        public static string FORM5IsItOwedbyYou {
+            get {
+                return ResourceManager.GetString("FORM5IsItOwedbyYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item.
         /// </summary>
         public static string FORM5Item {
@@ -1254,11 +1497,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Labor Occupancy.
+        /// </summary>
+        public static string FORM5LabourOccupancy {
+            get {
+                return ResourceManager.GetString("FORM5LabourOccupancy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Main Outlets.
         /// </summary>
         public static string FORM5MainOutlet {
             get {
                 return ResourceManager.GetString("FORM5MainOutlet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minerals.
+        /// </summary>
+        public static string FORM5Minerals {
+            get {
+                return ResourceManager.GetString("FORM5Minerals", resourceCulture);
             }
         }
         
@@ -1277,6 +1538,51 @@ namespace EGAZT {
         public static string FORM5NetProfitPer {
             get {
                 return ResourceManager.GetString("FORM5NetProfitPer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Taxable Amount.
+        /// </summary>
+        public static string FORM5NewTaxAmt {
+            get {
+                return ResourceManager.GetString("FORM5NewTaxAmt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No. of Branch.
+        /// </summary>
+        public static string FORM5NoofBranch {
+            get {
+                return ResourceManager.GetString("FORM5NoofBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No. Of Employees or Labours.
+        /// </summary>
+        public static string FORM5NoofEmployeesOrLabours {
+            get {
+                return ResourceManager.GetString("FORM5NoofEmployeesOrLabours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No. Of Labours.
+        /// </summary>
+        public static string FORM5NoofLabours {
+            get {
+                return ResourceManager.GetString("FORM5NoofLabours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No. Of Rooms/Units.
+        /// </summary>
+        public static string FORM5NoofRoomsPerUnits {
+            get {
+                return ResourceManager.GetString("FORM5NoofRoomsPerUnits", resourceCulture);
             }
         }
         
@@ -1335,11 +1641,47 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Occupancy Rate.
+        /// </summary>
+        public static string FORM5OccupationRate {
+            get {
+                return ResourceManager.GetString("FORM5OccupationRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other Profit.
+        /// </summary>
+        public static string FORM5OtherProfit {
+            get {
+                return ResourceManager.GetString("FORM5OtherProfit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outlet.
+        /// </summary>
+        public static string FORM5Outlet {
+            get {
+                return ResourceManager.GetString("FORM5Outlet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Outlet Name.
         /// </summary>
         public static string FORM5OutletName {
             get {
                 return ResourceManager.GetString("FORM5OutletName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percentage Sales Gain.
+        /// </summary>
+        public static string FORM5PercentageSalesGain {
+            get {
+                return ResourceManager.GetString("FORM5PercentageSalesGain", resourceCulture);
             }
         }
         
@@ -1353,11 +1695,92 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Poultry and Fish Farm activities.
+        /// </summary>
+        public static string FORM5PoultryAndFish {
+            get {
+                return ResourceManager.GetString("FORM5PoultryAndFish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procurement Details.
+        /// </summary>
+        public static string FORM5ProcurementDetails {
+            get {
+                return ResourceManager.GetString("FORM5ProcurementDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Professionals.
+        /// </summary>
+        public static string FORM5Professionals {
+            get {
+                return ResourceManager.GetString("FORM5Professionals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit.
+        /// </summary>
+        public static string FORM5Profit {
+            get {
+                return ResourceManager.GetString("FORM5Profit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit From Civil Contracting.
+        /// </summary>
+        public static string FORM5ProfitFromCivilContracting {
+            get {
+                return ResourceManager.GetString("FORM5ProfitFromCivilContracting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit from Civil Contracting(SAR).
+        /// </summary>
+        public static string FORM5ProfitFromCivilCoSAR {
+            get {
+                return ResourceManager.GetString("FORM5ProfitFromCivilCoSAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit Ratio.
+        /// </summary>
+        public static string FORM5ProfitRatio {
+            get {
+                return ResourceManager.GetString("FORM5ProfitRatio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profits.
+        /// </summary>
+        public static string FORM5Profits {
+            get {
+                return ResourceManager.GetString("FORM5Profits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to We Have Received Your Return With Reference Number :.
         /// </summary>
         public static string FORM5RecivedReturn {
             get {
                 return ResourceManager.GetString("FORM5RecivedReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refrence Number.
+        /// </summary>
+        public static string FORM5RefrenceNo {
+            get {
+                return ResourceManager.GetString("FORM5RefrenceNo", resourceCulture);
             }
         }
         
@@ -1416,11 +1839,65 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Room Rates.
+        /// </summary>
+        public static string FORM5RoomRates {
+            get {
+                return ResourceManager.GetString("FORM5RoomRates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales.
+        /// </summary>
+        public static string FORM5Sales {
+            get {
+                return ResourceManager.GetString("FORM5Sales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales profit Ratio.
+        /// </summary>
+        public static string FORM5SalesProfitRatio {
+            get {
+                return ResourceManager.GetString("FORM5SalesProfitRatio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SAR.
         /// </summary>
         public static string FORM5SAR {
             get {
                 return ResourceManager.GetString("FORM5SAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sell And Buy.
+        /// </summary>
+        public static string FORM5SellAndBuy {
+            get {
+                return ResourceManager.GetString("FORM5SellAndBuy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Fees.
+        /// </summary>
+        public static string FORM5ServiceFees {
+            get {
+                return ResourceManager.GetString("FORM5ServiceFees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share Capital.
+        /// </summary>
+        public static string FORM5ShareCapital {
+            get {
+                return ResourceManager.GetString("FORM5ShareCapital", resourceCulture);
             }
         }
         
@@ -1439,6 +1916,24 @@ namespace EGAZT {
         public static string FORM5ShareInOtherCompanies {
             get {
                 return ResourceManager.GetString("FORM5ShareInOtherCompanies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shares in other Companies?.
+        /// </summary>
+        public static string FORM5SharesInOtherCompany {
+            get {
+                return ResourceManager.GetString("FORM5SharesInOtherCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share in Persons Company.
+        /// </summary>
+        public static string FORM5SharesInPersonsCompany {
+            get {
+                return ResourceManager.GetString("FORM5SharesInPersonsCompany", resourceCulture);
             }
         }
         
@@ -1488,6 +1983,51 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total External Imports.
+        /// </summary>
+        public static string FORM5TotalExternalImports {
+            get {
+                return ResourceManager.GetString("FORM5TotalExternalImports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total funding from Government.
+        /// </summary>
+        public static string FORM5TotalfundGovenment {
+            get {
+                return ResourceManager.GetString("FORM5TotalfundGovenment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total of Annual Salary.
+        /// </summary>
+        public static string FORM5TotalofAnnualSalary {
+            get {
+                return ResourceManager.GetString("FORM5TotalofAnnualSalary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total of Imports.
+        /// </summary>
+        public static string FORM5TotalofImports {
+            get {
+                return ResourceManager.GetString("FORM5TotalofImports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total of Procurement.
+        /// </summary>
+        public static string FORM5TotalofProcurement {
+            get {
+                return ResourceManager.GetString("FORM5TotalofProcurement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Zakat Payable:.
         /// </summary>
         public static string FORM5TotalZakatPayable {
@@ -1497,11 +2037,47 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value of Subsidy From Government.
+        /// </summary>
+        public static string FORM5ValueofSubsityfromGov {
+            get {
+                return ResourceManager.GetString("FORM5ValueofSubsityfromGov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value of supply cont..
+        /// </summary>
+        public static string FORM5ValueSuppCount {
+            get {
+                return ResourceManager.GetString("FORM5ValueSuppCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yearly Rent(SAR).
         /// </summary>
         public static string FORM5YearlyRent {
             get {
                 return ResourceManager.GetString("FORM5YearlyRent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat.
+        /// </summary>
+        public static string FORM5Zakat {
+            get {
+                return ResourceManager.GetString("FORM5Zakat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakatable.
+        /// </summary>
+        public static string FORM5Zakatable {
+            get {
+                return ResourceManager.GetString("FORM5Zakatable", resourceCulture);
             }
         }
         
@@ -1520,6 +2096,15 @@ namespace EGAZT {
         public static string FORM5ZakatEstimation {
             get {
                 return ResourceManager.GetString("FORM5ZakatEstimation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Paid for Release of Contract.
+        /// </summary>
+        public static string FORM5ZakatPaidReleaseCo {
+            get {
+                return ResourceManager.GetString("FORM5ZakatPaidReleaseCo", resourceCulture);
             }
         }
         
@@ -1547,6 +2132,15 @@ namespace EGAZT {
         public static string FormBundleNo {
             get {
                 return ResourceManager.GetString("FormBundleNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Details.
+        /// </summary>
+        public static string FORMZakatDetails {
+            get {
+                return ResourceManager.GetString("FORMZakatDetails", resourceCulture);
             }
         }
         
@@ -2213,6 +2807,15 @@ namespace EGAZT {
         public static string NDTotal {
             get {
                 return ResourceManager.GetString("NDTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        public static string NDTPActive {
+            get {
+                return ResourceManager.GetString("NDTPActive", resourceCulture);
             }
         }
         

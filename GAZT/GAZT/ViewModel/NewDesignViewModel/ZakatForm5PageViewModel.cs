@@ -22,6 +22,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
 
         #region Variable
+
+        //private FinancialSubTabEnum _subTab = FinancialSubTabEnum.Cabs;
+        //public FinancialSubTabEnum subTab
+        //{
+        //    get => _subTab;
+        //    private set
+        //    {
+        //        _subTab = value;
+        //        RaisePropertyChanged(nameof(subTab));
+        //    }
+        //}
+
+
         private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.BasicInformation;
         public ZakatForm5TabEnum currentTab
         {
@@ -54,6 +67,189 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Property
+
+        public bool _isAdditionalVisible = false;
+        public bool isAdditionalVisible
+        {
+            get
+            {
+                return _isAdditionalVisible;
+            }
+            set
+            {
+                _isAdditionalVisible = value;
+                RaisePropertyChanged("isAdditionalVisible");
+            }
+        }
+
+        public bool _isMineralVisible = false;
+        public bool isMineralVisible
+        {
+            get
+            {
+                return _isMineralVisible;
+            }
+            set
+            {
+                _isMineralVisible = value;
+                RaisePropertyChanged("isMineralVisible");
+            }
+        }
+
+        public bool _isCarVisible = false;
+        public bool isCarVisible
+        {
+            get
+            {
+                return _isCarVisible;
+            }
+            set
+            {
+                _isCarVisible = value;
+                RaisePropertyChanged("isCarVisible");
+            }
+        }
+
+        public bool _isPoultryVisible = false;
+        public bool isPoultryVisible
+        {
+            get
+            {
+                return _isPoultryVisible;
+            }
+            set
+            {
+                _isPoultryVisible = value;
+                RaisePropertyChanged("isPoultryVisible");
+            }
+        }
+
+        public bool _isEducationVisible = false;
+        public bool isEducationVisible
+        {
+            get
+            {
+                return _isEducationVisible;
+            }
+            set
+            {
+                _isEducationVisible = value;
+                RaisePropertyChanged("isEducationVisible");
+            }
+        }
+
+        public bool _isHotelVisible = false;
+        public bool isHotelVisible
+        {
+            get
+            {
+                return _isHotelVisible;
+            }
+            set
+            {
+                _isHotelVisible = value;
+                RaisePropertyChanged("isHotelVisible");
+            }
+        }
+
+        public bool _isRealEstateVisible = false;
+        public bool isRealEstateVisible
+        {
+            get
+            {
+                return _isRealEstateVisible;
+            }
+            set
+            {
+                _isRealEstateVisible = value;
+                RaisePropertyChanged("isRealEstateVisible");
+            }
+        }
+
+        public bool _isContractingVisible = false;
+        public bool isContractingVisible
+        {
+            get
+            {
+                return _isContractingVisible;
+            }
+            set
+            {
+                _isContractingVisible = value;
+                RaisePropertyChanged("isContractingVisible");
+            }
+        }
+
+        public bool _isIndustryVisible = false;
+        public bool isIndustryVisible
+        {
+            get
+            {
+                return _isIndustryVisible;
+            }
+            set
+            {
+                _isIndustryVisible = value;
+                RaisePropertyChanged("isIndustryVisible");
+            }
+        }
+
+        public bool _isLabourOccupancyVisible = false;
+        public bool isLabourOccupancyVisible
+        {
+            get
+            {
+                return _isLabourOccupancyVisible;
+            }
+            set
+            {
+                _isLabourOccupancyVisible = value;
+                RaisePropertyChanged("isLabourOccupancyVisible");
+            }
+        }
+
+        public bool _isBuyVisible = false;
+        public bool isBuyVisible
+        {
+            get
+            {
+                return _isBuyVisible;
+            }
+            set
+            {
+                _isBuyVisible = value;
+                RaisePropertyChanged("isBuyVisible");
+            }
+        }
+
+        public bool _isProfessionalVisible = false;
+        public bool isProfessionalVisible
+        {
+            get
+            {
+                return _isProfessionalVisible;
+            }
+            set
+            {
+                _isProfessionalVisible = value;
+                RaisePropertyChanged("isProfessionalVisible");
+            }
+        }
+
+        public bool _isCabVisible = true;
+        public bool isCabVisible
+        {
+            get
+            {
+                return _isCabVisible;
+            }
+            set
+            {
+                _isCabVisible = value;
+                RaisePropertyChanged("isCabVisible");
+            }
+        }
+
         public string _nextText = AppResources.ZZNext;
         public string NextText
         {
@@ -654,6 +850,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged(() => TotalAnnualSalary);
             }
         }
+
+        /// <summary>
+        /// Zakat Details
+        /// </summary>
+
+        public string _zakatable;
+        public string Zakatable
+        {
+            get => _zakatable;
+
+            set
+            {
+                _zakatable = value;
+                RaisePropertyChanged(() => Zakatable);
+            }
+        }
+
+        public string _zakat;
+        public string Zakat
+        {
+            get => _zakat;
+
+            set
+            {
+                _zakat = value;
+                RaisePropertyChanged(() => Zakat);
+            }
+        }
+
+        public string _zakatPaid;
+        public string ZakatPaid
+        {
+            get => _zakatPaid;
+
+            set
+            {
+                _zakatPaid = value;
+                RaisePropertyChanged(() => ZakatPaid);
+            }
+        }
+
+        public string _newTaxAmt;
+        public string NewTaxAmt
+        {
+            get => _newTaxAmt;
+
+            set
+            {
+                _newTaxAmt = value;
+                RaisePropertyChanged(() => NewTaxAmt);
+            }
+        }
+
 
         #endregion
 
@@ -1309,10 +1558,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                          TotalAnnualSalary = ZakatForm5DataResult.ATotAnnualSal.ToString();
 
                         //Zakat Details
-                        var Zakatable = ZakatForm5DataResult.AZakat.ToString();
-                        var Zakat = ZakatForm5DataResult.AZakat51.ToString();
-                        var ZakatPaid = ZakatForm5DataResult.AReleaseOfContract.ToString();
-                        var NewTaxAmt = ZakatForm5DataResult.ANetTaxableAmount.ToString();
+                         Zakatable = ZakatForm5DataResult.AZakat.ToString();
+                         Zakat = ZakatForm5DataResult.AZakat51.ToString();
+                         ZakatPaid = ZakatForm5DataResult.AReleaseOfContract.ToString();
+                         NewTaxAmt = ZakatForm5DataResult.ANetTaxableAmount.ToString();
 
 
                         // Zakat Estimation API Call
