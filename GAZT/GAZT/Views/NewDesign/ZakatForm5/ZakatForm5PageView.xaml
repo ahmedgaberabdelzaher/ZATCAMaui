@@ -219,7 +219,7 @@
                        
                         <StackLayout>
                                 <!--On Cabs Clicked Starts-->
-                            <StackLayout x:Name="Cabs">
+                            <StackLayout x:Name="Cabs" IsVisible="{Binding isCabVisible}">
 
                                 <ListView  x:Name="CarList" 
            ItemsSource="{Binding Cabs}"
@@ -321,7 +321,7 @@
                             <!--On Cabs Clicked Ends-->
 
                             <!--On Professionals Clicked starts-->
-                            <StackLayout x:Name="Professionals">
+                            <StackLayout x:Name="Professionals" IsVisible="{Binding isProfessionalVisible}">
 
                                 <ListView  x:Name="ProfessionalsList" 
            ItemsSource="{Binding Professionals}"
@@ -400,7 +400,7 @@
                             <!--On Professionals Clicked ends-->
 
                             <!--On Buy and Sell Clicked Starts-->
-                            <StackLayout x:Name="BuyAndSell">
+                            <StackLayout x:Name="BuyAndSell" IsVisible="{Binding isBuyVisible}">
 
                                 <ListView  x:Name="BuyAndSellList" 
            ItemsSource="{Binding Sell_Buy}"
@@ -682,7 +682,7 @@
                             <!--On Buy and Sell Clicked ends-->
 
                             <!--On Labour Occupancy clicked Starts-->
-                            <StackLayout x:Name="LabourOccupancy">
+                            <StackLayout x:Name="LabourOccupancy" IsVisible="{Binding isLabourOccupancyVisible}">
                                 <ListView  x:Name="LabourOccupList" 
            ItemsSource="{Binding LabourOccup}"
           HorizontalOptions="FillAndExpand"
@@ -779,7 +779,7 @@
                             <!--On Labour Occupancy Cliked ends-->
 
                            <!--On Industry clicked Starts-->
-                            <StackLayout x:Name="Industry">
+                            <StackLayout x:Name="Industry" IsVisible="{Binding isIndustryVisible}">
 
                                 <ListView  x:Name="IndustryList" 
            ItemsSource="{Binding Industry}"
@@ -889,7 +889,7 @@
                             <!--On Industry clicked Ends-->
 
                                <!--On Contracting clicked Starts-->
-                            <StackLayout x:Name="Contracting">
+                            <StackLayout x:Name="Contracting" IsVisible="{Binding isContractingVisible}">
                                 <ListView  x:Name="ContractingList" 
            ItemsSource="{Binding Contracting}"
           HorizontalOptions="FillAndExpand"
@@ -1031,7 +1031,7 @@
                             <!--On Contracting clicked Ends-->
 
                              <!--On Invest and Real Est. Clicked Starts-->
-                            <StackLayout x:Name="RealEstateOffice">
+                            <StackLayout x:Name="RealEstateOffice" IsVisible="{Binding isRealEstateVisible}">
 
                                 <ListView  x:Name="InvstRealEstList" 
            ItemsSource="{Binding InvstRealEst}"
@@ -1119,7 +1119,7 @@
                             <!--On Invest and Real Est. Clicked Ends-->
 
                              <!--On Hotels Clicked Starts-->
-                            <StackLayout x:Name="Hotels">
+                            <StackLayout x:Name="Hotels" IsVisible="{Binding isHotelVisible}">
 
                                 <ListView  x:Name="HotelsList" 
            ItemsSource="{Binding Hotels}"
@@ -1253,7 +1253,7 @@
                             <!--On Hotels Clicked Ends-->
 
                              <!--On Education & Health Clicked Starts-->
-                            <StackLayout x:Name="EducationAndHealth">
+                            <StackLayout x:Name="EducationAndHealth" IsVisible="{Binding isEducationVisible}">
 
                                 <ListView  x:Name="EducationAndHealthList" 
            ItemsSource="{Binding Edu_Health}"
@@ -1342,7 +1342,7 @@
                             <!--On Education & Health Clicked Ends-->
 
                             <!--Poultry & Fish Fram Activities Clcked Starts-->
-                            <StackLayout x:Name="PoultryAndFishFram">
+                            <StackLayout x:Name="PoultryAndFishFram" IsVisible="{Binding isPoultryVisible}">
                                 <ListView  x:Name="PoultryAndFishFramList" 
            ItemsSource="{Binding Poultry_FishFarm}"
           HorizontalOptions="FillAndExpand"
@@ -1431,7 +1431,7 @@
                             <!--Poultry & Fish Fram Activities Clcked Ends-->
                             
                            <!--Cars Clicked Starts-->
-                            <StackLayout x:Name="Cars">
+                            <StackLayout x:Name="Cars" IsVisible="{Binding isCarVisible}">
 
                                 <ListView  x:Name="CarsList" 
            ItemsSource="{Binding Cars}"
@@ -1504,7 +1504,7 @@
                             <!--Cars Clicked Ends-->
 
                              <!--On Minerals Clicked Starts-->
-                            <StackLayout x:Name="Minerals">
+                            <StackLayout x:Name="Minerals" IsVisible="{Binding isMineralVisible}">
 
                                 <ListView  x:Name="MineralsList" 
            ItemsSource="{Binding Minerals}"
@@ -1577,7 +1577,7 @@
                             <!--On Minerals Clicked Ends-->
                             
                            <!--On Additional Info Clicked Starts-->
-                            <StackLayout x:Name="AdditionalInfo">
+                            <StackLayout x:Name="AdditionalInfo" IsVisible="{Binding isAdditionalVisible}">
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">

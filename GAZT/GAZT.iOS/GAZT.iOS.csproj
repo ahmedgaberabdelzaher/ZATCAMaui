@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -322,7 +322,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App_icon_1024.png">
       <Visible>false</Visible>
     </ImageAsset>
-    
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\LaunchImage-1242%403x~iphone6s-landscape_2208x1242.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -1763,5 +1762,23 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\hidePassword%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Whiteclock%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Whiteclock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Whiteclock%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Edit%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_Edit%402x.png" />
   </ItemGroup>
 </Project>
