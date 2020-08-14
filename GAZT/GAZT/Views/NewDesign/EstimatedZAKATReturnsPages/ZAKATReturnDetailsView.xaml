@@ -195,7 +195,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                            <custom:CustomLabel Text="Total VAT Series" Style="{StaticResource ValueLabelBlack}"/>
+                                            <custom:CustomLabel Text="Total VAT Sales" Style="{StaticResource ValueLabelBlack}"/>
 
                                             <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
 
@@ -649,7 +649,7 @@
                     <StackLayout Grid.Row="1" BackgroundColor="White" VerticalOptions="EndAndExpand" Padding="0,10,0,10">
                         <buttons:SfButton Text="{Binding ReleaseOrBillDetailsButtonText}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnReleaseBillsButtonClicked"/>
                         <buttons:SfButton x:Name="btnprimary" Text="Submit" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnSubmitClicked}" IsVisible="{Binding SetSubmitButtonVisibility}" Margin="0,10,0,0"/>
-                        <buttons:SfButton  Text="Confirm and Pay" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnConfirmClicked}" IsVisible="{Binding SetConfirmButtonVisibility}" Margin="0,10,0,0"/>
+                        <buttons:SfButton  Text="Confirm and Pay" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnConfirmClicked" IsVisible="{Binding SetConfirmButtonVisibility}" Margin="0,10,0,0"/>
 
                         <Label Margin="0,10,0,0" Text="Change to Account Basis"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ChangeFromEstimateTAccountringBasisButtonVisibility}" >
                               <Label.GestureRecognizers>

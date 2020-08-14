@@ -177,7 +177,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 attachment = fileData.DataArray;
                 await Task.Run(() =>
                 {
-                   // IsLoading = true;
+                    IsLoading = true;
                 });
                 await Task.Run(async () =>
                 {
