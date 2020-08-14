@@ -1893,7 +1893,7 @@ namespace EGAZT
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
             navigationService.Configure(App.TaxEvasionRegistrationPageView, typeof(TaxEvasionRegistrationPageView));
             navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
-            //navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
+            navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
             navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
             navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
             navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
