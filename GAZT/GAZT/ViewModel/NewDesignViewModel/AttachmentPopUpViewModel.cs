@@ -88,6 +88,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _objectionReason = value;
+                if(!string.IsNullOrEmpty(ObjectionReason))
+                {
+                    SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
+                }
                 
                 RaisePropertyChanged("ObjectionReason");
             }
@@ -124,6 +128,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if(ZAKATReturnDetailsView.IsGoingFirstTimeOnAttachmentPage)
             {
+                ZakatReturnAttachmentsList = new ObservableCollection<ZakatAttachment>();
                 GetSalesTypeObjectList();
                 ZAKATReturnDetailsView.IsGoingFirstTimeOnAttachmentPage = false;
             }
@@ -194,7 +199,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         if (attachment.Length < 5242880)
                                         {
-                                            if (ZakatReturnAttachmentsList.Count < 5)
+                                            if (true)//ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count < 5
                                             {
                                                 AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, ZakatReturnDetail.ReturnId, "Z12L", ContentType);
                                                 PopToRootPage();
@@ -378,6 +383,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
                             {
+                                AttachmentPopUpViewModel.SalesDetailList[SelectedSalesTypeIndex].estimateZakatAttachment.RemoveAt(i);
                                 ZakatReturnAttachmentsList.RemoveAt(i);
                             //    SelectedSalesDetails.estimateZakatAttachment.RemoveAt(i);
                             }

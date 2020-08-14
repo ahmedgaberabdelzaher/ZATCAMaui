@@ -18,6 +18,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             viewModel = App.Locator.ZAKATReturnDetailsView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            if(AttachmentPopUpViewModel.SalesDetailList != null)
+            AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
             viewModel.ClearData();
             viewModel.Fbguid = fbguid;
