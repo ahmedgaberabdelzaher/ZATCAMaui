@@ -18,26 +18,28 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             viewModel = App.Locator.ZAKATReturnDetailsView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            if (AttachmentPopUpViewModel.SalesDetailList != null)
+                AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
             viewModel.ClearData();
             viewModel.Fbguid = fbguid;
             SetLTR();
 
-          viewModel.OnPageLoad(fbguid);
+            viewModel.OnPageLoad(fbguid);
 
         }
 
         protected override void OnAppearing()
         {
 
-        //date.Text = viewModel.Abrzu;
+            //date.Text = viewModel.Abrzu;
         }
-        
+
         private void SetLTR()
         {
             if (!App.IsArabic)
             {
-           this.FlowDirection = FlowDirection.LeftToRight;
+                this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
         protected async void OnReleaseBillsButtonClicked(object sender, EventArgs e)
@@ -68,7 +70,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 await viewModel.OnReleaseOrBillsClicked();
             }
 
-           
+
 
         }
         private void OnEditClicked(object sender, EventArgs e)
@@ -80,7 +82,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             viewModel.SetSubmitButtonVisibility = true;
             viewModel.SetConfirmButtonVisibility = false;
             viewModel.SetEditImage();
-          //  PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            //  PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
 
         }
 
@@ -132,12 +134,44 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
-
-
-
-        private void OnInfoClicked(object sender, EventArgs e)
+        private async void OnConfirmClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            string PostOperationID = viewModel.GetConfirmOperationId();
+            if (viewModel.IsCurrentZAKATTaxLess)
+            {
+                if (App.IsArabic)
+                {
+                    var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZCancel, AppResources.ZZZOkayText);
+                    if (!result)
+                    {
+                        await viewModel.ConfirmClicked(PostOperationID);
+                    }
+
+                }
+                else
+                {
+                    var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZZOkayText, AppResources.ZZCancel);
+                    if (result)
+                    {
+                        await viewModel.ConfirmClicked(PostOperationID);
+                    }
+
+                }
+            }
+            else
+            {
+                await viewModel.ConfirmClicked(PostOperationID);
+            }
+
+
         }
+
+
+
+        //private void OnInfoClicked(object sender, EventArgs e)
+        //{
+        //    PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+        //}
+
     }
 }

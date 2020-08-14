@@ -26,13 +26,14 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <StackLayout Grid.Row="1" Padding="24">
-                <custom:CustomLabel Text="My Profile" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24"/>
+            <StackLayout Grid.Row="1" Padding="24" Orientation="Vertical" Spacing="0">
+                <custom:CustomLabel Text="Zaed Hardy" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24"/>
                 <custom:CustomLabel Margin="0,-15,0,0" Text="Individual Saudi (Resident)" Style="{StaticResource BodyLabelBlack}" TextColor="White"/>
 
-                <StackLayout Orientation="Horizontal">
-                    <Image Source="Whiteclock.png" Margin="0,0,5,0"/>
-                    <custom:CustomLabel Text="The last time you accessed was on 06, April, 2020 at 15:45" Style="{StaticResource BodyLabelBlack}" TextColor="White"/>
+                <StackLayout Orientation="Horizontal" Spacing="15" Padding="0,0,0,0" >
+                    <Image Source="Whiteclock.png" Margin="0,0,0,0"/>
+                    <custom:CustomLabel Text="The Last time you accessed was on 06, April, 2020 at 15:45" Style="{StaticResource BodyLabelBlack}" TextColor="White">
+                    </custom:CustomLabel>
                 </StackLayout>
             </StackLayout>
             <ScrollView Grid.Row="2">
@@ -54,43 +55,56 @@
                     
                     <StackLayout Orientation="Horizontal">
                     <custom:CustomLabel Text="Mobile Number" Style="{StaticResource CaptionLabelGrey}"/>
-                        <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
+                            <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnMobileEditTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
 
-                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="5,0,0,0">
+                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
 
-                        <inputLayout:SfTextInputLayout.LeadingView>
-                            <StackLayout Orientation="Horizontal" Margin="8,0,8,0">
-                                <custom:CustomLabel Text="+966" />
-                                <BoxView WidthRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}"/>
-                            </StackLayout>
-                        </inputLayout:SfTextInputLayout.LeadingView>
 
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="551 234 567"  HeightRequest="51" Keyboard="Numeric" >
+                            <StackLayout Orientation="Horizontal" Padding="0,8,0,8">
+                                    <control:BorderlessEntry Placeholder="+966" Style="{StaticResource DefaultEntry}"/>
+                                <BoxView WidthRequest="1" HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}"/>
+
+
+
+                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="551 234 567" Keyboard="Numeric" >
                         </control:BorderlessEntry>
-                    </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+                        </inputLayout:SfTextInputLayout>
 
 
                     <StackLayout Orientation="Horizontal">
                         <custom:CustomLabel Text="Email" Style="{StaticResource CaptionLabelGrey}"/>
-                        <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                        <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
+                            <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnEmailEditTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                        <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
 
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy@gmail.com"  HeightRequest="51" Keyboard="Email" >
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy@gmail.com" Keyboard="Email" >
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
 
                         <StackLayout Orientation="Horizontal">
                             <custom:CustomLabel Text="Password" Style="{StaticResource CaptionLabelGrey}"/>
-                            <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand"/>
+                            <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnPasswordEditTapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
                         </StackLayout>
-                        <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
+                        <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
 
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="kkkkkkkk"  HeightRequest="51" IsPassword="True" >
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="kkkkkkkk" IsPassword="True" >
                             </control:BorderlessEntry>
 
                             <inputLayout:SfTextInputLayout.TrailingView >
@@ -118,7 +132,7 @@
                     </Image>
                 </StackLayout>
             </Grid>
-
+  
         </Grid>
     </ContentPage.Content>
 </ContentPage>

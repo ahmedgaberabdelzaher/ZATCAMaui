@@ -35,7 +35,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //}
 
 
-        private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.FinancialInformation;
+        private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.BasicInformation;
         public ZakatForm5TabEnum currentTab
         {
             get => _currentTab;
@@ -851,6 +851,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        /// <summary>
+        /// Zakat Details
+        /// </summary>
+
+        public string _zakatable;
+        public string Zakatable
+        {
+            get => _zakatable;
+
+            set
+            {
+                _zakatable = value;
+                RaisePropertyChanged(() => Zakatable);
+            }
+        }
+
+        public string _zakat;
+        public string Zakat
+        {
+            get => _zakat;
+
+            set
+            {
+                _zakat = value;
+                RaisePropertyChanged(() => Zakat);
+            }
+        }
+
+        public string _zakatPaid;
+        public string ZakatPaid
+        {
+            get => _zakatPaid;
+
+            set
+            {
+                _zakatPaid = value;
+                RaisePropertyChanged(() => ZakatPaid);
+            }
+        }
+
+        public string _newTaxAmt;
+        public string NewTaxAmt
+        {
+            get => _newTaxAmt;
+
+            set
+            {
+                _newTaxAmt = value;
+                RaisePropertyChanged(() => NewTaxAmt);
+            }
+        }
+
+
         #endregion
 
         #region Zakat Estimation
@@ -1505,10 +1558,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                          TotalAnnualSalary = ZakatForm5DataResult.ATotAnnualSal.ToString();
 
                         //Zakat Details
-                        var Zakatable = ZakatForm5DataResult.AZakat.ToString();
-                        var Zakat = ZakatForm5DataResult.AZakat51.ToString();
-                        var ZakatPaid = ZakatForm5DataResult.AReleaseOfContract.ToString();
-                        var NewTaxAmt = ZakatForm5DataResult.ANetTaxableAmount.ToString();
+                         Zakatable = ZakatForm5DataResult.AZakat.ToString();
+                         Zakat = ZakatForm5DataResult.AZakat51.ToString();
+                         ZakatPaid = ZakatForm5DataResult.AReleaseOfContract.ToString();
+                         NewTaxAmt = ZakatForm5DataResult.ANetTaxableAmount.ToString();
 
 
                         // Zakat Estimation API Call

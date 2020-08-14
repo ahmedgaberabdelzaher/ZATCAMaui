@@ -4200,7 +4200,7 @@
     <value>•  إسم الفرع / النشاط:</value>
   </data>
   <data name="FORM5NoOutlet" xml:space="preserve">
-    <value>No. Of Outlets</value>
+    <value>عدد الفروع</value>
   </data>
   <data name="FORM5Period" xml:space="preserve">
     <value>الفترة من تاريخ</value>
@@ -4988,5 +4988,204 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="ZDone" xml:space="preserve">
     <value>Done</value>
+  </data>
+  <data name="FORM5ActivityTotalProfits" xml:space="preserve">
+    <value>إجمالي أرباح النشاط (ريال سعودي)</value>
+  </data>
+  <data name="FORM5AdditionalRoomRate" xml:space="preserve">
+    <value>سعر الغرفة الاضافية  (ريال سعودي)</value>
+  </data>
+  <data name="FORM5Capital" xml:space="preserve">
+    <value>رأس المال (ريال سعودي)</value>
+  </data>
+  <data name="FORM5CapitalRate" xml:space="preserve">
+    <value>رأس المال المعدل (ريال سعودي)</value>
+  </data>
+  <data name="FORM5Cars" xml:space="preserve">
+    <value>السيارات</value>
+  </data>
+  <data name="FORM5City" xml:space="preserve">
+    <value>المدينة</value>
+  </data>
+  <data name="FORM5ContractingCo" xml:space="preserve">
+    <value>المقاولات</value>
+  </data>
+  <data name="FORM5DeclaredCapital" xml:space="preserve">
+    <value>رأس المال المصرح به</value>
+  </data>
+  <data name="FORM5DoInternalProcurementFromSaudi" xml:space="preserve">
+    <value>هل لديك مشتريات من داخل السعودية؟</value>
+  </data>
+  <data name="FORM5DoYouHaveImports" xml:space="preserve">
+    <value>هل يوجد لديك استيرادات؟</value>
+  </data>
+  <data name="FORM5EduAndHealth" xml:space="preserve">
+    <value>الانشطة التعليمية والصحية</value>
+  </data>
+  <data name="FORM5EstimationDetails" xml:space="preserve">
+    <value>Estimation Details</value>
+  </data>
+  <data name="FORM5GovernmentContractProfile" xml:space="preserve">
+    <value>ارباح العقود الحكومية</value>
+  </data>
+  <data name="FORM5GovrnmentCont|Profits" xml:space="preserve">
+    <value>ارباح العقود الحكومية</value>
+  </data>
+  <data name="FORM5Hotels" xml:space="preserve">
+    <value>الايواء</value>
+  </data>
+  <data name="FORM5ImortsForLiveAnimals" xml:space="preserve">
+    <value>استيراد الخضار و المواشي</value>
+  </data>
+  <data name="FORM5ImporDetails" xml:space="preserve">
+    <value>Import Details</value>
+  </data>
+  <data name="FORM5Imports" xml:space="preserve">
+    <value>الإستيرادات من الخارج</value>
+  </data>
+  <data name="FORM5ImportsForGeneralTrading" xml:space="preserve">
+    <value>استيرادات التجارة العامة</value>
+  </data>
+  <data name="FORM5ImportsForLivelihoods" xml:space="preserve">
+    <value>استيراد الأرزاق</value>
+  </data>
+  <data name="FORM5IncreaseInCapital" xml:space="preserve">
+    <value>الزيادة في رأس المال</value>
+  </data>
+  <data name="FORM5Industry" xml:space="preserve">
+    <value>الصناعة</value>
+  </data>
+  <data name="FORM5InternalProcurementFromSaudi" xml:space="preserve">
+    <value>المشتريات الداخلية من السعودية</value>
+  </data>
+  <data name="FORM5InvestAndRealEst" xml:space="preserve">
+    <value>انشطة مكاتب الاستثمار والخدمات العقارية</value>
+  </data>
+  <data name="FORM5IsItOwedbyYou" xml:space="preserve">
+    <value>هل تملك العقار؟</value>
+  </data>
+  <data name="FORM5LabourOccupancy" xml:space="preserve">
+    <value>المهن العمالية</value>
+  </data>
+  <data name="FORM5Minerals" xml:space="preserve">
+    <value>المعادن</value>
+  </data>
+  <data name="FORM5NoofBranch" xml:space="preserve">
+    <value>عدد الفروع</value>
+  </data>
+  <data name="FORM5NoofEmployeesOrLabours" xml:space="preserve">
+    <value>عدد الموظفين او العاملين</value>
+  </data>
+  <data name="FORM5NoofLabours" xml:space="preserve">
+    <value>عدد العمالة</value>
+  </data>
+  <data name="FORM5NoofRoomsPerUnits" xml:space="preserve">
+    <value>عدد الغرف / الوحدات</value>
+  </data>
+  <data name="FORM5OccupationRate" xml:space="preserve">
+    <value>نسبة الإشغال</value>
+  </data>
+  <data name="FORM5OtherProfit" xml:space="preserve">
+    <value>ارباح اخرى</value>
+  </data>
+  <data name="FORM5Outlet" xml:space="preserve">
+    <value>Outlet</value>
+    <comment>Form5</comment>
+  </data>
+  <data name="FORM5PercentageSalesGain" xml:space="preserve">
+    <value>نسبة ربح المبيعات</value>
+  </data>
+  <data name="FORM5PoultryAndFish" xml:space="preserve">
+    <value>انشطة مزارع الدواجن والاسماك</value>
+  </data>
+  <data name="FORM5ProcurementDetails" xml:space="preserve">
+    <value>Procurement Details</value>
+  </data>
+  <data name="FORM5Professionals" xml:space="preserve">
+    <value>المهن الفكرية</value>
+  </data>
+  <data name="FORM5Profit" xml:space="preserve">
+    <value>نسبة الربح</value>
+  </data>
+  <data name="FORM5ProfitFromCivilContracting" xml:space="preserve">
+    <value>أرباح العقود مع القطاع الخاص</value>
+  </data>
+  <data name="FORM5ProfitFromCivilCoSAR" xml:space="preserve">
+    <value>أرباح العقود مع القطاع الخاص ↵ (ريال سعودي)</value>
+  </data>
+  <data name="FORM5ProfitRatio" xml:space="preserve">
+    <value>نسبة الأرباح</value>
+  </data>
+  <data name="FORM5Profits" xml:space="preserve">
+    <value>الأرباح</value>
+  </data>
+  <data name="FORM5RefrenceNo" xml:space="preserve">
+    <value>Refrence Number</value>
+  </data>
+  <data name="FORM5RoomRates" xml:space="preserve">
+    <value>سعر الغرفة</value>
+  </data>
+  <data name="FORM5Sales" xml:space="preserve">
+    <value>المبيعات</value>
+  </data>
+  <data name="FORM5SalesProfitRatio" xml:space="preserve">
+    <value>نسبة الأرباح من المبيعات</value>
+  </data>
+  <data name="FORM5SellAndBuy" xml:space="preserve">
+    <value>بيع وشراء</value>
+  </data>
+  <data name="FORM5ServiceFees" xml:space="preserve">
+    <value>رسوم الخدمة</value>
+  </data>
+  <data name="FORM5ShareCapital" xml:space="preserve">
+    <value>رأس المال</value>
+  </data>
+  <data name="FORM5SharesInOtherCompany" xml:space="preserve">
+    <value>Shares in other Companies?</value>
+  </data>
+  <data name="FORM5SharesInPersonsCompany" xml:space="preserve">
+    <value>Share in Persons Company</value>
+  </data>
+  <data name="FORM5TotalfundGovenment" xml:space="preserve">
+    <value>إجمالي التمويل من الدولة</value>
+  </data>
+  <data name="FORM5TotalofAnnualSalary" xml:space="preserve">
+    <value>مجموع رواتب الموظفين السنوية</value>
+  </data>
+  <data name="FORM5TotalofImports" xml:space="preserve">
+    <value>اجمالي الإستيرادات</value>
+  </data>
+  <data name="FORM5TotalofProcurement" xml:space="preserve">
+    <value>Total of Procurement</value>
+  </data>
+  <data name="FORM5ValueofSubsityfromGov" xml:space="preserve">
+    <value>قيمة الإعانة الحكومية</value>
+  </data>
+  <data name="FORM5ValueSuppCount" xml:space="preserve">
+    <value>قيمة العقود المنفذة خلال عام</value>
+  </data>
+  <data name="FORM5AdditionalInfo" xml:space="preserve">
+    <value>معلومات إضافية</value>
+  </data>
+  <data name="FORM5ActivityCapital" xml:space="preserve">
+    <value>Activity Capital</value>
+  </data>
+  <data name="FORM5NewTaxAmt" xml:space="preserve">
+    <value>New Taxable Amount</value>
+  </data>
+  <data name="FORM5TotalExternalImports" xml:space="preserve">
+    <value>مجموع الإستيرادات</value>
+  </data>
+  <data name="FORM5Zakat" xml:space="preserve">
+    <value>Zakat</value>
+  </data>
+  <data name="FORM5Zakatable" xml:space="preserve">
+    <value>وعـاء الزكـاة</value>
+  </data>
+  <data name="FORM5ZakatPaidReleaseCo" xml:space="preserve">
+    <value>٥٠٦٠٠ الزكاة المدفوعة للإفراج عن عقد</value>
+  </data>
+  <data name="FORMZakatDetails" xml:space="preserve">
+    <value>تفاصيل الزكاة</value>
   </data>
 </root>
