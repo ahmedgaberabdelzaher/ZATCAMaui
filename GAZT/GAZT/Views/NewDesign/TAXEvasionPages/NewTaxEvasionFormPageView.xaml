@@ -16,6 +16,7 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:gmaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormPageView">
     <ContentPage.Padding>
             <OnPlatform x:TypeArguments="Thickness">
@@ -68,19 +69,19 @@
                         <StackLayout >
                             <custom:CustomLabel Text="Reporter Name" Style="{StaticResource CaptionLabelGrey}"/>
                             <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry  Text="Zaed" Style="{StaticResource EntryHeight48}" >
+                                <custom:BorderlessEntry  Text="{Binding TName}" IsEnabled="False" Style="{StaticResource EntryHeight48}" >
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
                             <custom:CustomLabel Text="Mobile Number" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
+                            <inputLayout:SfTextInputLayout x:Name="FrmNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
                                 
                                     <StackLayout Orientation="Horizontal" Margin="16,0,0,0" >
                                         <custom:BorderlessEntry  Placeholder="+966" Style="{StaticResource EntryHeight48}" />
                                         <BoxView Style="{StaticResource lineSeperator}"  WidthRequest="1" HeightRequest="20" Margin="5"/>
 
 
-                                    <custom:BorderlessEntry  Text="551 234 567" Style="{StaticResource EntryHeight48}" >
+                                    <custom:BorderlessEntry x:Name="TMobNumber" Text="{Binding TMobNumber}" Unfocused="TMobNumber_Unfocused" Style="{StaticResource EntryHeight48}" MaxLength="15" >
                                 </custom:BorderlessEntry>
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>
@@ -95,7 +96,9 @@
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
 
-
+                            <Frame  Grid.Row="4" BackgroundColor="White"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
+                            <gmaps:Map Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Margin="-12"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                        </Frame>
 
                             
                         </StackLayout>
@@ -106,27 +109,27 @@
                     <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.FacilityInfo}}">
                         <StackLayout>
                             <custom:CustomLabel Text="Facility Name" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry  Text="Zeyad Corporation"     Style="{StaticResource EntryHeight48}" >
+                            <inputLayout:SfTextInputLayout x:Name="FrmFName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <custom:BorderlessEntry  Text="{Binding TFaciName}" x:Name="TFaciName" Unfocused="TFaciName_Unfocused" Style="{StaticResource EntryHeight48}" >
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
                             <custom:CustomLabel Text="TIN" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry  Text="111233348878999"     Style="{StaticResource EntryHeight48}" >
+                            <inputLayout:SfTextInputLayout x:Name="FrmTIN" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <custom:BorderlessEntry  Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused" Style="{StaticResource EntryHeight48}" >
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
                             <custom:CustomLabel Text="VAT Number" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry  Text="00008878933"     Style="{StaticResource EntryHeight48}" >
+                            <inputLayout:SfTextInputLayout x:Name="FrmVAT" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <custom:BorderlessEntry  Text="{Binding TVatNumber}"  x:Name="TVatNumber" Unfocused="TVatNumber_Unfocused"  Style="{StaticResource EntryHeight48}" >
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
                             <custom:CustomLabel Text="Region" Style="{StaticResource CaptionLabelGrey}"/>
                             <Grid>
                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry  Text="Riyadh Province"     Style="{StaticResource EntryHeight48}" >
+                                <custom:BorderlessEntry x:Name="Region_entry" Text="{Binding TxtReportDetailRegion}"   Style="{StaticResource EntryHeight48}" >
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView >
                                     <Image Source="arrowDropdown.png">
@@ -138,9 +141,9 @@
 
                                 <syncfusion:SfPicker x:Name="RegionPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                        ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
+                        ShowFooter="False" ItemHeight="40" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
-                        FooterHeight="46" >
+                        FooterHeight="46" ItemsSource="{Binding RList}" DisplayMemberPath="Name" SelectionChanged="RegionPicker_SelectionChanged" >
                                     <syncfusion:SfPicker.Behaviors>
                                         <customcontrol:SfPickerBehavior />
                                     </syncfusion:SfPicker.Behaviors>
@@ -150,7 +153,7 @@
                             <custom:CustomLabel Text="City" Style="{StaticResource CaptionLabelGrey}"/>
                             <Grid>
                                 <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <custom:BorderlessEntry  Text="Riyadh "     Style="{StaticResource EntryHeight48}" >
+                                    <custom:BorderlessEntry x:Name="City_entry" Text="{Binding TxtReportDetailCity}" Style="{StaticResource EntryHeight48}" >
                                     </custom:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView >
                                         <Image Source="arrowDropdown.png">
@@ -158,13 +161,13 @@
                                         </Image>
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
-                                <custom:CustomButton   Clicked="RegionBtnClicked" BackgroundColor="Transparent"  />
+                                <custom:CustomButton Clicked="CityPickerButton_Clicked" BackgroundColor="Transparent"  />
 
                                 <syncfusion:SfPicker x:Name="CityPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                        ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
+                        ShowFooter="False" ItemHeight="40" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
-                        FooterHeight="46" >
+                        FooterHeight="46" ItemsSource="{Binding CList}" DisplayMemberPath="Name" SelectionChanged="CityPicker_SelectionChanged">
                                     <syncfusion:SfPicker.Behaviors>
                                         <customcontrol:SfPickerBehavior />
                                     </syncfusion:SfPicker.Behaviors>
@@ -172,19 +175,19 @@
                             </Grid>
 
                             <custom:CustomLabel Text="District" Style="{StaticResource CaptionLabelGrey}"/>
-                            <Grid>
-                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <custom:BorderlessEntry  Text="Al-Shifa"     Style="{StaticResource EntryHeight48}" >
+                            <!--<Grid>-->
+                                <inputLayout:SfTextInputLayout x:Name="FrmFDAddress" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                    <custom:BorderlessEntry Text="{Binding TFDAdress}" x:Name="TFDAdress" Unfocused="TFDAdress_Unfocused" Style="{StaticResource EntryHeight48}" >
                                     </custom:BorderlessEntry>
-                                    <inputLayout:SfTextInputLayout.TrailingView >
+                                    <!--<inputLayout:SfTextInputLayout.TrailingView >
                                         <Image Source="arrowDropdown.png">
 
                                         </Image>
-                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                    </inputLayout:SfTextInputLayout.TrailingView>-->
                                 </inputLayout:SfTextInputLayout>
-                                <custom:CustomButton   Clicked="RegionBtnClicked" BackgroundColor="Transparent"  />
+                                <!--<custom:CustomButton Clicked="DistrictPickerButton_Clicked" BackgroundColor="Transparent"  />-->
 
-                                <syncfusion:SfPicker x:Name="DistrictPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
+                                <!--<syncfusion:SfPicker x:Name="DistrictPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
@@ -192,12 +195,12 @@
                                     <syncfusion:SfPicker.Behaviors>
                                         <customcontrol:SfPickerBehavior />
                                     </syncfusion:SfPicker.Behaviors>
-                                </syncfusion:SfPicker>
-                            </Grid>
+                                </syncfusion:SfPicker>-->
+                            <!--</Grid>-->
 
                             <custom:CustomLabel Text="Street" Style="{StaticResource CaptionLabelGrey}"/>
                             <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry  Text="Olaya St, Al Wurud, Riyadh 12253" Style="{StaticResource EntryHeight48}" >
+                                <custom:BorderlessEntry x:Name="TFSAddress" Text="{Binding TFSAddress}" Style="{StaticResource EntryHeight48}" >
                                 </custom:BorderlessEntry>
 
                                 <inputLayout:SfTextInputLayout.TrailingView >
@@ -214,7 +217,7 @@
                             <custom:CustomLabel Text="Report Type" Style="{StaticResource CaptionLabelGrey}"/>
                             <Grid>
                                 <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <custom:BorderlessEntry  Text="An invoice that does not meet the......."     Style="{StaticResource EntryHeight48}" >
+                                    <custom:BorderlessEntry  Text="{Binding TxtReporttype}"     Style="{StaticResource EntryHeight48}" >
                                     </custom:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView >
                                         <Image Source="arrowDropdown.png">
@@ -222,13 +225,13 @@
                                         </Image>
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
-                                <custom:CustomButton   Clicked="RegionBtnClicked" BackgroundColor="Transparent"  />
+                                <custom:CustomButton Clicked="ReportTypeButton_Clicked" BackgroundColor="Transparent"  />
 
                                 <syncfusion:SfPicker x:Name="ReportTypePicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                        ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
+                        ShowFooter="False" ItemHeight="40" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
-                        FooterHeight="46" >
+                        FooterHeight="46" ItemsSource="{Binding ReportTypes}" DisplayMemberPath="Title" SelectionChanged="ReportTypePicker_SelectionChanged">
                                     <syncfusion:SfPicker.Behaviors>
                                         <customcontrol:SfPickerBehavior />
                                     </syncfusion:SfPicker.Behaviors>
@@ -237,21 +240,26 @@
 
                             <custom:CustomLabel Text="Report Details" Style="{StaticResource CaptionLabelGrey}"/>
 
-                            <custom:CustomLabel Text="Attachments" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
-                                <inputLayout:SfTextInputLayout.LeadingView>
-                                    <Image Source="newui_ic_pdf"/>
-                                </inputLayout:SfTextInputLayout.LeadingView>
-                                <custom:BorderlessEntry  Text="File1.pdf" Style="{StaticResource EntryHeight48}" >
-                                </custom:BorderlessEntry>
+                            <custom:CustomLabel Text="Attachments" x:Name="Attachment_Label" Style="{StaticResource CaptionLabelGrey}"/>
+                            <Grid>
+                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
+                                    <inputLayout:SfTextInputLayout.LeadingView>
+                                        <Image Source="newui_ic_pdf" x:Name="Attachment_Tmg"/>
+                                    </inputLayout:SfTextInputLayout.LeadingView>
+                                    <custom:BorderlessEntry  Text="File1.pdf" x:Name="Attachment_Frm"  Style="{StaticResource EntryHeight48}" >
+                                    </custom:BorderlessEntry>
 
-                                <inputLayout:SfTextInputLayout.TrailingView >
-                                    <Image Source="closeGrey.png"/>
-                                </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
+                                    <inputLayout:SfTextInputLayout.TrailingView >
+                                        <Image Source="closeGrey.png"/>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
+                                <custom:CustomButton Command="{Binding OnAttachmentClick}" BackgroundColor="Transparent"  />
+                            </Grid>
+                            
 
                             <custom:CustomLabel Text="20MB" Margin="0,-20,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                         </StackLayout>
+
                     </ScrollView>
                     <!--End Of Reporter Details-->
 
@@ -275,11 +283,11 @@
                                 <StackLayout Padding="15" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="Reporter Name" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Text="Zaed" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding TName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="Mobile Number" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Text="+966 551 234 567" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding TMobNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="Reporter Location" Style="{StaticResource BodyLabelGrey}"/>
@@ -306,31 +314,31 @@
                                     <StackLayout Padding="16" Spacing="10">
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="Facility Name" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="Zayad Corporation" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding TFaciName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="TIN" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="111233348878999" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding TxtTIN}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="VAT Number" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="000008878933" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Text="{Binding TVatNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="Region" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="Riyadh Province" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Text="{Binding TxtReportDetailRegion}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="City" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="Riyadh" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Text="{Binding TxtReportDetailCity}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="District" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="Al-Shifa" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Text="{Binding TFDAdress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" Spacing="10">
                                             <custom:CustomLabel Text="Street" Style="{StaticResource BodyLabelGrey}" WidthRequest="50"/>
-                                            <custom:CustomLabel Text="Olaya St, Al Wurud, Riyadh 12253" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Text="{Binding TFSAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
@@ -353,7 +361,7 @@
                                     <StackLayout Padding="15" Spacing="10">
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="Reporter Type" Style="{StaticResource BodyLabelGrey}" WidthRequest="200"/>
-                                            <custom:CustomLabel Text="An Invoice that does not meet the tax specification" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Text="{Binding TxtReporttype}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="Report Details" Style="{StaticResource BodyLabelGrey}"/>
