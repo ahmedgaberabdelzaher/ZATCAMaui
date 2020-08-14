@@ -5212,6 +5212,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="FORMZakatDetails" xml:space="preserve">
     <value>Zakat Details</value>
   </data>
+  <data name="NDTPActive" xml:space="preserve">
+    <value>Active</value>
+    <comment>Taxpayer Profile</comment>
+  </data>
   <data name="NDTaxEvasion" xml:space="preserve">
     <value>Tax Evasion</value>
     <comment>Tax Evasion</comment>

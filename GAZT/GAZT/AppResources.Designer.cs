@@ -2820,6 +2820,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        public static string NDTPActive {
+            get {
+                return ResourceManager.GetString("NDTPActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type your ID Number.
         /// </summary>
         public static string NDTypeyourIDNumber {
