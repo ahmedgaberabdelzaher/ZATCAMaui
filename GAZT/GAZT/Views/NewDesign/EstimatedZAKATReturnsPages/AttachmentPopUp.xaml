@@ -117,7 +117,7 @@
                             
                             <!--Footer Section Starts-->
                      <StackLayout Grid.Row="2" BackgroundColor="White">
-                        <buttons:SfButton Text="Save" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnSaveButtonClick}" />
+                        <buttons:SfButton Text="Save" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
                      </StackLayout>
                             <!--Footer Section Ends-->
                         </StackLayout>

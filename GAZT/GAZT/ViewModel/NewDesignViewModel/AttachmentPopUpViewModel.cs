@@ -89,8 +89,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _objectionReason = value;
-               
-                
+                if(!string.IsNullOrEmpty(ObjectionReason))
+                {
+                    SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
+                }
+
+
                 RaisePropertyChanged("ObjectionReason");
             }
         }
@@ -123,7 +127,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (!string.IsNullOrEmpty(ObjectionReason))
                 {
                     SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
-                    _navigationService.GoBack();
+                   // _navigationService.GoBack();
 
                 }
                 else
