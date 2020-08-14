@@ -89,7 +89,7 @@
                             
                             <Label Padding="0,15,0,0" Margin="0" HorizontalOptions="Start" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackStepClicked}" />
+                                    <TapGestureRecognizer Tapped="BackButtonClicked"  />
                                 </Label.GestureRecognizers>
                             </Label>
 
@@ -203,9 +203,9 @@
                 <StackLayout  HorizontalOptions="FillAndExpand" Grid.Row="1" BackgroundColor="White" Margin="0,16,0,0">
 
                     <StackLayout Orientation="Horizontal">
-                        <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
+                        <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
                             <CheckBox.Triggers>
-                                <DataTrigger TargetType="CheckBox"  Value="false">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
                                     <Setter Property="Color" Value="#ff0000" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
@@ -375,9 +375,9 @@
                         </border:SfBorder>
 
                         <StackLayout Orientation="Horizontal">
-                            <CheckBox VerticalOptions="CenterAndExpand" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}">
+                            <CheckBox x:Name="chkTaxpayerDeclaration" VerticalOptions="CenterAndExpand" IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsTaxPayerCheckEnabled}" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}">
                                 <CheckBox.Triggers>
-                                    <DataTrigger TargetType="CheckBox"  Value="false">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkTaxpayerDeclaration}, Path=IsChecked}" Value="false">
                                         <Setter Property="Color" Value="#ff0000" />
                                     </DataTrigger>
                                 </CheckBox.Triggers>
@@ -415,14 +415,14 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0">
+                            <Grid Grid.Column="0" IsEnabled="{Binding IsYesBoxEnabled}">
                                 <Image x:Name="YesImg" Source="{Binding YesBackgroundImage}" />
                                 <custom:CustomLabel x:Name="YesLbl"  Text="{x:Static ResourceManager:AppResources.ZZZYesText}" TextColor="{Binding YesLabelColor}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center" Margin="10,0,0,0"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnYesTapped"/>
                                 </Grid.GestureRecognizers>
                             </Grid>
-                            <Grid Grid.Column="1">
+                            <Grid Grid.Column="1" IsEnabled="{Binding IsNoBoxEnabled}">
                                 <Image x:Name="NoImg"  Source="{Binding NoBackgroundImage}"  />
                                 <custom:CustomLabel x:Name="NoLbl" Text="{x:Static ResourceManager:AppResources.ZZZNoText}" Style="{StaticResource ValueLabelBlack}" TextColor="{Binding NoLabelColor}" VerticalOptions="Center" Margin="10,0,0,0"/>
                                 <Grid.GestureRecognizers>
@@ -2047,25 +2047,24 @@
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                                <StackLayout Padding="10" Spacing="10">
+                                <StackLayout Padding="10" Spacing="10" BindingContext="{Binding ResponseVATDeclarationD}">
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturnType}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="VAT Return" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding Incotext}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturnReferenceNo}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" Style="{StaticResource ValueLabelGrey}"/>
                                         <StackLayout Spacing="0" HorizontalOptions="EndAndExpand">
-                                            <custom:CustomLabel Text="01st Jan 2019" Style="{StaticResource ValueLabelBlack}" />
-                                            <custom:CustomLabel Text="-31st Dec 2019" Style="{StaticResource ValueLabelBlack}" />
+                                            <custom:CustomLabel Text="{Binding Perslt}" Style="{StaticResource ValueLabelBlack}" />
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="VAT Account Number" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding Fin}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -2087,18 +2086,18 @@
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                                <StackLayout Padding="10" Spacing="10">
+                                <StackLayout Padding="10" Spacing="10" >
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding TotalsalesAmt}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding TotalsalesAdj}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding TotalsalesVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -2123,15 +2122,15 @@
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding TotalpurchaseAmt}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding TotalpurchaseAdj}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding TotalpurchaseVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -2154,27 +2153,27 @@
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="VAT Due" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding TotaldueVat}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="From Previous Periods" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding CreditVat}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="Corrections" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding Preperiodcorr}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout BackgroundColor="LightBlue" Orientation="Horizontal" Padding="10">
                                     <custom:CustomLabel Text="Net VAT" Style="{StaticResource ValueLabelBlack}"/>
-                                    <custom:CustomLabel Text="500 SAR" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                    <custom:CustomLabel Text="{Binding NetdueVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
                         </border:SfBorder>
                         <!--VAT On Total End-->
 
                         <StackLayout Orientation="Horizontal">
-                            <CheckBox VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
+                            <CheckBox VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsSummaryCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForSummary}">
                                 <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox"  Value="false">
                                         <Setter Property="Color" Value="#ff0000" />
@@ -2214,9 +2213,9 @@
 
             <StackLayout BackgroundColor="White" Grid.Row="1" Margin="0,0,0,0"  VerticalOptions="FillAndExpand" Padding="0,0,0,10">
 
-                <buttons:SfButton x:Name="btnprimary"  VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Text="{Binding ContinueText}" Command="{Binding onCountinueClicked}" Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton x:Name="btnprimary" IsEnabled="{Binding IsMainButtonEnabled}"  VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <buttons:SfButton Text="{Binding CreditDetailsText}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
+                <buttons:SfButton Text="{Binding CreditDetailsText}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
             </StackLayout>
 
         </Grid>
