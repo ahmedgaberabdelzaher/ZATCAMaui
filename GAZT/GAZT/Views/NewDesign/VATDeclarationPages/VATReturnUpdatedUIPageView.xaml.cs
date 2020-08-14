@@ -251,7 +251,74 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         private void OnStandardRatedTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView());
+           // PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView());
+        }
+
+        private void OnNewStandardRatedSalesAmountClicked(object sender, EventArgs e)
+        {
+            try
+            {
+
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+
+                headerAmountInfo.Message = AppResources.ZToolTipStandardRatedSalesAmount;
+                string rate = viewModel.VATRate002.Replace(".00", string.Empty);
+                String MessageWithPercent = headerAmountInfo.Message.Replace("5%", rate + "%");
+                headerAmountInfo.Message = MessageWithPercent;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                headerAdjustmentInfo.Message = AppResources.ZToolTipStandardRatedSalesAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+               
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatStandardRatedSales;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                
+
+                //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void OnDomesticRatedTapped(object sender, EventArgs e)
@@ -1764,19 +1831,29 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     if (EntryVatAmount == 0 && EntryVatAdjustmentWithSAR > 0)
                     {
-                        PopUp Pop = new PopUp();
-                        Pop.IsLinkAvailable = false;
-                        Pop.Message = AppResources.ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-                        Pop.HeaderText = AppResources.ZZZInformationNew;
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
                         if (App.IsArabic)
                         {
-                            Pop.FlowDirections = "RightToLeft";
+                            headerAmountInfo.FlowDirections = "RightToLeft";
                         }
                         else
                         {
-                            Pop.FlowDirections = "LeftToRight";
+                            headerAmountInfo.FlowDirections = "LeftToRight";
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                        headerWithInfos.Add(headerAmountInfo);
+
+
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                     }
                     else
                     {
@@ -1784,19 +1861,29 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         //  decimal PercentageValue = (EntryVatAmount / 100) * Convert.ToDecimal(Percentage);
                         if (((Convert.ToDecimal(Percentage) / 100) * EntryVatAmount) + EntryVatAmount < EntryVatAdjustmentWithSAR)
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = string.Format(AppResources.ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                            Pop.HeaderText = AppResources.ZZZInformationNew;
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            //  PopUp Pop = new PopUp();
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
-                                Pop.FlowDirections = "RightToLeft";
+                                headerAmountInfo.FlowDirections = "RightToLeft";
                             }
                             else
                             {
-                                Pop.FlowDirections = "LeftToRight";
+                                headerAmountInfo.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                         }
                     }
                 }
@@ -1868,19 +1955,31 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     {
                         if (EntrySalesGccAmt == 0 && EntrySalesGccAdj > 0)
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = AppResources.ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-                            Pop.HeaderText = AppResources.ZZZInformationNew;
+
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = AppResources.ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
                             if (App.IsArabic)
                             {
-                                Pop.FlowDirections = "RightToLeft";
+                                headerAmountInfo.FlowDirections = "RightToLeft";
                             }
                             else
                             {
-                                Pop.FlowDirections = "LeftToRight";
+                                headerAmountInfo.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
                         }
                         else
                         {
@@ -1888,19 +1987,31 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             // decimal PercentageValue = (EntrySalesGccAmt / 100) * Convert.ToDecimal(Percentage);
                             if (((Convert.ToDecimal(Percentage) / 100) * EntrySalesGccAmt) + EntrySalesGccAmt < EntrySalesGccAdj)
                             {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                                Pop.HeaderText = AppResources.ZZZInformationNew;
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                                 if (App.IsArabic)
                                 {
-                                    Pop.FlowDirections = "RightToLeft";
+                                    headerAmountInfo.FlowDirections = "RightToLeft";
                                 }
                                 else
                                 {
-                                    Pop.FlowDirections = "LeftToRight";
+                                    headerAmountInfo.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                                headerWithInfos.Add(headerAmountInfo);
+
+
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
                             }
                         }
                     }
@@ -2018,13 +2129,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 try
                 {
+
                     StringBuilder Masseges = new StringBuilder();
                     if (!string.IsNullOrEmpty(Massege))
                     {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+
                         Masseges.Append(Massege);
-                        PopUp Pop = new PopUp();
-                        Pop.IsLinkAvailable = false;
-                        Pop.HeaderText = AppResources.ZZZInformationNew;
+                        headerAmountInfo.IsLinkAvailable = false;
                         string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
                         //  decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
                         if (((Convert.ToDecimal(Percentage) / 100) * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
@@ -2033,18 +2148,26 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             Masseges.Append(Environment.NewLine);
                             Masseges.Append(string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
                         }
-                        Pop.Message = Masseges.ToString();
-                        if (Pop.Message.Length > 0)
+                        headerAmountInfo.Message = Masseges.ToString();
+                        if (headerAmountInfo.Message.Length > 0)
                         {
                             if (App.IsArabic)
                             {
-                                Pop.FlowDirections = "RightToLeft";
+                                headerAmountInfo.FlowDirections = "RightToLeft";
                             }
                             else
                             {
-                                Pop.FlowDirections = "LeftToRight";
+                                headerAmountInfo.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                         }
                     }
                     else
@@ -2053,19 +2176,32 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         //  decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
                         if (((Convert.ToDecimal(Percentage) / 100) * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                            Pop.HeaderText = AppResources.ZZZInformationNew;
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            // PopUp Pop = new PopUp();
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
-                                Pop.FlowDirections = "RightToLeft";
+                                headerAmountInfo.FlowDirections = "RightToLeft";
                             }
                             else
                             {
-                                Pop.FlowDirections = "LeftToRight";
+                                headerAmountInfo.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
                         }
                     }
                 }
@@ -2189,9 +2325,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         StringBuilder Masseges = new StringBuilder();
                         if (!string.IsNullOrEmpty(Massege))
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.HeaderText = AppResources.ZZZInformationNew;
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            //PopUp Pop = new PopUp();
+                            headerAmountInfo.IsLinkAvailable = false;
                             Masseges.Append(Massege);
                             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
                             // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
@@ -2201,18 +2340,28 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 Masseges.Append(Environment.NewLine);
                                 Masseges.Append(string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]));
                             }
-                            Pop.Message = Masseges.ToString();
-                            if (Pop.Message.Length > 0)
+                            headerAmountInfo.Message = Masseges.ToString();
+                            if (headerAmountInfo.Message.Length > 0)
                             {
                                 if (App.IsArabic)
                                 {
-                                    Pop.FlowDirections = "RightToLeft";
+                                    headerAmountInfo.FlowDirections = "RightToLeft";
                                 }
                                 else
                                 {
-                                    Pop.FlowDirections = "LeftToRight";
+                                    headerAmountInfo.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                                headerWithInfos.Add(headerAmountInfo);
+
+
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                                //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
                         else
@@ -2221,19 +2370,31 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
                             if (((Convert.ToDecimal(Percentage) / 100) * EntryExportsAmt) + EntryExportsAmt < EntryExportsAdj)
                             {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.HeaderText = AppResources.ZZZInformationNew;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                                 if (App.IsArabic)
                                 {
-                                    Pop.FlowDirections = "RightToLeft";
+                                    headerAmountInfo.FlowDirections = "RightToLeft";
                                 }
                                 else
                                 {
-                                    Pop.FlowDirections = "LeftToRight";
+                                    headerAmountInfo.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                                headerWithInfos.Add(headerAmountInfo);
+
+
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                               // PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
                     }
@@ -2365,8 +2526,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     StringBuilder Masseges = new StringBuilder();
                     if (!string.IsNullOrEmpty(Message))
                     {
-                        PopUp Pop = new PopUp();
-                        Pop.HeaderText = AppResources.ZZZInformationNew;
+
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
                         Masseges.Append(Message);
                         if (viewModel.CalculationRateSetVTTH != null)
                         {
@@ -2380,17 +2544,27 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             }
                             if (Masseges.Length > 0)
                             {
-                                Pop.Message = Masseges.ToString();
-                                Pop.IsLinkAvailable = false;
+                                headerAmountInfo.Message = Masseges.ToString();
+                                headerAmountInfo.IsLinkAvailable = false;
                                 if (App.IsArabic)
                                 {
-                                    Pop.FlowDirections = "RightToLeft";
+                                    headerAmountInfo.FlowDirections = "RightToLeft";
                                 }
                                 else
                                 {
-                                    Pop.FlowDirections = "LeftToRight";
+                                    headerAmountInfo.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                                headerWithInfos.Add(headerAmountInfo);
+
+
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                                //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
                     }
@@ -2402,19 +2576,33 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             //  decimal PercentageValue = (EntryExemptsalesAmt / 100) * Convert.ToDecimal(Percentage);
                             if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptsalesAmt) + EntryExemptsalesAmt < EntryExemptsalesAdj)
                             {
-                                PopUp Pop = new PopUp();
-                                Pop.IsLinkAvailable = false;
-                                Pop.HeaderText = AppResources.ZZZInformationNew;
-                                Pop.Message = string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                                // PopUp Pop = new PopUp();
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                                 if (App.IsArabic)
                                 {
-                                    Pop.FlowDirections = "RightToLeft";
+                                    headerAmountInfo.FlowDirections = "RightToLeft";
                                 }
                                 else
                                 {
-                                    Pop.FlowDirections = "LeftToRight";
+                                    headerAmountInfo.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                                headerWithInfos.Add(headerAmountInfo);
+
+
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                                //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
                     }
@@ -2522,19 +2710,34 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 if (EntryStdpurchaseAmt > LabelTotalsalesAmt)
                 {
-                    PopUp Pop = new PopUp();
-                    Pop.IsLinkAvailable = false;
-                    Pop.Message = AppResources.ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-                    Pop.HeaderText = AppResources.ZZZInformationNew;
+
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                    // PopUp Pop = new PopUp();
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = AppResources.ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
                     if (App.IsArabic)
                     {
-                        Pop.FlowDirections = "RightToLeft";
+                        headerAmountInfo.FlowDirections = "RightToLeft";
                     }
                     else
                     {
-                        Pop.FlowDirections = "LeftToRight";
+                        headerAmountInfo.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+                    //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                 }
             }
         }
@@ -2551,19 +2754,32 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         //  decimal PercentageValue = (EntryStdpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
                         if (((Convert.ToDecimal(Percentage) / 100) * EntryStdpurchaseAmt) + EntryStdpurchaseAmt < EntryStdpurchaseAdj)
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = string.Format(AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                            Pop.HeaderText = AppResources.ZZZInformationNew;
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            // PopUp Pop = new PopUp();
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
-                                Pop.FlowDirections = "RightToLeft";
+                                headerAmountInfo.FlowDirections = "RightToLeft";
                             }
                             else
                             {
-                                Pop.FlowDirections = "LeftToRight";
+                                headerAmountInfo.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -2639,19 +2855,30 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         //  decimal PercentageValue = (EntryZVatAmountWithSAR / 100) * Convert.ToDecimal(Percentage);
                         if (((Convert.ToDecimal(Percentage) / 100) * EntryZVatAmountWithSAR) + EntryZVatAmountWithSAR < EntryImportspaidAdj)
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                            Pop.HeaderText = AppResources.ZZZInformationNew;
+
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
-                                Pop.FlowDirections = "RightToLeft";
+                                headerAmountInfo.FlowDirections = "RightToLeft";
                             }
                             else
                             {
-                                Pop.FlowDirections = "LeftToRight";
+                                headerAmountInfo.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
                         }
                     }
                 }
@@ -2727,19 +2954,31 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         //  decimal PercentageValue = (EntryImportsaccAmt / 100) * Convert.ToDecimal(Percentage);
                         if (((Convert.ToDecimal(Percentage) / 100) * EntryImportsaccAmt) + EntryImportsaccAmt < EntryImportsaccAdj)
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                            Pop.HeaderText = AppResources.ZZZInformationNew;
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
-                                Pop.FlowDirections = "RightToLeft";
+                                headerAmountInfo.FlowDirections = "RightToLeft";
                             }
                             else
                             {
-                                Pop.FlowDirections = "LeftToRight";
+                                headerAmountInfo.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
                         }
                     }
                 }
@@ -2815,19 +3054,28 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         //   decimal PercentageValue = (EntryZeropurchaseAmt / 100) * Convert.ToDecimal(Percentage);
                         if (((Convert.ToDecimal(Percentage) / 100) * EntryZeropurchaseAmt) + EntryZeropurchaseAmt < EntryZeropurchaseAdj)
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                            Pop.HeaderText = AppResources.ZZZInformationNew;
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
-                                Pop.FlowDirections = "RightToLeft";
+                                headerAmountInfo.FlowDirections = "RightToLeft";
                             }
                             else
                             {
-                                Pop.FlowDirections = "LeftToRight";
+                                headerAmountInfo.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                         }
                     }
                 }
@@ -2903,19 +3151,31 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         //  decimal PercentageValue = (EntryExemptpurchaseAmt / 100) * Convert.ToDecimal(Percentage);
                         if (((Convert.ToDecimal(Percentage) / 100) * EntryExemptpurchaseAmt) + EntryExemptpurchaseAmt < EntryExemptpurchaseAdj)
                         {
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
-                            Pop.HeaderText = AppResources.ZZZInformationNew;
+
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                             if (App.IsArabic)
                             {
-                                Pop.FlowDirections = "RightToLeft";
+                                headerAmountInfo.FlowDirections = "RightToLeft";
                             }
                             else
                             {
-                                Pop.FlowDirections = "LeftToRight";
+                                headerAmountInfo.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
                         }
                     }
                 }
@@ -5143,6 +5403,1121 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception ex)
             {
+            }
+        }
+
+        private void OnNewStandardRatedSalesAmount15Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipStandardRatedSalesAmount15;
+                string rate = viewModel.VATRate002.Replace(".00", string.Empty);
+                String MessageWithPercent = headerAmountInfo.Message.Replace("5%", rate + "%");
+                headerAmountInfo.Message = MessageWithPercent;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipStandardRatedSalesAdjustment15;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZZVatStandardRatedSales15;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewStandardRatedSalesAmount5Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+
+                headerAmountInfo.Message = AppResources.ZToolTipStandardRatedSalesAmount5;
+                string rate = viewModel.VATRate003.Replace(".00", string.Empty);
+                String MessageWithPercent = headerAmountInfo.Message.Replace("5%", rate + "%");
+                headerAmountInfo.Message = MessageWithPercent;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipStandardRatedSalesAdjustment5;
+                string rateAdj = viewModel.VATRate003.Replace(".00", string.Empty);
+                String AdjMessageWithPercent = headerAdjustmentInfo.Message.Replace("5%", rateAdj + "%");
+                headerAdjustmentInfo.Message = AdjMessageWithPercent;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZZSalessubjecttoVATat5;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewPrivateHealthcareAmountClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipPrivateHealthcareAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.LinkText = AppResources.ZLink;
+                headerAmountInfo.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = true;
+                headerAdjustmentInfo.LinkText = AppResources.ZLink; ;
+                headerAdjustmentInfo.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatPrivateHealthcare;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewExportsAmountClicked(object sender, EventArgs e)
+        {
+
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipExportsAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipExportsAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatExports;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+        }
+
+        private void OnNewExemptAmountClicked(object sender, EventArgs e)
+        {
+
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipExemptAmount;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipExemptAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatExemptsales;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewZerorateddomesticsalesAmountClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+
+                headerAmountInfo.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipZerorateddomesticsalesAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatZerorateddomesticsales;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+        }
+
+        private void OnNewStandardrateddomesticpurchasesAmountClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatStandardrateddomesticpurchases;
+
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewStandardrateddomesticpurchasesAmount15Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount15;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment15;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZZVatStandardrateddomesticpurchases15;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewStandardrateddomesticpurchasesAmount5Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount5;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment5;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZZPurchasessubjecttoVATat5;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatImportsVatPaidatcustomsAmountClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+
+                headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatImportsVatPaidatcustoms;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatImportsVatPaidatcustomsAmount15Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+
+                headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount15;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment15;
+                headerAmountInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZZImportssubjecttoVATpaidatcustoms15;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatImportsVatPaidatcustomsAmount5Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount5;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment5;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZZImportssubjecttoVATpaidatcustoms5;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatImportsSubjectToVatAccountedAmountClickedNew(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+
+                headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatImportsSubjectToVatAccounted;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatImportsSubjectToVatAccountedAmount15ClickedNew(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount15;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment15;
+                headerAdjustmentInfo.HeaderText = AppResources.ZZZInformationNew;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatImportsSubjectToVatAccountedAmount5ClickedNew(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount5;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment5;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatZeroRatedPurchasesAmountClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipZeroratedpurchasesAmount;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipZeroratedpurchasesAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatZeroRatedPurchases;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatExemptPurchasesAmountClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipExemptpurchasesAmount;
+                headerAmountInfo.HeaderText = AppResources.ZAmount;
+                headerAmountInfo.IsLinkAvailable = true;
+                headerAmountInfo.LinkText = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    headerAmountInfo.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerAdjustmentInfo.Message = AppResources.ZToolTipExemptpurchasesAdjustment;
+                headerAdjustmentInfo.HeaderText = AppResources.ZAdjustment;
+                headerAdjustmentInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAdjustmentInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAdjustmentInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+                headerWithInfos.Add(headerAdjustmentInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatExemptPurchases;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatcreditcarriedforwardClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipcreditcarriedforwardfrompreviousperiod;
+                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                headerAmountInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatcreditcarriedforward;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatcreditcarriedforwardFromPreviousPeriodClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipCorrectionsfrompreviousperiod;
+                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                String MessageWithPositiveValue = headerAmountInfo.Message.Replace("<5,000>", viewModel.CorrectionPeriodAmount);
+                String MessageWithNegativeValue = headerAmountInfo.Message.Replace("<-5,000>", MessageWithPositiveValue);
+                headerAmountInfo.Message = MessageWithNegativeValue;
+                headerAmountInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = viewModel.CarriedValueString;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void OnNewVatNetdueClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                HeaderWithInfo headerAdjustmentInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.Message = AppResources.ZToolTipNetVATdue;
+                headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                headerAmountInfo.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    headerAmountInfo.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    headerAmountInfo.FlowDirections = "LeftToRight";
+                }
+
+                headerWithInfos.Add(headerAmountInfo);
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.ZVatZerorateddomesticsales;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+            }
+            catch(Exception ex)
+            {
+
             }
         }
     }

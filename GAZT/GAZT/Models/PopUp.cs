@@ -15,6 +15,31 @@ namespace GAZT.Models
         public bool isFontSet { get; set; }
         public string HeaderText { get; set; }
     }
+
+    public class NewDesignPopUp
+    {
+        public String MainHeader { get; set; }
+        public List<HeaderWithInfo> HeaderWithInfos { get; set; }
+    }
+
+    public class HeaderWithInfo
+    {
+        public string HeaderText { get; set; }
+        public string Message { get; set; }
+
+        public string Link { get; set; }
+
+        public string IsRed { get; set; } = string.Empty;
+
+        public string IsBold { get; set; } = string.Empty;
+
+        public string LinkText { get; set; }
+
+        public bool IsLinkAvailable { get; set; }
+        public string FlowDirections { get; set; }
+        public bool isFontSet { get; set; }
+
+    }
     public class ForPdfJs
     {
         public string Url { get; set; }
