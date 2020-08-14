@@ -34,6 +34,7 @@
     <x:String x:Key="contactus">&#xe723;</x:String>
     <x:String x:Key="Viewd">&#xe71b;</x:String>
     <Color x:Key="Green">#7ed321</Color>
+    <Color x:Key="OpacityPrimary">#E5EFED</Color>
     <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
     <!--  Common style for Content pages  -->
     <Style x:Key="ContentPageStyle" TargetType="ContentPage">
