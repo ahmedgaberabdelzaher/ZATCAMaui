@@ -6,6 +6,7 @@
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                  mc:Ignorable="d"
+                   xmlns:ResourceManager="clr-namespace:EGAZT"
                  xmlns:FontImage="clr-namespace:MVP.FontIcons"
                 xmlns:custom="clr-namespace:GAZT"
 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"            x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.GAZTNewDesignShowVatInformationPopUpPageView">
@@ -17,49 +18,86 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView Margin="0,130,0,0" CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+    <yummy:PancakeView x:Name="MainPanCakeView" CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="72*"/>
-                <RowDefinition Height="18*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <custom:CustomLabel Grid.Row="0" Text="Standard Rated Sales" Style="{StaticResource SectionTitleBlack}"/>
-            <ScrollView Grid.Row="1">
-                <StackLayout Spacing="15">
-                    <Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
-                <StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                                <Image Source="ic_vat_info">
+            <custom:CustomLabel Grid.Row="0" Text="{Binding MainString}" Style="{StaticResource SectionTitleBlack}"/>
+                <ListView  x:Name="InformationList"
+                           Grid.Row="1"
+           ItemsSource="{Binding HeaderWithInfoList}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                           
+                               BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+                  
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="15" Margin="0,0,0,7">
+                                    <Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Source="ic_vat_info">
 
-                        </Image>
-                        <custom:CustomLabel Text="Amount" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand"/>
-                    </StackLayout>
-                    <custom:CustomLabel Text="Total Amount of Standard rated goods and services (excluding VAT paid) Supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme" Style="{StaticResource CaptionLabelGrey}" />
-                    <custom:CustomLabel Text="Please refer to the below FAQ URL for standard rated 5.00% goods and services." Style="{StaticResource CaptionLabelGrey}" />
-                </StackLayout>
-            </Frame>
+                                                </Image>
+                                            <custom:CustomLabel x:Name="HeaderTextlbl"   Text="{Binding HeaderText}" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand">
+                                                <custom:CustomLabel.Triggers>
+                                                    <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding Source={x:Reference HeaderTextlbl}, Path=Text.Length}" Value="0">
+                                                        <Setter Property="IsVisible" Value="False" />
+                                                    </DataTrigger>
+                                                </custom:CustomLabel.Triggers>
+                                            </custom:CustomLabel>
+                                        </StackLayout>
+                                        <custom:CustomLabel Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
+                                        </StackLayout>
+                                    </Frame>
 
-            <Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
-                <StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                                <Image Source="ic_vat_info">
+                                    <!--<Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Source="ic_vat_info">
 
-                        </Image>
-                        <custom:CustomLabel Text="Adjustments" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand"/>
-                    </StackLayout>
-                    <custom:CustomLabel Text="Total Amount of Supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme" Style="{StaticResource CaptionLabelGrey}" />
-                    <custom:CustomLabel Text="For example returns of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables." Style="{StaticResource CaptionLabelGrey}" />
-                </StackLayout>
-            </Frame>
-        </StackLayout>
-        </ScrollView>
+                                                </Image>
+                                                <custom:CustomLabel Text="Adjustments" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand"/>
+                                            </StackLayout>
+                                            <custom:CustomLabel Text="Total Amount of Supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme" Style="{StaticResource CaptionLabelGrey}" />
+                                            <custom:CustomLabel Text="For example returns of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables." Style="{StaticResource CaptionLabelGrey}" />
+                                        </StackLayout>
+                                    </Frame>-->
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
             <StackLayout BackgroundColor="White" Grid.Row="2" Margin="0,0,0,0"  VerticalOptions="FillAndExpand">
 
-                <buttons:SfButton x:Name="btnprimary"  VerticalOptions="CenterAndExpand" Margin="10,0,10,0"  Text="Done" Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand" Margin="10,0,10,0"  Text="{x:Static ResourceManager:AppResources.ZDone}" Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <buttons:SfButton Text="Go to FAQS" TextColor="{StaticResource NewDullOrangeColor}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,10"/>
+                <buttons:SfButton x:Name="FirstLink" Text="{Binding FirstLinkText}" TextColor="{StaticResource NewDullOrangeColor}" Style="{StaticResource PrimaryButtonStyle}" Clicked="FirstLinkClicked" BackgroundColor="Transparent" Margin="0,-10,0,3">
+                    <buttons:SfButton.Triggers>
+                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding Source={x:Reference FirstLink}, Path=Text.Length}" Value="0">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                    </buttons:SfButton.Triggers>
+                </buttons:SfButton>
+
+
+                <buttons:SfButton x:Name="SecondLink" Text="{Binding SecondLinkText}" TextColor="{StaticResource NewDullOrangeColor}" Style="{StaticResource PrimaryButtonStyle}" Clicked="SecondLinkClicked" BackgroundColor="Transparent" Margin="0,-10,0,3">
+                    <buttons:SfButton.Triggers>
+                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding Source={x:Reference SecondLink}, Path=Text.Length}" Value="0">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                    </buttons:SfButton.Triggers>
+                </buttons:SfButton>
             </StackLayout>
         </Grid>
     </yummy:PancakeView>

@@ -321,7 +321,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 vATDeclaration.d.ADRSet.results = lst;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    _navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
+                                    //_navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
+                                    _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
                                 });
                             }
                             else

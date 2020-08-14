@@ -1114,6 +1114,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
             zakatReturnDetailsD.d.Zbamt = _zakatReturnDetails.d.Zbamt;
             zakatReturnDetailsD.d.Zkamt = _zakatReturnDetails.d.Zkamt;
         }
+        
         public void SetSalesDetailsData(ZakatReturnDetails zakatReturnResponse)
         {
             try

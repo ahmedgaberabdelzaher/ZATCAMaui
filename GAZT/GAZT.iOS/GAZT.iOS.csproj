@@ -60,11 +60,13 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>true</MtouchFastDev>
     <CodesignProvision>eGAZT Development Profile</CodesignProvision>
     <OptimizePNGs>false</OptimizePNGs>
+    <MtouchFloat32>true</MtouchFloat32>
+    <MtouchInterpreter>-all</MtouchInterpreter>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
