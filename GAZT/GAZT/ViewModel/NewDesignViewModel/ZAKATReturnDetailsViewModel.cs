@@ -423,11 +423,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
 
 
-            OnConfirmClicked = new Xamarin.Forms.Command(() =>
-                {
-                    string PostOperationID = GetConfirmOperationId();
-                     ConfirmClicked(PostOperationID);
-                });
+            //OnConfirmClicked = new Xamarin.Forms.Command(() =>
+            //    {
+            //        string PostOperationID = GetConfirmOperationId();
+            //         ConfirmClicked(PostOperationID);
+            //    });
             OnEditClicked = new Xamarin.Forms.Command(() =>
             {
               
@@ -797,6 +797,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         IsCurrentZAKATTaxLess = false;
                     }
+
+                    if(IsCurrentZAKATTaxLess)
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount, AppResources.Information);
+
+
+                    }
+
                     SetLayoutVisibilityAfterSuccessfulSubmission();
                     AssignCalculatedValueAfterSubmission();
                 }
@@ -1043,7 +1051,7 @@ public void SetEditImage()
         //                    }
 
         //To Return th epost operation as per objection and without objection
-private string GetConfirmOperationId()
+public string GetConfirmOperationId()
         {
             if (IsCurrentZAKATTaxLess)
             {
