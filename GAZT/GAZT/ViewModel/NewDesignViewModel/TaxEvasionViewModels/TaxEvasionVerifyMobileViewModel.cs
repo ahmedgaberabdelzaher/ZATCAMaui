@@ -339,7 +339,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
             if (MobileNumber.Length == 9)
             {
-                tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
+                //tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
+                tesmobnoscreen.MobileNumber = "+966" + MobileNumber;
 
                 TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
                 taxEvasionSendSmsModel.mobile = tesmobnoscreen.MobileNumber;
@@ -496,10 +497,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
     private void ClearOTPForm()
     {
-            OTPFirstDigit = null;
-            OTPSecondDigit = null;
-            OTPThirdDigit = null;
-            OTPFourthDigit = null;
+            OTPFirstDigit = string.Empty;
+            OTPSecondDigit = string.Empty;
+            OTPThirdDigit = string.Empty;
+            OTPFourthDigit = string.Empty;
         }
     public async void VerifyOTP()
     {
@@ -523,13 +524,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     TaxEvasionVerifySmsModel taxEvasionVerifySmsModel = new TaxEvasionVerifySmsModel();
                     taxEvasionVerifySmsModel.key = App.TaxEvasionUserData.LoginKey;
                     taxEvasionVerifySmsModel.code = EnteredOTP;
-
-                    taxEvasionVerifySmsResponseModel = await WebServiceManager.GAZTTaxEvasionVerifySms(taxEvasionVerifySmsModel, MobileNumber);
+                    var mobilenumberWithcode = "+966" + MobileNumber;
+                    taxEvasionVerifySmsResponseModel = await WebServiceManager.GAZTTaxEvasionVerifySms(taxEvasionVerifySmsModel, mobilenumberWithcode);
 
                     if (taxEvasionVerifySmsResponseModel.Status == true)
                     {
                         TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
-                        taxEvasionSendSmsModel.mobile = MobileNumber;
+                        taxEvasionSendSmsModel.mobile = mobilenumberWithcode;
 
                         try
                         {
@@ -538,8 +539,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                             if (taxEvasionUserRegistrationResponseModel.Status == true)
                             {
-                                ClearOTPForm();
-                                //await navigateToListPage();
+                                try
+                                {
+                                    ClearOTPForm();
+                                }
+                                catch (Exception ex)
+                                { 
+                                
+                                }
+                                await navigateToListPage();
                             }
                         }
                         catch (Exception ex)
@@ -551,7 +559,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                     IsLoading = false;
                                 });
                                 ClearOTPForm();
-                                //_navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
+                                _navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
                             });
                         }
                     }
@@ -614,6 +622,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
     
         }
     }
-    #endregion
-}
+  public async Task navigateToListPage()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView,"+966571006494");
+        }
+        #endregion
+    }
 }
