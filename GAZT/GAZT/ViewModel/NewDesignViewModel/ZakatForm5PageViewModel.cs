@@ -280,6 +280,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Basic Information
 
+
+
+
         public ZakatForm5Data _zakatForm5DataResult;
         public ZakatForm5Data ZakatForm5DataResult
         {
@@ -324,6 +327,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //        RaisePropertyChanged(FinancialYear);
         //    }
         //}
+
+
+        public string _fbguid;
+        public string Fbguid
+        {
+            get => _fbguid;
+
+            set
+            {
+                _fbguid = value;
+                RaisePropertyChanged(() => Fbguid);
+            }
+        }
 
 
 
@@ -1177,7 +1193,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 try
                 {
 
-                    ZakatForm5DataResult ZakatForm5DataResult = await WebServiceManager.GAZTZakatForm5Data();
+                    ZakatForm5DataResult ZakatForm5DataResult = await WebServiceManager.GAZTZakatForm5Data(Fbguid);
 
                     
                     
@@ -1566,7 +1582,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         // Zakat Estimation API Call
 
-                        ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await WebServiceManager.GAZTZakatForm5DataSummary();
+                        ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await WebServiceManager.GAZTZakatForm5DataSummary(ZakatForm5DataResult.Fbnum);
 
                         if (ZakatForm5DataResult != null)
                         {

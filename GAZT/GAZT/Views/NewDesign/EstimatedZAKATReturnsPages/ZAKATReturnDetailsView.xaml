@@ -198,7 +198,9 @@
                                             <custom:CustomLabel Text="Total VAT Sales" Style="{StaticResource ValueLabelBlack}"/>
 
                                             <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-
+                                                <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnTotalVATSalesInfoClicked"/>
+                                                </Image.GestureRecognizers>
                                             </Image>
                                         </StackLayout>
                                          <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
@@ -256,7 +258,9 @@
                                                 <custom:CustomLabel Text="Average Number of Labour" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-
+ <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnAverageNumberOfLabourInfoClicked"/>
+                                                </Image.GestureRecognizers>
                                                 </Image>
                                             </StackLayout>
 
@@ -315,7 +319,10 @@
                                                 <custom:CustomLabel Text="Import Value" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-
+                                                    <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnImportValueInfoClicked"/>
+                                                </Image.GestureRecognizers>
+ 
                                                 </Image>
                                             </StackLayout>
                                       <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
@@ -372,7 +379,10 @@
                                                 <custom:CustomLabel Text="Impose from point of Sales" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-
+ <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnImportFromPointOfSalesInfoClicked"/>
+                                                </Image.GestureRecognizers>
+ 
                                                 </Image>
                                             </StackLayout>
 
@@ -429,7 +439,10 @@
                                                 <custom:CustomLabel Text="Contact from ETIMAD System" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-
+<Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnContactFromETIMADSystemInfoClicked"/>
+                                                </Image.GestureRecognizers>
+ 
                                                 </Image>
                                             </StackLayout>
 
@@ -485,7 +498,10 @@
                                                 <custom:CustomLabel Text="Export Value" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-
+                                                    <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnExportInfoClicked"/>
+                                                </Image.GestureRecognizers>
+ 
                                                 </Image>
                                             </StackLayout>
                                             <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
@@ -540,7 +556,10 @@
                                                 <custom:CustomLabel Text="Purchase Value" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-
+                                                     <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnPurchaseInfoClicked"/>
+                                                </Image.GestureRecognizers>
+ 
                                                 </Image>
                                             </StackLayout>
                                             <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
@@ -594,7 +613,10 @@
                                                 <custom:CustomLabel Text="Capital Amount" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-
+                                                     <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnCapitalAmountInfoClicked"/>
+                                                </Image.GestureRecognizers>
+ 
                                                 </Image>
                                             </StackLayout>
                                             <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>

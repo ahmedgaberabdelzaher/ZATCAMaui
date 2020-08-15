@@ -211,6 +211,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = lat;
                         viewModel.Longitude = lon;
+                        Pin pin = new Pin();
+                        pin.Label = "Report Location";
+                        pin.Type = PinType.Place;
+                        pin.Position = position;//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
                         var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
                         viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality + "," + addrs.CountryName + "-" + addrs.PostalCode;
                     }

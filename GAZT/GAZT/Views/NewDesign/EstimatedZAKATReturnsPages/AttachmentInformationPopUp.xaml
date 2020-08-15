@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.AttachmentInformationPopUp"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                  xmlns:FontImage="clr-namespace:MVP.FontIcons">
+
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White">
+
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+             <Image HorizontalOptions="EndAndExpand">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                                            </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                                        </Image.GestureRecognizers>
+                                        </Image>
+
+           <Label x:Name="InfromatationText" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelGrey}"></Label>
+
+        </StackLayout>
+</yummy:PancakeView>
+</pages:PopupPage>
