@@ -5248,4 +5248,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>المرفقات</value>
     <comment>Tax Evasion</comment>
   </data>
+  <data name="NDFacilityInformation" xml:space="preserve">
+    <value>ملعومات المنشأة</value>
+  </data>
+  <data name="NDReporterInformation" xml:space="preserve">
+    <value>معلومات المبلغ</value>
+  </data>
 </root>

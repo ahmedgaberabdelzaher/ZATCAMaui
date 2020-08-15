@@ -5272,5 +5272,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Attachments</value>
     <comment>Tax Evasion</comment>
   </data>
-    
+  <data name="NDFacilityInformation" xml:space="preserve">
+    <value>Facility Information</value>
+  </data>
+  <data name="NDReporterInformation" xml:space="preserve">
+    <value>Reporter Information</value>
+  </data>
 </root>
