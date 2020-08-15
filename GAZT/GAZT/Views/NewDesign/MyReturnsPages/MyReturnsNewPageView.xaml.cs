@@ -2,6 +2,7 @@
 using GAZT.Models;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -24,28 +25,29 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-           viewModel.OnPageLoad();
-            viewModel.PopulateReturnTypeList();
-            viewModel.PopulateDataInChips();
-            viewModel.SelectedChipFilterItem = null;
-            viewModel.FilterAllData();
-            if(Index == 0)
-            {
-                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
+            viewModel.Index = Index;
+           //viewModel.OnPageLoad();
+           // viewModel.PopulateReturnTypeList();
+           // viewModel.PopulateDataInChips();
+           // viewModel.SelectedChipFilterItem = null;
+           // viewModel.FilterAllData();
+           // if(Index == 0)
+           // {
+           //     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
+           //     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
 
-            }
-            if (Index == 1)
-            {
-                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
-            }
-            if (Index == 2)
-            {
-                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
-                ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
+           // }
+           // if (Index == 1)
+           // {
+           //     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+           //     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+           // }
+           // if (Index == 2)
+           // {
+           //     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
+           //     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
               
-            }
+           // }
             ListView_Returns.ItemTapped += (sender, e) =>
             {
                 MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
@@ -58,6 +60,50 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             };
 
           //  App.HideProgressView();
+        }
+
+        protected async override void OnAppearing()
+        { 
+            try
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+
+
+                viewModel.OnPageLoad();
+                viewModel.PopulateReturnTypeList();
+                viewModel.PopulateDataInChips();
+                viewModel.SelectedChipFilterItem = null;
+                viewModel.FilterAllData();
+                if (viewModel.Index == 0)
+                {
+                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
+                    ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
+
+                }
+                if (viewModel.Index == 1)
+                {
+                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                    ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+                }
+                if (viewModel.Index == 2)
+                {
+                    viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
+                    ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
+
+                }
+
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         private void SetLTR()
