@@ -208,6 +208,7 @@ namespace EGAZT
             #region NewDesignRelease2IOC
             SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
             SimpleIoc.Default.Register<TaxEvasionMyReportsListPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportDetailPageViewModel>();
 
             #endregion
 
@@ -1862,6 +1863,7 @@ namespace EGAZT
 
             navigationService.Configure(App.ZakatInstalmentPlanPageView, typeof(ZakatInstalmentPlanPageView));
             navigationService.Configure(App.TaxEvasionMyReportsListPageView, typeof(TaxEvasionMyReportsListPageView));
+            navigationService.Configure(App.TaxEvasionReportDetailPageView, typeof(TaxEvasionReportDetailPageView));
 
             #endregion
 
@@ -2006,6 +2008,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ZakatDeregistrationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }   
+        public TaxEvasionReportDetailPageViewModel TaxEvasionReportDetailPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportDetailPageViewModel>();
                 }
                 catch (Exception ex)
                 {

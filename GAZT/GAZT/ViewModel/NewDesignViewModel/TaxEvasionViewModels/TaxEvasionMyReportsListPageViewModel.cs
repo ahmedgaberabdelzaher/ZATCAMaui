@@ -16,7 +16,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
     public class TaxEvasionMyReportsListPageViewModel : BaseViewModel
     {
         #region Properties
-
+        private bool _isLoading=false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
         public List<ChipModel> _selectedChipFilterItemList = null;
         public List<ChipModel> SelectedChipFilterItemList
         {
@@ -137,7 +149,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 RaisePropertyChanged("IsNoReportLabelVisible");
             }
         }
+        private TaxEvasionReportDetails _selectedTaxEvasionListItem;
+        public TaxEvasionReportDetails SelectedTaxEvasionListItem
+        {
+            get
+            {
+                return _selectedTaxEvasionListItem;
+            }
+            set
+            {
+                try
+                {
+                    _selectedTaxEvasionListItem = value;
+
+                    if (_selectedTaxEvasionListItem != null)
+                    {
+                        passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
+                    }
+                    RaisePropertyChanged("SelectedTaxEvasionListItem");
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
         #endregion
+
         public TaxEvasionMyReportsListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
         }
@@ -289,6 +326,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     });
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                 });
+            }
+        }
+        public async Task passSelectedTaxEvasionItem(TaxEvasionReportDetails SelectedTaxEvasionReport)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //IsLoading = true;
+                    });
+
+                });
+                await Task.Run(() =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.TaxEvasionReportDetailPageView, SelectedTaxEvasionReport);
+                        //_navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionReport);
+                    });
+                });
+                await Task.Run(() =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        //IsLoading = false;
+                    });
+                });
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

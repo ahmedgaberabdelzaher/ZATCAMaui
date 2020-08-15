@@ -78,7 +78,7 @@
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-                 BackgroundColor="White"     
+                 BackgroundColor="White"     SelectedItem="{Binding SelectedTaxEvasionListItem}" ItemTapped="ListView_TaxEvasionReportList_ItemTapped"
             SeparatorVisibility="None" >
                         <x:Arguments>
                             <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>

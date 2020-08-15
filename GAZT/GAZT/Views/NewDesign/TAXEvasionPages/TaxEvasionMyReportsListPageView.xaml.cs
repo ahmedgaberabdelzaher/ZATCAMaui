@@ -27,8 +27,17 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             base.OnAppearing();
             ChangeAeroIcon();
+            
+                   await Task.Run(() =>
+                   {
+                     viewModel.IsLoading = true;
+                   });
             await viewModel.OnPageLoad();
             viewModel.FilterOnbasisOfChipSelectedItem();
+            await Task.Run(() =>
+            {
+               viewModel.IsLoading = false;
+            });
         }
         public void ChangeAeroIcon()
         {
@@ -79,6 +88,12 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 viewModel.IsLoading = false;
             });
+        }
+
+        private void ListView_TaxEvasionReportList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            return;
         }
     }
 }
