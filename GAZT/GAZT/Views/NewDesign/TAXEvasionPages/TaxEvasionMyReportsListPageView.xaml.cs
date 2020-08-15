@@ -95,5 +95,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
         }
+
+        private void AddReport_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.NewTaxEvasionFormPageView);
+        }
     }
 }
