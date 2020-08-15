@@ -5257,4 +5257,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDReporterInformation" xml:space="preserve">
     <value>معلومات المبلغ</value>
   </data>
+  <data name="NDTaxEvasionReport" xml:space="preserve">
+    <value>تقرير التهرب الضريبي</value>
+  </data>
+  <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
+    <value>تم استلام بلاغ التهرب الضريبي بنجاح</value>
+  </data>
 </root>

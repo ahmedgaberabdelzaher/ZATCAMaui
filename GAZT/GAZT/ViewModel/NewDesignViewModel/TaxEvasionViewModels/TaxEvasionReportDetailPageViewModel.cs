@@ -3,13 +3,14 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 {
     public class TaxEvasionReportDetailPageViewModel : BaseViewModel
     {
         #region properties
-
+        public ICommand OnBackButtonClicked { get; set; }
         public TaxEvasionReportDetails _SelectedTaxEvasionListItem = null;
         public TaxEvasionReportDetails SelectedTaxEvasionListItem
         {
@@ -27,6 +28,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
         public TaxEvasionReportDetailPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
         }
     }
 }

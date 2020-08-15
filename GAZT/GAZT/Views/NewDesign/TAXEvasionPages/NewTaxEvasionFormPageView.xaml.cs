@@ -11,6 +11,7 @@ using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 //using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Xaml;
 
@@ -25,6 +26,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             InitializeComponent();
             viewModel = App.Locator.NewTaxEvasionFormPageView;
             this.BindingContext = viewModel;
+            SetLTR();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
 
         }
@@ -44,6 +47,19 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 SetLocationToMap();
             //}
             viewModel.OnPageLoad();
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
         }
 
         #region Method

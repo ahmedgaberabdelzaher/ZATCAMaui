@@ -2874,6 +2874,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tax Evasion Report.
+        /// </summary>
+        public static string NDTaxEvasionReport {
+            get {
+                return ResourceManager.GetString("NDTaxEvasionReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report Details.
         /// </summary>
         public static string NDTaxEvasionReportDetails {
@@ -3005,6 +3014,15 @@ namespace EGAZT {
         public static string NDVATZAKATReturnSubmission {
             get {
                 return ResourceManager.GetString("NDVATZAKATReturnSubmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Tax Evasion Report is submitted successfully.
+        /// </summary>
+        public static string NDYourTaxEvasionReportissubmittedsuccessfully {
+            get {
+                return ResourceManager.GetString("NDYourTaxEvasionReportissubmittedsuccessfully", resourceCulture);
             }
         }
         

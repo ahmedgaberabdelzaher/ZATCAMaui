@@ -44,11 +44,11 @@
                                 <ColumnDefinition Width="20*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Column="1"
+                            <!--<Label Grid.Column="1"
                                    Grid.Row="0"
                                    Text="{x:Static ResourceManager:AppResources.ZTEReportReportScreenTitle}"
                                    Style="{StaticResource SectionTitleWhiteBold}"
-                                   HorizontalOptions="Center"/>
+                                   HorizontalOptions="Center"/>-->
                             <Label Grid.Row="0"
                                    Grid.Column="0"
                                    IsVisible="{Binding IsBackStepButtonVisible}"
