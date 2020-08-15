@@ -25,10 +25,24 @@ namespace GAZT.Droid.CustomRenderer
         {
             _context = context;
         }
+        // This is for line Spacing
+        protected CustomLabel LineSpacingLabel { get; private set; }
         #region Method
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
         {
             base.OnElementChanged(e);
+            //line spacing between two lines of one label
+            if (e.OldElement == null)
+            {
+                this.LineSpacingLabel = (CustomLabel)this.Element;
+            }
+
+            var lineSpacing = this.LineSpacingLabel.LineSpacing;
+
+            this.Control.SetLineSpacing(1f, (float)lineSpacing);
+
+            this.UpdateLayout();
+            //line spacing between two lines of one label
             //if (Control != null)
             //{
             if (App.IsArabic)
