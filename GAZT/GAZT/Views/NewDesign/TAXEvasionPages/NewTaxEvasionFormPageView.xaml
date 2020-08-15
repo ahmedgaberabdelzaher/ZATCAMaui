@@ -38,12 +38,12 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
-                <Setter Property="HeightRequest" Value="24" />
+                
                 <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
             </Style>
 
             <Style TargetType="Frame" x:Key="circleFrame">
-                <Setter Property="BackgroundColor" Value="LightGreen"/>
+                <Setter Property="BackgroundColor" Value="#E5EFED"/>
                 <Setter Property="Padding" Value="10"/>
                 <Setter Property="CornerRadius" Value="50"/>
                 <Setter Property="HasShadow" Value="False"/>
@@ -69,8 +69,8 @@
                     <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.ReporterInfo}}">
                         <StackLayout >
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry  Text="{Binding TName}" IsEnabled="False" Style="{StaticResource EntryHeight48}" >
+                            <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-6,0,-6">
+                                <custom:BorderlessEntry  Text="{Binding TName}" IsEnabled="False" Style="{StaticResource DefaultEntry}" >
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
@@ -88,8 +88,8 @@
                             </inputLayout:SfTextInputLayout>
 
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry  Text="{Binding RLocation}" Style="{StaticResource EntryHeight48}" IsReadOnly="True" >
+                            <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"   Margin="0,-10,0,0">
+                                <custom:BorderlessEntry  Text="{Binding RLocation}"  IsReadOnly="True" >
                                 </custom:BorderlessEntry>
 
                                 <inputLayout:SfTextInputLayout.TrailingView >
