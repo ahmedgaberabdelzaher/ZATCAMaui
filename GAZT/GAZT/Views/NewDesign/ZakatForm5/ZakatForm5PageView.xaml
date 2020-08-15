@@ -21,12 +21,6 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="BoxView" x:Key="boxIndicator">
-                <Setter Property="BackgroundColor" Value="{StaticResource NeutralLightGrey}"/>
-                <Setter Property="HeightRequest" Value="10"/>
-                <Setter Property="WidthRequest" Value="10"/>
-                <Setter Property="CornerRadius" Value="5"/>
-            </Style>
             <converters:ZakatForm5TabEnumToVisibilityConverter x:Key="enumToVisibilityConverter"/>
             <Style TargetType="buttons:SfButton" x:Key="BackgroundWhiteBtn">
                 <Setter Property="BackgroundColor" Value="White"/>
@@ -34,6 +28,18 @@
                 <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="CornerRadius" Value="20"/>
+            </Style>
+            <Style TargetType="buttons:SfButton" x:Name="SelectedBtn">
+                <Setter Property="BackgroundColor" Value="AliceBlue"/>
+                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                <Setter Property="BorderColor" Value="AliceBlue"/>
+            </Style>
+            <Style TargetType="Frame" x:Key="circleFrame">
+                <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="HasShadow" Value="False"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -60,12 +66,12 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                        </Image.Source>
+                                        <Frame Style="{StaticResource circleFrame}">
+                                    <Image Source="ic_vat_return.png">
+                                      
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
+                                        </Frame>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
                                 </StackLayout>
                                 
                             <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -93,12 +99,12 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                        </Image.Source>
+                                        <Frame Style="{StaticResource circleFrame}">
+                                    <Image Source="vat_user">
+                                        
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}" Style="{StaticResource SectionTitleBlack}"/>
+                                        </Frame>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}" Style="{StaticResource SectionTitleBlack}"/>
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -132,12 +138,12 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                        </Image.Source>
+                                        <Frame Style="{StaticResource circleFrame}">
+                                    <Image Source="ic_vat_bill">
+                                        
                                     </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5RegistrationInfo}" Style="{StaticResource SectionTitleBlack}"/>
+                                        </Frame>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5RegistrationInfo}" Style="{StaticResource SectionTitleBlack}"/>
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -242,12 +248,11 @@
 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                        <Image>
-                                            <Image.Source>
-                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                            </Image.Source>
-                                        </Image>
-                                      <!--   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GenTaxiOffice}" Style="{StaticResource SectionTitleBlack}"/> -->
+                                            <Frame Style="{StaticResource circleFrame}">
+                                              <Image Source="ic_vat_bill">
+                                              </Image>
+                                            </Frame>
+                                                            <!--   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GenTaxiOffice}" Style="{StaticResource SectionTitleBlack}"/> -->
                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}"/>
                                       </StackLayout>
 
@@ -343,11 +348,10 @@
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                        <Image>
-                                            <Image.Source>
-                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                            </Image.Source>
-                                        </Image>
+                                             <Frame Style="{StaticResource circleFrame}">
+                                             <Image Source="ic_vat_bill">
+                                             </Image>
+                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}"/>
                                     </StackLayout>
 
@@ -422,11 +426,10 @@
                                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -703,11 +706,10 @@
                                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -800,11 +802,10 @@
                                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -909,12 +910,11 @@
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
-                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -1052,11 +1052,10 @@
                                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -1140,11 +1139,10 @@
                                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -1276,11 +1274,10 @@
                                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -1362,11 +1359,10 @@
                                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -1452,11 +1448,10 @@
                                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -1525,11 +1520,10 @@
                                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                                            <Frame Style="{StaticResource circleFrame}">
+                                                                <Image Source="ic_vat_bill">
+                                                                </Image>
+                                                            </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -1582,11 +1576,10 @@
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                            <Frame Style="{StaticResource circleFrame}">
+                                                <Image Source="ic_vat_bill">
+                                                </Image>
+                                            </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5SharesInPersonsCompany}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -1632,11 +1625,10 @@
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                            <Frame Style="{StaticResource circleFrame}">
+                                                <Image Source="ic_vat_bill">
+                                                </Image>
+                                            </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORMZakatDetails}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -1690,11 +1682,10 @@
                                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Image>
-                                                <Image.Source>
-                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                                </Image.Source>
-                                            </Image>
+                                            <Frame Style="{StaticResource circleFrame}">
+                                                <Image Source="ic_vat_bill">
+                                                </Image>
+                                            </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Declaration}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
                                         </StackLayout>
 
@@ -1756,19 +1747,26 @@
 
                         <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                             <StackLayout Orientation="Horizontal" Padding="10">
-                                <buttons:SfButton TextColor="{StaticResource Primary}" BackgroundColor="AliceBlue" CornerRadius="20" BorderWidth="1" BorderColor="AliceBlue" Text="{x:Static ResourceManager:AppResources.FORM5Cabs}" />
-                                <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5Professionals}" />
-                                <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5SellAndBuy}" />
-                                <buttons:SfButton BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5LabourOccupancy}" />
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.FORM5Industry}" Style="{StaticResource BackgroundWhiteBtn}"/>
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.FORM5ContractingCo}" Style="{StaticResource BackgroundWhiteBtn}"/>
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.FORM5InvestAndRealEst}" Style="{StaticResource BackgroundWhiteBtn}"/>
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.FORM5Hotels}" Style="{StaticResource BackgroundWhiteBtn}"/>
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.FORM5EduAndHealth}" Style="{StaticResource BackgroundWhiteBtn}"/>
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.FORM5PoultryAndFish}" Style="{StaticResource BackgroundWhiteBtn}"/>
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.FORM5Cars}" Style="{StaticResource BackgroundWhiteBtn}"/>
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.FORM5Minerals}" Style="{StaticResource BackgroundWhiteBtn}"/>
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.FORM5AdditionalInfo}" Style="{StaticResource BackgroundWhiteBtn}"/>
+                                <buttons:SfButton x:Name="Cabsbtn" TextColor="{StaticResource Primary}" BackgroundColor="AliceBlue" CornerRadius="20" BorderWidth="1" BorderColor="AliceBlue" Text="{x:Static ResourceManager:AppResources.FORM5Cabs}" Clicked="Cabs_Clicked" />
+                                
+                                <buttons:SfButton x:Name="ProfessionalBtn" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5Professionals}" Clicked="Professional_Clicked" />
+                                
+                                <buttons:SfButton x:Name="SellBtn" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5SellAndBuy}" Clicked="Sell_Clicked" />
+                                <buttons:SfButton x:Name="LabourBtn" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5LabourOccupancy}" Clicked="Labour_Clicked" />
+                                <buttons:SfButton x:Name="IndustryBtn" Text="{x:Static ResourceManager:AppResources.FORM5Industry}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Industry_Clicked"/>
+                                <buttons:SfButton x:Name="ContractingBtn" Text="{x:Static ResourceManager:AppResources.FORM5ContractingCo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Contracting_Clicked"/>
+                                <buttons:SfButton x:Name="InvestBtn" Text="{x:Static ResourceManager:AppResources.FORM5InvestAndRealEst}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Invest_Clicked"/>
+                                
+                                <buttons:SfButton x:Name="Hotelsbtn" Text="{x:Static ResourceManager:AppResources.FORM5Hotels}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Hotels_Clicked"/>
+                                
+                                <buttons:SfButton x:Name="EducationBtn" Text="{x:Static ResourceManager:AppResources.FORM5EduAndHealth}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Education_Clicked"/>
+                                
+                                <buttons:SfButton x:Name="Poultrybtn" Text="{x:Static ResourceManager:AppResources.FORM5PoultryAndFish}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Poultry_Clicked"/>
+                                <buttons:SfButton x:Name="Carsbtn" Text="{x:Static ResourceManager:AppResources.FORM5Cars}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Cars_Clicked"/>
+                                
+                                <buttons:SfButton x:Name="Mineralsbtn" Text="{x:Static ResourceManager:AppResources.FORM5Minerals}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Minerals_Clicked"/>
+                                
+                                <buttons:SfButton x:Name="Additionalbtn" Text="{x:Static ResourceManager:AppResources.FORM5AdditionalInfo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Additional_Clicked"/>
 
 
                             </StackLayout>
@@ -1790,11 +1788,10 @@
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                        <Image>
-                                            <Image.Source>
-                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.KeyboardReturn}"/>
-                                            </Image.Source>
-                                        </Image>
+                                        <Frame Style="{StaticResource circleFrame}">
+                                            <Image Source="ic_vat_bill">
+                                            </Image>
+                                        </Frame>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5EstimationDetails}" Style="{StaticResource SectionTitleBlack}"/>
                                     </StackLayout>
 
@@ -2512,15 +2509,6 @@
                     </Image>
                 </Grid>
                     <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" />
-                    <!--<StackLayout Orientation="Horizontal" Margin="0,5,0,0">
-                        <Frame Padding="0" CornerRadius="15" BackgroundColor="{StaticResource Primary}">
-                        <StackLayout Orientation="Horizontal" Padding="0">
-                        <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
-                                <BoxView Style="{StaticResource boxIndicator}" BackgroundColor="{StaticResource Primary}"/>
-                        </StackLayout>
-                        </Frame>
-                        <BoxView Style="{StaticResource boxIndicator}"/>
-                    </StackLayout>-->
                 </StackLayout>
                 <StackLayout Grid.Row="2" BackgroundColor="White">
                     <buttons:SfButton x:Name="btnprimary" Text="{Binding NextText}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>

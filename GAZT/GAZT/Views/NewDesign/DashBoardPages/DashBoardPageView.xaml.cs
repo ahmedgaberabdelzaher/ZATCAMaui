@@ -44,7 +44,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 if (App.IsArabic)
                 {
-                    // viewModel.TranslateText = AppResources.ZZZSetLanguageText;
+                    // viewModel.TranslateText = AppResources.ZZZSetLanguageText; ;
                     viewModel.TranslateText = AppResources.ZZZChangetoLanguage;
                 }
                 else
@@ -619,5 +619,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
         protected override bool OnBackButtonPressed() => true;
+
+        private async  void TaxEvasion_Tapped(object sender, EventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+
+            });
+        }
     }
 }

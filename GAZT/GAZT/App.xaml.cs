@@ -45,6 +45,7 @@ namespace EGAZT
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
         public static string TaxEvasionVerifyMobileNumberPage = "TaxEvasionVerifyMobileNumberPage";
+        public static string NewTaxEvasionFormSuccessPaveView = "NewTaxEvasionFormSuccessPaveView";
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
@@ -69,13 +70,16 @@ namespace EGAZT
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
         public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
         public static string AttachmentPopUp = "AttachmentPopUp";
+        public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
 
+        
         #endregion
 
         #region new design views Release2
 
         public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";
         public static string TaxEvasionMyReportsListPageView = "TaxEvasionMyReportsListPageView";
+        public static string TaxEvasionReportDetailPageView = "TaxEvasionReportDetailPageView";
 
         #endregion
 

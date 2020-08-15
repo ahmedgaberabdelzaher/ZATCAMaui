@@ -661,9 +661,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                     });
                 }
-                else if (ZakatReturnDetails.d.Statusz.Equals(""))
+                else if (ZakatReturnDetails.d.Statusz.Equals("E0005"))// In Processing
                 {
-                    // SalesDetailsAndReleaseButtonVisibility = false;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.ZakatObjectionSuccessfullPageView, ZakatReturnDetail);
+                    });
                 }
                 else
                 {
@@ -864,10 +867,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
-                    Device.BeginInvokeOnMainThread(async () => {
-                        _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    if(PostOperation.Equals(ConfirmPostOperationWithoutObjection))
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
 
-                    });
+                        });
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            _navigationService.NavigateTo(App.ZakatObjectionSuccessfullPageView, ZakatReturnDetail);
+                        });
+                    }
+                  
                 }
                 else
                 {
@@ -1070,11 +1083,11 @@ public string GetConfirmOperationId()
         {
             if (IsCurrentZAKATTaxLess)
             {
-                return "66";// For Amendment
+                return ConfirmPostOperationWithObjection;// For Amendment with objection
             }
             else
             {
-                return "65";// For Objection
+                return ConfirmPostOperationWithoutObjection;// For Amendment without objection
             }
         }
 
