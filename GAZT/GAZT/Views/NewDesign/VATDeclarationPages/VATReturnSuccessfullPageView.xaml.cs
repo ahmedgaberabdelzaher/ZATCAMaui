@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -17,16 +18,78 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         #region Variable
         public VATReturnSuccessfullPageViewModel viewModel;
         #endregion
-        public VATReturnSuccessfullPageView()
+        public VATReturnSuccessfullPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
             viewModel = App.Locator.VATReturnSuccessfullPageView;
             this.BindingContext = viewModel;
-        }
 
+            if(vATDeclaration!=null)
+            {
+                viewModel.SadadNumber = string.Empty;
+                viewModel.IsSadadNumberVisible = false;
+                viewModel.IsButtonVisible = false;
+                viewModel.IsAcknowledgementButtonVisible = false;
+
+                viewModel.VATDeclarationData = vATDeclaration;
+                viewModel.ReturnReferenceNumber = vATDeclaration.d.Fbnum;
+                viewModel.TaxablePeriod = vATDeclaration.d.Perslt;
+
+                if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                {
+                    viewModel.IsSadadNumberVisible = false;
+                    viewModel.IsRefreshButtonVisible = false;
+                    viewModel.IsButtonVisible = true;
+                    if (vATDeclaration.d.EstimatedFg == "X")
+                    {
+                        viewModel.IsAcknowledgementButtonVisible = false;
+                    }
+                    else
+                    {
+                        viewModel.IsAcknowledgementButtonVisible = true;
+                    }
+                }
+                else
+                {
+                    RefreshForSadad();
+                }
+
+            }
+
+        }
+        public async void RefreshForSadad()
+        {
+            try
+            {
+                Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    await viewModel.OnRefreshClick();
+                });
+                Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+        }
         private void SfButton_Clicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView());
+        }
+
+        private async void OnVATRefreshButtonClicked(object sender, EventArgs e)
+        {
+            await viewModel.OnRefreshClick();
         }
     }
 }

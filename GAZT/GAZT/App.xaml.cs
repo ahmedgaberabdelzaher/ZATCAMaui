@@ -69,13 +69,16 @@ namespace EGAZT
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
         public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
         public static string AttachmentPopUp = "AttachmentPopUp";
+        public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
 
+        
         #endregion
 
         #region new design views Release2
 
         public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";
         public static string TaxEvasionMyReportsListPageView = "TaxEvasionMyReportsListPageView";
+        public static string TaxEvasionReportDetailPageView = "TaxEvasionReportDetailPageView";
 
         #endregion
 
@@ -293,11 +296,11 @@ namespace EGAZT
 
             if (!hasKey)
             {
-                navigationPage = new CustomNavigation(new TaxEvasionMyReportsListPageView()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
             }
             else
             {
-                navigationPage = new CustomNavigation(new TaxEvasionMyReportsListPageView()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };

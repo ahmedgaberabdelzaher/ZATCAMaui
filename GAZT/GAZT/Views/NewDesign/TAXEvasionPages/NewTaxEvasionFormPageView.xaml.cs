@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Models;
+using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps;
+//using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.TAXEvasionPages
@@ -12,16 +19,481 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewTaxEvasionFormPageView : ContentPage
     {
+        NewTaxEvasionFormPageViewModel viewModel;
         public NewTaxEvasionFormPageView()
         {
             InitializeComponent();
-            BindingContext = App.Locator.NewTaxEvasionFormPageView;
+            viewModel = App.Locator.NewTaxEvasionFormPageView;
+            this.BindingContext = viewModel;
+
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ClearFields();
+            viewModel.CreateCompanyTypeList();
+
+            SetDataToUI();
+            //SetPickerFont();
+
+            //if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
+            //{
+                SetLocationToMap();
+            //}
+            viewModel.OnPageLoad();
         }
 
         #region Method
+        public void ClearFields()
+        {
+            try
+            {
+                //viewModel.SelectedTaxEvasionCompanyType = null;
+                //viewModel.SelectedTaxEvasionRegion = null;
+                //viewModel.SelectLCType = null;
+                //viewModel.UploadedDocumentsListObj = null;
+                //viewModel.IsVisibleForReportDisplay = true;
+                if (viewModel.CList != null)
+                {
+                    try
+                    {
+                        viewModel.CList.Clear();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                }
+                if (viewModel.RList != null)
+                {
+
+                    try
+                    {
+                        viewModel.RList.Clear();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                }
+
+                viewModel.AttachmentCount = 0;
+                viewModel.TxtReportDetailCity = string.Empty;
+                viewModel.TxtReportDetailRegion = string.Empty;
+                viewModel.UploadedDocumentsListObj.Clear();
+                //Attachment_Entry.Text = string.Empty;
+                //FacilityType_entry.Text = string.Empty;
+                //Date_entry.Text = string.Empty;
+                City_entry.Text = string.Empty;
+                Region_entry.Text = string.Empty;
+
+                TFaciName.Text = string.Empty;
+
+                //TFaciMobNo.Text = string.Empty;
+                //TFaciMobNoAr.Text = string.Empty;
+
+                //TFaciEmail.Text = string.Empty;
+                TVatNumber.Text = string.Empty;
+                TxtTIN.Text = string.Empty;
+                //viewModel.IsTIN = true;
+                //viewModel.IsTINVisible = true;
+
+                TFSAddress.Text = string.Empty;
+                //DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void SetDataToUI()
+        {
+            // viewModel.SelectedCategory = viewModel.selectedtaxEList.Category;
+            //if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
+            //{
+
+
+            //    Attachment_Label.IsVisible = true;
+            //    Attachment_Label.IsVisible = true;
+
+            //    //Attachment_Tmg.IsVisible = true;
+            //    //Attachment_Frm.IsVisible = true;
+            //    //Attachment_Tmg.IsEnabled = true;
+
+            //    //TFaciMobNo.IsEnabled = false;
+            //    //TFaciMobNoAr.IsEnabled = false;
+            //    //TFaciEmail.IsEnabled = false;
+
+            //    //viewModel.IsSubmitButtonEnable = true;
+            //    //submit_btnmane.IsEnabled = true;
+            //    //submit_btnmane.BackgroundColor = Color.Gray;
+
+            //    //btnFacilityType.IsEnabled = false;
+
+            //    try
+            //    {
+            //        if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Location)))
+            //        {
+            //            string[] words = viewModel.selectedtaxEList.Location.Split(',');
+            //            viewModel.selectedtaxEList.Latitude = words[0];
+            //            viewModel.selectedtaxEList.Longitude = words[1];
+            //        }
+            //    }
+            //    catch
+            //    {
+            //        viewModel.selectedtaxEList.Latitude = string.Empty;
+            //        viewModel.selectedtaxEList.Longitude = string.Empty;
+            //    }
+
+            //if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Latitude) && string.IsNullOrEmpty(viewModel.selectedtaxEList.Longitude)))
+            //{
+            //Position position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
+            //MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+            //mapView.MoveToRegion(mapSpan);
+            //Pin pin = new Pin();
+            //pin.Label = "Report Location";
+            //pin.Type = PinType.Place;
+            //pin.Position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
+            //mapView.Pins.Clear();
+            //mapView.Pins.Add(pin);
+            //}
+            //mapView.IsEnabled = true;
+
+            //}
+            //else
+            //{
+
+            //if (viewModel.selectedtaxEList != null && viewModel.selectedtaxEList.PhoneNumber != null)
+            //{
+            //if (!string.IsNullOrEmpty(App.TaxEvasionUserData.Mobile))
+            //{
+            //    string mobb = App.TaxEvasionUserData.Mobile;
+
+            //    if (mobb == null)
+            //        mobb = string.Empty;
+
+            //    viewModel.TMobNumber = mobb;
+            //}
+            //}
+            //}
+        }
+
+        private async void SetLocationToMap()
+        {
+            try
+            {
+                //if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId)))
+                //{
+                //    viewModel.IsLoading = false;
+                //    //clearFields();
+                //}
+                //else
+                //{
+                    double lat = 24.7136, lon = 46.6753;
+                    try
+                    {
+                    //var timeout = TimeSpan.FromSeconds(4);
+                    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                    var location = await Geolocation.GetLocationAsync(request);
+                    if (location != null)
+                        {
+                            lat = location.Latitude;
+                            lon = location.Longitude;
+                        }
+
+                        Position position = new Position(lat, lon);
+                        MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                        mapView.MoveToRegion(mapSpan);
+                        viewModel.Latitude = lat;
+                        viewModel.Longitude = lon;
+                        var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
+                        viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality + "," + addrs.CountryName + "-" + addrs.PostalCode;
+                    }
+                    catch (FeatureNotSupportedException fnsEx)
+                    {
+                        // Handle not supported on device exception
+                    }
+                    catch (FeatureNotEnabledException fneEx)
+                    {
+                        // Handle not enabled on device exception
+                    }
+                    catch (PermissionException pEx)
+                    {
+                        // Handle permission exception
+                    }
+                    catch (Exception ex)
+                    {
+                        // Unable to get location
+                    }
+                //}
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void TxtTIN_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtTIN.Text))
+            {
+                if (TxtTIN.Text.Length < 10 || (TxtTIN.Text.Substring(0, 1) != "3"))
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZInvalidTinNumber;
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmTIN.HasError = true;
+                    TxtTIN.Text = string.Empty;
+                    // TxtTIN.Focus();
+                }
+                else
+                {
+                    FrmTIN.HasError = false;
+                }
+            }
+        }
+
+        private void TVatNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            {
+                if (!string.IsNullOrEmpty(TVatNumber.Text))
+                {
+                    if (TVatNumber.Text.Length < 15)
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZInvalidVatNumber;
+                        popUp.IsLinkAvailable = false;
+                        //if (App.IsArabic)
+                        //{
+                        //    popUp.FlowDirections = "RightToLeft";
+                        //}
+                        //else
+                        //{
+                        //    popUp.FlowDirections = "LeftToRight";
+                        //}
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmVAT.HasError = true;
+                        TVatNumber.Text = string.Empty;
+                    }
+
+                    else
+                    {
+                        FrmVAT.HasError = false;
+                    }
+                }
+            }
+        }
+
+        private void TFaciName_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TFaciName.Text))
+            { FrmFName.HasError = true; }
+            else
+            {
+                FrmFName.HasError = false;
+            }
+        }
+
+        private void TReportDetail_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TReportDetail.Text))
+            {
+                FrmReportDetail.HasError = true;
+            }
+            else
+            {
+                FrmReportDetail.HasError = false;
+            }
+        }
+
+        private async void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
+        {
+            //if ((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
+            //{
+                //   viewModel.IsLoading = false;
+                //clearFields();
+                try
+                {
+                    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                    var location = await Geolocation.GetLocationAsync(request);
+                    if (location != null)
+                    {
+                        Position position = new Position(location.Latitude, location.Longitude);
+                        MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                        mapView.MoveToRegion(mapSpan);
+                        viewModel.Latitude = location.Latitude;
+                        // viewModel.TEReportobj.Latitude = location.Latitude.ToString();
+                        viewModel.Longitude = location.Longitude;
+                    }
+                var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
+                viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality +","+ addrs.CountryName+"-"+ addrs.PostalCode;
+            }
+                catch (FeatureNotSupportedException fnsEx)
+                {
+                    // Handle not supported on device exception
+                }
+                catch (FeatureNotEnabledException fneEx)
+                {
+                    // Handle not enabled on device exception
+                }
+                catch (PermissionException pEx)
+                {
+                    // Handle permission exception
+                }
+                catch (Exception ex)
+                {
+                    // Unable to get location
+                }
+                Pin pin = new Pin();
+                pin.Label = "Your Location";
+                pin.Type = PinType.Place;
+                pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
+                viewModel.Latitude = e.Position.Latitude;
+                viewModel.Longitude = e.Position.Longitude;
+                mapView.Pins.Clear();
+                mapView.Pins.Add(pin);
+            //}
+            //else
+            //{
+            //}
+        }
+
         private void RegionBtnClicked(object sender, EventArgs e)
         {
             RegionPicker.IsOpen = true;
+        }
+
+        void RegionPicker_SelectionChanged(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            TaxEvasionRegionCityDatum taxEvasionRegionCityDatum = (TaxEvasionRegionCityDatum)e.NewValue;
+            RegionPicker.SelectedItem = taxEvasionRegionCityDatum;
+            viewModel.SelectedTaxEvasionRegion = taxEvasionRegionCityDatum;
+        }
+
+        void CityPickerButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Region_entry.Text))
+            {
+               
+                 CityPicker.IsOpen = true;
+                
+            }
+            else
+            {
+                RegionPicker.IsOpen = true;
+            }
+        }
+
+        void CityPicker_SelectionChanged(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            TaxEvasionRegionCityDatum selectedcity = (TaxEvasionRegionCityDatum)e.NewValue;
+            CityPicker.SelectedItem = selectedcity;
+            viewModel.SelectLCType = selectedcity;//selectedregion
+            //viewModel.SelectLCTypePrev = selectedcity;//selectedregion
+            viewModel.TxtReportDetailCity = selectedcity.Name;
+        }
+
+        void TFDAdress_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TFDAdress.Text))
+            {
+                FrmFDAddress.HasError = true;
+            }
+            else
+            { FrmFDAddress.HasError = false; }
+        }
+
+        void TMobNumber_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (App.IsArabic)
+            {
+                if (!string.IsNullOrEmpty(TMobNumber.Text))
+                {
+                    if (TMobNumber.Text.Length < 9)
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZInvalidMobileNoError;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmNumber.HasError = true;
+                        TMobNumber.Text = string.Empty;
+                    }
+                    else
+                    {
+                        FrmNumber.HasError = false;
+                    }
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(TMobNumber.Text))
+                {
+                    if (TMobNumber.Text.Length < 9)
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZInvalidMobileNoError;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmNumber.HasError = true;
+                        TMobNumber.Text = string.Empty;
+                    }
+                    else
+                    {
+                        FrmNumber.HasError = false;
+                    }
+                }
+            }
+        }
+
+        void ReportTypeButton_Clicked(System.Object sender, System.EventArgs e)
+        {
+            ReportTypePicker.IsOpen = true;
+        }
+
+        void ReportTypePicker_SelectionChanged(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            TaxEvasionCategoriesDataModel selectedReportType = (TaxEvasionCategoriesDataModel)e.NewValue;
+            ReportTypePicker.SelectedItem = selectedReportType;
+            viewModel.SelectedReportTypeListItem = selectedReportType;
+            viewModel.TxtReporttype = selectedReportType.Title;
+        }
+
+        void OnDeleteAttachmentClicked(System.Object sender, System.EventArgs e)
+        {
+            Image arrowImage = sender as Image;
+            UploadedDocumentsList attachment = (UploadedDocumentsList)arrowImage.BindingContext;
+            viewModel.UploadedDocumentsListObj.Remove(attachment);
+            viewModel.AttachmentCount = viewModel.AttachmentCount - 1;
+            viewModel.AttachmentName = string.Empty;
         }
         #endregion
     }

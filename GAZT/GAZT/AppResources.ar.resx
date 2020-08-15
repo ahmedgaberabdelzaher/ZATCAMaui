@@ -5192,4 +5192,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>نشط</value>
     <comment>Taxpayer Profile</comment>
   </data>
+  <data name="NDTaxEvasion" xml:space="preserve">
+    <value>التهرب الضريبي</value>
+    <comment>Tax Evasion</comment>
+  </data>
 </root>
