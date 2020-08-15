@@ -6,6 +6,7 @@ using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.TAXEvasionPages
@@ -21,6 +22,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             viewModel = App.Locator.TaxEvasionVerifyMobileNumberPage;
             this.BindingContext = viewModel;
 
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.ShowMobileForm();
         }
 

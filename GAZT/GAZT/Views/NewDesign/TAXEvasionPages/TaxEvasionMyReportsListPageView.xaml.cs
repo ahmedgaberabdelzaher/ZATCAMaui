@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.TAXEvasionPages
 {
@@ -18,6 +19,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             this.BindingContext = viewModel;
             viewModel.PopulateDataInChips();
             viewModel.SelectedChipFilterItemList = new List<ChipModel>();
+
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
 
 
@@ -96,9 +99,19 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             return;
         }
 
-        private void AddReport_Tapped(object sender, EventArgs e)
+        private async  void AddReport_Tapped(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.NewTaxEvasionFormPageView);
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.NewTaxEvasionFormPageView);
+
+            });
+           
         }
     }
 }

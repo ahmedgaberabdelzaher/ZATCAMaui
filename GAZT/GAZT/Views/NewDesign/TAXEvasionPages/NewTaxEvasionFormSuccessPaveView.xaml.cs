@@ -12,6 +12,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         public NewTaxEvasionFormSuccessPaveView()
         {
             InitializeComponent();
+            SetLTR();
         }
         private void SetLTR()
         {
@@ -19,10 +20,24 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+
+            //await Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+
+            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
+
+            });
 
         }
 
@@ -31,12 +46,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
-            // viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-            //  viewModel._navigationService.NavigateTo(App.SFLoginPageView);
 
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-
-
         }
     }
 }

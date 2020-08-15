@@ -1126,6 +1126,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
 
                 TaxEvasionReportTobeUsedToSubmit.Latitude = _latitude.ToString();
+                TaxEvasionReportTobeUsedToSubmit.Latitude = _latitude.ToString();
                 TaxEvasionReportTobeUsedToSubmit.Longitude = _longitude.ToString();
 
                 TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
@@ -1160,7 +1161,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 await Task.Run(() =>
                 {
-                    App.HideProgressView();
+                  //  App.HideProgressView();
                 });
             }
             catch (GAZTException gex)
