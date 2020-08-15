@@ -51,6 +51,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsListVisible");
             }
         }
+
+        public int _index;
+        public int Index
+        {
+            get
+            {
+                return _index;
+            }
+            set
+            {
+                _index = value;
+                RaisePropertyChanged("Index");
+            }
+        }
         public bool _setNoDataLabelVisibilityALL=true;
         public bool SetNoDataLabelVisibilityALL
         {
@@ -393,7 +407,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
-        public async void OnPageLoad()
+        public void OnPageLoad()
         {
             List<MyReturnsResult> AllReturns = new List<MyReturnsResult>();
         
@@ -891,13 +905,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                 {
+                   Index = 0;
                     FilterOnBasisOfTaxType();
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
                     //ListToDisplay = new ObservableCollection<MyBills>(MyBills.Where(x => x. == Enum.GetName(typeof(BillStatus), 0)).ToList());
                 }
                 if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                 {
-
+                    Index = 1;
                     FilterOnBasisOfTaxType();
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                     if (ListToDisplay != null)
@@ -911,6 +926,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
                 {
+                    Index = 2;
                     FilterOnBasisOfTaxType();
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
                     
