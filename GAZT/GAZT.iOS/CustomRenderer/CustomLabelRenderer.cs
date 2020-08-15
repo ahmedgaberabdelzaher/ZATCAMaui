@@ -27,18 +27,21 @@ namespace GAZT.iOS.CustomRenderer
                 }
 
                 //Line Spacing between two line in one Label
-                var lineSpacingLabel = (CustomLabel)this.Element;
-                var paragraphStyle = new NSMutableParagraphStyle()
-                {
-                    LineSpacing = (nfloat)lineSpacingLabel.LineSpacing
-                };
-                var text = new NSMutableAttributedString(lineSpacingLabel.Text);
-                var style = UIStringAttributeKey.ParagraphStyle;
-                var range = new NSRange(0, text.Length);
+                //if (!string.IsNullOrWhiteSpace(Element.Text))
+                //{
+                //    var lineSpacingLabel = (CustomLabel)this.Element;
+                //    var paragraphStyle = new NSMutableParagraphStyle()
+                //    {
+                //        LineSpacing = (nfloat)lineSpacingLabel.LineSpacing
+                //    };
+                //    var text = new NSMutableAttributedString(lineSpacingLabel.Text);
+                //    var style = UIStringAttributeKey.ParagraphStyle;
+                //    var range = new NSRange(0, text.Length);
 
-//                attrString.AddAttribute(style, paragraphStyle, range);
+                //    text.AddAttribute(style, paragraphStyle, range);
 
-                this.Control.AttributedText = text;
+                //    this.Control.AttributedText = text;
+                //}
                 //Line Spacing between two line in one Label
 
 
