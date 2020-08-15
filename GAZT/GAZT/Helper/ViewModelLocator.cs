@@ -573,6 +573,20 @@ namespace EGAZT
                 }
             }
         }
+        public NewTaxEvasionFormPageViewModel NewTaxEvasionFormSuccessPaveView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NewTaxEvasionFormPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
         #endregion
 
         //private INavigationService CreateNavigationService()
@@ -1852,6 +1866,7 @@ namespace EGAZT
             navigationService.Configure(App.NewZakatObjectionPageView, typeof(NewZakatObjectionPageView));
             navigationService.Configure(App.VATReturnSuccessfullPageView, typeof(VATReturnSuccessfullPageView));
             navigationService.Configure(App.NewTaxEvasionFormPageView, typeof(Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormPageView));
+            navigationService.Configure(App.NewTaxEvasionFormSuccessPaveView, typeof(Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormSuccessPaveView));
             navigationService.Configure(App.AttachmentPopUp, typeof(AttachmentPopUp));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));

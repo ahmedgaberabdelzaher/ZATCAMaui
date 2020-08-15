@@ -181,6 +181,14 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             //}
             //}
             //}
+            Console.WriteLine(App.TaxEvasionUserData);
+            if (App.TaxEvasionUserData != null)
+            {
+                viewModel.TMobNumber = App.TaxEvasionUserData.Mobile;
+                viewModel.TName = App.TaxEvasionUserData.FullName;
+                viewModel.TFWType = "NA";
+            }
+
         }
 
         private async void SetLocationToMap()
@@ -488,6 +496,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             TaxEvasionCategoriesDataModel selectedReportType = (TaxEvasionCategoriesDataModel)e.NewValue;
             ReportTypePicker.SelectedItem = selectedReportType;
             viewModel.SelectedReportTypeListItem = selectedReportType;
+            viewModel.SelectedCategory = selectedReportType.Title;
             viewModel.TxtReporttype = selectedReportType.Title;
         }
 

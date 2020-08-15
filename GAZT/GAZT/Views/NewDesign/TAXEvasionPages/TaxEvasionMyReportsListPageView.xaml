@@ -98,7 +98,7 @@
                                                         <!--BackgroundColor="{StaticResource LightGreenColor}"
                                                         TextColor="{StaticResource Primary}"-->
                                                         <buttons:SfButton.Triggers>
-                                                            <DataTrigger TargetType="buttons:SfButton" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportStatusNew}">
+                                                            <DataTrigger TargetType="buttons:SfButton" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
                                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                                                 <Setter Property="BackgroundColor" Value="#E5EFED" />
                                                             </DataTrigger>

@@ -15,6 +15,7 @@
              xmlns:ResourceManager="clr-namespace:EGAZT"
             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              FlowDirection="RightToLeft"
@@ -86,8 +87,8 @@
                         </Grid>
 
                         <StackLayout Orientation="Horizontal" BackgroundColor="White" Grid.Row="0" VerticalOptions="CenterAndExpand" >
-                            
-                            <Label Padding="0,15,0,0" Margin="0" HorizontalOptions="Start" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}">
+
+                            <Label Padding="0,15,0,0" Margin="0" HorizontalOptions="Start" Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="BackButtonClicked"  />
                                 </Label.GestureRecognizers>
@@ -159,6 +160,9 @@
                                     <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
                                 </Image.GestureRecognizers>-->
                         </Image>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                     <StackLayout  Grid.Row="0" Grid.Column="2">
@@ -183,7 +187,15 @@
                         </Label>-->
                 </Grid>
 
-
+                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{TemplateBinding BindingContext.IsNewLoading}">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForReturn" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="#D99A29"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
             </Grid>
 
         </ControlTemplate>
@@ -396,7 +408,7 @@
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" >
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}"  Style="{StaticResource PageTitleBlack}" />
-                    <custom:CustomLabel Text="Complete the below details"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,8"/>
                 </StackLayout>
             </Grid>
@@ -907,7 +919,7 @@
                 </ScrollView>
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,0,0,8">
                     <Label Text="{x:Static custom2:AppResources.ZZVATReturnForm}"  Style="{StaticResource PageTitleBlack}" />
-                    <Label Text="Complete the below details" Margin="0,-8,0,0"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
+                    <Label Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" Margin="0,-8,0,0"  BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}"/>
                 </StackLayout>
                 <!--View On Hold-->
@@ -1274,7 +1286,7 @@
 
                                 <yummy:PancakeView  Grid.Row="21" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ADD8E6" Padding="0,0,0,0"  Margin="0,0,0,0">
                                     <StackLayout  Padding="0,0,0,8" Margin="10,0,10,0">
-                                        <custom:CustomLabel Text="VAT Amount" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZVATAmount}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
                                         <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}"></custom:CustomLabel>
                                     </StackLayout>
                                 </yummy:PancakeView>
@@ -1884,7 +1896,7 @@
                 <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,8"  Spacing="0">
 
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}"  Style="{StaticResource PageTitleBlack}"/>
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationSubtitle}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                 </StackLayout>
                 <!--<StackLayout Grid.Row="1" BackgroundColor="White">
@@ -2201,8 +2213,8 @@
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,0" Spacing="0">
 
-                    <custom:CustomLabel Text="Summary"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                    <custom:CustomLabel Text="Review the below information"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSummary}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZReviewthebelowinformation}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
                 </StackLayout>
             </Grid>
@@ -2213,9 +2225,9 @@
 
             <StackLayout BackgroundColor="White" Grid.Row="1" Margin="0,0,0,0"  VerticalOptions="FillAndExpand" Padding="0,0,0,10">
 
-                <buttons:SfButton x:Name="btnprimary" IsEnabled="{Binding IsMainButtonEnabled}"  VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}"  Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton x:Name="btnprimary" IsEnabled="{Binding IsMainButtonEnabled}"  VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <buttons:SfButton Text="{Binding CreditDetailsText}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
+                <buttons:SfButton Text="{Binding CreditDetailsText}" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
             </StackLayout>
 
         </Grid>
