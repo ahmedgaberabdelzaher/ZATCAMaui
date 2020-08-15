@@ -1094,7 +1094,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 TaxEvasionReportTobeUsedToSubmit.CreatedAt = date;
                 //TaxEvasionReportTobeUsedToSubmit.CompanyType = SelectedTaxEvasionCompanyType.Id;
 
-                TaxEvasionReportTobeUsedToSubmit.Category = _selectedCategory;
+                TaxEvasionReportTobeUsedToSubmit.Category = SelectedCategory;
 
                 //Removed
                 //TaxEvasionReportTobeUsedToSubmit.Channel = "2";
@@ -1134,22 +1134,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (response != null && response.Status == true)
                 {
                     //ZTEReportReportSuccessResponsep1
-                    var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
-                    var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
-                    var newReplacedMsg = newrm.Replace("5", "10");
+                    //var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
+                    //var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
+                    //var newReplacedMsg = newrm.Replace("5", "10");
 
-                    await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    var _lastPage = _navigation.NavigationStack.LastOrDefault();
-                    //Remove last page
-                    _navigation.RemovePage(_lastPage);
-                    var _lastPage2 = _navigation.NavigationStack.LastOrDefault();
-                    //Remove last page
-                    _navigation.RemovePage(_lastPage2);
-                    //Go back 
+                    //await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);
+                    //var _navigation = Application.Current.MainPage.Navigation;
+                    //var _lastPage = _navigation.NavigationStack.LastOrDefault();
+                    ////Remove last page
+                    //_navigation.RemovePage(_lastPage);
+                    //var _lastPage2 = _navigation.NavigationStack.LastOrDefault();
+                    ////Remove last page
+                    //_navigation.RemovePage(_lastPage2);
+                    ////Go back 
 
-                    _navigation.PopAsync();
-                    //_navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                    //_navigation.PopAsync();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.NewTaxEvasionFormSuccessPaveView);
+                    });
                 }
                 else
                 {//ZTEReportReportSuccessResponsep2
@@ -1191,8 +1194,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     //viewModel._navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Task.Run(() =>

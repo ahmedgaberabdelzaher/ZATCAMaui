@@ -173,7 +173,8 @@ namespace EGAZT.Models
                        else if (_status.Contains("New")|| _status.Contains("تم فتح الطلب"))
                         
                         {
-                            newStatus = AppResources.ZTEReportStatusNew;
+                           // newStatus = AppResources.ZTEReportStatusNew;
+                            newStatus = AppResources.ZTEReportReportOpen;
                         _status = newStatus;
                         }
                         else
