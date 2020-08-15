@@ -39,10 +39,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             SetDataToUI();
             //SetPickerFont();
 
-            if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
-            {
+            //if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
+            //{
                 SetLocationToMap();
-            }
+            //}
             viewModel.OnPageLoad();
         }
 
@@ -150,33 +150,36 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             //        viewModel.selectedtaxEList.Longitude = string.Empty;
             //    }
 
-            //    if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Latitude) && string.IsNullOrEmpty(viewModel.selectedtaxEList.Longitude)))
-            //    {
-            //        Position position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-            //        MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-            //        mapView.MoveToRegion(mapSpan);
-            //        Pin pin = new Pin();
-            //        pin.Label = "Report Location";
-            //        pin.Type = PinType.Place;
-            //        pin.Position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-            //        mapView.Pins.Clear();
-            //        mapView.Pins.Add(pin);
-            //    }
-            //    mapView.IsEnabled = true;
+            //if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Latitude) && string.IsNullOrEmpty(viewModel.selectedtaxEList.Longitude)))
+            //{
+            //Position position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
+            //MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+            //mapView.MoveToRegion(mapSpan);
+            //Pin pin = new Pin();
+            //pin.Label = "Report Location";
+            //pin.Type = PinType.Place;
+            //pin.Position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
+            //mapView.Pins.Clear();
+            //mapView.Pins.Add(pin);
+            //}
+            //mapView.IsEnabled = true;
 
             //}
             //else
             //{
 
-                if (viewModel.selectedtaxEList != null && viewModel.selectedtaxEList.PhoneNumber != null)
-                {
-                    string mobb = App.TaxEvasionUserData.Mobile;
+            //if (viewModel.selectedtaxEList != null && viewModel.selectedtaxEList.PhoneNumber != null)
+            //{
+            //if (!string.IsNullOrEmpty(App.TaxEvasionUserData.Mobile))
+            //{
+            //    string mobb = App.TaxEvasionUserData.Mobile;
 
-                    if (mobb == null)
-                        mobb = string.Empty;
+            //    if (mobb == null)
+            //        mobb = string.Empty;
 
-                    viewModel.TMobNumber = mobb;
-            }
+            //    viewModel.TMobNumber = mobb;
+            //}
+            //}
             //}
         }
 
@@ -184,31 +187,32 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             try
             {
-                if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId)))
-                {
-                    viewModel.IsLoading = false;
-                    //clearFields();
-                }
-                else
-                {
+                //if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId)))
+                //{
+                //    viewModel.IsLoading = false;
+                //    //clearFields();
+                //}
+                //else
+                //{
                     double lat = 24.7136, lon = 46.6753;
                     try
                     {
-                        //var timeout = TimeSpan.FromSeconds(4);
-                        //var locationRequestData = new GeolocationRequest(GeolocationAccuracy.Medium, timeout);
-
-                        //var location = Geolocation.GetLocationAsync(locationRequestData).Result;
-                        //if (location != null)
-                        //{
-                        //    lat = location.Latitude;
-                        //    lon = location.Longitude;
-                        //}
+                    //var timeout = TimeSpan.FromSeconds(4);
+                    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                    var location = await Geolocation.GetLocationAsync(request);
+                    if (location != null)
+                        {
+                            lat = location.Latitude;
+                            lon = location.Longitude;
+                        }
 
                         Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
                         mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = lat;
                         viewModel.Longitude = lon;
+                        var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
+                        viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality + "," + addrs.CountryName + "-" + addrs.PostalCode;
                     }
                     catch (FeatureNotSupportedException fnsEx)
                     {
@@ -226,7 +230,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         // Unable to get location
                     }
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -303,10 +307,22 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
         }
 
+        private void TReportDetail_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TReportDetail.Text))
+            {
+                FrmReportDetail.HasError = true;
+            }
+            else
+            {
+                FrmReportDetail.HasError = false;
+            }
+        }
+
         private async void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
-            if ((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
-            {
+            //if ((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
+            //{
                 //   viewModel.IsLoading = false;
                 //clearFields();
                 try
@@ -322,7 +338,9 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         // viewModel.TEReportobj.Latitude = location.Latitude.ToString();
                         viewModel.Longitude = location.Longitude;
                     }
-                }
+                var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
+                viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality +","+ addrs.CountryName+"-"+ addrs.PostalCode;
+            }
                 catch (FeatureNotSupportedException fnsEx)
                 {
                     // Handle not supported on device exception
@@ -347,10 +365,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 viewModel.Longitude = e.Position.Longitude;
                 mapView.Pins.Clear();
                 mapView.Pins.Add(pin);
-            }
-            else
-            {
-            }
+            //}
+            //else
+            //{
+            //}
         }
 
         private void RegionBtnClicked(object sender, EventArgs e)
@@ -467,6 +485,15 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             ReportTypePicker.SelectedItem = selectedReportType;
             viewModel.SelectedReportTypeListItem = selectedReportType;
             viewModel.TxtReporttype = selectedReportType.Title;
+        }
+
+        void OnDeleteAttachmentClicked(System.Object sender, System.EventArgs e)
+        {
+            Image arrowImage = sender as Image;
+            UploadedDocumentsList attachment = (UploadedDocumentsList)arrowImage.BindingContext;
+            viewModel.UploadedDocumentsListObj.Remove(attachment);
+            viewModel.AttachmentCount = viewModel.AttachmentCount - 1;
+            viewModel.AttachmentName = string.Empty;
         }
         #endregion
     }
