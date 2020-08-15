@@ -76,6 +76,7 @@ namespace EGAZT.Views.NewDesign.Common
             }
             if (propertyName == MaxNumProperty.PropertyName)
             {
+                Children.Clear();
                 for (int i = 1; i <= MaxNum; i++)
                 {
                     Children.Add(new BoxView()
@@ -126,7 +127,8 @@ namespace EGAZT.Views.NewDesign.Common
                         else
                         {
                             box.BackgroundColor = Color.FromHex("#EBEBEB");
-                            Children[childCounter - 1].BackgroundColor = Color.Transparent;
+                            if (childCounter - 1 > 0)
+                                Children[childCounter - 1].BackgroundColor = Color.Transparent;
                         }
                         counter++;
                     }
