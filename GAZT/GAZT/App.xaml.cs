@@ -26,6 +26,7 @@ using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
+using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -68,12 +69,16 @@ namespace EGAZT
         public static string ZakatReturnDetailsSuccessfullPageView = "ZakatReturnDetailsSuccessfullPageView";
         public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
         public static string AttachmentPopUp = "AttachmentPopUp";
+        public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
 
+        
         #endregion
 
         #region new design views Release2
 
         public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";
+        public static string TaxEvasionMyReportsListPageView = "TaxEvasionMyReportsListPageView";
+        public static string TaxEvasionReportDetailPageView = "TaxEvasionReportDetailPageView";
 
         #endregion
 

@@ -82,13 +82,11 @@
     <Folder Include="Views\NewDesign\VATDeRegistration\" />
     <Folder Include="Views\NewDesign\GenericPickers\" />
     <Folder Include="ViewModel\NewDesignViewModel\GenericPickers\" />
-    <Folder Include="Views\NewDesign\TAXEvasionPages\" />
     <Folder Include="Views\NewDesign\EstablishmentRegistrationPages\" />
     <Folder Include="Views\NewDesign\Common\" />
     <Folder Include="Views\NewDesign\ZakatInstalmentPlan\" />
     <Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />
     <Folder Include="Models\ZakatInstalationModels\" />
-    <Folder Include="ViewModel\NewDesignViewModel\TaxEvasionViewModels\" />
     <Folder Include="Views\NewDesign\VATRefunds\" />
     <Folder Include="ViewModel\NewDesignViewModel\VATRefunds\" />
     <Folder Include="Models\VATRefunds\" />
@@ -200,6 +198,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\TAXEvasionPages\TaxEvasionPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\TAXEvasionPages\TaxEvasionReportDetailPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondancePageView.xaml">

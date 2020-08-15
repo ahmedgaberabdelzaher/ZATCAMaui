@@ -2793,6 +2793,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tax Evasion.
+        /// </summary>
+        public static string NDTaxEvasion {
+            get {
+                return ResourceManager.GetString("NDTaxEvasion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tax Management.
         /// </summary>
         public static string NDTaxManagement {
@@ -2807,6 +2816,15 @@ namespace EGAZT {
         public static string NDTotal {
             get {
                 return ResourceManager.GetString("NDTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        public static string NDTPActive {
+            get {
+                return ResourceManager.GetString("NDTPActive", resourceCulture);
             }
         }
         
