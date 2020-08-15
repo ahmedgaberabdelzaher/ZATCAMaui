@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -14,7 +15,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
+        public ICommand OnDownloadFormClicked { get; set; }
+        public ICommand OnAcknowlwdgementClicked { get; set; }
 
         #region Properties
 
@@ -160,8 +162,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-        }
 
+
+
+
+            OnDownloadFormClicked = new Xamarin.Forms.Command(async () =>
+            {
+                String Url = string.Empty;
+                // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
+                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.Tin + "',Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=enabled";
+                ShowPdf(Url);
+            });
+            OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
+            {
+                String Url = string.Empty;
+                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.Tin + "',Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=enabled";
+                ShowPdf(Url);
+            });
+        }
+        public async void ShowPdf(string pdfUrl)
+        {
+            //if (Device.RuntimePlatform == Device.iOS)
+            //{
+            //    if (pdfUrl != null)
+            //    {
+            //        //Uri uri = new Uri(pdfUrl);
+            //        //Device.OpenUri(uri);
+            //        _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+            //    }
+            //    else
+            //    {
+            //        //pop that certificate is not available
+            //        Device.BeginInvokeOnMainThread(async () =>
+            //        {
+            //            await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+            //        });
+            //    }
+            //}
+            //else
+            //{
+            if (pdfUrl != null)
+            {
+                _navigationService.NavigateTo(App.PdfView, pdfUrl);
+            }
+            else
+            {
+                //pop that certificate is not available
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                });
+            }
+            //}
+        }
 
         public async Task OnRefreshClick()
         {

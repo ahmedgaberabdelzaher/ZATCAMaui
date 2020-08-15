@@ -36,11 +36,14 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                
                 if (_vATDeclarationInfo.d != null)
                 {
-                    viewModel.VATDeclarationData = _vATDeclarationInfo;
+                    viewModel.VATDeclarationData = new VATDeclaration();
+                    viewModel.VATDeclarationData.d = new VATDeclarationD();
                     viewModel.isBtnVisible = false;
                     viewModel.IsDeclarationCheckedForInstruction = false;
                     viewModel.IsDeclarationCheckedForSummary = false;
                     viewModel.IsCheckedTaxPayerDetailsInfo = false;
+                    viewModel.VATDeclarationData = _vATDeclarationInfo;
+                 
                 }
                 checkNewFormorOld();
                 
@@ -60,6 +63,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (viewModel.VATDeclarationData.d.StepNumber == "01" || viewModel.VATDeclarationData.d.StepNumber == "1" || viewModel.VATDeclarationData.d.StepNumber == "0" || viewModel.VATDeclarationData.d.StepNumber == "00")
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+                ManageButtonsName();
             }
             else if (viewModel.VATDeclarationData.d.StepNumber == "02" || viewModel.VATDeclarationData.d.StepNumber == "2")
             {
@@ -94,7 +98,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if(viewModel.IsDeclarationCheckedForInstruction)
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.TaxpayerDetails;
-                viewModel.isBtnVisible = false;
+                ManageButtonsName();
             }
             else
             {
@@ -109,12 +113,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if(viewModel.IsFifteenPercentChange)
                 {
                     viewModel.currentTab = VATReturnUpdatedUITabEnum.VATReturns;
-                    viewModel.isBtnVisible = false;
+                    ManageButtonsName();
                 }
                 else
                 {
                     viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
-                    viewModel.isBtnVisible = false;
+                    ManageButtonsName();
                 }
             }
             else
@@ -127,7 +131,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (viewModel.IsFifteenPersenctVisible || viewModel.IsFivePersenctVisible)
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
-                viewModel.isBtnVisible = false;
+                ManageButtonsName();
             }
             else
             {
@@ -141,7 +145,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (IsFieldsCheck)
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Purchase;
-                viewModel.isBtnVisible = false;
+                ManageButtonsName();
             }
             else
             {
@@ -155,7 +159,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (IsFieldsCheck)
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.TotalVat;
-                viewModel.isBtnVisible = false;
+                ManageButtonsName();
             }
             else
             {
@@ -169,8 +173,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (IsFieldsCheck)
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Summery;
-                viewModel.isBtnVisible = true;
-                viewModel.CreditDetailsText = "Confrim and Generate SADAD Bill";
+                ManageButtonsName();
             }
             else
             {
@@ -189,6 +192,61 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             else
             {
 
+            }
+        }
+
+        public void ManageButtonsName()
+        {
+            if(viewModel.currentTab == VATReturnUpdatedUITabEnum.Instrunction)
+            {
+                viewModel.isBtnVisible = false;
+                viewModel.IsMainButtonVisible = true;
+                viewModel.ContinueText = AppResources.ZZZZContinue;
+            }
+            else if(viewModel.currentTab == VATReturnUpdatedUITabEnum.TaxpayerDetails)
+            {
+                viewModel.isBtnVisible = false;
+                viewModel.IsMainButtonVisible = true;
+                viewModel.ContinueText = AppResources.ZZZZContinue; 
+            }
+            else if (viewModel.currentTab == VATReturnUpdatedUITabEnum.VATReturns)
+            {
+                viewModel.isBtnVisible = false;
+                viewModel.IsMainButtonVisible = true;
+                viewModel.ContinueText = AppResources.ZZZZContinue;
+            }
+            else if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales)
+            {
+                viewModel.isBtnVisible = false;
+                viewModel.IsMainButtonVisible = true;
+                viewModel.ContinueText = AppResources.ZZZZContinue;
+            }
+            else if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
+            {
+                viewModel.isBtnVisible = false;
+                viewModel.IsMainButtonVisible = true;
+                viewModel.ContinueText = AppResources.ZZZZContinue;
+            }
+            else if (viewModel.currentTab == VATReturnUpdatedUITabEnum.TotalVat)
+            {
+                viewModel.isBtnVisible = false;
+                viewModel.IsMainButtonVisible = true;
+                viewModel.ContinueText = AppResources.ZZZZContinue;
+            }
+            else if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Summery)
+            {
+                if (Convert.ToDouble(viewModel.NetdueVat) < 0)
+                {
+                    viewModel.isBtnVisible = false;
+                    viewModel.IsMainButtonVisible = true;
+                    viewModel.ContinueText = "Confirm and Carry Forward";
+                }
+                else
+                {
+                    viewModel.isBtnVisible = true;
+                    viewModel.IsMainButtonVisible = false;
+                    viewModel.CreditDetailsText = "Confrim and Generate SADAD Bill";
+                }
             }
         }
 
@@ -308,9 +366,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
         public async Task IntilizeAsync()
         {
-            await Task.Run(() =>
+            Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel.IsLoading = true;
+                viewModel.IsNewLoading = true;
             });
 
             await Task.Run(async () =>
@@ -333,9 +391,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             });
 
-            await Task.Run(() =>
+            Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel.IsLoading = false;
+                viewModel.IsNewLoading = false;
             });
         }
 
@@ -7494,100 +7552,138 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private void OnContinueButtonClicked(object sender, EventArgs e)
+        private async void OnContinueButtonClicked(object sender, EventArgs e)
         {
-            if (viewModel.IsFifteenPercentChange == true)
+            try
             {
-                switch (viewModel.currentTab)
-                {
-                    case VATReturnUpdatedUITabEnum.Instrunction:
-                        Instrunctionsclicked();
-                        break;
+               
+                    if (viewModel.ContinueText == AppResources.ZZZZContinue)
+                    {
+                        if (viewModel.IsFifteenPercentChange == true)
+                        {
+                            switch (viewModel.currentTab)
+                            {
+                                case VATReturnUpdatedUITabEnum.Instrunction:
+                                    Instrunctionsclicked();
+                                    break;
 
-                    case VATReturnUpdatedUITabEnum.TaxpayerDetails:
-                        TaxpayerDetailsclicked();
-                        break;
-                    case VATReturnUpdatedUITabEnum.VATReturns:
-                        VatReturnclicked();
-                        break;
+                                case VATReturnUpdatedUITabEnum.TaxpayerDetails:
+                                    TaxpayerDetailsclicked();
+                                    break;
+                                case VATReturnUpdatedUITabEnum.VATReturns:
+                                    VatReturnclicked();
+                                    break;
 
-                    case VATReturnUpdatedUITabEnum.Sales:
-                        VatSalesclicked();
-                        break;
+                                case VATReturnUpdatedUITabEnum.Sales:
+                                    VatSalesclicked();
+                                    break;
 
-                    case VATReturnUpdatedUITabEnum.Purchase:
-                        VatPurchaseclicked();
-                        break;
+                                case VATReturnUpdatedUITabEnum.Purchase:
+                                    VatPurchaseclicked();
+                                    break;
 
-                    case VATReturnUpdatedUITabEnum.TotalVat:
-                        VatTotalAmountclicked();
-                        break;
+                                case VATReturnUpdatedUITabEnum.TotalVat:
+                                    VatTotalAmountclicked();
+                                    break;
 
-                    case VATReturnUpdatedUITabEnum.Summery:
-                        Summaryclicked();
-                        //                        currentTab = VATReturnUpdatedUITabEnum.Summery;
-                        break;
-                }
+                                case VATReturnUpdatedUITabEnum.Summery:
+                                    Summaryclicked();
+                                    //                        currentTab = VATReturnUpdatedUITabEnum.Summery;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            switch (viewModel.currentTab)
+                            {
+                                case VATReturnUpdatedUITabEnum.Instrunction:
+                                    Instrunctionsclicked();
+                                    break;
+
+                                case VATReturnUpdatedUITabEnum.TaxpayerDetails:
+                                    TaxpayerDetailsclicked();
+                                    break;
+
+                                case VATReturnUpdatedUITabEnum.Sales:
+                                    VatSalesclicked();
+                                    break;
+
+                                case VATReturnUpdatedUITabEnum.Purchase:
+                                    VatPurchaseclicked();
+                                    break;
+
+                                case VATReturnUpdatedUITabEnum.TotalVat:
+                                    VatTotalAmountclicked();
+                                    break;
+
+                                case VATReturnUpdatedUITabEnum.Summery:
+                                    Summaryclicked();
+                                    //                        currentTab = VATReturnUpdatedUITabEnum.Summery;
+                                    break;
+                            }
+                        }
+                    }
+                    else if (viewModel.ContinueText == "Confirm and Carry Forward")
+                    {
+                        if (viewModel.IsDeclarationCheckedForSummary && (App.ICRStatus == "E0001" || App.ICRStatus == "E0013"))
+                        {
+                            await viewModel.SubmitClicked();
+                        }
+                  }
+                
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        public void setSumbmitbuttonVisibility()
+        {
+            if(viewModel.currentTab == VATReturnUpdatedUITabEnum.Summery)
+            {
+                viewModel.isBtnVisible = true;
             }
             else
             {
-                switch (viewModel.currentTab)
-                {
-                    case VATReturnUpdatedUITabEnum.Instrunction:
-                        Instrunctionsclicked();
-                        break;
-
-                    case VATReturnUpdatedUITabEnum.TaxpayerDetails:
-                        TaxpayerDetailsclicked();
-                        break;
-
-                    case VATReturnUpdatedUITabEnum.Sales:
-                        VatSalesclicked();
-                        break;
-
-                    case VATReturnUpdatedUITabEnum.Purchase:
-                        VatPurchaseclicked();
-                        break;
-
-                    case VATReturnUpdatedUITabEnum.TotalVat:
-                        VatTotalAmountclicked();
-                        break;
-
-                    case VATReturnUpdatedUITabEnum.Summery:
-                        Summaryclicked();
-                        //                        currentTab = VATReturnUpdatedUITabEnum.Summery;
-                        break;
-                }
+                viewModel.isBtnVisible = false;
             }
         }
 
         private void BackButtonClicked(object sender, EventArgs e)
         {
+            setSumbmitbuttonVisibility();
             if (viewModel.IsFifteenPercentChange == true)
             {
                 switch (viewModel.currentTab)
                 {
                     case VATReturnUpdatedUITabEnum.TaxpayerDetails:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+                        ManageButtonsName();
                         break;
                     case VATReturnUpdatedUITabEnum.VATReturns:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.TaxpayerDetails;
+                        ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Sales:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.VATReturns;
+                        ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Purchase:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
+                        ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.TotalVat:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.Purchase;
+                        ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Summery:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.TotalVat;
+                        ManageButtonsName();
                         break;
                 }
             }
@@ -7597,25 +7693,31 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     case VATReturnUpdatedUITabEnum.TaxpayerDetails:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+                        ManageButtonsName();
                         break;
                     case VATReturnUpdatedUITabEnum.VATReturns:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.TaxpayerDetails;
+                        ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Sales:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.TaxpayerDetails;
+                        ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Purchase:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
+                        ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.TotalVat:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.Purchase;
+                        ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Summery:
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.TotalVat;
+                        ManageButtonsName();
                         break;
                 }
             }
