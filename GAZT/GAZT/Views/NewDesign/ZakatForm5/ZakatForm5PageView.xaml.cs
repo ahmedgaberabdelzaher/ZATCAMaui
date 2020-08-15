@@ -27,10 +27,10 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.Fbguid = Fbguid;
             //viewModel.z = true;
             //viewModel.IsNoDataLabelVisible = false;
-  //          IntialiseAsync();
+            IntialiseAsync();
         }
 
-/*        protected override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             App.IsComingFromSleepMode = false;
@@ -48,7 +48,6 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                     viewModel.IsLoading = false;
             });
         }
-        */
         private async Task LoadData()
         {
             try
