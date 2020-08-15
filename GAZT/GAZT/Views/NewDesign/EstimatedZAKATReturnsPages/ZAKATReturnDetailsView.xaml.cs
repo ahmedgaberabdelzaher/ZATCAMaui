@@ -168,10 +168,46 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
 
 
-        //private void OnInfoClicked(object sender, EventArgs e)
-        //{
-        //    PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
-        //}
+        private void OnTotalVATSalesInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZTotalsalesinVATreturns));
+        }
+
+        private void OnAverageNumberOfLabourInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZAveragenumberoflaborsx6000SAR));
+        }
+
+        private void OnImportValueInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZImportsvaluex115));
+        }
+
+        private void OnImportFromPointOfSalesInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
+        }
+
+        private void OnContactFromETIMADSystemInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
+        }
+
+        private void OnExportInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
+        }
+
+        private void OnPurchaseInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPurchasesvaluex115));
+        }
+
+        private void OnCapitalAmountInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount));
+        }
+
 
     }
 }

@@ -163,6 +163,9 @@
       <DependentUpon>..\..\SyncFusionEnabledViews\VATRefundsListPageView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentInformationPopUp.xaml.cs">
+      <DependentUpon>AttachmentInformationPopUp.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="AppResources.resx">
