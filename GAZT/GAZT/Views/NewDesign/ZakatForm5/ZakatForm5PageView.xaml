@@ -199,7 +199,7 @@
                         </border:SfBorder>
                         <!--End of Registration Information-->
                         <StackLayout Orientation="Horizontal" Margin="0,0,0,15">
-                            <CheckBox IsChecked="True" IsEnabled="False"/>
+                                <CheckBox IsChecked="{Binding IsConditionRadio}" IsEnabled="False"/>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5IsCorrect}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     
@@ -265,7 +265,7 @@
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5AvgDailyIncome}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding AgvDlyIncome, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Text="{Binding AgvDlyIncome,{x:Static ResourceManager:AppResources.FORM5NoOutlet}, StringFormat='{0:F2}'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5OccupancyRate}" Style="{StaticResource ValueLabelGrey}"/>
@@ -503,7 +503,10 @@
                                                                 <custom:CustomLabel Text="{Binding IsImport}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ImporDetails}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+
+
+                                                            <StackLayout IsVisible="{Binding IsImportVisible}">
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ImporDetails}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -574,7 +577,7 @@
 
                                             </Grid>
 
-                                        </StackLayout>
+                                     
 
                                         <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="LightSkyBlue">
 
@@ -582,8 +585,11 @@
                                                             <custom:CustomLabel Text="{Binding ExtnProc, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold"/>
                                             
                                         </StackLayout>
+                                                            </StackLayout>
 
-                                        <StackLayout Padding="10" Spacing="15">
+                                                        </StackLayout>
+
+                                                        <StackLayout Padding="10" Spacing="15">
                                         <Grid ColumnSpacing="10">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="90*"/>
@@ -593,7 +599,7 @@
                                                                 <custom:CustomLabel Grid.Column="1" Text="{Binding IsProcurement}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
 
-
+                                                            <StackLayout IsVisible="{Binding IsProcurementVisible}">
                                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ProcurementDetails}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
@@ -666,7 +672,6 @@
                                             </Grid>
 
 
-                                        </StackLayout>
 
                                         <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="LightSkyBlue" Spacing="0">
 
@@ -674,7 +679,9 @@
                                                             <custom:CustomLabel Text="{Binding IntnProc, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold"/>
 
                                         </StackLayout>
-                                    </StackLayout>
+                                        </StackLayout>
+                                                        </StackLayout>
+                                                    </StackLayout>
                                 </border:SfBorder>
 
                                             </ViewCell>
@@ -1747,26 +1754,26 @@
 
                         <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                             <StackLayout Orientation="Horizontal" Padding="10">
-                                <buttons:SfButton x:Name="Cabsbtn" TextColor="{StaticResource Primary}" BackgroundColor="AliceBlue" CornerRadius="20" BorderWidth="1" BorderColor="AliceBlue" Text="{x:Static ResourceManager:AppResources.FORM5Cabs}" Clicked="Cabs_Clicked" />
-                                
-                                <buttons:SfButton x:Name="ProfessionalBtn" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5Professionals}" Clicked="Professional_Clicked" />
-                                
-                                <buttons:SfButton x:Name="SellBtn" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5SellAndBuy}" Clicked="Sell_Clicked" />
-                                <buttons:SfButton x:Name="LabourBtn" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5LabourOccupancy}" Clicked="Labour_Clicked" />
-                                <buttons:SfButton x:Name="IndustryBtn" Text="{x:Static ResourceManager:AppResources.FORM5Industry}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Industry_Clicked"/>
-                                <buttons:SfButton x:Name="ContractingBtn" Text="{x:Static ResourceManager:AppResources.FORM5ContractingCo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Contracting_Clicked"/>
-                                <buttons:SfButton x:Name="InvestBtn" Text="{x:Static ResourceManager:AppResources.FORM5InvestAndRealEst}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Invest_Clicked"/>
-                                
-                                <buttons:SfButton x:Name="Hotelsbtn" Text="{x:Static ResourceManager:AppResources.FORM5Hotels}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Hotels_Clicked"/>
-                                
-                                <buttons:SfButton x:Name="EducationBtn" Text="{x:Static ResourceManager:AppResources.FORM5EduAndHealth}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Education_Clicked"/>
-                                
-                                <buttons:SfButton x:Name="Poultrybtn" Text="{x:Static ResourceManager:AppResources.FORM5PoultryAndFish}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Poultry_Clicked"/>
-                                <buttons:SfButton x:Name="Carsbtn" Text="{x:Static ResourceManager:AppResources.FORM5Cars}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Cars_Clicked"/>
-                                
-                                <buttons:SfButton x:Name="Mineralsbtn" Text="{x:Static ResourceManager:AppResources.FORM5Minerals}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Minerals_Clicked"/>
-                                
-                                <buttons:SfButton x:Name="Additionalbtn" Text="{x:Static ResourceManager:AppResources.FORM5AdditionalInfo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Additional_Clicked"/>
+                                <buttons:SfButton x:Name="Cabsbtn" TextColor="{StaticResource Primary}" BackgroundColor="AliceBlue" CornerRadius="20" BorderWidth="1" BorderColor="AliceBlue" Text="{x:Static ResourceManager:AppResources.FORM5Cabs}" Clicked="Cabs_Clicked" IsVisible="{Binding IsCabBtn}" />
+
+                                <buttons:SfButton x:Name="ProfessionalBtn" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5Professionals}" Clicked="Professional_Clicked" IsVisible="{Binding IsProfessionBtn}"/>
+
+                                <buttons:SfButton x:Name="SellBtn" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5SellAndBuy}" Clicked="Sell_Clicked" IsVisible="{Binding IsSellBtn}"/>
+                                <buttons:SfButton x:Name="LabourBtn" BackgroundColor="White" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" TextColor="Black" CornerRadius="20" Text="{x:Static ResourceManager:AppResources.FORM5LabourOccupancy}" Clicked="Labour_Clicked" IsVisible="{Binding IsLabourBtn}"/>
+                                <buttons:SfButton x:Name="IndustryBtn" Text="{x:Static ResourceManager:AppResources.FORM5Industry}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Industry_Clicked" IsVisible="{Binding IsIndustryBtn}"/>
+                                <buttons:SfButton x:Name="ContractingBtn" Text="{x:Static ResourceManager:AppResources.FORM5ContractingCo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Contracting_Clicked" IsVisible="{Binding IsContractBtn}"/>
+                                <buttons:SfButton x:Name="InvestBtn" Text="{x:Static ResourceManager:AppResources.FORM5InvestAndRealEst}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Invest_Clicked" IsVisible="{Binding IsInvestBtn}"/>
+
+                                <buttons:SfButton x:Name="Hotelsbtn" Text="{x:Static ResourceManager:AppResources.FORM5Hotels}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Hotels_Clicked" IsVisible="{Binding IsHotelsBtn}"/>
+
+                                <buttons:SfButton x:Name="EducationBtn" Text="{x:Static ResourceManager:AppResources.FORM5EduAndHealth}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Education_Clicked" IsVisible="{Binding IsEduBtn}"/>
+
+                                <buttons:SfButton x:Name="Poultrybtn" Text="{x:Static ResourceManager:AppResources.FORM5PoultryAndFish}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Poultry_Clicked" IsVisible="{Binding IsPoultryBtn}"/>
+                                <buttons:SfButton x:Name="Carsbtn" Text="{x:Static ResourceManager:AppResources.FORM5Cars}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Cars_Clicked" IsVisible="{Binding IsCarBtn}"/>
+
+                                <buttons:SfButton x:Name="Mineralsbtn" Text="{x:Static ResourceManager:AppResources.FORM5Minerals}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Minerals_Clicked" IsVisible="{Binding IsMineralsBtn}"/>
+
+                                <buttons:SfButton x:Name="Additionalbtn" Text="{x:Static ResourceManager:AppResources.FORM5AdditionalInfo}" Style="{StaticResource BackgroundWhiteBtn}" Clicked="Additional_Clicked" IsVisible="{Binding IsAddBtn}"/>
 
 
                             </StackLayout>
@@ -1799,17 +1806,18 @@
                                     <StackLayout Padding="10" Spacing="10">
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="2378718978787" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Period}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="01 Jan 2018 - 31 Dec 2018" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
 
-     <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <StackLayout  x:Name="ZakatEstimationList" IsVisible="{Binding IsZakatEstListVisible}">
+                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" >
                                     <Expander>
                                         <Expander.Header>
                                             <StackLayout Orientation="Horizontal" Padding="10">
@@ -1826,7 +1834,7 @@
                                         </Expander.Header>
                                         <StackLayout>
                                         <!--Cabs-->
-                                        <StackLayout Padding="10" >
+                                        <StackLayout Padding="10" IsVisible="{Binding CabsSummaryIsVisible}">
                                             <BoxView Style="{StaticResource lineSeperator}"/>
 
                                             <StackLayout Spacing="15">
@@ -2470,6 +2478,7 @@
                                         </StackLayout>
                                     </Expander>
                                 </border:SfBorder>
+                            </StackLayout>
                         </StackLayout> 
                             </ScrollView>
 
