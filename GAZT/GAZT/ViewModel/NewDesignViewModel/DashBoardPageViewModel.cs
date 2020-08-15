@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private Color _homeIndicatorColor = Color.FromHex("#005e4b");
         private Color _menuIndicatorColor = Color.White;
         private Color _tabbarColor = Color.DarkGray;
-        private Color _stackMenuColor;
+        private Color _stackMenuColor=Color.White;
 
         private string _NextCommitmentsString = AppResources.ZZZZNextCommitments;
         private string _ReturnString = AppResources.NDReturns;
