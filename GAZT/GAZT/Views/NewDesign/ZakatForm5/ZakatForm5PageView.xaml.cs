@@ -108,8 +108,8 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
         private void Additional_Clicked(object sender, EventArgs e)
         {
             viewModel.isAdditionalVisible = true;
-            Additionalbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
- Cabsbtn.Style=SellBtn.Style=ProfessionalBtn.Style=LabourBtn.Style=IndustryBtn.Style=ContractingBtn.Style=Mineralsbtn.Style=InvestBtn.Style=Hotelsbtn.Style=EducationBtn.Style=Poultrybtn.Style=Carsbtn.Style= (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+ //           Additionalbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
+ //Cabsbtn.Style=SellBtn.Style=ProfessionalBtn.Style=LabourBtn.Style=IndustryBtn.Style=ContractingBtn.Style=Mineralsbtn.Style=InvestBtn.Style=Hotelsbtn.Style=EducationBtn.Style=Poultrybtn.Style=Carsbtn.Style= (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isMineralVisible = false;
             viewModel.isCarVisible = false;
@@ -123,15 +123,43 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.AliceBlue;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Green;
 
         }
 
         private void Minerals_Clicked(object sender, EventArgs e)
         {
             viewModel.isMineralVisible = true;
-            Mineralsbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
+           // Mineralsbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+          // Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isAdditionalVisible = false;
             viewModel.isCarVisible = false;
@@ -145,14 +173,43 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.AliceBlue;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Green;
+            Additionalbtn.TextColor = Color.Black;
         }
 
         private void Cars_Clicked(object sender, EventArgs e)
         {
             viewModel.isCarVisible = true;
-            Carsbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
+          //  Carsbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+         //   Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isMineralVisible = false;
             viewModel.isAdditionalVisible = false;
@@ -166,14 +223,42 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.AliceBlue;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Green;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
         }
 
         private void Poultry_Clicked(object sender, EventArgs e)
         {
             viewModel.isPoultryVisible = true;
-            Poultrybtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
+           // Poultrybtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = EducationBtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+          //  Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = EducationBtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isCarVisible = false;
             viewModel.isMineralVisible = false;
@@ -187,14 +272,42 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.AliceBlue;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Green;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
         }
 
         private void Education_Clicked(object sender, EventArgs e)
         {
             viewModel.isEducationVisible = true;
-            EducationBtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
+          //  EducationBtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+         //   Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isPoultryVisible = false;
             viewModel.isCarVisible = false;
@@ -208,14 +321,42 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.AliceBlue;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Green;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
         }
 
         private void Hotels_Clicked(object sender, EventArgs e)
         {
             viewModel.isHotelVisible = true;
-            Hotelsbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
+           // Hotelsbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+          //  Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isEducationVisible = false;
             viewModel.isPoultryVisible = false;
@@ -229,14 +370,42 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.AliceBlue;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Green;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
         }
 
         private void Invest_Clicked(object sender, EventArgs e)
         {
             viewModel.isRealEstateVisible = true;
-            InvestBtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
+          //  InvestBtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+           // Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isHotelVisible = false;
             viewModel.isEducationVisible = false;
@@ -250,14 +419,44 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.AliceBlue;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Green;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
         }
 
         private void Contracting_Clicked(object sender, EventArgs e)
         {
             viewModel.isContractingVisible = true;
-            ContractingBtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
+          //  ContractingBtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+          //  Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
 
             viewModel.isRealEstateVisible = false;
@@ -272,14 +471,42 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.AliceBlue;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Green;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
         }
 
         private void Industry_Clicked(object sender, EventArgs e)
         {
             viewModel.isIndustryVisible = true;
-            IndustryBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
+          //  IndustryBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+           // Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isContractingVisible = false;
             viewModel.isRealEstateVisible = false;
@@ -293,15 +520,43 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.AliceBlue;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Green;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
 
         }
 
         private void Labour_Clicked(object sender, EventArgs e)
         {
             viewModel.isLabourOccupancyVisible = true;
-            LabourBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
+           // LabourBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+//Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
 
             viewModel.isIndustryVisible = false;
@@ -316,14 +571,42 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isBuyVisible = false ;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.AliceBlue;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Green;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
         }
 
         private void Sell_Clicked(object sender, EventArgs e)
         {
             viewModel.isBuyVisible = true;
-            SellBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
+          //  SellBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = LabourBtn.Style = ProfessionalBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+          //  Cabsbtn.Style = LabourBtn.Style = ProfessionalBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isLabourOccupancyVisible = false;
             viewModel.isIndustryVisible = false;
@@ -337,14 +620,42 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isAdditionalVisible = false;
             viewModel.isProfessionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.AliceBlue;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Green;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
         }
 
         private void Professional_Clicked(object sender, EventArgs e)
         {
             viewModel.isProfessionalVisible = true;
-            ProfessionalBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
+           // ProfessionalBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
 
-            Cabsbtn.Style = SellBtn.Style = SellBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+          //  Cabsbtn.Style = SellBtn.Style = SellBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isBuyVisible = false;
             viewModel.isLabourOccupancyVisible = false;
@@ -358,14 +669,43 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isMineralVisible = false;
             viewModel.isAdditionalVisible = false;
             viewModel.isCabVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.White;
+            ProfessionalBtn.BackgroundColor = Color.AliceBlue;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+            Additionalbtn.BackgroundColor = Color.White;
+
+            Cabsbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = Color.Green;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
+
         }
 
         private void Cabs_Clicked(object sender, EventArgs e)
         {
             viewModel.isCabVisible = true;
-            Cabsbtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
+//Cabsbtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
 
-            ProfessionalBtn.Style = SellBtn.Style = SellBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+      //      ProfessionalBtn.Style = SellBtn.Style = SellBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isProfessionalVisible = false;
             viewModel.isBuyVisible = false;
@@ -379,6 +719,36 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isCarVisible = false;
             viewModel.isMineralVisible = false;
             viewModel.isAdditionalVisible = false;
+
+            Cabsbtn.BackgroundColor = Color.AliceBlue;
+            ProfessionalBtn.BackgroundColor = Color.White;
+            SellBtn.BackgroundColor = Color.White;
+            LabourBtn.BackgroundColor = Color.White;
+            IndustryBtn.BackgroundColor = Color.White;
+            ContractingBtn.BackgroundColor = Color.White;
+            InvestBtn.BackgroundColor = Color.White;
+            Hotelsbtn.BackgroundColor = Color.White;
+            EducationBtn.BackgroundColor = Color.White;
+            Poultrybtn.BackgroundColor = Color.White;
+            Carsbtn.BackgroundColor = Color.White;
+            Mineralsbtn.BackgroundColor = Color.White;
+           Additionalbtn.BackgroundColor = Color.White;
+
+
+            Cabsbtn.TextColor = Color.Green;
+            ProfessionalBtn.TextColor = Color.Black;
+            SellBtn.TextColor = Color.Black;
+            LabourBtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = Color.Black;
+            InvestBtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = Color.Black;
+            Carsbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = Color.Black;
+
         }
     }
 }
