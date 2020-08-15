@@ -87,13 +87,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 App.IsZakatLoadingFromMyReturns = true;
                                 _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
                             }
-                            else
+                            else if (_selectedListItem.Fbtyp.Equals("ZKTE"))
+                             {
+
+                            App.IsZakatLoadingFromMyReturns = true;
+                            _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
+
+                        }
+                        else
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                                });
-                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                            });
+                        }
                     }
 
                     if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))

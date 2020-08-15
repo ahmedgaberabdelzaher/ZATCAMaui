@@ -16,11 +16,14 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
     {
         ZakatForm5PageViewModel viewModel;
 
-        public ZakatForm5PageView()
+        public ZakatForm5PageView(string Fbguid)
         {
+
+
             InitializeComponent();
             viewModel = App.Locator.ZakatForm5PageView;
             this.BindingContext = viewModel;
+            viewModel.Fbguid = Fbguid;
             //viewModel.z = true;
             //viewModel.IsNoDataLabelVisible = false;
             IntialiseAsync();
