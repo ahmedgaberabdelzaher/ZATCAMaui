@@ -30,6 +30,14 @@
 </Grid.RowDefinitions>
 
         <StackLayout Spacing="0" Grid.Row="0">
+            <Image HorizontalOptions="End">
+                <Image.Source>
+                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
 
              <!--Start Of Objection Reason-->
                         <StackLayout>
@@ -125,15 +133,7 @@
                     <!--End of Attachment Visible-->
 
 
-            <Image>
-                <Image.Source>
-                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                </Image.Source>
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
-                </Image.GestureRecognizers>
-            </Image>
-        </StackLayout>
+                    </StackLayout>
 
      <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  IsVisible="{Binding IsLoading}" Margin="-20">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
