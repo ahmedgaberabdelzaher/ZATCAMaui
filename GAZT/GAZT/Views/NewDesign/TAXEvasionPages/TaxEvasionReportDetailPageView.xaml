@@ -90,7 +90,7 @@
                         <custom:CustomLabel Text="{Binding Status}" Style="{StaticResource CaptionLabelGrey}" TextColor="{Binding TextColorHighlight}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <custom:CustomLabel.Triggers>
                                 <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
-                                <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportStatusNew}">
+                                <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
                                     <Setter Property="TextColor" Value="{StaticResource Primary}"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Status}"  Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
@@ -100,7 +100,7 @@
                         </custom:CustomLabel>
                         <yummy:PancakeView.Triggers>
                             <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
-                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportStatusNew}">
+                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
                                 <Setter Property="BackgroundColor" Value="#E5EFED" />
                             </DataTrigger>
                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}"  Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
@@ -153,7 +153,7 @@
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="Reporter Location" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="Abi Ad Darda, Ar Rawd" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
