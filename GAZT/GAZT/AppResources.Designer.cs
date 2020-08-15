@@ -2541,6 +2541,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Facility Information.
+        /// </summary>
+        public static string NDFacilityInformation {
+            get {
+                return ResourceManager.GetString("NDFacilityInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Financial Year.
         /// </summary>
         public static string NDFinancialYear {
@@ -2699,6 +2708,15 @@ namespace EGAZT {
         public static string NDRefunds {
             get {
                 return ResourceManager.GetString("NDRefunds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reporter Information.
+        /// </summary>
+        public static string NDReporterInformation {
+            get {
+                return ResourceManager.GetString("NDReporterInformation", resourceCulture);
             }
         }
         
