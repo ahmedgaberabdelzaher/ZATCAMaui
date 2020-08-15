@@ -11,6 +11,7 @@
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              BackgroundImageSource="partials_background"
+
              x:Class="EGAZT.Views.NewDesign.ZAKATObjectionPages.ZakatObjectionSuccessfullPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
