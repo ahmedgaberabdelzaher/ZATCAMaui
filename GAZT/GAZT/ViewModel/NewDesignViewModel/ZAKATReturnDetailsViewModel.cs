@@ -874,7 +874,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     else
                     {
                         Device.BeginInvokeOnMainThread(async () => {
-                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail)
+                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                         });
                     }
                   

@@ -80,7 +80,7 @@
     <ContentPage.Content>
         <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.Summary}}">
             <StackLayout>
-                <Grid>
+                <Grid BindingContext="{Binding SelectedTaxEvasionListItem}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
