@@ -166,6 +166,9 @@
     <Compile Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentInformationPopUp.xaml.cs">
       <DependentUpon>AttachmentInformationPopUp.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewDesign\TAXEvasionPages\NewTaxEvasionFormSuccessPaveView.xaml.cs">
+      <DependentUpon>NewTaxEvasionFormSuccessPaveView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="AppResources.resx">

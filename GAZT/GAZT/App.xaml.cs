@@ -45,6 +45,7 @@ namespace EGAZT
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
         public static string TaxEvasionVerifyMobileNumberPage = "TaxEvasionVerifyMobileNumberPage";
+        public static string NewTaxEvasionFormSuccessPaveView = "NewTaxEvasionFormSuccessPaveView";
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
