@@ -29,7 +29,7 @@
             <yummy:PancakeView CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White" HeightRequest="400">
 
                 <Grid HorizontalOptions="FillAndExpand" Padding="0,0,0,10"
-                      VerticalOptions="FillAndExpand">
+                      VerticalOptions="FillAndExpand" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="75*"/>
                                                 <RowDefinition Height="25*"/>
@@ -73,7 +73,7 @@
                        
                     </StackLayout>
                          </ScrollView>
-                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="10">
+                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="10" BackgroundColor="White">
                      <buttons:SfButton Text="invoice" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnInvoiceClicked}"/>
                         <Label Text="Returns" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}">
                               <Label.GestureRecognizers>
