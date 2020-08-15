@@ -44,7 +44,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 if (App.IsArabic)
                 {
-                    // viewModel.TranslateText = AppResources.ZZZSetLanguageText;
+                    // viewModel.TranslateText = AppResources.ZZZSetLanguageText; ;
                     viewModel.TranslateText = AppResources.ZZZChangetoLanguage;
                 }
                 else
