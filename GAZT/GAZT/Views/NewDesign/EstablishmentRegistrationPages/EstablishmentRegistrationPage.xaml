@@ -7,7 +7,9 @@
              xmlns:models="clr-namespace:EGAZT.Models"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              ios:Page.UseSafeArea="true"
              NavigationPage.HasNavigationBar="False"
              x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage"
@@ -53,32 +55,72 @@
                 <Image Grid.Column="1" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
                 <Image Grid.Column="2" Source="close.png" BackgroundColor="Black"/>
             </Grid>
-            <commonView:PageIndicatorView Grid.Row="1" MarkSize="24" DotSize="12" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" MinimumHeightRequest="25" />
-            <ScrollView Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
-                <Grid>
-                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">
-                        <custom:CustomLabel Text="Registration/Taxpayer type" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
-                        <custom:CustomLabel Text="Complete the below details" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}"/>
-                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
-                        <custom:CustomLabel Text="Taxpayer Details" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
-                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
-                        <custom:CustomLabel Text="Outlets" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
-                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
-                        <custom:CustomLabel Text="Financial Details" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
-                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}">
-                        <custom:CustomLabel Text="Declaration" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
-                        <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
-                    </StackLayout>
-                </Grid>
-            </ScrollView>
+            <!--<commonView:PageIndicatorView Grid.Row="1" MarkSize="24" DotSize="12" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" MinimumHeightRequest="25" />-->
+            <Grid Grid.Row="2" VerticalOptions="Fill" ColumnSpacing="0" RowSpacing="0">
+                <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">
+                    <custom:CustomLabel Text="Registration/Taxpayer type" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
+                    <custom:CustomLabel Text="Complete the below details" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}"/>
+                    <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
+                    <custom:CustomLabel Text="Taxpayer Details" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
+                    <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
+                    <buttons:SfButton ShowIcon="True" Text="Add Outlet" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
+                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                        <custom:GAZTBorderlessEntry Placeholder="Search" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                        <inputLayout:SfTextInputLayout.TrailingView>
+                            <Image Source="ic_location_Outline.png"/>
+                        </inputLayout:SfTextInputLayout.TrailingView>
+                    </inputLayout:SfTextInputLayout>
+                    <CollectionView VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="0">
+                        <CollectionView.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>34569</x:String>
+                                <x:String>34569</x:String>
+                                <x:String>34569</x:String>
+                                <x:String>34569</x:String>
+                                <x:String>34569</x:String>
+                                <x:String>34569</x:String>
+                                <x:String>34569</x:String>
+                                <x:String>34569</x:String>
+                                <x:String>34569</x:String>
+                            </x:Array>
+                        </CollectionView.ItemsSource>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <border:SfBorder BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="0.7" HasShadow="True" ShadowColor="{StaticResource NeutralLightGrey}" CornerRadius="15">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" ColumnSpacing="10" Padding="12">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Outlet (34569)" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="Outlet (34569)" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,-12,0,0"/>
+                                        <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                    </Grid>
+                                </border:SfBorder>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
+                    <custom:CustomLabel Text="Financial Details" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
+                    <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}">
+                    <custom:CustomLabel Text="Declaration" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
+                    <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                </StackLayout>
+            </Grid>
             <buttons:SfButton Grid.Row="3" Style="{StaticResource PrimaryButtonStyle}" Text="Next" Command="{Binding OnNextButtonClick}" />
         </Grid>
     </ContentPage.Content>
