@@ -5196,4 +5196,56 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>التهرب الضريبي</value>
     <comment>Tax Evasion</comment>
   </data>
+  <data name="NDTaxEvasionReporterName" xml:space="preserve">
+    <value>إسم المبلغ</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionMobileNumber" xml:space="preserve">
+    <value>رقم التواصل</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionReporterLocation" xml:space="preserve">
+    <value>موقع البلاغ</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionFacilityName" xml:space="preserve">
+    <value>إسم المنشأة</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionTIN" xml:space="preserve">
+    <value>الرقم المميز</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionVATNumber" xml:space="preserve">
+    <value>الرقم الضريبي</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionRegion" xml:space="preserve">
+    <value>المنطقة</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionCity" xml:space="preserve">
+    <value>المدينة</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionDistrict" xml:space="preserve">
+    <value>الحي</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionStreet" xml:space="preserve">
+    <value>الشارع</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionReportType" xml:space="preserve">
+    <value>نوع البلاغ</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionReportDetails" xml:space="preserve">
+    <value>معلومات المبلغ</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="NDTaxEvasionAttachments" xml:space="preserve">
+    <value>المرفقات</value>
+    <comment>Tax Evasion</comment>
+  </data>
 </root>

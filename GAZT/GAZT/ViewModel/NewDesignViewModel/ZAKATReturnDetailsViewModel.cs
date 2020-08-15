@@ -661,9 +661,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                     });
                 }
-                else if (ZakatReturnDetails.d.Statusz.Equals(""))
+                else if (ZakatReturnDetails.d.Statusz.Equals("E0005"))// In Processing
                 {
-                    // SalesDetailsAndReleaseButtonVisibility = false;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.ZakatObjectionSuccessfullPageView, ZakatReturnDetail);
+                    });
                 }
                 else
                 {
@@ -874,7 +877,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     else
                     {
                         Device.BeginInvokeOnMainThread(async () => {
-                            _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                            _navigationService.NavigateTo(App.ZakatObjectionSuccessfullPageView, ZakatReturnDetail);
                         });
                     }
                   

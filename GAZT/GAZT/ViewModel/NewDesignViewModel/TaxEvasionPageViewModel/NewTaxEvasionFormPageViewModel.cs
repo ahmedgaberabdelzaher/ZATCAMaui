@@ -85,6 +85,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
         }
         //Form
+        private string _tName = string.Empty;
+        public string TName
+        {
+            get
+            {
+                return _tName;
+            }
+            set
+            {
+                try
+                {
+                    _tName = value;
+                    RaisePropertyChanged("TName");
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
         private string _datePick = DateTime.UtcNow.ToString("dd/MM/yyyy");
         public string DatePick
         {
@@ -129,6 +148,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 //    }
                 //}
                 RaisePropertyChanged("TxtTIN");
+            }
+        }
+        private string _rLocation = string.Empty;
+        public string RLocation
+        {
+            get
+            {
+                return _rLocation;
+            }
+            set
+            {
+                _rLocation = value;
+                RaisePropertyChanged("RLocation");
             }
         }
         private string _tFaciName = string.Empty;
@@ -230,6 +262,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 //if (!string.IsNullOrEmpty(_tFWType))
                 //{ _TaxEvasionReportTobeUsedToSubmit.WorkType = _tFWType; }
                 RaisePropertyChanged("TFWType");
+            }
+        }
+        private string _tReportDetail = string.Empty;
+        public string TReportDetail
+        {
+            get
+            {
+                return _tReportDetail;
+            }
+            set
+            {
+                _tReportDetail = value;
+                //if (_tReportDetail != null)
+                //{
+                //    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.ReportDetails != null)
+                //    {
+                //        _TaxEvasionReportTobeUsedToSubmit.ReportDetails = _tReportDetail;
+                //    }
+                //}
+                RaisePropertyChanged("TReportDetail");
             }
         }
         private string _txtReportDetailRegion = string.Empty;
@@ -635,7 +687,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             _dialogService = dialogService;
 
-            OnContinueClicked = new Command(() => navigateToNext());
+            OnContinueClicked = new Command(() => navigateToNextAsync());
             OnBackStepClicked = new Command(() => navigateToBack());
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
@@ -645,7 +697,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         #endregion
 
         #region Method
-        private void navigateToNext()
+        private async Task navigateToNextAsync()
         {
             switch (currentTab)
             {
@@ -661,6 +713,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     currentTab = NewTaxEvasionTabEnum.Summary;
                     PageTitle = "Summary";
                     BodyTitle = "Review the below information";
+                    break;
+                case NewTaxEvasionTabEnum.Summary:
+                    await SubmitCreatedReport();
                     break;
             }
         }
@@ -1051,7 +1106,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 //TaxEvasionReportTobeUsedToSubmit.CompanyEmail = TFaciEmail;
 
                 TaxEvasionReportTobeUsedToSubmit.Tin = TxtTIN;
-                //TaxEvasionReportTobeUsedToSubmit.Content = TReportDetail;
+                TaxEvasionReportTobeUsedToSubmit.Content = TReportDetail;
 
                 TaxEvasionReportTobeUsedToSubmit.Facilities = TFaciName;
                 TaxEvasionReportTobeUsedToSubmit.PhoneNumber = TMobNumber;
