@@ -343,7 +343,7 @@
     <value>Please update your App to the Latest Version to Continue.</value>
   </data>
   <data name="ZakatAmount" xml:space="preserve">
-    <value>Zakat amount</value>
+    <value>Zakat Amount</value>
   </data>
   <data name="ZakatBase" xml:space="preserve">
     <value>Zakat base</value>
@@ -749,7 +749,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Login attempt failed because of entering {0} wrong verification codes</value>
   </data>
   <data name="ZSadadInvoiceNumber" xml:space="preserve">
-    <value>SADAD invoice number</value>
+    <value>SADAD Invoice Number</value>
   </data>
   <data name="ZUserNameIncorrect" xml:space="preserve">
     <value>User name or password is incorrect</value>
@@ -5272,8 +5272,13 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Attachments</value>
     <comment>Tax Evasion</comment>
   </data>
-    
   <data name="ZReviewthebelowinformation" xml:space="preserve">
     <value>Review the below information</value>
+  </data>
+  <data name="NDFacilityInformation" xml:space="preserve">
+    <value>Facility Information</value>
+  </data>
+  <data name="NDReporterInformation" xml:space="preserve">
+    <value>Reporter Information</value>
   </data>
 </root>

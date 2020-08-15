@@ -5251,4 +5251,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ZReviewthebelowinformation" xml:space="preserve">
     <value>مراجعة البيانات التالية</value>
   </data>
+  <data name="NDFacilityInformation" xml:space="preserve">
+    <value>ملعومات المنشأة</value>
+  </data>
+  <data name="NDReporterInformation" xml:space="preserve">
+    <value>معلومات المبلغ</value>
+  </data>
 </root>
