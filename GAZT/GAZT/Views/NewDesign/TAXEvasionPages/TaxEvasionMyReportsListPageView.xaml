@@ -214,6 +214,9 @@
                                 <custom:CustomLabel Text="Tax Evasion Report" Style="{StaticResource ValueLabelPrimary}" HorizontalOptions="Start"/>
                             </StackLayout>
                         </border:SfBorder>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AddReport_Tapped"/>
+                        </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                 </StackLayout>
