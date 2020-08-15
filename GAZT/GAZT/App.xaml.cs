@@ -293,11 +293,11 @@ namespace EGAZT
 
             if (!hasKey)
             {
-                navigationPage = new CustomNavigation(new TaxEvasionMyReportsListPageView()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
             }
             else
             {
-                navigationPage = new CustomNavigation(new TaxEvasionMyReportsListPageView()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };

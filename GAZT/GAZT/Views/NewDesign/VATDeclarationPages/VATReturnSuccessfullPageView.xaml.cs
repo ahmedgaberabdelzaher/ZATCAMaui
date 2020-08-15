@@ -23,8 +23,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             InitializeComponent();
             viewModel = App.Locator.VATReturnSuccessfullPageView;
             this.BindingContext = viewModel;
-
-            if(vATDeclaration!=null)
+            SetLTR();
+            if (vATDeclaration!=null)
             {
                 viewModel.SadadNumber = string.Empty;
                 viewModel.IsSadadNumberVisible = false;
@@ -56,6 +56,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
 
+        }
+
+        private void SetLTR()
+        {
+
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
         }
         public async void RefreshForSadad()
         {

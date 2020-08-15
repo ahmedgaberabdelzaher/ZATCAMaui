@@ -6616,6 +6616,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Review the below information.
+        /// </summary>
+        public static string ZReviewthebelowinformation {
+            get {
+                return ResourceManager.GetString("ZReviewthebelowinformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SADAD Bill Details.
         /// </summary>
         public static string ZSADADBillDetails {
