@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"
-             BackgroundImageSource="partials_background"
-             xmlns:custom="clr-namespace:GAZT"
+             xmlns:GAZTBehaviors="clr-namespace:EGAZT"
              xmlns:local="clr-namespace:EGAZT;assembly=GAZT"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" 
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             BackgroundImageSource="partials_background"
              x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.ZAKATReturnDetailsView"
-             Title="Return Details"
+             Title= "{x:Static ResourceManager:AppResources.FORM5ReturnDetails}"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -46,7 +46,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
 
             <yummy:PancakeView Grid.Row="1"  Style="{StaticResource MainPage}">
                 <Grid x:Name="MainGrid">
@@ -56,127 +56,124 @@
                     </Grid.RowDefinitions>
 
                     <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
-                    <StackLayout>
+                        <StackLayout>
 
                             <StackLayout Orientation="Horizontal">
-                            <custom:CustomLabel Text="Zakat" Style="{StaticResource PageTitleBlack}" />
-                                <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
-                                <buttons:SfButton  HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="{Binding ICRStatusImage}"  ShowIcon="True" Text="{Binding ICRStatus}" BackgroundColor="{StaticResource NeutralLightGrey}" CornerRadius="20" TextColor="Gray" VerticalTextAlignment="Center" />
-                                </StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAKAT}" Style="{StaticResource PageTitleBlack}" />
+                                <!--<StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                    <buttons:SfButton  HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="{Binding ICRStatusImage}"  ShowIcon="True" Text="{Binding ICRStatus}" BackgroundColor="{StaticResource NeutralLightGrey}" CornerRadius="20" TextColor="Gray" VerticalTextAlignment="Center" />
+                                </StackLayout>-->
                             </StackLayout>
                             <!--Start of Return Details-->
-                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                    <StackLayout>
+                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
-                                       
-                                            <Image Source="ic_vat_return">
-                                            </Image>
-                                       
-
+                                        <Image Source="ic_vat_return"> </Image>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
-                        </StackLayout>
+                                    </StackLayout>
 
-                        <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                        <StackLayout Padding="10" Spacing="10" BindingContext="{Binding ZakatReturnDetail}">
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static local:AppResources.FiscalYear}" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding Persl}" Style="{StaticResource HorizontalEnd}" />
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static local:AppResources.FinancialPeriodFrom}" Style="{StaticResource ValueLabelGrey}"/>
+                                    <StackLayout Padding="10" Spacing="10" BindingContext="{Binding ZakatReturnDetail}">
+                                        <StackLayout Orientation="Horizontal">
+                                            <custom:CustomLabel Text="{x:Static local:AppResources.FiscalYear}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <custom:CustomLabel Text="{Binding Persl}" Style="{StaticResource HorizontalEnd}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <custom:CustomLabel Text="{x:Static local:AppResources.FinancialPeriodFrom}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.Abrzu}" Style="{StaticResource HorizontalEnd}" />
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource HorizontalEnd}" WidthRequest="140" />
-                            </StackLayout>
-                        </StackLayout>
-                    </StackLayout>
-                </border:SfBorder>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <custom:CustomLabel Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource HorizontalEnd}" WidthRequest="140" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </border:SfBorder>
 
-                <!--End of Return Details-->
+                            <!--End of Return Details-->
 
-                <!--Start of Zakat Calculation-->
-                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                    <StackLayout>
+                            <!--Start of Zakat Calculation-->
+                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
                                         <Image Source="zakat_manageTax">
-                            </Image>
-                            <custom:CustomLabel Text="Zakat Calculation" Style="{StaticResource SectionTitleBlack}"/>
-                        </StackLayout>
+                                        </Image>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatCalculation}" Style="{StaticResource SectionTitleBlack}"/>
+                                    </StackLayout>
 
-                        <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                                    <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                        <StackLayout Padding="10" Spacing="10" BindingContext="{Binding ZakatReturnDetail}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding Estsl}" />
-                                            <Span Text=" "/>
-                                            <Span Text="{x:Static local:AppResources.ZSAR}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </custom:CustomLabel>
+                                    <StackLayout Padding="10" Spacing="10" BindingContext="{Binding ZakatReturnDetail}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Estsl}" />
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </custom:CustomLabel>
 
-                            </Grid>
-                            <Grid>
-                                <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.Capital}" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
+                                        </Grid>
+                                        <Grid>
+                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.Capital}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
                                                         <Span Text="{Binding Cpamt}" />
-                                            <Span Text=" "/>
-                                            <Span Text="{x:Static local:AppResources.ZSAR}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </custom:CustomLabel>
-                            </Grid>
-                            <Grid>
-                                <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.ZakatBase}" Style="{StaticResource ValueLabelGrey}"/>
-                                <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding Zbamt}" />
-                                            <Span Text=" "/>
-                                            <Span Text="{x:Static local:AppResources.ZSAR}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </custom:CustomLabel>
-                            </Grid>
-                        </StackLayout>
-                    </StackLayout>
-                </border:SfBorder>
-                <!--End of Zakat Calculation-->
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </custom:CustomLabel>
+                                        </Grid>
+                                        <Grid>
+                                            <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.ZakatBase}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Zbamt}" />
+                                                        <Span Text=" "/>
+                                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </custom:CustomLabel>
+                                        </Grid>
+                                    </StackLayout>
+                                </StackLayout>
+                            </border:SfBorder>
+                            <!--End of Zakat Calculation-->
 
-                        <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="AliceBlue" HasShadow="False" Padding="10">
-                            <StackLayout Orientation="Horizontal" BindingContext="{Binding ZakatReturnDetail}" >
+                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="AliceBlue" HasShadow="False" Padding="10">
+                                <StackLayout Orientation="Horizontal" BindingContext="{Binding ZakatReturnDetail}" >
                                     <custom:CustomLabel Text="{x:Static local:AppResources.ZakatAmount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center"/>
                                     <custom:CustomLabel  Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                    <FormattedString>
-                                      <Span Text="{Binding Zkamt}"/>
-                                          <Span Text=" "/>
-                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                                </custom:CustomLabel>
-                            </StackLayout>
-                        </border:SfBorder>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Zkamt}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{x:Static local:AppResources.ZSAR}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+                                </StackLayout>
+                            </border:SfBorder>
 
 
-                        <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
+                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
                                         <Image Source="zakat_details" >
-                                    </Image>
-                                    <custom:CustomLabel Text="Sales Details" Style="{StaticResource SectionTitleBlack}"/><!--{ Binding IsEditTextVisible}-->
+                                        </Image>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSalesDetails}" Style="{StaticResource SectionTitleBlack}"/>
+                                        <!--{ Binding IsEditTextVisible}-->
 
                                         <custom:CustomLabel IsVisible="{Binding IsEditTextVisible}" HorizontalOptions="EndAndExpand" Text="Edit" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
                                             <custom:CustomLabel.GestureRecognizers>
@@ -184,69 +181,9 @@
                                             </custom:CustomLabel.GestureRecognizers>
                                         </custom:CustomLabel>
                                     </StackLayout>
-                                <BoxView Style="{StaticResource lineSeperator}"/>
+                                    <BoxView Style="{StaticResource lineSeperator}"/>
 
-                                <StackLayout Spacing="0" Padding="10,10,10,0"  BindingContext="{Binding ZakatReturnDetail}">
-                                    <Grid RowSpacing="0">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                             <RowDefinition Height="auto"/>
-                                             <RowDefinition Height="auto"/>
-
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                            <custom:CustomLabel Text="Total VAT Sales" Style="{StaticResource ValueLabelBlack}"/>
-
-                                            <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-                                                <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnTotalVATSalesInfoClicked"/>
-                                                </Image.GestureRecognizers>
-                                            </Image>
-                                        </StackLayout>
-                                         <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
-
-                                        <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
-
-                                                <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                <custom:GAZTBorderlessEntry  Text="{Binding TvtslI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}">
-                                                </custom:GAZTBorderlessEntry>
-
-                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
-                                                </inputLayout:SfTextInputLayout.TrailingView>
-
-                                            </inputLayout:SfTextInputLayout>
-
-                                            <custom:CustomLabel Text="{Binding TvtslI}" Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
-
-                                        </StackLayout>
-                                            <custom:CustomLabel Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0"></custom:CustomLabel>
-
-                                        <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
-                                                <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                <custom:GAZTBorderlessEntry  Text="{Binding TvtslE}"   IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
-                                                </custom:GAZTBorderlessEntry>
-
-                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                    <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
-                                                </inputLayout:SfTextInputLayout.TrailingView>
-
-                                            </inputLayout:SfTextInputLayout>
-                                            <custom:CustomLabel Text="{Binding TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
-                                        </StackLayout>
-
-                                        <Image Grid.Row="3" Grid.Column="1"  Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TotalVATSalesEditImageSource}"  HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
-                                            <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnTotalVATSaleEditImageClicked"/>
-                    </Image.GestureRecognizers>
-                                            </Image>
-                                    </Grid>
-                                    <!---->
+                                    <StackLayout Spacing="0" Padding="10,10,10,0"  BindingContext="{Binding ZakatReturnDetail}">
                                         <Grid RowSpacing="0">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
@@ -260,25 +197,93 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                                <custom:CustomLabel Text="Average Number of Labour" Style="{StaticResource ValueLabelBlack}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTotalVATSales}" Style="{StaticResource ValueLabelBlack}"/>
+                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnTotalVATSalesInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </StackLayout>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+
+                                            <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding TvtslI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}">
+
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+
+                                                <custom:CustomLabel Text="{Binding TvtslI}" Grid.Row="1" Grid.Column="1"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+
+                                            </StackLayout>
+                                            <custom:CustomLabel Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0"></custom:CustomLabel>
+
+                                            <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
+                                                <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding TvtslE}"   IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    </custom:GAZTBorderlessEntry>
+
+                                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
+                                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomLabel Text="{Binding TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                            </StackLayout>
+
+                                            <Image Grid.Row="3" Grid.Column="1"  Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.TotalVATSalesEditImageSource}"  HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnTotalVATSaleEditImageClicked"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </Grid>
+                                        <!---->
+                                        <Grid RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZAveragenumberoflabour}" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
- <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnAverageNumberOfLabourInfoClicked"/>
-                                                </Image.GestureRecognizers>
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnAverageNumberOfLabourInfoClicked"/>
+                                                    </Image.GestureRecognizers>
                                                 </Image>
                                             </StackLayout>
 
-                                              <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
-                            
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding LabnoI}" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}">
+
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="14" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
@@ -291,10 +296,11 @@
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding LabnoE}"   IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
+
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
@@ -302,9 +308,9 @@
                                             </StackLayout>
 
                                             <Image Grid.Row="3" Grid.Column="1" Source= "{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.AverageNumberOfLabourEditImageSource}" HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
-                                            <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnAverageNumberLabourEditImageClicked"/>
-                    </Image.GestureRecognizers>
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnAverageNumberLabourEditImageClicked"/>
+                                                </Image.GestureRecognizers>
                                             </Image>
                                         </Grid>
 
@@ -312,7 +318,7 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
-                                               <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
 
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
@@ -321,25 +327,30 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                                <custom:CustomLabel Text="Import Value" Style="{StaticResource ValueLabelBlack}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZImportsvalue}" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
                                                     <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnImportValueInfoClicked"/>
-                                                </Image.GestureRecognizers>
- 
+                                                        <TapGestureRecognizer Tapped="OnImportValueInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+
                                                 </Image>
                                             </StackLayout>
-                                      <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding ImpvalI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}">
+
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
@@ -355,16 +366,16 @@
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel Text="{Binding ImpvalE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
-                                             <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImportValueEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
-                                            <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnImportValueEditImageClicked"/>
-                    </Image.GestureRecognizers>
+                                            <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImportValueEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnImportValueEditImageClicked"/>
+                                                </Image.GestureRecognizers>
                                             </Image>
                                         </Grid>
 
@@ -372,7 +383,7 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
-                                                 <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
 
                                             </Grid.RowDefinitions>
@@ -381,26 +392,31 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                                <custom:CustomLabel Text="Impose from point of Sales" Style="{StaticResource ValueLabelBlack}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZSalesformpointofsales}" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
- <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnImportFromPointOfSalesInfoClicked"/>
-                                                </Image.GestureRecognizers>
- 
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnImportFromPointOfSalesInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+
                                                 </Image>
                                             </StackLayout>
 
-                                  <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding PtoslI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}">
+
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
@@ -410,22 +426,22 @@
                                             </StackLayout>
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
-                                                
+
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding PtoslI}"  IsReadOnly="True"   Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel Text="{Binding PtoslI}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
-                                             <Image Grid.Row="3" Grid.Column="1"  Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImportFromPointOfSalesEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
-                                            <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnImportFromPointOfSalesEditImageClicked"/>
-                    </Image.GestureRecognizers>
+                                            <Image Grid.Row="3" Grid.Column="1"  Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImportFromPointOfSalesEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnImportFromPointOfSalesEditImageClicked"/>
+                                                </Image.GestureRecognizers>
                                             </Image>
                                         </Grid>
 
@@ -433,33 +449,38 @@
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
-                                                 <RowDefinition Height="auto"/>
-                                                  <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                                <custom:CustomLabel Text="Contact from ETIMAD System" Style="{StaticResource ValueLabelBlack}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZContractsformETIMADsystem}" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-<Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnContactFromETIMADSystemInfoClicked"/>
-                                                </Image.GestureRecognizers>
- 
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnContactFromETIMADSystemInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+
                                                 </Image>
                                             </StackLayout>
 
-                                            <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding EtimadI}"   IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}">
+
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
@@ -469,23 +490,23 @@
                                             </StackLayout>
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
-                                                
+
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding EtimadI}"    IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel Text="{Binding EtimadI}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
                                             <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ContactFromETIMADSystemEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
-                                            <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnContactFromETIMADSystemEditImageClicked"/>
-                    </Image.GestureRecognizers>
-                                         </Image>       
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnContactFromETIMADSystemEditImageClicked"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
                                         </Grid>
 
                                         <Grid RowSpacing="0">
@@ -493,23 +514,23 @@
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
-                                                 <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                                <custom:CustomLabel Text="Export Value" Style="{StaticResource ValueLabelBlack}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZExportsvalue}" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
                                                     <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnExportInfoClicked"/>
-                                                </Image.GestureRecognizers>
- 
+                                                        <TapGestureRecognizer Tapped="OnExportInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+
                                                 </Image>
                                             </StackLayout>
-                                            <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
@@ -517,7 +538,7 @@
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
@@ -527,54 +548,65 @@
                                             </StackLayout>
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
-                                               
+
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding ExamtI}"      Style="{StaticResource InputTableEntryLayoutStyle}">
+
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel Text="{Binding ExamtI}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
                                             <Image Grid.Row="3" Grid.Column="1" Source= "{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ExportValueEditImageSource}"  HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
-                                            <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnExportValueEditImageClicked"/>
-                    </Image.GestureRecognizers>
-                                         </Image>       
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnExportValueEditImageClicked"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
                                         </Grid>
 
                                         <Grid RowSpacing="0">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
-                                                 <RowDefinition Height="auto"/>
-                                                   <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                                <custom:CustomLabel Text="Purchase Value" Style="{StaticResource ValueLabelBlack}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZPurchasevalue}" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-                                                     <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnPurchaseInfoClicked"/>
-                                                </Image.GestureRecognizers>
- 
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnPurchaseInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+
                                                 </Image>
                                             </StackLayout>
-                                            <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding PramtI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}">
+
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
@@ -584,54 +616,58 @@
                                             </StackLayout>
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
-                                                
+
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding PramtE}"  IsReadOnly="True"   Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel Text="{Binding PramtE}"   IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
-                                             <Image Grid.Row="3" Grid.Column="1" Source= "{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.PurchaseValueEditImageSource}" HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
-                                            <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnPurchaseValueEditImageClicked"/>
-                    </Image.GestureRecognizers>
-                                         </Image>    
+                                            <Image Grid.Row="3" Grid.Column="1" Source= "{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.PurchaseValueEditImageSource}" HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnPurchaseValueEditImageClicked"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
                                         </Grid>
 
                                         <Grid RowSpacing="0">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
-                                                 <RowDefinition Height="auto"/>
-                                                 <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                                <custom:CustomLabel Text="Capital Amount" Style="{StaticResource ValueLabelBlack}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZCapitalamount}" Style="{StaticResource ValueLabelBlack}"/>
 
                                                 <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
-                                                     <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnCapitalAmountInfoClicked"/>
-                                                </Image.GestureRecognizers>
- 
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnCapitalAmountInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+
                                                 </Image>
                                             </StackLayout>
-                                            <Label Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></Label>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding Cpamt}"     Style="{StaticResource InputTableEntryLayoutStyle}">
 
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+
                                                     </custom:GAZTBorderlessEntry>
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
@@ -646,56 +682,56 @@
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Label Text="SAR"  Style="{StaticResource InputTableLableStyleForSAR}"></Label>
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSAR}"  Style="{StaticResource InputTableLableStyleForSAR}"></custom:CustomLabel>
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
                                                 <custom:CustomLabel Text="{Binding Cpamt}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
-                                             <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.CapitalAmountEditImageSource}" HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
-                                            <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnCapitalAmountEditImageClicked"/>
-                    </Image.GestureRecognizers>
-                                         </Image>    
+                                            <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.CapitalAmountEditImageSource}" HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnCapitalAmountEditImageClicked"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
                                         </Grid>
 
 
                                         <!---->
-                                </StackLayout>
+                                    </StackLayout>
                                     <StackLayout BackgroundColor="AliceBlue" Padding="10" BindingContext="{Binding ZakatReturnDetail}">
-                                        <custom:CustomLabel Text="Estimated Sales for the Fiscal Year" Style="{StaticResource BodyLabelBlack}"/>
-                                        <custom:CustomLabel Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}"/>                                        
-                                    </StackLayout>                                
-                                
-                            </StackLayout>
-                        </border:SfBorder>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource BodyLabelBlack}"/>
+                                        <custom:CustomLabel Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}"/>
+                                    </StackLayout>
 
-                    </StackLayout>
-                </ScrollView>
+                                </StackLayout>
+                            </border:SfBorder>
+
+                        </StackLayout>
+                    </ScrollView>
 
                     <StackLayout Grid.Row="1" BackgroundColor="White" VerticalOptions="EndAndExpand" Padding="0,10,0,10">
                         <buttons:SfButton Text="{Binding ReleaseOrBillDetailsButtonText}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnReleaseBillsButtonClicked"/>
-                        <buttons:SfButton x:Name="btnprimary" Text="Submit" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnSubmitClicked}" IsVisible="{Binding SetSubmitButtonVisibility}" Margin="0,10,0,0"/>
-                        <buttons:SfButton  Text="Confirm and Pay" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnConfirmClicked" IsVisible="{Binding SetConfirmButtonVisibility}" Margin="0,10,0,0"/>
+                        <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.Submit}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnSubmitClicked}" IsVisible="{Binding SetSubmitButtonVisibility}" Margin="0,10,0,0"/>
+                        <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.Confirm}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnConfirmClicked" IsVisible="{Binding SetConfirmButtonVisibility}" Margin="0,10,0,0"/>
 
-                        <Label Margin="0,10,0,0" Text="Change to Account Basis"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ChangeFromEstimateTAccountringBasisButtonVisibility}" >
-                              <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnChangeFromEstimateToAccountingBasisButtonClicked}"/>
-                    </Label.GestureRecognizers>
-                        </Label>
+                        <custom:CustomLabel Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.NDChangeToAccountBasis}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ChangeFromEstimateTAccountringBasisButtonVisibility}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnChangeFromEstimateToAccountingBasisButtonClicked}"/>
+                            </Label.GestureRecognizers>
+                        </custom:CustomLabel>
 
-                                                <Label Margin="0,10,0,0" Text="Confirm and Generate SADAD Bill"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ConfirmAndGenerateSADADBillLabelVisibility}">
+                        <custom:CustomLabel Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ConfirmAndGenerateSADADBillLabelVisibility}">
 
-                        <!--<Label.GestureRecognizers>
+                            <!--<Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnChangeFromEstimateToAccountingBasisButtonClicked}"/>
                     </Label.GestureRecognizers>-->
-                        </Label>
+                        </custom:CustomLabel>
 
                     </StackLayout>
                 </Grid>
             </yummy:PancakeView>
-            
-            
+
+
             <Grid Padding="15,10,15,10" Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -706,7 +742,7 @@
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="1" Grid.Row="0"   Text="Return Details" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
 
                 <StackLayout Grid.Row="0" Grid.Column="0">
                     <Image IsVisible="{Binding IsBackBtnVisible}" Source="arrowLeftwhite" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
@@ -728,7 +764,7 @@
 
             </Grid>
 
-            
+
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>

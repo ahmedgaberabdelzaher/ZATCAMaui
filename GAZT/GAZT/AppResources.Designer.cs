@@ -2460,11 +2460,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change to Account basis.
+        /// </summary>
+        public static string NDChangeToAccountBasis {
+            get {
+                return ResourceManager.GetString("NDChangeToAccountBasis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Commitments.
         /// </summary>
         public static string NDCommitments {
             get {
                 return ResourceManager.GetString("NDCommitments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm and Generate SADAD Bill.
+        /// </summary>
+        public static string NDConfirmAndGenerateSADADBill {
+            get {
+                return ResourceManager.GetString("NDConfirmAndGenerateSADADBill", resourceCulture);
             }
         }
         
@@ -3005,6 +3023,60 @@ namespace EGAZT {
         public static string NDVATZAKATReturnSubmission {
             get {
                 return ResourceManager.GetString("NDVATZAKATReturnSubmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write Your Objection Reason.
+        /// </summary>
+        public static string NDWriteYourObjectionReason {
+            get {
+                return ResourceManager.GetString("NDWriteYourObjectionReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat Return is submitted successfully.
+        /// </summary>
+        public static string NDYourZakatReturnIsSubmittedSuccessfully {
+            get {
+                return ResourceManager.GetString("NDYourZakatReturnIsSubmittedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Calculation.
+        /// </summary>
+        public static string NDZakatCalculation {
+            get {
+                return ResourceManager.GetString("NDZakatCalculation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Objection.
+        /// </summary>
+        public static string NDZakatObjection {
+            get {
+                return ResourceManager.GetString("NDZakatObjection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat Objection is submitted successfully.
+        /// </summary>
+        public static string NDZakatObjectionIsSubmittedSuccessfully {
+            get {
+                return ResourceManager.GetString("NDZakatObjectionIsSubmittedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Return.
+        /// </summary>
+        public static string NDZakatReturn {
+            get {
+                return ResourceManager.GetString("NDZakatReturn", resourceCulture);
             }
         }
         
@@ -5561,7 +5633,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zakat amount.
+        ///   Looks up a localized string similar to Zakat Amount.
         /// </summary>
         public static string ZakatAmount {
             get {
@@ -6787,7 +6859,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SADAD invoice number.
+        ///   Looks up a localized string similar to SADAD Invoice Number.
         /// </summary>
         public static string ZSadadInvoiceNumber {
             get {

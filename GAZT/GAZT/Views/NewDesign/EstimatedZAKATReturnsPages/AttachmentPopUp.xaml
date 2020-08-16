@@ -12,6 +12,7 @@
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" 
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+                  xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
 >
     <pages:PopupPage.Resources>
@@ -24,58 +25,58 @@
     </pages:PopupPage.Resources>
     <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" HeightRequest="400">
 
-<Grid>
-<Grid.RowDefinitions>
-<RowDefinition Height="100*"/>
-</Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
 
-        <StackLayout Spacing="0" Grid.Row="0">
-            <Image HorizontalOptions="End">
-                <Image.Source>
-                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                </Image.Source>
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
-                </Image.GestureRecognizers>
-            </Image>
+            <StackLayout Spacing="0" Grid.Row="0">
+                <Image HorizontalOptions="End">
+                    <Image.Source>
+                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
 
-             <!--Start Of Objection Reason-->
-                        <StackLayout>
-                        <custom:CustomLabel Text="Write Your Objection Reason" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                <custom:GAZTBorderlessEntry Text="{Binding ObjectionReason}"  Style="{StaticResource InputTableEntryLayoutStyle}">
-                                </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-                        </StackLayout>
-                    <!--End Of Objection Reason-->
+                <!--Start Of Objection Reason-->
+                <StackLayout>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDWriteYourObjectionReason}" Style="{StaticResource CaptionLabelGrey}"/>
+                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
+                        <custom:GAZTBorderlessEntry Text="{Binding ObjectionReason}"  Style="{StaticResource InputTableEntryLayoutStyle}">
+                        </custom:GAZTBorderlessEntry>
+                    </inputLayout:SfTextInputLayout>
+                </StackLayout>
+                <!--End Of Objection Reason-->
 
-              <!--Start of Attachment Visible-->
-                        <StackLayout >
-                        <custom:CustomLabel Margin="0,0,0,0" Text="Attachment" Style="{StaticResource CaptionLabelGrey}"/>
-                          
-                            <!--<custom:CustomLabel Margin="0,-5,0,0" Text="20MB max" Style="{StaticResource CaptionLabelGrey}"/>-->
+                <!--Start of Attachment Visible-->
+                <StackLayout >
+                    <custom:CustomLabel Margin="0,0,0,0" Text="Attachment" Style="{StaticResource CaptionLabelGrey}"/>
 
-                             <border:SfBorder   Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}">
-                                <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                                    <Label Text="Please Upload your docuument" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                    <!--<custom:CustomLabel Margin="0,-5,0,0" Text="20MB max" Style="{StaticResource CaptionLabelGrey}"/>-->
 
-                                    <Image HorizontalOptions="EndAndExpand" Rotation="90">
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                    <border:SfBorder   Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}">
+                        <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
+                            <Label Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentInputPlaceholder}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+
+                            <Image HorizontalOptions="EndAndExpand" Rotation="90">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                        </Image.Source>
-                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnAttachmentClicked"/>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                     <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnAttachmentClicked"/>
-                                        </StackLayout.GestureRecognizers>
-                                </StackLayout>
-                            </border:SfBorder>
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnAttachmentClicked"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnAttachmentClicked"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </border:SfBorder>
 
-                                <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
- <ListView  x:Name="Attachmentlist" 
+                    <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
+                        <ListView  x:Name="Attachmentlist" 
            ItemsSource="{Binding ZakatReturnAttachmentsList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -85,57 +86,57 @@
                 BackgroundColor="White"
             SeparatorVisibility="None"
             >
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
-                                                <border:SfBorder  Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <border:SfBorder  Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}" >
 
-                                                    <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
-                                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="Red" Size="25"
+                                            <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
+                                                <Image>
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="Red" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.FilePdf}"/>
-                                        </Image.Source>
-                                       
-                                    </Image>
+                                                    </Image.Source>
 
-                                    <Label Text="File1.pdf" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-                                    
-                                        <Image HorizontalOptions="EndAndExpand">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                                </Image>
+
+                                                <Label Text="File1.pdf" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+
+                                                <Image HorizontalOptions="EndAndExpand">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                                            </Image.Source>
-                                            <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnDeleteAttachmentClickedTapped"/>
-                                        </Image.GestureRecognizers>
-                                        </Image>
+                                                    </Image.Source>
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnDeleteAttachmentClickedTapped"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
 
-                                    
-</StackLayout>
 
-</border:SfBorder>
-                                            </ViewCell>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                         </ListView>
-                                  
-                                </StackLayout>
-                            <!--<custom:CustomLabel Margin="0,-5,0,0" Text="50MB max" Style="{StaticResource CaptionLabelGrey}"/>-->
-                            
-                            <!--Footer Section Starts-->
-                     <StackLayout Grid.Row="2" BackgroundColor="White">
-                        <buttons:SfButton Text="Save" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
-                     </StackLayout>
-                            <!--Footer Section Ends-->
-                        </StackLayout>
-                  
-                    <!--End of Attachment Visible-->
+                                            </StackLayout>
 
+                                        </border:SfBorder>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
 
                     </StackLayout>
+                    <!--<custom:CustomLabel Margin="0,-5,0,0" Text="50MB max" Style="{StaticResource CaptionLabelGrey}"/>-->
 
-     <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  IsVisible="{Binding IsLoading}" Margin="-20">
+                    <!--Footer Section Starts-->
+                    <StackLayout Grid.Row="2" BackgroundColor="White">
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.Save}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnCloseTapped" />
+                    </StackLayout>
+                    <!--Footer Section Ends-->
+                </StackLayout>
+
+                <!--End of Attachment Visible-->
+
+
+            </StackLayout>
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  IsVisible="{Binding IsLoading}" Margin="-20">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -151,12 +152,11 @@
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                         TextColor="#006450"/>
-                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
             </Grid>
 
 
-    </Grid>
+        </Grid>
     </yummy:PancakeView>
 </pages:PopupPage>

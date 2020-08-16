@@ -17,18 +17,18 @@
     <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White">
 
         <StackLayout VerticalOptions="Center">
-             <Image HorizontalOptions="EndAndExpand">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+            <Image HorizontalOptions="EndAndExpand">
+                <Image.Source>
+                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                                            </Image.Source>
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnCloseTapped"/>
-                                        </Image.GestureRecognizers>
-                                        </Image>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
 
-           <Label x:Name="InfromatationText" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelGrey}"></Label>
+            <Label x:Name="InfromatationText" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelGrey}"></Label>
 
         </StackLayout>
-</yummy:PancakeView>
+    </yummy:PancakeView>
 </pages:PopupPage>

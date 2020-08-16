@@ -5281,4 +5281,28 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDReporterInformation" xml:space="preserve">
     <value>Reporter Information</value>
   </data>
+  <data name="NDChangeToAccountBasis" xml:space="preserve">
+    <value>Change to Account basis</value>
+  </data>
+  <data name="NDConfirmAndGenerateSADADBill" xml:space="preserve">
+    <value>Confirm and Generate SADAD Bill</value>
+  </data>
+  <data name="NDWriteYourObjectionReason" xml:space="preserve">
+    <value>Write Your Objection Reason</value>
+  </data>
+  <data name="NDYourZakatReturnIsSubmittedSuccessfully" xml:space="preserve">
+    <value>Your Zakat Return is submitted successfully</value>
+  </data>
+  <data name="NDZakatCalculation" xml:space="preserve">
+    <value>Zakat Calculation</value>
+  </data>
+  <data name="NDZakatObjection" xml:space="preserve">
+    <value>Zakat Objection</value>
+  </data>
+  <data name="NDZakatObjectionIsSubmittedSuccessfully" xml:space="preserve">
+    <value>Your Zakat Objection is submitted successfully</value>
+  </data>
+  <data name="NDZakatReturn" xml:space="preserve">
+    <value>Zakat Return</value>
+  </data>
 </root>

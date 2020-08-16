@@ -19,11 +19,13 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             viewModel = App.Locator.ZakatReturnDetailsSuccessfullPageView;
-            Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
+          
+            // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetLTR();
+
             viewModel.OnPageLoad(ZakatReturnDetail);
         }
 
@@ -37,11 +39,16 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-            Navigation.RemovePage(pg);
+            //Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+            //Navigation.RemovePage(pg);
         }
         private void OnReturnClicked(object sender, EventArgs e)
         {
+            if (Navigation.NavigationStack.Count > 0)
+            {
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(pg);
+            }
             viewModel._navigationService.GoBack();
         }
     }
