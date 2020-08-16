@@ -188,7 +188,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGreatervalueofEstimatedSales));
         }
 
-        private void OnCapitalAmountInfoClicked(object sender, EventArgs e)
+        private void OnCapitalAmountInformationClicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount));
         }

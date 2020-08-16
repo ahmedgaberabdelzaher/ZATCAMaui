@@ -23,6 +23,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //============================start===================================================
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnConfirmClicked { get; set; }
+        public ICommand OnAmendClick { get; set; }
+
+        
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnEditClicked { get; set; }
         public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
@@ -95,6 +98,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+        private bool _setAmendButtonVisibility = false;
+        public bool SetAmendButtonVisibility
+        {
+            get
+            {
+                return _setAmendButtonVisibility;
+            }
+            set
+            {
+                _setAmendButtonVisibility = value;
+                RaisePropertyChanged("SetAmendButtonVisibility");
+            }
+        }
+        
 
         private ZakatReturnDetailsD _zakatReturnDetail;
         public ZakatReturnDetailsD ZakatReturnDetail
@@ -463,6 +480,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                 }
             });
+
+            OnAmendClick = new Xamarin.Forms.Command(async () =>
+            {
+                SetLayoutVisibilityAfterTappingOnAmendButton();
+            });
+
+            
             //OnSubmitButtonClicked = new Command(async () =>
             //{
             //    try
@@ -996,21 +1020,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else if (ButtonStatus.Equals("E0002"))// E0002 if return  released by GAZT officer 
                 {
-                    isEditVisible = true;
-                    isLabelVisible = false;
+                    isEditVisible = false;
+                    isLabelVisible = true;
                     IsEditTextVisible = false;
-                    SetSubmitButtonVisibility = true;
-                    SetEditImage();
+                    SetSubmitButtonVisibility = false;
+                    SetAmendButtonVisibility = true;
+                    UnSetEditImage();
                     SetConfirmButtonVisibility = false;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
                 {
-                    isEditVisible = true;
-                    SetEditImage();
-                    isLabelVisible = false;
+                    isEditVisible = false;
+                    UnSetEditImage();
+                    isLabelVisible = true;
                     IsEditTextVisible = false;
-                    SetSubmitButtonVisibility = true;
+                    SetSubmitButtonVisibility = false;
+
+                    SetAmendButtonVisibility = true;
                     SetConfirmButtonVisibility = false;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
@@ -1022,6 +1049,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsEditTextVisible = false;
                     SetSubmitButtonVisibility = false;
                     SetConfirmButtonVisibility = false;
+                    SetAmendButtonVisibility = false;
 
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
@@ -1033,6 +1061,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsEditTextVisible = false;
                     SetSubmitButtonVisibility = false;
                     SetConfirmButtonVisibility = false;
+                    SetAmendButtonVisibility = false;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0011"))// In Paid state 
@@ -1439,6 +1468,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             return IsRequiredAttachmentAdded;
 
         }
+
+       public void  SetLayoutVisibilityAfterTappingOnAmendButton()
+        {
+            isEditVisible = true;
+            isLabelVisible = false;
+            IsEditTextVisible = false;
+            SetSubmitButtonVisibility = true;
+            SetAmendButtonVisibility = false;
+            SetEditImage();
+            SetConfirmButtonVisibility = false;
+            ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+        }
+
         #endregion
 
     }
