@@ -5323,4 +5323,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDBacktoLoginnew" xml:space="preserve">
     <value>العودة لصفحة تسجيل الدخول</value>
   </data>
+  <data name="NDMyReports" xml:space="preserve">
+    <value>تقريري</value>
+  </data>
+  <data name="NDOpen" xml:space="preserve">
+    <value>افتح</value>
+  </data>
 </root>
