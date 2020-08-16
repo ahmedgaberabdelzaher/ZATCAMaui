@@ -204,6 +204,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 viewModel.TName = App.TaxEvasionUserData.FullName;
                 viewModel.TFWType = "NA";
             }
+            if (viewModel.TMobNumber.StartsWith("+966"))
+                viewModel.TMobNumber = viewModel.TMobNumber.Replace("+966","");
 
         }
 
@@ -361,14 +363,13 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         Position position = new Position(location.Latitude, location.Longitude);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                        mapView.MoveToRegion(mapSpan);
+                        //mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = location.Latitude;
                         // viewModel.TEReportobj.Latitude = location.Latitude.ToString();
                         viewModel.Longitude = location.Longitude;
                     }
-                var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
-                viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality +","+ addrs.CountryName+"-"+ addrs.PostalCode;
-            }
+
+                }
                 catch (FeatureNotSupportedException fnsEx)
                 {
                     // Handle not supported on device exception
@@ -393,6 +394,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 viewModel.Longitude = e.Position.Longitude;
                 mapView.Pins.Clear();
                 mapView.Pins.Add(pin);
+                var addrs = (await Geocoding.GetPlacemarksAsync(new Location(viewModel.Latitude, viewModel.Longitude))).FirstOrDefault();
+                viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality + "," + addrs.CountryName + "-" + addrs.PostalCode;
             //}
             //else
             //{
