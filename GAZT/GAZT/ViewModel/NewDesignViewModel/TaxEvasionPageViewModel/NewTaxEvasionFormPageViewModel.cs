@@ -21,7 +21,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
+        //IsLoading
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
         #region Variable
         private NewTaxEvasionTabEnum _currentTab = NewTaxEvasionTabEnum.ReporterInfo;
         public NewTaxEvasionTabEnum currentTab
@@ -1088,6 +1101,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         {
             try
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
                 string date = DateTime.UtcNow.ToString("dd/MM/yyyy");//1902/03/09
                 date = DatePick;
                 TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportDetails();
@@ -1150,6 +1167,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     ////Go back 
 
                     //_navigation.PopAsync();
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         _navigationService.NavigateTo(App.NewTaxEvasionFormSuccessPaveView);
@@ -1157,6 +1178,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 else
                 {//ZTEReportReportSuccessResponsep2
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
                     _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
                 }
                 await Task.Run(() =>
@@ -1166,6 +1191,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             catch (GAZTException gex)
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
                 // Handle the GAZT custom exception.
                 string MessageForTheUser = gex.Message;
                 if (gex is GAZTInvalidDataException)
@@ -1197,6 +1226,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
             catch (Exception ex)
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
                 Console.WriteLine(ex.Message);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
