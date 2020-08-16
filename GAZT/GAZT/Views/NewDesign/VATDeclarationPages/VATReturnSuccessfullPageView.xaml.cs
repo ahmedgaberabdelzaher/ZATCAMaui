@@ -24,7 +24,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel = App.Locator.VATReturnSuccessfullPageView;
             this.BindingContext = viewModel;
             SetLTR();
-            if (vATDeclaration!=null)
+            if (vATDeclaration!=null && vATDeclaration.d!=null)
             {
                 viewModel.SadadNumber = string.Empty;
                 viewModel.IsSadadNumberVisible = false;
@@ -103,6 +103,18 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         private async void OnVATRefreshButtonClicked(object sender, EventArgs e)
         {
             await viewModel.OnRefreshClick();
+        }
+
+        private void GotodashboardClicked(object sender, EventArgs e)
+        {
+            if (Navigation.NavigationStack.Count > 0)
+            {
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(pg);
+                Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(pg1);
+            }
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
         }
     }
 }
