@@ -37,7 +37,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             //});
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+                viewModel._navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView,"12334444");
 
             });
 

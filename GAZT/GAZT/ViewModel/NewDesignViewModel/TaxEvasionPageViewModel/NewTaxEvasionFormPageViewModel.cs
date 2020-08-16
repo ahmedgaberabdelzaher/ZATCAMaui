@@ -720,25 +720,100 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         {
             switch (currentTab)
             {
-                case NewTaxEvasionTabEnum.ReporterInfo: currentTab = NewTaxEvasionTabEnum.FacilityInfo;
-                    PageTitle = AppResources.NDFacilityInformation;
+                case NewTaxEvasionTabEnum.ReporterInfo:
+                    ReporterInformationValidation();
                     break;
 
-                case NewTaxEvasionTabEnum.FacilityInfo: currentTab = NewTaxEvasionTabEnum.ReportDetails;
-                    PageTitle = AppResources.NDTaxEvasionReportDetails;
+                case NewTaxEvasionTabEnum.FacilityInfo:
+                    FacilityInformationValidation();
                     break;
 
-                case NewTaxEvasionTabEnum.ReportDetails: 
-                    currentTab = NewTaxEvasionTabEnum.Summary;
-                    PageTitle =AppResources.ZZZZSummery;
-                    BodyTitle = AppResources.VatDeregSummarySubTitle;
+                case NewTaxEvasionTabEnum.ReportDetails:
+                    ReportDetailStepValidation();
                     break;
                 case NewTaxEvasionTabEnum.Summary:
                     await SubmitCreatedReport();
                     break;
             }
         }
+        public void ReporterInformationValidation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(TName))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TMobNumber))
+            {
+                flag = false;
+            }
+            if (flag)
+            {
+                currentTab = NewTaxEvasionTabEnum.FacilityInfo;
+                PageTitle = AppResources.NDFacilityInformation;
+            }
+            else
+            {
+              _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+            }
 
+        }
+        public void FacilityInformationValidation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(TFaciName))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TxtReportDetailRegion))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TxtReportDetailCity))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TFDAdress))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TFSAddress))
+            {
+                flag = false;
+            }
+            if (flag)
+            {
+                currentTab = NewTaxEvasionTabEnum.ReportDetails;
+                PageTitle = AppResources.NDTaxEvasionReportDetails;
+            }
+            else
+            {
+                _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+            }
+        }
+        public void ReportDetailStepValidation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(TxtReporttype))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TReportDetail))
+            {
+                flag = false;
+            }
+            if (flag)
+            {
+                currentTab = NewTaxEvasionTabEnum.Summary;
+                PageTitle = AppResources.ZZZZSummery;
+                BodyTitle = AppResources.VatDeregSummarySubTitle;
+            }
+            else
+            {
+                _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+            }
+
+        }
         private void navigateToBack()
         {
             switch (currentTab)
