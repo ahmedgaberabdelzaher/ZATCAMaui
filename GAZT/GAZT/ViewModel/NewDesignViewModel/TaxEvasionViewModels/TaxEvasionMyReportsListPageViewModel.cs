@@ -199,7 +199,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (TERListReportbymobnoAll != null)
                 {
                     List<TaxEvasionReportDetails> list = new List<TaxEvasionReportDetails>();
-                    ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(TERListReportbymobnoAll);
+                    try
+                    {
+                        ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(TERListReportbymobnoAll);
+                    }
+                    catch (Exception ex)
+                    { 
+                    
+                    }
+                    
                     if (SelectedChipFilterItemList != null)
                     {
                         if (SelectedChipFilterItemList.Count > 0)
@@ -224,7 +232,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 }
 
                             }
-                            ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(list);
+                            try
+                            {
+                                ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(list.OrderByDescending(c => c.TicketId));
+                            }
+                            catch (Exception ex)
+                            { 
+                            
+                            }
+                            
+
                         }
                     }
                 }
@@ -340,27 +357,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             {
                 await Task.Run(() =>
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        //IsLoading = true;
-                    });
+                   IsLoading = true;
 
                 });
-                await Task.Run(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        _navigationService.NavigateTo(App.TaxEvasionReportDetailPageView, SelectedTaxEvasionReport);
-                        //_navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionReport);
-                    });
+                    _navigationService.NavigateTo(App.TaxEvasionReportDetailPageView, SelectedTaxEvasionReport);
+
                 });
-                await Task.Run(() =>
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        //IsLoading = false;
-                    });
-                });
+                
             }
             catch (Exception ex)
             {
