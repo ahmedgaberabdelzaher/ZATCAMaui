@@ -4200,7 +4200,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Item</value>
   </data>
   <data name="FORM5MainOutlet" xml:space="preserve">
-    <value>Main Outlets</value>
+    <value>Main Outlet</value>
   </data>
   <data name="FORM5NetProfit" xml:space="preserve">
     <value>Net Profit</value>

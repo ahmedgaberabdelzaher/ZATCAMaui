@@ -4157,7 +4157,7 @@
     <value>الرجاء الضغط هنا للإعتراض</value>
   </data>
   <data name="FORM5GenTaxiOffice" xml:space="preserve">
-    <value>General Taxi Office</value>
+    <value>مكتب الضرائب العامة</value>
   </data>
   <data name="FORM5IndividualActiDetails" xml:space="preserve">
     <value>تفاصيل إحتساب الوعاء</value>
@@ -4260,7 +4260,7 @@
     <value>الوعاء الزكوي (ريال سعودي)</value>
   </data>
   <data name="FORM5ZakatEstimation" xml:space="preserve">
-    <value>Zakat Estimation</value>
+    <value>الزكاة التقديرية</value>
   </data>
   <data name="FORM5ZakatPayable" xml:space="preserve">
     <value>مبلغ الزكاة</value>
@@ -4939,7 +4939,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Contract Object No.</value>
   </data>
   <data name="FormBundleNo" xml:space="preserve">
-    <value>Form Bundle No.</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="NDBillDate" xml:space="preserve">
     <value>تاريخ الفاتورة</value>
@@ -5023,7 +5023,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>الانشطة التعليمية والصحية</value>
   </data>
   <data name="FORM5EstimationDetails" xml:space="preserve">
-    <value>Estimation Details</value>
+    <value>الحسبه التقديرية</value>
   </data>
   <data name="FORM5GovernmentContractProfile" xml:space="preserve">
     <value>ارباح العقود الحكومية</value>
@@ -5038,7 +5038,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>استيراد الخضار و المواشي</value>
   </data>
   <data name="FORM5ImporDetails" xml:space="preserve">
-    <value>Import Details</value>
+    <value>تفاصيل الاستيراد</value>
   </data>
   <data name="FORM5Imports" xml:space="preserve">
     <value>الإستيرادات من الخارج</value>
@@ -5089,7 +5089,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>ارباح اخرى</value>
   </data>
   <data name="FORM5Outlet" xml:space="preserve">
-    <value>Outlet</value>
+    <value>فرع</value>
     <comment>Form5</comment>
   </data>
   <data name="FORM5PercentageSalesGain" xml:space="preserve">
@@ -5099,7 +5099,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>انشطة مزارع الدواجن والاسماك</value>
   </data>
   <data name="FORM5ProcurementDetails" xml:space="preserve">
-    <value>Procurement Details</value>
+    <value>بيانات التحصيل</value>
   </data>
   <data name="FORM5Professionals" xml:space="preserve">
     <value>المهن الفكرية</value>
@@ -5120,7 +5120,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>الأرباح</value>
   </data>
   <data name="FORM5RefrenceNo" xml:space="preserve">
-    <value>Refrence Number</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="FORM5RoomRates" xml:space="preserve">
     <value>سعر الغرفة</value>
@@ -5141,10 +5141,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>رأس المال</value>
   </data>
   <data name="FORM5SharesInOtherCompany" xml:space="preserve">
-    <value>Shares in other Companies?</value>
+    <value>حصص في شركات أخرى؟</value>
   </data>
   <data name="FORM5SharesInPersonsCompany" xml:space="preserve">
-    <value>Share in Persons Company</value>
+    <value>حصص في شركات شخصية</value>
   </data>
   <data name="FORM5TotalfundGovenment" xml:space="preserve">
     <value>إجمالي التمويل من الدولة</value>
@@ -5156,7 +5156,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>اجمالي الإستيرادات</value>
   </data>
   <data name="FORM5TotalofProcurement" xml:space="preserve">
-    <value>Total of Procurement</value>
+    <value>إجمالي المشتريات</value>
   </data>
   <data name="FORM5ValueofSubsityfromGov" xml:space="preserve">
     <value>قيمة الإعانة الحكومية</value>
@@ -5168,16 +5168,16 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>معلومات إضافية</value>
   </data>
   <data name="FORM5ActivityCapital" xml:space="preserve">
-    <value>Activity Capital</value>
+    <value>نشاط رأس المال</value>
   </data>
   <data name="FORM5NewTaxAmt" xml:space="preserve">
-    <value>New Taxable Amount</value>
+    <value>المبلغ الخاضع للضريبة</value>
   </data>
   <data name="FORM5TotalExternalImports" xml:space="preserve">
     <value>مجموع الإستيرادات</value>
   </data>
   <data name="FORM5Zakat" xml:space="preserve">
-    <value>Zakat</value>
+    <value>الزكاة</value>
   </data>
   <data name="FORM5Zakatable" xml:space="preserve">
     <value>وعـاء الزكـاة</value>
