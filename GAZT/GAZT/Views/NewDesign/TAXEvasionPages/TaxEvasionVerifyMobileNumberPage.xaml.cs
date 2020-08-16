@@ -26,28 +26,28 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.ShowMobileForm();
         }
-        protected async override void OnAppearing()
-        {
-            base.OnAppearing();
-            try
-            {
-                var existingPages = Navigation.NavigationStack.ToList();
+        //protected async override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    try
+        //    {
+        //        var existingPages = Navigation.NavigationStack.ToList();
 
-                foreach (var page in existingPages)
-                {
-                    if (page.GetType().Name != App.TaxEvasionMyReportsListPageView || page.GetType().Name != App.NewTaxEvasionFormPageView)
-                    {
-                        Navigation.RemovePage(page);
+        //        foreach (var page in existingPages)
+        //        {
+        //            if (page.GetType().Name != App.TaxEvasionMyReportsListPageView || page.GetType().Name != App.NewTaxEvasionFormPageView)
+        //            {
+        //                Navigation.RemovePage(page);
 
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
+        //            }
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
 
-            }
+        //    }
             
-        }
+        //}
 
         private void SetLTR()
         {
