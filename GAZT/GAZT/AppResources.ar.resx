@@ -5281,4 +5281,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDZakatReturn" xml:space="preserve">
     <value>Zakat Return</value>
   </data>
+  <data name="NDTaxEvasionReport" xml:space="preserve">
+    <value>Tax Evasion Report</value>
+  </data>
+  <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
+    <value>Your Tax Evasion Report is submitted successfully</value>
+  </data>
 </root>

@@ -3045,6 +3045,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Tax Evasion Report is submitted successfully.
+        /// </summary>
+        public static string NDYourTaxEvasionReportissubmittedsuccessfully {
+            get {
+                return ResourceManager.GetString("NDYourTaxEvasionReportissubmittedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Zakat Return is submitted successfully.
         /// </summary>
         public static string NDYourZakatReturnIsSubmittedSuccessfully {
