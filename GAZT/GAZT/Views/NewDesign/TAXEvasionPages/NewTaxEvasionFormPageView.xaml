@@ -586,7 +586,9 @@
 
                 <StackLayout Grid.Column="2">
                     <Image Source="close.png" VerticalOptions="CenterAndExpand" HorizontalOptions="End">
-
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnGotoReportPageClicked}" />
+                        </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
             </Grid>

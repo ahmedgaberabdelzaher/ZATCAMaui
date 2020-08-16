@@ -26,6 +26,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             InitializeComponent();
             viewModel = App.Locator.NewTaxEvasionFormPageView;
             this.BindingContext = viewModel;
+            ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
@@ -59,6 +60,20 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
 
                 this.FlowDirection = FlowDirection.RightToLeft;
+            }
+        }
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
