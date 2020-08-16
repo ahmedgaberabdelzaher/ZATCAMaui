@@ -5317,4 +5317,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ZZZZVatAmountonPurchase" xml:space="preserve">
     <value>مبلغ ضريبة القيمة المضافة على المشتريات</value>
   </data>
+  <data name="NDBacktoLogin" xml:space="preserve">
+    <value>العودة لصفحة تسجيل الدخول</value>
+  </data>
 </root>

@@ -19,8 +19,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 {
     public class NewTaxEvasionFormPageViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
+        public  readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        
         //IsLoading
         private bool _isLoading = false;
         public bool IsLoading
@@ -70,7 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         #endregion
 
         #region Property
-        private string _PageTitle = "Reporter Information";
+        private string _PageTitle = AppResources.NDReporterInformation;
         public string PageTitle
         {
             get
@@ -84,7 +85,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
         }
 
-        private string _BodyTitle = "Complete the below details";
+        private string _BodyTitle = AppResources.ZZZZCompletethebelowdetails;
         public string BodyTitle
         {
             get
@@ -684,6 +685,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         public ICommand OnContinueClicked { get; set; }
         public ICommand OnBackStepClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
+        public ICommand OnGotoReportPageClicked { get; set; }
         #endregion
 
         #region Constructor
@@ -706,6 +708,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 await AddAttachment();
             });
+            OnGotoReportPageClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
+            });
         }
         #endregion
 
@@ -714,43 +720,118 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         {
             switch (currentTab)
             {
-                case NewTaxEvasionTabEnum.ReporterInfo: currentTab = NewTaxEvasionTabEnum.FacilityInfo;
-                    PageTitle = "Facility Information";
+                case NewTaxEvasionTabEnum.ReporterInfo:
+                    ReporterInformationValidation();
                     break;
 
-                case NewTaxEvasionTabEnum.FacilityInfo: currentTab = NewTaxEvasionTabEnum.ReportDetails;
-                    PageTitle = "Report Details";
+                case NewTaxEvasionTabEnum.FacilityInfo:
+                    FacilityInformationValidation();
                     break;
 
-                case NewTaxEvasionTabEnum.ReportDetails: 
-                    currentTab = NewTaxEvasionTabEnum.Summary;
-                    PageTitle = "Summary";
-                    BodyTitle = "Review the below information";
+                case NewTaxEvasionTabEnum.ReportDetails:
+                    ReportDetailStepValidation();
                     break;
                 case NewTaxEvasionTabEnum.Summary:
                     await SubmitCreatedReport();
                     break;
             }
         }
+        public void ReporterInformationValidation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(TName))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TMobNumber))
+            {
+                flag = false;
+            }
+            if (flag)
+            {
+                currentTab = NewTaxEvasionTabEnum.FacilityInfo;
+                PageTitle = AppResources.NDFacilityInformation;
+            }
+            else
+            {
+              _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+            }
 
+        }
+        public void FacilityInformationValidation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(TFaciName))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TxtReportDetailRegion))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TxtReportDetailCity))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TFDAdress))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TFSAddress))
+            {
+                flag = false;
+            }
+            if (flag)
+            {
+                currentTab = NewTaxEvasionTabEnum.ReportDetails;
+                PageTitle = AppResources.NDTaxEvasionReportDetails;
+            }
+            else
+            {
+                _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+            }
+        }
+        public void ReportDetailStepValidation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(TxtReporttype))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TReportDetail))
+            {
+                flag = false;
+            }
+            if (flag)
+            {
+                currentTab = NewTaxEvasionTabEnum.Summary;
+                PageTitle = AppResources.ZZZZSummery;
+                BodyTitle = AppResources.VatDeregSummarySubTitle;
+            }
+            else
+            {
+                _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+            }
+
+        }
         private void navigateToBack()
         {
             switch (currentTab)
             {
                 case NewTaxEvasionTabEnum.Summary: 
                     currentTab = NewTaxEvasionTabEnum.ReportDetails;
-                    PageTitle = "Report Details";
-                    BodyTitle = "Complete the below details";
+                    PageTitle = AppResources.NDTaxEvasionReportDetails;
+                    BodyTitle = AppResources.ZZZZCompletethebelowdetails;
                     break;
 
                 case NewTaxEvasionTabEnum.ReportDetails: 
                     currentTab = NewTaxEvasionTabEnum.FacilityInfo;
-                    PageTitle = "Facility Information";
+                    PageTitle = AppResources.NDFacilityInformation;
                     break;
 
                 case NewTaxEvasionTabEnum.FacilityInfo:
                     currentTab= NewTaxEvasionTabEnum.ReporterInfo;
-                    PageTitle = "Reporter Information";
+                    PageTitle = AppResources.NDReporterInformation;
                     break;
             }
 

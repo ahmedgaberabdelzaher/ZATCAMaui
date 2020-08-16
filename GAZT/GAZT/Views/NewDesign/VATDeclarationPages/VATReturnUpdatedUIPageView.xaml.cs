@@ -239,13 +239,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     viewModel.isBtnVisible = false;
                     viewModel.IsMainButtonVisible = true;
-                    viewModel.ContinueText = "Confirm and Carry Forward";
+                    viewModel.ContinueText = AppResources.ZZZZConfirmAndCarryForward;
                 }
                 else
                 {
                     viewModel.isBtnVisible = true;
                     viewModel.IsMainButtonVisible = false;
-                    viewModel.CreditDetailsText = "Confrim and Generate SADAD Bill";
+                    viewModel.CreditDetailsText = AppResources.ZZZZConfirmandGenerateSADADBill;
                 }
             }
         }
@@ -7623,7 +7623,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             }
                         }
                     }
-                    else if (viewModel.ContinueText == "Confirm and Carry Forward")
+                    else if (viewModel.ContinueText == AppResources.ZZZZConfirmAndCarryForward)
                     {
                         if (viewModel.IsDeclarationCheckedForSummary && (App.ICRStatus == "E0001" || App.ICRStatus == "E0013"))
                         {

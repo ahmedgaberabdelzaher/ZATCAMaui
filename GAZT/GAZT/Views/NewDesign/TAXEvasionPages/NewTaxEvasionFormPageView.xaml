@@ -417,8 +417,8 @@
                                         <Image Source="vat_user" HeightRequest="30">
                                         
                                     </Image>
-                                    </Frame>
-                                    <custom:CustomLabel Text="Reporter Information" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
+                                            </Frame>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReporterInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                                         <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand"/>
                                 </StackLayout>
 
@@ -448,8 +448,8 @@
                                             <Image Source="ic_company.png">
 
                                             </Image>
-                                        </Frame>
-                                        <custom:CustomLabel Text="Facility Information" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
+                                            </Frame>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                                         <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
 
@@ -495,8 +495,8 @@
                                             <Image Source="zakat_details">
 
                                             </Image>
-                                        </Frame>
-                                        <custom:CustomLabel Text="Report Details" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
+                                            </Frame>
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                                         <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center"  HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
 
