@@ -21,7 +21,110 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
     {
         public  readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        
+        private bool _IsTnameHasError  = false;
+        public bool IsTnameHasError
+        {
+            get
+            {
+                return _IsTnameHasError;
+            }
+            set
+            {
+                _IsTnameHasError = value;
+                RaisePropertyChanged("IsTnameHasError");
+            }
+        }
+        private bool _IsTmobileHasError = false;
+        public bool IsTmobileHasError
+        {
+            get
+            {
+                return _IsTmobileHasError;
+            }
+            set
+            {
+                _IsTmobileHasError = value;
+                RaisePropertyChanged("IsTmobileHasError");
+            }
+        }
+        private bool _IsFacilityNameHasError = false;
+        public bool IsFacilityNameHasError
+        {
+            get
+            {
+                return _IsFacilityNameHasError;
+            }
+            set
+            {
+                _IsFacilityNameHasError = value;
+                RaisePropertyChanged("IsFacilityNameHasError");
+            }
+        }
+        private bool _IsRegionHasError = false;
+        public bool IsRegionHasError
+        {
+            get
+            {
+                return _IsRegionHasError;
+            }
+            set
+            {
+                _IsRegionHasError = value;
+                RaisePropertyChanged("IsRegionHasError");
+            }
+        }
+        private bool _IsCityHasError = false;
+        public bool IsCityHasError
+        {
+            get
+            {
+                return _IsCityHasError;
+            }
+            set
+            {
+                _IsCityHasError = value;
+                RaisePropertyChanged("IsCityHasError");
+            }
+        }
+        private bool _IsFDHasError = false;
+        public bool IsFDHasError
+        {
+            get
+            {
+                return _IsFDHasError;
+            }
+            set
+            {
+                _IsFDHasError = value;
+                RaisePropertyChanged("IsFDHasError");
+            }
+        }
+        private bool _IsFSHasError = false;
+        public bool IsFSHasError
+        {
+            get
+            {
+                return _IsFSHasError;
+            }
+            set
+            {
+                _IsFSHasError = value;
+                RaisePropertyChanged("IsFSHasError");
+            }
+        }
+        private bool _IsReportDetailHasError = false;
+        public bool IsReportDetailHasError
+        {
+            get
+            {
+                return _IsReportDetailHasError;
+            }
+            set
+            {
+                _IsReportDetailHasError = value;
+                RaisePropertyChanged("IsReportDetailHasError");
+            }
+        }
         //IsLoading
         private bool _isLoading = false;
         public bool IsLoading
@@ -742,10 +845,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             if (string.IsNullOrEmpty(TName))
             {
                 flag = false;
+                IsTnameHasError = true;
             }
             if (string.IsNullOrEmpty(TMobNumber))
             {
                 flag = false;
+                IsTmobileHasError = true;
             }
             if (flag)
             {
@@ -764,22 +869,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             if (string.IsNullOrEmpty(TFaciName))
             {
                 flag = false;
+                IsFacilityNameHasError = true;
             }
             if (string.IsNullOrEmpty(TxtReportDetailRegion))
             {
                 flag = false;
+                IsRegionHasError = true;
+
             }
             if (string.IsNullOrEmpty(TxtReportDetailCity))
             {
                 flag = false;
+                IsCityHasError = true;
             }
             if (string.IsNullOrEmpty(TFDAdress))
             {
                 flag = false;
+                IsFDHasError = true;
             }
             if (string.IsNullOrEmpty(TFSAddress))
             {
                 flag = false;
+                IsFSHasError = true;
             }
             if (flag)
             {
@@ -801,6 +912,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             if (string.IsNullOrEmpty(TReportDetail))
             {
                 flag = false;
+                IsReportDetailHasError = true;
             }
             if (flag)
             {
