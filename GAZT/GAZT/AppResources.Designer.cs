@@ -2892,6 +2892,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tax Evasion Report.
+        /// </summary>
+        public static string NDTaxEvasionReport {
+            get {
+                return ResourceManager.GetString("NDTaxEvasionReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report Details.
         /// </summary>
         public static string NDTaxEvasionReportDetails {

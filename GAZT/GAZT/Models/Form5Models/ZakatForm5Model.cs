@@ -409,6 +409,10 @@ namespace ZakatForm5Model
         public string Pro_IsLivestockApplicable { get; set; }
 
 
+        public bool IsImportVisible { get; set; }
+        public bool IsProcurementVisible { get; set; }
+
+
 
 
     }

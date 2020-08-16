@@ -304,7 +304,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
     {
         IsShowMobileInput = true;
         IsShowOTPInput = false;
-        PageTitle = AppResources.ZTEReportReportScreenTitle;
+        PageTitle = AppResources.NDTaxEvasion;
         PageTitleTag = AppResources.EnterNewMobileNumber;
     }
     private void ShowOTPForm()

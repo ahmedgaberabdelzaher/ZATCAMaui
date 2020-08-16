@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
@@ -16,6 +17,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
     public class TaxEvasionMyReportsListPageViewModel : BaseViewModel
     {
         #region Properties
+        public ICommand OnBackButtonClicked { get; set; }
         private bool _isLoading=false;
         public bool IsLoading
         {
@@ -177,6 +179,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
         public TaxEvasionMyReportsListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
         }
         public void PopulateDataInChips()
         {
