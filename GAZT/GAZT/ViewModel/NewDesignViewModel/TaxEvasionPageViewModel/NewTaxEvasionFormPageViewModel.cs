@@ -21,6 +21,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
     {
         public  readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        
         //IsLoading
         private bool _isLoading = false;
         public bool IsLoading
@@ -684,6 +685,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         public ICommand OnContinueClicked { get; set; }
         public ICommand OnBackStepClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
+        public ICommand OnGotoReportPageClicked { get; set; }
         #endregion
 
         #region Constructor
@@ -705,6 +707,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
                 await AddAttachment();
+            });
+            OnGotoReportPageClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
             });
         }
         #endregion

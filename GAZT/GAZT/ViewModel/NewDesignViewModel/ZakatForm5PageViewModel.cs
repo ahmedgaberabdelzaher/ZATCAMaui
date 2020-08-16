@@ -405,6 +405,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 var newAddress = value.Replace(@", ,", "");
+                newAddress = newAddress.Replace(@", ,", "");
                 _address = newAddress.Replace(@" ,", "");
                 RaisePropertyChanged(() => Address);
             }
@@ -1591,14 +1592,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         Taxpayer = ZakatForm5DataResult.ACompNm;
                         Branch = ZakatForm5DataResult.APrctr;
                         Address = //ZakatForm5DataResult.Line0 + ", " +
-                            ZakatForm5DataResult.Line1 + ", " +
-                            ZakatForm5DataResult.Line2 + ", " +
-                            ZakatForm5DataResult.Line3 + ", " + 
-                            ZakatForm5DataResult.Line4 + ", " + 
-                            ZakatForm5DataResult.Line5 + ", " + 
-                            ZakatForm5DataResult.Line6 + ", " +
-                            ZakatForm5DataResult.Line7 + ", " +
-                            ZakatForm5DataResult.Line8 + ", " +
+                            ZakatForm5DataResult.Line1 + "," +
+                            ZakatForm5DataResult.Line2 + "," +
+                            ZakatForm5DataResult.Line3 + "," + 
+                            ZakatForm5DataResult.Line4 + "," + 
+                            ZakatForm5DataResult.Line5 + "," + 
+                            ZakatForm5DataResult.Line6 + "," +
+                            ZakatForm5DataResult.Line7 + "," +
+                            ZakatForm5DataResult.Line8 + "," +
                             ZakatForm5DataResult.Line9;
                         UserEmail = ZakatForm5DataResult.AEmail;
                         MobileNumber = ZakatForm5DataResult.AMobile;

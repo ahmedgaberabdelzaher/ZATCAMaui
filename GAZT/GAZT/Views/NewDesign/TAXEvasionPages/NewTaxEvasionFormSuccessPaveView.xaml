@@ -30,8 +30,8 @@
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
 
-                <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="VAT Registration Services"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                       Clicked="btnVATRegistration_Clicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="Tax Evasion Reports List"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                                      Command="{Binding OnGotoReportPageClicked}"  Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource PrimaryButtonStyle}"  />
                 <buttons:SfButton x:Name="btnDashboard"   Text="{x:Static local:AppResources.NDTaxEvasion}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
