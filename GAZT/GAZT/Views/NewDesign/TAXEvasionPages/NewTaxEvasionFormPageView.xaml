@@ -563,9 +563,9 @@
 
 
                     <StackLayout Grid.Row="2">
-                        <buttons:SfButton Text="Continue" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnContinueClicked}"/>
-                    </StackLayout>
-                </Grid>
+                            <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnContinueClicked}"/>
+                        </StackLayout> 
+                    </Grid>
             </yummy:PancakeView>
 
             <Grid Padding="15,10,15,10" Grid.Row="0">
@@ -574,7 +574,7 @@
                     <ColumnDefinition Width="60*"/>
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
-                <custom:CustomLabel Grid.Column="1" Text="Tax Evasion" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
                 <StackLayout Grid.Column="0">
                     <Image Source="arrowLeftwhite.png"  VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
 
