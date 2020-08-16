@@ -204,6 +204,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 viewModel.TName = App.TaxEvasionUserData.FullName;
                 viewModel.TFWType = "NA";
             }
+            if (viewModel.TMobNumber.StartsWith("+966"))
+                viewModel.TMobNumber = viewModel.TMobNumber.Replace("+966","");
 
         }
 

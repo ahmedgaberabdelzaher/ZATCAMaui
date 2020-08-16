@@ -1109,7 +1109,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 TaxEvasionReportTobeUsedToSubmit.Content = TReportDetail;
 
                 TaxEvasionReportTobeUsedToSubmit.Facilities = TFaciName;
-                TaxEvasionReportTobeUsedToSubmit.PhoneNumber = TMobNumber;
+                TaxEvasionReportTobeUsedToSubmit.PhoneNumber = "+966"+TMobNumber;
                 TaxEvasionReportTobeUsedToSubmit.Id = TID;
                 TaxEvasionReportTobeUsedToSubmit.VatNumber = TVatNumber;
                 TaxEvasionReportTobeUsedToSubmit.Longitude = Longitude.ToString();

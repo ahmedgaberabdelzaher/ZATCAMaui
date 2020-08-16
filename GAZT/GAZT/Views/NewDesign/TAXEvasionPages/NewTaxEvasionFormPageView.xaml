@@ -82,7 +82,7 @@
                                         <BoxView Style="{StaticResource lineSeperator}"  WidthRequest="1" HeightRequest="20" Margin="5"/>
 
 
-                                    <custom:BorderlessEntry x:Name="TMobNumber" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" MaxLength="15" >
+                                    <custom:BorderlessEntry x:Name="TMobNumber" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" HorizontalOptions="FillAndExpand" MaxLength="15" >
                                 </custom:BorderlessEntry>
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>
