@@ -71,7 +71,11 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             if (viewModel.OTPFourthDigit.Length > 0)
             {
-                viewModel.VerifyOTP();
+                if (!viewModel.IsResendOTPEnabled)
+                {
+                    viewModel.VerifyOTP();
+                }
+                
             }
         }
 
