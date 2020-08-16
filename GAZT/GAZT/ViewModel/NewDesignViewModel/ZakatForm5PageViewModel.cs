@@ -281,8 +281,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Basic Information
 
 
-
-
         public ZakatForm5Data _zakatForm5DataResult;
         public ZakatForm5Data ZakatForm5DataResult
         {
@@ -1576,6 +1574,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Return Detials
                         FinancialYear = ZakatForm5DataResult.PerslText;
                         IsConditionRadio = true;
+
+
+                        //string Fromdate = ConvertDateCalendar(ZakatForm5DataResult.AFromDt, "Hijri", "en-US");
+                        //string Todate = ConvertDateCalendar(ZakatForm5DataResult.AToDt, "Hijri", "en-US");
+
+                        //Period = Fromdate + " - " + Todate;
+
                         // Period = String.Format("{0:ddd, MMM d, yyyy}", ZakatForm5DataResult.AFromDt) + " - " + String.Format("{0:ddd, MMM d, yyyy}", ZakatForm5DataResult.AToDt);
                         Period = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd MMM yyyy", new CultureInfo("en-US")) + " - " + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
                         // Period = String.Format("{dd MMM yyyy}", DateTime.Now.ToString(ZakatForm5DataResult.AFromDt)) + " - " + String.Format("{dd MMM yyyy}", DateTime.Now.ToString(ZakatForm5DataResult.AToDt));
@@ -1601,7 +1606,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Registration Information
                         NumberOfOutlet = ZakatForm5DataResult.ANoOfOutlet.ToString();
                         Residency_Status = ZakatForm5DataResult.AResidency;
-                        MainOutlet = ZakatForm5DataResult.AMainAct;
+                        MainOutlet = ZakatForm5DataResult.AMainact;
                         AccountMethod = ZakatForm5DataResult.AActmethod;
                         FinancialPeriod = ZakatForm5DataResult.AFiscalPeriod;
                         Calendar_Type = ZakatForm5DataResult.AFiscalCalendar;
@@ -2205,6 +2210,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     break;
             }
         }
+
+        public static string ConvertDateCalendar(DateTime DateConv, string Calendar, string DateLangCulture)
+        {
+            DateTimeFormatInfo DTFormat;
+            DateLangCulture = DateLangCulture.ToLower();
+            /// We can't have the hijri date writen in English. We will get a runtime error
+
+            if (Calendar == "Hijri" && DateLangCulture.StartsWith("en-"))
+            {
+                DateLangCulture = "ar-sa";
+            }
+
+            /// Set the date time format to the given culture
+            DTFormat = new System.Globalization.CultureInfo(DateLangCulture, false).DateTimeFormat;
+
+            /// Set the calendar property of the date time format to the given calendar
+            switch (Calendar)
+            {
+                case "Hijri":
+                    DTFormat.Calendar = new System.Globalization.HijriCalendar();
+                    break;
+
+                case "Gregorian":
+                    DTFormat.Calendar = new System.Globalization.GregorianCalendar();
+                    break;
+
+                default:
+                    return "";
+            }
+
+            /// We format the date structure to whatever we want
+            DTFormat.ShortDatePattern = "dd/MM/yyyy";
+            return (DateConv.Date.ToString("f", DTFormat));
+        }
+
+
         #endregion
     }
 }
