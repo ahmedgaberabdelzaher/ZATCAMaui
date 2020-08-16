@@ -225,8 +225,8 @@
                         <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="I agree with these "  />
-                                    <Span Text="Instructions and Conditions" TextColor="{StaticResource Primary}" />
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                             <custom:CustomLabel.GestureRecognizers>
@@ -1880,7 +1880,7 @@
 
                                 <yummy:PancakeView  Grid.Row="27" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ADD8E6" Padding="0,0,0,0"  Margin="0,0,0,0">
                                     <StackLayout  Padding="0,0,0,8" Margin="10,0,10,0">
-                                        <custom:CustomLabel Text="VAT Amount on Purchases" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVatAmountonPurchase}" Style="{StaticResource CaptionLabelBlack}" Margin="0,0,0,-9"  ></custom:CustomLabel>
                                         <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}" ></custom:CustomLabel>
                                     </StackLayout>
                                 </yummy:PancakeView>
@@ -1961,7 +1961,7 @@
 
                         <Frame  BackgroundColor="LightBlue" Padding="10" CornerRadius="15" Margin="0">
                             <StackLayout Spacing="10" Orientation="Horizontal" Padding="5,0,5,0">
-                                <custom:CustomLabel Text="Net VAT" Style="{StaticResource BodyLabelBlack}" />
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNetVAT}" Style="{StaticResource BodyLabelBlack}" />
                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" />
                                 <Image Source="ic_vat_info">
                                     <Image.GestureRecognizers>
@@ -2177,7 +2177,7 @@
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout BackgroundColor="LightBlue" Orientation="Horizontal" Padding="10">
-                                    <custom:CustomLabel Text="Net VAT" Style="{StaticResource ValueLabelBlack}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNetVAT}" Style="{StaticResource ValueLabelBlack}"/>
                                     <custom:CustomLabel Text="{Binding NetdueVat}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
@@ -2195,8 +2195,8 @@
                             <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="I agree with these "  />
-                                        <Span Text="Instructions and Conditions" TextColor="{StaticResource Primary}" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                                 <custom:CustomLabel.GestureRecognizers>

@@ -19,8 +19,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 {
     public class NewTaxEvasionFormPageViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
+        public  readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        
         //IsLoading
         private bool _isLoading = false;
         public bool IsLoading
@@ -70,7 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         #endregion
 
         #region Property
-        private string _PageTitle = "Reporter Information";
+        private string _PageTitle = AppResources.NDReporterInformation;
         public string PageTitle
         {
             get
@@ -84,7 +85,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             }
         }
 
-        private string _BodyTitle = "Complete the below details";
+        private string _BodyTitle = AppResources.ZZZZCompletethebelowdetails;
         public string BodyTitle
         {
             get
@@ -684,6 +685,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         public ICommand OnContinueClicked { get; set; }
         public ICommand OnBackStepClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
+        public ICommand OnGotoReportPageClicked { get; set; }
         #endregion
 
         #region Constructor
@@ -706,6 +708,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 await AddAttachment();
             });
+            OnGotoReportPageClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
+            });
         }
         #endregion
 
@@ -715,17 +721,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             switch (currentTab)
             {
                 case NewTaxEvasionTabEnum.ReporterInfo: currentTab = NewTaxEvasionTabEnum.FacilityInfo;
-                    PageTitle = "Facility Information";
+                    PageTitle = AppResources.NDFacilityInformation;
                     break;
 
                 case NewTaxEvasionTabEnum.FacilityInfo: currentTab = NewTaxEvasionTabEnum.ReportDetails;
-                    PageTitle = "Report Details";
+                    PageTitle = AppResources.NDTaxEvasionReportDetails;
                     break;
 
                 case NewTaxEvasionTabEnum.ReportDetails: 
                     currentTab = NewTaxEvasionTabEnum.Summary;
-                    PageTitle = "Summary";
-                    BodyTitle = "Review the below information";
+                    PageTitle =AppResources.ZZZZSummery;
+                    BodyTitle = AppResources.VatDeregSummarySubTitle;
                     break;
                 case NewTaxEvasionTabEnum.Summary:
                     await SubmitCreatedReport();
@@ -739,18 +745,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 case NewTaxEvasionTabEnum.Summary: 
                     currentTab = NewTaxEvasionTabEnum.ReportDetails;
-                    PageTitle = "Report Details";
-                    BodyTitle = "Complete the below details";
+                    PageTitle = AppResources.NDTaxEvasionReportDetails;
+                    BodyTitle = AppResources.ZZZZCompletethebelowdetails;
                     break;
 
                 case NewTaxEvasionTabEnum.ReportDetails: 
                     currentTab = NewTaxEvasionTabEnum.FacilityInfo;
-                    PageTitle = "Facility Information";
+                    PageTitle = AppResources.NDFacilityInformation;
                     break;
 
                 case NewTaxEvasionTabEnum.FacilityInfo:
                     currentTab= NewTaxEvasionTabEnum.ReporterInfo;
-                    PageTitle = "Reporter Information";
+                    PageTitle = AppResources.NDReporterInformation;
                     break;
             }
 

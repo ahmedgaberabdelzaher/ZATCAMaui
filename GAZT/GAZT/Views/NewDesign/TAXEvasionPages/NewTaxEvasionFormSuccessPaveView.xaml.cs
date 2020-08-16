@@ -12,6 +12,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         public NewTaxEvasionFormSuccessPaveView()
         {
             InitializeComponent();
+            viewModel = App.Locator.NewTaxEvasionFormSuccessPaveView;
+            this.BindingContext = viewModel;
             SetLTR();
         }
         private void SetLTR()
@@ -35,7 +37,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             //});
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
+                viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
 
             });
 

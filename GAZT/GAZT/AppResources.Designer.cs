@@ -1506,7 +1506,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Main Outlets.
+        ///   Looks up a localized string similar to Main Outlet.
         /// </summary>
         public static string FORM5MainOutlet {
             get {
