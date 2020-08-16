@@ -46,7 +46,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             if (viewModel != null)
             {
                 viewModel.IsLoading = false;
-                
+               
             }
 
             Task.Run(async () =>
