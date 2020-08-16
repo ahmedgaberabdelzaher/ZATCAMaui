@@ -36,7 +36,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             base.OnAppearing();
             SetLocationToMap();
         }
-        private async void SetLocationToMap()
+        private  void SetLocationToMap()
         {
             try
             {

@@ -5287,4 +5287,34 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
     <value>Your Tax Evasion Report is submitted successfully</value>
   </data>
+  <data name="ZZZZAdjustment" xml:space="preserve">
+    <value>تسويه</value>
+  </data>
+  <data name="ZZZZConfirmAndCarryForward" xml:space="preserve">
+    <value>تأكيد والانتقال للتالي</value>
+  </data>
+  <data name="ZZZZConfirmandGenerateSADADBill" xml:space="preserve">
+    <value>تأكيد وإنشاء فاتورة سداد</value>
+  </data>
+  <data name="ZZZZConfirmAndRefundRequest" xml:space="preserve">
+    <value>تأكيد وطلب استرجاع</value>
+  </data>
+  <data name="ZZZZDone" xml:space="preserve">
+    <value>تم</value>
+  </data>
+  <data name="ZZZZIAgreeWithThese" xml:space="preserve">
+    <value>أوافق على التالي</value>
+  </data>
+  <data name="ZZZZNetVAT" xml:space="preserve">
+    <value>صافي ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZRemembertocompletepayment" xml:space="preserve">
+    <value>الرجاء التذكر لإتمام عملية الدفع</value>
+  </data>
+  <data name="ZZZZSadadGeneratedSuccessfully" xml:space="preserve">
+    <value>تم تقديم اقرار الضريبة المضافة بنجاح وتم انشاء رقم فاتورة سداد</value>
+  </data>
+  <data name="ZZZZVatAmountonPurchase" xml:space="preserve">
+    <value>مبلغ ضريبة القيمة المضافة على المشتريات</value>
+  </data>
 </root>

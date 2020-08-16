@@ -5311,4 +5311,34 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
     <value>Your Tax Evasion Report is submitted successfully</value>
   </data>
+  <data name="ZZZZAdjustment" xml:space="preserve">
+    <value>Adjustment</value>
+  </data>
+  <data name="ZZZZConfirmAndCarryForward" xml:space="preserve">
+    <value>Confirm and Carry Forward</value>
+  </data>
+  <data name="ZZZZConfirmandGenerateSADADBill" xml:space="preserve">
+    <value>Confirm and Generate SADAD Bill</value>
+  </data>
+  <data name="ZZZZConfirmAndRefundRequest" xml:space="preserve">
+    <value>Confirm and Request Refund</value>
+  </data>
+  <data name="ZZZZDone" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="ZZZZIAgreeWithThese" xml:space="preserve">
+    <value>I agree with these</value>
+  </data>
+  <data name="ZZZZNetVAT" xml:space="preserve">
+    <value>Net VAT</value>
+  </data>
+  <data name="ZZZZRemembertocompletepayment" xml:space="preserve">
+    <value>Please remember to complete the payment</value>
+  </data>
+  <data name="ZZZZSadadGeneratedSuccessfully" xml:space="preserve">
+    <value>Your VAT Return is submitted successfully and SADAD Bill generated</value>
+  </data>
+  <data name="ZZZZVatAmountonPurchase" xml:space="preserve">
+    <value>Vat Amount on Purchases</value>
+  </data>
 </root>
