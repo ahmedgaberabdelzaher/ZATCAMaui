@@ -109,6 +109,7 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                                  <ColumnDefinition Width="20"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
@@ -120,6 +121,13 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </custom:CustomLabel>
+
+                                             <Image Grid.Column="3" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnEstimatedSalesForTheFiscalYearInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+
 
                                         </Grid>
                                         <Grid>
@@ -133,6 +141,13 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </custom:CustomLabel>
+
+                                             <Image Grid.Column="3" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnCapitalAmountInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+
                                         </Grid>
                                         <Grid>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.ZakatBase}" Style="{StaticResource ValueLabelGrey}"/>
@@ -145,6 +160,13 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </custom:CustomLabel>
+
+                                            <Image Grid.Column="3" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnZAKATBaseAmountInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+
                                         </Grid>
                                     </StackLayout>
                                 </StackLayout>
@@ -163,6 +185,12 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </custom:CustomLabel>
+                                    <Image Grid.Column="3" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnZAKATAmountInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+
                                 </StackLayout>
                             </border:SfBorder>
 
