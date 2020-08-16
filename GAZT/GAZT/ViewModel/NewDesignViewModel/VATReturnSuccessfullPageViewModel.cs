@@ -17,6 +17,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnDownloadFormClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
+      
 
         #region Properties
 
