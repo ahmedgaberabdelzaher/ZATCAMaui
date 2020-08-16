@@ -213,9 +213,9 @@
                                 <custom:BorderlessEntry x:Name="TFSAddress" Text="{Binding TFSAddress}" Style="{StaticResource EntryHeight48}" IsSpellCheckEnabled="False"  MaxLength="100">
                                 </custom:BorderlessEntry>
 
-                                <inputLayout:SfTextInputLayout.TrailingView >
+                                <!--<inputLayout:SfTextInputLayout.TrailingView >
                                     <Image Source="ic_location_Outline.png"/>
-                                </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout.TrailingView>-->
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
                     </ScrollView>
