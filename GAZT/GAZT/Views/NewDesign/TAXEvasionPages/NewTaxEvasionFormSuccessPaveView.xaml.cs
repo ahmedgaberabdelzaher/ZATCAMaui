@@ -12,6 +12,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         public NewTaxEvasionFormSuccessPaveView()
         {
             InitializeComponent();
+            viewModel = App.Locator.NewTaxEvasionFormSuccessPaveView;
+            this.BindingContext = viewModel;
             SetLTR();
         }
         private void SetLTR()
