@@ -13156,6 +13156,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adjustment.
+        /// </summary>
+        public static string ZZZZAdjustment {
+            get {
+                return ResourceManager.GetString("ZZZZAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to At least 8 characters long.
         /// </summary>
         public static string ZZZZAtleast8characterslong {
@@ -13201,6 +13210,33 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm and Carry Forward.
+        /// </summary>
+        public static string ZZZZConfirmAndCarryForward {
+            get {
+                return ResourceManager.GetString("ZZZZConfirmAndCarryForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm and Generate SADAD Bill.
+        /// </summary>
+        public static string ZZZZConfirmandGenerateSADADBill {
+            get {
+                return ResourceManager.GetString("ZZZZConfirmandGenerateSADADBill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm and Request Refund.
+        /// </summary>
+        public static string ZZZZConfirmAndRefundRequest {
+            get {
+                return ResourceManager.GetString("ZZZZConfirmAndRefundRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Email.
         /// </summary>
         public static string ZZZZConfirmEmail {
@@ -13233,6 +13269,15 @@ namespace EGAZT {
         public static string ZZZZCreateasecurePassword {
             get {
                 return ResourceManager.GetString("ZZZZCreateasecurePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Done.
+        /// </summary>
+        public static string ZZZZDone {
+            get {
+                return ResourceManager.GetString("ZZZZDone", resourceCulture);
             }
         }
         
@@ -13426,6 +13471,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I agree with these.
+        /// </summary>
+        public static string ZZZZIAgreeWithThese {
+            get {
+                return ResourceManager.GetString("ZZZZIAgreeWithThese", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Individual Registration.
         /// </summary>
         public static string ZZZZIndividualRegistration {
@@ -13476,6 +13530,15 @@ namespace EGAZT {
         public static string ZZZZNeighborhood {
             get {
                 return ResourceManager.GetString("ZZZZNeighborhood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net VAT.
+        /// </summary>
+        public static string ZZZZNetVAT {
+            get {
+                return ResourceManager.GetString("ZZZZNetVAT", resourceCulture);
             }
         }
         
@@ -13615,6 +13678,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please remember to complete the payment.
+        /// </summary>
+        public static string ZZZZRemembertocompletepayment {
+            get {
+                return ResourceManager.GetString("ZZZZRemembertocompletepayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat Password.
         /// </summary>
         public static string ZZZZRepeatPassword {
@@ -13629,6 +13701,15 @@ namespace EGAZT {
         public static string ZZZZReviewinformation {
             get {
                 return ResourceManager.GetString("ZZZZReviewinformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your VAT Return is submitted successfully and SADAD Bill generated.
+        /// </summary>
+        public static string ZZZZSadadGeneratedSuccessfully {
+            get {
+                return ResourceManager.GetString("ZZZZSadadGeneratedSuccessfully", resourceCulture);
             }
         }
         
@@ -13674,6 +13755,15 @@ namespace EGAZT {
         public static string ZZZZUnitNumber {
             get {
                 return ResourceManager.GetString("ZZZZUnitNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vat Amount on Purchases.
+        /// </summary>
+        public static string ZZZZVatAmountonPurchase {
+            get {
+                return ResourceManager.GetString("ZZZZVatAmountonPurchase", resourceCulture);
             }
         }
         
