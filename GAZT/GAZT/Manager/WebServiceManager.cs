@@ -4023,7 +4023,7 @@ namespace GAZT.Manager
             }
             return dashboardData;
         }
-        public static MyReturnsRootObject GAZTGetReturnData(string lang, string TIN)
+        public static async Task<MyReturnsRootObject>  GAZTGetReturnData(string lang, string TIN)
         {
             MyReturnsRootObject ReturnsdData = null;
             if (CrossConnectivity.Current.IsConnected)
@@ -4039,7 +4039,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     //client.DefaultRequestHeaders.Add("Token", App.Token);
                     string uri = Constants.GAZTGetReturnList + TIN + "' and Lang eq '" + lang + "'&saml2=enabled&$format=json";
-                    HttpResponseMessage GAZTGetDashboardResponse = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTGetDashboardResponse =await client.GetAsync(uri);
                     if (GAZTGetDashboardResponse != null)
                     {
                         if (GAZTGetDashboardResponse.StatusCode == HttpStatusCode.Unauthorized)

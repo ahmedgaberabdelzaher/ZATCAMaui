@@ -1129,7 +1129,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel
                 });
             }
         }
-        public async void OnPageLoad()
+        public async Task OnPageLoad()
         {
             IsZakatVisible = false;
             IsVATVisible = false;
@@ -1160,9 +1160,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel
             List<MyReturnsResult> ReturnsWHOverDueChild = new List<MyReturnsResult>();
             List<MyReturnsResult> ReturnsWHSubmitedChild = new List<MyReturnsResult>();
             Task GetReturnDataTask = null;
-            GetReturnDataTask = Task.Run(() =>
+            GetReturnDataTask = Task.Run(async() =>
             {
-                MyReturns = WebServiceManager.GAZTGetReturnData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                MyReturns =await WebServiceManager.GAZTGetReturnData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
             });
             try
             {

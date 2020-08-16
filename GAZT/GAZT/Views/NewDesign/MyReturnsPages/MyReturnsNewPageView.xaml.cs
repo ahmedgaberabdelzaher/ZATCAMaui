@@ -170,5 +170,15 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             }
             
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            //Device.BeginInvokeOnMainThread(async () =>
+            //{
+            //    viewModel.IsLoading = false;
+            //});
+
+        }
     }
 }
