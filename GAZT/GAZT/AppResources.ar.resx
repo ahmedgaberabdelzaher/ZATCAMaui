@@ -1766,7 +1766,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZImportsvaluex115" xml:space="preserve">
-    <value>قيمة االستيرادات × 115 %</value>
+    <value> 115x قيمة الاستيرادات%</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount" xml:space="preserve">
