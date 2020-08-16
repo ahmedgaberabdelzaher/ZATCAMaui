@@ -5344,4 +5344,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDBacktoLogin" xml:space="preserve">
     <value>Back to Login</value>
   </data>
+  <data name="NDBacktoLoginnew" xml:space="preserve">
+    <value>Back to Login</value>
+  </data>
 </root>

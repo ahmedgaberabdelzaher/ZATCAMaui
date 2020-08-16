@@ -2451,6 +2451,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to Login.
+        /// </summary>
+        public static string NDBacktoLogin {
+            get {
+                return ResourceManager.GetString("NDBacktoLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back to Login.
+        /// </summary>
+        public static string NDBacktoLoginnew {
+            get {
+                return ResourceManager.GetString("NDBacktoLoginnew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bill Date.
         /// </summary>
         public static string NDBillDate {

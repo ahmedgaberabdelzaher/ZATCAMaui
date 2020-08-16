@@ -5320,4 +5320,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDBacktoLogin" xml:space="preserve">
     <value>العودة لصفحة تسجيل الدخول</value>
   </data>
+  <data name="NDBacktoLoginnew" xml:space="preserve">
+    <value>العودة لصفحة تسجيل الدخول</value>
+  </data>
 </root>
