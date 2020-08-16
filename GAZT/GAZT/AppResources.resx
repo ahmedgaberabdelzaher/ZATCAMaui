@@ -5341,4 +5341,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ZZZZVatAmountonPurchase" xml:space="preserve">
     <value>Vat Amount on Purchases</value>
   </data>
+  <data name="NDBacktoLogin" xml:space="preserve">
+    <value>Back to Login</value>
+  </data>
 </root>

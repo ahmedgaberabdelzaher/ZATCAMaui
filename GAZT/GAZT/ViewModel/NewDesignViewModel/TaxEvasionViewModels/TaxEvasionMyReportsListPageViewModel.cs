@@ -357,27 +357,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             {
                 await Task.Run(() =>
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        //IsLoading = true;
-                    });
+                   IsLoading = true;
 
                 });
-                await Task.Run(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        _navigationService.NavigateTo(App.TaxEvasionReportDetailPageView, SelectedTaxEvasionReport);
-                        //_navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionReport);
-                    });
+                    _navigationService.NavigateTo(App.TaxEvasionReportDetailPageView, SelectedTaxEvasionReport);
+
                 });
-                await Task.Run(() =>
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        //IsLoading = false;
-                    });
-                });
+                
             }
             catch (Exception ex)
             {
