@@ -91,7 +91,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 
                 if (_selectedListItem != null)
                 {
+                    //Device.BeginInvokeOnMainThread(async () =>
+                    //{
+                    //    IsLoading = true;
+                    //});
 
+                    
                     if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
                     {
                         //zakat
@@ -147,6 +152,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //    GetVATAllReturnsAsync(SelectedItem);
                 //}
                 RaisePropertyChanged("SelectedListItem");
+
             }
         }
         public ChipModel _selectedChipFilterItem = null;
@@ -301,14 +307,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Method
 
-        public async void GetVATAllReturnsAsync(MyReturnsResult SelectedReturnsVAT)
+        public async Task GetVATAllReturnsAsync(MyReturnsResult SelectedReturnsVAT)
         {
-            Device.BeginInvokeOnMainThread(() =>
+            await Task.Run(() =>
             {
                 IsLoading = true;
             });
-            await GetVATAllReturns(SelectedReturnsVAT);
-            Device.BeginInvokeOnMainThread(() =>
+
+            await Task.Run(async() =>
+            {
+                await GetVATAllReturns(SelectedReturnsVAT);
+            });
+            await Task.Run(() =>
             {
                 IsLoading = false;
             });
@@ -319,44 +329,75 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    if (SelectedReturnsVAT != null)
+                    await Task.Run(() =>
                     {
-                        if (isStatusNotValid(SelectedReturnsVAT))
+                        IsLoading = true;
+                    });
+
+
+                    await Task.Run(async() =>
+                    {
+                        if (SelectedReturnsVAT != null)
                         {
-                            String SelectedICRGUID = SelectedReturnsVAT.Fbguid;
-                            App.ICRStatus = SelectedReturnsVAT.Stat;
-                            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
-                            PopToRootPage();
-                            if (_vATDeclaration != null && _vATDeclaration.d != null)
+                            if (isStatusNotValid(SelectedReturnsVAT))
                             {
-                                _vATDeclaration.d.Fbguid = SelectedICRGUID;
-                                VATDeclaration vATDeclaration = new VATDeclaration();
-                                VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                                //if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
-                                //   numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
-                                Result5 result5 = new Result5();
-                                List<Result5> lst = new List<Result5>();
-                                ADRSet _aDRSet = new ADRSet();
-                                lst.Add(result5);
-                                vATDeclaration.d = vATDeclarationD;
-                                vATDeclaration.d.ADRSet = _aDRSet;
-                                vATDeclaration.d.ADRSet.results = lst;
-                                Device.BeginInvokeOnMainThread(() =>
+                                String SelectedICRGUID = SelectedReturnsVAT.Fbguid;
+                                App.ICRStatus = SelectedReturnsVAT.Stat;
+                                VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
+                                PopToRootPage();
+                                if (_vATDeclaration != null && _vATDeclaration.d != null)
                                 {
-                                    _navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
-                                   // _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
-                                });
+                                    _vATDeclaration.d.Fbguid = SelectedICRGUID;
+                                    VATDeclaration vATDeclaration = new VATDeclaration();
+                                    VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                                    //if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
+                                    //   numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
+                                    Result5 result5 = new Result5();
+                                    List<Result5> lst = new List<Result5>();
+                                    ADRSet _aDRSet = new ADRSet();
+                                    lst.Add(result5);
+                                    vATDeclaration.d = vATDeclarationD;
+                                    vATDeclaration.d.ADRSet = _aDRSet;
+                                    vATDeclaration.d.ADRSet.results = lst;
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        _navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
+                                        // _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
+                                    });
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        IsLoading = false;
+
+                                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+
+                                    });
+
+                                }
                             }
                             else
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(async() =>
+                                {
+                                    IsLoading = false;
+
+                                    await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
+
+                                });
+
                             }
                         }
-                        else
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
-                        }
-                    }
+                    });
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+
+                   
                 }
                 catch (InternetException ex)
                 {
@@ -407,81 +448,95 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
             List<MyReturnsResult> AllReturns = new List<MyReturnsResult>();
-        
-            Task GetReturnDataTask = null;
-            GetReturnDataTask = Task.Run(() =>
+            await Task.Run(() =>
             {
-                MyReturns = WebServiceManager.GAZTGetReturnData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                IsLoading = true;
             });
-            try
+
+            await Task.Run(async() =>
             {
-                if (GetReturnDataTask != null)
-                    GetReturnDataTask.Wait();
-            }
-            catch (AggregateException ae)
-            {
-                foreach (var gex in ae.InnerExceptions)
+
+
+                try
                 {
-                    // Handle the GAZT custom exception.
-                    if (gex is GAZTException)
+                    //Task GetReturnDataTask = null;
+                    //GetReturnDataTask = Task.Run(() =>
+                    //{
+
+                    MyReturns = await WebServiceManager.GAZTGetReturnData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                    //});
+                    //try
+                    //{
+                    //    if (GetReturnDataTask != null)
+                    //        GetReturnDataTask.Wait();
+                    //}
+                }
+                catch (AggregateException ae)
+                {
+                    foreach (var gex in ae.InnerExceptions)
                     {
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTNetworkConnectivityIssueException)
+                        // Handle the GAZT custom exception.
+                        if (gex is GAZTException)
                         {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
-                        else if (gex is GAZTSessionExpiredException)
-                        {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                        }
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTNetworkConnectivityIssueException)
                             {
-                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                _navigationService.GoBack();
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
                             }
-                            else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
+                            else if (gex is GAZTInternetException)
                             {
-                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                _navigationService.GoBack();
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
                             }
-                            else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
+                            else if (gex is GAZTSessionExpiredException)
                             {
-                                PopToRootPage();
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                             }
-                        });
-                    }
-                    // Rethrow any other exception.
-                    else
-                    {
-                        throw;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
+                                {
+                                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    _navigationService.GoBack();
+                                }
+                                else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
+                                {
+                                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    _navigationService.GoBack();
+                                }
+                                else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
+                                {
+                                    PopToRootPage();
+                                }
+                            });
+                        }
+                        // Rethrow any other exception.
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
-            }
-            catch (GAZTSessionExpiredException)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
+                catch (GAZTSessionExpiredException)
                 {
-                    await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                    PopToRootPage();
-                });
-            }
-            catch (Exception)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                        PopToRootPage();
+                    });
+                }
+                catch (Exception)
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    PopToRootPage();
-                });
-            }
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        PopToRootPage();
+                    });
+                }
+            });
+
             if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
             {
                 AllReturns = MyReturns.d.results;
@@ -490,8 +545,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             else
             {
 
-    
+
             }
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+
+           
+           
         }
         public void FilterAllData()
         {
