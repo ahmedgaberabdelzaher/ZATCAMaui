@@ -2451,6 +2451,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to Login.
+        /// </summary>
+        public static string NDBacktoLogin {
+            get {
+                return ResourceManager.GetString("NDBacktoLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back to Login.
+        /// </summary>
+        public static string NDBacktoLoginnew {
+            get {
+                return ResourceManager.GetString("NDBacktoLoginnew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bill Date.
         /// </summary>
         public static string NDBillDate {
@@ -2649,6 +2667,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Reports.
+        /// </summary>
+        public static string NDMyReports {
+            get {
+                return ResourceManager.GetString("NDMyReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A new and easy way to communicate.
         /// </summary>
         public static string NDNewEasyWayToCommunicate {
@@ -2690,6 +2717,15 @@ namespace EGAZT {
         public static string NDObjectionsandReviews {
             get {
                 return ResourceManager.GetString("NDObjectionsandReviews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string NDOpen {
+            get {
+                return ResourceManager.GetString("NDOpen", resourceCulture);
             }
         }
         

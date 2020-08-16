@@ -5282,7 +5282,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Zakat Return</value>
   </data>
   <data name="NDTaxEvasionReport" xml:space="preserve">
-    <value>Tax Evasion Report</value>
+    <value>تقرير التهرب الضريبي</value>
   </data>
   <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
     <value>Your Tax Evasion Report is submitted successfully</value>
@@ -5319,5 +5319,14 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDBacktoLogin" xml:space="preserve">
     <value>العودة لصفحة تسجيل الدخول</value>
+  </data>
+  <data name="NDBacktoLoginnew" xml:space="preserve">
+    <value>العودة لصفحة تسجيل الدخول</value>
+  </data>
+  <data name="NDMyReports" xml:space="preserve">
+    <value>تقريري</value>
+  </data>
+  <data name="NDOpen" xml:space="preserve">
+    <value>افتح</value>
   </data>
 </root>
