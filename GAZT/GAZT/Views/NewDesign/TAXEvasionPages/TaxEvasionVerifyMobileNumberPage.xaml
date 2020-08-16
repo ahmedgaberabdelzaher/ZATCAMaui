@@ -144,9 +144,16 @@
 
                 <!--Input For Mobile Number-->
                 <StackLayout Grid.Row="1" Padding="10" IsVisible="{Binding IsShowMobileInput}">
-                    <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                                                Padding="0,0,0,0"
-                                                                Style="{StaticResource CaptionLabelGrey}"/>
+        
+                    <control:CustomLabel   Style="{StaticResource CaptionLabelGrey}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                        <control:CustomLabel.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}"/>
+                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                            </FormattedString>
+                        </control:CustomLabel.FormattedText>
+                    </control:CustomLabel>
 
                     <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand"
                                                         ContainerType="Outlined"
@@ -340,7 +347,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="#006450"/>
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>
