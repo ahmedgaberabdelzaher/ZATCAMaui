@@ -29,13 +29,6 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
-
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
             ClearFields();
             viewModel.CreateCompanyTypeList();
 
@@ -44,9 +37,16 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
             //if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
             //{
-                SetLocationToMap();
+            SetLocationToMap();
             //}
             viewModel.OnPageLoad();
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
         }
         private void SetLTR()
         {
@@ -572,5 +572,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 viewModel.IsFSHasError = false;
             }
         }
+
+     
     }
 }
