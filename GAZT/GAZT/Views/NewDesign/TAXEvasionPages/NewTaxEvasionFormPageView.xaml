@@ -69,14 +69,30 @@
                     <!--Start Of Reporter Information-->
                     <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.ReporterInfo}}">
                         <StackLayout >
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-6,0,-6">
+                                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-6,0,-6">
                                 <custom:BorderlessEntry  Text="{Binding TName}" IsEnabled="False" Style="{StaticResource DefaultEntry}" >
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout x:Name="FrmNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <inputLayout:SfTextInputLayout x:Name="FrmNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 
                                     <StackLayout Orientation="Horizontal" Margin="16,0,0,0" >
                                         <custom:BorderlessEntry  Placeholder="+966" Style="{StaticResource EntryHeight48}" />
@@ -88,8 +104,16 @@
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"   Margin="0,-10,0,0">
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span  Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"   Margin="0,-10,0,0">
                                 <custom:BorderlessEntry  Text="{Binding RLocation}"  IsReadOnly="True" >
                                 </custom:BorderlessEntry>
 
@@ -110,8 +134,17 @@
                     <!--Facility Information Starts-->
                     <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.FacilityInfo}}">
                         <StackLayout>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout x:Name="FrmFName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+                                <inputLayout:SfTextInputLayout x:Name="FrmFName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <custom:BorderlessEntry  Text="{Binding TFaciName}" x:Name="TFaciName" Unfocused="TFaciName_Unfocused" IsSpellCheckEnabled="False" FontSize="Small" Style="{StaticResource EntryHeight48}" >
                                     <Entry.Behaviors>
                                         <customcontrol:AlphabetandArabicCharacters/>
@@ -137,8 +170,16 @@
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <Grid>
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <Grid>
                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <custom:BorderlessEntry x:Name="Region_entry" Text="{Binding TxtReportDetailRegion}"   Style="{StaticResource EntryHeight48}" >
                                 </custom:BorderlessEntry>
@@ -161,8 +202,16 @@
                                 </syncfusion:SfPicker>
                             </Grid>
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <Grid>
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <Grid>
                                 <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                     <custom:BorderlessEntry x:Name="City_entry" Text="{Binding TxtReportDetailCity}" Style="{StaticResource EntryHeight48}" >
                                     </custom:BorderlessEntry>
@@ -185,8 +234,16 @@
                                 </syncfusion:SfPicker>
                             </Grid>
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <!--<Grid>-->
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <!--<Grid>-->
                                 <inputLayout:SfTextInputLayout x:Name="FrmFDAddress" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                     <custom:BorderlessEntry Text="{Binding TFDAdress}" x:Name="TFDAdress" Unfocused="TFDAdress_Unfocused" Style="{StaticResource EntryHeight48}" IsSpellCheckEnabled="False"  MaxLength="100">
                                     </custom:BorderlessEntry>
@@ -209,8 +266,16 @@
                                 </syncfusion:SfPicker>-->
                             <!--</Grid>-->
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <custom:BorderlessEntry x:Name="TFSAddress" Text="{Binding TFSAddress}" Style="{StaticResource EntryHeight48}" IsSpellCheckEnabled="False"  MaxLength="100">
                                 </custom:BorderlessEntry>
 
@@ -225,7 +290,15 @@
                     <!--Start Of Report Details-->
                     <ScrollView Grid.Row="1" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:NewTaxEvasionTabEnum.ReportDetails}}">
                         <StackLayout>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource CaptionLabelGrey}"/>
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
                             <Grid>
                                 <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                     <custom:BorderlessEntry  Text="{Binding TxtReporttype}"     Style="{StaticResource EntryHeight48}" >
@@ -249,8 +322,16 @@
                                 </syncfusion:SfPicker>
                             </Grid>
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout x:Name="FrmReportDetail" Margin="10,-6,10,-6"
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <inputLayout:SfTextInputLayout x:Name="FrmReportDetail" Margin="10,-6,10,-6"
                                     TrailingViewPosition="Inside"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
