@@ -36,7 +36,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             //viewModel.z = true;
             //viewModel.IsNoDataLabelVisible = false;
             IntialiseAsync();
-            ZakatEstimationList.IsVisible = viewModel.IsZakatEstListVisible;
+          //  ZakatEstimationList.IsVisible = viewModel.IsZakatEstListVisible;
         }
 
         protected override void OnAppearing()
