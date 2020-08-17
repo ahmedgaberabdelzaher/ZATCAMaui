@@ -107,9 +107,9 @@
                                     <StackLayout Padding="10" Spacing="10" BindingContext="{Binding ZakatReturnDetail}">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                  <ColumnDefinition Width="20"></ColumnDefinition>
+                                                <ColumnDefinition Width="40*"></ColumnDefinition>
+                                                <ColumnDefinition Width="45*"></ColumnDefinition>
+                                                  <ColumnDefinition Width="15*"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
@@ -122,7 +122,7 @@
                                                 </Label.FormattedText>
                                             </custom:CustomLabel>
 
-                                             <Image Grid.Column="3" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                             <Image Grid.Column="2" Source="ic_vat_info" HorizontalOptions="EndAndExpand" VerticalOptions="Start">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnEstimatedSalesForTheFiscalYearInfoClicked"/>
                                                     </Image.GestureRecognizers>
@@ -131,6 +131,12 @@
 
                                         </Grid>
                                         <Grid>
+                                             <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"></ColumnDefinition>
+                                                <ColumnDefinition Width="45*"></ColumnDefinition>
+                                                  <ColumnDefinition Width="15*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                           
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.Capital}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
                                                 <Label.FormattedText>
@@ -142,7 +148,7 @@
                                                 </Label.FormattedText>
                                             </custom:CustomLabel>
 
-                                             <Image Grid.Column="3" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                             <Image Grid.Column="2" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnCapitalAmountInformationClicked"/>
                                                     </Image.GestureRecognizers>
@@ -150,6 +156,13 @@
 
                                         </Grid>
                                         <Grid>
+
+                                             <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"></ColumnDefinition>
+                                                <ColumnDefinition Width="45*"></ColumnDefinition>
+                                                  <ColumnDefinition Width="15*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                           
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static local:AppResources.ZakatBase}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Column="1" Style="{StaticResource HorizontalEnd}">
                                                 <Label.FormattedText>
@@ -161,7 +174,7 @@
                                                 </Label.FormattedText>
                                             </custom:CustomLabel>
 
-                                            <Image Grid.Column="3" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                            <Image Grid.Column="2" Source="ic_vat_info" HorizontalOptions="EndAndExpand" VerticalOptions="Start">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnZAKATBaseAmountInfoClicked"/>
                                                     </Image.GestureRecognizers>
@@ -185,7 +198,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </custom:CustomLabel>
-                                    <Image Grid.Column="3" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                    <Image Grid.Column="2" Source="ic_vat_info" HorizontalOptions="EndAndExpand">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnZAKATAmountInfoClicked"/>
                                                     </Image.GestureRecognizers>

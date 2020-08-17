@@ -554,7 +554,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         SetICRStatus();
                         DateTime _abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
                         DateTime _abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
-                        Abrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + AppResources.To + " " + _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+                        Abrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
 
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
