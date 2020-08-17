@@ -13,7 +13,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:local="clr-namespace:EGAZT.CustomControl"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.UnlockAccount.UnlockAccountTINPageView"
-                CloseWhenBackgroundIsClicked="False">
+                CloseWhenBackgroundIsClicked="False" >
     <ContentPage.Resources>
         <ResourceDictionary>
            <ResourceDictionary.MergedDictionaries>

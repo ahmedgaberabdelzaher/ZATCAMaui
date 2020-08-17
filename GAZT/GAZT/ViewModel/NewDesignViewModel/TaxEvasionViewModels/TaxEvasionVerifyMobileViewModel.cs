@@ -21,6 +21,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         public TaxEvasionVerifySmsResponseModel taxEvasionVerifySmsResponseModel;
 
         #region proprety
+        private Color _ResendOtpButtonColor = Color.FromHex("#999999");
+        public Color ResendOtpButtonColor
+        {
+            get
+            {
+                return _ResendOtpButtonColor;
+            }
+            set
+            {
+                _ResendOtpButtonColor = value;
+                RaisePropertyChanged("ResendOtpButtonColor");
+            }
+        }
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -253,6 +266,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             set
             {
                 _isResendOTPEnabled = value;
+                if (_isResendOTPEnabled)
+                {
+                    ResendOtpButtonColor = Color.DarkGreen;
+                }
+                else
+                {
+                    ResendOtpButtonColor = Color.FromHex("#999999");
+                }
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
@@ -289,12 +310,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
             SendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
+                IsResendOTPEnabled = false;
                 await sendOTPAsync();
             });
-            ResendOTPCommand = new Xamarin.Forms.Command(() =>
+            ResendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
-                IsTimerCancel = true;
-                ShowMobileForm();
+                //IsTimerCancel = true;
+                //ShowMobileForm();
+                if (IsResendOTPEnabled)
+                {
+                    IsResendOTPEnabled = false;
+                    ClearOTPForm();
+                    await sendOTPAsync();
+                    StartTimer(0, 2, 0);
+                }
+
+
             });
         }
 

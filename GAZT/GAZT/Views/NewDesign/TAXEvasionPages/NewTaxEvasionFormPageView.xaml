@@ -31,6 +31,14 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
+                
             <Style TargetType="Entry" x:Key="EntryHeight48">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
@@ -78,8 +86,8 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-6,0,-6">
-                                <custom:BorderlessEntry  Text="{Binding TName}" IsEnabled="False" Style="{StaticResource DefaultEntry}" >
+                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0" HasError="{Binding IsTnameHasError}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-6,0,-6">
+                                    <custom:BorderlessEntry  Text="{Binding TName}" TextChanged="TNameEntry_TextChanged" IsEnabled="False" Style="{StaticResource DefaultEntry}" >
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
@@ -92,14 +100,14 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout x:Name="FrmNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout x:Name="FrmNumber" HasError="{Binding IsTmobileHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 
                                     <StackLayout Orientation="Horizontal" Margin="16,0,0,0" >
                                         <custom:BorderlessEntry  Placeholder="+966" Style="{StaticResource EntryHeight48}" />
                                         <BoxView Style="{StaticResource lineSeperator}"  WidthRequest="1" HeightRequest="20" Margin="5"/>
 
 
-                                    <custom:BorderlessEntry x:Name="TMobNumber" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" HorizontalOptions="FillAndExpand" MaxLength="15" >
+                                    <custom:BorderlessEntry x:Name="TMobNumber" TextChanged="TMobNumber_TextChanged" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" HorizontalOptions="FillAndExpand" MaxLength="15" >
                                 </custom:BorderlessEntry>
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>
@@ -144,7 +152,7 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
 
-                                <inputLayout:SfTextInputLayout x:Name="FrmFName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout x:Name="FrmFName" HasError="{Binding IsFacilityNameHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <custom:BorderlessEntry  Text="{Binding TFaciName}" x:Name="TFaciName" Unfocused="TFaciName_Unfocused" IsSpellCheckEnabled="False" FontSize="Small" Style="{StaticResource EntryHeight48}" >
                                     <Entry.Behaviors>
                                         <customcontrol:AlphabetandArabicCharacters/>
@@ -180,8 +188,8 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <Grid>
-                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry x:Name="Region_entry" Text="{Binding TxtReportDetailRegion}"   Style="{StaticResource EntryHeight48}" >
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" HasError="{Binding IsRegionHasError}" Margin="0,-10,0,0">
+                                <custom:BorderlessEntry x:Name="Region_entry" Text="{Binding TxtReportDetailRegion}" TextChanged="Region_entry_TextChanged"  Style="{StaticResource EntryHeight48}" >
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView >
                                     <Image Source="arrowDropdown.png">
@@ -212,8 +220,8 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <Grid>
-                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <custom:BorderlessEntry x:Name="City_entry" Text="{Binding TxtReportDetailCity}" Style="{StaticResource EntryHeight48}" >
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" HasError="{Binding IsCityHasError}" Margin="0,-10,0,0">
+                                    <custom:BorderlessEntry x:Name="City_entry" TextChanged="City_entry_TextChanged" Text="{Binding TxtReportDetailCity}" Style="{StaticResource EntryHeight48}" >
                                     </custom:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView >
                                         <Image Source="arrowDropdown.png">
@@ -244,7 +252,7 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <!--<Grid>-->
-                                <inputLayout:SfTextInputLayout x:Name="FrmFDAddress" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout x:Name="FrmFDAddress" Style="{StaticResource InputTableTextInputLayoutStyle}" HasError="{Binding IsFDHasError}" Margin="0,-10,0,0">
                                     <custom:BorderlessEntry Text="{Binding TFDAdress}" x:Name="TFDAdress" Unfocused="TFDAdress_Unfocused" Style="{StaticResource EntryHeight48}" IsSpellCheckEnabled="False"  MaxLength="100">
                                     </custom:BorderlessEntry>
                                     <!--<inputLayout:SfTextInputLayout.TrailingView >
@@ -275,8 +283,8 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry x:Name="TFSAddress" Text="{Binding TFSAddress}" Style="{StaticResource EntryHeight48}" IsSpellCheckEnabled="False"  MaxLength="100">
+                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  HasError="{Binding IsFSHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <custom:BorderlessEntry x:Name="TFSAddress" Text="{Binding TFSAddress}" TextChanged="TFSAddress_TextChanged"  Style="{StaticResource EntryHeight48}" IsSpellCheckEnabled="False"  MaxLength="100">
                                 </custom:BorderlessEntry>
 
                                 <!--<inputLayout:SfTextInputLayout.TrailingView >
@@ -331,10 +339,10 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout x:Name="FrmReportDetail" Margin="10,-6,10,-6"
+                                <inputLayout:SfTextInputLayout x:Name="FrmReportDetail" HasError="{Binding IsReportDetailHasError}" Margin="0,-6,0,-6"
                                     TrailingViewPosition="Inside"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                        <Editor  MaxLength="999"
                                                 IsSpellCheckEnabled="False"
                                                 Text="{Binding TReportDetail}"
@@ -435,7 +443,7 @@
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding RLocation}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Text="{Binding RLocation}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -563,9 +571,9 @@
 
 
                     <StackLayout Grid.Row="2">
-                        <buttons:SfButton Text="Continue" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnContinueClicked}"/>
-                    </StackLayout>
-                </Grid>
+                            <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnContinueClicked}"/>
+                        </StackLayout> 
+                    </Grid>
             </yummy:PancakeView>
 
             <Grid Padding="15,10,15,10" Grid.Row="0">
@@ -574,9 +582,9 @@
                     <ColumnDefinition Width="60*"/>
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
-                <custom:CustomLabel Grid.Column="1" Text="Tax Evasion" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
                 <StackLayout Grid.Column="0">
-                    <Image Source="arrowLeftwhite.png"  VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
+                    <Image Source="arrowLeftwhite.png"  VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Style="{DynamicResource BackButtonArrow}">
 
                     </Image>
                     <StackLayout.GestureRecognizers>
@@ -586,7 +594,9 @@
 
                 <StackLayout Grid.Column="2">
                     <Image Source="close.png" VerticalOptions="CenterAndExpand" HorizontalOptions="End">
-
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnGotoReportPageClicked}" />
+                        </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
             </Grid>

@@ -21,6 +21,13 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.PopulateVATRefundsList();
+        }
+
         private void SetLTR()
         {
             //if (App.IsArabic)
@@ -44,10 +51,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             try
             {
-                VATRefundsModel selectedItem = e.AddedItems[0] as VATRefundsModel;
-                selectedItem.IsNewRequest = false;
+                VatRefHeaderSetResult selectedItem = e.AddedItems[0] as VatRefHeaderSetResult;
+                viewModel.SelectionChanged(selectedItem);
 
-                viewModel._navigationService.NavigateTo(App.VATRefundDetailsPageView, selectedItem);
+                viewModel._navigationService.NavigateTo(App.VATRefundDetailsPageView, viewModel.VatRefundsListResultModel);
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
@@ -61,7 +68,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             try
             {
-                viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView, viewModel.VATRefundsModel);
+                viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView);
             }
             catch (Exception ex)
             {

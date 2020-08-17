@@ -4945,18 +4945,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsStatusRefunded" xml:space="preserve">
     <value>Refunded</value>
   </data>
-  <data name="VATRefundsStatusInProcess" xml:space="preserve">
-    <value>In Process</value>
-  </data>
-  <data name="VATRefundAmounts" xml:space="preserve">
-    <value>Refund Amounts</value>
-  </data>
-  <data name="VATRefundsAlRajhiBank" xml:space="preserve">
-    <value>Al Rajhi Bank</value>
-  </data>
-  <data name="VATRefundsLastStatusChange" xml:space="preserve">
-    <value>Last Status Change</value>
-  </data>
+   <data name="VATRefundsStatusInProcess" xml:space="preserve">     <value>IN PROCESS</value>   </data>   <data name="VATRefundAmounts" xml:space="preserve">     <value>Refund Amounts</value>   </data>   <data name="VATRefundsAlRajhiBank" xml:space="preserve">     <value>Al Rajhi Bank</value>   </data>   <data name="VATRefundsLastStatusChange" xml:space="preserve">     <value>Last Status Change</value>   </data>   <data name="VATRefundsRequestSuccess" xml:space="preserve">     <value>Your VAT Refund Request is successful</value>   </data>   <data name="VATRefundsRequestedAmount" xml:space="preserve">     <value>Requested Amount</value>    </data>
+  <data name="VATRefundsAddAccount" xml:space="preserve">
+    <value>Add Account</value>
+   </data>
   <data name="VATRefundsRequestSuccess" xml:space="preserve">
     <value>Your VAT Refund Request is successful</value>
   </data>
@@ -5346,5 +5338,11 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDBacktoLoginnew" xml:space="preserve">
     <value>Back to Login</value>
+  </data>
+  <data name="NDMyReports" xml:space="preserve">
+    <value>My Reports</value>
+  </data>
+  <data name="NDOpen" xml:space="preserve">
+    <value>Open</value>
   </data>
 </root>

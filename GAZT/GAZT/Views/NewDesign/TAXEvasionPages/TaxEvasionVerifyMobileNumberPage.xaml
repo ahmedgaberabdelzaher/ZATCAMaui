@@ -145,7 +145,7 @@
                 <!--Input For Mobile Number-->
                 <StackLayout Grid.Row="1" Padding="10" IsVisible="{Binding IsShowMobileInput}">
         
-                    <control:CustomLabel   Style="{StaticResource CaptionLabelGrey}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+                    <control:CustomLabel   Style="{StaticResource CaptionLabelGrey}" Grid.Row="0"   Padding="0,0,0,0">
 
                         <control:CustomLabel.FormattedText>
                             <FormattedString>
@@ -329,7 +329,7 @@
                                                VerticalOptions="StartAndExpand"
                                                Margin="0,50,0,0"
                                                BackgroundColor="Transparent"
-                                               TextColor="#999999"/>
+                                               TextColor="{Binding ResendOtpButtonColor}"/>
                 </StackLayout>
 
                 <!--Continue button-->
