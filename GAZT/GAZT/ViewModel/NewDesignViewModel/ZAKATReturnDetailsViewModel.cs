@@ -1206,19 +1206,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //    }
 
         //}
-        //public string GetAmountAfterRemovingComma(string AmountText)
-        //{
-        //    if (AmountText.Contains(","))
-        //    {
-        //        return AmountText = AmountText.Replace(",", "");
-        //    }
-        //    else
-        //    {
-        //        return AmountText;
-        //    }
-        //}
+        public string GetAmountAfterRemovingComma(string AmountText)
+        {
+            if (AmountText.Contains(","))
+            {
+                return AmountText = AmountText.Replace(",", "");
+            }
+            else
+            {
+                return AmountText;
+            }
+        }
         private bool GetEstimatedZAKATValueChangeStatus()
         {
+            bool s = GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.TvtslI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.TvtslI));
+            string str = GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.TvtslI);
+            string str1 = GetAmountAfterRemovingComma(ZakatReturnDetail.TvtslI);
+            bool ss = str.Equals(str1);
+
             if (ZakatReturnDetailToCompare.TvtslI.Equals(ZakatReturnDetail.TvtslI)
                 && ZakatReturnDetailToCompare.LabnoI.Equals(ZakatReturnDetail.LabnoI)
                 && ZakatReturnDetailToCompare.ImpvalI.Equals(ZakatReturnDetail.ImpvalI)
