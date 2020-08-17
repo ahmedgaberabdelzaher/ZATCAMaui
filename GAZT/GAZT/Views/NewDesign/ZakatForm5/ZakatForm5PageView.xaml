@@ -270,7 +270,13 @@
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                     <StackLayout Padding="10" Spacing="10">
-                                        <StackLayout Orientation="Horizontal">
+
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5OutletName}" Style="{StaticResource ValueLabelGrey}"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                                            </StackLayout>
+
+                                                            <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NumOfCars}" Style="{StaticResource ValueLabelGrey}"/>
                                                                 <custom:CustomLabel Text="{Binding NoOfCars}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                         </StackLayout>
@@ -1118,7 +1124,7 @@
                                                             <StackLayout Orientation="Horizontal" Spacing="0">
 
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GovernmentContractProfile}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <Image Margin="-20,0,0,0" HorizontalOptions="StartAndExpand" Source="ic_vat_info"></Image>
+                                                                <Image HorizontalOptions="StartAndExpand" Source="ic_vat_info"></Image>
 
                                                                 <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200">
                                                                     <Label.FormattedText>
@@ -1521,9 +1527,13 @@
                                                                 <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                             </StackLayout>
 
-                                            <StackLayout  Orientation="Horizontal">
-                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ValueofSubsityfromGov}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200">
+                                            <Grid >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="60*"/>
+                                                    <ColumnDefinition Width="40*"/>
+                                                </Grid.ColumnDefinitions>
+                                                 <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5ValueofSubsityfromGov}" Style="{StaticResource ValueLabelGrey}" BackgroundColor="Green"/>
+                                                                <custom:CustomLabel Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" BackgroundColor="LightGreen">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding SubsidyVal}" />
@@ -1532,7 +1542,7 @@
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
                                                                 </custom:CustomLabel>
-                                                            </StackLayout>
+                                                            </Grid>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>

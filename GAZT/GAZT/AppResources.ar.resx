@@ -5369,4 +5369,16 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="TPUpdatePassword" xml:space="preserve">
     <value>تغيير الرقم السري</value>
   </data>
+  <data name="NDAckReceiptForZakat" xml:space="preserve">
+    <value>GAZT acknowledges the receipt of your Return of Zakat\Income Tax</value>
+  </data>
+  <data name="NDDownloadInvoice" xml:space="preserve">
+    <value>Download Invoice</value>
+  </data>
+  <data name="NDReturnOfZakat" xml:space="preserve">
+    <value>Return of Zakat</value>
+  </data>
+  <data name="NDSadadBillNoString1" xml:space="preserve">
+    <value>SADAD Bill Number</value>
+  </data>
 </root>

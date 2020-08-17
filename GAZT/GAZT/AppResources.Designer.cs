@@ -2433,6 +2433,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GAZT acknowledges the receipt of your Return of Zakat\Income Tax.
+        /// </summary>
+        public static string NDAckReceiptForZakat {
+            get {
+                return ResourceManager.GetString("NDAckReceiptForZakat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All certificates.
         /// </summary>
         public static string NDAllcertificates {
@@ -2537,6 +2546,15 @@ namespace EGAZT {
         public static string NDDontMissObligation {
             get {
                 return ResourceManager.GetString("NDDontMissObligation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download Invoice.
+        /// </summary>
+        public static string NDDownloadInvoice {
+            get {
+                return ResourceManager.GetString("NDDownloadInvoice", resourceCulture);
             }
         }
         
@@ -2793,6 +2811,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Return of Zakat.
+        /// </summary>
+        public static string NDReturnOfZakat {
+            get {
+                return ResourceManager.GetString("NDReturnOfZakat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Returns.
         /// </summary>
         public static string NDReturns {
@@ -2825,6 +2852,15 @@ namespace EGAZT {
         public static string NDReviewBelow {
             get {
                 return ResourceManager.GetString("NDReviewBelow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SADAD Bill Number.
+        /// </summary>
+        public static string NDSadadBillNo {
+            get {
+                return ResourceManager.GetString("NDSadadBillNo", resourceCulture);
             }
         }
         
