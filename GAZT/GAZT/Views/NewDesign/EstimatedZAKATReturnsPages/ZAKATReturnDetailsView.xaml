@@ -762,12 +762,12 @@
                             </Label.GestureRecognizers>
                         </Label>
 
-                        <custom:CustomLabel Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ConfirmAndGenerateSADADBillLabelVisibility}">
+                        <Label Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ConfirmAndGenerateSADADBillLabelVisibility}">
 
                             <!--<Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnChangeFromEstimateToAccountingBasisButtonClicked}"/>
                     </Label.GestureRecognizers>-->
-                        </custom:CustomLabel>
+                        </Label>
 
                     </StackLayout>
                 </Grid>
