@@ -50,27 +50,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        private void btnVATRegistration_Clicked(object sender, EventArgs e)
-        {                try
-                {
-
-                var _navigation = Application.Current.MainPage.Navigation;
-                var _lastPage = _navigation.NavigationStack.LastOrDefault();
-                //Remove last page
-                _navigation.RemovePage(_lastPage);
-                //Go back 
-                _navigation.PopAsync();
-            }
-            catch (Exception ex)
-                { 
-                
-                }
-         
-
-        }
-
+      
 
         protected override bool OnBackButtonPressed() => true;
+       
 
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {

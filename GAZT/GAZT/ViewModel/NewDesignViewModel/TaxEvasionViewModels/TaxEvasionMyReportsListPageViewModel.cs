@@ -181,7 +181,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         {
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.GoBack();
+                _navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+               // _navigationService.GoBack();
             });
         }
         public void PopulateDataInChips()
@@ -351,6 +352,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 });
             }
         }
+       
         public async Task passSelectedTaxEvasionItem(TaxEvasionReportDetails SelectedTaxEvasionReport)
         {
             try

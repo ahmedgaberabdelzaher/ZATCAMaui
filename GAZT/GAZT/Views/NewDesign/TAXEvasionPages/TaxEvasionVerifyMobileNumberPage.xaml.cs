@@ -115,7 +115,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 
             }
         }
-
+        protected override bool OnBackButtonPressed() => true;
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
 

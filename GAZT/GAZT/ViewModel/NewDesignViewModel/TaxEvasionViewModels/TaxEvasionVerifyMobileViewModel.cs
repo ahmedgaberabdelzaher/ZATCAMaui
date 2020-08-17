@@ -310,7 +310,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             IsShowOTPInput = false;
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.GoBack();
+                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+               // _navigationService.GoBack();
             });
             SendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
