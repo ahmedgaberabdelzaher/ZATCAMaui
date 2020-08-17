@@ -274,34 +274,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 {
                     if (rootObject.Data != null)
                     {
-                        if (rootObject.Data.Opened.Count() > 0)
+                        if (rootObject.Data.Opened != null)
                         {
-                            rootObject.Data.Opened = rootObject.Data.Opened.OrderByDescending(c => c.TicketId).ToArray();
-                            TERListReportbymobno = rootObject.Data.Opened.ToList();
-                            // SetNoDataLabelVisibilityforOpen = false;
-                            foreach (var item in TERListReportbymobno)
+                            if (rootObject.Data.Opened.Count() > 0)
                             {
-                                TERListReportbymobnoAll.Add(item);
+                                rootObject.Data.Opened = rootObject.Data.Opened.OrderByDescending(c => c.TicketId).ToArray();
+                                TERListReportbymobno = rootObject.Data.Opened.ToList();
+                                // SetNoDataLabelVisibilityforOpen = false;
+                                foreach (var item in TERListReportbymobno)
+                                {
+                                    TERListReportbymobnoAll.Add(item);
+                                }
                             }
-                        }
-                        else
-                        {
-                          //  SetNoDataLabelVisibilityforOpen = true;
-                        }
+                            else
+                            {
+                                //  SetNoDataLabelVisibilityforOpen = true;
+                            }
 
-                        if (rootObject.Data.Closed.Count() > 0)
+                        }
+                        if (rootObject.Data.Closed!=null)
                         {
-                            rootObject.Data.Opened = rootObject.Data.Closed.OrderByDescending(c => c.TicketId).ToArray();
-                            TERListReportbymobnoClosed = rootObject.Data.Closed.ToList();
-                            foreach (var item in TERListReportbymobnoClosed)
+                            if (rootObject.Data.Closed.Count() > 0)
                             {
-                                TERListReportbymobnoAll.Add(item);
+                                rootObject.Data.Opened = rootObject.Data.Closed.OrderByDescending(c => c.TicketId).ToArray();
+                                TERListReportbymobnoClosed = rootObject.Data.Closed.ToList();
+                                foreach (var item in TERListReportbymobnoClosed)
+                                {
+                                    TERListReportbymobnoAll.Add(item);
+                                }
+                                //SetNoDataLabelVisibilityforClose = false;
                             }
-                            //SetNoDataLabelVisibilityforClose = false;
+                            else
+                            {
+                            }
                         }
-                        else
-                        {
-                        }
+                        
                     }
                     else
                     {

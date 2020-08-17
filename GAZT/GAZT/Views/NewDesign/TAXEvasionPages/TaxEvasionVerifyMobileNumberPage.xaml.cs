@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
@@ -28,28 +29,15 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             ChangeAeroIcon();
             SetLTR();
         }
-        //protected async override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    try
-        //    {
-        //        var existingPages = Navigation.NavigationStack.ToList();
-
-        //        foreach (var page in existingPages)
-        //        {
-        //            if (page.GetType().Name != App.TaxEvasionMyReportsListPageView || page.GetType().Name != App.NewTaxEvasionFormPageView)
-        //            {
-        //                Navigation.RemovePage(page);
-
-        //            }
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-
-        //    }
-
-        //}
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
