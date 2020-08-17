@@ -38,11 +38,13 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
         void genericPicker_SelectionChanged(System.Object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            viewModel.SelectedItem = e.NewValue.ToString();
+            
+            viewModel.DataSource.SelectedValue = e.NewValue.ToString();
         }
 
         void PopupPage_BackgroundClicked(System.Object sender, System.EventArgs e)
         {
+
             MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
         }
     }

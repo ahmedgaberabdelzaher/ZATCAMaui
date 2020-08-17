@@ -7,6 +7,7 @@ using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
+using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
@@ -128,6 +129,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private bool _isReturnFilingViewEnabled = true;
+        public bool IsReturnFilingViewEnabled
+        {
+            get
+            {
+                return _isReturnFilingViewEnabled;
+            }
+            set
+            {
+                _isReturnFilingViewEnabled = value;
+                RaisePropertyChanged("IsReturnFilingViewEnabled");
+            }
+        }
         private bool _isSummaryViewEnabled = true;
         public bool IsSummaryViewEnabled
         {
@@ -154,7 +168,72 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TitleText");
             }
         }
+        private string _reasonTitle = string.Empty;
+        public string ReasonTitle
+        {
+            get
+            {
+                return _reasonTitle;
+            }
+            set
+            {
+                _reasonTitle = value;
+                RaisePropertyChanged("ReasonTitle");
+            }
+        }
 
+        private DateTime _startDate = DateTime.Now;
+        public DateTime StartDate
+        {
+            get
+            {
+                return _startDate;
+            }
+            set
+            {
+                _startDate = value;
+                RaisePropertyChanged("StartDate");
+            }
+        }
+        private DateTime _endDate = DateTime.Now;
+        public DateTime EndDate
+        {
+            get
+            {
+                return _endDate;
+            }
+            set
+            {
+                _endDate = value;
+                RaisePropertyChanged("EndDate");
+            }
+        }
+        private string _fromDate = string.Empty;
+        public string FromDate
+        {
+            get
+            {
+                return _fromDate;
+            }
+            set
+            {
+                _fromDate = value;
+                RaisePropertyChanged("FromDate");
+            }
+        }
+        private string _toDate = string.Empty;
+        public string ToDate
+        {
+            get
+            {
+                return _toDate;
+            }
+            set
+            {
+                _toDate = value;
+                RaisePropertyChanged("ToDate");
+            }
+        }
 
         private int _selectedOutletOptionIndex;
         public int SelectedOutletOptionIndex
@@ -167,6 +246,71 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _selectedOutletOptionIndex = value;
                 RaisePropertyChanged("SelectedOutletOptionIndex");
+            }
+        }
+        private string _txtIDNumber = string.Empty;
+        public string TxtIDNumber
+        {
+            get
+            {
+                return _txtIDNumber;
+            }
+            set
+            {
+                _txtIDNumber = value;
+                RaisePropertyChanged("TxtIDNumber");
+            }
+        }
+        private string _iDType = string.Empty;
+        public string IDType
+        {
+            get
+            {
+                return _iDType;
+            }
+            set
+            {
+                _iDType = value;
+                RaisePropertyChanged("IDType");
+            }
+        }
+        private string _DOB = string.Empty;
+        public string DOB
+        {
+            get
+            {
+                return _DOB;
+            }
+            set
+            {
+                _DOB = value;
+                RaisePropertyChanged("DOB");
+            }
+        }
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get
+            {
+                return _pickerModel;
+            }
+            set
+            {
+                _pickerModel = value;
+                RaisePropertyChanged("PickerModel");
+            }
+        }
+        private GenericDatePickerModel _datepickerModel { get; set; }
+        public GenericDatePickerModel DatePickerModel
+        {
+            get
+            {
+                return _datepickerModel;
+            }
+            set
+            {
+                _datepickerModel = value;
+                RaisePropertyChanged("DatePickerModel");
             }
         }
         public ObservableCollection<VATDeregistrationModel> c { get; set; }
@@ -379,12 +523,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             OnVatRegistrationDateTapped = new Command(this.OnVatRegistrationReasonDateClicked);
 
             AddOutletDecisionOptions();
-            AddOutletDocumentOptions();
             PopulateAttachmentsListViewTemplate();
             PopulateSummaryReasonData();
             PopulateSummaryDeclarationData();
 
             VATDeregistrationModel = new VATDeregistrationModel();
+           
 
             SelectedOutletOption = new VATDeregistrationModel();
 
@@ -432,27 +576,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public async void OnVatRegistrationReasonClicked()
+        public  void OnVatRegistrationReasonClicked()
         {
+           // ObservableCollection < VATDeregistrationReasonModel> reasonList = new ObservableCollection<VATDeregistrationReasonModel>();
+            ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
+            string reqType = string.Empty;
+            if(SelectedOutletOption.ActiveOutletDecisionOptions.Contains("De-Registration of VAT Account"))
+            {
+                reqType = "VT_DREG";
+            }
+            else
+            {
+                reqType = "VT_SUSP";
+            }
+            VATDeregistrationModelRootObject reasonList =  WebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
+
+            for (int i = 0; i < reasonList.d.results.Count; i++)
+            {
+                reasonDescription.Add(reasonList.d.results[i].Rdesc);
+            }
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = reasonDescription;
+            genericPickerModel.PickerTitle = "Reason List";
+            genericPickerModel.PickerId = "reasonTypePicker";
             try
             {
-                ObservableCollection<string> reasonData = new ObservableCollection<string>();
-                if (SelectedOutletOption.ActiveOutletDecisionOptions.Contains("De-Registration of VAT Account"))
-                {
-                    
-                    reasonData.Add(AppResources.VatDeregistrationofVATReason1);
-                    reasonData.Add(AppResources.VatDeregistrationofVATReason2);
-                    
-                }
-                else
-                {
-                    reasonData.Add(AppResources.VatDeregistrationofReturnReason1);
-                    reasonData.Add(AppResources.VatDeregistrationofReturnReason2);
-                    reasonData.Add(AppResources.VatDeregistrationofReturnReason3);
-                    reasonData.Add(AppResources.VatDeregistrationofReturnReason4);
-                }
-
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(reasonData));
+                
+                PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -492,6 +642,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
+
+
+
         public void AddOutletDecisionOptions()
         {
             OutletDecisionOptions = new ObservableCollection<VATDeregistrationModel>();
@@ -508,29 +661,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
 
-        public void AddOutletDocumentOptions()
+        public void returnFilingOptionsView()
         {
-            OutletDocumentOptions = new ObservableCollection<VATDeregistrationModel>();
-            OutletDocumentOptions.Add(new VATDeregistrationModel
-            {
-                ActiveOutletDocumentOptions = "Income Statements",
-                ActiveOutletDocumentOptionsIsSelected = true
-            });
-            OutletDocumentOptions.Add(new VATDeregistrationModel
-            {
-                ActiveOutletDocumentOptions = "Audited Reports",
-                ActiveOutletDocumentOptionsIsSelected = false
-            });
-            OutletDocumentOptions.Add(new VATDeregistrationModel
-            {
-                ActiveOutletDocumentOptions = "Official Contracts",
-                ActiveOutletDocumentOptionsIsSelected = true
-            });
-            OutletDocumentOptions.Add(new VATDeregistrationModel
-            {
-                ActiveOutletDocumentOptions = "Other Documents",
-                ActiveOutletDocumentOptionsIsSelected = false
-            });
+
+
+        }
+
+        public async void AddOutletDocumentOptions()
+        {
+            ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
+            string reqType = string.Empty;
+                if (SelectedOutletOptionIndex == 0)
+                {
+                 reqType = "VT_DREG";
+                }
+                else
+                {
+                    reqType = "VT_SUSP";
+                }
+                if (reqType != null || reqType != string.Empty)
+                {
+                    VATDeRegistrationAttachmentDropdownDetails reasonList = await WebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType);
+
+                }
+            
+            //OutletDocumentOptions = new ObservableCollection<VATDeregistrationModel>();
+            //OutletDocumentOptions.Add(new VATDeregistrationModel
+            //{
+            //    ActiveOutletDocumentOptions = "Income Statements",
+            //    ActiveOutletDocumentOptionsIsSelected = true
+            //});
+            //OutletDocumentOptions.Add(new VATDeregistrationModel
+            //{
+            //    ActiveOutletDocumentOptions = "Audited Reports",
+            //    ActiveOutletDocumentOptionsIsSelected = false
+            //});
+            //OutletDocumentOptions.Add(new VATDeregistrationModel
+            //{
+            //    ActiveOutletDocumentOptions = "Official Contracts",
+            //    ActiveOutletDocumentOptionsIsSelected = true
+            //});
+            //OutletDocumentOptions.Add(new VATDeregistrationModel
+            //{
+            //    ActiveOutletDocumentOptions = "Other Documents",
+            //    ActiveOutletDocumentOptionsIsSelected = false
+            //});
         }
 
         public async void ReasonContinueBtnClicked()
@@ -629,6 +804,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = false;
+
+            AddOutletDocumentOptions();
+
         }
 
         public void EnableAttachmentsView()
@@ -680,6 +858,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 FieldSubTitle = AppResources.TinDeregistration20MB,
                 AttachmentName = "File2.pdf",
                 IsAttachmentAttached = true
+            });
+            AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
+            {
+                FieldTitle = AppResources.VATRAttachment,
+                FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                AttachmentName = string.Empty,
+                IsAttachmentAttached = false
             });
 
         }

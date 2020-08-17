@@ -104,7 +104,7 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="1"/>
                     </Grid.RowDefinitions>
-                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Deregistration Details" HorizontalOptions="StartAndExpand"
+                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Deregistartion Details" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
                     <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="Complete Below Information" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
@@ -152,14 +152,14 @@
                     </Grid.RowDefinitions>
 
                     <StackLayout Grid.Row="0" Grid.Column="0">
-
+                         
                          <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
-                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                    <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding ReasonTitle}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
@@ -174,10 +174,113 @@
                                 </StackLayout>
                             </border:SfBorder >
                     </StackLayout>
-                       
-
+                        
                 </Grid>
-                 <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+
+    <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+      <StackLayout.Triggers> <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
+                                    <Setter Property="IsVisible" Value="true" />
+                                </DataTrigger>
+                            </StackLayout.Triggers>
+                    <StackLayout>
+                    <StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />   
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                         <Label Text="{Binding FromDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                </Image.Source>
+                                            </Image>
+
+                                        </StackLayout>
+                                                      <StackLayout.GestureRecognizers>
+                                             <TapGestureRecognizer x:Name="StartDate" Tapped="VATDeregStartDateClicked" ></TapGestureRecognizer>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                    
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                         <Label Text="{Binding ToDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal" >
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                </Image.Source>
+                                            </Image>
+
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                             <TapGestureRecognizer x:Name="EndDate" Tapped="VATDeregEndDateClicked" ></TapGestureRecognizer>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                    </StackLayout>
+                                </border:SfBorder >
+                            </StackLayout>
+                              <StackLayout Orientation="Vertical">
+                                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedFilingPeriod}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" /> 
+                                   <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                         <Label Text="{Binding StartDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                </Image.Source>
+                                            </Image>
+                                      <Label Text="{Binding EndDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
+
+
+                                    </StackLayout>
+                                </border:SfBorder >
+                             </StackLayout >
+                            <StackLayout Orientation="Vertical" >
+                                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingPeriod}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" /> 
+                                   <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                         <Label  Text="FROM" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <Image Margin="5,0" HorizontalOptions="Center">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                </Image.Source>
+                                            </Image>
+                                      <Label  Text="TO" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
+
+                                    </StackLayout>
+                                </border:SfBorder >
+                            </StackLayout >
+                               <StackLayout Orientation="Vertical" >
+                                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingDueDate}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" /> 
+                                   <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                         <Label Text="DD/MM/YYYY" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
+                            
+                     
+                                    </StackLayout>
+                                </border:SfBorder >
+                            </StackLayout >
+              </StackLayout>
+            </StackLayout>
+                  <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             </Grid>
@@ -292,7 +395,7 @@
                                                                     <FontImageSource FontFamily="UserIconFont" Color="#bbbbbb" Size="25"
                                                     Glyph="{x:Static FontImage:IconFonts.Attachment}" />
                                                                 </Image.Source>
-                                                              
+                      
                                                             </Image>
 
                                                         </StackLayout>
@@ -335,10 +438,7 @@
                              <RowDefinition Height="1"/>
                             </Grid.RowDefinitions>
                             <StackLayout>
-                          
-                            
-                         
-      <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
 
                          <custom:CustomLabel Text="ID Type" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
@@ -346,20 +446,20 @@
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding IDType}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                      <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                      <Image  Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
-
-                                        </Image>
+                                        </Image>    
                                         </StackLayout>
-
-                                    <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OnVatRegisrtationIDClicked}" ></TapGestureRecognizer>
+                                                                 
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VatDeregIdClicked"></TapGestureRecognizer>
                                         </StackLayout.GestureRecognizers>
-
                                 </StackLayout>
                             </border:SfBorder >
+                      
+
                     </StackLayout>
                                 <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="CenterAndExpand">
                                                                      <StackLayout Grid.Row="1" Grid.Column="0" >
@@ -368,9 +468,9 @@
                                 <inputLayout:SfTextInputLayout  Margin="-2,-6,0,6" WidthRequest="140"
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start"
-                                                            TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
+                                    <custom:BorderlessEntry x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start" Text="{Binding TxtIDNumber}"
+                                                            TextColor="#bbbbbb" HorizontalOptions="StartAndExpand" TextChanged="IDNumberEntry_TextChanged">
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
@@ -381,7 +481,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
                                         
-                                        <Label Text="YYYY/MM/DD" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                        <Label x:Name="DpDbo" Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -392,13 +492,13 @@
                                         </StackLayout>
 
                                         <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer Command="{Binding OnVatRegistrationDateTapped}" ></TapGestureRecognizer>
+                                             <TapGestureRecognizer Tapped="VATDeregDOBClicked" ></TapGestureRecognizer>
                                          </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
                                 </border:SfBorder >
                             </StackLayout>
-                                                    </StackLayout>
+         </StackLayout>
                                
                                       <StackLayout>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationContactPersonName}" HorizontalOptions="StartAndExpand"
@@ -424,23 +524,7 @@
                 
                 </StackLayout>
             </border:SfBorder>
-                                    <!--<border:SfBorder Margin="0,10,0,20"  Style="{StaticResource GreyBorderFrame}">
-                    <StackLayout Orientation="Horizontal" Padding="15,10,15,20">
-                        <Grid ColumnSpacing="0">
-                           <Image Grid.Row="0" Grid.Column="0" Source="information.png" Margin="5,0" WidthRequest="15" HeightRequest="15"
-                                               HorizontalOptions="Start" VerticalOptions="Center">
-
-                        </Image>
-                        <Label Grid.Row="0" Grid.Column="1" Text="Information"
-                               Style="{StaticResource ValueLabelBlack}" FontSize="Micro"
-                               HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"/>
-                     
-                            <Label Grid.Row="1" FontFamily="SST-Roman" Grid.ColumnSpan="6" HorizontalTextAlignment="Start"  Text="I hereby certify that iam authorised to complete this form for the taxable person and that all information contained is correct"
-                                   Style="{StaticResource ValueLabelGrey}" FontSize="Micro" HorizontalOptions="Start"/>
-                            </Grid>
-                    </StackLayout>
-
-                </border:SfBorder>-->
+                                   
                                 <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnDeclarationContinue"
                                    Command="{Binding DeclarationContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
@@ -567,7 +651,7 @@
                               </listView:SfListView>
                         </StackLayout>
                     </border:SfBorder >
-                    <border:SfBorder Margin="0,16,0,10" Grid.Row="5" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                          <border:SfBorder Margin="0,16,0,10" Grid.Row="5" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                         <StackLayout Padding="0">
                             <Grid Padding="15" RowSpacing="0" >
                                 <Grid.RowDefinitions>
