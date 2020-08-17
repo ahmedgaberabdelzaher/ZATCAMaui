@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.VATRefunds;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
@@ -18,165 +22,68 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         public readonly IDialogService _dialogService;
 
         #endregion
-
-        public VATRefundsModel _vatRefundsModel { get; set; }
-        public VATRefundsModel VATRefundsModel
+       
+        private VatRefHeaderSetResult _vatRefundsHeaderSet { get; set; }
+        public VatRefHeaderSetResult VATRefundsHeaderSet
         {
             get
             {
-                return _vatRefundsModel;
+                return _vatRefundsHeaderSet;
             }
 
             set
             {
 
-                _vatRefundsModel = value;
-                RaisePropertyChanged("VATRefundsModel");
+                _vatRefundsHeaderSet = value;
+                RaisePropertyChanged("VATRefundsHeaderSet");
             }
         }
 
-        private ObservableCollection<VATRefundsReturnsModel> _vatReturns { get; set; }
-        public ObservableCollection<VATRefundsReturnsModel> VATReturns
+        private ObservableCollection<VatRefSubItemsSetResult> _vatRefundsSubItemReturnsSet { get; set; }
+        public ObservableCollection<VatRefSubItemsSetResult> VATRefundsSubItemReturnsSet
         {
             get
             {
-                return _vatReturns;
+                return _vatRefundsSubItemReturnsSet;
             }
 
             set
             {
 
-                _vatReturns = value;
-                RaisePropertyChanged("VATReturns");
+                _vatRefundsSubItemReturnsSet = value;
+                RaisePropertyChanged("VATRefundsSubItemReturnsSet");
             }
         }
 
-        public string _ReassesmentAmount { get; set; }
-        public string ReassesmentAmount
+        private VatRefundsListResultModel _vatRefundsListResultModel = null;
+        public VatRefundsListResultModel VatRefundsListResultModel
         {
             get
             {
-                return ReassesmentAmount;
+                return _vatRefundsListResultModel;
             }
 
             set
             {
 
-                ReassesmentAmount = value;
-                RaisePropertyChanged("ReassesmentAmount");
+                _vatRefundsListResultModel = value;
+                RaisePropertyChanged("VatRefundsListResultModel");
             }
         }
 
-        public string _totalAmount { get; set; }
-        public string TotalAmount
+        private VatRefundDisplayDataModel _vatRefundsDisplayDataModel = null;
+        public VatRefundDisplayDataModel VatRefundsDisplayDataModel
         {
             get
             {
-                return _totalAmount;
+                return _vatRefundsDisplayDataModel;
             }
 
             set
             {
 
-                _totalAmount = value;
-                RaisePropertyChanged("TotalAmount");
-            }
-        }
-
-
-        public string _netCreditBalance { get; set; }
-        public string NCB
-        {
-            get
-            {
-                return _netCreditBalance;
-            }
-
-            set
-            {
-
-                _netCreditBalance = value;
-                RaisePropertyChanged("NCB");
-            }
-        }
-
-        public string _bankName { get; set; }
-        public string BankName
-        {
-            get
-            {
-                return _bankName;
-            }
-
-            set
-            {
-
-                _bankName = value;
-                RaisePropertyChanged("BankName");
-            }
-        }
-
-        public string _idNumber { get; set; }
-        public string IdNumber
-        {
-            get
-            {
-                return _idNumber;
-            }
-
-            set
-            {
-
-                _idNumber = value;
-                RaisePropertyChanged("IdNumber");
-            }
-        }
-
-        public string _idType { get; set; }
-        public string IdType
-        {
-            get
-            {
-                return _idType;
-            }
-
-            set
-            {
-
-                _idType = value;
-                RaisePropertyChanged("IdType");
-            }
-        }
-
-        public string _iban { get; set; }
-        public string Iban
-        {
-            get
-            {
-                return _iban;
-            }
-
-            set
-            {
-
-                _iban = value;
-                RaisePropertyChanged("Iban");
-            }
-        }
-
-        public string _status { get; set; }
-        public string Status
-        {
-            get
-            {
-                return _status;
-            }
-
-            set
-            {
-
-                _status = value;
-                RaisePropertyChanged("Status");
+                _vatRefundsDisplayDataModel = value;
+                RaisePropertyChanged("VatRefundsDisplayDataModel");
             }
         }
 
@@ -198,6 +105,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 _navigationService.GoBack();
             });
 
+            VATRefundsHeaderSet = new VatRefHeaderSetResult();
+            VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>();
+            VatRefundsDisplayDataModel = new VatRefundDisplayDataModel();
+
             //GoBackBtnTapped = new Command(this.GoBackBtnClicked);
             //ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
             //OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
@@ -216,13 +127,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             //EnableReasonView();
         }
 
-        public void ReloadData(VATRefundsModel vATRefundsModel)
+        public async void ReloadData(VatRefundsListResultModel vATRefundsModel)
         {
-            VATRefundsModel = new VATRefundsModel();
-            VATRefundsModel = vATRefundsModel;
-            VATReturns = new ObservableCollection<VATRefundsReturnsModel>();
-            VATReturns = vATRefundsModel.VATReturns;
-            Status = VATRefundsModel.Status;
+            Console.WriteLine(vATRefundsModel);
+
+            if(VatRefundsListResultModel == null)
+            {
+                VatRefundsListResultModel = new VatRefundsListResultModel();
+            }
+
+            VatRefundsListResultModel = vATRefundsModel;
+            VATRefundsHeaderSet = VatRefundsListResultModel.VatRefHeaderSet.Results[0];
+            VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet.Results);
+
+            try
+            {
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+
+                VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VATRefundsHeaderSet.RefundFbnum);
+
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+            }
+            catch (GAZTErrorException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    App.HideProgressView();
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+            catch (InternetException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
         }
     }
 }

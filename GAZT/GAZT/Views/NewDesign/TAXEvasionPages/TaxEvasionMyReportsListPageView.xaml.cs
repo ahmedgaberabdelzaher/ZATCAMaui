@@ -2,6 +2,7 @@
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -35,13 +36,32 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                    {
                      viewModel.IsLoading = true;
                    });
+            //try
+            //{
+            //    var existingPages = Navigation.NavigationStack.ToList();
+
+            //    foreach (var page in existingPages)
+            //    {
+            //        if (page.GetType().Name != App.NewTaxEvasionFormSuccessPaveView || page.GetType().Name != App.NewTaxEvasionFormPageView)
+            //        {
+            //            Navigation.RemovePage(page);
+
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
             await viewModel.OnPageLoad();
             viewModel.FilterOnbasisOfChipSelectedItem();
+
             await Task.Run(() =>
             {
                viewModel.IsLoading = false;
             });
         }
+        
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -98,7 +118,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
         }
-
+        protected override bool OnBackButtonPressed() => true;
         private async  void AddReport_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() =>

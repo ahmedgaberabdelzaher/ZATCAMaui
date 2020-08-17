@@ -20,7 +20,15 @@
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                     <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-                </ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </ContentPage.Resources>
         <ContentPage.Padding>
@@ -49,19 +57,12 @@
                                    Text="{x:Static ResourceManager:AppResources.ZTEReportReportScreenTitle}"
                                    Style="{StaticResource SectionTitleWhiteBold}"
                                    HorizontalOptions="Center"/>-->
-                            <Label Grid.Row="0"
-                                   Grid.Column="0"
-                                   IsVisible="{Binding IsBackStepButtonVisible}"
-                                   Style="{StaticResource IconLabelStyle}"
-                                   Text="{DynamicResource StyleReverseBack}"
-                                   TextColor="White"
-                                   VerticalOptions="CenterAndExpand"
-                                   HorizontalOptions="StartAndExpand">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
-                                </Label.GestureRecognizers>
-                            </Label>
-                        </Grid>
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
 
                         <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
                             <Grid HorizontalOptions="FillAndExpand"
@@ -145,7 +146,7 @@
                 <!--Input For Mobile Number-->
                 <StackLayout Grid.Row="1" Padding="10" IsVisible="{Binding IsShowMobileInput}">
         
-                    <control:CustomLabel   Style="{StaticResource CaptionLabelGrey}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+                    <control:CustomLabel   Style="{StaticResource CaptionLabelGrey}" Grid.Row="0"   Padding="0,0,0,0">
 
                         <control:CustomLabel.FormattedText>
                             <FormattedString>
@@ -155,7 +156,7 @@
                         </control:CustomLabel.FormattedText>
                     </control:CustomLabel>
 
-                    <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand"
+                    <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand"
                                                         ContainerType="Outlined"
                                                         x:Name="frmMobile"
                                                         LeadingViewPosition="Inside"
@@ -329,7 +330,7 @@
                                                VerticalOptions="StartAndExpand"
                                                Margin="0,50,0,0"
                                                BackgroundColor="Transparent"
-                                               TextColor="#999999"/>
+                                               TextColor="{Binding ResendOtpButtonColor}"/>
                 </StackLayout>
 
                 <!--Continue button-->
