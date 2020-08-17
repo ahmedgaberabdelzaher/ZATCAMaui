@@ -25,6 +25,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.ShowMobileForm();
+            ChangeAeroIcon();
+            SetLTR();
         }
         //protected async override void OnAppearing()
         //{
@@ -46,9 +48,21 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         //    {
 
         //    }
-            
-        //}
 
+        //}
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         private void SetLTR()
         {
             if (App.IsArabic)

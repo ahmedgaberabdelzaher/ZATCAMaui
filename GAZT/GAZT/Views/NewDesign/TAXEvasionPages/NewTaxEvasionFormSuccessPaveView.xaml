@@ -32,7 +32,7 @@
                 
                 <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.NDTaxEvasion}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       Command="{Binding OnGotoReportPageClicked}"  Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource PrimaryButtonStyle}"  />
+                                      Style="{StaticResource PrimaryButtonStyle}"  Clicked="btnVATRegistration_Clicked" />
                 <buttons:SfButton x:Name="btnDashboard"  Text="{x:Static local:AppResources.NDBacktoLoginnew}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="White"  />
