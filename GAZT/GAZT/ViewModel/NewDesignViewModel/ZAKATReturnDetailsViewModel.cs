@@ -823,7 +823,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
                     SetUpdatdDatatoTheUI(_zakatReturnDetails);
-
+                    GetDataAfterAddingComma();
                     Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
                     //  IsCurrentZAKATTaxLess = existingZakatBase >= Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                     if (existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt))
@@ -895,7 +895,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             await Task.Run(async () =>
             {
-                _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, PostOperation);
+                ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+                _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
                     if (PostOperation.Equals(ConfirmPostOperationWithoutObjection))
@@ -1157,6 +1158,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             return zakatReturnDetails;
         }
 
+        private void GetDataAfterAddingComma()
+        {
+            
+            ZakatReturnDetail.TvtslI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.TvtslI); 
+            ZakatReturnDetail.TvtslE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.TvtslE);
+            ZakatReturnDetail.LabnoI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.LabnoI);
+            ZakatReturnDetail.LabnoE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.LabnoE);
+            ZakatReturnDetail.ImpvalI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ImpvalI); 
+            ZakatReturnDetail.ImpvalE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ImpvalE); 
+            ZakatReturnDetail.PtoslI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PtoslI); 
+            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt); 
+            ZakatReturnDetail.EtimadI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.EtimadI);
+            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt); 
+            ZakatReturnDetail.ExamtI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ExamtI); 
+            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt);
+            ZakatReturnDetail.PramtI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PramtI); 
+            ZakatReturnDetail.PramtE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PramtE); 
+            ZakatReturnDetail.Cpamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Cpamt); 
+            ZakatReturnDetail.Estsl = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Estsl); 
+            ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt); 
+            ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt); 
+        }
         //private bool GetEstimatedZAKATValueChangeStatus()
         //{
 

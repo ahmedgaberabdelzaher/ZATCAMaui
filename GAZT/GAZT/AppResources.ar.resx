@@ -5267,13 +5267,13 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Change to Account basis</value>
   </data>
   <data name="NDConfirmAndGenerateSADADBill" xml:space="preserve">
-    <value>Confirm and Generate SADAD Bill</value>
+    <value>تأكيد وانشاء رقم سداد </value>
   </data>
   <data name="NDWriteYourObjectionReason" xml:space="preserve">
     <value>Write Your Objection Reason</value>
   </data>
   <data name="NDYourZakatReturnIsSubmittedSuccessfully" xml:space="preserve">
-    <value>Your Zakat Return is submitted successfully</value>
+    <value>تم تقديم اعتراضك الزكوى</value>
   </data>
   <data name="NDZakatCalculation" xml:space="preserve">
     <value>Zakat Calculation</value>
@@ -5285,7 +5285,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Your Zakat Objection is submitted successfully</value>
   </data>
   <data name="NDZakatReturn" xml:space="preserve">
-    <value>Zakat Return</value>
+    <value> إقرار زكاة</value>
   </data>
   <data name="NDTaxEvasionReport" xml:space="preserve">
     <value>تقرير التهرب الضريبي</value>
