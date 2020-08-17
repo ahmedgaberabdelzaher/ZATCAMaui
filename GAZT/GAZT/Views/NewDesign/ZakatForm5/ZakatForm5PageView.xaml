@@ -35,6 +35,7 @@
             </Style>
             <Style TargetType="Image">
                 <Setter Property="Margin" Value="0,5,0,0"/>
+                
             </Style>
             <Style TargetType="buttons:SfButton" x:Name="SelectedBtn">
                 <Setter Property="BackgroundColor" Value="AliceBlue"/>
@@ -46,7 +47,10 @@
                 <Setter Property="CornerRadius" Value="50"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="Padding" Value="10"/>
+                <Setter Property="HeightRequest" Value="25"/>
+                <Setter Property="WidthRequest" Value="25"/>
                 <Setter Property="HasShadow" Value="False"/>
+                
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -74,11 +78,11 @@
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
                                         <Frame Style="{StaticResource circleFrame}">
-                                    <Image Source="ic_vat_return.png">
+                                    <Image Margin="0" Source="ic_vat_return.png">
                                       
                                     </Image>
                                         </Frame>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                 </StackLayout>
                                 
                             <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -107,11 +111,11 @@
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
                                         <Frame Style="{StaticResource circleFrame}">
-                                    <Image Source="vat_user">
+                                    <Image Margin="0" Source="vat_user">
                                         
                                     </Image>
                                         </Frame>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}" Style="{StaticResource SectionTitleBlack}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -126,7 +130,7 @@
                                             <custom:CustomLabel Text="{Binding Branch}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource ValueLabelGrey}" WidthRequest="140"/>
                                             <custom:CustomLabel Text="{Binding Address}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
@@ -146,11 +150,11 @@
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
                                         <Frame Style="{StaticResource circleFrame}">
-                                    <Image Source="ic_vat_bill">
+                                    <Image Margin="0" Source="ic_vat_bill">
                                         
                                     </Image>
                                         </Frame>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5RegistrationInfo}" Style="{StaticResource SectionTitleBlack}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5RegistrationInfo}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -172,7 +176,7 @@
                                             <custom:CustomLabel Grid.Column="1" Text="{Binding Residency_Status}" Style="{StaticResource ValueLabelBlack}"  HorizontalTextAlignment="End"/>
                                     </Grid>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5MainOutlet}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5MainOutlet}" Style="{StaticResource ValueLabelGrey}" WidthRequest="180"/>
                                             <custom:CustomLabel Text="{Binding MainOutlet}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </StackLayout>
                                     <Grid>
@@ -256,7 +260,7 @@
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="10">
                                             <Frame Style="{StaticResource circleFrame}">
-                                              <Image Source="ic_vat_bill">
+                                              <Image Margin="0" Source="ic_vat_bill">
                                               </Image>
                                             </Frame>
                                                             <!--   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GenTaxiOffice}" Style="{StaticResource SectionTitleBlack}"/> -->
@@ -321,16 +325,32 @@
                                                 </StackLayout>
 
                                                                 <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                            
-                                        </Grid>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Expenses}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+
+                                                            </Grid>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Image Source="ic_vat_info">
                                                 
                                             </Image>
-                                                                <custom:CustomLabel Text="{Binding NetPft, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                        </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding NetPft}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
@@ -365,7 +385,7 @@
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="10">
                                              <Frame Style="{StaticResource circleFrame}">
-                                             <Image Source="ic_vat_bill">
+                                             <Image Margin="0" Source="ic_vat_bill">
                                              </Image>
                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}"/>
@@ -376,8 +396,16 @@
                                     <StackLayout Padding="10" Spacing="10">
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding Revenue, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                        </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Revenue}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <Grid RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -396,17 +424,33 @@
                                                 </StackLayout>
 
                                                                 <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Expenses}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
 
-                                            </Grid>
+                                                            </Grid>
 
                                             <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Image Source="ic_vat_info">
 
                                             </Image>
-                                                                <custom:CustomLabel Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                        </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Expenses}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                     </StackLayout>
                                 </StackLayout>
@@ -443,7 +487,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -460,8 +504,17 @@
 
                                             <StackLayout Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Capital}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding Capital, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Capital}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+
+                                                            </StackLayout>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -482,9 +535,17 @@
                                                 </StackLayout>
 
                                                                 <!--<custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding SuppCon, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding SuppCon}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
 
-                                            </Grid>
+                                                            </Grid>
 
                                             <StackLayout Orientation="Horizontal">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ProfitRatio}" Style="{StaticResource ValueLabelGrey}"/>
@@ -499,8 +560,16 @@
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                                <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Sales}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <StackLayout Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5SalesProfitRatio}" Style="{StaticResource ValueLabelGrey}"/>
@@ -543,9 +612,17 @@
                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Imp_IsGeneralApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding GenTrade, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding GenTrade}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
 
-                                            </Grid>
+                                                                </Grid>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -566,9 +643,17 @@
                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Imp_IsLiveLihoodsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding Livelihoods, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding Livelihoods}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
 
-                                            </Grid>
+                                                                </Grid>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -589,18 +674,34 @@
                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Imp_IsLivestockApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding LiveStkAnimals, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding LiveStkAnimals}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
 
-                                            </Grid>
+                                                                </Grid>
 
                                      
 
                                         <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="LightSkyBlue">
 
                                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5TotalofImports}" Style="{StaticResource ValueLabelBlack}"/>
-                                                            <custom:CustomLabel Text="{Binding ExtnProc, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold"/>
-                                            
-                                        </StackLayout>
+                                                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding ExtnProc}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
+
+                                                                </StackLayout>
                                                             </StackLayout>
 
                                                         </StackLayout>
@@ -637,9 +738,17 @@
                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Pro_IsGeneralApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding GenTradeI, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding GenTradeI}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
 
-                                            </Grid>
+                                                                </Grid>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -660,9 +769,17 @@
                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Pro_IsLiveLihoodsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding LivelihoodsI, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding LivelihoodsI}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
 
-                                            </Grid>
+                                                                </Grid>
 
                                             <Grid RowSpacing="0" ColumnSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -683,18 +800,34 @@
                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Pro_IsLivestockApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding LiveStkAnimalsI, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding LiveStkAnimalsI}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
 
-                                            </Grid>
+                                                                </Grid>
 
 
 
                                         <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="LightSkyBlue" Spacing="0">
 
                                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5TotalofProcurement}" Style="{StaticResource ValueLabelBlack}" />
-                                                            <custom:CustomLabel Text="{Binding IntnProc, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold"/>
+                                                                    <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding IntnProc}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
 
-                                        </StackLayout>
+                                                                </StackLayout>
                                         </StackLayout>
                                                         </StackLayout>
                                                     </StackLayout>
@@ -730,7 +863,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -778,17 +911,33 @@
                                                 </StackLayout>
 
                                                                 <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpensesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Expenses}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
 
-                                            </Grid>
+                                                            </Grid>
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                                <custom:CustomLabel Text="{Binding NetProfit, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding NetProfit}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                         </StackLayout>
 
@@ -826,7 +975,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -888,9 +1037,17 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="{Binding Profit, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Profit}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
 
-                                            </Grid>
+                                                            </Grid>
 
 
                                             <StackLayout  Orientation="Horizontal">
@@ -898,8 +1055,16 @@
                                                 <Image HorizontalOptions="Start" VerticalOptions="CenterAndExpand"  Source="ic_vat_info">
 
                                                 </Image>
-                                                                <custom:CustomLabel  Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Sales}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
                                         </StackLayout>
 
                                     </StackLayout>
@@ -934,7 +1099,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -955,7 +1120,15 @@
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GovernmentContractProfile}" Style="{StaticResource ValueLabelGrey}"/>
                                                                 <Image Margin="-20,0,0,0" HorizontalOptions="StartAndExpand" Source="ic_vat_info"></Image>
 
-                                                                <custom:CustomLabel Text="{Binding GovtContractProf, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200"/>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding GovtContractProf}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
                                                             </StackLayout>
 
 
@@ -963,8 +1136,16 @@
                                      
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ProfitFromCivilContracting}" Style="{StaticResource ValueLabelGrey}"/>
                                                                 <Image Margin="-20,0,0,0" HorizontalOptions="StartAndExpand" Source="ic_vat_info"></Image>
-                                     
-                                                                <custom:CustomLabel Text="{Binding CivilContrRev, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200"/>
+
+                                                                <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding CivilContrRev}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
                                                             </StackLayout>
                                             
                                             
@@ -988,14 +1169,30 @@
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
                                                     <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                    <custom:CustomLabel Text="{Binding OtherIncome, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                </StackLayout>
+                                                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding OtherIncome}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
+                                                                </StackLayout>
                                             </Grid>
 
                                             <StackLayout Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ActivityTotalProfits}" Style="{StaticResource ValueLabelGrey}" />
-                                                                <custom:CustomLabel Text="{Binding TotalProfit, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding TotalProfit}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <StackLayout Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NoofLabours}" Style="{StaticResource ValueLabelGrey}" />
@@ -1047,7 +1244,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -1089,17 +1286,33 @@
                                                 </StackLayout>
 
                                                                 <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpencesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Expenses}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
 
-                                            </Grid>
+                                                            </Grid>
                                             
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Image Source="ic_vat_info" Margin="0">
                                                     
                                                 </Image>
-                                                                <custom:CustomLabel Text="{Binding NetPft, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding NetPft}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
@@ -1134,7 +1347,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -1204,8 +1417,16 @@
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>
 
-                                                                <custom:CustomLabel Text="{Binding Revenue, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Revenue}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <Grid RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -1224,16 +1445,32 @@
                                                 </StackLayout>
 
                                                                 <!--<custom:CustomLabel  Text="{Binding IsExpApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                            </Grid>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Expenses}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </Grid>
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NetProfit}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Image Source="ic_vat_info">
 
                                                 </Image>
-                                                                <custom:CustomLabel Text="{Binding NetProfit, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding NetProfit}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
@@ -1269,7 +1506,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -1286,8 +1523,16 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ValueofSubsityfromGov}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding SubsidyVal, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding SubsidyVal}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>
@@ -1319,8 +1564,16 @@
                                                 <Image Source="ic_vat_info">
                                                     
                                                 </Image>
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding NetPft, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding NetPft}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
@@ -1354,7 +1607,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -1371,8 +1624,16 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5DeclaredCapital}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding Capital, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Capital}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <Grid Padding="0" RowSpacing="0">
                                                 <Grid.RowDefinitions>
@@ -1412,8 +1673,16 @@
                                                 <Image Source="ic_vat_info" >
 
                                                 </Image>
-                                                                <custom:CustomLabel Text="{Binding Profits, StringFormat='{0:F2} SAR'}" HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel HorizontalOptions="EndAndExpand" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Profits}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder>
@@ -1447,7 +1716,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -1464,13 +1733,29 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ShareCapital}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding ShareCap, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding ShareCap}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal" Spacing="-5">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5InternalProcurementFromSaudi}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding IntrPurchase, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="180"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="180">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding IntrPurchase}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Imports}" Style="{StaticResource ValueLabelGrey}"/>
@@ -1479,8 +1764,16 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Sales}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Sales}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5PercentageSalesGain}" Style="{StaticResource ValueLabelGrey}"/>
@@ -1519,7 +1812,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                                             <Frame Style="{StaticResource circleFrame}">
-                                                                <Image Source="ic_vat_bill">
+                                                                <Image Margin="0" Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
                                                             <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -1536,13 +1829,29 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ShareCapital}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding ShareCap, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding ShareCap}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal" Spacing="-5">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5InternalProcurementFromSaudi}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding IntrPurchase, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="180"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="180">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding IntrPurchase}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Imports}" Style="{StaticResource ValueLabelGrey}"/>
@@ -1551,8 +1860,16 @@
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Sales}" Style="{StaticResource ValueLabelGrey}"/>
-                                                                <custom:CustomLabel Text="{Binding Sales, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                            </StackLayout>
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Text="{Binding Sales}" />
+                                                                            <Span Text=" "/>
+                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </custom:CustomLabel>
+                                                            </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5PercentageSalesGain}" Style="{StaticResource ValueLabelGrey}"/>
@@ -1575,7 +1892,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Frame Style="{StaticResource circleFrame}">
-                                                <Image Source="ic_vat_bill">
+                                                <Image Margin="0" Source="ic_vat_bill">
                                                 </Image>
                                             </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5SharesInPersonsCompany}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -1686,7 +2003,7 @@
                                     <StackLayout>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Frame Style="{StaticResource circleFrame}">
-                                                <Image Source="ic_vat_bill">
+                                                <Image Margin="0" Source="ic_vat_bill">
                                                 </Image>
                                             </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Declaration}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
@@ -1722,7 +2039,16 @@
                                                 <Image Source="ic_vat_info" >
 
                                                 </Image>
-                                                <custom:CustomLabel Text="{Binding YearRent, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding YearRent}" />
+                                                            <Span Text=" "/>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+
+                                                </custom:CustomLabel>
                                             </StackLayout>
 
                                             <StackLayout  Orientation="Horizontal">
