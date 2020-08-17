@@ -4921,7 +4921,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Refunded</value>
   </data>
   <data name="VATRefundsStatusInProcess" xml:space="preserve">
-    <value>In Process</value>
+    <value>IN PROCESS</value>
   </data>
   <data name="VATRefundAmounts" xml:space="preserve">
     <value>Refund Amounts</value>
@@ -4935,6 +4935,12 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsRequestSuccess" xml:space="preserve">
     <value>Your VAT Refund Request is successful</value>
   </data>
+   <data name="VATRefundsRequestedAmount" xml:space="preserve">
+    <value>Requested Amount</value>
+  </data>
+   <data name="VATRefundsAddAccount" xml:space="preserve">
+    <value>Add Account</value>
+   </data>  
   <data name="ContractObjectNo" xml:space="preserve">
     <value>Contract Object No.</value>
   </data>

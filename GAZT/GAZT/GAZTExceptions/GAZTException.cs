@@ -238,4 +238,13 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+
+    public class GAZTErrorException : GAZTException
+    {
+        public GAZTErrorException()
+        { }
+        public GAZTErrorException(string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
 }
