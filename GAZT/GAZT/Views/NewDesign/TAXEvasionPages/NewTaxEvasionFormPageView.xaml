@@ -100,7 +100,7 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout x:Name="FrmNumber" HasError="{Binding IsTmobileHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" x:Name="FrmNumber" HasError="{Binding IsTmobileHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 
                                     <StackLayout Orientation="Horizontal" Margin="16,0,0,0" >
                                         <custom:BorderlessEntry  Placeholder="+966" Style="{StaticResource EntryHeight48}" />
