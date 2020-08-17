@@ -10,7 +10,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
-        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
         public EstablishmentRegistrationTabsEnum currentTab
         {
             get => _currentTab;
@@ -25,6 +25,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 5;
+
+
+
+        private int _currenrIndex = 4;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                MarkComplete = _currenrIndex == MaxIndex;
+                RaisePropertyChanged(nameof(MarkComplete));
+            }
+        }
+
+        private string _selectedTabText = "Registration/Taxpayer type";
+        public string SelectedTabText
+        {
+            get => _selectedTabText;
+            private set
+            {
+                _selectedTabText = value;
+                RaisePropertyChanged(nameof(SelectedTabText));
+            }
+        }
 
         private bool _isClickedOwnRentOption = false;
         public bool IsClickedOwnRentOption
@@ -147,19 +173,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        private int _currenrIndex = 1;
-        public int CurrentIndex
-        {
-            get => _currenrIndex;
-            set
-            {
-                _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
-                MarkComplete = _currenrIndex == MaxIndex;
-                RaisePropertyChanged(nameof(MarkComplete));
-            }
-        }
-
 
 
         private List<ETaxableIncomeSourceTypeListModel> _taxableIncomeSourceTypeList;
@@ -261,18 +274,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.Outlets;
+                SelectedTabText = "Outlets";
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
+                SelectedTabText = "Financial Details";
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                SelectedTabText = "Summary";
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
+                SelectedTabText = "Taxpayer Personal Details";
             }
         }
         private void navigateToPre()
@@ -280,18 +297,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+                SelectedTabText = "Registration/Taxpayer type";
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
+                SelectedTabText = "Taxpayer Personal Details";
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.Outlets;
+                SelectedTabText = "Outlets";
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
+                SelectedTabText = "Financial Details";
             }
         }
 
