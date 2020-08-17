@@ -4532,13 +4532,13 @@
   <data name="VatDeregSuspendedEndDate" xml:space="preserve">
     <value>End of Suspension Period</value>
   </data>
-   <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
+  <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
     <value>Suspended Filing Period</value>
   </data>
-   <data name="VatDeregNextFilingPeriod" xml:space="preserve">
+  <data name="VatDeregNextFilingPeriod" xml:space="preserve">
     <value>Next Filing Period</value>
   </data>
-   <data name="VatDeregNextFilingDueDate" xml:space="preserve">
+  <data name="VatDeregNextFilingDueDate" xml:space="preserve">
     <value>Next Filing due date</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
@@ -5345,7 +5345,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>العودة لصفحة تسجيل الدخول</value>
   </data>
   <data name="NDMyReports" xml:space="preserve">
-    <value>تقريري</value>
+    <value>تقاريري</value>
   </data>
   <data name="NDOpen" xml:space="preserve">
     <value>افتح</value>
