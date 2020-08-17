@@ -4935,12 +4935,12 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsRequestSuccess" xml:space="preserve">
     <value>Your VAT Refund Request is successful</value>
   </data>
-   <data name="VATRefundsRequestedAmount" xml:space="preserve">
+  <data name="VATRefundsRequestedAmount" xml:space="preserve">
     <value>Requested Amount</value>
   </data>
-   <data name="VATRefundsAddAccount" xml:space="preserve">
+  <data name="VATRefundsAddAccount" xml:space="preserve">
     <value>Add Account</value>
-   </data>  
+  </data>
   <data name="ContractObjectNo" xml:space="preserve">
     <value>Contract Object No.</value>
   </data>
@@ -5291,7 +5291,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>تقرير التهرب الضريبي</value>
   </data>
   <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
-    <value>Your Tax Evasion Report is submitted successfully</value>
+    <value>تم استلام بلاغ التهرب الضريبي بنجاح</value>
   </data>
   <data name="ZZZZAdjustment" xml:space="preserve">
     <value>تسويه</value>

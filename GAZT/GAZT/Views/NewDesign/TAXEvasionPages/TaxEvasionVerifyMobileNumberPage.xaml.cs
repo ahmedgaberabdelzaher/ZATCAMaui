@@ -35,7 +35,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             
             await Task.Run(() =>
             {
-                viewModel.IsLoading = true;
+                viewModel.IsLoading = false;
             });
         }
         public void ChangeAeroIcon()

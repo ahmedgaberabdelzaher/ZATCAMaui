@@ -97,7 +97,7 @@
                             </StackLayout>
 
                             <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
+                                    <TapGestureRecognizer Command="{Binding IbanIdTypeTapped}" ></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
 
                         </StackLayout>
