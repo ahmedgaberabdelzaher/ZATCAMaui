@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel
@@ -15,7 +16,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel
         #endregion
 
         public int DefaultMonth;
+        private GenericDatePickerModel _dataSource { get; set; }
+        public GenericDatePickerModel DataSource
+        {
+            get
+            {
+                return _dataSource;
+            }
+            set
+            {
+                _dataSource = value;
+                RaisePropertyChanged("DataSource");
+            }
+        }
+        private ObservableCollection<string> _pickerItemSource { get; set; }
+        public ObservableCollection<string> PickerItemSource
+        {
+            get
+            {
+                return _pickerItemSource;
+            }
+            set
+            {
+                _pickerItemSource = value;
+                RaisePropertyChanged("PickerItemSource");
+            }
+        }
 
+        private string _pickerTitle { get; set; }
+        public string PickerTitle
+        {
+            get
+            {
+                return _pickerTitle;
+            }
+            set
+            {
+                _pickerTitle = value;
+                RaisePropertyChanged("PickerTitle");
+            }
+        }
         private ObservableCollection<object> _selectedDate;
         public ObservableCollection<object> SelectedDate
         {
