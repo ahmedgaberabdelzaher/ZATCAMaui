@@ -4799,7 +4799,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Yearly</value>
   </data>
   <data name="ZakatInstalmetContinue" xml:space="preserve">
-    <value>Continue</value>
+    <value>المتابعة</value>
   </data>
   <data name="ZakatInstalmentAttachments" xml:space="preserve">
     <value>Attachments</value>
