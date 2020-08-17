@@ -679,33 +679,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     reqType = "VT_SUSP";
                 }
-                if (reqType != null || reqType != string.Empty)
+            OutletDocumentOptions = new ObservableCollection<VATDeregistrationModel>();
+            string attachmentType = string.Empty;
+            if (reqType != null || reqType != string.Empty)
                 {
                     VATDeRegistrationAttachmentDropdownDetails reasonList = await WebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType);
-
+                    for (int i = 0; i < reasonList.VatDeregSubItemsSet.Results.Length;i++)
+                    {
+                   attachmentType = reasonList.VatDeregSubItemsSet.Results[i].Txt50;
+                    if (attachmentType != string.Empty)
+                    {
+                        OutletDocumentOptions.Add(new VATDeregistrationModel
+                        {
+                            ActiveOutletDocumentOptions = attachmentType,
+                            ActiveOutletDocumentOptionsIsSelected = true
+                        });
+                    }
+                  
+                 }
                 }
-            
-            //OutletDocumentOptions = new ObservableCollection<VATDeregistrationModel>();
-            //OutletDocumentOptions.Add(new VATDeregistrationModel
-            //{
-            //    ActiveOutletDocumentOptions = "Income Statements",
-            //    ActiveOutletDocumentOptionsIsSelected = true
-            //});
-            //OutletDocumentOptions.Add(new VATDeregistrationModel
-            //{
-            //    ActiveOutletDocumentOptions = "Audited Reports",
-            //    ActiveOutletDocumentOptionsIsSelected = false
-            //});
-            //OutletDocumentOptions.Add(new VATDeregistrationModel
-            //{
-            //    ActiveOutletDocumentOptions = "Official Contracts",
-            //    ActiveOutletDocumentOptionsIsSelected = true
-            //});
-            //OutletDocumentOptions.Add(new VATDeregistrationModel
-            //{
-            //    ActiveOutletDocumentOptions = "Other Documents",
-            //    ActiveOutletDocumentOptionsIsSelected = false
-            //});
+
         }
 
         public async void ReasonContinueBtnClicked()
@@ -774,6 +767,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
+
                 //Display Success Screen
                 _navigationService.NavigateTo(App.VATDeregistrationSuccessPage);
             }

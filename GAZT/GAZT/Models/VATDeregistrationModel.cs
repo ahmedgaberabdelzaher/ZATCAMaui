@@ -26,9 +26,17 @@ namespace EGAZT.Models
   
     public class VATDeRegistrationAttachmentDropdownDetails
     {
-         [JsonProperty("ELGBL_DOCSet")]
-        public ResultsAttachmentItemForElgblDocSet results { get; set; }
+        [JsonProperty("__metadata")]
+        public Metadata Metadata { get; set; }
+
+        [JsonProperty("ELGBL_DOCSet")]
+        public VatDeregSubItemsSet VatDeregSubItemsSet { get; set; }
         //public VATDeregistrationAttachmentDetailD d { get; set; }
+    }
+    public partial class VatDeregSubItemsSet
+    {
+        [JsonProperty("results")]
+        public ResultsAttachmentItemForElgblDocSet[] Results { get; set; }
     }
     public class VATDeregistrationSuspendedDateRootObject
     {

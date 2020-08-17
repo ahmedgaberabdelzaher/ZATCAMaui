@@ -118,6 +118,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
             VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+            viewModel.AddOutletDocumentOptions();
 
         }
 
@@ -188,10 +189,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
             }
 
-            if (viewModel.StartDate != null && viewModel.EndDate != null)
-            {
-                VATDeregistrationSuspendedDateRootObject obj = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(viewModel.StartDate, viewModel.EndDate);
-            }
+           
         }
         async void VATDeregEndDateClicked(System.Object sender, System.EventArgs e)
         {
@@ -211,12 +209,15 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
+            if (viewModel.StartDate != null && viewModel.EndDate != null)
+            {
+                VATDeregistrationSuspendedDateRootObject obj = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(viewModel.StartDate, viewModel.EndDate);
+            }
 
-           
         }
         private async void VATDeregDOBClicked(System.Object sender, System.EventArgs e)
         {
@@ -226,7 +227,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             genericPickerModel.PickerId = "DOBDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView());
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
