@@ -4512,7 +4512,7 @@
     <value>Summary</value>
   </data>
   <data name="VatDeregSummarySubTitle" xml:space="preserve">
-    <value>Review the below information</value>
+        <value>مراجعة البيانات التالية</value>
   </data>
   <data name="VatDeregDetailsTitle" xml:space="preserve">
     <value>Deregistration details</value>
