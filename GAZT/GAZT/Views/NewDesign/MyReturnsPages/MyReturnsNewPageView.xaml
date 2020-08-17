@@ -85,7 +85,7 @@
             <Grid Padding="15">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1000"/>
                 </Grid.RowDefinitions>
                 <StackLayout Spacing="-5" Grid.Row="0">
                     <Grid>
@@ -136,7 +136,7 @@
                     </ScrollView>
                 </StackLayout>
 
-                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand">
+                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <ListView  x:Name="ListView_Returns" ItemsSource="{Binding ListToDisplay,Mode=TwoWay}" IsVisible="{Binding IsListVisible}" VerticalScrollBarVisibility="Never"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" BackgroundColor="White" SeparatorVisibility="None">
                         <ListView.ItemTemplate>

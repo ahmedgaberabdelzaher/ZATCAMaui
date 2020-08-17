@@ -315,12 +315,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             });
             SendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
+                IsTimerCancel = true;
                 IsResendOTPEnabled = false;
                 await sendOTPAsync();
             });
             ResendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
-                //IsTimerCancel = true;
+               IsTimerCancel = true;
                 //ShowMobileForm();
                 if (IsResendOTPEnabled)
                 {
@@ -667,6 +668,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
             _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView,"+966571006494");
             ShowMobileForm();
+            IsTimerCancel = true;
         }
         #endregion
     }

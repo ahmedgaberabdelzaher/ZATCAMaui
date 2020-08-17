@@ -167,6 +167,32 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         }
 
 
+        
+
+
+
+
+
+        private void OnEstimatedSalesForTheFiscalYearInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZEstimatedSalesInformationText));
+        }
+
+        private void OnZAKATAmountInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZakatBaseandwithalowerboundof500SAR));
+        }
+
+        private void OnZAKATBaseAmountInfoClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGreatervalueofEstimatedSales));
+        }
+
+        private void OnCapitalAmountInformationClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount));
+        }
+
 
         private void OnTotalVATSalesInfoClicked(object sender, EventArgs e)
         {

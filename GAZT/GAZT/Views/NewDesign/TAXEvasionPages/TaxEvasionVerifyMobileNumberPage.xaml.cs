@@ -35,8 +35,24 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             
             await Task.Run(() =>
             {
-                viewModel.IsLoading = true;
+                viewModel.IsLoading = false;
             });
+            try
+            {
+                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.TaxEvasionMyReportsListPageView)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         public void ChangeAeroIcon()
         {

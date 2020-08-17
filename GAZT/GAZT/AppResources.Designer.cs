@@ -7704,6 +7704,36 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregSuspendedStartDate {
+            get {
+                return ResourceManager.GetString("VatDeregSuspendedStartDate", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregSuspendedEndDate {
+            get {
+                return ResourceManager.GetString("VatDeregSuspendedEndDate", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregSuspendedFilingPeriod {
+            get {
+                return ResourceManager.GetString("VatDeregSuspendedFilingPeriod", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregNextFilingPeriod {
+            get {
+                return ResourceManager.GetString("VatDeregNextFilingPeriod", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregNextFilingDueDate {
+            get {
+                return ResourceManager.GetString("VatDeregNextFilingDueDate", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistrationInstructions {
             get {
                 return ResourceManager.GetString("VATDeregistrationInstructions", resourceCulture);
@@ -9255,6 +9285,78 @@ namespace EGAZT {
         public static string NDOpen {
             get {
                 return ResourceManager.GetString("NDOpen", resourceCulture);
+            }
+        }
+        
+        public static string TPAt {
+            get {
+                return ResourceManager.GetString("TPAt", resourceCulture);
+            }
+        }
+        
+        public static string TPGoToProfile {
+            get {
+                return ResourceManager.GetString("TPGoToProfile", resourceCulture);
+            }
+        }
+        
+        public static string TPIndividualSaudi {
+            get {
+                return ResourceManager.GetString("TPIndividualSaudi", resourceCulture);
+            }
+        }
+        
+        public static string TPLastTimeAccessedOn {
+            get {
+                return ResourceManager.GetString("TPLastTimeAccessedOn", resourceCulture);
+            }
+        }
+        
+        public static string TPMobileUpdate {
+            get {
+                return ResourceManager.GetString("TPMobileUpdate", resourceCulture);
+            }
+        }
+        
+        public static string TPNewEmailUpDated {
+            get {
+                return ResourceManager.GetString("TPNewEmailUpDated", resourceCulture);
+            }
+        }
+        
+        public static string TPPasswordUpdate {
+            get {
+                return ResourceManager.GetString("TPPasswordUpdate", resourceCulture);
+            }
+        }
+        
+        public static string TPSuccessMobileUpdated {
+            get {
+                return ResourceManager.GetString("TPSuccessMobileUpdated", resourceCulture);
+            }
+        }
+        
+        public static string TPUpdate {
+            get {
+                return ResourceManager.GetString("TPUpdate", resourceCulture);
+            }
+        }
+        
+        public static string TPUpdatedEmail {
+            get {
+                return ResourceManager.GetString("TPUpdatedEmail", resourceCulture);
+            }
+        }
+        
+        public static string TPUpdateMobile {
+            get {
+                return ResourceManager.GetString("TPUpdateMobile", resourceCulture);
+            }
+        }
+        
+        public static string TPUpdatePassword {
+            get {
+                return ResourceManager.GetString("TPUpdatePassword", resourceCulture);
             }
         }
     }

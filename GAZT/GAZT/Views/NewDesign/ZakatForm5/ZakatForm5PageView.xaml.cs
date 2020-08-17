@@ -36,7 +36,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             //viewModel.z = true;
             //viewModel.IsNoDataLabelVisible = false;
             IntialiseAsync();
-            ZakatEstimationList.IsVisible = viewModel.IsZakatEstListVisible;
+          //  ZakatEstimationList.IsVisible = viewModel.IsZakatEstListVisible;
         }
 
         protected override void OnAppearing()
@@ -122,6 +122,66 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
         private void OnInfoTapped(object sender, EventArgs e)
         {
            // PopupNavigation.Instance.PushAsync(new DummyPopUp());
+        }
+
+
+        public void SetButtonBackGroundColor(int BTNno)
+        {
+            switch (BTNno)
+            {
+                case 1:
+                    Cabsbtn.BackgroundColor = Color.AliceBlue;
+                    Cabsbtn.TextColor = Color.Green;
+                    break;
+                case 2:
+                    ProfessionalBtn.BackgroundColor = Color.AliceBlue;
+                    ProfessionalBtn.TextColor = Color.Green;
+                    break;
+                case 3:
+                    SellBtn.BackgroundColor = Color.AliceBlue;
+                    SellBtn.TextColor = Color.Green;
+                    break;
+                case 4:
+                    LabourBtn.BackgroundColor = Color.AliceBlue;
+                    LabourBtn.TextColor = Color.Green;
+                    break;
+                case 5:
+                    IndustryBtn.BackgroundColor = Color.AliceBlue;
+                    IndustryBtn.TextColor = Color.Green;
+                    break;
+                case 6:
+                    ContractingBtn.BackgroundColor = Color.AliceBlue;
+                    ContractingBtn.TextColor = Color.Green;
+                    break;
+                case 7:
+                    InvestBtn.BackgroundColor = Color.AliceBlue;
+                    InvestBtn.TextColor = Color.Green;
+                    break;
+                case 8:
+                    Hotelsbtn.BackgroundColor = Color.AliceBlue;
+                    Hotelsbtn.TextColor = Color.Green;
+                    break;
+                case 9:
+                    EducationBtn.BackgroundColor = Color.AliceBlue;
+                    EducationBtn.TextColor = Color.Green;
+                    break;
+                case 10:
+                    Poultrybtn.BackgroundColor = Color.AliceBlue;
+                    Poultrybtn.TextColor = Color.Green;
+                    break;
+                case 11:
+                    Carsbtn.BackgroundColor = Color.AliceBlue;
+                    Carsbtn.TextColor = Color.Green;
+                    break;
+                case 12:
+                    Mineralsbtn.BackgroundColor = Color.AliceBlue;
+                    Mineralsbtn.TextColor = Color.Green;
+                    break;
+                case 13:
+                    Additionalbtn.BackgroundColor = Color.AliceBlue;
+                    Additionalbtn.TextColor = Color.Green;
+                    break;
+            }
         }
 
         private void Additional_Clicked(object sender, EventArgs e)

@@ -2,11 +2,15 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models;
 using EGAZT.Models.VATRefunds;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
@@ -17,6 +21,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand CloseBtnTapped { get; set; }
+        public ICommand IbanIdTypeTapped { get; set; }
 
         #endregion
 
@@ -68,6 +73,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get 
+            {
+                return _pickerModel;
+            }   
+            set
+            {   
+                _pickerModel = value;
+                RaisePropertyChanged("PickerModel");
+            }
+        }
+
         private ObservableCollection<VarRefundIbanDataModelMetadataResult> _ibanData = null;
         public ObservableCollection<VarRefundIbanDataModelMetadataResult> IbanData
         {
@@ -100,6 +119,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        private ObservableCollection<IBANType> _iBANTypesList { get; set; }
+        public ObservableCollection<IBANType> IBANTypesList
+        {
+            get
+            {
+                return _iBANTypesList;
+            }
+            set
+            {
+                _iBANTypesList = value; 
+                //if (_iBANTypesList != null && _iBANTypesList.Count != 0)
+                //{
+                //    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false)
+                //    {
+                //        IsEnableIBANType = false;
+                //    }
+                //    else
+                //    {
+                //        IsEnableIBANType = true;
+                //    }
+                //}
+                //else
+                //{
+                //    IsEnableIBANType = false;
+                //}
+                RaisePropertyChanged("IBANTypesList");
+            }
+        }
+
         public VATRefundsNewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -116,7 +164,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 _navigationService.GoBack();
             });
 
-            //GoBackBtnTapped = new Command(this.GoBackBtnClicked);
+            IbanIdTypeTapped = new Command(OnIbanIdTypeClicked);
+
             //ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
             //OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
             //AttachmentsContinueBtnTapped = new Command(this.AttachmentsContinueBtnClicked);
@@ -185,6 +234,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        public async void OnIbanIdTypeClicked()
+        {
+            ObservableCollection<string> idTypeData = new ObservableCollection<string>();
+            idTypeData.Add(AppResources.ZIBANNationalID);
+            idTypeData.Add(AppResources.ZIBANCommercialRegistrationID);
+            idTypeData.Add(AppResources.ZIBANCompanyID);
 
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = idTypeData;
+            genericPickerModel.PickerTitle = "ID Type";
+            genericPickerModel.PickerId = "idTypePicker";
+
+            await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+        }
+
+        public void createIBANType()
+        {
+            IBANTypesList = new ObservableCollection<IBANType>();
+            ObservableCollection<IBANType> IBANTypesDummyList = new ObservableCollection<IBANType>();
+            IBANType iBANType = new IBANType();
+            iBANType.key = "ZS0001";
+            iBANType.Text = AppResources.ZIBANNationalID;
+            IBANTypesDummyList.Add(iBANType);   
+            IBANType iBANType1 = new IBANType();
+            iBANType1.key = "BUP002";
+            iBANType1.Text = AppResources.ZIBANCommercialRegistrationID;
+            IBANTypesDummyList.Add(iBANType1);
+            IBANType iBANType2 = new IBANType();
+            iBANType2.key = "ZS0005";
+            iBANType2.Text = AppResources.ZIBANCompanyID;
+            IBANTypesDummyList.Add(iBANType2);
+            IBANTypesList = IBANTypesDummyList;
+        }
     }
 }
