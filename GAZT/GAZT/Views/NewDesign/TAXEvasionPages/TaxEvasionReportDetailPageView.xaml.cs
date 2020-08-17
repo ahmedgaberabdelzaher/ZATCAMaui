@@ -36,10 +36,17 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             base.OnAppearing();
             SetLocationToMap();
         }
-        private  void SetLocationToMap()
+        private async void SetLocationToMap()
         {
             try
             {
+                //if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId)))
+                //{
+                //    viewModel.IsLoading = false;
+                //    //clearFields();
+                //}
+                //else
+                //{
                 double lat = 24.7136, lon = 46.6753;
                 try
                 {
@@ -53,27 +60,30 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     //}
                     if (viewModel.SelectedTaxEvasionListItem != null)
                     {
-                        if (!string.IsNullOrEmpty(viewModel.SelectedTaxEvasionListItem.Latitude))
+                        if (viewModel.SelectedTaxEvasionListItem.Latitude != null)
                         {
                             lat = Convert.ToDouble(viewModel.SelectedTaxEvasionListItem.Latitude);
+                           
                         }
-                        if (!string.IsNullOrEmpty(viewModel.SelectedTaxEvasionListItem.Longitude))
+                        if (viewModel.SelectedTaxEvasionListItem.Latitude != null)
                         {
+                           
                             lon = Convert.ToDouble(viewModel.SelectedTaxEvasionListItem.Longitude);
                         }
+
+
                     }
 
                     Position position = new Position(lat, lon);
                     MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
                     mapView.MoveToRegion(mapSpan);
-                 
-                 
                     Pin pin = new Pin();
-                    pin.Label = AppResources.NDTaxEvasionReporterLocation;
+                    pin.Label = "Report Location";
                     pin.Type = PinType.Place;
-                    pin.Position = new Position(lon, lon);
-                   // var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
-               //     viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality + "," + addrs.CountryName + "-" + addrs.PostalCode;
+                    pin.Position = position;
+                    mapView.Pins.Add(pin);//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
+                    //var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
+                    //viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality + "," + addrs.CountryName + "-" + addrs.PostalCode;
                 }
                 catch (FeatureNotSupportedException fnsEx)
                 {
