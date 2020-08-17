@@ -6918,7 +6918,7 @@ namespace GAZT.Manager
         {
             if (CrossConnectivity.Current.IsConnected)
             {
-                VatRefundDisplayDataModel VatRefundsListResultModelSet = new VatRefundDisplayDataModel();
+                VatRefundDisplayDataModel VatRefundDisplayDataModel = new VatRefundDisplayDataModel();
                 string NewToken = string.Empty;
                 try
                 {
@@ -6962,8 +6962,8 @@ namespace GAZT.Manager
                         {
                             VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["d"].ToString();
 
-                            VatRefundsListResultModelSet = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
-                            if (VatRefundsListResultModelSet == null)
+                            VatRefundDisplayDataModel = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
+                            if (VatRefundDisplayDataModel == null)
                             {
                                 throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                             }
@@ -6973,7 +6973,7 @@ namespace GAZT.Manager
                             throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                         }
                     }
-                    return VatRefundsListResultModelSet;
+                    return VatRefundDisplayDataModel;
                 }
                 catch (GAZTErrorException ex)
                 {
@@ -6987,6 +6987,80 @@ namespace GAZT.Manager
             }
         }
 
+        public static async Task<VarRefundIbanDataModel> GAZTGetVATRefundGetIbanData(string fbNum)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VarRefundIbanDataModel VarRefundIbanDataModel = new VarRefundIbanDataModel();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    string lang = GetLangZParameterAREN();
+
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet(Euser='00000000000000000000',Fbnumx='87000001021',
+                    //FormGuid='005056B1F8FB1EDAAEBDD2D56B2AB92F',Formprocx='ZTAX_VAT_MAISC_PROC',Gpartx='3102435227',Langx='EN',Officerx='',TxnTpx='')
+
+                    string url = Constants.VatRefundGetIbanData + "Gpart='" + App.LoginDataRetrieved.TIN + "',Status='',TxnTp='',Formproc='')?&$expand=VR_UI_BTNSet,IBANSet&$format=json";
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage VatRefundsResponse = await client.GetAsync(uri);
+                    if (VatRefundsResponse != null)
+                    {
+                        if (VatRefundsResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = VatRefundsResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String VatRefundsListResultModelSetResponseJson = VatRefundsResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
+                        {
+                            VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["d"].ToString();
+
+                            VarRefundIbanDataModel = JsonConvert.DeserializeObject<VarRefundIbanDataModel>(VatRefundsListResultModelSetResponseJson);
+                            if (VarRefundIbanDataModel == null)
+                            {
+                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        }
+                    }
+                    return VarRefundIbanDataModel;
+                }
+                catch (GAZTErrorException ex)
+                {
+                    Console.WriteLine(ex);
+                    throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        //VatRefundGetIbanData
         #endregion
     }
 }

@@ -68,7 +68,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             try
             {
-                viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView, viewModel.VATRefundsModel);
+                viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView);
             }
             catch (Exception ex)
             {

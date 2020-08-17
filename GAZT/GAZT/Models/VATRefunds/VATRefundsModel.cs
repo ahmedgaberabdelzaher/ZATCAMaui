@@ -675,4 +675,117 @@ namespace EGAZT.Models.VATRefunds
         public string Type { get; set; }
     }
 
+    public partial class VarRefundIbanDataResponseModel
+    {
+        [JsonProperty("d")]
+        public VarRefundIbanDataModel D { get; set; }
+    }
+
+    public partial class VarRefundIbanDataModel
+    {
+        [JsonProperty("__metadata")]
+        public VarRefundIbanDataModelMetadata Metadata { get; set; }
+
+        [JsonProperty("Mandtz")]
+        public string Mandtz { get; set; }
+
+        [JsonProperty("Fbtypz")]
+        public string Fbtypz { get; set; }
+
+        [JsonProperty("Fbustz")]
+        public string Fbustz { get; set; }
+
+        [JsonProperty("UserTypz")]
+        public string UserTypz { get; set; }
+
+        [JsonProperty("TransactionTypez")]
+        public string TransactionTypez { get; set; }
+
+        [JsonProperty("EditFgz")]
+        public string EditFgz { get; set; }
+
+        [JsonProperty("Mandt")]
+        public string Mandt { get; set; }
+
+        [JsonProperty("Fbnum")]
+        public string Fbnum { get; set; }
+
+        [JsonProperty("PortalUsr")]
+        public string PortalUsr { get; set; }
+
+        [JsonProperty("Lang")]
+        public string Lang { get; set; }
+
+        [JsonProperty("Operation")]
+        public string Operation { get; set; }
+
+        [JsonProperty("StepNumber")]
+        public string StepNumber { get; set; }
+
+        [JsonProperty("ReturnId")]
+        public string ReturnId { get; set; }
+
+        [JsonProperty("Officer")]
+        public string Officer { get; set; }
+
+        [JsonProperty("Gpart")]
+        public string Gpart { get; set; }
+
+        [JsonProperty("Status")]
+        public string Status { get; set; }
+
+        [JsonProperty("UserTyp")]
+        public string UserTyp { get; set; }
+
+        [JsonProperty("TxnTp")]
+        public string TxnTp { get; set; }
+
+        [JsonProperty("Formproc")]
+        public string Formproc { get; set; }
+
+        [JsonProperty("OfficerT")]
+        public string OfficerT { get; set; }
+
+        [JsonProperty("SrcApp")]
+        public string SrcApp { get; set; }
+
+        [JsonProperty("Periodkey")]
+        public string Periodkey { get; set; }
+
+        [JsonProperty("DestCheck")]
+        public string DestCheck { get; set; }
+
+        [JsonProperty("VR_UI_BTNSet")]
+        public NSet VrUiBtnSet { get; set; }
+
+        [JsonProperty("IBANSet")]
+        public NSet IbanSet { get; set; }
+    }
+
+    public partial class NSet
+    {
+        [JsonProperty("results")]
+        public VarRefundIbanDataModelMetadataResult[] Results { get; set; }
+    }
+
+    public partial class VarRefundIbanDataModelMetadataResult
+    {
+        [JsonProperty("__metadata")]
+        public VarRefundIbanDataModelMetadata VarRefundIbanDataModelMetadata { get; set; }
+
+        [JsonProperty("Iban")]
+        public string Iban { get; set; }
+    }
+
+    public partial class VarRefundIbanDataModelMetadata
+    {
+        [JsonProperty("id")]
+        public Uri Id { get; set; }
+
+        [JsonProperty("uri")]
+        public Uri Uri { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
 }
