@@ -170,6 +170,9 @@ namespace EGAZT
 
 
         public static string VATRefundsInstructionsPageView = "VATRefundsInstructionsPageView";
+        public static string MorePopUpPageView = "MorePopUpPageView";
+
+        
         //VATRefundsListPageView
         #endregion
 

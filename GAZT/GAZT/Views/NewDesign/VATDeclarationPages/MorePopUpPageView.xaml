@@ -29,17 +29,28 @@
                         <TapGestureRecognizer Tapped="OnClose"/>
                     </Image.GestureRecognizers>
                 </Image>-->
+            <ListView  x:Name="btnList"
+                           Grid.Row="1"
+           ItemsSource="{Binding VatReturnUIButtons}"
+          HorizontalOptions="CenterAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                           ItemSelected="SelectButton"
+                               BackgroundColor="White"
+                     HeightRequest="150"
+            SeparatorVisibility="None"
+            >
 
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
 
-            <custom:CustomLabel Text="Attachments" Style="{StaticResource SectionTitleBlack}">
-                <custom:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnAttachmentTapped"/>
-                </custom:CustomLabel.GestureRecognizers>
-            </custom:CustomLabel>
+                            <custom:CustomLabel Text="{Binding}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource SectionTitleBlack}"/>
 
-            <custom:CustomLabel Text="Create Notes" Style="{StaticResource SectionTitleBlack}"/>
-
-            <custom:CustomLabel Text="Display Notes" Style="{StaticResource SectionTitleBlack}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </yummy:PancakeView>
 </pages:PopupPage>

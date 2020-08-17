@@ -37,6 +37,7 @@
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.ZZZZSadadGeneratedSuccessfully}" />
                             <Span Text="{Binding AmountPayable}" TextColor="White" />
+                            <Span Text="   " TextColor="White" />
                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="White" />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
