@@ -51,7 +51,7 @@
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,0,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
@@ -64,7 +64,7 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <Grid>
-            <Grid Margin="10,0,10,0">
+            <Grid Margin="10,15,10,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
@@ -115,7 +115,10 @@
 
                                             <StackLayout Padding="17,16,17,16" Spacing="0">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTEReportReportDate}" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
-                                                <custom:CustomLabel  FlowDirection="LeftToRight" Text="{Binding CreatedAt}" Style="{StaticResource ValueLabelBlack}"  VerticalOptions="CenterAndExpand"  />
+                                                <StackLayout HorizontalOptions="Start">
+                                                    <custom:CustomLabel  FlowDirection="LeftToRight" Text="{Binding CreatedAt}" Style="{StaticResource ValueLabelBlack}"  VerticalOptions="CenterAndExpand"  />
+                                                </StackLayout>
+                                                
                                             </StackLayout>
                                         </StackLayout>
                                     </border:SfBorder>

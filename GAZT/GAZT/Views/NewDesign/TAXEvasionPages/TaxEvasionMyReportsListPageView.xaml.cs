@@ -118,7 +118,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
         }
-
+        protected override bool OnBackButtonPressed() => true;
         private async  void AddReport_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() =>

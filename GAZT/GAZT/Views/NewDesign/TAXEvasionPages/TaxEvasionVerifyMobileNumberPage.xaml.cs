@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
@@ -25,30 +26,31 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.ShowMobileForm();
+            ChangeAeroIcon();
+            SetLTR();
         }
-        //protected async override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    try
-        //    {
-        //        var existingPages = Navigation.NavigationStack.ToList();
-
-        //        foreach (var page in existingPages)
-        //        {
-        //            if (page.GetType().Name != App.TaxEvasionMyReportsListPageView || page.GetType().Name != App.NewTaxEvasionFormPageView)
-        //            {
-        //                Navigation.RemovePage(page);
-
-        //            }
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-
-        //    }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
             
-        //}
-
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         private void SetLTR()
         {
             if (App.IsArabic)
@@ -101,7 +103,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 
             }
         }
-
+        protected override bool OnBackButtonPressed() => true;
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
 

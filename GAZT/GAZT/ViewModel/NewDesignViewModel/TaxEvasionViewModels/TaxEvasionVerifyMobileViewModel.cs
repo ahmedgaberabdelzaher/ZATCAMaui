@@ -17,6 +17,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
         public ICommand SendOTPCommand { get; set; }
         public ICommand ResendOTPCommand { get; set; }
+        public ICommand OnBackButtonClicked { get; set; }
 
         public TaxEvasionVerifySmsResponseModel taxEvasionVerifySmsResponseModel;
 
@@ -307,7 +308,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
             IsShowMobileInput = true;
             IsShowOTPInput = false;
-
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+               // _navigationService.GoBack();
+            });
             SendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
                 IsResendOTPEnabled = false;
@@ -661,6 +666,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             });
 
             _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView,"+966571006494");
+            ShowMobileForm();
         }
         #endregion
     }
