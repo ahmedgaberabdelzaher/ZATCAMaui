@@ -17,10 +17,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
         public ICommand SendOTPCommand { get; set; }
         public ICommand ResendOTPCommand { get; set; }
+        public ICommand OnBackButtonClicked { get; set; }
 
         public TaxEvasionVerifySmsResponseModel taxEvasionVerifySmsResponseModel;
 
         #region proprety
+        private Color _ResendOtpButtonColor = Color.FromHex("#999999");
+        public Color ResendOtpButtonColor
+        {
+            get
+            {
+                return _ResendOtpButtonColor;
+            }
+            set
+            {
+                _ResendOtpButtonColor = value;
+                RaisePropertyChanged("ResendOtpButtonColor");
+            }
+        }
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -253,6 +267,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             set
             {
                 _isResendOTPEnabled = value;
+                if (_isResendOTPEnabled)
+                {
+                    ResendOtpButtonColor = Color.DarkGreen;
+                }
+                else
+                {
+                    ResendOtpButtonColor = Color.FromHex("#999999");
+                }
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
@@ -286,15 +308,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
             IsShowMobileInput = true;
             IsShowOTPInput = false;
-
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+               // _navigationService.GoBack();
+            });
             SendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
+                IsTimerCancel = true;
+                IsResendOTPEnabled = false;
                 await sendOTPAsync();
             });
-            ResendOTPCommand = new Xamarin.Forms.Command(() =>
+            ResendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
-                IsTimerCancel = true;
-                ShowMobileForm();
+               IsTimerCancel = true;
+                //ShowMobileForm();
+                if (IsResendOTPEnabled)
+                {
+                    IsResendOTPEnabled = false;
+                    ClearOTPForm();
+                    await sendOTPAsync();
+                    StartTimer(0, 2, 0);
+                }
+
+
             });
         }
 
@@ -630,6 +667,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             });
 
             _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView,"+966571006494");
+            ShowMobileForm();
+            IsTimerCancel = true;
         }
         #endregion
     }

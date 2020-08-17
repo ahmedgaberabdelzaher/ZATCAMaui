@@ -114,15 +114,15 @@
                         <!--//@Divya Jannapureddy adding line number
                         //Added below control below method-->
                         <local1:CustomLabel  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"   IsVisible="{Binding InvoiceVisibility}">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static custom2:AppResources.ZBillDetailsDisclaimer}"  FontFamily="{StaticResource SSTArBold}" FontSize="12"/>
-                                    <Span Text="&#10;"/>
-                                    <Span Text="{x:Static custom2:AppResources.ZBillDeatilsInfo1}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
-                                    <Span Text="&#10;"/>
-                                    <Span Text="{x:Static custom2:AppResources.ZBillDeatilsInfo2}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
-                                </FormattedString>
-                            </Label.FormattedText>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static custom2:AppResources.ZBillDetailsDisclaimer}"  FontFamily="{StaticResource SSTArBold}" FontSize="12"/>
+                                            <Span Text="&#10;"/>
+                                            <Span Text="{x:Static custom2:AppResources.ZBillDeatilsInfo1}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
+                                            <Span Text="&#10;"/>
+                                            <Span Text="{x:Static custom2:AppResources.ZBillDeatilsInfo2}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
                         </local1:CustomLabel>
                         <!--//@Divya Jannapureddy adding line number
                         //Added above control above method-->

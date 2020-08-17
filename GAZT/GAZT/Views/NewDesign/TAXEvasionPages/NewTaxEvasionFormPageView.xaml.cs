@@ -588,6 +588,9 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
         }
 
-     
+        private void mapView_MapClicked(object sender, MapClickedEventArgs e)
+        {
+
+        }
     }
 }

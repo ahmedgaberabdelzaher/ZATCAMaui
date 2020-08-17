@@ -13,12 +13,12 @@ namespace EGAZT.Views.NewDesign.VATRefunds
     public partial class VATRefundsNewRequestPageView : ContentPage
     {
         VATRefundsNewRequestViewModel viewModel;
-        public VATRefundsNewRequestPageView(ObservableCollection<VATRefundsModel> vATRefundsModel)
+        public VATRefundsNewRequestPageView()
         {
             InitializeComponent();
 
             viewModel = App.Locator.VATRefundsNewRequestPageView;
-            viewModel.ReloadData(vATRefundsModel);
+            viewModel.ReloadData();
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
