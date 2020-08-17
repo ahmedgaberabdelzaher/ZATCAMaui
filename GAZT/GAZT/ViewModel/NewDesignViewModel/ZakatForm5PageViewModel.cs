@@ -430,6 +430,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 var newAddress = value.Replace(@", ,", "");
                 newAddress = newAddress.Replace(@", ,", "");
+                newAddress = newAddress.Replace(@",,", "");
                 _address = newAddress.Replace(@" ,", "");
                 RaisePropertyChanged(() => Address);
             }
@@ -1780,8 +1781,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP03.results.Count; i++)
                             {
-                                ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
-                                ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
+                               // ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
+                              //  ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
 
 
 
@@ -1794,7 +1795,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable = "Not Applicable";
                                 }
 
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00" || ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods != "0.00" || ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals != "0.00")
+                                //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTrade == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods == "0.00" )&& (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals == "0.00"))
+                                //{
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
+
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "No";
+                                //}
+                                //else
+                                //{
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
+
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "Yes";
+
+                                //}
+
+
+                                if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
+
+                                      ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "Yes";
+                                }
+                                else if (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
+
+                                      ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "Yes";
+                                }
+                                else if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
 
@@ -1803,9 +1831,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 else
                                 {
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
-
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "No";
                                 }
+
 
                                 if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00")
                                 {
@@ -1834,18 +1862,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicable = "Not Applicable";
                                 }
 
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00" || ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI != "0.00" || ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI != "0.00")
+                                //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI == "0.00"))
+                                //{
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
+
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "No";
+
+                                //}
+                                //else
+                                //{
+                                    
+
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "Yes";
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
+                                //}
+
+                                if(ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "Yes";
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
-
+                                }else if (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "Yes";
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
+                                }else if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "Yes";
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
                                 }
                                 else
                                 {
-                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
-
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "No";
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
                                 }
+
+
+
+
 
                                 if (ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00")
                                 {
