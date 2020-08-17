@@ -260,7 +260,7 @@
                                               </Image>
                                             </Frame>
                                                             <!--   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GenTaxiOffice}" Style="{StaticResource SectionTitleBlack}"/> -->
-                                           <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}"/>
+                                           <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                       </StackLayout>
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -307,7 +307,7 @@
                                         <Grid RowSpacing="0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
+                                                    
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"/>
@@ -320,8 +320,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                                             
                                         </Grid>
                                         <StackLayout Orientation="Horizontal">
@@ -382,7 +382,7 @@
                                             <Grid RowSpacing="0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
+                                                    
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"/>
@@ -395,8 +395,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -446,7 +446,7 @@
                                                                 <Image Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
-                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -466,7 +466,7 @@
                                             <Grid RowSpacing="0" ColumnSpacing="0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
+                                                    
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="40*"/>
@@ -481,8 +481,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding SuppCon, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding SuppCon, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -733,7 +733,7 @@
                                                                 <Image Source="ic_vat_bill">
                                                                 </Image>
                                                             </Frame>
-                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation"/>
+                                                            <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                                         </StackLayout>
 
                                         <BoxView Style="{StaticResource lineSeperator}" />
@@ -764,7 +764,7 @@
                                             <Grid RowSpacing="0">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
+
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"/>
@@ -777,8 +777,8 @@
                                                     </Image>
                                                 </StackLayout>
 
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpensesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpensesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Expenses, StringFormat='{0:F2} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
                                             </Grid>
 
@@ -1788,7 +1788,7 @@
 
                     <ScrollView Grid.Row="1">
                         <StackLayout>
-                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <!--<border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="10">
                                         <Frame Style="{StaticResource circleFrame}">
@@ -1810,8 +1810,64 @@
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
-                            </border:SfBorder>
+                            </border:SfBorder>-->
 
+                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False">
+                                
+                                    <StackLayout Padding="10" Spacing="-5">
+
+                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.FORM5Dear}" />
+                                                    <Span Text=" "/>
+                                                <Span Text="{Binding Taxpayer}"/>
+                                                    <Span Text=","/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </custom:CustomLabel>
+
+                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}" />
+                                                    <Span Text=" "/>
+                                                    <Span Text="{Binding ReferenceNumber}"/>
+                                                    <Span Text=","/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </custom:CustomLabel>
+
+                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" Style="{StaticResource ValueLabelGrey}" />
+                                                    <Span Text=" "/>
+                                                <Span Text="{Binding ZakatFromDate}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </custom:CustomLabel>
+
+                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.FORM5To}" Style="{StaticResource ValueLabelGrey}" />
+                                                    <Span Text=" "/>
+                                                <Span Text="{Binding ZakatToDate}"/>
+                                                    <Span Text="."/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </custom:CustomLabel>
+
+                                        <!--<StackLayout Orientation="Horizontal">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Period}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <custom:CustomLabel Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        </StackLayout>-->
+                                    </StackLayout>
+                               
+                            </border:SfBorder>
+                            
+                            
                             <StackLayout  x:Name="ZakatEstimationList" IsVisible="{Binding IsZakatEstListVisible}">
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" >
                                     <Expander>

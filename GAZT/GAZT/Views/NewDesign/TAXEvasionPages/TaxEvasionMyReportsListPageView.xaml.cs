@@ -18,6 +18,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
             viewModel = App.Locator.TaxEvasionMyReportsListPageView;
             this.BindingContext = viewModel;
+
             viewModel.PopulateDataInChips();
             viewModel.SelectedChipFilterItemList = new List<ChipModel>();
 
@@ -30,36 +31,32 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            ChangeAeroIcon();
-            
-                   await Task.Run(() =>
-                   {
-                     viewModel.IsLoading = true;
-                   });
-            //try
-            //{
-            //    var existingPages = Navigation.NavigationStack.ToList();
 
-            //    foreach (var page in existingPages)
-            //    {
-            //        if (page.GetType().Name != App.NewTaxEvasionFormSuccessPaveView || page.GetType().Name != App.NewTaxEvasionFormPageView)
-            //        {
-            //            Navigation.RemovePage(page);
-
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
-            await viewModel.OnPageLoad();
-            viewModel.FilterOnbasisOfChipSelectedItem();
-
-            await Task.Run(() =>
+            try
             {
-               viewModel.IsLoading = false;
-            });
+                ChangeAeroIcon();
+
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+          
+                await viewModel.OnPageLoad();
+                viewModel.FilterOnbasisOfChipSelectedItem();
+
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            
         }
         
         public void ChangeAeroIcon()
@@ -118,7 +115,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
         }
-
+        protected override bool OnBackButtonPressed() => true;
         private async  void AddReport_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() =>

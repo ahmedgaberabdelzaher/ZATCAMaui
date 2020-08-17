@@ -115,7 +115,10 @@
 
                                             <StackLayout Padding="17,16,17,16" Spacing="0">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTEReportReportDate}" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
-                                                <custom:CustomLabel  FlowDirection="LeftToRight" Text="{Binding CreatedAt}" Style="{StaticResource ValueLabelBlack}"  VerticalOptions="CenterAndExpand"  />
+                                                <StackLayout HorizontalOptions="Start">
+                                                    <custom:CustomLabel  FlowDirection="LeftToRight" Text="{Binding CreatedAt}" Style="{StaticResource ValueLabelBlack}"  VerticalOptions="CenterAndExpand"  />
+                                                </StackLayout>
+                                                
                                             </StackLayout>
                                         </StackLayout>
                                     </border:SfBorder>
