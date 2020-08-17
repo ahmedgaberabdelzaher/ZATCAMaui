@@ -75,6 +75,23 @@
                                 </StackLayout>
                             </border:SfBorder>
 
+                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZBillDetailsDisclaimer}" Style="{StaticResource SectionTitleBlack}"/>
+                             <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                 <StackLayout Orientation="Vertical" Padding="10,5,5,5">
+ <custom:CustomLabel  Style="{StaticResource ValueLabelGrey}">
+       <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo1}"  />
+                                            <Span Text="&#10;"/>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo2}"  />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+
+ </custom:CustomLabel>
+
+                                 </StackLayout>
+                                
+                            </border:SfBorder >
                         </StackLayout>
                     </ScrollView>
                     <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="8" BackgroundColor="White" Padding="0,8,0,0">

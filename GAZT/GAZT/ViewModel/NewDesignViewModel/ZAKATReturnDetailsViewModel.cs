@@ -157,6 +157,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        private string _fromDate;
+        public string FromDate
+        {
+            get
+            {
+                return _fromDate;
+            }
+            set
+            {
+                _fromDate = value;
+                RaisePropertyChanged("FromDate");
+            }
+        }
+
+        private string _toDate;
+        public string ToDate
+        {
+            get
+            {
+                return _toDate;
+            }
+            set
+            {
+                _toDate = value;
+                RaisePropertyChanged("ToDate");
+            }
+        }
+
+
         private string _releaseOrBillDetailsButtonText;
         public string ReleaseOrBillDetailsButtonText
         {
@@ -552,11 +582,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         existingZakatBase = Convert.ToDouble(ZakatReturnDetails.d.Zkamt);
                         GetUpdatedDataAfterAddingComma();
                         SetICRStatus();
-                        DateTime _abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
-                        DateTime _abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
-                        Abrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
-
-
+                        DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
+                        DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+                                                                                                                           //  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+                        FromDate = FromDate = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        ToDate =" + "  +  toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
                         bool isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales();
