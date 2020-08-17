@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.GenericPickers
@@ -12,8 +13,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.GenericPickers
             PickerItemSource = new ObservableCollection<string>();
         }
         #endregion
+        //GenericPickerModel
+        private GenericPickerModel _dataSource { get; set; }
+        public GenericPickerModel DataSource
+        {
+            get
+            {
+                return _dataSource;
+            }
+            set
+            {
+                _dataSource = value;
+                RaisePropertyChanged("DataSource");
+            }
+        }
 
-        private ObservableCollection<string> _pickerItemSource;
+        private ObservableCollection<string> _pickerItemSource { get; set; }
         public ObservableCollection<string> PickerItemSource
         {
             get
@@ -24,6 +39,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel.GenericPickers
             {
                 _pickerItemSource = value;
                 RaisePropertyChanged("PickerItemSource");
+            }
+        }
+
+        private string _pickerTitle { get; set; }
+        public string PickerTitle
+        {
+            get
+            {
+                return _pickerTitle;
+            }
+            set
+            {
+                _pickerTitle = value;
+                RaisePropertyChanged("PickerItemSource");
+            }
+        }
+
+        private string _selectedItem { get; set; }
+        public string SelectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                _selectedItem = value;
+                RaisePropertyChanged("SelectedItem");
+            }
+        }
+
+        private int _selectedItemIndex { get; set; }
+        public int SelectedItemIndex
+        {
+            get
+            {
+                return _selectedItemIndex;
+            }
+            set
+            {
+                _selectedItemIndex = value;
+                RaisePropertyChanged("SelectedItemIndex");
             }
         }
     }
