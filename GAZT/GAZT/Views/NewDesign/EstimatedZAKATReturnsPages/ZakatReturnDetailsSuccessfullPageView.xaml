@@ -44,7 +44,12 @@
                                 <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADPaymentNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>
                                     <custom:CustomLabel WidthRequest="180" Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-                                    <Image Source="zakat_copy.png"> </Image>
+                                    <Image Source="zakat_copy.png">
+<Image.GestureRecognizers>
+<TapGestureRecognizer Tapped="OnCopySadadNumberButtonClicked"/>
+</Image.GestureRecognizers>
+                                        
+                                    </Image>
                                 </StackLayout>
                             </border:SfBorder >
 
