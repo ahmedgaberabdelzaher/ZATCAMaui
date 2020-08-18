@@ -1213,6 +1213,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt); 
             ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt); 
         }
+
+        // Method to remove the comma while comparing the changed value
+        private ZakatReturnDetailsD GetDataAfterRemovingComma(ZakatReturnDetailsD zakatReturnDetails)
+        {
+            ZakatReturnDetailsD zakatReturnDetailsD = new ZakatReturnDetailsD();
+            zakatReturnDetailsD.TvtslI = ZakatReturnDetail.TvtslI.Replace(",", "");
+            zakatReturnDetailsD.TvtslE = ZakatReturnDetail.TvtslE.Replace(",", "");
+            zakatReturnDetailsD.LabnoI = ZakatReturnDetail.LabnoI.Replace(",", "");
+            zakatReturnDetailsD.LabnoE = ZakatReturnDetail.LabnoE.Replace(",", "");
+            zakatReturnDetailsD.ImpvalI = ZakatReturnDetail.ImpvalI.Replace(",", "");
+            zakatReturnDetailsD.ImpvalE = ZakatReturnDetail.ImpvalE.Replace(",", "");
+            zakatReturnDetailsD.PtoslI = ZakatReturnDetail.PtoslI.Replace(",", "");
+            zakatReturnDetailsD.Sumcnt = ZakatReturnDetail.Sumcnt.Replace(",", "");
+            zakatReturnDetailsD.EtimadI = ZakatReturnDetail.EtimadI.Replace(",", "");
+            zakatReturnDetailsD.Sumcnt = ZakatReturnDetail.Sumcnt.Replace(",", "");
+            zakatReturnDetailsD.ExamtI = ZakatReturnDetail.ExamtI.Replace(",", "");
+            zakatReturnDetailsD.Sumcnt = ZakatReturnDetail.Sumcnt.Replace(",", "");
+            zakatReturnDetailsD.PramtI = ZakatReturnDetail.PramtI.Replace(",", "");
+            zakatReturnDetailsD.PramtE = ZakatReturnDetail.PramtE.Replace(",", "");
+            zakatReturnDetailsD.Cpamt = ZakatReturnDetail.Cpamt.Replace(",", "");
+            zakatReturnDetailsD.Estsl = ZakatReturnDetail.Estsl.Replace(",", "");
+            zakatReturnDetailsD.Zbamt = ZakatReturnDetail.Zbamt.Replace(",", "");
+            zakatReturnDetailsD.Zkamt = ZakatReturnDetail.Zkamt.Replace(",", "");
+            return zakatReturnDetailsD;
+        }
+
+
+
         //private bool GetEstimatedZAKATValueChangeStatus()
         //{
 
@@ -1253,14 +1281,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private bool GetEstimatedZAKATValueChangeStatus()
         {
-
-            if (ZakatReturnDetailToCompare.TvtslI.Equals(ZakatReturnDetail.TvtslI)
-                && ZakatReturnDetailToCompare.LabnoI.Equals(ZakatReturnDetail.LabnoI)
-                && ZakatReturnDetailToCompare.ImpvalI.Equals(ZakatReturnDetail.ImpvalI)
-                && ZakatReturnDetailToCompare.PtoslI.Equals(ZakatReturnDetail.PtoslI)
-                && ZakatReturnDetailToCompare.EtimadI.Equals(ZakatReturnDetail.EtimadI)
-                && ZakatReturnDetailToCompare.PramtI.Equals(ZakatReturnDetail.PramtI)
-                && ZakatReturnDetailToCompare.Cpamt.Equals(ZakatReturnDetail.Cpamt))
+            ZakatReturnDetailsD zakatReturnDetail = GetDataAfterRemovingComma(ZakatReturnDetail);
+            if (ZakatReturnDetailToCompare.TvtslI.Equals(zakatReturnDetail.TvtslI)
+                && ZakatReturnDetailToCompare.LabnoI.Equals(zakatReturnDetail.LabnoI)
+                && ZakatReturnDetailToCompare.ImpvalI.Equals(zakatReturnDetail.ImpvalI)
+                && ZakatReturnDetailToCompare.PtoslI.Equals(zakatReturnDetail.PtoslI)
+                && ZakatReturnDetailToCompare.EtimadI.Equals(zakatReturnDetail.EtimadI)
+                && ZakatReturnDetailToCompare.PramtI.Equals(zakatReturnDetail.PramtI)
+                && ZakatReturnDetailToCompare.Cpamt.Equals(zakatReturnDetail.Cpamt))
             {
                 return false;
             }
