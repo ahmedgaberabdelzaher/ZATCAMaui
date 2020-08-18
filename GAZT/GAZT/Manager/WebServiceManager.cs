@@ -7190,9 +7190,9 @@ namespace GAZT.Manager
                         if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
                         {
                             reasonData = JsonConvert.DeserializeObject<VATDeregistrationSuspendedDateRootObject>(GAZTVATDeregreasonDataResponseJSON);
-                            if (reasonData == null)
+                            if (reasonData.d == null)
                             {
-                                throw new Exception(AppResources.Nodataavailable);
+                                throw new Exception(AppResources.VatDeregSuspendedDateMismatchException);
                             }
                         }
                         else

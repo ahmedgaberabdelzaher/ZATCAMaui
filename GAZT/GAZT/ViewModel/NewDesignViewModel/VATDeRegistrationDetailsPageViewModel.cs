@@ -181,7 +181,99 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ReasonTitle");
             }
         }
+        private bool _frameIDError = false;
+        public bool FrameIDError
+        {
+            get
+            {
+                return _frameIDError;
+            }
+            set
+            {
+                _frameIDError = value;
+                RaisePropertyChanged("FrameIDError");
+            }
+        }
 
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private string _suspendedStartDate = string.Empty;
+        public string SuspendedStartDate
+        {
+            get
+            {
+                return _suspendedStartDate;
+            }
+            set
+            {
+                _suspendedStartDate = value;
+                RaisePropertyChanged("SuspendedStartDate");
+            }
+        }
+        private string _suspendedEndDate = string.Empty;
+        public string SuspendedEndDate
+        {
+            get
+            {
+                return _suspendedEndDate;
+            }
+            set
+            {
+                _suspendedEndDate = value;
+                RaisePropertyChanged("SuspendedEndDate");
+            }
+        }
+        private string _nextFilingStartDate = string.Empty;
+        public string NextFilingStartDate
+        {
+            get
+            {
+                return _nextFilingStartDate;
+            }
+            set
+            {
+                _nextFilingStartDate = value;
+                RaisePropertyChanged("NextFilingStartDate");
+            }
+        }
+        private string _nextFilingEndDate = string.Empty;
+        public string NextFilingEndDate
+        {
+            get
+            {
+                return _nextFilingEndDate;
+            }
+            set
+            {
+                _nextFilingEndDate = value;
+                RaisePropertyChanged("NextFilingEndDate");
+            }
+        }
+        private string _nextFilingDueDate = string.Empty;
+        public string NextFilingDueDate
+        {
+            get
+            {
+                return _nextFilingDueDate;
+            }
+            set
+            {
+                _nextFilingDueDate = value;
+                RaisePropertyChanged("NextFilingDueDate");
+            }
+        }
         private DateTime _startDate = DateTime.Now;
         public DateTime StartDate
         {
@@ -285,6 +377,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _DOB = value;
                 RaisePropertyChanged("DOB");
+            }
+        }
+        private string _contactPersonName = string.Empty;
+        public string ContactPersonName
+        {
+            get
+            {
+                return _contactPersonName;
+            }
+            set
+            {
+                _contactPersonName = value;
+                RaisePropertyChanged("ContactPersonName");
             }
         }
         private GenericPickerModel _pickerModel { get; set; }
@@ -407,6 +512,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("VATDeregistrationSummaryReasonData");
             }
         }
+        
+        public decimal _attachmentSize = 0;
+        public decimal AttachmentSize
+        {
+            get
+            {
+                return _attachmentSize;
+            }
+            set
+            {
+                _attachmentSize = value;
+                RaisePropertyChanged("AttachmentSize");
+            }
+        }
         public ObservableCollection<VATDeregistrationSummaryModel> _vatDeregistrationSummaryDeclarationData { get; set; }
         public ObservableCollection<VATDeregistrationSummaryModel> VATDeregistrationSummaryDeclarationData
         {
@@ -455,7 +574,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SelectedDocumentOption");
             }
         }
-
+        public decimal _totalAttachmentSize = 0;
+        public decimal TotalAttachmentSize
+        {
+            get
+            {
+                return _totalAttachmentSize;
+            }
+            set
+            {
+                _totalAttachmentSize = value;
+                RaisePropertyChanged("TotalAttachmentSize");
+            }
+        }
         private VATDeregistrationAttachmentsModel _selectedAttachment { get; set; }
         public VATDeregistrationAttachmentsModel SelectedAttachment
         {
@@ -524,8 +655,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             AddOutletDecisionOptions();
             PopulateAttachmentsListViewTemplate();
-            PopulateSummaryReasonData();
-            PopulateSummaryDeclarationData();
+       
 
             VATDeregistrationModel = new VATDeregistrationModel();
            
@@ -838,6 +968,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = true;
+
+            PopulateSummaryReasonData();
+            PopulateSummaryDeclarationData();
         }
 
 
@@ -871,13 +1004,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             VATDeregistrationSummaryReasonData.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = "Request Type",
-                SummaryData = "Deregistration of VAT Account",
+                SummaryData = SelectedOutletOption.ActiveOutletDecisionOptions,
                 IsEditVisible = true
             });
             VATDeregistrationSummaryReasonData.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = "Reason",
-                SummaryData = "Total value of VAT eligible support",
+                SummaryData = ReasonTitle,
                 IsEditVisible = true
             });
 
@@ -889,25 +1022,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = "ID Type",
-                SummaryData = "National ID",
+                SummaryData = IDType,
                 IsEditVisible = true
             });
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = "ID Number",
-                SummaryData = "Q12345678",
+                SummaryData = TxtIDNumber,
                 IsEditVisible = true
             });
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = "Date of Birth",
-                SummaryData = "8 August 2020",
+                SummaryData = DOB,
                 IsEditVisible = true
             });
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.TinDeregistrationContactPersonName,
-                SummaryData = "Hardy",
+                SummaryData = ContactPersonName,
                 IsEditVisible = true
             });
         }
@@ -927,74 +1060,74 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         attachment = fileData.DataArray;
                         AttachmentName = fileData.FileName;
-                        SelectedAttachment.AttachmentName = AttachmentName;
-                        SelectedAttachment.IsAttachmentAttached = true;
-                        AttachmentsListViewData.RemoveAt(SelectedOutletOptionIndex);
-                        AttachmentsListViewData.Insert(SelectedOutletOptionIndex, SelectedAttachment);
+                        //SelectedAttachment.AttachmentName = AttachmentName;
+                        //SelectedAttachment.IsAttachmentAttached = true;
+                        //AttachmentsListViewData.RemoveAt(SelectedOutletOptionIndex);
+                        //AttachmentsListViewData.Insert(SelectedOutletOptionIndex, SelectedAttachment);
 
-                        //if (fileData.FileName.Contains("."))
-                        //{
-                        //    string Extention = fileData.FileName.Split('.')[1];
-                        //    if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"
-                        //        || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx"
-                        //        || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
-                        //    {
-                        //        if (TotalAttachmentSize <= 300)
-                        //        {
-                        //            AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
-                        //            decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
+                        if (fileData.FileName.Contains("."))
+                        {
+                            string Extention = fileData.FileName.Split('.')[1];
+                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"
+                                || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx"
+                                || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
+                            {
+                                if (TotalAttachmentSize <= 300)
+                                {
+                                    AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
+                                    decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
 
-                        //            if (Convert.ToDecimal(AttachmentSize) <= 5)
-                        //            {
-                        //                if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
-                        //                {
-                        //                    bool IsAttachmentPresent = false;
+                                    if (Convert.ToDecimal(AttachmentSize) <= 5)
+                                    {
+                                        if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
+                                        {
+                                            bool IsAttachmentPresent = false;
 
-                        //                    if (IsAttachmentPresent == false)
-                        //                    {
-                        //                        string attachmentType = UtilityManager.GetContentType(Extention);
-                        //                    }
-                        //                    else
-                        //                    {
-                        //                        AttachmentName = string.Empty;
+                                            if (IsAttachmentPresent == false)
+                                            {
+                                                string attachmentType = UtilityManager.GetContentType(Extention);
+                                            }
+                                            else
+                                            {
+                                                AttachmentName = string.Empty;
 
-                        //                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-                        //                    }
-                        //                }
-                        //                else
-                        //                {
-                        //                    AttachmentName = string.Empty;
+                                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            AttachmentName = string.Empty;
 
-                        //                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                        //                }
-                        //            }
-                        //            else
-                        //            {
-                        //                AttachmentName = string.Empty;
+                                            await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        AttachmentName = string.Empty;
 
-                        //                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
-                        //            }
-                        //        }
-                        //        else
-                        //        {
-                        //            AttachmentName = string.Empty;
+                                        await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                                    }
+                                }
+                                else
+                                {
+                                    AttachmentName = string.Empty;
 
-                        //            await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        AttachmentName = string.Empty;
+                                    await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                                }
+                            }
+                            else
+                            {
+                                AttachmentName = string.Empty;
 
-                        //        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    AttachmentName = string.Empty;
+                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            }
+                        }
+                        else
+                        {
+                            AttachmentName = string.Empty;
 
-                        //    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                        //}
+                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                        }
                     }
                 }
                 catch (InternetException ex)
