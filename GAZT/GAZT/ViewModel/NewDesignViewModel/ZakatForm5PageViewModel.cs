@@ -2557,6 +2557,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     NextText = "Finish";
                   //  OnNextButtonClick = 
                     break;
+
             }
         }
 
