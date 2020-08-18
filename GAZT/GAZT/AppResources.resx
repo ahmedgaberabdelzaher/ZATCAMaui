@@ -5423,4 +5423,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDSadadBillNo" xml:space="preserve">
     <value>SADAD Bill Number</value>
   </data>
+  <data name="Comma" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="FORM5PeriodLabel" xml:space="preserve">
+    <value>For the Period</value>
+  </data>
 </root>
