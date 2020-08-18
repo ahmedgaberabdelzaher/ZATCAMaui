@@ -23,6 +23,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //============================start===================================================
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnConfirmClicked { get; set; }
+        public ICommand OnAmendClick { get; set; }
+
+        
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnEditClicked { get; set; }
         public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
@@ -95,6 +98,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
+        private bool _setAmendButtonVisibility = false;
+        public bool SetAmendButtonVisibility
+        {
+            get
+            {
+                return _setAmendButtonVisibility;
+            }
+            set
+            {
+                _setAmendButtonVisibility = value;
+                RaisePropertyChanged("SetAmendButtonVisibility");
+            }
+        }
+        
 
         private ZakatReturnDetailsD _zakatReturnDetail;
         public ZakatReturnDetailsD ZakatReturnDetail
@@ -463,6 +480,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                 }
             });
+
+            OnAmendClick = new Xamarin.Forms.Command(async () =>
+            {
+                SetLayoutVisibilityAfterTappingOnAmendButton();
+            });
+
+            
             //OnSubmitButtonClicked = new Command(async () =>
             //{
             //    try
@@ -530,7 +554,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         SetICRStatus();
                         DateTime _abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
                         DateTime _abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
-                        Abrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + AppResources.To + " " + _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+                        Abrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
 
 
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
@@ -799,7 +823,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
                     SetUpdatdDatatoTheUI(_zakatReturnDetails);
-
+                    GetDataAfterAddingComma();
                     Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
                     //  IsCurrentZAKATTaxLess = existingZakatBase >= Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                     if (existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt))
@@ -871,7 +895,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             await Task.Run(async () =>
             {
-                _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, PostOperation);
+                ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+                _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
                     if (PostOperation.Equals(ConfirmPostOperationWithoutObjection))
@@ -996,21 +1021,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else if (ButtonStatus.Equals("E0002"))// E0002 if return  released by GAZT officer 
                 {
-                    isEditVisible = true;
-                    isLabelVisible = false;
+                    isEditVisible = false;
+                    isLabelVisible = true;
                     IsEditTextVisible = false;
-                    SetSubmitButtonVisibility = true;
-                    SetEditImage();
+                    SetSubmitButtonVisibility = false;
+                    SetAmendButtonVisibility = true;
+                    UnSetEditImage();
                     SetConfirmButtonVisibility = false;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
                 {
-                    isEditVisible = true;
-                    SetEditImage();
-                    isLabelVisible = false;
+                    isEditVisible = false;
+                    UnSetEditImage();
+                    isLabelVisible = true;
                     IsEditTextVisible = false;
-                    SetSubmitButtonVisibility = true;
+                    SetSubmitButtonVisibility = false;
+
+                    SetAmendButtonVisibility = true;
                     SetConfirmButtonVisibility = false;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
@@ -1022,6 +1050,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsEditTextVisible = false;
                     SetSubmitButtonVisibility = false;
                     SetConfirmButtonVisibility = false;
+                    SetAmendButtonVisibility = false;
 
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
@@ -1033,6 +1062,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsEditTextVisible = false;
                     SetSubmitButtonVisibility = false;
                     SetConfirmButtonVisibility = false;
+                    SetAmendButtonVisibility = false;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0011"))// In Paid state 
@@ -1128,6 +1158,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             return zakatReturnDetails;
         }
 
+        private void GetDataAfterAddingComma()
+        {
+            
+            ZakatReturnDetail.TvtslI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.TvtslI); 
+            ZakatReturnDetail.TvtslE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.TvtslE);
+            ZakatReturnDetail.LabnoI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.LabnoI);
+            ZakatReturnDetail.LabnoE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.LabnoE);
+            ZakatReturnDetail.ImpvalI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ImpvalI); 
+            ZakatReturnDetail.ImpvalE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ImpvalE); 
+            ZakatReturnDetail.PtoslI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PtoslI); 
+            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt); 
+            ZakatReturnDetail.EtimadI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.EtimadI);
+            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt); 
+            ZakatReturnDetail.ExamtI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.ExamtI); 
+            ZakatReturnDetail.Sumcnt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Sumcnt);
+            ZakatReturnDetail.PramtI = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PramtI); 
+            ZakatReturnDetail.PramtE = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.PramtE); 
+            ZakatReturnDetail.Cpamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Cpamt); 
+            ZakatReturnDetail.Estsl = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Estsl); 
+            ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt); 
+            ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt); 
+        }
         //private bool GetEstimatedZAKATValueChangeStatus()
         //{
 
@@ -1439,6 +1491,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             return IsRequiredAttachmentAdded;
 
         }
+
+       public void  SetLayoutVisibilityAfterTappingOnAmendButton()
+        {
+            isEditVisible = true;
+            isLabelVisible = false;
+            IsEditTextVisible = false;
+            SetSubmitButtonVisibility = true;
+            SetAmendButtonVisibility = false;
+            SetEditImage();
+            SetConfirmButtonVisibility = false;
+            ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+        }
+
         #endregion
 
     }

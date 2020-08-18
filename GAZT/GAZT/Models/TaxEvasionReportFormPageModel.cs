@@ -174,6 +174,7 @@ namespace GAZT.Models
         public byte[] DocBinaryInBase64 { get; set; }
         public string FileNameWithExtension { get; set; }
         public string MimeType { get; set; }
+        public string Size { get; set; }
     }
     public class TaxEvasionReportTobeUsedToSubmit
     {

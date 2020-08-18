@@ -79,13 +79,13 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-
-        <StackLayout>
+        <Grid>
+        <StackLayout Grid.Row="0">
 
             <Grid Padding="15">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1000"/>
                 </Grid.RowDefinitions>
                 <StackLayout Spacing="-5" Grid.Row="0">
                     <Grid>
@@ -136,7 +136,7 @@
                     </ScrollView>
                 </StackLayout>
 
-                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand">
+                <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <ListView  x:Name="ListView_Returns" ItemsSource="{Binding ListToDisplay,Mode=TwoWay}" IsVisible="{Binding IsListVisible}" VerticalScrollBarVisibility="Never"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" BackgroundColor="White" SeparatorVisibility="None">
                         <ListView.ItemTemplate>
@@ -287,7 +287,7 @@
 
                 </StackLayout>
 
-                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
+                <!--<Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -295,9 +295,33 @@
                             <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="#D99A29"/>
                         </StackLayout>
                     </StackLayout>
-                </Grid>
+                </Grid>-->
             </Grid>
 
         </StackLayout>
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                        TextColor="#006450"/>
+                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+</Grid>
+
     </ContentPage.Content>
 </ContentPage>

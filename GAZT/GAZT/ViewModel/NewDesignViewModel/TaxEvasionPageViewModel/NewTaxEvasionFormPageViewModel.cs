@@ -21,7 +21,110 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
     {
         public  readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        
+        private bool _IsTnameHasError  = false;
+        public bool IsTnameHasError
+        {
+            get
+            {
+                return _IsTnameHasError;
+            }
+            set
+            {
+                _IsTnameHasError = value;
+                RaisePropertyChanged("IsTnameHasError");
+            }
+        }
+        private bool _IsTmobileHasError = false;
+        public bool IsTmobileHasError
+        {
+            get
+            {
+                return _IsTmobileHasError;
+            }
+            set
+            {
+                _IsTmobileHasError = value;
+                RaisePropertyChanged("IsTmobileHasError");
+            }
+        }
+        private bool _IsFacilityNameHasError = false;
+        public bool IsFacilityNameHasError
+        {
+            get
+            {
+                return _IsFacilityNameHasError;
+            }
+            set
+            {
+                _IsFacilityNameHasError = value;
+                RaisePropertyChanged("IsFacilityNameHasError");
+            }
+        }
+        private bool _IsRegionHasError = false;
+        public bool IsRegionHasError
+        {
+            get
+            {
+                return _IsRegionHasError;
+            }
+            set
+            {
+                _IsRegionHasError = value;
+                RaisePropertyChanged("IsRegionHasError");
+            }
+        }
+        private bool _IsCityHasError = false;
+        public bool IsCityHasError
+        {
+            get
+            {
+                return _IsCityHasError;
+            }
+            set
+            {
+                _IsCityHasError = value;
+                RaisePropertyChanged("IsCityHasError");
+            }
+        }
+        private bool _IsFDHasError = false;
+        public bool IsFDHasError
+        {
+            get
+            {
+                return _IsFDHasError;
+            }
+            set
+            {
+                _IsFDHasError = value;
+                RaisePropertyChanged("IsFDHasError");
+            }
+        }
+        private bool _IsFSHasError = false;
+        public bool IsFSHasError
+        {
+            get
+            {
+                return _IsFSHasError;
+            }
+            set
+            {
+                _IsFSHasError = value;
+                RaisePropertyChanged("IsFSHasError");
+            }
+        }
+        private bool _IsReportDetailHasError = false;
+        public bool IsReportDetailHasError
+        {
+            get
+            {
+                return _IsReportDetailHasError;
+            }
+            set
+            {
+                _IsReportDetailHasError = value;
+                RaisePropertyChanged("IsReportDetailHasError");
+            }
+        }
         //IsLoading
         private bool _isLoading = false;
         public bool IsLoading
@@ -720,25 +823,109 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         {
             switch (currentTab)
             {
-                case NewTaxEvasionTabEnum.ReporterInfo: currentTab = NewTaxEvasionTabEnum.FacilityInfo;
-                    PageTitle = AppResources.NDFacilityInformation;
+                case NewTaxEvasionTabEnum.ReporterInfo:
+                    ReporterInformationValidation();
                     break;
 
-                case NewTaxEvasionTabEnum.FacilityInfo: currentTab = NewTaxEvasionTabEnum.ReportDetails;
-                    PageTitle = AppResources.NDTaxEvasionReportDetails;
+                case NewTaxEvasionTabEnum.FacilityInfo:
+                    FacilityInformationValidation();
                     break;
 
-                case NewTaxEvasionTabEnum.ReportDetails: 
-                    currentTab = NewTaxEvasionTabEnum.Summary;
-                    PageTitle =AppResources.ZZZZSummery;
-                    BodyTitle = AppResources.VatDeregSummarySubTitle;
+                case NewTaxEvasionTabEnum.ReportDetails:
+                    ReportDetailStepValidation();
                     break;
                 case NewTaxEvasionTabEnum.Summary:
                     await SubmitCreatedReport();
                     break;
             }
         }
+        public void ReporterInformationValidation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(TName))
+            {
+                flag = false;
+                IsTnameHasError = true;
+            }
+            if (string.IsNullOrEmpty(TMobNumber))
+            {
+                flag = false;
+                IsTmobileHasError = true;
+            }
+            if (flag)
+            {
+                currentTab = NewTaxEvasionTabEnum.FacilityInfo;
+                PageTitle = AppResources.NDFacilityInformation;
+            }
+            else
+            {
+              _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+            }
 
+        }
+        public void FacilityInformationValidation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(TFaciName))
+            {
+                flag = false;
+                IsFacilityNameHasError = true;
+            }
+            if (string.IsNullOrEmpty(TxtReportDetailRegion))
+            {
+                flag = false;
+                IsRegionHasError = true;
+
+            }
+            if (string.IsNullOrEmpty(TxtReportDetailCity))
+            {
+                flag = false;
+                IsCityHasError = true;
+            }
+            if (string.IsNullOrEmpty(TFDAdress))
+            {
+                flag = false;
+                IsFDHasError = true;
+            }
+            if (string.IsNullOrEmpty(TFSAddress))
+            {
+                flag = false;
+                IsFSHasError = true;
+            }
+            if (flag)
+            {
+                currentTab = NewTaxEvasionTabEnum.ReportDetails;
+                PageTitle = AppResources.NDTaxEvasionReportDetails;
+            }
+            else
+            {
+                _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+            }
+        }
+        public void ReportDetailStepValidation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(TxtReporttype))
+            {
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(TReportDetail))
+            {
+                flag = false;
+                IsReportDetailHasError = true;
+            }
+            if (flag)
+            {
+                currentTab = NewTaxEvasionTabEnum.Summary;
+                PageTitle = AppResources.ZZZZSummery;
+                BodyTitle = AppResources.VatDeregSummarySubTitle;
+            }
+            else
+            {
+                _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+            }
+
+        }
         private void navigateToBack()
         {
             switch (currentTab)
@@ -1034,8 +1221,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
                     AttachmentName = fileData.FileName;
 
-                    //float sizemb = (attachment.Length / 1024f) / 1024f;
-                    //AttachmentSize = AttachmentSize + sizemb;
+                    float sizemb = (attachment.Length / 1024f) / 1024f;
+                    AttachmentSize = AttachmentSize + (Decimal)sizemb;
                     if (fileData.FileName.Contains("."))
                     {
                         string Extention = fileData.FileName.Split('.')[1];//pdf
@@ -1056,6 +1243,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                             UploadedDocumentsList a = new UploadedDocumentsList();
                                             a.FileNameWithExtension = AttachmentName;
                                             a.DocBinaryInBase64 = attachment;
+                                            a.Size = AttachmentSize.ToString();
 
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             //UploadedDocumentsList.DocBinaryInBase64 = base64String;

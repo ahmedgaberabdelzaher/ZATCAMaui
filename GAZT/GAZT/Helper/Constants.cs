@@ -183,5 +183,22 @@ namespace GAZT.Helper
         public static string Z_RET_F05_ZKTE = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_RET_F05_ZKTE_SRV/ZKTE_HEADERSet";
         public static string Z_ZKTE_SUMMARY = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ZKTE_SUMMARY_SRV/HeadSet";
         #endregion
+
+        #region VATRefunds
+        public static string VatRefundList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ETRF_WI_SRV/WISet";
+        public static string VatRefundDisplayData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet(Euser='',FormGuid='',Formprocx='ZTAX_VAT_MAISC_PROC',";
+        public static string VatRefundGetIbanData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_UI_RF_SRV/VR_UI_HDRSet(Fbnum='',Lang='',Officer='',";
+        #endregion
+
+
+        //public static string Z_ZKTE_SUMMARY = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ZKTE_SUMMARY_SRV/HeadSet";
+        #region VAT DeRegistration 
+        public static string GAZTGETVATDeregReasonDropdownList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetReasonSet?$filter=TxnTp";
+        public static string GAZTGETVATDeregAttachmentsDropdownList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VDRUH_SRV/VR_UI_HDRSet(Fbnum='";
+        public static string GAZTGETVATDeregSuspensionDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetLastICRDtSet?$filter=";
+        public static string GAZTGETVATDeregReturnFilingDateList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetSuspensionDetailSet?$filter=";
+
+        #endregion
+
     }
 }

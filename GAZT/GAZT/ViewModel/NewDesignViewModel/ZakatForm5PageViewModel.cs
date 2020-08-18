@@ -368,6 +368,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public string _ZakatToDate;
+        public string ZakatToDate
+        {
+            get => _ZakatToDate;
+
+            set
+            {
+                _ZakatToDate = value;
+                RaisePropertyChanged(() => ZakatToDate);
+            }
+        }
+
+
+        public string _ZakatFromDate;
+        public string ZakatFromDate
+        {
+            get => _ZakatFromDate;
+
+            set
+            {
+                _ZakatFromDate = value;
+                RaisePropertyChanged(() => ZakatFromDate);
+            }
+        }
         //Taxpayer Detials
 
 
@@ -406,6 +430,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 var newAddress = value.Replace(@", ,", "");
                 newAddress = newAddress.Replace(@", ,", "");
+                newAddress = newAddress.Replace(@",,", "");
                 _address = newAddress.Replace(@" ,", "");
                 RaisePropertyChanged(() => Address);
             }
@@ -1153,10 +1178,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool _isZakatEstListVisible;
+        public bool _isZakatEstListVisible = false;
         public bool IsZakatEstListVisible
         {
-            get => _isZakatEstListVisible;
+
+            get
+            {
+                return _isZakatEstListVisible;
+            }
 
             set
             {
@@ -1185,10 +1214,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
        
 
-        public bool _cabsSummaryIsVisible;
+        public bool _cabsSummaryIsVisible = true;
         public bool CabsSummaryIsVisible
         {
-            get => _cabsSummaryIsVisible;
+            get
+            {
+                return _cabsSummaryIsVisible;
+            }
 
             set
             {
@@ -1217,10 +1249,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
       //  public bool ProfessionalsSummaryIsVisible { get;  set; }
 
-        public bool _professionalsSummaryIsVisible;
+        public bool _professionalsSummaryIsVisible = true;
         public bool ProfessionalsSummaryIsVisible
         {
-            get => _professionalsSummaryIsVisible;
+            get
+            {
+                return _professionalsSummaryIsVisible;
+            }
 
             set
             {
@@ -1250,11 +1285,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         //public bool Sell_BuySummaryIsVisible { get;  set; }
 
-        public bool _sell_BuySummaryIsVisible;
+        public bool _sell_BuySummaryIsVisible = true;
         public bool Sell_BuySummaryIsVisible
         {
-            get => _sell_BuySummaryIsVisible;
-
+            get
+            {
+                return _sell_BuySummaryIsVisible;
+            }
             set
             {
                 _sell_BuySummaryIsVisible = value;
@@ -1282,10 +1319,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         // public bool LabourOccupSummaryIsVisble { get;  set; }
 
-        public bool _LabourOccupSummaryIsVisble;
+        public bool _LabourOccupSummaryIsVisble = true;
         public bool LabourOccupSummaryIsVisble
         {
-            get => _LabourOccupSummaryIsVisble;
+            get
+            {
+                return _LabourOccupSummaryIsVisble;
+            }
 
             set
             {
@@ -1315,10 +1355,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         // public bool IndustrySummaryIsVisible { get;  set; }
 
-        public bool _IndustrySummaryIsVisible;
+        public bool _IndustrySummaryIsVisible = true;
         public bool IndustrySummaryIsVisible
         {
-            get => _LabourOccupSummaryIsVisble;
+            get
+            {
+                return _IndustrySummaryIsVisible;
+            }
 
             set
             {
@@ -1347,11 +1390,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         //  public bool ContractingSummaryIsVisible { get;  set; }
 
-        public bool _ContractingSummaryIsVisible;
+        public bool _ContractingSummaryIsVisible = true;
         public bool ContractingSummaryIsVisible
         {
-            get => _ContractingSummaryIsVisible;
-
+            get
+            {
+                return _IndustrySummaryIsVisible;
+            }
             set
             {
                 _ContractingSummaryIsVisible = value;
@@ -1378,10 +1423,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         // public bool InvstRealEstSummaryIsVisible { get;  set; }
-        public bool _InvstRealEstSummaryIsVisible;
+        public bool _InvstRealEstSummaryIsVisible = true;
         public bool InvstRealEstSummaryIsVisible
         {
-            get => _InvstRealEstSummaryIsVisible;
+            get
+            {
+                return _IndustrySummaryIsVisible;
+            }
 
             set
             {
@@ -1408,10 +1456,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         //public bool HotelsSummaryIsVisible { get;  set; }
-        public bool _HotelsSummaryIsVisible;
+        public bool _HotelsSummaryIsVisible = true;
         public bool HotelsSummaryIsVisible
         {
-            get => _HotelsSummaryIsVisible;
+            get
+            {
+                return _HotelsSummaryIsVisible;
+            }
 
             set
             {
@@ -1438,10 +1489,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         // public bool Edu_HealthSummaryIsVisible { get;  set; }
-        public bool _Edu_HealthSummaryIsVisible;
+        public bool _Edu_HealthSummaryIsVisible = true;
         public bool Edu_HealthSummaryIsVisible
         {
-            get => _Edu_HealthSummaryIsVisible;
+            get
+            {
+                return _HotelsSummaryIsVisible;
+            }
 
             set
             {
@@ -1471,10 +1525,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         //public bool Poultry_FishFarmSummaryIsVisible { get;  set; }
 
-        public bool _Poultry_FishFarmSummaryIsVisible;
+        public bool _Poultry_FishFarmSummaryIsVisible = true;
         public bool Poultry_FishFarmSummaryIsVisible
         {
-            get => _Poultry_FishFarmSummaryIsVisible;
+            get
+            {
+                return _Poultry_FishFarmSummaryIsVisible;
+            }
 
             set
             {
@@ -1503,10 +1560,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         // public bool CarsSummaryIsVisible { get;  set; }
 
-        public bool _CarsSummaryIsVisible;
+        public bool _CarsSummaryIsVisible = true;
         public bool CarsSummaryIsVisible
         {
-            get => _CarsSummaryIsVisible;
+            get
+            {
+                return _CarsSummaryIsVisible;
+            }
 
             set
             {
@@ -1535,10 +1595,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         // public bool MineralsSummaryIsVisible { get;  set; }
 
-        public bool _MineralsSummaryIsVisible;
+        public bool _MineralsSummaryIsVisible = true;
         public bool MineralsSummaryIsVisible
         {
-            get => _MineralsSummaryIsVisible;
+            get
+            {
+                return _MineralsSummaryIsVisible;
+            }
 
             set
             {
@@ -1576,17 +1639,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         FinancialYear = ZakatForm5DataResult.PerslText;
                         IsConditionRadio = true;
 
-
-                        //string Fromdate = ConvertDateCalendar(ZakatForm5DataResult.AFromDt, "Hijri", "en-US");
-                        //string Todate = ConvertDateCalendar(ZakatForm5DataResult.AToDt, "Hijri", "en-US");
-
-                        //Period = Fromdate + " - " + Todate;
-
-                        // Period = String.Format("{0:ddd, MMM d, yyyy}", ZakatForm5DataResult.AFromDt) + " - " + String.Format("{0:ddd, MMM d, yyyy}", ZakatForm5DataResult.AToDt);
-                        Period = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd MMM yyyy", new CultureInfo("en-US")) + " - " + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
-                        // Period = String.Format("{dd MMM yyyy}", DateTime.Now.ToString(ZakatForm5DataResult.AFromDt)) + " - " + String.Format("{dd MMM yyyy}", DateTime.Now.ToString(ZakatForm5DataResult.AToDt));
-                        //var dates = DateTime.Now.ToString(ZakatForm5DataResult.AFromDt) ;
-                        //  var newDAte = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                         Period = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd MMM yyyy", new CultureInfo("en-US")) + " - " + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
+                 
 
                         //Taxpayer Detials
                         Taxpayer = ZakatForm5DataResult.ACompNm;
@@ -1622,12 +1676,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
 
                         //Financial Information
-
+                        int ListViewFlag = 0;
 
                         //Cabs
                         if (ZakatForm5DataResult.SCH_GP01.results.Any())
                         {
+                            ListViewFlag++;
+                            if(ListViewFlag == 1)
+                            {
+                                isCabVisible = true;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             IsCabBtn = true;
+
 
                             NoOFEntityList.Add("Cabs");
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP01.results.Count; i++) {
@@ -1645,6 +1718,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Professionals
                         if (ZakatForm5DataResult.SCH_GP02.results.Any())
                         {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = true;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             IsProfessionBtn = true;
 
                             NoOFEntityList.Add("Professionals");
@@ -1665,14 +1756,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Sell & Buy
                         if (ZakatForm5DataResult.SCH_GP03.results.Any())
                         {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = true;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             IsSellBtn = true;
+
 
                             NoOFEntityList.Add("Sell & Buy");
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP03.results.Count; i++)
                             {
-                                ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
-                                ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
+                               // ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
+                              //  ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
 
 
 
@@ -1685,7 +1795,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable = "Not Applicable";
                                 }
 
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00" || ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods != "0.00" || ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals != "0.00")
+                                //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTrade == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods == "0.00" )&& (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals == "0.00"))
+                                //{
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
+
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "No";
+                                //}
+                                //else
+                                //{
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
+
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "Yes";
+
+                                //}
+
+
+                                if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
+
+                                      ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "Yes";
+                                }
+                                else if (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
+
+                                      ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "Yes";
+                                }
+                                else if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
 
@@ -1694,9 +1831,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 else
                                 {
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
-
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsImport = "No";
                                 }
+
 
                                 if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00")
                                 {
@@ -1725,18 +1862,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicable = "Not Applicable";
                                 }
 
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00" || ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI != "0.00" || ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI != "0.00")
+                                //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI == "0.00"))
+                                //{
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
+
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "No";
+
+                                //}
+                                //else
+                                //{
+                                    
+
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "Yes";
+                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
+                                //}
+
+                                if(ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "Yes";
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
-
+                                }else if (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "Yes";
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
+                                }else if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI != "0.00")
+                                {
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "Yes";
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
                                 }
                                 else
                                 {
-                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
-
                                     ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = "No";
+                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
                                 }
+
+
+
+
 
                                 if (ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00")
                                 {
@@ -1783,6 +1945,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Labour Occup.
                         if (ZakatForm5DataResult.SCH_GP04.results.Any())
                         {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = true;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             IsLabourBtn = true;
 
                             NoOFEntityList.Add("Labour Occup.");
@@ -1804,6 +1984,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Industry
                         if (ZakatForm5DataResult.SCH_GP05.results.Any())
                         {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = true;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             IsIndustryBtn = true;
 
                             NoOFEntityList.Add("Industry");
@@ -1812,8 +2010,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                        // Contracting CO.
                         if (ZakatForm5DataResult.SCH_GP06.results.Any())
                         {
-                            NoOFEntityList.Add("Contracting CO.");
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = true;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             IsContractBtn = true;
+                            NoOFEntityList.Add("Contracting CO.");
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP06.results.Count; i++)
                             {
@@ -1851,6 +2067,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Invst & Real Estate
                         if (ZakatForm5DataResult.SCH_GP07.results.Any())
                         {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = true;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             NoOFEntityList.Add("Invst & Real Estate");
                             IsInvestBtn = true;
 
@@ -1874,6 +2108,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Hotels
                         if (ZakatForm5DataResult.SCH_GP08.results.Any())
                         {
+                            ListViewFlag++;
+
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = true;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             NoOFEntityList.Add("Hotels");
                             IsHotelsBtn = true;
 
@@ -1908,6 +2161,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Edu. & Health
                         if (ZakatForm5DataResult.SCH_GP09.results.Any())
                         {
+                            ListViewFlag++;
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = true;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             NoOFEntityList.Add("Edu. & Health");
                             IsEduBtn = true;
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP09.results.Count; i++)
@@ -1927,6 +2198,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Poultry and Fish Farms Activities
                         if (ZakatForm5DataResult.SCH_GP10.results.Any())
                         {
+                            ListViewFlag++;
+
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = true;
+                                isCarVisible = false;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
+
                             NoOFEntityList.Add("Poultry and Fish Farms Activities");
                             IsPoultryBtn = true;
 
@@ -1947,6 +2238,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Cars
                         if (ZakatForm5DataResult.SCH_GP11.results.Any())
                         {
+                            ListViewFlag++;
+
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = true;
+                                isMineralVisible = false;
+                                isAdditionalVisible = false;
+                            }
+
                             IsCarBtn = true;
 
                             NoOFEntityList.Add("Cars");
@@ -1955,6 +2265,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Minerals
                         if (ZakatForm5DataResult.SCH_GP12.results.Any())
                         {
+                            ListViewFlag++;
+
+                            if (ListViewFlag == 1)
+                            {
+                                isCabVisible = false;
+                                isProfessionalVisible = false;
+                                isBuyVisible = false;
+                                isLabourOccupancyVisible = false;
+                                isIndustryVisible = false;
+                                isContractingVisible = false;
+                                isRealEstateVisible = false;
+                                isHotelVisible = false;
+                                isEducationVisible = false;
+                                isPoultryVisible = false;
+                                isCarVisible = false;
+                                isMineralVisible = true;
+                                isAdditionalVisible = false;
+                            }
+
                             IsMineralsBtn = true;
                             NoOFEntityList.Add("Minerals");
                             Minerals = ZakatForm5DataResult.SCH_GP12.results;
@@ -1963,6 +2292,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         //Additional Information
                         NoOFEntityList.Add("Additional Information");
+                        ListViewFlag++;
+
+                        if (ListViewFlag == 1)
+                        {
+                            isCabVisible = false;
+                            isProfessionalVisible = false;
+                            isBuyVisible = false;
+                            isLabourOccupancyVisible = false;
+                            isIndustryVisible = false;
+                            isContractingVisible = false;
+                            isRealEstateVisible = false;
+                            isHotelVisible = false;
+                            isEducationVisible = false;
+                            isPoultryVisible = false;
+                            isCarVisible = false;
+                            isMineralVisible = false;
+                            isAdditionalVisible = true;
+                        }
                         //Share in Persons Companies
                         IsAddBtn = true;
 
@@ -2000,21 +2347,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await WebServiceManager.GAZTZakatForm5DataSummary(ZakatForm5DataResult.Fbnum);
 
-                        if (ZakatForm5DataResult != null)
+                        if (ZakatForm5SummaryDataResult != null)
                         {
 
-                            IsZakatEstListVisible = true;
+                            //IsZakatEstListVisible = true;
+                            int IsZakatFlag = 0;
                             // information
                            ReferenceNumber = ZakatForm5DataResult.Fbnum.ToString();
+                                ZakatFromDate = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
+                            ZakatToDate = Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
                             /// use same period property for which is used in Basic Information section.
 
                             if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
                             {
                                 //Cabs GP1
+
                                  CabsSummary = ZakatForm5SummaryDataResult.SchGP01Set.results;
                                 CabsSummaryIsVisible = true;
                                 NoOFZakatList.Add("Cabs");
-
+                                IsZakatFlag++;
                             }
 
                             if (ZakatForm5SummaryDataResult.SchGP02Set.results.Any())
@@ -2024,6 +2375,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 ProfessionalsSummaryIsVisible = true;
 
                                 NoOFZakatList.Add("Professionals");
+                                IsZakatFlag++;
                             }
                             if (ZakatForm5SummaryDataResult.SchGP03Set.results.Any())
                             {
@@ -2031,7 +2383,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Sell_BuySummary = ZakatForm5SummaryDataResult.SchGP03Set.results;
                                 Sell_BuySummaryIsVisible = true;
                                 NoOFZakatList.Add("SellesAndBuy");
-
+                                IsZakatFlag++;
                             }
                             if (ZakatForm5SummaryDataResult.SchGP04Set.results.Any())
                             {
@@ -2039,6 +2391,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 LabourOccupSummary = ZakatForm5SummaryDataResult.SchGP04Set.results;
                                 LabourOccupSummaryIsVisble = true;
                                 NoOFZakatList.Add("Labour");
+                                IsZakatFlag++;
                             }
                             if (ZakatForm5SummaryDataResult.SchGP05Set.results.Any())
                             {
@@ -2046,6 +2399,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IndustrySummary = ZakatForm5SummaryDataResult.SchGP05Set.results;
                                 IndustrySummaryIsVisible = true;
                                 NoOFZakatList.Add("Industry");
+                                IsZakatFlag++;
                             }
                             if (ZakatForm5SummaryDataResult.SchGP06Set.results.Any())
                             {
@@ -2053,6 +2407,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 ContractingSummary = ZakatForm5SummaryDataResult.SchGP06Set.results;
                                 ContractingSummaryIsVisible = true;
                                 NoOFZakatList.Add("Contracting");
+                                IsZakatFlag++;
                             }
                             if (ZakatForm5SummaryDataResult.SchGP07Set.results.Any())
                             {
@@ -2060,6 +2415,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 InvstRealEstSummary = ZakatForm5SummaryDataResult.SchGP07Set.results;
                                 InvstRealEstSummaryIsVisible = true;
                                 NoOFZakatList.Add("Invest");
+                                IsZakatFlag++;
                             }
                           
                             if (ZakatForm5SummaryDataResult.SchGP08Set.results.Any())
@@ -2068,6 +2424,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 HotelsSummary = ZakatForm5SummaryDataResult.SchGP08Set.results;
                                 HotelsSummaryIsVisible = true;
                                 NoOFZakatList.Add("Hotels");
+                                IsZakatFlag++;
                             }
                             if (ZakatForm5SummaryDataResult.SchGP09Set.results.Any())
                             {
@@ -2075,6 +2432,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Edu_HealthSummary = ZakatForm5SummaryDataResult.SchGP09Set.results;
                                 Edu_HealthSummaryIsVisible = true;
                                 NoOFZakatList.Add("edu");
+                                IsZakatFlag++;
 
                             }
                         
@@ -2084,6 +2442,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Poultry_FishFarmSummary = ZakatForm5SummaryDataResult.SchGP10Set.results;
                                 Poultry_FishFarmSummaryIsVisible = true;
                                 NoOFZakatList.Add("Poultry");
+                                IsZakatFlag++;
                             }
                           
                             if (ZakatForm5SummaryDataResult.SchGP11Set.results.Any())
@@ -2092,6 +2451,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 CarsSummary = ZakatForm5SummaryDataResult.SchGP11Set.results;
                                 CarsSummaryIsVisible = true;
                                 NoOFZakatList.Add("Cars");
+                                IsZakatFlag++;
                             }
                            
                             
@@ -2101,9 +2461,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 MineralsSummary = ZakatForm5SummaryDataResult.SchGP12Set.results;
                                 MineralsSummaryIsVisible = true;
                                 NoOFZakatList.Add("Minerls");
+                                IsZakatFlag++;
                             }
 
-                            if (NoOFZakatList.Any())
+                            if (IsZakatFlag != 0) 
                             {
                                 IsZakatEstListVisible = true;
                             }
@@ -2186,6 +2547,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             switch (currentTab)
             {
+
                 case ZakatForm5TabEnum.BasicInformation:
                    currentTab = ZakatForm5TabEnum.FinancialInformation;
                     break;
@@ -2195,6 +2557,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     NextText = "Finish";
                   //  OnNextButtonClick = 
                     break;
+
             }
         }
 
@@ -2202,6 +2565,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             switch (currentTab)
             {
+                case ZakatForm5TabEnum.BasicInformation:
+                    _navigationService.GoBack();
+                    break;
                 case ZakatForm5TabEnum.FinancialInformation: 
                     currentTab = ZakatForm5TabEnum.BasicInformation;
                     break;

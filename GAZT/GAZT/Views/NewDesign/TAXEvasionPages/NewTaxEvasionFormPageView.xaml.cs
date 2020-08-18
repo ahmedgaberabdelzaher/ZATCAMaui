@@ -26,15 +26,9 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             InitializeComponent();
             viewModel = App.Locator.NewTaxEvasionFormPageView;
             this.BindingContext = viewModel;
+            ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
-
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
 
             ClearFields();
             viewModel.CreateCompanyTypeList();
@@ -44,9 +38,16 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
             //if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
             //{
-                SetLocationToMap();
+            SetLocationToMap();
             //}
             viewModel.OnPageLoad();
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
         }
         private void SetLTR()
         {
@@ -59,6 +60,20 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
 
                 this.FlowDirection = FlowDirection.RightToLeft;
+            }
+        }
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
@@ -242,7 +257,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         pin.Type = PinType.Place;
                         pin.Position = position;//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
                         var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
-                        viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality + "," + addrs.CountryName + "-" + addrs.PostalCode;
+                        viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
                     }
                     catch (FeatureNotSupportedException fnsEx)
                     {
@@ -334,6 +349,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             else
             {
                 FrmFName.HasError = false;
+                viewModel.IsFacilityNameHasError = false;
             }
         }
 
@@ -346,6 +362,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             else
             {
                 FrmReportDetail.HasError = false;
+                viewModel.IsReportDetailHasError = false;
             }
         }
 
@@ -395,7 +412,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 mapView.Pins.Clear();
                 mapView.Pins.Add(pin);
                 var addrs = (await Geocoding.GetPlacemarksAsync(new Location(viewModel.Latitude, viewModel.Longitude))).FirstOrDefault();
-                viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + "," + addrs.Locality + "," + addrs.CountryName + "-" + addrs.PostalCode;
+                viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
             //}
             //else
             //{
@@ -444,7 +461,9 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 FrmFDAddress.HasError = true;
             }
             else
-            { FrmFDAddress.HasError = false; }
+            { FrmFDAddress.HasError = false;
+                viewModel.IsFDHasError = false;
+            }
         }
 
         void TMobNumber_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
@@ -528,5 +547,50 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             viewModel.AttachmentName = string.Empty;
         }
         #endregion
+
+        private void TNameEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.TName))
+            {
+                viewModel.IsTnameHasError = false;
+
+            }
+        }
+
+        private void TMobNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.TMobNumber))
+            {
+                viewModel.IsTmobileHasError = false;
+
+            }
+        }
+
+        private void Region_entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.IsRegionHasError = false;
+        }
+
+        private void City_entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(City_entry.Text))
+                {
+                viewModel.IsCityHasError = false;
+
+            }
+        }
+
+        private void TFSAddress_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.TFSAddress))
+            {
+                viewModel.IsFSHasError = false;
+            }
+        }
+
+        private void mapView_MapClicked(object sender, MapClickedEventArgs e)
+        {
+
+        }
     }
 }

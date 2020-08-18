@@ -510,7 +510,6 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
 
-
                                  <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
@@ -561,7 +560,7 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsVatRegistrationTileVisible}"/>
-                              <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                              <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
                                     </Image>
@@ -580,7 +579,7 @@
                                         <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                 <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>

@@ -10,17 +10,27 @@ namespace EGAZT.Views.NewDesign.VATRefunds
     public partial class VATRefundDetailsPageView : ContentPage
     {
         VATRefundDetailsPageViewModel viewModel;
-        public VATRefundDetailsPageView(VATRefundsModel vATRefundsModel)
+        VatRefundsListResultModel vatRefundsListResultModel;
+
+        public VATRefundDetailsPageView(VatRefundsListResultModel vATRefundsModel)
         {
             InitializeComponent();
 
             viewModel = App.Locator.VATRefundDetailsPageView;
-            viewModel.ReloadData(vATRefundsModel);
+            vatRefundsListResultModel = vATRefundsModel;
+
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.ReloadData(vatRefundsListResultModel);
+        }
+
         private void SetLTR()
         {
             //if (App.IsArabic)

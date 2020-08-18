@@ -31,6 +31,14 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
+                
             <Style TargetType="Entry" x:Key="EntryHeight48">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
@@ -78,8 +86,8 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-6,0,-6">
-                                <custom:BorderlessEntry  Text="{Binding TName}" IsEnabled="False" Style="{StaticResource DefaultEntry}" >
+                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0" HasError="{Binding IsTnameHasError}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-6,0,-6">
+                                    <custom:BorderlessEntry  Text="{Binding TName}" TextChanged="TNameEntry_TextChanged" IsEnabled="False" Style="{StaticResource DefaultEntry}" >
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
@@ -92,14 +100,14 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout x:Name="FrmNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" x:Name="FrmNumber" HasError="{Binding IsTmobileHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 
                                     <StackLayout Orientation="Horizontal" Margin="16,0,0,0" >
                                         <custom:BorderlessEntry  Placeholder="+966" Style="{StaticResource EntryHeight48}" />
                                         <BoxView Style="{StaticResource lineSeperator}"  WidthRequest="1" HeightRequest="20" Margin="5"/>
 
 
-                                    <custom:BorderlessEntry x:Name="TMobNumber" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" HorizontalOptions="FillAndExpand" MaxLength="15" >
+                                    <custom:BorderlessEntry x:Name="TMobNumber" TextChanged="TMobNumber_TextChanged" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" HorizontalOptions="FillAndExpand" MaxLength="15" >
                                 </custom:BorderlessEntry>
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>
@@ -144,7 +152,7 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
 
-                                <inputLayout:SfTextInputLayout x:Name="FrmFName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout x:Name="FrmFName" HasError="{Binding IsFacilityNameHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <custom:BorderlessEntry  Text="{Binding TFaciName}" x:Name="TFaciName" Unfocused="TFaciName_Unfocused" IsSpellCheckEnabled="False" FontSize="Small" Style="{StaticResource EntryHeight48}" >
                                     <Entry.Behaviors>
                                         <customcontrol:AlphabetandArabicCharacters/>
@@ -180,8 +188,8 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <Grid>
-                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry x:Name="Region_entry" Text="{Binding TxtReportDetailRegion}"   Style="{StaticResource EntryHeight48}" >
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" HasError="{Binding IsRegionHasError}" Margin="0,-10,0,0">
+                                <custom:BorderlessEntry x:Name="Region_entry" Text="{Binding TxtReportDetailRegion}" TextChanged="Region_entry_TextChanged"  Style="{StaticResource EntryHeight48}" >
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView >
                                     <Image Source="arrowDropdown.png">
@@ -212,8 +220,8 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <Grid>
-                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <custom:BorderlessEntry x:Name="City_entry" Text="{Binding TxtReportDetailCity}" Style="{StaticResource EntryHeight48}" >
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" HasError="{Binding IsCityHasError}" Margin="0,-10,0,0">
+                                    <custom:BorderlessEntry x:Name="City_entry" TextChanged="City_entry_TextChanged" Text="{Binding TxtReportDetailCity}" Style="{StaticResource EntryHeight48}" >
                                     </custom:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView >
                                         <Image Source="arrowDropdown.png">
@@ -244,7 +252,7 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <!--<Grid>-->
-                                <inputLayout:SfTextInputLayout x:Name="FrmFDAddress" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout x:Name="FrmFDAddress" Style="{StaticResource InputTableTextInputLayoutStyle}" HasError="{Binding IsFDHasError}" Margin="0,-10,0,0">
                                     <custom:BorderlessEntry Text="{Binding TFDAdress}" x:Name="TFDAdress" Unfocused="TFDAdress_Unfocused" Style="{StaticResource EntryHeight48}" IsSpellCheckEnabled="False"  MaxLength="100">
                                     </custom:BorderlessEntry>
                                     <!--<inputLayout:SfTextInputLayout.TrailingView >
@@ -275,8 +283,8 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <custom:BorderlessEntry x:Name="TFSAddress" Text="{Binding TFSAddress}" Style="{StaticResource EntryHeight48}" IsSpellCheckEnabled="False"  MaxLength="100">
+                                <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"  HasError="{Binding IsFSHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <custom:BorderlessEntry x:Name="TFSAddress" Text="{Binding TFSAddress}" TextChanged="TFSAddress_TextChanged"  Style="{StaticResource EntryHeight48}" IsSpellCheckEnabled="False"  MaxLength="100">
                                 </custom:BorderlessEntry>
 
                                 <!--<inputLayout:SfTextInputLayout.TrailingView >
@@ -331,10 +339,10 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout x:Name="FrmReportDetail" Margin="10,-6,10,-6"
+                                <inputLayout:SfTextInputLayout x:Name="FrmReportDetail" HasError="{Binding IsReportDetailHasError}" Margin="0,-6,0,-6"
                                     TrailingViewPosition="Inside"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" >
                                        <Editor  MaxLength="999"
                                                 IsSpellCheckEnabled="False"
                                                 Text="{Binding TReportDetail}"
@@ -374,13 +382,14 @@
                             <listView:SfListView  AutoFitMode="DynamicHeight" 
                                                   ItemsSource="{Binding UploadedDocumentsListObj}" SelectionBackgroundColor="White"
                                                   HorizontalOptions="FillAndExpand"
+                                                  HeightRequest="300"
                                                   VerticalOptions="Start"
                                                   BackgroundColor="White"
                                                   >
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
+                                        <StackLayout>
+                                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,0,0,0" LeadingViewPosition="Inside">
                                                 <inputLayout:SfTextInputLayout.LeadingView>
                                                     <Image Source="newui_ic_pdf" x:Name="Attachment_Tmg"/>
                                                 </inputLayout:SfTextInputLayout.LeadingView>
@@ -395,13 +404,14 @@
                                                     </Image>
                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                             </inputLayout:SfTextInputLayout>
+                                            <custom:CustomLabel Text="{Binding Size, StringFormat='{0} MB'}" Margin="0,-15,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                                             <!--<custom:CustomButton Command="{Binding OnAttachmentClick}" BackgroundColor="Transparent"  />-->
-                                        </Grid>
+                                        </StackLayout>
                                     </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
                             
                         </listView:SfListView>
-                            <custom:CustomLabel Text="20MB" Margin="0,-20,0,0" Style="{StaticResource CaptionLabelGrey}"/>
+                           
                         </StackLayout>
 
                     </ScrollView>
@@ -424,20 +434,27 @@
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                                <StackLayout Padding="15" Spacing="10">
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TMobNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding RLocation}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                    </StackLayout>
-                                </StackLayout>
+                                <Grid Padding="15" RowSpacing="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding TMobNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+
+                                    <custom:CustomLabel Grid.Row="2" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <custom:CustomLabel Grid.Row="2" Grid.Column="1" Text="{Binding RLocation}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                </Grid>
+
                             </StackLayout>
                         </border:SfBorder>
 
@@ -455,36 +472,43 @@
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                                    <StackLayout Padding="16" Spacing="10">
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding TFaciName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionTIN}" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding TxtTIN}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionVATNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding TVatNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding TxtReportDetailRegion}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding TxtReportDetailCity}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding TFDAdress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal" Spacing="10">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" Style="{StaticResource BodyLabelGrey}" WidthRequest="50"/>
-                                            <custom:CustomLabel Text="{Binding TFSAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                        </StackLayout>
-                                    </StackLayout>
+                                    <Grid Padding="15" RowSpacing="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource BodyLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TFaciName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionTIN}" Style="{StaticResource BodyLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding TxtTIN}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+
+                                        <custom:CustomLabel Grid.Row="2" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionVATNumber}" Style="{StaticResource BodyLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Row="2" Grid.Column="1" Text="{Binding TVatNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                        <custom:CustomLabel Grid.Row="3" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}" Style="{StaticResource BodyLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{Binding TxtReportDetailRegion}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}" Style="{StaticResource BodyLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="1" Text="{Binding TxtReportDetailCity}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}" Style="{StaticResource BodyLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{Binding TFDAdress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" Style="{StaticResource BodyLabelGrey}" WidthRequest="50"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding TFSAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    </Grid>
+                                    
                                 </StackLayout>
                             </border:SfBorder>
 
@@ -502,51 +526,51 @@
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
-                                    <StackLayout Padding="15" Spacing="10">
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource BodyLabelGrey}" WidthRequest="200"/>
-                                            <custom:CustomLabel Text="{Binding TxtReporttype}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource BodyLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding TReportDetail}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionAttachments}" Style="{StaticResource BodyLabelGrey}"/>
+                                    <Grid Padding="15" RowSpacing="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
 
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource BodyLabelGrey}" WidthRequest="200"/>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TxtReporttype}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource BodyLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding TReportDetail}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+
+                                        <custom:CustomLabel Grid.Row="2" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionAttachments}" Style="{StaticResource BodyLabelGrey}"/>
                                             <!--Attachment List-->
                                             <listView:SfListView  AutoFitMode="DynamicHeight" 
                                                                     ItemsSource="{Binding UploadedDocumentsListObj}" SelectionBackgroundColor="White"
                                                                     HorizontalOptions="FillAndExpand"
+                                                                    Margin="5"
+                                                                    HeightRequest="300"
                                                                     VerticalOptions="Start"
                                                                     BackgroundColor="White"
+                                                                    Grid.Row="2" Grid.Column="1"
                                                                     >
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <Grid>
-                                                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
+                                                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,10,0,0" LeadingViewPosition="Inside">
                                                                 <inputLayout:SfTextInputLayout.LeadingView>
                                                                     <Image Source="newui_ic_pdf" x:Name="Attachment_Tmg"/>
                                                                 </inputLayout:SfTextInputLayout.LeadingView>
                                                                 <custom:BorderlessEntry  Text="{Binding FileNameWithExtension}" x:Name="Attachment_Frm"  Style="{StaticResource EntryHeight48}" IsReadOnly="True">
                                                                 </custom:BorderlessEntry>
-
-                                                                <!--<inputLayout:SfTextInputLayout.TrailingView >
-                                                                    <Image Source="closeGrey.png">
-                                                                        <Image.GestureRecognizers>
-                                                                            <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked"/>
-                                                                        </Image.GestureRecognizers>
-                                                                    </Image>
-                                                                </inputLayout:SfTextInputLayout.TrailingView>-->
                                                             </inputLayout:SfTextInputLayout>
-                                                            <!--<custom:CustomButton Command="{Binding OnAttachmentClick}" BackgroundColor="Transparent"  />-->
                                                         </Grid>
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
-                            
                                         </listView:SfListView>
-                                        </StackLayout>
-                                    </StackLayout>
+
+                                    </Grid>
+
                                 </StackLayout>
                             </border:SfBorder>
                         </StackLayout>
@@ -563,9 +587,9 @@
 
 
                     <StackLayout Grid.Row="2">
-                        <buttons:SfButton Text="Continue" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnContinueClicked}"/>
-                    </StackLayout>
-                </Grid>
+                            <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnContinueClicked}"/>
+                        </StackLayout> 
+                    </Grid>
             </yummy:PancakeView>
 
             <Grid Padding="15,10,15,10" Grid.Row="0">
@@ -574,9 +598,9 @@
                     <ColumnDefinition Width="60*"/>
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
-                <custom:CustomLabel Grid.Column="1" Text="Tax Evasion" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
                 <StackLayout Grid.Column="0">
-                    <Image Source="arrowLeftwhite.png"  VerticalOptions="CenterAndExpand" HorizontalOptions="Start">
+                    <Image Source="arrowLeftwhite.png"  VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Style="{DynamicResource BackButtonArrow}">
 
                     </Image>
                     <StackLayout.GestureRecognizers>
@@ -586,7 +610,9 @@
 
                 <StackLayout Grid.Column="2">
                     <Image Source="close.png" VerticalOptions="CenterAndExpand" HorizontalOptions="End">
-
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnGotoReportPageClicked}" />
+                        </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
             </Grid>

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using EGAZT.Models;
 using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
+using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -13,16 +15,21 @@ namespace EGAZT.Views.NewDesign.VATRefunds
     public partial class VATRefundsNewRequestPageView : ContentPage
     {
         VATRefundsNewRequestViewModel viewModel;
-        public VATRefundsNewRequestPageView(ObservableCollection<VATRefundsModel> vATRefundsModel)
+        public VATRefundsNewRequestPageView()
         {
             InitializeComponent();
 
             viewModel = App.Locator.VATRefundsNewRequestPageView;
-            viewModel.ReloadData(vATRefundsModel);
+            viewModel.ReloadData();
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                viewModel.PickerModel = arg;
+                Console.WriteLine(arg);
+            });
+            
         }
         private void SetLTR()
         {

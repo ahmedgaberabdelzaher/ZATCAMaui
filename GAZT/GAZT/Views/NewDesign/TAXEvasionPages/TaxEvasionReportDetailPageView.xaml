@@ -164,7 +164,7 @@
                                 <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                             </StackLayout>
                             <Frame   BackgroundColor="White"     Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
-                                <gmaps:Map Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Margin="-12"  MapType="Street" x:Name="mapView" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                                <gmaps:Map Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Margin="-12"  MapType="Street" IsEnabled="False" x:Name="mapView" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                             </Frame>
                            
                                 <!--<maps:Map  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />-->
@@ -190,7 +190,7 @@
                         <StackLayout Padding="16" Spacing="10">
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding TFaciName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.CompanyName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout> 
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionTIN}" Style="{StaticResource BodyLabelGrey}"/>
