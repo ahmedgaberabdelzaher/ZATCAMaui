@@ -190,7 +190,7 @@
                         <StackLayout Padding="16" Spacing="10">
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding TFaciName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.CompanyName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout> 
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionTIN}" Style="{StaticResource BodyLabelGrey}"/>

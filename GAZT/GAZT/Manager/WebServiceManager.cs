@@ -6958,25 +6958,20 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
-                        String VatDeRegistrationData = GAZTVATDeregAttDataResponse.Content.ReadAsStringAsync().Result;
-                        VatDeRegistrationData = JObject.Parse(VatDeRegistrationData)["d"].ToString();
-
-                        vATDeregAttDetails = JsonConvert.DeserializeObject<VATDeRegistrationAttachmentDropdownDetails>(VatDeRegistrationData);
-                        if (!string.IsNullOrEmpty(VatDeRegistrationData))
+                        String VatDeregAttListResultModelSetResponseJson = GAZTVATDeregAttDataResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(VatDeregAttListResultModelSetResponseJson))
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatDeRegistrationData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null &&
-                                errorMesg.error.innererror.errordetails != null &&
-                                errorMesg.error.innererror.errordetails[0].message != null)
+                            VatDeregAttListResultModelSetResponseJson = JObject.Parse(VatDeregAttListResultModelSetResponseJson)["d"].ToString();
+
+                            vATDeregAttDetails = JsonConvert.DeserializeObject<VATDeRegistrationAttachmentDropdownDetails>(VatDeregAttListResultModelSetResponseJson);
+                            if (vATDeregAttDetails == null)
                             {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                             }
+                        }
+                        else
+                        {
+                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                         }
                     }
                     return vATDeregAttDetails;
