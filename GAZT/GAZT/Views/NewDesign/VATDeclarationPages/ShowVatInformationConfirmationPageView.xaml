@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    mc:Ignorable="d"
+     xmlns:ResourceManager="clr-namespace:EGAZT"
+             x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.ShowVatInformationConfirmationPageView">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <yummy:PancakeView x:Name="MainPanCakeView1" CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <custom:CustomLabel Grid.Row="0" Text="{Binding MainString}" Style="{StaticResource SectionTitleBlack}"/>
+            <ListView  x:Name="InformationList"
+                           Grid.Row="1"
+           ItemsSource="{Binding HeaderWithInfoList}"
+          HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                           
+                               BackgroundColor="White"
+                     
+            SeparatorVisibility="None"
+            >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Spacing="15" Margin="0,0,0,7">
+                                <Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image Source="ic_vat_info">
+
+                                            </Image>
+                                            <custom:CustomLabel x:Name="HeaderTextlbl"   Text="{Binding HeaderText}" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand">
+                                                <custom:CustomLabel.Triggers>
+                                                    <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding Source={x:Reference HeaderTextlbl}, Path=Text.Length}" Value="0">
+                                                        <Setter Property="IsVisible" Value="False" />
+                                                    </DataTrigger>
+                                                </custom:CustomLabel.Triggers>
+                                            </custom:CustomLabel>
+                                        </StackLayout>
+                                        <custom:CustomLabel Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
+                                    </StackLayout>
+                                </Frame>
+
+                                <!--<Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
+                                        <StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Source="ic_vat_info">
+
+                                                </Image>
+                                                <custom:CustomLabel Text="Adjustments" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand"/>
+                                            </StackLayout>
+                                            <custom:CustomLabel Text="Total Amount of Supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme" Style="{StaticResource CaptionLabelGrey}" />
+                                            <custom:CustomLabel Text="For example returns of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables." Style="{StaticResource CaptionLabelGrey}" />
+                                        </StackLayout>
+                                    </Frame>-->
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout BackgroundColor="White" Grid.Row="2" Margin="0,0,0,0"  VerticalOptions="FillAndExpand">
+
+                <buttons:SfButton x:Name="btnprimary" Clicked="YesButtonClicked"  VerticalOptions="CenterAndExpand" Margin="10,0,10,0"  Text="{x:Static ResourceManager:AppResources.ZYes}" Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton x:Name="btnprimary1" Clicked="NoButtonClicked"  VerticalOptions="CenterAndExpand" Margin="10,0,10,0"  Text="{x:Static ResourceManager:AppResources.ZNo}" Style="{StaticResource PrimaryButtonStyle}"/>
+              
+            </StackLayout>
+        </Grid>
+    </yummy:PancakeView>
+</pages:PopupPage>

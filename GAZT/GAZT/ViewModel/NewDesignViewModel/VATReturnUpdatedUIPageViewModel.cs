@@ -2020,8 +2020,172 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }*/
             });
         }
-        #endregion
 
+        public async void VoidMsg()
+        {
+            //var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
+            //if (answer)
+
+
+            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+            headerAmountInfo.IsLinkAvailable = false;
+            headerAmountInfo.Message = AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost;
+
+            headerWithInfos.Add(headerAmountInfo);
+
+
+            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+            await PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+
+        }
+
+        #endregion
+        public async Task VATSetReturnVoidAsync()
+        {
+            //var answer = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost, AppResources.ZYes, AppResources.ZNo);
+            //if (answer)
+            //{
+                await Task.Run(() =>
+                {
+                    IsNewLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    try
+                    {
+                        CreateDataForPost();
+                        string operation = "04";// Passed 04 to set void
+                        VATDeclarationData.d.Operationz = operation;
+                        StepNumber = "01";
+                        if (IsDeclarationCheckedForInstruction == true)
+                        {
+                            StepNumber = "02";
+                        }
+                        if (IsCheckedTaxPayerDetailsInfo == true)
+                        {
+                            StepNumber = "03";
+                        }
+                        if (IsDeclarationCheckedForSummary == true)
+                        {
+                            StepNumber = "04";
+                        }
+                        VATDeclarationData.d.StepNumber = StepNumber;
+                        VATDeclarationData.d.UserTypz = "TP";
+                        var response = WebServiceManager.GAZTSetVATReturnVoid(VATDeclarationData);
+                        PopToRootPage();
+                        var res = await SaveReturnAndGetReturnAndSetButtons();
+                        if (res != null && res.d != null && response != null)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                ManageEnabledProperty(false);
+                                IsMainButtonVisible = false;
+                                
+                            });
+                            // ManageEnabledProperty(false);
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                              //  await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
+
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = AppResources.ZZGeneralMessage_VATReturnFormCancelled;
+
+                                headerWithInfos.Add(headerAmountInfo);
+
+
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+
+                            });
+                        }
+                        else
+                        {
+                            IsLoading = false;
+                            if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                            {
+                                Device.BeginInvokeOnMainThread(async () => {
+
+
+                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                                    headerAmountInfo.IsLinkAvailable = false;
+                                    headerAmountInfo.Message = AppResources.ZZSomethingwentwrong;
+
+                                    headerWithInfos.Add(headerAmountInfo);
+
+
+                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+
+                                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
+                                });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () => {
+
+                                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                                    headerAmountInfo.IsLinkAvailable = false;
+                                    headerAmountInfo.Message = WebServiceManager.ErrorMessageForVAT;
+
+                                    headerWithInfos.Add(headerAmountInfo);
+
+
+                                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                                    //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                                    // _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessageForVAT = string.Empty;
+                                });
+                            }
+                            //Device.BeginInvokeOnMainThread(async () =>
+                            //{
+                            //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.ZInstructions);
+                            //});
+                        }
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsNewLoading = false;
+                });
+            //}
+        }
         public async Task OnSaveDraftClicked()
         {
             try
@@ -4172,10 +4336,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZVATRejectButton);
             }
-            //else if (ButtonName == "Void")
-            //{
-            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZVoid);
-            //}
+            else if (ButtonName == "Void")
+            {
+                DummyListOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+            }
             else if (ButtonName == "SaveasDraft")
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);

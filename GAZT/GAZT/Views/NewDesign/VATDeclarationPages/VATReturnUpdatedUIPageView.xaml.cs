@@ -458,6 +458,36 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         }
 
+        public async void getYesCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
+                {
+                    await viewModel.VATSetReturnVoidAsync();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public async void getNoCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
+                {
+                   // await viewModel.VATSetReturnVoidAsync();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public async void getActionCommand()
         {
             try
@@ -488,7 +518,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 // viewModel.VATViewAttachments();
                                 break;
                                 case ArButtons.إلغاء:
-                                //   await viewModel.VATSetReturnVoidAsync();
+                                    viewModel.VoidMsg();
                                 break;
                                 case ArButtons.عادةتعيين:
                                 //  await viewModel.VATReturnResetAsync();
@@ -559,7 +589,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                 // viewModel.VATViewAttachments();
                                 break;
                                 case Buttons.Void:
-                                //  await viewModel.VATSetReturnVoidAsync();
+                                    viewModel.VoidMsg();
                                 break;
                                 case Buttons.Reset:
                                 //  await viewModel.VATReturnResetAsync();
@@ -624,11 +654,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, string>(this, "CommandReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
         }
 
         protected async override void OnAppearing()
         {
             getActionCommand();
+            getYesCommand();
+            getNoCommand();
         }
 
         public async Task IntilizeAsync()

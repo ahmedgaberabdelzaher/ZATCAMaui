@@ -306,6 +306,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<VerificationEmailPasswordViewModel>();
             SimpleIoc.Default.Register<UpdatePasswordViewModel>();
             SimpleIoc.Default.Register<TaxpayerProfileSuccessViewModel>();
+            SimpleIoc.Default.Register<ShowVatInformationConfirmationPageViewModel>();
             #endregion
         }
 
@@ -2083,6 +2084,7 @@ namespace EGAZT
 
             navigationService.Configure(App.VATRefundsInstructionsPageView, typeof(VATRefundsInstructionsPageView));
             navigationService.Configure(App.MorePopUpPageView, typeof(MorePopUpPageView));
+            navigationService.Configure(App.ShowVatInformationConfirmationPageView, typeof(ShowVatInformationConfirmationPageView));
 
             // * Taxpayer Profile
             navigationService.Configure(App.TaxpayerProfilePageView, typeof(TaxpayerProfilePageView));
@@ -2232,7 +2234,24 @@ namespace EGAZT
             }
         }
 
+        public ShowVatInformationConfirmationPageViewModel ShowVatInformationConfirmationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ShowVatInformationConfirmationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         
+
+
 
 
 
