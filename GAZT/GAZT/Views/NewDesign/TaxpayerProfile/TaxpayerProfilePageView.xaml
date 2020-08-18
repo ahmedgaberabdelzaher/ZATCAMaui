@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              BackgroundImageSource="partials_background.png"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
@@ -32,19 +33,19 @@
                                     Style="{StaticResource SectionTitleWhiteBold}"
                                     FontSize="24"/>
                 <custom:CustomLabel Margin="0,-15,0,0"
-                                    Text="Individual Saudi (Resident)"
+                                    Text="{x:Static ResourceManager:AppResources.TPIndividualSaudi}"
                                     Style="{StaticResource BodyLabelBlack}"
                                     HorizontalOptions="StartAndExpand"
                                     TextColor="White"/>
 
-                <StackLayout Orientation="Horizontal"
+                <!--<StackLayout Orientation="Horizontal"
                              Spacing="10" Margin="0,20,0,0">
                     <Image Source="Whiteclock.png"/>
                     <custom:CustomLabel Text="The Last time you accessed was on 06, April, 2020 at 15:45"
                                         Style="{StaticResource CaptionLabelBlack}"
                                         TextColor="White">
                     </custom:CustomLabel>
-                </StackLayout>
+                </StackLayout>-->
             </StackLayout>
             <ScrollView Grid.Row="2">
                 <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,32,24,16">
@@ -52,7 +53,7 @@
                         <Frame BorderColor="{StaticResource NeutralLightGrey}" HasShadow="False" CornerRadius="16" Padding="16">
                             <StackLayout Orientation="Horizontal">
                                 <StackLayout>
-                                    <custom:CustomLabel Text="TIN" Style="{StaticResource ValueLabelGrey}"
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTERReportDetailTIN}" Style="{StaticResource ValueLabelGrey}"
                                                         HorizontalOptions="Start"/>
                                     <custom:CustomLabel
                                         Text="{Binding TINLabel}"
@@ -60,7 +61,7 @@
                                         Margin="0,-20,0,0"/>
                                 </StackLayout>
                                 <yummy:PancakeView  Padding="10,0,10,0" CornerRadius="14"  HeightRequest="32" WidthRequest="59" BorderThickness="1" BackgroundColor="{StaticResource OpacityPrimary}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
-                                    <custom:CustomLabel Text="Active"
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTPActive}"
                                                         Style="{StaticResource CaptionLabelGrey}"
                                                         TextColor="{StaticResource Primary}"
                                                         HorizontalOptions="Center"
@@ -69,13 +70,13 @@
                             </StackLayout>
                         </Frame>
 
-                        <custom:CustomLabel Text="Contact Information"
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource ValueLabelBlackBold}"
                                             Margin="0,16,0,0"/>
 
                         <StackLayout Orientation="Horizontal">
-                            <custom:CustomLabel Text="Mobile Number" Style="{StaticResource CaptionLabelGrey}"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                             <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnMobileEditTapped"/>
@@ -122,7 +123,7 @@
                         </inputLayout:SfTextInputLayout>
 
                         <StackLayout Orientation="Horizontal">
-                            <custom:CustomLabel Text="Email" Style="{StaticResource CaptionLabelGrey}"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}" Style="{StaticResource CaptionLabelGrey}"/>
                             <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnEmailEditTapped"/>
@@ -139,7 +140,7 @@
 
 
                         <StackLayout Orientation="Horizontal">
-                            <custom:CustomLabel Text="Password" Style="{StaticResource CaptionLabelGrey}"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Password}" Style="{StaticResource CaptionLabelGrey}"/>
                             <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnPasswordEditTapped"/>
@@ -167,7 +168,7 @@
                 </Grid.ColumnDefinitions>
 
                 <custom:CustomLabel Grid.Column="1"
-                                    Text="My Profile" Style="{StaticResource SectionTitleWhiteBold}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZMyProfile}" Style="{StaticResource SectionTitleWhiteBold}"
                                     HorizontalOptions="Center"
                                     VerticalTextAlignment="Center"/>
 

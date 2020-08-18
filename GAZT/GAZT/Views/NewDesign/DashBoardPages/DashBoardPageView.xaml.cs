@@ -404,7 +404,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             //         App.DisplayProgressView();
 
-            viewModel._navigationService.NavigateTo(App.TaxPayerProfilePageView);
+            //viewModel._navigationService.NavigateTo(App.TaxPayerProfilePageView);
         }
         private void Aboutus_Tapped(object sender, EventArgs e)
         {

@@ -81,7 +81,7 @@
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static local:AppResources.FinancialPeriodFrom}" HorizontalOptions="End" HorizontalTextAlignment="End" Style="{StaticResource ValueLabelGrey}"/>
-                                            <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                            <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" WidthRequest="160">
                                                  <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.FromDate}"  Style="{StaticResource HorizontalEnd}" >
 
                                                 <!--<Label.FormattedText>
@@ -99,7 +99,7 @@
                                            </StackLayout>
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                             <custom:CustomLabel Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource HorizontalEnd}"  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource HorizontalEnd}"  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="150"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>

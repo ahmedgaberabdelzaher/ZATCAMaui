@@ -1781,4 +1781,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_Edit%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_White_info%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_White_info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_White_info%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\WhiteCircle_arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\WhiteCircle_arrow_right%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\WhiteCircle_arrow_right%403x.png" />
+  </ItemGroup>
 </Project>
