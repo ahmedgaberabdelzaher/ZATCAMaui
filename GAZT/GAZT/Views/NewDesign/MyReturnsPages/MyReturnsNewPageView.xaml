@@ -85,7 +85,7 @@
             <Grid Padding="15">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="1000"/>
+                    <RowDefinition Height="500"/>
                 </Grid.RowDefinitions>
                 <StackLayout Spacing="-5" Grid.Row="0">
                     <Grid>
