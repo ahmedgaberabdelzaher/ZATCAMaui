@@ -26,28 +26,8 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.Index = Index;
-           //viewModel.OnPageLoad();
-           // viewModel.PopulateReturnTypeList();
-           // viewModel.PopulateDataInChips();
-           // viewModel.SelectedChipFilterItem = null;
-           // viewModel.FilterAllData();
-           // if(Index == 0)
-           // {
-           //     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
-           //     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
-
-           // }
-           // if (Index == 1)
-           // {
-           //     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
-           //     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
-           // }
-           // if (Index == 2)
-           // {
-           //     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
-           //     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
-              
-           // }
+            viewModel.PopulateReturnTypeList();
+            viewModel.PopulateDataInChips();
             ListView_Returns.ItemTapped += (sender, e) =>
             {
                 MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
@@ -72,11 +52,10 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                 });
 
 
-                viewModel.OnPageLoad();
-                viewModel.PopulateReturnTypeList();
-                viewModel.PopulateDataInChips();
+               await viewModel.OnPageLoad();
+              
                 viewModel.SelectedChipFilterItem = null;
-                viewModel.FilterAllData();
+               // viewModel.FilterAllData();
                 if (viewModel.Index == 0)
                 {
                     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
