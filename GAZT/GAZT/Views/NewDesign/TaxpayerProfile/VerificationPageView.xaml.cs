@@ -43,22 +43,16 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (callAPIFlag)
             {
-                // Navigating to Verification Screen
+                viewModel.LoadingStart();
                 TaxPayerProfile TPAPIResponse = await viewModel.ChangePassword();
                 System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
 
                 if (TPAPIResponse != null)
                 {
+                    viewModel.LoadingStop();
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 1);
-                    });
-                }
-                else
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox("Wrong Current Password!", AppResources.Information);
                     });
                 }
             }
@@ -185,12 +179,25 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             base.OnAppearing();
 
             // * Start timer period for valid OTP
-            //var result = Regex.Match(App.TP.Mobile, @"(.{3})\s*$");
-            viewModel.NewMobileNumberLabel = "Mobile Number "
-                                              + "xxxxxxx"
-                                              + "388";
+            var result = Regex.Match(App.TP.Mobile, @"(.{3})\s*$");
+            viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
             viewModel.StartOTPTimer();
+
+            //RefreshControlsData();
         }
+
+        // * // Reset Enteried
+        /*private void RefreshControlsData()
+        {
+            viewModel.OTPFirstDigit = string.Empty;
+            viewModel.OTPSecondDigit = string.Empty;
+            viewModel.OTPThirdDigit = string.Empty;
+            viewModel.OTPFourthDigit = string.Empty;
+
+            viewModel.CurrentPasswordEntry = string.Empty;
+            viewModel.NewPasswordEntry = string.Empty;
+            viewModel.ConfirmPasswordEntry = string.Empty;
+        }*/
 
         void OnBackArrowTapped(System.Object sender, System.EventArgs e)
         {

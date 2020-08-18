@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 
@@ -111,6 +112,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("OTPFourthDigit");
             }
         }
+
+        private bool _IsLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                _IsLoading = value;
+                RaisePropertyChanged(() => IsLoading);
+            }
+        }
         // * End
 
         private string _LblCountDownTimer;
@@ -127,17 +142,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        private string _NewMobileNumberLabel;
-        public string NewMobileNumberLabel
+        private string _OTPSentOnThisMobileNumber;
+        public string OTPSentOnThisMobileNumber
         {
             get
             {
-                return _NewMobileNumberLabel;
+                return _OTPSentOnThisMobileNumber;
             }
             set
             {
-                _NewMobileNumberLabel = value;
-                RaisePropertyChanged("NewMobileNumberLabel");
+                _OTPSentOnThisMobileNumber = value;
+                RaisePropertyChanged("OTPSentOnThisMobileNumber");
             }
         }
 
@@ -245,30 +260,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         // * Call API
         public async Task<TaxPayerProfile> ChangePassword()
         {
-            /*await Task.Run(() =>
-            {
-                IsLoading = true;
-            });*/
-
             TaxPayerProfile TP = null;
-            string lang = "EN";
-
-            if (App.IsArabic == true) { lang = "AR"; }
 
             try
             {
-                TP = await WebServiceManager.GAZTValidateOTPForEmail(lang,
-                                                                    EnteredOTP,
-                                                                    App.TP.Tin,
-                                                                    _updateEmailData.CurrentEmail, _updateEmailData.NewEmail,
-                                                                    CurrentPasswordEntry, NewPasswordEntry);
+                string lang = "EN";
+
+                if (App.IsArabic == true) { lang = "AR"; }
+
+                try
+                {
+                    TP = await WebServiceManager.GAZTValidateOTPForEmail(lang,
+                                                                        EnteredOTP,
+                                                                        App.TP.Tin,
+                                                                        _updateEmailData.CurrentEmail, _updateEmailData.NewEmail,
+                                                                        CurrentPasswordEntry, NewPasswordEntry);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                    });
+                }
             }
-            catch (Exception ex)
+            catch (InternetException ex)
             {
-                System.Diagnostics.Debug.WriteLine("Exception : ", ex.ToString());
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
 
+            LoadingStop();
             return TP;
+        }
+
+        public async void LoadingStart()
+        {
+            await Task.Run(() => { IsLoading = true; });
+        }
+
+        public async void LoadingStop()
+        {
+            await Task.Run(() => { IsLoading = false; });
         }
     }
 

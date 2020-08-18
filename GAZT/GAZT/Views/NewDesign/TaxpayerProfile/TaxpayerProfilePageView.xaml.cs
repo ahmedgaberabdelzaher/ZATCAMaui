@@ -44,20 +44,28 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             PopupNavigation.Instance.PushAsync(new UpdatePasswordPopUp());
         }
 
+        private void OnBackArrowBtnTapped(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.GoBack();
+            });
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
             // * Last Updated Taxpayer Profile Data
-            /*viewModel.TINLabel = App.TP.Tin;
+            viewModel.TINLabel = App.TP.Tin;
             viewModel.MobileNumberEntry = App.TP.Mobile;
             viewModel.EmailEntry = App.TP.Email;
-            viewModel.PasswordEntry = "********";*/
+            viewModel.PasswordEntry = "********";
 
-            viewModel.TINLabel = "0987654321";
+            /*viewModel.TINLabel = "0987654321".Remove(3);
             viewModel.MobileNumberEntry = "1234567890";
             viewModel.EmailEntry = "TESTS@PM.COM";
-            viewModel.PasswordEntry = "********";
+            viewModel.PasswordEntry = "********";*/
         }
     }
 }

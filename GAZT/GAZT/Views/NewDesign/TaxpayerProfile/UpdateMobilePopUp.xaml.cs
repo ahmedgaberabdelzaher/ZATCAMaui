@@ -86,17 +86,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     VerificationView.IsVisible = true;
                     btn.Text = "Verify";
 
-                    //var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
-                    viewModel.NewMobileNumberLabel = "Mobile Number "
-                                                        + "xxxxxxx"
-                                                        + "388";
-                }
-                else
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox("Wrong Current Mobile Number!", AppResources.Information);
-                    });
+                    var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
+                    viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
+
+                    // * Start timer period for valid OTP
+                    viewModel.StartOTPTimer();
                 }
             }
         }
@@ -182,8 +176,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            // * Start timer period for valid OTP
-            viewModel.StartOTPTimer();
+            RefreshControlsData();
+        }
+
+        // * // Reset Enteried
+        private void RefreshControlsData()
+        {
+            viewModel.CurrentMobileNumberEntryText = string.Empty;
+            viewModel.NewMobileNumberEntryText = string.Empty;
         }
     }
 }

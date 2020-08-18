@@ -46,6 +46,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("ConfirmEmailText");
             }
         }
+
+        /*private bool _IsLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                _IsLoading = value;
+                RaisePropertyChanged(() => IsLoading);
+            }
+        }*/
         #endregion
 
         public UpdateEmailViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -80,11 +94,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Exception : ", ex.ToString());
+                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                });
             }
 
+            //LoadingStop();
             return APIResponse;
         }
+
+        /*public async void LoadingStart()
+        {
+            await Task.Run(() => { IsLoading = true; });
+        }
+
+        public async void LoadingStop()
+        {
+            await Task.Run(() => { IsLoading = false; });
+        }*/
         #endregion
     }
 }
