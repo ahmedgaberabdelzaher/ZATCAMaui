@@ -1876,7 +1876,7 @@
     <value>Inspect or Submit</value>
   </data>
   <data name="ZVATInvoiceButton" xml:space="preserve">
-    <value>Invoice</value>
+    <value>الفاتورة </value>
   </data>
   <data name="ZVATNotesforERButton" xml:space="preserve">
     <value>Notes for ER</value>
@@ -5279,25 +5279,25 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>معلومات المبلغ</value>
   </data>
   <data name="NDChangeToAccountBasis" xml:space="preserve">
-    <value>Change to Account basis</value>
+    <value>تغير الى حساب أساسي</value>
   </data>
   <data name="NDConfirmAndGenerateSADADBill" xml:space="preserve">
     <value>تأكيد وانشاء رقم سداد </value>
   </data>
   <data name="NDWriteYourObjectionReason" xml:space="preserve">
-    <value>Write Your Objection Reason</value>
+    <value>اكتب سبب إعتراضك</value>
   </data>
   <data name="NDYourZakatReturnIsSubmittedSuccessfully" xml:space="preserve">
     <value>تم تقديم اعتراضك الزكوى</value>
   </data>
   <data name="NDZakatCalculation" xml:space="preserve">
-    <value>Zakat Calculation</value>
+    <value>حسبة الزكاة</value>
   </data>
   <data name="NDZakatObjection" xml:space="preserve">
-    <value>Zakat Objection</value>
+    <value>اعتراض زكاة</value>
   </data>
   <data name="NDZakatObjectionIsSubmittedSuccessfully" xml:space="preserve">
-    <value>Your Zakat Objection is submitted successfully</value>
+    <value>تم تقديم اعتراضك الزكوى</value>
   </data>
   <data name="NDZakatReturn" xml:space="preserve">
     <value> إقرار زكاة</value>

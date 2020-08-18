@@ -80,12 +80,26 @@
                                             <custom:CustomLabel Text="{Binding Persl}" Style="{StaticResource HorizontalEnd}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static local:AppResources.FinancialPeriodFrom}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.Abrzu}" Style="{StaticResource HorizontalEnd}" />
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal">
+                                            <custom:CustomLabel Text="{x:Static local:AppResources.FinancialPeriodFrom}" HorizontalOptions="End" HorizontalTextAlignment="End" Style="{StaticResource ValueLabelGrey}"/>
+                                            <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.FromDate}"  Style="{StaticResource HorizontalEnd}" >
+
+                                                <!--<Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.FromDate}"  />
+                                            <Span Text="&#10;"/>
+                                            <Span Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ToDate}"  />
+                                             </FormattedString>
+                                    </Label.FormattedText>-->
+                                            </custom:CustomLabel>
+                        <custom:CustomLabel Margin="0,-10,0,0" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ToDate}"  Style="{StaticResource HorizontalEnd}" >
+                            </custom:CustomLabel>
+                                        
+                                            </StackLayout>
+                                           </StackLayout>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                             <custom:CustomLabel Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource HorizontalEnd}" WidthRequest="140" />
+                                            <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource HorizontalEnd}"  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
@@ -435,12 +449,12 @@
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZSalesformpointofsales}" Style="{StaticResource ValueLabelBlack}"/>
 
-                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                                <!--<Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnImportFromPointOfSalesInfoClicked"/>
                                                     </Image.GestureRecognizers>
 
-                                                </Image>
+                                                </Image>-->
                                             </StackLayout>
 
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
@@ -465,7 +479,7 @@
                                                 <custom:CustomLabel Text="{Binding PtoslI}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
-                                            <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0"></custom:CustomLabel>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
@@ -477,7 +491,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="{Binding PtoslI}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <!--<custom:CustomLabel Text="{Binding PtoslI}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>-->
                                             </StackLayout>
                                             <Image Grid.Row="3" Grid.Column="1"  Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ImportFromPointOfSalesEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                                 <Image.GestureRecognizers>
@@ -533,7 +547,7 @@
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="{Binding EtimadI}"    IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding Sumcnt}"    IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -541,7 +555,7 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="{Binding EtimadI}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <custom:CustomLabel Text="{Binding Sumcnt}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
                                             <Image Grid.Row="3" Grid.Column="1" Source="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ContactFromETIMADSystemEditImageSource}"   HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                                 <Image.GestureRecognizers>
@@ -564,12 +578,12 @@
                                             <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZExportsvalue}" Style="{StaticResource ValueLabelBlack}"/>
 
-                                                <Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
+                                                <!--<Image Source="ic_vat_info" HorizontalOptions="EndAndExpand">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnExportInfoClicked"/>
                                                     </Image.GestureRecognizers>
 
-                                                </Image>
+                                                </Image>-->
                                             </StackLayout>
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
@@ -587,7 +601,7 @@
                                                 <custom:CustomLabel Text="{Binding ExamtI}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
 
                                             </StackLayout>
-                                            <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0"></custom:CustomLabel>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,0,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
@@ -604,9 +618,9 @@
                                                     </inputLayout:SfTextInputLayout.TrailingView>
 
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomLabel Text="{Binding ExamtI}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
+                                                <!--<custom:CustomLabel Text="{Binding ExamtI}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>-->
                                             </StackLayout>
-                                            <Image Grid.Row="3" Grid.Column="1" Source= "{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ExportValueEditImageSource}"  HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
+                                         <Image Grid.Row="3" Grid.Column="1" Source= "{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ExportValueEditImageSource}"  HorizontalOptions="EndAndExpand" Margin="0,0,0,10">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnExportValueEditImageClicked"/>
                                                 </Image.GestureRecognizers>
@@ -762,12 +776,12 @@
                             </Label.GestureRecognizers>
                         </Label>
 
-                        <custom:CustomLabel Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ConfirmAndGenerateSADADBillLabelVisibility}">
+                        <Label Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ConfirmAndGenerateSADADBillLabelVisibility}">
 
                             <!--<Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnChangeFromEstimateToAccountingBasisButtonClicked}"/>
                     </Label.GestureRecognizers>-->
-                        </custom:CustomLabel>
+                        </Label>
 
                     </StackLayout>
                 </Grid>

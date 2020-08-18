@@ -126,6 +126,26 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
+        public void ComeToInstrunctionsclicked()
+        {
+            try
+            {
+                if (viewModel.IsDeclarationCheckedForInstruction)
+                {
+                    viewModel.IsMainButtonEnabled = true;
+                }
+                else
+                {
+                    viewModel.IsMainButtonEnabled = false;
+                }
+                viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public void TaxpayerDetailsclicked()
         {
             if (viewModel.IsDeclarationCheckedForInstruction)
@@ -146,6 +166,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
 
             }
+        }
+
+        public void ComeToVatReturnclicked()
+        {
+            viewModel.currentTab = VATReturnUpdatedUITabEnum.VATReturns;
+            viewModel.IsMainButtonEnabled = true;
         }
         public void VatReturnclicked()
         {
@@ -173,6 +199,22 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
         }
+
+        public void ComeToVatSalesclicked()
+        {
+            bool IsFieldsCheck = CheckSalesMandetoryFields();
+
+            if (IsFieldsCheck)
+            {
+                viewModel.IsMainButtonEnabled = true;
+                
+            }
+            else
+            {
+                viewModel.IsMainButtonEnabled = false;
+            }
+            viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
+        }
         public void VatPurchaseclicked()
         {
             bool IsFieldsCheck = CheckPurchaseMandetoryFields();
@@ -186,6 +228,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
 
             }
+        }
+
+        public void ComeToVatPurchaseclicked()
+        {
+            bool IsFieldsCheck = CheckPurchaseMandetoryFields();
+
+            if (IsFieldsCheck)
+            {
+                viewModel.IsMainButtonEnabled = true;
+            }
+            else
+            {
+                viewModel.IsMainButtonEnabled = false;
+            }
+            viewModel.currentTab = VATReturnUpdatedUITabEnum.Purchase;
         }
         public void VatTotalAmountclicked()
         {
@@ -201,6 +258,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
             
+        }
+
+        public void ComeToVatTotalAmountclicked()
+        {
+            bool IsFieldsCheck = CheckTotalVATMandetoryFields();
+
+            if (IsFieldsCheck)
+            {
+                viewModel.IsMainButtonEnabled = true;
+            }
+            else
+            {
+                viewModel.IsMainButtonEnabled = false;
+            }
+            viewModel.currentTab = VATReturnUpdatedUITabEnum.TotalVat;
         }
 
         public void Summaryclicked()
@@ -7864,28 +7936,28 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //    ManageButtonsName();
                     //    break;
                     case VATReturnUpdatedUITabEnum.VATReturns:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+                        ComeToInstrunctionsclicked();
                         viewModel.IsCheckedTaxPayerDetailsInfo = false;
                         ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Sales:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.VATReturns;
+                        ComeToVatReturnclicked();
                         ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Purchase:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
+                        ComeToVatSalesclicked();
                         ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.TotalVat:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.Purchase;
+                        ComeToVatPurchaseclicked();
                         ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Summery:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.TotalVat;
+                        ComeToVatTotalAmountclicked(); 
                         ManageButtonsName();
                         break;
                 }
@@ -7900,27 +7972,27 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //    ManageButtonsName();
                     //    break;
                     case VATReturnUpdatedUITabEnum.VATReturns:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+                        ComeToInstrunctionsclicked();
                         ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Sales:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
+                        ComeToInstrunctionsclicked();
                         ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Purchase:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
+                        ComeToVatSalesclicked();
                         ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.TotalVat:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.Purchase;
+                        ComeToVatPurchaseclicked();
                         ManageButtonsName();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Summery:
-                        viewModel.currentTab = VATReturnUpdatedUITabEnum.TotalVat;
+                        ComeToVatTotalAmountclicked();
                         ManageButtonsName();
                         break;
                 }
