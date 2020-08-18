@@ -1213,61 +1213,62 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt); 
             ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt); 
         }
-        private bool GetEstimatedZAKATValueChangeStatus()
-        {
-
-            if (GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.TvtslI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.TvtslI))
-
-                && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.LabnoI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.LabnoI))
-
-                && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.ImpvalI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.ImpvalI))
-
-                && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.PtoslI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PtoslI))
-
-                && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.EtimadI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.EtimadI))
-
-                && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.PramtI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PramtI))
-
-                && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.Cpamt).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PramtI)))
-
-            {
-                return false;//ExamtI
-            }
-            else
-            {
-                return true;
-            }
-
-        }
-        public string GetAmountAfterRemovingComma(string AmountText)
-        {
-            if (AmountText.Contains(","))
-            {
-                return AmountText = AmountText.Replace(",", "");
-            }
-            else
-            {
-                return AmountText;
-            }
-        }
         //private bool GetEstimatedZAKATValueChangeStatus()
         //{
-           
-        //    if (ZakatReturnDetailToCompare.TvtslI.Equals(ZakatReturnDetail.TvtslI)
-        //        && ZakatReturnDetailToCompare.LabnoI.Equals(ZakatReturnDetail.LabnoI)
-        //        && ZakatReturnDetailToCompare.ImpvalI.Equals(ZakatReturnDetail.ImpvalI)
-        //        && ZakatReturnDetailToCompare.PtoslI.Equals(ZakatReturnDetail.PtoslI)
-        //        && ZakatReturnDetailToCompare.EtimadI.Equals(ZakatReturnDetail.EtimadI)
-        //        && ZakatReturnDetailToCompare.PramtI.Equals(ZakatReturnDetail.PramtI)
-        //        && ZakatReturnDetailToCompare.Cpamt.Equals(ZakatReturnDetail.Cpamt))
+
+        //    if (GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.TvtslI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.TvtslI))
+
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.LabnoI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.LabnoI))
+
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.ImpvalI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.ImpvalI))
+
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.PtoslI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PtoslI))
+
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.EtimadI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.EtimadI))
+
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.PramtI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PramtI))
+
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.Cpamt).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PramtI)))
+
         //    {
-        //        return false;
+        //        return false;//ExamtI
         //    }
         //    else
         //    {
         //        return true;
         //    }
+
         //}
+        //public string GetAmountAfterRemovingComma(string AmountText)
+        //{
+        //    if (AmountText.Contains(","))
+        //    {
+        //        return AmountText = AmountText.Replace(",", "");
+        //    }
+        //    else
+        //    {
+        //        return AmountText;
+        //    }
+        //}
+
+        private bool GetEstimatedZAKATValueChangeStatus()
+        {
+
+            if (ZakatReturnDetailToCompare.TvtslI.Equals(ZakatReturnDetail.TvtslI)
+                && ZakatReturnDetailToCompare.LabnoI.Equals(ZakatReturnDetail.LabnoI)
+                && ZakatReturnDetailToCompare.ImpvalI.Equals(ZakatReturnDetail.ImpvalI)
+                && ZakatReturnDetailToCompare.PtoslI.Equals(ZakatReturnDetail.PtoslI)
+                && ZakatReturnDetailToCompare.EtimadI.Equals(ZakatReturnDetail.EtimadI)
+                && ZakatReturnDetailToCompare.PramtI.Equals(ZakatReturnDetail.PramtI)
+                && ZakatReturnDetailToCompare.Cpamt.Equals(ZakatReturnDetail.Cpamt))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
 
 
