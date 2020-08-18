@@ -4197,7 +4197,7 @@
     <value>نسبة الإشغال %</value>
   </data>
   <data name="FORM5OutletName" xml:space="preserve">
-    <value>•  إسم الفرع / النشاط:</value>
+    <value>إسم الفرع / النشاط</value>
   </data>
   <data name="FORM5NoOutlet" xml:space="preserve">
     <value>عدد الفروع</value>
@@ -4512,7 +4512,7 @@
     <value>Summary</value>
   </data>
   <data name="VatDeregSummarySubTitle" xml:space="preserve">
-        <value>مراجعة البيانات التالية</value>
+    <value>مراجعة البيانات التالية</value>
   </data>
   <data name="VatDeregDetailsTitle" xml:space="preserve">
     <value>Deregistration details</value>
