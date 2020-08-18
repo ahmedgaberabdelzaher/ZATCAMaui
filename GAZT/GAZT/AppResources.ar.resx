@@ -5408,4 +5408,16 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="FORM5IndividualActivityDetail" xml:space="preserve">
     <value>تفاصيل إحتساب الوعاء</value>
   </data>
+  <data name="ZZZZCorrections" xml:space="preserve">
+    <value>تصحيحات</value>
+  </data>
+  <data name="ZZZZFromPreviousPeriods" xml:space="preserve">
+    <value>من الفترات السابقة</value>
+  </data>
+  <data name="ZZZZVATAccountNumber" xml:space="preserve">
+    <value>رقم حساب ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVATDue" xml:space="preserve">
+    <value>ضريبة القيمة المضافة المستحقة</value>
+  </data>
 </root>
