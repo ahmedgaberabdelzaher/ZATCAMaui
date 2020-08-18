@@ -2136,13 +2136,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "Yes";
                                 }
-                                else if(ZakatForm5DataResult.SCH_GP08.results[i].Owned == "2")
-                                {
-                                    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "No";
-                                }
+                                //else if(ZakatForm5DataResult.SCH_GP08.results[i].Owned == "2")
+                                //{
+                                //    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "No";
+                                //}
                                 else
                                 {
-                                    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "";
+                                   // ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "";
+                                    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "No";
                                 }
 
 
