@@ -13,6 +13,8 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Xamarin.Forms;
+
 namespace GAZT.Manager
 {
     public static class UtilityManager
@@ -870,6 +872,18 @@ namespace GAZT.Manager
             else return false;
         }
 
+        // * Global Method For Changing Flow Direction LANG Based
+        public static FlowDirection SetLTRAndRTL()
+        {
+            if (App.IsArabic)
+            {
+                return FlowDirection.RightToLeft;
+            }
+            else
+            {
+                return FlowDirection.LeftToRight;
+            }
+        }
     }
    
 

@@ -166,13 +166,6 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
-
-        
-
-
-
-
-
         private void OnEstimatedSalesForTheFiscalYearInfoClicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZEstimatedSalesInformationText));
@@ -209,20 +202,20 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZImportsvaluex115));
         }
 
-        private void OnImportFromPointOfSalesInfoClicked(object sender, EventArgs e)
-        {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
-        }
+        //private void OnImportFromPointOfSalesInfoClicked(object sender, EventArgs e)
+        //{
+        //    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
+        //}
 
         private void OnContactFromETIMADSystemInfoClicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
         }
 
-        private void OnExportInfoClicked(object sender, EventArgs e)
-        {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
-        }
+        //private void OnExportInfoClicked(object sender, EventArgs e)
+        //{
+        //    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
+        //}
 
         private void OnPurchaseInfoClicked(object sender, EventArgs e)
         {
