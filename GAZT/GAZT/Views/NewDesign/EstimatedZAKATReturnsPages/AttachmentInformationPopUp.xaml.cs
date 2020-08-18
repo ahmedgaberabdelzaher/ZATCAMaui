@@ -21,6 +21,14 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             PopupNavigation.Instance.PopAsync();
         }
+
+        private void OnOkClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PopAsync();
+        }
+
+        
+
         private void SetLTR()
         {
             if (!App.IsArabic)

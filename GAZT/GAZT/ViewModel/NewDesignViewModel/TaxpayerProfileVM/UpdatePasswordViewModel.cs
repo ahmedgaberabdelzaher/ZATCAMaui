@@ -86,7 +86,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("Exception : ", ex.ToString());
+                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                });
             }
 
             return APIResponse;

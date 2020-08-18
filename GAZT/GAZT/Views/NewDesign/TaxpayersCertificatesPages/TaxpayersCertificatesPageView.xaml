@@ -162,7 +162,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.NoBillsAvailable}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsNoDataLabelVisible}"/>
+                    <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.Nocertificateavailable}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsNoDataLabelVisible}"/>
 
             </StackLayout>
 

@@ -23,6 +23,7 @@
         </ResourceDictionary>
     </pages:PopupPage.Resources>
 
+
     <yummy:PancakeView Padding="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
         <StackLayout>
 
@@ -43,75 +44,63 @@
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdateMobile}" Style="{StaticResource SectionTitleBlackBold}"/>
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZCurrentMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
 
-                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    LeadingViewPosition="Inside" ContainerType="Outlined"
-                                                    UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
-                        <StackLayout Orientation="Horizontal" Padding="0,8,0,8">
+                    <inputLayout:SfTextInputLayout      Margin="0,-10,0,0"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        LeadingViewPosition="Inside"
+                                                        ContainerType="Outlined"
+                                                        UnfocusedColor="#B1B1B1"
+                                                        OutlineCornerRadius="8"
+                                                        FocusedColor="#005e4b"
+                                                        ErrorColor="#B00020"
+                                                        InputViewPadding="8,0" >
+                        <inputLayout:SfTextInputLayout.LeadingView>
+                            <StackLayout Orientation="Horizontal"
+                                     Padding="0,14,0,14">
+                                <custom:CustomLabel Text="+966"
+                                                    Style="{StaticResource BodyLabelGrey}" />
+                                <BoxView WidthRequest="1"
+                                         BackgroundColor="{StaticResource NeutralLightGrey}" />
+                            </StackLayout>
+                        </inputLayout:SfTextInputLayout.LeadingView>
 
-                            <OnPlatform x:TypeArguments="custom:CustomLabel">
-                                <On Platform="iOS">
-                                    <custom:CustomLabel Text="+966"
-                                                        VerticalTextAlignment="Center"
-                                                        Style="{StaticResource BodyLabelGrey}" />
-                                </On>
-                            </OnPlatform>
-                            <OnPlatform x:TypeArguments="control:BorderlessEntry">
-                                <On Platform="Android">
-                                    <control:BorderlessEntry
-                                        Placeholder="+966"
-                                        VerticalTextAlignment="Center"
-                                        Style="{StaticResource DefaultEntry}"
-                                        IsEnabled="False" />
-                                </On>
-                            </OnPlatform>
-
-                            <BoxView WidthRequest="1" HeightRequest="1"
-                                         BackgroundColor="{StaticResource NeutralLightGrey}"/>
-
-                            <control:BorderlessEntry x:Name="EntryCurrentMobileNumber"
-                                                         Style="{StaticResource DefaultEntry}"
-                                                         Text="{Binding CurrentMobileNumberEntryText}"
-                                                         Keyboard="Numeric"
-                                                         HorizontalOptions="FillAndExpand">
-                            </control:BorderlessEntry>
-                        </StackLayout>
+                        <control:BorderlessEntry VerticalOptions="FillAndExpand"
+                                                 Style="{StaticResource DefaultEntry}"
+                                                 Text="{Binding CurrentMobileNumberEntryText}"
+                                                 Keyboard="Numeric"
+                                                 HorizontalOptions="FillAndExpand">
+                        </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
 
-                    <inputLayout:SfTextInputLayout Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
-                        <StackLayout Orientation="Horizontal" Padding="0,8,0,8">
-                            <OnPlatform x:TypeArguments="custom:CustomLabel">
-                                <On Platform="iOS">
-                                    <custom:CustomLabel Text="+966"
-                                                        VerticalTextAlignment="Center"
-                                                        Style="{StaticResource BodyLabelGrey}" />
-                                </On>
-                            </OnPlatform>
-                            <OnPlatform x:TypeArguments="control:BorderlessEntry">
-                                <On Platform="Android">
-                                    <control:BorderlessEntry
-                                        Placeholder="+966"
-                                        VerticalTextAlignment="Center"
-                                        Style="{StaticResource DefaultEntry}"
-                                        IsEnabled="False" />
-                                </On>
-                            </OnPlatform>
+                    <inputLayout:SfTextInputLayout      Margin="0,-10,0,0"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        LeadingViewPosition="Inside"
+                                                        ContainerType="Outlined"
+                                                        UnfocusedColor="#B1B1B1"
+                                                        OutlineCornerRadius="8"
+                                                        FocusedColor="#005e4b"
+                                                        ErrorColor="#B00020"
+                                                        InputViewPadding="8,0,8,0" >
+                        <inputLayout:SfTextInputLayout.LeadingView>
+                            <StackLayout Orientation="Horizontal"
+                                     Padding="0,14,0,14">
+                                <custom:CustomLabel Text="+966"
+                                                    Style="{StaticResource BodyLabelGrey}" />
+                                <BoxView WidthRequest="1"
+                                         BackgroundColor="{StaticResource NeutralLightGrey}" />
+                            </StackLayout>
+                        </inputLayout:SfTextInputLayout.LeadingView>
 
-                            <BoxView WidthRequest="1" HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}"/>
-
-                            <control:BorderlessEntry
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding NewMobileNumberEntryText}"
-                                    Keyboard="Numeric"
-                                    HorizontalOptions="FillAndExpand">
-                            </control:BorderlessEntry>
-                        </StackLayout>
+                        <control:BorderlessEntry VerticalOptions="FillAndExpand"
+                                                 Style="{StaticResource DefaultEntry}"
+                                                 Text="{Binding NewMobileNumberEntryText}"
+                                                 Keyboard="Numeric"
+                                                 HorizontalOptions="FillAndExpand">
+                        </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>
             </StackLayout>
-
 
             <!--OTP View-->
             <StackLayout x:Name="VerificationView" Padding="24"
@@ -121,10 +110,9 @@
                 <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1"/>
 
                 <StackLayout Padding="0,15,0,0" >
-                    <custom:CustomLabel Text="{Binding NewMobileNumberLabel}"
+                    <custom:CustomLabel Text="{Binding OTPSentOnThisMobileNumber}"
                                         Style="{StaticResource BodyLabelGrey}"
                                         HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>
-
 
                     <Grid Margin="0,-10,0,0">
                         <Grid.RowDefinitions>
@@ -267,4 +255,5 @@
                               Clicked="UpdatedClicked"/>
         </StackLayout>
     </yummy:PancakeView>
+
 </pages:PopupPage>

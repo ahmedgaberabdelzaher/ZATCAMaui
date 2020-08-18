@@ -23,14 +23,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        private string _MobileNumberEntry;
-        public string MobileNumberEntry
+        private string _MobileNumber;
+        public string MobileNumber
         {
-            get { return _MobileNumberEntry; }
+            get { return _MobileNumber; }
             set
             {
-                _MobileNumberEntry = value;
-                RaisePropertyChanged("MobileNumberEntry");
+                _MobileNumber = value;
+                RaisePropertyChanged("MobileNumber");
             }
         }
 

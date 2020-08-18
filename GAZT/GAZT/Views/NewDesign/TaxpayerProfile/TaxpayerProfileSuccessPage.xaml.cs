@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using Xamarin.Forms;
 
@@ -28,16 +29,16 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             switch (ProfileSuccessId)
             {
                 case 1:
-                    viewModel.SuccessTitleLbl = "Email Updated";
-                    viewModel.successCaptionLbl = "New Email Updated Successfully";
+                    viewModel.SuccessTitleLbl = AppResources.TPEmailUpdated;
+                    viewModel.successCaptionLbl = AppResources.TPNewEmailUpDated;
                     break;
                 case 2:
-                    viewModel.SuccessTitleLbl = "Mobile Number Updated";
-                    viewModel.successCaptionLbl = "New Mobile Number Updated Successfully";
+                    viewModel.SuccessTitleLbl = AppResources.TPMobileUpdate;
+                    viewModel.successCaptionLbl = AppResources.TPSuccessMobileUpdated;
                     break;
                 case 3:
-                    viewModel.SuccessTitleLbl = "Password Updated";
-                    viewModel.successCaptionLbl = "New Password Updated Sucessfully";
+                    viewModel.SuccessTitleLbl = AppResources.TPPasswordUpdate;
+                    viewModel.successCaptionLbl = AppResources.NewPasswordUpdatedSuccessfully;
                     break;
                 default:
                     break;

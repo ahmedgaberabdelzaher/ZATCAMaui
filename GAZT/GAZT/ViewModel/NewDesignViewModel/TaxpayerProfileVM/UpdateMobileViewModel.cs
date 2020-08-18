@@ -163,17 +163,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        private string _NewMobileNumberLabel;
-        public string NewMobileNumberLabel
+        private string _OTPSentOnThisMobileNumber;
+        public string OTPSentOnThisMobileNumber
         {
             get
             {
-                return _NewMobileNumberLabel;
+                return _OTPSentOnThisMobileNumber;
             }
             set
             {
-                _NewMobileNumberLabel = value;
-                RaisePropertyChanged("NewMobileNumberLabel");
+                _OTPSentOnThisMobileNumber = value;
+                RaisePropertyChanged("OTPSentOnThisMobileNumber");
             }
         }
         #endregion
@@ -242,6 +242,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             string lang = "EN";
             if (App.IsArabic == true) { lang = "AR"; }
 
+            CurrentMobileNumberEntryText = MobileNumberFormate(CurrentMobileNumberEntryText);
+            NewMobileNumberEntryText = MobileNumberFormate(NewMobileNumberEntryText);
+
             try
             {
                 await Task.Run(async () =>
@@ -253,7 +256,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("UPDATE MOBILE NUMBER ERROR : {0}", ex.ToString());
+                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                });
             }
 
             return callAPIFlag;
@@ -281,6 +288,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
 
             return TP;
+        }
+
+        private string MobileNumberFormate(string mobileNumber)
+        {
+            return "966" + mobileNumber;
         }
     }
 }
