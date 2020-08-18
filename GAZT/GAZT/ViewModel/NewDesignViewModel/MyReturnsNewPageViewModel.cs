@@ -343,6 +343,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 String SelectedICRGUID = SelectedReturnsVAT.Fbguid;
                                 App.ICRStatus = SelectedReturnsVAT.Stat;
+                                App.VATDeclrationFbguid= SelectedReturnsVAT.Fbguid;
                                 VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
                                 PopToRootPage();
                                 if (_vATDeclaration != null && _vATDeclaration.d != null)

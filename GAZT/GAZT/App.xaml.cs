@@ -198,6 +198,7 @@ namespace EGAZT
         public static string ICRStatus = String.Empty;
         public static string EUser = String.Empty;
         public static string Fbguid = String.Empty;
+        public static string VATDeclrationFbguid = String.Empty;
         public static TaxPayerProfile TP = null;
         public static string Token = String.Empty;
         public static string Otp = String.Empty;

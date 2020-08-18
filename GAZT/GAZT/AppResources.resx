@@ -5432,4 +5432,16 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="TPEmailUpdated" xml:space="preserve">
     <value>Email Updated</value>
   </data>
+  <data name="ZZZZCorrections" xml:space="preserve">
+    <value>Corrections</value>
+  </data>
+  <data name="ZZZZFromPreviousPeriods" xml:space="preserve">
+    <value>From Previous Periods</value>
+  </data>
+  <data name="ZZZZVATAccountNumber" xml:space="preserve">
+    <value>VAT Account Number</value>
+  </data>
+  <data name="ZZZZVATDue" xml:space="preserve">
+    <value>VAT Due</value>
+  </data>
 </root>

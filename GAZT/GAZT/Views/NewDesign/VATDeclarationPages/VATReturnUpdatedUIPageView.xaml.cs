@@ -47,6 +47,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
                  
                 }
+                viewModel.IsAmendClicked = false;
+                viewModel.IsVoidClicked = false;
+                viewModel.IsResetClicked = false;
                 checkNewFormorOld();
                 
                 IntilizeAsync();
@@ -65,7 +68,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (viewModel.VATDeclarationData.d.StepNumber == "01" || viewModel.VATDeclarationData.d.StepNumber == "1" || viewModel.VATDeclarationData.d.StepNumber == "0" || viewModel.VATDeclarationData.d.StepNumber == "00")
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
-                ManageButtonsName();
+                viewModel.ManageButtonsNameOnViewModel();
             }
             else if (viewModel.VATDeclarationData.d.StepNumber == "02" || viewModel.VATDeclarationData.d.StepNumber == "2")
             {
@@ -107,12 +110,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (viewModel.IsFifteenPercentChange)
                     {
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.VATReturns;
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                     }
                     else
                     {
                         viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                     }
                 }
                 else
@@ -154,12 +157,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (viewModel.IsFifteenPercentChange)
                 {
                     viewModel.currentTab = VATReturnUpdatedUITabEnum.VATReturns;
-                    ManageButtonsName();
+                    viewModel.ManageButtonsNameOnViewModel();
                 }
                 else
                 {
                     viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
-                    ManageButtonsName();
+                    viewModel.ManageButtonsNameOnViewModel();
                 }
             }
             else
@@ -178,7 +181,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (viewModel.IsFifteenPersenctVisible || viewModel.IsFivePersenctVisible)
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
-                ManageButtonsName();
+                viewModel.ManageButtonsNameOnViewModel();
             }
             else
             {
@@ -192,7 +195,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (IsFieldsCheck)
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Purchase;
-                ManageButtonsName();
+                viewModel.ManageButtonsNameOnViewModel();
             }
             else
             {
@@ -222,7 +225,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (IsFieldsCheck)
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.TotalVat;
-                ManageButtonsName();
+                viewModel.ManageButtonsNameOnViewModel();
             }
             else
             {
@@ -251,7 +254,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (IsFieldsCheck)
             {
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Summery;
-                ManageButtonsName();
+                viewModel.ManageButtonsNameOnViewModel();
             }
             else
             {
@@ -464,8 +467,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
                 {
-                    await viewModel.VATSetReturnVoidAsync();
                     await PopupNavigation.Instance.PopAsync();
+                    await viewModel.VATSetReturnVoidAsync();
+               
                 });
             }
             catch (Exception ex)
@@ -524,11 +528,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     viewModel.VoidMsg();
                                 break;
                                 case ArButtons.عادةتعيين:
-                                //  await viewModel.VATReturnResetAsync();
-                                break;
+                                    await viewModel.VATReturnResetAsync();
+                                    break;
                                 case ArButtons.تعديل:
-                                //await viewModel.VATReturnAmendAsync();
-                                break;
+                                    await viewModel.VATReturnAmendAsync();
+                                    break;
                                 case ArButtons.حفظكمسودة:
                                     viewModel.IsVATReturnFieldCheckForSaveAsDraft = true;
                                     if (CheckSalesMandetoryFields() && CheckPurchaseMandetoryFields() && CheckTotalVATMandetoryFields())
@@ -595,11 +599,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     viewModel.VoidMsg();
                                 break;
                                 case Buttons.Reset:
-                                //  await viewModel.VATReturnResetAsync();
-                                break;
+                                    await viewModel.VATReturnResetAsync();
+                                    break;
                                 case Buttons.Amend:
-                                //  await viewModel.VATReturnAmendAsync();
-                                break;
+                                    await viewModel.VATReturnAmendAsync();
+                                    break;
                                 case Buttons.SaveasDraft:
                                     viewModel.IsVATReturnFieldCheckForSaveAsDraft = true;
                                     if (CheckSalesMandetoryFields() && CheckPurchaseMandetoryFields() && CheckTotalVATMandetoryFields())
@@ -683,6 +687,18 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     NavigationtoStep();
                     viewModel.ListOfActionButtonsApplicable = new List<string>();
                     await viewModel.SetButtons(viewModel.VATDeclarationData);
+                    if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
+                    {
+                        viewModel.ManageEnabledProperty(true);
+
+                        viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                        viewModel.IsDeclarationCheckedForSummary = true;
+                        viewModel.IsDeclarationCheckedForInstruction = true;
+                        //viewModel.ButtonName = AppResources.ZVatDownloadForm;
+                        viewModel.IsMainButtonEnabled = false;
+                        viewModel.IsMainButtonVisible = false;
+                        viewModel.ManageButtonsNameOnViewModel();
+                    }
                     if (App.CheckTINStatusPageView != "0045")
                     {
                         await onPageLoadCalculation();
@@ -7936,10 +7952,28 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                     else if (viewModel.ContinueText == AppResources.ZZZZConfirmAndCarryForward)
                     {
-                        if (viewModel.IsDeclarationCheckedForSummary && (App.ICRStatus == "E0001" || App.ICRStatus == "E0013"))
+
+                    if (viewModel.IsDeclarationCheckedForSummary && (viewModel.IsVoidClicked == false && viewModel.IsResetClicked == false))
+                    {
+                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (viewModel.IsCheckedDraftMode()))
                         {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                viewModel.IsNewLoading = true;
+                            });
                             await viewModel.SubmitClicked();
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                viewModel.IsNewLoading = false;
+                            });
                         }
+                    }
+
+
+                    //if (viewModel.IsDeclarationCheckedForSummary && (App.ICRStatus == "E0001" || App.ICRStatus == "E0013"))
+                    //    {
+                    //        await viewModel.SubmitClicked();
+                    //    }
                   }
                 
             }
@@ -7975,27 +8009,27 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     case VATReturnUpdatedUITabEnum.VATReturns:
                         ComeToInstrunctionsclicked();
                         viewModel.IsCheckedTaxPayerDetailsInfo = false;
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Sales:
                         ComeToVatReturnclicked();
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Purchase:
                         ComeToVatSalesclicked();
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
 
                     case VATReturnUpdatedUITabEnum.TotalVat:
                         ComeToVatPurchaseclicked();
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Summery:
-                        ComeToVatTotalAmountclicked(); 
-                        ManageButtonsName();
+                        ComeToVatTotalAmountclicked();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
                 }
             }
@@ -8010,27 +8044,27 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //    break;
                     case VATReturnUpdatedUITabEnum.VATReturns:
                         ComeToInstrunctionsclicked();
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Sales:
                         ComeToInstrunctionsclicked();
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Purchase:
                         ComeToVatSalesclicked();
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
 
                     case VATReturnUpdatedUITabEnum.TotalVat:
                         ComeToVatPurchaseclicked();
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
 
                     case VATReturnUpdatedUITabEnum.Summery:
                         ComeToVatTotalAmountclicked();
-                        ManageButtonsName();
+                        viewModel.ManageButtonsNameOnViewModel();
                         break;
                 }
             }
