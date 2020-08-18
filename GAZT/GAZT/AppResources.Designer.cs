@@ -4476,6 +4476,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email Updated.
+        /// </summary>
+        public static string TPEmailUpdated {
+            get {
+                return ResourceManager.GetString("TPEmailUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go To My Profile.
         /// </summary>
         public static string TPGoToProfile {
