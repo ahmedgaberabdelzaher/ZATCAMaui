@@ -1,4 +1,7 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+using GAZT.Manager;
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,44 +16,113 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UpdateEmailPopUp : PopupPage
     {
+        UpdateEmailViewModel viewModel;
+
         public UpdateEmailPopUp()
         {
             InitializeComponent();
+            viewModel = App.Locator.UpdateEmailPopUp;
+            this.BindingContext = viewModel;
+
+            //SetLTR();
+            this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
 
-        private void UpdatedClicked(object sender, EventArgs e)
+        private async void UpdatedClicked(object sender, EventArgs e)
         {
-            if (btn.Text== "Update")
+
+            // Call Update Mobile Number API + Go Success Page
+            bool callAPIFlag = TaxpayerProfileEmailUpdateValidation(viewModel.CurrentEmailText,
+                                                                    viewModel.NewEmailText,
+                                                                    viewModel.ConfirmEmailText);
+            if (callAPIFlag)
             {
-                //UpdateEmail.IsVisible = false;
-                //VerificationView.IsVisible = true;
-                //btn.Text = "Verify";
+                bool OTPSuccess = await viewModel.VarifyEmail();
+                System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", OTPSuccess);
+
+                if (OTPSuccess)
+                {
+                    // Navigating to Verification Screen
+                    this.CloseAllPopup();
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        // setup updated email's
+                        UpdateEmailDataModel updateEmailData = new UpdateEmailDataModel();
+                        updateEmailData.CurrentEmail = viewModel.CurrentEmailText;
+                        updateEmailData.NewEmail = viewModel.NewEmailText;
+
+                        viewModel._navigationService.NavigateTo(App.VerificationPageView, updateEmailData);
+                    });
+                }
+                else
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await viewModel._dialogService.ShowMessageBox("Wrong Current Email!", AppResources.Information);
+                    });
+                }
             }
         }
 
-        private void OTPFirstEntry_TextChanged(object sender, TextChangedEventArgs e)
+        // * Password Validations
+        private bool TaxpayerProfileEmailUpdateValidation(string CurrentEmail, string NewEmail, string ConfirmEmail)
         {
+            //CurrentMobileNumber = Regex.Replace(CurrentMobileNumber, @"\s+", "");
+            //NewMobileNumber = Regex.Replace(NewMobileNumber, @"\s+", "");
 
+            string validationError = VerifyEmails(CurrentEmail, NewEmail, ConfirmEmail);
+
+            if (validationError == string.Empty)
+            {
+                return true;
+            }
+            else
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessageBox(validationError, AppResources.Information);
+                });
+                return false;
+            }
         }
 
-        private void OTPSecondEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private string VerifyEmails(string CurrentEmail, string NewEmail, string ConfirmEmail)
         {
+            bool compareStringFlag = string.Equals(NewEmail, ConfirmEmail);
 
+            if (CurrentEmail == null || NewEmail == null
+                                        || ConfirmEmail == null
+                                        || CurrentEmail == string.Empty
+                                        || NewEmail == string.Empty
+                                        || ConfirmEmail == string.Empty)
+                return AppResources.InvalidEmailFormat;
+            else if (!compareStringFlag)
+                return AppResources.InvalidEmailFormat;
+            else
+            {
+                /*bool passwordValidationRegXFlag = UtilityManager.ValidateNewPassword(NewPassword);
+                if (passwordValidationRegXFlag)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return "Password Not Matches As Expected!!";
+                }*/
+
+                return string.Empty;
+            }
         }
 
-        private void OTPThirdEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private async void CloseAllPopup()
         {
-
+            await PopupNavigation.Instance.PopAllAsync();
         }
 
-        private void OTPFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
+        async void OnBackArrowTapped(System.Object sender, System.EventArgs e)
         {
-
-        }
-
-        private void OTPFourthEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-
+            await PopupNavigation.Instance.PopAllAsync();
         }
     }
 }

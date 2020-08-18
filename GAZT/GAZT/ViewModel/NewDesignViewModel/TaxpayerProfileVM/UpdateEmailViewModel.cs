@@ -1,0 +1,90 @@
+﻿using System;
+using System.Threading.Tasks;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+
+namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
+{
+    public class UpdateEmailViewModel : ViewModelBase
+    {
+        #region Variable
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        #endregion
+
+        #region Properties
+        private string _CurrentEmailText;
+        public string CurrentEmailText
+        {
+            get { return _CurrentEmailText; }
+            set
+            {
+                _CurrentEmailText = value;
+                RaisePropertyChanged("CurrentEmailText");
+            }
+        }
+
+        private string _NewEmailText;
+        public string NewEmailText
+        {
+            get { return _NewEmailText; }
+            set
+            {
+                _NewEmailText = value;
+                RaisePropertyChanged("NewEmailText");
+            }
+        }
+
+        private string _ConfirmEmailText;
+        public string ConfirmEmailText
+        {
+            get { return _ConfirmEmailText; }
+            set
+            {
+                _ConfirmEmailText = value;
+                RaisePropertyChanged("ConfirmEmailText");
+            }
+        }
+        #endregion
+
+        public UpdateEmailViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
+            _navigationService = navigationService;
+
+            if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
+            _dialogService = dialogService;
+        }
+
+        #region Method
+        public async Task<bool> VarifyEmail()
+        {
+            bool APIResponse = false;
+            string lang = "EN";
+            if (App.IsArabic == true) { lang = "AR"; }
+
+            try
+            {
+                // API Calls
+                await Task.Run(async () =>
+                {
+                    APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, CurrentEmailText, NewEmailText);
+
+                    // setup updated email's
+                    UpdateEmailDataModel updateEmailData = new UpdateEmailDataModel();
+                    updateEmailData.CurrentEmail = CurrentEmailText;
+                    updateEmailData.NewEmail = NewEmailText;
+
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception : ", ex.ToString());
+            }
+
+            return APIResponse;
+        }
+        #endregion
+    }
+}
