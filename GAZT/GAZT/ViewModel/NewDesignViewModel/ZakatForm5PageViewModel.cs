@@ -2557,6 +2557,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     NextText = "Finish";
                   //  OnNextButtonClick = 
                     break;
+                case ZakatForm5TabEnum.ZakatEstimation:
+                    _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                    break;
 
             }
         }
