@@ -4172,38 +4172,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZVATRejectButton);
             }
-            else if (ButtonName == "Void")
-            {
-                DummyListOfActionButtonsApplicable.Add(AppResources.ZZVoid);
-            }
+            //else if (ButtonName == "Void")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZVoid);
+            //}
             else if (ButtonName == "SaveasDraft")
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZSaveAsDraft);
             }
-            else if (ButtonName == "DisplayNotes")
-            {
-                DummyListOfActionButtonsApplicable.Add(AppResources.ZZDisplayNotes);
-            }
+            //else if (ButtonName == "DisplayNotes")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZDisplayNotes);
+            //}
             //else if (ButtonName == "Validate")
             //{
             //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZValidate);
             //}
-            else if (ButtonName == "Attachments")
-            {
-                DummyListOfActionButtonsApplicable.Add(AppResources.Attachments);
-            }
-            else if (ButtonName == "Reset")
-            {
-                DummyListOfActionButtonsApplicable.Add(AppResources.ZZReset);
-            }
-            else if (ButtonName == "CreateNotes")
-            {
-                DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCreateNote);
-            }
-            else if (ButtonName == "Amend")
-            {
-                DummyListOfActionButtonsApplicable.Add(AppResources.ZZAmend);
-            }
+            //else if (ButtonName == "Attachments")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.Attachments);
+            //}
+            //else if (ButtonName == "Reset")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZReset);
+            //}
+            //else if (ButtonName == "CreateNotes")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCreateNote);
+            //}
+            //else if (ButtonName == "Amend")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZAmend);
+            //}
             else if (ButtonName == "Closed")
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZClose);

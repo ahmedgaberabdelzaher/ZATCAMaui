@@ -756,7 +756,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg != "X")
                 {
-                    if (viewModel.currentTab == VATReturnUpdatedUITabEnum.VATReturns || viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
+                    if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
                     {
                         if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
                         {
@@ -1192,11 +1192,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 if (viewModel.IsFifteenPercentChange)
                 {
-                    bool check = CheckSalesMandetoryFieldsFor15Percent();
-                    if (!check)
-                    {
-                        IsAllEntered = false;
-                    }
+                   if(viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
+                        {
+                            bool check = CheckSalesMandetoryFieldsFor15Percent();
+                            if (!check)
+                            {
+                                IsAllEntered = false;
+                            }
+                        }
+                   
                 }
             }
         }
@@ -1985,10 +1989,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     if (viewModel.IsFifteenPercentChange)
                     {
-                        bool check = CheckPurchaseMandetoryFieldsFor15Percent();
-                        if (!check)
+                        if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
                         {
-                            IsAllEntered = false;
+                            bool check = CheckPurchaseMandetoryFieldsFor15Percent();
+                            if (!check)
+                            {
+                                IsAllEntered = false;
+                            }
                         }
                     }
                 }
