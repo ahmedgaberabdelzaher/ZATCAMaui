@@ -382,13 +382,14 @@
                             <listView:SfListView  AutoFitMode="DynamicHeight" 
                                                   ItemsSource="{Binding UploadedDocumentsListObj}" SelectionBackgroundColor="White"
                                                   HorizontalOptions="FillAndExpand"
+                                                  HeightRequest="300"
                                                   VerticalOptions="Start"
                                                   BackgroundColor="White"
                                                   >
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
+                                        <StackLayout>
+                                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,0,0,0" LeadingViewPosition="Inside">
                                                 <inputLayout:SfTextInputLayout.LeadingView>
                                                     <Image Source="newui_ic_pdf" x:Name="Attachment_Tmg"/>
                                                 </inputLayout:SfTextInputLayout.LeadingView>
@@ -403,13 +404,14 @@
                                                     </Image>
                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                             </inputLayout:SfTextInputLayout>
+                                            <custom:CustomLabel Text="{Binding Size, StringFormat='{0} MB'}" Margin="0,-15,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                                             <!--<custom:CustomButton Command="{Binding OnAttachmentClick}" BackgroundColor="Transparent"  />-->
-                                        </Grid>
+                                        </StackLayout>
                                     </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
                             
                         </listView:SfListView>
-                            <custom:CustomLabel Text="20MB" Margin="0,-20,0,0" Style="{StaticResource CaptionLabelGrey}"/>
+                           
                         </StackLayout>
 
                     </ScrollView>
@@ -547,7 +549,7 @@
                                                                     ItemsSource="{Binding UploadedDocumentsListObj}" SelectionBackgroundColor="White"
                                                                     HorizontalOptions="FillAndExpand"
                                                                     Margin="5"
-                                                                    HeightRequest="200"
+                                                                    HeightRequest="300"
                                                                     VerticalOptions="Start"
                                                                     BackgroundColor="White"
                                                                     Grid.Row="2" Grid.Column="1"

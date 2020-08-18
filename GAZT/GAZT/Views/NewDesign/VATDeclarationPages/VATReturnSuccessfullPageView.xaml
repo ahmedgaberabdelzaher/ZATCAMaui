@@ -29,14 +29,18 @@
                 <RowDefinition Height="70*"/>
             </Grid.RowDefinitions>
 
-            <StackLayout Grid.Row="0" Margin="0,8,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+            <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="0" Margin="0,8,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+            <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+
                 <Image Source="Forget_ic_success"/>
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturn}" Margin="0,20,0,0" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalTextAlignment="Center"/>
                 <custom:CustomLabel  TextColor="White" IsVisible="{Binding IsSadadNumberVisible}" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.ZZZZSadadGeneratedSuccessfully}" />
+                            <Span Text="&#160;&#160;"/>
                             <Span Text="{Binding AmountPayable}" TextColor="White" />
+                            <Span Text="&#160;"/>
                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="White" />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
@@ -44,6 +48,7 @@
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZRemembertocompletepayment}" IsVisible="{Binding IsSadadNumberVisible}" HorizontalTextAlignment="Center" TextColor="White" Style="{StaticResource CaptionLabelBlack}" Margin="0,8,0,0"/>
 
             </StackLayout>
+            </ScrollView>
 
             <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
 
@@ -61,12 +66,7 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <custom:CustomLabel Text="{Binding ReturnReferenceNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-                                        <Image>
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
-                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
-                                            </Image.Source>
-                                        </Image>
+                                        
 
                                     </StackLayout>
                                 </StackLayout>
@@ -88,6 +88,15 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSadadNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <custom:CustomLabel Text="{Binding SadadNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                        <Image>
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnCopySadadNumberButtonClicked"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
@@ -97,7 +106,8 @@
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZVatRefresh}" IsVisible="{Binding IsRefreshButtonVisible}" Margin="0,0,0,2" Clicked="OnVATRefreshButtonClicked" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}"  IsVisible="{Binding IsAcknowledgementButtonVisible}" Margin="0,0,0,2" Command="{Binding OnAcknowlwdgementClicked}" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
                         <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDownloadForm}" IsVisible="{Binding IsButtonVisible}" Margin="0,0,0,2" Command="{Binding OnDownloadFormClicked}" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"  Margin="0,0,0,2" Clicked="GotodashboardClicked" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>
+                        <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"  Margin="0,0,0,2" Clicked="GotodashboardClicked" Style="{StaticResource PrimaryButtonStyle}"></buttons:SfButton>-->
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDReturns}"  Clicked="GotoreturnClicked" TextColor="{StaticResource NewDullOrangeColor}"  Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,0,0,2"/>
                     </StackLayout>
                 </Grid>
             </yummy:PancakeView>

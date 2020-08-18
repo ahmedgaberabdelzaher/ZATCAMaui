@@ -1766,7 +1766,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZImportsvaluex115" xml:space="preserve">
-    <value> 115x قيمة الاستيرادات%</value>
+    <value> 115% x قيمة الاستيرادات</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount" xml:space="preserve">
@@ -1876,7 +1876,7 @@
     <value>Inspect or Submit</value>
   </data>
   <data name="ZVATInvoiceButton" xml:space="preserve">
-    <value>Invoice</value>
+    <value>الفاتورة </value>
   </data>
   <data name="ZVATNotesforERButton" xml:space="preserve">
     <value>Notes for ER</value>
@@ -4151,7 +4151,7 @@
     <value>السنة المالية</value>
   </data>
   <data name="FORM5ForPeriod" xml:space="preserve">
-    <value>عن الفترة من   :</value>
+    <value>عن الفترة   :</value>
   </data>
   <data name="FORM5GenerateObjection" xml:space="preserve">
     <value>الرجاء الضغط هنا للإعتراض</value>
@@ -4197,7 +4197,7 @@
     <value>نسبة الإشغال %</value>
   </data>
   <data name="FORM5OutletName" xml:space="preserve">
-    <value>•  إسم الفرع / النشاط:</value>
+    <value>إسم الفرع / النشاط</value>
   </data>
   <data name="FORM5NoOutlet" xml:space="preserve">
     <value>عدد الفروع</value>
@@ -4512,7 +4512,7 @@
     <value>Summary</value>
   </data>
   <data name="VatDeregSummarySubTitle" xml:space="preserve">
-        <value>مراجعة البيانات التالية</value>
+    <value>مراجعة البيانات التالية</value>
   </data>
   <data name="VatDeregDetailsTitle" xml:space="preserve">
     <value>Deregistration details</value>
@@ -5126,7 +5126,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>المهن الفكرية</value>
   </data>
   <data name="FORM5Profit" xml:space="preserve">
-    <value>نسبة الربح</value>
+    <value>نسبةالربح</value>
   </data>
   <data name="FORM5ProfitFromCivilContracting" xml:space="preserve">
     <value>أرباح العقود مع القطاع الخاص</value>
@@ -5279,25 +5279,25 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>معلومات المبلغ</value>
   </data>
   <data name="NDChangeToAccountBasis" xml:space="preserve">
-    <value>Change to Account basis</value>
+    <value>تغير الى حساب أساسي</value>
   </data>
   <data name="NDConfirmAndGenerateSADADBill" xml:space="preserve">
     <value>تأكيد وانشاء رقم سداد </value>
   </data>
   <data name="NDWriteYourObjectionReason" xml:space="preserve">
-    <value>Write Your Objection Reason</value>
+    <value>اكتب سبب إعتراضك</value>
   </data>
   <data name="NDYourZakatReturnIsSubmittedSuccessfully" xml:space="preserve">
     <value>تم تقديم اعتراضك الزكوى</value>
   </data>
   <data name="NDZakatCalculation" xml:space="preserve">
-    <value>Zakat Calculation</value>
+    <value>حسبة الزكاة</value>
   </data>
   <data name="NDZakatObjection" xml:space="preserve">
-    <value>Zakat Objection</value>
+    <value>اعتراض زكاة</value>
   </data>
   <data name="NDZakatObjectionIsSubmittedSuccessfully" xml:space="preserve">
-    <value>Your Zakat Objection is submitted successfully</value>
+    <value>تم تقديم اعتراضك الزكوى</value>
   </data>
   <data name="NDZakatReturn" xml:space="preserve">
     <value> إقرار زكاة</value>
@@ -5395,5 +5395,29 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDSadadBillNoString1" xml:space="preserve">
     <value>SADAD Bill Number</value>
+  </data>
+  <data name="TPEmailUpdated" xml:space="preserve">
+    <value>Email Updated</value>
+  </data>
+  <data name="Comma" xml:space="preserve">
+    <value>،</value>
+  </data>
+  <data name="FORM5From" xml:space="preserve">
+    <value>من :</value>
+  </data>
+  <data name="FORM5IndividualActivityDetail" xml:space="preserve">
+    <value>تفاصيل إحتساب الوعاء</value>
+  </data>
+  <data name="ZZZZCorrections" xml:space="preserve">
+    <value>تصحيحات</value>
+  </data>
+  <data name="ZZZZFromPreviousPeriods" xml:space="preserve">
+    <value>من الفترات السابقة</value>
+  </data>
+  <data name="ZZZZVATAccountNumber" xml:space="preserve">
+    <value>رقم حساب ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVATDue" xml:space="preserve">
+    <value>ضريبة القيمة المضافة المستحقة</value>
   </data>
 </root>

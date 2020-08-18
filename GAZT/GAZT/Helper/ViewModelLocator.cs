@@ -148,6 +148,8 @@ using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using EGAZT.Views.NewDesign.VATRefunds;
+using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+using EGAZT.Views.NewDesign.TaxpayerProfile;
 
 namespace EGAZT
 {
@@ -295,9 +297,16 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
             SimpleIoc.Default.Register<VATRefundsSuccessPageView>();
             SimpleIoc.Default.Register<AttachmentPopUpViewModel>();
+            SimpleIoc.Default.Register<MorePopUpPageViewModel>();
 
-            
-
+            // * Taxpayer Profile
+            SimpleIoc.Default.Register<NewTaxpayerProfileViewModel>();
+            SimpleIoc.Default.Register<UpdateMobileViewModel>();
+            SimpleIoc.Default.Register<UpdateEmailViewModel>();
+            SimpleIoc.Default.Register<VerificationEmailPasswordViewModel>();
+            SimpleIoc.Default.Register<UpdatePasswordViewModel>();
+            SimpleIoc.Default.Register<TaxpayerProfileSuccessViewModel>();
+            SimpleIoc.Default.Register<ShowVatInformationConfirmationPageViewModel>();
             #endregion
         }
 
@@ -580,6 +589,92 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<NewTaxEvasionFormPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
+        // * Taxpayer Profile
+        public NewTaxpayerProfileViewModel TaxpayerProfilePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NewTaxpayerProfileViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public UpdateMobileViewModel UpdateMobilePopUp
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UpdateMobileViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public UpdateEmailViewModel UpdateEmailPopUp
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UpdateEmailViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public VerificationEmailPasswordViewModel VerificationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VerificationEmailPasswordViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public UpdatePasswordViewModel UpdatePasswordPopUp
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UpdatePasswordViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public TaxpayerProfileSuccessViewModel TaxpayerProfileSuccessPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxpayerProfileSuccessViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1987,12 +2082,18 @@ namespace EGAZT
             navigationService.Configure(App.GAZTNewDesignShowVatInformationPopUpPageView, typeof(GAZTNewDesignShowVatInformationPopUpPageView));
             navigationService.Configure(App.ZakatObjectionSuccessfullPageView, typeof(ZakatObjectionSuccessfullPageView));
 
-            
-
-
             navigationService.Configure(App.VATRefundsInstructionsPageView, typeof(VATRefundsInstructionsPageView));
+            navigationService.Configure(App.MorePopUpPageView, typeof(MorePopUpPageView));
+            navigationService.Configure(App.ShowVatInformationConfirmationPageView, typeof(ShowVatInformationConfirmationPageView));
 
-
+            // * Taxpayer Profile
+            navigationService.Configure(App.TaxpayerProfilePageView, typeof(TaxpayerProfilePageView));
+            navigationService.Configure(App.UpdateMobilePopUp, typeof(UpdateMobilePopUp));
+            navigationService.Configure(App.UpdateEmailPopUp, typeof(UpdateEmailPopUp));
+            navigationService.Configure(App.VerificationPageView, typeof(VerificationPageView));
+            navigationService.Configure(App.UpdatePasswordPopUp, typeof(UpdatePasswordPopUp));
+            navigationService.Configure(App.TaxpayerProfileSuccessPage, typeof(TaxpayerProfileSuccessPage));
+            // * End
             #endregion
 
             return navigationService;
@@ -2118,9 +2219,43 @@ namespace EGAZT
             }
         }
 
-       
+        public MorePopUpPageViewModel MorePopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MorePopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ShowVatInformationConfirmationPageViewModel ShowVatInformationConfirmationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ShowVatInformationConfirmationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         
+
+
+
+
+
+
         //
     }
 }

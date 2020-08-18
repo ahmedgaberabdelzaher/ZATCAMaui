@@ -1,13 +1,15 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
+using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
@@ -24,6 +26,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel = App.Locator.VATReturnSuccessfullPageView;
             this.BindingContext = viewModel;
             SetLTR();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             if (vATDeclaration!=null && vATDeclaration.d!=null)
             {
                 viewModel.SadadNumber = string.Empty;
@@ -35,7 +38,75 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.ReturnReferenceNumber = vATDeclaration.d.Fbnum;
                 viewModel.TaxablePeriod = vATDeclaration.d.Perslt;
 
-                if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                //if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                //{
+                //    viewModel.IsSadadNumberVisible = false;
+                //    viewModel.IsRefreshButtonVisible = false;
+                //    viewModel.IsButtonVisible = true;
+                //    if (vATDeclaration.d.EstimatedFg == "X")
+                //    {
+                //        viewModel.IsAcknowledgementButtonVisible = false;
+                //    }
+                //    else
+                //    {
+                //        viewModel.IsAcknowledgementButtonVisible = true;
+                //    }
+                //}
+                //else
+                //{
+                //    RefreshForSadad();
+                //}
+
+                if ((App.ICRStatus == "E0045") && viewModel.VATDeclarationData.d.RefundFg != "1")
+                {
+                    if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
+                    {
+                        viewModel.IsSadadNumberVisible = false;
+                        viewModel.IsRefreshButtonVisible = false;
+                        viewModel.IsButtonVisible = true;
+                        if (vATDeclaration.d.EstimatedFg == "X")
+                        {
+                            viewModel.IsAcknowledgementButtonVisible = false;
+                        }
+                        else
+                        {
+                            viewModel.IsAcknowledgementButtonVisible = true;
+                        }
+                    }
+                    else
+                    {
+                        RefreshForSadad();
+                    }
+                }
+                else
+                {
+                    if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0) || ((App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057") && (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)) || (App.ICRStatus == "E0055" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0))
+                    {
+                        viewModel.IsSadadNumberVisible = false;
+                        viewModel.IsRefreshButtonVisible = false;
+                        viewModel.IsButtonVisible = true;
+                        if (vATDeclaration.d.EstimatedFg == "X")
+                        {
+                            viewModel.IsAcknowledgementButtonVisible = false;
+                        }
+                        else
+                        {
+                            viewModel.IsAcknowledgementButtonVisible = true;
+                        }
+                    }
+                    else
+                    {
+                        if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0056" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0001" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0013" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0))
+                        {
+                            RefreshForSadad();
+                        }
+                        else
+                        {
+                            viewModel.IsRefreshButtonVisible = true;
+                        }
+                    }
+                }
+                if (viewModel.VATDeclarationData.d.RefundFg == "1")
                 {
                     viewModel.IsSadadNumberVisible = false;
                     viewModel.IsRefreshButtonVisible = false;
@@ -49,10 +120,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         viewModel.IsAcknowledgementButtonVisible = true;
                     }
                 }
-                else
-                {
-                    RefreshForSadad();
-                }
+
 
             }
 
@@ -105,16 +173,43 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             await viewModel.OnRefreshClick();
         }
 
-        private void GotodashboardClicked(object sender, EventArgs e)
+        private void GotoreturnClicked(object sender, EventArgs e)
         {
+
             if (Navigation.NavigationStack.Count > 0)
             {
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                 Navigation.RemovePage(pg);
-                Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(pg1);
             }
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+            viewModel._navigationService.GoBack();
+        }
+
+        private async void OnCopySadadNumberButtonClicked(object sender, EventArgs e)
+        {
+            await Clipboard.SetTextAsync(viewModel.SadadNumber);
+            if (Clipboard.HasText)
+            {
+                var text = await Clipboard.GetTextAsync();
+
+                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                headerAmountInfo.IsLinkAvailable = false;
+                headerAmountInfo.Message = AppResources.ZSadadInvoiceNumber + " " + text;
+
+                headerWithInfos.Add(headerAmountInfo);
+
+
+                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                newDesignPopUp.MainHeader = AppResources.Copied;
+
+                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+                //await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
+            }
         }
     }
 }

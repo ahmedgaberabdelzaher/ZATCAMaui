@@ -4,15 +4,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-                             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                               xmlns:local="clr-namespace:EGAZT.CustomControl"
+                 
                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                  xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
                  xmlns:ResourceManager="clr-namespace:EGAZT"
                  xmlns:custom="clr-namespace:GAZT"
-                 x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.UpdateEmailPopUp">
+                 x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.UpdateEmailPopUp"
+                 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -24,225 +26,48 @@
 
     <yummy:PancakeView Padding="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
         <StackLayout>
-            
+
             <StackLayout x:Name="UpdateEmail" IsVisible="True">
-                <Image Margin="24,16,0,8" HorizontalOptions="Start" Source="arrowLeft.png"/>
+
+                <Image Margin="24,16,0,8" HorizontalOptions="Start"
+                       Source="arrowLeft.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1"
+                                              Tapped="OnBackArrowTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+
                 <BoxView Style="{StaticResource lineSeperator}" BackgroundColor="{StaticResource NeutralLightGrey}"/>
                 <StackLayout Padding="24,16,24,0">
-                    <custom:CustomLabel Text="Update Email" Style="{StaticResource SectionTitleBlackBold}"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZUpdateEmail}" Style="{StaticResource SectionTitleBlackBold}"/>
 
-                    <custom:CustomLabel Text="Current Email" Style="{StaticResource CaptionLabelGrey}"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZCurrentEmail}" Style="{StaticResource CaptionLabelGrey}"/>
 
                     <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy@gmail.com" Keyboard="Email" >
+                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
+                                                 Text="{Binding CurrentEmailText}" Keyboard="Email" >
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
-
-                    <custom:CustomLabel Text="New Email" Style="{StaticResource CaptionLabelGrey}"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NewEmail}" Style="{StaticResource CaptionLabelGrey}"/>
                     <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
-
-
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy123@gmail.com" Keyboard="Email" >
+                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
+                                                 Text="{Binding NewEmailText}" Keyboard="Email" >
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
-                    <custom:CustomLabel Text="Confirm Email" Style="{StaticResource CaptionLabelGrey}"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}" Style="{StaticResource CaptionLabelGrey}"/>
                     <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
-
-
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="Zaedhardy123@gmail.com" Keyboard="Email" >
+                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
+                                                 Text="{Binding ConfirmEmailText}" Keyboard="Email" >
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>
             </StackLayout>
 
-
-            <!--<ScrollView x:Name="VerificationView" IsVisible="False">
-                <StackLayout Padding="24" >
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VerificationCode}" Style="{StaticResource SectionTitleBlackBold}" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" Style="{StaticResource BodyLabelGrey}"/>
-                <BoxView BackgroundColor="{StaticResource NeutralGreay}" HeightRequest="1"/>
-
-                <StackLayout Padding="0,15,0,0" >
-                    <custom:CustomLabel Text="Mobile Number xxxxxxx388" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>
-
-
-                    <Grid Margin="0,-10,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Row="0" ColumnSpacing="20" Padding="30,20,30,20" FlowDirection="LeftToRight">
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-
-                            
-                            <inputLayout:SfTextInputLayout
-                                                    Grid.Column="0"
-                                                    ContainerType="Outlined"
-                                                    UnfocusedColor="#B1B1B1"
-                                                    OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                <custom:BorderlessEntry
-                                                        x:Name="OTPFirstEntry"
-                                                        FontAttributes="Bold"
-                                                        FontSize="Small"
-                                                        WidthRequest="8"
-                                                        HorizontalTextAlignment="Center"
-                                                        IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Text="{Binding OTPFirstDigit}"
-                                                        TextChanged="OTPFirstEntry_TextChanged"
-                                                        ReturnType="Next"
-                                                        Keyboard="Numeric"
-                                                        MaxLength="1"
-                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                    <custom:BorderlessEntry.Behaviors>
-                                        <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
-                                    </custom:BorderlessEntry.Behaviors>
-                                </custom:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-                            
-
-                            
-                            <inputLayout:SfTextInputLayout
-                                                    Grid.Column="1"
-                                                    ContainerType="Outlined"
-                                                    UnfocusedColor="#B1B1B1"
-                                                    OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                <custom:BorderlessEntry
-                                                        x:Name="OTPSecondEntry"
-                                                        FontAttributes="Bold"
-                                                        FontSize="Small"
-                                                        WidthRequest="8"
-                                                        HorizontalTextAlignment="Center"
-                                                        IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Text="{Binding OTPSecondDigit}"
-                                                        TextChanged="OTPSecondEntry_TextChanged"
-                                                        ReturnType="Next"
-                                                        Keyboard="Numeric"
-                                                        MaxLength="1"
-                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                    <custom:BorderlessEntry.Behaviors>
-                                        <local:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
-                                    </custom:BorderlessEntry.Behaviors>
-                                </custom:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-                            
-
-                            
-                            <inputLayout:SfTextInputLayout
-                                                    Grid.Column="2"
-                                                    ContainerType="Outlined"
-                                                    UnfocusedColor="#B1B1B1"
-                                                    OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                <custom:BorderlessEntry
-                                                        x:Name="OTPThirdEntry"
-                                                        FontAttributes="Bold"
-                                                        FontSize="Small"
-                                                        WidthRequest="8"
-                                                        HorizontalTextAlignment="Center"
-                                                        IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Text="{Binding OTPThirdDigit}"
-                                                        TextChanged="OTPThirdEntry_TextChanged"
-                                                        ReturnType="Next"
-                                                        Keyboard="Numeric"
-                                                        MaxLength="1"
-                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                    <custom:BorderlessEntry.Behaviors>
-                                        <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
-                                    </custom:BorderlessEntry.Behaviors>
-                                </custom:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-                            
-
-                            
-                            <inputLayout:SfTextInputLayout
-                                                    Grid.Column="3"
-                                                    ContainerType="Outlined"
-                                                    UnfocusedColor="#B1B1B1"
-                                                    OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                <custom:BorderlessEntry
-                                                        x:Name="OTPFourthEntry"
-                                                        FontAttributes="Bold"
-                                                        FontSize="Small"
-                                                        WidthRequest="8"
-                                                        HorizontalTextAlignment="Center"
-                                                        IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Text="{Binding OTPFourthDigit}"
-                                                        TextChanged="OTPFourthEntry_TextChanged"
-                                                        ReturnType="Next"
-                                                        Keyboard="Numeric"
-                                                        MaxLength="1"
-                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand"
-                                                        Unfocused="OTPFourthEntry_Unfocused">
-                                </custom:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-                            
-
-                        </Grid>
-
-                    </Grid>
-
-
-                    <StackLayout Orientation="Horizontal" Margin="0,-15,0,0" HorizontalOptions="Center">
-                        <Image Source="clock">
-                        </Image>
-                        <custom:CustomLabel  Text="0:59" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
-                    </StackLayout>
-                    <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,10,0,0" BackgroundColor="Transparent" TextColor="{StaticResource Primary}"/>
-                </StackLayout>
-
-                <custom:CustomLabel Text="Current Password" Style="{StaticResource CaptionLabelGrey}"/>
-                <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
-
-
-                    <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="kkkkkkkk"  HeightRequest="51" IsPassword="True" >
-                    </control:BorderlessEntry>
-
-                    <inputLayout:SfTextInputLayout.TrailingView >
-                        <Image Source="showPassword.png"/>
-                    </inputLayout:SfTextInputLayout.TrailingView>
-                </inputLayout:SfTextInputLayout>
-
-
-                <custom:CustomLabel Text="New Password" Style="{StaticResource CaptionLabelGrey}"/>
-                <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
-
-                    <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="ABcdre123523"  HeightRequest="51" IsPassword="False" >
-                    </control:BorderlessEntry>
-
-                    <inputLayout:SfTextInputLayout.TrailingView >
-                        <Image Source="hidePassword.png"/>
-                    </inputLayout:SfTextInputLayout.TrailingView>
-                </inputLayout:SfTextInputLayout>
-
-                <custom:CustomLabel Text="Confirm Password" Style="{StaticResource CaptionLabelGrey}"/>
-                <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="8,0,0,0">
-
-                    <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="ABcdre123523"  HeightRequest="51" IsPassword="False" >
-                    </control:BorderlessEntry>
-
-                    <inputLayout:SfTextInputLayout.TrailingView >
-                        <Image Source="hidePassword.png"/>
-                    </inputLayout:SfTextInputLayout.TrailingView>
-                </inputLayout:SfTextInputLayout>
-
-            </StackLayout>
-            </ScrollView>-->
-            <buttons:SfButton Margin="24,0,24,24" x:Name="btn" Text="Update" Style="{StaticResource PrimaryButtonStyle}" Clicked="UpdatedClicked"/>
+            <buttons:SfButton Margin="24,0,24,24" x:Name="btn" Text="{x:Static ResourceManager:AppResources.TPUpdate}" Style="{StaticResource PrimaryButtonStyle}" Clicked="UpdatedClicked"/>
         </StackLayout>
     </yummy:PancakeView>
+
 </pages:PopupPage>

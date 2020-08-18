@@ -72,7 +72,14 @@ namespace EGAZT
         public static string AttachmentPopUp = "AttachmentPopUp";
         public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
 
-        
+        // * Taxpayer Profile
+        public static string TaxpayerProfilePageView = "TaxpayerProfilePageView";
+        public static string UpdateMobilePopUp = "UpdateMobilePopUp";
+        public static string UpdateEmailPopUp = "UpdateEmailPopUp";
+        public static string UpdatePasswordPopUp = "UpdatePasswordPopUp";
+        public static string VerificationPageView = "VerificationPageView";
+        public static string TaxpayerProfileSuccessPage = "TaxpayerProfileSuccessPage";
+        // * End
         #endregion
 
         #region new design views Release2
@@ -170,6 +177,11 @@ namespace EGAZT
 
 
         public static string VATRefundsInstructionsPageView = "VATRefundsInstructionsPageView";
+        public static string MorePopUpPageView = "MorePopUpPageView";
+        public static string ShowVatInformationConfirmationPageView = "ShowVatInformationConfirmationPageView";
+
+
+
         //VATRefundsListPageView
         #endregion
 
@@ -186,6 +198,7 @@ namespace EGAZT
         public static string ICRStatus = String.Empty;
         public static string EUser = String.Empty;
         public static string Fbguid = String.Empty;
+        public static string VATDeclrationFbguid = String.Empty;
         public static TaxPayerProfile TP = null;
         public static string Token = String.Empty;
         public static string Otp = String.Empty;

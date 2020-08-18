@@ -1221,8 +1221,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
                     AttachmentName = fileData.FileName;
 
-                    //float sizemb = (attachment.Length / 1024f) / 1024f;
-                    //AttachmentSize = AttachmentSize + sizemb;
+                    float sizemb = (attachment.Length / 1024f) / 1024f;
+                    AttachmentSize = AttachmentSize + (Decimal)sizemb;
                     if (fileData.FileName.Contains("."))
                     {
                         string Extention = fileData.FileName.Split('.')[1];//pdf
@@ -1243,6 +1243,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                             UploadedDocumentsList a = new UploadedDocumentsList();
                                             a.FileNameWithExtension = AttachmentName;
                                             a.DocBinaryInBase64 = attachment;
+                                            a.Size = AttachmentSize.ToString();
 
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             //UploadedDocumentsList.DocBinaryInBase64 = base64String;

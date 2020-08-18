@@ -90,6 +90,7 @@
     <Folder Include="Views\NewDesign\VATRefunds\" />
     <Folder Include="ViewModel\NewDesignViewModel\VATRefunds\" />
     <Folder Include="Models\VATRefunds\" />
+    <Folder Include="ViewModel\NewDesignViewModel\TaxpayerProfileVM\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -212,15 +213,6 @@
     <EmbeddedResource Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondancePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\EamilUpdatedSuccessFully.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\MoblieNumberUpdatedSuccessFully.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\PasswordUpdatedSuccessFully.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\TaxpayerProfile\TaxpayerProfilePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -252,6 +244,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\RefundAccountPopupPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationConfirmationPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationPopUpPageView.xaml">

@@ -226,6 +226,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
+                                    <Span Text="&#160;"/>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
@@ -250,14 +251,14 @@
                 </StackLayout>
             </Grid>
 
-            <Grid Grid.Row="0" Margin="0,-15,0,0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.TaxpayerDetails}}" RowSpacing="0"  x:Name="TaxpayerDetails">
+            <!--<Grid Grid.Row="0" Margin="0,-15,0,0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.TaxpayerDetails}}" RowSpacing="0"  x:Name="TaxpayerDetails">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <ScrollView Grid.Row="1">
                     <StackLayout BindingContext="{Binding ResponseVATDeclarationD}">
-                        <!--<border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                        --><!--<border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
                                     <Frame Style="{StaticResource circleFrame}">
@@ -295,15 +296,15 @@
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
-                        </border:SfBorder>-->
+                        </border:SfBorder>--><!--
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <!--<Frame Style="{StaticResource circleFrame}">
+                                    --><!--<Frame Style="{StaticResource circleFrame}">
                                         <Image Source="ic_vat_return">
 
                                         </Image>
-                                    </Frame>-->
+                                    </Frame>--><!--
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTaxReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
                                 </StackLayout>
 
@@ -347,11 +348,11 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <!--<Frame Style="{StaticResource circleFrame}">
+                                    --><!--<Frame Style="{StaticResource circleFrame}">
                                             <Image Source="ic_vat_return">
 
                                         </Image>
-                                    </Frame>-->
+                                    </Frame>--><!--
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTaxpayerInformation}" Style="{StaticResource SectionTitleBlack}" />
                                 </StackLayout>
 
@@ -411,7 +412,7 @@
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,8"/>
                 </StackLayout>
-            </Grid>
+            </Grid>-->
 
             <Grid Grid.Row="0" Margin="0,-15,0,0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:VATReturnUpdatedUITabEnum.VATReturns}}" x:Name="VATReturnsSection" BackgroundColor="White" >
                 <Grid.RowDefinitions>
@@ -1302,7 +1303,7 @@
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,0" Spacing="0">
 
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationSubtitle}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
 
                     <!--<BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                 </StackLayout>
@@ -1975,9 +1976,9 @@
                 </ScrollView>
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Spacing="0">
-                    
-                    <custom:CustomLabel Text="Total VAT"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationSubtitle}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
+
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTotalVat}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
                 </StackLayout>
             </Grid>
@@ -2075,7 +2076,7 @@
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="VAT Account Number" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVATAccountNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="{Binding Fin}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
@@ -2157,7 +2158,7 @@
 
                                         </Image>
                                     </Frame>
-                                    <custom:CustomLabel Text="Total VAT" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTotalVat}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                 </StackLayout>
 
                                 <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -2168,11 +2169,11 @@
                                         <custom:CustomLabel Text="{Binding TotaldueVat}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="From Previous Periods" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZFromPreviousPeriods}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="{Binding CreditVat}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Corrections" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCorrections}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="{Binding Preperiodcorr}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
@@ -2196,6 +2197,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
+                                        <Span Text="&#160;"/>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -2213,7 +2215,7 @@
 
                 <StackLayout Grid.Row="0" BackgroundColor="White" Margin="0,-17,0,0" Spacing="0">
 
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSummary}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatSummary}"  Style="{StaticResource PageTitleBlack}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZReviewthebelowinformation}"  BackgroundColor="White" Style="{StaticResource BodyLabelGrey}" />
                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,15,0,30"/>
                 </StackLayout>
@@ -2227,7 +2229,7 @@
 
                 <buttons:SfButton x:Name="btnprimary" IsEnabled="{Binding IsMainButtonEnabled}"  VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <buttons:SfButton Text="{Binding CreditDetailsText}" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
+                <buttons:SfButton Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
             </StackLayout>
 
         </Grid>
