@@ -96,6 +96,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 viewModel.ManageEnabledProperty(true);
                 viewModel.IsMainButtonEnabled = true;
+                viewModel.IsMainButtonVisible = true;
             }
         }
          public void Instrunctionsclicked()
@@ -704,6 +705,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         await onPageLoadCalculation();
                     }
                     SetEnabledProperty();
+                    //viewModel.IsMainButtonVisible = true;
                 }
                 catch(Exception ex)
                 {
