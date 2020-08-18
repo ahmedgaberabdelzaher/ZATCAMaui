@@ -50,13 +50,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                         viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 3);
                     });
                 }
-                else
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox("Wrong Current Password!", AppResources.Information);
-                    });
-                }
             }
         }
 
@@ -93,7 +86,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                                         || ConfirmPassword == string.Empty)
                 return AppResources.PasswordValidationMesseg;
             else if (!compareStringFlag)
-                return "Did not match new and confirm passwords!";
+                return AppResources.NewPasswordandRetypePasswordNotMatch;
             else
             {
                 /*bool passwordValidationRegXFlag = UtilityManager.ValidateNewPassword(NewPassword);
@@ -149,6 +142,21 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         async void OnBackArrowTapped(System.Object sender, System.EventArgs e)
         {
             await PopupNavigation.Instance.PopAllAsync();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            RefreshControlsData();
+        }
+
+        // * // Reset Enteried
+        private void RefreshControlsData()
+        {
+            viewModel.CurrentPasswordEntry = string.Empty;
+            viewModel.NewPasswordEntry = string.Empty;
+            viewModel.ConfirmPasswordEntry = string.Empty;
         }
     }
 }

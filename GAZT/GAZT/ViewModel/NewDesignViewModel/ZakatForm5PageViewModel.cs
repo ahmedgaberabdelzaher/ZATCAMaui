@@ -736,7 +736,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
-                _IsMineralsBtn = value;
+                _IsAddBtn = value;
                 RaisePropertyChanged("IsAddBtn");
             }
         }
@@ -1214,7 +1214,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
        
 
-        public bool _cabsSummaryIsVisible = true;
+        public bool _cabsSummaryIsVisible = false;
         public bool CabsSummaryIsVisible
         {
             get
@@ -1249,7 +1249,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
       //  public bool ProfessionalsSummaryIsVisible { get;  set; }
 
-        public bool _professionalsSummaryIsVisible = true;
+        public bool _professionalsSummaryIsVisible = false;
         public bool ProfessionalsSummaryIsVisible
         {
             get
@@ -1285,7 +1285,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         //public bool Sell_BuySummaryIsVisible { get;  set; }
 
-        public bool _sell_BuySummaryIsVisible = true;
+        public bool _sell_BuySummaryIsVisible = false;
         public bool Sell_BuySummaryIsVisible
         {
             get
@@ -1319,7 +1319,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         // public bool LabourOccupSummaryIsVisble { get;  set; }
 
-        public bool _LabourOccupSummaryIsVisble = true;
+        public bool _LabourOccupSummaryIsVisble = false;
         public bool LabourOccupSummaryIsVisble
         {
             get
@@ -1355,7 +1355,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         // public bool IndustrySummaryIsVisible { get;  set; }
 
-        public bool _IndustrySummaryIsVisible = true;
+        public bool _IndustrySummaryIsVisible = false;
         public bool IndustrySummaryIsVisible
         {
             get
@@ -1390,7 +1390,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         //  public bool ContractingSummaryIsVisible { get;  set; }
 
-        public bool _ContractingSummaryIsVisible = true;
+        public bool _ContractingSummaryIsVisible = false;
         public bool ContractingSummaryIsVisible
         {
             get
@@ -1423,7 +1423,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         // public bool InvstRealEstSummaryIsVisible { get;  set; }
-        public bool _InvstRealEstSummaryIsVisible = true;
+        public bool _InvstRealEstSummaryIsVisible = false;
         public bool InvstRealEstSummaryIsVisible
         {
             get
@@ -1456,7 +1456,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         //public bool HotelsSummaryIsVisible { get;  set; }
-        public bool _HotelsSummaryIsVisible = true;
+        public bool _HotelsSummaryIsVisible = false;
         public bool HotelsSummaryIsVisible
         {
             get
@@ -1489,7 +1489,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         // public bool Edu_HealthSummaryIsVisible { get;  set; }
-        public bool _Edu_HealthSummaryIsVisible = true;
+        public bool _Edu_HealthSummaryIsVisible = false;
         public bool Edu_HealthSummaryIsVisible
         {
             get
@@ -1525,7 +1525,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         //public bool Poultry_FishFarmSummaryIsVisible { get;  set; }
 
-        public bool _Poultry_FishFarmSummaryIsVisible = true;
+        public bool _Poultry_FishFarmSummaryIsVisible = false;
         public bool Poultry_FishFarmSummaryIsVisible
         {
             get
@@ -1560,7 +1560,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         // public bool CarsSummaryIsVisible { get;  set; }
 
-        public bool _CarsSummaryIsVisible = true;
+        public bool _CarsSummaryIsVisible = false;
         public bool CarsSummaryIsVisible
         {
             get
@@ -1595,7 +1595,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         // public bool MineralsSummaryIsVisible { get;  set; }
 
-        public bool _MineralsSummaryIsVisible = true;
+        public bool _MineralsSummaryIsVisible = false;
         public bool MineralsSummaryIsVisible
         {
             get
@@ -1645,7 +1645,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Taxpayer Detials
                         Taxpayer = ZakatForm5DataResult.ACompNm;
                         Branch = ZakatForm5DataResult.APrctr;
-                        Address = //ZakatForm5DataResult.Line0 + ", " +
+                        Address = ZakatForm5DataResult.Line0 + "," +
                             ZakatForm5DataResult.Line1 + "," +
                             ZakatForm5DataResult.Line2 + "," +
                             ZakatForm5DataResult.Line3 + "," + 
@@ -2136,13 +2136,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "Yes";
                                 }
-                                else if(ZakatForm5DataResult.SCH_GP08.results[i].Owned == "2")
-                                {
-                                    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "No";
-                                }
+                                //else if(ZakatForm5DataResult.SCH_GP08.results[i].Owned == "2")
+                                //{
+                                //    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "No";
+                                //}
                                 else
                                 {
-                                    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "";
+                                   // ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "";
+                                    ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "No";
                                 }
 
 

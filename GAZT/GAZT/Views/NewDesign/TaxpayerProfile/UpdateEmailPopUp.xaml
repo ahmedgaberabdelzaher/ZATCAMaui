@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-                             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                               xmlns:local="clr-namespace:EGAZT.CustomControl"
                  
@@ -13,7 +13,8 @@
              xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
                  xmlns:ResourceManager="clr-namespace:EGAZT"
                  xmlns:custom="clr-namespace:GAZT"
-                 x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.UpdateEmailPopUp">
+                 x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.UpdateEmailPopUp"
+                 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -68,4 +69,5 @@
             <buttons:SfButton Margin="24,0,24,24" x:Name="btn" Text="{x:Static ResourceManager:AppResources.TPUpdate}" Style="{StaticResource PrimaryButtonStyle}" Clicked="UpdatedClicked"/>
         </StackLayout>
     </yummy:PancakeView>
+
 </pages:PopupPage>

@@ -37,6 +37,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                                                                     viewModel.ConfirmEmailText);
             if (callAPIFlag)
             {
+                //viewModel.LoadingStart();
                 bool OTPSuccess = await viewModel.VarifyEmail();
                 System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", OTPSuccess);
 
@@ -53,13 +54,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                         updateEmailData.NewEmail = viewModel.NewEmailText;
 
                         viewModel._navigationService.NavigateTo(App.VerificationPageView, updateEmailData);
-                    });
-                }
-                else
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox("Wrong Current Email!", AppResources.Information);
                     });
                 }
             }
@@ -123,6 +117,29 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         async void OnBackArrowTapped(System.Object sender, System.EventArgs e)
         {
             await PopupNavigation.Instance.PopAllAsync();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            RefreshControlsData();
+        }
+
+        /*private string RemoveWhiteSpaceFromTheString(string actualString)
+        {
+            string example = actualString;
+            string trimmed = String.Concat(example.Where(c => !Char.IsWhiteSpace(c)));
+
+            return trimmed;
+        }*/
+
+        // * // Reset Enteried
+        private void RefreshControlsData()
+        {
+            viewModel.CurrentEmailText = string.Empty;
+            viewModel.NewEmailText = string.Empty;
+            viewModel.ConfirmEmailText = string.Empty;
         }
     }
 }

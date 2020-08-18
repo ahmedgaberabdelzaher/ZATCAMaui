@@ -1766,7 +1766,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZImportsvaluex115" xml:space="preserve">
-    <value> 115x قيمة الاستيرادات%</value>
+    <value> 115% x قيمة الاستيرادات</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount" xml:space="preserve">
@@ -4151,7 +4151,7 @@
     <value>السنة المالية</value>
   </data>
   <data name="FORM5ForPeriod" xml:space="preserve">
-    <value>عن الفترة من   :</value>
+    <value>عن الفترة   :</value>
   </data>
   <data name="FORM5GenerateObjection" xml:space="preserve">
     <value>الرجاء الضغط هنا للإعتراض</value>
@@ -5401,6 +5401,12 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="Comma" xml:space="preserve">
     <value>،</value>
+  </data>
+  <data name="FORM5From" xml:space="preserve">
+    <value>من :</value>
+  </data>
+  <data name="FORM5IndividualActivityDetail" xml:space="preserve">
+    <value>تفاصيل إحتساب الوعاء</value>
   </data>
   <data name="ZZZZCorrections" xml:space="preserve">
     <value>تصحيحات</value>

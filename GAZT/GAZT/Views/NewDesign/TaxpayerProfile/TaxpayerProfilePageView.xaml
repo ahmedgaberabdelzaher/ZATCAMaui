@@ -37,15 +37,6 @@
                                     Style="{StaticResource BodyLabelBlack}"
                                     HorizontalOptions="StartAndExpand"
                                     TextColor="White"/>
-
-                <!--<StackLayout Orientation="Horizontal"
-                             Spacing="10" Margin="0,20,0,0">
-                    <Image Source="Whiteclock.png"/>
-                    <custom:CustomLabel Text="The Last time you accessed was on 06, April, 2020 at 15:45"
-                                        Style="{StaticResource CaptionLabelBlack}"
-                                        TextColor="White">
-                    </custom:CustomLabel>
-                </StackLayout>-->
             </StackLayout>
             <ScrollView Grid.Row="2">
                 <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,32,24,16">
@@ -93,33 +84,26 @@
                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
                             <StackLayout Orientation="Horizontal"
                                          Padding="0,8,0,8">
-                                <OnPlatform x:TypeArguments="custom:CustomLabel">
+                                <OnPlatform x:TypeArguments="View">
                                     <On Platform="iOS">
                                         <custom:CustomLabel Text="+966"
                                                         VerticalTextAlignment="Center"
                                                         Style="{StaticResource BodyLabelGrey}" />
                                     </On>
-                                </OnPlatform>
-                                <OnPlatform x:TypeArguments="control:BorderlessEntry">
                                     <On Platform="Android">
                                         <control:BorderlessEntry
-                                        Placeholder="+966"
-                                        VerticalTextAlignment="Center"
-                                        Style="{StaticResource DefaultEntry}"
-                                        IsEnabled="False" />
+                                                Placeholder="+966"
+                                                VerticalTextAlignment="Center"
+                                                Style="{StaticResource DefaultEntry}"
+                                                IsEnabled="False" />
                                     </On>
                                 </OnPlatform>
 
                                 <BoxView WidthRequest="1"
                                          HeightRequest="1"
                                          BackgroundColor="{StaticResource NeutralLightGrey}"/>
-
-                                <control:BorderlessEntry HorizontalOptions="FillAndExpand"
-                                                         Style="{StaticResource DefaultEntry}"
-                                                         Text="{Binding MobileNumberEntry}"
-                                                         IsEnabled="False">
-                                </control:BorderlessEntry>
                             </StackLayout>
+
                         </inputLayout:SfTextInputLayout>
 
                         <StackLayout Orientation="Horizontal">
@@ -176,6 +160,9 @@
                     <Image Source="arrowLeftwhite.png"
                            HorizontalOptions="Start"
                            VerticalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBackArrowBtnTapped"/>
+                        </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
             </Grid>

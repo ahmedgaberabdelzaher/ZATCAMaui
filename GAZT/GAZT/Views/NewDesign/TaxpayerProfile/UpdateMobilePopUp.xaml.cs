@@ -86,17 +86,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     VerificationView.IsVisible = true;
                     btn.Text = "Verify";
 
-                    //var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
-                    viewModel.NewMobileNumberLabel = "Mobile Number "
-                                                        + "xxxxxxx"
-                                                        + "388";
-                }
-                else
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox("Wrong Current Mobile Number!", AppResources.Information);
-                    });
+                    var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
+                    viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
+
+                    // * Start timer period for valid OTP
+                    viewModel.StartOTPTimer();
                 }
             }
         }
@@ -110,25 +104,24 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (viewModel.EnteredOTP.Length != 4)
             {
-                // * Navigating to Verification Screen
-                TaxPayerProfile TPAPIResponse = await viewModel.VarifyOTPToUpdateMobileNumber();
-                System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessageBox(AppResources.EnterOTP, AppResources.Information);
+                });
+                return;
+            }
 
-                if (TPAPIResponse != null)
+            // * Navigating to Verification Screen
+            TaxPayerProfile TPAPIResponse = await viewModel.VarifyOTPToUpdateMobileNumber();
+            System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
+
+            if (TPAPIResponse != null)
+            {
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        this.CloseAllPopup();
-                        viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 2);
-                    });
-                }
-                else
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox("Entered Wrong OTP!", AppResources.Information);
-                    });
-                }
+                    this.CloseAllPopup();
+                    viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 2);
+                });
             }
         }
 
@@ -182,8 +175,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            // * Start timer period for valid OTP
-            viewModel.StartOTPTimer();
+            RefreshControlsData();
+        }
+
+        // * // Reset Enteried
+        private void RefreshControlsData()
+        {
+            viewModel.CurrentMobileNumberEntryText = string.Empty;
+            viewModel.NewMobileNumberEntryText = string.Empty;
         }
     }
 }
