@@ -7,11 +7,10 @@ namespace EGAZT.Models
     public enum VATReturnUpdatedUITabEnum
     {
         Instrunction = 1,
-        TaxpayerDetails = 2,
-        VATReturns = 3,
-        Sales = 4,
-        Purchase = 5,
-        TotalVat = 6,
-        Summery = 7
+        VATReturns = 2,
+        Sales = 3,
+        Purchase = 4,
+        TotalVat = 5,
+        Summery = 6
     }
 }
