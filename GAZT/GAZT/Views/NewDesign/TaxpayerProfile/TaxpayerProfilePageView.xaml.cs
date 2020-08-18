@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+using GAZT.Manager;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +15,18 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxpayerProfilePageView : ContentPage
     {
+        NewTaxpayerProfileViewModel viewModel;
+
         public TaxpayerProfilePageView()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+
+            viewModel = App.Locator.TaxpayerProfilePageView;
+            this.BindingContext = viewModel;
+
+            //SetLTR();
+            this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
 
         private void OnMobileEditTapped(object sender, EventArgs e)
@@ -31,6 +42,22 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         private void OnPasswordEditTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new UpdatePasswordPopUp());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // * Last Updated Taxpayer Profile Data
+            /*viewModel.TINLabel = App.TP.Tin;
+            viewModel.MobileNumberEntry = App.TP.Mobile;
+            viewModel.EmailEntry = App.TP.Email;
+            viewModel.PasswordEntry = "********";*/
+
+            viewModel.TINLabel = "0987654321";
+            viewModel.MobileNumberEntry = "1234567890";
+            viewModel.EmailEntry = "TESTS@PM.COM";
+            viewModel.PasswordEntry = "********";
         }
     }
 }

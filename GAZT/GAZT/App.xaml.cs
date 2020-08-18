@@ -72,7 +72,14 @@ namespace EGAZT
         public static string AttachmentPopUp = "AttachmentPopUp";
         public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
 
-        
+        // * Taxpayer Profile
+        public static string TaxpayerProfilePageView = "TaxpayerProfilePageView";
+        public static string UpdateMobilePopUp = "UpdateMobilePopUp";
+        public static string UpdateEmailPopUp = "UpdateEmailPopUp";
+        public static string UpdatePasswordPopUp = "UpdatePasswordPopUp";
+        public static string VerificationPageView = "VerificationPageView";
+        public static string TaxpayerProfileSuccessPage = "TaxpayerProfileSuccessPage";
+        // * End
         #endregion
 
         #region new design views Release2
