@@ -78,13 +78,7 @@
      <ContentPage.Content>
        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
            <Grid>
-               <Grid.RowDefinitions>
-                            <RowDefinition Height="30*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
+        
               <Grid IsVisible="{Binding IsReasonViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                      <RowDefinition Height="auto"/>
@@ -235,14 +229,14 @@
                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                         <Label Text="{Binding StartDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
+                                         <Label Text="{Binding SuspendedStartDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
                                             <Image Margin="5,0">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
                                                              Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                 </Image.Source>
                                             </Image>
-                                      <Label Text="{Binding EndDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
+                                      <Label Text="{Binding SuspendedEndDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
 
 
                                     </StackLayout>
@@ -254,14 +248,14 @@
                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                         <Label  Text="FROM" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                         <Label  Text="{Binding NextFilingStartDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                             <Image Margin="5,0" HorizontalOptions="Center">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
                                                              Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                 </Image.Source>
                                             </Image>
-                                      <Label  Text="TO" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
+                                      <Label  Text="{Binding NextFilingEndDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
 
                                     </StackLayout>
                                 </border:SfBorder >
@@ -272,7 +266,7 @@
                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                         <Label Text="DD/MM/YYYY" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
+                                         <Label Text="{Binding NextFilingDueDate }" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
                             
                      
                                     </StackLayout>
@@ -280,6 +274,7 @@
                             </StackLayout >
               </StackLayout>
             </StackLayout>
+
                   <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
@@ -467,10 +462,10 @@
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="-2,-6,0,6" WidthRequest="140"
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
+                                    <custom:BorderlessEntry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" Text="{Binding TxtIDNumber}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="StartAndExpand" TextChanged="IDNumberEntry_TextChanged">
+                                                            TextColor="#bbbbbb" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
@@ -506,7 +501,7 @@
                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                        <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                        <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationContactPersonName}" Text="{Binding ContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start"
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
                                         </custom:BorderlessEntry>
@@ -573,7 +568,7 @@
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
                                     <Label Text="Deregistration Details" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
-                                <Button Grid.Row="0" Grid.Column="2" Text="Edit" FontFamily="SSTBold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#006450"/>
+                                <Button Grid.Row="0" Grid.Column="2" Text="Edit" Clicked="Button_Clicked_1" FontFamily="SSTBold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#006450"/>
                             </Grid>
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
@@ -621,7 +616,7 @@
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
                                     <Label Text="Attachments" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
-                                <Button Grid.Row="0" Grid.Column="2" Text="Edit" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+                                <Button Grid.Row="0" Grid.Column="2" Text="Edit" Clicked="Button_Clicked_2" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
 
                             </Grid>
 
@@ -670,7 +665,7 @@
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
                                     <Label Text="Declaration" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
-                                   <Button Grid.Row="0" Grid.Column="2"  Text="Edit" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+                                   <Button Grid.Row="0" Grid.Column="2"  Text="Edit" Clicked="Button_Clicked_3" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
 
                             </Grid>
 
