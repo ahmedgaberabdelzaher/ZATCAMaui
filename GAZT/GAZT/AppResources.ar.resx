@@ -5126,7 +5126,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>المهن الفكرية</value>
   </data>
   <data name="FORM5Profit" xml:space="preserve">
-    <value>نسبة الربح</value>
+    <value>نسبةالربح</value>
   </data>
   <data name="FORM5ProfitFromCivilContracting" xml:space="preserve">
     <value>أرباح العقود مع القطاع الخاص</value>
