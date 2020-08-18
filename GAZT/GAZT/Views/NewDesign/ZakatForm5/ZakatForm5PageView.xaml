@@ -400,7 +400,11 @@
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
 
                                     <StackLayout Padding="10" Spacing="10">
-                                        <StackLayout Orientation="Horizontal">
+                                                            <StackLayout  Orientation="Horizontal">
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5OutletName}" Style="{StaticResource ValueLabelGrey}" WidthRequest="140"/>
+                                                                <custom:CustomLabel Text="{Binding ActDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                            </StackLayout>
+                                                            <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Revenue}" Style="{StaticResource ValueLabelGrey}"/>
                                                                 <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
                                                                     <Label.FormattedText>
@@ -1532,8 +1536,8 @@
                                                     <ColumnDefinition Width="60*"/>
                                                     <ColumnDefinition Width="40*"/>
                                                 </Grid.ColumnDefinitions>
-                                                 <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5ValueofSubsityfromGov}" Style="{StaticResource ValueLabelGrey}" BackgroundColor="Green"/>
-                                                                <custom:CustomLabel Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" BackgroundColor="LightGreen">
+                                                 <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5ValueofSubsityfromGov}" Style="{StaticResource ValueLabelGrey}" />
+                                                                <custom:CustomLabel Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" >
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding SubsidyVal}" />
@@ -2250,8 +2254,8 @@
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5Dear}" />
                                                     <Span Text=" "/>
                                                 <Span Text="{Binding Taxpayer}"/>
-                                                    <Span Text=","/>
-                                                </FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.Comma}"/>
+                                            </FormattedString>
                                             </Label.FormattedText>
                                         </custom:CustomLabel>
 
@@ -2271,12 +2275,22 @@
                                                 <FormattedString>
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" Style="{StaticResource ValueLabelGrey}" />
                                                     <Span Text=" "/>
-                                                <Span Text="{Binding ZakatFromDate}"/>
+                                                <!--<Span Text="{Binding ZakatFromDate}"/>-->
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </custom:CustomLabel>
 
-                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.FORM5From}" Style="{StaticResource ValueLabelGrey}" />
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding ZakatFromDate}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5To}" Style="{StaticResource ValueLabelGrey}" />
@@ -2301,7 +2315,7 @@
                                     <Expander>
                                         <Expander.Header>
                                             <StackLayout Orientation="Horizontal" Padding="10">
-                                                <custom:CustomLabel Text="Estimation Details" Style="{StaticResource SectionTitleBlack}"/>
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5IndividualActivityDetail}" Style="{StaticResource SectionTitleBlack}"/>
                                                 <Image Source="arrowDropdown" HorizontalOptions="EndAndExpand">
                                                     <Image.Triggers>
                                                         <DataTrigger TargetType="Image"

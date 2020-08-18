@@ -4151,7 +4151,7 @@
     <value>السنة المالية</value>
   </data>
   <data name="FORM5ForPeriod" xml:space="preserve">
-    <value>عن الفترة من   :</value>
+    <value>عن الفترة   :</value>
   </data>
   <data name="FORM5GenerateObjection" xml:space="preserve">
     <value>الرجاء الضغط هنا للإعتراض</value>
@@ -5401,5 +5401,23 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="Comma" xml:space="preserve">
     <value>،</value>
+  </data>
+  <data name="FORM5From" xml:space="preserve">
+    <value>من :</value>
+  </data>
+  <data name="FORM5IndividualActivityDetail" xml:space="preserve">
+    <value>تفاصيل إحتساب الوعاء</value>
+  </data>
+  <data name="ZZZZCorrections" xml:space="preserve">
+    <value>تصحيحات</value>
+  </data>
+  <data name="ZZZZFromPreviousPeriods" xml:space="preserve">
+    <value>من الفترات السابقة</value>
+  </data>
+  <data name="ZZZZVATAccountNumber" xml:space="preserve">
+    <value>رقم حساب ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVATDue" xml:space="preserve">
+    <value>ضريبة القيمة المضافة المستحقة</value>
   </data>
 </root>

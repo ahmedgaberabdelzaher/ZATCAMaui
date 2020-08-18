@@ -1326,11 +1326,20 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For the Period From :.
+        ///   Looks up a localized string similar to For the Period :.
         /// </summary>
         public static string FORM5ForPeriod {
             get {
                 return ResourceManager.GetString("FORM5ForPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From :.
+        /// </summary>
+        public static string FORM5From {
+            get {
+                return ResourceManager.GetString("FORM5From", resourceCulture);
             }
         }
         
@@ -1439,6 +1448,15 @@ namespace EGAZT {
         public static string FORM5IndividualActiDetails {
             get {
                 return ResourceManager.GetString("FORM5IndividualActiDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Individual Activity Detail.
+        /// </summary>
+        public static string FORM5IndividualActivityDetail {
+            get {
+                return ResourceManager.GetString("FORM5IndividualActivityDetail", resourceCulture);
             }
         }
         
@@ -13525,6 +13543,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Corrections.
+        /// </summary>
+        public static string ZZZZCorrections {
+            get {
+                return ResourceManager.GetString("ZZZZCorrections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string ZZZZCountry {
@@ -13728,6 +13755,15 @@ namespace EGAZT {
         public static string ZZZZestablishmentsignup {
             get {
                 return ResourceManager.GetString("ZZZZestablishmentsignup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From Previous Periods.
+        /// </summary>
+        public static string ZZZZFromPreviousPeriods {
+            get {
+                return ResourceManager.GetString("ZZZZFromPreviousPeriods", resourceCulture);
             }
         }
         
@@ -14029,11 +14065,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Account Number.
+        /// </summary>
+        public static string ZZZZVATAccountNumber {
+            get {
+                return ResourceManager.GetString("ZZZZVATAccountNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vat Amount on Purchases.
         /// </summary>
         public static string ZZZZVatAmountonPurchase {
             get {
                 return ResourceManager.GetString("ZZZZVatAmountonPurchase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Due.
+        /// </summary>
+        public static string ZZZZVATDue {
+            get {
+                return ResourceManager.GetString("ZZZZVATDue", resourceCulture);
             }
         }
         
