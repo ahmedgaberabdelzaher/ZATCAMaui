@@ -4197,7 +4197,7 @@
     <value>نسبة الإشغال %</value>
   </data>
   <data name="FORM5OutletName" xml:space="preserve">
-    <value>•  إسم الفرع / النشاط:</value>
+    <value>إسم الفرع / النشاط</value>
   </data>
   <data name="FORM5NoOutlet" xml:space="preserve">
     <value>عدد الفروع</value>
@@ -4512,7 +4512,7 @@
     <value>Summary</value>
   </data>
   <data name="VatDeregSummarySubTitle" xml:space="preserve">
-    <value>Review the below information</value>
+    <value>مراجعة البيانات التالية</value>
   </data>
   <data name="VatDeregDetailsTitle" xml:space="preserve">
     <value>Deregistration details</value>
@@ -4525,6 +4525,21 @@
   </data>
   <data name="VatDeregConfirmTitle" xml:space="preserve">
     <value>Confirm</value>
+  </data>
+  <data name="VatDeregSuspendedStartDate" xml:space="preserve">
+    <value>Start of Suspension Period</value>
+  </data>
+  <data name="VatDeregSuspendedEndDate" xml:space="preserve">
+    <value>End of Suspension Period</value>
+  </data>
+  <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
+    <value>Suspended Filing Period</value>
+  </data>
+  <data name="VatDeregNextFilingPeriod" xml:space="preserve">
+    <value>Next Filing Period</value>
+  </data>
+  <data name="VatDeregNextFilingDueDate" xml:space="preserve">
+    <value>Next Filing due date</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
     <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.
@@ -4784,7 +4799,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Yearly</value>
   </data>
   <data name="ZakatInstalmetContinue" xml:space="preserve">
-    <value>Continue</value>
+    <value>المتابعة</value>
   </data>
   <data name="ZakatInstalmentAttachments" xml:space="preserve">
     <value>Attachments</value>
@@ -5330,9 +5345,55 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>العودة لصفحة تسجيل الدخول</value>
   </data>
   <data name="NDMyReports" xml:space="preserve">
-    <value>تقريري</value>
+    <value>تقاريري</value>
   </data>
   <data name="NDOpen" xml:space="preserve">
     <value>افتح</value>
+  </data>
+  <data name="TPAt" xml:space="preserve">
+    <value>في</value>
+  </data>
+  <data name="TPGoToProfile" xml:space="preserve">
+    <value>الذهاب الى ملفي الشخصي</value>
+    <comment>Taxpayer Profile</comment>
+  </data>
+  <data name="TPLastTimeAccessedOn" xml:space="preserve">
+    <value>تاريخ اخر تسجيل دخول</value>
+  </data>
+  <data name="TPMobileUpdate" xml:space="preserve">
+    <value>تم تحديث رقم الجوال</value>
+  </data>
+  <data name="TPNewEmailUpDated" xml:space="preserve">
+    <value>New Email updated Successfully</value>
+  </data>
+  <data name="TPPasswordUpdate" xml:space="preserve">
+    <value>تم تغيير الرقم السري</value>
+  </data>
+  <data name="TPSuccessMobileUpdated" xml:space="preserve">
+    <value>تم تحديث رقم الجوال بنجاح</value>
+  </data>
+  <data name="TPUpdate" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="TPUpdatedEmail" xml:space="preserve">
+    <value>تم تحديث البريد الالكتروني</value>
+  </data>
+  <data name="TPUpdateMobile" xml:space="preserve">
+    <value>تحديث رقم الجوال</value>
+  </data>
+  <data name="TPUpdatePassword" xml:space="preserve">
+    <value>تغيير الرقم السري</value>
+  </data>
+  <data name="NDAckReceiptForZakat" xml:space="preserve">
+    <value>GAZT acknowledges the receipt of your Return of Zakat\Income Tax</value>
+  </data>
+  <data name="NDDownloadInvoice" xml:space="preserve">
+    <value>Download Invoice</value>
+  </data>
+  <data name="NDReturnOfZakat" xml:space="preserve">
+    <value>Return of Zakat</value>
+  </data>
+  <data name="NDSadadBillNoString1" xml:space="preserve">
+    <value>SADAD Bill Number</value>
   </data>
 </root>

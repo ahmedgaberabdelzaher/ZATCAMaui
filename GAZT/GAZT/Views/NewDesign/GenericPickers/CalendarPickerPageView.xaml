@@ -4,7 +4,7 @@
                   xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                   xmlns:custom="clr-namespace:GAZT" xmlns:custom1="clr-namespace:GAZT.CustomControl"
                   x:Class="EGAZT.Views.NewDesign.GenericPickers.CalendarPickerPageView"
-                  xmlns:ResourceManager="clr-namespace:EGAZT">
+                  xmlns:ResourceManager="clr-namespace:EGAZT" BackgroundClicked="PopupPage_BackgroundClicked">
      <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -21,7 +21,7 @@
                                     HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"
                                 Margin="0,16,0,16"  />
                  <custom1:CustomDatePicker IsOpen="True" Style="{StaticResource CalendarPickerStyle}"
-								Margin="2" 
+								Margin="2" SelectionChanged="genericPicker_SelectionChanged"
 								x:Name="calendarPicker" SelectedItem="{Binding SelectedDate}"
 								ItemHeight="36" >
                             <custom1:CustomDatePicker.Behaviors>

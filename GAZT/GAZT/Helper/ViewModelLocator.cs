@@ -295,8 +295,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
             SimpleIoc.Default.Register<VATRefundsSuccessPageView>();
             SimpleIoc.Default.Register<AttachmentPopUpViewModel>();
-
+            SimpleIoc.Default.Register<MorePopUpPageViewModel>();
             
+
+
 
             #endregion
         }
@@ -1991,8 +1993,8 @@ namespace EGAZT
 
 
             navigationService.Configure(App.VATRefundsInstructionsPageView, typeof(VATRefundsInstructionsPageView));
-
-
+            navigationService.Configure(App.MorePopUpPageView, typeof(MorePopUpPageView));
+            
             #endregion
 
             return navigationService;
@@ -2118,9 +2120,26 @@ namespace EGAZT
             }
         }
 
-       
+        public MorePopUpPageViewModel MorePopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MorePopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         
+
+
+
+
         //
     }
 }

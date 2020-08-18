@@ -1822,15 +1822,15 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATRegistrationDataResponse = client.GetAsync(uri).Result;
-                    if (GAZTVATRegistrationDataResponse != null)
+                    HttpResponseMessage GAZTInternationalMobileNumDataResponse = client.GetAsync(uri).Result;
+                    if (GAZTInternationalMobileNumDataResponse != null)
                     {
-                        if (GAZTVATRegistrationDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        if (GAZTInternationalMobileNumDataResponse.StatusCode == HttpStatusCode.Unauthorized)
                         {
                             App.IsSessionExpired = true;
                             return null;
                         }
-                        HttpHeaders headers = GAZTVATRegistrationDataResponse.Headers;
+                        HttpHeaders headers = GAZTInternationalMobileNumDataResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
                         {
@@ -1850,14 +1850,14 @@ namespace GAZT.Manager
 
                         //internationalCodes = JsonConvert.DeserializeObject<InternationalMobileData>(InternationalMobileData);
 
-                        String GAZTMyBillsResponseJSON = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(GAZTMyBillsResponseJSON))
+                        String GAZTInternationalNumberResponseJSON = GAZTInternationalMobileNumDataResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTInternationalNumberResponseJSON))
                         {
-                            GAZTMyBillsResponseJSON = JObject.Parse(GAZTMyBillsResponseJSON)["d"].ToString();
-                            string GAZTMyBillsResponseJSONJToken = JObject.Parse(GAZTMyBillsResponseJSON)["results"].ToString();
-                            if (string.IsNullOrEmpty(GAZTMyBillsResponseJSONJToken) != true)
+                            GAZTInternationalNumberResponseJSON = JObject.Parse(GAZTInternationalNumberResponseJSON)["d"].ToString();
+                            string GAZTInternationalNumberResponseJSONJToken = JObject.Parse(GAZTInternationalNumberResponseJSON)["results"].ToString();
+                            if (string.IsNullOrEmpty(GAZTInternationalNumberResponseJSONJToken) != true)
                             {
-                                internationalCodes = JsonConvert.DeserializeObject<ObservableCollection<InternationalMobileData>>(GAZTMyBillsResponseJSONJToken);
+                                internationalCodes = JsonConvert.DeserializeObject<ObservableCollection<InternationalMobileData>>(GAZTInternationalNumberResponseJSONJToken);
                                 //internationalCodes = JsonConvert.DeserializeObject<InternationalMobileData>(GAZTMyBillsResponseJSONJToken);
                             }
                             else
@@ -6838,6 +6838,386 @@ namespace GAZT.Manager
         }
         #endregion
 
+        #region VATDeregistration Reason
+
+        public static VATDeregistrationModelRootObject GAZTGETVATDeregReasonDropdownList( string selectedType)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATDeregistrationModelRootObject reasonData = new VATDeregistrationModelRootObject();
+               // ObservableCollection<VATDeregistrationReasonModel> reasonDropdownlist = new ObservableCollection<VATDeregistrationReasonModel>();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    char lang = GetLangZParameter();
+                    string url = Constants.GAZTGETVATDeregReasonDropdownList + " eq " +"'"+ selectedType +"'"+" and "+"Lang"+" eq "+"'" + lang +"'"+ "&$format=json"; 
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATDeregreasonDataResponse = client.GetAsync(uri).Result;
+                    if (GAZTVATDeregreasonDataResponse != null)
+                    {
+                        if (GAZTVATDeregreasonDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATDeregreasonDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                      
+                        String GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
+                        {
+                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationModelRootObject>(GAZTVATDeregreasonDataResponseJSON);
+                            if (reasonData == null)
+                            {
+                                throw new Exception(AppResources.Nodataavailable);
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.NoBillsAvailable);
+                        }
+                    }
+                    return reasonData;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        #endregion
+
+        #region VATDeregistration Attachment DocumentType
+
+        public static async Task<VATDeRegistrationAttachmentDropdownDetails> GAZTGETVATDeregAttachmentsDropdownList(string selectedType)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATDeRegistrationAttachmentDropdownDetails vATDeregAttDetails = new VATDeRegistrationAttachmentDropdownDetails();
+                string NewToken = string.Empty;
+                try
+                {
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    //  https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VDRUH_SRV/VR_UI_HDRSet(Fbnum='',Lang='E',Officer='',Gpart='3101937624',Status='E0001',TxnTp='VT_DREG',Formproc='ZTAX_VT_REG')?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json
+
+                     string status = "E0001";
+
+                    String url = Constants.GAZTGETVATDeregAttachmentsDropdownList + "',Lang='" + lang + "',Officer='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Status='" + status + "',TxnTp='" + selectedType + "',Formproc='ZTAX_VT_REG'"+ ")?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json";
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATDeregAttDataResponse = await client.GetAsync(uri);
+                    if (GAZTVATDeregAttDataResponse != null)
+                    {
+                        if (GAZTVATDeregAttDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATDeregAttDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String VatDeregAttListResultModelSetResponseJson = GAZTVATDeregAttDataResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(VatDeregAttListResultModelSetResponseJson))
+                        {
+                            VatDeregAttListResultModelSetResponseJson = JObject.Parse(VatDeregAttListResultModelSetResponseJson)["d"].ToString();
+
+                            vATDeregAttDetails = JsonConvert.DeserializeObject<VATDeRegistrationAttachmentDropdownDetails>(VatDeregAttListResultModelSetResponseJson);
+                            if (vATDeregAttDetails == null)
+                            {
+                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        }
+                    }
+                    return vATDeregAttDetails;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        #endregion
+        public async static Task<VATRegistrationOtherDetails> GAZTGetVATDeRegistrationDataWithButtons(string Fbnumz, string Officerz, string Status, string TxnTp, string Formproc)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATRegistrationOtherDetails vATRegistrationOtherDetails = new VATRegistrationOtherDetails();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    String url = Constants.GAZTGetVATRegistrationOtherDetails + Fbnumz + "',Lang='" + lang + "',Officer='" + Officerz + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Status='" + Status + "',TxnTp='" + "CRE_RGVT" + "',Formproc='" + "ZTAX_VT_REG" + "')?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json";
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATRegistrationDataOtherResponse = await client.GetAsync(uri);
+                    if (GAZTVATRegistrationDataOtherResponse != null)
+                    {
+                        if (GAZTVATRegistrationDataOtherResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATRegistrationDataOtherResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String VatRegistrationOtherData = GAZTVATRegistrationDataOtherResponse.Content.ReadAsStringAsync().Result;
+                        vATRegistrationOtherDetails = JsonConvert.DeserializeObject<VATRegistrationOtherDetails>(VatRegistrationOtherData);
+
+                        if (!string.IsNullOrEmpty(VatRegistrationOtherData) && vATRegistrationOtherDetails == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationOtherData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new Exception(errorMessage);
+                            }
+                        }
+
+                    }
+                    return vATRegistrationOtherDetails;
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        #region VATDeregistration Reason
+
+        public static VATDeregistrationModelRootObject GAZTGETVATDeregSuspensionDate(string selectedType)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATDeregistrationModelRootObject reasonData = new VATDeregistrationModelRootObject();
+                // ObservableCollection<VATDeregistrationReasonModel> reasonDropdownlist = new ObservableCollection<VATDeregistrationReasonModel>();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    char lang = GetLangZParameter();
+                    string url = Constants.GAZTGETVATDeregSuspensionDate + " eq " + "'" + selectedType + "'" + " and " + "Lang" + " eq " + "'" + lang + "'" + "&$format=json";
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATDeregreasonDataResponse = client.GetAsync(uri).Result;
+                    if (GAZTVATDeregreasonDataResponse != null)
+                    {
+                        if (GAZTVATDeregreasonDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATDeregreasonDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
+                        {
+                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationModelRootObject>(GAZTVATDeregreasonDataResponseJSON);
+                            if (reasonData == null)
+                            {
+                                throw new Exception(AppResources.Nodataavailable);
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.NoBillsAvailable);
+                        }
+                    }
+                    return reasonData;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        #endregion
+
+        #region VATDeregistration Reason
+
+        public static VATDeregistrationSuspendedDateRootObject GAZTGETVATDeregReturnFilingDateList(DateTime StartDate, DateTime EndDate)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATDeregistrationSuspendedDateRootObject reasonData = new VATDeregistrationSuspendedDateRootObject();
+                // ObservableCollection<VATDeregistrationReasonModel> reasonDropdownlist = new ObservableCollection<VATDeregistrationReasonModel>();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    char lang = GetLangZParameter();
+
+                    string startDate = StartDate.Year.ToString() + "-" + StartDate.Month.ToString() + "-" + StartDate.Day.ToString() + "T" + StartDate.Hour.ToString() + ":" + StartDate.Minute.ToString();
+                    string endDate = EndDate.Year.ToString() + "-" + EndDate.Month.ToString() + "-" + EndDate.Day.ToString() + "T" + EndDate.Hour.ToString() + ":" + EndDate.Minute.ToString();
+
+                    string url = Constants.GAZTGETVATDeregReturnFilingDateList + "Gpart"+ " eq " + "'" + App.LoginDataRetrieved.TIN + "'" + " and " + "StartDate" + " eq datetime" + "'" + startDate + "'" + " and " + "EndDate" + " eq datetime" + "'" + endDate+ "'" + "&$format=json";
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATDeregreasonDataResponse = client.GetAsync(uri).Result;
+                    if (GAZTVATDeregreasonDataResponse != null)
+                    {
+                        if (GAZTVATDeregreasonDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATDeregreasonDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
+                        {
+                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationSuspendedDateRootObject>(GAZTVATDeregreasonDataResponseJSON);
+                            if (reasonData == null)
+                            {
+                                throw new Exception(AppResources.Nodataavailable);
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.NoBillsAvailable);
+                        }
+                    }
+                    return reasonData;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        #endregion
 
 
         public static async Task<VatRefundsListResultModel> GAZTGetVAtRefundList()
