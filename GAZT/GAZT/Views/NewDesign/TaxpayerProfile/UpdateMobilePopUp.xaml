@@ -40,8 +40,8 @@
                 <BoxView Style="{StaticResource SeparatorStyle}" BackgroundColor="{StaticResource NeutralLightGrey}" />
                 <StackLayout Padding="24,16,24,0">
 
-                    <custom:CustomLabel Text="Update Mobile Number" Style="{StaticResource SectionTitleBlackBold}"/>
-                    <custom:CustomLabel Text="Current Mobile Number" Style="{StaticResource CaptionLabelGrey}"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdateMobile}" Style="{StaticResource SectionTitleBlackBold}"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZCurrentMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
 
                     <inputLayout:SfTextInputLayout  Margin="0,-10,0,0"
                                                     HorizontalOptions="FillAndExpand"
@@ -78,7 +78,7 @@
                         </StackLayout>
                     </inputLayout:SfTextInputLayout>
 
-                    <custom:CustomLabel Text="New Mobile Number" Style="{StaticResource CaptionLabelGrey}"/>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
 
                     <inputLayout:SfTextInputLayout Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
                         <StackLayout Orientation="Horizontal" Padding="0,8,0,8">
@@ -262,7 +262,7 @@
             </StackLayout>
 
             <buttons:SfButton Margin="24,0,24,24"
-                              x:Name="btn" Text="Update"
+                              x:Name="btn" Text="{x:Static ResourceManager:AppResources.TPUpdate}"
                               Style="{StaticResource PrimaryButtonStyle}"
                               Clicked="UpdatedClicked"/>
         </StackLayout>

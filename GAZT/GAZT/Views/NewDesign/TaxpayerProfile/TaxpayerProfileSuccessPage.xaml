@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.TaxpayerProfileSuccessPage"
     xmlns:custom="clr-namespace:GAZT"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
     BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -24,7 +25,7 @@
             <custom:CustomLabel Text="{Binding successCaptionLbl}"
                                 HorizontalOptions="Center"
                                 Style="{StaticResource CaptionLabelWhite}"/>
-            <custom:CustomLabel Text="Go To My Profile"
+            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPGoToProfile}"
                                 VerticalOptions="EndAndExpand"
                                 TextColor="{StaticResource NewDullOrangeColor}"
                                 Style="{StaticResource ButtonLabelBlackBold}"
