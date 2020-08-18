@@ -5399,4 +5399,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="TPEmailUpdated" xml:space="preserve">
     <value>Email Updated</value>
   </data>
+  <data name="Comma" xml:space="preserve">
+    <value>،</value>
+  </data>
 </root>

@@ -413,6 +413,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ,.
+        /// </summary>
+        public static string Comma {
+            get {
+                return ResourceManager.GetString("Comma", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Corporate.
         /// </summary>
         public static string Company {
@@ -1691,6 +1700,15 @@ namespace EGAZT {
         public static string FORM5Period {
             get {
                 return ResourceManager.GetString("FORM5Period", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For the Period.
+        /// </summary>
+        public static string FORM5PeriodLabel {
+            get {
+                return ResourceManager.GetString("FORM5PeriodLabel", resourceCulture);
             }
         }
         

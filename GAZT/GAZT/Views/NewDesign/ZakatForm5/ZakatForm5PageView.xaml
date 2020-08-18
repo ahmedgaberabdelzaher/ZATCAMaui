@@ -2261,7 +2261,7 @@
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}" />
                                                     <Span Text=" "/>
                                                     <Span Text="{Binding ReferenceNumber}"/>
-                                                    <Span Text=","/>
+                                                <Span Text="{x:Static ResourceManager:AppResources.Comma}"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </custom:CustomLabel>
