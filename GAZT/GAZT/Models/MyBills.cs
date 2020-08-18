@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GAZT.Manager;
+using System;
 using System.Globalization;
 
 namespace EGAZT.Models
@@ -22,7 +23,7 @@ namespace EGAZT.Models
                     decimal d = Convert.ToDecimal(_BETRW);
                     decimal positiveMoney = d;
                     positiveMoney.ToString(format);  //will return $24,508,975.94
-                    TestDueAmount = positiveMoney.ToString();
+                    TestDueAmount =  UtilityManager.GetCommaSeparatedAmount(positiveMoney.ToString());
                 }
             } 
         } //DueAmount
