@@ -63,28 +63,6 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 }
             }
         }
-        private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
-            ZakatAttachment attachment = (ZakatAttachment)Document.SelectedItem;
-            //attachment.DocUrl;
-            if (attachment.Filename.Contains(".")) ;
-            string Extention = attachment.Filename.Split('.')[1];
-            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
-            {
-                if (attachment.DocUrl != null)
-                {
-                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
-                }
-            }
-            else
-            {
-                await email(attachment.Doguid, attachment);
-            }
-            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
-        }
-
-
         public async Task email(string doguid, ZakatAttachment attachment)
         {
             await Task.Run(() =>
@@ -138,6 +116,26 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             });
         }
 
+        private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
+            ZakatAttachment attachment = (ZakatAttachment)Document.SelectedItem;
+            //attachment.DocUrl;
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+                await email(attachment.Doguid, attachment);
+            }
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+        }
 
 
     }
