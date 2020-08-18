@@ -1079,7 +1079,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             { 
             if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg != "X")
             {
-                if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
+                if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales)
                 {
                     if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
                     {
@@ -1192,7 +1192,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 if (viewModel.IsFifteenPercentChange)
                 {
-                   if(viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
+                   if(viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales)
                         {
                             bool check = CheckSalesMandetoryFieldsFor15Percent();
                             if (!check)
@@ -1867,7 +1867,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg != "X")
                 {
-                    if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
+                    if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
                     {
                         if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) || EntryStdpurchaseAmt.TextColor == Color.Red)
                         {
@@ -1989,7 +1989,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     if (viewModel.IsFifteenPercentChange)
                     {
-                        if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Sales || viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
+                        if (viewModel.currentTab == VATReturnUpdatedUITabEnum.Purchase)
                         {
                             bool check = CheckPurchaseMandetoryFieldsFor15Percent();
                             if (!check)
