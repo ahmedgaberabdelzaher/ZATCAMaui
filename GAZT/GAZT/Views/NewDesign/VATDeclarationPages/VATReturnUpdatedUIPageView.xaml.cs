@@ -465,6 +465,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
                 {
                     await viewModel.VATSetReturnVoidAsync();
+                    await PopupNavigation.Instance.PopAsync();
                 });
             }
             catch (Exception ex)
@@ -479,7 +480,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
                 {
-                   // await viewModel.VATSetReturnVoidAsync();
+                    await PopupNavigation.Instance.PopAsync();
+                    // await viewModel.VATSetReturnVoidAsync();
                 });
             }
             catch (Exception ex)
@@ -494,6 +496,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "CommandReceived", async (sender, arg) =>
                 {
+                    await PopupNavigation.Instance.PopAsync();
                     if (arg != null)
                     {
                         string message = arg;

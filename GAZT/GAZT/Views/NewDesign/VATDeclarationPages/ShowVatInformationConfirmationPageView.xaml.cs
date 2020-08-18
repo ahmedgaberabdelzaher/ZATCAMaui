@@ -22,6 +22,18 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel = App.Locator.ShowVatInformationConfirmationPageView;
             this.BindingContext = viewModel;
             SetLTR();
+            if (newDesignPopData != null)
+            {
+                viewModel.NewDesignPopUp = newDesignPopData;
+                viewModel.MainString = viewModel.NewDesignPopUp.MainHeader;
+                if (viewModel.NewDesignPopUp.HeaderWithInfos != null && viewModel.NewDesignPopUp.HeaderWithInfos.Count != 0)
+                {
+                    viewModel.HeaderWithInfoList = viewModel.NewDesignPopUp.HeaderWithInfos;
+                    //LoadLink();
+                }
+
+            }
+            SetMargin();
         }
 
         private void SetLTR()
@@ -36,7 +48,24 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
-
+        public void SetMargin()
+        {
+            if (viewModel.NewDesignPopUp != null && viewModel.NewDesignPopUp.HeaderWithInfos != null && viewModel.NewDesignPopUp.HeaderWithInfos.Count != 0)
+            {
+                if (viewModel.NewDesignPopUp.HeaderWithInfos.Count < 2)
+                {
+                    MainPanCakeView1.Margin = new Thickness(0, 380, 0, 0);
+                }
+                else
+                {
+                    MainPanCakeView1.Margin = new Thickness(0, 130, 0, 0);
+                }
+            }
+            else
+            {
+                MainPanCakeView1.Margin = new Thickness(0, 130, 0, 0);
+            }
+        }
         private void YesButtonClicked(object sender, EventArgs e)
         {
             MessagingCenter.Send<Object, string>(this, "YesReceived", "Yes");

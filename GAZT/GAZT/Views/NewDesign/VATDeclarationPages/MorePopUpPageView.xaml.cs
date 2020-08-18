@@ -77,7 +77,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                    
 
                 }
-                await PopupNavigation.Instance.PopAsync();
+                
             }
             catch(Exception ex)
             {
