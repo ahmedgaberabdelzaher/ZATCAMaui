@@ -58,7 +58,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             // * Last Updated Taxpayer Profile Data
             viewModel.TINLabel = App.TP.Tin;
-            viewModel.MobileNumberEntry = App.TP.Mobile;
+            viewModel.MobileNumber = App.TP.Mobile;
             viewModel.EmailEntry = App.TP.Email;
             viewModel.PasswordEntry = "********";
 

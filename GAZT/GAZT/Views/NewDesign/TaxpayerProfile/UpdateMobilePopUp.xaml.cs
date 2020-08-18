@@ -104,25 +104,24 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (viewModel.EnteredOTP.Length != 4)
             {
-                // * Navigating to Verification Screen
-                TaxPayerProfile TPAPIResponse = await viewModel.VarifyOTPToUpdateMobileNumber();
-                System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessageBox(AppResources.EnterOTP, AppResources.Information);
+                });
+                return;
+            }
 
-                if (TPAPIResponse != null)
+            // * Navigating to Verification Screen
+            TaxPayerProfile TPAPIResponse = await viewModel.VarifyOTPToUpdateMobileNumber();
+            System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
+
+            if (TPAPIResponse != null)
+            {
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        this.CloseAllPopup();
-                        viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 2);
-                    });
-                }
-                else
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox("Entered Wrong OTP!", AppResources.Information);
-                    });
-                }
+                    this.CloseAllPopup();
+                    viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 2);
+                });
             }
         }
 
