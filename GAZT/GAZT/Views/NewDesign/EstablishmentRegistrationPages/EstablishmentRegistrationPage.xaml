@@ -138,53 +138,79 @@
                                     </StackLayout>
                                 </Frame>
                             </StackLayout>
-                            <StackLayout Orientation="Vertical"  Grid.Row="5"  Margin="0,0,0,10">
-                                <StackLayout Orientation="Horizontal"  Margin="0,0,0,10">
-                                    <Grid x:Name="StayMoreKsagrid" WidthRequest="300" >
+                            <StackLayout x:Name="NationalityStatusOptionmain" Orientation="Vertical"  Grid.Row="5"  Margin="0,0,0,10">
+                                <Grid  Margin="0,0,0,10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid x:Name="StayMoreKsagrid" Grid.Row="0" Grid.Column="0"  >
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="20*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusStayMoreThanKSAClick}"/>
                                         </Grid.GestureRecognizers>
-                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Stay More than or equal to 183 days in KSA" Padding="5"  IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
-                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedStayMoreThanKSAOption}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Stay More than or equal to 183 days in KSA"  Padding="5"   IsVisible="{Binding IsClickedStayMoreThanKSAOption}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                        <Image Grid.Row="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
+                                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                        <custom:CustomLabel Grid.Row="0"  Text="Stay More than or equal to 183 days in KSA" 
+                                                            IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                            HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                            VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                            LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                        <Image Grid.Row="0" Source="vat_tile_listofsignup.png" 
+                                               IsVisible="{Binding IsClickedStayMoreThanKSAOption}"
+                                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                        <custom:CustomLabel Grid.Row="0" Text="Stay More than or equal to 183 days in KSA" 
+                                                            IsVisible="{Binding IsClickedStayMoreThanKSAOption}" 
+                                                            HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                            VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                            LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                     </Grid>
-                                    <Grid x:Name="OwnhouseGrid" WidthRequest="300">
+                                    <Grid x:Name="OwnhouseGrid" Grid.Row="0" Grid.Column="1" >
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="20*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusRentOwnHouseClick}"/>
                                         </Grid.GestureRecognizers>
                                         <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedOwnRentOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Rent/Own a house more than 30 days" Padding="5"  IsVisible="{Binding IsClickedOwnRentOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Rent/Own a house more than 30 days" Padding="10" 
+                                                            IsVisible="{Binding IsClickedOwnRentOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                            LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                         <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedOwnRentOption}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Rent/Own a house more than 30 days"  Padding="5"   IsVisible="{Binding IsClickedOwnRentOption}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Rent/Own a house more than 30 days"  Padding="10" 
+                                                            IsVisible="{Binding IsClickedOwnRentOption}"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                            LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                     </Grid>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal"  Margin="0,0,0,10">
-                                    <Grid  x:Name="NoneOfTheAboveGrid" WidthRequest="250">
+                                    <Grid  x:Name="NoneOfTheAboveGrid"  Grid.Row="1" Grid.Column="0"  WidthRequest="250">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="20*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusNoneOfTheAboveClick}"/>
                                         </Grid.GestureRecognizers>
-                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedNoneOfTheAboveOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="None of the above" Padding="2"  IsVisible="{Binding IsClickedNoneOfTheAboveOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
+                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedNoneOfTheAboveOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
+                                               HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="None of the above"   IsVisible="{Binding IsClickedNoneOfTheAboveOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                             HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                            VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                            LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                         <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedNoneOfTheAboveOption}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="None of the above"  Padding="2"   IsVisible="{Binding IsClickedNoneOfTheAboveOption}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="None of the above"    IsVisible="{Binding IsClickedNoneOfTheAboveOption}"
+                                                             HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                            VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                            LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                     </Grid>
-                                </StackLayout>
+                                </Grid>
                             </StackLayout>
                             <!-- Attachment layout start-->
                             <StackLayout x:Name="AttachmentsMainLayout"  IsVisible="{Binding IsClickedOwnRentOption}" Orientation="Vertical" Grid.Row="6" Margin="0,0,0,10">
@@ -247,36 +273,54 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <StackLayout Orientation="Vertical"  Margin="0,0,0,10">
-                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
-                                        <Grid x:Name="PermanentEstablishmentGrid" WidthRequest="300" >
+                                    <Grid Margin="0,0,0,10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"> </RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid x:Name="PermanentEstablishmentGrid" Grid.Row="0" Grid.Column="0" >
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="20*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding PermanentEstablishmentLegalEntityClick}"/>
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Permanent Establishment" Padding="5"  IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Permanent Establishment"
+                                                                IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedPermanentLegalEntity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Permanent Establishment"  Padding="5"   IsVisible="{Binding IsClickedPermanentLegalEntity}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Permanent Establishment"
+                                                                IsVisible="{Binding IsClickedPermanentLegalEntity}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
-                                        <Grid x:Name="OtherTaxableIncomeGrid" WidthRequest="300" >
+                                        <Grid x:Name="OtherTaxableIncomeGrid" Grid.Row="0" Grid.Column="1">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="20*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OtherTaxableIncomeLegalEntityClick}"/>
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Other Taxable income from source with in the KSA" Padding="5"  IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Other Taxable income from source with in the KSA"
+                                                                IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Other Taxable income from source with in the KSA"  Padding="5"   IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Other Taxable income from source with in the KSA" 
+                                                                IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
-                                    </StackLayout>
+                                    </Grid>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="PermanentEstablishmentsOptionsLayout" IsVisible="{Binding IsClickedPermanentLegalEntity}"  Orientation="Vertical" Grid.Row="8" Margin="0,0,0,10">
@@ -288,100 +332,305 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <StackLayout Orientation="Vertical"  Grid.Row="5" Margin="0,0,0,10">
-                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,10">
-                                        <Grid x:Name="ABranchNonResidentCompanyGrid" WidthRequest="300" >
+                                <StackLayout Orientation="Vertical"   Margin="0,0,0,10">
+                                    <Grid  Margin="0,0,0,10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid x:Name="ABranchNonResidentCompanyGrid"  Grid.Row="0" Grid.Column="0">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="20*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ABranchOfNonResidentCompanyPEClick}"/>
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Branch of Non - Resident Company" Padding="5"  IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Branch of Non - Resident Company"
+                                                                IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Branch of Non - Resident Company"  IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}"  Padding="5"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Branch of Non - Resident Company"  IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
-                                        <Grid x:Name="ConstructionSiteGrid" WidthRequest="300" >
+                                        <Grid x:Name="ConstructionSiteGrid"   Grid.Row="0" Grid.Column="1" >
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="20*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ConstructionSitePEClick}"/>
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Construction Site" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  Padding="5"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Construction Site" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedConstructionSitePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Construction Site"  IsVisible="{Binding IsClickedConstructionSitePE}"  Padding="5"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Construction Site"  IsVisible="{Binding IsClickedConstructionSitePE}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal"  Margin="0,0,0,10">
-                                        <Grid x:Name="InstallationGrid" WidthRequest="300" >
+                                        <Grid x:Name="InstallationGrid"   Grid.Row="1" Grid.Column="0" >
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="20*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding InstallationPEClick}"/>
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Installation" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  Padding="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Installation" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                              HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedInstallationPE}"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Installation"   IsVisible="{Binding IsClickedInstallationPE}"  Padding="5"    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Installation"   IsVisible="{Binding IsClickedInstallationPE}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
-                                        <Grid x:Name="AFixedBasedGrid" WidthRequest="300" >
+                                        <Grid x:Name="AFixedBasedGrid"   Grid.Row="1" Grid.Column="1" >
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="20*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding AFixedBasePEClick}"/>
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A fixed based" IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  Padding="5"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A fixed based"
+                                                                IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedAFixedBasePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A fixed based"   IsVisible="{Binding IsClickedAFixedBasePE}"  Padding="5"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A fixed based"   IsVisible="{Binding IsClickedAFixedBasePE}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal"  Margin="0,0,0,10">
-                                        <Grid x:Name="ANonResidentPartnerGrid" WidthRequest="300" >
+                                        <Grid x:Name="ANonResidentPartnerGrid"   Grid.Row="2" Grid.Column="0">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="20*"></RowDefinition>
+                                                <RowDefinition Height="*"></RowDefinition>
                                             </Grid.RowDefinitions>
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
                                             </Grid.GestureRecognizers>
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  Padding="5"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
+                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
                                             <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"   Padding="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
+                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
                                         </Grid>
-                                    </StackLayout>
+                                    </Grid>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="OtherTaxIncomeFromSourceWithInTheSKAlist" Grid.Row="8" Orientation="Vertical" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" >
-                                <Grid x:Name="OtherTaxableIncomeGridtest" WidthRequest="300" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="20*"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OtherTaxableIncomeLegalEntityClick}"/>
-                                    </Grid.GestureRecognizers>
-                                    <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Other Taxable income from source with in the KSA" Padding="5"  IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
-                                    <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Other Taxable income from source with in the KSA"  Padding="5"   IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
-                                </Grid>
+                                <StackLayout Orientation="Vertical"  Grid.Row="5" Margin="0,0,0,10">
+                                    <Grid  Margin="0,0,0,10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid x:Name="ABranchNonResidentCompanygd"  Grid.Row="0" Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ABranchOfNonResidentCompanyPEClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Branch of Non - Resident Company"
+                                                                IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Branch of Non - Resident Company"  IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>
+                                        <Grid x:Name="ConstructionSiteGd"   Grid.Row="1" Grid.Column="0" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ConstructionSitePEClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Construction Site" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedConstructionSitePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Construction Site"  IsVisible="{Binding IsClickedConstructionSitePE}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>
+                                        <Grid x:Name="InstallationGd"   Grid.Row="2" Grid.Column="0" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding InstallationPEClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Installation" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                              HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedInstallationPE}"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Installation"   IsVisible="{Binding IsClickedInstallationPE}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>
+                                        <Grid x:Name="AFixedBasedGd"   Grid.Row="3" Grid.Column="0" >
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding AFixedBasePEClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A fixed based"
+                                                                IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedAFixedBasePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A fixed based"   IsVisible="{Binding IsClickedAFixedBasePE}" 
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>
+                                        <Grid x:Name="ANonResidentPartnerGd"   Grid.Row="4" Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
+                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
+                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>
+                                        <Grid x:Name="ANonResidentPartner"   Grid.Row="5" Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
+                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
+                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>
+                                        <Grid x:Name="ANonResidentPartne"   Grid.Row="6" Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
+                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
+                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>
+                                        <Grid x:Name="ANonResidentPartn"   Grid.Row="7" Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
+                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
+                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>
+                                        <Grid x:Name="ANonResidentPart"   Grid.Row="8" Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
+                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
+                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
+                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
+                                        </Grid>
+                                       
+                                    </Grid>
+                                </StackLayout>
+                                
+                                
+                                
                                 <!--<ListView  x:Name="ListView_Correspondance" ItemsSource="{Binding TaxableIncomeSourceTypeList,Mode=TwoWay}" VerticalScrollBarVisibility="Never"  
                                            HorizontalOptions="FillAndExpand" VerticalOptions="Center"   HasUnevenRows="True" 
                                            BackgroundColor="White" SeparatorVisibility="None" ItemTapped="ListView_Correspondance_ItemTapped">
