@@ -4179,7 +4179,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Finanical Year</value>
   </data>
   <data name="FORM5ForPeriod" xml:space="preserve">
-    <value>For the Period From :</value>
+    <value>For the Period :</value>
   </data>
   <data name="FORM5GenerateObjection" xml:space="preserve">
     <value>Click here to Generate Objection</value>
@@ -5431,5 +5431,11 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="TPEmailUpdated" xml:space="preserve">
     <value>Email Updated</value>
+  </data>
+  <data name="FORM5From" xml:space="preserve">
+    <value>From :</value>
+  </data>
+  <data name="FORM5IndividualActivityDetail" xml:space="preserve">
+    <value>Individual Activity Detail</value>
   </data>
 </root>

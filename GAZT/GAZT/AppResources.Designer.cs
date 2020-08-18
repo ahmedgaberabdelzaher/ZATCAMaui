@@ -1326,11 +1326,20 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For the Period From :.
+        ///   Looks up a localized string similar to For the Period :.
         /// </summary>
         public static string FORM5ForPeriod {
             get {
                 return ResourceManager.GetString("FORM5ForPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From :.
+        /// </summary>
+        public static string FORM5From {
+            get {
+                return ResourceManager.GetString("FORM5From", resourceCulture);
             }
         }
         
@@ -1439,6 +1448,15 @@ namespace EGAZT {
         public static string FORM5IndividualActiDetails {
             get {
                 return ResourceManager.GetString("FORM5IndividualActiDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Individual Activity Detail.
+        /// </summary>
+        public static string FORM5IndividualActivityDetail {
+            get {
+                return ResourceManager.GetString("FORM5IndividualActivityDetail", resourceCulture);
             }
         }
         
