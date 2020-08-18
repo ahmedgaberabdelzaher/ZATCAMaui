@@ -56,16 +56,39 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     viewModel.IsLoading = false;
                 });
             }
+            //try
+            //{
+            //    var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+            //    foreach (var item in _navigation.NavigationStack)
+            //    {
+            //        if (item.GetType().Name == App.NewTaxEvasionFormPageView)
+            //        {
+            //            _navigation.RemovePage(item);
+            //            break;
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{ 
+            
+            //}
+            
+        }
+        
+        public void ChangeAeroIcon()
+        {
             try
             {
-                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
-                foreach (var item in _navigation.NavigationStack)
+
+                if (App.IsArabic)
                 {
-                    if (item.GetType().Name == App.NewTaxEvasionFormPageView)
-                    {
-                        _navigation.RemovePage(item);
-                        break;
-                    }
+                    Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+                }
+                else
+                {
+                    Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
                 }
             }
             catch (Exception ex)
@@ -73,20 +96,6 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             
             }
             
-        }
-        
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
         }
         private void SetLTR()
         {
@@ -104,26 +113,34 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         private async void ChipGroup_statusFilter_SelectionChanging(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
         {
-            await Task.Run(() =>
+            try
             {
-                viewModel.IsLoading = true;
-            });
-            ChipModel addeditemtype = (ChipModel)e.AddedItem;
-            ChipModel removedItem = (ChipModel)e.RemovedItem;
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                ChipModel addeditemtype = (ChipModel)e.AddedItem;
+                ChipModel removedItem = (ChipModel)e.RemovedItem;
 
-            if (addeditemtype != null)
-            {
-                viewModel.SelectedChipFilterItemList.Add(addeditemtype);
+                if (addeditemtype != null)
+                {
+                    viewModel.SelectedChipFilterItemList.Add(addeditemtype);
+                }
+                if (removedItem != null)
+                {
+                    viewModel.SelectedChipFilterItemList.Remove(removedItem);
+                }
+                viewModel.FilterOnbasisOfChipSelectedItem();
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
-            if (removedItem != null)
-            {
-                viewModel.SelectedChipFilterItemList.Remove(removedItem);
+            catch (Exception ex)
+            { 
+            
             }
-            viewModel.FilterOnbasisOfChipSelectedItem();
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+            
         }
 
         private void ListView_TaxEvasionReportList_ItemTapped(object sender, ItemTappedEventArgs e)
