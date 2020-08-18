@@ -1409,7 +1409,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public bool IsThresholdValueLessThanTotalVATSales()
         {
-            double d = Convert.ToDouble(ZakatReturnDetails.d.TvtslI);
+            string TotalVatSalesAmount = string.Empty ;
+            if (ZakatReturnDetails.d.TvtslI.Contains(","))
+            {
+                TotalVatSalesAmount = ZakatReturnDetails.d.TvtslI.Replace("'", "");
+            }
+            else
+            {
+                TotalVatSalesAmount = ZakatReturnDetails.d.TvtslI;
+            }
+            
+            double d = Convert.ToDouble(TotalVatSalesAmount);
             double d1 = Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value);
             bool IsThresholdGreaterLessVATAmount = d1 < d;
             if (Convert.ToDouble(ZakatReturnDetails.d.TvtslE) > Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value))

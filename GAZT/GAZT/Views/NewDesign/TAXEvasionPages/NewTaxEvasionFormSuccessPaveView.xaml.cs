@@ -54,11 +54,23 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         protected override bool OnBackButtonPressed() => true;
        
-
+        
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
 
           viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
         }
-    }
+
+    private void OnGotoReportPageClicked(object sender, EventArgs e)
+    {
+            if (Navigation.NavigationStack.Count > 0)
+            {
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(pg);
+            }
+            viewModel._navigationService.GoBack();
+        }
+
+    
+}
 }

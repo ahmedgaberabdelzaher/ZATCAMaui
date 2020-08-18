@@ -18,6 +18,7 @@ namespace GAZT.iOS
             }
             catch (Exception ex)
             {
+
             }
         }
     }
