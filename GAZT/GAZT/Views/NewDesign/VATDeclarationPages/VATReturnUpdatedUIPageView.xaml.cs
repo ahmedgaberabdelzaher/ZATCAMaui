@@ -96,6 +96,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 viewModel.ManageEnabledProperty(true);
                 viewModel.IsMainButtonEnabled = true;
+                viewModel.IsMainButtonVisible = true;
             }
         }
          public void Instrunctionsclicked()
@@ -384,12 +385,14 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.IsNewReturn = true;
                 ShowHideContent(viewModel.IsNewReturn);
                 SetNewVATRate();
+               // viewModel.MaxIndex = 6;
             }
             else
             {
                 viewModel.IsFifteenPercentChange = false;
                 viewModel.IsNewReturn = false;
                 ShowHideContent(viewModel.IsNewReturn);
+               // viewModel.MaxIndex = 5;
             }
 
         }
@@ -704,6 +707,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         await onPageLoadCalculation();
                     }
                     SetEnabledProperty();
+                    //viewModel.IsMainButtonVisible = true;
                 }
                 catch(Exception ex)
                 {
@@ -7955,7 +7959,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                     if (viewModel.IsDeclarationCheckedForSummary && (viewModel.IsVoidClicked == false && viewModel.IsResetClicked == false))
                     {
-                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (viewModel.IsCheckedDraftMode()))
+                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (App.ICRStatus == "E0001" || viewModel.IsCheckedDraftMode()))
                         {
                             Device.BeginInvokeOnMainThread(() =>
                             {
