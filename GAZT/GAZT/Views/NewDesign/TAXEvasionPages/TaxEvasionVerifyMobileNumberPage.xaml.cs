@@ -23,12 +23,12 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
             viewModel = App.Locator.TaxEvasionVerifyMobileNumberPage;
             this.BindingContext = viewModel;
-
+            viewModel.MobileNumber = string.Empty;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.ShowMobileForm();
             ChangeAeroIcon();
             SetLTR();
-            viewModel.MobileNumber = "";
+           
         }
         protected async override void OnAppearing()
         {
