@@ -4541,7 +4541,7 @@
   <data name="VatDeregNextFilingDueDate" xml:space="preserve">
     <value>Next Filing due date</value>
   </data>
-    <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
+  <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
     <value>The Start Date and End Date lie in the same period</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
@@ -5422,5 +5422,11 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="ZZZZVATDue" xml:space="preserve">
     <value>ضريبة القيمة المضافة المستحقة</value>
+  </data>
+  <data name="Form5Finish" xml:space="preserve">
+    <value>النهاية</value>
+  </data>
+  <data name="NDEdit" xml:space="preserve">
+    <value>تعديل</value>
   </data>
 </root>

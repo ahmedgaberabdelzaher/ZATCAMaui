@@ -32,6 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         List<EstimateZakatAttachment> EstimateZakatAttachmentList = new List<EstimateZakatAttachment>();
         public string Fbguid { get; set; }
         public bool IsCurrentZAKATTaxLess = false;
+        public bool isThresholdValueLessThanTotalVATSales;
         public const string SubmitPostOperation = "05";
         public const string ConfirmPostOperationWithoutObjection = "65";
         public const string ConfirmPostOperationWithObjection = "66";
@@ -589,7 +590,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         ToDate =" - "  +  toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
-                        bool isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales();
+                         isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales();
                         if (isThresholdValueLessThanTotalVATSales)
                         {
                             SetReadOnlyToOtherThanTotalVATSales = true;
@@ -1382,7 +1383,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsEditTextVisible = true;
         }
 
-
         public void ClearData()
         {
             UnSetEditImage();
@@ -1392,6 +1392,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetSubmitButtonVisibility = false;
             ConfirmAndGenerateSADADBillLabelVisibility = false;
             SetConfirmButtonVisibility = false;
+            isThresholdValueLessThanTotalVATSales = false;
         }
 
         public void SetChangeFromEstimateTAccountringBasisButtonVisibility(string ButtonStatus)

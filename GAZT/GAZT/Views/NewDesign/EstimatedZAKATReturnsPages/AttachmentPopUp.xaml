@@ -105,7 +105,7 @@
 
                                                 </Image>
 
-                                                <Label Text="File1.pdf" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                                <Label Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
 
                                                 <Image HorizontalOptions="EndAndExpand">
                                                     <Image.Source>

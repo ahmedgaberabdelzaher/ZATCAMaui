@@ -95,17 +95,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 return AppResources.InvalidEmailFormat;
             else
             {
-                /*bool passwordValidationRegXFlag = UtilityManager.ValidateNewPassword(NewPassword);
-                if (passwordValidationRegXFlag)
+                bool validateEmailFormateRegX = UtilityManager.IsValidEmailAddress(NewEmail);
+                if (validateEmailFormateRegX)
                 {
                     return string.Empty;
                 }
                 else
                 {
-                    return "Password Not Matches As Expected!!";
-                }*/
-
-                return string.Empty;
+                    return AppResources.InvalidEmailFormat;
+                }
             }
         }
 
@@ -123,6 +121,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
+            // Show existing email
+            viewModel.CurrentEmailText = App.TP.Email;
+
             RefreshControlsData();
         }
 
@@ -137,7 +138,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         // * // Reset Enteried
         private void RefreshControlsData()
         {
-            viewModel.CurrentEmailText = string.Empty;
             viewModel.NewEmailText = string.Empty;
             viewModel.ConfirmEmailText = string.Empty;
         }
