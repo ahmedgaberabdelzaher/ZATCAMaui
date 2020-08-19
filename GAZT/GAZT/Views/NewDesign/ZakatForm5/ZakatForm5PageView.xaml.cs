@@ -54,7 +54,10 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 await LoadData();
 
                 if (viewModel != null)
+                {
                     viewModel.IsLoading = false;
+                    viewModel.NextText = AppResources.ZZNext;
+                }
             });
         }
         private async Task LoadData()

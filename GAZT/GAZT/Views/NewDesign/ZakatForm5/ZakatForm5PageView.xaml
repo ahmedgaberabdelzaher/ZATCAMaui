@@ -104,8 +104,18 @@
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Period}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
+                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding ZakatFromDate}" />
+                                                            <Span Text=" - "/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </custom:CustomLabel>
+                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding ZakatToDate}">
+                                                    
+                                                </custom:CustomLabel>
+                                            </StackLayout>
                                 </StackLayout>
                             </StackLayout>
                         </border:SfBorder>
@@ -3063,11 +3073,12 @@
                 </Grid>
                     <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" />
                 </StackLayout>
-                <StackLayout Grid.Row="2" BackgroundColor="White">
-                    <buttons:SfButton x:Name="btnprimary" Text="{Binding NextText}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
-                </StackLayout>
-            </Grid>
+                    <StackLayout Grid.Row="2" BackgroundColor="White">
+                        <buttons:SfButton x:Name="btnprimary" Text="{Binding NextText}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
+                    </StackLayout>
+                </Grid>
         </yummy:PancakeView>
+
             <Grid Grid.Row="0" IsVisible="{Binding IsLoading}" Margin="0,-20,0,0">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
@@ -3087,6 +3098,7 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
