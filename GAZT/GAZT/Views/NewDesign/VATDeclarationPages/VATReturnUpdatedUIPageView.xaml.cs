@@ -96,7 +96,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 viewModel.ManageEnabledProperty(true);
                 viewModel.IsMainButtonEnabled = true;
-                viewModel.IsMainButtonVisible = true;
+                // viewModel.IsMainButtonVisible = true;
+                viewModel.ManageButtonsNameOnViewModel();
             }
         }
          public void Instrunctionsclicked()
