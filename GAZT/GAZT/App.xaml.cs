@@ -71,6 +71,8 @@ namespace EGAZT
         public static string NewTaxEvasionFormPageView = "NewTaxEvasionFormPageView";
         public static string AttachmentPopUp = "AttachmentPopUp";
         public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
+        public static string RefundAccountPopupPageView = "RefundAccountPopupPageView";
+        public static string NewAccountPopPageView = "NewAccountPopPageView";
 
         // * Taxpayer Profile
         public static string TaxpayerProfilePageView = "TaxpayerProfilePageView";
