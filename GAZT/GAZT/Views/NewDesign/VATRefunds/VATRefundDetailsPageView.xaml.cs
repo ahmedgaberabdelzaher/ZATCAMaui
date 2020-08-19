@@ -11,6 +11,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
     {
         VATRefundDetailsPageViewModel viewModel;
         VatRefundsListResultModel vatRefundsListResultModel;
+        VatRefundDisplayDataModel vatRefundsSaveDataModel;
 
         public VATRefundDetailsPageView(VatRefundsListResultModel vATRefundsModel)
         {
@@ -25,18 +26,46 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             this.BindingContext = viewModel;
         }
 
-        protected override void OnAppearing()
+        public VATRefundDetailsPageView(VatRefundDisplayDataModel vATRefundsSaveModel)
+        {
+            InitializeComponent();
+
+            viewModel = App.Locator.VATRefundDetailsPageView;
+            vatRefundsListResultModel = null;
+            vatRefundsSaveDataModel = vATRefundsSaveModel;
+
+            ChangeAeroIcon();
+            SetLTR();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            this.BindingContext = viewModel;
+        }
+
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.ReloadData(vatRefundsListResultModel);
+
+            if(vatRefundsListResultModel == null)
+            {
+                viewModel.IsNewReqSummary = true;
+                viewModel.LoadSummaryData(vatRefundsSaveDataModel);
+            }
+            else
+            {
+                viewModel.IsNewReqSummary = false;
+                await viewModel.ReloadData(vatRefundsListResultModel);
+            }
         }
 
         private void SetLTR()
         {
-            //if (App.IsArabic)
-            //{
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
                 this.FlowDirection = FlowDirection.LeftToRight;
-            //}
+            }
         }
         public void ChangeAeroIcon()
         {
@@ -55,6 +84,18 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             try
             {
                 viewModel._navigationService.NavigateTo(App.VATRefundsSuccessPageView);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        void ConfirmSummaryButton_Tapped(object sender, EventArgs e)
+        {
+            try
+            {
+                viewModel.ConfirmSummaryBtnClicked();
             }
             catch (Exception ex)
             {

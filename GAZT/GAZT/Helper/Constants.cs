@@ -187,8 +187,10 @@ namespace GAZT.Helper
 
         #region VATRefunds
         public static string VatRefundList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ETRF_WI_SRV/WISet";
-        public static string VatRefundDisplayData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet(Euser='',FormGuid='',Formprocx='ZTAX_VAT_MAISC_PROC',";
+        public static string VatRefundDisplayData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet(Euser='',Fbnumx='',";
         public static string VatRefundGetIbanData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_UI_RF_SRV/VR_UI_HDRSet(Fbnum='',Lang='',Officer='',";
+        public static string VatRefundSubmitData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet";
+       
         #endregion
 
 

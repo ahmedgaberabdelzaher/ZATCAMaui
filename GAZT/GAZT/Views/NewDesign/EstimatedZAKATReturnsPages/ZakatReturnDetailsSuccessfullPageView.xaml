@@ -33,7 +33,7 @@
             </StackLayout>
 
             <yummy:PancakeView HeightRequest="250" Grid.Row="1" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White">
-                <Grid HorizontalOptions="FillAndExpand" Padding="0,0,0,10" VerticalOptions="FillAndExpand" RowSpacing="0">
+                <Grid HorizontalOptions="FillAndExpand" Padding="0,0,0,0" VerticalOptions="FillAndExpand" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>

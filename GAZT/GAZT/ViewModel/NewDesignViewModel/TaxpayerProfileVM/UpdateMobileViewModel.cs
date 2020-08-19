@@ -285,6 +285,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("VERIFY OTP ERROR : {0}", ex.ToString());
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                });
             }
 
             return TP;
