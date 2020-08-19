@@ -28,6 +28,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             viewModel.ShowMobileForm();
             ChangeAeroIcon();
             SetLTR();
+            viewModel.MobileNumber = "";
         }
         protected async override void OnAppearing()
         {

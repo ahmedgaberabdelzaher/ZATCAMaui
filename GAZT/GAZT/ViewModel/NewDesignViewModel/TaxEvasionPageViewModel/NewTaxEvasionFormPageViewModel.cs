@@ -789,6 +789,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         public ICommand OnBackStepClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
         public ICommand OnGotoReportPageClicked { get; set; }
+        public ICommand OnEditClicked { get; set; }
         #endregion
 
         #region Constructor
@@ -815,6 +816,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
             });
+            OnEditClicked = new Command<NewTaxEvasionTabEnum>((gotoTab) => EditInfo(gotoTab));
         }
         #endregion
 
@@ -944,6 +946,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 case NewTaxEvasionTabEnum.FacilityInfo:
                     currentTab= NewTaxEvasionTabEnum.ReporterInfo;
                     PageTitle = AppResources.NDReporterInformation;
+                    break;
+            }
+
+        }
+        private void EditInfo(NewTaxEvasionTabEnum gotoTab)
+        {
+            switch (gotoTab)
+            {
+                case NewTaxEvasionTabEnum.ReporterInfo:
+                    currentTab = NewTaxEvasionTabEnum.ReporterInfo;
+                    PageTitle = AppResources.NDReporterInformation;
+                    break;
+
+                case NewTaxEvasionTabEnum.ReportDetails:
+                    currentTab = NewTaxEvasionTabEnum.ReportDetails;
+                    PageTitle = AppResources.NDTaxEvasionReportDetails;
+                    BodyTitle = AppResources.ZZZZCompletethebelowdetails;
+                    break;
+
+                case NewTaxEvasionTabEnum.FacilityInfo:
+                    currentTab = NewTaxEvasionTabEnum.FacilityInfo;
+                    PageTitle = AppResources.NDFacilityInformation;
                     break;
             }
 
