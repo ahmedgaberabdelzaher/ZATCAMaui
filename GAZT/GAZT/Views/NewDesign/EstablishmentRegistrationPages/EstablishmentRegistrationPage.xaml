@@ -46,8 +46,8 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="20,10,20,0">
-                <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">
-                    <ScrollView  Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout x:Name="RegistrationTabMainGrid"  Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">
+                    <ScrollView   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                         <Grid x:Name="RegistrationTab"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <!--IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">-->
                             <Grid.RowDefinitions>
@@ -70,18 +70,9 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <StackLayout>
-                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                            <Label Text="Sample drop down" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                                <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
-                                               HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                            </StackLayout>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
-                                            </StackLayout.GestureRecognizers>
-                                        </StackLayout>
-                                    </border:SfBorder >
+                                    <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnReportingBranchSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
@@ -439,229 +430,309 @@
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout x:Name="OtherTaxIncomeFromSourceWithInTheSKAlist" Grid.Row="8" Orientation="Vertical" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" >
-                                <StackLayout Orientation="Vertical"  Grid.Row="5" Margin="0,0,0,10">
-                                    <Grid  Margin="0,0,0,10">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid x:Name="ABranchNonResidentCompanygd"  Grid.Row="0" Grid.Column="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding ABranchOfNonResidentCompanyPEClick}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Branch of Non - Resident Company"
-                                                                IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"   IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Branch of Non - Resident Company"  IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                        <Grid x:Name="ConstructionSiteGd"   Grid.Row="1" Grid.Column="0" >
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding ConstructionSitePEClick}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Construction Site" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedConstructionSitePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Construction Site"  IsVisible="{Binding IsClickedConstructionSitePE}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                        <Grid x:Name="InstallationGd"   Grid.Row="2" Grid.Column="0" >
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding InstallationPEClick}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Installation" IsVisible="{Binding IsClickedInstallationPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                              HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedInstallationPE}"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Installation"   IsVisible="{Binding IsClickedInstallationPE}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                        <Grid x:Name="AFixedBasedGd"   Grid.Row="3" Grid.Column="0" >
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding AFixedBasePEClick}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A fixed based"
-                                                                IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedAFixedBasePE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A fixed based"   IsVisible="{Binding IsClickedAFixedBasePE}" 
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                        <Grid x:Name="ANonResidentPartnerGd"   Grid.Row="4" Grid.Column="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
-                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
-                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                        <Grid x:Name="ANonResidentPartner"   Grid.Row="5" Grid.Column="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
-                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
-                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                        <Grid x:Name="ANonResidentPartne"   Grid.Row="6" Grid.Column="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
-                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
-                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                        <Grid x:Name="ANonResidentPartn"   Grid.Row="7" Grid.Column="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
-                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
-                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                        <Grid x:Name="ANonResidentPart"   Grid.Row="8" Grid.Column="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
-                                            </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
-                                                                IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
-                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="Gray" />
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner"  IsVisible="{Binding IsClickedNonResidentPartnerPE}" 
-                                                               HorizontalOptions="CenterAndExpand"  Padding="10" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                                LineSpacing="1" VerticalTextAlignment="Center" TextColor="White" />
-                                        </Grid>
-                                       
-                                    </Grid>
-                                </StackLayout>
-                                
-                                
-                                
-                                <!--<ListView  x:Name="ListView_Correspondance" ItemsSource="{Binding TaxableIncomeSourceTypeList,Mode=TwoWay}" VerticalScrollBarVisibility="Never"  
-                                           HorizontalOptions="FillAndExpand" VerticalOptions="Center"   HasUnevenRows="True" 
-                                           BackgroundColor="White" SeparatorVisibility="None" ItemTapped="ListView_Correspondance_ItemTapped">
-                                    <x:Arguments>
-                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
-                                    </x:Arguments>
-                                    <ListView.ItemTemplate>
+                            <CollectionView  x:Name="OtherTaxIncomeFromSourceWithInTheSKAlist" Grid.Row="8" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
+                                                 VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
+                                                 ItemsSource="{Binding TaxableIncomeSourceTypeList}"  SelectedItem="{Binding SelectedTaxIncomeSourceType, Mode=OneWay}"
+                                                 SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical"  HorizontalItemSpacing="0" VerticalItemSpacing="0"  />
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <ViewCell>
-                                                <Grid  WidthRequest="300" >
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="20*"></RowDefinition>
-                                                    </Grid.RowDefinitions>
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsSelectedType,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding IncomeSourceType}"  IsVisible="{Binding IsSelectedType,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  Padding="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="Gray" />
-                                                    <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup.png"  IsVisible="{Binding IsSelectedType}"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
-                                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding IncomeSourceType}"  IsVisible="{Binding IsSelectedType}"   Padding="5"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
-                                                    VerticalTextAlignment="Center" TextColor="White" />
-                                                </Grid>
-                                            </ViewCell>
+                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualState x:Name="Normal">
+                                                            <VisualState.Setters>
+                                                                <Setter Property="BackgroundColor" Value="White" />
+                                                                <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup_W" />
+                                                                <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="Gray" />
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Selected">
+                                                            <VisualState.Setters>
+                                                                <Setter Property="BackgroundColor" Value="White" />
+                                                                <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup" />
+                                                                <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="White" />
+                                                            </VisualState.Setters>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="30" VerticalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
+                                                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                                      HorizontalOptions="CenterAndExpand"  Padding="20" 
+                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start"
+                                                                LineSpacing="1" VerticalTextAlignment="Start"  />
+                                        </Grid>
                                         </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>-->
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            <!--</StackLayout>-->
+                        </Grid>
+                    </ScrollView>
+                </StackLayout>
+                <StackLayout x:Name="TaxpayerDetailsTabMain" Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
+                  <ScrollView   HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                        <Grid x:Name="TaxpayerDetailsTab"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <!--IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout x:Name="IdentificationDetailsSL"    Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
+                                <custom:CustomLabel  Text="Identification Details" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                                <Grid HorizontalOptions="FillAndExpand"  >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="ID Type" TextColor="Gray" FontFamily="{StaticResource SSTArBold}"  />
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="GCC ID" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}"/>
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="ID Number" TextColor="Gray" FontFamily="{StaticResource SSTArBold}"  />
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="1234567890" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" />
+                                </Grid>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                                    <!--<Label Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                        <Image Margin="5,0">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </StackLayout>-->
+                                    <!--<StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="StartDate" Tapped="VATDeregStartDateClicked" ></TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>-->
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Date of Birth" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding DOB}" 
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" >
+                                        <buttons:SfButton.ImageSource>
+                                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                        </buttons:SfButton.ImageSource>
+                                        <buttons:SfButton.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="DateofBirth" Tapped="dOBDateClicked" ></TapGestureRecognizer>
+                                        </buttons:SfButton.GestureRecognizers>
+                                    </buttons:SfButton>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout x:Name="PersonalDetails" Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
+                                <custom:CustomLabel  Text="Identification Details" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                            
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="First Name" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                        <Entry VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Last Name" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                        <Entry  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
+                                               TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Fathers Name" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                        <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="GrandFathers Name" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                        <Entry  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Family Name" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                        <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Initial" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                        <Entry  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Gender" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <CollectionView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding GenderList}" SelectedItem="{Binding SelectedGender, Mode=TwoWay}"  HeightRequest="112" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                                        <CollectionView.ItemsLayout>
+                                            <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="0" />
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" HeightRequest="108" Padding="0" Margin="0">
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="Normal">
+                                                                <VisualState.Setters>
+                                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                                    <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup_W" />
+                                                                    <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="{StaticResource NeutralBlack}" />
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Selected">
+                                                                <VisualState.Setters>
+                                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                                    <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup" />
+                                                                    <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="White" />
+                                                                </VisualState.Setters>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
+                                                                    Margin="26" HorizontalTextAlignment="Start" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout x:Name="NationalityDetails" Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10">
+                                <custom:CustomLabel  Text="Identification Details" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Nationality" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <StackLayout>
+                                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnPDNatinalitySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Citizen" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <StackLayout>
+                                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnPDCitizenSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
+                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Residence" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <StackLayout>
+                                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnPDResidenceSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
+                                    </StackLayout>
+                                </StackLayout>
+                           
                             </StackLayout>
                         </Grid>
                     </ScrollView>
                 </StackLayout>
-                <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
-                    <custom:CustomLabel Text="Taxpayer Details" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
-                    <BoxView HeightRequest="1" BackgroundColor="WhiteSmoke" Margin="0,10" />
+                <StackLayout x:Name="PassportDetailsTabMainGrid"  Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}}">
+                    <ScrollView   HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                        <Grid x:Name="PassportDetailsTab"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <!--IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
+                                <Label  Style="{StaticResource forLightLabel}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Passport" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <StackLayout>
+                                    <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnReportingBranchSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
+                                </StackLayout>
+                            </StackLayout>
+                           
+                            <!--</StackLayout>-->
+                        </Grid>
+                    </ScrollView>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
                     <buttons:SfButton ShowIcon="True" Text="Add Outlet" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />

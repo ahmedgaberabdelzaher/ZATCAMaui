@@ -1,4 +1,9 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.GenericPickers;
+using GAZT.Helper;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 
@@ -27,22 +32,31 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             base.OnDisappearing();
         }
 
-        private void ListView_Correspondance_ItemTapped(object sender, ItemTappedEventArgs e)
+        async void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
-            ETaxableIncomeSourceTypeListModel taxableIncomeSourceTypeSelected = ((Xamarin.Forms.ListView)sender).SelectedItem as ETaxableIncomeSourceTypeListModel;
 
-            if (taxableIncomeSourceTypeSelected.IsSelectedType == false)
+            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+            genericPickerModel.PickerTitle = "DateofBirthType";
+            genericPickerModel.PickerId = "DateofBirthTypePicker";
+            try
             {
-                taxableIncomeSourceTypeSelected.IsSelectedType = true;
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
 
             }
-         //  viewModel.ShowCorrespondenceDetails(Correspondence);
-         ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._navigationService.GoBack();
+                });
+            }
+
+
         }
 
-        private void TappedOnicon(object sender, EventArgs e)
-        {
-
-        }
     }
 }

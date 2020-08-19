@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         public bool MarkComplete { get; private set; } = false;
-        private int _maxIndex = 5;
+        private int _maxIndex = 6;
         public int MaxIndex
         {
             get => _maxIndex; private set
@@ -63,6 +63,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged(nameof(SelectedTabText));
             }
         }
+
+        #region Registration Details Tab Variables
 
         private bool _isClickedOwnRentOption = false;
         public bool IsClickedOwnRentOption
@@ -187,8 +189,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-        private List<ETaxableIncomeSourceTypeListModel> _taxableIncomeSourceTypeList;
-        public List<ETaxableIncomeSourceTypeListModel> TaxableIncomeSourceTypeList
+        private ObservableCollection<string> _taxableIncomeSourceTypeList = new ObservableCollection<string>();
+        public ObservableCollection<string> TaxableIncomeSourceTypeList
         {
             get
             {
@@ -197,10 +199,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _taxableIncomeSourceTypeList = value;
-                RaisePropertyChanged("TaxableIncomeSourceTypeList");
+                RaisePropertyChanged(nameof(TaxableIncomeSourceTypeList));
             }
         }
 
+        private string _selectedTaxIncomeSourceType = null;
+        public string SelectedTaxIncomeSourceType
+        {
+            get => _selectedTaxIncomeSourceType;
+            private set
+            {
+                _selectedTaxIncomeSourceType = value;
+                RaisePropertyChanged(nameof(SelectedTaxIncomeSourceType));
+            }
+        }
 
         private bool _isAttachmentEnable = false;
         public bool IsAttachmentEnabled
@@ -215,6 +227,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsAttachmentEnable");
             }
         }
+        #endregion
+
+        #region TaxPayer Personal Details Tab Variables
+
+        private ObservableCollection<string> _genderList = new ObservableCollection<string>();
+        public ObservableCollection<string> GenderList
+        {
+            get => _genderList;
+            private set
+            {
+                _genderList = value;
+                RaisePropertyChanged(nameof(GenderList));
+            }
+        }
+        private string _selectedGender = null;
+        public string SelectedGender
+        {
+            get => _selectedGender;
+            private set
+            {
+                _selectedGender = value;
+                RaisePropertyChanged(nameof(SelectedGender));
+            }
+        }
+
+
+        #endregion
 
         #region Financial Details Tabs variables
         private ObservableCollection<string> _methodList = new ObservableCollection<string>();
@@ -268,6 +307,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnPreButtonClick { get; private set; }
 
 
+        #region Registration Tab commands
+
+       
+
         #region NationalityStatus option commands
         public ICommand NationalityStatusRentOwnHouseClick { get; set; }
         public ICommand NationalityStatusStayMoreThanKSAClick { get; set; }
@@ -290,9 +333,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand NonResidentPartnerPEClick { get; set; }
         #endregion
 
-
-
         public ICommand OnAttachmentClick { get; set; }
+        public ICommand OnReportingBranchSelectButtonClick { get; set; }
+
+        #endregion
+
+        #region TaxPayer Tab commands
+
+        public ICommand OnPDNatinalitySelectButtonClick { get; set; }
+
+        public ICommand OnPDCitizenSelectButtonClick { get; set; }
+
+        public ICommand OnPDResidenceSelectButtonClick { get; set; }
+
+        #endregion
 
 
         #region Financial Details Tabs commands
@@ -306,6 +360,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
+
+
+            #region Registration Tab Variable initialization
+
             NationalityStatusStayMoreThanKSAClick = new Command(() => nationalityStatusSelection(EstablishmentRegistrationNationalityEnum.StayMoreThanKSA));
             NationalityStatusRentOwnHouseClick = new Command(() => nationalityStatusSelection(EstablishmentRegistrationNationalityEnum.RentOwnhouseMoreThanThirtyDays));
             NationalityStatusNoneOfTheAboveClick = new Command(() => nationalityStatusSelection(EstablishmentRegistrationNationalityEnum.NoneOfTheAbove));
@@ -322,11 +380,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             #endregion
 
+            taxableIncomeSourceTypeListObjPreparation();
+
+            OnReportingBranchSelectButtonClick = new Command(() => {
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+            });
+
+            #endregion
+
+            #region TaxPayer Variable initialization
+
+            getGenderList();
+
+            OnPDNatinalitySelectButtonClick = new Command(() => {
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+            });
+
+            OnPDCitizenSelectButtonClick = new Command(() => {
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+            });
+
+            OnPDResidenceSelectButtonClick = new Command(() => {
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+            });
+            #endregion
+
             #region Financial Details Tabs variable initialization
             MethodList.Clear();
             MethodList.Add("Accounts");
             MethodList.Add("Estimate");
-            
+            MethodList.Add("Accounts1");
+            MethodList.Add("Estimate1");
+            MethodList.Add("Accounts2");
+            MethodList.Add("Estimate3");
+            MethodList.Add("Accounts4");
+            MethodList.Add("Estimate5");
+
             CalendarTypeList.Clear();
             CalendarTypeList.Add("Hijri");
             CalendarTypeList.Add("Gregorian");
@@ -334,13 +423,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Device.BeginInvokeOnMainThread(()=> {
                 SelectedMethod = MethodList.FirstOrDefault();
                 CalendarType = CalendarTypeList.LastOrDefault();
+               var testValue = SelectedTaxIncomeSourceType ;
             });
             OnMonthSelectButtonClick = new Command(() => {
                 PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
             });
             #endregion
 
-            testObjectPrepare();
+        
         }
 
         #endregion
@@ -349,6 +439,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private void navigateToNext()
         {
             if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+            {
+                currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+                SelectedTabText = "Passport Details";
+            }
+            if (currentTab == EstablishmentRegistrationTabsEnum.PassportDetails)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.Outlets;
                 SelectedTabText = "Outlets";
@@ -376,10 +471,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
                 SelectedTabText = "Registration/Taxpayer type";
             }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
+            else if (currentTab == EstablishmentRegistrationTabsEnum.PassportDetails)
             {
                 currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
                 SelectedTabText = "Taxpayer Personal Details";
+            }
+            else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
+            {
+                currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+                SelectedTabText = "Passport Details";
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
             {
@@ -568,23 +668,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        private void testObjectPrepare()
+        private void taxableIncomeSourceTypeListObjPreparation()
         {
-            TaxableIncomeSourceTypeList = new List<ETaxableIncomeSourceTypeListModel>()
-                { new ETaxableIncomeSourceTypeListModel() { IncomeSourceType="First Record", Id=101},
-                new ETaxableIncomeSourceTypeListModel() { IncomeSourceType = "First Secound record", Id = 102 } };
+            TaxableIncomeSourceTypeList.Clear();
+            TaxableIncomeSourceTypeList.Add("Derived from an activity which occurs in KSA");
+            TaxableIncomeSourceTypeList.Add("Derived from immoviable property located in the Kingdome");
+            TaxableIncomeSourceTypeList.Add("Derived from the disposal of shares or a partnership in resident company");
+            TaxableIncomeSourceTypeList.Add("Derived from lease of moveable properties used in Kingdome");
+            TaxableIncomeSourceTypeList.Add("Derived from Sales or license for use of industrial or intellectual Properties used in Kingdome");
+            TaxableIncomeSourceTypeList.Add("Dividends, Managment or directors fees paid by resident company");
+            TaxableIncomeSourceTypeList.Add("Amounts paid against services rendered to the company's head office or to an affiliated company");
+            TaxableIncomeSourceTypeList.Add("Amounts paid by a resident against serivces performed in whole or in part in the Kingdome");
+            TaxableIncomeSourceTypeList.Add("Amounts for exploitation of a natural resource in the kingdome");
+
+         
+
+        }
+
+
+        private void getGenderList()
+        {
+            GenderList.Clear();
+            GenderList.Add("Male");
+            GenderList.Add("Female");
+
 
         }
         #endregion
     }
 
 
-    public class ETaxableIncomeSourceTypeListModel
-    {
-        public string IncomeSourceType { get; set; }
-
-        public int Id { get; set; }
-
-        public bool IsSelectedType { get; set; }
-    }
 }
