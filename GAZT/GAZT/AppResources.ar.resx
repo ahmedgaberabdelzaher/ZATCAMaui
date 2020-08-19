@@ -5426,4 +5426,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="Form5Finish" xml:space="preserve">
     <value>النهاية</value>
   </data>
+  <data name="NDEdit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
 </root>

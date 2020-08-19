@@ -89,17 +89,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 return AppResources.NewPasswordandRetypePasswordNotMatch;
             else
             {
-                /*bool passwordValidationRegXFlag = UtilityManager.ValidateNewPassword(NewPassword);
+                bool passwordValidationRegXFlag = UtilityManager.ValidateNewPasswordForTP(NewPassword);
                 if (passwordValidationRegXFlag)
                 {
                     return string.Empty;
                 }
                 else
                 {
-                    return "Password Not Matches As Expected!!";
-                }*/
-
-                return string.Empty;
+                    return AppResources.InvalidPassword;
+                }
             }
         }
 
@@ -148,13 +146,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
+            // Show existing email
+            viewModel.CurrentPasswordEntry = "********";
+
             RefreshControlsData();
         }
 
         // * // Reset Enteried
         private void RefreshControlsData()
         {
-            viewModel.CurrentPasswordEntry = string.Empty;
             viewModel.NewPasswordEntry = string.Empty;
             viewModel.ConfirmPasswordEntry = string.Empty;
         }

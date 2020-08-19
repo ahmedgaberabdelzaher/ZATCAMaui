@@ -81,57 +81,71 @@
                             LeadingViewPosition="Inside"
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"
-                            OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
+                            OutlineCornerRadius="8"
+                            FocusedColor="#005e4b" ErrorColor="#B00020"
+                            InputViewPadding="16,0,16,0" FlowDirection="LeftToRight">
                             <StackLayout Orientation="Horizontal"
                                          Padding="0,8,0,8">
                                 <OnPlatform x:TypeArguments="View">
                                     <On Platform="iOS">
                                         <custom:CustomLabel Text="+966"
-                                                        VerticalTextAlignment="Center"
-                                                        Style="{StaticResource BodyLabelGrey}" />
+                                                            VerticalTextAlignment="Center"
+                                                            Style="{StaticResource BodyLabelGrey}" />
                                     </On>
                                     <On Platform="Android">
-                                        <control:BorderlessEntry
-                                                Placeholder="+966"
-                                                VerticalTextAlignment="Center"
-                                                Style="{StaticResource DefaultEntry}"
-                                                IsEnabled="False" />
+                                        <control:BorderlessEntry Placeholder="+966"
+                                                                 VerticalTextAlignment="Center"
+                                                                 Style="{StaticResource DefaultEntry}"
+                                                                 IsEnabled="False" />
                                     </On>
                                 </OnPlatform>
 
                                 <BoxView WidthRequest="1"
                                          HeightRequest="1"
                                          BackgroundColor="{StaticResource NeutralLightGrey}"/>
-                            </StackLayout>
 
+                                <control:BorderlessEntry VerticalTextAlignment="Center"
+                                                         Style="{StaticResource DefaultEntry}"
+                                                         IsEnabled="False"
+                                                         Text="{Binding MobileNumber}"
+                                                         HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
                         </inputLayout:SfTextInputLayout>
 
                         <StackLayout Orientation="Horizontal">
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}" Style="{StaticResource CaptionLabelGrey}"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}"
+                                                Style="{StaticResource CaptionLabelGrey}"/>
                             <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnEmailEditTapped"/>
                                 </Image.GestureRecognizers>
                             </Image>
                         </StackLayout>
-                        <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
+                        <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand"
+                                                        LeadingViewPosition="Inside" ContainerType="Outlined"
+                                                        UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
+                                                        FocusedColor="#005e4b" ErrorColor="#B00020"
+                                                        InputViewPadding="16,8,16,8">
 
-
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="{Binding EmailEntry}"
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
+                                                     Text="{Binding EmailEntry}"
                                                      IsEnabled="False">
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
-
                         <StackLayout Orientation="Horizontal">
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Password}" Style="{StaticResource CaptionLabelGrey}"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Password}"
+                                                Style="{StaticResource CaptionLabelGrey}"/>
                             <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnPasswordEditTapped"/>
                                 </Image.GestureRecognizers>
                             </Image>
                         </StackLayout>
-                        <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
+                        <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand"
+                                                        LeadingViewPosition="Inside" ContainerType="Outlined"
+                                                        UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
+                                                        FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
                             <control:BorderlessEntry x:Name="Password"
                                                      Style="{StaticResource DefaultEntry}" Text="{Binding PasswordEntry}"
                                                      IsEnabled="False"
@@ -152,7 +166,8 @@
                 </Grid.ColumnDefinitions>
 
                 <custom:CustomLabel Grid.Column="1"
-                                    Text="{x:Static ResourceManager:AppResources.ZZZMyProfile}" Style="{StaticResource SectionTitleWhiteBold}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZMyProfile}"
+                                    Style="{StaticResource SectionTitleWhiteBold}"
                                     HorizontalOptions="Center"
                                     VerticalTextAlignment="Center"/>
 

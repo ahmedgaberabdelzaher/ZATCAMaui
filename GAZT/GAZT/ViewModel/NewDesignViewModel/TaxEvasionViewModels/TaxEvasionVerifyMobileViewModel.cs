@@ -613,6 +613,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 
                                 }
                                 await navigateToListPage();
+                                MobileNumber = string.Empty;
                             }
                         }
                         catch (Exception ex)
