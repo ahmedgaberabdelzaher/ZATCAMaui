@@ -385,12 +385,14 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.IsNewReturn = true;
                 ShowHideContent(viewModel.IsNewReturn);
                 SetNewVATRate();
+               // viewModel.MaxIndex = 6;
             }
             else
             {
                 viewModel.IsFifteenPercentChange = false;
                 viewModel.IsNewReturn = false;
                 ShowHideContent(viewModel.IsNewReturn);
+               // viewModel.MaxIndex = 5;
             }
 
         }
