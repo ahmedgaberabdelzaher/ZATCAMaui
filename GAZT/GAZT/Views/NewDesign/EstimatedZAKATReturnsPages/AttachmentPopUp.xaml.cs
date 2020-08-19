@@ -22,8 +22,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         AttachmentPopUpViewModel viewModel;
         public AttachmentPopUp(ZakatReturnDetailsD ZakatReturnDetail)
         {
-            InitializeComponent();
             viewModel = App.Locator.AttachmentPopUp;
+            InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
@@ -137,6 +137,12 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.ClearData();
+
+        }
 
     }
 }

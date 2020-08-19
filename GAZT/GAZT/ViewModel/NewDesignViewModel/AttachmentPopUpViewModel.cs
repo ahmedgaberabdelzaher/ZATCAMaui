@@ -558,6 +558,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 return 0;
             }
         }
+
+        public  void ClearData()
+        {
+            ObjectionReason = string.Empty;
+            if(ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count > 0)
+            {
+                ZakatReturnAttachmentsList.Clear();
+            }
+
+        }
         #endregion
 
     }
