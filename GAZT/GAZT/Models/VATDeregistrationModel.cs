@@ -44,7 +44,8 @@ namespace EGAZT.Models
     }
     public class VATDeregSuspendedDateRootObjectDetailD
     {
-        public List<VATDeregSuspendedDateRootObjectDetailsResult> results { get; set; }
+        [JsonProperty("results")]
+        public List<VATDeregSuspendedDateRootObjectDetailsResult> dateResults { get; set; }
     }
     public class VATDeregSuspendedDateRootObjectDetailsResult
     {
@@ -52,11 +53,13 @@ namespace EGAZT.Models
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public DateTime SuspDtfrom { get; set; }
-        public DateTime SuspDtto { get; set; }
-        public DateTime NextDtfrom { get; set; }
-        public DateTime NextDtto { get; set; }
-        public DateTime Duedate { get; set; }
+        public DateTime? SuspDtfrom { get;
+            set;
+        }
+        public DateTime? SuspDtto { get; set; }
+        public DateTime? NextDtfrom { get; set; }
+        public DateTime? NextDtto { get; set; }
+        public DateTime? Duedate { get; set; }
 
     }
 

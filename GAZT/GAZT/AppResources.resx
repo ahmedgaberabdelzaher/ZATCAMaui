@@ -4133,7 +4133,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Applicable Rules &amp; Regulations</value>
   </data>
   <data name="FORM5AvgDailyIncome" xml:space="preserve">
-    <value>Average Daily Income(SAR)</value>
+    <value>Average Daily Income (SAR)</value>
   </data>
   <data name="FORM5BasedMiniProfit" xml:space="preserve">
     <value>Based on minimum Profit</value>
@@ -4179,7 +4179,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Finanical Year</value>
   </data>
   <data name="FORM5ForPeriod" xml:space="preserve">
-    <value>For the Period From :</value>
+    <value>For the Period :</value>
   </data>
   <data name="FORM5GenerateObjection" xml:space="preserve">
     <value>Click here to Generate Objection</value>
@@ -4260,7 +4260,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Share in Persons Companies</value>
   </data>
   <data name="FORM5ShareInOtherCompanies" xml:space="preserve">
-    <value>Do you have Share in other Companies?(SAR)</value>
+    <value>Do you have Share in other Companies? (SAR)</value>
   </data>
   <data name="FORM5Taxpayer" xml:space="preserve">
     <value>Taxpayer</value>
@@ -4275,16 +4275,16 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>To Date</value>
   </data>
   <data name="FORM5TotalAnnualSalary" xml:space="preserve">
-    <value>Total of Annual Salary(SAR)</value>
+    <value>Total of Annual Salary (SAR)</value>
   </data>
   <data name="FORM5TotalZakatPayable" xml:space="preserve">
     <value>Total Zakat Payable:</value>
   </data>
   <data name="FORM5YearlyRent" xml:space="preserve">
-    <value>Yearly Rent(SAR)</value>
+    <value>Yearly Rent (SAR)</value>
   </data>
   <data name="FORM5ZakatBase" xml:space="preserve">
-    <value>Zakat Base(SAR)</value>
+    <value>Zakat Base (SAR)</value>
   </data>
   <data name="FORM5ZakatEstimation" xml:space="preserve">
     <value>Zakat Estimation</value>
@@ -4548,20 +4548,23 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregConfirmTitle" xml:space="preserve">
     <value>Document Type</value>
   </data>
-     <data name="VatDeregSuspendedStartDate" xml:space="preserve">
+  <data name="VatDeregSuspendedStartDate" xml:space="preserve">
     <value>Start of Suspension Period</value>
   </data>
-       <data name="VatDeregSuspendedEndDate" xml:space="preserve">
+  <data name="VatDeregSuspendedEndDate" xml:space="preserve">
     <value>End of Suspension Period</value>
   </data>
-           <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
+  <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
     <value>Suspended Filing Period</value>
   </data>
-            <data name="VatDeregNextFilingPeriod" xml:space="preserve">
+  <data name="VatDeregNextFilingPeriod" xml:space="preserve">
     <value>Next Filing Period</value>
   </data>
-                <data name="VatDeregNextFilingDueDate" xml:space="preserve">
+  <data name="VatDeregNextFilingDueDate" xml:space="preserve">
     <value>Next Filing due date</value>
+  </data>
+       <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
+    <value>The Start Date and End Date lie in the same period</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
     <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.
@@ -5156,7 +5159,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Profit From Civil Contracting</value>
   </data>
   <data name="FORM5ProfitFromCivilCoSAR" xml:space="preserve">
-    <value>Profit from Civil Contracting(SAR)</value>
+    <value>Profit from Civil Contracting (SAR)</value>
   </data>
   <data name="FORM5ProfitRatio" xml:space="preserve">
     <value>Profit Ratio</value>
@@ -5422,5 +5425,32 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDSadadBillNo" xml:space="preserve">
     <value>SADAD Bill Number</value>
+  </data>
+  <data name="Comma" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="FORM5PeriodLabel" xml:space="preserve">
+    <value>For the Period</value>
+  </data>
+  <data name="TPEmailUpdated" xml:space="preserve">
+    <value>Email Updated</value>
+  </data>
+  <data name="FORM5From" xml:space="preserve">
+    <value>From :</value>
+  </data>
+  <data name="FORM5IndividualActivityDetail" xml:space="preserve">
+    <value>Individual Activity Detail</value>
+  </data>
+  <data name="ZZZZCorrections" xml:space="preserve">
+    <value>Corrections</value>
+  </data>
+  <data name="ZZZZFromPreviousPeriods" xml:space="preserve">
+    <value>From Previous Periods</value>
+  </data>
+  <data name="ZZZZVATAccountNumber" xml:space="preserve">
+    <value>VAT Account Number</value>
+  </data>
+  <data name="ZZZZVATDue" xml:space="preserve">
+    <value>VAT Due</value>
   </data>
 </root>

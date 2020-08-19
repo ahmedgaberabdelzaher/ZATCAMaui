@@ -7734,6 +7734,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregSuspendedDateMismatchException {
+            get {
+                return ResourceManager.GetString("VatDeregSuspendedDateMismatchException", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistrationInstructions {
             get {
                 return ResourceManager.GetString("VATDeregistrationInstructions", resourceCulture);
@@ -9357,6 +9363,84 @@ namespace EGAZT {
         public static string TPUpdatePassword {
             get {
                 return ResourceManager.GetString("TPUpdatePassword", resourceCulture);
+            }
+        }
+        
+        public static string NDAckReceiptForZakat {
+            get {
+                return ResourceManager.GetString("NDAckReceiptForZakat", resourceCulture);
+            }
+        }
+        
+        public static string NDDownloadInvoice {
+            get {
+                return ResourceManager.GetString("NDDownloadInvoice", resourceCulture);
+            }
+        }
+        
+        public static string NDReturnOfZakat {
+            get {
+                return ResourceManager.GetString("NDReturnOfZakat", resourceCulture);
+            }
+        }
+        
+        public static string NDSadadBillNo {
+            get {
+                return ResourceManager.GetString("NDSadadBillNo", resourceCulture);
+            }
+        }
+        
+        public static string Comma {
+            get {
+                return ResourceManager.GetString("Comma", resourceCulture);
+            }
+        }
+        
+        public static string FORM5PeriodLabel {
+            get {
+                return ResourceManager.GetString("FORM5PeriodLabel", resourceCulture);
+            }
+        }
+        
+        public static string TPEmailUpdated {
+            get {
+                return ResourceManager.GetString("TPEmailUpdated", resourceCulture);
+            }
+        }
+        
+        public static string FORM5From {
+            get {
+                return ResourceManager.GetString("FORM5From", resourceCulture);
+            }
+        }
+        
+        public static string FORM5IndividualActivityDetail {
+            get {
+                return ResourceManager.GetString("FORM5IndividualActivityDetail", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZCorrections {
+            get {
+                return ResourceManager.GetString("ZZZZCorrections", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZFromPreviousPeriods {
+            get {
+                return ResourceManager.GetString("ZZZZFromPreviousPeriods", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATAccountNumber {
+            get {
+                return ResourceManager.GetString("ZZZZVATAccountNumber", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATDue {
+            get {
+                return ResourceManager.GetString("ZZZZVATDue", resourceCulture);
             }
         }
     }

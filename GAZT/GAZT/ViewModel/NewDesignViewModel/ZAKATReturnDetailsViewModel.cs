@@ -157,6 +157,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        private string _fromDate;
+        public string FromDate
+        {
+            get
+            {
+                return _fromDate;
+            }
+            set
+            {
+                _fromDate = value;
+                RaisePropertyChanged("FromDate");
+            }
+        }
+
+        private string _toDate;
+        public string ToDate
+        {
+            get
+            {
+                return _toDate;
+            }
+            set
+            {
+                _toDate = value;
+                RaisePropertyChanged("ToDate");
+            }
+        }
+
+
         private string _releaseOrBillDetailsButtonText;
         public string ReleaseOrBillDetailsButtonText
         {
@@ -548,15 +578,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         ZakatReturnDetails = zakatReturnDetails;
                         ZakatReturnDetail = zakatReturnDetails.d;
-
+                        GetDataAfterAddingComma();
                         existingZakatBase = Convert.ToDouble(ZakatReturnDetails.d.Zkamt);
                         GetUpdatedDataAfterAddingComma();
                         SetICRStatus();
-                        DateTime _abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
-                        DateTime _abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
-                        Abrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
-
-
+                        DateTime fromDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
+                        DateTime toDate = JsonConvert.DeserializeObject<DateTime>(@"""" + ZakatReturnDetail.Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+                                                                                                                           //  Abrzu = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " " + " - " + " " + toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+                        FromDate = FromDate = fromDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        ToDate =" - "  +  toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
                         bool isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales();
@@ -724,8 +754,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     try
                     {
-                        GetUpdatedDataAfterRemovingComma();
-                        ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, "59");
+                      //  GetUpdatedDataAfterRemovingComma();
+                        ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+
+                        ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, "59");
                         if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                         {
                             try
@@ -823,11 +855,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
                     SetUpdatdDatatoTheUI(_zakatReturnDetails);
-                    GetDataAfterAddingComma();
                     Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
                     //  IsCurrentZAKATTaxLess = existingZakatBase >= Convert.ToDouble(_zakatReturnDetails.d.Zkamt);
                     if (existingZakatBase > Convert.ToDouble(_zakatReturnDetails.d.Zkamt))
                     {
+                        AssignCalculatedValueAfterSubmission();
+
                         IsCurrentZAKATTaxLess = true;
                         bool isRequiredAttachmentAdded = SetRedEditIconForMandatoryAttachment(_zakatReturnDetails);
                         if (isRequiredAttachmentAdded)
@@ -850,7 +883,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         SetLayoutVisibilityAfterSuccessfulSubmission();
                     }
 
-                    AssignCalculatedValueAfterSubmission();
+                    GetDataAfterAddingComma();
                 }
                 else
                 {
@@ -1180,25 +1213,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt); 
             ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt); 
         }
+
+        // Method to remove the comma while comparing the changed value
+        private ZakatReturnDetailsD GetDataAfterRemovingComma(ZakatReturnDetailsD zakatReturnDetails)
+        {
+            ZakatReturnDetailsD zakatReturnDetailsD = new ZakatReturnDetailsD();
+            zakatReturnDetailsD.TvtslI = ZakatReturnDetail.TvtslI.Replace(",", "");
+            zakatReturnDetailsD.TvtslE = ZakatReturnDetail.TvtslE.Replace(",", "");
+            zakatReturnDetailsD.LabnoI = ZakatReturnDetail.LabnoI.Replace(",", "");
+            zakatReturnDetailsD.LabnoE = ZakatReturnDetail.LabnoE.Replace(",", "");
+            zakatReturnDetailsD.ImpvalI = ZakatReturnDetail.ImpvalI.Replace(",", "");
+            zakatReturnDetailsD.ImpvalE = ZakatReturnDetail.ImpvalE.Replace(",", "");
+            zakatReturnDetailsD.PtoslI = ZakatReturnDetail.PtoslI.Replace(",", "");
+            zakatReturnDetailsD.Sumcnt = ZakatReturnDetail.Sumcnt.Replace(",", "");
+            zakatReturnDetailsD.EtimadI = ZakatReturnDetail.EtimadI.Replace(",", "");
+            zakatReturnDetailsD.Sumcnt = ZakatReturnDetail.Sumcnt.Replace(",", "");
+            zakatReturnDetailsD.ExamtI = ZakatReturnDetail.ExamtI.Replace(",", "");
+            zakatReturnDetailsD.Sumcnt = ZakatReturnDetail.Sumcnt.Replace(",", "");
+            zakatReturnDetailsD.PramtI = ZakatReturnDetail.PramtI.Replace(",", "");
+            zakatReturnDetailsD.PramtE = ZakatReturnDetail.PramtE.Replace(",", "");
+            zakatReturnDetailsD.Cpamt = ZakatReturnDetail.Cpamt.Replace(",", "");
+            zakatReturnDetailsD.Estsl = ZakatReturnDetail.Estsl.Replace(",", "");
+            zakatReturnDetailsD.Zbamt = ZakatReturnDetail.Zbamt.Replace(",", "");
+            zakatReturnDetailsD.Zkamt = ZakatReturnDetail.Zkamt.Replace(",", "");
+            return zakatReturnDetailsD;
+        }
+
+
+
         //private bool GetEstimatedZAKATValueChangeStatus()
         //{
 
-        //    if (GetAmountAfterRemovingComma(ZakatReturnDetail.TvtslI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.TvtslI))
+        //    if (GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.TvtslI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.TvtslI))
 
-        //        && GetAmountAfterRemovingComma(ZakatReturnDetail.LabnoI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.LabnoI))
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.LabnoI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.LabnoI))
 
-        //        && GetAmountAfterRemovingComma(ZakatReturnDetail.ImpvalI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.ImpvalI))
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.ImpvalI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.ImpvalI))
 
-        //        && GetAmountAfterRemovingComma(ZakatReturnDetail.PtoslI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PtoslI))
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.PtoslI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PtoslI))
 
-        //        && GetAmountAfterRemovingComma(ZakatReturnDetail.EtimadI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.EtimadI))
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.EtimadI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.EtimadI))
 
-        //        && GetAmountAfterRemovingComma(ZakatReturnDetail.PramtI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PramtI))
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.PramtI).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PramtI))
 
-        //        && GetAmountAfterRemovingComma(ZakatReturnDetail.Cpamt).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PramtI)))
+        //        && GetAmountAfterRemovingComma(ZakatReturnDetailToCompare.Cpamt).Equals(GetAmountAfterRemovingComma(ZakatReturnDetail.PramtI)))
 
         //    {
-        //        return false;
+        //        return false;//ExamtI
         //    }
         //    else
         //    {
@@ -1217,15 +1278,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //        return AmountText;
         //    }
         //}
+
         private bool GetEstimatedZAKATValueChangeStatus()
         {
-            if (ZakatReturnDetailToCompare.TvtslI.Equals(ZakatReturnDetail.TvtslI)
-                && ZakatReturnDetailToCompare.LabnoI.Equals(ZakatReturnDetail.LabnoI)
-                && ZakatReturnDetailToCompare.ImpvalI.Equals(ZakatReturnDetail.ImpvalI)
-                && ZakatReturnDetailToCompare.PtoslI.Equals(ZakatReturnDetail.PtoslI)
-                && ZakatReturnDetailToCompare.EtimadI.Equals(ZakatReturnDetail.EtimadI)
-                && ZakatReturnDetailToCompare.PramtI.Equals(ZakatReturnDetail.PramtI)
-                && ZakatReturnDetailToCompare.Cpamt.Equals(ZakatReturnDetail.Cpamt))
+            ZakatReturnDetailsD zakatReturnDetail = GetDataAfterRemovingComma(ZakatReturnDetail);
+            if (ZakatReturnDetailToCompare.TvtslI.Equals(zakatReturnDetail.TvtslI)
+                && ZakatReturnDetailToCompare.LabnoI.Equals(zakatReturnDetail.LabnoI)
+                && ZakatReturnDetailToCompare.ImpvalI.Equals(zakatReturnDetail.ImpvalI)
+                && ZakatReturnDetailToCompare.PtoslI.Equals(zakatReturnDetail.PtoslI)
+                && ZakatReturnDetailToCompare.EtimadI.Equals(zakatReturnDetail.EtimadI)
+                && ZakatReturnDetailToCompare.PramtI.Equals(zakatReturnDetail.PramtI)
+                && ZakatReturnDetailToCompare.Cpamt.Equals(zakatReturnDetail.Cpamt))
             {
                 return false;
             }
@@ -1346,7 +1409,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public bool IsThresholdValueLessThanTotalVATSales()
         {
-            double d = Convert.ToDouble(ZakatReturnDetails.d.TvtslI);
+            string TotalVatSalesAmount = string.Empty ;
+            if (ZakatReturnDetails.d.TvtslI.Contains(","))
+            {
+                TotalVatSalesAmount = ZakatReturnDetails.d.TvtslI.Replace("'", "");
+            }
+            else
+            {
+                TotalVatSalesAmount = ZakatReturnDetails.d.TvtslI;
+            }
+            
+            double d = Convert.ToDouble(TotalVatSalesAmount);
             double d1 = Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value);
             bool IsThresholdGreaterLessVATAmount = d1 < d;
             if (Convert.ToDouble(ZakatReturnDetails.d.TvtslE) > Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value))
@@ -1414,7 +1487,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (AttachmentPopUpViewModel.SalesDetailList == null || AttachmentPopUpViewModel.SalesDetailList.Count == 0 || AttachmentPopUpViewModel.SalesDetailList[0].estimateZakatAttachment.Count == 0 || string.IsNullOrEmpty(zakatReturnDetail.d.TvtslResn))
                 {
-                    CapitalAmountEditImageSource = "ic_Edit_red.png";
+                    TotalVATSalesEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
                 }
             }
@@ -1423,7 +1496,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (AttachmentPopUpViewModel.SalesDetailList == null || AttachmentPopUpViewModel.SalesDetailList.Count == 0 || AttachmentPopUpViewModel.SalesDetailList[1].estimateZakatAttachment.Count == 0 || string.IsNullOrEmpty(zakatReturnDetail.d.LabnoResn))
                 {
-                    CapitalAmountEditImageSource = "ic_Edit_red.png";
+                    AverageNumberOfLabourEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
 
                 }
@@ -1433,7 +1506,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (AttachmentPopUpViewModel.SalesDetailList == null || AttachmentPopUpViewModel.SalesDetailList.Count == 0 || AttachmentPopUpViewModel.SalesDetailList[2].estimateZakatAttachment.Count == 0 || string.IsNullOrEmpty(zakatReturnDetail.d.ImpvalResn))
                 {
-                    CapitalAmountEditImageSource = "ic_Edit_red.png";
+                    ImportValueEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
 
                 }
@@ -1443,7 +1516,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (AttachmentPopUpViewModel.SalesDetailList == null || AttachmentPopUpViewModel.SalesDetailList.Count == 0 || AttachmentPopUpViewModel.SalesDetailList[3].estimateZakatAttachment.Count == 0 || string.IsNullOrEmpty(zakatReturnDetail.d.PtoslResn))
                 {
-                    CapitalAmountEditImageSource = "ic_Edit_red.png";
+                    ImportFromPointOfSalesEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
 
                 }
@@ -1453,7 +1526,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (AttachmentPopUpViewModel.SalesDetailList == null || AttachmentPopUpViewModel.SalesDetailList.Count == 0 || AttachmentPopUpViewModel.SalesDetailList[4].estimateZakatAttachment.Count == 0 || string.IsNullOrEmpty(zakatReturnDetail.d.EtimadResn))
                 {
-                    CapitalAmountEditImageSource = "ic_Edit_red.png";
+                    ContactFromETIMADSystemEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
 
                 }
@@ -1463,7 +1536,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (AttachmentPopUpViewModel.SalesDetailList == null || AttachmentPopUpViewModel.SalesDetailList.Count == 0 || AttachmentPopUpViewModel.SalesDetailList[5].estimateZakatAttachment.Count == 0 || string.IsNullOrEmpty(zakatReturnDetail.d.ExamtResn))
                 {
-                    CapitalAmountEditImageSource = "ic_Edit_red.png";
+                    ExportValueEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
 
                 }

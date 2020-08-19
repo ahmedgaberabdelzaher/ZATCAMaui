@@ -68,58 +68,21 @@
                             <Grid HorizontalOptions="FillAndExpand"
                                   VerticalOptions="FillAndExpand"
                                   Margin="0" 
-                                  Padding="0,15,0,0"
+                                  Padding="0,0,0,0"
                                   BackgroundColor="White"
                                   x:Name="VATRMainGrid">
 
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="10*" />
-                                    <RowDefinition Height="90*" />
+                                    <!--<RowDefinition Height="10*" />-->
+                                    <RowDefinition Height="100*" />
 
                                 </Grid.RowDefinitions>
-                                <ContentPresenter VerticalOptions="FillAndExpand"
+                            <ContentPresenter VerticalOptions="FillAndExpand"
                                                   HorizontalOptions="FillAndExpand"
                                                   Grid.Column="0"
-                                                  Grid.Row="1"
+                                                  Grid.Row="0"
                                                   BackgroundColor="White"/>
-                            <Grid Grid.Row="0"
-                                  BackgroundColor="White">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="1"
-                                       Source="ic_logo_gazt.png"
-                                       WidthRequest="50"
-                                       HeightRequest="50"
-                                       VerticalOptions="Center"
-                                       HorizontalOptions="Center"
-                                       />
-
-                                <!--<Label Grid.Column="0"
-                                       x:Name="Image_backArrow"
-                                       Grid.Row="0"
-                                       Margin="10,0,10,0"
-                                       HorizontalOptions="Start"
-                                       VerticalOptions="Center"
-                                       Style="{StaticResource IconLabelStyle}"
-                                       Text="{StaticResource Back}"
-                                       Rotation="270">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
-                                    </Label.GestureRecognizers>
-                                </Label>-->
-
-                                <Image Grid.Column="2" IsVisible="false">
-                                    <Image.Source>
-                                        <FontImageSource Color="White"
-                                                         FontFamily="UserIconFont"
-                                                         Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                                    </Image.Source>
-                                </Image>
-                            </Grid>
-                            </Grid>
+                        </Grid>
                         </yummy:PancakeView>
                     </StackLayout>
 
@@ -134,7 +97,33 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" Padding="10">
+                <StackLayout Grid.Row="0" Margin="10,0,10,0" Padding="10">
+                    <Grid 
+                        Margin="0,15,0,0"
+                                  BackgroundColor="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="1"
+                                       Source="ic_logo_gazt.png"
+                                       WidthRequest="50"
+                                       HeightRequest="50"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       />
+
+
+
+                        <Image Grid.Column="2" IsVisible="false">
+                            <Image.Source>
+                                <FontImageSource Color="White"
+                                                         FontFamily="UserIconFont"
+                                                         Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                            </Image.Source>
+                        </Image>
+                    </Grid>
                     <control:CustomLabel Text="{Binding PageTitle}"
                                              Style="{StaticResource SectionTitleBlack}" />
                     <control:CustomLabel Text="{Binding PageTitleTag}"
@@ -144,7 +133,7 @@
                 </StackLayout>
 
                 <!--Input For Mobile Number-->
-                <StackLayout Grid.Row="1" Padding="10" IsVisible="{Binding IsShowMobileInput}">
+                <StackLayout Grid.Row="1" Padding="10" Margin="10,0,10,0" IsVisible="{Binding IsShowMobileInput}">
         
                     <control:CustomLabel   Style="{StaticResource CaptionLabelGrey}" Grid.Row="0"   Padding="0,0,0,0">
 
@@ -196,7 +185,7 @@
                 </StackLayout>
 
                 <!--Input for OTP Verification-->
-                <StackLayout Grid.Row="1" Padding="0,15,0,0" IsVisible="{Binding IsShowOTPInput}">
+                <StackLayout Grid.Row="1" Padding="0,15,0,0" Margin="10,0,10,0" IsVisible="{Binding IsShowOTPInput}">
                     <custom:CustomLabel Text="{Binding OTPSentOnThisMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>
 
                     <Grid ColumnSpacing="20" Padding="30,20,30,20" FlowDirection="LeftToRight">
@@ -334,12 +323,12 @@
                 </StackLayout>
 
                 <!--Continue button-->
-                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"      
+                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"      
                                       Command="{Binding SendOTPCommand}"
                                       Grid.Row="2"
                                       HorizontalOptions="FillAndExpand"
                                       IsVisible="{Binding IsShowMobileInput}"
-                                      Margin="10,5,10,20"
+                                      Margin="20,5,20,20"
                                       Style="{StaticResource PrimaryButtonStyle}"/>
 
             </Grid>

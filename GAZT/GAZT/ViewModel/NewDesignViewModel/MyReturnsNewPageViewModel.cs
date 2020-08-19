@@ -96,61 +96,87 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //    IsLoading = true;
                     //});
 
-                    
-                    if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
+                    Task.Run(async () =>
                     {
-                        //zakat
-                       
+                        await Task.Run(async () =>
+                        {
+                           IsLoading = true;
+                        });
+                           
+                        if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
+                        {
+                            //zakat
+
                             if (_selectedListItem.Fbtyp.Equals("FZ12"))
                             {
                                 App.IsZakatLoadingFromMyReturns = true;
-                                _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
+                                });
+
                             }
                             else if (_selectedListItem.Fbtyp.Equals("ZKTE"))
-                             {
-
-                            App.IsZakatLoadingFromMyReturns = true;
-                            _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
-
-                        }
-                        else
                             {
 
+                                App.IsZakatLoadingFromMyReturns = true;
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
+                                });
+                              
+
+                            }
+                            else
+                            {
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await Task.Run(async () =>
+                                    {
+                                        IsLoading = false;
+                                    });
+                                    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                });
+                            }
+                        }
+
+                        if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
+                        {
+                            //Vat
+                            GetVATAllReturnsAsync(_selectedListItem);
+                        }
+                        if (_selectedListItem.TaxType.Equals("ETAX"))
+                        {
+                            //ET
                             Device.BeginInvokeOnMainThread(async () =>
                             {
+                                await Task.Run(async () =>
+                                {
+                                    IsLoading = false;
+                                });
                                 await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                             });
+
                         }
-                    }
-
-                    if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
-                    {
-                        //Vat
-                        GetVATAllReturnsAsync(_selectedListItem);
-                    }
-                    if (_selectedListItem.TaxType.Equals("ETAX") )
-                    {
-                        //ET
-                        Device.BeginInvokeOnMainThread(async () =>
+                        if (_selectedListItem.TaxType.Equals("WHTX"))
                         {
-                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                        });
+                            //WT
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await Task.Run(async () =>
+                                {
+                                    IsLoading = false;
+                                });
+                                await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                            });
 
-                    }
-                    if (_selectedListItem.TaxType.Equals("WHTX"))
-                    {
-                        //WT
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                        });
-
-                    }
+                        }
+                    
+                    });
+                  
                 }
-                //if (SelectedListItem != null)
-                //{
-                //    GetVATAllReturnsAsync(SelectedItem);
-                //}
+                
                 RaisePropertyChanged("SelectedListItem");
 
             }
@@ -167,7 +193,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _selectedChipFilterItem = value;
                 if (_selectedChipFilterItem != null)
                 {
-                    FilterIfTypeAndStausFilterSelected();
+
+                    if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+                    {
+                        Index = 2;
+                    }
+                    if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+                    {
+                        Index = 1;
+                    }
+                    if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+                    {
+                        Index = 0;
+                    }
+                                FilterOnBasisOfTaxType();
+
                 }
                 RaisePropertyChanged("SelectedChipFilterItem");
             }
@@ -343,6 +383,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 String SelectedICRGUID = SelectedReturnsVAT.Fbguid;
                                 App.ICRStatus = SelectedReturnsVAT.Stat;
+                                App.VATDeclrationFbguid= SelectedReturnsVAT.Fbguid;
                                 VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
                                 PopToRootPage();
                                 if (_vATDeclaration != null && _vATDeclaration.d != null)
@@ -468,6 +509,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     MyReturns = await WebServiceManager.GAZTGetReturnData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
                     //});
+                    SelectedReturnTypeForFilter = ReturnTypeForFilter.FirstOrDefault();
                     //try
                     //{
                     //    if (GetReturnDataTask != null)
@@ -556,6 +598,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
            
            
         }
+        public void FilterListToDisplay()
+        { 
+        
+        }
         public void FilterAllData()
         {
             try
@@ -568,10 +614,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
+                           
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "submitted";
+                                }
+                               
+                            }
+                           
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
+                           
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -584,6 +641,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
                           {
+                            
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
@@ -651,12 +709,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT"));
                     if (_selectedChipFilterItem != null)
                     {
+                        
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
+                            
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "submitted";
+                                }
+
+                            }
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
+                           
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -669,6 +738,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
                         {
+                           
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
@@ -734,10 +804,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
+                            
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "submitted";
+                                }
+
+                            }
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
+                         
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -750,6 +830,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
                         {
+                          
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
@@ -815,10 +896,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
+                   
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "submitted";
+                                }
+
+                            }
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
+                         
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -896,10 +987,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
                         {
+                           
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+                            if (ListToDisplay != null)
+                            {
+                                foreach (var item in ListToDisplay)
+                                {
+                                    item.StatusMessage = "submitted";
+                                }
+
+                            }
                         }
                         if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
                         {
+                           
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
                             if (ListToDisplay != null)
                             {
@@ -912,6 +1013,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
                         {
+                           
                             ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
 
 
@@ -962,83 +1064,83 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             }
         }
-        public void FilterIfTypeAndStausFilterSelected()
-        {
-            try
-            {
-                if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
-                {
-                   Index = 0;
-                    FilterOnBasisOfTaxType();
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
-                    //ListToDisplay = new ObservableCollection<MyBills>(MyBills.Where(x => x. == Enum.GetName(typeof(BillStatus), 0)).ToList());
-                }
-                if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
-                {
-                    Index = 1;
-                    FilterOnBasisOfTaxType();
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
-                    if (ListToDisplay != null)
-                    {
-                        foreach (var item in ListToDisplay)
-                        {
-                            item.StatusMessage = "unsubmitted";
-                        }
-                    }
-                }
+        //public void FilterIfTypeAndStausFilterSelected()
+        //{
+        //    try
+        //    {
+        //        if (_selectedChipFilterItem.TemplateType.Equals("Submitted"))
+        //        {
+        //           Index = 0;
+        //            FilterOnBasisOfTaxType();
+        //            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Submitted"));
+        //            //ListToDisplay = new ObservableCollection<MyBills>(MyBills.Where(x => x. == Enum.GetName(typeof(BillStatus), 0)).ToList());
+        //        }
+        //        if (_selectedChipFilterItem.TemplateType.Equals("UnSubmitted"))
+        //        {
+        //            Index = 1;
+        //            FilterOnBasisOfTaxType();
+        //            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted"));
+        //            if (ListToDisplay != null)
+        //            {
+        //                foreach (var item in ListToDisplay)
+        //                {
+        //                    item.StatusMessage = "unsubmitted";
+        //                }
+        //            }
+        //        }
 
-                if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
-                {
-                    Index = 2;
-                    FilterOnBasisOfTaxType();
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
+        //        if (_selectedChipFilterItem.TemplateType.Equals("OverDue"))
+        //        {
+        //            Index = 2;
+        //            FilterOnBasisOfTaxType();
+        //            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay.Where(x => x.StatusTxt == "Non Submitted" && x.Due == "X"));
                     
 
-                        if (ListToDisplay != null)
-                        {
-                            foreach (var item in ListToDisplay)
-                            {
-                                item.StatusMessage = "overdue";
-                            }
-                        }
+        //                if (ListToDisplay != null)
+        //                {
+        //                    foreach (var item in ListToDisplay)
+        //                    {
+        //                        item.StatusMessage = "overdue";
+        //                    }
+        //                }
 
-                    }
+        //            }
 
-                if (_selectedChipFilterItem.TemplateType.Equals("All"))
-                {
-                    FilterOnBasisOfTaxType();
-                    ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
-
-
-                    if (ListToDisplay != null)
-                    {
-                        foreach (var item in ListToDisplay)
-                        {
-                            if (item.StatusTxt == "Non Submitted")
-                            {
-                                item.StatusMessage = "unsubmitted";
-
-                            }
-                            if (item.StatusTxt == "Non Submitted" && item.Due == "X")
-                            {
-                                item.StatusMessage = "overdue";
-                            }
-                            if (item.StatusTxt == "Submitted")
-                            {
-                                item.StatusMessage = "submitted";
-                            }
+        //        if (_selectedChipFilterItem.TemplateType.Equals("All"))
+        //        {
+        //            FilterOnBasisOfTaxType();
+        //            ListToDisplay = new ObservableCollection<MyReturnsResult>(ListToDisplay);
 
 
+        //            if (ListToDisplay != null)
+        //            {
+        //                foreach (var item in ListToDisplay)
+        //                {
+        //                    if (item.StatusTxt == "Non Submitted")
+        //                    {
+        //                        item.StatusMessage = "unsubmitted";
 
-                        }
-                    }
+        //                    }
+        //                    if (item.StatusTxt == "Non Submitted" && item.Due == "X")
+        //                    {
+        //                        item.StatusMessage = "overdue";
+        //                    }
+        //                    if (item.StatusTxt == "Submitted")
+        //                    {
+        //                        item.StatusMessage = "submitted";
+        //                    }
 
-                }
 
-            }
-            catch (Exception ex)
-            { }
-            }
+
+        //                }
+        //            }
+
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    { }
+        //    }
         public void PopulateReturnTypeList()
             {
             try
@@ -1053,7 +1155,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             };
                 ReturnTypeForFilter = new List<ReturnTypes>();
                 ReturnTypeForFilter = ReturnTypesList;
-                SelectedReturnTypeForFilter = ReturnTypeForFilter.FirstOrDefault();
+               
 
             }
             catch (Exception ex)
@@ -1091,12 +1193,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             if (_selectedReturnTypeForFilter.Id == "03")
             {
                 FilterETData();
-                
+
             }
             if (_selectedReturnTypeForFilter.Id == "04")
             {
                 FilterWTData();
             }
+            
         }
         #endregion
 

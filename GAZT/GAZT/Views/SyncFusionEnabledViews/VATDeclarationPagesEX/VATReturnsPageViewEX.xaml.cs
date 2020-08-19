@@ -304,6 +304,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             viewModel.IsDeclarationCheckedForInstruction = true;
                             viewModel.IsVATRefunCheckedVisible = true;
                             //viewModel.ButtonName = AppResources.ZVatDownloadForm;
+                          
                             viewModel.IsMainButtonEnabled = false;
                             viewModel.IsMainButtonVisible = false;
                         });

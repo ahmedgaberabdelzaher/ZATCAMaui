@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -51,5 +52,16 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
             viewModel._navigationService.GoBack();
         }
+
+        public async void OnCopySadadNumberButtonClicked(object sender, EventArgs args)
+        {
+            await Clipboard.SetTextAsync(viewModel.EstimatedZAKATSADADNumber.Sopbel);
+            if (Clipboard.HasText)
+            {
+                var text = await Clipboard.GetTextAsync();
+                await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
+                }
+        }
+
     }
 }

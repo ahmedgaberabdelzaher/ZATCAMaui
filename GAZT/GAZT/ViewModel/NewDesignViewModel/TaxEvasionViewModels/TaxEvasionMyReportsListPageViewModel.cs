@@ -163,11 +163,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 try
                 {
                     _selectedTaxEvasionListItem = value;
-
-                    if (_selectedTaxEvasionListItem != null)
+                    try
                     {
-                        passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
+                        if (_selectedTaxEvasionListItem != null)
+                        {
+                            passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
+                        }
                     }
+                    catch (Exception ex)
+                    { 
+                    
+                    }
+                    
                     RaisePropertyChanged("SelectedTaxEvasionListItem");
                 }
                 catch (Exception ex)
@@ -181,17 +188,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         {
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
-               // _navigationService.GoBack();
+                //_navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+                _navigationService.GoBack();
             });
         }
         public void PopulateDataInChips()
         {
-            ChipDataFilterlist = new ObservableCollection<ChipModel>()
+            try
+            {
+                ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
                 new ChipModel(){Text =AppResources.ZTEReportReportOpen, TemplateType = AppResources.ZTEReportReportOpen, ImageSource="ic_star_border.png"},
                                new ChipModel(){Text =AppResources.ZReportStatusClose, TemplateType = AppResources.ZReportStatusClose,ImageSource = "ic_money.png"}
             };
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+            
         }
         public void FilterOnbasisOfChipSelectedItem()
         {

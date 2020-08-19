@@ -45,6 +45,11 @@
                     </Grid.RowDefinitions>
                     <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="0">
                         <StackLayout Spacing="0" BindingContext="{Binding EstimatedZAKATSADADNumber}" Orientation="Vertical">
+
+                            <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount}" Style="{StaticResource ValueLabelGrey}">
+       
+                             </custom:CustomLabel>
+
                             <local1:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTotalAmount}" Style="{StaticResource ValueLabelBlack}"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"    />
 
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
