@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using GalaSoft.MvvmLight.Views;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -292,6 +294,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public ICommand OnAttachmentClick { get; set; }
 
+
+        #region Financial Details Tabs commands
+        public ICommand OnMonthSelectButtonClick { get; set; }
+        #endregion
+
         #endregion
 
         #region Constructor
@@ -327,6 +334,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Device.BeginInvokeOnMainThread(()=> {
                 SelectedMethod = MethodList.FirstOrDefault();
                 CalendarType = CalendarTypeList.LastOrDefault();
+            });
+            OnMonthSelectButtonClick = new Command(() => {
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
             });
             #endregion
 
