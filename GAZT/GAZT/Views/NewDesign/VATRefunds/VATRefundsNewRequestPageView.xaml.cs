@@ -15,29 +15,75 @@ namespace EGAZT.Views.NewDesign.VATRefunds
     public partial class VATRefundsNewRequestPageView : ContentPage
     {
         VATRefundsNewRequestViewModel viewModel;
+        VatRefundsListResultModel DraftsRequestDataModel;
+
         public VATRefundsNewRequestPageView()
         {
             InitializeComponent();
 
             viewModel = App.Locator.VATRefundsNewRequestPageView;
-            viewModel.ReloadData();
+
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            DraftsRequestDataModel = null;
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 viewModel.PickerModel = arg;
                 Console.WriteLine(arg);
             });
-            
         }
+
+        public VATRefundsNewRequestPageView(VatRefundsListResultModel draftsRequestData)
+        {
+            InitializeComponent();
+
+            viewModel = App.Locator.VATRefundsNewRequestPageView;
+
+            ChangeAeroIcon();
+            SetLTR();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            this.BindingContext = viewModel;
+            DraftsRequestDataModel = draftsRequestData;
+
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                viewModel.PickerModel = arg;
+                Console.WriteLine(arg);
+            });
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                if(DraftsRequestDataModel == null)
+                {
+                    viewModel.ReloadData();
+                }
+                else
+                {
+                    viewModel.LoadDraftsData(DraftsRequestDataModel);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         private void SetLTR()
         {
-            //if (App.IsArabic)
-            //{
-            this.FlowDirection = FlowDirection.LeftToRight;
-            //}
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
+
         public void ChangeAeroIcon()
         {
             if (!App.IsArabic)
@@ -61,14 +107,12 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             // viewModel.IsNewAccountClicked = true;
             PopupNavigation.Instance.PushAsync(new NewAccountPopUpPageView(string.Empty));
         }
-
+        
         void ContinueButton_Tapped(object sender, EventArgs e)
         {
             try
             {
-                VATRefundsModel selectedItem = viewModel.VATRefundsModel[0] as VATRefundsModel;
-                selectedItem.IsNewRequest = true;
-                viewModel._navigationService.NavigateTo(App.VATRefundDetailsPageView, selectedItem);
+                viewModel.ContinueBtnClicked();
             }
             catch (Exception ex)
             {
