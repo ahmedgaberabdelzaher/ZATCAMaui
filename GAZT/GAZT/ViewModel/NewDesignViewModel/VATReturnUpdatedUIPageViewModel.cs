@@ -85,10 +85,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         public bool MarkComplete { get; private set; } = false;
-        public int MaxIndex { get; private set; } = 6;
+        //public int MaxIndex { get; set; } = 6;
         #endregion
 
 
+        private int _maxIndex=6;
+        public int MaxIndex
+        {
+            get
+            {
+                return _maxIndex;
+            }
+            set
+            {
+                _maxIndex = value;
+                RaisePropertyChanged("MaxIndex");
+            }
+        }
 
         private bool _isUnFocusedTextBox = false;
         public bool IsUnFocusedTextBox
@@ -1926,7 +1939,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (IsDeclarationCheckedForSummary && (IsVoidClicked==false && IsResetClicked==false))
                     {
-                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (IsCheckedDraftMode()))
+                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus=="E0001" ||IsCheckedDraftMode()))
                         {
                             Device.BeginInvokeOnMainThread(() =>
                             {

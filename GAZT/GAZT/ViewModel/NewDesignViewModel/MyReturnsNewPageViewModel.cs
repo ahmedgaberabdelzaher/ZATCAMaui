@@ -96,61 +96,87 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //    IsLoading = true;
                     //});
 
-                    
-                    if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
+                    Task.Run(async () =>
                     {
-                        //zakat
-                       
+                        await Task.Run(async () =>
+                        {
+                           IsLoading = true;
+                        });
+                           
+                        if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
+                        {
+                            //zakat
+
                             if (_selectedListItem.Fbtyp.Equals("FZ12"))
                             {
                                 App.IsZakatLoadingFromMyReturns = true;
-                                _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
+                                });
+
                             }
                             else if (_selectedListItem.Fbtyp.Equals("ZKTE"))
-                             {
-
-                            App.IsZakatLoadingFromMyReturns = true;
-                            _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
-
-                        }
-                        else
                             {
 
+                                App.IsZakatLoadingFromMyReturns = true;
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
+                                });
+                              
+
+                            }
+                            else
+                            {
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await Task.Run(async () =>
+                                    {
+                                        IsLoading = false;
+                                    });
+                                    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                });
+                            }
+                        }
+
+                        if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
+                        {
+                            //Vat
+                            GetVATAllReturnsAsync(_selectedListItem);
+                        }
+                        if (_selectedListItem.TaxType.Equals("ETAX"))
+                        {
+                            //ET
                             Device.BeginInvokeOnMainThread(async () =>
                             {
+                                await Task.Run(async () =>
+                                {
+                                    IsLoading = false;
+                                });
                                 await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                             });
+
                         }
-                    }
-
-                    if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
-                    {
-                        //Vat
-                        GetVATAllReturnsAsync(_selectedListItem);
-                    }
-                    if (_selectedListItem.TaxType.Equals("ETAX") )
-                    {
-                        //ET
-                        Device.BeginInvokeOnMainThread(async () =>
+                        if (_selectedListItem.TaxType.Equals("WHTX"))
                         {
-                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                        });
+                            //WT
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await Task.Run(async () =>
+                                {
+                                    IsLoading = false;
+                                });
+                                await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                            });
 
-                    }
-                    if (_selectedListItem.TaxType.Equals("WHTX"))
-                    {
-                        //WT
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                        });
-
-                    }
+                        }
+                    
+                    });
+                  
                 }
-                //if (SelectedListItem != null)
-                //{
-                //    GetVATAllReturnsAsync(SelectedItem);
-                //}
+                
                 RaisePropertyChanged("SelectedListItem");
 
             }

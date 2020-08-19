@@ -82,6 +82,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public bool _IsLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                _IsLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         public bool _isMineralVisible = false;
         public bool isMineralVisible
         {
