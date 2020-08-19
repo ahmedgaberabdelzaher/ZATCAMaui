@@ -88,8 +88,12 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private void OnTotalVATSaleEditImageClicked(object sender, EventArgs e)
         {
-            salesType = "TotalVATSales";
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            if(viewModel.isThresholdValueLessThanTotalVATSales)
+            {
+                salesType = "TotalVATSales";
+                PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+
+            }
         }
 
         private void OnAverageNumberLabourEditImageClicked(object sender, EventArgs e)
