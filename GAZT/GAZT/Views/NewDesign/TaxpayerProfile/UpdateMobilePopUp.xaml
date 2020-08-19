@@ -26,11 +26,8 @@
 
     <ScrollView>
     <yummy:PancakeView Padding="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
+        <StackLayout>
+            
 
             <StackLayout Grid.Row="0" x:Name="UpdateMobile"
                          IsVisible="True">
@@ -288,9 +285,15 @@
                                                        ViewBoxHeight="70" TextColor="#006450"/>
                     </StackLayout>
                 </StackLayout>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
             </Grid>-->
 
-        </Grid>
+        </StackLayout>
     </yummy:PancakeView>
         </ScrollView>
 </pages:PopupPage>

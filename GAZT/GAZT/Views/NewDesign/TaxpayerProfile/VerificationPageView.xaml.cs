@@ -157,7 +157,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (viewModel.OTPFourthDigit.Length <= 0)
             {
-                if (viewModel.OTPThirdDigit.Length >= 0)
+                if (viewModel.OTPThirdDigit.Length > 0)
                     OTPThirdEntry.Focus();
             }
         }

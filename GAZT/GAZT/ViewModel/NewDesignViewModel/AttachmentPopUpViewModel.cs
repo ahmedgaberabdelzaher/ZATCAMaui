@@ -366,20 +366,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private bool IsFileAlreadyAttached(string FileName)
         {
-            //bool isFileAlreadyAttached = false;
-            //if (SelectedSalesDetails.estimateZakatAttachment != null)
-            //{
-            //    for (int i = 0; i < SelectedSalesDetails.estimateZakatAttachment.Count; i++)
-            //    {
-            //        if (SelectedSalesDetails.estimateZakatAttachment[i].Filename.Equals(FileName))
-            //            isFileAlreadyAttached = true;
-            //        else
-            //            isFileAlreadyAttached = false;
-            //        if (isFileAlreadyAttached)
-            //            break;
-            //    }
-            //}
-            //return isFileAlreadyAttached;
+            bool isFileAlreadyAttached = false;
+            if (ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count > 0)
+            {
+                for (int i = 0; i < ZakatReturnAttachmentsList.Count; i++)
+                {
+                    if (ZakatReturnAttachmentsList[i].Filename.Equals(FileName))
+                        isFileAlreadyAttached = true;
+                    else
+                        isFileAlreadyAttached = false;
+                    if (isFileAlreadyAttached)
+                        break;
+                }
+            }
+            return isFileAlreadyAttached;
             return false;
         }
 
@@ -557,6 +557,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 return 0;
             }
+        }
+
+        public  void ClearData()
+        {
+            ObjectionReason = string.Empty;
+            if(ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count > 0)
+            {
+                ZakatReturnAttachmentsList.Clear();
+            }
+
         }
         #endregion
 
