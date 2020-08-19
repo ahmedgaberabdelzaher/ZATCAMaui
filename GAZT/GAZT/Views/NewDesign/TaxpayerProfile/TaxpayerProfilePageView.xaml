@@ -171,7 +171,8 @@
                                     HorizontalOptions="Center"
                                     VerticalTextAlignment="Center"/>
 
-                <StackLayout Grid.Column="0">
+                <StackLayout Grid.Column="0"
+                             Padding="0,8,0,0">
                     <Image Source="arrowLeftwhite.png"
                            HorizontalOptions="Start"
                            VerticalOptions="Center">

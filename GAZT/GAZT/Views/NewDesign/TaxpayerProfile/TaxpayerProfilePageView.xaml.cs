@@ -79,6 +79,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
                 // * Update
                 App.TP = TPAPIResponse;
+                App.TP.Userid = TPAPIResponse.Tin;
 
                 viewModel.TPProfileNameLbl = TPAPIResponse.Name;
                 viewModel.TINLabel = TPAPIResponse.Tin;
