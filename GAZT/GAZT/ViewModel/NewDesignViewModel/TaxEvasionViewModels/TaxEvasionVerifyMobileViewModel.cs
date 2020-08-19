@@ -310,8 +310,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             IsShowOTPInput = false;
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
-               // _navigationService.GoBack();
+                if (App.TP != null)
+                {
+                    if (!string.IsNullOrEmpty(App.TP.Tin))
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        });
+                   
+                        
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                        });
+                        
+                    }
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                    });
+                    
+                }
+               // 
+               _navigationService.GoBack();
             });
             SendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
@@ -585,6 +613,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 
                                 }
                                 await navigateToListPage();
+                                MobileNumber = string.Empty;
                             }
                         }
                         catch (Exception ex)

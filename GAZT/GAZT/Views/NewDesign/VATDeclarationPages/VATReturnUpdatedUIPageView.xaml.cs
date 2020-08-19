@@ -7959,7 +7959,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                     if (viewModel.IsDeclarationCheckedForSummary && (viewModel.IsVoidClicked == false && viewModel.IsResetClicked == false))
                     {
-                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (viewModel.IsCheckedDraftMode()))
+                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (App.ICRStatus == "E0001" || viewModel.IsCheckedDraftMode()))
                         {
                             Device.BeginInvokeOnMainThread(() =>
                             {

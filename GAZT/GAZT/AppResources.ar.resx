@@ -4541,7 +4541,7 @@
   <data name="VatDeregNextFilingDueDate" xml:space="preserve">
     <value>Next Filing due date</value>
   </data>
-    <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
+  <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
     <value>The Start Date and End Date lie in the same period</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
@@ -4725,7 +4725,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <comment>New Design Form5</comment>
   </data>
   <data name="NDReviewBelow" xml:space="preserve">
-    <value>Review the Below Details</value>
+    <value>مراجعة التفاصيل ادناه</value>
   </data>
   <data name="ZZZZNextCommitments" xml:space="preserve">
     <value>الالتزامات القادمة</value>
@@ -5138,7 +5138,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>أرباح العقود مع القطاع الخاص ↵ (ريال سعودي)</value>
   </data>
   <data name="FORM5ProfitRatio" xml:space="preserve">
-    <value>نسبة الأرباح</value>
+    <value>نسبة الربح</value>
   </data>
   <data name="FORM5Profits" xml:space="preserve">
     <value>الأرباح</value>
@@ -5422,5 +5422,11 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="ZZZZVATDue" xml:space="preserve">
     <value>ضريبة القيمة المضافة المستحقة</value>
+  </data>
+  <data name="Form5Finish" xml:space="preserve">
+    <value>النهاية</value>
+  </data>
+  <data name="NDEdit" xml:space="preserve">
+    <value>تعديل</value>
   </data>
 </root>
