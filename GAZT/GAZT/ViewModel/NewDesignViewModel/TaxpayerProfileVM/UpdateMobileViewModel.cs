@@ -242,16 +242,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             string lang = "EN";
             if (App.IsArabic == true) { lang = "AR"; }
 
-            CurrentMobileNumberEntryText = MobileNumberFormate(CurrentMobileNumberEntryText);
-            NewMobileNumberEntryText = MobileNumberFormate(NewMobileNumberEntryText);
+            string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
+            string newMobileNumber = MobileNumberFormate(NewMobileNumberEntryText);
 
             try
             {
                 await Task.Run(async () =>
                 {
                     callAPIFlag = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin,
-                                                                                CurrentMobileNumberEntryText,
-                                                                                NewMobileNumberEntryText);
+                                                                                currentMobileNumber,
+                                                                                newMobileNumber);
                 });
             }
             catch (Exception ex)
@@ -276,7 +276,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 await Task.Run(async () =>
                 {
-                    TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, "OTP",
+                    TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, EnteredOTP,
                                                                                 App.TP.Tin,
                                                                                 CurrentMobileNumberEntryText,
                                                                                 NewMobileNumberEntryText);

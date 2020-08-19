@@ -22,6 +22,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             // * Update UI
             ProfileSuccessId = SuccessId;
             UpdateUI();
+
+            // * Need to update - Taxpayer Profile Data
+
         }
 
         private void UpdateUI()

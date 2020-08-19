@@ -54,25 +54,44 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 await LoadData();
 
                 if (viewModel != null)
+                {
                     viewModel.IsLoading = false;
+                    viewModel.NextText = AppResources.ZZNext;
+                }
             });
         }
         private async Task LoadData()
         {
             try
             {
-                App.DisplayProgressView();
+                //App.DisplayProgressView();
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
                 await viewModel.LoadZakatForm5Data();
-                Device.BeginInvokeOnMainThread(() => {
-                   
-                    App.HideProgressView();
-                    });
+                //Device.BeginInvokeOnMainThread(() => {
 
-               
+                //    ////App.HideProgressView();
+                //    //});
+                //    await Task.Run(() =>
+                //    {
+                //        viewModel.IsLoading = false;
+                //    });
+
+                //}
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
             catch (Exception ex)
             {
-                App.HideProgressView();
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+                // App.HideProgressView();
             }
         }
         public async Task IntialiseAsync()

@@ -189,7 +189,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
-               // _navigationService.GoBack();
+                //_navigationService.GoBack();
             });
         }
         public void PopulateDataInChips()
