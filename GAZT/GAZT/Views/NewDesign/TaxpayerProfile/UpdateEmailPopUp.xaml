@@ -25,9 +25,13 @@
     </pages:PopupPage.Resources>
 
     <yummy:PancakeView Padding="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
-        <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-            <StackLayout x:Name="UpdateEmail" IsVisible="True">
+            <StackLayout Grid.Row="0" x:Name="UpdateEmail" IsVisible="True">
 
                 <Image Margin="24,16,0,8" HorizontalOptions="Start"
                        Source="arrowLeft.png">
@@ -66,8 +70,31 @@
                 </StackLayout>
             </StackLayout>
 
+            <StackLayout Grid.Row="1">
             <buttons:SfButton Margin="24,0,24,24" x:Name="btn" Text="{x:Static ResourceManager:AppResources.TPUpdate}" Style="{StaticResource PrimaryButtonStyle}" Clicked="UpdatedClicked"/>
-        </StackLayout>
+            </StackLayout>
+
+
+            <Grid Grid.Row="0" Grid.RowSpan="2" Margin="-20">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                        TextColor="#006450"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
     </yummy:PancakeView>
 
 </pages:PopupPage>

@@ -87,6 +87,7 @@ namespace EGAZT
         public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";
         public static string TaxEvasionMyReportsListPageView = "TaxEvasionMyReportsListPageView";
         public static string TaxEvasionReportDetailPageView = "TaxEvasionReportDetailPageView";
+        public static string ZakatAcknowledgmentPageView = "ZakatAcknowledgmentPageView";
 
         #endregion
 
