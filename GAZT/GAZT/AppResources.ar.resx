@@ -4725,7 +4725,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <comment>New Design Form5</comment>
   </data>
   <data name="NDReviewBelow" xml:space="preserve">
-    <value>Review the Below Details</value>
+    <value>مراجعة التفاصيل ادناه</value>
   </data>
   <data name="ZZZZNextCommitments" xml:space="preserve">
     <value>الالتزامات القادمة</value>
@@ -5138,7 +5138,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>أرباح العقود مع القطاع الخاص ↵ (ريال سعودي)</value>
   </data>
   <data name="FORM5ProfitRatio" xml:space="preserve">
-    <value>نسبة الأرباح</value>
+    <value>نسبة الربح</value>
   </data>
   <data name="FORM5Profits" xml:space="preserve">
     <value>الأرباح</value>
