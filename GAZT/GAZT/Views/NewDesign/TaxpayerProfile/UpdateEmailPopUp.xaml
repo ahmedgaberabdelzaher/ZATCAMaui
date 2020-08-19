@@ -23,8 +23,8 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <ScrollView>
         <yummy:PancakeView Padding="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
+            <ScrollView>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -96,6 +96,7 @@
                 </StackLayout>
             </Grid>-->
             </Grid>
+                </ScrollView>
         </yummy:PancakeView>
-    </ScrollView>
+    
 </pages:PopupPage>

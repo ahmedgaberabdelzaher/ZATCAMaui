@@ -146,15 +146,13 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            // Show existing email
-            viewModel.CurrentPasswordEntry = "********";
-
             RefreshControlsData();
         }
 
         // * // Reset Enteried
         private void RefreshControlsData()
         {
+            viewModel.CurrentPasswordEntry = string.Empty;
             viewModel.NewPasswordEntry = string.Empty;
             viewModel.ConfirmPasswordEntry = string.Empty;
         }

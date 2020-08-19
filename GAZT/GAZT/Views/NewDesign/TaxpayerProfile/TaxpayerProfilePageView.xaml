@@ -28,7 +28,7 @@
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="1" Padding="24" Orientation="Vertical" Spacing="0">
-                <custom:CustomLabel Text="Zaed Hardy"
+                <custom:CustomLabel Text="{Binding TPProfileNameLbl}"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleWhiteBold}"
                                     FontSize="24"/>

@@ -24,8 +24,9 @@
         </ResourceDictionary>
     </pages:PopupPage.Resources>
 
-    <ScrollView>
+    
     <yummy:PancakeView Padding="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
+        <ScrollView>
         <StackLayout>
             
 
@@ -294,6 +295,7 @@
             </Grid>-->
 
         </StackLayout>
+            </ScrollView>
     </yummy:PancakeView>
-        </ScrollView>
+        
 </pages:PopupPage>
