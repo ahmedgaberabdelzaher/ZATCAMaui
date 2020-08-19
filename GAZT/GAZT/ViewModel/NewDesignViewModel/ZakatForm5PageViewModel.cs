@@ -2250,7 +2250,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     ZakatForm5DataResult.SCH_GP08.results[i].NetProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].NetProfit);
 
 
-                                    if (ZakatForm5DataResult.SCH_GP08.results[i].City == "")
+                                    if (ZakatForm5DataResult.SCH_GP08.results[i].City != "")
+                                    {
+                                        for (int j = 0; j < ZakatForm5CityDataResults.zcitySet.results.Count(); j++)
+                                        {
+                                            if (ZakatForm5DataResult.SCH_GP08.results[i].City == ZakatForm5CityDataResults.zcitySet.results[j].CityCode)
+                                            {
+                                                ZakatForm5DataResult.SCH_GP08.results[i].City = ZakatForm5CityDataResults.zcitySet.results[j].CityName;
+                                            }
+                                        }
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP08.results[i].City = "-";
                                     }
