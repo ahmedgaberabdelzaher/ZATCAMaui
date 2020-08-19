@@ -429,7 +429,7 @@
                                     </Image>
                                             </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReporterInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                                        <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OnEditClicked}" CommandParameter="{x:Static models:NewTaxEvasionTabEnum.ReporterInfo}" />
                                             </custom:CustomLabel.GestureRecognizers>
@@ -471,7 +471,7 @@
                                             </Image>
                                             </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                                        <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OnEditClicked}" CommandParameter="{x:Static models:NewTaxEvasionTabEnum.FacilityInfo}" />
                                             </custom:CustomLabel.GestureRecognizers>
@@ -529,7 +529,7 @@
                                             </Image>
                                             </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                                        <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center"  HorizontalOptions="EndAndExpand">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center"  HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OnEditClicked}" CommandParameter="{x:Static models:NewTaxEvasionTabEnum.ReportDetails}" />
                                             </custom:CustomLabel.GestureRecognizers>

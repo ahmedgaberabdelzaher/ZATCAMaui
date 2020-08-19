@@ -290,11 +290,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
 
-            LoadingStop();
+            //LoadingStop();
             return TP;
         }
 
-        public async void LoadingStart()
+        public async Task<bool> VarifyEmail()
+        {
+            bool APIResponse = false;
+            string lang = "EN";
+            if (App.IsArabic == true) { lang = "AR"; }
+
+            try
+            {
+                // API Calls
+                await Task.Run(async () =>
+                {
+                    APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, _updateEmailData.CurrentEmail, _updateEmailData.NewEmail);
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                });
+            }
+
+            //LoadingStop();
+            return APIResponse;
+        }
+
+        /*public async void LoadingStart()
         {
             await Task.Run(() => { IsLoading = true; });
         }
@@ -302,7 +329,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         public async void LoadingStop()
         {
             await Task.Run(() => { IsLoading = false; });
-        }
+        }*/
     }
 
     // * Need Updated Email Data From Update Email Page
