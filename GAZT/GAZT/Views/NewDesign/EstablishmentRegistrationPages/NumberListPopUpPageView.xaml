@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.NumberListPopUpPageView">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <pages:PopupPage.Content>
+        <yummy:PancakeView>
+            <CollectionView VerticalOptions="Start" HorizontalOptions="Fill" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>12</x:String>
+                        <x:String>11</x:String>
+                        <x:String>10</x:String>
+                        <x:String>9</x:String>
+                        <x:String>8</x:String>
+                        <x:String>7</x:String>
+                        <x:String>6</x:String>
+                        <x:String>5</x:String>
+                        <x:String>4</x:String>
+                        <x:String>3</x:String>
+                        <x:String>2</x:String>
+                        <x:String>1</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <custom:CustomLabel Text="{Binding .}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
+                                                                    HorizontalTextAlignment="Center" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </yummy:PancakeView>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

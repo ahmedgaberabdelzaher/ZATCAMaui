@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
@@ -24,7 +26,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         public bool MarkComplete { get; private set; } = false;
-        public int MaxIndex { get; private set; } = 5;
+        private int _maxIndex = 5;
+        public int MaxIndex
+        {
+            get => _maxIndex; private set
+            {
+                _maxIndex = value;
+                RaisePropertyChanged(nameof(MaxIndex));
+            }
+        }
 
 
 
@@ -41,7 +51,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _selectedTabText = "Registration/Taxpayer type";
+        private string _selectedTabText = "Financial Details";
         public string SelectedTabText
         {
             get => _selectedTabText;
@@ -204,6 +214,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        #region Financial Details Tabs variables
+        private ObservableCollection<string> _methodList = new ObservableCollection<string>();
+        public ObservableCollection<string> MethodList
+        {
+            get => _methodList;
+            private set
+            {
+                _methodList = value;
+                RaisePropertyChanged(nameof(MethodList));
+            }
+        }
+        private string _selectedMethod = null;
+        public string SelectedMethod
+        {
+            get => _selectedMethod;
+            private set
+            {
+                _selectedMethod = value;
+                RaisePropertyChanged(nameof(SelectedMethod));
+            }
+        }
+        public ObservableCollection<string> _calendarTypeList = new ObservableCollection<string>();
+        public ObservableCollection<string> CalendarTypeList
+        {
+            get => _calendarTypeList;
+            private set
+            {
+                _calendarTypeList = value;
+                RaisePropertyChanged(nameof(CalendarTypeList));
+            }
+        }
+        public string _calendarType = null;
+        public string CalendarType
+        {
+            get => _calendarType;
+            private set
+            {
+                _calendarType = value;
+                RaisePropertyChanged(nameof(CalendarType));
+            }
+        }
+        #endregion
+
         #endregion
 
         #region Commands
@@ -262,6 +315,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             #endregion
 
+            #region Financial Details Tabs variable initialization
+            MethodList.Clear();
+            MethodList.Add("Accounts");
+            MethodList.Add("Estimate");
+            
+            CalendarTypeList.Clear();
+            CalendarTypeList.Add("Hijri");
+            CalendarTypeList.Add("Gregorian");
+            
+            Device.BeginInvokeOnMainThread(()=> {
+                SelectedMethod = MethodList.FirstOrDefault();
+                CalendarType = CalendarTypeList.LastOrDefault();
+            });
+            #endregion
 
             testObjectPrepare();
         }

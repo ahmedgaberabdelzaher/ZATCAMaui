@@ -456,69 +456,83 @@
                     </CollectionView>
                 </StackLayout>
                 <ScrollView Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
-                    <Grid RowSpacing="0" ColumnSpacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Method of financial records maintained" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="0" HeightRequest="108">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
-                                <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                <custom:CustomLabel Text="Accounts" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
-                                                                    Margin="26" TextColor="White" HorizontalTextAlignment="Start" />
-
-                            </Grid>
-                        </cards:SfCardView>
-                        <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="108">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
-                                <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                <custom:CustomLabel Text="Estimate" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
+                    <StackLayout Spacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
+                        <custom:CustomLabel Text="Method of financial records maintained" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <CollectionView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding MethodList}" SelectedItem="{Binding SelectedMethod, Mode=TwoWay}"  HeightRequest="112" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="0" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" HeightRequest="108" Padding="0" Margin="0">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="White" />
+                                                        <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup_W" />
+                                                        <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="{StaticResource NeutralBlack}" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="White" />
+                                                        <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup" />
+                                                        <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="White" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
                                                                     Margin="26" HorizontalTextAlignment="Start" />
-
-                            </Grid>
-                        </cards:SfCardView>
-                        <custom:CustomLabel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Calendar Type" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <cards:SfCardView Grid.Row="3" Grid.Column="0" HasShadow="True" BackgroundColor="Transparent" CornerRadius="0" HeightRequest="108">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
-                                <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                <custom:CustomLabel Text="Hijri" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
-                                                                    Margin="26" TextColor="White" HorizontalTextAlignment="Start" />
-
-                            </Grid>
-                        </cards:SfCardView>
-                        <cards:SfCardView Grid.Row="3" Grid.Column="1" HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="108">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0">
-                                <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                <custom:CustomLabel Text="Gregorian" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <custom:CustomLabel Text="Calendar Type" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <CollectionView VerticalOptions="Start" ItemsSource="{Binding CalendarTypeList}" SelectedItem="{Binding CalendarType, Mode=TwoWay}" HorizontalOptions="Fill" HeightRequest="112" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="0" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" HeightRequest="108" Padding="0" Margin="0">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="White" />
+                                                        <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup_W" />
+                                                        <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="{StaticResource NeutralBlack}" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundColor" Value="White" />
+                                                        <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup" />
+                                                        <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="White" />
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                        <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
                                                                     Margin="26" HorizontalTextAlignment="Start" />
-                            </Grid>
-                        </cards:SfCardView>
-                        <custom:CustomLabel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="End of Financial Year" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
-                        <custom:CustomLabel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="End of Fiscal Month" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <buttons:SfButton Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
-                        <custom:CustomLabel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Text="End of Fiscal Day" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <buttons:SfButton Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="20" Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
-                        <custom:CustomLabel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Text="Business Commencement Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <custom:CustomLabel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Text="1432/11/21" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
-                        <custom:CustomLabel Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Text="Taxable Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <custom:CustomLabel Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" Text="1432/11/20" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
-                    </Grid>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                        <custom:CustomLabel  Text="End of Financial Year" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                        <custom:CustomLabel  Text="End of Fiscal Month" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
+                        <custom:CustomLabel  Text="End of Fiscal Day" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="20" Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
+                        <custom:CustomLabel  Text="Business Commencement Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel  Text="1432/11/21" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
+                        <custom:CustomLabel  Text="Taxable Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="1432/11/20" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
+                    </StackLayout>
                 </ScrollView>
                 <StackLayout Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}">
                     <custom:CustomLabel Text="Declaration" HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlack}"/>
