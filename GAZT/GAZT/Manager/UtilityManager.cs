@@ -795,6 +795,12 @@ namespace GAZT.Manager
             return valid;
         }
 
+        public static bool ValidateNewPasswordForTP(string password)
+        {
+            bool valid = Regex.IsMatch(password, passwordValidation);
+            return valid;
+        }
+
         // * Character wise validation
         private static void CharValidation(string passwordchar)
         {
