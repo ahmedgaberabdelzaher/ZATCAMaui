@@ -181,7 +181,11 @@
                                     </Image>
                                     <custom:CustomLabel  Text="{Binding LblCountDownTimer}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
                                 </StackLayout>
-                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,16,0,0" BackgroundColor="Transparent" TextColor="{StaticResource Primary}"/>
+                                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
+                                                  VerticalOptions="EndAndExpand"
+                                                  Margin="0,16,0,0" BackgroundColor="Transparent"
+                                                  TextColor="{StaticResource Primary}"
+                                                  Clicked="OnResendOTPBtnClicked"/>
                             </StackLayout>
 
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CurrentPassword}" Style="{StaticResource CaptionLabelGrey}"/>
@@ -189,7 +193,7 @@
 
 
                                 <control:BorderlessEntry x:Name="CurrentPassword" Style="{StaticResource DefaultEntry}"
-                                                         Text="{Binding CurrentPasswordEntry}" IsPassword="False" >
+                                                         Text="{Binding CurrentPasswordEntry}" IsPassword="True" >
                                 </control:BorderlessEntry>
 
                                 <inputLayout:SfTextInputLayout.TrailingView >
@@ -211,7 +215,7 @@
 
                                 <control:BorderlessEntry x:Name="NewPassword"
                                                          Style="{StaticResource DefaultEntry}"
-                                                         Text="{Binding NewPasswordEntry}" IsPassword="False" >
+                                                         Text="{Binding NewPasswordEntry}" IsPassword="True" >
                                 </control:BorderlessEntry>
 
                                 <inputLayout:SfTextInputLayout.TrailingView >
@@ -232,7 +236,7 @@
 
                                 <control:BorderlessEntry x:Name="ConfirmPassword"
                                                          Style="{StaticResource DefaultEntry}"
-                                                         Text="{Binding ConfirmPasswordEntry}" IsPassword="False" >
+                                                         Text="{Binding ConfirmPasswordEntry}" IsPassword="True" >
                                 </control:BorderlessEntry>
 
                                 <inputLayout:SfTextInputLayout.TrailingView >
@@ -290,7 +294,7 @@
                 </Grid>
             </yummy:PancakeView>
 
-            <Grid Grid.Row="0"    Grid.Column="0"   IsVisible="{Binding IsLoading}" Padding="-20,-20,-20,-10">
+            <!--<Grid Grid.Row="0"    Grid.Column="0"   IsVisible="{Binding IsLoading}" Padding="-20,-20,-20,-10">
                     <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                     </StackLayout>
                     <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -306,9 +310,8 @@
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
                         </StackLayout>
-                        <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
-                </Grid>
+                </Grid>-->
 
         </StackLayout>
     </ContentPage.Content>

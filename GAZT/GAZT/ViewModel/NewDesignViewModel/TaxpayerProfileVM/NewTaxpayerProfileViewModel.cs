@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using GAZT.Models;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -9,6 +12,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+
+        public string UpdatedMobileNumber = string.Empty;
+        public string UpdatedEmail = string.Empty;
         #endregion
 
         #region Properties
@@ -75,6 +81,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
             if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
             _dialogService = dialogService;
+        }
+
+        public async Task<TaxPayerProfile> GetTPProfileData()
+        {
+            /*await Task.Run(() =>
+            {
+                IsLoading = true;
+            });*/
+
+            TaxPayerProfile APIResponse = null;
+            string lang = "EN";
+            if (App.IsArabic == true) { lang = "AR"; }
+
+            try
+            {
+                await Task.Run(async () =>
+                {
+                    APIResponse = WebServiceManager.SFGAZTGetTaxPayerProfile(App.TP.Tin, lang);
+                });
+                    
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                });
+            }
+
+            return APIResponse;
         }
     }
 }

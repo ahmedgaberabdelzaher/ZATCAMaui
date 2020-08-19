@@ -175,14 +175,47 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
+            // Show existing mobile
+            var result = Regex.Match(App.TP.Mobile, @"(.{9})\s*$");
+            viewModel.CurrentMobileNumberEntryText = result.ToString();
+
+            //IsLoading = false;
             RefreshControlsData();
         }
 
         // * // Reset Enteried
         private void RefreshControlsData()
         {
-            viewModel.CurrentMobileNumberEntryText = string.Empty;
+            viewModel.OTPFirstDigit = string.Empty;
+            viewModel.OTPSecondDigit = string.Empty;
+            viewModel.OTPThirdDigit = string.Empty;
+            viewModel.OTPFourthDigit = string.Empty;
+            viewModel.EnteredOTP = string.Empty;
+
             viewModel.NewMobileNumberEntryText = string.Empty;
+            btn.Text = "Update";
+        }
+
+        async void OnResendOTPBtnClicked(System.Object sender, System.EventArgs e)
+        {
+            if (viewModel.countDownSeconds == 0)
+            {
+                bool PWDSuccess = await viewModel.VarifyMobileNumber();
+                System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", PWDSuccess);
+
+                if (PWDSuccess)
+                {
+                    /*UpdateMobile.IsVisible = false;
+                    VerificationView.IsVisible = true;
+                    btn.Text = "Verify";*/
+
+                    var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
+                    viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
+
+                    // * Start timer period for valid OTP
+                    viewModel.StartOTPTimer();
+                }
+            }
         }
     }
 }

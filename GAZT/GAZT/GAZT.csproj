@@ -91,6 +91,7 @@
     <Folder Include="ViewModel\NewDesignViewModel\VATRefunds\" />
     <Folder Include="Models\VATRefunds\" />
     <Folder Include="ViewModel\NewDesignViewModel\TaxpayerProfileVM\" />
+    <Folder Include="ViewModel\NewDesignViewModel\EstablishmentRegistration\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

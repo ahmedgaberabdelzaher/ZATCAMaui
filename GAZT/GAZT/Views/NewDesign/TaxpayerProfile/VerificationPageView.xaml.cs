@@ -43,13 +43,13 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (callAPIFlag)
             {
-                viewModel.LoadingStart();
+                //viewModel.LoadingStart();
                 TaxPayerProfile TPAPIResponse = await viewModel.ChangePassword();
                 System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
 
                 if (TPAPIResponse != null)
                 {
-                    viewModel.LoadingStop();
+                    //viewModel.LoadingStop();
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 1);
@@ -109,6 +109,23 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             }
         }
 
+        async void OnResendOTPBtnClicked(object sender, EventArgs e)
+        {
+            if( viewModel.countDownSeconds == 0 )
+            {
+                //viewModel.LoadingStart();
+                viewModel.EnteredOTP = string.Empty;
+                viewModel.OTPFirstDigit = string.Empty;
+                viewModel.OTPSecondDigit = string.Empty;
+                viewModel.OTPThirdDigit = string.Empty;
+                viewModel.OTPFourthDigit = string.Empty;
+
+                viewModel.StartOTPTimer();
+                bool OTPSuccess = await viewModel.VarifyEmail();
+                System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", OTPSuccess);
+            }
+        }
+
         // * Forgot password : OTP Verification :
         void OtpFirstEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
@@ -137,7 +154,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            if (viewModel.OTPFourthDigit.Length <= 0) { OTPThirdEntry.Focus(); }
+
+            if (viewModel.OTPFourthDigit.Length <= 0)
+            {
+                if (viewModel.OTPThirdDigit.Length > 0)
+                    OTPThirdEntry.Focus();
+            }
         }
 
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e) { }
@@ -179,15 +201,19 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             base.OnAppearing();
 
             // * Start timer period for valid OTP
-            var result = Regex.Match(App.TP.Mobile, @"(.{3})\s*$");
-            viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
+            //var result = Regex.Match(App.TP.Mobile, @"(.{3})\s*$");
+            //viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
+            //viewModel.StartOTPTimer();
+
+            //var result = Regex.Match(viewModel._updateEmailData.CurrentEmail, @"(.{8})\s*$");
+            viewModel.OTPSentOnThisMobileNumber = AppResources.Email + " " + viewModel._updateEmailData.NewEmail;
             viewModel.StartOTPTimer();
 
-            //RefreshControlsData();
+            RefreshControlsData();
         }
 
         // * // Reset Enteried
-        /*private void RefreshControlsData()
+        private void RefreshControlsData()
         {
             viewModel.OTPFirstDigit = string.Empty;
             viewModel.OTPSecondDigit = string.Empty;
@@ -197,7 +223,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.CurrentPasswordEntry = string.Empty;
             viewModel.NewPasswordEntry = string.Empty;
             viewModel.ConfirmPasswordEntry = string.Empty;
-        }*/
+        }
 
         void OnBackArrowTapped(System.Object sender, System.EventArgs e)
         {
