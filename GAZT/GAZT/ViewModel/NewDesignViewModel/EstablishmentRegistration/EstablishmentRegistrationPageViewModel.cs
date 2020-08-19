@@ -14,7 +14,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
-        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
+        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
         public EstablishmentRegistrationTabsEnum currentTab
         {
             get => _currentTab;
@@ -40,7 +40,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
 
-        private int _currenrIndex = 4;
+        private int _currenrIndex = 3;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -53,7 +53,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _selectedTabText = "Financial Details";
+        private string _selectedTabText = "Passport Details";
         public string SelectedTabText
         {
             get => _selectedTabText;
@@ -333,7 +333,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand NonResidentPartnerPEClick { get; set; }
         #endregion
 
-        public ICommand OnAttachmentClick { get; set; }
+        public ICommand OnERAttachmentCloseTapped { get; set; }
+        public ICommand OnEstablishmentRegistrationAttachmentTapped { get; set; }
+
         public ICommand OnReportingBranchSelectButtonClick { get; set; }
 
         #endregion
@@ -348,6 +350,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #endregion
 
+        #region Passport Tab Commands
+        public ICommand OnPassportAttachmentTapped { get; private set; }
+
+        public ICommand OnPassportCloseTapped { get; private set; }
+
+
+        #endregion
 
         #region Financial Details Tabs commands
         public ICommand OnMonthSelectButtonClick { get; set; }
@@ -380,9 +389,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             #endregion
 
+            #region Attachment commands 
+            OnERAttachmentCloseTapped = new Command(() => onERAttachmentCloseTapped());
+            OnEstablishmentRegistrationAttachmentTapped = new Command(() => onEstablishmentRegistrationAttachmentTapped());
+            #endregion
+
             taxableIncomeSourceTypeListObjPreparation();
 
-            OnReportingBranchSelectButtonClick = new Command(() => {
+            OnReportingBranchSelectButtonClick = new Command(() =>
+            {
                 PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
             });
 
@@ -392,17 +407,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             getGenderList();
 
-            OnPDNatinalitySelectButtonClick = new Command(() => {
+            OnPDNatinalitySelectButtonClick = new Command(() =>
+            {
                 PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
             });
 
-            OnPDCitizenSelectButtonClick = new Command(() => {
+            OnPDCitizenSelectButtonClick = new Command(() =>
+            {
                 PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
             });
 
-            OnPDResidenceSelectButtonClick = new Command(() => {
+            OnPDResidenceSelectButtonClick = new Command(() =>
+            {
                 PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
             });
+            #endregion
+
+            #region Passport Variable Initialization
+
+            OnPassportAttachmentTapped = new Command(() => onPassportAttachmentTapped());
+            OnPassportCloseTapped = new Command(() => onPassportCloseTapped());
             #endregion
 
             #region Financial Details Tabs variable initialization
@@ -419,18 +443,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             CalendarTypeList.Clear();
             CalendarTypeList.Add("Hijri");
             CalendarTypeList.Add("Gregorian");
-            
-            Device.BeginInvokeOnMainThread(()=> {
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
                 SelectedMethod = MethodList.FirstOrDefault();
                 CalendarType = CalendarTypeList.LastOrDefault();
-               var testValue = SelectedTaxIncomeSourceType ;
+                var testValue = SelectedTaxIncomeSourceType;
             });
-            OnMonthSelectButtonClick = new Command(() => {
+            OnMonthSelectButtonClick = new Command(() =>
+            {
                 PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
             });
             #endregion
 
-        
+
         }
 
         #endregion
@@ -693,6 +719,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             GenderList.Add("Female");
 
 
+        }
+
+
+
+        private void onPassportCloseTapped()
+        {
+        }
+
+        private void onPassportAttachmentTapped()
+        {
+        }
+
+        private void onERAttachmentCloseTapped()
+        {
+        }
+
+        private void onEstablishmentRegistrationAttachmentTapped()
+        {
         }
         #endregion
     }

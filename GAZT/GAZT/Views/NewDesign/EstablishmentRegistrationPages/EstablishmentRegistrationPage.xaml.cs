@@ -58,5 +58,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         }
 
+        private void PassportIssueDateClicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PassportExpiryDateClicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

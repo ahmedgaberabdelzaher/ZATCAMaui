@@ -230,7 +230,7 @@
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
                                             </StackLayout>
                                             <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
+                                                <TapGestureRecognizer Command="{Binding OnEstablishmentRegistrationAttachmentTapped}" ></TapGestureRecognizer>
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
                                     </border:SfBorder >
@@ -248,10 +248,10 @@
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
                                             </StackLayout>
                                             <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
+                                                <TapGestureRecognizer Command="{Binding OnERAttachmentCloseTapped}" ></TapGestureRecognizer>
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
-                                    </border:SfBorder >
+                                    </border:SfBorder>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="NoneOfTheAboveOptionsLayout" IsVisible="{Binding IsClickedNoneOfTheAboveOption}" Orientation="Vertical" Grid.Row="7" Margin="0,0,0,10">
@@ -500,18 +500,6 @@
                                     <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="1234567890" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" />
                                 </Grid>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start">
-                                    <!--<Label Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Image Margin="5,0">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                            </Image.Source>
-                                        </Image>
-                                    </StackLayout>-->
-                                    <!--<StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="StartDate" Tapped="VATDeregStartDateClicked" ></TapGestureRecognizer>
-                                        </StackLayout.GestureRecognizers>-->
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
@@ -713,24 +701,138 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <StackLayout Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
-                                <Label  Style="{StaticResource forLightLabel}">
-                                    <Label.FormattedText>
+                           
+                                <border:SfBorder BorderColor="#B1B1B1"  Grid.Row="0" BorderWidth="1" Padding="10" Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                    <StackLayout Orientation="Vertical" Padding="0,0,10,0">
+                                    <StackLayout Orientation="Horizontal" Padding="0,0,10,0">
+                                        <Image Source="information.png"/>
+                                        <Label Text="Information"  TextColor="Black" Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                    </StackLayout>
+                                    <custom:CustomLabel Text="Passport Details are mandatory for Non-Saudi individuals. Please provide all necessary details below" LineSpacing="1" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                </border:SfBorder >
+                                <StackLayout Orientation="Vertical"  Grid.Row="1" HorizontalOptions="Start" Margin="0,0,0,10">
+                                <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                    <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="Passport" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            <Span Text="Passport Number" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
+                                    <Entry VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical"  Grid.Row="2" HorizontalOptions="Start" Margin="0,0,0,10">
+                                <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Issue Country" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
                                 <StackLayout>
-                                    <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnReportingBranchSelectButtonClick}"
+                                    <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnPDNatinalitySelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                 </StackLayout>
                             </StackLayout>
-                           
-                            <!--</StackLayout>-->
+                            <StackLayout Orientation="Vertical"  Grid.Row="3" HorizontalOptions="Start">
+                                <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Issue Date" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding PassportIssueDate}" 
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" >
+                                    <buttons:SfButton.ImageSource>
+                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20" 
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                    </buttons:SfButton.ImageSource>
+                                    <buttons:SfButton.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="PassportIssueDate" Tapped="PassportIssueDateClicked" ></TapGestureRecognizer>
+                                    </buttons:SfButton.GestureRecognizers>
+                                </buttons:SfButton>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical"  Grid.Row="4" HorizontalOptions="Start">
+                                <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Expiry Date" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding PassportExpireDate}" 
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" >
+                                    <buttons:SfButton.ImageSource>
+                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                    </buttons:SfButton.ImageSource>
+                                    <buttons:SfButton.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="PassportExpiryDate" Tapped="PassportExpiryDateClicked" ></TapGestureRecognizer>
+                                    </buttons:SfButton.GestureRecognizers>
+                                </buttons:SfButton>
+                            </StackLayout>
+                            <StackLayout x:Name="PassportAttachmentsMainLayout"  Orientation="Vertical" Grid.Row="5" Margin="0,0,0,10">
+                                <custom:CustomLabel Text="Attachments"  Style="{StaticResource ButtonLabelBlackBold}"/>
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Please provide a copy of above passport details" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Image Source="information.png"  WidthRequest="20" HeightRequest="20" HorizontalOptions="EndAndExpand">
+                                    </Image>
+                                </StackLayout>
+                                <StackLayout>
+                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                            <Label Text="Upload your document" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                <Image Grid.Row="0" Grid.Column="1" Source="ic_attachment" Margin="5,0" WidthRequest="20" HeightRequest="20"
+                                               HorizontalOptions="Start" VerticalOptions="Center"></Image>
+                                            </StackLayout>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnPassportAttachmentTapped}" ></TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                    </border:SfBorder >
+                                </StackLayout>
+                                <StackLayout>
+                                    <custom:CustomLabel Text="Attachment - passport details" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}" />
+                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                            <Image Grid.Row="0" Grid.Column="1" Source="newui_ic_pdf" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                               HorizontalOptions="Start" VerticalOptions="Center"></Image>
+                                            <Label Text="filname.pdf" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                <Image Grid.Row="0" Grid.Column="1" Source="closegrey" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                               HorizontalOptions="Start" VerticalOptions="Center"></Image>
+                                            </StackLayout>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnPassportCloseTapped}" ></TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                    </border:SfBorder >
+                                </StackLayout>
+                            </StackLayout>
                         </Grid>
                     </ScrollView>
                 </StackLayout>
