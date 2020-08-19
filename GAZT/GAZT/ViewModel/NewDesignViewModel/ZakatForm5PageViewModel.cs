@@ -1718,6 +1718,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             NoOFEntityList.Add("Cabs");
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP01.results.Count; i++) {
+
+                                ZakatForm5DataResult.SCH_GP01.results[i].NoOfCars = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].NoOfCars))).ToString();
+                                ZakatForm5DataResult.SCH_GP01.results[i].AgvDlyIncome = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].AgvDlyIncome);
+                                ZakatForm5DataResult.SCH_GP01.results[i].OccRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].OccRate);
+                                ZakatForm5DataResult.SCH_GP01.results[i].NetPftPer = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].NetPftPer);
+                                ZakatForm5DataResult.SCH_GP01.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP01.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP01.results[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP01.results[i].NetPft);
+
+
+
                                 if (ZakatForm5DataResult.SCH_GP01.results[i].Expenses != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = "Applicable";
@@ -1756,6 +1767,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP02.results.Count; i++)
                             {
+
+                                ZakatForm5DataResult.SCH_GP02.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP02.results[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP02.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP02.results[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP02.results[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP02.results[i].NetPft);
+
+
+
                                 if (ZakatForm5DataResult.SCH_GP02.results[i].Expenses != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP02.results[i].IsApplicable = "Applicable";
@@ -1795,9 +1813,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP03.results.Count; i++)
                             {
-                               // ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
-                              //  ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
+                                // ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
+                                //  ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
 
+                                ZakatForm5DataResult.SCH_GP03.results[i].Capital = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].Capital);
+                                ZakatForm5DataResult.SCH_GP03.results[i].SuppCon = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].SuppCon);
+                                ZakatForm5DataResult.SCH_GP03.results[i].ProfitRatio = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].ProfitRatio);
+                                ZakatForm5DataResult.SCH_GP03.results[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].Sales);
+                                ZakatForm5DataResult.SCH_GP03.results[i].SalePrfRatio = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].SalePrfRatio);
+
+                                ZakatForm5DataResult.SCH_GP03.results[i].GenTrade = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].GenTrade);
+                                ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods);
+                                ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals);
+                                ZakatForm5DataResult.SCH_GP03.results[i].ExtnProc = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].ExtnProc);
+
+                                ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI);
+                                ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI);
+                                ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals);
+                                ZakatForm5DataResult.SCH_GP03.results[i].IntnProc = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP03.results[i].IntnProc);
 
 
                                 if (ZakatForm5DataResult.SCH_GP03.results[i].SuppCon != "0.00")
@@ -1983,6 +2016,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP04.results.Count; i++)
                             {
+                                ZakatForm5DataResult.SCH_GP04.results[i].NoOfLabour = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04.results[i].NoOfLabour))).ToString();
+                                ZakatForm5DataResult.SCH_GP04.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04.results[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP04.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04.results[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP04.results[i].NetProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP04.results[i].NetProfit);
+
+
                                 if (ZakatForm5DataResult.SCH_GP04.results[i].Expenses != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP04.results[i].IsExpensesApplicable = "Applicable";
@@ -2018,6 +2057,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             IsIndustryBtn = true;
 
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP05.results.Count; i++)
+                            {
+                                ZakatForm5DataResult.SCH_GP05.results[i].FundingTot = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05.results[i].FundingTot);
+                                ZakatForm5DataResult.SCH_GP05.results[i].CapitalStr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05.results[i].CapitalStr);
+                                ZakatForm5DataResult.SCH_GP05.results[i].Profit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05.results[i].Profit);
+                                ZakatForm5DataResult.SCH_GP05.results[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP05.results[i].Sales);
+
+
+                            }
+
                             NoOFEntityList.Add("Industry");
                             Industry = ZakatForm5DataResult.SCH_GP05.results;
                         }
@@ -2047,6 +2096,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP06.results.Count; i++)
                             {
+                                ZakatForm5DataResult.SCH_GP06.results[i].GovtContractProf = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].GovtContractProf);
+                                ZakatForm5DataResult.SCH_GP06.results[i].CivilContrRev = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].CivilContrRev);
+                                ZakatForm5DataResult.SCH_GP06.results[i].OtherIncome = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].OtherIncome);
+                                ZakatForm5DataResult.SCH_GP06.results[i].TotalProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].TotalProfit);
+                                ZakatForm5DataResult.SCH_GP06.results[i].Capital = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].Capital);
+                                ZakatForm5DataResult.SCH_GP06.results[i].NoOfLabours = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP06.results[i].NoOfLabours))).ToString();
+
+
                                 if (ZakatForm5DataResult.SCH_GP06.results[i].GovtContractProf != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicable = "Applicable";
@@ -2105,6 +2162,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP07.results.Count; i++)
                             {
+
+                                ZakatForm5DataResult.SCH_GP07.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP07.results[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP07.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP07.results[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP07.results[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP07.results[i].NetPft);
+
+                                if(ZakatForm5DataResult.SCH_GP07.results[i].City == "")
+                                {
+                                    ZakatForm5DataResult.SCH_GP07.results[i].City = "-";
+                                }
+
+
                                 if (ZakatForm5DataResult.SCH_GP07.results[i].Expenses != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP07.results[i].IsExpencesApplicable = "Applicable";
@@ -2146,6 +2214,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP08.results.Count; i++)
                             {
+                                ZakatForm5DataResult.SCH_GP08.results[i].NoOfRooms = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].NoOfRooms))).ToString();
+                                ZakatForm5DataResult.SCH_GP08.results[i].RoomRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].RoomRate);
+                                ZakatForm5DataResult.SCH_GP08.results[i].AddRoomRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].AddRoomRate);
+                                ZakatForm5DataResult.SCH_GP08.results[i].ServicFee = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].ServicFee);
+                                ZakatForm5DataResult.SCH_GP08.results[i].OccRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].OccRate);
+                                ZakatForm5DataResult.SCH_GP08.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP08.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP08.results[i].NetProfit = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP08.results[i].NetProfit);
+
+
+                                if (ZakatForm5DataResult.SCH_GP08.results[i].City == "")
+                                {
+                                    ZakatForm5DataResult.SCH_GP08.results[i].City = "-";
+                                }
+
                                 if (ZakatForm5DataResult.SCH_GP08.results[i].Owned == "1")
                                 {
                                     ZakatForm5DataResult.SCH_GP08.results[i].IsOwned = "Yes";
@@ -2198,6 +2281,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             IsEduBtn = true;
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP09.results.Count; i++)
                             {
+                                ZakatForm5DataResult.SCH_GP09.results[i].SubsidyVal = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09.results[i].SubsidyVal);
+                                ZakatForm5DataResult.SCH_GP09.results[i].Revenue = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09.results[i].Revenue);
+                                ZakatForm5DataResult.SCH_GP09.results[i].Expenses = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09.results[i].Expenses);
+                                ZakatForm5DataResult.SCH_GP09.results[i].NetPft = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP09.results[i].NetPft);
+
+
+
                                 if (ZakatForm5DataResult.SCH_GP09.results[i].Expenses != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP09.results[i].IsExpApplicable = "Applicable";
@@ -2238,6 +2328,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             for (int i = 0; i < ZakatForm5DataResult.SCH_GP10.results.Count; i++)
                             {
+
+                                ZakatForm5DataResult.SCH_GP10.results[i].Capital = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10.results[i].Capital);
+                                ZakatForm5DataResult.SCH_GP10.results[i].IncrInCap = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10.results[i].IncrInCap);
+                                ZakatForm5DataResult.SCH_GP10.results[i].CapitalRate = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10.results[i].CapitalRate);
+                                ZakatForm5DataResult.SCH_GP10.results[i].Profits = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP10.results[i].Profits);
+
+
+
                                 if (ZakatForm5DataResult.SCH_GP10.results[i].IncrInCap != "0.00")
                                 {
                                     ZakatForm5DataResult.SCH_GP10.results[i].IsIncCapApplicable = "Applicable";
@@ -2272,6 +2370,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 isAdditionalVisible = false;
                             }
 
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP11.results.Count; i++)
+                            {
+
+                                ZakatForm5DataResult.SCH_GP11.results[i].ShareCap = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].ShareCap);
+                                ZakatForm5DataResult.SCH_GP11.results[i].IntrPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].IntrPurchase);
+                                ZakatForm5DataResult.SCH_GP11.results[i].ForgPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].ForgPurchase);
+                                ZakatForm5DataResult.SCH_GP11.results[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].Sales);
+                                ZakatForm5DataResult.SCH_GP11.results[i].PerSalesGain = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP11.results[i].PerSalesGain);
+
+                            }
+
                             IsCarBtn = true;
 
                             NoOFEntityList.Add("Cars");
@@ -2297,6 +2406,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 isCarVisible = false;
                                 isMineralVisible = true;
                                 isAdditionalVisible = false;
+                            }
+
+                            for (int i = 0; i < ZakatForm5DataResult.SCH_GP12.results.Count; i++)
+                            {
+
+
+                                ZakatForm5DataResult.SCH_GP12.results[i].ShareCap = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].ShareCap);
+                                ZakatForm5DataResult.SCH_GP12.results[i].IntrPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].IntrPurchase);
+                                ZakatForm5DataResult.SCH_GP12.results[i].ForgPurchase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].ForgPurchase);
+                                ZakatForm5DataResult.SCH_GP12.results[i].Sales = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].Sales);
+                                ZakatForm5DataResult.SCH_GP12.results[i].PerSalesGain = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.SCH_GP12.results[i].PerSalesGain);
+
                             }
 
                             IsMineralsBtn = true;
@@ -2339,23 +2460,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 ZakatForm5DataResult.IsOtherShareApplicable = "Not Applicable";
                             }
                         
-                        OtherCompanyShare = ZakatForm5DataResult.APlShare.ToString();
+                        OtherCompanyShare = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.APlShare);
                         IsOtherComShareApp = ZakatForm5DataResult.IsOtherShareApplicable;
-                         ZakatBase = ZakatForm5DataResult.ACapital.ToString();
+
+                         ZakatBase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ACapital);
 
 
 
                         //Declaration
-                         NoOfBranch = ZakatForm5DataResult.ANoBranches.ToString();
-                         NoofEmp = ZakatForm5DataResult.ANoEmp.ToString();
-                         YearRent = ZakatForm5DataResult.AAnnualRent.ToString();
-                         TotalAnnualSalary = ZakatForm5DataResult.ATotAnnualSal.ToString();
+                        NoOfBranch = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ANoBranches))).ToString();
+                        NoofEmp = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ANoEmp))).ToString();
+                        YearRent = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AAnnualRent);
+                         TotalAnnualSalary = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ATotAnnualSal);
 
                         //Zakat Details
-                         Zakatable = ZakatForm5DataResult.AZakat.ToString();
-                         Zakat = ZakatForm5DataResult.AZakat51.ToString();
-                         ZakatPaid = ZakatForm5DataResult.AReleaseOfContract.ToString();
-                         NewTaxAmt = ZakatForm5DataResult.ANetTaxableAmount.ToString();
+                        Zakatable = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AZakat);
+                        Zakat = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AZakat51);
+                        ZakatPaid = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AReleaseOfContract);
+                        NewTaxAmt = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ANetTaxableAmount);
 
 
                         // Zakat Estimation API Call
@@ -2381,6 +2503,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 CabsSummaryIsVisible = true;
                                 NoOFZakatList.Add("Cabs");
                                 IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP01Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP01Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP01Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP01Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP01Set.results[0].ZakatBaseRr);
+
+
+
                             }
 
                             if (ZakatForm5SummaryDataResult.SchGP02Set.results.Any())
@@ -2391,6 +2522,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 NoOFZakatList.Add("Professionals");
                                 IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP02Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP02Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP02Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP02Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP02Set.results[0].ZakatBaseRr);
+
                             }
                             if (ZakatForm5SummaryDataResult.SchGP03Set.results.Any())
                             {
@@ -2399,6 +2537,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Sell_BuySummaryIsVisible = true;
                                 NoOFZakatList.Add("SellesAndBuy");
                                 IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityCapitalTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityCapitalTp);
+                                ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityCapitalRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityCapitalRr);
+
+                                ZakatForm5SummaryDataResult.SchGP03Set.results[0].ExternalImportTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ExternalImportTp);
+                                ZakatForm5SummaryDataResult.SchGP03Set.results[0].ExternalImportRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ExternalImportRr);
+                             
+                                ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP03Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP03Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP03Set.results[0].ZakatBaseRr);
+
+
                             }
                             if (ZakatForm5SummaryDataResult.SchGP04Set.results.Any())
                             {
@@ -2407,6 +2559,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 LabourOccupSummaryIsVisble = true;
                                 NoOFZakatList.Add("Labour");
                                 IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP04Set.results[0].NoLaboursTp = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].NoLaboursTp))).ToString();
+                                ZakatForm5SummaryDataResult.SchGP04Set.results[0].NoLaboursRr = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].NoLaboursRr))).ToString();
+
+                                ZakatForm5SummaryDataResult.SchGP04Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP04Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP04Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP04Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP04Set.results[0].ZakatBaseRr);
+
                             }
                             if (ZakatForm5SummaryDataResult.SchGP05Set.results.Any())
                             {
@@ -2415,6 +2577,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IndustrySummaryIsVisible = true;
                                 NoOFZakatList.Add("Industry");
                                 IsZakatFlag++;
+
+
+                                ZakatForm5SummaryDataResult.SchGP05Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP05Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP05Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP05Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP05Set.results[0].ZakatBaseRr);
+
                             }
                             if (ZakatForm5SummaryDataResult.SchGP06Set.results.Any())
                             {
@@ -2423,6 +2593,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 ContractingSummaryIsVisible = true;
                                 NoOFZakatList.Add("Contracting");
                                 IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].GovtContractProfTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].GovtContractProfTp);
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].GovtContractProfRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].GovtContractProfRr);
+
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].CivilContrRevTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].CivilContrRevTp);
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].CivilContrRevRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].CivilContrRevRr);
+
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].NoLaboursTp= Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].NoLaboursTp))).ToString();
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].NoLaboursRr = Math.Round(Convert.ToDecimal(UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].NoLaboursRr))).ToString();
+
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP06Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP06Set.results[0].ZakatBaseRr);
+
                             }
                             if (ZakatForm5SummaryDataResult.SchGP07Set.results.Any())
                             {
@@ -2431,8 +2617,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 InvstRealEstSummaryIsVisible = true;
                                 NoOFZakatList.Add("Invest");
                                 IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP07Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP07Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP07Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP07Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP07Set.results[0].ZakatBaseRr);
+
                             }
-                          
+
                             if (ZakatForm5SummaryDataResult.SchGP08Set.results.Any())
                             {
                                 //Hotels
@@ -2440,6 +2633,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 HotelsSummaryIsVisible = true;
                                 NoOFZakatList.Add("Hotels");
                                 IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP08Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP08Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP08Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP08Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP08Set.results[0].ZakatBaseRr);
+
                             }
                             if (ZakatForm5SummaryDataResult.SchGP09Set.results.Any())
                             {
@@ -2449,8 +2649,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 NoOFZakatList.Add("edu");
                                 IsZakatFlag++;
 
+
+                                ZakatForm5SummaryDataResult.SchGP09Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP09Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP09Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP09Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP09Set.results[0].ZakatBaseRr);
+
                             }
-                        
+
                             if (ZakatForm5SummaryDataResult.SchGP10Set.results.Any())
                             {
                                 //Poultry and Fish Farms Activities
@@ -2458,8 +2665,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Poultry_FishFarmSummaryIsVisible = true;
                                 NoOFZakatList.Add("Poultry");
                                 IsZakatFlag++;
+
+
+                                ZakatForm5SummaryDataResult.SchGP10Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP10Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP10Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP10Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP10Set.results[0].ZakatBaseRr);
+
                             }
-                          
+
                             if (ZakatForm5SummaryDataResult.SchGP11Set.results.Any())
                             {
                                 //Cars
@@ -2467,9 +2682,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 CarsSummaryIsVisible = true;
                                 NoOFZakatList.Add("Cars");
                                 IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP11Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP11Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP11Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP11Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP11Set.results[0].ZakatBaseRr);
+
                             }
-                           
-                            
+
+
                             if (ZakatForm5SummaryDataResult.SchGP12Set.results.Any())
                             {
                                 //Minerls
@@ -2477,6 +2699,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 MineralsSummaryIsVisible = true;
                                 NoOFZakatList.Add("Minerls");
                                 IsZakatFlag++;
+
+                                ZakatForm5SummaryDataResult.SchGP12Set.results[0].ActivityProfitTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set.results[0].ActivityProfitTp);
+                                ZakatForm5SummaryDataResult.SchGP12Set.results[0].ActivityProfitRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set.results[0].ActivityProfitRr);
+
+                                ZakatForm5SummaryDataResult.SchGP12Set.results[0].ZakatBaseTp = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set.results[0].ZakatBaseTp);
+                                ZakatForm5SummaryDataResult.SchGP12Set.results[0].ZakatBaseRr = UtilityManager.GetCommaSeparatedAmount(ZakatForm5SummaryDataResult.SchGP12Set.results[0].ZakatBaseRr);
+
                             }
 
                             if (IsZakatFlag != 0) 
