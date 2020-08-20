@@ -1,11 +1,14 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Manager;
+using GAZT.Models;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -143,6 +146,87 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             // Default
             viewModel.IsLoading = false;
+        }
+
+        private void NewEmail_Entry_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.NewEmailText))
+            {
+                bool flag = IsValid(viewModel.NewEmailText);
+                if (!flag)
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;//ZZPleaseenteravalidEmailAddress//ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;//ZZZInvalidEmailAddressMessage
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        // popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    Frm_NewEmail.HasError = true;
+                    //FrmEmailAddress.HasError = true;
+                    viewModel.NewEmailText = string.Empty;
+                }
+                else
+                {
+                    Frm_NewEmail.HasError = false;
+                    //FrmEmailAddress.HasError = false;
+                }
+            }
+        }
+        public bool IsValid(string emailaddress)
+        {
+            bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            if (isEmail)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void BorderlessEntry_Unfocused(object sender, FocusEventArgs e)
+        {
+
+        }
+
+        private void ConfirmEmail_Entry_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.ConfirmEmailText))
+            {
+                bool flag = IsValid(viewModel.ConfirmEmailText);
+                if (!flag)
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;//ZZPleaseenteravalidEmailAddress//ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;//ZZZInvalidEmailAddressMessage
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        // popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    Frm_confirmEmail.HasError = true;
+                    //FrmEmailAddress.HasError = true;
+                    viewModel.ConfirmEmailText = string.Empty;
+                }
+                else
+                {
+                    Frm_confirmEmail.HasError = false;
+                    //FrmEmailAddress.HasError = false;
+                }
+            }
         }
     }
 }

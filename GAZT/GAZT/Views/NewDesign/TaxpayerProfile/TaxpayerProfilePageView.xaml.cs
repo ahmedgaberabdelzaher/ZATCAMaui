@@ -26,11 +26,21 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             viewModel = App.Locator.TaxpayerProfilePageView;
             this.BindingContext = viewModel;
-
+            ChangeAeroIcon();
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         private void OnMobileEditTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new UpdateMobilePopUp());
