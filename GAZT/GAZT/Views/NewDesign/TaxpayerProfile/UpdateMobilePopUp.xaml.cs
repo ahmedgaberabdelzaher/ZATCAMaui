@@ -183,6 +183,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             RefreshControlsData();
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            if(viewModel.countDownSeconds != 0 )
+                viewModel.otpTimer.Stop();
+        }
+
         // * // Reset Enteried
         private void RefreshControlsData()
         {

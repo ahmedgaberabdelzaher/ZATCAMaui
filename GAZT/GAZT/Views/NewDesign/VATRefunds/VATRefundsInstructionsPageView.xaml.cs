@@ -20,7 +20,19 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             viewModel.ReloadData(vATRefundsModel);
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            this.FlowDirection = FlowDirection.LeftToRight;
+            SetLTR();
+        }
+
+        private void SetLTR()
+        {
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
     }
 }

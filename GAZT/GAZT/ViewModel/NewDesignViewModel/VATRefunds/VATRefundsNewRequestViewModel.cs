@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.VATRefunds;
 using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -22,6 +26,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand CloseBtnTapped { get; set; }
         public ICommand IbanIdTypeTapped { get; set; }
+        public ICommand IbanIdNumberTapped { get; set; }
 
         #endregion
 
@@ -57,6 +62,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        private VatRefundDisplayDataModel _vatNewReqSummaryData = null;
+        public VatRefundDisplayDataModel VatNewReqSummaryData
+        {
+            get
+            {
+                return _vatNewReqSummaryData;
+            }
+
+            set
+            {
+
+                _vatNewReqSummaryData = value;
+                RaisePropertyChanged("VatNewReqSummaryData");
+            }
+        }
+
+
         private VarRefundIbanDataModel _vatRefundsIbanDataModel = null;
         public VarRefundIbanDataModel VatRefundsIbanDataModel
         {
@@ -73,6 +95,56 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+       
+
+        private string _selectedIdtype { get; set; }
+        public string SelectedIdtype
+        {
+            get
+            {
+                return _selectedIdtype;
+            }
+
+            set
+            {
+
+                _selectedIdtype = value;
+                RaisePropertyChanged("SelectedIdtype");
+            }
+        }
+
+        private string _selectedIdNumber { get; set; }
+        public string SelectedIdNumber
+        {
+            get
+            {
+                return _selectedIdNumber;
+            }
+
+            set
+            {
+
+                _selectedIdNumber = value;
+                RaisePropertyChanged("SelectedIdNumber");
+            }
+        }
+
+        private string _selectedIDTypeCode { get; set; }
+        public string SelectedIDTypeCode
+        {
+            get
+            {
+                return _selectedIDTypeCode;
+            }
+
+            set
+            {
+
+                _selectedIDTypeCode = value;
+                RaisePropertyChanged("SelectedIDTypeCode");
+            }
+        }
+
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
         {
@@ -83,6 +155,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             set
             {   
                 _pickerModel = value;
+
+                if(PickerModel != null && PickerModel.SelectedValue != null && IBANTypesList!= null)
+                {
+                    if(PickerModel.PickerId == "idTypePicker")
+                    {
+                        SelectedIdtype = PickerModel.SelectedValue;
+                        IBANType idType = IBANTypesList.Where(m => m.Text == PickerModel.SelectedValue).FirstOrDefault();
+                        SelectedIDTypeCode = idType.key;
+
+                        SetIBANIdNumber(idType.key);
+                    }
+                    else
+                    {
+                        SelectedIdNumber = PickerModel.SelectedValue;
+                    }
+                }
+
                 RaisePropertyChanged("PickerModel");
             }
         }
@@ -100,6 +189,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 _ibanData = value;
                 RaisePropertyChanged("IbanData");
+            }
+        }
+
+        private VarRefundIbanDataModelMetadataResult _selectedIbanData = null;
+        public VarRefundIbanDataModelMetadataResult SelectedIbanData
+        {
+            get
+            {
+                return _selectedIbanData;
+            }
+
+            set
+            {
+
+                _selectedIbanData = value;
+                RaisePropertyChanged("SelectedIbanData");
             }
         }
 
@@ -129,24 +234,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             set
             {
                 _iBANTypesList = value; 
-                //if (_iBANTypesList != null && _iBANTypesList.Count != 0)
-                //{
-                //    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false)
-                //    {
-                //        IsEnableIBANType = false;
-                //    }
-                //    else
-                //    {
-                //        IsEnableIBANType = true;
-                //    }
-                //}
-                //else
-                //{
-                //    IsEnableIBANType = false;
-                //}
                 RaisePropertyChanged("IBANTypesList");
             }
         }
+
+        private ObservableCollection<IBANIDNumber> _iBANIDNumberList;
+        public ObservableCollection<IBANIDNumber> IBANIDNumberList
+        {
+            get
+            {
+                return _iBANIDNumberList;
+            }
+            set
+            {
+                _iBANIDNumberList = value;
+                RaisePropertyChanged("IBANIDNumberList");
+            }
+        }
+
 
         public VATRefundsNewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
@@ -154,6 +259,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 throw new ArgumentNullException("navigationService");
             }
+            
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
@@ -165,6 +271,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             });
 
             IbanIdTypeTapped = new Command(OnIbanIdTypeClicked);
+            IbanIdNumberTapped = new Command(OnIbanNumberClicked);
+            SelectedIdtype = AppResources.ZZIDType;
+            SelectedIdNumber = AppResources.IDNumber;
+            VatNewReqSummaryData = new VatRefundDisplayDataModel();
+
+            PickerModel = new GenericPickerModel();
+            CreateIBANType();
 
             //ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
             //OutletContinueBtnTapped = new Command(this.OutletContinueBtnClicked);
@@ -193,7 +306,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 });
 
                 VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
-
+               
                 VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
 
@@ -211,12 +324,100 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     App.HideProgressView();
                 });
             }
-            catch (GAZTErrorException ex)
+            catch (InternetException ex)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                await Task.Run(() =>
                 {
                     App.HideProgressView();
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                //    _navigationService.GoBack();
+                //});
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                string message = ex.Message;
+
+                try
+                {
+                    PopUp popUp = new PopUp();
+                    StringBuilder PopMsg = new StringBuilder();
+
+                    popUp.Message = message;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    _navigationService.GoBack();
+                }
+                catch(Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
+
+            }
+        }
+
+        public async void LoadDraftsData(VatRefundsListResultModel draftsData)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {   
+                    App.DisplayProgressView();
+                });
+
+                VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(draftsData.WiDtlSet.Results[0].Fbguid);
+
+                if(VatRefundsDisplayDataModel.Idnumber != null && VatRefundsDisplayDataModel.Idnumber != string.Empty)
+                {
+                    SelectedIdNumber = VatRefundsDisplayDataModel.Idnumber;
+                }
+
+                if (VatRefundsDisplayDataModel.Idtype != null && VatRefundsDisplayDataModel.Idtype != string.Empty)
+                {
+                    try
+                    {
+                        SelectedIDTypeCode = VatRefundsDisplayDataModel.Idtype;
+                        IBANType idType = IBANTypesList.Where(m => m.key == SelectedIDTypeCode).FirstOrDefault();
+                        SelectedIdtype = idType.Text;
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine("No ID type");
+                    }
+                }
+
+                VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
+                IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
+
+                if (IbanData == null || IbanData.Count == 0)
+                {
+                    IsAddAccountVisisble = true;
+                }
+                else
+                {
+                    IsAddAccountVisisble = false;
+                }
+
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
                 });
             }
             catch (InternetException ex)
@@ -226,30 +427,105 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     App.HideProgressView();
                 });
 
-                Device.BeginInvokeOnMainThread(async () =>
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                //    _navigationService.GoBack();
+                //});
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
+                    App.HideProgressView();
                 });
+
+                string message = ex.Message;
+
+                try
+                {
+                    PopUp popUp = new PopUp();
+                    StringBuilder PopMsg = new StringBuilder();
+
+                    popUp.Message = message;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    _navigationService.GoBack();
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
+
             }
         }
 
         public async void OnIbanIdTypeClicked()
         {
             ObservableCollection<string> idTypeData = new ObservableCollection<string>();
-            idTypeData.Add(AppResources.ZIBANNationalID);
-            idTypeData.Add(AppResources.ZIBANCommercialRegistrationID);
-            idTypeData.Add(AppResources.ZIBANCompanyID);
+
+            foreach(IBANType iBANType in IBANTypesList)
+            {
+                idTypeData.Add(iBANType.Text);
+            }
 
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = idTypeData;
-            genericPickerModel.PickerTitle = "ID Type";
+            genericPickerModel.PickerTitle = AppResources.IDType;
             genericPickerModel.PickerId = "idTypePicker";
 
             await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
-        public void createIBANType()
+        public async void OnIbanNumberClicked()
+        {
+            if(IBANIDNumberList != null && IBANIDNumberList.Count > 0)
+            {
+                ObservableCollection<string> idNumberData = new ObservableCollection<string>();
+
+                foreach (IBANIDNumber iBANId in IBANIDNumberList)
+                {
+                    idNumberData.Add(iBANId.Idnumber);
+                }
+
+                GenericPickerModel genericPickerModel = new GenericPickerModel();
+                genericPickerModel.PickerData = idNumberData;
+                genericPickerModel.PickerTitle = AppResources.IDNumber;
+                genericPickerModel.PickerId = "idNumberPicker";
+
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            }
+            else
+            {
+                PopUp popUp = new PopUp();
+                StringBuilder PopMsg = new StringBuilder();
+
+                popUp.Message = AppResources.VATRefundsNoIdNumber;
+
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+
+                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            }
+        }
+
+        public void CreateIBANType()
         {
             IBANTypesList = new ObservableCollection<IBANType>();
             ObservableCollection<IBANType> IBANTypesDummyList = new ObservableCollection<IBANType>();
@@ -266,6 +542,133 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             iBANType2.Text = AppResources.ZIBANCompanyID;
             IBANTypesDummyList.Add(iBANType2);
             IBANTypesList = IBANTypesDummyList;
+        }
+
+        public async Task SetIBANIdNumber(string selectedIbanIdType)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+
+                List<IBANIDNumber> iBANIDNumbersResponse = await WebServiceManager.GAZTGetIBANIdNumber(selectedIbanIdType);
+
+                PopToRootPage();
+                if (iBANIDNumbersResponse != null || iBANIDNumbersResponse.Count() != 0)
+                {
+                    IBANIDNumberList = new ObservableCollection<IBANIDNumber>(iBANIDNumbersResponse);
+                }
+
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    });
+
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+        }
+
+        public async void ContinueBtnClicked()
+        {
+            PopUp popUp = new PopUp();
+            StringBuilder PopMsg = new StringBuilder();
+
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+                popUp.isFontSet = true;
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+
+            if (SelectedIdtype == string.Empty || SelectedIdtype == AppResources.ZZIDType)
+            {
+                popUp.Message = AppResources.ZPleaseselectparametertype;
+                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                return;
+            }
+
+            if (SelectedIdNumber == string.Empty || SelectedIdNumber == AppResources.IDNumber)
+            {
+                popUp.Message = AppResources.ZVatRefundInformationSelectIBANIDNumber;
+                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                return;
+            }
+
+            if(SelectedIbanData == null)
+            {
+                popUp.Message = AppResources.ZVatRefundInformationSelectIBAN;
+                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                return;
+            }
+
+
+            VatRefundsDisplayDataModel.Operationx = "05";
+            VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
+            VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
+            VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
+            VatRefundsDisplayDataModel.Iban = _selectedIbanData.Iban;
+            VatRefundsDisplayDataModel.IbanC = _selectedIbanData.Iban;
+            VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+            VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
+            VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
+
+            try
+            {
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+
+                VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+                _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
+
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+            }
+            catch (InternetException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                });
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                string message = ex.Message;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(message, AppResources.Information);
+                });
+            }
+
         }
     }
 }

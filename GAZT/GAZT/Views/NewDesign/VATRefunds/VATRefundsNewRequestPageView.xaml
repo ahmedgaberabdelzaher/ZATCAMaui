@@ -89,7 +89,7 @@
 
                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                            <Label Text="{x:Static ResourceManager:AppResources.ZZIDType}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                            <Label Text="{Binding SelectedIdtype}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                     <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                     HorizontalOptions="Start" VerticalOptions="Center">
@@ -104,17 +104,26 @@
                     </border:SfBorder >
                 </StackLayout>
 
-                <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Margin="0,16,0,0">
+                <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"  Margin="0,16,0,0" >
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource CaptionLabelGrey}" />     
-                    <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-						ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-						OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                        <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                VerticalTextAlignment="Start"
-                                                TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
-                        </custom:BorderlessEntry>
-                    </inputLayout:SfTextInputLayout>
+                                        Style="{StaticResource CaptionLabelGrey}" />   
+                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                        
+                            <Label Text="{Binding SelectedIdNumber}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                    HorizontalOptions="Start" VerticalOptions="Center">
+                                    </Image>
+                            </StackLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding IbanIdNumberTapped}" ></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+                    </border:SfBorder >
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,8" >
@@ -136,7 +145,7 @@
                 
 
                 <listView:SfListView x:Name="BankOptionsListView" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding IbanData}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
+                                      ItemsSource="{Binding IbanData}" SelectedItem="{Binding SelectedIbanData, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="BankOptionsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>

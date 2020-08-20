@@ -30,7 +30,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public ICommand onSecondButtonClicked { get; set; }
 
+        public ICommand onRefundClicked { get; set; }
         
+
+
 
 
         int CurrentView;
@@ -100,6 +103,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _maxIndex = value;
                 RaisePropertyChanged("MaxIndex");
+            }
+        }
+
+        private bool _isRefundButtonEnabled;
+        public bool IsRefundButtonEnabled
+        {
+            get
+            {
+                return _isRefundButtonEnabled;
+            }
+            set
+            {
+                _isRefundButtonEnabled = value;
+                RaisePropertyChanged("IsRefundButtonEnabled");
+            }
+        }
+
+        private bool _isRefundButtonVisible;
+        public bool IsRefundButtonVisible
+        {
+            get
+            {
+                return _isRefundButtonVisible;
+            }
+            set
+            {
+                _isRefundButtonVisible = value;
+                RaisePropertyChanged("IsRefundButtonVisible");
             }
         }
 
@@ -536,11 +567,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_isDeclarationCheckedForInstruction == true)
                 {
                     IsMainButtonEnabled = true;
+                    
                     VATDeclarationData.d.TcFg = "1";
                 }
                 else
                 {
                     IsMainButtonEnabled = false;
+                   
                     VATDeclarationData.d.TcFg = "0";
                 }
                 RaisePropertyChanged("IsDeclarationCheckedForInstruction");
@@ -1931,6 +1964,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _navigationService.GoBack();
             });
 
+            onRefundClicked = new Xamarin.Forms.Command(() =>
+            {
+                //_navigationService.GoBack();
+            });
+
             
 
             onSecondButtonClicked = new Xamarin.Forms.Command(async() =>
@@ -2308,6 +2346,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 if (IsDeclarationCheckedForInstruction == false)
                                 {
                                     IsMainButtonEnabled = false;
+                                    IsRefundButtonEnabled = false;
                                 }
                             }
                          
@@ -2789,6 +2828,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         isBtnVisible = false;
                         IsMainButtonVisible = true;
+                        IsRefundButtonVisible = true;
                         ContinueText = AppResources.ZZZZConfirmAndCarryForward;
                     }
                     else
@@ -3212,6 +3252,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             IsGetSadadNumberEnabled = false;
                             IsMainButtonEnabled = false;
                             IsMainButtonVisible = false;
+                            IsRefundButtonEnabled = false;
+                            IsRefundButtonVisible = false;
                             isBtnVisible = false;
                             IsEnableSwitchToggledFor15PercentChange = false;
                             //IsMainButtonVisible = false;
@@ -3368,6 +3410,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsGetSadadNumberEnabled = false;
                                 IsMainButtonEnabled = false;
                                 IsMainButtonVisible = false;
+                                IsRefundButtonEnabled = false;
+                                IsRefundButtonVisible = false;
                                 isBtnVisible = false;
                                 IsEnableSwitchToggledFor15PercentChange = false;
                                 //IsMainButtonVisible = false;

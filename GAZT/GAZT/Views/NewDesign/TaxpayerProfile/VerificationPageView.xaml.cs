@@ -95,17 +95,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 return AppResources.InvalidPassword;*/
             else
             {
-                /*bool passwordValidationRegXFlag = UtilityManager.ValidateNewPassword(NewPassword);
+                bool passwordValidationRegXFlag = UtilityManager.ValidateNewPasswordForTP(NewPassword);
                 if (passwordValidationRegXFlag)
                 {
                     return string.Empty;
                 }
                 else
                 {
-                    return "Password Not Matches As Expected!!";
-                }*/
-
-                return string.Empty;
+                    return AppResources.InvalidPassword;
+                }
             }
         }
 
@@ -157,7 +155,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             if (viewModel.OTPFourthDigit.Length <= 0)
             {
-                if (viewModel.OTPThirdDigit.Length >= 0)
+                if (viewModel.OTPThirdDigit.Length > 0)
                     OTPThirdEntry.Focus();
             }
         }
@@ -210,6 +208,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.StartOTPTimer();
 
             RefreshControlsData();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            if (viewModel.countDownSeconds != 0)
+                viewModel.otpTimer.Stop();
         }
 
         // * // Reset Enteried

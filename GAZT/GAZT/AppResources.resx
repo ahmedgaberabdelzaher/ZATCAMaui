@@ -4939,6 +4939,9 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
+ <data name="VATRefundRequestTtitle" xml:space="preserve">
+    <value>VAT Refund Request</value>
+  </data>
   <data name="VATRefund" xml:space="preserve">
     <value>VAT Refund</value>
   </data>
@@ -4960,29 +4963,35 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsRequestDate" xml:space="preserve">
     <value>Request Date</value>
   </data>
-  <data name="VATRefundsStatusRefunded" xml:space="preserve">
-    <value>Refunded</value>
+  <data name="VATRefundsStatusTransferred" xml:space="preserve">
+    <value>Transferred</value>
+  </data>
+ <data name="VATRefundsStatusDraft" xml:space="preserve">
+    <value>DRAFT</value>
   </data>
   <data name="VATRefundsStatusInProcess" xml:space="preserve">
     <value />
   </data>
   <data name="VATRefundAmounts" xml:space="preserve">
-    <value />
+    <value>Refund Amounts</value>
   </data>
   <data name="VATRefundsAlRajhiBank" xml:space="preserve">
     <value />
   </data>
   <data name="VATRefundsLastStatusChange" xml:space="preserve">
-    <value />
+    <value>Last Status Change</value>
   </data>
   <data name="VATRefundsRequestSuccess" xml:space="preserve">
     <value>Your VAT Refund Request is successful</value>
   </data>
   <data name="VATRefundsRequestedAmount" xml:space="preserve">
-    <value />
-  </data>
+    <value>Requested Amount</value>
+    </data>
   <data name="VATRefundsAddAccount" xml:space="preserve">
     <value>Add Account</value>
+  </data>
+  <data name="VATRefundsNoIdNumber" xml:space="preserve">
+    <value>There are no ID Numbers for this ID Type</value>
   </data>
   <data name="ContractObjectNo" xml:space="preserve">
     <value>Contract Object No.</value>
