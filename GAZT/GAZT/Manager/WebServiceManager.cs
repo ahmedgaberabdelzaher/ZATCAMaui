@@ -6890,10 +6890,16 @@ namespace GAZT.Manager
         #region Form5
         #region ZakatForm5
 
+        /// <summary>
+        /// Basic Information and Financial Information
+        /// </summary>
+        /// <param name="Fbguid"></param>
+        /// <returns></returns>
+         #region Basic and Financial Information
         public static async Task<ZakatForm5DataResult> GAZTZakatForm5Data(string Fbguid)
         {
             if (CrossConnectivity.Current.IsConnected)
-            {
+            {   
                 ZakatForm5DataResult ZakatForm5DataResultSet = new ZakatForm5DataResult();
                 string NewToken = string.Empty;
                 try
@@ -6962,7 +6968,14 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        #endregion
 
+        /// <summary>
+        /// Form5 City API
+        /// </summary>
+        /// <returns></returns>
+
+        #region City
         public static async Task<ZakatForm5CityDataResult> GAZTZakatForm5CityData()
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -7048,9 +7061,16 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        #endregion
 
 
+        /// <summary>
+        /// Zakat Estimation Summary API
+        /// </summary>
+        /// <param name="Fbnum"></param>
+        /// <returns></returns>
 
+        #region Zakat Estimation Summary
         public static async Task<ZakatForm5SummaryResult> GAZTZakatForm5DataSummary(string Fbnum)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -7123,6 +7143,10 @@ namespace GAZT.Manager
             }
         }
         #endregion
+        #endregion
+        #endregion
+
+        #region VAT Deregistration
         public static async Task<VATDeregAttachmentRootOject> GAZTSaveVATDeregAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
         {
             if (CrossConnectivity.Current.IsConnected)

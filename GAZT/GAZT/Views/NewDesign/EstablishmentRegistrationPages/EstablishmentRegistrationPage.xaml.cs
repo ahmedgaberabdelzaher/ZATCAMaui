@@ -1,3 +1,4 @@
+﻿using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.GenericPickers;
@@ -20,6 +21,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             InitializeComponent();
             BindingContext = App.Locator.EstablishmentRegistrationPage;
+            SetLTR();
         }
 
         protected override void OnAppearing()
@@ -30,6 +32,19 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+        }
+
+        private void SetLTR()
+        {
+
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
         }
 
         async void dOBDateClicked(System.Object sender, System.EventArgs e)

@@ -41,4 +41,11 @@ namespace EGAZT.Models
         AFixedBasePE = 4,
         NonResidentPartnerPE = 5
     }
+
+    public enum EstablishmentRegistrationOutletTabsEnum
+    {
+        OutletDetail = 1,
+        ActivityDetails = 2,
+        AddressDetails = 3
+    }
 }

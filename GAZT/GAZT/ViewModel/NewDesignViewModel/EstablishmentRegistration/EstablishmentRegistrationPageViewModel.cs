@@ -9,7 +9,7 @@ using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
-namespace EGAZT.ViewModel.NewDesignViewModel
+namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
