@@ -5453,4 +5453,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="FORM5TotalProfit" xml:space="preserve">
     <value>إجمالي ارباح المشتريات من الداخل</value>
   </data>
+  <data name="TPIndividualSaudi" xml:space="preserve">
+    <value>فرد سعودي (اقامة)</value>
+  </data>
 </root>
