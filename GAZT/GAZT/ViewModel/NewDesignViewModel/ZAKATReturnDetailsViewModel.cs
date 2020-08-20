@@ -1492,6 +1492,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsRequiredAttachmentAdded = false;
                 }
             }
+            else
+            {
+                TotalVATSalesEditImageSource = "ic_edit_gray.png";
+            }
 
             if (Convert.ToDouble(zakatReturnDetail.d.LabnoI) < Convert.ToDouble(ZakatReturnDetailToCompare.LabnoI))
             {
@@ -1500,6 +1504,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     AverageNumberOfLabourEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
 
+                }
+                else
+                {
+                    AverageNumberOfLabourEditImageSource = "ic_edit_gray.png";
                 }
             }
 
@@ -1511,6 +1519,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsRequiredAttachmentAdded = false;
 
                 }
+                else
+                {
+                    ExportValueEditImageSource = "ic_edit_gray.png";
+                }
             }
 
             if (Convert.ToDouble(zakatReturnDetail.d.PtoslI) < Convert.ToDouble(ZakatReturnDetailToCompare.PtoslI))
@@ -1520,6 +1532,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     ImportFromPointOfSalesEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
 
+                }
+                else
+                {
+                    ImportFromPointOfSalesEditImageSource = "ic_edit_gray.png";
                 }
             }
 
@@ -1531,6 +1547,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsRequiredAttachmentAdded = false;
 
                 }
+                else
+                {
+                    ContactFromETIMADSystemEditImageSource = "ic_edit_gray.png";
+                }
             }
 
             if (Convert.ToDouble(zakatReturnDetail.d.ExamtI) < Convert.ToDouble(ZakatReturnDetailToCompare.ExamtI) || !zakatReturnDetail.d.ExamtResn.Equals(ZakatReturnDetailToCompare.ExamtResn))
@@ -1541,15 +1561,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsRequiredAttachmentAdded = false;
 
                 }
+                else
+                {
+                    ExportValueEditImageSource = "ic_edit_gray.png";
+                }
             }
 
             if (Convert.ToDouble(zakatReturnDetail.d.PramtI) < Convert.ToDouble(ZakatReturnDetailToCompare.PramtI))
             {
                 if (AttachmentPopUpViewModel.SalesDetailList == null || AttachmentPopUpViewModel.SalesDetailList.Count == 0 || AttachmentPopUpViewModel.SalesDetailList[6].estimateZakatAttachment.Count == 0 || string.IsNullOrEmpty(zakatReturnDetail.d.PramtResn))
                 {
-                    CapitalAmountEditImageSource = "ic_Edit_red.png";
+                    PurchaseValueEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
 
+                }
+                else
+                {
+                    PurchaseValueEditImageSource = "ic_edit_gray.png";
                 }
             }
             if (Convert.ToDouble(zakatReturnDetail.d.Cpamt) < Convert.ToDouble(ZakatReturnDetailToCompare.Cpamt))
@@ -1559,6 +1587,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     CapitalAmountEditImageSource = "ic_Edit_red.png";
                     IsRequiredAttachmentAdded = false;
 
+                }
+                else
+                {
+                    CapitalAmountEditImageSource = "ic_edit_gray.png";
                 }
 
             }
