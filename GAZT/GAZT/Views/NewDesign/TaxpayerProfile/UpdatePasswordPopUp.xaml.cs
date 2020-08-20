@@ -155,6 +155,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.CurrentPasswordEntry = string.Empty;
             viewModel.NewPasswordEntry = string.Empty;
             viewModel.ConfirmPasswordEntry = string.Empty;
+
+            // Default
+            viewModel.IsLoading = false;
         }
     }
 }
