@@ -23,12 +23,22 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             NavigationPage.SetHasNavigationBar(this, false);
             viewModel = App.Locator.VerificationPageView;
             this.BindingContext = viewModel;
-
+            ChangeAeroIcon();
             viewModel._updateEmailData = updateEmailData;
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         private async void VerifyBtnClicked(object sender, EventArgs e)
         {
             // Call Update Mobile Number API + Go Success Page

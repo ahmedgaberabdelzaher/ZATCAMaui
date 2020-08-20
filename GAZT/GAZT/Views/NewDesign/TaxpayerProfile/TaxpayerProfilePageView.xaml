@@ -17,6 +17,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -185,7 +193,7 @@
                              Padding="0,8,0,0">
                         <Image Source="arrowLeftwhite.png"
                            HorizontalOptions="Start"
-                           VerticalOptions="Center">
+                           VerticalOptions="Center" Style="{DynamicResource BackButtonArrow}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnBackArrowBtnTapped"/>
                             </Image.GestureRecognizers>
