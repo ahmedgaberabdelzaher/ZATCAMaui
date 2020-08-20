@@ -5483,4 +5483,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="FORM5TotalProfit" xml:space="preserve">
     <value>Total Profits</value>
   </data>
+  <data name="NDConfirmNewEmail" xml:space="preserve">
+    <value>Confirm New Email</value>
+  </data>
+  <data name="NDConfirmNewPassword" xml:space="preserve">
+    <value>Confirm New Password</value>
+  </data>
 </root>
