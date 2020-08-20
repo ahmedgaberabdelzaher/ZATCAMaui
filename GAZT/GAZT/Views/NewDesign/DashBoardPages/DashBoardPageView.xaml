@@ -44,12 +44,40 @@
             <Grid IsVisible="{Binding HomeViewVisible}" Grid.Row="0" RowSpacing="0"  Margin="0" Padding="0,15,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="1" Padding="0" VerticalOptions="FillAndExpand">
 
-                    <StackLayout Padding="0">
+                <yummy:PancakeView Grid.Row="1" IsVisible="{Binding IsVatRegistrationTileVisible}" CornerRadius="12,12,0,0" BackgroundColor="{StaticResource NewDullOrangeColor}" Padding="15,16,15,8">
+                    <Grid ColumnSpacing="16" RowSpacing="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="StartAndExpand">
+                        </Image>
+
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
+
+                        <Image Grid.Row="0" Grid.Column="2" Source="WhiteCircle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnVATNowTapped" NumberOfTapsRequired="1"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDLessThan5MinRegister}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
+                    </Grid>
+                </yummy:PancakeView>
+
+
+                <StackLayout Grid.Row="2" Padding="0" VerticalOptions="FillAndExpand">
+       
                         <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
                             <ScrollView>
                                 <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
@@ -437,8 +465,12 @@
                                 </StackLayout>
                             </ScrollView>
                         </yummy:PancakeView>
-                    </StackLayout>
-
+                    
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding IsVatRegistrationTileVisible}" Value="True">
+                            <Setter Property="BackgroundColor" Value="{StaticResource NewDullOrangeColor}"/>
+                        </DataTrigger>
+                    </StackLayout.Triggers>
                 </StackLayout>
                 <StackLayout Grid.Row="0" Margin="15,0,15,0">
                     <StackLayout Orientation="Horizontal" Spacing="10">

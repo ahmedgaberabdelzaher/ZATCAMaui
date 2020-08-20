@@ -10,13 +10,10 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              ios:Page.UseSafeArea="true"
              NavigationPage.HasNavigationBar="False"
              x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage"
              BackgroundImageSource="partials_background.png"
-             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:FontImage="clr-namespace:MVP.FontIcons">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -266,7 +263,7 @@
                                 <StackLayout Orientation="Vertical"  Margin="0,0,0,10">
                                     <Grid Margin="0,0,0,10">
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"> </RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -968,13 +965,23 @@
                         <ColumnDefinition Width="70*"/>
                         <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Grid.Row="0" Source="arrowLeftwhite.png" BackgroundColor="Black" >
+                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="48" Glyph="{x:Static FontImage:IconFonts.ChevronLeft}"/>
+                        </Image.Source>
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1" />
+                            <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>
                     </Image>
                     <Image Grid.Column="1" Grid.Row="0" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
-                    <Image Grid.Column="2" Grid.Row="0" Source="close.png" BackgroundColor="Black"/>
+                    <Image Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image.Source>
+                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Grid>
                 <commonView:PageIndicatorView MarkSize="24" DotSize="12" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" />
                 <custom:CustomLabel Text="{Binding SelectedTabText}" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,-5,0,-10" Style="{StaticResource SectionTitleBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="28"/>

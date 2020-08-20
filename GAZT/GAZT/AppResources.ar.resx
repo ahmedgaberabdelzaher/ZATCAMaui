@@ -4914,7 +4914,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
-    <data name="VATRefundRequestTtitle" xml:space="preserve">
+  <data name="VATRefundRequestTtitle" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="VATRefund" xml:space="preserve">
@@ -4941,7 +4941,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsStatusTransferred" xml:space="preserve">
     <value>تم الحويل</value>
   </data>
-    <data name="VATRefundsStatusDraft" xml:space="preserve">
+  <data name="VATRefundsStatusDraft" xml:space="preserve">
     <value>مسودة</value>
   </data>
   <data name="VATRefundsStatusInProcess" xml:space="preserve">
@@ -5437,5 +5437,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDEdit" xml:space="preserve">
     <value>تعديل</value>
+  </data>
+  <data name="NDLessThan5MinRegister" xml:space="preserve">
+    <value>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</value>
   </data>
 </root>

@@ -639,5 +639,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             });
         }
+
+        private void OnVATNowTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+        }
     }
 }

@@ -4939,7 +4939,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
- <data name="VATRefundRequestTtitle" xml:space="preserve">
+  <data name="VATRefundRequestTtitle" xml:space="preserve">
     <value>VAT Refund Request</value>
   </data>
   <data name="VATRefund" xml:space="preserve">
@@ -4966,7 +4966,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsStatusTransferred" xml:space="preserve">
     <value>Transferred</value>
   </data>
- <data name="VATRefundsStatusDraft" xml:space="preserve">
+  <data name="VATRefundsStatusDraft" xml:space="preserve">
     <value>DRAFT</value>
   </data>
   <data name="VATRefundsStatusInProcess" xml:space="preserve">
@@ -4986,7 +4986,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="VATRefundsRequestedAmount" xml:space="preserve">
     <value>Requested Amount</value>
-    </data>
+  </data>
   <data name="VATRefundsAddAccount" xml:space="preserve">
     <value>Add Account</value>
   </data>
@@ -5467,5 +5467,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDEdit" xml:space="preserve">
     <value>Edit</value>
+  </data>
+  <data name="NDLessThan5MinRegister" xml:space="preserve">
+    <value>Register now for Value Added Tax in less than 5 minutes</value>
   </data>
 </root>
