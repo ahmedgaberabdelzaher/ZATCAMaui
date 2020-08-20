@@ -47,7 +47,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
         }
 
-        private void ListView_Correspondance_ItemTapped(object sender, ItemTappedEventArgs e)
         async void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
 

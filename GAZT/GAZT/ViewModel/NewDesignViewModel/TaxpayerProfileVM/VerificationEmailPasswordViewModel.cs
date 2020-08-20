@@ -126,6 +126,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged(() => IsLoading);
             }
         }
+
+        private bool _BtnEnableFlag;
+        public bool BtnEnableFlag
+        {
+            get { return _BtnEnableFlag; }
+            set
+            {
+                _BtnEnableFlag = value;
+                RaisePropertyChanged("BtnEnableFlag");
+            }
+        }
         // * End
 
         private string _LblCountDownTimer;
@@ -180,6 +191,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             set
             {
                 _NewPasswordEntry = value;
+
+                BtnEnableFlag = false;
+                if (value.Length > 0)
+                    BtnEnableFlag = true;
+
                 RaisePropertyChanged("NewPasswordEntry");
             }
         }
@@ -194,6 +210,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             set
             {
                 _ConfirmPasswordEntry = value;
+
+                BtnEnableFlag = false;
+                if (value.Length > 0)
+                    BtnEnableFlag = true;
+
                 RaisePropertyChanged("ConfirmPasswordEntry");
             }
         }
@@ -260,12 +281,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         // * Call API
         public async Task<TaxPayerProfile> ChangePassword()
         {
+            IsLoading = true;
             TaxPayerProfile TP = null;
 
             try
             {
                 string lang = "EN";
-
                 if (App.IsArabic == true) { lang = "AR"; }
 
                 try
@@ -275,9 +296,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                                                                         App.TP.Tin,
                                                                         _updateEmailData.CurrentEmail, _updateEmailData.NewEmail,
                                                                         CurrentPasswordEntry, NewPasswordEntry);
+                    IsLoading = false;
                 }
                 catch (Exception ex)
                 {
+                    IsLoading = false;
                     System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -287,15 +310,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
             catch (InternetException ex)
             {
+                IsLoading = false;
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
 
-            //LoadingStop();
             return TP;
         }
 
         public async Task<bool> VarifyEmail()
         {
+            IsLoading = true;
             bool APIResponse = false;
             string lang = "EN";
             if (App.IsArabic == true) { lang = "AR"; }
@@ -306,10 +330,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 await Task.Run(async () =>
                 {
                     APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, _updateEmailData.CurrentEmail, _updateEmailData.NewEmail);
+                    IsLoading = false;
                 });
             }
             catch (Exception ex)
             {
+                IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -317,19 +343,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 });
             }
 
-            //LoadingStop();
             return APIResponse;
         }
-
-        /*public async void LoadingStart()
-        {
-            await Task.Run(() => { IsLoading = true; });
-        }
-
-        public async void LoadingStop()
-        {
-            await Task.Run(() => { IsLoading = false; });
-        }*/
     }
 
     // * Need Updated Email Data From Update Email Page
