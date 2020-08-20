@@ -1392,6 +1392,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetSubmitButtonVisibility = false;
             ConfirmAndGenerateSADADBillLabelVisibility = false;
             SetConfirmButtonVisibility = false;
+            SetAmendButtonVisibility = false;
             isThresholdValueLessThanTotalVATSales = false;
         }
 
