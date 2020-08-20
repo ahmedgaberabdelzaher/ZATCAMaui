@@ -264,7 +264,7 @@
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
 
-                                                    <custom:GAZTBorderlessEntry x:Name="TotalVATSales" Text="{Binding TvtslI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry x:Name="TotalVATSales" Text="{Binding TvtslI}" Keyboard="Numeric" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -329,7 +329,7 @@
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry x:Name="AverageNumberOfLabour"  Text="{Binding LabnoI}" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}"  Focused="AverageNumberOfLabourInputFocused"  Unfocused="AverageNumberOfLabourInputUnFocused">
+                                                    <custom:GAZTBorderlessEntry x:Name="AverageNumberOfLabour" Keyboard="Numeric" Text="{Binding LabnoI}" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}"  Focused="AverageNumberOfLabourInputFocused"  Unfocused="AverageNumberOfLabourInputUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="14" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -396,7 +396,7 @@
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry x:Name="ImportValue" Text="{Binding ImpvalI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}"  Focused="ImportValueInputFocused"  Unfocused="ImportValueInputUnFocused">
+                                                    <custom:GAZTBorderlessEntry x:Name="ImportValue" Keyboard="Numeric" Text="{Binding ImpvalI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}"  Focused="ImportValueInputFocused"  Unfocused="ImportValueInputUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -462,7 +462,7 @@
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry x:Name="SalesFromPointOfSales"  Text="{Binding PtoslI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}" Focused="SalesFromPointOfSalesInputFocused"  Unfocused="SalesFromPointOfSalesUnFocused">
+                                                    <custom:GAZTBorderlessEntry x:Name="SalesFromPointOfSales" Keyboard="Numeric" Text="{Binding PtoslI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}" Focused="SalesFromPointOfSalesInputFocused"  Unfocused="SalesFromPointOfSalesUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -483,7 +483,7 @@
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="{Binding PtoslI}"  IsReadOnly="True"   Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding PtoslI}" Keyboard="Numeric" IsReadOnly="True"   Style="{StaticResource InputTableEntryLayoutStyle}">
                                                     </custom:GAZTBorderlessEntry>
 
                                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -526,7 +526,7 @@
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry x:Name="ContractFromETIMADSystem" Text="{Binding EtimadI}"   IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}" Focused="ContractFromETIMADSystemInputFocused"  Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
+                                                    <custom:GAZTBorderlessEntry x:Name="ContractFromETIMADSystem" Keyboard="Numeric" Text="{Binding EtimadI}"   IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}" Focused="ContractFromETIMADSystemInputFocused"  Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -589,7 +589,7 @@
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry x:Name="ExportValue" Text="{Binding ExamtI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}" Focused="ExportValueInputFocused"  Unfocused="ExportValueUnFocused">
+                                                    <custom:GAZTBorderlessEntry x:Name="ExportValue" Keyboard="Numeric" Text="{Binding ExamtI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"   Style="{StaticResource InputTableEntryLayoutStyle}" Focused="ExportValueInputFocused"  Unfocused="ExportValueUnFocused">
                                                      <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="14" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
                                                         </custom:GAZTBorderlessEntry.Behaviors>
@@ -609,7 +609,7 @@
                                             <StackLayout Spacing="0" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1">
 
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry  Text="{Binding ExamtI}"      Style="{StaticResource InputTableEntryLayoutStyle}">
+                                                    <custom:GAZTBorderlessEntry  Text="{Binding ExamtI}"   Keyboard="Numeric"   Style="{StaticResource InputTableEntryLayoutStyle}">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -655,7 +655,7 @@
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry x:Name="PurchaseValue" Text="{Binding PramtI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}" Focused="PurchaseValueInputFocused"  Unfocused="PurchaseValueUnFocused">
+                                                    <custom:GAZTBorderlessEntry x:Name="PurchaseValue" Keyboard="Numeric" Text="{Binding PramtI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}" Focused="PurchaseValueInputFocused"  Unfocused="PurchaseValueUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -718,7 +718,7 @@
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                                                    <custom:GAZTBorderlessEntry x:Name="CapitalAmount" Text="{Binding Cpamt}"     Style="{StaticResource InputTableEntryLayoutStyle}" Focused="CapitalAmountInputFocused"  Unfocused="CapitalAmountUnFocused">
+                                                    <custom:GAZTBorderlessEntry x:Name="CapitalAmount" Keyboard="Numeric" Text="{Binding Cpamt}"     Style="{StaticResource InputTableEntryLayoutStyle}" Focused="CapitalAmountInputFocused"  Unfocused="CapitalAmountUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="18" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
