@@ -351,8 +351,8 @@
                                                                     </Image>
                                                                 </StackLayout>
 
-                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -454,8 +454,8 @@
                                                                     </Image>
                                                                 </StackLayout>
 
-                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -565,8 +565,8 @@
                                                                     </Image>
                                                                 </StackLayout>
 
-                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding SuppCon}" />
@@ -941,8 +941,8 @@
                                                                     </Image>
                                                                 </StackLayout>
 
-                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpensesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpensesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -1151,7 +1151,10 @@
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GovernmentContractProfile}" Style="{StaticResource ValueLabelGrey}"/>
                                                                 <Image HorizontalOptions="StartAndExpand" Source="ic_vat_info"></Image>
 
-                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
+                                                                <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
+                                                                    <custom:CustomLabel Text="{Binding IsGovenmentApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+
+                                                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding GovtContractProf}" />
@@ -1160,6 +1163,8 @@
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
                                                                 </custom:CustomLabel>
+                                                                </StackLayout>
+
                                                             </StackLayout>
 
 
@@ -1167,16 +1172,19 @@
 
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ProfitFromCivilContracting}" Style="{StaticResource ValueLabelGrey}"/>
                                                                 <Image Margin="-20,0,0,0" HorizontalOptions="StartAndExpand" Source="ic_vat_info"></Image>
+                                                                <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
+                                                                    <custom:CustomLabel Text="{Binding IsCivilProfitApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
-                                                                <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
-                                                                    <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            <Span Text="{Binding CivilContrRev}" />
-                                                                            <Span Text=" "/>
-                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </custom:CustomLabel>
+                                                                    <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding CivilContrRev}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
+                                                                </StackLayout>
                                                             </StackLayout>
 
 
@@ -1200,6 +1208,8 @@
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
                                                                     <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
+                                                                    <custom:CustomLabel Text="{Binding IsOtherProfitApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+
                                                                     <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
@@ -1324,8 +1334,8 @@
                                                                     </Image>
                                                                 </StackLayout>
 
-                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpencesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpencesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -1491,8 +1501,8 @@
                                                                     </Image>
                                                                 </StackLayout>
 
-                                                                <!--<custom:CustomLabel  Text="{Binding IsExpApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="{Binding IsExpApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -1606,8 +1616,8 @@
                                                                     </Image>
                                                                 </StackLayout>
 
-                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Expenses}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
                                                             </Grid>
 
                                                             <StackLayout Orientation="Horizontal">
@@ -1706,8 +1716,8 @@
 
                                                                     </Image>
                                                                 </StackLayout>
-                                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsIncCapApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IncrInCap}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsIncCapApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding IncrInCap}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
 
                                                             </Grid>
 
@@ -1980,10 +1990,10 @@
                                                 <!--</StackLayout>-->
 
 
-                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsOtherComShareApp}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsOtherComShareApp}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding OtherCompanyShare}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding OtherCompanyShare}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
 
                                             </Grid>
 

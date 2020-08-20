@@ -2486,7 +2486,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             var OtherCompanyCheck = ZakatForm5DataResult.APlShareChk;
 
-                            if (ZakatForm5DataResult.APlShareChk != "0.00")
+                            if (ZakatForm5DataResult.APlShare != "0.00")
                             {
                                 ZakatForm5DataResult.IsOtherShareApplicable = "Applicable";
                             }
@@ -2509,6 +2509,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             TotalAnnualSalary = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ATotAnnualSal);
 
                             //Zakat Details
+
                             Zakatable = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AZakat);
                             Zakat = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AZakat51);
                             ZakatPaid = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.AReleaseOfContract);
@@ -2516,11 +2517,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
                             // Zakat Estimation API Call
-
-
-                        
-
-
 
 
                             ZakatForm5SummaryResult ZakatForm5SummaryDataResult = await WebServiceManager.GAZTZakatForm5DataSummary(ZakatForm5DataResult.Fbnum);
