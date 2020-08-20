@@ -331,7 +331,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 ListAllCorrespondance = new List<CorrespondanceModel>();
                 List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
                 // Assigning data in the list
-                if (ZakatCorres != null && ZakatCorres.d.results.Count > 0)
+                if (ZakatCorres != null && ZakatCorres.d!=null && ZakatCorres.d.results!=null && ZakatCorres.d.results.Count > 0)
                 {
                     foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
                     {
@@ -421,7 +421,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 PopToRootPage();
                 // Assigning data in the list
-                if (VATCorres != null && VATCorres.d.results.Count > 0)
+                if (VATCorres != null && VATCorres.d!=null && VATCorres.d.results!=null && VATCorres.d.results.Count > 0)
                 {
                     List<CorrespondanceModel> VATCo = new List<CorrespondanceModel>();
                     foreach (CorrespondenceResult itemVAT in VATCorres.d.results)
@@ -509,7 +509,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                 }
                 // Assigning data in the list
-                if (ETCorres != null && ETCorres.d.results.Count > 0)
+                if (ETCorres != null && ETCorres.d!=null && ETCorres.d.results!=null && ETCorres.d.results.Count > 0)
                 {
                     List<CorrespondanceModel> ETCo = new List<CorrespondanceModel>();
                     foreach (CorrespondenceResult itemET in ETCorres.d.results)
@@ -612,12 +612,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     new ReturnTypes {Id = "00",TaxType = AppResources.ZZCorrespondence},
                     //new ReturnTypes {Id = "01",TaxType = AppResources.ZAKATReturns},
-                   
-            };
+                };
+                
                 FilterListForDropDown = new List<ReturnTypes>();
                 FilterListForDropDown = FilterList;
-         
-
             }
             catch (Exception ex)
             {
@@ -634,7 +632,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public void SetAllCorrespondancedata()
         {
-  
             ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance) ;
         }
         public async void ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
@@ -667,8 +664,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.Where(x => x.IsFav==true).ToList());
                     }
                 }
-
         }
             #endregion
-        }
     }
+}
