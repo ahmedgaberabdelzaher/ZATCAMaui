@@ -851,7 +851,7 @@
 
                                                                 <StackLayout Padding="10" Orientation="Horizontal" BackgroundColor="LightSkyBlue" Spacing="0">
 
-                                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5TotalProfits}" Style="{StaticResource ValueLabelBlack}" />
+                                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5TotalProfit}" Style="{StaticResource ValueLabelBlack}" />
                                                                     <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" FontAttributes="Bold">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
