@@ -1,4 +1,4 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using System;
 using System.Collections.Generic;
 
@@ -15,6 +15,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             InitializeComponent();
             BindingContext = App.Locator.EstablishmentRegistrationPage;
+            SetLTR();
         }
 
         protected override void OnAppearing()
@@ -25,6 +26,19 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+        }
+
+        private void SetLTR()
+        {
+
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
         }
 
         private void ListView_Correspondance_ItemTapped(object sender, ItemTappedEventArgs e)

@@ -150,6 +150,7 @@ using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using EGAZT.Views.NewDesign.TaxpayerProfile;
+using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 
 namespace EGAZT
 {
@@ -198,6 +199,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
             SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
+            SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
             SimpleIoc.Default.Register<ZakatReturnDetailsSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<NewTaxEvasionFormPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
@@ -547,6 +549,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<EstablishmentRegistrationPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public OutletDetailsPageViewModel OutletDetailsPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<OutletDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
