@@ -1353,6 +1353,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Trading Internal.
+        /// </summary>
+        public static string FORM5GeneralTradingInternal {
+            get {
+                return ResourceManager.GetString("FORM5GeneralTradingInternal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here to Generate Objection.
         /// </summary>
         public static string FORM5GenerateObjection {
@@ -1538,6 +1547,24 @@ namespace EGAZT {
         public static string FORM5LabourOccupancy {
             get {
                 return ResourceManager.GetString("FORM5LabourOccupancy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Livelihoods Internal.
+        /// </summary>
+        public static string FORM5LivelihoodsInternal {
+            get {
+                return ResourceManager.GetString("FORM5LivelihoodsInternal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Livestock &amp; Animals Int..
+        /// </summary>
+        public static string FORM5LivestockAnimalInternals {
+            get {
+                return ResourceManager.GetString("FORM5LivestockAnimalInternals", resourceCulture);
             }
         }
         
@@ -2069,6 +2096,15 @@ namespace EGAZT {
         public static string FORM5TotalofProcurement {
             get {
                 return ResourceManager.GetString("FORM5TotalofProcurement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Profits.
+        /// </summary>
+        public static string FORM5TotalProfit {
+            get {
+                return ResourceManager.GetString("FORM5TotalProfit", resourceCulture);
             }
         }
         
