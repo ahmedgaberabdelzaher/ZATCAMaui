@@ -64,7 +64,7 @@
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDConfirmNewEmail}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
                             <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
                                                  Text="{Binding ConfirmEmailText}" Keyboard="Email"  TextColor="{StaticResource NeutralBlack}" >

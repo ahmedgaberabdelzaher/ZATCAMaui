@@ -5453,6 +5453,12 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="FORM5TotalProfit" xml:space="preserve">
     <value>إجمالي ارباح المشتريات من الداخل</value>
   </data>
+  <data name="NDConfirmNewEmail" xml:space="preserve">
+    <value>تأكيد البريد الالكتروني الجديد</value>
+  </data>
+  <data name="NDConfirmNewPassword" xml:space="preserve">
+    <value>تاكيد كلمة المرور الجديدة</value>
+  </data>
   <data name="TPIndividualSaudi" xml:space="preserve">
     <value>فرد سعودي (اقامة)</value>
   </data>

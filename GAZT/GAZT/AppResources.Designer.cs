@@ -2595,6 +2595,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm New Email.
+        /// </summary>
+        public static string NDConfirmNewEmail {
+            get {
+                return ResourceManager.GetString("NDConfirmNewEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm New Password.
+        /// </summary>
+        public static string NDConfirmNewPassword {
+            get {
+                return ResourceManager.GetString("NDConfirmNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Count.
         /// </summary>
         public static string NDCount {
