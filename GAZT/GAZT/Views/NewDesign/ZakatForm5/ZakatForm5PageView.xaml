@@ -3084,10 +3084,10 @@
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>-->
 
-                        <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="EndAndExpand" >
-                            <Image.Source>
+                        <Image Grid.Row="0" Source="closeGrey.png" Grid.Column="2" HorizontalOptions="EndAndExpand" >
+                            <!--<Image.Source>
                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                            </Image.Source>
+                            </Image.Source>-->
                         </Image>
                     </Grid>
                     <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" />
