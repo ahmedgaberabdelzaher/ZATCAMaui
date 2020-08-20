@@ -96,7 +96,7 @@
                                         <control:BorderlessEntry Placeholder="+966"
                                                                  VerticalTextAlignment="Center"
                                                                  Style="{StaticResource DefaultEntry}"
-                                                                 IsEnabled="False" />
+                                                                 IsReadOnly="True" />
                                     </On>
                                 </OnPlatform>
 
@@ -106,7 +106,7 @@
 
                                 <control:BorderlessEntry VerticalTextAlignment="Center"
                                                          Style="{StaticResource DefaultEntry}"
-                                                         IsEnabled="False"
+                                                        IsReadOnly="True"
                                                          Text="{Binding MobileNumber}"
                                                          HorizontalOptions="FillAndExpand"/>
                             </StackLayout>
@@ -129,7 +129,7 @@
 
                             <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
                                                      Text="{Binding EmailEntry}"
-                                                     IsEnabled="False">
+                                                    IsReadOnly="True">
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
@@ -148,8 +148,8 @@
                                                         FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
                             <control:BorderlessEntry x:Name="Password"
                                                      Style="{StaticResource DefaultEntry}" Text="{Binding PasswordEntry}"
-                                                     IsEnabled="False"
-                                                     IsPassword="True" >
+                                                    IsReadOnly="True"
+                                                     IsPassword="True"  >
                             </control:BorderlessEntry>
 
                         </inputLayout:SfTextInputLayout>
