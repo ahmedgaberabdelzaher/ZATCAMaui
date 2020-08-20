@@ -5226,7 +5226,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <comment>Taxpayer Profile</comment>
   </data>
   <data name="NDTaxEvasion" xml:space="preserve">
-    <value>التهرب الضريبي</value>
+    <value>الإبلاغ عن التهرب الضريبي</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionReporterName" xml:space="preserve">
@@ -5274,7 +5274,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionReportDetails" xml:space="preserve">
-    <value>معلومات المبلغ</value>
+    <value>بيانات البلاغ</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionAttachments" xml:space="preserve">
@@ -5285,7 +5285,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>مراجعة البيانات التالية</value>
   </data>
   <data name="NDFacilityInformation" xml:space="preserve">
-    <value>ملعومات المنشأة</value>
+    <value>بيانات المنشأة</value>
   </data>
   <data name="NDReporterInformation" xml:space="preserve">
     <value>معلومات المبلغ</value>
