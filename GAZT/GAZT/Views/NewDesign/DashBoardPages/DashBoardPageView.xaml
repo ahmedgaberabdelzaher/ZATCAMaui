@@ -514,7 +514,7 @@
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="VAT Refund Request" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATRefundRequestTtitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="VATRefundRequest_Tapped" />
                                     </StackLayout.GestureRecognizers>

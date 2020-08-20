@@ -598,10 +598,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
            
            
         }
-        public void FilterListToDisplay()
-        { 
         
-        }
         public void FilterAllData()
         {
             try

@@ -86,7 +86,7 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
-                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
@@ -187,7 +187,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                                         <Label Text="{Binding FromDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                         <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -204,7 +204,7 @@
                                     </StackLayout>
                                     
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                                         <Label Text="{Binding ToDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                         <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="End" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -229,14 +229,14 @@
                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                         <Label Text="{Binding SuspendedStartDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
+                                         <Label Text="{Binding SuspendedStartDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
                                             <Image Margin="5,0">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
                                                              Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                 </Image.Source>
                                             </Image>
-                                      <Label Text="{Binding SuspendedEndDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
+                                      <Label Text="{Binding SuspendedEndDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
 
 
                                     </StackLayout>
@@ -248,14 +248,14 @@
                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                         <Label  Text="{Binding NextFilingStartDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                         <Label  Text="{Binding NextFilingStartDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                             <Image Margin="5,0" HorizontalOptions="Center">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
                                                              Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                 </Image.Source>
                                             </Image>
-                                      <Label  Text="{Binding NextFilingEndDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
+                                      <Label  Text="{Binding NextFilingEndDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
 
                                     </StackLayout>
                                 </border:SfBorder >
@@ -266,8 +266,7 @@
                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                         <Label Text="{Binding NextFilingDueDate }" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
-                            
+                                         <Label Text="{Binding NextFilingDueDate,StringFormat='{0:dd MMM yyyy}' }" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
                      
                                     </StackLayout>
                                 </border:SfBorder >
@@ -338,7 +337,7 @@
                         </listView:SfListView.LayoutManager>
                  </listView:SfListView>
                 <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="attachmentsListView_SelectionChanged" >
+                                      ItemsSource="{Binding AttachmentList}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="attachmentsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
 					                <StackLayout Spacing="2">
@@ -356,14 +355,19 @@
                                                     </Image.Source>
                                                 </Image>
                                             </inputLayout:SfTextInputLayout.LeadingView>
-                                            <Entry Style="{StaticResource DefaultEntry}" Placeholder="File.pdf" HorizontalTextAlignment="Start" HeightRequest="24"/>
+                                            <Entry Style="{StaticResource DefaultEntry}" Text="{Binding FileName}"  Placeholder="File.pdf" HorizontalTextAlignment="Start" HeightRequest="24"/>
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image HorizontalOptions="Center" VerticalOptions="Center" Rotation="90">
+                                                <!--<Image HorizontalOptions="Center" VerticalOptions="Center" Rotation="90">
                                                     <Image.Source>
                                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
                                                                  Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
                                                     </Image.Source>
                   
+                                                </Image>-->
+                                                   <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
+                                                    </Image.GestureRecognizers>
                                                 </Image>
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </inputLayout:SfTextInputLayout>
@@ -385,13 +389,18 @@
 
                                                             <!--<custom:BorderlessEntry  x:Name="AttachmentOptional"  IsEnabled="False" Placeholder="{x:Static custom2:AppResources.Attachments}" Style="{StaticResource GAZTEntry}">
                                                             </custom:BorderlessEntry>-->
-                                                            <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                                            <!--<Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                                 <Image.Source>
                                                                     <FontImageSource FontFamily="UserIconFont" Color="#bbbbbb" Size="25"
                                                     Glyph="{x:Static FontImage:IconFonts.Attachment}" />
                                                                 </Image.Source>
                       
-                                                            </Image>
+                                                            </Image>-->
+                                                               <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Attachment.png"  >
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
 
                                                         </StackLayout>
                                                     </inputLayout:SfTextInputLayout>
@@ -616,7 +625,7 @@
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
                                     <Label Text="Attachments" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
-                                <Button Grid.Row="0" Grid.Column="2" Text="Edit" Clicked="Button_Clicked_2" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+                                <Button Grid.Row="0" Grid.Column="2" Text="Edit" Clicked="Button_Clicked" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
 
                             </Grid>
 
@@ -665,7 +674,7 @@
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
                                     <Label Text="Declaration" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
-                                   <Button Grid.Row="0" Grid.Column="2"  Text="Edit" Clicked="Button_Clicked_3" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+                                   <Button Grid.Row="0" Grid.Column="2"  Text="Edit" Clicked="Button_Clicked" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
 
                             </Grid>
 

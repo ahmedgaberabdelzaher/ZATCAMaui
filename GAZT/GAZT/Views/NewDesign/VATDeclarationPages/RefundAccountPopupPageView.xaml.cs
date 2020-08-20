@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using EGAZT.ViewModel.NewDesignViewModel;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,33 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RefundAccountPopupPageView : PopupPage
     {
+        public RefundAccountPopupPageViewModel viewModel;
         public RefundAccountPopupPageView()
         {
-            InitializeComponent();
-        }
+            try
+            {
+                InitializeComponent();
+                viewModel = App.Locator.RefundAccountPopupPageView;
+                this.BindingContext = viewModel;
+                SetLTR();
+            }
+            catch(Exception ex)
+            {
 
+            }
+        }
+        private void SetLTR()
+        {
+
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+        }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new NewAccountPopPage());

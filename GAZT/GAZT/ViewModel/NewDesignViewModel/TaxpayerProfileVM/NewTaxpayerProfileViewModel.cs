@@ -18,6 +18,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         #endregion
 
         #region Properties
+
+        private string _TPProfileNameLbl;
+        public string TPProfileNameLbl
+        {
+            get { return _TPProfileNameLbl; }
+            set
+            {
+                _TPProfileNameLbl = value;
+                RaisePropertyChanged("TPProfileNameLbl");
+            }
+        }
+
         private string _TINLabel;
         public string TINLabel
         {
@@ -100,7 +112,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 {
                     APIResponse = WebServiceManager.SFGAZTGetTaxPayerProfile(App.TP.Tin, lang);
                 });
-                    
+
             }
             catch (Exception ex)
             {

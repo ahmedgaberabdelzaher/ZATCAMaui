@@ -72,12 +72,16 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.EmailEntry = "TESTS@PM.COM";
             viewModel.PasswordEntry = "********";*/
 
-
             TaxPayerProfile TPAPIResponse = await viewModel.GetTPProfileData();
             System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
 
             if(TPAPIResponse != null)
             {
+                // * Update
+                App.TP = TPAPIResponse;
+                App.TP.Userid = TPAPIResponse.Tin;
+
+                viewModel.TPProfileNameLbl = TPAPIResponse.Name;
                 viewModel.TINLabel = TPAPIResponse.Tin;
 
                 var result = Regex.Match(TPAPIResponse.Mobile, @"(.{9})\s*$");

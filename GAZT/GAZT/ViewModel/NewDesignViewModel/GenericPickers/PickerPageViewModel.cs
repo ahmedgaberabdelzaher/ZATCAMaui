@@ -11,6 +11,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.GenericPickers
         public PickerPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             PickerItemSource = new ObservableCollection<string>();
+            DataSource = new GenericPickerModel();
         }
         #endregion
         //GenericPickerModel

@@ -310,6 +310,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<UpdatePasswordViewModel>();
             SimpleIoc.Default.Register<TaxpayerProfileSuccessViewModel>();
             SimpleIoc.Default.Register<ShowVatInformationConfirmationPageViewModel>();
+            SimpleIoc.Default.Register<RefundAccountPopupPageViewModel>();
+            SimpleIoc.Default.Register<NewAccountPopPageViewModel>();
+            
+
             #endregion
         }
 
@@ -1994,6 +1998,8 @@ namespace EGAZT
             navigationService.Configure(App.NewTaxEvasionFormPageView, typeof(Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormPageView));
             navigationService.Configure(App.NewTaxEvasionFormSuccessPaveView, typeof(Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormSuccessPaveView));
             navigationService.Configure(App.AttachmentPopUp, typeof(AttachmentPopUp));
+            navigationService.Configure(App.RefundAccountPopupPageView, typeof(RefundAccountPopupPageView));
+            navigationService.Configure(App.NewAccountPopPageView, typeof(NewAccountPopUpPageView));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
@@ -2281,7 +2287,38 @@ namespace EGAZT
             }
         }
 
+        public RefundAccountPopupPageViewModel RefundAccountPopupPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<RefundAccountPopupPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public NewAccountPopPageViewModel NewAccountPopPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NewAccountPopPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         
+
+
 
 
 

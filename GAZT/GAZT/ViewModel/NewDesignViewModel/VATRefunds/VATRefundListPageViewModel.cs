@@ -86,6 +86,58 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+       
+
+        //
+
+        private VatRefundDisplayDataModel _vatRefundsDisplayDataModel = null;
+        public VatRefundDisplayDataModel VatRefundsDisplayDataModel
+        {
+            get
+            {
+                return _vatRefundsDisplayDataModel;
+            }
+
+            set
+            {
+
+                _vatRefundsDisplayDataModel = value;
+                RaisePropertyChanged("VatRefundsDisplayDataModel");
+            }
+        }
+
+        private ObservableCollection<VarRefundIbanDataModelMetadataResult> _ibanData = null;
+        public ObservableCollection<VarRefundIbanDataModelMetadataResult> IbanData
+        {
+            get
+            {
+                return _ibanData;
+            }
+
+            set
+            {
+
+                _ibanData = value;
+                RaisePropertyChanged("IbanData");
+            }
+        }
+
+        private VarRefundIbanDataModel _vatRefundsIbanDataModel = null;
+        public VarRefundIbanDataModel VatRefundsIbanDataModel
+        {
+            get
+            {
+                return _vatRefundsIbanDataModel;
+            }
+
+            set
+            {
+
+                _vatRefundsIbanDataModel = value;
+                RaisePropertyChanged("VatRefundsIbanDataModel");
+            }
+        }
+
         public VATRefundListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -169,84 +221,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 });
             }
-
-            //VATRefundsReturnsModel = new ObservableCollection<VATRefundsReturnsModel>();
-            //VATRefundsReturnsModel.Add(new VATRefundsReturnsModel
-            //{
-            //    ReturnPeriod = "01 Jan 1995",
-            //    CreditBalance = "200,000.00 SAR",
-            //    ReassessedBalance = "100,000.00 SAR",
-            //    Offset = "200,000.00 SAR",
-            //    NetCreditBalance = "100,000.00 SAR",
-            //    Status = "Transferred",
-            //    LastStatusChange = "15 Feb 2019"
-            //});
-            //VATRefundsReturnsModel.Add(new VATRefundsReturnsModel
-            //{
-            //    ReturnPeriod = "01 Jan 1995",
-            //    CreditBalance = "200,000.00 SAR",
-            //    ReassessedBalance = "100,000.00 SAR",
-            //    Offset = "200,000.00 SAR",
-            //    NetCreditBalance = "100,000.00 SAR",
-            //    Status = "Transferred",
-            //    LastStatusChange = "15 Feb 2019"
-            //});
-
-            //VATRefundsModel = new ObservableCollection<VatRefHeaderSetResult>();
-            //VATRefundsModel.Add(new VATRefundsModel
-            //{
-            //    Title = AppResources.ZZVAT,
-            //    RefernceNumber = "1234567890",
-            //    Status = AppResources.VATRefundsStatusRefunded,
-            //    ReassesmentAmount = "1,000 SAR",
-            //    TotalOffset = "500.00 SAR",
-            //    NetCreditBalance = "2,000 SAR",
-            //    RequestDate = "01 Jan 1995",
-            //    BankDetails = new VATRefundsBankDetailsModel
-            //    {
-            //        IDType = AppResources.NationaID,
-            //        IDNumber = "Q1234567",
-            //        IBAN = "SA03 80000 12345",
-            //        BankName =  "Al Rajhi Bank"
-            //    },
-            //    VATReturns = VATRefundsReturnsModel
-            //});
-            //VATRefundsModel.Add(new VATRefundsModel
-            //{
-            //    Title = AppResources.ZZVAT,
-            //    RefernceNumber = "1234567890",
-            //    Status = AppResources.VATRefundsStatusInProcess,
-            //    ReassesmentAmount = "1,000 SAR",
-            //    TotalOffset = "500.00 SAR",
-            //    NetCreditBalance = "2,000 SAR",
-            //    RequestDate = "01 Jan 1995",
-            //    BankDetails = new VATRefundsBankDetailsModel
-            //    {
-            //        IDType = AppResources.NationaID,
-            //        IDNumber = "Q1234567",
-            //        IBAN = "SA03 80000 12345",
-            //        BankName = "Al Rajhi Bank"
-            //    },
-            //    VATReturns = VATRefundsReturnsModel
-            //});
-            //VATRefundsModel.Add(new VATRefundsModel
-            //{
-            //    Title = AppResources.ZZVAT,
-            //    RefernceNumber = "1234567890",
-            //    Status = AppResources.VATRefundsStatusRefunded,
-            //    ReassesmentAmount = "1,000 SAR",
-            //    TotalOffset = "500.00 SAR",
-            //    NetCreditBalance = "2,000 SAR",
-            //    RequestDate = "01 Jan 1995",
-            //    BankDetails = new VATRefundsBankDetailsModel
-            //    {
-            //        IDType = AppResources.NationaID,
-            //        IDNumber = "Q1234567",
-            //        IBAN = "SA03 80000 12345",
-            //        BankName = "Al Rajhi Bank"
-            //    },
-            //    VATReturns = VATRefundsReturnsModel
-            //});
         }
 
         public void SelectionChanged(VatRefHeaderSetResult vatRefHeaderSetResult)
@@ -258,11 +232,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 VatRefSubItemsSetResult[] sortedSubitemsResultSet = VatRefundsListResultModel.VatRefSubItemsSet.Results.Where(m => m.RefundFbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
                 VatRefundsListResultModel.VatRefSubItemsSet.Results = sortedSubitemsResultSet;
+
+                WiDtlSetResult[] sortedWidtlSet = VatRefundsListResultModel.WiDtlSet.Results.Where(m => m.Fbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
+                VatRefundsListResultModel.WiDtlSet.Results = sortedWidtlSet;
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public async Task ReloadData()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+
+                VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
+
+                VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
+                IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
+
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+            }
+            catch (InternetException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                });
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                string message = ex.Message;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(message, AppResources.Information);
+                });
+            }
+        }
+
     }
 }
