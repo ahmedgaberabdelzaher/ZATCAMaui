@@ -72,6 +72,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.EmailEntry = "TESTS@PM.COM";
             viewModel.PasswordEntry = "********";*/
 
+            // Default
+            viewModel.IsLoading = false;
+
             TaxPayerProfile TPAPIResponse = await viewModel.GetTPProfileData();
             System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
 

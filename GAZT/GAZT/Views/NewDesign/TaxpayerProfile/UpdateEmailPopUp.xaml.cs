@@ -90,9 +90,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                                         || CurrentEmail == string.Empty
                                         || NewEmail == string.Empty
                                         || ConfirmEmail == string.Empty)
-                return AppResources.InvalidEmailFormat;
+                return AppResources.InvalidEmail;
             else if (!compareStringFlag)
-                return AppResources.InvalidEmailFormat;
+                return AppResources.NewEmailandRetypeEmailNotMatch;
             else
             {
                 bool validateEmailFormateRegX = UtilityManager.IsValidEmailAddress(NewEmail);
@@ -140,6 +140,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             viewModel.NewEmailText = string.Empty;
             viewModel.ConfirmEmailText = string.Empty;
+
+            // Default
+            viewModel.IsLoading = false;
         }
     }
 }
