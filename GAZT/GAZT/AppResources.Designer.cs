@@ -14200,6 +14200,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Return has been Submitted.
+        /// </summary>
+        public static string ZZZZVATReturnsubmitted {
+            get {
+                return ResourceManager.GetString("ZZZZVATReturnsubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please refer to the.
         /// </summary>
         public static string ZZZZVATRFAQ1 {

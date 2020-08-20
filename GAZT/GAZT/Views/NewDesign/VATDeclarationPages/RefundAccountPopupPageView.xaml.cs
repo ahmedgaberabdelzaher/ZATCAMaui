@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -16,7 +17,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
     public partial class RefundAccountPopupPageView : PopupPage
     {
         public RefundAccountPopupPageViewModel viewModel;
-        public RefundAccountPopupPageView()
+        public RefundAccountPopupPageView(VATDeclaration vATDeclaration)
         {
             try
             {
@@ -24,6 +25,11 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel = App.Locator.RefundAccountPopupPageView;
                 this.BindingContext = viewModel;
                 SetLTR();
+
+                if(vATDeclaration!=null)
+                {
+                    viewModel.VATDeclarationDetails = vATDeclaration;
+                }
             }
             catch(Exception ex)
             {

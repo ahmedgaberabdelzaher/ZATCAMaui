@@ -5459,4 +5459,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDEdit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
+    <value>VAT Return has been Submitted</value>
+  </data>
 </root>
