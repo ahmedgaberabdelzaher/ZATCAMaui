@@ -1628,7 +1628,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Method
 
-
+        public void setCurrentTab()
+        {
+            currentTab = ZakatForm5TabEnum.BasicInformation;
+        }
 
         public async Task LoadZakatForm5Data()
         {
