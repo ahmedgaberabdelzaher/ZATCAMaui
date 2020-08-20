@@ -75,8 +75,8 @@
                                                         FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
                                                         Keyboard="Telephone"
-                                                        MaxLength="9"
-                                                        IsEnabled="False">
+                                                        MaxLength="9" 
+                                                        IsReadOnly="True" TextColor="{StaticResource NeutralBlack}" >
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>
@@ -90,7 +90,7 @@
                                                         UnfocusedColor="#B1B1B1"
                                                         OutlineCornerRadius="8"
                                                         FocusedColor="#005e4b"
-                                                        ErrorColor="#B00020">
+                                                        ErrorColor="#B00020" >
                                 <inputLayout:SfTextInputLayout.LeadingView>
 
                                     <Label FlowDirection="LeftToRight"
@@ -107,9 +107,9 @@
                                 <control:BorderlessEntry    Text="{Binding NewMobileNumberEntryText}"
                                                         FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
-                                                        Keyboard="Telephone"
+                                                        Keyboard="Telephone" TextColor="{StaticResource NeutralBlack}"
                                                         MaxLength="9"
-                                                        IsEnabled="True">
+                                                        >
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>
