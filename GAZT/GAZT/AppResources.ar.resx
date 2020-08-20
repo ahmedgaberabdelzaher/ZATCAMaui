@@ -5017,7 +5017,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>ادخل الرقم التسلسلي</value>
   </data>
   <data name="ZAdjustment" xml:space="preserve">
-    <value>Adjustment</value>
+    <value>تسويه</value>
   </data>
   <data name="ZDone" xml:space="preserve">
     <value>Done</value>
@@ -5461,5 +5461,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="TPIndividualSaudi" xml:space="preserve">
     <value>فرد سعودي (اقامة)</value>
+  </data>
+  <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
+    <value>تمتقديمإقرارضريبةالقيمةالمضافةبنجاح</value>
   </data>
 </root>

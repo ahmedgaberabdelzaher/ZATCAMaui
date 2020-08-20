@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,5 +24,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
         }
+
+        #region Properties
+        private VATDeclaration _vATDeclarationDetails;
+        public VATDeclaration VATDeclarationDetails
+        {
+            get
+            {
+                return _vATDeclarationDetails;
+            }
+            set
+            {
+                _vATDeclarationDetails = value;
+                RaisePropertyChanged("VATDeclarationDetails");
+            }
+        }
+        #endregion
+
     }
 }

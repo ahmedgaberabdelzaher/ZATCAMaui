@@ -349,10 +349,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             });
             ResendOTPCommand = new Xamarin.Forms.Command(async () =>
             {
-               IsTimerCancel = true;
                 //ShowMobileForm();
                 if (IsResendOTPEnabled)
                 {
+                    IsTimerCancel = true;
                     IsResendOTPEnabled = false;
                     ClearOTPForm();
                     await sendOTPAsync();

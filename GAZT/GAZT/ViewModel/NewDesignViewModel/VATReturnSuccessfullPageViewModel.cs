@@ -118,7 +118,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsButtonVisible");
             }
         }
-
+        private bool _isCreditCarriedTextVisible = false;
+        public bool IsCreditCarriedTextVisible
+        {
+            get
+            {
+                return _isCreditCarriedTextVisible;
+            }
+            set
+            {
+                _isCreditCarriedTextVisible = value;
+                RaisePropertyChanged("IsCreditCarriedTextVisible");
+            }
+        }
+        
 
         private bool _isAcknowledgementButtonVisible = false;
         public bool IsAcknowledgementButtonVisible
