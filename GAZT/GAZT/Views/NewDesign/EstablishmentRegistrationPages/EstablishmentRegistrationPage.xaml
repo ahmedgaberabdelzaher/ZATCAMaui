@@ -432,11 +432,11 @@
                                                  ItemsSource="{Binding TaxableIncomeSourceTypeList}"  SelectedItem="{Binding SelectedTaxIncomeSourceType, Mode=OneWay}"
                                                  SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                                 <CollectionView.ItemsLayout>
-                                    <GridItemsLayout Orientation="Vertical"  HorizontalItemSpacing="0" VerticalItemSpacing="0"  />
+                                    <LinearItemsLayout Orientation="Vertical"   />
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0">
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup x:Name="CommonStates">
                                                     <VisualState x:Name="Normal">
@@ -455,12 +455,12 @@
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
-                                            <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="30" VerticalOptions="FillAndExpand"/>
+                                            <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
                                             <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
                                                                     FontFamily="{StaticResource SSTArabicMedium}"
-                                                                      HorizontalOptions="CenterAndExpand"  Padding="20" 
-                                                                VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start"
-                                                                LineSpacing="1" VerticalTextAlignment="Start"  />
+                                                                      HorizontalOptions="Start"  Padding="20" 
+                                                                VerticalOptions="End" HorizontalTextAlignment="Start"
+                                                                />
                                         </Grid>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
