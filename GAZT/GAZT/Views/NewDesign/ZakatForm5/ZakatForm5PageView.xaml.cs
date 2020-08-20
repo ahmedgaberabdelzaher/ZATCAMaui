@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using System;
@@ -42,6 +43,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            
             App.IsComingFromSleepMode = false;
             if (viewModel != null)
             {
@@ -57,6 +59,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 {
                     viewModel.IsLoading = false;
                     viewModel.NextText = AppResources.ZZNext;
+                    viewModel.setCurrentTab();
                 }
             });
         }
@@ -131,10 +134,12 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             if (!App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Image_backArrow.Rotation = 0;
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Image_backArrow.Rotation = 180; 
             }
         }
 

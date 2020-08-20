@@ -35,6 +35,8 @@ namespace GAZT.Manager
         public static bool ValidMaxSixteen = false;
         public static bool ValidNumber = false;
         public static bool ValidSymbol = false;
+        public static string MobileNumberRegX = @"(.{9})\s*$";
+        public static string MobileNumberLastThreeDigitsRegX = @"(.{3})\s*$";
 
 
         public static string TPTaxAvalable = string.Empty;

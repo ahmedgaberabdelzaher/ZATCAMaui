@@ -82,7 +82,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private string VerifyOTPPasswords(string CurrentPassword, string NewPassword, string ConfirmPassword)
         {
-            //bool compareStringFlag = string.Equals(CurrentPassword, "Password@2");
+            bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
 
             if (CurrentPassword == null || NewPassword == null
                                         || ConfirmPassword == null
@@ -91,8 +91,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                                         || ConfirmPassword == string.Empty
                                         || viewModel.EnteredOTP.Length != 4)
                 return AppResources.InvalidPassword;
-            /*else if (!compareStringFlag)
-                return AppResources.InvalidPassword;*/
+            else if (!compareStringFlag)
+                return AppResources.NewPasswordandRetypePasswordNotMatch;
             else
             {
                 bool passwordValidationRegXFlag = UtilityManager.ValidateNewPasswordForTP(NewPassword);
@@ -102,7 +102,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 }
                 else
                 {
-                    return AppResources.InvalidPassword;
+                    return AppResources.PasswordGuidelineText;
                 }
             }
         }
@@ -112,6 +112,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             if( viewModel.countDownSeconds == 0 )
             {
                 //viewModel.LoadingStart();
+                viewModel.BtnEnableFlag = false;
                 viewModel.EnteredOTP = string.Empty;
                 viewModel.OTPFirstDigit = string.Empty;
                 viewModel.OTPSecondDigit = string.Empty;
@@ -132,35 +133,21 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         void OtpSecondEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            if (viewModel.OTPSecondDigit.Length > 0)
-            {
-                OTPThirdEntry.Focus();
-                return;
-            }
-            OTPFirstEntry.Focus();
+            if (viewModel.OTPSecondDigit.Length > 0) { OTPThirdEntry.Focus(); }
         }
 
         void OtpThirdEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            if (viewModel.OTPThirdDigit.Length > 0)
-            {
-                OTPFourthEntry.Focus();
-                return;
-            }
-            OTPSecondEntry.Focus();
+            if (viewModel.OTPThirdDigit.Length > 0) { OTPFourthEntry.Focus(); }
         }
 
-        void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e) { }
+
+        void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
-
-            if (viewModel.OTPFourthDigit.Length <= 0)
-            {
-                if (viewModel.OTPThirdDigit.Length > 0)
-                    OTPThirdEntry.Focus();
-            }
+            if (viewModel.OTPFourthDigit.Length != 0)
+                viewModel.BtnEnableFlag = true;
         }
-
-        void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e) { }
         // * End
 
         // * Current Password - New Password - Confirm New Password : Show / Hide
@@ -214,6 +201,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnDisappearing();
 
+            // * Worka aroung - Need to find a solution
             if (viewModel.countDownSeconds != 0)
                 viewModel.otpTimer.Stop();
         }
@@ -225,6 +213,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.OTPSecondDigit = string.Empty;
             viewModel.OTPThirdDigit = string.Empty;
             viewModel.OTPFourthDigit = string.Empty;
+
+            // Defualt
+            viewModel.BtnEnableFlag = false;
+            viewModel.IsLoading = false;
 
             viewModel.CurrentPasswordEntry = string.Empty;
             viewModel.NewPasswordEntry = string.Empty;
