@@ -4233,7 +4233,7 @@
     <value>الحصص في شركات الأشخاص</value>
   </data>
   <data name="FORM5ShareInOtherCompanies" xml:space="preserve">
-    <value>هل لديك حصة في شركات اخرى؟ (ريال سعودي)</value>
+    <value>هل لديك حصة في شركات اخرى؟ </value>
   </data>
   <data name="FORM5Taxpayer" xml:space="preserve">
     <value>المكلف</value>
@@ -4254,10 +4254,10 @@
     <value>مبلغ الزكاة</value>
   </data>
   <data name="FORM5YearlyRent" xml:space="preserve">
-    <value>الإيجار السنوي  (ريال سعودي)</value>
+    <value>الإيجار السنوي</value>
   </data>
   <data name="FORM5ZakatBase" xml:space="preserve">
-    <value>الوعاء الزكوي (ريال سعودي)</value>
+    <value>الوعاء الزكوي</value>
   </data>
   <data name="FORM5ZakatEstimation" xml:space="preserve">
     <value>الزكاة التقديرية</value>

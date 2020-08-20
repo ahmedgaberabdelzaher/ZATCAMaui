@@ -1980,9 +1980,9 @@
                                                     <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="50*"/>
-                                                    <ColumnDefinition Width="10*"/>
                                                     <ColumnDefinition Width="40*"/>
+                                                    <ColumnDefinition Width="10*"/>
+                                                    <ColumnDefinition Width="50*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <!--<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Grid.RowSpan="2">-->
                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text="{x:Static ResourceManager:AppResources.FORM5ShareInOtherCompanies}" Style="{StaticResource ValueLabelGrey}" WidthRequest="140"/>
@@ -1997,8 +1997,16 @@
                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsOtherComShareApp}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
 
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding OtherCompanyShare}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
-
+                                                <!--<custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding OtherCompanyShare}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>-->
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding OtherCompanyShare}" />
+                                                            <Span Text=" "/>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </custom:CustomLabel>
                                             </Grid>
 
                                             <StackLayout  Orientation="Horizontal">
@@ -2006,7 +2014,16 @@
                                                 <Image Source="ic_vat_info" >
 
                                                 </Image>
-                                                <custom:CustomLabel Text="{Binding ZakatBase}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <!--<custom:CustomLabel Text="{Binding ZakatBase}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding ZakatBase}" />
+                                                            <Span Text=" "/>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </custom:CustomLabel>
                                             </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
@@ -2108,9 +2125,9 @@
 
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="50*"/>
-                                                    <ColumnDefinition Width="10*"/>
                                                     <ColumnDefinition Width="40*"/>
+                                                    <ColumnDefinition Width="10*"/>
+                                                    <ColumnDefinition Width="50*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5YearlyRent}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <StackLayout Grid.Column="1" >
@@ -2132,9 +2149,9 @@
 
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="50*"/>
-                                                    <ColumnDefinition Width="10*"/>
                                                     <ColumnDefinition Width="40*"/>
+                                                    <ColumnDefinition Width="10*"/>
+                                                    <ColumnDefinition Width="50*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5TotalofAnnualSalary}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <StackLayout Grid.Column="1" >
@@ -2142,7 +2159,17 @@
 
                                                     </Image>
                                                 </StackLayout>
-                                                <custom:CustomLabel Grid.Column="2" Text="{Binding TotalAnnualSalary}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                <!--<custom:CustomLabel Grid.Column="2" Text="{Binding TotalAnnualSalary}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                                <custom:CustomLabel Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding TotalAnnualSalary}" />
+                                                            <Span Text=" "/>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </custom:CustomLabel>
+
                                             </Grid>
                                         </StackLayout>
                                     </StackLayout>

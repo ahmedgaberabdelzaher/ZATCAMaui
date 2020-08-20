@@ -812,15 +812,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 await AddAttachment();
             });
-            OnGotoReportPageClicked = new Xamarin.Forms.Command(() =>
-            {
-                _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
-            });
+            OnGotoReportPageClicked = new Command(() => gotoReportsListpage());
             OnEditClicked = new Command<NewTaxEvasionTabEnum>((gotoTab) => EditInfo(gotoTab));
         }
         #endregion
 
         #region Method
+        private void gotoReportsListpage()
+        {
+            _navigationService.NavigateTo(App.TaxEvasionMyReportsListPageView, "142536474");
+        }
         private async Task navigateToNextAsync()
         {
             switch (currentTab)
@@ -946,6 +947,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 case NewTaxEvasionTabEnum.FacilityInfo:
                     currentTab= NewTaxEvasionTabEnum.ReporterInfo;
                     PageTitle = AppResources.NDReporterInformation;
+                    break;
+                case NewTaxEvasionTabEnum.ReporterInfo:
+                    gotoReportsListpage();
                     break;
             }
 

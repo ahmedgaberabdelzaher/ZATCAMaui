@@ -16,6 +16,20 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             viewModel = App.Locator.NewTaxEvasionFormSuccessPaveView;
             this.BindingContext = viewModel;
             SetLTR();
+            
+            if (App.TP != null)
+            {
+                if (!string.IsNullOrEmpty(App.TP.Tin))
+                {
+                    btnDashboard.Text = AppResources.ZZZZGotoDashboard;
+                }
+                else
+                {
+                    btnDashboard.Text = AppResources.NDBacktoLoginnew;
+                }
+            }
+            else
+                btnDashboard.Text = AppResources.NDBacktoLoginnew;
         }
         protected async override void OnAppearing()
         {
@@ -57,8 +71,19 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
-
-          viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+            if(App.TP != null)
+            {
+                if (!string.IsNullOrEmpty(App.TP.Tin))
+                {
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                }
+                else
+                {
+                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                }
+            }
+            else
+            viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
         }
 
     private void OnGotoReportPageClicked(object sender, EventArgs e)
