@@ -2721,6 +2721,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register now for Value Added Tax in less than 5 minutes.
+        /// </summary>
+        public static string NDLessThan5MinRegister {
+            get {
+                return ResourceManager.GetString("NDLessThan5MinRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Make all your transactions fast and simple with MADA &amp; Apple Pay.
         /// </summary>
         public static string NDMakeTransactionsFast {
@@ -5354,7 +5363,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Refund Amounts.
         /// </summary>
         public static string VATRefundAmounts {
             get {
@@ -5368,6 +5377,15 @@ namespace EGAZT {
         public static string VATRefundDetails {
             get {
                 return ResourceManager.GetString("VATRefundDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Refund Request.
+        /// </summary>
+        public static string VATRefundRequestTtitle {
+            get {
+                return ResourceManager.GetString("VATRefundRequestTtitle", resourceCulture);
             }
         }
         
@@ -5390,7 +5408,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Last Status Change.
         /// </summary>
         public static string VATRefundsLastStatusChange {
             get {
@@ -5404,6 +5422,15 @@ namespace EGAZT {
         public static string VATRefundsNetCreditBalance {
             get {
                 return ResourceManager.GetString("VATRefundsNetCreditBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no ID Numbers for this ID Type.
+        /// </summary>
+        public static string VATRefundsNoIdNumber {
+            get {
+                return ResourceManager.GetString("VATRefundsNoIdNumber", resourceCulture);
             }
         }
         
@@ -5435,7 +5462,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Requested Amount.
         /// </summary>
         public static string VATRefundsRequestedAmount {
             get {
@@ -5453,6 +5480,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DRAFT.
+        /// </summary>
+        public static string VATRefundsStatusDraft {
+            get {
+                return ResourceManager.GetString("VATRefundsStatusDraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string VATRefundsStatusInProcess {
@@ -5462,11 +5498,11 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refunded.
+        ///   Looks up a localized string similar to Transferred.
         /// </summary>
-        public static string VATRefundsStatusRefunded {
+        public static string VATRefundsStatusTransferred {
             get {
-                return ResourceManager.GetString("VATRefundsStatusRefunded", resourceCulture);
+                return ResourceManager.GetString("VATRefundsStatusTransferred", resourceCulture);
             }
         }
         

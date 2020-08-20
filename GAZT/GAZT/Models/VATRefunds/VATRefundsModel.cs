@@ -289,9 +289,28 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("NetCreditBal")]
         public string NetCreditBal { get; set; }
 
-        [JsonProperty("RefundReqDt")]
-        public string RefundReqDt { get; set; }
+        private string _formatedReqdt { get; set; }
 
+        [JsonProperty("RefundReqDt")]
+        public DateTime RefundReqDt { get; set; }
+
+        //[JsonProperty("RefundReqDt")]
+        //private DateTime _refundReqDt { get; set; }
+        //public DateTime RefundReqDt
+        //{
+        //    get
+        //    {
+        //        return _refundReqDt;
+        //    }
+        //    set
+        //    {
+        //        _refundReqDt = value;
+        //        //if (_refundReqDt != null)
+        //        //{
+        //        //    FormatedReqDt = _refundReqDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+        //        //}
+        //    }
+        //}
     }
 
     public partial class VatRefSubItemsSet
@@ -330,7 +349,7 @@ namespace EGAZT.Models.VATRefunds
         public string Status { get; set; }
 
         [JsonProperty("LastChgDt")]
-        public string LastChgDt { get; set; }
+        public DateTime LastChgDt { get; set; }
 
         [JsonProperty("Waers")]
         public string Waers { get; set; }
@@ -480,7 +499,7 @@ namespace EGAZT.Models.VATRefunds
         public string Branchx { get; set; }
 
         [JsonProperty("BuildingNo")]
-        public long BuildingNo { get; set; }
+        public string BuildingNo { get; set; }
 
         [JsonProperty("City")]
         public string City { get; set; }
@@ -492,7 +511,7 @@ namespace EGAZT.Models.VATRefunds
         public string DataVersion { get; set; }
 
         [JsonProperty("Decdt")]
-        public object Decdt { get; set; }
+        public string Decdt { get; set; }
 
         [JsonProperty("Decflg")]
         public string Decflg { get; set; }
@@ -549,7 +568,7 @@ namespace EGAZT.Models.VATRefunds
         public string PortalUsrx { get; set; }
 
         [JsonProperty("PostalCd")]
-        public long PostalCd { get; set; }
+        public string PostalCd { get; set; }
 
         [JsonProperty("Quarter")]
         public string Quarter { get; set; }
@@ -558,7 +577,7 @@ namespace EGAZT.Models.VATRefunds
         public string RefundTp { get; set; }
 
         [JsonProperty("Region")]
-        public long Region { get; set; }
+        public string Region { get; set; }
 
         [JsonProperty("RegionDesc")]
         public string RegionDesc { get; set; }
@@ -621,7 +640,7 @@ namespace EGAZT.Models.VATRefunds
         public string DataVersion { get; set; }
 
         [JsonProperty("LineNo")]
-        public long LineNo { get; set; }
+        public int LineNo { get; set; }
 
         [JsonProperty("RankingOrder")]
         public string RankingOrder { get; set; }
@@ -636,7 +655,7 @@ namespace EGAZT.Models.VATRefunds
         public string Fin { get; set; }
 
         [JsonProperty("Opbel")]
-        public long Opbel { get; set; }
+        public string Opbel { get; set; }
 
         [JsonProperty("Opupk")]
         public string Opupk { get; set; }
@@ -652,12 +671,6 @@ namespace EGAZT.Models.VATRefunds
 
         [JsonProperty("Betrh")]
         public string Betrh { get; set; }
-
-        [JsonProperty("Faedn")]
-        public string Faedn { get; set; }
-
-        [JsonProperty("Faeds")]
-        public string Faeds { get; set; }
 
         [JsonProperty("Waers")]
         public string Waers { get; set; }
@@ -788,4 +801,193 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("type")]
         public string Type { get; set; }
     }
+
+    public partial class VatRefundSaveDataModel
+    {
+        [JsonProperty("__metadata")]
+        public MetadataVatRefundSaveDataModel Metadata { get; set; }
+
+        [JsonProperty("TcFg")]
+        public string TcFg { get; set; }
+
+        [JsonProperty("AdditionalNo")]
+        public string AdditionalNo { get; set; }
+
+        [JsonProperty("Idtype")]
+        public string Idtype { get; set; }
+
+        [JsonProperty("IbanCb")]
+        public long IbanCb { get; set; }
+
+        [JsonProperty("Persl")]
+        public string Persl { get; set; }
+
+        [JsonProperty("Agrfg")]
+        public string Agrfg { get; set; }
+
+        [JsonProperty("Idnum")]
+        public string Idnum { get; set; }
+
+        [JsonProperty("Caltyp")]
+        public string Caltyp { get; set; }
+
+        [JsonProperty("Confirmfg")]
+        public string Confirmfg { get; set; }
+
+        [JsonProperty("Iban")]
+        public string Iban { get; set; }
+
+        [JsonProperty("IdType")]
+        public string IdType { get; set; }
+
+        [JsonProperty("Addrnumber")]
+        public string Addrnumber { get; set; }
+
+        [JsonProperty("IbanC")]
+        public string IbanC { get; set; }
+
+        [JsonProperty("Idnumber")]
+        public string Idnumber { get; set; }
+
+        [JsonProperty("Branchx")]
+        public string Branchx { get; set; }
+
+        [JsonProperty("BuildingNo")]
+        public string BuildingNo { get; set; }
+
+        [JsonProperty("City")]
+        public string City { get; set; }
+
+        [JsonProperty("Curr")]
+        public string Curr { get; set; }
+
+        [JsonProperty("DataVersion")]
+        public string DataVersion { get; set; }
+
+        [JsonProperty("Decdt")]
+        public object Decdt { get; set; }
+
+        [JsonProperty("Decflg")]
+        public string Decflg { get; set; }
+
+        [JsonProperty("Euser")]
+        public string Euser { get; set; }
+
+        [JsonProperty("Evstatus")]
+        public string Evstatus { get; set; }
+
+        [JsonProperty("Fbnum")]
+        public string Fbnum { get; set; }
+
+        [JsonProperty("Fbnumx")]
+        public string Fbnumx { get; set; }
+
+        [JsonProperty("Fbstax")]
+        public string Fbstax { get; set; }
+
+        [JsonProperty("Fbustx")]
+        public string Fbustx { get; set; }
+
+        [JsonProperty("Fin")]
+        public string Fin { get; set; }
+
+        [JsonProperty("FormGuid")]
+        public string FormGuid { get; set; }
+
+        [JsonProperty("Formprocx")]
+        public string Formprocx { get; set; }
+
+        [JsonProperty("Forwardx")]
+        public string Forwardx { get; set; }
+
+        [JsonProperty("Gpartx")]
+        public string Gpartx { get; set; }
+
+        [JsonProperty("Langx")]
+        public string Langx { get; set; }
+
+        [JsonProperty("Mandt")]
+        public string Mandt { get; set; }
+
+        [JsonProperty("Mandtx")]
+        public string Mandtx { get; set; }
+
+        [JsonProperty("Officerx")]
+        public string Officerx { get; set; }
+
+        [JsonProperty("Operationx")]
+        public string Operationx { get; set; }
+
+        [JsonProperty("PortalUsrx")]
+        public string PortalUsrx { get; set; }
+
+        [JsonProperty("PostalCd")]
+        public string PostalCd { get; set; }
+
+        [JsonProperty("Quarter")]
+        public string Quarter { get; set; }
+
+        [JsonProperty("RefundTp")]
+        public string RefundTp { get; set; }
+
+        [JsonProperty("Region")]
+        public string Region { get; set; }
+
+        [JsonProperty("RegionDesc")]
+        public string RegionDesc { get; set; }
+
+        [JsonProperty("ReturnIdx")]
+        public string ReturnIdx { get; set; }
+
+        [JsonProperty("Rfamt")]
+        public string Rfamt { get; set; }
+
+        [JsonProperty("Srcidentifyx")]
+        public string Srcidentifyx { get; set; }
+
+        [JsonProperty("Statusx")]
+        public string Statusx { get; set; }
+
+        [JsonProperty("StepNumberx")]
+        public string StepNumberx { get; set; }
+
+        [JsonProperty("Street")]
+        public string Street { get; set; }
+
+        [JsonProperty("Tin")]
+        public string Tin { get; set; }
+
+        [JsonProperty("TinName")]
+        public string TinName { get; set; }
+
+        [JsonProperty("TxnTpx")]
+        public string TxnTpx { get; set; }
+
+        [JsonProperty("UserTypx")]
+        public string UserTypx { get; set; }
+
+        [JsonProperty("NotesSet")]
+        public Array[] NotesSet { get; set; }
+
+        [JsonProperty("AttdetSet")]
+        public Array[] AttdetSet { get; set; }
+
+        [JsonProperty("BankDtlSet")]
+        public Array[] BankDtlSet { get; set; }
+    }
+
+    public partial class MetadataVatRefundSaveDataModel
+    {
+        [JsonProperty("id")]
+        public Uri Id { get; set; }
+
+        [JsonProperty("uri")]
+        public Uri Uri { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+   
+
 }

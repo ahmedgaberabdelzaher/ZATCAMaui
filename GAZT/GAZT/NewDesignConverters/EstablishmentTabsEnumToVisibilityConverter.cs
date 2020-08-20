@@ -22,4 +22,21 @@ namespace EGAZT.NewDesignConverters
             return isVisible;
         }
     }
+
+    public class EstablishmentRegistrationOutletTabsEnumToVisibilityConverter : IValueConverter
+    {
+        private bool isVisible { get; set; } = false;
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            EstablishmentRegistrationOutletTabsEnum _value = (EstablishmentRegistrationOutletTabsEnum)value;
+            EstablishmentRegistrationOutletTabsEnum _parameter = (EstablishmentRegistrationOutletTabsEnum)parameter;
+            isVisible = _value == _parameter;
+            return isVisible;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return isVisible;
+        }
+    }
 }

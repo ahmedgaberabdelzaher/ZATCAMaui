@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+
+using Xamarin.Forms;
+
+namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
+{
+    public partial class OutletDetailsPageView : ContentPage
+    {
+        public OutletDetailsPageView()
+        {
+            InitializeComponent();
+            BindingContext = App.Locator.OutletDetailsPage;
+            SetLTR();
+        }
+        private void SetLTR()
+        {
+
+            //if (!App.IsArabic)
+            //{
+                this.FlowDirection = FlowDirection.LeftToRight;
+            //}
+            //else
+            //{
+            //    this.FlowDirection = FlowDirection.RightToLeft;
+            //}
+        }
+    }
+}

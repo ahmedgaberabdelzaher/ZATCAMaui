@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel;
+using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -230,6 +231,324 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount));
         }
+
+        // Events to handle the Sales Type inputs entry
+        private void TotalVATSalesInputFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (TotalVATSales.Text == "0.00")
+                {
+                    TotalVATSales.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(TotalVATSales.Text) && TotalVATSales.Text.Contains(","))
+                {
+                    TotalVATSales.Text = TotalVATSales.Text.Replace(",", "");
+                    TotalVATSales.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void TotalVATSalesInputUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(TotalVATSales.Text))
+                {
+                    TotalVATSales.Text = "0.00";
+                }
+                if (!String.IsNullOrEmpty(TotalVATSales.Text) && TotalVATSales.Text.Contains(","))
+                {
+                    TotalVATSales.Text = UtilityManager.GetCommaSeparatedAmount(TotalVATSales.Text);
+                    TotalVATSales.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+        private void AverageNumberOfLabourInputFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (AverageNumberOfLabour.Text == "0.00")
+                {
+                    AverageNumberOfLabour.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(AverageNumberOfLabour.Text) && AverageNumberOfLabour.Text.Contains(","))
+                {
+                    AverageNumberOfLabour.Text = AverageNumberOfLabour.Text.Replace(",", "");
+                    AverageNumberOfLabour.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void AverageNumberOfLabourInputUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(AverageNumberOfLabour.Text))
+                {
+                    AverageNumberOfLabour.Text = "0.00";
+                }
+                if (!String.IsNullOrEmpty(AverageNumberOfLabour.Text) )
+                {
+                    AverageNumberOfLabour.Text = UtilityManager.GetCommaSeparatedAmount(AverageNumberOfLabour.Text);
+                    AverageNumberOfLabour.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        
+
+
+
+             private void ImportValueInputFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (ImportValue.Text == "0.00")
+                {
+                    ImportValue.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(ImportValue.Text) && ImportValue.Text.Contains(","))
+                {
+                    ImportValue.Text = ImportValue.Text.Replace(",", "");
+                    ImportValue.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void ImportValueInputUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(ImportValue.Text))
+                {
+                    ImportValue.Text = "0.00";
+                }
+                if (!String.IsNullOrEmpty(ImportValue.Text) )
+                {
+                    ImportValue.Text = UtilityManager.GetCommaSeparatedAmount(ImportValue.Text);
+                    ImportValue.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+
+
+        
+
+        
+
+
+        private void SalesFromPointOfSalesInputFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (SalesFromPointOfSales.Text == "0.00")
+                {
+                    SalesFromPointOfSales.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(SalesFromPointOfSales.Text) && SalesFromPointOfSales.Text.Contains(","))
+                {
+                    SalesFromPointOfSales.Text = SalesFromPointOfSales.Text.Replace(",", "");
+                    SalesFromPointOfSales.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void SalesFromPointOfSalesUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(SalesFromPointOfSales.Text))
+                {
+                    SalesFromPointOfSales.Text = "0.00";
+                }
+                if (!String.IsNullOrEmpty(SalesFromPointOfSales.Text) )
+                {
+                    SalesFromPointOfSales.Text = UtilityManager.GetCommaSeparatedAmount(SalesFromPointOfSales.Text);
+                    SalesFromPointOfSales.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void ContractFromETIMADSystemInputFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (ContractFromETIMADSystem.Text == "0.00")
+                {
+                    ContractFromETIMADSystem.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(ContractFromETIMADSystem.Text) && ContractFromETIMADSystem.Text.Contains(","))
+                {
+                    ContractFromETIMADSystem.Text = ContractFromETIMADSystem.Text.Replace(",", "");
+                    ContractFromETIMADSystem.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void ContractFromETIMADSystemInputFocusedUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(ContractFromETIMADSystem.Text))
+                {
+                    ContractFromETIMADSystem.Text = "0.00";
+                }
+                if (!String.IsNullOrEmpty(ContractFromETIMADSystem.Text))
+                {
+                    ContractFromETIMADSystem.Text = UtilityManager.GetCommaSeparatedAmount(ContractFromETIMADSystem.Text);
+                    ContractFromETIMADSystem.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void ExportValueInputFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (ExportValue.Text == "0.00")
+                {
+                    ExportValue.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(ExportValue.Text) && ExportValue.Text.Contains(","))
+                {
+                    ExportValue.Text = ExportValue.Text.Replace(",", "");
+                    ExportValue.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void ExportValueUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(ExportValue.Text))
+                {
+                    ExportValue.Text = "0.00";
+                }
+                if (!String.IsNullOrEmpty(ExportValue.Text) )
+                {
+                    ExportValue.Text = UtilityManager.GetCommaSeparatedAmount(ExportValue.Text);
+                    ExportValue.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void PurchaseValueInputFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (PurchaseValue.Text == "0.00")
+                {
+                    PurchaseValue.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(PurchaseValue.Text) && PurchaseValue.Text.Contains(","))
+                {
+                    PurchaseValue.Text = PurchaseValue.Text.Replace(",", "");
+                    PurchaseValue.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void PurchaseValueUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(PurchaseValue.Text))
+                {
+                    PurchaseValue.Text = "0.00";
+                }
+                if (!String.IsNullOrEmpty(PurchaseValue.Text) )
+                {
+                    PurchaseValue.Text = UtilityManager.GetCommaSeparatedAmount(PurchaseValue.Text);
+                    PurchaseValue.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void CapitalAmountInputFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (CapitalAmount.Text == "0.00")
+                {
+                    CapitalAmount.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(CapitalAmount.Text) && CapitalAmount.Text.Contains(","))
+                {
+                    CapitalAmount.Text = CapitalAmount.Text.Replace(",", "");
+                    CapitalAmount.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void CapitalAmountUnFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(CapitalAmount.Text))
+                {
+                    CapitalAmount.Text = "0.00";
+                }
+                if (!String.IsNullOrEmpty(CapitalAmount.Text))
+                {
+                    CapitalAmount.Text = UtilityManager.GetCommaSeparatedAmount(CapitalAmount.Text);
+                    CapitalAmount.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
 
 
     }

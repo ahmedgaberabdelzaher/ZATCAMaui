@@ -4914,29 +4914,35 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
+  <data name="VATRefundRequestTtitle" xml:space="preserve">
+    <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
+  </data>
   <data name="VATRefund" xml:space="preserve">
-    <value>VAT Refund</value>
+    <value>استردادات المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="VATRefundDetails" xml:space="preserve">
     <value>Refund Details</value>
   </data>
   <data name="VATRefundsRequest" xml:space="preserve">
-    <value>Refund Request</value>
+    <value>طلب إسترداد</value>
   </data>
   <data name="VATRefundsReassesmentAmount" xml:space="preserve">
-    <value>Reassesment Amount</value>
+    <value>المبلغ الإجمالي بعد إعادة التقييم</value>
   </data>
   <data name="VATRefundsTotalOffset" xml:space="preserve">
-    <value>Total Offset</value>
+    <value>إجمالي مبلغ المقاصة</value>
   </data>
   <data name="VATRefundsNetCreditBalance" xml:space="preserve">
-    <value>Net Credit Balance</value>
+    <value>إجمالي صافي المبلغ الدائن</value>
   </data>
   <data name="VATRefundsRequestDate" xml:space="preserve">
-    <value>Request Date</value>
+    <value>تاريخ طلب الاسترداد</value>
   </data>
-  <data name="VATRefundsStatusRefunded" xml:space="preserve">
-    <value>Refunded</value>
+  <data name="VATRefundsStatusTransferred" xml:space="preserve">
+    <value>تم الحويل</value>
+  </data>
+  <data name="VATRefundsStatusDraft" xml:space="preserve">
+    <value>مسودة</value>
   </data>
   <data name="VATRefundsStatusInProcess" xml:space="preserve">
     <value>IN PROCESS</value>
@@ -4948,16 +4954,19 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Al Rajhi Bank</value>
   </data>
   <data name="VATRefundsLastStatusChange" xml:space="preserve">
-    <value>Last Status Change</value>
+    <value>اخر تغيير في الحالة</value>
   </data>
   <data name="VATRefundsRequestSuccess" xml:space="preserve">
-    <value>Your VAT Refund Request is successful</value>
+    <value>تم استلام طلب استرداد المدفوعات لضريبة القيمة المضافة بنجاح</value>
   </data>
   <data name="VATRefundsRequestedAmount" xml:space="preserve">
-    <value>Requested Amount</value>
+    <value>إجمالي المبلغ المطلوب</value>
   </data>
   <data name="VATRefundsAddAccount" xml:space="preserve">
     <value>Add Account</value>
+  </data>
+  <data name="VATRefundsNoIdNumber" xml:space="preserve">
+    <value>There are no ID Numbers for this ID Type</value>
   </data>
   <data name="ContractObjectNo" xml:space="preserve">
     <value>Contract Object No.</value>
@@ -5428,5 +5437,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDEdit" xml:space="preserve">
     <value>تعديل</value>
+  </data>
+  <data name="NDLessThan5MinRegister" xml:space="preserve">
+    <value>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</value>
   </data>
 </root>

@@ -1,4 +1,10 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.GenericPickers;
+using GAZT.Helper;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 
@@ -15,6 +21,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             InitializeComponent();
             BindingContext = App.Locator.EstablishmentRegistrationPage;
+            SetLTR();
         }
 
         protected override void OnAppearing()
@@ -27,20 +34,51 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             base.OnDisappearing();
         }
 
-        private void ListView_Correspondance_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void SetLTR()
         {
-            ETaxableIncomeSourceTypeListModel taxableIncomeSourceTypeSelected = ((Xamarin.Forms.ListView)sender).SelectedItem as ETaxableIncomeSourceTypeListModel;
 
-            if (taxableIncomeSourceTypeSelected.IsSelectedType == false)
+            if (!App.IsArabic)
             {
-                taxableIncomeSourceTypeSelected.IsSelectedType = true;
-
+                this.FlowDirection = FlowDirection.LeftToRight;
             }
-         //  viewModel.ShowCorrespondenceDetails(Correspondence);
-         ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
         }
 
-        private void TappedOnicon(object sender, EventArgs e)
+        async void dOBDateClicked(System.Object sender, System.EventArgs e)
+        {
+
+            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+            genericPickerModel.PickerTitle = "DateofBirthType";
+            genericPickerModel.PickerId = "DateofBirthTypePicker";
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._navigationService.GoBack();
+                });
+            }
+
+
+        }
+
+        private void PassportIssueDateClicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PassportExpiryDateClicked(object sender, EventArgs e)
         {
 
         }
