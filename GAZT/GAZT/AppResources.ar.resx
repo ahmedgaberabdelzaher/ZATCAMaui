@@ -5441,4 +5441,16 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDLessThan5MinRegister" xml:space="preserve">
     <value>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</value>
   </data>
+  <data name="FORM5GeneralTradingInternal" xml:space="preserve">
+    <value>المشتريات من الداخل للتجارة العامة</value>
+  </data>
+  <data name="FORM5LivelihoodsInternal" xml:space="preserve">
+    <value>المشتريات من الداخل للأرزاق</value>
+  </data>
+  <data name="FORM5LivestockAnimalInternals" xml:space="preserve">
+    <value>المشتريات من الداخل للمواشي و الخضار</value>
+  </data>
+  <data name="FORM5TotalProfit" xml:space="preserve">
+    <value>إجمالي ارباح المشتريات من الداخل</value>
+  </data>
 </root>

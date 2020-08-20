@@ -5471,4 +5471,16 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDLessThan5MinRegister" xml:space="preserve">
     <value>Register now for Value Added Tax in less than 5 minutes</value>
   </data>
+  <data name="FORM5GeneralTradingInternal" xml:space="preserve">
+    <value>General Trading Internal</value>
+  </data>
+  <data name="FORM5LivelihoodsInternal" xml:space="preserve">
+    <value>Livelihoods Internal</value>
+  </data>
+  <data name="FORM5LivestockAnimalInternals" xml:space="preserve">
+    <value>Livestock &amp; Animals Int.</value>
+  </data>
+  <data name="FORM5TotalProfit" xml:space="preserve">
+    <value>Total Profits</value>
+  </data>
 </root>
