@@ -56,7 +56,9 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <yummy:PancakeView Grid.Row="0" CornerRadius="15,15,0,0" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White">
+       
+
+        <yummy:PancakeView Grid.Row="0" CornerRadius="15,15,0,0"  HasShadow="True" BackgroundColor="White">
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
@@ -66,7 +68,7 @@
 
 
                 <!--Start Of Basic Information View-->
-                <Grid Grid.Row="1" x:Name="BasicInformation" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.BasicInformation}}">
+                <Grid Grid.Row="1" x:Name="BasicInformation" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.BasicInformation}}" Padding="20,0,20,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
@@ -237,7 +239,7 @@
                 <!--End of Basic Information View-->
 
                 <!--Start of Financial Information-->
-                <Grid Grid.Row="1" x:Name="FinancialInformation" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.FinancialInformation}}">
+                <Grid Grid.Row="1" x:Name="FinancialInformation" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.FinancialInformation}}" Padding="20,0,20,0">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -2268,7 +2270,7 @@
                 <!--End of Financial Information-->
 
                 <!--Start of Zakat Estimation-->
-                <Grid Grid.Row="1" x:Name="ZakatEstimation" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.ZakatEstimation}}">
+                <Grid Grid.Row="1" x:Name="ZakatEstimation" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:ZakatForm5TabEnum.ZakatEstimation}}" Padding="20,0,20,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
@@ -3042,7 +3044,7 @@
 
 
 
-                <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,10">
+                <StackLayout Grid.Row="0" BackgroundColor="White" Padding="20,0,20,0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -3069,13 +3071,13 @@
                     </Grid>
                     <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" />
                 </StackLayout>
-                <StackLayout Grid.Row="2" BackgroundColor="White">
+                <StackLayout Grid.Row="2" BackgroundColor="White" Padding="20,8,20,10">
                     <buttons:SfButton x:Name="btnprimary" Text="{Binding NextText}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
                 </StackLayout>
 
 
-                <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0">
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.4" VerticalOptions="FillAndExpand">
+                <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
@@ -3094,8 +3096,11 @@
                     </StackLayout>
                 </Grid>
 
-
             </Grid>
         </yummy:PancakeView>
-    </ContentPage.Content>
+            
+
+            
+
+        </ContentPage.Content>
 </ContentPage>
