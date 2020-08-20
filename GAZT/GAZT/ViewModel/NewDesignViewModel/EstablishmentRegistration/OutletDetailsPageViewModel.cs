@@ -9,7 +9,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class OutletDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
+        private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
             get => _currentTab;
@@ -26,7 +26,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public int MaxIndex { get; private set; } = 3;
 
 
-        private int _currenrIndex = (int)EstablishmentRegistrationOutletTabsEnum.OutletDetail;
+        private int _currenrIndex = (int)EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -40,7 +40,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
 
         public string SelectedTabText { get; private set; } = "Outlets";
-        private string _selectedOutletTabText = "Outlet Details";
+        private string _selectedOutletTabText = "Address Details";
         public string SelectedOutletTabText
         {
             get => _selectedOutletTabText;
@@ -54,7 +54,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public bool PostalAsPhysical
         {
             get => _postalAsPhysical;
-            private set
+            set
             {
                 _postalAsPhysical = value;
                 RaisePropertyChanged(nameof(PostalAsPhysical));
@@ -65,6 +65,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region commands
         public ICommand OnNextButtonClick { get; private set; }
         public ICommand OnPreButtonClick { get; private set; }
+        public ICommand OnActivityItemButtonClick { get; private set; }
         #endregion
 
         #region Constructor
@@ -72,6 +73,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
+            OnActivityItemButtonClick = new Command(() => {
+                System.Diagnostics.Debug.WriteLine("OnActivityItemButtonClick");
+                navigationService.NavigateTo(App.ActivityItemPage);
+            });
         }
         #endregion
 

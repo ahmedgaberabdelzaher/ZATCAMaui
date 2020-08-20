@@ -14,7 +14,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
-        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+        public readonly INavigationService _navigationService;
+        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.Outlets;
         public EstablishmentRegistrationTabsEnum currentTab
         {
             get => _currentTab;
@@ -40,7 +41,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
 
-        private int _currenrIndex = 3;
+        private int _currenrIndex = (int)EstablishmentRegistrationTabsEnum.Outlets;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -53,7 +54,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTabText = "Passport Details";
+        private string _selectedTabText = "Outlets";
         public string SelectedTabText
         {
             get => _selectedTabText;
@@ -198,8 +199,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             set
             {
-                _taxableIncomeSourceTypeList = value;
-                RaisePropertyChanged(nameof(TaxableIncomeSourceTypeList));
+                if (value != null)
+                {
+                    _taxableIncomeSourceTypeList = value;
+                    RaisePropertyChanged(nameof(TaxableIncomeSourceTypeList));
+                }
             }
         }
 
@@ -237,8 +241,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _genderList;
             private set
             {
-                _genderList = value;
-                RaisePropertyChanged(nameof(GenderList));
+                if (value != null)
+                {
+                    _genderList = value;
+                    RaisePropertyChanged(nameof(GenderList));
+                }
             }
         }
         private string _selectedGender = null;
@@ -262,8 +269,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _methodList;
             private set
             {
-                _methodList = value;
-                RaisePropertyChanged(nameof(MethodList));
+                if (value != null)
+                {
+                    _methodList = value;
+                    RaisePropertyChanged(nameof(MethodList));
+                }
             }
         }
         private string _selectedMethod = null;
@@ -282,8 +292,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _calendarTypeList;
             private set
             {
-                _calendarTypeList = value;
-                RaisePropertyChanged(nameof(CalendarTypeList));
+                if (value != null)
+                {
+                    _calendarTypeList = value;
+                    RaisePropertyChanged(nameof(CalendarTypeList));
+                }
             }
         }
         public string _calendarType = null;
@@ -357,7 +370,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
         #endregion
-
+        #region Outlet Tabs commands
+        public ICommand OnNewOutletButtonClick { get; set; }
+        #endregion
         #region Financial Details Tabs commands
         public ICommand OnMonthSelectButtonClick { get; set; }
         #endregion
@@ -367,6 +382,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            _navigationService = navigationService;
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
 
@@ -429,27 +445,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnPassportCloseTapped = new Command(() => onPassportCloseTapped());
             #endregion
 
+            #region Outlet Tabs variable initialization
+            OnNewOutletButtonClick = new Command(() => {
+                System.Diagnostics.Debug.WriteLine("OnNewOutletButtonClick "+ navigationService);
+                _navigationService.NavigateTo(App.OutletDetailsPageView);
+            });
+            #endregion
+
             #region Financial Details Tabs variable initialization
             MethodList.Clear();
             MethodList.Add("Accounts");
             MethodList.Add("Estimate");
-            MethodList.Add("Accounts1");
-            MethodList.Add("Estimate1");
-            MethodList.Add("Accounts2");
-            MethodList.Add("Estimate3");
-            MethodList.Add("Accounts4");
-            MethodList.Add("Estimate5");
 
             CalendarTypeList.Clear();
             CalendarTypeList.Add("Hijri");
             CalendarTypeList.Add("Gregorian");
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                SelectedMethod = MethodList.FirstOrDefault();
-                CalendarType = CalendarTypeList.LastOrDefault();
-                var testValue = SelectedTaxIncomeSourceType;
-            });
             OnMonthSelectButtonClick = new Command(() =>
             {
                 PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
@@ -462,6 +473,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Method
+        public void OnAppearing()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                SelectedMethod = MethodList.FirstOrDefault();
+                CalendarType = CalendarTypeList.LastOrDefault();
+            });
+        }
+
         private void navigateToNext()
         {
             if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)

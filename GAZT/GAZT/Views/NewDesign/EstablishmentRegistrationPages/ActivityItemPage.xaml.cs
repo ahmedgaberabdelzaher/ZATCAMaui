@@ -5,12 +5,12 @@ using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
-    public partial class OutletDetailsPageView : ContentPage
+    public partial class ActivityItemPage : ContentPage
     {
-        public OutletDetailsPageView()
+        public ActivityItemPage()
         {
             InitializeComponent();
-            BindingContext = App.Locator.OutletDetailsPageView;
+            BindingContext = App.Locator.ActivityItemPage;
             SetLTR();
         }
         private void SetLTR()
@@ -18,7 +18,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
             //if (!App.IsArabic)
             //{
-                this.FlowDirection = FlowDirection.LeftToRight;
+            this.FlowDirection = FlowDirection.LeftToRight;
             //}
             //else
             //{

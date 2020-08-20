@@ -143,7 +143,7 @@
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusStayMoreThanKSAClick}"/>
                                         </Grid.GestureRecognizers>
-                                        <Image Grid.Row="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
+                                        <Image Grid.Row="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
                                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                         <custom:CustomLabel Grid.Row="0"  Text="Stay More than or equal to 183 days in KSA" 
                                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
@@ -166,7 +166,7 @@
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusRentOwnHouseClick}"/>
                                         </Grid.GestureRecognizers>
-                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedOwnRentOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedOwnRentOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Rent/Own a house more than 30 days" Padding="10" 
                                                             IsVisible="{Binding IsClickedOwnRentOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
                                                             HorizontalOptions="CenterAndExpand"
@@ -186,7 +186,7 @@
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding NationalityStatusNoneOfTheAboveClick}"/>
                                         </Grid.GestureRecognizers>
-                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedNoneOfTheAboveOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
+                                        <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedNoneOfTheAboveOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
                                                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="None of the above"   IsVisible="{Binding IsClickedNoneOfTheAboveOption,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
                                                              HorizontalOptions="CenterAndExpand"  Padding="10" 
@@ -275,7 +275,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding PermanentEstablishmentLegalEntityClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Permanent Establishment"
                                                                 IsVisible="{Binding IsClickedPermanentLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" 
@@ -295,7 +295,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OtherTaxableIncomeLegalEntityClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Other Taxable income from source with in the KSA"
                                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" 
@@ -338,7 +338,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ABranchOfNonResidentCompanyPEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Branch of Non - Resident Company"
                                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
                                                                HorizontalOptions="CenterAndExpand"  Padding="10" 
@@ -357,7 +357,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding ConstructionSitePEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Construction Site" IsVisible="{Binding IsClickedConstructionSitePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" 
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
@@ -393,7 +393,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding AFixedBasePEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png" IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png" IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A fixed based"
                                                                 IsVisible="{Binding IsClickedAFixedBasePE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}" 
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" 
@@ -412,7 +412,7 @@
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding NonResidentPartnerPEClick}"/>
                                             </Grid.GestureRecognizers>
-                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_w.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
+                                            <Image Grid.Row="0" Grid.Column="0" Source="vat_tile_listofsignup_W.png"  IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Aspect="Fill" />
                                             <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="A Non - Resident Partner" 
                                                                 IsVisible="{Binding IsClickedNonResidentPartnerPE,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}"
                                                                 HorizontalOptions="CenterAndExpand"  Padding="10" 
@@ -427,50 +427,50 @@
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
-                            <CollectionView  x:Name="OtherTaxIncomeFromSourceWithInTheSKAlist" Grid.Row="8" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
+                            <CollectionView  x:Name="OtherTaxIncomeFromSourceWithInTheSKAlist" Grid.Row="8"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
                                                  ItemsSource="{Binding TaxableIncomeSourceTypeList}"  SelectedItem="{Binding SelectedTaxIncomeSourceType, Mode=OneWay}"
                                                  SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
-                                    <CollectionView.ItemsLayout>
-                                        <GridItemsLayout Orientation="Vertical"  HorizontalItemSpacing="0" VerticalItemSpacing="0"  />
-                                    </CollectionView.ItemsLayout>
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
-                                                <VisualStateManager.VisualStateGroups>
-                                                    <VisualStateGroup x:Name="CommonStates">
-                                                        <VisualState x:Name="Normal">
-                                                            <VisualState.Setters>
-                                                                <Setter Property="BackgroundColor" Value="White" />
-                                                                <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup_W" />
-                                                                <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="Gray" />
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                        <VisualState x:Name="Selected">
-                                                            <VisualState.Setters>
-                                                                <Setter Property="BackgroundColor" Value="White" />
-                                                                <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup" />
-                                                                <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="White" />
-                                                            </VisualState.Setters>
-                                                        </VisualState>
-                                                    </VisualStateGroup>
-                                                </VisualStateManager.VisualStateGroups>
-                                                <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="30" VerticalOptions="FillAndExpand"/>
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical"  HorizontalItemSpacing="0" VerticalItemSpacing="0"  />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Normal">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                            <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup_W" />
+                                                            <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="Gray" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Selected">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                            <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup" />
+                                                            <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="White" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="30" VerticalOptions="FillAndExpand"/>
                                             <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
                                                                     FontFamily="{StaticResource SSTArabicMedium}"
                                                                       HorizontalOptions="CenterAndExpand"  Padding="20" 
                                                                 VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start"
                                                                 LineSpacing="1" VerticalTextAlignment="Start"  />
                                         </Grid>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
                             <!--</StackLayout>-->
                         </Grid>
                     </ScrollView>
                 </StackLayout>
                 <StackLayout x:Name="TaxpayerDetailsTabMain" Orientation="Vertical" Spacing="3" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
-                  <ScrollView   HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                    <ScrollView   HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
                         <Grid x:Name="TaxpayerDetailsTab"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <!--IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">-->
                             <Grid.RowDefinitions>
@@ -520,7 +520,7 @@
                             </StackLayout>
                             <StackLayout x:Name="PersonalDetails" Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
                                 <custom:CustomLabel  Text="Identification Details" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
-                            
+
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
@@ -605,7 +605,7 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <CollectionView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding GenderList}" SelectedItem="{Binding SelectedGender, Mode=TwoWay}"  HeightRequest="112" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                                    <CollectionView VerticalOptions="Start" HorizontalOptions="Fill"  ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding GenderList}" SelectedItem="{Binding SelectedGender, Mode=TwoWay}"  HeightRequest="112" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                                         <CollectionView.ItemsLayout>
                                             <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="0" />
                                         </CollectionView.ItemsLayout>
@@ -686,7 +686,7 @@
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                     </StackLayout>
                                 </StackLayout>
-                           
+
                             </StackLayout>
                         </Grid>
                     </ScrollView>
@@ -703,17 +703,17 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                           
-                                <border:SfBorder BorderColor="#B1B1B1"  Grid.Row="0" BorderWidth="1" Padding="10" Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                    <StackLayout Orientation="Vertical" Padding="0,0,10,0">
+
+                            <border:SfBorder BorderColor="#B1B1B1"  Grid.Row="0" BorderWidth="1" Padding="10" Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                <StackLayout Orientation="Vertical" Padding="0,0,10,0">
                                     <StackLayout Orientation="Horizontal" Padding="0,0,10,0">
                                         <Image Source="information.png"/>
                                         <Label Text="Information"  TextColor="Black" Style="{StaticResource GAZTSmallBlackLbl}"/>
                                     </StackLayout>
                                     <custom:CustomLabel Text="Passport Details are mandatory for Non-Saudi individuals. Please provide all necessary details below" LineSpacing="1" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                    </StackLayout>
-                                </border:SfBorder >
-                                <StackLayout Orientation="Vertical"  Grid.Row="1" HorizontalOptions="Start" Margin="0,0,0,10">
+                                </StackLayout>
+                            </border:SfBorder >
+                            <StackLayout Orientation="Vertical"  Grid.Row="1" HorizontalOptions="Start" Margin="0,0,0,10">
                                 <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
@@ -834,7 +834,7 @@
                     </ScrollView>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
-                    <buttons:SfButton ShowIcon="True" Text="Add Outlet" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
+                    <buttons:SfButton ShowIcon="True" Text="Add Outlet" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewOutletButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
                         <Entry Placeholder="Search" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                         <inputLayout:SfTextInputLayout.TrailingView>
@@ -877,7 +877,7 @@
                 <ScrollView Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
                     <StackLayout Spacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
                         <custom:CustomLabel Text="Method of financial records maintained" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <CollectionView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding MethodList}" SelectedItem="{Binding SelectedMethod, Mode=TwoWay}"  HeightRequest="112" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                        <CollectionView VerticalOptions="Start" HorizontalOptions="Fill" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding MethodList}" SelectedItem="{Binding SelectedMethod, Mode=TwoWay}"  HeightRequest="112" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="0" />
                             </CollectionView.ItemsLayout>
@@ -910,7 +910,7 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                         <custom:CustomLabel Text="Calendar Type" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <CollectionView VerticalOptions="Start" ItemsSource="{Binding CalendarTypeList}" SelectedItem="{Binding CalendarType, Mode=TwoWay}" HorizontalOptions="Fill" HeightRequest="112" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                        <CollectionView VerticalOptions="Start" ItemSizingStrategy="MeasureFirstItem" ItemsSource="{Binding CalendarTypeList}" SelectedItem="{Binding CalendarType, Mode=TwoWay}" HorizontalOptions="Fill" HeightRequest="112" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                             <CollectionView.ItemsLayout>
                                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="0" />
                             </CollectionView.ItemsLayout>

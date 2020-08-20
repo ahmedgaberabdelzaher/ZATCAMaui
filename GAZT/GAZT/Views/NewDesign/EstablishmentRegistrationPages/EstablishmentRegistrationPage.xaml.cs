@@ -10,6 +10,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Linq;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -20,13 +21,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         public EstablishmentRegistrationPage()
         {
             InitializeComponent();
-            BindingContext = App.Locator.EstablishmentRegistrationPage;
             SetLTR();
+            viewModel = App.Locator.EstablishmentRegistrationPage;
+            BindingContext = viewModel;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            viewModel?.OnAppearing();
         }
 
         protected override void OnDisappearing()
@@ -37,38 +40,38 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         private void SetLTR()
         {
 
-            if (!App.IsArabic)
-            {
+            //if (!App.IsArabic)
+            //{
                 this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
+            //}
+            //else
+            //{
+            //    this.FlowDirection = FlowDirection.RightToLeft;
+            //}
         }
 
         async void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
 
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "DateofBirthType";
-            genericPickerModel.PickerId = "DateofBirthTypePicker";
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
+            //GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+            //genericPickerModel.PickerTitle = "DateofBirthType";
+            //genericPickerModel.PickerId = "DateofBirthTypePicker";
+            //try
+            //{
+            //    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+            //}
+            //catch (GAZTUnlockAccountException ex)
+            //{
 
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    viewModel._navigationService.GoBack();
-                });
-            }
+            //}
+            //catch (InternetException ex)
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+            //        viewModel._navigationService.GoBack();
+            //    });
+            //}
 
 
         }
