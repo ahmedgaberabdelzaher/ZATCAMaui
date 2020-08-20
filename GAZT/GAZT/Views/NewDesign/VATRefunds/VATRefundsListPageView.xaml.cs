@@ -30,10 +30,14 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         private void SetLTR()
         {
-            //if (App.IsArabic)
-            //{
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
                 this.FlowDirection = FlowDirection.LeftToRight;
-            //}
+            }
         }
         public void ChangeAeroIcon()
         {
@@ -54,7 +58,18 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 VatRefHeaderSetResult selectedItem = e.AddedItems[0] as VatRefHeaderSetResult;
                 viewModel.SelectionChanged(selectedItem);
 
-                viewModel._navigationService.NavigateTo(App.VATRefundDetailsPageView, viewModel.VatRefundsListResultModel);
+
+                if(selectedItem.Status == AppResources.VATRefundsStatusDraft)
+                {
+                    viewModel.VatRefundsListResultModel.IsEditable = true;
+                    viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView, viewModel.VatRefundsListResultModel);
+                }
+                else
+                {
+                    viewModel.VatRefundsListResultModel.IsEditable = false;
+                    viewModel._navigationService.NavigateTo(App.VATRefundDetailsPageView, viewModel.VatRefundsListResultModel);
+                }
+
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
@@ -64,10 +79,11 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
         }
 
-        void NewRefundRequest_Tapped(System.Object sender, System.EventArgs e)
+        public void NewRefundRequest_Tapped(System.Object sender, System.EventArgs e)
         {
             try
             {
+                //await viewModel.ReloadData();
                 viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView);
             }
             catch (Exception ex)

@@ -44,14 +44,26 @@ namespace EGAZT
                     {
                         if (!string.IsNullOrEmpty(args.NewTextValue))
                             ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();// need to change later
-                    }
-                    foreach (char letter in args.NewTextValue.ToCharArray())
-                    {
-                        if (!((LastChar >= 46 && LastChar <= 57) || LastChar == 44))
+                    }                    
+                        char[] textValue = args.NewTextValue.ToCharArray();
+                        for (int i = 0; i < textValue.Length; i++)
                         {
-                            ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
+                            if (!((textValue[i] >= 46 && textValue[i] <= 57) || textValue[i] == 44))
+                            {
+                            ((Entry)sender).Text =   args.NewTextValue.Remove(i,1);
+                            break;
+                                // ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
+                            }
                         }
-                    }
+                       
+
+                        //if (!((LastChar >= 46 && LastChar <= 57) || LastChar == 44))
+                        //{
+                        //    ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
+                        //}
+
+                        //if(letter >= 46 && letter <= 57 )
+                   
                     if (args.NewTextValue.Length == Max)
                         ((Entry)sender).Unfocus();
                     //if ((LastChar >= 46 && LastChar <= 57) || LastChar == 44)

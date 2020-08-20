@@ -20,7 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         #endregion
 
         #region Properties
-        /*private bool _IsLoading = false;
+        private bool _IsLoading = false;
         public bool IsLoading
         {
             get
@@ -32,7 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 _IsLoading = value;
                 RaisePropertyChanged(() => IsLoading);
             }
-        }*/
+        }
 
         private string _CurrentMobileNumberEntryText;
         public string CurrentMobileNumberEntryText
@@ -53,6 +53,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             set
             {
                 _NewMobileNumberEntryText = value;
+
+                BtnEnableFlag = false;
+                if (value.Length > 0)
+                    BtnEnableFlag = true;
+
                 RaisePropertyChanged("NewMobileNumberEntryText");
             }
         }
@@ -176,6 +181,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("OTPSentOnThisMobileNumber");
             }
         }
+
+        private bool _BtnEnableFlag;
+        public bool BtnEnableFlag
+        {
+            get { return _BtnEnableFlag; }
+            set
+            {
+                _BtnEnableFlag = value;
+                RaisePropertyChanged("BtnEnableFlag");
+            }
+        }
         #endregion
 
         public UpdateMobileViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -238,6 +254,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
         public async Task<bool> VarifyMobileNumber()
         {
+            IsLoading = true;
             bool callAPIFlag = false;
             string lang = "EN";
             if (App.IsArabic == true) { lang = "AR"; }
@@ -252,10 +269,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     callAPIFlag = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin,
                                                                                 currentMobileNumber,
                                                                                 newMobileNumber);
+                    IsLoading = false;
                 });
             }
             catch (Exception ex)
             {
+                IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -268,6 +287,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
         public async Task<TaxPayerProfile> VarifyOTPToUpdateMobileNumber()
         {
+            IsLoading = true;
             TaxPayerProfile TP = null;
             string lang = "EN";
             if (App.IsArabic == true) { lang = "AR"; }
@@ -280,11 +300,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                                                                                 App.TP.Tin,
                                                                                 CurrentMobileNumberEntryText,
                                                                                 NewMobileNumberEntryText);
+                    IsLoading = false;
                 });
             }
             catch (Exception ex)
             {
+                IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("VERIFY OTP ERROR : {0}", ex.ToString());
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                });
             }
 
             return TP;

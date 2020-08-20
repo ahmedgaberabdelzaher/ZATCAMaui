@@ -47,7 +47,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        /*private bool _IsLoading = false;
+        private bool _IsLoading = false;
         public bool IsLoading
         {
             get
@@ -59,7 +59,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 _IsLoading = value;
                 RaisePropertyChanged(() => IsLoading);
             }
-        }*/
+        }
         #endregion
 
         public UpdateEmailViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -74,6 +74,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         #region Method
         public async Task<bool> VarifyEmail()
         {
+            IsLoading = true;
             bool APIResponse = false;
             string lang = "EN";
             if (App.IsArabic == true) { lang = "AR"; }
@@ -89,11 +90,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     UpdateEmailDataModel updateEmailData = new UpdateEmailDataModel();
                     updateEmailData.CurrentEmail = CurrentEmailText;
                     updateEmailData.NewEmail = NewEmailText;
+                    IsLoading = false;
 
                 });
             }
             catch (Exception ex)
             {
+                IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -101,19 +104,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 });
             }
 
-            //LoadingStop();
             return APIResponse;
         }
-
-        /*public async void LoadingStart()
-        {
-            await Task.Run(() => { IsLoading = true; });
-        }
-
-        public async void LoadingStop()
-        {
-            await Task.Run(() => { IsLoading = false; });
-        }*/
         #endregion
     }
 }

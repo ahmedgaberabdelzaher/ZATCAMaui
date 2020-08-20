@@ -14,6 +14,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         #endregion
 
         #region Properties
+        private bool _IsLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                _IsLoading = value;
+                RaisePropertyChanged(() => IsLoading);
+            }
+        }
+
         private string _CurrentPasswordEntry;
         public string CurrentPasswordEntry
         {
@@ -73,6 +87,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 IsLoading = true;
             });*/
 
+            IsLoading = true;
             bool APIResponse = false;
             string lang = "EN";
             if (App.IsArabic == true) { lang = "AR"; }
@@ -83,9 +98,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                                                                                     App.TP.Tin,
                                                                                     CurrentPasswordEntry,
                                                                                     NewPasswordEntry);
+                IsLoading = false;
             }
             catch (Exception ex)
             {
+                IsLoading = false;
                 System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                 {

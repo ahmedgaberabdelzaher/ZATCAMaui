@@ -116,26 +116,22 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 viewModel.AttachmentCount = 0;
                 viewModel.TxtReportDetailCity = string.Empty;
                 viewModel.TxtReportDetailRegion = string.Empty;
+                viewModel.TFDAdress = string.Empty;
+                viewModel.TFSAddress = string.Empty;
+                viewModel.TReportDetail = string.Empty;
+                viewModel.TFaciName = string.Empty;
+                viewModel.TxtTIN = string.Empty;
+                viewModel.TVatNumber = string.Empty;
+
                 viewModel.UploadedDocumentsListObj.Clear();
-                //Attachment_Entry.Text = string.Empty;
-                //FacilityType_entry.Text = string.Empty;
-                //Date_entry.Text = string.Empty;
+
                 City_entry.Text = string.Empty;
                 Region_entry.Text = string.Empty;
-
                 TFaciName.Text = string.Empty;
-
-                //TFaciMobNo.Text = string.Empty;
-                //TFaciMobNoAr.Text = string.Empty;
-
-                //TFaciEmail.Text = string.Empty;
                 TVatNumber.Text = string.Empty;
                 TxtTIN.Text = string.Empty;
-                //viewModel.IsTIN = true;
-                //viewModel.IsTINVisible = true;
 
                 TFSAddress.Text = string.Empty;
-                //DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
             }
             catch (Exception ex)
             {
@@ -144,75 +140,6 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         private void SetDataToUI()
         {
-            // viewModel.SelectedCategory = viewModel.selectedtaxEList.Category;
-            //if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
-            //{
-
-
-            //    Attachment_Label.IsVisible = true;
-            //    Attachment_Label.IsVisible = true;
-
-            //    //Attachment_Tmg.IsVisible = true;
-            //    //Attachment_Frm.IsVisible = true;
-            //    //Attachment_Tmg.IsEnabled = true;
-
-            //    //TFaciMobNo.IsEnabled = false;
-            //    //TFaciMobNoAr.IsEnabled = false;
-            //    //TFaciEmail.IsEnabled = false;
-
-            //    //viewModel.IsSubmitButtonEnable = true;
-            //    //submit_btnmane.IsEnabled = true;
-            //    //submit_btnmane.BackgroundColor = Color.Gray;
-
-            //    //btnFacilityType.IsEnabled = false;
-
-            //    try
-            //    {
-            //        if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Location)))
-            //        {
-            //            string[] words = viewModel.selectedtaxEList.Location.Split(',');
-            //            viewModel.selectedtaxEList.Latitude = words[0];
-            //            viewModel.selectedtaxEList.Longitude = words[1];
-            //        }
-            //    }
-            //    catch
-            //    {
-            //        viewModel.selectedtaxEList.Latitude = string.Empty;
-            //        viewModel.selectedtaxEList.Longitude = string.Empty;
-            //    }
-
-            //if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Latitude) && string.IsNullOrEmpty(viewModel.selectedtaxEList.Longitude)))
-            //{
-            //Position position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-            //MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-            //mapView.MoveToRegion(mapSpan);
-            //Pin pin = new Pin();
-            //pin.Label = "Report Location";
-            //pin.Type = PinType.Place;
-            //pin.Position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-            //mapView.Pins.Clear();
-            //mapView.Pins.Add(pin);
-            //}
-            //mapView.IsEnabled = true;
-
-            //}
-            //else
-            //{
-
-            //if (viewModel.selectedtaxEList != null && viewModel.selectedtaxEList.PhoneNumber != null)
-            //{
-            //if (!string.IsNullOrEmpty(App.TaxEvasionUserData.Mobile))
-            //{
-            //    string mobb = App.TaxEvasionUserData.Mobile;
-
-            //    if (mobb == null)
-            //        mobb = string.Empty;
-
-            //    viewModel.TMobNumber = mobb;
-            //}
-            //}
-            //}
-            Console.WriteLine(App.TaxEvasionUserData);
             if (App.TaxEvasionUserData != null)
             {
                 viewModel.TMobNumber = App.TaxEvasionUserData.Mobile;
@@ -228,54 +155,46 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             try
             {
-                //if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId)))
-                //{
-                //    viewModel.IsLoading = false;
-                //    //clearFields();
-                //}
-                //else
-                //{
-                    double lat = 24.7136, lon = 46.6753;
-                    try
+                double lat = 24.7136, lon = 46.6753;
+                try
+                {
+                //var timeout = TimeSpan.FromSeconds(4);
+                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                var location = await Geolocation.GetLocationAsync(request);
+                if (location != null)
                     {
-                    //var timeout = TimeSpan.FromSeconds(4);
-                    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                    var location = await Geolocation.GetLocationAsync(request);
-                    if (location != null)
-                        {
-                            lat = location.Latitude;
-                            lon = location.Longitude;
-                        }
+                        lat = location.Latitude;
+                        lon = location.Longitude;
+                    }
 
-                        Position position = new Position(lat, lon);
-                        MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                        mapView.MoveToRegion(mapSpan);
-                        viewModel.Latitude = lat;
-                        viewModel.Longitude = lon;
-                        Pin pin = new Pin();
-                        pin.Label = "Report Location";
-                        pin.Type = PinType.Place;
-                        pin.Position = position;//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-                        var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
-                        viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
-                    }
-                    catch (FeatureNotSupportedException fnsEx)
-                    {
-                        // Handle not supported on device exception
-                    }
-                    catch (FeatureNotEnabledException fneEx)
-                    {
-                        // Handle not enabled on device exception
-                    }
-                    catch (PermissionException pEx)
-                    {
-                        // Handle permission exception
-                    }
-                    catch (Exception ex)
-                    {
-                        // Unable to get location
-                    }
-                //}
+                    Position position = new Position(lat, lon);
+                    MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                    mapView.MoveToRegion(mapSpan);
+                    viewModel.Latitude = lat;
+                    viewModel.Longitude = lon;
+                    Pin pin = new Pin();
+                    pin.Label = "Report Location";
+                    pin.Type = PinType.Place;
+                    pin.Position = position;//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
+                    var addrs = (await Geocoding.GetPlacemarksAsync(new Location(location.Latitude, location.Longitude))).FirstOrDefault();
+                    viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
+                }
+                catch (FeatureNotSupportedException fnsEx)
+                {
+                    // Handle not supported on device exception
+                }
+                catch (FeatureNotEnabledException fneEx)
+                {
+                    // Handle not enabled on device exception
+                }
+                catch (PermissionException pEx)
+                {
+                    // Handle permission exception
+                }
+                catch (Exception ex)
+                {
+                    // Unable to get location
+                }
             }
             catch (Exception ex)
             {
@@ -368,55 +287,47 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         private async void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
-            //if ((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
-            //{
-                //   viewModel.IsLoading = false;
-                //clearFields();
-                try
+            try
+            {
+                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                var location = await Geolocation.GetLocationAsync(request);
+                if (location != null)
                 {
-                    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                    var location = await Geolocation.GetLocationAsync(request);
-                    if (location != null)
-                    {
-                        Position position = new Position(location.Latitude, location.Longitude);
-                        MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                        //mapView.MoveToRegion(mapSpan);
-                        viewModel.Latitude = location.Latitude;
-                        // viewModel.TEReportobj.Latitude = location.Latitude.ToString();
-                        viewModel.Longitude = location.Longitude;
-                    }
+                    Position position = new Position(location.Latitude, location.Longitude);
+                    MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                    //mapView.MoveToRegion(mapSpan);
+                    viewModel.Latitude = location.Latitude;
+                    // viewModel.TEReportobj.Latitude = location.Latitude.ToString();
+                    viewModel.Longitude = location.Longitude;
+                }
 
-                }
-                catch (FeatureNotSupportedException fnsEx)
-                {
-                    // Handle not supported on device exception
-                }
-                catch (FeatureNotEnabledException fneEx)
-                {
-                    // Handle not enabled on device exception
-                }
-                catch (PermissionException pEx)
-                {
-                    // Handle permission exception
-                }
-                catch (Exception ex)
-                {
-                    // Unable to get location
-                }
-                Pin pin = new Pin();
-                pin.Label = "Your Location";
-                pin.Type = PinType.Place;
-                pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
-                viewModel.Latitude = e.Position.Latitude;
-                viewModel.Longitude = e.Position.Longitude;
-                mapView.Pins.Clear();
-                mapView.Pins.Add(pin);
-                var addrs = (await Geocoding.GetPlacemarksAsync(new Location(viewModel.Latitude, viewModel.Longitude))).FirstOrDefault();
-                viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
-            //}
-            //else
-            //{
-            //}
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Handle not supported on device exception
+            }
+            catch (FeatureNotEnabledException fneEx)
+            {
+                // Handle not enabled on device exception
+            }
+            catch (PermissionException pEx)
+            {
+                // Handle permission exception
+            }
+            catch (Exception ex)
+            {
+                // Unable to get location
+            }
+            Pin pin = new Pin();
+            pin.Label = "Your Location";
+            pin.Type = PinType.Place;
+            pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
+            viewModel.Latitude = e.Position.Latitude;
+            viewModel.Longitude = e.Position.Longitude;
+            mapView.Pins.Clear();
+            mapView.Pins.Add(pin);
+            var addrs = (await Geocoding.GetPlacemarksAsync(new Location(viewModel.Latitude, viewModel.Longitude))).FirstOrDefault();
+            viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
         }
 
         private void RegionBtnClicked(object sender, EventArgs e)

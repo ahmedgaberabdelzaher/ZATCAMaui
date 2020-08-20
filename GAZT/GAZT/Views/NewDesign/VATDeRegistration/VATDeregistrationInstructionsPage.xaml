@@ -38,7 +38,7 @@
                 </StackLayout>
             </border:SfBorder>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"> 
-                <CheckBox x:Name="chkDeclaration" Color="{StaticResource NeutralGreay}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
+                <CheckBox x:Name="chkDeclaration" Color="{StaticResource NeutralGreay}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionChecked}">
                     <CheckBox.Triggers>
                         <DataTrigger TargetType="CheckBox"  Value="false">
                             <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
@@ -53,7 +53,7 @@
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
            </StackLayout>
-           <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24"  x:Name="btnVATDeregistration" Command="{Binding VATDeregistrationClicked}" Text="{x:Static ResourceManager:AppResources.VATDeregistration}"
+           <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24" IsEnabled="{Binding IsContinueButtonEnable}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" x:Name="btnVATDeregistration" Command="{Binding VATDeregistrationClicked}" Text="{x:Static ResourceManager:AppResources.VATDeregistration}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
     </StackLayout>
     </yummy:PancakeView>

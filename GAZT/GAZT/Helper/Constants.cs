@@ -187,8 +187,10 @@ namespace GAZT.Helper
 
         #region VATRefunds
         public static string VatRefundList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ETRF_WI_SRV/WISet";
-        public static string VatRefundDisplayData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet(Euser='',FormGuid='',Formprocx='ZTAX_VAT_MAISC_PROC',";
+        public static string VatRefundDisplayData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet(Euser='',Fbnumx='',";
         public static string VatRefundGetIbanData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_UI_RF_SRV/VR_UI_HDRSet(Fbnum='',Lang='',Officer='',";
+        public static string VatRefundSubmitData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet";
+       
         #endregion
 
 
@@ -198,6 +200,11 @@ namespace GAZT.Helper
         public static string GAZTGETVATDeregAttachmentsDropdownList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VDRUH_SRV/VR_UI_HDRSet(Fbnum='";
         public static string GAZTGETVATDeregSuspensionDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetLastICRDtSet?$filter=";
         public static string GAZTGETVATDeregReturnFilingDateList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetSuspensionDetailSet?$filter=";
+        public static string GAZTGetVATDeRegistrationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/HeaderSet(Fbnumx='";
+        public static string GAZTSaveVATDeregAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(OutletRef=";
+        public static string GAZTVATDeregDeteleAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(OutletRef=";
+
+        public static string SaveVATDeRegistration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/HeaderSet";
 
         #endregion
 

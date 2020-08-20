@@ -533,7 +533,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 return 2;
             }
-            else if (ZAKATReturnDetailsView.salesType.Equals("AverageNumberLabour"))
+            else if (ZAKATReturnDetailsView.salesType.Equals("ImportFromPointOfSales"))
             {
                 return 3;
             }
