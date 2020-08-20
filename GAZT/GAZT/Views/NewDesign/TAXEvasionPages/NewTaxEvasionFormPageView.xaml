@@ -103,11 +103,11 @@
                                 <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" x:Name="FrmNumber" HasError="{Binding IsTmobileHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 
                                     <StackLayout Orientation="Horizontal" Margin="16,0,0,0" >
-                                        <custom:BorderlessEntry  Placeholder="+966" Style="{StaticResource EntryHeight48}" />
+                                        <custom:BorderlessEntry FlowDirection="LeftToRight" Placeholder="+966" IsReadOnly="True" Style="{StaticResource EntryHeight48}" />
                                         <BoxView Style="{StaticResource lineSeperator}"  WidthRequest="1" HeightRequest="20" Margin="5"/>
 
 
-                                    <custom:BorderlessEntry x:Name="TMobNumber" TextChanged="TMobNumber_TextChanged" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" HorizontalOptions="FillAndExpand" MaxLength="15" >
+                                    <custom:BorderlessEntry x:Name="TMobNumber" TextChanged="TMobNumber_TextChanged" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" IsReadOnly="True"  HorizontalOptions="FillAndExpand" MaxLength="15" >
                                 </custom:BorderlessEntry>
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>
@@ -404,7 +404,7 @@
                                                     </Image>
                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                             </inputLayout:SfTextInputLayout>
-                                            <custom:CustomLabel Text="{Binding Size, StringFormat='{0} MB'}" Margin="0,-15,0,0" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <custom:CustomLabel FlowDirection="LeftToRight" Text="{Binding Size, StringFormat='{0} MB'}" Margin="0,-15,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                                             <!--<custom:CustomButton Command="{Binding OnAttachmentClick}" BackgroundColor="Transparent"  />-->
                                         </StackLayout>
                                     </DataTemplate>
@@ -429,7 +429,7 @@
                                     </Image>
                                             </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReporterInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="50" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OnEditClicked}" CommandParameter="{x:Static models:NewTaxEvasionTabEnum.ReporterInfo}" />
                                             </custom:CustomLabel.GestureRecognizers>
@@ -471,7 +471,7 @@
                                             </Image>
                                             </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="50" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OnEditClicked}" CommandParameter="{x:Static models:NewTaxEvasionTabEnum.FacilityInfo}" />
                                             </custom:CustomLabel.GestureRecognizers>
@@ -529,7 +529,7 @@
                                             </Image>
                                             </Frame>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="34" VerticalTextAlignment="Center"  HorizontalOptions="EndAndExpand">
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="50" VerticalTextAlignment="Center"  HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OnEditClicked}" CommandParameter="{x:Static models:NewTaxEvasionTabEnum.ReportDetails}" />
                                             </custom:CustomLabel.GestureRecognizers>
