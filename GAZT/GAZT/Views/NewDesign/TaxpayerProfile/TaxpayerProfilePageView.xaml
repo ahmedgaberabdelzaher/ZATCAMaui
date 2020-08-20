@@ -17,6 +17,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -106,9 +114,9 @@
                                             <control:BorderlessEntry Placeholder="+966"
                                                                  VerticalTextAlignment="Center"
                                                                  Style="{StaticResource DefaultEntry}"
-                                                                 IsEnabled="False" />
-                                        </On>
-                                    </OnPlatform>
+                                                                 IsReadOnly="True" />
+                                    </On>
+                                </OnPlatform>
 
                                     <BoxView WidthRequest="1"
                                          HeightRequest="1"
@@ -116,7 +124,7 @@
 
                                     <control:BorderlessEntry VerticalTextAlignment="Center"
                                                          Style="{StaticResource DefaultEntry}"
-                                                         IsEnabled="False"
+                                                        IsReadOnly="True"
                                                          Text="{Binding MobileNumber}"
                                                          HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
@@ -139,9 +147,9 @@
 
                                 <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
                                                      Text="{Binding EmailEntry}"
-                                                     IsEnabled="False">
-                                </control:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                                                    IsReadOnly="True">
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
 
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Password}"
@@ -158,9 +166,9 @@
                                                         FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
                                 <control:BorderlessEntry x:Name="Password"
                                                      Style="{StaticResource DefaultEntry}" Text="{Binding PasswordEntry}"
-                                                     IsEnabled="False"
-                                                     IsPassword="True" >
-                                </control:BorderlessEntry>
+                                                    IsReadOnly="True"
+                                                     IsPassword="True"  >
+                            </control:BorderlessEntry>
 
                             </inputLayout:SfTextInputLayout>
 
@@ -185,7 +193,7 @@
                              Padding="0,8,0,0">
                         <Image Source="arrowLeftwhite.png"
                            HorizontalOptions="Start"
-                           VerticalOptions="Center">
+                           VerticalOptions="Center" Style="{DynamicResource BackButtonArrow}">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnBackArrowBtnTapped"/>
                             </Image.GestureRecognizers>

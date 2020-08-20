@@ -35,7 +35,7 @@
                 <Setter Property="CornerRadius" Value="5"/>
             </Style>
 
-            <Style TargetType="Frame" x:Key="circleFrame">
+            <!--<Style TargetType="Frame" x:Key="circleFrame">
                 <Setter Property="BackgroundColor" Value="AliceBlue"/>
                 <Setter Property="Padding" Value="10"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
@@ -43,6 +43,16 @@
                 <Setter Property="HasShadow" Value="False"/>
                 <Setter Property="HeightRequest" Value="10"/>
                 <Setter Property="WidthRequest" Value="10"/>
+            </Style>-->
+
+            <Style TargetType="Frame" x:Key="circleFrame">
+                <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="HeightRequest" Value="25"/>
+                <Setter Property="WidthRequest" Value="25"/>
+                <Setter Property="HasShadow" Value="False"/>
             </Style>
 
             <Style TargetType="Entry" x:Key="EntryHeight48">
@@ -1377,14 +1387,14 @@
                                     <ColumnDefinition Width="50*"/>
                                     <ColumnDefinition Width="50*"/>
                                 </Grid.ColumnDefinitions>
-                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatStandardrateddomesticpurchases}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0"></custom:CustomLabel>
-                                    <Image Style="{StaticResource ImageStyleForInputTable}" Source="ic_vat_info">
+                                <!--<StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}">-->
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatStandardrateddomesticpurchases}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}" Style="{StaticResource ValueLabelBlack}" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></custom:CustomLabel>
+                                    <Image Style="{StaticResource ImageStyleForInputTable}" Source="ic_vat_info" Grid.Row="0" Grid.Column="1" >
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnNewStandardrateddomesticpurchasesAmountClicked" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                </StackLayout>
+                                <!--</StackLayout>-->
 
 
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,-8" Grid.Row="1" Grid.Column="0"></custom:CustomLabel>
@@ -1942,7 +1952,13 @@
                         </StackLayout>
                         <StackLayout Spacing="-5">
                             <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" Style="{StaticResource CaptionLabelGrey}" />
-                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" UnfocusedColor="#B1B1B1" x:Name="EntryPreperiodcorrFrame" ErrorColor="#B00020" HasError="False" Margin="0">
+
+                             <StackLayout HorizontalOptions="Start" WidthRequest="150"  VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
+                                                <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}"  />
+                                                <Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}"  />
+                                            </StackLayout>
+
+                            <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" UnfocusedColor="#B1B1B1" x:Name="EntryPreperiodcorrFrame" ErrorColor="#B00020" HasError="False" Margin="0">
                                 <custom:GAZTBorderlessEntry  x:Name="EntryPreperiodcorr" Focused="EntryPreperiodcorrFocused" PropertyChanged="EntryPreperiodcorr_PropertyChanged" Unfocused="EntryPreperiodcorr_Unfocused" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}" TextChanged="EntryPreperiodcorr_TextChanged" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"  Keyboard="Numeric"     Style="{StaticResource EntryHeight48}">
                                   <custom:GAZTBorderlessEntry.Behaviors>
                                                         <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue isNegativeEnable="True"  Max="11" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="6"/>
@@ -2174,7 +2190,7 @@
 
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="VAT Due" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVATDue}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="{Binding TotaldueVat}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
@@ -2238,7 +2254,7 @@
 
                 <buttons:SfButton x:Name="btnprimary" IsEnabled="{Binding IsMainButtonEnabled}"  VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZConfirmAndRefundRequest}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="False" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
+                <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZConfirmAndRefundRequest}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>-->
                 
                 <buttons:SfButton Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
             </StackLayout>

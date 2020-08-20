@@ -31,26 +31,38 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         async void OnUpdateBtnClicked(System.Object sender, System.EventArgs e)
         {
-            // Call Update Mobile Number API + Go Success Page
-            bool callAPIFlag = TaxpayerProfilePasswordUpdateValidation(viewModel.CurrentPasswordEntry,
-                                                                        viewModel.NewPasswordEntry,
-                                                                        viewModel.ConfirmPasswordEntry);
-            if (callAPIFlag)
+            if (!string.IsNullOrEmpty(viewModel.NewPasswordEntry) && !string.IsNullOrEmpty(viewModel.ConfirmPasswordEntry))
             {
-                bool PWDSuccess = await viewModel.ChangePassword();
-                System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", PWDSuccess);
-
-                if (PWDSuccess)
+                // Call Update Mobile Number API + Go Success Page
+                bool callAPIFlag = TaxpayerProfilePasswordUpdateValidation(viewModel.CurrentPasswordEntry,
+                                                                            viewModel.NewPasswordEntry,
+                                                                            viewModel.ConfirmPasswordEntry);
+                if (callAPIFlag)
                 {
-                    // * Navigating to Verification Screen
-                    this.CloseAllPopup();
+                    bool PWDSuccess = await viewModel.ChangePassword();
+                    System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", PWDSuccess);
 
-                    Device.BeginInvokeOnMainThread(() =>
+                    if (PWDSuccess)
                     {
-                        viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 3);
-                    });
+                        // * Navigating to Verification Screen
+                        this.CloseAllPopup();
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 3);
+                        });
+                    }
                 }
             }
+            else
+            {
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Information);
+                });
+            }
+       
         }
 
         // * Password Validations

@@ -4233,7 +4233,7 @@
     <value>الحصص في شركات الأشخاص</value>
   </data>
   <data name="FORM5ShareInOtherCompanies" xml:space="preserve">
-    <value>هل لديك حصة في شركات اخرى؟ (ريال سعودي)</value>
+    <value>هل لديك حصة في شركات اخرى؟ </value>
   </data>
   <data name="FORM5Taxpayer" xml:space="preserve">
     <value>المكلف</value>
@@ -4254,10 +4254,10 @@
     <value>مبلغ الزكاة</value>
   </data>
   <data name="FORM5YearlyRent" xml:space="preserve">
-    <value>الإيجار السنوي  (ريال سعودي)</value>
+    <value>الإيجار السنوي</value>
   </data>
   <data name="FORM5ZakatBase" xml:space="preserve">
-    <value>الوعاء الزكوي (ريال سعودي)</value>
+    <value>الوعاء الزكوي</value>
   </data>
   <data name="FORM5ZakatEstimation" xml:space="preserve">
     <value>الزكاة التقديرية</value>
@@ -5017,7 +5017,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>ادخل الرقم التسلسلي</value>
   </data>
   <data name="ZAdjustment" xml:space="preserve">
-    <value>Adjustment</value>
+    <value>تسويه</value>
   </data>
   <data name="ZDone" xml:space="preserve">
     <value>Done</value>
@@ -5226,7 +5226,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <comment>Taxpayer Profile</comment>
   </data>
   <data name="NDTaxEvasion" xml:space="preserve">
-    <value>التهرب الضريبي</value>
+    <value>الإبلاغ عن التهرب الضريبي</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionReporterName" xml:space="preserve">
@@ -5274,7 +5274,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionReportDetails" xml:space="preserve">
-    <value>معلومات المبلغ</value>
+    <value>بيانات البلاغ</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionAttachments" xml:space="preserve">
@@ -5285,7 +5285,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>مراجعة البيانات التالية</value>
   </data>
   <data name="NDFacilityInformation" xml:space="preserve">
-    <value>ملعومات المنشأة</value>
+    <value>بيانات المنشأة</value>
   </data>
   <data name="NDReporterInformation" xml:space="preserve">
     <value>معلومات المبلغ</value>
@@ -5440,5 +5440,29 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
     <value>سجل الآن في ضريبة القيمة المضافة في اقل من 5 دقائق</value>
+  </data>
+  <data name="FORM5GeneralTradingInternal" xml:space="preserve">
+    <value>المشتريات من الداخل للتجارة العامة</value>
+  </data>
+  <data name="FORM5LivelihoodsInternal" xml:space="preserve">
+    <value>المشتريات من الداخل للأرزاق</value>
+  </data>
+  <data name="FORM5LivestockAnimalInternals" xml:space="preserve">
+    <value>المشتريات من الداخل للمواشي و الخضار</value>
+  </data>
+  <data name="FORM5TotalProfit" xml:space="preserve">
+    <value>إجمالي ارباح المشتريات من الداخل</value>
+  </data>
+  <data name="NDConfirmNewEmail" xml:space="preserve">
+    <value>تأكيد البريد الالكتروني الجديد</value>
+  </data>
+  <data name="NDConfirmNewPassword" xml:space="preserve">
+    <value>تاكيد كلمة المرور الجديدة</value>
+  </data>
+  <data name="TPIndividualSaudi" xml:space="preserve">
+    <value>فرد سعودي (اقامة)</value>
+  </data>
+  <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
+    <value>تمتقديمإقرارضريبةالقيمةالمضافةبنجاح</value>
   </data>
 </root>

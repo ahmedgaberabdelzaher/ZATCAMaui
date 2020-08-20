@@ -4260,7 +4260,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Share in Persons Companies</value>
   </data>
   <data name="FORM5ShareInOtherCompanies" xml:space="preserve">
-    <value>Do you have Share in other Companies? (SAR)</value>
+    <value>Do you have Share in other Companies?</value>
   </data>
   <data name="FORM5Taxpayer" xml:space="preserve">
     <value>Taxpayer</value>
@@ -4275,16 +4275,16 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>To Date</value>
   </data>
   <data name="FORM5TotalAnnualSalary" xml:space="preserve">
-    <value>Total of Annual Salary (SAR)</value>
+    <value>Total of Annual Salary</value>
   </data>
   <data name="FORM5TotalZakatPayable" xml:space="preserve">
     <value>Total Zakat Payable:</value>
   </data>
   <data name="FORM5YearlyRent" xml:space="preserve">
-    <value>Yearly Rent (SAR)</value>
+    <value>Yearly Rent</value>
   </data>
   <data name="FORM5ZakatBase" xml:space="preserve">
-    <value>Zakat Base (SAR)</value>
+    <value>Zakat Base</value>
   </data>
   <data name="FORM5ZakatEstimation" xml:space="preserve">
     <value>Zakat Estimation</value>
@@ -5470,5 +5470,26 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDLessThan5MinRegister" xml:space="preserve">
     <value>Register now for Value Added Tax in less than 5 minutes</value>
+  </data>
+  <data name="FORM5GeneralTradingInternal" xml:space="preserve">
+    <value>General Trading Internal</value>
+  </data>
+  <data name="FORM5LivelihoodsInternal" xml:space="preserve">
+    <value>Livelihoods Internal</value>
+  </data>
+  <data name="FORM5LivestockAnimalInternals" xml:space="preserve">
+    <value>Livestock &amp; Animals Int.</value>
+  </data>
+  <data name="FORM5TotalProfit" xml:space="preserve">
+    <value>Total Profits</value>
+  </data>
+  <data name="NDConfirmNewEmail" xml:space="preserve">
+    <value>Confirm New Email</value>
+  </data>
+  <data name="NDConfirmNewPassword" xml:space="preserve">
+    <value>Confirm New Password</value>
+  </data>
+  <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
+    <value>VAT Return has been Submitted</value>
   </data>
 </root>
