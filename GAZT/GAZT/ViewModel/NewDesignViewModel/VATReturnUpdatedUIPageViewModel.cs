@@ -311,6 +311,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        private bool _isControlEnabled = false;
+        public bool IsControlEnabled
+        {
+            get
+            {
+                return _isControlEnabled;
+            }
+            set
+            {
+                _isControlEnabled = value;
+                RaisePropertyChanged("IsControlEnabled");
+            }
+        }
+
+
+
+        private bool _isSwitchVisible = false;
+        public bool IsSwitchVisible
+        {
+            get
+            {
+                return _isSwitchVisible;
+            }
+            set
+            {
+                _isSwitchVisible = value;
+                RaisePropertyChanged("IsSwitchVisible");
+            }
+        }
         private bool _IsSummaryCheckEnabled = false;
         public bool IsSummaryCheckEnabled
         {
@@ -3837,6 +3867,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             // IsMainButtonEnabled = value;
             IsYesBoxEnabled = value;
             IsNoBoxEnabled = value;
+
+            IsControlEnabled = value;
         }
         public void SetData()
         {

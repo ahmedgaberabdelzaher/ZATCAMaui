@@ -671,6 +671,14 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         protected async override void OnAppearing()
         {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                viewModel.IsSwitchVisible = true;
+            }
+            else
+            {
+                viewModel.IsSwitchVisible = false;
+            }
             getActionCommand();
             getYesCommand();
             getNoCommand();
