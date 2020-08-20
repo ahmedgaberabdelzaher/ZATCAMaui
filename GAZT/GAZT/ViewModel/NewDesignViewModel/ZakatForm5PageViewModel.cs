@@ -2840,6 +2840,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     break;
                 case ZakatForm5TabEnum.ZakatEstimation:
                     _navigationService.GoBack();
+                    currentTab = ZakatForm5TabEnum.BasicInformation;
                     break;
 
             }
@@ -2856,8 +2857,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     currentTab = ZakatForm5TabEnum.BasicInformation;
                     break;
                 case ZakatForm5TabEnum.ZakatEstimation:
-                    currentTab = ZakatForm5TabEnum.FinancialInformation;
                     NextText = AppResources.ZZNext;
+                   // currentTab = ZakatForm5TabEnum.FinancialInformation;
                     break;
             }
         }

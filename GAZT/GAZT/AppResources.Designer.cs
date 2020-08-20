@@ -1983,7 +1983,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you have Share in other Companies? (SAR).
+        ///   Looks up a localized string similar to Do you have Share in other Companies?.
         /// </summary>
         public static string FORM5ShareInOtherCompanies {
             get {
@@ -2046,7 +2046,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total of Annual Salary (SAR).
+        ///   Looks up a localized string similar to Total of Annual Salary.
         /// </summary>
         public static string FORM5TotalAnnualSalary {
             get {
@@ -2136,7 +2136,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yearly Rent (SAR).
+        ///   Looks up a localized string similar to Yearly Rent.
         /// </summary>
         public static string FORM5YearlyRent {
             get {
@@ -2163,7 +2163,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zakat Base (SAR).
+        ///   Looks up a localized string similar to Zakat Base.
         /// </summary>
         public static string FORM5ZakatBase {
             get {
@@ -14286,6 +14286,15 @@ namespace EGAZT {
         public static string ZZZZVATREInstructionsandConditions {
             get {
                 return ResourceManager.GetString("ZZZZVATREInstructionsandConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Return has been Submitted.
+        /// </summary>
+        public static string ZZZZVATReturnsubmitted {
+            get {
+                return ResourceManager.GetString("ZZZZVATReturnsubmitted", resourceCulture);
             }
         }
         

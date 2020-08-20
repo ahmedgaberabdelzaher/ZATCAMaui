@@ -34,7 +34,9 @@
 
                 <Image Source="Forget_ic_success"/>
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatReturn}" Margin="0,20,0,0" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalTextAlignment="Center"/>
-                <custom:CustomLabel  TextColor="White" IsVisible="{Binding IsSadadNumberVisible}" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}">
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVATReturnsubmitted}" IsVisible="{Binding IsCreditCarriedTextVisible}" TextColor="White"  HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}">
+                    </custom:CustomLabel>
+                    <custom:CustomLabel  TextColor="White" IsVisible="{Binding IsSadadNumberVisible}" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.ZZZZSadadGeneratedSuccessfully}" />

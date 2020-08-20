@@ -33,7 +33,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.IsSadadNumberVisible = false;
                 viewModel.IsButtonVisible = false;
                 viewModel.IsAcknowledgementButtonVisible = false;
-
+                viewModel.IsCreditCarriedTextVisible = false;
                 viewModel.VATDeclarationData = vATDeclaration;
                 viewModel.ReturnReferenceNumber = vATDeclaration.d.Fbnum;
                 viewModel.TaxablePeriod = vATDeclaration.d.Perslt;
@@ -85,6 +85,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         viewModel.IsSadadNumberVisible = false;
                         viewModel.IsRefreshButtonVisible = false;
                         viewModel.IsButtonVisible = true;
+                        viewModel.IsCreditCarriedTextVisible = true;
                         if (vATDeclaration.d.EstimatedFg == "X")
                         {
                             viewModel.IsAcknowledgementButtonVisible = false;
@@ -165,7 +166,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
         private void SfButton_Clicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView());
+            //PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView());
         }
 
         private async void OnVATRefreshButtonClicked(object sender, EventArgs e)

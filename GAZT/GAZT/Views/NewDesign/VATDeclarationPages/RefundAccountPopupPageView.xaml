@@ -13,7 +13,8 @@
             xmlns:custom="clr-namespace:GAZT"
                  xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-            x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.RefundAccountPopupPageView">
+                 xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+                 x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.RefundAccountPopupPageView">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,7 +23,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView VerticalOptions="EndAndExpand" Style="{StaticResource CommonTopCurves}">
+    <yummy:PancakeView VerticalOptions="EndAndExpand"  Style="{StaticResource CommonTopCurves}">
         <StackLayout>
             <custom:CustomLabel Text="Refund Account" Style="{StaticResource PageTitleBlack}"/>
 
@@ -102,6 +103,37 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </border:SfBorder.GestureRecognizers>
             </border:SfBorder>
+
+            <!--<CollectionView Grid.Row="1" HeightRequest="100"   Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="OnPageSelectedForIban"   SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SelectedIban}" SelectionMode="Single"  ItemsSource="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IbanList}"   x:Name="Ibanset"  ItemsLayout="HorizontalList" Margin="0"   BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+
+
+                        <Grid Padding="5,0,5,0">
+                            <cards:SfCardView  HasShadow="True"   ShadowColor="#5d6770" 
+                                                          BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
+                                <Grid>
+                                    <Image Margin="0" Source="vat_tile_IbanCard_background.png" Aspect="AspectFill"  Grid.Row="0">
+                                    </Image>
+                                    <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Grid.Row="1" Spacing="0">
+
+                                            <Label Text="{Binding Iban}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>
+                                            <Label Text="{x:Static custom2:AppResources.VATRInmaBank}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  TextColor="White"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Grid>
+                            </cards:SfCardView>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>-->
+
 
             <Grid>
                 <Grid.ColumnDefinitions>
