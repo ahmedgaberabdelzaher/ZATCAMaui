@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,20 +45,59 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 Console.WriteLine(arg);
                 OnAppearing();
             });
+            MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
+                viewModel.IsInstructionChecked = arg;
+                //Console.WriteLine(arg);
+                OnAppearing();
+            });
+
 
             viewModel.FromDate = "DD/MM/YYYY";
             viewModel.ToDate = "DD/MM/YYYY";
-            viewModel.SuspendedStartDate = "DD/MM/YYYY";
-            viewModel.SuspendedEndDate = "DD/MM/YYYY";
-            viewModel.NextFilingStartDate = "DD/MM/YYYY";
-            viewModel.NextFilingEndDate = "DD/MM/YYYY";
-            viewModel.NextFilingDueDate = "DD/MM/YYYY";
+           // viewModel.SuspendedStartDate = "DD/MM/YYYY";
+            //viewModel.SuspendedEndDate = "DD/MM/YYYY";
+           // viewModel.NextFilingStartDate = "DD/MM/YYYY";
+           // viewModel.NextFilingEndDate = "DD/MM/YYYY";
+           // viewModel.NextFilingDueDate = "DD/MM/YYYY";
+
+            Task.Run(async () =>
+            {
+                viewModel.IsLoading = true;
+                await GetVatDeRegistrationData();
+            });
 
         }
+        public async Task GetVatDeRegistrationData()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    await viewModel.onPageLoad();
+                });
+                //await Task.Run(() =>
+                //{
+                //    viewModel.IsLoading = false;
+                //});
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
+                viewModel.IsInstructionChecked = arg;
+                //Console.WriteLine(arg);
+            });
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
                
@@ -88,6 +128,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
             });
+
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
             {
                 
@@ -134,8 +175,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     {
                         if (obj.d.dateResults[0].SuspDtfrom != null)
                         {
-                            DateTime date = Convert.ToDateTime(obj.d.dateResults[0].SuspDtfrom.ToString());
-                            viewModel.SuspendedStartDate = date.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
+                            viewModel.SuspendedStartDate = date;//ToString("dd-MM-yyyy", new CultureInfo("en-US"));
 
 
                         }
@@ -143,55 +184,159 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
 
-                            viewModel.SuspendedEndDate = date.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.SuspendedEndDate = date;//ToString("dd-MM-yyyy", new CultureInfo("en-US"));
 
                         }
                         if (obj.d.dateResults[0].NextDtfrom != null)
                         {
-                            DateTime date = Convert.ToDateTime(obj.d.dateResults[0].NextDtfrom.ToString());
+                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
 
-                            viewModel.NextFilingStartDate = date.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.NextFilingStartDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
 
                         }
                         if (obj.d.dateResults[0].NextDtfrom != null)
                         {
-                            DateTime date = Convert.ToDateTime(obj.d.dateResults[0].NextDtto.ToString());
+                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
 
-                            viewModel.NextFilingEndDate = date.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.NextFilingEndDate = date;// ToString("dd-MM-yyyy", new CultureInfo("en-US"));
                         }
                         if (obj.d.dateResults[0].Duedate!= null)
                         {
-                            DateTime date = Convert.ToDateTime(obj.d.dateResults[0].Duedate.ToString());
+                            DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
 
-                            viewModel.NextFilingDueDate = date.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.NextFilingDueDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
                         }
                     }
                 }
             });
         }
 
+
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+        
+                viewModel.ReasonTitle = string.Empty;
+           
             viewModel.AddOutletDocumentOptions();
 
         }
 
-        void OnDownloadAttachmentClicked()
+        private async void OnAttachmentClicked(object sender, EventArgs e)
         {
-
+            await viewModel.AddAttachmentEx();
         }
 
-        void OnDeleteAttachmentClicked()
+        private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
+            try
+            {
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = true;
+                    });
+                    Image arrowImage = sender as Image;
+                    VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
+                    //{
 
+                    if (attachment != null)
+                    {//ZZNotification
+                        var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+
+                        await DeleteAttachment(result, attachment);
+                    }
+
+                    //}
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+                }
+                catch (Exception ex)
+                {
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel.IsLoading = false;
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+        }
+        public async Task DeleteAttachment(bool result, VATAttachment attachment)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                await Task.Run(() =>
+                {
+                    //if (result)
+                    //{
+                    //    // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                    //    string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
+                    //    if (results == "X")
+                    //    {
+                            
+
+                    //        VATDeregAttachment listitem = (from itm in viewModel.VatAttachmentsList
+                    //                                     where itm.Doguid == attachment.Doguid.ToString()
+                    //                                     select itm)
+                    //                        .FirstOrDefault<VATDeregAttachment>();
+
+                    //        if (listitem != null)
+                    //            viewModel.VatAttachmentsList.Remove(listitem);
+
+
+                    //        viewModel.VATDeRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+
+
+                    //        //if (indexToReduceTheSize != -1)
+                    //        // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                    //        viewModel.AttachmentCount--;
+                    //        viewModel.filterList();
+                    //        viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
+                    //    }
+                    //    viewModel.filterList();
+                    //    viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
+                    //}
+                });
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            {
+                viewModel.IsLoading = false;
+            }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            // VATDeregistrationAttachmentsModel selectedItem = e.AddedItems[0] as VATDeregistrationAttachmentsModel;
-            // viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(selectedItem);
+             VATDeregistrationAttachmentsModel selectedItem = e.AddedItems[0] as VATDeregistrationAttachmentsModel;
+             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(selectedItem);
             viewModel.SelectedAttachment = e.AddedItems[0] as VATDeregistrationAttachmentsModel;
             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
 
@@ -203,7 +348,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             else
             {
                 attachmentsListView.SelectedItems.Clear();
-                viewModel.AddAttachmentEx();
+                 viewModel.AddAttachmentEx();
             }
         }
 
@@ -810,6 +955,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         void Button_Clicked_3(System.Object sender, System.EventArgs e)
         {
             viewModel.EnableDeclarationView();
+        }
+
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+             viewModel.AddAttachmentEx();
         }
     }
 }

@@ -200,6 +200,11 @@ namespace GAZT.Helper
         public static string GAZTGETVATDeregAttachmentsDropdownList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VDRUH_SRV/VR_UI_HDRSet(Fbnum='";
         public static string GAZTGETVATDeregSuspensionDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetLastICRDtSet?$filter=";
         public static string GAZTGETVATDeregReturnFilingDateList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetSuspensionDetailSet?$filter=";
+        public static string GAZTGetVATDeRegistrationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/HeaderSet(Fbnumx='";
+        public static string GAZTSaveVATDeregAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(OutletRef=";
+        public static string GAZTVATDeregDeteleAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(OutletRef=";
+
+        public static string SaveVATDeRegistration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/HeaderSet";
 
         #endregion
 

@@ -18,5 +18,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             this.BindingContext = viewModel;
             this.FlowDirection = FlowDirection.LeftToRight;
         }
+
+ 
     }
 }

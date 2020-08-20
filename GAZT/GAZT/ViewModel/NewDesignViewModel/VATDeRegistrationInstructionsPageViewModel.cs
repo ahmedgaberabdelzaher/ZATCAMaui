@@ -16,7 +16,63 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         #endregion
-
+        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        public Color ContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _continueButtonnBackroundColor;
+            }
+            set
+            {
+                _continueButtonnBackroundColor = value;
+                RaisePropertyChanged("ContinueButtonnBackroundColor");
+            }
+        }
+        private bool _isInstructionChecked;
+        public bool IsInstructionChecked
+        {
+            get
+            {
+                return _isInstructionChecked;
+            }
+            set
+            {
+                _isInstructionChecked = value;
+              
+                    if (_isInstructionChecked)
+                    {
+                        IsContinueButtonEnable = true;
+                    }
+                    else
+                    {
+                        IsContinueButtonEnable = false;
+                    }
+                
+                RaisePropertyChanged("IsInstructionChecked");
+            }
+        }
+        private bool _isContinueButtonEnable = false;
+        public bool IsContinueButtonEnable
+        {
+            get
+            {
+                return _isContinueButtonEnable;
+            }
+            set
+            {
+                _isContinueButtonEnable = value;
+                if (_isContinueButtonEnable)
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                }
+                else
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }
+                RaisePropertyChanged("IsContinueButtonEnabled");
+            }
+        }
         public ICommand VATDeregistrationClicked { get; set; }
 
         public VATDeRegistrationInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -41,22 +97,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async void VATDeregistrationTapped()
         {
-            try
+            if (_isInstructionChecked)
             {
-                await PopupNavigation.Instance.PopAsync();
-                _navigationService.NavigateTo(App.VATDeregistrationDetailsPage);
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
+                MessagingCenter.Send<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", IsInstructionChecked);
+                try
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                    await PopupNavigation.Instance.PopAsync();
+                    _navigationService.NavigateTo(App.VATDeregistrationDetailsPage);
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
             }
         }
     }
