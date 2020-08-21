@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
@@ -462,7 +463,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnReportingBranchSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "Qurayyat Office", "Almajmaah Office", "Muhayil Asir Office", "SHarurah Office", "Alaflaj Office", "Almajardah Office", "Mahd adh-Dhahab Office", "GAZT Centralized Branch"}));
+                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<string> { "Qurayyat Office", "Almajmaah Office", "Muhayil Asir Office", "SHarurah Office", "Alaflaj Office", "Almajardah Office", "Mahd adh-Dhahab Office", "GAZT Centralized Branch"}));
             });
 
             #endregion
@@ -473,17 +474,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnPDNatinalitySelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
+                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
 
             OnPDCitizenSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
+                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
 
             OnPDResidenceSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
+                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
             #endregion
 
@@ -514,13 +515,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnMonthSelectButtonClick = new Command(() =>
             {
-                NumberListPopUpPageView poupWindow = new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
                 poupWindow.OnItemSelect = (item) => FiscalMonth = item;
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
             OnDaySelectButtonClick = new Command(() =>
             {
-                NumberListPopUpPageView poupWindow = new NumberListPopUpPageView(new List<string> { "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
                 poupWindow.OnItemSelect = (item) => FiscalDay = item;
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });

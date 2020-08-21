@@ -5,13 +5,14 @@ using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
-namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
+namespace EGAZT.Views.NewDesign.Common
 {
-    public partial class NumberListPopUpPageView : PopupPage
+ 
+    public partial class ListPopUpViewPage : PopupPage
     {
         public delegate void OnItemSelectDelegate(string item);
         public OnItemSelectDelegate OnItemSelect { get; set; } = null;
-        public NumberListPopUpPageView(List<string> data)
+        public ListPopUpViewPage(List<string> data)
         {
             InitializeComponent();
             PopupList.ItemsSource = data;
