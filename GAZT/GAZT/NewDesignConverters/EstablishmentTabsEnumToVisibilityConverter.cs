@@ -56,4 +56,19 @@ namespace EGAZT.NewDesignConverters
             return isVisible;
         }
     }
+
+    public class EstablishmentFinanicalMethodsToVisibilityConverter : IValueConverter
+    {
+        private bool isVisible { get; set; } = false;
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            isVisible = value.ToString().Equals(parameter.ToString(), StringComparison.InvariantCultureIgnoreCase);
+            return isVisible;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return isVisible;
+        }
+    }
 }

@@ -280,13 +280,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public string SelectedMethod
         {
             get => _selectedMethod;
-            private set
+            set
             {
                 _selectedMethod = value;
                 RaisePropertyChanged(nameof(SelectedMethod));
             }
         }
-        public ObservableCollection<string> _calendarTypeList = new ObservableCollection<string>();
+        private ObservableCollection<string> _calendarTypeList = new ObservableCollection<string>();
         public ObservableCollection<string> CalendarTypeList
         {
             get => _calendarTypeList;
@@ -299,14 +299,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        public string _calendarType = null;
+        private string _calendarType = null;
         public string CalendarType
         {
             get => _calendarType;
-            private set
+            set
             {
                 _calendarType = value;
                 RaisePropertyChanged(nameof(CalendarType));
+            }
+        }
+        private string _fiscalMonth = "09";
+        public string FiscalMonth
+        {
+            get => _fiscalMonth;
+            private set
+            {
+                _fiscalMonth = value;
+                RaisePropertyChanged(nameof(FiscalMonth));
+            }
+        }
+        private string _fiscalDay = "28";
+        public string FiscalDay
+        {
+            get => _fiscalDay;
+            private set
+            {
+                _fiscalDay = value;
+                RaisePropertyChanged(nameof(FiscalDay));
             }
         }
         #endregion
@@ -400,6 +420,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
         #region Financial Details Tabs commands
         public ICommand OnMonthSelectButtonClick { get; set; }
+        public ICommand OnDaySelectButtonClick { get; set; }
         #endregion
         #region Summary Tabs commands
         public ICommand OnExpendGridViewClick { get; private set; }
@@ -493,7 +514,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnMonthSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
+                NumberListPopUpPageView poupWindow = new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
+                poupWindow.OnItemSelect = (item) => FiscalMonth = item;
+                PopupNavigation.Instance.PushAsync(poupWindow);
+            });
+            OnDaySelectButtonClick = new Command(() =>
+            {
+                NumberListPopUpPageView poupWindow = new NumberListPopUpPageView(new List<string> { "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
+                poupWindow.OnItemSelect = (item) => FiscalDay = item;
+                PopupNavigation.Instance.PushAsync(poupWindow);
             });
             #endregion
 
