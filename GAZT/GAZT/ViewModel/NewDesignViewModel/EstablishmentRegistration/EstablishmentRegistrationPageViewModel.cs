@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
@@ -14,8 +15,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.Outlets;
+        //public readonly INavigationService _navigationService;
+        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.Declaration;
         public EstablishmentRegistrationTabsEnum currentTab
         {
             get => _currentTab;
@@ -41,7 +42,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
 
-        private int _currenrIndex = (int)EstablishmentRegistrationTabsEnum.Outlets;
+        private int _currenrIndex = (int)EstablishmentRegistrationTabsEnum.Declaration;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -54,7 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTabText = "Outlets";
+        private string _selectedTabText = "Summary";
         public string SelectedTabText
         {
             get => _selectedTabText;
@@ -310,6 +311,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
         #endregion
+        #region Summary Tabs variables
+        private EstablishmentRegistrationTabsEnum _summaryExpendedCard = EstablishmentRegistrationTabsEnum.RegistrationType;
+        public EstablishmentRegistrationTabsEnum SummaryExpendedCard
+        {
+            get => _summaryExpendedCard;
+            private set
+            {
+                _summaryExpendedCard = value;
+                RaisePropertyChanged(nameof(SummaryExpendedCard));
+            }
+        }
+        private ObservableCollection<string> _outletList = new ObservableCollection<string>();
+        public ObservableCollection<string> OutletList
+        {
+            get => _outletList;
+            private set
+            {
+                if (value != null)
+                {
+                    _outletList = value;
+                    RaisePropertyChanged(nameof(OutletList));
+                }
+            }
+        }
+        #endregion
 
         #endregion
 
@@ -376,13 +402,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Financial Details Tabs commands
         public ICommand OnMonthSelectButtonClick { get; set; }
         #endregion
+        #region Summary Tabs commands
+        public ICommand OnExpendGridViewClick { get; private set; }
+        #endregion
 
         #endregion
 
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            _navigationService = navigationService;
+            //_navigationService = navigationService;
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
 
@@ -448,7 +477,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             #region Outlet Tabs variable initialization
             OnNewOutletButtonClick = new Command(() => {
                 System.Diagnostics.Debug.WriteLine("OnNewOutletButtonClick "+ navigationService);
-                _navigationService.NavigateTo(App.OutletDetailsPageView);
+                _navigationService.NavigateTo(App.OutletDetailsPageView, new OutletNavigationModels());
             });
             #endregion
 
@@ -461,13 +490,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             CalendarTypeList.Add("Hijri");
             CalendarTypeList.Add("Gregorian");
 
+            SelectedMethod = MethodList.FirstOrDefault();
+            CalendarType = CalendarTypeList.LastOrDefault();
+
             OnMonthSelectButtonClick = new Command(() =>
             {
                 PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
             });
             #endregion
 
-
+            #region Summary Tabs variable initialization
+            OnExpendGridViewClick = new Command((_enum)=> OnExpandCollapseGridViewClick(_enum));
+            OutletList.Clear();
+            OutletList.Add("1");
+            OutletList.Add("2");
+            #endregion
         }
 
         #endregion
@@ -475,11 +512,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         public void OnAppearing()
         {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                SelectedMethod = MethodList.FirstOrDefault();
-                CalendarType = CalendarTypeList.LastOrDefault();
-            });
+            
         }
 
         private void navigateToNext()
@@ -508,6 +541,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
                 SelectedTabText = "Taxpayer Personal Details";
+            }else if(currentTab == EstablishmentRegistrationTabsEnum.Declaration)
+            {
+                _navigationService.NavigateTo(App.RegistrationSuccessfulPage);
             }
         }
         private void navigateToPre()
@@ -757,6 +793,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private void onEstablishmentRegistrationAttachmentTapped()
         {
+        }
+
+
+        private void OnExpandCollapseGridViewClick(object _enum)
+        {
+            System.Diagnostics.Debug.WriteLine(_enum);
+            SummaryExpendedCard = (EstablishmentRegistrationTabsEnum)_enum;
         }
         #endregion
     }

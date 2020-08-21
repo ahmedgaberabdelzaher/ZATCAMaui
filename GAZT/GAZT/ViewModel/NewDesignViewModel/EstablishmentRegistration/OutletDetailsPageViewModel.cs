@@ -13,12 +13,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
             get => _currentTab;
-            private set
+            set
             {
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
                 RaisePropertyChanged(nameof(CurrentIndex));
+                switch (value)
+                {
+                    case EstablishmentRegistrationOutletTabsEnum.ActivityDetails:
+                        SelectedOutletTabText = "Activity Details";
+                        break;
+                    case EstablishmentRegistrationOutletTabsEnum.AddressDetails:
+                        SelectedOutletTabText = "Address Details";
+                        break;
+                    case EstablishmentRegistrationOutletTabsEnum.OutletDetail:
+                    default:
+                        SelectedOutletTabText = "Outlet Details";
+                        break;
+                }
             }
         }
 
@@ -73,10 +86,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
-            OnActivityItemButtonClick = new Command(() => {
-                System.Diagnostics.Debug.WriteLine("OnActivityItemButtonClick");
-                navigationService.NavigateTo(App.ActivityItemPage);
-            });
+            OnActivityItemButtonClick = new Command(() => navigationService.NavigateTo(App.ActivityItemPage));
         }
         #endregion
 
@@ -86,12 +96,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             if(currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
-                SelectedOutletTabText = "Activity Details";
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
-                SelectedOutletTabText = "Address Details";
             }
         }
         private void navigateToPre()
@@ -99,12 +107,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
-                SelectedOutletTabText = "Activity Details";
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
-                SelectedOutletTabText = "Outlet Details";
             }
         }
         #endregion

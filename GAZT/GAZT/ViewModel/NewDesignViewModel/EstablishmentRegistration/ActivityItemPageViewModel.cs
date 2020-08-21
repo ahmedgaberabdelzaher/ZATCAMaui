@@ -16,15 +16,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ActivityItemPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnNextButtonClick = new Command(() => navigateToNext());
-            OnPreButtonClick = new Command(() => navigateToPre());
+            OnPreButtonClick = new Command(() => navigationService.GoBack());
         }
         #endregion
 
         #region Method
-        private void navigateToPre()
-        {
-            
-        }
         private void navigateToNext()
         {
 

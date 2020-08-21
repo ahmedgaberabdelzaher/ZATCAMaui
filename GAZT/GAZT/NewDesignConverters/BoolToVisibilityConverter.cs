@@ -17,13 +17,13 @@ namespace EGAZT.NewDesignConverters
             if (_parameter == "invert")
             {
                 isInvertValue = _value ? false : true;
-                System.Diagnostics.Debug.WriteLine("Invert" + "_value {0} _parameter {1} isVisible {2} ", _value, _parameter, isInvertValue);
+                //System.Diagnostics.Debug.WriteLine("Invert" + "_value {0} _parameter {1} isVisible {2} ", _value, _parameter, isInvertValue);
                 return isInvertValue;
             }
             else
             {
                 isInvertValue = _value ? true : false;
-                System.Diagnostics.Debug.WriteLine("NonInvert" + "_value {0} _parameter {1} isVisible {2} ", _value, _parameter, isInvertValue);
+                //System.Diagnostics.Debug.WriteLine("NonInvert" + "_value {0} _parameter {1} isVisible {2} ", _value, _parameter, isInvertValue);
                 return isInvertValue;
             }
         

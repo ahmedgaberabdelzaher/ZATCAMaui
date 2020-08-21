@@ -69,6 +69,7 @@ namespace EGAZT
         public static string ActivityItemPage = nameof(ActivityItemPage);
         public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
         public static string OutletDetailsPageView = nameof(OutletDetailsPageView);
+        public static string RegistrationSuccessfulPage = nameof(RegistrationSuccessfulPage);
         //*End EST
 
         //test

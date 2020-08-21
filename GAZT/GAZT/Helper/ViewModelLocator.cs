@@ -201,6 +201,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
             SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
             SimpleIoc.Default.Register<ActivityItemPageViewModel>();
+            SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
             SimpleIoc.Default.Register<ZakatReturnDetailsSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<NewTaxEvasionFormPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
@@ -582,6 +583,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ActivityItemPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public RegistrationSuccessfulPageViewModel RegistrationSuccessfulPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<RegistrationSuccessfulPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2152,6 +2167,7 @@ namespace EGAZT
             navigationService.Configure(App.EstablishmentRegistrationPage, typeof(EstablishmentRegistrationPage));
             navigationService.Configure(App.ActivityItemPage, typeof(ActivityItemPage));
             navigationService.Configure(App.OutletDetailsPageView, typeof(OutletDetailsPageView));
+            navigationService.Configure(App.RegistrationSuccessfulPage, typeof(RegistrationSuccessfulPage));
             //End EST
 
             #endregion
