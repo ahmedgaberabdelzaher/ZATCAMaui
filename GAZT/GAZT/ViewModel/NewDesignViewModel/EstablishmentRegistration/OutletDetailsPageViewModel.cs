@@ -86,7 +86,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
-            OnActivityItemButtonClick = new Command(() => navigationService.NavigateTo(App.ActivityItemPage));
+            OnActivityItemButtonClick = new Command((_enum) => {
+                Console.WriteLine(_enum);
+                navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                {
+                    openedTab = (EstablishmentOutletActivitiesTabsEnum)_enum
+                });
+            });
         }
         #endregion
 
@@ -100,6 +106,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+            }
+            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
+            {
+                _navigationService.GoBack();
             }
         }
         private void navigateToPre()

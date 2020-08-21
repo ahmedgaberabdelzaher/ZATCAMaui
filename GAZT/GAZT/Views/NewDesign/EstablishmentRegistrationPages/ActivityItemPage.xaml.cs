@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
     public partial class ActivityItemPage : ContentPage
     {
-        public ActivityItemPage()
+        private ActivityNavigationModels _activityNavigation;
+        private ActivityItemPageViewModel viewModel;
+        public ActivityItemPage(ActivityNavigationModels activityNavigation)
         {
             InitializeComponent();
-            BindingContext = App.Locator.ActivityItemPage;
+            _activityNavigation = activityNavigation;
+            viewModel = App.Locator.ActivityItemPage;
+            BindingContext = viewModel;
             SetLTR();
         }
         private void SetLTR()
@@ -24,6 +29,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             //{
             //    this.FlowDirection = FlowDirection.RightToLeft;
             //}
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if(viewModel != null)
+            {
+                viewModel.CurrentTab = _activityNavigation.openedTab;
+            }
         }
     }
 }

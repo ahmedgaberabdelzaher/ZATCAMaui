@@ -23,30 +23,25 @@
     </pages:PopupPage.Animation>
     <pages:PopupPage.Content>
         <yummy:PancakeView VerticalOptions="EndAndExpand" HeightRequest="300" BackgroundColor="White">
-            <CollectionView VerticalOptions="Start" HorizontalOptions="Fill" SelectionMode="Single" Margin="10" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
-                <CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>12</x:String>
-                        <x:String>11</x:String>
-                        <x:String>10</x:String>
-                        <x:String>9</x:String>
-                        <x:String>8</x:String>
-                        <x:String>7</x:String>
-                        <x:String>6</x:String>
-                        <x:String>5</x:String>
-                        <x:String>4</x:String>
-                        <x:String>3</x:String>
-                        <x:String>2</x:String>
-                        <x:String>1</x:String>
-                    </x:Array>
-                </CollectionView.ItemsSource>
+            <CollectionView x:Name="PopupList" VerticalOptions="Start" HorizontalOptions="Fill" SelectionMode="Single" SelectionChanged="PopupList_SelectionChanged" Margin="10" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <custom:CustomLabel Text="{Binding .}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" Padding="10"
-                                            FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                                            FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" >
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="Transparent" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </custom:CustomLabel>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

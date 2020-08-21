@@ -61,7 +61,7 @@
                 </StackLayout>
                 <ScrollView  Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.ActivityDetails}}">
                     <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                        <syncEffectsView:SfEffectsView CornerRadius="10" TouchDownCommand="{Binding OnActivityItemButtonClick}">
+                        <syncEffectsView:SfEffectsView CornerRadius="10" TouchDownCommand="{Binding OnActivityItemButtonClick}" TouchDownCommandParameter="{x:Static models:EstablishmentOutletActivitiesTabsEnum.CRDetails}">
                             <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="15" CornerRadius="10">
                                 <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
                                     <Grid.ColumnDefinitions>
@@ -75,7 +75,7 @@
                                 </Grid>
                             </border:SfBorder>
                         </syncEffectsView:SfEffectsView>
-                        <syncEffectsView:SfEffectsView CornerRadius="10" Margin="0,20" TouchDownCommand="{Binding OnActivityItemButtonClick}" >
+                        <syncEffectsView:SfEffectsView CornerRadius="10" Margin="0,20" TouchDownCommand="{Binding OnActivityItemButtonClick}" TouchDownCommandParameter="{x:Static models:EstablishmentOutletActivitiesTabsEnum.LicenseDetails}">
                             <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="15" CornerRadius="10">
                                 <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
                                     <Grid.ColumnDefinitions>

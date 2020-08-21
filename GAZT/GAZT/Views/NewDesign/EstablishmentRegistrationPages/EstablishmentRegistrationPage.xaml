@@ -70,7 +70,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <StackLayout>
-                                    <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnReportingBranchSelectButtonClick}"
+                                    <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="Qurayyat Office" Command="{Binding OnReportingBranchSelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                 </StackLayout>

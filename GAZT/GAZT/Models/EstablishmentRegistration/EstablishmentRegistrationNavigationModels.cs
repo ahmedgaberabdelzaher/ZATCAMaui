@@ -8,6 +8,6 @@ namespace EGAZT.Models
 
     public class ActivityNavigationModels
     {
-        public EstablishmentRegistrationOutletTabsEnum openedTab { get; set; } = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
+        public EstablishmentOutletActivitiesTabsEnum openedTab { get; set; } = EstablishmentOutletActivitiesTabsEnum.ActivityList;
     }
 }

@@ -15,8 +15,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
-        //public readonly INavigationService _navigationService;
-        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
         public EstablishmentRegistrationTabsEnum currentTab
         {
             get => _currentTab;
@@ -42,7 +41,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
 
-        private int _currenrIndex = (int)EstablishmentRegistrationTabsEnum.Declaration;
+        private int _currenrIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -55,7 +54,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTabText = "Summary";
+        private string _selectedTabText = "Registration/Taxpayer type";
         public string SelectedTabText
         {
             get => _selectedTabText;
@@ -411,7 +410,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            //_navigationService = navigationService;
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
 
@@ -443,7 +441,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnReportingBranchSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "Qurayyat Office", "Almajmaah Office", "Muhayil Asir Office", "SHarurah Office", "Alaflaj Office", "Almajardah Office", "Mahd adh-Dhahab Office", "GAZT Centralized Branch"}));
             });
 
             #endregion
@@ -454,17 +452,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnPDNatinalitySelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
 
             OnPDCitizenSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
 
             OnPDResidenceSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
             #endregion
 
@@ -495,7 +493,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnMonthSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
             #endregion
 
