@@ -43,7 +43,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
+            ChangeArrowDirection();
             if(vatRefundsListResultModel == null)
             {
                 viewModel.IsNewReqSummary = true;
@@ -76,6 +76,19 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

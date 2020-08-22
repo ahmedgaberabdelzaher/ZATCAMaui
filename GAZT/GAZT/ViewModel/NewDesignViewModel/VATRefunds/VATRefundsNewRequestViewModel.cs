@@ -316,7 +316,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 }
                 else
                 {
+                    VarRefundIbanDataModelMetadataResult varRefundIbanDataModelMetadataResult = IbanData.FirstOrDefault();
                     IsAddAccountVisisble = false;
+
+                    if (varRefundIbanDataModelMetadataResult.Iban == string.Empty)
+                    {
+                        IsAddAccountVisisble = true;
+                    }
                 }
 
                 await Task.Run(() =>
@@ -412,7 +418,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 }
                 else
                 {
+                    VarRefundIbanDataModelMetadataResult varRefundIbanDataModelMetadataResult = IbanData.FirstOrDefault();
                     IsAddAccountVisisble = false;
+
+                    if (varRefundIbanDataModelMetadataResult.Iban == string.Empty)
+                    {
+                        IsAddAccountVisisble = true;
+                    }
                 }
 
                 await Task.Run(() =>
@@ -467,6 +479,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 }
 
             }
+        }
+
+        public void AddNewIban(string newIban)
+        {
+            if(IbanData == null)
+            {
+                IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>();
+            }
+
+            VarRefundIbanDataModelMetadataResult newIbanModel = new VarRefundIbanDataModelMetadataResult();
+            newIbanModel.Iban = newIban;
+            IbanData.Add(newIbanModel);
+
+            if(VatRefundsIbanDataModel.IbanSet == null)
+            {
+                VatRefundsIbanDataModel.IbanSet = new NSet();
+            }
+
+            if(VatRefundsIbanDataModel.IbanSet.Results == null)
+            {
+                VatRefundsIbanDataModel.IbanSet.Results = new VarRefundIbanDataModelMetadataResult[1000];
+            }
+
+            List<VarRefundIbanDataModelMetadataResult> tempNewIbanList = new List<VarRefundIbanDataModelMetadataResult>();
+            tempNewIbanList.Add(newIbanModel);
+
+            VatRefundsIbanDataModel.IbanSet.Results = tempNewIbanList.ToArray();
+
+            //VatRefundsIbanDataModel.IbanSet.Results
         }
 
         public async void OnIbanIdTypeClicked()
@@ -616,16 +657,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 return;
             }
 
-
             VatRefundsDisplayDataModel.Operationx = "05";
             VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
             VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
-            VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
-            VatRefundsDisplayDataModel.Iban = _selectedIbanData.Iban;
-            VatRefundsDisplayDataModel.IbanC = _selectedIbanData.Iban;
+            VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
+            VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
             VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+            VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
             VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
             VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
+            VatRefundsDisplayDataModel.RefundTp = "Refund Request";
+
+            //VatRefundsDisplayDataModel.Statusx = "E0013";
+            VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
 
             try
             {

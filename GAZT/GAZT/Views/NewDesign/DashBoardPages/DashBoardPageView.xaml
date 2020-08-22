@@ -592,7 +592,7 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsVatRegistrationTileVisible}"/>
-                              <StackLayout Orientation="Horizontal" Spacing="20">
+                              <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
                                     </Image>
@@ -601,7 +601,7 @@
                                         <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 

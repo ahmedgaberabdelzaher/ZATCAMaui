@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
+using Rg.Plugins.Popup.Services;
 using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -26,6 +27,20 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             base.OnAppearing();
             viewModel.PopulateVATRefundsList();
+            ChangeArrowDirection();
+            Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "InstructionsConfirmed", (message, arg) =>
+            {
+                if (arg == "NavigateToNewRequestPageView")
+                {
+                    viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView);
+                }
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<string>(this, "InstructionsConfirmed");
         }
 
         private void SetLTR()
@@ -48,6 +63,19 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
@@ -79,12 +107,13 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
         }
 
-        public void NewRefundRequest_Tapped(System.Object sender, System.EventArgs e)
+        public async void NewRefundRequest_Tapped(System.Object sender, System.EventArgs e)
         {
             try
             {
                 //await viewModel.ReloadData();
-                viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView);
+                await PopupNavigation.Instance.PushAsync(new VATRefundsInstructionsPageView());
+
             }
             catch (Exception ex)
             {

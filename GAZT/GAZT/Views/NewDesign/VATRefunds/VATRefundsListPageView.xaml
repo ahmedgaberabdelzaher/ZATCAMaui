@@ -13,6 +13,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                 <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -33,7 +41,7 @@
 
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDRefunds}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
 
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
+                        <Image x:Name="btnBack" Grid.Row="0" Style="{DynamicResource BackButtonArrow}" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
                             </Image.GestureRecognizers>
@@ -64,9 +72,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackLayout Spacing="0" Grid.Row="0">
-                <custom:CustomLabel Text="Test" Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand">
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}" Style="{StaticResource PageTitleBlack}" HorizontalOptions="StartAndExpand">
                 </custom:CustomLabel>
-                <Label Margin="2,-10,2,16" Text="600000.00 SAR" Style="{StaticResource CaptionLabelGrey}"/>
+                <Label Margin="2,-10,2,16" Text="{Binding TotalReassessmentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
                 <border:SfBorder  Margin="0,10,0,5" Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
                         <Image Source="add" HeightRequest="20" WidthRequest="20">
@@ -103,7 +111,7 @@
                     </buttons:SfChipGroup>
                 </ScrollView>
             </StackLayout>
-                <listView:SfListView Grid.Row="1" ItemsSource="{Binding VATRefundsSet}" IsVisible="true" SelectionChanged="vatRefundDetailsListView_SelectionChanged" HorizontalOptions="FillAndExpand"
+                <listView:SfListView Grid.Row="1" ItemsSource="{Binding VATRefundsSet   }" IsVisible="true" SelectionChanged="vatRefundDetailsListView_SelectionChanged" HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand" BackgroundColor="White" AutoFitMode="Height" x:Name="vatRefundsListView" SelectionBackgroundColor="Transparent" > 
                     <listView:SfListView.ItemTemplate>
                         <DataTemplate>

@@ -261,11 +261,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                await Task.Run(() =>
-                {
-                    App.DisplayProgressView();
-                });
-
                 VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VATRefundsHeaderSet.RefundFbnum);
                 SelectedIbanTypeFromList();
 
@@ -298,6 +293,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 });
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void SelectedIbanTypeFromList()
@@ -326,7 +325,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatNewReqSummaryData.Operationx = "01";
             VatNewReqSummaryData.Gpartx = App.LoginDataRetrieved.TIN;
             VatNewReqSummaryData.Langx = UtilityManager.GetLanguageParameter();
-            VatNewReqSummaryData.Rfamt = VatNewReqSummaryData.Rfamt.Replace("-", string.Empty);
 
             try
             {

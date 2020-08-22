@@ -138,6 +138,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        private string _totalReassessmentAmount { get; set; }
+        public string TotalReassessmentAmount
+        {
+            get
+            {
+                return _totalReassessmentAmount;
+            }
+
+            set
+            {
+
+                _totalReassessmentAmount = value;
+                RaisePropertyChanged("TotalReassessmentAmount");
+            }
+        }
+
         public VATRefundListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -194,6 +210,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsListResultModel = await WebServiceManager.GAZTGetVAtRefundList();
                 VATRefundsSet = new ObservableCollection<VatRefHeaderSetResult>(VatRefundsListResultModel.VatRefHeaderSet.Results);
                 VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet.Results);
+
+                double total = VATRefundsSet.Sum(item => Convert.ToDouble(item.ReassessAmt));
+                TotalReassessmentAmount = string.Format("{0:0.00}",total);
 
                 await Task.Run(() =>
                 {

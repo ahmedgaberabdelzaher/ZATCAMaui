@@ -3,8 +3,6 @@
                  xmlns:custom="clr-namespace:GAZT" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                  x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsInstructionsPageView"  xmlns:ResourceManager="clr-namespace:EGAZT"
-                               xmlns:custom2="clr-namespace:EGAZT"
-                           xmlns:FontImage="clr-namespace:MVP.FontIcons"
                  NavigationPage.HasNavigationBar="False">
      <ContentPage.Resources>
         <ResourceDictionary>
@@ -24,10 +22,10 @@
                 <StackLayout Margin="8">
                     <StackLayout Orientation="Horizontal" Spacing="0">
                        <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
-                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
+                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZInstructions}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
                             Style="{StaticResource ValueLabelBlack}"/>
                     </StackLayout>
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATDeregistrationInstructions}" HorizontalOptions="StartAndExpand"
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatRefundInstructions}" HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}" />
                 
                 </StackLayout>
@@ -43,12 +41,12 @@
                 <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  />
+                            <Span Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}"  />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
            </StackLayout>
-           <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24"  x:Name="btnVATDeregistration" Command="{Binding VATDeregistrationClicked}" Text="{x:Static ResourceManager:AppResources.VATDeregistration}"
+           <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24"  x:Name="btnConfirmVATRefundInstructions" Clicked="VATRefundRequestInstructions_Tapped" Text="{x:Static ResourceManager:AppResources.VATDeregistration}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
     </StackLayout>
     </yummy:PancakeView>
