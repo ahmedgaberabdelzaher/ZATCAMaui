@@ -830,22 +830,35 @@
                             <Image Source="ic_location_Outline.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
-                    <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" AutoFitMode="Height" ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False">
-                        <listView:SfListView.ItemsSource>
+                    <CollectionView VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never">
+                        <CollectionView.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Outlet (34569)</x:String>
-                                <x:String>Outlet (34569)</x:String>
-                                <x:String>Outlet (34569)</x:String>
-                                <x:String>Outlet (34569)</x:String>
+                                <x:String>Outlet (34570)</x:String>
+                                <x:String>Outlet (34571)</x:String>
+                                <x:String>Outlet (34572)</x:String>
                             </x:Array>
-                        </listView:SfListView.ItemsSource>
-                        <listView:SfListView.LayoutManager>
-                            <listView:LinearLayout />
-                        </listView:SfListView.LayoutManager>
-                        <listView:SfListView.ItemTemplate>
+                        </CollectionView.ItemsSource>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="0.7">
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center" ColumnSpacing="10" Padding="12">
+                                <cards:SfCardView HasShadow="True" BorderColor="{StaticResource NeutralLightGrey}" BackgroundColor="White" BorderWidth="0.7" CornerRadius="10" Margin="0">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal" />
+                                            <VisualState x:Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Property="BackgroundColor" Value="White" />
+                                                    <Setter Property="ShadowColor" Value="White" />
+                                                    <Setter Property="CornerRadius" Value="10" />
+                                                    <Setter TargetName="GridItem" Property="Grid.BackgroundColor" Value="White" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Grid x:Name="GridItem" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ColumnSpacing="10" Padding="12">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
@@ -860,8 +873,8 @@
                                     </Grid>
                                 </cards:SfCardView>
                             </DataTemplate>
-                        </listView:SfListView.ItemTemplate>
-                    </listView:SfListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
                 <ScrollView Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
                     <StackLayout Spacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
@@ -945,7 +958,7 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
                                     <border:SfBorder CornerRadius="24" BorderColor="Transparent" ShadowColor="White" HasShadow="False" BackgroundColor="#E5EFED" HeightRequest="48" WidthRequest="48">
-                                        <Image Grid.Column="0" Source="zakat_details.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Image Grid.Column="0" Source="zakat_details.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="24" WidthRequest="24"/>
                                         <border:SfBorder.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
@@ -970,6 +983,7 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="reporting branch" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="Qurayyat Office" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
@@ -980,10 +994,9 @@
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="Nationality" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="GCC" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="Residency Status" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <StackLayout Orientation="Vertical" Grid.Column="1" Grid.Row="4" Spacing="0" VerticalOptions="Fill" HorizontalOptions="End">
-                                            <custom:CustomLabel Text="Rent/own a house more than 30 days" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                            <!--<buttons:SfChip ShowIcon="True" Image="newui_ic_pdf.png" Text="File1.pdf" ImageSource="End" ImageWidth="24" TextColor="{StaticResource NeutralBlack}" />-->
-                                        </StackLayout>
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="Rent/own a house more than 30 days" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <buttons:SfChip Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" ShowIcon="True" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Transparent" 
+                                                        ImageSource="newui_ic_pdf.png" Text="File1.pdf" ImageAlignment="End" ImageWidth="24" TextColor="{StaticResource NeutralBlack}" />
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
@@ -996,8 +1009,11 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
                                     <border:SfBorder CornerRadius="24" BorderColor="Transparent" ShadowColor="White" HasShadow="False" BackgroundColor="#E5EFED" HeightRequest="48" WidthRequest="48">
-                                        <Image Grid.Column="0" Source="vat_user.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Image Grid.Column="0" Source="vat_user.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="24" WidthRequest="24"/>
                                         <border:SfBorder.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
@@ -1009,7 +1025,7 @@
                                     </custom:CustomLabel>
                                     <custom:CustomLabel Grid.Column="2" Text="Edit" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
                                 </Grid>
-                                <StackLayout Orientation="Vertical" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
+                                <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
                                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}" Margin="0,0,0,16"/>
                                     <custom:CustomLabel  Text="Identification Details" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" HorizontalOptions="Start" Padding="16,0" />
                                     <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16,0,16,16">
@@ -1066,16 +1082,16 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="Nationality" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="United Arb Emirates" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="Citizen" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="United Arb Emirates" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="Residence" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="United Arb Emirates" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="United Arb Emirates" Style="{StaticResource ValueLabelBlack}" />
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
@@ -1089,7 +1105,7 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
                                     <border:SfBorder CornerRadius="24" BorderColor="Transparent" ShadowColor="White" HasShadow="False" BackgroundColor="#E5EFED" HeightRequest="48" WidthRequest="48">
-                                        <Image Grid.Column="0" Source="zakat_details.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Image Grid.Column="0" Source="zakat_details.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="24" WidthRequest="24"/>
                                         <border:SfBorder.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
@@ -1132,7 +1148,7 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
                                     <border:SfBorder CornerRadius="24" BorderColor="Transparent" ShadowColor="White" HasShadow="False" BackgroundColor="#E5EFED" HeightRequest="48" WidthRequest="48">
-                                        <Image Grid.Column="0" Source="establishments.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Image Grid.Column="0" Source="establishments.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="24" WidthRequest="24"/>
                                         <border:SfBorder.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
@@ -1178,7 +1194,7 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
                                     <border:SfBorder CornerRadius="24" BorderColor="Transparent" ShadowColor="White" HasShadow="False" BackgroundColor="#E5EFED" HeightRequest="48" WidthRequest="48">
-                                        <Image Grid.Column="0" Source="amount.png" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Image Grid.Column="0" Source="amount.png" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="24" WidthRequest="24"/>
                                         <border:SfBorder.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
@@ -1217,12 +1233,11 @@
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="1436/12/16" HorizontalOptions="End"  VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="5" Text="Taxable Date" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="5" Text="1431/12/16" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
-
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <buttons:SfCheckBox HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" LineBreakMode="WordWrap" CheckedColor="{StaticResource Primary}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="{StaticResource NeutralBlack}" Text="Given Pledge that the information on this form is correct and that I am Authorized to sign this application"/>
+                        <buttons:SfCheckBox HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" LineBreakMode="WordWrap" Visual="Material" CheckedColor="{StaticResource Primary}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="{StaticResource NeutralBlack}" Text="Given Pledge that the information on this form is correct and that I am Authorized to sign this application"/>
                     </StackLayout>
                 </ScrollView>
             </Grid>
@@ -1255,8 +1270,8 @@
                 <custom:CustomLabel Text="{Binding SelectedTabText}" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,-5,0,-10" Style="{StaticResource SectionTitleBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="28"/>
                 <custom:CustomLabel Text="Complete the below details" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"/>
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
-                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                    <buttons:SfChipGroup Type="Choice" SelectedItem="{Binding SelectedTabText}" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" x:Name="TabScrollView">
+                    <buttons:SfChipGroup Type="Choice" x:Name="TabSfChipGroup" SelectedItem="{Binding SelectedTabText}" SelectionChanged="SfChipGroup_SelectionChanged" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
                         <buttons:SfChipGroup.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Registration/Taxpayer type</x:String>

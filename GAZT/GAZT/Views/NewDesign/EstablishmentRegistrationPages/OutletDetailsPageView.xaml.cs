@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using Xamarin.Forms;
@@ -15,6 +16,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             InitializeComponent();
             _outletNavigation = outletNavigation;
             viewModel = App.Locator.OutletDetailsPageView;
+            viewModel.currentTab = _outletNavigation.openedTab;
             BindingContext = viewModel;
             SetLTR();
         }
@@ -34,10 +36,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (viewModel != null)
+        }
+
+        void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        {
+            try
             {
-                viewModel.currentTab = _outletNavigation.openedTab;
+                var index = OutletTabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
+                OutletTabScrollView.ScrollToAsync(OutletTabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
+            catch (Exception) { }
         }
     }
 }

@@ -15,6 +15,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             InitializeComponent();
             _activityNavigation = activityNavigation;
             viewModel = App.Locator.ActivityItemPage;
+            viewModel.CurrentTab = _activityNavigation.openedTab;
             BindingContext = viewModel;
             SetLTR();
         }
@@ -33,10 +34,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if(viewModel != null)
-            {
-                viewModel.CurrentTab = _activityNavigation.openedTab;
-            }
         }
     }
 }

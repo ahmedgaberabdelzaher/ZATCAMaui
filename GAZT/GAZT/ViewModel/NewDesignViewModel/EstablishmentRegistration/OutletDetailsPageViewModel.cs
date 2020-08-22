@@ -9,7 +9,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class OutletDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+        private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
             get => _currentTab;
@@ -39,7 +39,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public int MaxIndex { get; private set; } = 3;
 
 
-        private int _currenrIndex = (int)EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+        private int _currenrIndex = (int)EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public int CurrentIndex
         {
             get => _currenrIndex;

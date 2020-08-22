@@ -283,8 +283,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _selectedMethod;
             set
             {
-                _selectedMethod = value;
-                RaisePropertyChanged(nameof(SelectedMethod));
+                if (value != null)
+                {
+                    _selectedMethod = value;
+                    RaisePropertyChanged(nameof(SelectedMethod));
+                }
             }
         }
         private ObservableCollection<string> _calendarTypeList = new ObservableCollection<string>();

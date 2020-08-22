@@ -60,11 +60,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         private void navigateToNext()
         {
-            if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+            if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
                 CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
             }
-            else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.ActivityList)
+            else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.ActivityList)
             {
                 _navigationService.GoBack();
             }

@@ -85,5 +85,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
 
         }
+
+        void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
+                TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
+            }
+            catch (Exception) { }
+        }
     }
 }
