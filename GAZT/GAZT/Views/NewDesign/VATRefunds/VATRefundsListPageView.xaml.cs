@@ -42,7 +42,8 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<string>(this, "InstructionsConfirmed");
+            MessagingCenter.Unsubscribe<object, string>(this, "InstructionsConfirmed");
+
         }
 
         private void SetLTR()

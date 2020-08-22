@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
+using GAZT.Helper;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -44,16 +47,42 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             base.OnAppearing();
             ChangeArrowDirection();
-            if(vatRefundsListResultModel == null)
+
+            try
             {
-                viewModel.IsNewReqSummary = true;
-                viewModel.LoadSummaryData(vatRefundsSaveDataModel);
+                if (vatRefundsListResultModel == null)
+                {
+                    viewModel.IsNewReqSummary = true;
+                    await viewModel.LoadSummaryData(vatRefundsSaveDataModel);
+                }
+                else
+                {
+                    viewModel.IsNewReqSummary = false;
+                    await viewModel.ReloadData(vatRefundsListResultModel);
+                }
             }
-            else
+            catch (GAZTErrorException ex)
             {
-                viewModel.IsNewReqSummary = false;
-                await viewModel.ReloadData(vatRefundsListResultModel);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    App.HideProgressView();
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
+            catch (InternetException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._navigationService.GoBack();
+                });
+            }
+
         }
 
         private void SetLTR()

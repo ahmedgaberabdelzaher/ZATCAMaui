@@ -16,7 +16,7 @@
     <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" IsVisible="true">
         <StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
             <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" HorizontalOptions="StartAndExpand"
+            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZInstructions}" HorizontalOptions="StartAndExpand"
                             Style="{StaticResource SectionTitleBlackBold}" Margin="0,0,0,16"  />
             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
                 <StackLayout Margin="8">
@@ -31,12 +31,13 @@
                 </StackLayout>
             </border:SfBorder>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"> 
-                <CheckBox x:Name="chkDeclaration" Color="{StaticResource NeutralGreay}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
+                <CheckBox x:Name="chkDeclaration" Color="{StaticResource NewDarkBlueGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionsChecked, Mode=TwoWay}">
                     <CheckBox.Triggers>
-                        <DataTrigger TargetType="CheckBox"  Value="false">
-                            <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                        <DataTrigger TargetType="CheckBox" Binding="{Binding IsInstructionsChecked}"  Value="false">
+                            <Setter Property="Color" Value="{StaticResource NewDarkBlueGreenColor}" />
                         </DataTrigger>
                     </CheckBox.Triggers>
+                    
                 </CheckBox>
                 <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
                     <custom:CustomLabel.FormattedText>
@@ -46,8 +47,17 @@
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
            </StackLayout>
-           <buttons:SfButton Grid.ColumnSpan="2" Margin="0,24,0,24"  x:Name="btnConfirmVATRefundInstructions" Clicked="VATRefundRequestInstructions_Tapped" Text="{x:Static ResourceManager:AppResources.VATDeregistration}"
-                                   Style="{StaticResource PrimaryButtonStyle}"/>
+           <buttons:SfButton Grid.ColumnSpan="2"  Margin="0,24,0,24" IsEnabled="{Binding IsInstructionsChecked}"  x:Name="btnConfirmVATRefundInstructions" Clicked="VATRefundRequestInstructions_Tapped" Text="{x:Static ResourceManager:AppResources.VATRefundRequestTtitle}"
+                                   Style="{StaticResource PrimaryButtonStyle}">
+                <buttons:SfButton.Triggers>
+                    <DataTrigger TargetType="buttons:SfButton" Binding="{Binding IsInstructionsChecked}"  Value="true">
+                        <Setter Property="BackgroundColor" Value="#d49504" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="buttons:SfButton" Binding="{Binding IsInstructionsChecked}"  Value="false">
+                        <Setter Property="BackgroundColor" Value="{StaticResource NeutralGreay}" />
+                    </DataTrigger>
+                </buttons:SfButton.Triggers>
+           </buttons:SfButton>
     </StackLayout>
     </yummy:PancakeView>
 

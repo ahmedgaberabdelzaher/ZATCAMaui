@@ -339,8 +339,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    _navigationService.GoBack();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                   
                 }
                 catch (Exception mex)
                 {
@@ -358,8 +362,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
-                    _navigationService.GoBack();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
                 }
                 catch(Exception mex)
                 {
@@ -370,8 +377,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 try
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+
                 }
                 catch (Exception mex)
                 {
@@ -442,8 +453,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    _navigationService.GoBack();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                   
                 }
                 catch (Exception mex)
                 {
@@ -461,8 +476,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
-                    _navigationService.GoBack();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                   
                 }
                 catch (Exception mex)
                 {
@@ -473,8 +492,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 try
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                   
                 }
                 catch (Exception mex)
                 {
@@ -620,6 +643,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
+            }
+            catch(Exception)
+            {
+
             }
         }
 

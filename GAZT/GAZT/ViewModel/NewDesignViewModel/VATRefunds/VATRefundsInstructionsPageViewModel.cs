@@ -37,6 +37,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        public bool _isInstructionsChecked { get; set; }
+        public bool IsInstructionsChecked
+        {
+            get
+            {
+                return _isInstructionsChecked;
+            }
+
+            set
+            {
+
+                _isInstructionsChecked = value;
+                RaisePropertyChanged("IsInstructionsChecked");
+            }
+        }
+
         public VATRefundsInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -53,7 +69,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 _navigationService.GoBack();
             });
-
+            IsInstructionsChecked = false;
             VATRefundInstructionsConfirmedBtnClicked = new Command(this.VATRefundInstructionsConfirmedBtnTapped);
         }
 
