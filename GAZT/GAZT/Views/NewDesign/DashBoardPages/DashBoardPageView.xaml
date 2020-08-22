@@ -542,7 +542,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
 
-                                 <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
                                     </Image>
@@ -551,7 +551,7 @@
                                         <TapGestureRecognizer Tapped="VATRefundRequest_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>-->
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">

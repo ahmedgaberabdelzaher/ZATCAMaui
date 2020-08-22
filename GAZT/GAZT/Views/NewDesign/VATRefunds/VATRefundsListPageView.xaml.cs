@@ -12,6 +12,8 @@ namespace EGAZT.Views.NewDesign.VATRefunds
     public partial class VATRefundsListPageView : ContentPage
     {
         VATRefundListPageViewModel viewModel;
+        Xamarin.Forms.SearchBar searchBar = null;
+
         public VATRefundsListPageView()
         {
             InitializeComponent();
@@ -119,6 +121,42 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        void SearchBar_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            searchBar = (sender as Xamarin.Forms.SearchBar);
+            if (vatRefundsListView.DataSource != null)
+            {
+                this.vatRefundsListView.DataSource.Filter = FilterRefundsList;
+                this.vatRefundsListView.DataSource.RefreshFilter();
+            }
+        }
+
+        void SearchButton_Tapped(System.Object sender, System.EventArgs e)
+        {
+            viewModel.IsSearchButtonVisible = false;
+            viewModel.IsCloseButtonVisible = true;
+
+        }
+
+        void CloseSearchButton_Tapped(System.Object sender, System.EventArgs e)
+        {
+            viewModel.IsSearchButtonVisible = true;
+            viewModel.IsCloseButtonVisible = false;
+        }
+
+        private bool FilterRefundsList(object obj)
+        {
+            if (searchBar == null || searchBar.Text == null)
+                return true;
+
+            var vatRefHeaderSetResult = obj as VatRefHeaderSetResult;
+            if (vatRefHeaderSetResult.RefundFbnum.ToLower().Contains(searchBar.Text.ToLower())
+                 || vatRefHeaderSetResult.RefundFbnum.ToLower().Contains(searchBar.Text.ToLower()))
+                return true;
+            else
+                return false;
         }
     }
 }

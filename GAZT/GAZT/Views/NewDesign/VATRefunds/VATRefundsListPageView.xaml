@@ -48,9 +48,24 @@
                         </Image>
 
                         <StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
-                            <Image Source="search">
+                            <Image Source="search" IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}">
+                               <Image.GestureRecognizers>
+                                   <TapGestureRecognizer Tapped="SearchButton_Tapped">
+
+                                   </TapGestureRecognizer>
+                               </Image.GestureRecognizers>
                             </Image>
+                            <Image Source="close" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                                <Image.GestureRecognizers>
+                                   <TapGestureRecognizer Tapped="CloseSearchButton_Tapped">
+
+                                   </TapGestureRecognizer>
+                               </Image.GestureRecognizers>
+                            </Image>
+                            
                         </StackLayout>
+                        <SearchBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
+                        </SearchBar>
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
@@ -111,7 +126,7 @@
                     </buttons:SfChipGroup>
                 </ScrollView>
             </StackLayout>
-                <listView:SfListView Grid.Row="1" ItemsSource="{Binding VATRefundsSet   }" IsVisible="true" SelectionChanged="vatRefundDetailsListView_SelectionChanged" HorizontalOptions="FillAndExpand"
+                <listView:SfListView Grid.Row="1" ItemsSource="{Binding VATRefundsSet}" IsVisible="true" SelectionChanged="vatRefundDetailsListView_SelectionChanged" HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand" BackgroundColor="White" AutoFitMode="Height" x:Name="vatRefundsListView" SelectionBackgroundColor="Transparent" > 
                     <listView:SfListView.ItemTemplate>
                         <DataTemplate>
