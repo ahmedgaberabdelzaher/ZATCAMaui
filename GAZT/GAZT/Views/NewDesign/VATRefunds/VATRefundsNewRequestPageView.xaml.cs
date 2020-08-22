@@ -6,6 +6,7 @@ using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -52,7 +53,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             });
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
             string message = string.Empty;
@@ -70,16 +71,20 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 if(DraftsRequestDataModel == null)
                 {
-                    viewModel.ReloadData();
+                    await viewModel.ReloadData();
                 }
                 else
                 {
-                    viewModel.LoadDraftsData(DraftsRequestDataModel);
+                    await viewModel.LoadDraftsData(DraftsRequestDataModel);
                 }
+            }
+            catch(GAZTErrorException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
         }
 

@@ -296,7 +296,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             //EnableReasonView();
         }
 
-        public async void ReloadData()
+        public async Task ReloadData()
         {
             try
             {
@@ -337,11 +337,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     App.HideProgressView();
                 });
 
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                //    _navigationService.GoBack();
-                //});
+                try
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    _navigationService.GoBack();
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
             }
             catch (GAZTErrorException ex)
             {
@@ -354,32 +358,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    PopUp popUp = new PopUp();
-                    StringBuilder PopMsg = new StringBuilder();
-
-                    popUp.Message = message;
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-
-                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    await _dialogService.ShowMessage(message, AppResources.Information);
                     _navigationService.GoBack();
                 }
                 catch(Exception mex)
                 {
                     Console.WriteLine(mex.Message);
                 }
-
+            }
+            catch(Exception ex)
+            {
+                try
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
             }
         }
 
-        public async void LoadDraftsData(VatRefundsListResultModel draftsData)
+        public async Task LoadDraftsData(VatRefundsListResultModel draftsData)
         {
             try
             {
@@ -439,11 +440,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     App.HideProgressView();
                 });
 
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                //    _navigationService.GoBack();
-                //});
+                try
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    _navigationService.GoBack();
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
             }
             catch (GAZTErrorException ex)
             {
@@ -456,28 +461,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    PopUp popUp = new PopUp();
-                    StringBuilder PopMsg = new StringBuilder();
-
-                    popUp.Message = message;
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-
-                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    await _dialogService.ShowMessage(message, AppResources.Information);
                     _navigationService.GoBack();
                 }
                 catch (Exception mex)
                 {
                     Console.WriteLine(mex.Message);
                 }
-
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
             }
         }
 
