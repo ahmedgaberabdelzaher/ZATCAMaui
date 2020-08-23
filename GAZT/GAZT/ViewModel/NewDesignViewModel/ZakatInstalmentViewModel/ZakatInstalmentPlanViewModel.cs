@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
+using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
+using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
@@ -19,6 +26,114 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        private bool _isLoading = true;
+        public System.Collections.Generic.List<VATResults4> selectedList = new System.Collections.Generic.List<VATResults4>();
+
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+        private string _vATDueAmount = "0.00";
+        public string VATDueAmount
+        {
+            get
+            {
+                return _vATDueAmount;
+            }
+            set
+            {
+                _vATDueAmount = value;
+                RaisePropertyChanged("VATDueAmount");
+            }
+        }
+        private string _vATPenalityAmount = "0.00";
+        public string VATPenalityAmount
+        {
+            get
+            {
+                return _vATPenalityAmount;
+            }
+            set
+            {
+                _vATPenalityAmount = value;
+                RaisePropertyChanged("VATPenalityAmount");
+            }
+        }
+        private string _vATLiabilityAmount = "0.00 SAR";
+        public string VATLiabilityAmount
+        {
+            get
+            {
+                return _vATLiabilityAmount;
+            }
+            set
+            {
+                _vATLiabilityAmount = value;
+                RaisePropertyChanged("VATLiabilityAmount");
+            }
+        }
+        private string _vATBillDueAmount = "0.00 SAR";
+        public string VATBillDueAmount
+        {
+            get
+            {
+                return _vATBillDueAmount;
+            }
+            set
+            {
+                _vATBillDueAmount = value;
+                RaisePropertyChanged("VATBillDueAmount");
+            }
+        }
+        private VATResults4[] _billsListVAT;
+        public VATResults4[] BillsListVAT
+        {
+            get
+            {
+                return _billsListVAT;
+            }
+            set
+            {
+                _billsListVAT = value;
+                RaisePropertyChanged("BillsListVAT");
+            }
+        }
+        private VATResults3[] _statementList;
+        public VATResults3[] StatementList
+        {
+            get
+            {
+                return _statementList;
+            }
+            set
+            {
+                _statementList = value;
+                RaisePropertyChanged("StatementList");
+            }
+        }
+
+
+        private bool _isNoDataLableVisible = false;
+        public bool isNoDataLableVisible
+        {
+            get
+            {
+                return _isNoDataLableVisible;
+            }
+            set
+            {
+                _isNoDataLableVisible = value;
+                RaisePropertyChanged("isNoDataLableVisible");
+            }
+        }
         public ICommand GoBackClick { get; set; }
 
         int noOfInstalments = 5;
@@ -28,7 +143,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         double minAmount = 400.0;
         double maxAmount = 2000000.0;
         string inputData = "";
-        string totalAmountSAR = "50,000.00 SAR";
+        string totalAmountSAR = "0.00 SAR";
         int selectedPage = (int)PagesEnum.ZakatSelectionView;
         #endregion
 
@@ -67,8 +182,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         public ICommand GoBackToAggrement { get; set; }
         public ICommand GoBackToAttachments { get; set; }
         public ICommand SummaryInstallmentDetailsBtnTapped { get; set; }
+        public ICommand OnZakatInstalmentReasonTapped { get; set; }
+        public ICommand VATInstalationClicked { get; set; }
+        public ICommand NewAttachmentTapped { get; set; }
+
 
         #endregion
+
+
 
         #region Properties
 
@@ -367,7 +488,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         //Zakat Slection starts here
 
-        private bool _isZakatSelected= true;
+        private bool _isZakatSelected = true;
         public bool IsZakatSelected
         {
             get
@@ -409,6 +530,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("IsSubIncomeTaxViewEnabled");
             }
         }
+
 
         private CorrespondenceFiltersModel _selectedFilterZakat = null;
         public CorrespondenceFiltersModel SelectedFilterZakat
@@ -657,10 +779,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         private void vatInstallmentBillsList()
         {
-            SelectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
-            SelectedBillsList.Add(new ZakatSelectBillModel()
+            //SelectedBillsList = new ObservableCollection<Models.ZakatInstalationModels.Result>();
+
+
+            //SelectedBillsList = VATInstalmentPlanObject.d.VtiaSet.Results;
+
+            /*SelectedBillsList.Add(new ZakatSelectBillModel()
             {
-                billNumber = "Bill 1",
+                billNumber = "Bill 1"
                 amount = "1,200.00 SAR",
                 saadNumber = "1234568798",
                 taxPeriod = "2019-2020",
@@ -693,30 +819,73 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 taxPeriod = "2019-2020",
                 isSelected = false,
                 billType = "VAT"
-            });
+            });*/
         }
 
         public void PopulateSummaryReasonData()
         {
             SummarySelectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
-            SummarySelectedBillsList.Add(new ZakatSelectBillModel()
+
+            for (int i = 0; i < selectedList.Count; i++)
             {
-                billNumber = "Bill " + (SelectedBillsList.Count + 1).ToString("00"),
-                amount = "1,200.00 SAR",
-                saadNumber = "1234568798",
-                taxPeriod = "2019-2020",
-                isSelected = false,
-                billType = "VAT"
-            });
-            SummarySelectedBillsList.Add(new ZakatSelectBillModel()
+                SummarySelectedBillsList.Add(new ZakatSelectBillModel()
+                {
+                    billNumber = "Bill " + (i + 1).ToString("00"),
+                    amount = "0",
+                    saadNumber = selectedList[i].SadadNo,
+                    taxPeriod = selectedList[i].Taxperioddsc,
+                    isSelected = false,
+                    billType = "VAT"
+                });
+            }
+        }
+
+        public void PopulateInstalmentsListViewTemplate()
+        {
+            InstalmentPlans = new ObservableCollection<InstalmentAgreementInstalmentPlansModel>();
+            InstalmentPlans.Add(new InstalmentAgreementInstalmentPlansModel
             {
-                billNumber = "Bill " + (SelectedBillsList.Count + 1).ToString("00"),
-                amount = "1,300.00 SAR",
-                saadNumber = "1234568798",
-                taxPeriod = "2019-2020",
-                isSelected = false,
-                billType = "VAT"
+                DueDate = "30/09/2020",
+                NumberOfMonths = "01",
+                MonthlyInstalment = "3672.09",
+                TotalAmountPaid = "3672.09",
+                TotalAmountRemaining = "7344.17"
             });
+            InstalmentPlans.Add(new InstalmentAgreementInstalmentPlansModel
+            {
+                DueDate = "31/10/2020",
+                NumberOfMonths = "02",
+                MonthlyInstalment = "3672.09",
+                TotalAmountPaid = "7344.18",
+                TotalAmountRemaining = "3672.08"
+            });
+            InstalmentPlans.Add(new InstalmentAgreementInstalmentPlansModel
+            {
+                DueDate = "30/11/2020",
+                NumberOfMonths = "03",
+                MonthlyInstalment = "3672.09",
+                TotalAmountPaid = "11016.26",
+                TotalAmountRemaining = "0.00"
+            });
+        }
+
+
+        public ObservableCollection<InstalmentAgreementInstalmentPlansModel> _instalmentPlans { get; set; }
+        public ObservableCollection<InstalmentAgreementInstalmentPlansModel> InstalmentPlans
+        {
+            get
+            {
+                return _instalmentPlans;
+            }
+            set
+            {
+                if (_instalmentPlans == value)
+                {
+                    return;
+                }
+                _instalmentPlans = value;
+                RaisePropertyChanged("InstalmentPlans");
+            }
         }
 
         public ObservableCollection<InstalmentAgreementAttachmentsModel> SummaryAttachmentsListViewData { get; private set; }
@@ -772,7 +941,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         public ZakatInstalmentPlanModel zakatInstalmentPlanModel { get; set; }
         public ZakatInstalmentPlanModel ZakatInstalmentPlanModel
-    {
+        {
             get
             {
                 return zakatInstalmentPlanModel;
@@ -829,8 +998,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("ZakatSelectBillModel");
             }
         }
-        public ObservableCollection<ZakatSelectBillModel> selectedBillsList { get; set; }
-        public ObservableCollection<ZakatSelectBillModel> SelectedBillsList
+        public ObservableCollection<Models.ZakatInstalationModels.VATResults4> selectedBillsList { get; set; }
+        public ObservableCollection<Models.ZakatInstalationModels.VATResults4> SelectedBillsList
         {
             get
             {
@@ -869,8 +1038,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        public ObservableCollection<InstalmentAgreementAttachmentsModel> attachmentsListViewData { get; set; }
-        public ObservableCollection<InstalmentAgreementAttachmentsModel> AttachmentsListViewData
+        public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
+        public ObservableCollection<Attachment> AttachmentsListViewData
         {
             get
             {
@@ -909,7 +1078,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        
+
 
         private ZakatInstalmentPlanModel _selectedOutletOption;
         public ZakatInstalmentPlanModel SelectedOutletOption
@@ -927,6 +1096,127 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         }
 
 
+        private ZakatInstalmentPlanResponse _vatInstalments;
+        public ZakatInstalmentPlanResponse VatInstalments
+        {
+            get
+            {
+                return _vatInstalments;
+            }
+            set
+            {
+                _vatInstalments = value;
+                RaisePropertyChanged("VatInstalments");
+            }
+        }
+
+        private ZakatInstalment _vatInstalment;
+        public ZakatInstalment VatInstalment
+        {
+            get
+            {
+                return _vatInstalment;
+            }
+            set
+            {
+                _vatInstalment = value;
+                RaisePropertyChanged("VatInstalment");
+            }
+        }
+
+        private bool _isInstrunctionChecked;
+        public bool IsInstrunctionChecked
+        {
+            get
+            {
+                return _isInstrunctionChecked;
+            }
+            set
+            {
+                _isInstrunctionChecked = value;
+                if (_isInstrunctionChecked != null)
+                {
+                    if (_isInstrunctionChecked)
+                    {
+                        IsContinueButtonEnable = true;
+                    }
+                    else
+                    {
+                        IsContinueButtonEnable = false;
+                    }
+                }
+                RaisePropertyChanged("IsInstrunctionChecked");
+            }
+        }
+
+        private bool _isVatTermsChecked = false;
+        public bool IsVatTermsChecked
+        {
+            get
+            {
+                return _isVatTermsChecked;
+            }
+            set
+            {
+                _isVatTermsChecked = value;
+                RaisePropertyChanged("IsVatTermsChecked");
+            }
+        }
+
+        private bool _isDeclarationChecked;
+        public bool IsDeclarationChecked
+        {
+            get
+            {
+                return _isDeclarationChecked;
+            }
+            set
+            {
+                _isDeclarationChecked = value;
+                if (_isDeclarationChecked)
+                {
+                    IsContinueButtonEnable = true;
+                }
+
+                RaisePropertyChanged("IsDeclarationChecked");
+            }
+        }
+
+        private bool _isContinueButtonEnable = false;
+        public bool IsContinueButtonEnable
+        {
+            get
+            {
+                return _isContinueButtonEnable;
+            }
+            set
+            {
+                _isContinueButtonEnable = value;
+                if (_isContinueButtonEnable)
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                }
+                else
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }
+                RaisePropertyChanged("IsContinueButtonEnable");
+            }
+        }
+        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        public Color ContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _continueButtonnBackroundColor;
+            }
+            set
+            {
+                _continueButtonnBackroundColor = value;
+                RaisePropertyChanged("ContinueButtonnBackroundColor");
+            }
+        }
+
         private void Backnavigations()
         {
             switch (selectedPage)
@@ -938,17 +1228,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     EnableSlectionView();
                     break;
                 case (int)PagesEnum.ZakatAggrementView:
-                    EnableBillView();
+                    if (IsZakatSelected)
+                    {
+                        EnableBillView();
+                    }
+                    else if (IsIncomeTaxViewEnabled)
+                    {
+                        EnableVATBillView();
+                    }
                     break;
 
                 case (int)PagesEnum.ZakatAttachmentsView:
-                    EnableAgreementView();
+                    EnableStatementsView();
                     break;
                 case (int)PagesEnum.ZakatEnableStatementsView:
-                    EnableAttachmentsView();
+                    EnableAgreementView();
                     break;
                 case (int)PagesEnum.ZakatSummaryView:
-                    EnableStatementsView();
+                    EnableAttachmentsView();
                     break;
 
                 case (int)PagesEnum.ZakatSuccessView:
@@ -995,7 +1292,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 EnableAttachmentsView();
             });
 
-
+            VATInstalationClicked = new Command(this.VATInstalationTapped);
             ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
             AggrementContinueBtnTapped = new Command(this.AggrementContinueBtnClicked);
             BillContinueBtnTapped = new Command(this.BillContinueBtnClicked);
@@ -1003,22 +1300,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             StatementsContinueBtnTapped = new Command(this.StatementsContinueBtnClicked);
             SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
             SummaryInstallmentDetailsBtnTapped = new Command(this.SummaryInstallmentDetailsBtnClicked);
+            OnZakatInstalmentReasonTapped = new Command(this.OnZakatInstalmentReasonClicked);
+            NewAttachmentTapped = new Command(this.NewAttachmentClicked);
+
             ZakatInstalmentPlanModel = new ZakatInstalmentPlanModel();
             SelectedOutletOption = new ZakatInstalmentPlanModel();
-
+            //LoadVatInstalmentData();
             AddOutletDecisionOptions();
             AddFrequencyOptions();
-            vatInstallmentBillsList();
-            PopulateAttachmentsListViewTemplate();
-            EnableSlectionView();
-            PopulateSummaryReasonData();
-            PopulateSummaryInstallmentAgreement();
-            PopulateSummaryAttachments();
-            PopulateSummaryInstallmentAgreement();
-            SetStatusPickerItem();
-            SetSubStatusPickerItem();
+            //PopulateAttachmentsListViewTemplate();
 
-           // EnableBillView();
+            //PopulateSummaryReasonData();
+            //PopulateSummaryInstallmentAgreement();
+            //PopulateSummaryAttachments();
+            //PopulateSummaryInstallmentAgreement();
+            //SetStatusPickerItem();
+            //SetSubStatusPickerItem();
+
+            //PopulateInstalmentsListViewTemplate();
+
+            // EnableBillView();
         }
 
         public void AddOutletDecisionOptions()
@@ -1031,10 +1332,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             });
             OutletDecisionOptions.Add(new ZakatInstalmentPlanModel
             {
+                ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeIncomeTax,
+                ActiveOutletDecisionOptionsIsSelected = false
+            });
+            OutletDecisionOptions.Add(new ZakatInstalmentPlanModel
+            {
                 ActiveOutletDecisionOptions = AppResources.ZakatInstalmetSelectTypeVAT,
                 ActiveOutletDecisionOptionsIsSelected = false
             });
-           
+
         }
 
         public void AddFrequencyOptions()
@@ -1077,7 +1383,117 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             IsVATBillsViewEnabled = false;
             IsSucessViewEnabled = false;
             selectedPage = (int)PagesEnum.ZakatSelectionView;
+
+
+
         }
+        public void BindVATSelectionView()
+        {
+
+            if (VatInstalments != null && VatInstalments.d != null)
+            {
+
+                VATDueAmount = VatInstalments.d.TotInvAmt;
+                VATPenalityAmount = VatInstalments.d.Peneltyamt;
+                VATBillDueAmount = VatInstalments.d.Totdueamt;
+                VATLiabilityAmount = VatInstalments.d.Totliablityamt;
+            }
+        }
+
+        public void BindBillsListView()
+        {
+
+
+            if (VatInstalments.d.VTIASet.results != null)
+            {
+
+                BillsListVAT = VatInstalments.d.VTIASet.results;
+            }
+
+        }
+
+        public void BindStatementsView()
+        {
+            if (VatInstalments.d.VTISSet.results != null)
+            {
+                StatementList = VatInstalments.d.VTISSet.results;
+
+                for (int i = 0; i < StatementList.Length; i++)
+                {
+                    DateTime dateStart = new DateTime();
+                    CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                    string apiDate = @"""" + StatementList[i].Faedn + @"""";
+                    dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                    //if (App.IsArabic)
+                    //{
+
+                    //    dateStart = DateTime.ParseExact(dt.ToString(), "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                    //}
+                    //else
+                    //{
+
+                    //    dateStart = DateTime.ParseExact(dt.ToString(), "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                    //}
+
+                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                    int year = hjCalendar.GetYear(dateStart);
+                    int month = hjCalendar.GetMonth(dateStart);
+                    int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                    StatementList[i].Faedn = dateStr;
+
+                    string dt1 = string.Empty;
+                    string[] dts = null;
+                    dts = StatementList[i].Faedn.Split('/');
+                    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                    StatementList[i].Faedn = dt1;
+
+                }
+
+                /*DateTime dateStart = new DateTime();
+
+
+                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+
+                if (App.IsArabic)
+                {
+
+                    dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                }
+                else
+                {
+
+                    dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                }
+
+
+                GregorianCalendar hjCalendar = new GregorianCalendar();
+                int year = hjCalendar.GetYear(dateStart);
+                int month = hjCalendar.GetMonth(dateStart);
+                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                myBills[i].Faednar = dateStr;
+
+                string dt = string.Empty;
+                string[] dts = null;
+
+                dts = myBills[i].Faednar.Split('/');
+                dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                myBills[i].Faednar = dt;
+                */
+
+
+                VATBillDueAmount = VatInstalments.d.Totdueamt;
+
+            }
+        }
+
+
         public void EnableBillView()
         {
             //SelectedOutletOption = OutletDecisionOptions[0];
@@ -1114,7 +1530,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         }
 
-        public void EnableAgreementView() {
+        public void EnableAgreementView()
+        {
 
             IsBackButtonVisible = false;
             IsSelectionViewEnabled = false;
@@ -1130,7 +1547,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         }
         public void EnableStatementsView()
-        { 
+        {
 
             IsBackButtonVisible = false;
             IsSelectionViewEnabled = false;
@@ -1160,9 +1577,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             IsStatementViewEnabled = false;
             selectedPage = (int)PagesEnum.ZakatAttachmentsView;
 
+
         }
 
- 
+
 
         public void EnableSummaryView()
         {
@@ -1170,6 +1588,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
             IsSummaryViewEnabled = true;
+            IsVATBillsViewEnabled = false;
             IsAgreementViewEnabled = false;
             IsBillsViewEnabled = false;
             IsSucessViewEnabled = false;
@@ -1178,9 +1597,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
         }
-        public void EnableSucessScreen()
+        public async Task EnableSucessScreenAsync()
         {
-            IsSelectionViewEnabled = false;
+           
+          await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
+
+ 
+
+            /*IsSelectionViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
             IsSummaryViewEnabled = false;
@@ -1188,27 +1612,77 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             IsBillsViewEnabled = false;
             IsSucessViewEnabled = true;
             IsStatementViewEnabled = false;
-            selectedPage = (int)PagesEnum.ZakatSuccessView;
+            selectedPage = (int)PagesEnum.ZakatSuccessView;*/
 
         }
 
 
+        public async void VATInstalationTapped()
+        {
+            try
+            {
+                if (IsVatTermsChecked)
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                }
+                else
+                {
+
+                    await _dialogService.ShowMessage("Please accept VAT Instructions and Conditions to continue", "Alert");
+                    // await showAlert("Please accept VAT Instructions and Conditions to continue");
+                }
+                // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
         public async void ReasonContinueBtnClicked()
         {
             try
             {
-                if (IsZakatSelected) {
+                if (IsZakatSelected)
+                {
                     EnableBillView();
                 }
-                else {
+                else if (IsIncomeTaxViewEnabled)
+                {
                     EnableVATBillView();
+                }
+                else if (IsVATAmountVisible)
+                {
+                    if (IsVatTermsChecked)
+                    {
+                        EnableVATBillView();
+                    }
+                    else
+                    {
+                        await PopupNavigation.Instance.PushAsync(new ZakatInstalmentPlanBottomPopup());
+                    }
+                }
+                else
+                {
+                    await _dialogService.ShowMessage("Please choose a Tax type to continue", "Alert");
                 }
 
 
-               
+
+
+
             }
             catch (GAZTUnlockAccountException ex)
             {
+
+
 
             }
             catch (InternetException ex)
@@ -1225,10 +1699,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
-                EnableAgreementView();
+                if (TotalAmountSAR.Equals("0.00 SAR"))
+                {
+                    await _dialogService.ShowMessage("Please Select atleast one bill to continue", "Alert");
+                }
+                else
+                {
+                    EnableAgreementView();
+                }
             }
             catch (GAZTUnlockAccountException ex)
             {
+
+
 
             }
             catch (InternetException ex)
@@ -1245,7 +1728,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
-                EnableAttachmentsView();
+                //EnableAttachmentsView();
+
+
+                setDATA();
+                //VaiInstalmentRequest vatInstalments1 = new VaiInstalmentRequest();
+                //vatInstalments1.Xstep1Conf = "1";
+                //vatInstalments1.Xstep2Conf = "2";
+                //vatInstalments1.Noofinstallment = "4";
+                //vatInstalments1.Operationz = "10";
+
+                var amount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
+                VatInstalments.d.Totliablityamt = amount;
+                VatInstalments.d.StepNumberz = "03";
+
+                VatInstalments.d.Operationz = "10";
+
+
+                VatInstalments = await SubmitClicked();
+
+
+                EnableStatementsView();
+                BindStatementsView();
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1286,7 +1791,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
-               EnableStatementsView();
+
+
+                EnableSummaryView();
+                PopulateSummaryReasonData();
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1305,7 +1813,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
-                EnableSummaryView();
+
+                AttachmentsListViewData = new ObservableCollection<Attachment>();
+                EnableAttachmentsView();
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1328,7 +1839,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             try
             {
                 //Display Success Screen
-                EnableSucessScreen();
+                EnableSucessScreenAsync();
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1343,7 +1854,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 });
             }
         }
+        public async void OnZakatInstalmentReasonClicked()
+        {
+            try
+            {
+                ObservableCollection<string> ZakatreasonData = new ObservableCollection<string>();
+                ZakatreasonData.Add(AppResources.TinDeregistrationReasonBankruptcy);
+                ZakatreasonData.Add(AppResources.TinDeregistrationReasonDeath);
+                ZakatreasonData.Add(AppResources.TinDeregistrationReasonLiquidation);
+                ZakatreasonData.Add(AppResources.TinDeregistrationReasonEstablishmentToCompany);
 
+                //await PopupNavigation.Instance.PushAsync(new PickerPageView(ZakatreasonData));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public async void NewAttachmentClicked()
+        {
+            try
+            {
+                PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(VatInstalments.d.AttachmentSet.results, WhichAttachment.VATInstalment, VatInstalments.d.ReturnIdz));
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         public async void SummaryInstallmentDetailsBtnClicked()
         {
             try
@@ -1375,25 +1938,347 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         //SummaryContinueButtonTapped
 
         #region Attachments View
-        public void PopulateAttachmentsListViewTemplate()
+        public void PopulateAttachments(List<Attachment> attachments)
         {
-            AttachmentsListViewData = new ObservableCollection<InstalmentAgreementAttachmentsModel>();
-            AttachmentsListViewData.Add(new InstalmentAgreementAttachmentsModel
-            {
-                FieldTitle = AppResources.ZakatInstalmentBankStatementsForLast3Months,
-                FieldSubTitle = AppResources.TinDeregistration20MB,
-                AttachmentName = "File1.pdf",
-                IsAttachmentAttached = true
-            });
-            AttachmentsListViewData.Add(new InstalmentAgreementAttachmentsModel
-            {
-                FieldTitle = AppResources.ZakatInstalmentFinancialStatementsForLastThreeYears,
-                FieldSubTitle = AppResources.TinDeregistration20MB,
-                AttachmentName = "File2.pdf",
-                IsAttachmentAttached = true
-            });
+
+            AttachmentsListViewData = new ObservableCollection<Attachment>();
+
+            foreach(Attachment attachemnt in attachments) {
+                AttachmentsListViewData.Add(attachemnt);
+            }
+
         }
 
+        #endregion
+
+
+        #region OnPageLoad
+
+        public async Task OnPageLoad()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+
+                    IsLoading = true;
+                    VatInstalments = null;
+                    ZakatInstalmentPlanResponse vATInstalment = null;
+                    try
+                    {
+                        vATInstalment = await WebServiceManager.GAZTGetZakatInstalmentData();
+                        VatInstalments = vATInstalment;
+
+                        PopToRootPage();
+                        // If seesion Expired it will navigate to Dashboard page
+
+                        // EnableSlectionView();
+
+
+                        if (VatInstalments != null && VatInstalments.d != null)
+                        {
+
+                            await PopupNavigation.Instance.PushAsync(new ZakatInstalmentPlanBottomPopup());
+                            BindVATSelectionView();
+                            BindBillsListView();
+
+
+                            if (VatInstalments.d.Xstep1Conf != null)
+                            {
+                                if (VatInstalments.d.Xstep1Conf == "1")
+                                {
+                                    IsInstrunctionChecked = true;
+
+                                }
+                                if (vATInstalment.d.Xstep1Conf == "0")
+                                {
+                                    IsInstrunctionChecked = false;
+                                }
+
+                            }
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
+
+        #endregion
+        #region Method
+
+        public void setDATA()
+        {
+            try
+            {
+                //if (IsInstrunctionChecked)
+                //{
+                //    VATInstalmentPlanObject.d.Xstep1Conf = "1";
+                //}
+                //else
+                //{
+                //    VATInstalmentPlanObject.d.Xstep1Conf = "0";
+                //}
+                VatInstalments.d.Xstep1Conf = "1";
+                VatInstalments.d.Xstep2Conf = "1";
+                if (NoOfInstalments == 0)
+                {
+
+                    VatInstalments.d.Noofinstallment = "2";
+                }
+                else
+                {
+
+                    VatInstalments.d.Noofinstallment = NoOfInstalments.ToString();
+                }
+
+                //Double dueAmount = Double.Parse(VatInstalments.d.TotInvAmt) + Double.Parse(VatInstalments.d.Peneltyamt);
+                //VatInstalments.d.Totdueamt = Math.Round(dueAmount, 2).ToString();
+                VatInstalments.d.UserTypz = "TP";
+
+                //Step 5
+                //if (IsDeclarationChecked)
+                //{
+                //    VATInstalmentPlanObject.d.Xstep2Conf = "1";
+                //}
+                //else
+                //{
+                //    VATInstalmentPlanObject.d.Xstep2Conf = "0";
+                //}
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+        }
+        #endregion
+
+        #region MAP_VAT_RequestObject
+
+        public ZakatInstalmentPlanRequest BuildRequestObject()
+        {
+            ZakatInstalmentPlanRequest request = new ZakatInstalmentPlanRequest();
+            request.d = new ZakatInstalmentRequest();
+            request.d.Appchkbox = VatInstalments.d.Appchkbox;
+            request.d.Begdaz = VatInstalments.d.Begdaz;
+            request.d.Betrw = VatInstalments.d.Betrw;
+            request.d.DataVersion = VatInstalments.d.DataVersion;
+            request.d.Decflg = VatInstalments.d.Decflg;
+            request.d.Enddaz = VatInstalments.d.Enddaz;
+            request.d.Euser = VatInstalments.d.Euser;
+            request.d.EvStatus = VatInstalments.d.EvStatus;
+            request.d.Fbnumz = VatInstalments.d.Fbnumz;
+            request.d.FormGuid = VatInstalments.d.FormGuid;
+            request.d.Formprocz = VatInstalments.d.Formprocz;
+            request.d.Gpartz = VatInstalments.d.Gpartz;
+            request.d.Langz = VatInstalments.d.Langz;
+            request.d.Mandt = VatInstalments.d.Mandt;
+            request.d.Noofinstallment = VatInstalments.d.Noofinstallment;
+            request.d.Officer = VatInstalments.d.Officer;
+            request.d.OfficerTz = VatInstalments.d.OfficerTz;
+            request.d.Officerz = VatInstalments.d.Officerz;
+            request.d.Operationz = VatInstalments.d.Operationz;
+            request.d.Partner = VatInstalments.d.Partner;
+            request.d.Partnernm = VatInstalments.d.Partnernm;
+            request.d.Peneltyamt = VatInstalments.d.Peneltyamt;
+            request.d.Periodkeyz = VatInstalments.d.Periodkeyz;
+            request.d.PortalUsrz = VatInstalments.d.PortalUsrz;
+            request.d.ReturnId = VatInstalments.d.ReturnId;
+            request.d.ReturnIdz = VatInstalments.d.ReturnIdz;
+            request.d.SrcAppz = VatInstalments.d.SrcAppz;
+            request.d.Statusz = VatInstalments.d.Statusz;
+            request.d.StepNumberz = VatInstalments.d.StepNumberz;
+            request.d.Totdueamt = VatInstalments.d.Totdueamt;
+            request.d.TotInvAmt = VatInstalments.d.TotInvAmt;
+            request.d.Totliablityamt = VatInstalments.d.Totliablityamt;
+            request.d.TxnTpz = VatInstalments.d.TxnTpz;
+            request.d.UserTypz = VatInstalments.d.UserTypz;
+            request.d.Vtref = VatInstalments.d.Vtref;
+            request.d.Waers = VatInstalments.d.Waers;
+            request.d.Xstep1Conf = VatInstalments.d.Xstep1Conf;
+            request.d.Xstep2Conf = VatInstalments.d.Xstep2Conf;
+            request.d.__metadata = VatInstalments.d.__metadata;
+            request.d.VTADSet = VatInstalments.d.VTADSet.results;
+            request.d.ATTACHMENTSet = VatInstalments.d.AttachmentSet.results;
+            request.d.VTIASet = VatInstalments.d.VTIASet.results;
+            request.d.VTISSet = VatInstalments.d.VTISSet.results;
+            request.d.NOTESSet = VatInstalments.d.NotesSet.results;
+            return request;
+
+
+        }
+
+        #endregion
+
+
+        #region ApiIntegration
+
+
+
+
+        public async Task<ZakatInstalmentPlanResponse> SubmitClicked()
+        {
+            ZakatInstalmentPlanResponse response = new ZakatInstalmentPlanResponse();
+            ZakatInstalmentPlanRequest request = new ZakatInstalmentPlanRequest();
+
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                request = BuildRequestObject();
+
+
+
+
+                //setDATA();
+                //VaiInstalmentRequest vatInstalments1 = new VaiInstalmentRequest();
+                //vatInstalments1.Xstep1Conf = "1";
+                //vatInstalments1.Xstep2Conf = "2";
+                //vatInstalments1.Noofinstallment = "4";
+                //vatInstalments1.Operationz = "10";
+
+                response = await WebServiceManager.SaveZakatInstalmentData(request);
+                PopToRootPage();
+                if (response != null && response.d != null)
+                {
+                    try
+                    {
+                        if (response != null && response.d != null)
+                        {
+                            if (response.d.Operationz.Equals("04"))
+                            {
+                                string number = response.d.Fbnumz;
+                                string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
+                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                _navigationService.GoBack();
+                            }
+                            if (response.d.Operationz.Equals("05"))
+                            {
+                                //  string number = response.d.Fbnumz;
+                                string displayMessage = AppResources.VATRSaveasdraftMessage;
+                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+
+                            }
+
+
+
+
+                            // VatInstalments = response;
+
+                            //Set data after api call 
+                            //setDataAfterSubmitAPIAsync(response);
+
+                        }
+                        IsLoading = false;
+                        return response;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                        return null;
+
+                    }
+                }
+                IsLoading = false;
+                return response;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+
+                });
+                return response;
+            }
+
+            catch (Exception ex)
+            {
+                return response;
+            }
+
+        }
 
         #endregion
     }

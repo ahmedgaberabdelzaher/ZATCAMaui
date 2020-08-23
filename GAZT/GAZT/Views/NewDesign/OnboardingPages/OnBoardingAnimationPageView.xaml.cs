@@ -31,7 +31,7 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
         {
             try
             {
-                if (App.IsArabic)
+                if (App.IsArabic)   
                 {
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);

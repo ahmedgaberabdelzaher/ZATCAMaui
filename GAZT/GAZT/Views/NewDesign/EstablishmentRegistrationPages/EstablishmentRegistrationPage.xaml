@@ -431,34 +431,44 @@
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
-                            <listView:SfListView x:Name="OtherTaxIncomeFromSourceWithInTheSKAlist" Grid.Row="8"  VerticalOptions="Start" HorizontalOptions="Fill" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}"
-                                                 ItemsSource="{Binding TaxableIncomeSourceTypeList}"  SelectedItem="{Binding SelectedTaxIncomeSourceType, Mode=OneWay}"  AutoFitMode="Height" ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False" IsScrollingEnabled="False">
-                                <listView:SfListView.LayoutManager>
-                                    <listView:LinearLayout />
-                                </listView:SfListView.LayoutManager>
-                                <listView:SfListView.ItemTemplate>
+                            <CollectionView  x:Name="OtherTaxIncomeFromSourceWithInTheSKAlist" Grid.Row="8"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
+                                                 VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
+                                                 ItemsSource="{Binding TaxableIncomeSourceTypeList}"  SelectedItem="{Binding SelectedTaxIncomeSourceType, Mode=OneWay}"
+                                                 SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout Orientation="Vertical"   />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
                                     <DataTemplate>
-                                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent">
-                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
-                                                <Image Source="vat_tile_listofsignup_W.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="100" />
-                                                <custom:CustomLabel Text="{Binding .}" Style="{StaticResource CaptionLabelBlack}" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
-                                                                  TextColor="Gray"  Padding="20" HorizontalTextAlignment="Start" />
-                                            </Grid>
-                                        </cards:SfCardView>
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0">
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Normal">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                            <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup_W" />
+                                                            <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="Gray" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Selected">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundColor" Value="White" />
+                                                            <Setter TargetName="cardBackGroundImage" Property="Image.Source" Value="vat_tile_listofsignup" />
+                                                            <Setter TargetName="cardLabel" Property="custom:CustomLabel.TextColor" Value="White" />
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Image x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding .}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
+                                                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                                      HorizontalOptions="Start"  Padding="20" 
+                                                                VerticalOptions="End" HorizontalTextAlignment="Start"
+                                                                />
+                                        </Grid>
                                     </DataTemplate>
-                                </listView:SfListView.ItemTemplate>
-                                <listView:SfListView.SelectedItemTemplate>
-                                    <DataTemplate>
-                                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent">
-                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" ColumnSpacing="0" RowSpacing="0" Padding="0" Margin="0">
-                                                <Image Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_tile_listofsignup.png" HeightRequest="100"/>
-                                                <custom:CustomLabel Text="{Binding .}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="Start" VerticalOptions="End"
-                                                                  TextColor="White"  Padding="20" HorizontalTextAlignment="Start" />
-                                            </Grid>
-                                        </cards:SfCardView>
-                                    </DataTemplate>
-                                </listView:SfListView.SelectedItemTemplate>
-                            </listView:SfListView>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
                             <!--</StackLayout>-->
                         </Grid>
                     </ScrollView>

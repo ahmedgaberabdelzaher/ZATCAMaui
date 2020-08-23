@@ -21,8 +21,8 @@
 
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="0,0,0,10">
+        <!--<ScrollView>-->
+            <StackLayout Padding="0,0,0,10" VerticalOptions="FillAndExpand">
                 <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
                     <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
                     <Label  Text="{x:Static local:AppResources.NDTaxEvasionReport}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
@@ -30,15 +30,15 @@
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
                 
-                <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.NDTaxEvasion}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      Clicked="OnGotoReportPageClicked"  Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                <buttons:SfButton x:Name="btnDashboard" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.NDTaxEvasion}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                                      Clicked="btnDashboard_Clicked"  Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource PrimaryButtonStyle}"  />
-                <buttons:SfButton x:Name="btnDashboard"  Text="{x:Static local:AppResources.NDBacktoLoginnew}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                <!--<buttons:SfButton x:Name="btnDashboard"  Text="{x:Static local:AppResources.NDBacktoLoginnew}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="White"  />
+                                      Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" TextColor="White"  />-->
                 <!--TextColor="#d49504"-->
             </StackLayout>
-        </ScrollView>
+        <!--</ScrollView>-->
     </ContentPage.Content>
 </ContentPage>
 

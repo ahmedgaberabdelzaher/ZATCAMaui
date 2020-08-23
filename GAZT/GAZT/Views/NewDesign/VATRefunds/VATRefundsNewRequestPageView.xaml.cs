@@ -6,6 +6,7 @@ using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -52,24 +53,45 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             });
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+            string message = string.Empty;
+            ChangeArrowDirection();
+            Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
+            {
+                if (arg != null)
+                {
+                    message = arg;
+                    viewModel.AddNewIban(message);
+                }
+            });
+
             try
             {
                 if(DraftsRequestDataModel == null)
                 {
-                    viewModel.ReloadData();
+                    await viewModel.ReloadData();
                 }
                 else
                 {
-                    viewModel.LoadDraftsData(DraftsRequestDataModel);
+                    await viewModel.LoadDraftsData(DraftsRequestDataModel);
                 }
+            }
+            catch(GAZTErrorException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<object, string>(this, "IbanReceived");
         }
 
         private void SetLTR()
@@ -93,6 +115,19 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

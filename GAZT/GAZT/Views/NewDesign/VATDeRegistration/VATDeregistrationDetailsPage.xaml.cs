@@ -54,17 +54,15 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             viewModel.FromDate = "DD/MM/YYYY";
             viewModel.ToDate = "DD/MM/YYYY";
-           // viewModel.SuspendedStartDate = "DD/MM/YYYY";
-            //viewModel.SuspendedEndDate = "DD/MM/YYYY";
-           // viewModel.NextFilingStartDate = "DD/MM/YYYY";
-           // viewModel.NextFilingEndDate = "DD/MM/YYYY";
-           // viewModel.NextFilingDueDate = "DD/MM/YYYY";
+      
 
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
                 await GetVatDeRegistrationData();
             });
+
+
 
         }
         public async Task GetVatDeRegistrationData()
@@ -228,57 +226,57 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             await viewModel.AddAttachmentEx();
         }
 
-        private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
+
+        public void onPageLoad(VATDeRegistrationDetails vATDeRegistrationDetails)
         {
-            try
+            if (vATDeRegistrationDetails != null && vATDeRegistrationDetails.d != null)
             {
-                try
+                viewModel.VATDeRegistrationDetailsForAttach = vATDeRegistrationDetails;
+                SetDocType();
+                if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet != null && viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results != null)
                 {
-                    await Task.Run(() =>
+                    if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Count != 0)
                     {
-                        viewModel.IsLoading = true;
-                    });
-                    Image arrowImage = sender as Image;
-                    VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
-                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
-                    //{
+                        ObservableCollection<VATDeregAttachment> myCollection = new ObservableCollection<VATDeregAttachment>(viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results as List<VATDeregAttachment>);
+                        viewModel.VatAttachmentsList = myCollection;
 
-                    if (attachment != null)
-                    {//ZZNotification
-                        var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                        try
+                        {
+                            foreach (var item in viewModel.VatAttachmentsList)
+                            {
+                                if (item.Erfdt != null && item.Erftm != null)
+                                {
+                                    viewModel.FileName = item.Filename;
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+                        }
 
-                        await DeleteAttachment(result, attachment);
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                     }
-
-                    //}
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
-                }
-                catch (Exception ex)
-                {
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
-
                 }
             }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    viewModel.IsLoading = false;
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
-            }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
         }
-        public async Task DeleteAttachment(bool result, VATAttachment attachment)
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Send<Object, AttdetSet>(this, "AttachmentReceived", viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet);
+            //comment because main button remains enabled
+            //  viewModel.IsSwichButtonEnable = false;
+            viewModel.IsLoading = false;
+        }
+        public void SetDocType()
+        {
+            viewModel.setDocType();
+        }
+
+        public async Task DeleteAttachment(bool result, VATDeregAttachment attachment)
         {
             try
             {
@@ -288,35 +286,35 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
                 await Task.Run(() =>
                 {
-                    //if (result)
-                    //{
-                    //    // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-                    //    string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-                    //    if (results == "X")
-                    //    {
-                            
-
-                    //        VATDeregAttachment listitem = (from itm in viewModel.VatAttachmentsList
-                    //                                     where itm.Doguid == attachment.Doguid.ToString()
-                    //                                     select itm)
-                    //                        .FirstOrDefault<VATDeregAttachment>();
-
-                    //        if (listitem != null)
-                    //            viewModel.VatAttachmentsList.Remove(listitem);
+                    if (result)
+                    {
+                        // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                        string results = WebServiceManager.GAZTDeleteVATDeRegistrationAttachment(attachment.Filename, attachment.Doguid,viewModel.DocTypeString);
+                        if (results == "X")
+                        {
 
 
-                    //        viewModel.VATDeRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+                            VATDeregAttachment listitem = (from itm in viewModel.VatAttachmentsList
+                                                           where itm.Doguid == attachment.Doguid.ToString()
+                                                           select itm)
+                                            .FirstOrDefault<VATDeregAttachment>();
+
+                            if (listitem != null)
+                                viewModel.VatAttachmentsList.Remove(listitem);
 
 
-                    //        //if (indexToReduceTheSize != -1)
-                    //        // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
-                    //        viewModel.AttachmentCount--;
-                    //        viewModel.filterList();
-                    //        viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
-                    //    }
-                    //    viewModel.filterList();
-                    //    viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
-                    //}
+                            viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Remove(listitem);
+
+
+                            //if (indexToReduceTheSize != -1)
+                            // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                            viewModel.AttachmentCount--;
+                            viewModel.filterList();
+                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
+                        }
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
+                    }
                 });
                 await Task.Run(() =>
                 {
@@ -960,6 +958,57 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
              viewModel.AddAttachmentEx();
+        }
+
+        async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = true;
+                    });
+                    Image arrowImage = sender as Image;
+                    VATDeregAttachment attachment = (VATDeregAttachment)arrowImage.BindingContext;
+                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
+                    //{
+
+                    if (attachment != null)
+                    {//ZZNotification
+                        var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+
+                        await DeleteAttachment(result, attachment);
+                    }
+
+                    //}
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+                }
+                catch (Exception ex)
+                {
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel.IsLoading = false;
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
     }
 }

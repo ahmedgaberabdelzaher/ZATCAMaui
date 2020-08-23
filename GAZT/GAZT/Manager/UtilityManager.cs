@@ -640,6 +640,59 @@ namespace GAZT.Manager
             }
             return Month;
         }
+        public static string GetShortMonthName(string Month)
+        {
+            if (Month == "01" || Month == "1")
+            {
+                Month = "Jan";
+            }
+            else if (Month == "02" || Month == "2")
+            {
+                Month = "Feb";
+            }
+            else if (Month == "03" || Month == "3")
+            {
+                Month = "Mar";
+            }
+            else if (Month == "04" || Month == "4")
+            {
+                Month = "Apr";
+            }
+            else if (Month == "05" || Month == "5")
+            {
+                Month = "May";
+            }
+            else if (Month == "06" || Month == "6")
+            {
+                Month = "Jun";
+            }
+            else if (Month == "07" || Month == "7")
+            {
+                Month = "Jul";
+            }
+            else if (Month == "08" || Month == "8")
+            {
+                Month = "Aug";
+            }
+            else if (Month == "09" || Month == "9")
+            {
+                Month = "Sep";
+            }
+            else if (Month == "10")
+            {
+                Month = "Oct";
+            }
+            else if (Month == "11")
+            {
+                Month = "Nov";
+            }
+            else if (Month == "12")
+            {
+                Month = "Dec";
+            }
+            return Month;
+        }
+
         public static string GetMonthNameHijri(string Month)
         {
             if (Month == "جمادى الأولى")
