@@ -43,7 +43,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             this.BindingContext = viewModel;
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             ChangeArrowDirection();
@@ -53,12 +53,12 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 if (vatRefundsListResultModel == null)
                 {
                     viewModel.IsNewReqSummary = true;
-                    await viewModel.LoadSummaryData(vatRefundsSaveDataModel);
+                    viewModel.LoadSummaryData(vatRefundsSaveDataModel);
                 }
                 else
                 {
                     viewModel.IsNewReqSummary = false;
-                    await viewModel.ReloadData(vatRefundsListResultModel);
+                    viewModel.ReloadData(vatRefundsListResultModel);
                 }
             }
             catch (GAZTErrorException ex)
@@ -71,7 +71,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
             catch (InternetException ex)
             {
-                await Task.Run(() =>
+                Task.Run(() =>
                 {
                     App.HideProgressView();
                 });
@@ -81,6 +81,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                     await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
         }

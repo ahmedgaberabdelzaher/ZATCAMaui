@@ -68,9 +68,9 @@
 
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAKAT}" Style="{StaticResource PageTitleBlack}" />
-                                <!--<StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
                                     <buttons:SfButton  HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="{Binding ICRStatusImage}"  ShowIcon="True" Text="{Binding ICRStatus}" BackgroundColor="{StaticResource NeutralLightGrey}" CornerRadius="20" TextColor="Gray" VerticalTextAlignment="Center" />
-                                </StackLayout>-->
+                                </StackLayout>
                             </StackLayout>
                             <!--Start of Return Details-->
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">

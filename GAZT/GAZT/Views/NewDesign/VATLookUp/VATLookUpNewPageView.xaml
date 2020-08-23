@@ -45,7 +45,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1"
+                        <!--<Label Grid.Column="1"
                                Grid.Row="0"
                                Text="{x:Static ResourceManager:AppResources.ZZZVatLookUpTitleNew}"
                                Style="{StaticResource SectionTitleWhiteBold}"
@@ -61,7 +61,7 @@
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
-                        </Label>
+                        </Label>-->
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
@@ -97,19 +97,19 @@
                                    HorizontalOptions="Center"
                                    />
 
-                            <!--<Label Grid.Column="0"
+                            <Label Grid.Column="0"
                                    x:Name="Image_backArrow"
                                    Grid.Row="0"
                                    Margin="10,0,10,0"
                                    HorizontalOptions="Start"
                                    VerticalOptions="Center"
                                    Style="{StaticResource IconLabelStyle}"
-                                   Text="{StaticResource Back}"
-                                   Rotation="270">
+                                   Text="{DynamicResource StyleReverseBack}"
+                                   >
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
                                 </Label.GestureRecognizers>
-                            </Label>-->
+                            </Label>
 
                             <Image Grid.Column="2" IsVisible="false">
                                 <Image.Source>

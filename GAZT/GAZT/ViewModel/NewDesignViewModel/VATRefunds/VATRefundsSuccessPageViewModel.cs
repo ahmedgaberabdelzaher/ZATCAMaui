@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Input;
+using EGAZT.Models.VATRefunds;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
@@ -14,6 +15,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         public ICommand GoToDashboard_Tapped { get; set; }
+
+        private VatRefundDisplayDataModel _vatNewReqSummaryData { get; set; }
+        public VatRefundDisplayDataModel VatNewReqSummaryData
+        {
+            get
+            {
+                return _vatNewReqSummaryData;
+            }
+
+            set
+            {
+
+                _vatNewReqSummaryData = value;
+                RaisePropertyChanged("VatNewReqSummaryData");
+            }
+        }
 
         #endregion
 
@@ -38,27 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 _navigationService.GoBack();
             });
 
-            GoToDashboard_Tapped = new Command(this.GoToDashboard_Clicked);
-        }
-
-        public void GoToDashboard_Clicked()
-        {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
-                var _navigation = Application.Current.MainPage.Navigation;
-                foreach (var item in _navigation.NavigationStack)
-                {
-                    if (item.GetType().Name == App.GAZTNewDesignDashBoardPageView)
-                    {
-                        _navigation.RemovePage(item);
-                        break;
-                    }
-                }
-                _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
-                _navigation.NavigationStack.ToList().Clear();
-                //var _navigation = Application.Current.MainPage.Navigation;
-                //_navigation.PopToRootAsync();
-            });
+            VatNewReqSummaryData = new VatRefundDisplayDataModel();
         }
     }
 }
