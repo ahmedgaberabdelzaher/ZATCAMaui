@@ -8414,26 +8414,55 @@ namespace GAZT.Manager
                     String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    var serilized = JsonConvert.SerializeObject(_vATInstalment);
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
-                    _vatResponseObject = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
-                    if (_vatResponseObject == null || _vatResponseObject.d == null)
-                    {
-                        ErrorMessage = string.Empty;
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    if(_vATInstalment.d.Operationz == "01") {
+
+                        var serilized = JsonConvert.SerializeObject(_vATInstalment.d);
+                        client.DefaultRequestHeaders.Add("Token", "123");
+                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                        var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                        _vatResponseObject = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
+                        if (_vatResponseObject == null || _vatResponseObject.d == null)
                         {
-                            ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            ErrorMessage = string.Empty;
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            }
                         }
+                        return _vatResponseObject;
                     }
-                    return _vatResponseObject;
+                    else {
+                        var serilized = JsonConvert.SerializeObject(_vATInstalment);
+                        client.DefaultRequestHeaders.Add("Token", "123");
+                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                        var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                        _vatResponseObject = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
+                        if (_vatResponseObject == null || _vatResponseObject.d == null)
+                        {
+                            ErrorMessage = string.Empty;
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            }
+                        }
+                        return _vatResponseObject;
+                    }
+
+
+                   
                 }
                 catch (Exception ex)
                 {

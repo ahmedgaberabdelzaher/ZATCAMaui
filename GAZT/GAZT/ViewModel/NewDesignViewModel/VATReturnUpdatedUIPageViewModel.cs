@@ -1996,7 +1996,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             onRefundClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.NavigateTo(App.RefundAccountPopupPageView,VATDeclarationData);
+                PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(VATDeclarationData));
+                // _navigationService.NavigateTo(App.RefundAccountPopupPageView,VATDeclarationData);
                 //_navigationService.GoBack();
             });
 

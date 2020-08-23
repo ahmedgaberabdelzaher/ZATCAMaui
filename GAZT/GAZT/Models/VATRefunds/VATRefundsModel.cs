@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.ComponentModel;
 
 namespace EGAZT.Models.VATRefunds
 {
@@ -448,8 +449,34 @@ namespace EGAZT.Models.VATRefunds
         public VatRefundDisplayDataModel D { get; set; }
     }
 
-    public partial class VatRefundDisplayDataModel
+    public partial class VatRefundDisplayDataModel:INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+
+        private string _rfamt { get; set; }
+
+        [JsonProperty("Rfamt")]
+        public string Rfamt
+        {
+            get
+            {
+                return _rfamt;
+            }
+            set
+            {
+                _rfamt = value;
+                OnPropertyRaised("Rfamt");
+            }
+        }
+    
         [JsonProperty("__metadata")]
         public MetadataDisplayModel Metadata { get; set; }
 
@@ -584,9 +611,6 @@ namespace EGAZT.Models.VATRefunds
 
         [JsonProperty("ReturnIdx")]
         public string ReturnIdx { get; set; }
-
-        [JsonProperty("Rfamt")]
-        public string Rfamt { get; set; }
 
         [JsonProperty("Srcidentifyx")]
         public string Srcidentifyx { get; set; }

@@ -494,7 +494,7 @@
                                     <Label Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                 </StackLayout>
                                 <StackLayout Grid.Row="0" Grid.Column="1" >
-                                    <Label Text="{Binding SelectedIbanType}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                    <Label Text="{Binding SelectedIbanIdType}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                 </StackLayout>
                                 <StackLayout Grid.Row="1" Grid.Column="0" >
                                     <Label Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>

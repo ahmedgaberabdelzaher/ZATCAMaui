@@ -646,7 +646,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
-
             });
         }
         protected override bool OnBackButtonPressed() => true;
