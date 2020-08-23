@@ -4501,7 +4501,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Other Documents</value>
   </data>
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
-    <value>Attachments</value>
+    <value>Attachment</value>
   </data>
   <data name="VatDeregAttachmentInputTitle" xml:space="preserve">
     <value>Attachments-Audited Reports</value>
