@@ -183,7 +183,7 @@ namespace EGAZT.Models
         public string Mandt { get; set; }
         public string FormGuid { get; set; }
         public string DataVersion { get; set; }
-        public string LineNo { get; set; }
+        public long LineNo { get; set; }
         public string RankingOrder { get; set; }
         public string AddrType { get; set; }
         public string Srcidentify { get; set; }
@@ -196,7 +196,6 @@ namespace EGAZT.Models
         public string City1 { get; set; }
         public string City2 { get; set; }
         public string Country { get; set; }
-        public string Quarter { get; set; }
         public string PostCode1 { get; set; }
         public string Street { get; set; }
         public string Building { get; set; }
@@ -230,8 +229,8 @@ namespace EGAZT.Models
         public string DataVersionz { get; set; }
         public string Namez { get; set; } //Name
         public string Noteno { get; set; }
-       // public int Lineno { get; set; }
-        //public int ElemNo { get; set; }
+        public int Lineno { get; set; }
+        public int ElemNo { get; set; }
         public string Tdformat { get; set; }
         public string Tdline { get; set; }
         public string Sect { get; set; } //Section
@@ -280,7 +279,6 @@ namespace EGAZT.Models
     {
         public List<VATDeregAttachment> results { get; set; }
     }
-
 
     public class VATDeregistrationSummaryModel
     {
