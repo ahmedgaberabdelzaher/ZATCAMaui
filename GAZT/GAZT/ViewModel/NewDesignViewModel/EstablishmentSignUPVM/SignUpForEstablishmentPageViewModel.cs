@@ -4,13 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EGAZT.ViewModel.NewDesignViewModel
+namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
-    public class EstablishmentSignUPPageViewModel : BaseViewModel
+    public class SignUpForEstablishmentPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
         #region Variable
         private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.EstablishmentAccount;
         public EstablishmentSignUPTabEnum currentTab
@@ -44,7 +43,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Propetry
-        public string _PageTitle = AppResources.ZTERNewAccount;
+        public string _PageTitle = "Establishment Account";
         public string PageTitle
         {
             get
@@ -58,7 +57,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public string _BodyText = AppResources.ZZZZSelectthetypeofEntity;
+        public string _BodyText = AppResources.ZZZZCompletethebelowdetails;
         public string BodyText
         {
             get
@@ -74,7 +73,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Constructor
-        public EstablishmentSignUPPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public SignUpForEstablishmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
@@ -86,6 +85,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+
         }
         #endregion
     }
