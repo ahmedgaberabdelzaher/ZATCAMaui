@@ -296,7 +296,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             //EnableReasonView();
         }
 
-        public async void ReloadData()
+        public async Task ReloadData()
         {
             try
             {
@@ -316,7 +316,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 }
                 else
                 {
+                    VarRefundIbanDataModelMetadataResult varRefundIbanDataModelMetadataResult = IbanData.FirstOrDefault();
                     IsAddAccountVisisble = false;
+
+                    if (varRefundIbanDataModelMetadataResult.Iban == string.Empty)
+                    {
+                        IsAddAccountVisisble = true;
+                    }
                 }
 
                 await Task.Run(() =>
@@ -331,11 +337,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     App.HideProgressView();
                 });
 
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                //    _navigationService.GoBack();
-                //});
+                try
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                   
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
             }
             catch (GAZTErrorException ex)
             {
@@ -348,32 +362,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    PopUp popUp = new PopUp();
-                    StringBuilder PopMsg = new StringBuilder();
-
-                    popUp.Message = message;
-                    if (App.IsArabic)
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-
-                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    _navigationService.GoBack();
+                        await _dialogService.ShowMessage(message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
                 }
                 catch(Exception mex)
                 {
                     Console.WriteLine(mex.Message);
                 }
+            }
+            catch(Exception ex)
+            {
+                try
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
 
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
             }
         }
 
-        public async void LoadDraftsData(VatRefundsListResultModel draftsData)
+        public async Task LoadDraftsData(VatRefundsListResultModel draftsData)
         {
             try
             {
@@ -412,7 +430,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 }
                 else
                 {
+                    VarRefundIbanDataModelMetadataResult varRefundIbanDataModelMetadataResult = IbanData.FirstOrDefault();
                     IsAddAccountVisisble = false;
+
+                    if (varRefundIbanDataModelMetadataResult.Iban == string.Empty)
+                    {
+                        IsAddAccountVisisble = true;
+                    }
                 }
 
                 await Task.Run(() =>
@@ -427,11 +451,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     App.HideProgressView();
                 });
 
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                //    _navigationService.GoBack();
-                //});
+                try
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                   
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
             }
             catch (GAZTErrorException ex)
             {
@@ -444,29 +476,63 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    PopUp popUp = new PopUp();
-                    StringBuilder PopMsg = new StringBuilder();
-
-                    popUp.Message = message;
-                    if (App.IsArabic)
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-
-                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    _navigationService.GoBack();
+                        await _dialogService.ShowMessage(message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                   
                 }
                 catch (Exception mex)
                 {
                     Console.WriteLine(mex.Message);
                 }
-
             }
+            catch (Exception ex)
+            {
+                try
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                   
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
+            }
+        }
+
+        public void AddNewIban(string newIban)
+        {
+            if(IbanData == null)
+            {
+                IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>();
+            }
+
+            VarRefundIbanDataModelMetadataResult newIbanModel = new VarRefundIbanDataModelMetadataResult();
+            newIbanModel.Iban = newIban;
+            IbanData.Add(newIbanModel);
+
+            if(VatRefundsIbanDataModel.IbanSet == null)
+            {
+                VatRefundsIbanDataModel.IbanSet = new NSet();
+            }
+
+            if(VatRefundsIbanDataModel.IbanSet.Results == null)
+            {
+                VatRefundsIbanDataModel.IbanSet.Results = new VarRefundIbanDataModelMetadataResult[1000];
+            }
+
+            List<VarRefundIbanDataModelMetadataResult> tempNewIbanList = new List<VarRefundIbanDataModelMetadataResult>();
+            tempNewIbanList.Add(newIbanModel);
+
+            VatRefundsIbanDataModel.IbanSet.Results = tempNewIbanList.ToArray();
+
+            //VatRefundsIbanDataModel.IbanSet.Results
         }
 
         public async void OnIbanIdTypeClicked()
@@ -578,6 +644,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
+            catch(Exception)
+            {
+
+            }
         }
 
         public async void ContinueBtnClicked()
@@ -616,16 +686,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 return;
             }
 
-
             VatRefundsDisplayDataModel.Operationx = "05";
             VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
             VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
-            VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
-            VatRefundsDisplayDataModel.Iban = _selectedIbanData.Iban;
-            VatRefundsDisplayDataModel.IbanC = _selectedIbanData.Iban;
+            VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
+            VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
             VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+            VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
             VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
             VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
+            VatRefundsDisplayDataModel.RefundTp = "Refund Request";
+
+            //VatRefundsDisplayDataModel.Statusx = "E0013";
+            VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
 
             try
             {

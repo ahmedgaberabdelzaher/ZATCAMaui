@@ -48,4 +48,11 @@ namespace EGAZT.Models
         ActivityDetails = 2,
         AddressDetails = 3
     }
+
+    public enum EstablishmentOutletActivitiesTabsEnum
+    {
+        CRDetails = 1,
+        ActivityList = 2,
+        LicenseDetails = 3
+    }
 }

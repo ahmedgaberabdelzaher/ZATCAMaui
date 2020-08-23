@@ -85,6 +85,7 @@
         <Setter Property="HasShadow" Value="False" />
     </Style>
 
+
     <!--<Style x:Key="GAZTSmallBlackLblForInputTable"  TargetType="Label">
         --><!-- Small font--><!--
         <Setter Property="HorizontalTextAlignment" Value="Start" />
