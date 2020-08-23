@@ -559,6 +559,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             //List<BranchesDropDownModel> dropDownModels = await WebServiceManager.ESTBranchesDropDown();
             //TaxPayerDetails taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailMainService(App.TP.Tin, "SKORADA-C@GAZT.GOV.SA");
+            //List<TaxpayerNationality> dropDownModels = await WebServiceManager.ESTTaxPayerNationality();
         }
 
         private void navigateToNext()

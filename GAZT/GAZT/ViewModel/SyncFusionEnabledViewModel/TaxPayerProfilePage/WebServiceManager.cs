@@ -8673,7 +8673,7 @@ namespace GAZT.Manager
             }
             return dropDownModels;
         }
-        public static async Task<TaxPayerDetails> ESTTaxPayerDetailMainService(string TIN, string emailID)
+        public static async Task<TaxPayerDetails> ESTTaxPayerDetailGetService(string step, string TIN, string emailID)
         {
             TaxPayerDetails taxPayer = new TaxPayerDetails();
             if (CrossConnectivity.Current.IsConnected)
@@ -8689,8 +8689,8 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
-                    var uri = new Uri(string.Format("{0}(Euser='',Fbguid='',Gpartx='{1}',Langx='{2}',Operationx='',PortalUsrx='{3}',Srcidentifyx='',StepNumberx='01',Fbnumx='',Fbstax='',Fbustx='')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,Nreg_FormEdit,Nreg_BtnSet,off_notesSet,AttDetSet,Nreg_MSGSet&$format=json",
-                        Constants.ESTTaxPayerDetails, TIN, lang, emailID));
+                    var uri = new Uri(string.Format("{0}(Euser='',Fbguid='',Gpartx='{1}',Langx='{2}',Operationx='',PortalUsrx='{3}',Srcidentifyx='',StepNumberx='{4}',Fbnumx='',Fbstax='',Fbustx='')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,Nreg_FormEdit,Nreg_BtnSet,off_notesSet,AttDetSet,Nreg_MSGSet&$format=json",
+                        Constants.ESTTaxPayerDetails, TIN, lang, emailID, step));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
@@ -8742,6 +8742,184 @@ namespace GAZT.Manager
                 throw new GAZTInternetException();
             }
             return taxPayer;
+        }
+        public static async Task<TaxPayerDetails> ESTTaxPayerDetailPostService(TaxPayerDetails taxPayer) //Rentatt =X , Passatt=X
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    HttpContent contentPost = new StringContent(JsonConvert.SerializeObject(taxPayer), Encoding.UTF8, Constants.ContentType);
+
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(new Uri(string.Format("{0}?sap-language={1}", Constants.ESTTaxPayerDetails, lang)), contentPost);
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return taxPayer;
+        }
+        public static async Task<List<TaxpayerNationality>> ESTTaxPayerNationality()
+        {
+            List<TaxpayerNationality> nationalities = new List<TaxpayerNationality>();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(string.Format("{0}?&$format=json&$filter=ANationality eq 'SAUDI' and Spras eq '{1}'",
+                        Constants.ESTTaxPayerNationality, lang));
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
+                            nationalities = JsonConvert.DeserializeObject<List<TaxpayerNationality>>(ESTBranchesDropDownResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return nationalities;
+        }
+        public static async Task<string> ESTAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Doctype, string contentType) //RG16 for Residency, RG19 for passport
+        {
+            char lang = GetLangZParameter();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    //VATDeregAttachmentRootOject _attachment = new VATDeregAttachmentRootOject();
+                    var uri = new Uri(string.Format("{0}?&$format=json&(RetGuid='{1}',OutletRef='',Flag='N',Dotyp='{2}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
+                        Constants.ESTTaxPayerNationality, RetGuid, Doctype));
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    if (!string.IsNullOrEmpty(contentType))
+                        baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+                    var response = await client.PostAsync(uri, baContent);
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    //_attachment = JsonConvert.DeserializeObject<VATDeregAttachmentRootOject>(responsestr);
+                    return responsestr;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
         }
         #endregion
     }
