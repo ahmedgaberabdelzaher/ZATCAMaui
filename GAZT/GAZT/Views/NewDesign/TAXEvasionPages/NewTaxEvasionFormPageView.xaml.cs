@@ -147,8 +147,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         private async void SetLocationToMap()
         {
-            await Task.Run(async () =>
-            {
+            //await Task.Run(async () =>
+            //{
                 try
                 {
                     double lat = 24.7136, lon = 46.6753;
@@ -196,7 +196,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 {
                 }
 
-            });
+            //});
            
         }
 

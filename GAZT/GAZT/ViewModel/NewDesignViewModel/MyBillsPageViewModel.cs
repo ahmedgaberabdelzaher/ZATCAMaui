@@ -164,7 +164,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        AmountLabel = string.Empty;
+                        AmountLabel = " - ";
                         IsListVisible = false;
                         isNoDataLableVisible = true;
                     }
@@ -174,7 +174,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _amountLabel=string.Empty;
+        private string _amountLabel= " - ";
         public string AmountLabel
         {
             get

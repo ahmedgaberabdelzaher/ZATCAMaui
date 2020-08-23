@@ -52,19 +52,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
 
 
-            viewModel.FromDate = "DD/MM/YYYY";
-            viewModel.ToDate = "DD/MM/YYYY";
-           // viewModel.SuspendedStartDate = "DD/MM/YYYY";
-            //viewModel.SuspendedEndDate = "DD/MM/YYYY";
-           // viewModel.NextFilingStartDate = "DD/MM/YYYY";
-           // viewModel.NextFilingEndDate = "DD/MM/YYYY";
-           // viewModel.NextFilingDueDate = "DD/MM/YYYY";
+            //viewModel.FromDate = "DD/MM/YYYY";
+           // viewModel.ToDate = "DD/MM/YYYY";
+      
 
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
                 await GetVatDeRegistrationData();
             });
+
+
 
         }
         public async Task GetVatDeRegistrationData()
@@ -112,6 +110,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.ReasonTitle = arg.SelectedValue;
+                        if(viewModel.ReasonTitle.Contains("Others"))
+                        {
+                          //  viewModel.SelectedOthersOption = true;
+                        }
                     }
                 }
                 else
@@ -123,6 +125,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.ReasonTitle = arg.SelectedValue;
+                        if (viewModel.ReasonTitle.Contains("Others"))
+                        {
+                           // viewModel.SelectedOthersOption = true;
+                        }
                     }
                 }
 
@@ -134,13 +140,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 
                 if (App.IsArabic)
                 {
-                    if (arg.PickerTitle.Contains("StartDateType"))
+                    if (arg.PickerTitle.Contains("Select Start Date"))
                     {
-                        viewModel.FromDate = arg.SelectedValue;
+                        viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
-                    else if (arg.PickerTitle.Contains("EndDateType"))
+                    else if (arg.PickerTitle.Contains("Select End Date"))
                     {
-                        viewModel.ToDate = arg.SelectedValue;
+                        viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
                     }
                     else
@@ -150,13 +156,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
                 else
                 {
-                    if (arg.PickerTitle.Contains("StartDateType"))
+                    if (arg.PickerTitle.Contains("Select Start Date"))
                     {
-                        viewModel.FromDate = arg.SelectedValue;
+                        viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
-                    else if(arg.PickerTitle.Contains("EndDateType")) 
+                    else if(arg.PickerTitle.Contains("Select End Date")) 
                     {
-                        viewModel.ToDate = arg.SelectedValue;
+                        viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
                     }else
                     {
@@ -164,8 +170,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     }
                 }
 
-                if (!viewModel.FromDate.Contains( "DD/MM/YYYY") && !viewModel.ToDate.Contains
-                    ("DD/MM/YYYY"))
+                if (viewModel.FromDate != DateTime.Now && viewModel.ToDate !=DateTime.Now)
                 {
                     DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
                     DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
@@ -176,7 +181,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         if (obj.d.dateResults[0].SuspDtfrom != null)
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
-                            viewModel.SuspendedStartDate = date;//ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.SuspendedStartDate = date;
 
 
                         }
@@ -184,21 +189,21 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
 
-                            viewModel.SuspendedEndDate = date;//ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.SuspendedEndDate = date;
 
                         }
                         if (obj.d.dateResults[0].NextDtfrom != null)
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
 
-                            viewModel.NextFilingStartDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.NextFilingStartDate = date;
 
                         }
                         if (obj.d.dateResults[0].NextDtfrom != null)
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
 
-                            viewModel.NextFilingEndDate = date;// ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.NextFilingEndDate = date;
                         }
                         if (obj.d.dateResults[0].Duedate!= null)
                         {
@@ -228,57 +233,57 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             await viewModel.AddAttachmentEx();
         }
 
-        private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
+
+        public void onPageLoad(VATDeRegistrationDetails vATDeRegistrationDetails)
         {
-            try
+            if (vATDeRegistrationDetails != null && vATDeRegistrationDetails.d != null)
             {
-                try
+                viewModel.VATDeRegistrationDetailsForAttach = vATDeRegistrationDetails;
+                SetDocType();
+                if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet != null && viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results != null)
                 {
-                    await Task.Run(() =>
+                    if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Count != 0)
                     {
-                        viewModel.IsLoading = true;
-                    });
-                    Image arrowImage = sender as Image;
-                    VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
-                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
-                    //{
+                        ObservableCollection<VATDeregAttachment> myCollection = new ObservableCollection<VATDeregAttachment>(viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results as List<VATDeregAttachment>);
+                        viewModel.VatAttachmentsList = myCollection;
 
-                    if (attachment != null)
-                    {//ZZNotification
-                        var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                        try
+                        {
+                            foreach (var item in viewModel.VatAttachmentsList)
+                            {
+                                if (item.Erfdt != null && item.Erftm != null)
+                                {
+                                    viewModel.FileName = item.Filename;
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                }
+                            }
+                        }
+                        catch (Exception)
+                        {
+                        }
 
-                        await DeleteAttachment(result, attachment);
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                     }
-
-                    //}
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
-                }
-                catch (Exception ex)
-                {
-                    await Task.Run(() =>
-                    {
-                        viewModel.IsLoading = false;
-                    });
-
                 }
             }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    viewModel.IsLoading = false;
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
-            }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
         }
-        public async Task DeleteAttachment(bool result, VATAttachment attachment)
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Send<Object, AttdetSet>(this, "AttachmentReceived", viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet);
+            //comment because main button remains enabled
+            //  viewModel.IsSwichButtonEnable = false;
+            viewModel.IsLoading = false;
+        }
+        public void SetDocType()
+        {
+            viewModel.setDocType();
+        }
+
+        public async Task DeleteAttachment(bool result, VATDeregAttachment attachment)
         {
             try
             {
@@ -288,35 +293,35 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
                 await Task.Run(() =>
                 {
-                    //if (result)
-                    //{
-                    //    // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-                    //    string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-                    //    if (results == "X")
-                    //    {
-                            
-
-                    //        VATDeregAttachment listitem = (from itm in viewModel.VatAttachmentsList
-                    //                                     where itm.Doguid == attachment.Doguid.ToString()
-                    //                                     select itm)
-                    //                        .FirstOrDefault<VATDeregAttachment>();
-
-                    //        if (listitem != null)
-                    //            viewModel.VatAttachmentsList.Remove(listitem);
+                    if (result)
+                    {
+                        // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                        string results = WebServiceManager.GAZTDeleteVATDeRegistrationAttachment(attachment.Filename, attachment.Doguid,viewModel.DocTypeString);
+                        if (results == "X")
+                        {
 
 
-                    //        viewModel.VATDeRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+                            VATDeregAttachment listitem = (from itm in viewModel.VatAttachmentsList
+                                                           where itm.Doguid == attachment.Doguid.ToString()
+                                                           select itm)
+                                            .FirstOrDefault<VATDeregAttachment>();
+
+                            if (listitem != null)
+                                viewModel.VatAttachmentsList.Remove(listitem);
 
 
-                    //        //if (indexToReduceTheSize != -1)
-                    //        // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
-                    //        viewModel.AttachmentCount--;
-                    //        viewModel.filterList();
-                    //        viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
-                    //    }
-                    //    viewModel.filterList();
-                    //    viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
-                    //}
+                            viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Remove(listitem);
+
+
+                            //if (indexToReduceTheSize != -1)
+                            // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                            viewModel.AttachmentCount--;
+                            viewModel.filterList();
+                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
+                        }
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
+                    }
                 });
                 await Task.Run(() =>
                 {
@@ -371,7 +376,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "StartDateType";
+            genericPickerModel.PickerTitle = "Select Start Date";
             genericPickerModel.PickerId = "StartDateTypePicker";
             try
             {
@@ -396,7 +401,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "EndDateType";
+            genericPickerModel.PickerTitle = "Select End Date";
             genericPickerModel.PickerId = "EndDateTypePicker";
             try
             {
@@ -421,7 +426,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "DOBDateType";
+            genericPickerModel.PickerTitle = "Select DOB";
             genericPickerModel.PickerId = "DOBDateTypePicker";
             try
             {
@@ -708,7 +713,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         else
                         {
                             //  viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                            // viewModel.DOB = vATSignUpData.d.Birthdt10;
+                            //  viewModel.DOB = vATSignUpData.d.Birthdt10;
                        
                            // viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
                           
@@ -960,6 +965,57 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
              viewModel.AddAttachmentEx();
+        }
+
+        async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = true;
+                    });
+                    Image arrowImage = sender as Image;
+                    VATDeregAttachment attachment = (VATDeregAttachment)arrowImage.BindingContext;
+                    //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
+                    //{
+
+                    if (attachment != null)
+                    {//ZZNotification
+                        var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+
+                        await DeleteAttachment(result, attachment);
+                    }
+
+                    //}
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+                }
+                catch (Exception ex)
+                {
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel.IsLoading = false;
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
     }
 }

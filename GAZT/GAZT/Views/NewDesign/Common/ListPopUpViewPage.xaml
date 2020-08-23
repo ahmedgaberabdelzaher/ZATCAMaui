@@ -4,7 +4,7 @@
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.NumberListPopUpPageView" >
+             x:Class="EGAZT.Views.NewDesign.Common.ListPopUpViewPage" >
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,23 +23,7 @@
     </pages:PopupPage.Animation>
     <pages:PopupPage.Content>
         <yummy:PancakeView VerticalOptions="EndAndExpand" HeightRequest="300" BackgroundColor="White">
-            <CollectionView VerticalOptions="Start" HorizontalOptions="Fill" SelectionMode="Single" Margin="10" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
-                <CollectionView.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>12</x:String>
-                        <x:String>11</x:String>
-                        <x:String>10</x:String>
-                        <x:String>9</x:String>
-                        <x:String>8</x:String>
-                        <x:String>7</x:String>
-                        <x:String>6</x:String>
-                        <x:String>5</x:String>
-                        <x:String>4</x:String>
-                        <x:String>3</x:String>
-                        <x:String>2</x:String>
-                        <x:String>1</x:String>
-                    </x:Array>
-                </CollectionView.ItemsSource>
+            <CollectionView x:Name="PopupList" VerticalOptions="Start" HorizontalOptions="Fill" SelectionMode="Single" SelectionChanged="PopupList_SelectionChanged" Margin="10" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>

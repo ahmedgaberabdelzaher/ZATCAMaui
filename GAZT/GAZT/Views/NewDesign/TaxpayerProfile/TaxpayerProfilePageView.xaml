@@ -70,7 +70,7 @@
                                         Margin="0,-20,0,0"/>
                                     </StackLayout>
                                     <yummy:PancakeView  Padding="10,0,10,0" CornerRadius="14"  HeightRequest="32" WidthRequest="59" BorderThickness="1" BackgroundColor="{StaticResource OpacityPrimary}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTPActive}"
+                                        <custom:CustomLabel Text="{Binding TinStatusLabelText}"
                                                         Style="{StaticResource CaptionLabelGrey}"
                                                         TextColor="{StaticResource Primary}"
                                                         HorizontalOptions="Center"
@@ -78,6 +78,7 @@
                                     </yummy:PancakeView>
                                 </StackLayout>
                             </Frame>
+                            
 
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}"
                                             HorizontalOptions="StartAndExpand"

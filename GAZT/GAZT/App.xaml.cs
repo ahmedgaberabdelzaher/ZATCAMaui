@@ -27,6 +27,7 @@ using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
+using EGAZT.Views.NewDesign.EstablishmentSignUP;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -64,6 +65,14 @@ namespace EGAZT
         public static string TaxpayerCorrespondancePageView = "TaxpayerCorrespondancePageView";
         public static string TaxpayerCorrespondanceDetailPageView = "TaxpayerCorrespondanceDetailPageView";
         public static string NewZakatObjectionPageView = "NewZakatObjectionPageView";
+
+        //*EST
+        public static string ActivityItemPage = nameof(ActivityItemPage);
+        public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
+        public static string OutletDetailsPageView = nameof(OutletDetailsPageView);
+        public static string RegistrationSuccessfulPage = nameof(RegistrationSuccessfulPage);
+        //*End EST
+
         //test
         public static string AttachmentPopupPageView = "AttachmentPopupPageView";
         public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
@@ -74,6 +83,7 @@ namespace EGAZT
         public static string RefundAccountPopupPageView = "RefundAccountPopupPageView";
         public static string NewAccountPopPageView = "NewAccountPopPageView";
 
+
         // * Taxpayer Profile
         public static string TaxpayerProfilePageView = "TaxpayerProfilePageView";
         public static string UpdateMobilePopUp = "UpdateMobilePopUp";
@@ -81,15 +91,25 @@ namespace EGAZT
         public static string UpdatePasswordPopUp = "UpdatePasswordPopUp";
         public static string VerificationPageView = "VerificationPageView";
         public static string TaxpayerProfileSuccessPage = "TaxpayerProfileSuccessPage";
+        public static string EstablishmentSignUPPageView = "EstablishmentSignUPPageView";
+        public static string SignUpForEstablishmentPageView = "SignUpForEstablishmentPageView";
         // * End
+
         #endregion
 
         #region new design views Release2
-
+        public static string InstalmentPlanPageView = "InstalmentPlanPageView";
+        public static string VatInstalmentPlanSuccessPage = "VatInstalmentPlanSuccessPage";
         public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";
+        public static string VatInstalmentPlanPageView = "VatInstalmentPlanPageView";
+        public static string VatInstalmentPlanListPageView = "VatInstalmentPlanListPageView";
+        public static string ZakatInstalmentPlanListPageView = "ZakatInstalmentPlanListPageView";
         public static string TaxEvasionMyReportsListPageView = "TaxEvasionMyReportsListPageView";
         public static string TaxEvasionReportDetailPageView = "TaxEvasionReportDetailPageView";
         public static string ZakatAcknowledgmentPageView = "ZakatAcknowledgmentPageView";
+        public static string ChangeFillingPeriodPageView = "ChangeFillingPeriodPageView";
+        public static string ContractReleasePageView = "ContractReleasePageView";
+        public static string ContractReleaseSuccessPageView = "ContractReleaseSuccessPageView";
 
         #endregion
 
@@ -169,14 +189,13 @@ namespace EGAZT
         public static string UnlockAccountChangePasswordPageView = "UnlockAccountChangePasswordPageView";
         public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
         public static string TINDeregestrationSuccessPageView = "TINDeregestrationSuccessPageView";
-        public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
 
         public static string VATRefundsSuccessPageView = "VATRefundsSuccessPageView";
         public static string VATRefundsListPageView = "VATRefundsListPageView";
         public static string VATRefundDetailsPageView = "VATRefundDetailsPageView";
         public static string VATRefundsNewRequestPageView = "VATRefundsNewRequestPageView";
         public static string GAZTNewDesignShowVatInformationPopUpPageView = "GAZTNewDesignShowVatInformationPopUpPageView";
-        
+
 
 
         public static string VATRefundsInstructionsPageView = "VATRefundsInstructionsPageView";
@@ -321,7 +340,7 @@ namespace EGAZT
             }
 
             //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-            //CustomNavigation navigationPage = new CustomNavigation(new VATRefundsListPageView()) { BarTextColor = Color.White };
+            //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();

@@ -41,6 +41,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             try
             {
                 viewModel.DataSource.SelectedValue = e.NewValue.ToString();
+                
             }
             catch (Exception ex)
             {

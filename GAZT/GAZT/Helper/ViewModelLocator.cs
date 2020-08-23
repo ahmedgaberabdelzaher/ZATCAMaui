@@ -60,7 +60,6 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 
 using EGAZT.Views.NewDesign.DashBoardPages;
 using EGAZT.Views.NewDesign.ForgotPasswordPages;
@@ -137,12 +136,11 @@ using EGAZT.Views.NewDesign.VATDeRegistration;
 using EGAZT.Views.NewDesign.ZAKATObjectionPages;
 using EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
-using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.GenericPickers;
-using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
+using EGAZT.Views.NewDesign.VatInstalmentPlan;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel;
@@ -151,7 +149,18 @@ using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using EGAZT.Views.NewDesign.TaxpayerProfile;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
-
+using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
+using EGAZT.Views.NewDesign.ChangeFillingPeriod;
+using EGAZT.ViewModel.NewDesignViewModel.ContractReleaseViewModel;
+using EGAZT.Views.NewDesign.ContractRelease;
+using EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
+using EGAZT.Models.InstalmentPlanModel;
+using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
+using EGAZT.Views.NewDesign.InstalmentPlan;
+using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
+using EGAZT.Views.NewDesign.EstablishmentSignUP;
+using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 namespace EGAZT
 {
     public class ViewModelLocator
@@ -200,21 +209,34 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
             SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
+            SimpleIoc.Default.Register<ActivityItemPageViewModel>();
+            SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
             SimpleIoc.Default.Register<ZakatReturnDetailsSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<NewTaxEvasionFormPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
             SimpleIoc.Default.Register<ZakatObjectionSuccessfullPageViewModel>();
 
-            
+
 
             #endregion
 
             #region NewDesignRelease2IOC
             SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
+            SimpleIoc.Default.Register<ZakatInstalmentPlanListViewModel>();
+
+            SimpleIoc.Default.Register<InstalmentPlanViewModel>();
+            SimpleIoc.Default.Register<VATInstalmentPlanViewModel>();
+            SimpleIoc.Default.Register<VATInstalmentPlanListViewModel>();
             SimpleIoc.Default.Register<TaxEvasionMyReportsListPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportDetailPageViewModel>();
             SimpleIoc.Default.Register<ZakatAcknowledgmentPageViewModel>();
-
+            SimpleIoc.Default.Register<ChangeFillingPeriodViewModel>();
+            SimpleIoc.Default.Register<ContractReleaseViewModel>();
+            SimpleIoc.Default.Register<ContractReleaseSuccessViewModel>();
+            SimpleIoc.Default.Register<FilesUploadPopUpViewModel>();
+            SimpleIoc.Default.Register<InstructionsBottomPopUpViewModel>();
+            SimpleIoc.Default.Register<EstablishmentSignUPPageViewModel>();
+            SimpleIoc.Default.Register<SignUpForEstablishmentPageViewModel>();
             #endregion
 
             #region OldIOC
@@ -298,7 +320,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATRefundListPageViewModel>();
             SimpleIoc.Default.Register<VATRefundDetailsPageViewModel>();
             SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
-            SimpleIoc.Default.Register<VATRefundsSuccessPageView>();
+            SimpleIoc.Default.Register<VATRefundsSuccessPageViewModel>();
+            SimpleIoc.Default.Register<VATRefundsInstructionsPageViewModel>();
+
             SimpleIoc.Default.Register<AttachmentPopUpViewModel>();
             SimpleIoc.Default.Register<MorePopUpPageViewModel>();
 
@@ -312,12 +336,42 @@ namespace EGAZT
             SimpleIoc.Default.Register<ShowVatInformationConfirmationPageViewModel>();
             SimpleIoc.Default.Register<RefundAccountPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopPageViewModel>();
-            
+
 
             #endregion
         }
 
         #region NewDesignViewModel
+
+        public SignUpForEstablishmentPageViewModel SignUpForEstablishmentPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SignUpForEstablishmentPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public EstablishmentSignUPPageViewModel EstablishmentSignUPPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EstablishmentSignUPPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         public GAZTNewDesignOnBoardingAnimationPageViewModel GAZTNewDesignOnBoardingAnimationPageView
         {
@@ -560,13 +614,41 @@ namespace EGAZT
                 }
             }
         }
-        public OutletDetailsPageViewModel OutletDetailsPage
+        public OutletDetailsPageViewModel OutletDetailsPageView
         {
             get
             {
                 try
                 {
                     return ServiceLocator.Current.GetInstance<OutletDetailsPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public ActivityItemPageViewModel ActivityItemPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ActivityItemPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public RegistrationSuccessfulPageViewModel RegistrationSuccessfulPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<RegistrationSuccessfulPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1959,7 +2041,7 @@ namespace EGAZT
                     return null;
                 }
             }
-        } 
+        }
         public ZakatAcknowledgmentPageViewModel ZakatAcknowledgmentPageView
         {
             get
@@ -1975,7 +2057,7 @@ namespace EGAZT
             }
         }
 
-        
+
 
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
@@ -2000,6 +2082,8 @@ namespace EGAZT
             navigationService.Configure(App.AttachmentPopUp, typeof(AttachmentPopUp));
             navigationService.Configure(App.RefundAccountPopupPageView, typeof(RefundAccountPopupPageView));
             navigationService.Configure(App.NewAccountPopPageView, typeof(NewAccountPopUpPageView));
+            navigationService.Configure(App.EstablishmentSignUPPageView, typeof(EstablishmentSignUPPageView));
+            navigationService.Configure(App.SignUpForEstablishmentPageView, typeof(SignUpForEstablishmentPageView));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
@@ -2007,11 +2091,19 @@ namespace EGAZT
             #endregion
 
             #region NewDesignRelease2
-
+            navigationService.Configure(App.InstalmentPlanPageView, typeof(InstalmentPlanPageView));
             navigationService.Configure(App.ZakatInstalmentPlanPageView, typeof(ZakatInstalmentPlanPageView));
+            navigationService.Configure(App.ZakatInstalmentPlanListPageView, typeof(ZakatInstalmentPlanListPageView));
+
+            navigationService.Configure(App.VatInstalmentPlanPageView, typeof(VatInstalmentPlanPageView));
+            navigationService.Configure(App.VatInstalmentPlanListPageView, typeof(VatInstalmentPlanListPageView));
             navigationService.Configure(App.TaxEvasionMyReportsListPageView, typeof(TaxEvasionMyReportsListPageView));
             navigationService.Configure(App.TaxEvasionReportDetailPageView, typeof(TaxEvasionReportDetailPageView));
             navigationService.Configure(App.ZakatAcknowledgmentPageView, typeof(ZakatAcknowledgmentPageView));
+            navigationService.Configure(App.ChangeFillingPeriodPageView, typeof(ChangeFillingPeriodPageView));
+            navigationService.Configure(App.ContractReleasePageView, typeof(ContractReleasePageView));
+            navigationService.Configure(App.ContractReleaseSuccessPageView, typeof(ContractReleaseSuccessPageView));
+            navigationService.Configure(App.VatInstalmentPlanSuccessPage, typeof(VatInstalmentPlanSuccessPage));
 
             #endregion
 
@@ -2108,7 +2200,7 @@ namespace EGAZT
             navigationService.Configure(App.TINDeregestrationSuccessPageView, typeof(TINDeregestrationSuccessPageView));
             navigationService.Configure(App.TINDeregistrationPageView, typeof(TINDeregistrationPageView));
             navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
-            //navigationService.Configure(App.EstablishmentRegistrationPage, typeof(EstablishmentRegistrationPage));
+
             navigationService.Configure(App.ZakatReturnDetailsSuccessfullPageView, typeof(ZakatReturnDetailsSuccessfullPageView));
 
             navigationService.Configure(App.TaxEvasionVerifyMobileNumberPage, typeof(TaxEvasionVerifyMobileNumberPage));
@@ -2119,7 +2211,6 @@ namespace EGAZT
             navigationService.Configure(App.VATRefundsSuccessPageView, typeof(VATRefundsSuccessPageView));
             navigationService.Configure(App.GAZTNewDesignShowVatInformationPopUpPageView, typeof(GAZTNewDesignShowVatInformationPopUpPageView));
             navigationService.Configure(App.ZakatObjectionSuccessfullPageView, typeof(ZakatObjectionSuccessfullPageView));
-
             navigationService.Configure(App.VATRefundsInstructionsPageView, typeof(VATRefundsInstructionsPageView));
             navigationService.Configure(App.MorePopUpPageView, typeof(MorePopUpPageView));
             navigationService.Configure(App.ShowVatInformationConfirmationPageView, typeof(ShowVatInformationConfirmationPageView));
@@ -2132,11 +2223,104 @@ namespace EGAZT
             navigationService.Configure(App.UpdatePasswordPopUp, typeof(UpdatePasswordPopUp));
             navigationService.Configure(App.TaxpayerProfileSuccessPage, typeof(TaxpayerProfileSuccessPage));
             // * End
+
+            //EST
+            navigationService.Configure(App.EstablishmentRegistrationPage, typeof(EstablishmentRegistrationPage));
+            navigationService.Configure(App.ActivityItemPage, typeof(ActivityItemPage));
+            navigationService.Configure(App.OutletDetailsPageView, typeof(OutletDetailsPageView));
+            navigationService.Configure(App.RegistrationSuccessfulPage, typeof(RegistrationSuccessfulPage));
+            //End EST
+
             #endregion
 
             return navigationService;
         }
         #endregion
+
+        #region Release2 FileUpload
+
+        public FilesUploadPopUpViewModel FilesUploadPopUpView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FilesUploadPopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Release2 InstalmentPlan
+
+        public InstalmentPlanViewModel InstalmentPlanPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<InstalmentPlanViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        #endregion
+        #region Release2 VATInstalmentPlan
+
+        public VATInstalmentPlanViewModel VatInstalmentPlanPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATInstalmentPlanViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public VATInstalmentPlanListViewModel VatInstalmentPlanListPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATInstalmentPlanListViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        #endregion
+
+        public InstructionsBottomPopUpViewModel InstructionsBottomPopUpView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<InstructionsBottomPopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         #region Release2 ZakatInstalmentPlan
 
@@ -2154,7 +2338,73 @@ namespace EGAZT
                 }
             }
         }
+        public ZakatInstalmentPlanListViewModel ZakatInstalmentPlanListPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanListViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         #endregion
+        #region Contract Release
+
+        public ContractReleaseViewModel ContractReleasePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ContractReleaseViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public ContractReleaseSuccessViewModel ContractReleaseSuccessPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ContractReleaseSuccessViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        #endregion
+
+        #region ChnageFillingPeriod
+
+        public ChangeFillingPeriodViewModel ChangeFillingPeriodPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangeFillingPeriodViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        #endregion
+
         public ZakatDeregistrationPageViewModel ZakatDeregistrationPageView
         {
             get
@@ -2168,7 +2418,7 @@ namespace EGAZT
                     return null;
                 }
             }
-        }   
+        }
         public TaxEvasionReportDetailPageViewModel TaxEvasionReportDetailPageView
         {
             get
@@ -2287,6 +2537,7 @@ namespace EGAZT
             }
         }
 
+
         public RefundAccountPopupPageViewModel RefundAccountPopupPageView
         {
             get
@@ -2315,13 +2566,6 @@ namespace EGAZT
                 }
             }
         }
-
-        
-
-
-
-
-
 
 
 

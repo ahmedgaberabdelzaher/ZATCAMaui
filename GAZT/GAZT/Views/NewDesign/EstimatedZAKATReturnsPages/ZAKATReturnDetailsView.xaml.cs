@@ -22,8 +22,12 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             if (AttachmentPopUpViewModel.SalesDetailList != null)
                 AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
+          //  NavigationPage.SetBackButtonTitle(this, " ");
+
             viewModel.ClearData();
+            ChangeAeroIcon();
             viewModel.Fbguid = fbguid;
+
             SetLTR();
 
             viewModel.OnPageLoad(fbguid);
@@ -43,6 +47,19 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
+
         protected async void OnReleaseBillsButtonClicked(object sender, EventArgs e)
         {
             if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
@@ -549,7 +566,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
         }
 
-
+        protected void OnCheckBoxCheckedChanged(Object sender, EventArgs e)
+        {
+            viewModel.CheckBoxStatus = checkBox.IsChecked;
+        }
 
     }
 }
