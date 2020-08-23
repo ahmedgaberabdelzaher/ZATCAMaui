@@ -4520,7 +4520,7 @@
     <value>اسم الشخص الذي يمكن الاتصال به</value>
   </data>
   <data name="VatDeregSummaryTitle" xml:space="preserve">
-    <value>Summary</value>
+    <value>الملخص</value>
   </data>
   <data name="VatDeregSummarySubTitle" xml:space="preserve">
     <value>مراجعة البيانات التالية</value>

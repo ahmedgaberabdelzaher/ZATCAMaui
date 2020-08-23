@@ -260,7 +260,7 @@
                                              Padding="15,10,15,10">
                                     <Label Text="{x:Static ResourceManager:AppResources.ZZTaxPayerName}" Style="{StaticResource ValueLabelGrey}"
                                            HorizontalOptions="Start"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand"
+                                    <StackLayout HorizontalOptions="StartAndExpand"
                                                  Orientation="Horizontal" >
                                         <Label Text="{Binding Name}"
                                                Style="{StaticResource ValueLabelBlack}"
