@@ -21,7 +21,8 @@
     <Color x:Key="ErrorColor">#AA0C19</Color>
     <Color x:Key="warningColor">#E39800</Color>
     <Color x:Key="NewDarkGreenColor">#006450</Color>
-     <Color x:Key="LightGreen">#006450</Color>
+     <Color x:Key="LightGreen">#e4f0ee</Color>
+    <Color x:Key="NeturalInProgress">#fcf5e9</Color>
 
     <!--Vat New UI-->
 
@@ -438,12 +439,33 @@
 
     <!--Styles for Onboarding-->
 
-    <!--#Styles for New Design-->
+    <!--#Styles for New Design R2-->
 
      <Style x:Key="SfStyleForZakatPlanGreen" TargetType="Frame">
        
         <Setter Property="BackgroundColor" Value="{StaticResource LightGreen}"/>
 
        </Style>
+     <Style x:Key="ValueLabelWhiteBold" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource WhiteTextColor}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>    
+
+    <Style x:Key="SfStyleGreyBorderFrame" TargetType="border:SfBorder">
+        <!--<Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="VerticalOptions" Value="Center" />-->
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="BorderColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="ShadowColor" Value="{StaticResource NeutralGreay}" />
+    </Style>
+
+
+
+
+
 
 </ResourceDictionary>

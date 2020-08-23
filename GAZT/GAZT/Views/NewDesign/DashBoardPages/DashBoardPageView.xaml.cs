@@ -611,6 +611,31 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
+        private async void ZakatInstalmentPlan_Tapped(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.InstalmentPlanPageView);
+
+            });
+        }
+        private async void ChnageFillingPeriod_Tapped(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
+
+            });
+        }
+        private async void ContractRelease_Tapped(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.ContractReleasePageView);
+
+            });
+        }
+
         private async void VATRefundRequest_Tapped(object sender, EventArgs e)
         {
             //await Task.Run(() =>

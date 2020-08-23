@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 mc:Ignorable="d"
+                 xmlns:FontImage="clr-namespace:MVP.FontIcons"
+                 xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+                 xmlns:ResourceManager="clr-namespace:EGAZT"
+                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 xmlns:custom="clr-namespace:GAZT"
+                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 x:Class="EGAZT.Views.NewDesign.InstructionsBottomPopUpView">
+   
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </pages:PopupPage.Resources>
+    
+    <Grid>
+    
+    <yummy:PancakeView IsVisible="{Binding IsInstructions}" CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+        <Grid RowSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.BPInstrucionsAndConditions}" HorizontalOptions="Center" Style="{StaticResource SectionTitleBlack}"/>
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical" Padding="5">
+                    
+                    <border:SfBorder Grid.Row="0" BorderColor="#B1B1B1" BorderWidth="1" Margin="0,0,0,10"
+                             Style="{StaticResource GreyBorderFrame}">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                        <Image Grid.Row="0" Grid.Column="0 ">
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                 Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                            </Image.Source>
+
+                        </Image>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.Information}"
+                                            Margin="10,0,0,0" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}" />
+                    
+                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Description}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource CaptionLabelGrey}" />
+
+                </Grid>
+            </border:SfBorder>
+            
+                <StackLayout Orientation="Horizontal">
+                <CheckBox Color="{StaticResource NewDarkGreenColor}"
+                          VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstuctionsChecked}">
+                    <CheckBox.Triggers>
+                        <DataTrigger TargetType="CheckBox" Value="false">
+                            <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                        </DataTrigger>
+                    </CheckBox.Triggers>
+                </CheckBox>
+                <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="{Binding CheckBoxDescription}" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
+                    </StackLayout>
+                
+                </StackLayout>
+            </ScrollView>
+           <buttons:SfButton Grid.Row="2" Text="{Binding ButtonTitle}" Margin="0,24,0,24" Command="{Binding InstructionsContinueClick}"
+                              Style="{StaticResource PrimaryButtonStyle}"/>
+            
+        </Grid>
+    </yummy:PancakeView>
+    
+    <yummy:PancakeView IsVisible="{Binding IsTerms}" CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+        <Grid RowSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.BPTermsAndConditions}" HorizontalOptions="Center" Style="{StaticResource SectionTitleBlack}"/>
+            <ScrollView Grid.Row="1">
+                <StackLayout Orientation="Vertical" Padding="5">
+                   
+                   
+                      <border:SfBorder Grid.Row="0" BorderColor="#B1B1B1" BorderWidth="1" Margin="0,0,0,10"
+                             Style="{StaticResource GreyBorderFrame}">
+                <Grid Margin="8">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                        <Image Grid.Row="0" Grid.Column="0 ">
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                 Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                            </Image.Source>
+
+                        </Image>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.Information}"
+                                            Margin="10,0,0,0" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}" />
+                    
+                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Description}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource CaptionLabelGrey}" />
+
+                </Grid>
+            </border:SfBorder>
+            
+                
+                <StackLayout Orientation="Horizontal">
+                
+                <CheckBox Color="{StaticResource NewDarkGreenColor}"
+                          VerticalOptions="CenterAndExpand" IsChecked="{Binding IsTermsChecked}">
+                    <CheckBox.Triggers>
+                        <DataTrigger TargetType="CheckBox" Value="false">
+                            <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                        </DataTrigger>
+                    </CheckBox.Triggers>
+                </CheckBox>
+                <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="{Binding CheckBoxDescription}" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
+                </StackLayout>
+            </StackLayout>
+                
+            </ScrollView>
+            <buttons:SfButton Grid.Row="2" Text="{Binding ButtonTitle}" Margin="0,24,0,24" Command="{Binding TermsContinueClick}"
+                              Style="{StaticResource PrimaryButtonStyle}"/>
+            
+        </Grid>
+    </yummy:PancakeView>
+        
+    </Grid>
+</pages:PopupPage>

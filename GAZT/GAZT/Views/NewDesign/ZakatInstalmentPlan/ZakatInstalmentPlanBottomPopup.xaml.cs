@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
@@ -14,14 +17,23 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatInstalmentPlanBottomPopup : PopupPage
     {
+
+
+        ZakatInstalmentPlanViewModel viewModel;
         public ZakatInstalmentPlanBottomPopup()
         {
             InitializeComponent();
+            viewModel = App.Locator.ZakatInstalmentPlanPageView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            this.BindingContext = viewModel;
+            this.FlowDirection = FlowDirection.LeftToRight;
         }
 
-        private void Close_Tapped(object sender, EventArgs e)
-        {
-            PopupNavigation.Instance.PopAsync();
-        }
+       
+
+        //private void Close_Tapped(object sender, EventArgs e)
+        //{
+        //    PopupNavigation.Instance.PopAsync();
+        //}
     }
 }

@@ -602,6 +602,35 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+                                    </Image>
+                                    <custom:CustomLabel  Text="Instalment Plan" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ZakatInstalmentPlan_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                             <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+                                    </Image>
+                                    <custom:CustomLabel  Text="VAT Filling Frequency" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                             <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="menu_return">
+                                    </Image>
+                                    <custom:CustomLabel  Text="Contract Release" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ContractRelease_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 

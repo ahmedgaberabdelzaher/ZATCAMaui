@@ -244,6 +244,16 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         public GAZTErrorException()
         { }
         public GAZTErrorException(string ExceptionMessage) : base(ExceptionMessage)
+        { }
+
+
+    }
+
+    public class GAZTVATInstalmentException : GAZTException
+    {
+        public GAZTVATInstalmentException()
+        { }
+        public GAZTVATInstalmentException(string ExceptionMessage) : base(ExceptionMessage)
         {
         }
     }

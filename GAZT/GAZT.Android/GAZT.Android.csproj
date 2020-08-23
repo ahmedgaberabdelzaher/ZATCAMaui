@@ -1658,6 +1658,10 @@
       <Generator>
       </Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\ic_reviewDetails.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
