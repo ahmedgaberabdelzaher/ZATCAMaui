@@ -4758,7 +4758,10 @@
     <value>اختر النوع</value>
   </data>
   <data name="ZakatInstalmetSelectTypeZakat" xml:space="preserve">
-    <value>Zakat / IncomeTax</value>
+    <value>الزكاة</value>
+  </data>
+   <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
+    <value>ضريبة الدخل</value>
   </data>
   <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
     <value>ضريبة القيمة المضافة</value>
@@ -5495,6 +5498,9 @@
   </data>
   <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
     <value>Total Monthly Instalments</value>
+  </data>
+     <data name="VatInstalmentPlan" xml:space="preserve">
+    <value>خطة التقسيط</value>
   </data>
 </root>
 
