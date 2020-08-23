@@ -4501,7 +4501,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Other Documents</value>
   </data>
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
-    <value>Attachments</value>
+    <value>Attachment</value>
   </data>
   <data name="VatDeregAttachmentInputTitle" xml:space="preserve">
     <value>Attachments-Audited Reports</value>
@@ -5832,7 +5832,16 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <data name="VATInstalmentStatusRefunded" xml:space="preserve">
     <value>Refunded</value>
   </data>
-   <data name="NDInvoiceDetail" xml:space="preserve">     <value>Invoice Detail</value>   </data>   <data name="NDSubmittedSuccessfully" xml:space="preserve">     <value>Submitted Successfully</value>   </data>    <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">     <value>Objection Submitted successfully</value>   </data>   <data name="NDBilled" xml:space="preserve">
+   <data name="NDInvoiceDetail" xml:space="preserve">
+    <value>Invoice Detail</value>
+  </data>
+  <data name="NDSubmittedSuccessfully" xml:space="preserve">
+    <value>Submitted Successfully</value>
+  </data>
+   <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">
+    <value>Objection Submitted successfully</value>
+  </data>
+  <data name="NDBilled" xml:space="preserve">
     <value>Billed</value>
   </data>
    <data name="NDInProcessing" xml:space="preserve">
@@ -5841,6 +5850,11 @@ Applicant should ensure that there is no pending return filing or any outstandin
    <data name="ToBeApproved" xml:space="preserve">
     <value>To Be Approved</value>
   </data>
-
+     <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
+    <value>Total Number of Months</value>
+  </data>
+  <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
+    <value>Total Monthly Instalments</value>
+  </data>
 </root>
 

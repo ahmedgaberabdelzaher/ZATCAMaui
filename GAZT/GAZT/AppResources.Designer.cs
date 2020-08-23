@@ -10217,5 +10217,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("ToBeApproved", resourceCulture);
             }
         }
+        
+        public static string VATInstalmentPlanListTotalNumberOfMonths {
+            get {
+                return ResourceManager.GetString("VATInstalmentPlanListTotalNumberOfMonths", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentPlanListTotalMonthlyInstalments {
+            get {
+                return ResourceManager.GetString("VATInstalmentPlanListTotalMonthlyInstalments", resourceCulture);
+            }
+        }
     }
 }

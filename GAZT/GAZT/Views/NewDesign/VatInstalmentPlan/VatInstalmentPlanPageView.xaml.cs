@@ -279,7 +279,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                     if (arg != null)
                     {
 
-                        viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
+                        //viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
                         viewModel.PopulateAttachments(arg.results);
 
 
@@ -290,6 +290,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 {
                     if (arg != null)
                     {
+
                         viewModel.EnableSucessScreenAsync();
                     }
                 });
