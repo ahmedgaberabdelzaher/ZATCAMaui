@@ -92,6 +92,7 @@ namespace EGAZT
         public static string VerificationPageView = "VerificationPageView";
         public static string TaxpayerProfileSuccessPage = "TaxpayerProfileSuccessPage";
         public static string EstablishmentSignUPPageView = "EstablishmentSignUPPageView";
+        public static string SignUpForEstablishmentPageView = "SignUpForEstablishmentPageView";
         // * End
 
         #endregion

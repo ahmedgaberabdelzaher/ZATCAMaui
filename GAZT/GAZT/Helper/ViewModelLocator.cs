@@ -160,7 +160,7 @@ using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
 using EGAZT.Views.NewDesign.InstalmentPlan;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
-
+using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 namespace EGAZT
 {
     public class ViewModelLocator
@@ -236,7 +236,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<FilesUploadPopUpViewModel>();
             SimpleIoc.Default.Register<InstructionsBottomPopUpViewModel>();
             SimpleIoc.Default.Register<EstablishmentSignUPPageViewModel>();
-
+            SimpleIoc.Default.Register<SignUpForEstablishmentPageViewModel>();
             #endregion
 
             #region OldIOC
@@ -342,6 +342,21 @@ namespace EGAZT
         }
 
         #region NewDesignViewModel
+
+        public SignUpForEstablishmentPageViewModel SignUpForEstablishmentPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SignUpForEstablishmentPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         public EstablishmentSignUPPageViewModel EstablishmentSignUPPageView
         {
@@ -2068,6 +2083,7 @@ namespace EGAZT
             navigationService.Configure(App.RefundAccountPopupPageView, typeof(RefundAccountPopupPageView));
             navigationService.Configure(App.NewAccountPopPageView, typeof(NewAccountPopUpPageView));
             navigationService.Configure(App.EstablishmentSignUPPageView, typeof(EstablishmentSignUPPageView));
+            navigationService.Configure(App.SignUpForEstablishmentPageView, typeof(SignUpForEstablishmentPageView));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
