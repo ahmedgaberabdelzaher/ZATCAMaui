@@ -355,8 +355,8 @@
                                                                     </Image>
                                                                 </StackLayout>
 
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}"  Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsApplicableVisible}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -459,7 +459,7 @@
                                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsApplicableVisible}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -570,7 +570,7 @@
                                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding SuppCon}" />
@@ -647,7 +647,7 @@
                                                                     </StackLayout>
 
                                                                     <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Imp_IsGeneralApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding Imp_IsGeneralApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{Binding GenTrade}" />
@@ -678,7 +678,7 @@
                                                                     </StackLayout>
 
                                                                     <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Imp_IsLiveLihoodsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding Imp_IsLiveLihoodsApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{Binding Livelihoods}" />
@@ -709,7 +709,7 @@
                                                                     </StackLayout>
 
                                                                     <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Imp_IsLivestockApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding Imp_IsLivestockApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{Binding LiveStkAnimals}" />
@@ -773,7 +773,7 @@
                                                                     </StackLayout>
 
                                                                     <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Pro_IsGeneralApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding Pro_IsGeneralApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{Binding GenTradeI}" />
@@ -804,7 +804,7 @@
                                                                     </StackLayout>
 
                                                                     <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Pro_IsLiveLihoodsApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding Pro_IsLiveLihoodsApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{Binding LivelihoodsI}" />
@@ -835,7 +835,7 @@
                                                                     </StackLayout>
 
                                                                     <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding Pro_IsLivestockApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding Pro_IsLivestockApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{Binding LiveStkAnimalsI}" />
@@ -946,7 +946,7 @@
                                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpensesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsApplicableVisible}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -1158,7 +1158,7 @@
                                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
                                                                     <custom:CustomLabel Text="{Binding IsGovenmentApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
-                                                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
+                                                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsGovenmentApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding GovtContractProf}" />
@@ -1179,7 +1179,7 @@
                                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
                                                                     <custom:CustomLabel Text="{Binding IsCivilProfitApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
-                                                                    <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
+                                                                    <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsCivilProfitApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{Binding CivilContrRev}" />
@@ -1214,7 +1214,7 @@
                                                                     <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
                                                                     <custom:CustomLabel Text="{Binding IsOtherProfitApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
 
-                                                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsOtherProfitApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{Binding OtherIncome}" />
@@ -1339,7 +1339,7 @@
                                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpencesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsApplicableVisible}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -1506,7 +1506,7 @@
                                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1"  Text="{Binding IsExpApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" IsVisible="{Binding IsApplicableVisible}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
                                                                             <Span Text="{Binding Expenses}" />
@@ -1621,7 +1621,7 @@
                                                                 </StackLayout>
 
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding Expenses}" IsVisible="{Binding IsApplicableVisible}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
                                                             </Grid>
 
                                                             <StackLayout Orientation="Horizontal">
@@ -1721,7 +1721,7 @@
                                                                     </Image>
                                                                 </StackLayout>
                                                                 <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsIncCapApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
-                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding IncrInCap}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
+                                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding IncrInCap}" IsVisible="{Binding IsApplicableVisible}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
 
                                                             </Grid>
 
@@ -1998,7 +1998,7 @@
 
 
                                                 <!--<custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding OtherCompanyShare}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>-->
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsOtherShareApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding OtherCompanyShare}" />
@@ -3111,11 +3111,11 @@
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>-->
 
-                        <Image Grid.Row="0" Source="closeGrey.png" Grid.Column="2" HorizontalOptions="EndAndExpand" >
+                        <!--<Image Grid.Row="0" Source="closeGrey.png" Grid.Column="2" HorizontalOptions="EndAndExpand" >-->
                             <!--<Image.Source>
                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                             </Image.Source>-->
-                        </Image>
+                        <!--</Image>-->
                     </Grid>
                     <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" />
                 </StackLayout>
