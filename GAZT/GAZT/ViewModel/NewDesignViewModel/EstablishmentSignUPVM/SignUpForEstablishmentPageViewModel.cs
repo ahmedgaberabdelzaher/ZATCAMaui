@@ -3,6 +3,8 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
@@ -40,6 +42,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         }
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 4;
+        #endregion
+
+        #region Commands
+        public ICommand OnNextButtonClick { get; private set; }
+        public ICommand OnBackButtonClick { get; private set; }
         #endregion
 
         #region Propetry
@@ -86,7 +93,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             _dialogService = dialogService;
 
+            OnNextButtonClick = new Command(() => navigateToNext());
+            OnBackButtonClick = new Command(() => navigateBack());
         }
+        #endregion
+
+        #region Methods
+        private void navigateToNext()
+        {
+            switch (currentTab)
+            {
+                case EstablishmentSignUPTabEnum.EstablishmentAccount:
+                    currentTab = EstablishmentSignUPTabEnum.VerificationCode;
+                    break;
+
+                case EstablishmentSignUPTabEnum.VerificationCode:
+                    PageTitle = AppResources.VerificationCode;
+                    BodyText = AppResources.NDPleaseEnterVerificationSenttomobile;
+                    currentTab = EstablishmentSignUPTabEnum.Summary;
+                    break;
+
+                case EstablishmentSignUPTabEnum.Summary:
+                    PageTitle = AppResources.ZSummary;
+                    BodyText = AppResources.VATRReviewInformation;
+                    currentTab = EstablishmentSignUPTabEnum.Password;
+                    break;
+            }
+        }
+
+
+        private void navigateBack()
+        {
+            switch (currentTab)
+            {
+                case EstablishmentSignUPTabEnum.Password:
+                    currentTab = EstablishmentSignUPTabEnum.Summary;
+                    break;
+
+                case EstablishmentSignUPTabEnum.Summary:
+                    currentTab = EstablishmentSignUPTabEnum.VerificationCode;
+                    break;
+
+                case EstablishmentSignUPTabEnum.VerificationCode:
+                    currentTab = EstablishmentSignUPTabEnum.EstablishmentAccount;
+                    break;
+            }
+        }
+
         #endregion
     }
 }

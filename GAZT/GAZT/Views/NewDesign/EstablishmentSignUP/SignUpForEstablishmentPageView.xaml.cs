@@ -19,5 +19,30 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             InitializeComponent();
             BindingContext = viewModel;
         }
+
+        private void OTPFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void OTPFourthEntry_Unfocused(object sender, FocusEventArgs e)
+        {
+
+        }
+
+        private void OTPThirdEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void OTPSecondEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void OTPFirstEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

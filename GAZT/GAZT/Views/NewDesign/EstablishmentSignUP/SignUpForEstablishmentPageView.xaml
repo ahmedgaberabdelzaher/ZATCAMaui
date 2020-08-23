@@ -9,8 +9,12 @@
             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
             xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-            xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.SignUpForEstablishmentPageView">
+             xmlns:local="clr-namespace:EGAZT.CustomControl"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:models="clr-namespace:EGAZT.Models.EnumModels"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:ResourceManager="clr-namespace:EGAZT"             x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.SignUpForEstablishmentPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -19,6 +23,16 @@
             </ResourceDictionary.MergedDictionaries>
 
             <converters:EstablishmentSignUPTabEnumToVisibilityConverters x:Key="enumToVisibilityConverter"/>
+
+            <Style TargetType="Frame" x:Key="circleFrame">
+                <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="HeightRequest" Value="25"/>
+                <Setter Property="WidthRequest" Value="25"/>
+                <Setter Property="HasShadow" Value="False"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -32,7 +46,7 @@
                 </Grid.RowDefinitions>
 
 
-                <Grid Grid.Row="2" x:Name="ParentView">
+                <Grid Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.EstablishmentAccount}}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -65,9 +79,304 @@
                     </StackLayout>
 
                 </Grid>
+                <StackLayout Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.VerificationCode}}" >
+                    <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VerificationCode}" Style="{StaticResource PageTitleBlack}" />
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" Style="{StaticResource BodyLabelGrey}"/>
+                    <BoxView BackgroundColor="{StaticResource NeutralGreay}" HeightRequest="1"/>-->
+
+                    <StackLayout Padding="0,15,0,0" >
+                        <!--<custom:CustomLabel Text="{Binding OTPSentOnThisMobileNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>-->
+                        <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Mobile Number "/>
+                                    <Span Text="xxxxxxx388"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </custom:CustomLabel>
+
+                        <StackLayout Padding="0,0,0,0" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Row="0" ColumnSpacing="20" Padding="30,20,30,20" FlowDirection="LeftToRight">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
 
+                                    <!--First OTP Digit Start-->
+                                    <inputLayout:SfTextInputLayout
+                                                    Grid.Column="0"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                        <custom:BorderlessEntry
+                                                        x:Name="OTPFirstEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPFirstDigit}"
+                                                        TextChanged="OTPFirstEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                            <custom:BorderlessEntry.Behaviors>
+                                                <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
+                                            </custom:BorderlessEntry.Behaviors>
+                                        </custom:BorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--First OTP Digit End-->
 
+                                    <!--Second OTP Digit Start-->
+                                    <inputLayout:SfTextInputLayout
+                                                    Grid.Column="1"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                        <custom:BorderlessEntry
+                                                        x:Name="OTPSecondEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPSecondDigit}"
+                                                        TextChanged="OTPSecondEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                            <custom:BorderlessEntry.Behaviors>
+                                                <local:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
+                                            </custom:BorderlessEntry.Behaviors>
+                                        </custom:BorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--Second OTP Digit End-->
+
+                                    <!--Third OTP Digit Start-->
+                                    <inputLayout:SfTextInputLayout
+                                                    Grid.Column="2"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                        <custom:BorderlessEntry
+                                                        x:Name="OTPThirdEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPThirdDigit}"
+                                                        TextChanged="OTPThirdEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                            <custom:BorderlessEntry.Behaviors>
+                                                <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
+                                            </custom:BorderlessEntry.Behaviors>
+                                        </custom:BorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--Third OTP Digit End-->
+
+                                    <!--Fourth OTP Digit Start-->
+                                    <inputLayout:SfTextInputLayout
+                                                    Grid.Column="3"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                        <custom:BorderlessEntry
+                                                        x:Name="OTPFourthEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPFourthDigit}"
+                                                        TextChanged="OTPFourthEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand"
+                                                        Unfocused="OTPFourthEntry_Unfocused">
+                                        </custom:BorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--Fourth OTP Digit End-->
+
+                                </Grid>
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Image Source="clock">
+                            </Image>
+                            <!--<custom:CustomLabel  Text="{Binding LblCountDownTimer}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />-->
+                            <custom:CustomLabel  Text="0:59" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
+                        </StackLayout>
+                        <buttons:SfButton  Command="{Binding OnResendOTPClicked}" IsEnabled="{Binding IsResendOTPEnabled}" Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,50,0,0" BackgroundColor="Transparent" TextColor="{StaticResource Primary}"/>
+                    </StackLayout>
+
+                </StackLayout>
+                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.Summary}}">
+                    <StackLayout>
+                        <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Frame Style="{StaticResource circleFrame}">
+                                    <Image Margin="0" Source="ic_company.png">
+
+                                    </Image>
+                                </Frame>
+                                <custom:CustomLabel Text="Facility Information" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+
+                            <StackLayout Padding="10" Spacing="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TINS}" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                </StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50*"/>
+                                        <ColumnDefinition Width="50*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <custom:CustomLabel Grid.Column="0" Text="Comercial Name" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Grid.Column="1"  Text="Zaed Enterprises" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                </Grid>
+                                
+                                <StackLayout Orientation="Horizontal">
+                                    <custom:CustomLabel Text="End Of Financial Year" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="31st December" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                    </custom:CustomLabel>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <custom:CustomLabel Text="Legal Entity" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="Limited" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                    </custom:CustomLabel>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <custom:CustomLabel Text="Accounting Type" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Text="Retail" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                    </custom:CustomLabel>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <custom:CustomLabel Text="Capital" Style="{StaticResource ValueLabelGrey}"/>
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="50,000.00"/>
+                                                    <Span Text=""/>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </border:SfBorder>
+
+
+                        <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal" Padding="10">
+                                    <Frame Style="{StaticResource circleFrame}">
+                                        <Image Margin="0" Source="ic_company.png">
+
+                                        </Image>
+                                    </Frame>
+                                    <custom:CustomLabel Text="Facility Branches" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
+                                </StackLayout>
+
+                                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+
+                                <StackLayout Padding="10" Spacing="10">
+                                    
+                                    <StackLayout Orientation="Horizontal">
+                                        <custom:CustomLabel Text="Branch Name" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="Hardy Branch" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <custom:CustomLabel Text="Branch Location" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="King Faisal Road" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <custom:CustomLabel Text="Branch Type" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="Mall Branch" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <custom:CustomLabel Text="End Of Financial Year" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="31st December" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                        </custom:CustomLabel>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <custom:CustomLabel Text="Legal Entity" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="Limited" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                        </custom:CustomLabel>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <custom:CustomLabel Text="Accounting Type" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="Retail" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                        </custom:CustomLabel>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <custom:CustomLabel Text="Capital" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="50,000.00"/>
+                                                        <Span Text=""/>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </custom:CustomLabel>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </border:SfBorder>
+
+                    </StackLayout>
+                </ScrollView>
+
+                <StackLayout Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.Password}}">
+
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="3">
+                    <buttons:SfButton x:Name="btnprimary" Text="Continue" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
+                </StackLayout>
+                
                 <StackLayout Grid.Row="1" Padding="0,0,0,0">
                     <commonView:PageIndicatorView MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" />
                     <custom:CustomLabel Text="{Binding PageTitle}" Style="{StaticResource PageTitleBlack}"/>
@@ -83,7 +392,9 @@
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0" Padding="0,8,0,0">
                         <Image Source="arrowLeft.png" HorizontalOptions="Start">
-
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OnBackButtonClick}"/>
+                            </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
                     <StackLayout Grid.Column="1">
