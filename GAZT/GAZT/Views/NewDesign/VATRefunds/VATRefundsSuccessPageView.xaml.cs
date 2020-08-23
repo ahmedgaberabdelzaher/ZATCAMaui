@@ -22,10 +22,14 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         }
         private void SetLTR()
         {
-            //if (App.IsArabic)
-            //{
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
                 this.FlowDirection = FlowDirection.LeftToRight;
-            //}
+            }
         }
         public void ChangeAeroIcon()
         {
@@ -43,8 +47,11 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
-                _navigation.PopToRootAsync();
+                for (var counter = 1; counter < 5; counter++)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                }
+                await Navigation.PopAsync();
             });
         }
 
@@ -52,8 +59,11 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
-                _navigation.PopToRootAsync();
+                for (var counter = 1; counter < 3; counter++)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+                }
+                await Navigation.PopAsync();
             });
         }
     }

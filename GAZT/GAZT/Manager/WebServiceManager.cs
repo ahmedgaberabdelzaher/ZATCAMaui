@@ -7694,7 +7694,7 @@ namespace GAZT.Manager
                                 String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForUnlockAccount = WithReplacedString;
                                 //ErrorMessageForVAT
-                                //throw new GAZTUnlockAccountException(ErrorMessageForUnlockAccount);
+                                throw new GAZTErrorException(ErrorMessageForUnlockAccount);
                             }
                         }
                         else if(!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
@@ -7713,15 +7713,10 @@ namespace GAZT.Manager
                     }
                     return VatRefundDisplayDataModel;
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTErrorException ex)
                 {
                     Console.WriteLine(ex);
-                    throw new GAZTUnlockAccountException(ex.Message);
-                }
-            
-                catch(Exception ex)
-                {
-                    throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                    throw new GAZTErrorException(ex.Message);
                 }
             }
             else

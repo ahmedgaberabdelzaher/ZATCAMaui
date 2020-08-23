@@ -19,7 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         public ICommand GoBackClick { get; set; }
         #endregion
 
-        public ICommand VATDeregistrationClicked { get; set; }
+        public ICommand VATRefundInstructionsConfirmedBtnClicked { get; set; }
 
         public ObservableCollection<VATRefundsModel> _vatRefundsModel { get; set; }
         public ObservableCollection<VATRefundsModel> VATRefundsModel
@@ -34,6 +34,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 _vatRefundsModel = value;
                 RaisePropertyChanged("VATRefundsModel");
+            }
+        }
+
+        public bool _isInstructionsChecked { get; set; }
+        public bool IsInstructionsChecked
+        {
+            get
+            {
+                return _isInstructionsChecked;
+            }
+
+            set
+            {
+
+                _isInstructionsChecked = value;
+                RaisePropertyChanged("IsInstructionsChecked");
             }
         }
 
@@ -53,16 +69,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 _navigationService.GoBack();
             });
-
-            VATDeregistrationClicked = new Command(this.VATDeregistrationTapped);
+            IsInstructionsChecked = false;
+            VATRefundInstructionsConfirmedBtnClicked = new Command(this.VATRefundInstructionsConfirmedBtnTapped);
         }
 
-        public async void VATDeregistrationTapped()
+        public async void VATRefundInstructionsConfirmedBtnTapped()
         {
             try
             {
                 await PopupNavigation.Instance.PopAsync();
-                _navigationService.NavigateTo(App.VATRefundsNewRequestPageView, VATRefundsModel);
+                MessagingCenter.Send<Object, string>(this, "InstructionsConfirmed", "NavigateToNewRequestPageView");
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -76,12 +92,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 });
             }
-        }
-
-        public void ReloadData(ObservableCollection<VATRefundsModel> vATRefundsModel)
-        {
-            VATRefundsModel = new ObservableCollection<VATRefundsModel>();
-            VATRefundsModel = vATRefundsModel;
         }
     }
 }

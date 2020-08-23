@@ -248,7 +248,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
-        public async void LoadSummaryData(VatRefundDisplayDataModel vATRefundsSaveDataModel)
+        public async Task LoadSummaryData(VatRefundDisplayDataModel vATRefundsSaveDataModel)
         {
             IsNewReqSummary = true;
 
@@ -261,12 +261,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                await Task.Run(() =>
-                {
-                    App.DisplayProgressView();
-                });
-
-                VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VATRefundsHeaderSet.RefundFbnum);
+                //VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(VATRefundsHeaderSet.RefundFbnum);
                 SelectedIbanTypeFromList();
 
                 IBANType selectedIdType = IBANTypesList.Where(m => m.key == VatRefundsDisplayDataModel.IdType).FirstOrDefault();
@@ -279,11 +274,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (GAZTErrorException ex)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                await Task.Run(() =>
                 {
                     App.HideProgressView();
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
+
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             catch (InternetException ex)
             {
@@ -297,6 +293,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -326,7 +326,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatNewReqSummaryData.Operationx = "01";
             VatNewReqSummaryData.Gpartx = App.LoginDataRetrieved.TIN;
             VatNewReqSummaryData.Langx = UtilityManager.GetLanguageParameter();
-            VatNewReqSummaryData.Rfamt = VatNewReqSummaryData.Rfamt.Replace("-", string.Empty);
 
             try
             {
@@ -336,7 +335,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 });
 
                 VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatNewReqSummaryData);
-                //_navigationService.NavigateTo(App.VATRefundsSuccessPageView);
+                _navigationService.NavigateTo(App.VATRefundsSuccessPageView);
 
                 await Task.Run(() =>
                 {

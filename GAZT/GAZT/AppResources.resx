@@ -1646,6 +1646,15 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
     <value>Please select the IBAN ID Number linked to the selected IBAN</value>
   </data>
+   <data name="ZVatRefundInstructions" xml:space="preserve">
+    <value>Kindly read the below instructions before completing the ad-hoc refund form:
+Please fill the requested information for each step
+The request cannot be successfully submitted until all of the mandatory fields have been completed.
+You should ensure that the existing details are complete and up to date before submitting your refund request.
+Please refer to the FAQ section before filling out the refund form.
+GAZT has the right to audit and amend any credit balance that is requested to be refunded before allow the taxpayer to refund his credit balance.
+Taxpayer has the right to withdraw his verified credit balance after the taxpayer pays his remaining liabilities or after GAZT offset the taxpayer remaining liabilities.</value>
+  </data>
   <data name="MyCertificates" xml:space="preserve">
     <value>My Certificates</value>
   </data>

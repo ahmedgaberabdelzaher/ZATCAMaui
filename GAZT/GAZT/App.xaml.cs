@@ -27,7 +27,6 @@ using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
-using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -65,6 +64,14 @@ namespace EGAZT
         public static string TaxpayerCorrespondancePageView = "TaxpayerCorrespondancePageView";
         public static string TaxpayerCorrespondanceDetailPageView = "TaxpayerCorrespondanceDetailPageView";
         public static string NewZakatObjectionPageView = "NewZakatObjectionPageView";
+
+        //*EST
+        public static string ActivityItemPage = nameof(ActivityItemPage);
+        public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
+        public static string OutletDetailsPageView = nameof(OutletDetailsPageView);
+        public static string RegistrationSuccessfulPage = nameof(RegistrationSuccessfulPage);
+        //*End EST
+
         //test
         public static string AttachmentPopupPageView = "AttachmentPopupPageView";
         public static string VATReturnSuccessfullPageView = "VATReturnSuccessfullPageView";
@@ -170,7 +177,6 @@ namespace EGAZT
         public static string UnlockAccountChangePasswordPageView = "UnlockAccountChangePasswordPageView";
         public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
         public static string TINDeregestrationSuccessPageView = "TINDeregestrationSuccessPageView";
-        public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
 
         public static string VATRefundsSuccessPageView = "VATRefundsSuccessPageView";
         public static string VATRefundsListPageView = "VATRefundsListPageView";
@@ -321,8 +327,8 @@ namespace EGAZT
                 navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
             }
 
-             navigationPage = new CustomNavigation(new EstablishmentRegistrationPage()) { BarTextColor = Color.White };
-            //CustomNavigation navigationPage = new CustomNavigation(new VATRefundsListPageView()) { BarTextColor = Color.White };
+            //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+            //navigationPage = new CustomNavigation(new EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();

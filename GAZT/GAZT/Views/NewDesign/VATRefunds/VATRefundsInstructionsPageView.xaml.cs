@@ -13,11 +13,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
     {
         VATRefundsInstructionsPageViewModel viewModel;
 
-        public VATRefundsInstructionsPageView(ObservableCollection<VATRefundsModel> vATRefundsModel)
+        public VATRefundsInstructionsPageView()
         {
             InitializeComponent();
             viewModel = App.Locator.VATRefundsInstructionsPageView;
-            viewModel.ReloadData(vATRefundsModel);
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetLTR();
@@ -32,6 +31,18 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+
+        public void VATRefundRequestInstructions_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                viewModel.VATRefundInstructionsConfirmedBtnTapped();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
