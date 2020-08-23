@@ -52,6 +52,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                             viewModel._navigationService.NavigateTo(App.TaxpayerProfileSuccessPage, 3);
                         });
                     }
+
                 }
             }
             else

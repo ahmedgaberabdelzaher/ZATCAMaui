@@ -103,6 +103,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 viewModel.EmailEntry = TPAPIResponse.Email;
                 viewModel.PasswordEntry = "********";
             }
+            await Task.Run(() =>
+            {
+               viewModel.IsLoading = true;
+            });
+            await viewModel.GetTinStatusDATA();
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
     }
 }
