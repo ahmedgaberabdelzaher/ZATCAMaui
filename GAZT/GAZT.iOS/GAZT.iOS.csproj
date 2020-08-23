@@ -76,9 +76,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision> eGAZT Distribution Profile</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.collude.app</CodesignProvision>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
   </PropertyGroup>
@@ -269,6 +269,9 @@
     <BundleResource Include="Resources\selected171x136.png" />
     <BundleResource Include="Resources\selected171x136%402x.png" />
     <BundleResource Include="Resources\selected171x136%403x.png" />
+    <BundleResource Include="Resources\ic_reviewDetails.png" />
+    <BundleResource Include="Resources\ic_reviewDetails%402x.png" />
+    <BundleResource Include="Resources\ic_reviewDetails%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1819,5 +1822,50 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\WhiteCircle_arrow_right%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\other.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\other%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\other%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_White%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_White%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location_Green%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\location_Green%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phone_Green%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phone_Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phone_Green%402x.png" />
   </ItemGroup>
 </Project>

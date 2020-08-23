@@ -70,6 +70,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        private ObservableCollection<VatRefHeaderSetResult> _vatRefundsSearchSet { get; set; }
+        public ObservableCollection<VatRefHeaderSetResult> VATRefundsSearchSet
+        {
+            get
+            {
+                return _vatRefundsSearchSet;
+            }
+            set
+            {
+
+                _vatRefundsSearchSet = value;
+                RaisePropertyChanged("VATRefundsSearchSet");
+            }
+        }
+
         private VatRefundsListResultModel _vatRefundsListResultModel = null;
         public VatRefundsListResultModel VatRefundsListResultModel
         {
@@ -138,6 +153,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        private string _totalReassessmentAmount { get; set; }
+        public string TotalReassessmentAmount
+        {
+            get
+            {
+                return _totalReassessmentAmount;
+            }
+
+            set
+            {
+
+                _totalReassessmentAmount = value;
+                RaisePropertyChanged("TotalReassessmentAmount");
+            }
+        }
+
+        private bool _isSearchButtonVisible = true;
+        public bool IsSearchButtonVisible
+        {
+            get
+            {
+                return _isSearchButtonVisible;
+            }
+
+            set
+            {
+
+                _isSearchButtonVisible = value;
+                RaisePropertyChanged("IsSearchButtonVisible");
+            }
+        }
+
+        private bool _isCloseButtonVisible = false;
+        public bool IsCloseButtonVisible
+        {
+            get
+            {
+                return _isCloseButtonVisible;
+            }
+
+            set
+            {
+
+                _isCloseButtonVisible = value;
+                RaisePropertyChanged("IsCloseButtonVisible");
+            }
+        }
+
         public VATRefundListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -158,6 +221,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsListResultModel = new VatRefundsListResultModel();
             VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>();
             VATRefundsSet = new ObservableCollection<VatRefHeaderSetResult>();
+            IsSearchButtonVisible = true;
+            IsCloseButtonVisible = false;
 
             //PopulateVATRefundsList();
 
@@ -194,6 +259,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 VatRefundsListResultModel = await WebServiceManager.GAZTGetVAtRefundList();
                 VATRefundsSet = new ObservableCollection<VatRefHeaderSetResult>(VatRefundsListResultModel.VatRefHeaderSet.Results);
                 VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet.Results);
+
+                double total = VATRefundsSet.Sum(item => Convert.ToDouble(item.ReassessAmt));
+                TotalReassessmentAmount = string.Format("{0:0.00}",total);
 
                 await Task.Run(() =>
                 {

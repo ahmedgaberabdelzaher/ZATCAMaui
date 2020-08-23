@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
+using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -31,7 +33,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged(() => IsLoading);
             }
         }
-
+        private TINStatus _listTINStatus;
+        public TINStatus ListTINStatus
+        {
+            get
+            {
+                return _listTINStatus;
+            }
+            set
+            {
+                _listTINStatus = value;
+                RaisePropertyChanged("ListTINStatus");
+            }
+        }
+        private string _TinStatusLabelText;
+        public string TinStatusLabelText
+        {
+            get
+            {
+                return _TinStatusLabelText;
+            }
+            set
+            {
+                _TinStatusLabelText = value;
+                RaisePropertyChanged("TinStatusLabelText");
+            }
+        }
         private string _TPProfileNameLbl;
         public string TPProfileNameLbl
         {
@@ -140,6 +167,75 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
 
             return APIResponse;
+        }
+
+        public async Task GetTinStatusDATA()
+        {
+            string Lang = UtilityManager.GetLanguageParameter();
+            ListTINStatus = new TINStatus();
+            try
+            { 
+
+           
+                ListTINStatus = await WebServiceManager.GAZTGetTinStatus(Lang, App.TP.Tin);
+                PopToRootPage();
+                IsLoading = false;
+                if (ListTINStatus!=null)
+                {
+                    if (ListTINStatus.d != null)
+                    {
+                        if (!String.IsNullOrEmpty(ListTINStatus.d.StatusText))
+                        {
+                            TinStatusLabelText = ListTINStatus.d.StatusText;
+                        }
+                        else
+                        {
+                            TinStatusLabelText = " - ";
+                        }
+                    }
+                    else
+                    {
+                        TinStatusLabelText = " - ";
+                    }
+
+                }
+                else
+                {
+                    TinStatusLabelText = " - ";
+                }
+             
+
+
+            }
+            catch
+            {
+             
+            
+                TinStatusLabelText = " - ";
+            }
+            
+        }
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    foreach (var item in _navigation.NavigationStack)
+                    {
+                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                        {
+                            _navigation.RemovePage(item);
+                            break;
+                        }
+                    }
+                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                    _navigation.NavigationStack.ToList().Clear();
+                    //var _navigation = Application.Current.MainPage.Navigation;
+                    //_navigation.PopToRootAsync();
+                });
+            }
         }
     }
 }

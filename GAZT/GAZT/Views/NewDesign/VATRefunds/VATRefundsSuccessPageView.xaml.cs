@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -10,7 +11,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
     public partial class VATRefundsSuccessPageView : ContentPage
     {
         VATRefundsSuccessPageViewModel viewModel;
-        public VATRefundsSuccessPageView()
+        public VATRefundsSuccessPageView(VatRefundDisplayDataModel vatRefundsSummaryData)
         {
             InitializeComponent();
 
@@ -19,13 +20,18 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            viewModel.VatNewReqSummaryData = vatRefundsSummaryData;
         }
         private void SetLTR()
         {
-            //if (App.IsArabic)
-            //{
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
                 this.FlowDirection = FlowDirection.LeftToRight;
-            //}
+            }
         }
         public void ChangeAeroIcon()
         {
@@ -41,20 +47,41 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         void btnGoToDasboard_Clicked(System.Object sender, System.EventArgs e)
         {
-            Device.BeginInvokeOnMainThread(async () =>
+            try
             {
-                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
-                _navigation.PopToRootAsync();
-            });
+                var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(firstPageToRemove);
+
+                var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(secondPageToRemove);
+
+                var thirdPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(thirdPageToRemove);
+
+                viewModel._navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         void btnRefunds_Clicked(System.Object sender, System.EventArgs e)
         {
-            Device.BeginInvokeOnMainThread(async () =>
+            try
             {
-                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
-                _navigation.PopToRootAsync();
-            });
+                var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(firstPageToRemove);
+
+                var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(secondPageToRemove);
+
+                viewModel._navigationService.GoBack();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }

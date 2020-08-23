@@ -170,7 +170,25 @@
                     </StackLayout>
                         
                 </Grid>
+                     <!--<StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                               <StackLayout.Triggers> <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOthersOption}" Value="0">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                                
+                            </StackLayout.Triggers>
+                                <custom:CustomLabel Text="Other Options" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />   
+                   <Label Text="Others (Please Specify)" HorizontalOptions="StartAndExpand"
+                                                                Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />   
+                                        <inputLayout:SfTextInputLayout    LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
+                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
+                                        OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
 
+                                            <Entry Style="{StaticResource DefaultEntry}" Text="Others"  Placeholder="Enter reason" HorizontalTextAlignment="Start" HeightRequest="24"/>
+                                     
+                                                
+                                        </inputLayout:SfTextInputLayout>
+                            </StackLayout>-->
     <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
       <StackLayout.Triggers> <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
                                     <Setter Property="IsVisible" Value="false" />
@@ -337,75 +355,54 @@
                         </listView:SfListView.LayoutManager>
                  </listView:SfListView>
                 <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding AttachmentList}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="attachmentsListView_SelectionChanged" >
+                                      ItemsSource="{Binding VatAttachmentsList}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="attachmentsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
 					                <StackLayout Spacing="2">
-                                        <Label Text="{Binding FieldTitle}" HorizontalOptions="StartAndExpand"
+                                        <Label Text="{Binding AttachmentTitle}" HorizontalOptions="StartAndExpand"
                                                                 Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />   
                                         <inputLayout:SfTextInputLayout    LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
                                         ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
                                         OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
 
-                                            <inputLayout:SfTextInputLayout.LeadingView>
-                                                <Image HorizontalOptions="Center" VerticalOptions="Center" >
-                                                    <Image.Source>
-                                                        <FontImageSource FontFamily="UserIconFont" Color="Red" Size="20"
-                                                                 Glyph="{x:Static FontImage:IconFonts.FilePdf}"/>
-                                                    </Image.Source>
-                                                </Image>
-                                            </inputLayout:SfTextInputLayout.LeadingView>
                                             <Entry Style="{StaticResource DefaultEntry}" Text="{Binding FileName}"  Placeholder="File.pdf" HorizontalTextAlignment="Start" HeightRequest="24"/>
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <!--<Image HorizontalOptions="Center" VerticalOptions="Center" Rotation="90">
-                                                    <Image.Source>
-                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
-                                                                 Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                    </Image.Source>
-                  
-                                                </Image>-->
-                                                   <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                             <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
                                                     <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
+                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
                                                     </Image.GestureRecognizers>
                                                 </Image>
+                                            
                                             </inputLayout:SfTextInputLayout.TrailingView>
+                                                
                                         </inputLayout:SfTextInputLayout>
-                    <Label Text="{Binding FieldSubTitle}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
+                    <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsize}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
                                                 Style="{StaticResource CaptionLabelGrey}" /> 
                  </StackLayout>
 
 			                </DataTemplate>
                         </listView:SfListView.ItemTemplate>
                  </listView:SfListView>
-
-                  <Label Text="{x:Static custom2:AppResources.VATRAttachment}" Grid.Row="4"  Style="{StaticResource GAZTCaptionBlackLabel}"/>
-                                                    <inputLayout:SfTextInputLayout Grid.Row="5" Grid.ColumnSpan="2" Margin="12,-6,0,-6" 
+                       <StackLayout Grid.Row="4" Spacing="2" Grid.ColumnSpan="2">
+                  <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputTitle2}"    Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <inputLayout:SfTextInputLayout  Margin="10,-6,0,-6" 
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
-                                                        <StackLayout Orientation="Horizontal" Grid.ColumnSpan="2">
                                                             <!--Attachments-->
                                                 <Entry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}" HorizontalTextAlignment="Start" HeightRequest="24"/>
-
-                                                            <!--<custom:BorderlessEntry  x:Name="AttachmentOptional"  IsEnabled="False" Placeholder="{x:Static custom2:AppResources.Attachments}" Style="{StaticResource GAZTEntry}">
-                                                            </custom:BorderlessEntry>-->
-                                                            <!--<Image HorizontalOptions="EndAndExpand" Rotation="270">
-                                                                <Image.Source>
-                                                                    <FontImageSource FontFamily="UserIconFont" Color="#bbbbbb" Size="25"
-                                                    Glyph="{x:Static FontImage:IconFonts.Attachment}" />
-                                                                </Image.Source>
-                      
-                                                            </Image>-->
-                                                               <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Attachment.png"  >
+  
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                             <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png"  >
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                                                     </Image.GestureRecognizers>
                                                 </Image>
-
-                                                        </StackLayout>
+                                            
+                                            </inputLayout:SfTextInputLayout.TrailingView>
                                                     </inputLayout:SfTextInputLayout>
-
-                 <buttons:SfButton Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,16,0,36" x:Name="btnAttachmentsContinue"
+                                    <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}" Style="{StaticResource CaptionLabelGrey}"/>
+                                </StackLayout>
+                 <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,16,0,36" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                 

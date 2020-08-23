@@ -1,7 +1,10 @@
 ﻿using EGAZT;
 using EGAZT.Models;
+using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Models.Form5Models;
 using EGAZT.Models.VATRefunds;
+using EGAZT.Models.VATInstalationModels;
+using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Helper;
 using GAZT.Models;
@@ -26,6 +29,11 @@ using System.Xml.XPath;
 using Xamarin.Forms;
 using ZakatForm5Model;
 using static GAZT.ErrorMessage;
+using Metadata = EGAZT.Models.ZakatInstalationModels.Metadata;
+using EGAZT.Models.VATInstalmentModels;
+using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
+using NotesSet = EGAZT.Models.NotesSet;
+
 namespace GAZT.Manager
 {
     public static class WebServiceManager
@@ -1295,7 +1303,7 @@ namespace GAZT.Manager
                     }
                     return forgotPasswordOTP;
                 }
-                 catch (Exception ex)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3440,7 +3448,7 @@ namespace GAZT.Manager
 
 
 
-      
+
 
 
         public static CRValidationModelRootObject GAZTValidateCRNumber(string CRNumber)
@@ -4024,7 +4032,7 @@ namespace GAZT.Manager
             }
             return dashboardData;
         }
-        public static async Task<MyReturnsRootObject>  GAZTGetReturnData(string lang, string TIN)
+        public static async Task<MyReturnsRootObject> GAZTGetReturnData(string lang, string TIN)
         {
             MyReturnsRootObject ReturnsdData = null;
             if (CrossConnectivity.Current.IsConnected)
@@ -4040,7 +4048,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     //client.DefaultRequestHeaders.Add("Token", App.Token);
                     string uri = Constants.GAZTGetReturnList + TIN + "' and Lang eq '" + lang + "'&saml2=enabled&$format=json";
-                    HttpResponseMessage GAZTGetDashboardResponse =await client.GetAsync(uri);
+                    HttpResponseMessage GAZTGetDashboardResponse = await client.GetAsync(uri);
                     if (GAZTGetDashboardResponse != null)
                     {
                         if (GAZTGetDashboardResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -4476,7 +4484,7 @@ namespace GAZT.Manager
 
                             //QA, Pre-prod and Prod
                             //cookie.Domain = ".gazt.gov.sa";
-                         
+
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
                             cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -4621,7 +4629,7 @@ namespace GAZT.Manager
                             cookie.Path = cookieModel.Path;
                             cookie.Name = cookieModel.CName;
 
-                            if(cookieModel.Domain.StartsWith(".") == false)
+                            if (cookieModel.Domain.StartsWith(".") == false)
                             {
                                 cookie.Domain = "." + cookieModel.Domain;
                             }
@@ -4633,7 +4641,7 @@ namespace GAZT.Manager
                             cookie.Value = cookieModel.CValue;
                             cookie.Secure = cookieModel.Secure;
                             cookieContainer.Add(cookie);
-                           
+
                         }
 
                         App.httpClientHandler.CookieContainer = cookieContainer;
@@ -5198,18 +5206,18 @@ namespace GAZT.Manager
                 catch (Exception)
                 {
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
-                    if (errorReponseModel.Data.Contains("Invalid code")||errorReponseModel.Data.Contains("الرمز غير صحيح"))
+                    if (errorReponseModel.Data.Contains("Invalid code") || errorReponseModel.Data.Contains("الرمز غير صحيح"))
                     {
-                      
-                            throw new Exception(AppResources.InvalidOTP);
-  
+
+                        throw new Exception(AppResources.InvalidOTP);
+
 
                     }
                     else
                     {
                         throw new Exception(errorReponseModel.Data);
                     }
-                    
+
                 }
             }
             else
@@ -5343,7 +5351,7 @@ namespace GAZT.Manager
 
                     HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
                     requestMessage.Headers.Add("Accept", "application/json");
-                   
+
                     var serilized = JsonConvert.SerializeObject(registerUserModel);
                     requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.SendAsync(requestMessage);
@@ -5527,7 +5535,7 @@ namespace GAZT.Manager
                                     String.Format("\"{0}\"", keyValuePair.Key));
                             }
 
-                            foreach(UploadedDocumentsList uploadedDocumentsList in documentsLists)
+                            foreach (UploadedDocumentsList uploadedDocumentsList in documentsLists)
                             {
                                 multipartFormDataContent.Add(new ByteArrayContent(uploadedDocumentsList.DocBinaryInBase64),
                                '"' + "File" + '"',
@@ -5591,7 +5599,7 @@ namespace GAZT.Manager
 
                     //client.DefaultRequestHeaders.Add("Accept-Language", langVal);
 
-                    HttpResponseMessage res =  client.GetAsync(uri).Result;
+                    HttpResponseMessage res = client.GetAsync(uri).Result;
                     var response = res.Content.ReadAsStringAsync().Result;
                     vATSignUpCaseId = JsonConvert.DeserializeObject<VATSignUpCaseId>(response);
                     return vATSignUpCaseId;
@@ -5640,7 +5648,7 @@ namespace GAZT.Manager
                     string DBO = string.Empty;
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    String url = Constants.GAZTVATSignUpValidateId + "(Tin='"+ Tin + "',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    String url = Constants.GAZTVATSignUpValidateId + "(Tin='" + Tin + "',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
                     //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
 
                     var uri = new Uri(url);
@@ -5723,7 +5731,7 @@ namespace GAZT.Manager
                 VATSignUp vATSignUp = new VATSignUp();
                 string IsIDTypeValidList = string.Empty;
                 string NewToken = string.Empty;
-                String SignUpCityList=string.Empty;
+                String SignUpCityList = string.Empty;
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
@@ -5857,8 +5865,8 @@ namespace GAZT.Manager
 
                             }
                         }
-                        
-                            
+
+
 
                         //IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
                     }
@@ -5914,7 +5922,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
                     String url = Constants.GAZTGetVATSignUpCityAndRegionList + "dropdown_headerSet(Spras='" + lang + "',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json";
-                                                                               // dropdown_headerSet(Spras='A',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json
+                    // dropdown_headerSet(Spras='A',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json
                     var uri = new Uri(url);
                     HttpResponseMessage VATSignUpCountryRegionCityList = await client.GetAsync(uri);
                     if (VATSignUpCountryRegionCityList != null)
@@ -6001,7 +6009,7 @@ namespace GAZT.Manager
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
-                    
+
                     vatSignUpSubmit = JsonConvert.DeserializeObject<VATSignUpSubmit>(detailJson);
                     return vatSignUpSubmit;
                 }
@@ -6022,8 +6030,8 @@ namespace GAZT.Manager
                 try
                 {
                     string LangZ = GetLangZParameterAREN();
-        
-                 
+
+
 
                     VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
                     string url = Constants.GAZTGetCreateVATSignUp + LangZ;
@@ -6150,7 +6158,7 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetVATDeRegistrationData + "',PortalUsrx='" + "',Langx='" + lang + "',Officerx='" + "',Gpartx='" + App.LoginDataRetrieved.TIN  + "',Euser='" + "" + "',FormGuid='" +"" + "',ReviewFg=false)?&$expand=AddressSet,AttdetSet,NotesSet,QuesListSet&$format=json";
+                    String url = Constants.GAZTGetVATDeRegistrationData + "',PortalUsrx='" + "',Langx='" + lang + "',Officerx='" + "',Gpartx='" + App.LoginDataRetrieved.TIN + "',Euser='" + "" + "',FormGuid='" + "" + "',ReviewFg=false)?&$expand=AddressSet,AttdetSet,NotesSet,QuesListSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
@@ -6308,7 +6316,7 @@ namespace GAZT.Manager
                             //    //    }
                             //    //}
                             //}
-                                RequestVATRegistration = vATRegistration;
+                            RequestVATRegistration = vATRegistration;
 
                             ELGBL_DOCSet eLGBL_DOCSet = new ELGBL_DOCSet();
                             eLGBL_DOCSet.results = new List<ResultsItemForElgblDocSet>();
@@ -6321,7 +6329,7 @@ namespace GAZT.Manager
                             //{
                             //    vATRegistration.d.VatTaxDt = "";
                             //}
-                            
+
 
                         }
 
@@ -6330,7 +6338,7 @@ namespace GAZT.Manager
 
                         char LangZ = GetLangZParameter();
                         string lang = UtilityManager.GetLanguageParameter();
-                        String url = Constants.SaveVATRegistration+ LangZAREN;
+                        String url = Constants.SaveVATRegistration + LangZAREN;
                         vATRegistration.d.Langz = lang;
                         var uri = new Uri(url);
                         HttpClient client = new HttpClient(App.httpClientHandler);
@@ -6411,7 +6419,7 @@ namespace GAZT.Manager
                                     _vATRegistration.d.QUESLISTSet = qUESLIST;
                                 }
 
-                               
+
 
 
                             }
@@ -6518,8 +6526,8 @@ namespace GAZT.Manager
                                     nOTEs.results = new List<VATDeregNote>();
                                     _vATDeRegistration.d.NotesSet = nOTEs;
                                 }
-                         
-                         
+
+
                                 if (_vATDeRegistration.d.AttdetSet == null)
                                 {
                                     AttdetSet aTTDETSet = new AttdetSet();
@@ -6610,7 +6618,7 @@ namespace GAZT.Manager
                         HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                         var detailJson = res.Content.ReadAsStringAsync().Result;
                         _unlockResponseModel = JsonConvert.DeserializeObject<UnlockAccountResponseModel>(detailJson);
-                        
+
                         if (_unlockResponseModel == null || _unlockResponseModel.D == null)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
@@ -6899,7 +6907,7 @@ namespace GAZT.Manager
         public static async Task<ZakatForm5DataResult> GAZTZakatForm5Data(string Fbguid)
         {
             if (CrossConnectivity.Current.IsConnected)
-            {   
+            {
                 ZakatForm5DataResult ZakatForm5DataResultSet = new ZakatForm5DataResult();
                 string NewToken = string.Empty;
                 try
@@ -6908,7 +6916,7 @@ namespace GAZT.Manager
                     char lang = GetLangZParameter();
 
                     //string url = Constants.Z_RET_F05_ZKTE+"(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='00000000000000000000',Fbguid='005056B1F8FB1EEAB680B9ED5E358961')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
-                    string url = Constants.Z_RET_F05_ZKTE + "(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='"+ App.TP.Userid + "',Fbguid='"+Fbguid+"')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
+                    string url = Constants.Z_RET_F05_ZKTE + "(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='" + App.TP.Userid + "',Fbguid='" + Fbguid + "')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
@@ -6918,7 +6926,7 @@ namespace GAZT.Manager
                     {
                         if (GAZTZakatForm5Response.StatusCode == HttpStatusCode.Unauthorized)
                         {
-                            App.IsSessionExpired = true; 
+                            App.IsSessionExpired = true;
                             return null;
                         }
                         HttpHeaders headers = GAZTZakatForm5Response.Headers;
@@ -6937,12 +6945,12 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
-                        
+
                         String GAZTZakatForm5ResponseJSON = GAZTZakatForm5Response.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTZakatForm5ResponseJSON))
                         {
                             GAZTZakatForm5ResponseJSON = JObject.Parse(GAZTZakatForm5ResponseJSON)["d"].ToString();
-                          
+
                             ZakatForm5DataResultSet = JsonConvert.DeserializeObject<ZakatForm5DataResult>(GAZTZakatForm5ResponseJSON);
                             if (ZakatForm5DataResultSet == null)
                             {
@@ -6987,7 +6995,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     char lang = GetLangZParameter();
                     string Lang = "";
-                        if(App.IsArabic == true)
+                    if (App.IsArabic == true)
                     {
                         Lang = "AR";
                     }
@@ -6995,13 +7003,13 @@ namespace GAZT.Manager
                     {
                         Lang = "EN";
                     }
-                       
-                  
+
+
 
                     //string url = Constants.Z_RET_F05_ZKTE+"(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='00000000000000000000',Fbguid='005056B1F8FB1EEAB680B9ED5E358961')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
                     //string url = Constants.Z_RET_F05_ZKTE + "(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='" + App.TP.Userid + "',Fbguid='" + Fbguid + "')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
                     // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_F05_DROPDOWN_SRV/HeaderSet(Langu='AR',Country='SA')?&$expand=zcitySet,zmain_descSet,zsub_desc_A60Set,zsub_desc_A61Set,zsub_desc_A62Set,URLSet,MSGSet,GOVCODESet
-                    string url = Constants.Z_RET_F05_City+ "(Langu='"+Lang+ "',Country='SA')?&$expand=zcitySet,zmain_descSet,zsub_desc_A60Set,zsub_desc_A61Set,zsub_desc_A62Set,URLSet,MSGSet,GOVCODESet";
+                    string url = Constants.Z_RET_F05_City + "(Langu='" + Lang + "',Country='SA')?&$expand=zcitySet,zmain_descSet,zsub_desc_A60Set,zsub_desc_A61Set,zsub_desc_A62Set,URLSet,MSGSet,GOVCODESet";
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
@@ -7080,9 +7088,9 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = Constants.Z_ZKTE_SUMMARY + "(Fbnum='"+Fbnum+"',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
-                     // string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ZKTE_SUMMARY_SRV/HeadSet(Fbnum='23001410241',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
-                   // string url = Constants.Z_ZKTE_SUMMARY + "(Fbnum='"+Fbnum+"'',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
+                    string url = Constants.Z_ZKTE_SUMMARY + "(Fbnum='" + Fbnum + "',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
+                    // string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ZKTE_SUMMARY_SRV/HeadSet(Fbnum='23001410241',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
+                    // string url = Constants.Z_ZKTE_SUMMARY + "(Fbnum='"+Fbnum+"'',Flag='X')?$expand=headsumSet,SadadSet,SchGP01Set,SchGP02Set,SchGP03Set,SchGP04Set,SchGP05Set,SchGP06Set,SchGP07Set,SchGP08Set,SchGP09Set,SchGP10Set,SchGP11Set,SchGP12Set";
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
@@ -7156,7 +7164,9 @@ namespace GAZT.Manager
                     VATDeregAttachmentRootOject _attachment = new VATDeregAttachmentRootOject();
                     char LangZ = GetLangZParameter();
                     string AttBy = "TP";
-                    String url = Constants.GAZTSaveVATDeregAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
+                    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
+
+                    // String url = Constants.GAZTSaveVATDeregAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -7181,20 +7191,67 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        public static string GAZTDeleteVATDeRegistrationAttachment(string fileName, string RetGuid, string Dotyp)//, string returnedFguid
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string DeleteToken = string.Empty;
+                try
+                {
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
+                    char LangZ = GetLangZParameter();
+                    //string Dotyp = "VTA0";
+                    string AttBy = "TP";
+                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                                                                                                                                                                                                                                                                                   // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+                    HttpResponseMessage res = client.DeleteAsync(url).Result;
+                    var responsestr = res.Content.ReadAsStringAsync().Result;
+                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+                    if (res != null)
+                    {
+                        HttpHeaders headers = res.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("delete", out values))
+                        {
+                            DeleteToken = values.First();
+                        }
+                    }
+                    return DeleteToken;
+                }
+                catch (Exception ex)
+                {
+                    return DeleteToken;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
         #region VATDeregistration Reason
 
-        public static VATDeregistrationModelRootObject GAZTGETVATDeregReasonDropdownList( string selectedType)
+        public static VATDeregistrationModelRootObject GAZTGETVATDeregReasonDropdownList(string selectedType)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 VATDeregistrationModelRootObject reasonData = new VATDeregistrationModelRootObject();
-               // ObservableCollection<VATDeregistrationReasonModel> reasonDropdownlist = new ObservableCollection<VATDeregistrationReasonModel>();
+                // ObservableCollection<VATDeregistrationReasonModel> reasonDropdownlist = new ObservableCollection<VATDeregistrationReasonModel>();
                 string NewToken = string.Empty;
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     char lang = GetLangZParameter();
-                    string url = Constants.GAZTGETVATDeregReasonDropdownList + " eq " +"'"+ selectedType +"'"+" and "+"Lang"+" eq "+"'" + lang +"'"+ "&$format=json"; 
+                    string url = Constants.GAZTGETVATDeregReasonDropdownList + " eq " + "'" + selectedType + "'" + " and " + "Lang" + " eq " + "'" + lang + "'" + "&$format=json";
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
@@ -7223,7 +7280,7 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
-                      
+
                         String GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
                         {
@@ -7271,9 +7328,9 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     //  https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VDRUH_SRV/VR_UI_HDRSet(Fbnum='',Lang='E',Officer='',Gpart='3101937624',Status='E0001',TxnTp='VT_DREG',Formproc='ZTAX_VT_REG')?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json
 
-                     string status = "E0001";
+                    string status = "E0001";
 
-                    String url = Constants.GAZTGETVATDeregAttachmentsDropdownList + "',Lang='" + lang + "',Officer='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Status='" + status + "',TxnTp='" + selectedType + "',Formproc='ZTAX_VT_REG'"+ ")?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json";
+                    String url = Constants.GAZTGETVATDeregAttachmentsDropdownList + "',Lang='" + lang + "',Officer='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Status='" + status + "',TxnTp='" + selectedType + "',Formproc='ZTAX_VT_REG'" + ")?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
@@ -7499,7 +7556,7 @@ namespace GAZT.Manager
                     string startDate = StartDate.Year.ToString() + "-" + StartDate.Month.ToString() + "-" + StartDate.Day.ToString() + "T" + StartDate.Hour.ToString() + ":" + StartDate.Minute.ToString();
                     string endDate = EndDate.Year.ToString() + "-" + EndDate.Month.ToString() + "-" + EndDate.Day.ToString() + "T" + EndDate.Hour.ToString() + ":" + EndDate.Minute.ToString();
 
-                    string url = Constants.GAZTGETVATDeregReturnFilingDateList + "Gpart"+ " eq " + "'" + App.LoginDataRetrieved.TIN + "'" + " and " + "StartDate" + " eq datetime" + "'" + startDate + "'" + " and " + "EndDate" + " eq datetime" + "'" + endDate+ "'" + "&$format=json";
+                    string url = Constants.GAZTGETVATDeregReturnFilingDateList + "Gpart" + " eq " + "'" + App.LoginDataRetrieved.TIN + "'" + " and " + "StartDate" + " eq datetime" + "'" + startDate + "'" + " and " + "EndDate" + " eq datetime" + "'" + endDate + "'" + "&$format=json";
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
@@ -7578,7 +7635,7 @@ namespace GAZT.Manager
                     //Gpart='3102435227',Euser='',Flag='W',Fbguid='')?&$expand=STATUSSet,WI_DTLSet,VatRef_HeaderSet,
                     //VatRef_SubItemsSet&$format=json
 
-                    string url = Constants.VatRefundList + "(TaxType='VT',Lang='"+ lang + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Euser='',Flag='W',Fbguid='')?&$expand=STATUSSet,WI_DTLSet,VatRef_HeaderSet,VatRef_SubItemsSet&$format=json";
+                    string url = Constants.VatRefundList + "(TaxType='VT',Lang='" + lang + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Euser='',Flag='W',Fbguid='')?&$expand=STATUSSet,WI_DTLSet,VatRef_HeaderSet,VatRef_SubItemsSet&$format=json";
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var uri = new Uri(url);
@@ -7653,8 +7710,9 @@ namespace GAZT.Manager
                     ///sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet(Euser='00000000001000083299',Fbnumx='',FormGuid='005056B1365C1EEAB6E0F7222AF68000',
                     ///Formprocx='ZTAX_VAT_MAISC_PROC',Gpartx='',Langx='EN',Officerx='',TxnTpx='')?$expand=AttdetSet,BankDtlSet,NotesSet
 
+
                     //HeaderSet(Euser='',FormGuid='',Formprocx='ZTAX_VAT_MAISC_PROC',";
-                    string url = Constants.VatRefundDisplayData + "FormGuid='"+ formguid + "',Formprocx='ZTAX_VAT_MAISC_PROC',Gpartx='" + App.LoginDataRetrieved.TIN +"',Langx='"+ lang + "',Officerx='',TxnTpx='')?$expand=AttdetSet,BankDtlSet,NotesSet&$format=json";
+                    string url = Constants.VatRefundDisplayData + "FormGuid='" + formguid + "',Formprocx='ZTAX_VAT_MAISC_PROC',Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "',Officerx='',TxnTpx='')?$expand=AttdetSet,BankDtlSet,NotesSet&$format=json";
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var uri = new Uri(url);
@@ -7685,7 +7743,7 @@ namespace GAZT.Manager
 
                         String VatRefundsListResultModelSetResponseJson = VatRefundsResponse.Content.ReadAsStringAsync().Result;
 
-                        if(VatRefundsResponse.StatusCode == HttpStatusCode.BadRequest)
+                        if (VatRefundsResponse.StatusCode == HttpStatusCode.BadRequest)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
@@ -7694,10 +7752,10 @@ namespace GAZT.Manager
                                 String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForUnlockAccount = WithReplacedString;
                                 //ErrorMessageForVAT
-                                //throw new GAZTUnlockAccountException(ErrorMessageForUnlockAccount);
+                                throw new GAZTErrorException(ErrorMessageForUnlockAccount);
                             }
                         }
-                        else if(!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
+                        else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
                         {
                             VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["d"].ToString();
                             VatRefundDisplayDataModel = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
@@ -7713,15 +7771,10 @@ namespace GAZT.Manager
                     }
                     return VatRefundDisplayDataModel;
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTErrorException ex)
                 {
                     Console.WriteLine(ex);
-                    throw new GAZTUnlockAccountException(ex.Message);
-                }
-            
-                catch(Exception ex)
-                {
-                    throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                    throw new GAZTErrorException(ex.Message);
                 }
             }
             else
@@ -7827,7 +7880,7 @@ namespace GAZT.Manager
                     HttpResponseMessage VatRefundsResponse = await client.PostAsync(uri, contentPost);
 
                     if (VatRefundsResponse != null)
-                    {   
+                    {
                         if (VatRefundsResponse.StatusCode == HttpStatusCode.Unauthorized)
                         {
                             App.IsSessionExpired = true;
@@ -7898,6 +7951,976 @@ namespace GAZT.Manager
         }
 
 
+        #endregion
+
+        #region Upload Attachements
+        public static async Task<AttachmentRootOject> GAZTSaveAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
+                    char LangZ = GetLangZParameter();
+                    string AttBy = "TP";
+                    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    if (!string.IsNullOrEmpty(contentType))
+                        baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+                    var response = await client.PostAsync(url, baContent);
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+                    return _attachment;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        public static string GAZTDeleteAttachment(string fileName, string RetGuid)//, string returnedFguid
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string DeleteToken = string.Empty;
+                try
+                {
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
+                    char LangZ = GetLangZParameter();
+                    string Dotyp = "VTA0";
+                    string AttBy = "TP";
+                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                                                                                                                                                                                                                                                                                   // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+                    HttpResponseMessage res = client.DeleteAsync(url).Result;
+                    var responsestr = res.Content.ReadAsStringAsync().Result;
+                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+                    if (res != null)
+                    {
+                        HttpHeaders headers = res.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("delete", out values))
+                        {
+                            DeleteToken = values.First();
+                        }
+                    }
+                    return DeleteToken;
+                }
+                catch (Exception ex)
+                {
+                    return DeleteToken;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        #endregion
+
+        #region VATInstalationPlan
+
+        //Request To VAT Installment Plan
+        public static async Task<ReqVatInstalmentPlanResponse> GetRequestToVATInstalmentData()
+        {
+            ReqVatInstalmentPlanResponse _requestVATInstalmentPlan = new ReqVatInstalmentPlanResponse();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string LangZAREN = GetLangZParameterAREN();
+                    char LangZ = GetLangZParameter();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string taxType = "VT";
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GetReqVATInstalmentdata + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
+
+                    //var serilized = JsonConvert.SerializeObject(_requestVATInstalmentPlanresponse);
+                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    //HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    //var detailJson = res.Content.ReadAsStringAsync().Result;
+
+                    var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
+                    _requestVATInstalmentPlan = JsonConvert.DeserializeObject<ReqVatInstalmentPlanResponse>(detailJson);
+
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+            }
+            return _requestVATInstalmentPlan;
+        }
+
+        //Get FBGuid for VAT plan details
+        public async static Task<VATInstalmentDetailsInputModel> GAZTGetVATInstalmentDetailsInputData(string fbguid, string fbnum, string gpart, string Status)
+        {
+            VATInstalmentDetailsInputModel _InstalmentDetailsInputs = new VATInstalmentDetailsInputModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+                    string fbtyp = "VTIA";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet
+                    //    (Euser1 = '', Fbguid = '005056B1F8FB1EEAB8D6D063DAB19A0C', Fbnum = '86000000664', Fbtyp = 'VTIA', Gpart = '3102288776', Lang = 'EN', Persl = '', Status = 'E0045', Dispflag = '')
+                    //    ?=&$format = json
+
+                    String url = Constants.VATGetFormGUIDURL + "Euser1='" + "',Fbguid='" + fbguid + "',Fbnum='" + fbnum + "',Fbtyp='" + fbtyp + "'," +
+                     "Gpart='" + gpart + "',Lang='" + lang + "',Persl='" + "',Status='" + Status + "',Dispflag='" + "')?=&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vATRefillingGetDropdownResponse = await client.GetAsync(uri);
+
+
+
+                    if (_vATRefillingGetDropdownResponse != null)
+                    {
+                        if (_vATRefillingGetDropdownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vATRefillingGetDropdownResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _VATRefillingRequestData = _vATRefillingGetDropdownResponse.Content.ReadAsStringAsync().Result;
+                        _InstalmentDetailsInputs = JsonConvert.DeserializeObject<VATInstalmentDetailsInputModel>(_VATRefillingRequestData);
+
+
+
+                        if (!string.IsNullOrEmpty(_VATRefillingRequestData) && _InstalmentDetailsInputs.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_VATRefillingRequestData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _InstalmentDetailsInputs;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        //Request To VAT Installment Plan Details
+        public static async Task<RequestToVATInstallmentPlanDetails> GetRequestToVATInstalmentPlanDetails(string euser, string formGuid)
+        {
+            RequestToVATInstallmentPlanDetails _requestToVATInstallmentPlanDetails = new RequestToVATInstallmentPlanDetails();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string LangZAREN = GetLangZParameterAREN();
+                    char LangZ = GetLangZParameter();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    //Input Parameters
+                    string Euser = euser;
+                    string FormGuid = formGuid;
+
+                    //End
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    //FormGuid = '005056B1F8FB1EDAB7B1293EB7E27171',Euser = '00000000001008317083',Gpartz = '',Langz = 'E',Officerz = '',PortalUsrz = '',TxnTpz = '')
+                    //?$expand = VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet &$format = json
+
+                    String url = Constants.GetRequestToVATInstalmentPlanById
+                        + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpartz=''," +
+                        "Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?&$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
+
+                    //var serilized = JsonConvert.SerializeObject(_requestVATInstalmentPlanresponse);
+                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    //HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    //var detailJson = res.Content.ReadAsStringAsync().Result;
+
+                    var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
+                    _requestToVATInstallmentPlanDetails = JsonConvert.DeserializeObject<RequestToVATInstallmentPlanDetails>(detailJson);
+
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+            }
+            return _requestToVATInstallmentPlanDetails;
+        }
+
+
+        //Display Installment Agreement Schedule Plan
+        public static async Task<DisplayInstallmentAgreementSchedulePlan> GetDisplayInstallmentAgreementSchedulePlan(string formGuid)
+        {
+            DisplayInstallmentAgreementSchedulePlan _displayInstallmentAgreementSchedulePlan = new DisplayInstallmentAgreementSchedulePlan();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string LangZAREN = GetLangZParameterAREN();
+                    char LangZ = GetLangZParameter();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    //Input Parameters
+                    string Euser = "";
+                    string FormGuid = formGuid;
+
+                    //End
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    //  FormGuid = '005056B1F8FB1EDAB7B1669470197223',Euser = '00000010000008316968',Gpart = '',Langz = 'E',Opbel = '')
+                    //?$expand = VTIA_IADTSet,VTIA_IAHDSet &$format = json
+
+                    String url = Constants.GetDisplayInstallmentAgreementSchedule
+                        + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpart=''," +
+                        "Langz='" + lang + "',Opbel='" + "')?&$expand=VTIA_IADTSet,VTIA_IAHDSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
+
+                    //var serilized = JsonConvert.SerializeObject(_requestVATInstalmentPlanresponse);
+                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    //HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    //var detailJson = res.Content.ReadAsStringAsync().Result;
+
+                    var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
+
+                    _displayInstallmentAgreementSchedulePlan = JsonConvert.DeserializeObject<DisplayInstallmentAgreementSchedulePlan>(detailJson);
+
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+            }
+            return _displayInstallmentAgreementSchedulePlan;
+        }
+
+
+        //Instalment Schedule details
+        public static async Task<VATInstalmentScheduleDetailsModel> GetDisplayInstallmentScheduleDetails(string opbel, string fromGuid, string eUser)
+        {
+            VATInstalmentScheduleDetailsModel _vATInstalmentScheduleDetailsModel = new VATInstalmentScheduleDetailsModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string LangZAREN = GetLangZParameterAREN();
+                    char LangZ = GetLangZParameter();
+                    string lang = UtilityManager.GetLanguageParameter();
+                    //Input Parameters
+                    string Euser = eUser;
+                    string FormGuid = fromGuid;
+                    string Opbel = opbel;
+
+                    //End
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    //(FormGuid = '005056B1F8FB1EDAB7B1669470197223', Euser = '00000010000008316968', Gpart = '', Langz = 'E', Opbel = '8000003828') 
+                    //  ?$expand = VTIA_IADTSet,VTIA_IAHDSet &$format = json
+
+                    String url = Constants.GetInstallmentSchedule
+                        + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpart=''," +
+                        "Langz='E',Opbel='" + Opbel + "')?$expand=VTIA_IADTSet,VTIA_IAHDSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
+
+                    //var serilized = JsonConvert.SerializeObject(_requestVATInstalmentPlanresponse);
+                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    //HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    //var detailJson = res.Content.ReadAsStringAsync().Result;
+
+
+                    var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
+
+                    _vATInstalmentScheduleDetailsModel = JsonConvert.DeserializeObject<VATInstalmentScheduleDetailsModel>(detailJson);
+
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+            }
+            return _vATInstalmentScheduleDetailsModel;
+        }
+
+
+        public async static Task<VatInstalmentPlanResponse> GAZTGetVATInstalmentData()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VatInstalmentPlanResponse vATInstalmentDetails = new VatInstalmentPlanResponse();
+                string NewToken = string.Empty;
+                try
+                {
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATInstalmentDataResponse = await client.GetAsync(uri);
+                    if (GAZTVATInstalmentDataResponse != null)
+                    {
+                        if (GAZTVATInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATInstalmentDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String vatInstalmentData = GAZTVATInstalmentDataResponse.Content.ReadAsStringAsync().Result;
+                        vATInstalmentDetails = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(vatInstalmentData);
+                        if (!string.IsNullOrEmpty(vatInstalmentData) && vATInstalmentDetails.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(vatInstalmentData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return vATInstalmentDetails;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<VatInstalmentPlanResponse> SaveVATInstalmentData(VatInstalmentPlanRequest _vATInstalment)
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+
+                    VatInstalmentPlanResponse _vatResponseObject = new VatInstalmentPlanResponse();
+                    string LangZ = GetLangZParameterAREN();
+                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    if(_vATInstalment.d.Operationz == "01") {
+
+                        var serilized = JsonConvert.SerializeObject(_vATInstalment.d);
+                        client.DefaultRequestHeaders.Add("Token", "123");
+                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                        var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                        _vatResponseObject = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
+                        if (_vatResponseObject == null || _vatResponseObject.d == null)
+                        {
+                            ErrorMessage = string.Empty;
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            }
+                        }
+                        return _vatResponseObject;
+                    }
+                    else {
+                        var serilized = JsonConvert.SerializeObject(_vATInstalment);
+                        client.DefaultRequestHeaders.Add("Token", "123");
+                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                        var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                        _vatResponseObject = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
+                        if (_vatResponseObject == null || _vatResponseObject.d == null)
+                        {
+                            ErrorMessage = string.Empty;
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            }
+                        }
+                        return _vatResponseObject;
+                    }
+
+
+                   
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+
+
+        }
+        #endregion
+
+        #region ZakatInstalationPlan
+
+
+        public async static Task<ZakatInstalmentPlanResponse> GAZTGetZakatInstalmentData()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ZakatInstalmentPlanResponse vATInstalmentDetails = new ZakatInstalmentPlanResponse();
+                string NewToken = string.Empty;
+                try
+                {
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATInstalmentDataResponse = await client.GetAsync(uri);
+                    if (GAZTVATInstalmentDataResponse != null)
+                    {
+                        if (GAZTVATInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATInstalmentDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String vatInstalmentData = GAZTVATInstalmentDataResponse.Content.ReadAsStringAsync().Result;
+                        vATInstalmentDetails = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(vatInstalmentData);
+                        if (!string.IsNullOrEmpty(vatInstalmentData) && vATInstalmentDetails.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(vatInstalmentData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return vATInstalmentDetails;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<ZakatInstalmentPlanResponse> SaveZakatInstalmentData(ZakatInstalmentPlanRequest _vATInstalment)
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+
+                    ZakatInstalmentPlanResponse _vatResponseObject = new ZakatInstalmentPlanResponse();
+                    string LangZ = GetLangZParameterAREN();
+                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var serilized = JsonConvert.SerializeObject(_vATInstalment);
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                    _vatResponseObject = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
+                    if (_vatResponseObject == null || _vatResponseObject.d == null)
+                    {
+                        ErrorMessage = string.Empty;
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                        }
+                    }
+                    return _vatResponseObject;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+
+
+        }
+        #endregion
+
+        #region Establishment Registration API Calls
+        public static async Task<List<BranchesDropDownModel>> ESTBranchesDropDown()
+        {
+            List<BranchesDropDownModel> dropDownModels = new List<BranchesDropDownModel>();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(string.Format("{0}?&$format=json&$filter=Spras eq '{1}'", Constants.ESTBranchesDropDown ,lang));
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
+                            dropDownModels = JsonConvert.DeserializeObject<List<BranchesDropDownModel>>(ESTBranchesDropDownResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return dropDownModels;
+        }
+        public static async Task<TaxPayerDetails> ESTTaxPayerDetailGetService(string step, string TIN, string emailID)
+        {
+            TaxPayerDetails taxPayer = new TaxPayerDetails();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(string.Format("{0}(Euser='',Fbguid='',Gpartx='{1}',Langx='{2}',Operationx='',PortalUsrx='{3}',Srcidentifyx='',StepNumberx='{4}',Fbnumx='',Fbstax='',Fbustx='')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,Nreg_FormEdit,Nreg_BtnSet,off_notesSet,AttDetSet,Nreg_MSGSet&$format=json",
+                        Constants.ESTTaxPayerDetails, TIN, lang, emailID, step));
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return taxPayer;
+        }
+        public static async Task<TaxPayerDetails> ESTTaxPayerDetailPostService(TaxPayerDetails taxPayer) //Rentatt =X , Passatt=X
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    HttpContent contentPost = new StringContent(JsonConvert.SerializeObject(taxPayer), Encoding.UTF8, Constants.ContentType);
+
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(new Uri(string.Format("{0}?sap-language={1}", Constants.ESTTaxPayerDetails, lang)), contentPost);
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return taxPayer;
+        }
+        public static async Task<List<TaxpayerNationality>> ESTTaxPayerNationality()
+        {
+            List<TaxpayerNationality> nationalities = new List<TaxpayerNationality>();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(string.Format("{0}?&$format=json&$filter=ANationality eq 'SAUDI' and Spras eq '{1}'",
+                        Constants.ESTTaxPayerNationality, lang));
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
+                            nationalities = JsonConvert.DeserializeObject<List<TaxpayerNationality>>(ESTBranchesDropDownResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return nationalities;
+        }
+        public static async Task<string> ESTAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Doctype, string contentType) //RG16 for Residency, RG19 for passport
+        {
+            char lang = GetLangZParameter();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    //VATDeregAttachmentRootOject _attachment = new VATDeregAttachmentRootOject();
+                    var uri = new Uri(string.Format("{0}?&$format=json&(RetGuid='{1}',OutletRef='',Flag='N',Dotyp='{2}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
+                        Constants.ESTTaxPayerNationality, RetGuid, Doctype));
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    if (!string.IsNullOrEmpty(contentType))
+                        baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+                    var response = await client.PostAsync(uri, baContent);
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    //_attachment = JsonConvert.DeserializeObject<VATDeregAttachmentRootOject>(responsestr);
+                    return responsestr;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
         #endregion
     }
 }

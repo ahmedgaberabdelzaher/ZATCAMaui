@@ -9,16 +9,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class OutletDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+        private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
             get => _currentTab;
-            private set
+            set
             {
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
                 RaisePropertyChanged(nameof(CurrentIndex));
+                switch (value)
+                {
+                    case EstablishmentRegistrationOutletTabsEnum.ActivityDetails:
+                        SelectedOutletTabText = "Activity Details";
+                        break;
+                    case EstablishmentRegistrationOutletTabsEnum.AddressDetails:
+                        SelectedOutletTabText = "Address Details";
+                        break;
+                    case EstablishmentRegistrationOutletTabsEnum.OutletDetail:
+                    default:
+                        SelectedOutletTabText = "Outlet Details";
+                        break;
+                }
             }
         }
 
@@ -26,7 +39,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public int MaxIndex { get; private set; } = 3;
 
 
-        private int _currenrIndex = (int)EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+        private int _currenrIndex = (int)EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -73,9 +86,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
-            OnActivityItemButtonClick = new Command(() => {
-                System.Diagnostics.Debug.WriteLine("OnActivityItemButtonClick");
-                navigationService.NavigateTo(App.ActivityItemPage);
+            OnActivityItemButtonClick = new Command((_enum) => {
+                Console.WriteLine(_enum);
+                navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                {
+                    openedTab = (EstablishmentOutletActivitiesTabsEnum)_enum
+                });
             });
         }
         #endregion
@@ -86,12 +102,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             if(currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
-                SelectedOutletTabText = "Activity Details";
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
-                SelectedOutletTabText = "Address Details";
+            }
+            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
+            {
+                _navigationService.GoBack();
             }
         }
         private void navigateToPre()
@@ -99,12 +117,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
-                SelectedOutletTabText = "Activity Details";
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
-                SelectedOutletTabText = "Outlet Details";
             }
         }
         #endregion

@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
+using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
     public partial class OutletDetailsPageView : ContentPage
     {
-        public OutletDetailsPageView()
+        private OutletDetailsPageViewModel viewModel;
+        private OutletNavigationModels _outletNavigation;
+        public OutletDetailsPageView(OutletNavigationModels outletNavigation)
         {
             InitializeComponent();
-            BindingContext = App.Locator.OutletDetailsPageView;
+            _outletNavigation = outletNavigation;
+            viewModel = App.Locator.OutletDetailsPageView;
+            viewModel.currentTab = _outletNavigation.openedTab;
+            BindingContext = viewModel;
             SetLTR();
         }
         private void SetLTR()
@@ -24,6 +31,21 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             //{
             //    this.FlowDirection = FlowDirection.RightToLeft;
             //}
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+        void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var index = OutletTabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
+                OutletTabScrollView.ScrollToAsync(OutletTabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
+            }
+            catch (Exception) { }
         }
     }
 }

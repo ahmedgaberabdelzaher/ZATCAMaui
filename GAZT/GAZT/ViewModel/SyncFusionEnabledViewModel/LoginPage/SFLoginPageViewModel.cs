@@ -993,6 +993,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        //TODO for continue work on EST added by ashwini
+                        //_navigationService.NavigateTo(App.EstablishmentRegistrationPage);
                     });
 
                     //if (App.IsOTPByPassed == true)

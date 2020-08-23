@@ -370,7 +370,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _iCRStatusImage = value;
-                RaisePropertyChanged("ICRStatus");
+                RaisePropertyChanged("ICRStatusImage");
             }
         }
 
@@ -389,19 +389,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _confirmAndGenerateSADADBillLabelVisibility = false;
-        public bool ConfirmAndGenerateSADADBillLabelVisibility
+
+        private bool _checkBoxStatus = false;
+        public bool CheckBoxStatus
         {
             get
             {
-                return _confirmAndGenerateSADADBillLabelVisibility;
+                return _checkBoxStatus;
             }
             set
             {
-                _confirmAndGenerateSADADBillLabelVisibility = value;
-                RaisePropertyChanged("ConfirmAndGenerateSADADBillLabelVisibility");
+                _checkBoxStatus = value;
+                RaisePropertyChanged("CheckBoxStatus");
             }
         }
+
+        private bool _desClaimerVisibility = true;
+        public bool DesClaimerVisibility
+        {
+            get
+            {
+                return _desClaimerVisibility;
+            }
+            set
+            {
+                _desClaimerVisibility = value;
+                RaisePropertyChanged("DesClaimerVisibility");
+            }
+        }
+        //private bool _confirmAndGenerateSADADBillLabelVisibility = false;
+        //public bool ConfirmAndGenerateSADADBillLabelVisibility
+        //{
+        //    get
+        //    {
+        //        return _confirmAndGenerateSADADBillLabelVisibility;
+        //    }
+        //    set
+        //    {
+        //        _confirmAndGenerateSADADBillLabelVisibility = value;
+        //        RaisePropertyChanged("ConfirmAndGenerateSADADBillLabelVisibility");
+        //    }
+        //}
 
 
         private bool _setReadOnlyToTotalVATSales = false;
@@ -455,14 +483,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
                 if (IsValueChange)
                 {
-                    SetUpdatedDataToZAKATEstimated();
-
-                    if (AttachmentPopUpViewModel.SalesDetailList != null && AttachmentPopUpViewModel.SalesDetailList.Count > 0)
+                    if (CheckBoxStatus)
                     {
-                        AddAttachmetToPostData();
-                    }
+                        SetUpdatedDataToZAKATEstimated();
 
-                    SubmitReturn();
+                        if (AttachmentPopUpViewModel.SalesDetailList != null && AttachmentPopUpViewModel.SalesDetailList.Count > 0)
+                        {
+                            AddAttachmetToPostData();
+                        }
+
+                        SubmitReturn();
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                        });
+                    }
 
                 }
                 else
@@ -1305,64 +1342,65 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if ((string.Equals(ZakatReturnDetail.Statusz, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
             {
-                ICRStatusImage = "UnSubmitted";
+                ICRStatus = AppResources.UnSubmitted;
                 ICRStatusImage = "ic_unsubmitted.png";
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
             {
-                ICRStatusImage = "Paid";
+                ICRStatusImage = "submited_check.png";
+                ICRStatusImage = AppResources.Paid;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_loading.png";
-                ICRStatus = "In Processing";
+                ICRStatus = AppResources.NDInProcessing;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
-                ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Paid";
+                ICRStatusImage = "submited_check.png";
+                ICRStatus = AppResources.Paid;
 
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0008"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Build";
+                ICRStatus = AppResources.NDBilled;
 
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP021"))//To be approved || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_loading.png";
-                ICRStatus = "To be approved";
+                ICRStatus = AppResources.ToBeApproved;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0004"))//Amend without Objection
             {
-                ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Submitted";
+                ICRStatusImage = "submited_check.png";
+                ICRStatus = AppResources.Submitted;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0003"))// In Build state 
             {
-                ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Build";
+                ICRStatusImage = "submited_check.png";
+                ICRStatus = AppResources.NDBilled;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0011"))// In Paid state 
             {
-                ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Paid";
+                ICRStatusImage = "submited_check.png";
+                ICRStatus = AppResources.Paid;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0005"))// In Processing
             {
                 ICRStatusImage = "ic_loading.png";
-                ICRStatus = "In Processing";
+                ICRStatus = AppResources.NDInProcessing;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0002"))// Status when the return released by GAZT officer
             {
-                ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Build";
+                ICRStatusImage = "submited_check.png";
+                ICRStatus = AppResources.NDBilled;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0001"))// UnSubmitted
             {
                 ICRStatusImage = "unsubmitted.png";
-                ICRStatus = "UnSubmitted";
+                ICRStatus = AppResources.UnSubmitted;
             }
         }
 
@@ -1374,7 +1412,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsEditTextVisible = true;
             SetSubmitButtonVisibility = false;
             SetConfirmButtonVisibility = true;
-            ConfirmAndGenerateSADADBillLabelVisibility = true;
+         //   ConfirmAndGenerateSADADBillLabelVisibility = true;
             ChangeFromEstimateTAccountringBasisButtonVisibility = false;
         }
 
@@ -1390,10 +1428,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             isLabelVisible = false;
             IsEditTextVisible = false;
             SetSubmitButtonVisibility = false;
-            ConfirmAndGenerateSADADBillLabelVisibility = false;
+        //    ConfirmAndGenerateSADADBillLabelVisibility = false;
             SetConfirmButtonVisibility = false;
             SetAmendButtonVisibility = false;
             isThresholdValueLessThanTotalVATSales = false;
+            DesClaimerVisibility = false;
         }
 
         public void SetChangeFromEstimateTAccountringBasisButtonVisibility(string ButtonStatus)
@@ -1609,8 +1648,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetEditImage();
             SetConfirmButtonVisibility = false;
             ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+            DesClaimerVisibility = true;
         }
 
+        private void SetLayoutVisibilityAfterSuccessfulAmendement()
+        {
+            UnSetEditImage();
+            isEditVisible = false;
+            isLabelVisible = true;
+            IsEditTextVisible = false;
+            SetSubmitButtonVisibility = false;
+            //    ConfirmAndGenerateSADADBillLabelVisibility = false;
+            SetConfirmButtonVisibility = false;
+            SetAmendButtonVisibility = false;
+            isThresholdValueLessThanTotalVATSales = false;
+            DesClaimerVisibility = false;
+        }
         #endregion
 
     }

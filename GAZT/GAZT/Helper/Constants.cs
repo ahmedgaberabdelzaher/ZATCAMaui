@@ -38,10 +38,10 @@ namespace GAZT.Helper
 
         #endregion
 
-         //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
-         //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
-         //public static string DomainUrlForCookies = DevDomainForCookies;
-         //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
+        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = DevDomainForCookies;
+        //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
@@ -185,6 +185,7 @@ namespace GAZT.Helper
         public static string Z_ZKTE_SUMMARY = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ZKTE_SUMMARY_SRV/HeadSet";
         #endregion
 
+
         #region VATRefunds
         public static string VatRefundList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ETRF_WI_SRV/WISet";
         public static string VatRefundDisplayData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RF_SRV/HeaderSet(Euser='',Fbnumx='',";
@@ -205,6 +206,24 @@ namespace GAZT.Helper
         public static string GAZTVATDeregDeteleAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(OutletRef=";
 
         public static string SaveVATDeRegistration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/HeaderSet";
+
+        #endregion
+
+        #region Establishment Registration
+        public static string ESTBranchesDropDown = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_BRANCH_DROPDOWN_SRV/branch_dropdownSet";
+        public static string ESTTaxPayerDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_HeaderSet";
+        public static string ESTTaxPayerNationality = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NATIOANALITY_SRV/nationalitySet";
+        public static string ESTPostAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_SAVE_ATTACH_SRV_01/AttachSet";
+        #endregion
+
+        #region VATInstalment
+        public static string GetVATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet(";
+        public static string VATInstalmentSaveData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+        public static string GetReqVATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(";
+        public static string GetRequestToVATInstalmentPlanById = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet(";
+        public static string GetDisplayInstallmentAgreementSchedule = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_DISPLAY_SRV/VTIA_HEADERSet(";
+        public static string GetInstallmentSchedule = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_DISPLAY_SRV/VTIA_HEADERSet(";
+        public static string VATGetFormGUIDURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
 
         #endregion
 
