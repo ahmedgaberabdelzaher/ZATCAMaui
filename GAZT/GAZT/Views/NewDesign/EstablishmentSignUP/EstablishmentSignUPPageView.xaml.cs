@@ -20,5 +20,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel = App.Locator.EstablishmentSignUPPageView;
             BindingContext = viewModel;
         }
+
+        private void OnEstablishmentTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
+        }
     }
 }

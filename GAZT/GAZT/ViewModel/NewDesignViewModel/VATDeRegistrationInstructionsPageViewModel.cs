@@ -92,6 +92,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _navigationService.GoBack();
             });
 
+            IsContinueButtonEnable = false;
             VATDeregistrationClicked = new Command(this.VATDeregistrationTapped);
         }
 
@@ -99,6 +100,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if (_isInstructionChecked)
             {
+                IsContinueButtonEnable = true;
+
                 MessagingCenter.Send<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", IsInstructionChecked);
                 try
                 {

@@ -219,13 +219,10 @@
         <Setter Property="ColumnHeaderHeight" Value="40"/>
         <Setter Property="PickerMode" Value="Default"/>
         <Setter Property="ShowHeader" Value="False"/>
-        <Setter Property="ColumnHeaderFontFamily" Value="{StaticResource SSTArRoman}"/>
         <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}"/>
         <Setter Property="ColumnHeaderFontAttribute" Value="Bold"/>
         <Setter Property="ColumnHeaderFontSize" Value="16"/>
-        <Setter Property="UnSelectedItemFontFamily" Value="{StaticResource SSTArRoman}"/>
         <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}"/>
-        <Setter Property="SelectedItemFontFamily" Value="{StaticResource SSTArabicMedium}"/>
         <Setter Property="SelectedItemFontSize" Value="16"/>
         <Setter Property="BorderColor" Value="Transparent"/>
         <Setter Property="HeightRequest" Value="250"/>
@@ -245,13 +242,10 @@
         <Setter Property="ColumnHeaderHeight" Value="0"/>
         <Setter Property="PickerMode" Value="Default"/>
         <Setter Property="ShowHeader" Value="False"/>
-        <Setter Property="ColumnHeaderFontFamily" Value="{StaticResource SSTArRoman}"/>
         <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}"/>
         <Setter Property="ColumnHeaderFontAttribute" Value="Bold"/>
         <Setter Property="ColumnHeaderFontSize" Value="16"/>
-        <Setter Property="UnSelectedItemFontFamily" Value="{StaticResource SSTArRoman}"/>
         <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}"/>
-        <Setter Property="SelectedItemFontFamily" Value="{StaticResource SSTArabicMedium}"/>
         <Setter Property="SelectedItemFontSize" Value="16"/>
         <Setter Property="BorderColor" Value="Transparent"/>
         <Setter Property="HeightRequest" Value="200"/>

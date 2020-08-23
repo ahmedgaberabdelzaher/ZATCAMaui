@@ -10199,5 +10199,35 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDObjectionSubmittedSuccessfully", resourceCulture);
             }
         }
+        
+        public static string NDBilled {
+            get {
+                return ResourceManager.GetString("NDBilled", resourceCulture);
+            }
+        }
+        
+        public static string NDInProcessing {
+            get {
+                return ResourceManager.GetString("NDInProcessing", resourceCulture);
+            }
+        }
+        
+        public static string ToBeApproved {
+            get {
+                return ResourceManager.GetString("ToBeApproved", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentPlanListTotalNumberOfMonths {
+            get {
+                return ResourceManager.GetString("VATInstalmentPlanListTotalNumberOfMonths", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentPlanListTotalMonthlyInstalments {
+            get {
+                return ResourceManager.GetString("VATInstalmentPlanListTotalMonthlyInstalments", resourceCulture);
+            }
+        }
     }
 }

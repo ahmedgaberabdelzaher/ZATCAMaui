@@ -30,7 +30,7 @@
                 </Grid.RowDefinitions>
 
 
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="2" x:Name="ParentView">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -53,6 +53,9 @@
                             <Image HorizontalOptions="Start" Source="establishments_White.png"/>
                             <custom:CustomLabel Text="Establishments" Style="{StaticResource ValueLabelWhiteMedium}"/>
                         </StackLayout>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnEstablishmentTapped"/>
+                        </Grid.GestureRecognizers>
                     </Grid>
 
 

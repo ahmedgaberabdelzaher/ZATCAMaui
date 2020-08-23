@@ -45,7 +45,7 @@
                             <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
                                 <Label  Text="Reference Number" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start" VerticalOptions="Center"/>
                                 <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                <Label Text="1234567890" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                <Label Text="{Binding VatNewReqSummaryData.Fbnumx}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
                             </StackLayout>
 
                            </StackLayout>

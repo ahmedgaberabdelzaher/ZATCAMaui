@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.Views.NewDesign.VATDeRegistration;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -219,6 +220,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("FileName");
             }
         }
+        private string _attachmentTitle = string.Empty;
+        public string AttachmentTitle
+        {
+            get
+            {
+                return _attachmentTitle;
+            }
+            set
+            {
+                _attachmentTitle = value;
+                RaisePropertyChanged("AttachmentTitle");
+            }
+        }
         private bool _frameIDError = false;
         public bool FrameIDError
         {
@@ -260,7 +274,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SuspendedStartDate");
             }
         }
-        private DateTime _suspendedEndDate = DateTime.Now.Date;
+        private DateTime _suspendedEndDate = DateTime.Now;
         public DateTime SuspendedEndDate
         {
             get
@@ -366,8 +380,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        private string _fromDate = string.Empty;
-        public string FromDate
+        private DateTime _fromDate = DateTime.Now;
+        public DateTime FromDate
         {
             get
             {
@@ -379,8 +393,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("FromDate");
             }
         }
-        private string _toDate = string.Empty;
-        public string ToDate
+        private DateTime _toDate = DateTime.Now;
+        public DateTime ToDate
         {
             get
             {
@@ -691,6 +705,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SelectedOutletOption");
             }
         }
+        //private bool _selectedOthersOption = false;
+        //public bool SelectedOthersOption
+        //{
+        //    get
+        //    {
+        //        return _selectedOthersOption;
+        //    }
+        //    set
+        //    {
+        //        _selectedOthersOption = value;
+        //        //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
+        //        RaisePropertyChanged("SelectedOthersOption");
+        //    }
+        //}
         private VATDeRegistrationDetails _vATDeRegistrationDetailsData;
         public VATDeRegistrationDetails VATDeRegistrationDetailsData
         {
@@ -1042,6 +1070,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        [Obsolete]
         public  void OnVatRegistrationReasonClicked()
         {
            // ObservableCollection < VATDeregistrationReasonModel> reasonList = new ObservableCollection<VATDeregistrationReasonModel>();
@@ -1068,8 +1097,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             genericPickerModel.PickerId = "reasonTypePicker";
             try
             {
-                
-                PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                //PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
+                 PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1285,6 +1314,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsAttachmentsViewEnabled = true;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = false;
+
+            AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
+
         }
 
         public void EnableDeclarationView()
@@ -1316,20 +1348,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Attachments View
         public void PopulateAttachmentsListViewTemplate()
         {
+            AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
+
             AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
   
             AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
             {
-                FieldTitle = "Attachment",
+                FieldTitle = AppResources.VatDeregDocumentTitle,
                 FieldSubTitle = AppResources.TinDeregistration20MB,
-                AttachmentName = FileName,
+                AttachmentName = SelectedDocumentOption.ActiveOutletDocumentOptions,
                 IsAttachmentAttached = true
             });
             AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
             {
-                FieldTitle = AppResources.VATRAttachment,
+                FieldTitle = AppResources.VatDeregAttachmentTitle,
                 FieldSubTitle = AppResources.TinDeregistration50MBMax,
-                AttachmentName = string.Empty,
+                AttachmentName = FileName,
                 IsAttachmentAttached = false
             });
 
@@ -1814,10 +1848,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 //  string number = response.d.Fbnumz;
                                 string displayMessage = AppResources.VATRSaveasdraftMessage;
                                 await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-
                             }
-
-
 
                             VATDeRegistrationDetailsData = response;
 
@@ -1827,13 +1858,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         IsLoading = false;
                         return response;
-
                     }
                     catch (Exception ex)
                     {
                         IsLoading = false;
                         return null;
-
                     }
                 }
                 IsLoading = false;
@@ -1846,7 +1875,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     //_navigationService.GoBack();
-
                 });
                 return response;
             }
