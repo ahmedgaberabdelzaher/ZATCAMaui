@@ -27,6 +27,7 @@ using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
+using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -320,7 +321,7 @@ namespace EGAZT
                 navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
             }
 
-            //CustomNavigation navigationPage = new CustomNavigation(new EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+             navigationPage = new CustomNavigation(new EstablishmentRegistrationPage()) { BarTextColor = Color.White };
             //CustomNavigation navigationPage = new CustomNavigation(new VATRefundsListPageView()) { BarTextColor = Color.White };
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
