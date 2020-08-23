@@ -316,4 +316,19 @@ namespace EGAZT.Models.EstablishmentRegistration
         public OffNotesSet off_notesSet { get; set; }
         public NregMSGSet Nreg_MSGSet { get; set; }
     }
+
+
+    public class TaxpayerNationality
+    {
+        public Metadata __metadata { get; set; }
+        public string ANationality { get; set; }
+        public string Mandt { get; set; }
+        public string Spras { get; set; }
+        public string Land1 { get; set; }
+        public string Landx { get; set; }
+        public string Natio { get; set; }
+        public string Landx50 { get; set; }
+        public string Natio50 { get; set; }
+        public string PrqSpregt { get; set; }
+    }
 }
