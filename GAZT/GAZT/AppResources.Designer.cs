@@ -10199,5 +10199,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDObjectionSubmittedSuccessfully", resourceCulture);
             }
         }
+        
+        public static string NDBilled {
+            get {
+                return ResourceManager.GetString("NDBilled", resourceCulture);
+            }
+        }
+        
+        public static string NDInProcessing {
+            get {
+                return ResourceManager.GetString("NDInProcessing", resourceCulture);
+            }
+        }
     }
 }

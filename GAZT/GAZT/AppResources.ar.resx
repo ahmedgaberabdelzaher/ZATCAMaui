@@ -5485,5 +5485,13 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">
     <value>تم تقديم الإعتراض بنجاح</value>
   </data>
-
+   <data name="NDBilled" xml:space="preserve">
+    <value>مفوتر</value>
+  </data>
+   <data name="NDInProcessing" xml:space="preserve">
+    <value>في طور المعالجة</value>
+  </data>
+   <data name="ToBeApproved" xml:space="preserve">
+    <value>إنتظار الموافقة</value>
+  </data>
 </root>
