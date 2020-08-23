@@ -209,6 +209,11 @@ namespace GAZT.Helper
 
         #endregion
 
+        #region Establishment Registration
+        public static string ESTBranchesDropDown = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_BRANCH_DROPDOWN_SRV/branch_dropdownSet";
+        public static string ESTTaxPayerDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_HeaderSet";
+        #endregion
+        
         #region VATInstalment
         public static string GetVATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet(";
         public static string VATInstalmentSaveData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";

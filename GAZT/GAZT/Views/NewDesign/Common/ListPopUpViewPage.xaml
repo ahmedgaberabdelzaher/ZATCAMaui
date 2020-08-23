@@ -30,18 +30,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <custom:CustomLabel Text="{Binding .}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" Padding="10"
-                                            FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" >
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal" />
-                                    <VisualState x:Name="Selected">
-                                        <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="Transparent" />
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                        </custom:CustomLabel>
+                                            FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

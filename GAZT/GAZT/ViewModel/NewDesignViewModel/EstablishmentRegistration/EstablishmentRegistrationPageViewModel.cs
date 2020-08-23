@@ -5,9 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
@@ -466,7 +468,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnReportingBranchSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<string> { "Qurayyat Office", "Almajmaah Office", "Muhayil Asir Office", "SHarurah Office", "Alaflaj Office", "Almajardah Office", "Mahd adh-Dhahab Office", "GAZT Centralized Branch"}));
+                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<BranchesDropDownModel> { new BranchesDropDownModel() { Bez50 = "Qurayyat Office", Augrp= "Qurayyat"}, new BranchesDropDownModel() { Bez50 = "Qurayyat1 Office", Augrp = "Qurayyat1" } }));
             });
 
             #endregion
@@ -519,13 +521,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnMonthSelectButtonClick = new Command(() =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
-                poupWindow.OnItemSelect = (item) => FiscalMonth = item;
+                poupWindow.OnItemSelect = (item) => FiscalMonth = item as string;
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
             OnDaySelectButtonClick = new Command(() =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
-                poupWindow.OnItemSelect = (item) => FiscalDay = item;
+                poupWindow.OnItemSelect = (item) => FiscalDay = item as string;
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
             #endregion
@@ -541,9 +543,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Method
-        public void OnAppearing()
+        public async void OnAppearing()
         {
-            
+            //List<BranchesDropDownModel> dropDownModels = await WebServiceManager.ESTBranchesDropDown();
+            //TaxPayerDetails taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailMainService(App.TP.Tin, "SKORADA-C@GAZT.GOV.SA");
         }
 
         private void navigateToNext()
