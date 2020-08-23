@@ -1342,64 +1342,65 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if ((string.Equals(ZakatReturnDetail.Statusz, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
             {
-                ICRStatus = "UnSubmitted";
+                ICRStatus = AppResources.UnSubmitted;
                 ICRStatusImage = "ic_unsubmitted.png";
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
             {
-                ICRStatusImage = "Paid";
+                ICRStatusImage = "submited_check.png";
+                ICRStatusImage = AppResources.Paid;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_loading.png";
-                ICRStatus = "In Processing";
+                ICRStatus = AppResources.NDInProcessing;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "submited_check.png";
-                ICRStatus = "Paid";
+                ICRStatus = AppResources.Paid;
 
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0008"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Billed";
+                ICRStatus = AppResources.NDBilled;
 
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP021"))//To be approved || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_loading.png";
-                ICRStatus = "To be approved";
+                ICRStatus = AppResources.ToBeApproved;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0004"))//Amend without Objection
             {
                 ICRStatusImage = "submited_check.png";
-                ICRStatus = "Submitted";
+                ICRStatus = AppResources.Submitted;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0003"))// In Build state 
             {
                 ICRStatusImage = "submited_check.png";
-                ICRStatus = "Billed";
+                ICRStatus = AppResources.NDBilled;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0011"))// In Paid state 
             {
                 ICRStatusImage = "submited_check.png";
-                ICRStatus = "Paid";
+                ICRStatus = AppResources.Paid;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0005"))// In Processing
             {
                 ICRStatusImage = "ic_loading.png";
-                ICRStatus = "In Processing";
+                ICRStatus = AppResources.NDInProcessing;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0002"))// Status when the return released by GAZT officer
             {
                 ICRStatusImage = "submited_check.png";
-                ICRStatus = "Build";
+                ICRStatus = AppResources.NDBilled;
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0001"))// UnSubmitted
             {
                 ICRStatusImage = "unsubmitted.png";
-                ICRStatus = "UnSubmitted";
+                ICRStatus = AppResources.UnSubmitted;
             }
         }
 

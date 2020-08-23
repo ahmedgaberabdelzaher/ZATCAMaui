@@ -10211,5 +10211,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDInProcessing", resourceCulture);
             }
         }
+        
+        public static string ToBeApproved {
+            get {
+                return ResourceManager.GetString("ToBeApproved", resourceCulture);
+            }
+        }
     }
 }
