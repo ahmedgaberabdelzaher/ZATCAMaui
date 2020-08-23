@@ -1820,4 +1820,31 @@
   <ItemGroup>
     <BundleResource Include="Resources\WhiteCircle_arrow_right%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\other.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\other%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\other%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_White%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_White%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_White.png" />
+  </ItemGroup>
 </Project>
