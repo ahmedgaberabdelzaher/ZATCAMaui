@@ -389,19 +389,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _confirmAndGenerateSADADBillLabelVisibility = false;
-        public bool ConfirmAndGenerateSADADBillLabelVisibility
-        {
-            get
-            {
-                return _confirmAndGenerateSADADBillLabelVisibility;
-            }
-            set
-            {
-                _confirmAndGenerateSADADBillLabelVisibility = value;
-                RaisePropertyChanged("ConfirmAndGenerateSADADBillLabelVisibility");
-            }
-        }
+        //private bool _confirmAndGenerateSADADBillLabelVisibility = false;
+        //public bool ConfirmAndGenerateSADADBillLabelVisibility
+        //{
+        //    get
+        //    {
+        //        return _confirmAndGenerateSADADBillLabelVisibility;
+        //    }
+        //    set
+        //    {
+        //        _confirmAndGenerateSADADBillLabelVisibility = value;
+        //        RaisePropertyChanged("ConfirmAndGenerateSADADBillLabelVisibility");
+        //    }
+        //}
 
 
         private bool _setReadOnlyToTotalVATSales = false;
@@ -1374,7 +1374,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsEditTextVisible = true;
             SetSubmitButtonVisibility = false;
             SetConfirmButtonVisibility = true;
-            ConfirmAndGenerateSADADBillLabelVisibility = true;
+         //   ConfirmAndGenerateSADADBillLabelVisibility = true;
             ChangeFromEstimateTAccountringBasisButtonVisibility = false;
         }
 
@@ -1390,7 +1390,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             isLabelVisible = false;
             IsEditTextVisible = false;
             SetSubmitButtonVisibility = false;
-            ConfirmAndGenerateSADADBillLabelVisibility = false;
+        //    ConfirmAndGenerateSADADBillLabelVisibility = false;
             SetConfirmButtonVisibility = false;
             SetAmendButtonVisibility = false;
             isThresholdValueLessThanTotalVATSales = false;
