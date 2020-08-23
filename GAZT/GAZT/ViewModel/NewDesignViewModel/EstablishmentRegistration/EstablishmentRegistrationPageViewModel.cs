@@ -234,6 +234,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged("IsAttachmentEnable");
             }
         }
+
+        private string _selectedReportinBranch = "Select";
+        public string SelectedReportinBranch
+        {
+            get => _selectedTabText;
+            private set
+            {
+                _selectedTabText = value;
+                RaisePropertyChanged(nameof(SelectedReportinBranch));
+            }
+        }
+
         #endregion
 
         #region TaxPayer Personal Details Tab Variables
