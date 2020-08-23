@@ -83,7 +83,6 @@
     <Folder Include="Views\NewDesign\GenericPickers\" />
     <Folder Include="ViewModel\NewDesignViewModel\GenericPickers\" />
     <Folder Include="Views\NewDesign\EstablishmentRegistrationPages\" />
-    <Folder Include="Views\NewDesign\Common\" />
     <Folder Include="Views\NewDesign\ZakatInstalmentPlan\" />
     <Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />
     <Folder Include="Models\ZakatInstalationModels\" />
@@ -92,6 +91,7 @@
     <Folder Include="Models\VATRefunds\" />
     <Folder Include="ViewModel\NewDesignViewModel\TaxpayerProfileVM\" />
     <Folder Include="ViewModel\NewDesignViewModel\EstablishmentRegistration\" />
+    <Folder Include="Models\EstablishmentRegistration\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -182,6 +182,9 @@
       <LastGenOutput>SyncfusionControl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MyBillsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\Common\ListPopUpViewPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">

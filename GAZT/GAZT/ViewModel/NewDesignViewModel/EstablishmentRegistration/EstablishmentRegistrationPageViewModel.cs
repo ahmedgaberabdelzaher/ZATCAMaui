@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
@@ -14,7 +16,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
-        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
         public EstablishmentRegistrationTabsEnum currentTab
         {
             get => _currentTab;
@@ -40,7 +42,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
 
-        private int _currenrIndex = 3;
+        private int _currenrIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -53,7 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTabText = "Passport Details";
+        private string _selectedTabText = "Registration/Taxpayer type";
         public string SelectedTabText
         {
             get => _selectedTabText;
@@ -198,8 +200,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             set
             {
-                _taxableIncomeSourceTypeList = value;
-                RaisePropertyChanged(nameof(TaxableIncomeSourceTypeList));
+                if (value != null)
+                {
+                    _taxableIncomeSourceTypeList = value;
+                    RaisePropertyChanged(nameof(TaxableIncomeSourceTypeList));
+                }
             }
         }
 
@@ -237,8 +242,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _genderList;
             private set
             {
-                _genderList = value;
-                RaisePropertyChanged(nameof(GenderList));
+                if (value != null)
+                {
+                    _genderList = value;
+                    RaisePropertyChanged(nameof(GenderList));
+                }
             }
         }
         private string _selectedGender = null;
@@ -262,38 +270,92 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _methodList;
             private set
             {
-                _methodList = value;
-                RaisePropertyChanged(nameof(MethodList));
+                if (value != null)
+                {
+                    _methodList = value;
+                    RaisePropertyChanged(nameof(MethodList));
+                }
             }
         }
         private string _selectedMethod = null;
         public string SelectedMethod
         {
             get => _selectedMethod;
-            private set
+            set
             {
-                _selectedMethod = value;
-                RaisePropertyChanged(nameof(SelectedMethod));
+                if (value != null)
+                {
+                    _selectedMethod = value;
+                    RaisePropertyChanged(nameof(SelectedMethod));
+                }
             }
         }
-        public ObservableCollection<string> _calendarTypeList = new ObservableCollection<string>();
+        private ObservableCollection<string> _calendarTypeList = new ObservableCollection<string>();
         public ObservableCollection<string> CalendarTypeList
         {
             get => _calendarTypeList;
             private set
             {
-                _calendarTypeList = value;
-                RaisePropertyChanged(nameof(CalendarTypeList));
+                if (value != null)
+                {
+                    _calendarTypeList = value;
+                    RaisePropertyChanged(nameof(CalendarTypeList));
+                }
             }
         }
-        public string _calendarType = null;
+        private string _calendarType = null;
         public string CalendarType
         {
             get => _calendarType;
-            private set
+            set
             {
                 _calendarType = value;
                 RaisePropertyChanged(nameof(CalendarType));
+            }
+        }
+        private string _fiscalMonth = "09";
+        public string FiscalMonth
+        {
+            get => _fiscalMonth;
+            private set
+            {
+                _fiscalMonth = value;
+                RaisePropertyChanged(nameof(FiscalMonth));
+            }
+        }
+        private string _fiscalDay = "28";
+        public string FiscalDay
+        {
+            get => _fiscalDay;
+            private set
+            {
+                _fiscalDay = value;
+                RaisePropertyChanged(nameof(FiscalDay));
+            }
+        }
+        #endregion
+        #region Summary Tabs variables
+        private EstablishmentRegistrationTabsEnum _summaryExpendedCard = EstablishmentRegistrationTabsEnum.RegistrationType;
+        public EstablishmentRegistrationTabsEnum SummaryExpendedCard
+        {
+            get => _summaryExpendedCard;
+            private set
+            {
+                _summaryExpendedCard = value;
+                RaisePropertyChanged(nameof(SummaryExpendedCard));
+            }
+        }
+        private ObservableCollection<string> _outletList = new ObservableCollection<string>();
+        public ObservableCollection<string> OutletList
+        {
+            get => _outletList;
+            private set
+            {
+                if (value != null)
+                {
+                    _outletList = value;
+                    RaisePropertyChanged(nameof(OutletList));
+                }
             }
         }
         #endregion
@@ -357,9 +419,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
         #endregion
-
+        #region Outlet Tabs commands
+        public ICommand OnNewOutletButtonClick { get; set; }
+        #endregion
         #region Financial Details Tabs commands
         public ICommand OnMonthSelectButtonClick { get; set; }
+        public ICommand OnDaySelectButtonClick { get; set; }
+        #endregion
+        #region Summary Tabs commands
+        public ICommand OnExpendGridViewClick { get; private set; }
         #endregion
 
         #endregion
@@ -398,7 +466,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnReportingBranchSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<string> { "Qurayyat Office", "Almajmaah Office", "Muhayil Asir Office", "SHarurah Office", "Alaflaj Office", "Almajardah Office", "Mahd adh-Dhahab Office", "GAZT Centralized Branch"}));
             });
 
             #endregion
@@ -409,17 +477,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnPDNatinalitySelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
 
             OnPDCitizenSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
 
             OnPDResidenceSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                PopupNavigation.Instance.PushAsync(new ListPopUpViewPage(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" }));
             });
             #endregion
 
@@ -429,39 +497,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnPassportCloseTapped = new Command(() => onPassportCloseTapped());
             #endregion
 
+            #region Outlet Tabs variable initialization
+            OnNewOutletButtonClick = new Command(() => {
+                System.Diagnostics.Debug.WriteLine("OnNewOutletButtonClick "+ navigationService);
+                _navigationService.NavigateTo(App.OutletDetailsPageView, new OutletNavigationModels());
+            });
+            #endregion
+
             #region Financial Details Tabs variable initialization
             MethodList.Clear();
             MethodList.Add("Accounts");
             MethodList.Add("Estimate");
-            MethodList.Add("Accounts1");
-            MethodList.Add("Estimate1");
-            MethodList.Add("Accounts2");
-            MethodList.Add("Estimate3");
-            MethodList.Add("Accounts4");
-            MethodList.Add("Estimate5");
 
             CalendarTypeList.Clear();
             CalendarTypeList.Add("Hijri");
             CalendarTypeList.Add("Gregorian");
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                SelectedMethod = MethodList.FirstOrDefault();
-                CalendarType = CalendarTypeList.LastOrDefault();
-                var testValue = SelectedTaxIncomeSourceType;
-            });
+            SelectedMethod = MethodList.FirstOrDefault();
+            CalendarType = CalendarTypeList.LastOrDefault();
+
             OnMonthSelectButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new NumberListPopUpPageView());
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
+                poupWindow.OnItemSelect = (item) => FiscalMonth = item;
+                PopupNavigation.Instance.PushAsync(poupWindow);
+            });
+            OnDaySelectButtonClick = new Command(() =>
+            {
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
+                poupWindow.OnItemSelect = (item) => FiscalDay = item;
+                PopupNavigation.Instance.PushAsync(poupWindow);
             });
             #endregion
 
-
+            #region Summary Tabs variable initialization
+            OnExpendGridViewClick = new Command((_enum)=> OnExpandCollapseGridViewClick(_enum));
+            OutletList.Clear();
+            OutletList.Add("1");
+            OutletList.Add("2");
+            #endregion
         }
 
         #endregion
 
         #region Method
+        public void OnAppearing()
+        {
+            
+        }
+
         private void navigateToNext()
         {
             if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
@@ -488,6 +572,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
                 SelectedTabText = "Taxpayer Personal Details";
+            }else if(currentTab == EstablishmentRegistrationTabsEnum.Declaration)
+            {
+                _navigationService.NavigateTo(App.RegistrationSuccessfulPage);
             }
         }
         private void navigateToPre()
@@ -737,6 +824,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private void onEstablishmentRegistrationAttachmentTapped()
         {
+        }
+
+
+        private void OnExpandCollapseGridViewClick(object _enum)
+        {
+            System.Diagnostics.Debug.WriteLine(_enum);
+            SummaryExpendedCard = (EstablishmentRegistrationTabsEnum)_enum;
         }
         #endregion
     }

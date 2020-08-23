@@ -35,7 +35,7 @@
                 <Setter Property="CornerRadius" Value="5"/>
             </Style>
 
-            <Style TargetType="Frame" x:Key="circleFrame">
+            <!--<Style TargetType="Frame" x:Key="circleFrame">
                 <Setter Property="BackgroundColor" Value="AliceBlue"/>
                 <Setter Property="Padding" Value="10"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
@@ -43,6 +43,16 @@
                 <Setter Property="HasShadow" Value="False"/>
                 <Setter Property="HeightRequest" Value="10"/>
                 <Setter Property="WidthRequest" Value="10"/>
+            </Style>-->
+
+            <Style TargetType="Frame" x:Key="circleFrame">
+                <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="HeightRequest" Value="25"/>
+                <Setter Property="WidthRequest" Value="25"/>
+                <Setter Property="HasShadow" Value="False"/>
             </Style>
 
             <Style TargetType="Entry" x:Key="EntryHeight48">
