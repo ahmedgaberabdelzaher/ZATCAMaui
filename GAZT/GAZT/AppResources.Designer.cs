@@ -9527,5 +9527,23 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZVATReturnsubmitted", resourceCulture);
             }
         }
+        
+        public static string NDInvoiceDetail {
+            get {
+                return ResourceManager.GetString("NDInvoiceDetail", resourceCulture);
+            }
+        }
+        
+        public static string NDSubmittedSuccessfully {
+            get {
+                return ResourceManager.GetString("NDSubmittedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string NDObjectionSubmittedSuccessfully {
+            get {
+                return ResourceManager.GetString("NDObjectionSubmittedSuccessfully", resourceCulture);
+            }
+        }
     }
 }
