@@ -320,7 +320,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATRefundListPageViewModel>();
             SimpleIoc.Default.Register<VATRefundDetailsPageViewModel>();
             SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
-            SimpleIoc.Default.Register<VATRefundsSuccessPageView>();
+            SimpleIoc.Default.Register<VATRefundsSuccessPageViewModel>();
             SimpleIoc.Default.Register<VATRefundsInstructionsPageViewModel>();
 
             SimpleIoc.Default.Register<AttachmentPopUpViewModel>();

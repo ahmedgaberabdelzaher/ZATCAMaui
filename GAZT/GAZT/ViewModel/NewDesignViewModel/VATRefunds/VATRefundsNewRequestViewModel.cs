@@ -259,7 +259,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 throw new ArgumentNullException("navigationService");
             }
-            
+
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
@@ -309,8 +309,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                
                 VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
+                VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
 
-                if(IbanData == null || IbanData.Count == 0)
+                if (IbanData == null || IbanData.Count == 0)
                 {
                     IsAddAccountVisisble = true;
                 }
@@ -362,13 +363,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    PopUp popUp = new PopUp();
+                    StringBuilder PopMsg = new StringBuilder();
+
+                    popUp.Message = message;
+                    popUp.HeaderText = AppResources.Information;
+
+                    if (App.IsArabic)
                     {
-                        await _dialogService.ShowMessage(message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    _navigationService.GoBack();
                 }
-                catch(Exception mex)
+                catch (Exception mex)
                 {
                     Console.WriteLine(mex.Message);
                 }
@@ -401,8 +415,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 });
 
                 VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData(draftsData.WiDtlSet.Results[0].Fbguid);
+                VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-",string.Empty);
 
-                if(VatRefundsDisplayDataModel.Idnumber != null && VatRefundsDisplayDataModel.Idnumber != string.Empty)
+                if (VatRefundsDisplayDataModel.Idnumber != null && VatRefundsDisplayDataModel.Idnumber != string.Empty)
                 {
                     SelectedIdNumber = VatRefundsDisplayDataModel.Idnumber;
                 }
@@ -476,12 +491,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 try
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    PopUp popUp = new PopUp();
+                    StringBuilder PopMsg = new StringBuilder();
+
+                    popUp.Message = message;
+                    popUp.HeaderText = AppResources.Information;
+
+                    if (App.IsArabic)
                     {
-                        await _dialogService.ShowMessage(message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                   
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    _navigationService.GoBack();
                 }
                 catch (Exception mex)
                 {
@@ -708,11 +735,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 });
 
                 VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
-                _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
 
-                await Task.Run(() =>
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    App.HideProgressView();
+                   _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
                 });
             }
             catch (InternetException ex)

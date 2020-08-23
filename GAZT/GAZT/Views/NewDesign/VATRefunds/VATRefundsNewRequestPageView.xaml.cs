@@ -71,11 +71,11 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 if(DraftsRequestDataModel == null)
                 {
-                    await viewModel.ReloadData();
+                    viewModel.ReloadData();
                 }
                 else
                 {
-                    await viewModel.LoadDraftsData(DraftsRequestDataModel);
+                    viewModel.LoadDraftsData(DraftsRequestDataModel);
                 }
             }
             catch(GAZTErrorException ex)
