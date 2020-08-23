@@ -370,7 +370,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _iCRStatusImage = value;
-                RaisePropertyChanged("ICRStatus");
+                RaisePropertyChanged("ICRStatusImage");
             }
         }
 
@@ -1342,7 +1342,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if ((string.Equals(ZakatReturnDetail.Statusz, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
             {
-                ICRStatusImage = "UnSubmitted";
+                ICRStatus = "UnSubmitted";
                 ICRStatusImage = "ic_unsubmitted.png";
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
@@ -1356,14 +1356,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
-                ICRStatusImage = "ic_Paid.png";
+                ICRStatusImage = "submited_check.png";
                 ICRStatus = "Paid";
 
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0008"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Build";
+                ICRStatus = "Billed";
 
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP021"))//To be approved || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
@@ -1373,17 +1373,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0004"))//Amend without Objection
             {
-                ICRStatusImage = "ic_Paid.png";
+                ICRStatusImage = "submited_check.png";
                 ICRStatus = "Submitted";
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0003"))// In Build state 
             {
-                ICRStatusImage = "ic_Paid.png";
-                ICRStatus = "Build";
+                ICRStatusImage = "submited_check.png";
+                ICRStatus = "Billed";
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0011"))// In Paid state 
             {
-                ICRStatusImage = "ic_Paid.png";
+                ICRStatusImage = "submited_check.png";
                 ICRStatus = "Paid";
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0005"))// In Processing
@@ -1393,7 +1393,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0002"))// Status when the return released by GAZT officer
             {
-                ICRStatusImage = "ic_Paid.png";
+                ICRStatusImage = "submited_check.png";
                 ICRStatus = "Build";
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0001"))// UnSubmitted
