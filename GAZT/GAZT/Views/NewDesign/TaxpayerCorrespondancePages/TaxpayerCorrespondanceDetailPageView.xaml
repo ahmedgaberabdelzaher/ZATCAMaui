@@ -118,8 +118,11 @@
                     <StackLayout Grid.Row="0" Grid.Column="0">
                         <control:CustomLabel Text="{Binding CorrespondenceTitle}"
                                              Style="{StaticResource SectionTitleBlack}" />
-                        <control:CustomLabel Text="{Binding CorrespondenceDateTime}"
+                        <StackLayout HorizontalOptions="Start">
+                            <control:CustomLabel FlowDirection="LeftToRight" Text="{Binding CorrespondenceDateTime}"
                                              Style="{StaticResource BodyLabelGrey}"/>
+
+                        </StackLayout>
 
                     </StackLayout>
                     <Image Grid.Row="0" Grid.Column="1" Source="{Binding FavIcon}" VerticalOptions="StartAndExpand">
