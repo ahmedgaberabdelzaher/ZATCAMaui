@@ -89,7 +89,7 @@
                                 <ColumnDefinition Width="85*"/>
                             </Grid.ColumnDefinitions>
                             <StackLayout Grid.Row="0" Grid.Column="1">
-                                <control:CustomLabel Text="Attachment" Style="{StaticResource CaptionLabelBlack}" VerticalOptions="CenterAndExpand"/>
+                            <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.Attachment}"  Style="{StaticResource CaptionLabelBlack}" VerticalOptions="CenterAndExpand"/>
                                 <!--<Label Text=" Date" Style="{StaticResource CaptionLabelGrey}" />-->
                             </StackLayout>
                         <Image Source="newui_ic_pdf.png" Grid.Row="0" Grid.Column="0" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
@@ -118,8 +118,11 @@
                     <StackLayout Grid.Row="0" Grid.Column="0">
                         <control:CustomLabel Text="{Binding CorrespondenceTitle}"
                                              Style="{StaticResource SectionTitleBlack}" />
-                        <control:CustomLabel Text="{Binding CorrespondenceDateTime}"
+                        <StackLayout HorizontalOptions="Start">
+                            <control:CustomLabel FlowDirection="LeftToRight" Text="{Binding CorrespondenceDateTime}"
                                              Style="{StaticResource BodyLabelGrey}"/>
+
+                        </StackLayout>
 
                     </StackLayout>
                     <Image Grid.Row="0" Grid.Column="1" Source="{Binding FavIcon}" VerticalOptions="StartAndExpand">

@@ -1,0 +1,1338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="EGAZT.Views.NewDesign.ContractRelease.ContractReleasePageView"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"
+                              Padding="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <!--<RowDefinition Height="10*" />-->
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter VerticalOptions="FillAndExpand"
+                                              HorizontalOptions="FillAndExpand"
+                                              Grid.Column="0"
+                                              Grid.Row="0" BackgroundColor="White" />
+                        </Grid>
+                    </yummy:PancakeView>
+                    <Grid Padding="0,10,0,10" Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1" Grid.Row="0"
+                               Text="{x:Static ResourceManager:AppResources.ContractRelease}"
+                               TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
+                               FontSize="Large" />
+                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}"
+                               Text="{DynamicResource StyleReverseBack}" TextColor="White"
+                               IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Grid.Row="0" Grid.Column="2" Style="{StaticResource IconLabelStyle}" TextColor="White"
+                               Text="{StaticResource Close}" VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="EndAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid>
+                <!--Release Contract 1-->
+
+                <Grid IsVisible="{Binding IsReleaseDetailsVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="0,5,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                            Text="{x:Static ResourceManager:AppResources.CRReleaseDetails}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource PageTitleBlack}" />
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Margin="0,-10,0,15"
+                                            Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}" />
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.CRNameOnContract}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <custom:BorderlessEntry Text="Zaed Hardy"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                        </border:SfBorder>
+                        
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="0,10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.CRContractNumber}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <custom:BorderlessEntry Text="1234567890"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                        </border:SfBorder>
+
+                    </Grid>
+
+                    <Grid Grid.Row="3" Margin="0,10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.CRContractType}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Contract 1"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                            
+
+                                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+                                                         Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                    </Image.Source>
+
+                                </Image>
+                            
+                            </Grid>
+                        </border:SfBorder>
+
+                    </Grid>
+                    <Grid Grid.Row="4" Margin="0,10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.CRContractPeriod}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="13 Aug 2020"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                            <!-- <Image Grid.Row="0"  Grid.Column="1" Source="arrowDropdown" Margin="5" WidthRequest="30" HeightRequest="30" -->
+                            <!--        HorizontalOptions="Start" VerticalOptions="Center"/> -->
+
+                            <Image Grid.Row="0" Rotation="270" Margin="5,0,5,0" Grid.Column="1" HorizontalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+                                                     Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                </Image.Source>
+
+                            </Image>
+                            
+                            <custom:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="13 Aug 2020"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                             
+                            <!-- <Image Grid.Row="0" Grid.Column="3" Source="calender" Margin="5" WidthRequest="30" HeightRequest="30" -->
+                            <!--        HorizontalOptions="Start" VerticalOptions="Center"/> -->
+
+                            <Image Grid.Row="0" Margin="5,0,5,0" Grid.Column="3" HorizontalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+                                                     Glyph="{x:Static FontImage:IconFonts.Calendar}" />
+                                </Image.Source>
+
+                            </Image>
+
+                            </Grid>
+                        </border:SfBorder>
+
+                    </Grid>
+                    <Grid Grid.Row="5" Margin="0,10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <custom:BorderlessEntry Text="500.00 SAR"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                        </border:SfBorder>
+
+                    </Grid>
+                    <Grid Grid.Row="6" Margin="0,10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                            Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <custom:BorderlessEntry Text="500.00 SAR"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}" />
+                        </border:SfBorder>
+
+                    </Grid>
+
+                    <cards:SfCardView Grid.Row="7" Margin="0,10,0,10" HasShadow="True" Padding="10" CornerRadius="20">
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" 
+                                                Text="{x:Static ResourceManager:AppResources.CRContractprofitEstimatedRate}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Margin="0,0,0,10"
+                                                Style="{StaticResource ValueLabelBlack}" />
+                            
+                            <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                     Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                </Image.Source>
+                                
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ContractProfitPercentCommand}"/>
+                                </Image.GestureRecognizers>
+
+                            </Image>
+                            
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRPercentage}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" />
+
+                            <custom:CustomLabel Grid.Row="2" Grid.Column="0"
+                                                Text="30%"
+                                                Margin="0,-10,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                        </Grid>
+
+                    </cards:SfCardView>
+                    
+                    <cards:SfCardView Grid.Row="8" Margin="0,10,0,10" HasShadow="True" Padding="10" CornerRadius="20">
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" 
+                                                Text="{x:Static ResourceManager:AppResources.CRProfitEstimatedForContract}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Margin="0,0,0,10"
+                                                Style="{StaticResource ValueLabelBlack}" />
+
+                            <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                     Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ProfitEstimatedContractCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRAmount}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" />
+
+                            <custom:CustomLabel Grid.Row="2" Grid.Column="0"
+                                                Text="500.00 SAR"
+                                                Margin="0,-10,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                        </Grid>
+
+                    </cards:SfCardView>
+
+                    <cards:SfCardView Grid.Row="9" Margin="0,10,0,10" HasShadow="True" Padding="10" CornerRadius="20">
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="50*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" 
+                                                    Text="{x:Static ResourceManager:AppResources.CREstimatedProfitforZakat}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Margin="0,0,0,10"
+                                                    Style="{StaticResource ValueLabelBlack}" />
+
+                                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                         Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding EstimatedProfitZakatCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                            
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRAmount}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" />
+
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="1"
+                                                Text="{x:Static ResourceManager:AppResources.CRPercentage}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" />
+
+                            <custom:CustomLabel Grid.Row="2" Grid.Column="0"
+                                                Text="500.00 SAR"
+                                                Margin="0,-10,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                            <custom:CustomLabel Grid.Row="2" Grid.Column="1"
+                                                Text="100%"
+                                                Margin="0,-10,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                        </Grid>
+
+                    </cards:SfCardView>
+
+                    <cards:SfCardView Grid.Row="10" Margin="0,10,0,10" HasShadow="True" Padding="10" CornerRadius="20">
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="50*" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" 
+                                                    Text="{x:Static ResourceManager:AppResources.CREstimatedProfitforTax}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Margin="0,0,0,10"
+                                                    Style="{StaticResource ValueLabelBlack}" />
+
+                                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                         Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding EstimatedProfitTaxCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRAmount}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" />
+
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="1"
+                                                Text="{x:Static ResourceManager:AppResources.CRPercentage}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" />
+
+                            <custom:CustomLabel Grid.Row="2" Grid.Column="0"
+                                                Text="500.00 SAR"
+                                                Margin="0,-10,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                            <custom:CustomLabel Grid.Row="2" Grid.Column="1"
+                                                Text="100%"
+                                                Margin="0,-10,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                        </Grid>
+
+                    </cards:SfCardView>
+
+                    <cards:SfCardView Grid.Row="11" Margin="0,10,0,10" HasShadow="True" Padding="10" CornerRadius="20">
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRTheValueofZakatdues}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Margin="0,0,0,10"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                            <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                     Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ValueofZakatDuesCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRAmount}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" />
+
+                            <custom:CustomLabel Grid.Row="2" Grid.Column="0"
+                                                Text="500.00 SAR"
+                                                Margin="0,-10,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                        </Grid>
+
+                    </cards:SfCardView>
+                    
+                    <cards:SfCardView Grid.Row="12" Margin="0,10,0,10" HasShadow="True" Padding="10" CornerRadius="20">
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRTheValueTaxDues}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Margin="0,0,0,10"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                            <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                     Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ValueofTaxDuesCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRAmount}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MicroGrayLabelStyle}" />
+
+                            <custom:CustomLabel Grid.Row="2" Grid.Column="0"
+                                                Text="500.00 SAR"
+                                                Margin="0,-10,0,0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+
+                        </Grid>
+
+                    </cards:SfCardView>
+
+                    <Frame Grid.Row="13" CornerRadius="12" BackgroundColor="#E6EFED" HasShadow="False">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRTotalDues}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
+
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="1,000.00 SAR" HorizontalOptions="EndAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}"
+                                                VerticalTextAlignment="Center" Margin="0,0,8,0"/>
+
+                            <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Margin="0,0,5,0">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                     Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TotalDuesCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Grid>
+                    </Frame>
+
+                    <buttons:SfButton Grid.Row="14" Margin="0,16,0,16"
+                                      Text="{x:Static ResourceManager:AppResources.CRContinue}"
+                                      Style="{StaticResource PrimaryButtonStyle}"
+                                      Command="{Binding ReleaseDetailsConBtnTapped}" />
+
+                </Grid>
+
+                <!--Release Contract 2-->
+                <Grid IsVisible="{Binding AttachmentsVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                            Text="{x:Static ResourceManager:AppResources.CRAttachments}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource PageTitleBlack}" />
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Margin="0,-10,0,15"
+                                            Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}" />
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                    </Grid>
+
+
+                    <custom:CustomLabel Grid.Row="1" Grid.ColumnSpan="2"
+                                        Text="{x:Static ResourceManager:AppResources.CRAttachACopyOfTheContractRequiredToReleaseAndAmounts}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}" />
+
+
+                    <Grid Grid.Row="2" Margin="0,10,0,10" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <custom:CustomLabel Grid.Row="0"
+                                            Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="30" HeightRequest="30"
+                                       HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                                <custom:GAZTBorderlessEntry Grid.Row="0" Grid.Column="1" Text="File 1.pdf" IsEnabled="False"
+                                                            PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
+                                                            HorizontalOptions="FillAndExpand" />
+                                <Image Grid.Row="0" Grid.Column="2" Source="ic_close.png" WidthRequest="20" HeightRequest="20" Margin="0,0,5,0" />
+                            </Grid>
+                        </border:SfBorder>
+                        
+                        <custom:CustomLabel Grid.Row="2"
+                                            Text="{x:Static ResourceManager:AppResources.CR20MB}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                    </Grid>
+
+
+                    <custom:CustomLabel Grid.Row="3" Grid.ColumnSpan="2"
+                                        Text="{x:Static ResourceManager:AppResources.CRAttachacopyofinvoicesandpurchase}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}" />
+
+
+                    <Grid Grid.Row="4" Margin="0,10,0,10" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0"
+                                            Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                        
+                        <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="30" HeightRequest="30"
+                                       HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                                <custom:GAZTBorderlessEntry Grid.Row="0" Grid.Column="1" Text="File 1.pdf" IsEnabled="False"
+                                                            PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
+                                                            HorizontalOptions="FillAndExpand" />
+                                <Image Grid.Row="0" Grid.Column="2" Source="ic_close.png" WidthRequest="20" HeightRequest="20" Margin="0,0,5,0" />
+                            </Grid>
+                        </border:SfBorder>
+                        
+                        <custom:CustomLabel Grid.Row="2"
+                                            Text="{x:Static ResourceManager:AppResources.CR20MB}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                    </Grid>
+
+                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16" Grid.ColumnSpan="2"
+                                      Text="{x:Static ResourceManager:AppResources.CRContinue}"
+                                      Style="{StaticResource PrimaryButtonStyle}"
+                                      Command="{Binding AttachmentsConBtnTapped}" />
+
+                </Grid>
+
+                <!--Release Contract 3-->
+                <Grid IsVisible="{Binding RemarksAndDescVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="150" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="0,5,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                            Text="{x:Static ResourceManager:AppResources.CRRemarksAndDescription}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource PageTitleBlack}" />
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Margin="0,-10,0,15"
+                                            Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}" />
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                    </Grid>
+
+
+                    <custom:CustomLabel Grid.Row="1"
+                                        Text="{x:Static ResourceManager:AppResources.CRRemarks}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}" />
+
+
+                    <border:SfBorder Grid.Row="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <custom:GAZTBorderlessEntry Text="Remark 1"
+                                                        PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
+                                                        HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                    </border:SfBorder>
+
+                    <custom:CustomLabel Grid.Row="3"
+                                        Text="{x:Static ResourceManager:AppResources.CRDetailDescription}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}" />
+
+
+                    <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <custom:GAZTBorderlessEntry Text="Contract Release detail description" MaxLength="1000"
+                                                        PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
+                                                        HorizontalOptions="FillAndExpand" />
+
+                        </StackLayout>
+                    </border:SfBorder>
+
+
+                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16"
+                                      VerticalOptions="End"
+                                      Text="{x:Static ResourceManager:AppResources.CRContinue}"
+                                      Style="{StaticResource PrimaryButtonStyle}"
+                                      Command="{Binding RemarksAndDescConBtnTapped}" />
+
+                </Grid>
+                <!--Release Contract 4-->
+                <Grid IsVisible="{Binding DeclarationVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Margin="0,5,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                            Text="{x:Static ResourceManager:AppResources.CRDeclaration}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource PageTitleBlack}" />
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Margin="0,-10,0,15"
+                                            Text="{x:Static ResourceManager:AppResources.CRCompleteBelowDetails}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}" />
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                    </Grid>
+
+
+                    <custom:CustomLabel Grid.Row="1"
+                                        Text="{x:Static ResourceManager:AppResources.CRContactPersonName}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}" />
+
+
+                    <border:SfBorder Grid.Row="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <custom:GAZTBorderlessEntry Text="Remark 1"
+                                                        PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
+                                                        HorizontalOptions="FillAndExpand" />
+                        </StackLayout>
+                    </border:SfBorder>
+
+
+                    <custom:CustomLabel Grid.Row="3"
+                                        Text="{x:Static ResourceManager:AppResources.CRDesignation}"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}" />
+
+
+                    <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <custom:GAZTBorderlessEntry Text="Contract Release detail description"
+                                                        PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
+                                                        HorizontalOptions="FillAndExpand" />
+
+                        </StackLayout>
+                    </border:SfBorder>
+
+
+                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16"
+                                      VerticalOptions="End"
+                                      Text="{x:Static ResourceManager:AppResources.CRContinue}"
+                                      Style="{StaticResource PrimaryButtonStyle}"
+                                      Command="{Binding DeclarationConBtnTapped}" />
+
+                </Grid>
+                <!--Release Contract 5-->
+                <Grid IsVisible="{Binding SummaryVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
+                      HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <StackLayout Orientation="Vertical">
+
+                        <Grid Margin="0,5,0,10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                Text="{x:Static ResourceManager:AppResources.CRSummary}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource PageTitleBlack}" />
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Margin="0,-10,0,15"
+                                                Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource BodyLabelGrey}" />
+                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                        </Grid>
+
+                        <border:SfBorder Margin="0,16,0,10" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                            <StackLayout Orientation="Vertical">
+
+                                <Grid Padding="15" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
+                                           Opacity=".2" IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                           HasShadow="False" />
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                           Source="establishments" />
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRReleaseDetails}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                        <Label 
+                                               Text="{x:Static ResourceManager:AppResources.CREdit}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GoBackToReleaseDetails}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                <Grid Padding="15,15,15,0" RowSpacing="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Row="0" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRContractonName}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="0" Grid.Column="1">
+                                        <Label Text="Zaed Hardy"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRContractNumber}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="1">
+                                        <Label Text="1234567890"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="2" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRContractType}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="2" Grid.Column="1">
+                                        <Label Text="Contract 1"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="3" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRContractPeriod}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="3" Grid.Column="1">
+                                        <Label Text="May 2019-May 2020"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="4" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="4" Grid.Column="1">
+                                        <Label Text="500.00 SAR"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="5" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="5" Grid.Column="1">
+                                        <Label Text="500.00 SAR"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                </Grid>
+                            </StackLayout>
+
+                        </border:SfBorder>
+
+                        <Frame CornerRadius="10" BackgroundColor="#E6EFED" HasShadow="False">
+                            <StackLayout Orientation="Horizontal">
+
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CRTotalDues}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource BodyLabelBlack}"
+                                                    VerticalTextAlignment="Center" />
+
+                                <custom:CustomLabel Text="1,000.00 SAR" HorizontalOptions="EndAndExpand"
+                                                    Style="{StaticResource SectionTitleBlackBold}"
+                                                    VerticalTextAlignment="Center" />
+
+                            </StackLayout>
+                        </Frame>
+
+                        <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                            <StackLayout Orientation="Vertical">
+
+                                <Grid Padding="15" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
+                                           Opacity=".2" IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                           HasShadow="False" />
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                           Source="ic_attachment" />
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachments}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                        <Label 
+                                               Text="{x:Static ResourceManager:AppResources.CREdit}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GoBackToAttachments}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                <Grid Padding="15,15,15,0" RowSpacing="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Row="0" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="0" Grid.Column="1">
+                                        <Label Text="File1.pdf"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="1">
+                                        <Label Text="File2.pdf"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="2" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRRemarks}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="2" Grid.Column="1">
+                                        <Label Text="Remark 1"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="3" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRDetailDescription}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="3" Grid.Column="1">
+                                        <Label Text="Lorem Ipsum"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                </Grid>
+                            </StackLayout>
+                        </border:SfBorder>
+
+                        <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                            <StackLayout Orientation="Vertical">
+
+                                <Grid Padding="15" RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
+                                           Opacity=".2" IsClippedToBounds="True"
+                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                           HasShadow="False" />
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                           HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                           Source="establishments" />
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
+                                                 Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRDeclaration}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                        <Label 
+                                               Text="{x:Static ResourceManager:AppResources.CREdit}"
+                                               VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GoBackToDeclaration}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                                <Grid Padding="15,15,15,0" RowSpacing="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Row="0" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRIDType}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="0" Grid.Column="1">
+                                        <Label Text="National ID"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRIDNumber}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="1">
+                                        <Label Text="Q1720187"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="2" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRDateOfBirth}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="2" Grid.Column="1">
+                                        <Label Text="7 June 1995"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                    <Grid Grid.Row="3" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRContactPersonName}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="3" Grid.Column="1">
+                                        <Label Text="Zaed Hardy"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+
+                                </Grid>
+                            </StackLayout>
+                        </border:SfBorder>
+
+                        <border:SfBorder Margin="0,16,0,10" Padding="0,0,0,16" HasShadow="False"
+                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+                            
+                            <StackLayout Padding="15,15,15,0">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Row="0" Grid.Column="0">
+                                        <Image >
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                            </Image.Source>
+
+                                        </Image>
+                                    </Grid>
+
+                                    <Grid Grid.Row="0" Grid.Column="1">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRInformation}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+                                </Grid>
+
+                                <Label Text="{x:Static ResourceManager:AppResources.CRIherebycertify}"
+                                       HorizontalOptions="Start"
+                                       VerticalOptions="Start"
+                                       Style="{StaticResource BodyLabelGrey}" />
+
+                            </StackLayout>
+
+                        </border:SfBorder>
+
+                        <buttons:SfButton Margin="0,16,0,16"
+                                          Text="{x:Static ResourceManager:AppResources.CRContinue}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                          Command="{Binding SummaryConBtnTapped}" />
+
+                    </StackLayout>
+                </Grid>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
