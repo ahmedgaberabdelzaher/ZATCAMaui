@@ -178,6 +178,9 @@ namespace ZakatForm5Model
         public string Waers { get; set; }
         public string IsExpencesApplicable { get; set; }
 
+        public bool IsApplicableVisible { get; set; }
+
+
     }
 
     public class SCHGP07
@@ -228,8 +231,14 @@ namespace ZakatForm5Model
         public string Waers { get; set; }
 
         public string IsGovenmentApplicable { get; set; }
+        public bool IsGovenmentApplicableVisible { get; set; }
+
         public string IsCivilProfitApplicable { get; set; }
+        public bool IsCivilProfitApplicableVisible { get; set; }
+
         public string IsOtherProfitApplicable { get; set; }
+        public bool IsOtherProfitApplicableVisible { get; set; }
+
 
 
 
@@ -280,6 +289,7 @@ namespace ZakatForm5Model
         public string Container { get; set; }
         public int LineCnt { get; set; }
         public string Waers { get; set; }
+
     }
 
     public class SCHGP05
@@ -324,6 +334,8 @@ namespace ZakatForm5Model
         public string Waers { get; set; }
 
         public string IsExpensesApplicable { get; set; }
+        public bool IsApplicableVisible { get; set; }
+
 
     }
 
@@ -396,17 +408,32 @@ namespace ZakatForm5Model
         public string Waers { get; set; }
 
         public string IsApplicable { get; set; }
+        public bool IsApplicableVisible { get; set; }
+
         public string IsImport { get; set; }
         public string IsProcurement { get; set; }
 
         
         public string Imp_IsGeneralApplicable { get; set; }
+        public bool Imp_IsGeneralApplicableVisible { get; set; }
+
         public string Imp_IsLiveLihoodsApplicable { get; set; }
+        public bool Imp_IsLiveLihoodsApplicableVisible { get; set; }
+
         public string Imp_IsLivestockApplicable { get; set; }
+        public bool Imp_IsLivestockApplicableVisible { get; set; }
+
+
 
         public string Pro_IsGeneralApplicable { get; set; }
+        public bool Pro_IsGeneralApplicableVisible { get; set; }
+
         public string Pro_IsLiveLihoodsApplicable { get; set; }
+        public bool Pro_IsLiveLihoodsApplicableVisible { get; set; }
+
         public string Pro_IsLivestockApplicable { get; set; }
+        public bool Pro_IsLivestockApplicableVisible { get; set; }
+
 
 
         public bool IsImportVisible { get; set; }
@@ -972,6 +999,8 @@ namespace ZakatForm5Model
         public int LineCnt { get; set; }
         public string Waers { get; set; }
         public string IsIncCapApplicable { get; set; }
+        public bool IsApplicableVisible { get; set; }
+
 
     }
 
@@ -1016,6 +1045,8 @@ namespace ZakatForm5Model
         public int LineCnt { get; set; }
         public string Waers { get; set; }
         public string IsExpApplicable { get; set; }
+        public bool IsApplicableVisible { get; set; }
+
 
     }
 
@@ -1073,6 +1104,7 @@ namespace ZakatForm5Model
         public string Waers { get; set; }
         public string IsOwned { get; set; }
         public string IsExpApplicable { get; set; }
+        public bool IsApplicableVisible { get; set; }
 
 
     }
@@ -1116,6 +1148,8 @@ namespace ZakatForm5Model
         public int LineCnt { get; set; }
         public string Waers { get; set; }
         public string IsApplicable { get; set; }
+        public bool IsApplicableVisible { get; set; }
+
 
     }
 
@@ -1168,6 +1202,8 @@ namespace ZakatForm5Model
         public int LineCnt { get; set; }
         public string Waers { get; set; }
         public string IsApplicable { get; set; }
+        public bool IsApplicableVisible { get; set; }
+
     }
 
     public class SCHGP01
@@ -1425,6 +1461,8 @@ namespace ZakatForm5Model
         public GENSUBSCH GEN_SUB_SCH { get; set; }
 
         public string IsOtherShareApplicable { get; set; }
+        public bool IsOtherShareApplicableVisible { get; set; }
+
     }
 }
 
