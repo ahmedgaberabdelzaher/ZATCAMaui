@@ -5832,5 +5832,6 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <data name="VATInstalmentStatusRefunded" xml:space="preserve">
     <value>Refunded</value>
   </data>
+   <data name="NDInvoiceDetail" xml:space="preserve">     <value>Invoice Detail</value>   </data>   <data name="NDSubmittedSuccessfully" xml:space="preserve">     <value>Submitted Successfully</value>   </data>    <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">     <value>Objection Submitted successfully</value>   </data> 
 </root>
 
