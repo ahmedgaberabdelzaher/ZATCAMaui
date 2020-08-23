@@ -8130,6 +8130,18 @@ namespace EGAZT {
             }
         }
         
+        public static string ZakatInstalmetPlanTitle {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetPlanTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmetPlanTitle {
+            get {
+                return ResourceManager.GetString("VatInstalmetPlanTitle", resourceCulture);
+            }
+        }
+        
         public static string ZakatInstalmetPlan {
             get {
                 return ResourceManager.GetString("ZakatInstalmetPlan", resourceCulture);
@@ -8145,6 +8157,12 @@ namespace EGAZT {
         public static string ZakatInstalmetSelectTypeZakat {
             get {
                 return ResourceManager.GetString("ZakatInstalmetSelectTypeZakat", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmetSelectTypeIncomeTax {
+            get {
+                return ResourceManager.GetString("ZakatInstalmetSelectTypeIncomeTax", resourceCulture);
             }
         }
         
@@ -8391,12 +8409,6 @@ namespace EGAZT {
         public static string ZakatInstallmentAgreementPenalty {
             get {
                 return ResourceManager.GetString("ZakatInstallmentAgreementPenalty", resourceCulture);
-            }
-        }
-        
-        public static string ZakatInstallmentPlanZakatIncometax {
-            get {
-                return ResourceManager.GetString("ZakatInstallmentPlanZakatIncometax", resourceCulture);
             }
         }
         
@@ -9525,6 +9537,648 @@ namespace EGAZT {
         public static string ZZZZVATReturnsubmitted {
             get {
                 return ResourceManager.GetString("ZZZZVATReturnsubmitted", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodAttachments {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodAttachments", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodAttachmentsSub {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodAttachmentsSub", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodCurrentFrequency {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodCurrentFrequency", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodFrequencyDetails {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodFrequencyDetails", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodFrequencyDetailsSub {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodFrequencyDetailsSub", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodNewFrequency {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodNewFrequency", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodTitle {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodTitle", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodAttachmentsOtherDocuments {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodAttachmentsOtherDocuments", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodAttachmentsTwelveMonths {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodAttachmentsTwelveMonths", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodAttachmentsTwoYears {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodAttachmentsTwoYears", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodDeclaration {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodDeclaration", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodDeclarationSub {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodDeclarationSub", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodButtonText {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodButtonText", resourceCulture);
+            }
+        }
+        
+        public static string ChangeFillingPeriodMyRequests {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriodMyRequests", resourceCulture);
+            }
+        }
+        
+        public static string ContractRelease {
+            get {
+                return ResourceManager.GetString("ContractRelease", resourceCulture);
+            }
+        }
+        
+        public static string CRReleaseDetails {
+            get {
+                return ResourceManager.GetString("CRReleaseDetails", resourceCulture);
+            }
+        }
+        
+        public static string CRCompleteBelowDetails {
+            get {
+                return ResourceManager.GetString("CRCompleteBelowDetails", resourceCulture);
+            }
+        }
+        
+        public static string CRNameOnContract {
+            get {
+                return ResourceManager.GetString("CRNameOnContract", resourceCulture);
+            }
+        }
+        
+        public static string CRContractNumber {
+            get {
+                return ResourceManager.GetString("CRContractNumber", resourceCulture);
+            }
+        }
+        
+        public static string CRContractType {
+            get {
+                return ResourceManager.GetString("CRContractType", resourceCulture);
+            }
+        }
+        
+        public static string CRContractPeriod {
+            get {
+                return ResourceManager.GetString("CRContractPeriod", resourceCulture);
+            }
+        }
+        
+        public static string CRTotalAmountOfContract {
+            get {
+                return ResourceManager.GetString("CRTotalAmountOfContract", resourceCulture);
+            }
+        }
+        
+        public static string CRAmountRequiredToRelease {
+            get {
+                return ResourceManager.GetString("CRAmountRequiredToRelease", resourceCulture);
+            }
+        }
+        
+        public static string CRProfitEstimatedForContract {
+            get {
+                return ResourceManager.GetString("CRProfitEstimatedForContract", resourceCulture);
+            }
+        }
+        
+        public static string CREstimatedProfitforZakat {
+            get {
+                return ResourceManager.GetString("CREstimatedProfitforZakat", resourceCulture);
+            }
+        }
+        
+        public static string CREstimatedProfitforTax {
+            get {
+                return ResourceManager.GetString("CREstimatedProfitforTax", resourceCulture);
+            }
+        }
+        
+        public static string CRTheValueTaxDues {
+            get {
+                return ResourceManager.GetString("CRTheValueTaxDues", resourceCulture);
+            }
+        }
+        
+        public static string CRTotalDues {
+            get {
+                return ResourceManager.GetString("CRTotalDues", resourceCulture);
+            }
+        }
+        
+        public static string CRAmount {
+            get {
+                return ResourceManager.GetString("CRAmount", resourceCulture);
+            }
+        }
+        
+        public static string CRPercentage {
+            get {
+                return ResourceManager.GetString("CRPercentage", resourceCulture);
+            }
+        }
+        
+        public static string CRContinue {
+            get {
+                return ResourceManager.GetString("CRContinue", resourceCulture);
+            }
+        }
+        
+        public static string CRAttachments {
+            get {
+                return ResourceManager.GetString("CRAttachments", resourceCulture);
+            }
+        }
+        
+        public static string CRAttachACopyOfTheContractRequiredToReleaseAndAmounts {
+            get {
+                return ResourceManager.GetString("CRAttachACopyOfTheContractRequiredToReleaseAndAmounts", resourceCulture);
+            }
+        }
+        
+        public static string CRAttachContract {
+            get {
+                return ResourceManager.GetString("CRAttachContract", resourceCulture);
+            }
+        }
+        
+        public static string CRAttachacopyofinvoicesandpurchase {
+            get {
+                return ResourceManager.GetString("CRAttachacopyofinvoicesandpurchase", resourceCulture);
+            }
+        }
+        
+        public static string CRAttachInvoiceCopy {
+            get {
+                return ResourceManager.GetString("CRAttachInvoiceCopy", resourceCulture);
+            }
+        }
+        
+        public static string CR20MB {
+            get {
+                return ResourceManager.GetString("CR20MB", resourceCulture);
+            }
+        }
+        
+        public static string CRRemarksAndDescription {
+            get {
+                return ResourceManager.GetString("CRRemarksAndDescription", resourceCulture);
+            }
+        }
+        
+        public static string CRRemarks {
+            get {
+                return ResourceManager.GetString("CRRemarks", resourceCulture);
+            }
+        }
+        
+        public static string CRDetailDescription {
+            get {
+                return ResourceManager.GetString("CRDetailDescription", resourceCulture);
+            }
+        }
+        
+        public static string CRDeclaration {
+            get {
+                return ResourceManager.GetString("CRDeclaration", resourceCulture);
+            }
+        }
+        
+        public static string CRContactPersonName {
+            get {
+                return ResourceManager.GetString("CRContactPersonName", resourceCulture);
+            }
+        }
+        
+        public static string CRDesignation {
+            get {
+                return ResourceManager.GetString("CRDesignation", resourceCulture);
+            }
+        }
+        
+        public static string CRSummary {
+            get {
+                return ResourceManager.GetString("CRSummary", resourceCulture);
+            }
+        }
+        
+        public static string CRReviewthebelowinformation {
+            get {
+                return ResourceManager.GetString("CRReviewthebelowinformation", resourceCulture);
+            }
+        }
+        
+        public static string CREdit {
+            get {
+                return ResourceManager.GetString("CREdit", resourceCulture);
+            }
+        }
+        
+        public static string CRContractonName {
+            get {
+                return ResourceManager.GetString("CRContractonName", resourceCulture);
+            }
+        }
+        
+        public static string CRIDType {
+            get {
+                return ResourceManager.GetString("CRIDType", resourceCulture);
+            }
+        }
+        
+        public static string CRIDNumber {
+            get {
+                return ResourceManager.GetString("CRIDNumber", resourceCulture);
+            }
+        }
+        
+        public static string CRDateOfBirth {
+            get {
+                return ResourceManager.GetString("CRDateOfBirth", resourceCulture);
+            }
+        }
+        
+        public static string CRInformation {
+            get {
+                return ResourceManager.GetString("CRInformation", resourceCulture);
+            }
+        }
+        
+        public static string CRIherebycertify {
+            get {
+                return ResourceManager.GetString("CRIherebycertify", resourceCulture);
+            }
+        }
+        
+        public static string CRContractprofitEstimatedRate {
+            get {
+                return ResourceManager.GetString("CRContractprofitEstimatedRate", resourceCulture);
+            }
+        }
+        
+        public static string CRTheValueofZakatdues {
+            get {
+                return ResourceManager.GetString("CRTheValueofZakatdues", resourceCulture);
+            }
+        }
+        
+        public static string CRYourContractisreleasedsuccessfully {
+            get {
+                return ResourceManager.GetString("CRYourContractisreleasedsuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string CRReferenceNumber {
+            get {
+                return ResourceManager.GetString("CRReferenceNumber", resourceCulture);
+            }
+        }
+        
+        public static string CRDownloadConfirmation {
+            get {
+                return ResourceManager.GetString("CRDownloadConfirmation", resourceCulture);
+            }
+        }
+        
+        public static string CRContractingNumber {
+            get {
+                return ResourceManager.GetString("CRContractingNumber", resourceCulture);
+            }
+        }
+        
+        public static string CRInstructionsandConditions {
+            get {
+                return ResourceManager.GetString("CRInstructionsandConditions", resourceCulture);
+            }
+        }
+        
+        public static string CRInstructions {
+            get {
+                return ResourceManager.GetString("CRInstructions", resourceCulture);
+            }
+        }
+        
+        public static string CRInstructionsDesc {
+            get {
+                return ResourceManager.GetString("CRInstructionsDesc", resourceCulture);
+            }
+        }
+        
+        public static string CRDone {
+            get {
+                return ResourceManager.GetString("CRDone", resourceCulture);
+            }
+        }
+        
+        public static string CRContractprofitEstimatedRateDesc {
+            get {
+                return ResourceManager.GetString("CRContractprofitEstimatedRateDesc", resourceCulture);
+            }
+        }
+        
+        public static string CRProfitEstimatedForContractDesc {
+            get {
+                return ResourceManager.GetString("CRProfitEstimatedForContractDesc", resourceCulture);
+            }
+        }
+        
+        public static string CREstimatedProfitforZakatDesc {
+            get {
+                return ResourceManager.GetString("CREstimatedProfitforZakatDesc", resourceCulture);
+            }
+        }
+        
+        public static string CREstimatedProfitforTaxDesc {
+            get {
+                return ResourceManager.GetString("CREstimatedProfitforTaxDesc", resourceCulture);
+            }
+        }
+        
+        public static string CRTheValueofZakatduesDesc {
+            get {
+                return ResourceManager.GetString("CRTheValueofZakatduesDesc", resourceCulture);
+            }
+        }
+        
+        public static string CRTheValueTaxDuesDesc {
+            get {
+                return ResourceManager.GetString("CRTheValueTaxDuesDesc", resourceCulture);
+            }
+        }
+        
+        public static string CRTotalDuesDesc {
+            get {
+                return ResourceManager.GetString("CRTotalDuesDesc", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentDueDate {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentDueDate", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentNoOfMonths {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentNoOfMonths", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentMonthlyInstallment {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentMonthlyInstallment", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentTotalAmountPaid {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentTotalAmountPaid", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentTotalAmountRemaining {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentTotalAmountRemaining", resourceCulture);
+            }
+        }
+        
+        public static string AttachmentPopUpNote1 {
+            get {
+                return ResourceManager.GetString("AttachmentPopUpNote1", resourceCulture);
+            }
+        }
+        
+        public static string AttachmentPopUpNote2 {
+            get {
+                return ResourceManager.GetString("AttachmentPopUpNote2", resourceCulture);
+            }
+        }
+        
+        public static string AttachmentPopUpAddAttachment {
+            get {
+                return ResourceManager.GetString("AttachmentPopUpAddAttachment", resourceCulture);
+            }
+        }
+        
+        public static string VRUploadYourDocument {
+            get {
+                return ResourceManager.GetString("VRUploadYourDocument", resourceCulture);
+            }
+        }
+        
+        public static string VRNewAttachment {
+            get {
+                return ResourceManager.GetString("VRNewAttachment", resourceCulture);
+            }
+        }
+        
+        public static string VR20MB {
+            get {
+                return ResourceManager.GetString("VR20MB", resourceCulture);
+            }
+        }
+        
+        public static string BPInstrucionsAndConditions {
+            get {
+                return ResourceManager.GetString("BPInstrucionsAndConditions", resourceCulture);
+            }
+        }
+        
+        public static string BPInformation {
+            get {
+                return ResourceManager.GetString("BPInformation", resourceCulture);
+            }
+        }
+        
+        public static string BPTermsAndConditions {
+            get {
+                return ResourceManager.GetString("BPTermsAndConditions", resourceCulture);
+            }
+        }
+        
+        public static string BPTermsAndConditionsAlert {
+            get {
+                return ResourceManager.GetString("BPTermsAndConditionsAlert", resourceCulture);
+            }
+        }
+        
+        public static string BPInstructionsAndConditionsAlert {
+            get {
+                return ResourceManager.GetString("BPInstructionsAndConditionsAlert", resourceCulture);
+            }
+        }
+        
+        public static string InstalmentSchedule {
+            get {
+                return ResourceManager.GetString("InstalmentSchedule", resourceCulture);
+            }
+        }
+        
+        public static string Instalment {
+            get {
+                return ResourceManager.GetString("Instalment", resourceCulture);
+            }
+        }
+        
+        public static string VatDueAmountInstruction {
+            get {
+                return ResourceManager.GetString("VatDueAmountInstruction", resourceCulture);
+            }
+        }
+        
+        public static string VatInstructions {
+            get {
+                return ResourceManager.GetString("VatInstructions", resourceCulture);
+            }
+        }
+        
+        public static string VatInstructionsCheckBoxDesc {
+            get {
+                return ResourceManager.GetString("VatInstructionsCheckBoxDesc", resourceCulture);
+            }
+        }
+        
+        public static string VatTerms {
+            get {
+                return ResourceManager.GetString("VatTerms", resourceCulture);
+            }
+        }
+        
+        public static string VatTermsCheckBoxDesc {
+            get {
+                return ResourceManager.GetString("VatTermsCheckBoxDesc", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentRequestToVatDisplayInstalment {
+            get {
+                return ResourceManager.GetString("VATInstalmentRequestToVatDisplayInstalment", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentRequestToVatInstalment {
+            get {
+                return ResourceManager.GetString("VATInstalmentRequestToVatInstalment", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmentPlan {
+            get {
+                return ResourceManager.GetString("VatInstalmentPlan", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmentPlanSubmittedSuccess {
+            get {
+                return ResourceManager.GetString("VatInstalmentPlanSubmittedSuccess", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmentDownload {
+            get {
+                return ResourceManager.GetString("VatInstalmentDownload", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentListInstalmentAmountRemaining {
+            get {
+                return ResourceManager.GetString("VATInstalmentListInstalmentAmountRemaining", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentListInstalmentNumberOfMonths {
+            get {
+                return ResourceManager.GetString("VATInstalmentListInstalmentNumberOfMonths", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentListInstalmentPaymentStatus {
+            get {
+                return ResourceManager.GetString("VATInstalmentListInstalmentPaymentStatus", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentListInstalmentVatInstalmentPlan {
+            get {
+                return ResourceManager.GetString("VATInstalmentListInstalmentVatInstalmentPlan", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentListInstalmentAgreementNumber {
+            get {
+                return ResourceManager.GetString("VATInstalmentListInstalmentAgreementNumber", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentListInstalmentDisplayInstalmentSchedule {
+            get {
+                return ResourceManager.GetString("VATInstalmentListInstalmentDisplayInstalmentSchedule", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentListInstalmentRelevantTax {
+            get {
+                return ResourceManager.GetString("VATInstalmentListInstalmentRelevantTax", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentListInstalmentSummary {
+            get {
+                return ResourceManager.GetString("VATInstalmentListInstalmentSummary", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmentPlanPleaseReviewTheInstalmentSchedule {
+            get {
+                return ResourceManager.GetString("VatInstalmentPlanPleaseReviewTheInstalmentSchedule", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentStatusRefunded {
+            get {
+                return ResourceManager.GetString("VATInstalmentStatusRefunded", resourceCulture);
             }
         }
     }
