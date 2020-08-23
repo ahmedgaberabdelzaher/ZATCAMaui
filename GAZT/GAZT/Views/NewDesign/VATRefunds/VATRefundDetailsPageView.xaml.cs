@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
+using GAZT.Helper;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -40,20 +43,50 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             this.BindingContext = viewModel;
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
+            ChangeArrowDirection();
 
-            if(vatRefundsListResultModel == null)
+            try
             {
-                viewModel.IsNewReqSummary = true;
-                viewModel.LoadSummaryData(vatRefundsSaveDataModel);
+                if (vatRefundsListResultModel == null)
+                {
+                    viewModel.IsNewReqSummary = true;
+                    viewModel.LoadSummaryData(vatRefundsSaveDataModel);
+                }
+                else
+                {
+                    viewModel.IsNewReqSummary = false;
+                    viewModel.ReloadData(vatRefundsListResultModel);
+                }
             }
-            else
+            catch (GAZTErrorException ex)
             {
-                viewModel.IsNewReqSummary = false;
-                await viewModel.ReloadData(vatRefundsListResultModel);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    App.HideProgressView();
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
+            catch (InternetException ex)
+            {
+                Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._navigationService.GoBack();
+                });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
         }
 
         private void SetLTR()
@@ -76,6 +109,19 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

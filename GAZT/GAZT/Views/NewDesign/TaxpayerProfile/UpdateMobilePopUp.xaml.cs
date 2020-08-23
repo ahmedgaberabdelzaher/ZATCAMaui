@@ -58,7 +58,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private void UpdatedClicked(object sender, EventArgs e)
         {
-            if (btn.Text == "Update") { UpdateMobileNumber(); }
+            if (btn.Text == AppResources.TPUpdate) { UpdateMobileNumber(); }
             else { VerifyOTP(); }
         }
 
@@ -78,7 +78,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     UpdateMobile.IsVisible = false;
                     VerificationView.IsVisible = true;
                     viewModel.BtnEnableFlag = false;
-                    btn.Text = "Verify";
+                    btn.Text = AppResources.Verify ;
 
                     var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
                     viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
@@ -211,7 +211,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.IsLoading = false;
 
             viewModel.NewMobileNumberEntryText = string.Empty;
-            btn.Text = "Update";
+            btn.Text =AppResources.TPUpdate ;
         }
 
         private void Mobile_entry_Unfocused(object sender, FocusEventArgs e)

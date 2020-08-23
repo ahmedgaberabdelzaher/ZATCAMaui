@@ -1659,6 +1659,17 @@
   <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
     <value>الرجاء إختيار رقم الهوية المرتبطة برقم الحساب البنكي (الايبان) المختار</value>
   </data>
+    <data name="ZVatRefundInstructions" xml:space="preserve">
+    <value>
+            يرجى قراءة التعليمات أدناه قبل ملء نموذج الاسترداد:
+يرجى تعبئة المعلومات المطلوبة لكل خطوة
+لايمكن تقديم الطلب بنجاح حتى يتم الإنتهاء من جميع الحقول الإلزامية
+يجب التأكد من أن التفاصيل الحالية كاملة ومحدثة قبل إرسال طلب الاسترداد
+يرجى الرجوع إلى قسم الأسئلة الشائعة قبل ملء نموذج الاسترداد
+للهيئة الحق في فتح أي حالة فحص إعادة تقييم للمبالغ الدائنة وذلك للمبالغ الدائنة للتحقق منها وتعديلها قبل السماح بإسترداد المبلغ الدائن.
+يحق للمكلف بالإسترداد المباشر للمبالغ الدائنة المتحقق منها بعد سداد باقي التزامات المكلف الأخرى او قيام الهيئة بالمقاصة من رصيد المكلف الدائن.
+        </value>
+  </data>
   <data name="MyCertificates" xml:space="preserve">
     <value>الشهادات</value>
   </data>
@@ -5464,5 +5475,23 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
     <value>تمتقديمإقرارضريبةالقيمةالمضافةبنجاح</value>
+  </data>
+   <data name="NDInvoiceDetail" xml:space="preserve">
+    <value>تفاصيل الفاتورة</value>
+  </data>
+  <data name="NDSubmittedSuccessfully" xml:space="preserve">
+    <value>تم التقديم بنجاح</value>
+  </data>
+  <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">
+    <value>تم تقديم الإعتراض بنجاح</value>
+  </data>
+   <data name="NDBilled" xml:space="preserve">
+    <value>مفوتر</value>
+  </data>
+   <data name="NDInProcessing" xml:space="preserve">
+    <value>في طور المعالجة</value>
+  </data>
+   <data name="ToBeApproved" xml:space="preserve">
+    <value>إنتظار الموافقة</value>
   </data>
 </root>

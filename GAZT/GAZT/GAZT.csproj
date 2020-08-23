@@ -83,7 +83,6 @@
     <Folder Include="Views\NewDesign\GenericPickers\" />
     <Folder Include="ViewModel\NewDesignViewModel\GenericPickers\" />
     <Folder Include="Views\NewDesign\EstablishmentRegistrationPages\" />
-    <Folder Include="Views\NewDesign\Common\" />
     <Folder Include="Views\NewDesign\ZakatInstalmentPlan\" />
     <Folder Include="ViewModel\NewDesignViewModel\ZakatInstalmentViewModel\" />
     <Folder Include="Models\ZakatInstalationModels\" />
@@ -92,6 +91,7 @@
     <Folder Include="Models\VATRefunds\" />
     <Folder Include="ViewModel\NewDesignViewModel\TaxpayerProfileVM\" />
     <Folder Include="ViewModel\NewDesignViewModel\EstablishmentRegistration\" />
+    <Folder Include="Models\EstablishmentRegistration\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -99,11 +99,6 @@
   <ItemGroup>
     <Compile Update="AppResources.ar.Designer.cs">
       <DependentUpon>AppResources.ar.resx</DependentUpon>
-    </Compile>
-    <Compile Update="AppResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Update="SyncfusionControl.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -171,6 +166,9 @@
     <Compile Update="Views\NewDesign\TAXEvasionPages\NewTaxEvasionFormSuccessPaveView.xaml.cs">
       <DependentUpon>NewTaxEvasionFormSuccessPaveView.xaml</DependentUpon>
     </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="AppResources.resx">
@@ -184,7 +182,13 @@
     <EmbeddedResource Update="Views\MyBillsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\Common\ListPopUpViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUPPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentPopUp.xaml">
