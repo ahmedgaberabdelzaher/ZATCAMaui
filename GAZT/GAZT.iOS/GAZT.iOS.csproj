@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -76,9 +76,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision> eGAZT Distribution Profile</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.collude.app</CodesignProvision>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
   </PropertyGroup>
@@ -269,6 +269,9 @@
     <BundleResource Include="Resources\selected171x136.png" />
     <BundleResource Include="Resources\selected171x136%402x.png" />
     <BundleResource Include="Resources\selected171x136%403x.png" />
+    <BundleResource Include="Resources\ic_reviewDetails.png" />
+    <BundleResource Include="Resources\ic_reviewDetails%402x.png" />
+    <BundleResource Include="Resources\ic_reviewDetails%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1848,3 +1851,6 @@
     <BundleResource Include="Resources\establishments_White.png" />
   </ItemGroup>
 </Project>
+
+
+

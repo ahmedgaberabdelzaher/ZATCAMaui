@@ -1,0 +1,174 @@
+﻿using System;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Views;
+using Rg.Plugins.Popup.Services;
+using Xamarin.Forms;
+
+namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
+{
+    public class InstructionsBottomPopUpViewModel : BaseViewModel
+    {
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        
+        public enum DialogType
+        {
+            Instructions,
+            TermsConditions
+        }
+        
+        private string _description = "";
+        public string Description
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+                RaisePropertyChanged("Description");
+            }
+        }
+        
+        private bool _isInstuctionsChecked = false;
+        public bool IsInstuctionsChecked
+        {
+            get
+            {
+                return _isInstuctionsChecked;
+            }
+            set
+            {
+                _isInstuctionsChecked = value;
+                RaisePropertyChanged("IsInstuctionsChecked");
+            }
+        }
+        
+        private bool _isTermsChecked = false;
+        public bool IsTermsChecked
+        {
+            get
+            {
+                return _isTermsChecked;
+            }
+            set
+            {
+                _isTermsChecked = value;
+                RaisePropertyChanged("IsTermsChecked");
+            }
+        }
+        
+        private bool _isInstructions = false;
+        public bool IsInstructions
+        {
+            get
+            {
+                return _isInstructions;
+            }
+            set
+            {
+                _isInstructions = value;
+                RaisePropertyChanged("IsInstructions");
+            }
+        }
+        
+        private bool _isTerms = false;
+        public bool IsTerms
+        {
+            get
+            {
+                return _isTerms;
+            }
+            set
+            {
+                _isTerms = value;
+                RaisePropertyChanged("IsTerms");
+            }
+        }
+        
+        private string _checkBoxDescription = "";
+        public string CheckBoxDescription
+        {
+            get
+            {
+                return _checkBoxDescription;
+            }
+            set
+            {
+                _checkBoxDescription = value;
+                RaisePropertyChanged("CheckBoxDescription");
+            }
+        }
+        
+        private string _buttonTitle = "";
+        public string ButtonTitle
+        {
+            get
+            {
+                return _buttonTitle;
+            }
+            set
+            {
+                _buttonTitle = value;
+                RaisePropertyChanged("ButtonTitle");
+            }
+        }
+
+
+           
+
+
+        public ICommand Close_Tapped { get; set; }
+
+        public ICommand TermsContinueClick { get; set; }
+        
+        public ICommand InstructionsContinueClick { get; set; }
+        
+        public InstructionsBottomPopUpViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
+            
+            TermsContinueClick = new Command(async () =>
+            {
+                if (_isTermsChecked)
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                }
+                else
+                {
+
+                    await _dialogService.ShowMessage(AppResources.BPTermsAndConditionsAlert, "Alert");
+                }
+            });
+            
+            InstructionsContinueClick = new Command(async () =>
+            {
+                if (_isInstuctionsChecked)
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                }
+                else
+                {
+
+                    await _dialogService.ShowMessage(AppResources.BPInstructionsAndConditionsAlert, "Alert");
+                }
+            });
+
+            Close_Tapped = new Command(async () =>
+            {
+                await PopupNavigation.Instance.PopAsync();
+            });
+        }
+    }
+}

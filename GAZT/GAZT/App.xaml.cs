@@ -83,6 +83,7 @@ namespace EGAZT
         public static string RefundAccountPopupPageView = "RefundAccountPopupPageView";
         public static string NewAccountPopPageView = "NewAccountPopPageView";
 
+
         // * Taxpayer Profile
         public static string TaxpayerProfilePageView = "TaxpayerProfilePageView";
         public static string UpdateMobilePopUp = "UpdateMobilePopUp";
@@ -92,14 +93,22 @@ namespace EGAZT
         public static string TaxpayerProfileSuccessPage = "TaxpayerProfileSuccessPage";
         public static string EstablishmentSignUPPageView = "EstablishmentSignUPPageView";
         // * End
+
         #endregion
 
         #region new design views Release2
-
+        public static string InstalmentPlanPageView = "InstalmentPlanPageView";
+        public static string VatInstalmentPlanSuccessPage = "VatInstalmentPlanSuccessPage";
         public static string ZakatInstalmentPlanPageView = "ZakatInstalmentPlanPageView";
+        public static string VatInstalmentPlanPageView = "VatInstalmentPlanPageView";
+        public static string VatInstalmentPlanListPageView = "VatInstalmentPlanListPageView";
+        public static string ZakatInstalmentPlanListPageView = "ZakatInstalmentPlanListPageView";
         public static string TaxEvasionMyReportsListPageView = "TaxEvasionMyReportsListPageView";
         public static string TaxEvasionReportDetailPageView = "TaxEvasionReportDetailPageView";
         public static string ZakatAcknowledgmentPageView = "ZakatAcknowledgmentPageView";
+        public static string ChangeFillingPeriodPageView = "ChangeFillingPeriodPageView";
+        public static string ContractReleasePageView = "ContractReleasePageView";
+        public static string ContractReleaseSuccessPageView = "ContractReleaseSuccessPageView";
 
         #endregion
 
@@ -185,7 +194,7 @@ namespace EGAZT
         public static string VATRefundDetailsPageView = "VATRefundDetailsPageView";
         public static string VATRefundsNewRequestPageView = "VATRefundsNewRequestPageView";
         public static string GAZTNewDesignShowVatInformationPopUpPageView = "GAZTNewDesignShowVatInformationPopUpPageView";
-        
+
 
 
         public static string VATRefundsInstructionsPageView = "VATRefundsInstructionsPageView";
