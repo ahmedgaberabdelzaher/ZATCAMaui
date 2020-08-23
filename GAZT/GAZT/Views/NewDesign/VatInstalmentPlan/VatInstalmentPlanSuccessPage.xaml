@@ -52,7 +52,7 @@
                                                     VerticalOptions="Center" FontSize="12" TextColor="#909090"
                                                     HorizontalOptions="Start" />
 
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="1234567890" FontSize="16"
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding VATReferanceNumber}" FontSize="16"
                                                     VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" />
 
                                 <Image Grid.Row="0" Grid.Column="2">
