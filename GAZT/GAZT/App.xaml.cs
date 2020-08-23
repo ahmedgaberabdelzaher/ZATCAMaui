@@ -27,6 +27,7 @@ using EGAZT.Views.NewDesign.ZakatForm5;
 using EGAZT.Views.NewDesign.TAXEvasionPages;
 using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
+using EGAZT.Views.NewDesign.EstablishmentSignUP;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -89,6 +90,7 @@ namespace EGAZT
         public static string UpdatePasswordPopUp = "UpdatePasswordPopUp";
         public static string VerificationPageView = "VerificationPageView";
         public static string TaxpayerProfileSuccessPage = "TaxpayerProfileSuccessPage";
+        public static string EstablishmentSignUPPageView = "EstablishmentSignUPPageView";
         // * End
         #endregion
 

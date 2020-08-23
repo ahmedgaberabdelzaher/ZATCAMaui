@@ -151,6 +151,7 @@ using EGAZT.Views.NewDesign.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using EGAZT.Views.NewDesign.TaxpayerProfile;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
+using EGAZT.Views.NewDesign.EstablishmentSignUP;
 
 namespace EGAZT
 {
@@ -216,6 +217,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxEvasionMyReportsListPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportDetailPageViewModel>();
             SimpleIoc.Default.Register<ZakatAcknowledgmentPageViewModel>();
+            SimpleIoc.Default.Register<EstablishmentSignUPPageViewModel>();
 
             #endregion
 
@@ -322,6 +324,21 @@ namespace EGAZT
         }
 
         #region NewDesignViewModel
+
+        public EstablishmentSignUPPageViewModel EstablishmentSignUPPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EstablishmentSignUPPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         public GAZTNewDesignOnBoardingAnimationPageViewModel GAZTNewDesignOnBoardingAnimationPageView
         {
@@ -2032,6 +2049,7 @@ namespace EGAZT
             navigationService.Configure(App.AttachmentPopUp, typeof(AttachmentPopUp));
             navigationService.Configure(App.RefundAccountPopupPageView, typeof(RefundAccountPopupPageView));
             navigationService.Configure(App.NewAccountPopPageView, typeof(NewAccountPopUpPageView));
+            navigationService.Configure(App.EstablishmentSignUPPageView, typeof(EstablishmentSignUPPageView));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));

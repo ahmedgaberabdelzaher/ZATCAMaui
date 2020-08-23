@@ -43,6 +43,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public int MaxIndex { get; private set; } = 4;
         #endregion
 
+        #region Propetry
+        public string _PageTitle = AppResources.ZTERNewAccount;
+        public string PageTitle
+        {
+            get
+            {
+                return _PageTitle;
+            }
+            set
+            {
+                _PageTitle = value;
+                RaisePropertyChanged("PageTitle");
+            }
+        }
+
+        public string _BodyText = AppResources.ZZZZSelectthetypeofEntity;
+        public string BodyText
+        {
+            get
+            {
+                return _BodyText;
+            }
+            set
+            {
+                _BodyText = value;
+                RaisePropertyChanged("BodyText");
+            }
+        }
+        #endregion
+
         #region Constructor
         public EstablishmentSignUPPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
