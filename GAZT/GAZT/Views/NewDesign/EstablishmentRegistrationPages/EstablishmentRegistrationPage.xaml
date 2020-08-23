@@ -1285,7 +1285,7 @@
                         <Image.Source>
                             <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                         </Image.Source>
-                        <Image.GestureRecognizers>
+                        <Image.GestureRecognizers> <!-- Need to replace icon-->
                             <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
                     </Image>
