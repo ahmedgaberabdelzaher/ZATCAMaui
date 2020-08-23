@@ -71,7 +71,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
-            if(App.TP != null)
+            if (App.TP != null)
             {
                 if (!string.IsNullOrEmpty(App.TP.Tin))
                 {
@@ -83,7 +83,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 }
             }
             else
-            viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
         }
 
     private void OnGotoReportPageClicked(object sender, EventArgs e)
