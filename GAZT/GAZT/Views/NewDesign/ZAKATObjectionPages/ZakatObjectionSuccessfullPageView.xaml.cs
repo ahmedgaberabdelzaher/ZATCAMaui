@@ -8,6 +8,7 @@ using EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using NavigationPage = Xamarin.Forms.NavigationPage;
 
 namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
 {
@@ -21,8 +22,9 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             viewModel = App.Locator.ZakatObjectionSuccessfullPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
+           // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
             SetLTR();
+
             viewModel.OnPageLoad(ZakatReturnDetail);
         }
 
@@ -36,14 +38,16 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
 
         private void OnReturnClicked(object sender, EventArgs e)
         {
+            Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+            Navigation.RemovePage(pg);
             viewModel._navigationService.GoBack();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-            Navigation.RemovePage(pg);
+            //Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+            //Navigation.RemovePage(pg);
         }
     }
 }
