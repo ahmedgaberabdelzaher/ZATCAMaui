@@ -92,6 +92,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
                 viewModel.IsInstructionChecked = arg;
                 //Console.WriteLine(arg);
@@ -143,6 +145,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     if (arg.PickerTitle.Contains("Select Start Date"))
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
+                    
+
                     }
                     else if (arg.PickerTitle.Contains("Select End Date"))
                     {
@@ -169,8 +173,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.DOB = arg.SelectedValue;
                     }
                 }
-
-                if (viewModel.FromDate != DateTime.Now && viewModel.ToDate !=DateTime.Now)
+                if (viewModel.FromDate < viewModel.LastIcrDate)
+                {
+                    viewModel._dialogService.ShowMessage( AppResources.VatDeregSuspendedDateMismatchException, "Information");
+                }
+                else if (viewModel.FromDate != DateTime.Now && viewModel.ToDate !=DateTime.Now)
                 {
                     DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
                     DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);

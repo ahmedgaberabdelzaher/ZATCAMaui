@@ -7465,18 +7465,20 @@ namespace GAZT.Manager
 
         #region VATDeregistration Reason
 
-        public static VATDeregistrationModelRootObject GAZTGETVATDeregSuspensionDate(string selectedType)
+        public static VATDeregistrationLastICRDateRootObject GAZTGETVATDeregSuspensionDate(string selectedType)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
-                VATDeregistrationModelRootObject reasonData = new VATDeregistrationModelRootObject();
+                VATDeregistrationLastICRDateRootObject reasonData = new VATDeregistrationLastICRDateRootObject();
                 // ObservableCollection<VATDeregistrationReasonModel> reasonDropdownlist = new ObservableCollection<VATDeregistrationReasonModel>();
                 string NewToken = string.Empty;
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     char lang = GetLangZParameter();
-                    string url = Constants.GAZTGETVATDeregSuspensionDate + " eq " + "'" + selectedType + "'" + " and " + "Lang" + " eq " + "'" + lang + "'" + "&$format=json";
+            //    https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetLastICRDtSet?$filter=Gpartx%20eq%20%273001105571%27%20and%20UserTypx%20eq%20%27TP%27%20and%20TxnTpx%20eq%20%27ZVAT_SUSP%27%20and%20Reqtp%20eq%20%27S%27&$format=json
+
+                    string url = Constants.GAZTGETVATDeregSuspensionDate +"Gpartx"+ " eq " +"'"+ App.LoginDataRetrieved.TIN +"'"+" and "+ "UserTypx" + " eq " +"'TP'"+ " and "+"TxnTpx" + " eq " + "'" + "ZVAT_SUSP"+ "'" + " and " + "Reqtp"+ " eq "  + "'S'"+ "&$format=json";
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
@@ -7509,7 +7511,7 @@ namespace GAZT.Manager
                         String GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
                         {
-                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationModelRootObject>(GAZTVATDeregreasonDataResponseJSON);
+                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationLastICRDateRootObject>(GAZTVATDeregreasonDataResponseJSON);
                             if (reasonData == null)
                             {
                                 throw new Exception(AppResources.Nodataavailable);
