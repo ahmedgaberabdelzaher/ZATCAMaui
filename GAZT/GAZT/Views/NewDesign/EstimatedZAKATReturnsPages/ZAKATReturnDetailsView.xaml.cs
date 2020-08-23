@@ -564,7 +564,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
         }
 
-
+        protected void OnCheckBoxCheckedChanged(Object sender, EventArgs e)
+        {
+            viewModel.CheckBoxStatus = checkBox.IsChecked;
+        }
 
     }
 }

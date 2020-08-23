@@ -389,6 +389,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+
+        private bool _checkBoxStatus = false;
+        public bool CheckBoxStatus
+        {
+            get
+            {
+                return _checkBoxStatus;
+            }
+            set
+            {
+                _checkBoxStatus = value;
+                RaisePropertyChanged("CheckBoxStatus");
+            }
+        }
+
+        private bool _desClaimerVisibility = true;
+        public bool DesClaimerVisibility
+        {
+            get
+            {
+                return _desClaimerVisibility;
+            }
+            set
+            {
+                _desClaimerVisibility = value;
+                RaisePropertyChanged("DesClaimerVisibility");
+            }
+        }
         //private bool _confirmAndGenerateSADADBillLabelVisibility = false;
         //public bool ConfirmAndGenerateSADADBillLabelVisibility
         //{
@@ -455,14 +483,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 bool IsValueChange = GetEstimatedZAKATValueChangeStatus();
                 if (IsValueChange)
                 {
-                    SetUpdatedDataToZAKATEstimated();
-
-                    if (AttachmentPopUpViewModel.SalesDetailList != null && AttachmentPopUpViewModel.SalesDetailList.Count > 0)
+                    if (CheckBoxStatus)
                     {
-                        AddAttachmetToPostData();
-                    }
+                        SetUpdatedDataToZAKATEstimated();
 
-                    SubmitReturn();
+                        if (AttachmentPopUpViewModel.SalesDetailList != null && AttachmentPopUpViewModel.SalesDetailList.Count > 0)
+                        {
+                            AddAttachmetToPostData();
+                        }
+
+                        SubmitReturn();
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                        });
+                    }
 
                 }
                 else
@@ -1394,6 +1431,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetConfirmButtonVisibility = false;
             SetAmendButtonVisibility = false;
             isThresholdValueLessThanTotalVATSales = false;
+            DesClaimerVisibility = false;
         }
 
         public void SetChangeFromEstimateTAccountringBasisButtonVisibility(string ButtonStatus)
@@ -1609,8 +1647,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetEditImage();
             SetConfirmButtonVisibility = false;
             ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
+            DesClaimerVisibility = true;
         }
 
+        private void SetLayoutVisibilityAfterSuccessfulAmendement()
+        {
+            UnSetEditImage();
+            isEditVisible = false;
+            isLabelVisible = true;
+            IsEditTextVisible = false;
+            SetSubmitButtonVisibility = false;
+            //    ConfirmAndGenerateSADADBillLabelVisibility = false;
+            SetConfirmButtonVisibility = false;
+            SetAmendButtonVisibility = false;
+            isThresholdValueLessThanTotalVATSales = false;
+            DesClaimerVisibility = false;
+        }
         #endregion
 
     }
