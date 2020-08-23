@@ -4478,7 +4478,7 @@
     <value>Edit</value>
   </data>
   <data name="VATDeregistrationDocumentType4" xml:space="preserve">
-    <value>Other Documents</value>
+    <value>ملفات أخرى</value>
   </data>
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>المرفقات</value>
@@ -4505,19 +4505,19 @@
     <value>التعهد</value>
   </data>
   <data name="VatDeregDeclarationSubtitle" xml:space="preserve">
-    <value>Complete the below details</value>
+    <value>اكمل المعلومات التالية</value>
   </data>
   <data name="VatDeregIDType" xml:space="preserve">
-    <value>ID Type</value>
+    <value>نوع الهوية</value>
   </data>
   <data name="VatDeregIDNumber" xml:space="preserve">
-    <value>ID Number</value>
+    <value>رقم الهوية</value>
   </data>
   <data name="VatDeregDOBTitle" xml:space="preserve">
-    <value>Date of Birth</value>
+    <value>تاريخ الميلاد</value>
   </data>
   <data name="VatDeregContactPerson" xml:space="preserve">
-    <value>Contact Person Name</value>
+    <value>اسم الشخص الذي يمكن الاتصال به</value>
   </data>
   <data name="VatDeregSummaryTitle" xml:space="preserve">
     <value>Summary</value>
@@ -4526,16 +4526,16 @@
     <value>مراجعة البيانات التالية</value>
   </data>
   <data name="VatDeregDetailsTitle" xml:space="preserve">
-    <value>Deregistration details</value>
+    <value>تفاصيل الغاء التسجيل</value>
   </data>
   <data name="VatDeregReasonTitle" xml:space="preserve">
-    <value>Reason</value>
+    <value>الأسباب</value>
   </data>
   <data name="VatDeregDocumentTitle" xml:space="preserve">
-    <value>Document Type</value>
+    <value>نوع الملف</value>
   </data>
   <data name="VatDeregConfirmTitle" xml:space="preserve">
-    <value>Confirm</value>
+    <value>تأكيد</value>
   </data>
   <data name="VatDeregSuspendedStartDate" xml:space="preserve">
     <value>Start of Suspension Period</value>
@@ -4556,17 +4556,13 @@
     <value>The Start Date and End Date lie in the same period</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
-    <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.
-
-Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields and attachments have been completed.
-
-Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
+    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -> تعديل التسجيل -> الايقاف (الايقاف النهائي للرقم المميز)- تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.- يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
   </data>
   <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
     <value>أوافق على التعليمات والشروط وإكمال الخطوات.</value>
   </data>
   <data name="VATDeregistrationDeclarationAgreement" xml:space="preserve">
-    <value>I hereby certify that iam authorised to complete this form for the taxable person and that all information contained is correct.</value>
+    <value>أتعهد بأني مصرح لإكمال هذا النموذج للشخص الخاضع للضريبة وجميع المعلومات صحيحة</value>
   </data>
   <data name="VatDeregistrationofVATReason1" xml:space="preserve">
     <value>Total value of VAT eligible supplies falls below mandatory registration threshold (&lt;375,000 SAR)</value>
@@ -4587,13 +4583,13 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Others (please specify)</value>
   </data>
   <data name="VatDeregistrationApplicationNumber" xml:space="preserve">
-    <value>Application Number</value>
+    <value>رقم الطلب</value>
   </data>
   <data name="VatDeregistrationRegistrationServices" xml:space="preserve">
-    <value>VAT Registration Services</value>
+    <value>خدمة التسجيل في ضريبة القيمة المضافة</value>
   </data>
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
-    <value>VAT Deregistration Application is submitted successfully</value>
+    <value>تم استلام طلب إيقاف التسجيل في ضريبة القيمة المضافة بنجاح</value>
   </data>
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
