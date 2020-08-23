@@ -104,18 +104,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             switch (currentTab)
             {
                 case EstablishmentSignUPTabEnum.EstablishmentAccount:
+                    PageTitle = AppResources.VerificationCode;
+                    BodyText = AppResources.NDPleaseEnterVerificationSenttomobile;
                     currentTab = EstablishmentSignUPTabEnum.VerificationCode;
                     break;
 
                 case EstablishmentSignUPTabEnum.VerificationCode:
-                    PageTitle = AppResources.VerificationCode;
-                    BodyText = AppResources.NDPleaseEnterVerificationSenttomobile;
+                    PageTitle = AppResources.ZSummary;
+                    BodyText = AppResources.VATRReviewInformation;
+
                     currentTab = EstablishmentSignUPTabEnum.Summary;
                     break;
 
                 case EstablishmentSignUPTabEnum.Summary:
-                    PageTitle = AppResources.ZSummary;
-                    BodyText = AppResources.VATRReviewInformation;
+                    PageTitle = AppResources.Password;
+                    BodyText = AppResources.CreateASecurePassword;
                     currentTab = EstablishmentSignUPTabEnum.Password;
                     break;
             }
