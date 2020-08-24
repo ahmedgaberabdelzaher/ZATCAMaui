@@ -50,7 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #endregion
 
         #region Propetry
-        public string _PageTitle = "Establishment Account";
+        public string _PageTitle = AppResources.NDEstablishmentAccount;
         public string PageTitle
         {
             get
@@ -75,6 +75,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 _BodyText = value;
                 RaisePropertyChanged("BodyText");
+            }
+        }
+
+        public string _NextBTN = AppResources.ZZZZContinue;
+        public string NextBTN
+        {
+            get
+            {
+                return _NextBTN;
+            }
+            set
+            {
+                _NextBTN = value;
+                RaisePropertyChanged("NextBTN");
             }
         }
         #endregion
@@ -112,13 +126,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 case EstablishmentSignUPTabEnum.VerificationCode:
                     PageTitle = AppResources.ZSummary;
                     BodyText = AppResources.VATRReviewInformation;
-
+                    NextBTN = AppResources.Confirm;
                     currentTab = EstablishmentSignUPTabEnum.Summary;
                     break;
 
                 case EstablishmentSignUPTabEnum.Summary:
                     PageTitle = AppResources.Password;
                     BodyText = AppResources.CreateASecurePassword;
+                    NextBTN = AppResources.ZZZZContinue;
                     currentTab = EstablishmentSignUPTabEnum.Password;
                     break;
             }
@@ -130,14 +145,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             switch (currentTab)
             {
                 case EstablishmentSignUPTabEnum.Password:
+                    PageTitle = AppResources.ZSummary;
+                    BodyText = AppResources.VATRReviewInformation;
+                    NextBTN = AppResources.Confirm;
                     currentTab = EstablishmentSignUPTabEnum.Summary;
                     break;
 
                 case EstablishmentSignUPTabEnum.Summary:
+                    PageTitle = AppResources.VerificationCode;
+                    BodyText = AppResources.NDPleaseEnterVerificationSenttomobile;
+                    NextBTN = AppResources.ZZZZContinue;
                     currentTab = EstablishmentSignUPTabEnum.VerificationCode;
                     break;
 
                 case EstablishmentSignUPTabEnum.VerificationCode:
+                    PageTitle = AppResources.NDEstablishmentAccount;
+                    BodyText = AppResources.ZZZZCompletethebelowdetails;
                     currentTab = EstablishmentSignUPTabEnum.EstablishmentAccount;
                     break;
             }

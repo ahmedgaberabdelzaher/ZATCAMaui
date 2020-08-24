@@ -158,32 +158,43 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private async void OnConfirmClicked(object sender, EventArgs e)
         {
-            string PostOperationID = viewModel.GetConfirmOperationId();
-            if (viewModel.IsCurrentZAKATTaxLess)
+            if (viewModel.CheckBoxStatus)
             {
-                if (App.IsArabic)
+                string PostOperationID = viewModel.GetConfirmOperationId();
+                if (viewModel.IsCurrentZAKATTaxLess)
                 {
-                    var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZCancel, AppResources.ZZZOkayText);
-                    if (!result)
+                    if (App.IsArabic)
                     {
-                        await viewModel.ConfirmClicked(PostOperationID);
-                    }
+                        var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZCancel, AppResources.ZZZOkayText);
+                        if (!result)
+                        {
+                            await viewModel.ConfirmClicked(PostOperationID);
+                        }
 
+                    }
+                    else
+                    {
+                        var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZZOkayText, AppResources.ZZCancel);
+                        if (result)
+                        {
+                            await viewModel.ConfirmClicked(PostOperationID);
+                        }
+
+                    }
                 }
                 else
                 {
-                    var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZZOkayText, AppResources.ZZCancel);
-                    if (result)
-                    {
-                        await viewModel.ConfirmClicked(PostOperationID);
-                    }
-
+                    await viewModel.ConfirmClicked(PostOperationID);
                 }
             }
             else
             {
-                await viewModel.ConfirmClicked(PostOperationID);
+                  Device.BeginInvokeOnMainThread(async () => {
+                        await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                    });
+               
             }
+              
 
 
         }
