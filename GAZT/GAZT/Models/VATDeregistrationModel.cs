@@ -23,7 +23,32 @@ namespace EGAZT.Models
     {
         public List<VATDeregistrationModelDetailsResult> results { get; set; }
     }
-  
+    public class VATDeregistrationLastICRDateRootObject
+    {
+        public VATDeregistrationLastICRDateDetailD d { get; set; }
+    }
+    public class VATDeregistrationLastICRDateDetailD
+    {
+        [JsonProperty("results")]
+
+        public List<VATDeregistrationLastICRDateDetailsResult> results { get; set; }
+    }
+    public class VATDeregistrationLastICRDateDetailsResult
+    {
+        public __metadata __metadata { get; set; }
+
+        public DateTime Lasticrdt { get; set; }
+
+        public string Reqtp { get; set; }
+
+        public string TxnTpx { get; set; }
+
+        public string UserTypx { get; set; }
+        public string Gpartx { get; set; }
+
+
+    }
+
     public class VATDeRegistrationAttachmentDropdownDetails
     {
         [JsonProperty("__metadata")]

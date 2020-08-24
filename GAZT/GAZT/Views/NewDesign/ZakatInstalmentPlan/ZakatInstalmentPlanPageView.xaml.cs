@@ -41,7 +41,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel = App.Locator.ZakatInstalmentPlanPageView;
                 this.BindingContext = viewModel;
 
-
+                viewModel.showInstructionsDialog();
+                 GetZakatInstalmentData();
             }
             catch (Exception ex)
             {
@@ -54,7 +55,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-        public async Task GetVAtInstalmentData()
+        public async Task GetZakatInstalmentData()
         {
             try
             {
@@ -98,6 +99,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
+        private void Frequncy_Selected(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            var selectedItem = e.ItemData as InstalmentAgreementFrequencyModel;
+            viewModel.updateInstalmentsOnSlider(selectedItem);
+        }
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             ZakatInstalmentPlanModel selectedItem = e.AddedItems[0] as ZakatInstalmentPlanModel;
@@ -127,7 +133,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 Task.Run(async () =>
                 {
                     viewModel.IsLoading = true;
-                    await GetVAtInstalmentData();
+                    //await GetVAtInstalmentData();
 
                 });
 
@@ -223,36 +229,38 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         }
         private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-           
 
-                try
+
+            try
+            {
+                /*if (SearchItemVAT.Text.Length > 0)
+                {*/
+
+                /*
+                var itemsSource = viewModel.BillsListVAT.Where(w => w.SadadNo.Contains(SearchItemVAT.Text));
+                  BillsVATListVIew.ItemsSource = itemsSource;
+                  */
+
+
+                /*}
+                else
                 {
-                    if (SearchItemVAT.Text.Length > 0)
-                    {
-
-                      var itemsSource = viewModel.BillsListVAT.Where(w => w.SadadNo.Contains(SearchItemVAT.Text));
-                        BillsVATListVIew.ItemsSource = itemsSource;
-
-
-                    }
-                    else
-                    {
-                        BillsVATListVIew.ItemsSource = viewModel.BillsListVAT;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            
+                    BillsVATListVIew.ItemsSource = viewModel.BillsListVAT;
+                }*/
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
 
-            
+
+
         }
 
         private void Bills_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-            var dataItem = e.ItemData as EGAZT.Models.ZakatInstalationModels.VATResults4;
+          /*  var dataItem = e.ItemData as EGAZT.Models.ZakatInstalationModels.VATResults4;
 
             try
             {
@@ -304,11 +312,12 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
             }
+          */
         }
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-           // PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(viewModel.VatInstalments.d.AttachmentSet.results,WhichAttachment.VATInstalment,viewModel.VatInstalments.d.ReturnIdz));
+            // PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(viewModel.VatInstalments.d.AttachmentSet.results,WhichAttachment.VATInstalment,viewModel.VatInstalments.d.ReturnIdz));
         }
 
         protected override void OnDisappearing()
@@ -328,7 +337,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     if (arg != null)
                     {
 
-                        viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
+                       // viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
                         viewModel.PopulateAttachments(arg.results);
 
 

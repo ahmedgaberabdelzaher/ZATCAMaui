@@ -1659,7 +1659,7 @@
   <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
     <value>الرجاء إختيار رقم الهوية المرتبطة برقم الحساب البنكي (الايبان) المختار</value>
   </data>
-    <data name="ZVatRefundInstructions" xml:space="preserve">
+  <data name="ZVatRefundInstructions" xml:space="preserve">
     <value>
             يرجى قراءة التعليمات أدناه قبل ملء نموذج الاسترداد:
 يرجى تعبئة المعلومات المطلوبة لكل خطوة
@@ -1669,6 +1669,9 @@
 للهيئة الحق في فتح أي حالة فحص إعادة تقييم للمبالغ الدائنة وذلك للمبالغ الدائنة للتحقق منها وتعديلها قبل السماح بإسترداد المبلغ الدائن.
 يحق للمكلف بالإسترداد المباشر للمبالغ الدائنة المتحقق منها بعد سداد باقي التزامات المكلف الأخرى او قيام الهيئة بالمقاصة من رصيد المكلف الدائن.
         </value>
+  </data>
+  <data name="VATRefundRequest" xml:space="preserve">
+    <value>طلب إستردادt</value>
   </data>
   <data name="MyCertificates" xml:space="preserve">
     <value>الشهادات</value>
@@ -4520,7 +4523,7 @@
     <value>اسم الشخص الذي يمكن الاتصال به</value>
   </data>
   <data name="VatDeregSummaryTitle" xml:space="preserve">
-    <value>Summary</value>
+    <value>الملخص</value>
   </data>
   <data name="VatDeregSummarySubTitle" xml:space="preserve">
     <value>مراجعة البيانات التالية</value>
@@ -4556,7 +4559,7 @@
     <value>The Start Date and End Date lie in the same period</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
-    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -> تعديل التسجيل -> الايقاف (الايقاف النهائي للرقم المميز)- تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.- يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
+    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)- تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.- يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
   </data>
   <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
     <value>أوافق على التعليمات والشروط وإكمال الخطوات.</value>
@@ -4752,137 +4755,140 @@
     <comment>Bills</comment>
   </data>
   <data name="ZakatInstalmetPlan" xml:space="preserve">
-    <value>Instalment Plans</value>
+    <value>خطة التقسيط</value>
   </data>
   <data name="ZakatInstalmetSelectType" xml:space="preserve">
-    <value>Select Type</value>
+    <value>اختر النوع</value>
   </data>
   <data name="ZakatInstalmetSelectTypeZakat" xml:space="preserve">
-    <value>Zakat / IncomeTax</value>
+    <value>الزكاة</value>
+  </data>
+  <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
+    <value>ضريبة الدخل</value>
   </data>
   <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
-    <value>VAT</value>
+    <value>ضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatInstalmetChooseTaxTypeText" xml:space="preserve">
-    <value>Choose the Tax type to request a instalment plan</value>
+    <value>اختر نوع الضريبة لطلب خطة التقسيط</value>
   </data>
   <data name="ZakatInstalmet" xml:space="preserve">
-    <value>Choose the Tax type to request a instalment plan</value>
+    <value>اختر نوع الضريبة لطلب خطة التقسيط</value>
   </data>
   <data name="ZakatInstalmetDownPaymentAmount" xml:space="preserve">
-    <value>Down Payment Amount</value>
+    <value>مبلغ الدفعة المقدمة بالريال السعودي</value>
   </data>
   <data name="ZakatInstalmetFrequency" xml:space="preserve">
-    <value>Frequency</value>
+    <value>التكرار</value>
   </data>
   <data name="ZakatInstalmentAgrement" xml:space="preserve">
-    <value>Instalment Agreement</value>
+    <value>القسط الشهري</value>
   </data>
   <data name="ZakatInstalmentSchedule" xml:space="preserve">
-    <value>Instalment Schedule</value>
+    <value>جدول التقسيط</value>
   </data>
   <data name="ZakatInstalmetNumberOfInstalments" xml:space="preserve">
-    <value>Number of Instalments</value>
+    <value>عدد الأقساط</value>
   </data>
   <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
-    <value>Periodic Instalment</value>
+    <value>القسط الدوري</value>
   </data>
   <data name="ZakatInstalmetRequestInstalmentPlan" xml:space="preserve">
-    <value>Request Instalment Plan</value>
+    <value>طلب خطة التقسيط</value>
   </data>
   <data name="ZakatInstalmetRequestInstalmentDesc" xml:space="preserve">
-    <value>Set up your instalment plan details</value>
+    <value>تفاصيل طلب خطة تقسيط</value>
   </data>
   <data name="ZakatInstalmetTotalAmount" xml:space="preserve">
-    <value>Total Amount</value>
+    <value>المبلغ الإجمالي</value>
   </data>
   <data name="ZakatInstalmetHalfYearly" xml:space="preserve">
-    <value>Half Yearly</value>
+    <value>نصف سنوي</value>
   </data>
   <data name="ZakatInstalmetMonthly" xml:space="preserve">
-    <value>Monthly</value>
+    <value>شهري</value>
   </data>
   <data name="ZakatInstalmetQuarterly" xml:space="preserve">
-    <value>Quarterly</value>
+    <value>ربع سنوي</value>
   </data>
   <data name="ZakatInstalmetYearly" xml:space="preserve">
-    <value>Yearly</value>
+    <value>سنوي</value>
   </data>
   <data name="ZakatInstalmetContinue" xml:space="preserve">
     <value>المتابعة</value>
   </data>
   <data name="ZakatInstalmentAttachments" xml:space="preserve">
-    <value>Attachments</value>
+    <value>المرفقات</value>
   </data>
   <data name="ZakatInstalmentPleaseProvideWithSupportingDocuments" xml:space="preserve">
-    <value>Please provide with the supporting documentation</value>
+    <value>المرفقات المقدمة من المكلف</value>
   </data>
   <data name="ZakatInstalmentSetupyourinstalmentplandetails" xml:space="preserve">
-    <value>Set up your instalment plan details</value>
+    <value>تفاصيل طلب خطة تقسيط</value>
   </data>
   <data name="ZakatInstalment20MB" xml:space="preserve">
     <value>20MB</value>
   </data>
   <data name="ZakatInstalmentAttachment" xml:space="preserve">
-    <value>Attachment</value>
+    <value>المرفقات</value>
   </data>
   <data name="ZakatInstalmentBankStatementsForLast3Months" xml:space="preserve">
-    <value>Bank Statements for the last 3 months</value>
+    <value>الكشوف المصرفية لآخر ٣ شهور</value>
   </data>
   <data name="ZakatInstalmentFinancialStatementsForLastThreeYears" xml:space="preserve">
-    <value>Financial Statements for the Last 3 years</value>
+    <value>الكشوف المصرفية لآخر ٣ سنوات</value>
   </data>
   <data name="ZakatInstallmentPageAmendment" xml:space="preserve">
-    <value>Amendment by GAZT</value>
+    <value>التعديل من قبل الهيئة العامة للزكاة والدخل</value>
   </data>
   <data name="ZakatInstallmentPageTitle" xml:space="preserve">
-    <value>Request Installment Plan</value>
+    <value>طلب خطة التقسيط</value>
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
-    <value>Search Reference Number</value>
+    <value>البحث بالرقم المرجعي</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBills" xml:space="preserve">
-    <value>Select Bills</value>
+    <value>اختر الفاتورة</value>
   </data>
   <data name="ZakatSelectBillsPageViewSelectBillsGray" xml:space="preserve">
-    <value>Select the SADAD bills you wish to include in the instalment agreement</value>
+    <value>يرجى تحديد فواتير سداد التي ترغب بتضمينها في اتفاقية التقسيط</value>
   </data>
   <data name="ZakatBillAmount" xml:space="preserve">
-    <value>Due Amount</value>
+    <value>الالتزامات المستحقة</value>
   </data>
   <data name="ZakatInstalmentDownloadConfirmation" xml:space="preserve">
-    <value>Download Confirmation</value>
+    <value>تحميل إشعار تسليم الطلب</value>
   </data>
   <data name="ZakatInstalmentGoToDashboard" xml:space="preserve">
-    <value>Go to Dashboard</value>
+    <value>الانتقال الى لوحة المعلومات</value>
   </data>
   <data name="ZakatInstalmentReferenceNumber" xml:space="preserve">
-    <value>Reference Number</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="ZakatInstalmentRequestInstalmentPlan" xml:space="preserve">
-    <value>Request Instalment Plan</value>
+    <value>طلب خطة التقسيط</value>
   </data>
   <data name="ZakatInstalmentYourVatInstalmentPlanIsSuccessfullySubmitted" xml:space="preserve">
-    <value>Your VAT Instalment Plan is successfully submitted</value>
+    <value>تم استلام طلب خطة تقسيط ضريبة القيمة المضافة بنجاح</value>
   </data>
   <data name="ZakatInstallmentPlanSummaryReview" xml:space="preserve">
-    <value>Review the below information</value>
+    <value>مراجعة المعلومات التالية</value>
   </data>
   <data name="ZakatInstallmentSummaryEdit" xml:space="preserve">
-    <value>Edit</value>
+    <value>تعديل</value>
   </data>
   <data name="ZakatInstallmentSummaryBillType" xml:space="preserve">
-    <value>Bill Type</value>
+    <value>نوع الفاتورة</value>
   </data>
   <data name="ZakatInstallmentSummarySadadNumber" xml:space="preserve">
-    <value>SADAD Number</value>
+    <value>رقم سداد</value>
   </data>
   <data name="ZakatInstallmentSummaryTaxPeriod" xml:space="preserve">
-    <value>Tax Period</value>
+    <value>الفترة الضريبية</value>
   </data>
   <data name="ZakatInstallmentAgreementPenalty" xml:space="preserve">
-    <value>Penalty</value>
+    <value>الغرامة</value>
   </data>
   <data name="ZakatInstallmentPlanZakatIncometax" xml:space="preserve">
     <value>Zakat/IncomeTax</value>
@@ -5410,7 +5416,7 @@
     <value>Download Invoice</value>
   </data>
   <data name="NDReturnOfZakat" xml:space="preserve">
-    <value>Return of Zakat</value>
+    <value>عوائد الزكاة</value>
   </data>
   <data name="NDSadadBillNoString1" xml:space="preserve">
     <value>SADAD Bill Number</value>
@@ -5472,22 +5478,156 @@
   <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
     <value>تمتقديمإقرارضريبةالقيمةالمضافةبنجاح</value>
   </data>
-   <data name="NDInvoiceDetail" xml:space="preserve">
-    <value>تفاصيل الفاتورة</value>
+  <data name="NDInvoiceDetail" xml:space="preserve">
+    <value />
   </data>
   <data name="NDSubmittedSuccessfully" xml:space="preserve">
-    <value>تم التقديم بنجاح</value>
+    <value />
   </data>
   <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">
-    <value>تم تقديم الإعتراض بنجاح</value>
+    <value />
   </data>
-   <data name="NDBilled" xml:space="preserve">
+  <data name="NDBilled" xml:space="preserve">
     <value>مفوتر</value>
   </data>
-   <data name="NDInProcessing" xml:space="preserve">
+  <data name="NDInProcessing" xml:space="preserve">
     <value>في طور المعالجة</value>
   </data>
-   <data name="ToBeApproved" xml:space="preserve">
+  <data name="ToBeApproved" xml:space="preserve">
     <value>إنتظار الموافقة</value>
   </data>
+  <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
+    <value>Total Number of Months</value>
+  </data>
+  <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
+    <value>Total Monthly Instalments</value>
+  </data>
+  <data name="FORM5TaxpayerDetails" xml:space="preserve">
+    <value>تفاصيل المكلف</value>
+  </data>
+  <data name="VatInstalmentPlan" xml:space="preserve">
+    <value>خطة التقسيط</value>
+  </data>
+  <data name="NDAccountingType" xml:space="preserve">
+    <value>Accounting Type</value>
+  </data>
+  <data name="NDBranchLocation" xml:space="preserve">
+    <value>Branch Location</value>
+  </data>
+  <data name="NDBranchName" xml:space="preserve">
+    <value>Branch Name</value>
+  </data>
+  <data name="NDBranchType" xml:space="preserve">
+    <value>Branch Type</value>
+  </data>
+  <data name="NDComercialName" xml:space="preserve">
+    <value>Comercial Name</value>
+  </data>
+  <data name="NDCompany" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="NDEndOfFinancialYear" xml:space="preserve">
+    <value>End Of Financial Year</value>
+  </data>
+  <data name="NDEstablishmentAccount" xml:space="preserve">
+    <value>Establishment Account</value>
+  </data>
+  <data name="NDEstablishments" xml:space="preserve">
+    <value>Establishments</value>
+  </data>
+  <data name="NDFacilityAddress" xml:space="preserve">
+    <value>Facility Address</value>
+  </data>
+  <data name="NDFacilityBranches" xml:space="preserve">
+    <value>Facility Branches</value>
+  </data>
+  <data name="NDIndividuals" xml:space="preserve">
+    <value>Individuals</value>
+  </data>
+  <data name="NDLegalEntity" xml:space="preserve">
+    <value>Legal Entity</value>
+  </data>
+  <data name="NDMainActivity" xml:space="preserve">
+    <value>Main Activity</value>
+  </data>
+  <data name="NDOthers" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="NDPOBox" xml:space="preserve">
+    <value>P.O Box</value>
+  </data>
+  <data name="NDStreetName" xml:space="preserve">
+    <value>Street Name</value>
+  </data>
+  <data name="NDSubActivity" xml:space="preserve">
+    <value>Sub Activity</value>
+  </data>
+  <data name="NDYouReceivedSMSWithTIN" xml:space="preserve">
+    <value>You have received an SMS with the TIN number. You can use the set password to Login in the future.</value>
+  </data>
+  <data name="NDYouSuccessfullyRegisteredGAZTServies" xml:space="preserve">
+    <value>You have successfully registered to GAZT Servies.</value>
+  </data>
+  <data name="FORM5SadadBillNo" xml:space="preserve">
+    <value>رقم فاتورة سداد:</value>
+  </data>
+  <data name="NDPayBillAmtObtainCertificateAutomaticall" xml:space="preserve">
+    <value>في حال سدادكم مبلغ الفاتورة أعلاه يمكنكم الحصول على الشهادة آلياً</value>
+  </data>
+     <data name="VATInstalmentRequestToVatInstalment" xml:space="preserve">
+    <value>Create/Display VAT Instalment Plan</value>
+  </data>
+    <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
+    <value>Total Number of Months</value>
+  </data>
+  <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
+    <value>Total Monthly Instalments</value>
+  </data>
+    <data name="ZakatFinancialCrisis" xml:space="preserve">  <value>Financial Crisis</value> </data>
+    <data name="ZakatDisputeInFavorOfGAZT" xml:space="preserve">
+    <value>Dispute in Favor of GAZT</value>
+  </data>
+  <data name="ZakatOtherReason" xml:space="preserve">
+    <value>Other Reason</value>
+  </data>
+    <data name="ZakatInstructions" xml:space="preserve">
+    <value>1. I acknowledge that I do not have sufficient liquidity to pay the full amount.&#x0a;2. I pledge to provide the General Authority for Zakat &amp; Tax with all recent bank statements of the business activity, as well as my personal account statements for the past three months.&#x0a;3. I pledge to provide the General Authority for Zakat &amp; Tax with any documents that are requested for the purpose of processing the application.&#x0a;4. The General Authority for Zakat &amp; Tax has the right to estimate the amount and period of the instalment plan, as appropriate.&#x0a;5. I pledge to pay at least 20% of total debts that requested for instalment.&#x0a;6. The General Authority for Zakat &amp; Tax has the right to cancel the instalment plan, in case of having financial unsuitability to pay the full amount of the dues.&#x0a;7. I acknowledge that In case of default in paying two sequential instalments, the General Authority for Zakat &amp; Tax has the right to cancel the instalment plan, and no other instalment plan could be requested for the same invoices.&#x0a;8. The General Authority for Zakat &amp; Tax has the right to implement the collection procedures, in the case of cancellation of the instalment plan.&#x0a;9. The General Authority for Zakat &amp; Tax has the right to cancel the instalment plan, in case of reassessment of the amount that has been approved for the instalment plan.</value>
+  </data>
+    <data name="ZakatInstructionsCheckBoxDesc" xml:space="preserve">
+    <value>I Agree</value>
+  </data>
+  <data name="ZakatInvoiceAmount" xml:space="preserve">
+    <value>Invoice Amount</value>
+  </data>
+  <data name="ZakatClearedAmount" xml:space="preserve">
+    <value>Cleared Amount</value>
+  </data>
+  <data name="ZakatDueAmount" xml:space="preserve">
+    <value>Due Amount</value>
+  </data>
+  <data name="ZakatYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="ZakatCashBank" xml:space="preserve">
+    <value>Cash + Bank</value>
+  </data>
+  <data name="ZakatShortTermInvestment" xml:space="preserve">
+    <value>Short Term Investment</value>
+  </data>
+  <data name="ZakatDebitors" xml:space="preserve">
+    <value>Debitors</value>
+  </data>
+  <data name="ZakatInventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="ZakatYearOne" xml:space="preserve">
+    <value>Year 1</value>
+   </data>
+  <data name="ZakatYearTwo" xml:space="preserve">
+    <value>Year 2</value>
+   </data>
+  <data name="ZakatYearThree" xml:space="preserve">
+    <value>Year 3</value>
+  </data>
 </root>
+

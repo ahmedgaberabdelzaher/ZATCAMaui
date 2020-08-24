@@ -210,6 +210,7 @@ namespace EGAZT.Models.VATInstalationModels
         public VATInstalmentRequest d { get; set; }
     }
 
+
     public partial class VATInstalmentRequest
     {
         public Metadata __metadata { get; set; }

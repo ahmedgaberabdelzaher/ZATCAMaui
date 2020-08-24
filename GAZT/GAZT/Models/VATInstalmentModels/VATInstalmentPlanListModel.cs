@@ -419,7 +419,7 @@ namespace EGAZT.Models.VATInstalmentModels
             public string WfSub { get; set; }
             public string Fbust { get; set; }
             public string FbustTxt { get; set; }
-            public DateTime Receipt { get; set; }
+            public string Receipt { get; set; }
             public string AssignUsr { get; set; }
             public string LoginUsr { get; set; }
             public string AssignMe { get; set; }

@@ -90,7 +90,7 @@
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static local:AppResources.FinancialPeriodFrom}" HorizontalOptions="End" HorizontalTextAlignment="End" Style="{StaticResource ValueLabelGrey}"/>
                                             <StackLayout Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" WidthRequest="160" StyleId="ValueLabel">
-                                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.FromDate}"  Style="{StaticResource HorizontalEnd}" >
+                                                 <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.FromDate}"  Style="{StaticResource HorizontalEnd}" FlowDirection="LeftToRight">
 
                                                 <!--<Label.FormattedText>
                                         <FormattedString>
@@ -100,7 +100,7 @@
                                              </FormattedString>
                                     </Label.FormattedText>-->
                                             </custom:CustomLabel>
-                        <custom:CustomLabel Margin="0,-10,0,0" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ToDate}"  Style="{StaticResource HorizontalEnd}" StyleId="ValueLabel">
+                        <custom:CustomLabel Margin="0,-10,0,0" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ToDate}"  Style="{StaticResource HorizontalEnd}" StyleId="ValueLabel" FlowDirection="LeftToRight">
                             </custom:CustomLabel>
                                         
                                             </StackLayout>
@@ -765,9 +765,27 @@
 
                                         <!---->
                                     </StackLayout>
-                                    <StackLayout BackgroundColor="AliceBlue" Padding="10" BindingContext="{Binding ZakatReturnDetail}">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource BodyLabelBlack}"/>
-                                        <custom:CustomLabel Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}"/>
+                                    <StackLayout BackgroundColor="AliceBlue" Padding="10" BindingContext="{Binding ZakatReturnDetail}" Orientation="Horizontal">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                               
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="45*"/>
+
+                                                <ColumnDefinition Width="43*"/>
+                                                <ColumnDefinition Width="12*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource BodyLabelBlack}"/>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}"/>
+                                         <Image Grid.Row="0" Grid.Column="2" Source="ic_vat_info" HorizontalOptions="EndAndExpand" VerticalOptions="Start">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnEstimatedSalesForTheFiscalYearInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+                                          </Image>
+                                            </Grid>
+                                        
                                     </StackLayout>
                                      <Grid>
                                             <Grid.RowDefinitions>
@@ -779,7 +797,7 @@
                                                 <ColumnDefinition Width="88*"/>
                                             </Grid.ColumnDefinitions>
                                           <CheckBox Grid.Row="0" Grid.Column="0" x:Name="checkBox"   VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}"></CheckBox>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZDeclarationText}"  IsVisible="{Binding DesClaimerVisibility}" ></custom:CustomLabel>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZDeclarationText}"  IsVisible="{Binding DesClaimerVisibility}" Margin="5"></custom:CustomLabel>
                             
                                        </Grid>
                                       
@@ -790,7 +808,7 @@
                         </StackLayout>
                     </ScrollView>
 
-                    <StackLayout Grid.Row="1" BackgroundColor="White" VerticalOptions="EndAndExpand" Padding="0,10,0,10">
+                    <StackLayout Grid.Row="1" BackgroundColor="White" VerticalOptions="EndAndExpand" Padding="0,10,0,0">
                         <buttons:SfButton Text="{Binding ReleaseOrBillDetailsButtonText}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnReleaseBillsButtonClicked"/>
                         <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.Submit}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnSubmitClicked}" IsVisible="{Binding SetSubmitButtonVisibility}" Margin="0,10,0,0"/>
                         <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnConfirmClicked" IsVisible="{Binding SetConfirmButtonVisibility}" Margin="0,10,0,0"/>

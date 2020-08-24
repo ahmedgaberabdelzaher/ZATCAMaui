@@ -161,6 +161,8 @@ using EGAZT.Views.NewDesign.InstalmentPlan;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
+using ZakatInstalmentPlanListViewModel = EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel.ZakatInstalmentPlanListViewModel;
+
 namespace EGAZT
 {
     public class ViewModelLocator

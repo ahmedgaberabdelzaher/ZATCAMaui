@@ -205,6 +205,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         {
             var dataItem = e.ItemData as VATResults4;
 
+
+
             try
             {
                 if (viewModel.selectedList.Count > 0)
@@ -214,27 +216,34 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
                     foreach (VATResults4 listItem in viewModel.selectedList)
                     {
-                        if (viewModel.selectedList.Contains(listItem))
+                        if (viewModel.selectedList.Contains(dataItem))
                         {
-                            int index = viewModel.BillsListVAT.IndexOf(listItem);
+                            int index = viewModel.BillsListVAT.IndexOf(dataItem);
+
+
 
                             viewModel.BillsListVAT[index].Xsele = "";
                             totalAmount -= Convert.ToDouble(dataItem.Betrh);
-                            viewModel.selectedList.Remove(listItem);
+                            viewModel.selectedList.Remove(dataItem);
+
 
 
                             viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
                         }
                         else
                         {
-                            int index = viewModel.BillsListVAT.IndexOf(listItem);
+                            int index = viewModel.BillsListVAT.IndexOf(dataItem);
                             viewModel.BillsListVAT[index].Xsele = "X";
                             viewModel.selectedList.Add(dataItem);
                             totalAmount += Convert.ToDouble(dataItem.Betrh);
                             viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
                         }
 
+
+
                     }
+
+
 
                 }
                 else
@@ -247,8 +256,9 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
 
 
-
             }
+           
+        
             catch (Exception ex)
             {
 
@@ -279,7 +289,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                     if (arg != null)
                     {
 
-                        viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
+                        //viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
                         viewModel.PopulateAttachments(arg.results);
 
 
@@ -290,6 +300,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 {
                     if (arg != null)
                     {
+
                         viewModel.EnableSucessScreenAsync();
                     }
                 });

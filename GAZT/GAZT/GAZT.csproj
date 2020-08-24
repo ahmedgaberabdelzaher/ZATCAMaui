@@ -11,7 +11,7 @@
     <PackageReference Include="Microsoft.AppCenter" Version="3.2.2" />
     <PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.2.2" />
     <PackageReference Include="NodaTime" Version="3.0.0" />
-    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.2" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.4" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.1.0.55" />
@@ -22,7 +22,6 @@
     <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.1.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.1.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.1.0.54" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.7.0" />
@@ -168,6 +167,8 @@
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="AppResources.Designer.cs">
       <DependentUpon>AppResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +190,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUPPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUpRegistrationSuccessfulForNoTINPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUpRegistrationSuccessfullPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NewDesign\EstablishmentSignUP\EstablishmentSignUpRegistrationSuccessfullPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentPopUp.xaml">
@@ -343,5 +353,10 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Syncfusion.SfRotator.XForms">
+      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\PCL\Syncfusion.SfRotator.XForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

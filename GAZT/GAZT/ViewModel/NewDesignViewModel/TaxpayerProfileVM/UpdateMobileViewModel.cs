@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Timers;
+using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
@@ -17,6 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         public System.Timers.Timer otpTimer;
         public int countDownSeconds;
         public string EnteredOTP = string.Empty;
+       
         #endregion
 
         #region Properties
@@ -33,7 +36,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged(() => IsLoading);
             }
         }
-
+        private string _maxDigids = "9";
+        public string MaxDigids
+        {
+            get
+            {
+                return _maxDigids;
+            }
+            set
+            {
+                _maxDigids = value;
+                RaisePropertyChanged("MaxDigids");
+            }
+        }
+        private string _CountryCode = "+966";
+        public string CountryCode
+        {
+            get
+            {
+                return _CountryCode;
+            }
+            set
+            {
+                _CountryCode = value;
+                if (_CountryCode != null)
+                {
+                    MaxDigids = (14 - _CountryCode.Length).ToString();
+                }
+                else
+                {
+                    MaxDigids = "15";
+                }
+                
+                RaisePropertyChanged("CountryCode");
+            }
+        }
         private string _CurrentMobileNumberEntryText;
         public string CurrentMobileNumberEntryText
         {
@@ -260,7 +297,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             if (App.IsArabic == true) { lang = "AR"; }
 
             string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
-            string newMobileNumber = MobileNumberFormate(NewMobileNumberEntryText);
+            string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
 
             try
             {
@@ -296,10 +333,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 await Task.Run(async () =>
                 {
+                    string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
+                    string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
                     TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, EnteredOTP,
                                                                                 App.TP.Tin,
-                                                                                CurrentMobileNumberEntryText,
-                                                                                NewMobileNumberEntryText);
+                                                                                currentMobileNumber,
+                                                                                newMobileNumber);
                     IsLoading = false;
                 });
             }
@@ -318,7 +357,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
         private string MobileNumberFormate(string mobileNumber)
         {
-            return "966" + mobileNumber;
+            return App.TP.Mobile;
+        }
+        private string NewMobileNumberFormate(string mobileNumber)
+        {
+            string formatedCountryCode = CountryCode.Replace("+", "");
+            return formatedCountryCode+ NewMobileNumberEntryText;
         }
     }
 }

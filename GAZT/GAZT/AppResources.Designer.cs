@@ -8580,6 +8580,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VATRefundRequest {
+            get {
+                return ResourceManager.GetString("VATRefundRequest", resourceCulture);
+            }
+        }
+        
         public static string ContractObjectNo {
             get {
                 return ResourceManager.GetString("ContractObjectNo", resourceCulture);
@@ -10215,6 +10221,252 @@ namespace EGAZT {
         public static string ToBeApproved {
             get {
                 return ResourceManager.GetString("ToBeApproved", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentPlanListTotalNumberOfMonths {
+            get {
+                return ResourceManager.GetString("VATInstalmentPlanListTotalNumberOfMonths", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentPlanListTotalMonthlyInstalments {
+            get {
+                return ResourceManager.GetString("VATInstalmentPlanListTotalMonthlyInstalments", resourceCulture);
+            }
+        }
+        
+        public static string FORM5TaxpayerDetails {
+            get {
+                return ResourceManager.GetString("FORM5TaxpayerDetails", resourceCulture);
+            }
+        }
+        
+        public static string NDAccountingType {
+            get {
+                return ResourceManager.GetString("NDAccountingType", resourceCulture);
+            }
+        }
+        
+        public static string NDBranchLocation {
+            get {
+                return ResourceManager.GetString("NDBranchLocation", resourceCulture);
+            }
+        }
+        
+        public static string NDBranchName {
+            get {
+                return ResourceManager.GetString("NDBranchName", resourceCulture);
+            }
+        }
+        
+        public static string NDBranchType {
+            get {
+                return ResourceManager.GetString("NDBranchType", resourceCulture);
+            }
+        }
+        
+        public static string NDComercialName {
+            get {
+                return ResourceManager.GetString("NDComercialName", resourceCulture);
+            }
+        }
+        
+        public static string NDCompany {
+            get {
+                return ResourceManager.GetString("NDCompany", resourceCulture);
+            }
+        }
+        
+        public static string NDEndOfFinancialYear {
+            get {
+                return ResourceManager.GetString("NDEndOfFinancialYear", resourceCulture);
+            }
+        }
+        
+        public static string NDEstablishmentAccount {
+            get {
+                return ResourceManager.GetString("NDEstablishmentAccount", resourceCulture);
+            }
+        }
+        
+        public static string NDEstablishments {
+            get {
+                return ResourceManager.GetString("NDEstablishments", resourceCulture);
+            }
+        }
+        
+        public static string NDFacilityAddress {
+            get {
+                return ResourceManager.GetString("NDFacilityAddress", resourceCulture);
+            }
+        }
+        
+        public static string NDFacilityBranches {
+            get {
+                return ResourceManager.GetString("NDFacilityBranches", resourceCulture);
+            }
+        }
+        
+        public static string NDIndividuals {
+            get {
+                return ResourceManager.GetString("NDIndividuals", resourceCulture);
+            }
+        }
+        
+        public static string NDLegalEntity {
+            get {
+                return ResourceManager.GetString("NDLegalEntity", resourceCulture);
+            }
+        }
+        
+        public static string NDMainActivity {
+            get {
+                return ResourceManager.GetString("NDMainActivity", resourceCulture);
+            }
+        }
+        
+        public static string NDOthers {
+            get {
+                return ResourceManager.GetString("NDOthers", resourceCulture);
+            }
+        }
+        
+        public static string NDPOBox {
+            get {
+                return ResourceManager.GetString("NDPOBox", resourceCulture);
+            }
+        }
+        
+        public static string NDStreetName {
+            get {
+                return ResourceManager.GetString("NDStreetName", resourceCulture);
+            }
+        }
+        
+        public static string NDSubActivity {
+            get {
+                return ResourceManager.GetString("NDSubActivity", resourceCulture);
+            }
+        }
+        
+        public static string NDYouReceivedSMSWithTIN {
+            get {
+                return ResourceManager.GetString("NDYouReceivedSMSWithTIN", resourceCulture);
+            }
+        }
+        
+        public static string NDYouSuccessfullyRegisteredGAZTServies {
+            get {
+                return ResourceManager.GetString("NDYouSuccessfullyRegisteredGAZTServies", resourceCulture);
+            }
+        }
+        
+        public static string FORM5SadadBillNo {
+            get {
+                return ResourceManager.GetString("FORM5SadadBillNo", resourceCulture);
+            }
+        }
+        
+        public static string NDPayBillAmtObtainCertificateAutomaticall {
+            get {
+                return ResourceManager.GetString("NDPayBillAmtObtainCertificateAutomaticall", resourceCulture);
+            }
+        }
+        
+        public static string ZakatFinancialCrisis {
+            get {
+                return ResourceManager.GetString("ZakatFinancialCrisis", resourceCulture);
+            }
+        }
+        
+        public static string ZakatDisputeInFavorOfGAZT {
+            get {
+                return ResourceManager.GetString("ZakatDisputeInFavorOfGAZT", resourceCulture);
+            }
+        }
+        
+        public static string ZakatOtherReason {
+            get {
+                return ResourceManager.GetString("ZakatOtherReason", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstructions {
+            get {
+                return ResourceManager.GetString("ZakatInstructions", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstructionsCheckBoxDesc {
+            get {
+                return ResourceManager.GetString("ZakatInstructionsCheckBoxDesc", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInvoiceAmount {
+            get {
+                return ResourceManager.GetString("ZakatInvoiceAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatClearedAmount {
+            get {
+                return ResourceManager.GetString("ZakatClearedAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatDueAmount {
+            get {
+                return ResourceManager.GetString("ZakatDueAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatYear {
+            get {
+                return ResourceManager.GetString("ZakatYear", resourceCulture);
+            }
+        }
+        
+        public static string ZakatCashBank {
+            get {
+                return ResourceManager.GetString("ZakatCashBank", resourceCulture);
+            }
+        }
+        
+        public static string ZakatShortTermInvestment {
+            get {
+                return ResourceManager.GetString("ZakatShortTermInvestment", resourceCulture);
+            }
+        }
+        
+        public static string ZakatDebitors {
+            get {
+                return ResourceManager.GetString("ZakatDebitors", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInventory {
+            get {
+                return ResourceManager.GetString("ZakatInventory", resourceCulture);
+            }
+        }
+        
+        public static string ZakatYearOne {
+            get {
+                return ResourceManager.GetString("ZakatYearOne", resourceCulture);
+            }
+        }
+        
+        public static string ZakatYearTwo {
+            get {
+                return ResourceManager.GetString("ZakatYearTwo", resourceCulture);
+            }
+        }
+        
+        public static string ZakatYearThree {
+            get {
+                return ResourceManager.GetString("ZakatYearThree", resourceCulture);
             }
         }
     }

@@ -406,6 +406,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ToDate");
             }
         }
+        private DateTime _lastIcrDate = DateTime.Now;
+        public DateTime LastIcrDate
+        {
+            get
+            {
+                return _lastIcrDate;
+            }
+            set
+            {
+                _lastIcrDate = value;
+                RaisePropertyChanged("LastIcrDate");
+            }
+        }
 
         private int _selectedOutletOptionIndex;
         public int SelectedOutletOptionIndex
@@ -883,6 +896,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public async Task onPageLoad()
         {
+            GetLastICRDate();
             try
             {
                 await Task.Run(() =>
@@ -992,6 +1006,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     _navigationService.GoBack();
                 });
             }
+        }
+        private void GetLastICRDate()
+        {
+            string reqType = string.Empty;
+            if (SelectedOutletOptionIndex == 0)
+            {
+                reqType = "VT_DREG";
+            }
+            else
+            {
+                reqType = "VT_SUSP";
+            }
+            VATDeregistrationLastICRDateRootObject obj =  WebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
+
+            LastIcrDate = obj.d.results[0].Lasticrdt;
         }
         public void setData(VATDeRegistrationDetails vATDeRegistrationDetails)
         {

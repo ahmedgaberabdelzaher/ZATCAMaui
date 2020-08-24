@@ -108,7 +108,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     MarkComplete = true;
                     RaisePropertyChanged(nameof(MarkComplete));
                 }
-                else {
+                else
+                {
                     MarkComplete = false;
                     RaisePropertyChanged(nameof(MarkComplete));
                 }
@@ -143,7 +144,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("BillsListVAT");
             }
         }
-       
+
         private VATResults3[] _statementList;
         public VATResults3[] StatementList
         {
@@ -1280,7 +1281,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     break;
                 case (int)PagesEnum.ZakatAggrementView:
                     EnableVATBillView();
-                      break;
+                    break;
 
                 case (int)PagesEnum.ZakatAttachmentsView:
                     EnableStatementsView();
@@ -1494,27 +1495,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             if (VatInstalments.d.VTISSet.results != null)
             {
-                //StatementList = new VATResults3[0];
-                
-                StatementList = VatInstalments.d.VTISSet.results;
 
-                for (int i = 0; i < StatementList.Length; i++)
+                //StatementList = null;
+                var statementList = VatInstalments.d.VTISSet.results;
+
+                for (int i = 0; i < statementList.Length; i++)
                 {
                     DateTime dateStart = new DateTime();
                     CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                    string apiDate = @"""" + StatementList[i].Faedn + @"""";
+                    string apiDate = @"""" + statementList[i].Faedn + @"""";
                     dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-
-                    //if (App.IsArabic)
-                    //{
-
-                    //    dateStart = DateTime.ParseExact(dt.ToString(), "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                    //}
-                    //else
-                    //{
-
-                    //    dateStart = DateTime.ParseExact(dt.ToString(), "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                    //}
 
                     GregorianCalendar hjCalendar = new GregorianCalendar();
                     int year = hjCalendar.GetYear(dateStart);
@@ -1523,52 +1513,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
 
-                    StatementList[i].Faedn = dateStr;
+                    statementList[i].Faedn = dateStr;
 
                     string dt1 = string.Empty;
                     string[] dts = null;
-                    dts = StatementList[i].Faedn.Split('/');
+                    dts = statementList[i].Faedn.Split('/');
                     dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                    StatementList[i].Faedn = dt1;
+                    statementList[i].Faedn = dt1;
+
 
                 }
-
-                /*DateTime dateStart = new DateTime();
-
-
-                CultureInfo cultureInfo = new CultureInfo("ar-SA");
-
-                if (App.IsArabic)
-                {
-
-                    dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                }
-                else
-                {
-
-                    dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                }
-
-
-                GregorianCalendar hjCalendar = new GregorianCalendar();
-                int year = hjCalendar.GetYear(dateStart);
-                int month = hjCalendar.GetMonth(dateStart);
-                int day = hjCalendar.GetDayOfMonth(dateStart);
-
-                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-                myBills[i].Faednar = dateStr;
-
-                string dt = string.Empty;
-                string[] dts = null;
-
-                dts = myBills[i].Faednar.Split('/');
-                dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                myBills[i].Faednar = dt;
-                */
-
-
+                StatementList = statementList;
                 VATBillDueAmount = VatInstalments.d.Totdueamt;
+                try
+                {
+                    VATPenalityAmount = (double.Parse(VATBillDueAmount) - double.Parse(TotalAmountSAR.Replace(" SAR", "").Replace(",", ""))) + "";
+                }
+                catch (Exception e)
+                {
+
+                }
 
             }
         }
@@ -1578,7 +1542,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             //SelectedOutletOption = OutletDecisionOptions[0];
             //SelectedOutletOptionIndex = 0;
-            
+
             IsBackButtonVisible = false;
             IsSelectionViewEnabled = false;
             IsOutletViewEnabled = false;
@@ -1596,7 +1560,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             //SelectedOutletOption = OutletDecisionOptions[0];
             //SelectedOutletOptionIndex = 0;
-            
+
             CurrentIndex = 2;
             IsBackButtonVisible = false;
             IsSelectionViewEnabled = false;
@@ -1698,7 +1662,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
 
             EnableSlectionView();
-            
+
 
             await Application.Current.MainPage.Navigation.PushAsync(new VatInstalmentPlanSuccessPage());
 
@@ -1715,22 +1679,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             selectedPage = (int)PagesEnum.ZakatSuccessView;*/
 
         }
-       
-           public void ResetData()
-              {
-                        EnableSlectionView();
 
-                        _isLoading = false;
-                        _vATPenalityAmount = "0.00";
-                        _vATLiabilityAmount = "0.00 SAR";
-                        _vATBillDueAmount = "0.00 SAR";
-                        _isNoDataLableVisible = false;
-                        downPaymentAmount = 00.00;
-                        inputData = "";
-                        TotalAmountSAR = "0.00 SAR";
-                        selectedList.Clear();
-                        selectedPage = (int)PagesEnum.ZakatSelectionView;
-           }
+        public void ResetData()
+        {
+            EnableSlectionView();
+
+            _isLoading = false;
+            _vATPenalityAmount = "0.00";
+            _vATLiabilityAmount = "0.00 SAR";
+            _vATBillDueAmount = "0.00 SAR";
+            _isNoDataLableVisible = false;
+            downPaymentAmount = 00.00;
+            inputData = "";
+            TotalAmountSAR = "0.00 SAR";
+            selectedList.Clear();
+            selectedPage = (int)PagesEnum.ZakatSelectionView;
+        }
 
         public async void VATInstalationTapped()
         {
@@ -2084,14 +2048,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         #region Attachments View
         public void PopulateAttachments(List<Attachment> attachments)
         {
-
-            AttachmentsListViewData = new ObservableCollection<Attachment>();
+            var attachmentsListViewData = new ObservableCollection<Attachment>();
 
             foreach (Attachment attachemnt in attachments)
             {
-                AttachmentsListViewData.Add(attachemnt);
+                attachmentsListViewData.Add(attachemnt);
             }
-
+            AttachmentsListViewData = attachmentsListViewData;
         }
 
         #endregion
@@ -2327,7 +2290,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 request.d.Totliablityamt = VatInstalments.d.Totliablityamt.Replace(",", "");
             }
 
-           
+
 
 
             request.d.TxnTpz = VatInstalments.d.TxnTpz;
@@ -2344,7 +2307,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             request.d.NOTESSet = VatInstalments.d.NotesSet.results;
 
             if (VatInstalments.d.VTISSet.results.Length != 0)
-            { 
+            {
 
                 string apiDate = VatInstalments.d.VTISSet.results[0].Faedn;
                 if (!apiDate.Contains("Date"))
@@ -2381,7 +2344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         #endregion
 
 
-        
+
 
 
         #region ApiIntegration
