@@ -137,7 +137,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.PopulateReturnsInformation();
                     viewModel.PopualateCommittmentsInformation();
                   
-                        viewModel.IsLoading = false;
+                    viewModel.IsLoading = false;
 
                 });
 

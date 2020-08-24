@@ -57,6 +57,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                     _currentAttempts = 0;
+                    OTPValidDuration = " 0:00";
+                    StopTimer = true;
+                    numberOfSeconds = 0;
+                    TotalSec = 0;
                 }
                 RaisePropertyChanged("currentAttempts");
             }
@@ -234,7 +238,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     if(IsOtpAPICalled == false)
                     {
                         IsOtpAPICalled = true;
-                        ConfirmOtpBtnCommand(string.Empty);
+
+                        if(_currentAttempts < 5)
+                        {
+                            ConfirmOtpBtnCommand(string.Empty);
+                        } 
                     }
                 }
             }
@@ -494,7 +502,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isResendOTPEnabled = value;
-                OnResendOTPClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
@@ -568,6 +575,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
+
                 }
                 RaisePropertyChanged("OTPValidDuration");
             }
@@ -718,6 +726,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         }
                         else if (!StopTimer)
                         {
+
                             IsVerifyOTPEnabled = false;
                             return false;
                         }
@@ -904,7 +913,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
             //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
             numberOfSeconds = 120;
-
+            StopTimer = false;
             VerifyTinBtnCommand();
         }
 

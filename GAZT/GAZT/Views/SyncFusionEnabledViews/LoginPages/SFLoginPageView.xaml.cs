@@ -92,8 +92,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             // ParentContainer.RaiseChild(BusyIndicator);
         }
 
-        
-
         public void CheckFirstTimeorNot()
         {
             Preferences.Set("first_TimeLoging_key", "False");
@@ -352,8 +350,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             if (data == "navigateToForgotUsernamePage")
                             {
                                 hybridWebView.Opacity = 0;
-                               viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
-                            //viewModel._navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
+                                viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
+                                //viewModel._navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
                             }
 
                             if (data == "navigateToUnlockAccountPage")
@@ -361,12 +359,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 hybridWebView.Opacity = 0;
                                 await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
                             }
+
                             if (data == "navigateToVATIndividualSignupPage")
                             {
                                 hybridWebView.Opacity = 0;
                                 viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
                             }
                             
+                            if (data == "navigateBackToLoginPage")
+                            {
+                                OnAppearing();
+                            }
 
                             if (data == "error")
                             {
