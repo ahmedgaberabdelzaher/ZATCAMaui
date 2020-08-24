@@ -71,7 +71,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <StackLayout>
-                                    <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="Qurayyat Office" Command="{Binding OnReportingBranchSelectButtonClick}"
+                                    <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding SelectedReportingBranch}" Command="{Binding OnReportingBranchSelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                 </StackLayout>
@@ -85,7 +85,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <custom:CustomLabel Text="Individual" HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
+                                <custom:CustomLabel Text="{Binding SelectedEntityType}" HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
                             <StackLayout Orientation="Vertical" Grid.Row="2" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" >
@@ -96,7 +96,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <custom:CustomLabel Text="Trade/Business" HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
+                                <custom:CustomLabel Text="{Binding SelectedTaxPayerType}"  HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
                             <StackLayout Orientation="Vertical" Grid.Row="3" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}">
@@ -107,7 +107,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <custom:CustomLabel Text="GCC" HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
+                                <custom:CustomLabel Text="{Binding SelectedRegNationalityType}"  HorizontalOptions="Start"  Padding="0,-10,0,0" Style="{StaticResource ValueLabelBlack}"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal"  Grid.Row="4" Margin="0,0,0,10">
                                 <Label  Style="{StaticResource forLightLabel}" HorizontalOptions="StartAndExpand"  >
@@ -433,7 +433,7 @@
                             </StackLayout>
                             <CollectionView  x:Name="OtherTaxIncomeFromSourceWithInTheSKAlist" Grid.Row="8"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
-                                                 ItemsSource="{Binding TaxableIncomeSourceTypeList}"  SelectedItem="{Binding SelectedTaxIncomeSourceType, Mode=OneWay}"
+                                                 ItemsSource="{Binding TaxableIncomeSourceTypeList}"  SelectedItem="{Binding SelectedTaxIncomeSourceType, Mode=TwoWay}"
                                                  SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                                 <CollectionView.ItemsLayout>
                                     <LinearItemsLayout Orientation="Vertical"   />
@@ -496,9 +496,9 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="ID Type" TextColor="Gray" FontFamily="{StaticResource SSTArBold}"  />
-                                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="GCC ID" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}"/>
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding GCCIDType}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}"/>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="ID Number" TextColor="Gray" FontFamily="{StaticResource SSTArBold}"  />
-                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="1234567890" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" />
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding GCCIDTypeIdNumberValue}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" />
                                 </Grid>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
@@ -509,7 +509,7 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
-                                    <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding DOB}" 
+                                    <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding SelectedDOB}" 
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" >
                                         <buttons:SfButton.ImageSource>
@@ -535,7 +535,11 @@
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
-                                        <Entry VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                        <Entry VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="Center" HeightRequest="48"
+                                               PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}"
+                                               FontFamily="{StaticResource SSTArRoman}" FontSize="16"
+                                               Text="{Binding FirstName}"/>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
@@ -549,7 +553,8 @@
                                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
                                         <Entry  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
                                                VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
-                                               TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                               TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"
+                                                Text="{Binding LastName}"/>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
@@ -561,7 +566,10 @@
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
-                                        <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                        <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10"
+                                               HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48"
+                                               PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}"
+                                               FontFamily="{StaticResource SSTArRoman}" FontSize="16" Text="{Binding FatherName}" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
@@ -573,7 +581,9 @@
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
-                                        <Entry  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                        <Entry  Text="{Binding GrandFatherName}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
+                                                TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
@@ -585,7 +595,7 @@
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
-                                        <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                        <Entry Text="{Binding FamilyName}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
@@ -597,7 +607,7 @@
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
-                                        <Entry  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                        <Entry Text="{Binding Initial}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
@@ -650,9 +660,10 @@
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
                                     <StackLayout>
-                                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnPDNatinalitySelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
+                                        <buttons:SfButton  ShowIcon="True" Text="{Binding SelectedTaxpayerPDNationality}" ImageSource="arrowDropdown.png" ImageAlignment="End"
+                                                           Command="{Binding OnPDNatinalitySelectButtonClick}"
+                                                           Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}"
+                                                           BorderWidth="1" CornerRadius="10"  TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
@@ -665,9 +676,10 @@
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
                                     <StackLayout>
-                                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnPDCitizenSelectButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
+                                        <buttons:SfButton  Text="{Binding SelectedCitizen}" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End"
+                                                           Command="{Binding OnPDCitizenSelectButtonClick}" Style="{StaticResource NoBackgroundButtonStyle}"
+                                                           BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
+                                                           TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Margin="0,0,0,10">
@@ -680,7 +692,8 @@
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
                                     <StackLayout>
-                                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnPDResidenceSelectButtonClick}"
+                                        <buttons:SfButton  Text="{Binding SelectedResidence}" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End"
+                                                           Command="{Binding OnPDResidenceSelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                     </StackLayout>
@@ -722,7 +735,7 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
-                                    <Entry VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                    <Entry Text="{Binding PassportNumber}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
                             <StackLayout Orientation="Vertical"  Grid.Row="2" HorizontalOptions="Start" Margin="0,0,0,10">
@@ -735,7 +748,8 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <StackLayout>
-                                    <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="11" Command="{Binding OnPDNatinalitySelectButtonClick}"
+                                    <buttons:SfButton Text="{Binding SelectedPassportIssueCountry}" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End"
+                                                      Command="{Binding OnPassportIssueCountryButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                 </StackLayout>
@@ -749,7 +763,7 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding PassportIssueDate}" 
+                                <buttons:SfButton   ShowIcon="True" ImageAlignment="End" Text="{Binding PassportIssueDate}" 
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" >
                                     <buttons:SfButton.ImageSource>
@@ -1271,8 +1285,8 @@
                         <Image.Source>
                             <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                         </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" />
+                        <Image.GestureRecognizers> <!-- Need to replace icon-->
+                            <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
                     </Image>
                 </Grid>

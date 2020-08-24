@@ -1670,6 +1670,9 @@
 يحق للمكلف بالإسترداد المباشر للمبالغ الدائنة المتحقق منها بعد سداد باقي التزامات المكلف الأخرى او قيام الهيئة بالمقاصة من رصيد المكلف الدائن.
         </value>
   </data>
+  <data name="VATRefundRequest" xml:space="preserve">
+    <value>طلب إستردادt</value>
+  </data>
   <data name="MyCertificates" xml:space="preserve">
     <value>الشهادات</value>
   </data>
@@ -4520,7 +4523,7 @@
     <value>اسم الشخص الذي يمكن الاتصال به</value>
   </data>
   <data name="VatDeregSummaryTitle" xml:space="preserve">
-    <value>Summary</value>
+    <value>الملخص</value>
   </data>
   <data name="VatDeregSummarySubTitle" xml:space="preserve">
     <value>مراجعة البيانات التالية</value>
@@ -4758,7 +4761,10 @@
     <value>اختر النوع</value>
   </data>
   <data name="ZakatInstalmetSelectTypeZakat" xml:space="preserve">
-    <value>Zakat / IncomeTax</value>
+    <value>الزكاة</value>
+  </data>
+   <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
+    <value>ضريبة الدخل</value>
   </data>
   <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
     <value>ضريبة القيمة المضافة</value>
@@ -5500,3 +5506,8 @@
     <value>تفاصيل المكلف</value>
   </data>
 </root>
+     <data name="VatInstalmentPlan" xml:space="preserve">
+    <value>خطة التقسيط</value>
+  </data>
+</root>
+
