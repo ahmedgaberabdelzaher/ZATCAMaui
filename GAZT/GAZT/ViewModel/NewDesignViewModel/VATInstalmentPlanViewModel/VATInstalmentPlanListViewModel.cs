@@ -30,7 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        private bool _isLoading = true;
+        private bool _isLoading = false;
         public bool IsLoading
         {
             get
@@ -98,7 +98,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             });
 
             AddOutletDecisionOptions();
-            GetVATInstalmentPlanList();
+           
 
 
             RequestInstalmentButtonTapped = new Command(this.RequestInstalmentButtonClicked);
@@ -478,27 +478,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
 
 
-
         public void AddOutletDecisionOptions()
         {
 
-            OutletDecisionOptions = new ObservableCollection<InstalmentPlanModel>();
-            OutletDecisionOptions.Add(new InstalmentPlanModel
+
+
+            var outletDecisionOptions = new ObservableCollection<InstalmentPlanModel>();
+            outletDecisionOptions.Add(new InstalmentPlanModel
             {
                 ActiveOutletDecisionOptions = AppResources.VATInstalmentRequestToVatInstalment,
                 ActiveOutletDecisionOptionsIsSelected = false
             });
-            OutletDecisionOptions.Add(new InstalmentPlanModel
+            outletDecisionOptions.Add(new InstalmentPlanModel
             {
                 ActiveOutletDecisionOptions = AppResources.VATInstalmentRequestToVatDisplayInstalment,
                 ActiveOutletDecisionOptionsIsSelected = false
             });
-
+            OutletDecisionOptions = outletDecisionOptions;
         }
 
 
         public void EnableVATLandingPage()
         {
+            AddOutletDecisionOptions();
+
             IsVATLandingPageVisible = true;
             IsVATInstalmentPlanVisible = false;
             IsInstalmentSchedulePlanVisible = false;

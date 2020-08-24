@@ -12,7 +12,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              mc:Ignorable="d" FlowDirection="RightToLeft"    
-              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.NewDesign.InstalmentPlan.VatInstalmentPlanListPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
@@ -424,9 +424,6 @@
                             </StackLayout>
                         </border:SfBorder >
 
-
-
-
                     </Grid>
                     <Grid Grid.Row="1"  Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
@@ -513,13 +510,13 @@
                         
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATCertificates}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
-                        <BoxView Grid.Row="2" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                     </Grid>
 
-                    <Grid Grid.Row="1"   BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid Grid.Row="1" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"></RowDefinition>
@@ -564,11 +561,11 @@
 
                                                 <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentMonthlyInstallment}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <Label Text="{Binding InstalmentAmt}" Style="{StaticResource ValueLabelBlack}" />
+                                                    <Label Text="{Binding InstalmentAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountRemaining}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <Label Text="{Binding RemainingAmt}" Style="{StaticResource ValueLabelBlack}" />
+                                                    <Label Text="{Binding RemainingAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentRelevantTax}" Style="{StaticResource CaptionLabelGrey}"/>
@@ -597,21 +594,25 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                      <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
+                        
                         <custom:CustomLabel Grid.Row="0"  Text="{x:Static ResourceManager:AppResources.VATCertificates}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
                         <custom:CustomLabel Grid.Row="1"  Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
+
                         <BoxView Grid.Row="2"  Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                     </Grid>
 
-                    <Grid Grid.Row="1" Grid.ColumnSpan="2"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                  
+
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"></RowDefinition>
@@ -672,16 +673,16 @@
 
                                                 <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentMonthlyInstallment}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <Label Text="{Binding InstalmentAmt}" Style="{StaticResource ValueLabelBlack}" />
+                                                    <Label Text="{Binding InstalmentAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentAmountRemaining}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <Label Text="{Binding RemainingAmt}" Style="{StaticResource ValueLabelBlack}" />
+                                                    <Label Text="{Binding RemainingAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
 
                                                 <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountPaid}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <Label Text="{Binding TotalPaidAmt}" Style="{StaticResource ValueLabelBlack}" />
+                                                    <Label Text="{Binding TotalPaidAmt,StringFormat='{0:N} SAR'}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountPaid}" Style="{StaticResource CaptionLabelGrey}"/>
@@ -749,6 +750,32 @@
                     </Grid>
 
                 </Grid>
+
+                    <!-- Loadig Indiacatr -->
+
+               
+                   <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
+                                     Opacity="0.4" VerticalOptions="FillAndExpand" />
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
+                                     Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
+                                                               EnableAnimation="True"
+                                                               AnimationType="SingleCircle"
+                                                               HorizontalOptions="CenterAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               IsBusy="True"
+                                                               ViewBoxWidth="70"
+                                                               TitlePlacement="Bottom"
+                                                               ViewBoxHeight="70"
+                                                               TextColor="#D99A29" />
+                                <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+               
+           
 
             </Grid>
         </ScrollView>

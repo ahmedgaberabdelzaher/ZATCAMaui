@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using EGAZT.Models.InstalmentPlanModel;
-using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
-using EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
-namespace EGAZT.Views.NewDesign.InstalmentPlan
+namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
     public partial class ZakatInstalmentPlanListPageView : ContentPage
     {
@@ -65,8 +62,18 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             }
         }
 
+        private void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            /*var item = e.ItemData as Result31;
+            var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
+            viewModel.GetDetailsClicked(index);
+            viewModel.EnableVAtInstalmentSummary();*/
+        }
 
 
+        private void DisplayListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
 
+        }
     }
 }

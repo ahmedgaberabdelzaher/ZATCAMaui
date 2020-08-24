@@ -227,5 +227,10 @@ namespace GAZT.Helper
 
         #endregion
 
+        #region ZakatInstalment
+        public static string GetZAKATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet(";
+        public static string GetZAKATPostdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet";
+        #endregion
+
     }
 }

@@ -5574,4 +5574,60 @@
   <data name="NDPayBillAmtObtainCertificateAutomaticall" xml:space="preserve">
     <value>في حال سدادكم مبلغ الفاتورة أعلاه يمكنكم الحصول على الشهادة آلياً</value>
   </data>
+     <data name="VATInstalmentRequestToVatInstalment" xml:space="preserve">
+    <value>Create/Display VAT Instalment Plan</value>
+  </data>
+    <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
+    <value>Total Number of Months</value>
+  </data>
+  <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
+    <value>Total Monthly Instalments</value>
+  </data>
+    <data name="ZakatFinancialCrisis" xml:space="preserve">  <value>Financial Crisis</value> </data>
+    <data name="ZakatDisputeInFavorOfGAZT" xml:space="preserve">
+    <value>Dispute in Favor of GAZT</value>
+  </data>
+  <data name="ZakatOtherReason" xml:space="preserve">
+    <value>Other Reason</value>
+  </data>
+    <data name="ZakatInstructions" xml:space="preserve">
+    <value>1. I acknowledge that I do not have sufficient liquidity to pay the full amount.&#x0a;2. I pledge to provide the General Authority for Zakat &amp; Tax with all recent bank statements of the business activity, as well as my personal account statements for the past three months.&#x0a;3. I pledge to provide the General Authority for Zakat &amp; Tax with any documents that are requested for the purpose of processing the application.&#x0a;4. The General Authority for Zakat &amp; Tax has the right to estimate the amount and period of the instalment plan, as appropriate.&#x0a;5. I pledge to pay at least 20% of total debts that requested for instalment.&#x0a;6. The General Authority for Zakat &amp; Tax has the right to cancel the instalment plan, in case of having financial unsuitability to pay the full amount of the dues.&#x0a;7. I acknowledge that In case of default in paying two sequential instalments, the General Authority for Zakat &amp; Tax has the right to cancel the instalment plan, and no other instalment plan could be requested for the same invoices.&#x0a;8. The General Authority for Zakat &amp; Tax has the right to implement the collection procedures, in the case of cancellation of the instalment plan.&#x0a;9. The General Authority for Zakat &amp; Tax has the right to cancel the instalment plan, in case of reassessment of the amount that has been approved for the instalment plan.</value>
+  </data>
+    <data name="ZakatInstructionsCheckBoxDesc" xml:space="preserve">
+    <value>I Agree</value>
+  </data>
+  <data name="ZakatInvoiceAmount" xml:space="preserve">
+    <value>Invoice Amount</value>
+  </data>
+  <data name="ZakatClearedAmount" xml:space="preserve">
+    <value>Cleared Amount</value>
+  </data>
+  <data name="ZakatDueAmount" xml:space="preserve">
+    <value>Due Amount</value>
+  </data>
+  <data name="ZakatYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="ZakatCashBank" xml:space="preserve">
+    <value>Cash + Bank</value>
+  </data>
+  <data name="ZakatShortTermInvestment" xml:space="preserve">
+    <value>Short Term Investment</value>
+  </data>
+  <data name="ZakatDebitors" xml:space="preserve">
+    <value>Debitors</value>
+  </data>
+  <data name="ZakatInventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="ZakatYearOne" xml:space="preserve">
+    <value>Year 1</value>
+   </data>
+  <data name="ZakatYearTwo" xml:space="preserve">
+    <value>Year 2</value>
+   </data>
+  <data name="ZakatYearThree" xml:space="preserve">
+    <value>Year 3</value>
+  </data>
 </root>
+

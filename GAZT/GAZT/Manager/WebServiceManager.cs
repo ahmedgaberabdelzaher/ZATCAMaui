@@ -8480,32 +8480,33 @@ namespace GAZT.Manager
         }
         #endregion
 
-        #region ZakatInstalationPlan
-
-
-        public async static Task<ZakatInstalmentPlanResponse> GAZTGetZakatInstalmentData()
+        #region Zakat Instalment Plan
+        public async static Task<ZakatInstalmentPlanResponse> GetZakatInstalmentPostData()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
-                ZakatInstalmentPlanResponse vATInstalmentDetails = new ZakatInstalmentPlanResponse();
+                ZakatInstalmentPlanResponse zakatInstalmentDetails = new ZakatInstalmentPlanResponse();
                 string NewToken = string.Empty;
                 try
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GetVATInstalmentdata + "FormGuid='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
+                    String url = Constants.GetZAKATInstalmentdata + "Auditorz='" + "',Taxpayerz='" + "',Fbnumz='" + "',PeriodKeyz='" + "',Langz='" + lang + "'," +
+                      "FormGuid='" + "',Euser='" + "',UserTin='" + App.LoginDataRetrieved.TIN + "',Submitz='" + "',Savez='" + "')?&$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";
+
+
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATInstalmentDataResponse = await client.GetAsync(uri);
-                    if (GAZTVATInstalmentDataResponse != null)
+                    HttpResponseMessage GAZTZakatInstalmentDataResponse = await client.GetAsync(uri);
+                    if (GAZTZakatInstalmentDataResponse != null)
                     {
-                        if (GAZTVATInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        if (GAZTZakatInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
                         {
                             App.IsSessionExpired = true;
                             return null;
                         }
-                        HttpHeaders headers = GAZTVATInstalmentDataResponse.Headers;
+                        HttpHeaders headers = GAZTZakatInstalmentDataResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
                         {
@@ -8521,11 +8522,11 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
-                        String vatInstalmentData = GAZTVATInstalmentDataResponse.Content.ReadAsStringAsync().Result;
-                        vATInstalmentDetails = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(vatInstalmentData);
-                        if (!string.IsNullOrEmpty(vatInstalmentData) && vATInstalmentDetails.d == null)
+                        String zakatInstalmentData = GAZTZakatInstalmentDataResponse.Content.ReadAsStringAsync().Result;
+                        zakatInstalmentDetails = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(zakatInstalmentData);
+                        if (!string.IsNullOrEmpty(zakatInstalmentData) && zakatInstalmentDetails.d == null)
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(vatInstalmentData);
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(zakatInstalmentData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 string errorMessage = string.Empty;
@@ -8538,7 +8539,7 @@ namespace GAZT.Manager
                             }
                         }
                     }
-                    return vATInstalmentDetails;
+                    return zakatInstalmentDetails;
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
@@ -8556,39 +8557,71 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<ZakatInstalmentPlanResponse> SaveZakatInstalmentData(ZakatInstalmentPlanRequest _vATInstalment)
+        public async static Task<ZakatInstalmentPlanResponse> SaveZakatInstalmentData(ZakatInstalmentPlanRequest _zakatInstalmentDetails)
         {
+
 
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
 
-                    ZakatInstalmentPlanResponse _vatResponseObject = new ZakatInstalmentPlanResponse();
+                    ZakatInstalmentPlanResponse _zakatResponseObject = new ZakatInstalmentPlanResponse();
                     string LangZ = GetLangZParameterAREN();
-                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
+                    String url = Constants.GetZAKATPostdata;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    var serilized = JsonConvert.SerializeObject(_vATInstalment);
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
-                    _vatResponseObject = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
-                    if (_vatResponseObject == null || _vatResponseObject.d == null)
+                    if (_zakatInstalmentDetails.d.Savez == "X")
                     {
-                        ErrorMessage = string.Empty;
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+
+                        var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails.d);
+                        client.DefaultRequestHeaders.Add("Token", "123");
+                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                        var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                        _zakatResponseObject = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
+                        if (_zakatResponseObject == null || _zakatResponseObject.d == null)
                         {
-                            ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            ErrorMessage = string.Empty;
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            }
                         }
+                        return _zakatResponseObject;
                     }
-                    return _vatResponseObject;
+                    else
+                    {
+                        var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails);
+                        client.DefaultRequestHeaders.Add("Token", "123");
+                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                        var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                        _zakatResponseObject = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
+                        if (_zakatResponseObject == null || _zakatResponseObject.d == null)
+                        {
+                            ErrorMessage = string.Empty;
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            }
+                        }
+                        return _zakatResponseObject;
+                    }
+
+
+
                 }
                 catch (Exception ex)
                 {
@@ -8600,8 +8633,9 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
 
-
         }
+     
+
         #endregion
 
         #region Establishment Registration API Calls

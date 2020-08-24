@@ -37,25 +37,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         }
 
-        public ZakatInstalmentPlanListModel instalmentListModel { get; set; }
-        public ZakatInstalmentPlanListModel InstalmentListModel
-        {
-            get
-            {
-                return instalmentListModel;
-            }
+        //public ZakatInstalmentPlanListModel instalmentListModel { get; set; }
+        //public ZakatInstalmentPlanListModel InstalmentListModel
+        //{
+        //    get
+        //    {
+        //        return instalmentListModel;
+        //    }
 
-            set
-            {
-                if (instalmentListModel == value)
-                {
-                    return;
-                }
+        //    set
+        //    {
+        //        if (instalmentListModel == value)
+        //        {
+        //            return;
+        //        }
 
-                instalmentListModel = value;
-                RaisePropertyChanged("InstalmentListModel");
-            }
-        }
+        //        instalmentListModel = value;
+        //        RaisePropertyChanged("InstalmentListModel");
+        //    }
+        //}
 
 
     }
