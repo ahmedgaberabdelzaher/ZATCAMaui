@@ -1642,6 +1642,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #endregion
 
+        #region Acknowledgement 
+        private List<Result_9> _AknowledgementList;
+        public List<Result_9> AknowledgementList
+        {
+            get
+            {
+                return _AknowledgementList;
+            }
+            set
+            {
+                _AknowledgementList = value;
+                RaisePropertyChanged("AknowledgementList");
+            }
+        }
+
+        #endregion
+
         #region Method
 
         public void setCurrentTab()
@@ -1653,8 +1670,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             IsLoading = true;
             ZakatForm5DataResult = null;
+          
 
-           
                 try
                 {
 
@@ -2626,8 +2643,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 ReferenceNumber = ZakatForm5DataResult.Fbnum.ToString();
                                 ZakatFromDate = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
                                 ZakatToDate = Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
-                                /// use same period property for which is used in Basic Information section.
+                            /// use same period property for which is used in Basic Information section.
 
+                            AknowledgementList = ZakatForm5SummaryDataResult.SadadSet.results;
+                            
                                 if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
                                 {
                                     //Cabs GP1
@@ -2932,10 +2951,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                   //  OnNextButtonClick = 
                     break;
                 case ZakatForm5TabEnum.ZakatEstimation:
-                    _navigationService.GoBack();
-                    currentTab = ZakatForm5TabEnum.BasicInformation;
-                    break;
 
+                    if (AknowledgementList.Any())
+                    {
+                        _navigationService.NavigateTo(App.ZakatAcknowledgmentPageView, AknowledgementList);
+                       
+                    }
+                    else
+                    {
+
+                        _navigationService.GoBack();
+                        currentTab = ZakatForm5TabEnum.BasicInformation;
+                        
+                    }
+                    break;
             }
         }
 
@@ -2951,7 +2980,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     break;
                 case ZakatForm5TabEnum.ZakatEstimation:
                     NextText = AppResources.ZZNext;
-                   // currentTab = ZakatForm5TabEnum.FinancialInformation;
+                    currentTab = ZakatForm5TabEnum.FinancialInformation;
+
                     break;
             }
         }

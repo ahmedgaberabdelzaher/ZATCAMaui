@@ -45,7 +45,7 @@
 
                             <custom:CustomLabel Text="SADAD Bill Number" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                <custom:CustomLabel Text="3000326589314001" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="Start"/>
+                                        <custom:CustomLabel Text="{Binding SadadBillNumber}" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="Start"/>
                             </StackLayout>
                         </StackLayout>
                     </border:SfBorder >
@@ -59,7 +59,7 @@
                                 <custom:CustomLabel Style="{StaticResource BodyLabelBlack}" HorizontalOptions="Start">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="316,921.45"/>
+                                                    <Span Text="{Binding TotalZakatPayble}"/>
                                             <Span Text=" "/>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
                                         </FormattedString>
