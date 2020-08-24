@@ -5505,7 +5505,7 @@
   <data name="FORM5TaxpayerDetails" xml:space="preserve">
     <value>تفاصيل المكلف</value>
   </data>
-</root>
+
      <data name="VatInstalmentPlan" xml:space="preserve">
     <value>خطة التقسيط</value>
   </data>
