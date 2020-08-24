@@ -722,7 +722,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
             VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
             VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
-            VatRefundsDisplayDataModel.RefundTp = "Refund Request";
+            VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundsRequest;
 
             //VatRefundsDisplayDataModel.Statusx = "E0013";
             VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
@@ -739,6 +739,67 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                    _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
+                });
+            }
+            catch (InternetException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                });
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                string message = ex.Message;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(message, AppResources.Information);
+                });
+            }
+
+        }
+
+        public async void VoidBtnClicked()
+        {
+            VatRefundsDisplayDataModel.Operationx = "04";
+            VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
+            VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
+
+            //VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
+            //VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
+            //VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
+            //VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
+            //VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
+            //VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
+
+            VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundsRequest;
+
+            //VatRefundsDisplayDataModel.Statusx = "E0013";
+            VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
+
+            try
+            {
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+
+                VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
                 });
             }
             catch (InternetException ex)

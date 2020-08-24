@@ -154,5 +154,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 Console.WriteLine(ex.Message);
             }
         }
+
+        void VoidButton_Tapped(System.Object sender, System.EventArgs e)
+        {
+            viewModel.VoidBtnClicked();
+        }
     }
 }

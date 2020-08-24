@@ -5009,6 +5009,9 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATRefundsNoIdNumber" xml:space="preserve">
     <value>There are no ID Numbers for this ID Type</value>
   </data>
+  <data name="VATRefundRequest" xml:space="preserve">
+    <value>Refund Request</value>
+  </data>
   <data name="ContractObjectNo" xml:space="preserve">
     <value>Contract Object No.</value>
   </data>
