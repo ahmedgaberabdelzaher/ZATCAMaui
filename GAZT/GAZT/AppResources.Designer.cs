@@ -3765,6 +3765,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If you pay the bill amount above you can obtain the certificate Automatically.
+        /// </summary>
+        public static string NDPayBillAmtObtainCertificateAutomaticall {
+            get {
+                return ResourceManager.GetString("NDPayBillAmtObtainCertificateAutomaticall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Period.
         /// </summary>
         public static string NDPeriod {

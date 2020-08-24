@@ -57,7 +57,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Commands
-        public ICommand OnNextButtonClick { get; private set; }
+        public ICommand OnFinishClick { get; private set; }
         public ICommand OnBackButtonClick { get; private set; }
         #endregion
 
@@ -65,7 +65,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ZakatAcknowledgmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
-            OnNextButtonClick = new Command(() => navigateToNext());
+            OnFinishClick = new Command(() => navigateToNext());
             OnBackButtonClick = new Command(() => navigateBack());
         }
         #endregion
@@ -80,7 +80,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private void navigateToNext()
         {
-
+           
         }
 
         private void navigateBack()

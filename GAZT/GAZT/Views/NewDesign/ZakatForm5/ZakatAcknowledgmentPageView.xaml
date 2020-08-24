@@ -72,14 +72,18 @@
                     <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
                         <StackLayout Orientation="Horizontal" Spacing="10"  Padding="15,10,15,10">
                             <Image Source="ic_vat_info.png"/>
-                            <custom:CustomLabel Text="If you pay the bill amount above you can obtain the certificate Automatically" Style="{StaticResource CaptionLabelGrey}" LineSpacing="0.6" HorizontalOptions="Start"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPayBillAmtObtainCertificateAutomaticall}" Style="{StaticResource CaptionLabelGrey}" LineSpacing="0.6" HorizontalOptions="Start"/>
                         </StackLayout>
                     </border:SfBorder >
                     </StackLayout>
                     </ScrollView>
                     <StackLayout Grid.Row="1" Spacing="0" Padding="0,8,0,0" BackgroundColor="White">
                     <!--<buttons:SfButton x:Name="btnprimary" Text="Download Invoice" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>-->
-                    <custom:CustomLabel Text="Go To Dashboard" Style="{StaticResource ValueLabelBlackBold}" HorizontalTextAlignment="Center" TextColor="{StaticResource NewDullOrangeColor}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Form5Finish}" Style="{StaticResource ValueLabelBlackBold}" HorizontalTextAlignment="Center" TextColor="{StaticResource NewDullOrangeColor}">
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFinishedTapped" NumberOfTapsRequired="1"/>
+                            </custom:CustomLabel.GestureRecognizers>
+                        </custom:CustomLabel>
                     </StackLayout>
                 </Grid>
             </yummy:PancakeView>

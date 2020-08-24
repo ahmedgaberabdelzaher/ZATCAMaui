@@ -20,6 +20,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
     public partial class ZakatAcknowledgmentPageView : ContentPage
     {
         ZakatAcknowledgmentPageViewModel viewModel;
+
         public ZakatAcknowledgmentPageView(List<Result_9> AknowledgementList)
         {
             InitializeComponent();
@@ -135,5 +136,14 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             }
         }
 
+        private void OnFinishedTapped(object sender, EventArgs e)
+        {
+            if (Navigation.NavigationStack.Count > 0)
+            {
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(pg);
+            }
+            viewModel._navigationService.GoBack();
+        }
     }
 }

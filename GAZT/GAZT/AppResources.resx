@@ -5930,4 +5930,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="FORM5SadadBillNo" xml:space="preserve">
     <value>Sadad Bill No:</value>
   </data>
+  <data name="NDPayBillAmtObtainCertificateAutomaticall" xml:space="preserve">
+    <value>If you pay the bill amount above you can obtain the certificate Automatically</value>
+  </data>
 </root>
