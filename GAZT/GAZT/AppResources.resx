@@ -346,7 +346,7 @@
     <value>Zakat Amount</value>
   </data>
   <data name="ZakatBase" xml:space="preserve">
-    <value>Zakat base</value>
+    <value>Zakat Base</value>
   </data>
   <data name="ZakatTaxType" xml:space="preserve">
     <value>An appeal will not be filed only in case pay for amount not objected plus 25% from objected amount. In case accepted in whole or in part objection. It will refunded to the amount objected</value>
@@ -1670,7 +1670,7 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZAveragenumberoflabour" xml:space="preserve">
-    <value>Average number of labour</value>
+    <value>Average Number of Labour</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZCancel" xml:space="preserve">
@@ -1690,7 +1690,7 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZContractsformETIMADsystem" xml:space="preserve">
-    <value>Contracts from ETIMAD system</value>
+    <value>Contracts from ETIMAD System</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZDoyouwanttoreleasethedeclaration" xml:space="preserve">
@@ -1698,7 +1698,7 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZExportsvalue" xml:space="preserve">
-    <value>Exports value</value>
+    <value>Exports Value</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZFilesizemustbelessthan5MB" xml:space="preserve">
@@ -1711,7 +1711,7 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZImportsvalue" xml:space="preserve">
-    <value>Imports value</value>
+    <value>Imports Value</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZImportsvaluex115" xml:space="preserve">
@@ -1739,7 +1739,7 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZPurchasevalue" xml:space="preserve">
-    <value>Purchase value</value>
+    <value>Purchase Value</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZReleasedSuccessfully" xml:space="preserve">
@@ -1759,7 +1759,7 @@ Taxpayer has the right to withdraw his verified credit balance after the taxpaye
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSalesformpointofsales" xml:space="preserve">
-    <value>Sales from point of sales</value>
+    <value>Sales from Point of Sales</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSomethingwentwrong" xml:space="preserve">
