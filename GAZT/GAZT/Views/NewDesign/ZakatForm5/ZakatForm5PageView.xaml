@@ -132,7 +132,7 @@
 
                                             </Image>
                                         </Frame>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5TaxpayerDetails}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                     </StackLayout>
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -148,7 +148,7 @@
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource ValueLabelGrey}" WidthRequest="140"/>
-                                            <custom:CustomLabel Text="{Binding Address}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
+                                            <custom:CustomLabel Text="{Binding Address}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}" WidthRequest="100" Style="{StaticResource ValueLabelGrey}" />
@@ -1998,7 +1998,7 @@
 
 
                                                 <!--<custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding OtherCompanyShare}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>-->
-                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsOtherShareApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" StyleId="ValueLabel">
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="2" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsOtherComShareAppVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding OtherCompanyShare}" />

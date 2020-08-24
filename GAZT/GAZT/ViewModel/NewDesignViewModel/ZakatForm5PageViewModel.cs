@@ -1028,6 +1028,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+       
+
+        private bool _IsOtherComShareAppVisible = false;
+        public bool IsOtherComShareAppVisible
+        {
+            get
+            {
+                return _IsOtherComShareAppVisible;
+            }
+            set
+            {
+                _IsOtherComShareAppVisible = value;
+                RaisePropertyChanged("IsOtherComShareAppVisible");
+            }
+        }
+
 
         public string _otherCompanyShare;
         public string OtherCompanyShare
@@ -1673,7 +1689,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             //Taxpayer Detials
                             Taxpayer = ZakatForm5DataResult.ACompNm;
                             Branch = ZakatForm5DataResult.APrctr;
-                            Address = ZakatForm5DataResult.Line0 + "," +
+                            string addAddress = ZakatForm5DataResult.Line0 + "," +
                                 ZakatForm5DataResult.Line1 + "," +
                                 ZakatForm5DataResult.Line2 + "," +
                                 ZakatForm5DataResult.Line3 + "," +
@@ -1683,6 +1699,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 ZakatForm5DataResult.Line7 + "," +
                                 ZakatForm5DataResult.Line8 + "," +
                                 ZakatForm5DataResult.Line9;
+
+                        Address = addAddress.ToString();
                             UserEmail = ZakatForm5DataResult.AEmail;
                             MobileNumber = ZakatForm5DataResult.AMobile;
 
@@ -2560,7 +2578,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             var OtherCompanyCheck = ZakatForm5DataResult.APlShareChk;
 
-                            if (ZakatForm5DataResult.APlShare != "0.00")
+                            if (ZakatForm5DataResult.APlShareChk == "1")
                             {
                                 ZakatForm5DataResult.IsOtherShareApplicable =AppResources.FORM5Applicable.ToString();
                             ZakatForm5DataResult.IsOtherShareApplicableVisible = true;
@@ -2569,13 +2587,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         else
                             {
                                 ZakatForm5DataResult.IsOtherShareApplicable = AppResources.FORM5NotApplicable.ToString();
-                            ZakatForm5DataResult.IsOtherShareApplicableVisible = true;
+                            ZakatForm5DataResult.IsOtherShareApplicableVisible = false;
 
                         }
 
                         OtherCompanyShare = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.APlShare);
                             IsOtherComShareApp = ZakatForm5DataResult.IsOtherShareApplicable;
-
+                        IsOtherComShareAppVisible = ZakatForm5DataResult.IsOtherShareApplicableVisible;
                             ZakatBase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ACapital);
 
 
