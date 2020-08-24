@@ -8580,6 +8580,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VATRefundRequest {
+            get {
+                return ResourceManager.GetString("VATRefundRequest", resourceCulture);
+            }
+        }
+        
         public static string ContractObjectNo {
             get {
                 return ResourceManager.GetString("ContractObjectNo", resourceCulture);

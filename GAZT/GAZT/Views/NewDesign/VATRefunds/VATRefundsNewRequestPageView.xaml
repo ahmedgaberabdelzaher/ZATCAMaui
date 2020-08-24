@@ -45,7 +45,15 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
                             </Image.GestureRecognizers>
                         </Image>
-                        
+
+                        <!--<StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
+                            <Image Source="close" IsVisible="true">
+                                <Image.GestureRecognizers>
+                                   <TapGestureRecognizer Tapped="VoidButton_Tapped">
+                                   </TapGestureRecognizer>
+                               </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>-->
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
