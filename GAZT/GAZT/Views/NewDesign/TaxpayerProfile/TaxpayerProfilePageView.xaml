@@ -104,7 +104,7 @@
                             FocusedColor="#005e4b" ErrorColor="#B00020"
                             InputViewPadding="16,0,16,0" >
                                 <StackLayout Orientation="Horizontal"
-                                         Padding="0,8,0,8" >
+                                         Padding="0,8,0,8"  HorizontalOptions="StartAndExpand">
                                     <!--<OnPlatform x:TypeArguments="View">
                                         <On Platform="iOS">
                                             <custom:CustomLabel Text="+966"
