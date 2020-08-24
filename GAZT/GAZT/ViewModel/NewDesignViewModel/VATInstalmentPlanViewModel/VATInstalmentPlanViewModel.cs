@@ -9,6 +9,7 @@ using EGAZT.Models;
 using EGAZT.Models.VATInstalationModels;
 using EGAZT.Views.NewDesign;
 using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.Views.NewDesign.InstalmentPlan;
 using EGAZT.Views.NewDesign.VatInstalmentPlan;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using GalaSoft.MvvmLight;
@@ -1322,7 +1323,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             CloseClick = new Command(async () =>
             {
-                EnableSlectionView();
+
+                //await Application.Current.MainPage.Navigation.PushAsync(new VatInstalmentPlanListPageView());
+
+                _navigationService.GoBack();
+
+                //EnableSlectionView();
             });
             GoBackToBills = new Command(async () =>
             {
@@ -1470,18 +1476,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (InputData.Length > 0)
                 {
-                    BillsListVAT = BillsListVATData.Where(w => w.SadadNo.Contains(InputData)).ToArray();
-                    //SelectedBillsList = (ObservableCollection<VATResults4>)SelectedBillsList.Where(w => w.SadadNo.Contains(InputData));
+                    //BillsListVAT = BillsListVATData.Where(w => w.SadadNo.Contains(InputData)).ToArray();
+                    SelectedBillsList = (ObservableCollection<VATResults4>)SelectedBillsList.Where(w => w.SadadNo.Contains(InputData));
                 }
                 else
                 {
-                    //SelectedBillsList = new ObservableCollection<Models.VATInstalationModels.VATResults4>();
+                    SelectedBillsList = new ObservableCollection<Models.VATInstalationModels.VATResults4>();
 
-                    //foreach (VATResults4 bills in VatInstalments.d.VTIASet.results)
-                    //{
-                    //    SelectedBillsList.Add(bills);
-                    //}
-                    BillsListVAT = BillsListVATData;
+                    foreach (VATResults4 bills in VatInstalments.d.VTIASet.results)
+                    {
+                        SelectedBillsList.Add(bills);
+                    }
+                   // BillsListVAT = BillsListVATData;
 
                 }
             }
@@ -1543,7 +1549,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             //SelectedOutletOption = OutletDecisionOptions[0];
             //SelectedOutletOptionIndex = 0;
 
-            IsBackButtonVisible = false;
+            IsBackButtonVisible = true;
             IsSelectionViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
@@ -1562,7 +1568,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             //SelectedOutletOptionIndex = 0;
 
             CurrentIndex = 2;
-            IsBackButtonVisible = false;
+            IsBackButtonVisible = true;
             IsSelectionViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
@@ -1580,7 +1586,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public void EnableAgreementView()
         {
             CurrentIndex = 3;
-            IsBackButtonVisible = false;
+            IsBackButtonVisible = true;
             IsSelectionViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
@@ -1596,7 +1602,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public void EnableStatementsView()
         {
             CurrentIndex = 4;
-            IsBackButtonVisible = false;
+            IsBackButtonVisible = true;
             IsSelectionViewEnabled = false;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
@@ -1689,6 +1695,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             _vATLiabilityAmount = "0.00 SAR";
             _vATBillDueAmount = "0.00 SAR";
             _isNoDataLableVisible = false;
+            AttachmentsListViewData = null;
             downPaymentAmount = 00.00;
             inputData = "";
             TotalAmountSAR = "0.00 SAR";
@@ -1890,8 +1897,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
+                if(AttachmentsListViewData == null)
+                {
+                    AttachmentsListViewData = new ObservableCollection<Attachment>();
 
-                AttachmentsListViewData = new ObservableCollection<Attachment>();
+                }
+
                 EnableAttachmentsView();
 
             }
@@ -1970,7 +1981,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(VatInstalments.d.AttachmentSet.results, Models.ZakatInstalationModels.WhichAttachment.VATInstalment, VatInstalments.d.ReturnIdz));
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(AttachmentsListViewData.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATInstalment, VatInstalments.d.ReturnIdz));
 
             }
             catch (GAZTUnlockAccountException ex)
