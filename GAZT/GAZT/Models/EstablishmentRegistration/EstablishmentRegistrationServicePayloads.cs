@@ -213,7 +213,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Atype { get; set; }
         public string Augrp { get; set; }
         public string Birthcity { get; set; }
-        public object Birthdt { get; set; }
+        public DateTime Birthdt { get; set; }
         public string Birthdtc { get; set; }
         public string Birthland { get; set; }
         public string Birthregion { get; set; }

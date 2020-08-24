@@ -8818,12 +8818,13 @@ namespace GAZT.Manager
             }
             return taxPayer;
         }
-        public static async Task<List<TaxpayerNationality>> ESTTaxPayerNationality()
+        public static async Task<List<TaxpayerNationality>> ESTTaxPayerNationality(string nationality)
         {
             List<TaxpayerNationality> nationalities = new List<TaxpayerNationality>();
             if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
+                nationality = (string.IsNullOrEmpty(nationality) || string.IsNullOrWhiteSpace(nationality)) ? "SAUDI" : nationality;
                 try
                 {
                     char lang = GetLangZParameter();
@@ -8834,8 +8835,8 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
-                    var uri = new Uri(string.Format("{0}?&$format=json&$filter=ANationality eq 'SAUDI' and Spras eq '{1}'",
-                        Constants.ESTTaxPayerNationality, lang));
+                    var uri = new Uri(string.Format("{0}?&$format=json&$filter=ANationality eq '{1}' and Spras eq '{2}'",
+                        Constants.ESTTaxPayerNationality, nationality, lang));
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
