@@ -80,7 +80,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             else
             {
+                
                 viewModel.refreshList();
+                viewModel.MobileCodes = this.mobileData;
             }
 
         }
