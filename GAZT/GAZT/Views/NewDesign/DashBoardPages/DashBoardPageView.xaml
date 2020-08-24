@@ -519,13 +519,13 @@
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_calendar"></Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDCommitments}" Style="{StaticResource ButtonLabelWhiteBold}" />
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBMyCommitements}" Style="{StaticResource ButtonLabelWhiteBold}" />
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_bill"> </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Bills}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZDBMyPayments}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyBills"/>
                                     </StackLayout.GestureRecognizers>
@@ -534,7 +534,7 @@
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return"></Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDReturns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZDBMyReturns}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped"/>
                                     </StackLayout.GestureRecognizers>
@@ -556,7 +556,7 @@
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return"> </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZVatLookUpTitleTextNew}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZDBTaxCheck}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="VATLookUp_Tapped" />
                                     </StackLayout.GestureRecognizers>
@@ -566,7 +566,7 @@
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.Certificates}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZDBMyCertificates}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TaxpayerCertificate_Tapped" />
                                     </StackLayout.GestureRecognizers>
@@ -576,7 +576,7 @@
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDTaxEvasion}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZDBTaxEvasion}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TaxEvasion_Tapped" />
                                     </StackLayout.GestureRecognizers>
@@ -592,7 +592,7 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsVatRegistrationTileVisible}"/>
-                              <StackLayout Orientation="Horizontal" Spacing="20">
+                              <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
                                     </Image>
@@ -601,7 +601,7 @@
                                         <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
@@ -631,7 +631,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                 <StackLayout Orientation="Horizontal" Spacing="20">
+                                 <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
                                     </Image>
@@ -640,7 +640,7 @@
                                         <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
                                 <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>

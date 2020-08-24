@@ -33,12 +33,39 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.VATDeclarationDetails = vATDeclaration;
                     onPageLoad();
                     viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                    viewModel.IsSwichButtonEnable = true;
+                    
+                    if(App.ICRStatus!="E0001" && App.ICRStatus != "E0013")
+                    {
+                        if (viewModel.VATDeclarationDetails.d.EstimatedFg == "A")
+                        {
+                            ManageEnabledProperties(true);
+                        }
+                        else
+                        {
+                            ManageEnabledProperties(false);
+                        }
+                    }
+                    else
+                    {
+                        ManageEnabledProperties(true);
+                    }
+
                 }
             }
             catch(Exception ex)
             {
 
             }
+        }
+        public void ManageEnabledProperties(bool value)
+        {
+            viewModel.IsIdTypeEnabled = value;
+            viewModel.IsIdNumberEnabled = value;
+            viewModel.IsNewAccountEnabled = value;
+            viewModel.IsIbansEnabled = value;
+            viewModel.IsRefundCheckboxEnabled = value;
+            viewModel.IsConfirmRefundButtonEnabled = value;
         }
         public void ValidationsForVATRefund()
         {
@@ -195,21 +222,102 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
 
         }
-        public void onPageLoad()
+        public bool IsCheckedDraftMode()
+        {
+            bool value = false;
+            if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+            {
+                value = true;
+            }
+            return value;
+        }
+        public async void onPageLoad()
         {
             viewModel.createIBANType();
-            if (viewModel.VATDeclarationDetails.d.IBANSet.results != null && viewModel.VATDeclarationDetails.d.IBANSet.results.Count() != 0)
+            if (App.ICRStatus == "E0001")
             {
-                viewModel.IBANList = new ObservableCollection<Result2>();
-                viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
-                viewModel.IsVATRefunCheckedVisible = false;
-                viewModel.IsEnableCheckedRefund = false;
-                viewModel.SelectedIBAN= viewModel.IBANList.FirstOrDefault();
+                if (viewModel.VATDeclarationDetails.d.IBANSet.results != null && viewModel.VATDeclarationDetails.d.IBANSet.results.Count() != 0)
+                {
+                    viewModel.IBANList = new ObservableCollection<Result2>();
+                    viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
+                    viewModel.IsVATRefunCheckedVisible = false;
+                    viewModel.IsEnableCheckedRefund = false;
+                    viewModel.SelectedIBAN = viewModel.IBANList.FirstOrDefault();
+                }
+                else
+                {
+                    viewModel.IsVATRefunCheckedVisible = true;
+                    viewModel.IsEnableCheckedRefund = true;
+                    viewModel.IsNewAccountButtonVisible = true;
+                }
             }
-            else
+            bool value=IsCheckedDraftMode();
+            if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
             {
-                viewModel.IsVATRefunCheckedVisible = true;
-                viewModel.IsEnableCheckedRefund = true;
+                if (viewModel.VATDeclarationDetails.d.RefundFg == "1")
+                {
+                    viewModel.IsSwichButtonEnable = true;
+                  
+                    //IsVisibleDropdownForRefund = true;
+                    //IsVisiblechkRefundDeclaration = true;
+                    //  IsDropdownVisibleForIban = true;
+                    if (viewModel.VATDeclarationDetails.d.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
+                    {
+                        //IsTextBoxVisibleForIban = true;
+                        //IsDropdownVisibleForIban = false;
+                        //IsCheckedRefund = true;
+                        viewModel.IsNewAccountButtonVisible = true;
+                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
+                        {
+                            viewModel.IbanNumberText = viewModel.VATDeclarationDetails.d.Iban;
+                            viewModel.IBANList = new ObservableCollection<Result2>();
+                            Result2 result = new Result2();
+                            result.Iban = viewModel.VATDeclarationDetails.d.Iban;
+                            viewModel.IBANList.Add(result);
+                            viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                        }
+                    }
+                    else
+                    {
+                        viewModel.IsTextBoxVisibleForIban = false;
+                        viewModel.IsDropdownVisibleForIban = true;
+                        if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
+                        {
+                            viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+                        }
+                        if (viewModel.IBANList != null && viewModel.IBANList.Count > 0)
+                        {
+                            viewModel.IsVATRefunCheckedVisible = false;
+                        }
+                        else
+                        {
+                            viewModel.IsVATRefunCheckedVisible = true;
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Idtype))
+                    {
+                        viewModel.SelectedIBANType = viewModel.IBANTypesList.Where(x => x.key == viewModel.VATDeclarationDetails.d.Idtype).FirstOrDefault();
+                        if (viewModel.SelectedIBANType != null)
+                        {
+                            await viewModel.SetIBANIdNumber();
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Idnum))
+                    {
+                        if (viewModel.IBANIDNumberList != null && viewModel.IBANIDNumberList.Count != 0)
+                        {
+                            viewModel.SelectedIBANIDNumber = viewModel.IBANIDNumberList.Where(x => x.Idnumber == viewModel.VATDeclarationDetails.d.Idnum).FirstOrDefault();
+                        }
+                    }
+                }
+                else
+                {
+                    //viewModel.IsSwichButtonEnableToTap = true;
+                    viewModel.IsSwichButtonEnable = false;
+                    viewModel.IsDropdownVisibleForIban = false;
+                    viewModel.IsVisibleDropdownForRefund = false;
+                    viewModel.IsVisiblechkRefundDeclaration = false;
+                }
             }
         }
         public void ManageValidations()
@@ -230,7 +338,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             bool result = false;
             if(viewModel.IsNewAccountButtonVisible)
             {
-                if(!string.IsNullOrEmpty(viewModel.TxtSelectedIBANIDNumber) && string.IsNullOrEmpty(viewModel.TxtSelectedIBANType) && viewModel.SelectedIban!=null)
+                if(!string.IsNullOrEmpty(viewModel.TxtSelectedIBANIDNumber) && !string.IsNullOrEmpty(viewModel.TxtSelectedIBANType) && viewModel.SelectedIBAN != null && viewModel.IsDeclarationCheckedForRefund == true)
                 {
                     result = true;
                 }
@@ -241,7 +349,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             else
             {
-                if (!string.IsNullOrEmpty(viewModel.TxtSelectedIBANIDNumber) && string.IsNullOrEmpty(viewModel.TxtSelectedIBANType) && viewModel.SelectedIban != null)
+                if (!string.IsNullOrEmpty(viewModel.TxtSelectedIBANIDNumber) && !string.IsNullOrEmpty(viewModel.TxtSelectedIBANType) && viewModel.SelectedIBAN != null && viewModel.IsDeclarationCheckedForRefund == true)
                 {
                     result = true;
                 }
@@ -367,12 +475,59 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private void Confirm_RefundClicked(object sender, EventArgs e)
+        private async void Confirm_RefundClicked(object sender, EventArgs e)
         {
             if(CheckValidationsForSubmitButton())
             {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsNewLoading = true;
+                });
+                await viewModel.SubmitClicked();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsNewLoading = false;
+                });
+            }
+        }
+
+        private async void IbanChanged(object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            try
+            {
+              
+            }
+            catch (Exception ex)
+            {
 
             }
+        }
+
+        private async void OnRefundInCTapped(object sender, EventArgs e)
+        {
+            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+
+
+            headerAmountInfo.IsLinkAvailable = false;
+            headerAmountInfo.Message = AppResources.ZZIacknowledgethattheabovebankaccount;
+
+
+
+            headerWithInfos.Add(headerAmountInfo);
+
+
+
+
+            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+
+
+            await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
         }
     }
 }

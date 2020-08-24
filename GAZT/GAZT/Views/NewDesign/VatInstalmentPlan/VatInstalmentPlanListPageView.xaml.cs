@@ -47,6 +47,20 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
         }
 
+        protected async override void OnAppearing()
+        {
+            try
+            {
+                base.OnAppearing();
+                viewModel.EnableVATLandingPage();
+                viewModel.AddOutletDecisionOptions();
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
 
         private void SetLTR()
         {
@@ -75,6 +89,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 0)
             {
                 viewModel.EnableVAtInstalmentPlan();
+                viewModel.GetVATInstalmentPlanList();
             }
             else if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 1)
             {

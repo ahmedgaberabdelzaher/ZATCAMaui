@@ -6434,7 +6434,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Request to VAT Instalment Plan.
+        ///   Looks up a localized string similar to Create/Display VAT Instalment Plan.
         /// </summary>
         public static string VATInstalmentRequestToVatInstalment {
             get {
@@ -7304,11 +7304,65 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cash + Bank.
+        /// </summary>
+        public static string ZakatCashBank {
+            get {
+                return ResourceManager.GetString("ZakatCashBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ZAKAT / CIT.
         /// </summary>
         public static string ZakatCertificates {
             get {
                 return ResourceManager.GetString("ZakatCertificates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cleared Amount.
+        /// </summary>
+        public static string ZakatClearedAmount {
+            get {
+                return ResourceManager.GetString("ZakatClearedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debitors.
+        /// </summary>
+        public static string ZakatDebitors {
+            get {
+                return ResourceManager.GetString("ZakatDebitors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dispute in Favor of GAZT.
+        /// </summary>
+        public static string ZakatDisputeInFavorOfGAZT {
+            get {
+                return ResourceManager.GetString("ZakatDisputeInFavorOfGAZT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Due Amount.
+        /// </summary>
+        public static string ZakatDueAmount {
+            get {
+                return ResourceManager.GetString("ZakatDueAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financial Crisis.
+        /// </summary>
+        public static string ZakatFinancialCrisis {
+            get {
+                return ResourceManager.GetString("ZakatFinancialCrisis", resourceCulture);
             }
         }
         
@@ -7763,11 +7817,59 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1. I acknowledge that I do not have sufficient liquidity to pay the full amount.
+        ///2. I pledge to provide the General Authority for Zakat &amp; Tax with all recent bank statements of the business activity, as well as my personal account statements for the past three months.
+        ///3. I pledge to provide the General Authority for Zakat &amp; Tax with any documents that are requested for the purpose of processing the application.
+        ///4. The General Authority for Zakat &amp; Tax has the right to estimate the amount and period of the i [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ZakatInstructions {
+            get {
+                return ResourceManager.GetString("ZakatInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I Agree.
+        /// </summary>
+        public static string ZakatInstructionsCheckBoxDesc {
+            get {
+                return ResourceManager.GetString("ZakatInstructionsCheckBoxDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inventory.
+        /// </summary>
+        public static string ZakatInventory {
+            get {
+                return ResourceManager.GetString("ZakatInventory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice Amount.
+        /// </summary>
+        public static string ZakatInvoiceAmount {
+            get {
+                return ResourceManager.GetString("ZakatInvoiceAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Zakat.
         /// </summary>
         public static string ZakatnewUi {
             get {
                 return ResourceManager.GetString("ZakatnewUi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other Reason.
+        /// </summary>
+        public static string ZakatOtherReason {
+            get {
+                return ResourceManager.GetString("ZakatOtherReason", resourceCulture);
             }
         }
         
@@ -7808,6 +7910,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Short Term Investment.
+        /// </summary>
+        public static string ZakatShortTermInvestment {
+            get {
+                return ResourceManager.GetString("ZakatShortTermInvestment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An appeal will not be filed only in case pay for amount not objected plus 25% from objected amount. In case accepted in whole or in part objection. It will refunded to the amount objected.
         /// </summary>
         public static string ZakatTaxType {
@@ -7822,6 +7933,42 @@ namespace EGAZT {
         public static string ZakatTaxTypeForBills {
             get {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        public static string ZakatYear {
+            get {
+                return ResourceManager.GetString("ZakatYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year 1.
+        /// </summary>
+        public static string ZakatYearOne {
+            get {
+                return ResourceManager.GetString("ZakatYearOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year 3.
+        /// </summary>
+        public static string ZakatYearThree {
+            get {
+                return ResourceManager.GetString("ZakatYearThree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year 2.
+        /// </summary>
+        public static string ZakatYearTwo {
+            get {
+                return ResourceManager.GetString("ZakatYearTwo", resourceCulture);
             }
         }
         
@@ -13769,6 +13916,60 @@ namespace EGAZT {
         public static string ZZZCRValidateMessg {
             get {
                 return ResourceManager.GetString("ZZZCRValidateMessg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Certificates.
+        /// </summary>
+        public static string ZZZDBMyCertificates {
+            get {
+                return ResourceManager.GetString("ZZZDBMyCertificates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Commitments.
+        /// </summary>
+        public static string ZZZDBMyCommitements {
+            get {
+                return ResourceManager.GetString("ZZZDBMyCommitements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Payment.
+        /// </summary>
+        public static string ZZZDBMyPayments {
+            get {
+                return ResourceManager.GetString("ZZZDBMyPayments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Returns.
+        /// </summary>
+        public static string ZZZDBMyReturns {
+            get {
+                return ResourceManager.GetString("ZZZDBMyReturns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tax Check.
+        /// </summary>
+        public static string ZZZDBTaxCheck {
+            get {
+                return ResourceManager.GetString("ZZZDBTaxCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Tax Evasion.
+        /// </summary>
+        public static string ZZZDBTaxEvasion {
+            get {
+                return ResourceManager.GetString("ZZZDBTaxEvasion", resourceCulture);
             }
         }
         
