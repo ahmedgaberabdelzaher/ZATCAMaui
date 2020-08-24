@@ -1646,7 +1646,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
     <value>Please select the IBAN ID Number linked to the selected IBAN</value>
   </data>
-   <data name="ZVatRefundInstructions" xml:space="preserve">
+  <data name="ZVatRefundInstructions" xml:space="preserve">
     <value>Kindly read the below instructions before completing the ad-hoc refund form:
 Please fill the requested information for each step
 The request cannot be successfully submitted until all of the mandatory fields have been completed.
@@ -4778,10 +4778,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Partially</value>
     <comment>Bills</comment>
   </data>
-     <data name="ZakatInstalmetPlanTitle" xml:space="preserve">
+  <data name="ZakatInstalmetPlanTitle" xml:space="preserve">
     <value>Zakat Instalment</value>
   </data>
-     <data name="VatInstalmetPlanTitle" xml:space="preserve">
+  <data name="VatInstalmetPlanTitle" xml:space="preserve">
     <value>VAT Instalment</value>
   </data>
   <data name="ZakatInstalmetPlan" xml:space="preserve">
@@ -4793,7 +4793,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ZakatInstalmetSelectTypeZakat" xml:space="preserve">
     <value>Zakat</value>
   </data>
-    <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
+  <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
     <value>IncomeTax</value>
   </data>
   <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
@@ -4820,7 +4820,6 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ZakatInstalmetNumberOfInstalments" xml:space="preserve">
     <value>Number of Instalments</value>
   </data>
-   
   <data name="ZakatInstalmetPeriodicInstalment" xml:space="preserve">
     <value>Periodic Instalment</value>
   </data>
@@ -5511,7 +5510,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
     <value>VAT Return has been Submitted</value>
   </data>
-    <data name="ChangeFillingPeriodAttachments" xml:space="preserve">
+  <data name="ChangeFillingPeriodAttachments" xml:space="preserve">
     <value>Attachments</value>
   </data>
   <data name="ChangeFillingPeriodAttachmentsSub" xml:space="preserve">
@@ -5553,259 +5552,265 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ChangeFillingPeriodMyRequests" xml:space="preserve">
     <value>My Requests</value>
   </data>
-    <data name="ContractRelease" xml:space="preserve">
-  <value>Contract Release</value>
-</data>
+  <data name="ContractRelease" xml:space="preserve">
+    <value>Contract Release</value>
+  </data>
   <data name="CRReleaseDetails" xml:space="preserve">
-  <value>Release Details</value>
-</data>
+    <value>Release Details</value>
+  </data>
   <data name="CRCompleteBelowDetails" xml:space="preserve">
-  <value>Complete below details</value>
-</data>
+    <value>Complete below details</value>
+  </data>
   <data name="CRNameOnContract" xml:space="preserve">
-  <value>Name on Contract</value>
-</data>
+    <value>Name on Contract</value>
+  </data>
   <data name="CRContractNumber" xml:space="preserve">
-  <value>Contract Number</value>
-</data>
+    <value>Contract Number</value>
+  </data>
   <data name="CRContractType" xml:space="preserve">
-  <value>Contract Type</value>
-</data>
+    <value>Contract Type</value>
+  </data>
   <data name="CRContractPeriod" xml:space="preserve">
-  <value>Contract Period</value>
-</data>
+    <value>Contract Period</value>
+  </data>
   <data name="CRTotalAmountOfContract" xml:space="preserve">
-  <value>Total Amount of Contract</value>
-</data>
+    <value>Total Amount of Contract</value>
+  </data>
   <data name="CRAmountRequiredToRelease" xml:space="preserve">
-  <value>Amount required to Release</value>
-</data>
+    <value>Amount required to Release</value>
+  </data>
   <data name="CRProfitEstimatedForContract" xml:space="preserve">
-  <value>Profit Estimated for Contract</value>
-</data>
+    <value>Profit Estimated for Contract</value>
+  </data>
   <data name="CREstimatedProfitforZakat" xml:space="preserve">
-  <value>Estimated Profit for Zakat</value>
-</data>
+    <value>Estimated Profit for Zakat</value>
+  </data>
   <data name="CREstimatedProfitforTax" xml:space="preserve">
-  <value>Estimated Profit for Tax</value>
-</data>
+    <value>Estimated Profit for Tax</value>
+  </data>
   <data name="CRTheValueTaxDues" xml:space="preserve">
-  <value>The Value Tax dues</value>
-</data>
+    <value>The Value Tax dues</value>
+  </data>
   <data name="CRTotalDues" xml:space="preserve">
-  <value>Total Dues</value>
-</data>
+    <value>Total Dues</value>
+  </data>
   <data name="CRAmount" xml:space="preserve">
-  <value>Amount</value>
-</data>
+    <value>Amount</value>
+  </data>
   <data name="CRPercentage" xml:space="preserve">
-  <value>Percentage</value>
-</data>
+    <value>Percentage</value>
+  </data>
   <data name="CRContinue" xml:space="preserve">
-  <value>Continue</value>
-</data>
+    <value>Continue</value>
+  </data>
   <data name="CRAttachments" xml:space="preserve">
-  <value>Attachments</value>
-</data>
+    <value>Attachments</value>
+  </data>
   <data name="CRAttachACopyOfTheContractRequiredToReleaseAndAmounts" xml:space="preserve">
-  <value>Attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certiied translation Office.</value>
-</data>
+    <value>Attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certiied translation Office.</value>
+  </data>
   <data name="CRAttachContract" xml:space="preserve">
-  <value>Attach Contract</value>
-</data>
+    <value>Attach Contract</value>
+  </data>
   <data name="CRAttachacopyofinvoicesandpurchase" xml:space="preserve">
-  <value>Attach a copy of invoices and purchase orders required the release of their amount values</value>
-</data>
+    <value>Attach a copy of invoices and purchase orders required the release of their amount values</value>
+  </data>
   <data name="CRAttachInvoiceCopy" xml:space="preserve">
-  <value>Attach Invoice Copy</value>
-</data>
+    <value>Attach Invoice Copy</value>
+  </data>
   <data name="CR20MB" xml:space="preserve">
-  <value>20MB</value>
-</data>
+    <value>20MB</value>
+  </data>
   <data name="CRRemarksAndDescription" xml:space="preserve">
-  <value>Remarks &amp; Description</value>
-</data>
+    <value>Remarks &amp; Description</value>
+  </data>
   <data name="CRRemarks" xml:space="preserve">
-  <value>Remarks</value>
-</data>
+    <value>Remarks</value>
+  </data>
   <data name="CRDetailDescription" xml:space="preserve">
-  <value>Detail Description</value>
-</data>
+    <value>Detail Description</value>
+  </data>
   <data name="CRDeclaration" xml:space="preserve">
-  <value>Declaration</value>
-</data>
+    <value>Declaration</value>
+  </data>
   <data name="CRContactPersonName" xml:space="preserve">
-  <value>Contact Person Name</value>
-</data>
+    <value>Contact Person Name</value>
+  </data>
   <data name="CRDesignation" xml:space="preserve">
-  <value>Designation</value>
-</data>
+    <value>Designation</value>
+  </data>
   <data name="CRSummary" xml:space="preserve">
-  <value>Summary</value>
-</data>
+    <value>Summary</value>
+  </data>
   <data name="CRReviewthebelowinformation" xml:space="preserve">
-  <value>Review the below information</value>
-</data>   
+    <value>Review the below information</value>
+  </data>
   <data name="CREdit" xml:space="preserve">
-  <value>Edit</value>
-</data>
+    <value>Edit</value>
+  </data>
   <data name="CRContractonName" xml:space="preserve">
-  <value>Contract on Name</value>
-</data>   
-<data name="CRIDType" xml:space="preserve">
-  <value>ID Type</value>
-</data>
-<data name="CRIDNumber" xml:space="preserve">
-  <value>ID Number</value>
-</data>
-<data name="CRDateOfBirth" xml:space="preserve">
-  <value>Date of Birth</value>
-</data>
-<data name="CRInformation" xml:space="preserve">
-  <value>Information</value>
-</data>
-<data name="CRIherebycertify" xml:space="preserve">
-  <value>I hereby certify that i am authorized to complete this form for the taxable person and that all information contained is correct</value>
-</data> 
+    <value>Contract on Name</value>
+  </data>
+  <data name="CRIDType" xml:space="preserve">
+    <value>ID Type</value>
+  </data>
+  <data name="CRIDNumber" xml:space="preserve">
+    <value>ID Number</value>
+  </data>
+  <data name="CRDateOfBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="CRInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="CRIherebycertify" xml:space="preserve">
+    <value>I hereby certify that i am authorized to complete this form for the taxable person and that all information contained is correct</value>
+  </data>
   <data name="CRContractprofitEstimatedRate" xml:space="preserve">
-  <value>Contract profit Estimated Rate %</value>
-</data> 
+    <value>Contract profit Estimated Rate %</value>
+  </data>
   <data name="CRTheValueofZakatdues" xml:space="preserve">
-  <value>The Value of Zakat dues</value>
-</data>
-<data name="CRYourContractisreleasedsuccessfully" xml:space="preserve">
-  <value>Your Contract is released successfully</value>
-</data>
-<data name="CRReferenceNumber" xml:space="preserve">
-  <value>Reference Number</value>
-</data>
-<data name="CRDownloadConfirmation" xml:space="preserve">
-  <value>Download Confirmation</value>
-</data>
-<data name="CRContractingNumber" xml:space="preserve">
-  <value>Contracting Number</value>
-</data>
-<data name="CRInstructionsandConditions" xml:space="preserve">
-  <value>Instructions &amp; Conditions</value>
-</data>
-<data name="CRInstructions" xml:space="preserve">
-  <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
-</data>
-<data name="CRInstructionsDesc" xml:space="preserve">
-  <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
-</data>
-<data name="CRDone" xml:space="preserve">
-  <value>Done</value>
-</data>
-<data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
-  <value>Estimated Profit percentage based on contract type.</value>
-</data>
-<data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
-  <value>Estimated Profit percentage based on contract type.</value>
-</data>
-<data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-  <value>Estimated Profit percentage based on contract type.</value>
-</data>
-<data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
-  <value>Estimated Profit percentage based on contract type.</value>
-</data>
-<data name="CRTheValueofZakatduesDesc" xml:space="preserve">
-  <value>Estimated Profit percentage based on contract type.</value>
-</data>
-<data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-  <value>Estimated Profit percentage based on contract type.</value>
-</data>
-<data name="CRTotalDuesDesc" xml:space="preserve">
-  <value>The value off Zakat due+value of tax due</value>
-</data>
+    <value>The Value of Zakat dues</value>
+  </data>
+  <data name="CRYourContractisreleasedsuccessfully" xml:space="preserve">
+    <value>Your Contract is released successfully</value>
+  </data>
+  <data name="CRReferenceNumber" xml:space="preserve">
+    <value>Reference Number</value>
+  </data>
+  <data name="CRDownloadConfirmation" xml:space="preserve">
+    <value>Download Confirmation</value>
+  </data>
+  <data name="CRContractingNumber" xml:space="preserve">
+    <value>Contracting Number</value>
+  </data>
+  <data name="CRInstructionsandConditions" xml:space="preserve">
+    <value>Instructions &amp; Conditions</value>
+  </data>
+  <data name="CRInstructions" xml:space="preserve">
+    <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
+  </data>
+  <data name="CRInstructionsDesc" xml:space="preserve">
+    <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
+  </data>
+  <data name="CRDone" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
+    <value>Estimated Profit percentage based on contract type.</value>
+  </data>
+  <data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
+    <value>Estimated Profit percentage based on contract type.</value>
+  </data>
+  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+    <value>Estimated Profit percentage based on contract type.</value>
+  </data>
+  <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
+    <value>Estimated Profit percentage based on contract type.</value>
+  </data>
+  <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
+    <value>Estimated Profit percentage based on contract type.</value>
+  </data>
+  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+    <value>Estimated Profit percentage based on contract type.</value>
+  </data>
+  <data name="CRTotalDuesDesc" xml:space="preserve">
+    <value>The value off Zakat due+value of tax due</value>
+  </data>
   <data name="ZakatInstalmentDueDate" xml:space="preserve">
-  <value>Due Date</value>
-</data>
+    <value>Due Date</value>
+  </data>
   <data name="ZakatInstalmentNoOfMonths" xml:space="preserve">
-  <value>Number Of Months</value>
-</data>
+    <value>Number Of Months</value>
+  </data>
   <data name="ZakatInstalmentMonthlyInstallment" xml:space="preserve">
-  <value>Monthly Installment</value>
-</data>
+    <value>Monthly Installment</value>
+  </data>
   <data name="ZakatInstalmentTotalAmountPaid" xml:space="preserve">
-  <value>Total Amount Paid</value>
-</data>
+    <value>Total Amount Paid</value>
+  </data>
   <data name="ZakatInstalmentTotalAmountRemaining" xml:space="preserve">
-  <value>Total Amount Remaining</value>
-</data>
+    <value>Total Amount Remaining</value>
+  </data>
   <data name="AttachmentPopUpNote1" xml:space="preserve">
-  <value>File size should be less than 20 MB</value>
-</data>
-<data name="AttachmentPopUpNote2" xml:space="preserve">
-  <value>Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx</value>
-</data>
-<data name="AttachmentPopUpAddAttachment" xml:space="preserve">
-  <value>Add Attachment</value>
-</data>
+    <value>File size should be less than 20 MB</value>
+  </data>
+  <data name="AttachmentPopUpNote2" xml:space="preserve">
+    <value>Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx</value>
+  </data>
+  <data name="AttachmentPopUpAddAttachment" xml:space="preserve">
+    <value>Add Attachment</value>
+  </data>
   <data name="VRUploadYourDocument" xml:space="preserve">
-  <value>Upload your document</value>
-</data>
+    <value>Upload your document</value>
+  </data>
   <data name="VRNewAttachment" xml:space="preserve">
-  <value>New Attachment</value>
-</data>
- <data name="VR20MB" xml:space="preserve">
-  <value>20MB</value>
-</data>
+    <value>New Attachment</value>
+  </data>
+  <data name="VR20MB" xml:space="preserve">
+    <value>20MB</value>
+  </data>
   <data name="BPInstrucionsAndConditions" xml:space="preserve">
-  <value>Instructions &amp; Conditions</value>
-</data>
-<data name="BPInformation" xml:space="preserve">
-  <value>Information</value>
-</data>
-<data name="BPTermsAndConditions" xml:space="preserve">
-  <value>Terms &amp; Conditions</value>
-</data>
-<data name="BPTermsAndConditionsAlert" xml:space="preserve">
-  <value>Please accept Terms &amp; Conditions</value>
-</data>
-<data name="BPInstructionsAndConditionsAlert" xml:space="preserve">
-  <value>Please accept Instructions &amp; Conditions</value>
-</data>
+    <value>Instructions &amp; Conditions</value>
+  </data>
+  <data name="BPInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="BPTermsAndConditions" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+  </data>
+  <data name="BPTermsAndConditionsAlert" xml:space="preserve">
+    <value>Please accept Terms &amp; Conditions</value>
+  </data>
+  <data name="BPInstructionsAndConditionsAlert" xml:space="preserve">
+    <value>Please accept Instructions &amp; Conditions</value>
+  </data>
   <data name="InstalmentSchedule" xml:space="preserve">
-  <value>Instalment Schedule</value>
-</data>
+    <value>Instalment Schedule</value>
+  </data>
   <data name="Instalment" xml:space="preserve">
-  <value>Instalment</value>
-</data>
-<data name="VatDueAmountInstruction" xml:space="preserve">
-  <value> This figure excludes amount under an existing installment plan or under GAZT review.</value>
-</data>
+    <value>Instalment</value>
+  </data>
+  <data name="VatDueAmountInstruction" xml:space="preserve">
+    <value> This figure excludes amount under an existing installment plan or under GAZT review.</value>
+  </data>
   <data name="VatInstructions" xml:space="preserve">
-  <value>Kindly read the below instructions before completing the installment agreement form:&#x0a;1. Please fill the requested information for each step.&#x0a;2. The application cannot be successfully until all of the mandatory fields have been completed.&#x0a;3. Taxpayers should ensure that their existing taxpayer details are completed and up to date before submitting their installment agreement form.&#x0a;4. Please refer to the FAQ section before filling out the installment agreement form.</value>
-   </data>
+    <value>Kindly read the below instructions before completing the installment agreement form:
+1. Please fill the requested information for each step.
+2. The application cannot be successfully until all of the mandatory fields have been completed.
+3. Taxpayers should ensure that their existing taxpayer details are completed and up to date before submitting their installment agreement form.
+4. Please refer to the FAQ section before filling out the installment agreement form.</value>
+  </data>
   <data name="VatInstructionsCheckBoxDesc" xml:space="preserve">
-  <value>I declare that I have read and understood the above instruction.</value>
-</data>
+    <value>I declare that I have read and understood the above instruction.</value>
+  </data>
   <data name="VatTerms" xml:space="preserve">
-  <value>1. It is assumed that taxpayer has read and understood the Kingdom of Saudi Arbia's VAT Law and Regulations and all the information provided is, to the best of the taxpayer's knowledge, true, correct and complete.&#x0a;2. GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this request.&#x0a;3. GAZT holds the right to audit a business in order to verify that this request is valid, if proven otherwise, this may result in levy if fines as per the Kingdom of Saudi Arabia's VAT Law and Regulations.&#x0a;4. This request does NOT guarantee an approval of installment agreement. You will be advised of GAZT's decision in later correspondences.&#x0a;5. Note that once this installment agreement is approved and goes into effect, taxpayers are obligated to make payements according to the installment schedule, regardless of any future decisions resulting from GAZT review / audit.&#x0a;6. Taxpayers will not be able to submit self-amendments for tax returns covered under the installment plan while the installment agreement is active.</value>
-</data>
+    <value>1. It is assumed that taxpayer has read and understood the Kingdom of Saudi Arbia's VAT Law and Regulations and all the information provided is, to the best of the taxpayer's knowledge, true, correct and complete.
+2. GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this request.
+3. GAZT holds the right to audit a business in order to verify that this request is valid, if proven otherwise, this may result in levy if fines as per the Kingdom of Saudi Arabia's VAT Law and Regulations.
+4. This request does NOT guarantee an approval of installment agreement. You will be advised of GAZT's decision in later correspondences.
+5. Note that once this installment agreement is approved and goes into effect, taxpayers are obligated to make payements according to the installment schedule, regardless of any future decisions resulting from GAZT review / audit.
+6. Taxpayers will not be able to submit self-amendments for tax returns covered under the installment plan while the installment agreement is active.</value>
+  </data>
   <data name="VatTermsCheckBoxDesc" xml:space="preserve">
-  <value>I certify that the information given in this request is, to the best of my knowledge, true, correct and complete in every respect. I am the person who is required to file this request or i am authorized to sign on behalf of that person.</value>
-</data>
-<data name="VATInstalmentRequestToVatDisplayInstalment" xml:space="preserve">
+    <value>I certify that the information given in this request is, to the best of my knowledge, true, correct and complete in every respect. I am the person who is required to file this request or i am authorized to sign on behalf of that person.</value>
+  </data>
+  <data name="VATInstalmentRequestToVatDisplayInstalment" xml:space="preserve">
     <value>Display Instalment Schedule Plan</value>
   </data>
   <data name="VATInstalmentRequestToVatInstalment" xml:space="preserve">
     <value>Request to VAT Instalment Plan</value>
   </data>
-    <data name="VatInstalmentPlan" xml:space="preserve">
-  <value>Instalment Plan</value>
-</data>
+  <data name="VatInstalmentPlan" xml:space="preserve">
+    <value>Instalment Plan</value>
+  </data>
   <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
-  <value>Your Instalment Plan submitted successfully</value>
-</data>
-  <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
-  <value>Your Instalment Plan submitted successfully</value>
-</data>
+    <value>Your Instalment Plan submitted successfully</value>
+  </data>
   <data name="VatInstalmentDownload" xml:space="preserve">
-  <value>Download</value>
-</data>
-<data name="VATInstalmentListInstalmentAmountRemaining" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="VATInstalmentListInstalmentAmountRemaining" xml:space="preserve">
     <value>Amount Remaining</value>
   </data>
   <data name="VATInstalmentListInstalmentNumberOfMonths" xml:space="preserve">
@@ -5814,13 +5819,13 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATInstalmentListInstalmentPaymentStatus" xml:space="preserve">
     <value>Payment status</value>
   </data>
-    <data name="VATInstalmentListInstalmentVatInstalmentPlan" xml:space="preserve">
+  <data name="VATInstalmentListInstalmentVatInstalmentPlan" xml:space="preserve">
     <value>VAT Instalment Plan</value>
   </data>
-    <data name="VATInstalmentListInstalmentAgreementNumber" xml:space="preserve">
+  <data name="VATInstalmentListInstalmentAgreementNumber" xml:space="preserve">
     <value>Instalment Agreement No.</value>
   </data>
- <data name="VATInstalmentListInstalmentDisplayInstalmentSchedule" xml:space="preserve">
+  <data name="VATInstalmentListInstalmentDisplayInstalmentSchedule" xml:space="preserve">
     <value>Display Instalment Agreement schedule plan</value>
   </data>
   <data name="VATInstalmentListInstalmentRelevantTax" xml:space="preserve">
@@ -5829,35 +5834,103 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VATInstalmentListInstalmentSummary" xml:space="preserve">
     <value>Summary</value>
   </data>
-    <data name="VatInstalmentPlanPleaseReviewTheInstalmentSchedule" xml:space="preserve">
+  <data name="VatInstalmentPlanPleaseReviewTheInstalmentSchedule" xml:space="preserve">
     <value>Please Review the Instalment Schedule</value>
   </data>
-    <data name="VATInstalmentStatusRefunded" xml:space="preserve">
+  <data name="VATInstalmentStatusRefunded" xml:space="preserve">
     <value>Refunded</value>
   </data>
-   <data name="NDInvoiceDetail" xml:space="preserve">
+  <data name="NDInvoiceDetail" xml:space="preserve">
     <value>Invoice Detail</value>
   </data>
   <data name="NDSubmittedSuccessfully" xml:space="preserve">
     <value>Submitted Successfully</value>
   </data>
-   <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">
+  <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">
     <value>Objection Submitted successfully</value>
   </data>
   <data name="NDBilled" xml:space="preserve">
     <value>Billed</value>
   </data>
-   <data name="NDInProcessing" xml:space="preserve">
+  <data name="NDInProcessing" xml:space="preserve">
     <value>In Processing</value>
   </data>
-   <data name="ToBeApproved" xml:space="preserve">
+  <data name="ToBeApproved" xml:space="preserve">
     <value>To Be Approved</value>
   </data>
-     <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
+  <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
     <value>Total Number of Months</value>
   </data>
   <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
     <value>Total Monthly Instalments</value>
   </data>
+  <data name="FORM5TaxpayerDetails" xml:space="preserve">
+    <value>Taxpayer Details</value>
+  </data>
+  <data name="NDAccountingType" xml:space="preserve">
+    <value>Accounting Type</value>
+  </data>
+  <data name="NDBranchLocation" xml:space="preserve">
+    <value>Branch Location</value>
+  </data>
+  <data name="NDBranchName" xml:space="preserve">
+    <value>Branch Name</value>
+  </data>
+  <data name="NDBranchType" xml:space="preserve">
+    <value>Branch Type</value>
+  </data>
+  <data name="NDComercialName" xml:space="preserve">
+    <value>Comercial Name</value>
+  </data>
+  <data name="NDCompany" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="NDEndOfFinancialYear" xml:space="preserve">
+    <value>End Of Financial Year</value>
+  </data>
+  <data name="NDEstablishmentAccount" xml:space="preserve">
+    <value>Establishment Account</value>
+  </data>
+  <data name="NDEstablishments" xml:space="preserve">
+    <value>Establishments</value>
+  </data>
+  <data name="NDFacilityAddress" xml:space="preserve">
+    <value>Facility Address</value>
+  </data>
+  <data name="NDFacilityBranches" xml:space="preserve">
+    <value>Facility Branches</value>
+  </data>
+  <data name="NDIndividuals" xml:space="preserve">
+    <value>Individuals</value>
+  </data>
+  <data name="NDLegalEntity" xml:space="preserve">
+    <value>Legal Entity</value>
+  </data>
+  <data name="NDMainActivity" xml:space="preserve">
+    <value>Main Activity</value>
+  </data>
+  <data name="NDOthers" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="NDPOBox" xml:space="preserve">
+    <value>P.O Box</value>
+  </data>
+  <data name="NDStreetName" xml:space="preserve">
+    <value>Street Name</value>
+  </data>
+  <data name="NDSubActivity" xml:space="preserve">
+    <value>Sub Activity</value>
+  </data>
+  <data name="NDYouReceivedSMSWithTIN" xml:space="preserve">
+    <value>You have received an SMS with the TIN number. You can use the set password to Login in the future.</value>
+  </data>
+  <data name="NDYouSuccessfullyRegisteredGAZTServies" xml:space="preserve">
+    <value>You have successfully registered to GAZT Servies.</value>
+  </data>
+  <data name="FORM5SadadBillNo" xml:space="preserve">
+    <value>Sadad Bill No:</value>
+  </data>
+  <data name="NDPayBillAmtObtainCertificateAutomaticall" xml:space="preserve">
+    <value>If you pay the bill amount above you can obtain the certificate Automatically</value>
+  </data>
 </root>
-

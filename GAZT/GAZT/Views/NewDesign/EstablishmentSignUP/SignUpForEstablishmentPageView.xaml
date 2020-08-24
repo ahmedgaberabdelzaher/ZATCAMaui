@@ -37,7 +37,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,16,24,24">
-            <Grid>
+            <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -57,7 +57,7 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Row="0" Grid.Column="0">
-                        <custom:CustomLabel Text="ID Type" Style="{StaticResource CaptionLabelGrey}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="4">
 
@@ -70,7 +70,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="0" Grid.Column="1">
-                        <custom:CustomLabel Text="ID Number" Style="{StaticResource CaptionLabelGrey}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIDNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="4">
 
@@ -90,7 +90,8 @@
                         <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="Mobile Number "/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}"/>
+                                    <Span Text=" "/>
                                     <Span Text="xxxxxxx388"/>
                                 </FormattedString>
                             </Label.FormattedText>
@@ -245,7 +246,7 @@
 
                                     </Image>
                                 </Frame>
-                                    <custom:CustomLabel Text="Facility Information" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityInformation}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                             </StackLayout>
 
                             <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
@@ -283,7 +284,7 @@
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal">
-                                    <custom:CustomLabel Text="Capital" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Capital}" Style="{StaticResource ValueLabelGrey}"/>
                                     <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -332,7 +333,7 @@
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="CR Number" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZCRNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
 
@@ -370,7 +371,7 @@
                                 <StackLayout Padding="10" Spacing="10">
 
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Country" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCountry}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="Saudi Arabia" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
 
@@ -380,17 +381,17 @@
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Postal Code" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="12613" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="City" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5City}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="Riyadh" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Building Number" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="50" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
                                         </custom:CustomLabel>
                                     </StackLayout>
@@ -413,9 +414,9 @@
 
                                         </Image>
                                     </Frame>
-                                    <custom:CustomLabel Text="Contact Information" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
 
-                                    <custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelWhiteBold}" TextColor="{StaticResource Primary}" VerticalTextAlignment="Center"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelWhiteBold}" TextColor="{StaticResource Primary}" VerticalTextAlignment="Center"/>
 
                                 </StackLayout>
 
@@ -424,12 +425,12 @@
                                 <StackLayout Padding="10" Spacing="10">
 
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Mobile Number" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="0111231234" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Email" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text="zaed@gmail.com" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>
@@ -444,7 +445,7 @@
                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDNewPassword}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
 
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="New Password" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="4">
+                        <control:BorderlessEntry x:Name="NewPassword" Text="{Binding NewPassword}" TextChanged="NewPassword_TextChanged" IsPassword="True">
 
                         </control:BorderlessEntry>
 
@@ -456,12 +457,12 @@
                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
 
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="Repeat Password" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="4">
+                        <control:BorderlessEntry x:Name="ConfirmNewPassword" Text="{Binding ConfirmPassword}">
 
                         </control:BorderlessEntry>
 
                         <inputLayout:SfTextInputLayout.TrailingView>
-                            <Image Source="hidePassword.png"/>
+                            <Image Source="showPassword.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
 
@@ -499,7 +500,7 @@
 
 
                 <StackLayout Grid.Row="3" Padding="0,8,0,0" BackgroundColor="White">
-                    <buttons:SfButton x:Name="btnprimary" Text="Continue" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
+                    <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
                 </StackLayout>
                 
                 <StackLayout Grid.Row="1" Padding="0,0,0,8" BackgroundColor="White">
@@ -509,7 +510,7 @@
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
                 </StackLayout>
 
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" BackgroundColor="White">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20*"/>
                         <ColumnDefinition Width="60*"/>

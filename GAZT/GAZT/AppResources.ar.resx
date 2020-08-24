@@ -1659,7 +1659,7 @@
   <data name="ZVatRefundInformationSelectIBANIDNumber" xml:space="preserve">
     <value>الرجاء إختيار رقم الهوية المرتبطة برقم الحساب البنكي (الايبان) المختار</value>
   </data>
-    <data name="ZVatRefundInstructions" xml:space="preserve">
+  <data name="ZVatRefundInstructions" xml:space="preserve">
     <value>
             يرجى قراءة التعليمات أدناه قبل ملء نموذج الاسترداد:
 يرجى تعبئة المعلومات المطلوبة لكل خطوة
@@ -4559,7 +4559,7 @@
     <value>The Start Date and End Date lie in the same period</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
-    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -> تعديل التسجيل -> الايقاف (الايقاف النهائي للرقم المميز)- تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.- يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
+    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)- تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.- يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
   </data>
   <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
     <value>أوافق على التعليمات والشروط وإكمال الخطوات.</value>
@@ -4763,7 +4763,7 @@
   <data name="ZakatInstalmetSelectTypeZakat" xml:space="preserve">
     <value>الزكاة</value>
   </data>
-   <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
+  <data name="ZakatInstalmetSelectTypeIncomeTax" xml:space="preserve">
     <value>ضريبة الدخل</value>
   </data>
   <data name="ZakatInstalmetSelectTypeVAT" xml:space="preserve">
@@ -5416,7 +5416,7 @@
     <value>Download Invoice</value>
   </data>
   <data name="NDReturnOfZakat" xml:space="preserve">
-    <value>Return of Zakat</value>
+    <value>عوائد الزكاة</value>
   </data>
   <data name="NDSadadBillNoString1" xml:space="preserve">
     <value>SADAD Bill Number</value>
@@ -5478,32 +5478,100 @@
   <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
     <value>تمتقديمإقرارضريبةالقيمةالمضافةبنجاح</value>
   </data>
-   <data name="NDInvoiceDetail" xml:space="preserve">
-    <value>تفاصيل الفاتورة</value>
+  <data name="NDInvoiceDetail" xml:space="preserve">
+    <value />
   </data>
   <data name="NDSubmittedSuccessfully" xml:space="preserve">
-    <value>تم التقديم بنجاح</value>
+    <value />
   </data>
   <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">
-    <value>تم تقديم الإعتراض بنجاح</value>
+    <value />
   </data>
-   <data name="NDBilled" xml:space="preserve">
+  <data name="NDBilled" xml:space="preserve">
     <value>مفوتر</value>
   </data>
-   <data name="NDInProcessing" xml:space="preserve">
+  <data name="NDInProcessing" xml:space="preserve">
     <value>في طور المعالجة</value>
   </data>
-   <data name="ToBeApproved" xml:space="preserve">
+  <data name="ToBeApproved" xml:space="preserve">
     <value>إنتظار الموافقة</value>
   </data>
-  <data name="NDInvoiceDetail" xml:space="preserve">     <value>تفاصيل الفاتورة</value>   </data>   <data name="NDSubmittedSuccessfully" xml:space="preserve">     <value>تم التقديم بنجاح</value>   </data>   <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">     <value>تم تقديم الإعتراض بنجاح</value>   </data>    <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
+  <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
     <value>Total Number of Months</value>
   </data>
   <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
     <value>Total Monthly Instalments</value>
   </data>
-     <data name="VatInstalmentPlan" xml:space="preserve">
+  <data name="FORM5TaxpayerDetails" xml:space="preserve">
+    <value>تفاصيل المكلف</value>
+  </data>
+  <data name="VatInstalmentPlan" xml:space="preserve">
     <value>خطة التقسيط</value>
   </data>
+  <data name="NDAccountingType" xml:space="preserve">
+    <value>Accounting Type</value>
+  </data>
+  <data name="NDBranchLocation" xml:space="preserve">
+    <value>Branch Location</value>
+  </data>
+  <data name="NDBranchName" xml:space="preserve">
+    <value>Branch Name</value>
+  </data>
+  <data name="NDBranchType" xml:space="preserve">
+    <value>Branch Type</value>
+  </data>
+  <data name="NDComercialName" xml:space="preserve">
+    <value>Comercial Name</value>
+  </data>
+  <data name="NDCompany" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="NDEndOfFinancialYear" xml:space="preserve">
+    <value>End Of Financial Year</value>
+  </data>
+  <data name="NDEstablishmentAccount" xml:space="preserve">
+    <value>Establishment Account</value>
+  </data>
+  <data name="NDEstablishments" xml:space="preserve">
+    <value>Establishments</value>
+  </data>
+  <data name="NDFacilityAddress" xml:space="preserve">
+    <value>Facility Address</value>
+  </data>
+  <data name="NDFacilityBranches" xml:space="preserve">
+    <value>Facility Branches</value>
+  </data>
+  <data name="NDIndividuals" xml:space="preserve">
+    <value>Individuals</value>
+  </data>
+  <data name="NDLegalEntity" xml:space="preserve">
+    <value>Legal Entity</value>
+  </data>
+  <data name="NDMainActivity" xml:space="preserve">
+    <value>Main Activity</value>
+  </data>
+  <data name="NDOthers" xml:space="preserve">
+    <value>Others</value>
+  </data>
+  <data name="NDPOBox" xml:space="preserve">
+    <value>P.O Box</value>
+  </data>
+  <data name="NDStreetName" xml:space="preserve">
+    <value>Street Name</value>
+  </data>
+  <data name="NDSubActivity" xml:space="preserve">
+    <value>Sub Activity</value>
+  </data>
+  <data name="NDYouReceivedSMSWithTIN" xml:space="preserve">
+    <value>You have received an SMS with the TIN number. You can use the set password to Login in the future.</value>
+  </data>
+  <data name="NDYouSuccessfullyRegisteredGAZTServies" xml:space="preserve">
+    <value>You have successfully registered to GAZT Servies.</value>
+  </data>
+  <data name="FORM5SadadBillNo" xml:space="preserve">
+    <value>رقم فاتورة سداد:</value>
+  </data>
+  <data name="NDPayBillAmtObtainCertificateAutomaticall" xml:space="preserve">
+    <value>في حال سدادكم مبلغ الفاتورة أعلاه يمكنكم الحصول على الشهادة آلياً</value>
+  </data>
 </root>
-
