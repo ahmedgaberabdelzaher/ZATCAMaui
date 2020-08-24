@@ -72,8 +72,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async Task LoadZakatForm5_ACK_Data()
         {
-            SadadBillNumber = AknowledgementDataList[0].Sopbel.ToString();
+            if (AknowledgementDataList[0].Sopbel != "")
+            {
+                SadadBillNumber = AknowledgementDataList[0].Sopbel.ToString();
+            }else
+            {
+                SadadBillNumber = " - ";
+
+            }
+
+            if (AknowledgementDataList[0].Betrh != "")
+            {
+
             TotalZakatPayble = UtilityManager.GetCommaSeparatedAmount(AknowledgementDataList[0].Betrh.ToString());
+            }
+            else
+            {
+                TotalZakatPayble = " - ";
+
+            }
 
 
         }
