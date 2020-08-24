@@ -148,7 +148,7 @@
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel x:Name="addressLbL" Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource ValueLabelGrey}" WidthRequest="140"/>
-                                            <custom:CustomLabel Text="{Binding Address}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}"  StyleId="ValueLabel">
+                                            <custom:CustomLabel Text="{Binding Address}" Style="{StaticResource ValueLabelBlack}"  StyleId="ValueLabel" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                 <custom:CustomLabel.Triggers>
                                                     <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding Source={x:Reference addressLbL}, Path=Text}" Value="Address">
                                                         <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
