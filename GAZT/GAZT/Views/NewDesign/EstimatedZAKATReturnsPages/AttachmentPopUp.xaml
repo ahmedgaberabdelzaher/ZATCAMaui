@@ -45,7 +45,7 @@
                 <StackLayout>
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDWriteYourObjectionReason}" Style="{StaticResource CaptionLabelGrey}"/>
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
-                        <custom:GAZTBorderlessEntry Text="{Binding ObjectionReason}"  Style="{StaticResource InputTableEntryLayoutStyle}">
+                        <custom:GAZTBorderlessEntry x:Name="ObjectionReason" Text="{Binding ObjectionReason}"  Style="{StaticResource InputTableEntryLayoutStyle}" Focused="OnObjectionReasonFocused"  Unfocused="OnObjectionReasonUnFocused">
                         </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>
