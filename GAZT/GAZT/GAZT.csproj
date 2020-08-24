@@ -22,7 +22,6 @@
     <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.1.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.1.0.54" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.1.0.54" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.7.0" />
@@ -351,5 +350,10 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Syncfusion.SfRotator.XForms">
+      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\PCL\Syncfusion.SfRotator.XForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
