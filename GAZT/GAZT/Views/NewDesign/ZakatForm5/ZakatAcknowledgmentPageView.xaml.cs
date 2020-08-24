@@ -136,6 +136,11 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             }
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
         private void OnFinishedTapped(object sender, EventArgs e)
         {
             if (Navigation.NavigationStack.Count > 0)

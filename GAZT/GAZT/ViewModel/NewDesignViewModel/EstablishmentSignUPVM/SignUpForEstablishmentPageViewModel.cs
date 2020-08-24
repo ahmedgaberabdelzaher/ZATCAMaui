@@ -50,7 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #endregion
 
         #region Propetry
-        public string _PageTitle = "Establishment Account";
+        public string _PageTitle = AppResources.NDEstablishmentAccount;
         public string PageTitle
         {
             get
@@ -159,7 +159,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     break;
 
                 case EstablishmentSignUPTabEnum.VerificationCode:
-                    PageTitle = "Establishment Account";
+                    PageTitle = AppResources.NDEstablishmentAccount;
                     BodyText = AppResources.ZZZZCompletethebelowdetails;
                     currentTab = EstablishmentSignUPTabEnum.EstablishmentAccount;
                     break;

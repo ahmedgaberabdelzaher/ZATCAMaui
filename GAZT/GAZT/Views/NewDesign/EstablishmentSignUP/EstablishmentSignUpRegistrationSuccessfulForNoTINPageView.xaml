@@ -23,7 +23,7 @@
             <StackLayout Padding="24,0,24,16">
             <Image Source="Forget_ic_success.png" Margin="0,75,0,0"/>
             <custom:CustomLabel Margin="0,25,0,0" Text="{x:Static ResourceManager:AppResources.ZZZZRegistrationSuccessful}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalTextAlignment="Center"/>
-            <custom:CustomLabel Text="You have received an SMS with the TIN number. You can use the set password to Login in the future." Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White"/>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDYouReceivedSMSWithTIN}" Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White"/>
             </StackLayout>
             <yummy:PancakeView VerticalOptions="EndAndExpand" Style="{StaticResource CommonTopCurves}">
                 <StackLayout>
