@@ -66,7 +66,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
-                        <Label Grid.Row="0" Grid.Column="0"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
@@ -465,7 +465,7 @@
 
                         <Frame Grid.Row="1" Padding="0" Grid.ColumnSpan="3" HasShadow="False"  CornerRadius="12" BorderColor="Gray"  Margin="20,15,20,15">
 
-                            <SearchBar Text="{Binding InputData}" Margin="0" PropertyChanged="SearchItem_PropertyChanged"
+                            <SearchBar IsEnabled="False" Text="{Binding InputData}" Margin="0" PropertyChanged="SearchItem_PropertyChanged"
                            Placeholder="{x:Static ResourceManager:AppResources.ZakatSelectBillsPageViewPlaceholder}"
                            PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
                            HorizontalOptions="FillAndExpand"
