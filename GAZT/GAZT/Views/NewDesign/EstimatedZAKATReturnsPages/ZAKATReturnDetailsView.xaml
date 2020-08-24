@@ -765,9 +765,27 @@
 
                                         <!---->
                                     </StackLayout>
-                                    <StackLayout BackgroundColor="AliceBlue" Padding="10" BindingContext="{Binding ZakatReturnDetail}">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource BodyLabelBlack}"/>
-                                        <custom:CustomLabel Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}"/>
+                                    <StackLayout BackgroundColor="AliceBlue" Padding="10" BindingContext="{Binding ZakatReturnDetail}" Orientation="Horizontal">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                               
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="45*"/>
+
+                                                <ColumnDefinition Width="43*"/>
+                                                <ColumnDefinition Width="12*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource BodyLabelBlack}"/>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}"/>
+                                         <Image Grid.Row="0" Grid.Column="2" Source="ic_vat_info" HorizontalOptions="EndAndExpand" VerticalOptions="Start">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnEstimatedSalesForTheFiscalYearInfoClicked"/>
+                                                    </Image.GestureRecognizers>
+                                          </Image>
+                                            </Grid>
+                                        
                                     </StackLayout>
                                      <Grid>
                                             <Grid.RowDefinitions>
