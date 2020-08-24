@@ -2947,8 +2947,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 case ZakatForm5TabEnum.FinancialInformation: 
                     currentTab = ZakatForm5TabEnum.ZakatEstimation;
-                    NextText = AppResources.Form5Finish;
-                  //  OnNextButtonClick = 
+                    if (AknowledgementList.Any())
+                    {
+                        NextText = AppResources.ZZNext;
+                    }
+                    else {
+                        NextText = AppResources.Form5Finish;
+
+                    }
+                    //  OnNextButtonClick = 
                     break;
                 case ZakatForm5TabEnum.ZakatEstimation:
 

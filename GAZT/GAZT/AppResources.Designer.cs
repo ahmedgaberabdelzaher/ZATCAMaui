@@ -2613,6 +2613,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sadad Bill No:.
+        /// </summary>
+        public static string FORM5SadadBillNo {
+            get {
+                return ResourceManager.GetString("FORM5SadadBillNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales.
         /// </summary>
         public static string FORM5Sales {

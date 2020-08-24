@@ -5568,4 +5568,8 @@
   <data name="NDYouSuccessfullyRegisteredGAZTServies" xml:space="preserve">
     <value>You have successfully registered to GAZT Servies.</value>
   </data>
+
+  <data name="FORM5SadadBillNo" xml:space="preserve">
+    <value>رقم فاتورة سداد:</value>
+  </data>
 </root>
