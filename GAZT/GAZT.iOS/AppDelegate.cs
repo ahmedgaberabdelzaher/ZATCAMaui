@@ -22,6 +22,7 @@ using AppDynamics.Agent;
 using Syncfusion.SfRotator.XForms.iOS;
 using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.XForms.iOS.Buttons;
+using System;
 
 namespace GAZT.iOS
 {
@@ -113,6 +114,30 @@ namespace GAZT.iOS
 
             return base.FinishedLaunching(app, options);
         }
+
+        public override void OnActivated(UIApplication application)
+        {
+            MessagingCenter.Send("OnActivated", "OnActivated");
+            Console.WriteLine("OnActivated called, App is active.");
+        }
+        public override void WillEnterForeground(UIApplication application)
+        {
+            Console.WriteLine("App will enter foreground");
+        }
+        public override void OnResignActivation(UIApplication application)
+        {
+            Console.WriteLine("OnResignActivation called, App moving to inactive state.");
+        }
+        public override void DidEnterBackground(UIApplication application)
+        {
+            Console.WriteLine("App entering background state.");
+        }
+        // not guaranteed that this will run
+        public override void WillTerminate(UIApplication application)
+        {
+            Console.WriteLine("App is terminating.");
+        }
+
         //Code for PUSH notification
         //public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
         //{
