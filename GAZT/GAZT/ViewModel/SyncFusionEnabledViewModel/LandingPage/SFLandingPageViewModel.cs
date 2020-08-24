@@ -974,7 +974,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
                             }
                         }
                     }
-
                 }
 
                 eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png" });
@@ -996,9 +995,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
             {
                 Console.WriteLine(ex.Message);
             }
-
-
-
             try
             {
                 if (App.LoginDataRetrieved.VtReg == null)

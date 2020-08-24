@@ -73,6 +73,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     OnAppearing();
                 });
 
+                MessagingCenter.Subscribe<string>(this, "OnActivated", message => {
+                    Console.WriteLine("OnActivated");
+                    OnAppearing();
+                });
+
                 DependencyService.Get<IStatusBar>().HideStatusBar();
 
                 App.ArePreLoginLangCookiesSet = false;
@@ -86,6 +91,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             }
             // ParentContainer.RaiseChild(BusyIndicator);
         }
+
+        
 
         public void CheckFirstTimeorNot()
         {
@@ -151,6 +158,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             //InitializeComponent();
             // this.FlowDirection = FlowDirection.LeftToRight;
         }
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -159,6 +167,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             viewModel.Password = string.Empty;
             viewModel.Email = string.Empty;
         }
+
+
 
 
         protected async override void OnAppearing()
