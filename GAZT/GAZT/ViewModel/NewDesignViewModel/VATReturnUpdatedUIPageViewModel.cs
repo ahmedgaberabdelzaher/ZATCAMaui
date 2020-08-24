@@ -1996,7 +1996,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             onRefundClicked = new Xamarin.Forms.Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(VATDeclarationData));
+                if (IsDeclarationCheckedForSummary)
+                {
+                    SetDataForRefundPopup();
+                    PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(VATDeclarationData));
+                }
+                else
+                {
+
+                }
                 // _navigationService.NavigateTo(App.RefundAccountPopupPageView,VATDeclarationData);
                 //_navigationService.GoBack();
             });
@@ -2813,6 +2821,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
+                IsRefundButtonVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             //else if(viewModel.currentTab == VATReturnUpdatedUITabEnum.TaxpayerDetails)
@@ -2825,24 +2834,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
+                IsRefundButtonVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Sales)
             {
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
+                IsRefundButtonVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Purchase)
             {
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
+                IsRefundButtonVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.TotalVat)
             {
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
+                IsRefundButtonVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Summery)
@@ -2867,6 +2880,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         isBtnVisible = true;
                         IsMainButtonVisible = false;
+                        IsRefundButtonVisible = false;
                         CreditDetailsText = AppResources.ZZZZConfirmandGenerateSADADBill;
                     }
                 }
@@ -3073,6 +3087,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             else
             {
                 IsGetSadadNumberEnabled = false;
+            }
+        }
+
+        public void SetDataForRefundPopup()
+        {
+            CreateDataForPost();
+            if (IsYesChecked == true)
+            {
+                VATDeclarationData.d.Yesno = "X";
+            }
+            else
+            {
+                VATDeclarationData.d.Yesno = string.Empty;
+            }
+
+
+
+
+            if (IsDeclarationCheckedForSummary == true)
+            {
+                VATDeclarationData.d.DecFg = "1";
+            }
+            else
+            {
+                VATDeclarationData.d.DecFg = "0";
             }
         }
 
