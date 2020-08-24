@@ -102,10 +102,10 @@
                             UnfocusedColor="#B1B1B1"
                             OutlineCornerRadius="8"
                             FocusedColor="#005e4b" ErrorColor="#B00020"
-                            InputViewPadding="16,0,16,0" FlowDirection="LeftToRight">
+                            InputViewPadding="16,0,16,0" >
                                 <StackLayout Orientation="Horizontal"
-                                         Padding="0,8,0,8">
-                                    <OnPlatform x:TypeArguments="View">
+                                         Padding="0,8,0,8" >
+                                    <!--<OnPlatform x:TypeArguments="View">
                                         <On Platform="iOS">
                                             <custom:CustomLabel Text="+966"
                                                             VerticalTextAlignment="Center"
@@ -121,13 +121,13 @@
 
                                     <BoxView WidthRequest="1"
                                          HeightRequest="1"
-                                         BackgroundColor="{StaticResource NeutralLightGrey}"/>
+                                         BackgroundColor="{StaticResource NeutralLightGrey}"/>-->
 
-                                    <control:BorderlessEntry VerticalTextAlignment="Center"
+                                    <control:BorderlessEntry FlowDirection="LeftToRight" VerticalTextAlignment="Center"
                                                          Style="{StaticResource DefaultEntry}"
-                                                        IsReadOnly="True"
-                                                         Text="{Binding MobileNumber}"
-                                                         HorizontalOptions="FillAndExpand"/>
+                                                        IsReadOnly="True" 
+                                                         Text="{Binding MobileNumber}" HorizontalOptions="StartAndExpand"
+                                                         />
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>
 

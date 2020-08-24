@@ -1,11 +1,14 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,13 +23,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
     public partial class UpdateMobilePopUp : PopupPage
     {
         UpdateMobileViewModel viewModel;
-
+        ObservableCollection<InternationalMobileData> mobileData = null;
         public UpdateMobilePopUp()
         {
             InitializeComponent();
             viewModel = App.Locator.UpdateMobilePopUp;
             this.BindingContext = viewModel;
-
+            viewModel.CountryCode = "+966";
+            Label_InternationalnoCode.Text = "+966";
+            
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
@@ -181,11 +186,52 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             base.OnAppearing();
 
             // Show existing mobile
-            var resultedNumber = Regex.Match(App.TP.Mobile, UtilityManager.MobileNumberRegX);
-            viewModel.CurrentMobileNumberEntryText = resultedNumber.ToString();
+            //var resultedNumber = Regex.Match(App.TP.Mobile, UtilityManager.MobileNumberRegX);
+            //viewModel.CurrentMobileNumberEntryText = resultedNumber.ToString();
+            //var result = "+" + App.TP.Mobile.Remove(0, 2);
+            //viewModel.CurrentMobileNumberEntryText = result.ToString();
 
+        // viewModel.CurrentMobileNumberEntryText = App.TP.Mobile;
+            //if (App.TP.Mobile.Length < 12)
+            //{
+            //    viewModel.CurrentMobileNumberEntryText="+966"+ App.TP.Mobile
+
+            //}
+            if (App.TP.Mobile.Length < 12)
+            {
+                viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
+            }
+            else
+            {
+
+                viewModel.CurrentMobileNumberEntryText = "+" + App.TP.Mobile.Remove(0, 2);
+
+            }
             //IsLoading = false;
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
+            {
+                //if (App.IsArabic)
+                //{
+                //    ArIntnlCodes.Text = arg;
+                //}
+                //else
+                //{
+                //    IntnlCodes.Text = arg;
+                //}
+                Label_InternationalnoCode.Text = arg;
+                viewModel.CountryCode = arg;
+
+                //viewModel.TxtCountryCode = arg;
+            });
             RefreshControlsData();
+            try
+            {
+                mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         protected override void OnDisappearing()
@@ -261,6 +307,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 popUp.Message = Message.ToString();
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
         }
     }
     }

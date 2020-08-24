@@ -88,7 +88,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             TaxPayerProfile TPAPIResponse = await viewModel.GetTPProfileData();
             System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
 
-            if(TPAPIResponse != null)
+            if (TPAPIResponse != null)
             {
                 // * Update
                 App.TP = TPAPIResponse;
@@ -96,16 +96,44 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
                 viewModel.TPProfileNameLbl = TPAPIResponse.Name;
                 viewModel.TINLabel = TPAPIResponse.Tin;
+                String lang = "E";
+                if (App.IsArabic == true)
+                    lang = "A";
+                if (TPAPIResponse != null && TPAPIResponse.Tin != null)
+                {
+                    //try
+                    //{
+                    //    String mobilenumber = await WebServiceManager.GAZTGetTaxPayerProfile(TPAPIResponse.Tin, lang);
+                    //    // PopToRootPage();
+                    //    if (mobilenumber != null)
+                    //    {
+                    //        string MobileNo = "+" + mobilenumber.Substring(mobilenumber.Length - 12);
+                    //        viewModel.MobileNumber = MobileNo;
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{ 
 
-                var result = Regex.Match(TPAPIResponse.Mobile, @"(.{9})\s*$");
-                viewModel.MobileNumber = result.ToString();
+                    //}
+                    if (TPAPIResponse.Mobile.Length < 12)
+                    {
+                        viewModel.MobileNumber = "+966" + TPAPIResponse.Mobile.Remove(0, 2);
+                    }
+                    else
+                    {
+                       
+                            viewModel.MobileNumber = "+" + TPAPIResponse.Mobile.Remove(0, 2);
 
-                viewModel.EmailEntry = TPAPIResponse.Email;
+                    }
+
+                    //viewModel.MobileNumber = TPAPIResponse.Mobile;
+                }
+                        viewModel.EmailEntry = TPAPIResponse.Email;
                 viewModel.PasswordEntry = "********";
             }
             await Task.Run(() =>
             {
-               viewModel.IsLoading = true;
+                viewModel.IsLoading = true;
             });
             await viewModel.GetTinStatusDATA();
             await Task.Run(() =>

@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:EGAZT.CustomControl"
+                    xmlns:FontImage="clr-namespace:MVP.FontIcons"
                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
@@ -14,7 +15,7 @@
                  xmlns:custom1="clr-namespace:GAZT.CustomControl"
                  xmlns:ResourceManager="clr-namespace:EGAZT"
                  xmlns:custom="clr-namespace:GAZT"
-                             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+                          
                  x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.UpdateMobilePopUp">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -60,14 +61,14 @@
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPUpdateMobile}" Style="{StaticResource SectionTitleBlackBold}"/>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZCurrentMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
 
-                            <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand"
+                            <inputLayout:SfTextInputLayout  HorizontalOptions="FillAndExpand"
                                                         ContainerType="Outlined"
                                                         LeadingViewPosition="Inside"
                                                         UnfocusedColor="#B1B1B1"
                                                         OutlineCornerRadius="8"
                                                         FocusedColor="#005e4b"
                                                         ErrorColor="#B00020">
-                                <inputLayout:SfTextInputLayout.LeadingView>
+                                <!--<inputLayout:SfTextInputLayout.LeadingView>
 
                                     <Label FlowDirection="LeftToRight"
                                         Margin="0"
@@ -79,17 +80,17 @@
                                         HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center">
                                     </Label>
-                                </inputLayout:SfTextInputLayout.LeadingView>
-                                <control:BorderlessEntry    x:Name="Mobile_Entry"
+                                </inputLayout:SfTextInputLayout.LeadingView>-->
+                                <control:BorderlessEntry  FlowDirection="LeftToRight"  x:Name="Mobile_Entry"
                                                         Text="{Binding CurrentMobileNumberEntryText}"
                                                         FontSize="Medium"
-                                                        HorizontalOptions="FillAndExpand"
+                                                        
                                                         Keyboard="Telephone"
-                                                        MaxLength="9" 
-                                                        IsReadOnly="True" TextColor="{StaticResource NeutralBlack}" >
-                                    <Entry.Behaviors>
+                                              
+                                                        IsReadOnly="True" TextColor="{StaticResource NeutralBlack}" HorizontalOptions="StartAndExpand">
+                                    <!--<Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
-                                    </Entry.Behaviors>
+                                    </Entry.Behaviors>-->
                                 </control:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
@@ -104,23 +105,41 @@
                                                         FocusedColor="#005e4b"
                                                         ErrorColor="#B00020" >
                                 <inputLayout:SfTextInputLayout.LeadingView>
-
-                                    <Label FlowDirection="LeftToRight"
-                                        Margin="0"
-                                        Text="+966  |"
-                                        WidthRequest="80"
+                                    <!--<StackLayout>-->
+                                        <!--<Image HorizontalOptions="StartAndExpand" Rotation="270" >
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="Gray" Size="18"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Image.GestureRecognizers>
+                                        </Image>-->
+                                        <custom:CustomLabel FlowDirection="LeftToRight"
+                                       x:Name="Label_InternationalnoCode"
+                                                        Margin="0"
+                                        
+                                        WidthRequest="120"
                                         TextColor="Gray"
                                         FontSize="Medium"
                                         VerticalTextAlignment="Center"
                                         HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center">
-                                    </Label>
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
+                                        <!--<StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>-->
+                                    
                                 </inputLayout:SfTextInputLayout.LeadingView>
                                 <control:BorderlessEntry  x:Name="Mobile_entry"  Text="{Binding NewMobileNumberEntryText}"
                                                         FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
                                                         Keyboard="Telephone" Unfocused="Mobile_entry_Unfocused" TextColor="{StaticResource NeutralBlack}"
-                                                        MaxLength="9"
+                                                        MaxLength="{Binding MaxDigids}"
                                                         >
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
