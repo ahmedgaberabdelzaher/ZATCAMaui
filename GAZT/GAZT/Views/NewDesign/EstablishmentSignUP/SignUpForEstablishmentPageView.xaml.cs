@@ -44,5 +44,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
 
         }
+
+        private void OnNewPasswordTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void OnConfirmNewPasswordTapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }

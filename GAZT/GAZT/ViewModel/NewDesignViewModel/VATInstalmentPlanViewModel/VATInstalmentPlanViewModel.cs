@@ -56,6 +56,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("VATDueAmount");
             }
         }
+        private string _vATReferanceNumber = "";
+        public string VATReferanceNumber
+        {
+            get
+            {
+                return _vATReferanceNumber;
+            }
+            set
+            {
+                _vATReferanceNumber = value;
+                RaisePropertyChanged("VATReferanceNumber");
+            }
+        }
         private string _vATPenalityAmount = "0.00";
         public string VATPenalityAmount
         {
@@ -1694,13 +1707,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
         }
+
+
         public async Task EnableSucessScreenAsync()
         {
 
-            EnableSlectionView();
-            
 
-            await Application.Current.MainPage.Navigation.PushAsync(new VatInstalmentPlanSuccessPage());
+
+            VatInstalments = await SubmitClicked();
+
+            if (VatInstalments != null && VatInstalments.d != null)
+            {
+
+                EnableSlectionView();
+                VATReferanceNumber = VatInstalments.d.Fbnumz;
+
+                await Application.Current.MainPage.Navigation.PushAsync(new VatInstalmentPlanSuccessPage());
+            }
+
+               
 
 
 
@@ -1926,8 +1951,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-
-                AttachmentsListViewData = new ObservableCollection<Attachment>();
+                if(AttachmentsListViewData == null)
+                {
+                    AttachmentsListViewData = new ObservableCollection<Attachment>();
+                }
+               
                 EnableAttachmentsView();
 
             }
@@ -1956,6 +1984,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
+                VatInstalments.d.Operationz = "01";
+                VatInstalments.d.Decflg = "1";
+                //VatInstalments = await SubmitClicked();
+
                 showTermsPopUp();
                 //Display Success Screen
                 //EnableSucessScreenAsync();
@@ -2006,7 +2038,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(VatInstalments.d.AttachmentSet.results, Models.ZakatInstalationModels.WhichAttachment.VATInstalment, VatInstalments.d.ReturnIdz));
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(AttachmentsListViewData.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATInstalment, VatInstalments.d.ReturnIdz));
 
             }
             catch (GAZTUnlockAccountException ex)
@@ -2084,14 +2116,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         #region Attachments View
         public void PopulateAttachments(List<Attachment> attachments)
         {
-
-            AttachmentsListViewData = new ObservableCollection<Attachment>();
-
+            var attachmentsListViewData = new ObservableCollection<Attachment>();
             foreach (Attachment attachemnt in attachments)
             {
-                AttachmentsListViewData.Add(attachemnt);
+                attachmentsListViewData.Add(attachemnt);
             }
-
+            AttachmentsListViewData = attachmentsListViewData;
         }
 
         #endregion
@@ -2327,8 +2357,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 request.d.Totliablityamt = VatInstalments.d.Totliablityamt.Replace(",", "");
             }
 
-           
 
+       
 
             request.d.TxnTpz = VatInstalments.d.TxnTpz;
             request.d.UserTypz = VatInstalments.d.UserTypz;

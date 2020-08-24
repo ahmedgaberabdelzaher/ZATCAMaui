@@ -52,8 +52,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
 
 
-            viewModel.FromDate = "DD/MM/YYYY";
-            viewModel.ToDate = "DD/MM/YYYY";
+            //viewModel.FromDate = "DD/MM/YYYY";
+           // viewModel.ToDate = "DD/MM/YYYY";
       
 
             Task.Run(async () =>
@@ -92,6 +92,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
                 viewModel.IsInstructionChecked = arg;
                 //Console.WriteLine(arg);
@@ -110,6 +112,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.ReasonTitle = arg.SelectedValue;
+                        if(viewModel.ReasonTitle.Contains("Others"))
+                        {
+                          //  viewModel.SelectedOthersOption = true;
+                        }
                     }
                 }
                 else
@@ -121,6 +127,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.ReasonTitle = arg.SelectedValue;
+                        if (viewModel.ReasonTitle.Contains("Others"))
+                        {
+                           // viewModel.SelectedOthersOption = true;
+                        }
                     }
                 }
 
@@ -132,13 +142,15 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 
                 if (App.IsArabic)
                 {
-                    if (arg.PickerTitle.Contains("StartDateType"))
+                    if (arg.PickerTitle.Contains("Select Start Date"))
                     {
-                        viewModel.FromDate = arg.SelectedValue;
+                        viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
+                    
+
                     }
-                    else if (arg.PickerTitle.Contains("EndDateType"))
+                    else if (arg.PickerTitle.Contains("Select End Date"))
                     {
-                        viewModel.ToDate = arg.SelectedValue;
+                        viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
                     }
                     else
@@ -148,22 +160,24 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
                 else
                 {
-                    if (arg.PickerTitle.Contains("StartDateType"))
+                    if (arg.PickerTitle.Contains("Select Start Date"))
                     {
-                        viewModel.FromDate = arg.SelectedValue;
+                        viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
-                    else if(arg.PickerTitle.Contains("EndDateType")) 
+                    else if(arg.PickerTitle.Contains("Select End Date")) 
                     {
-                        viewModel.ToDate = arg.SelectedValue;
+                        viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
                     }else
                     {
                         viewModel.DOB = arg.SelectedValue;
                     }
                 }
-
-                if (!viewModel.FromDate.Contains( "DD/MM/YYYY") && !viewModel.ToDate.Contains
-                    ("DD/MM/YYYY"))
+                if (viewModel.FromDate < viewModel.LastIcrDate)
+                {
+                    viewModel._dialogService.ShowMessage( AppResources.VatDeregSuspendedDateMismatchException, "Information");
+                }
+                else if (viewModel.FromDate != DateTime.Now && viewModel.ToDate !=DateTime.Now)
                 {
                     DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
                     DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
@@ -174,7 +188,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         if (obj.d.dateResults[0].SuspDtfrom != null)
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
-                            viewModel.SuspendedStartDate = date;//ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.SuspendedStartDate = date;
 
 
                         }
@@ -182,21 +196,21 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
 
-                            viewModel.SuspendedEndDate = date;//ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.SuspendedEndDate = date;
 
                         }
                         if (obj.d.dateResults[0].NextDtfrom != null)
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
 
-                            viewModel.NextFilingStartDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.NextFilingStartDate = date;
 
                         }
                         if (obj.d.dateResults[0].NextDtfrom != null)
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
 
-                            viewModel.NextFilingEndDate = date;// ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            viewModel.NextFilingEndDate = date;
                         }
                         if (obj.d.dateResults[0].Duedate!= null)
                         {
@@ -369,7 +383,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "StartDateType";
+            genericPickerModel.PickerTitle = "Select Start Date";
             genericPickerModel.PickerId = "StartDateTypePicker";
             try
             {
@@ -394,7 +408,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "EndDateType";
+            genericPickerModel.PickerTitle = "Select End Date";
             genericPickerModel.PickerId = "EndDateTypePicker";
             try
             {
@@ -419,7 +433,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "DOBDateType";
+            genericPickerModel.PickerTitle = "Select DOB";
             genericPickerModel.PickerId = "DOBDateTypePicker";
             try
             {
@@ -706,7 +720,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         else
                         {
                             //  viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                            // viewModel.DOB = vATSignUpData.d.Birthdt10;
+                            //  viewModel.DOB = vATSignUpData.d.Birthdt10;
                        
                            // viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
                           

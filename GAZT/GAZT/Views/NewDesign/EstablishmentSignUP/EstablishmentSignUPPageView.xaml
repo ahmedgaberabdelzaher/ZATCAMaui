@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.EstablishmentSignUPPageView">
@@ -44,14 +45,14 @@
                         <Image Source="FP_unselected_tile.png"/>
                         <StackLayout VerticalOptions="End" Padding="15,0,16,16">
                         <Image HorizontalOptions="Start" Source="ic_company.png"/>
-                        <custom:CustomLabel Text="Company" Style="{StaticResource ValueLabelBlackMedium}"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDCompany}" Style="{StaticResource ValueLabelBlackMedium}"/>
                         </StackLayout>
                     </Grid>
                     <Grid Grid.Row="0" Grid.Column="1">
                         <Image Source="FP_selected_tile.png"/>
                         <StackLayout VerticalOptions="End" Padding="15,0,16,16">
                             <Image HorizontalOptions="Start" Source="establishments_White.png"/>
-                            <custom:CustomLabel Text="Establishments" Style="{StaticResource ValueLabelWhiteMedium}"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEstablishments}" Style="{StaticResource ValueLabelWhiteMedium}"/>
                         </StackLayout>
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnEstablishmentTapped"/>
@@ -63,14 +64,14 @@
                         <Image Source="FP_unselected_tile.png"/>
                         <StackLayout VerticalOptions="End" Padding="15,0,16,16">
                             <Image HorizontalOptions="Start" Source="individual_32.png"/>
-                            <custom:CustomLabel Text="Individuals" Style="{StaticResource ValueLabelBlackMedium}"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIndividuals}" Style="{StaticResource ValueLabelBlackMedium}"/>
                         </StackLayout>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Image Source="FP_unselected_tile.png"/>
                         <StackLayout VerticalOptions="End" Padding="15,0,16,16">
                             <Image HorizontalOptions="Start" Source="other.png"/>
-                            <custom:CustomLabel Text="Others" Style="{StaticResource ValueLabelBlackMedium}"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDOthers}" Style="{StaticResource ValueLabelBlackMedium}"/>
                         </StackLayout>
                     </Grid>
                 </Grid>

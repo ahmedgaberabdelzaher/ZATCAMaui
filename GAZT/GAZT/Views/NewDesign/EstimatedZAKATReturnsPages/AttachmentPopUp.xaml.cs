@@ -152,5 +152,14 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
+        private void OnObjectionReasonFocused(object sender, FocusEventArgs e)
+        {
+            
+        }
+        private async void OnObjectionReasonUnFocused(object sender, FocusEventArgs e)
+        {
+            //await PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+           //    await PopupNavigation.Instance.PopAsync();
+        }
     }
 }
