@@ -66,6 +66,22 @@ namespace GAZT.Droid
             Distribute.SetEnabledForDebuggableBuild(true);
             LoadApplication(app);
         }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+        }
+
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
