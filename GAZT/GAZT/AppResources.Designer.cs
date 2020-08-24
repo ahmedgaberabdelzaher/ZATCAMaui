@@ -12944,15 +12944,16 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to New Password can’t be same as Old Password..
         /// </summary>
-        public static string ZZThenewpasswordmustnotmatchtheexistingpassword {
         public static string VATRefundRequest {
             get {
                 return ResourceManager.GetString("VATRefundRequest", resourceCulture);
             }
         }
-        
-        public static string ContractObjectNo {
-            get {
+
+        public static string ZZThenewpasswordmustnotmatchtheexistingpassword
+        {
+            get
+            {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
             }
         }
