@@ -30,7 +30,7 @@
                     <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
                         <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
 
-                            <Label Text="TIN Number" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Start"/>
+                            <Label Text="{x:Static ResourceManager:AppResources.TINS}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Start"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                 <Label Text="1234 5678 9012 3456" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
                                 <Image Source="zakat_copy.png">
