@@ -34,6 +34,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
+            if (App.IsArabic)
+            {
+                Mobile_Entry.HorizontalTextAlignment = TextAlignment.End;
+            }
+            else
+            {
+                Mobile_Entry.HorizontalTextAlignment = TextAlignment.Start;
+            }
         }
 
         // * Forgot password : OTP Verification :

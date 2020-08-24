@@ -81,17 +81,17 @@
                                         HorizontalTextAlignment="Center">
                                     </Label>
                                 </inputLayout:SfTextInputLayout.LeadingView>-->
-                                <control:BorderlessEntry  FlowDirection="LeftToRight"  x:Name="Mobile_Entry"
+                                <Entry  FlowDirection="LeftToRight"  x:Name="Mobile_Entry"
                                                         Text="{Binding CurrentMobileNumberEntryText}"
                                                         FontSize="Medium"
-                                                        
+                                                        VerticalTextAlignment="Center"
                                                         Keyboard="Telephone"
                                               
-                                                        IsReadOnly="True" TextColor="{StaticResource NeutralBlack}" HorizontalOptions="StartAndExpand">
+                                                        IsReadOnly="True" TextColor="{StaticResource NeutralBlack}" HorizontalOptions="FillAndExpand">
                                     <!--<Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>-->
-                                </control:BorderlessEntry>
+                                </Entry>
                             </inputLayout:SfTextInputLayout>
 
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
