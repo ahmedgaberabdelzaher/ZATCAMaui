@@ -132,13 +132,13 @@
                                     <!--<StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                         </StackLayout.GestureRecognizers>
-                                    </StackLayout>-->
+                                    </StackLayout> Unfocused="Mobile_entry_Unfocused"-->
 
                                 </inputLayout:SfTextInputLayout.LeadingView>
                                 <control:BorderlessEntry  x:Name="Mobile_entry"  Text="{Binding NewMobileNumberEntryText}"
                                                         FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
-                                                        Keyboard="Telephone" Unfocused="Mobile_entry_Unfocused" TextColor="{StaticResource NeutralBlack}"
+                                                        Keyboard="Telephone"  TextColor="{StaticResource NeutralBlack}"
                                                         MaxLength="{Binding MaxDigids}"
                                                         >
                                     <Entry.Behaviors>
