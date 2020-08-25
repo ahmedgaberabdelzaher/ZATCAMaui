@@ -33,9 +33,9 @@
                 <buttons:SfButton x:Name="btnDashboard" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.NDTaxEvasion}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       Clicked="btnDashboard_Clicked"  Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource PrimaryButtonStyle}"  />
-                <!--<buttons:SfButton x:Name="btnDashboard"  Text="{x:Static local:AppResources.NDBacktoLoginnew}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" TextColor="White"  />-->
+            <buttons:SfButton x:Name="btnReportList"  Text="{x:Static local:AppResources.NDTaxEvasion}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                                      HeightRequest="46" Clicked="OnGotoReportPageClicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                                      Style="{StaticResource PrimaryButtonStyle}"  BackgroundColor="Transparent" TextColor="White"  />
                 <!--TextColor="#d49504"-->
             </StackLayout>
         <!--</ScrollView>-->

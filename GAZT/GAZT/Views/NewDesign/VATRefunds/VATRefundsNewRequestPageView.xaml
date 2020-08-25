@@ -236,7 +236,7 @@
                     <StackLayout Margin="8">
                         <StackLayout Orientation="Horizontal" Spacing="0">
                             <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource ValueLabelBlack}"/>
                         </StackLayout>
                         <Label Text="{x:Static ResourceManager:AppResources.ZVatConfirmMessage}" HorizontalOptions="StartAndExpand"
@@ -248,7 +248,7 @@
                                     <StackLayout Margin="8">
                                         <StackLayout Orientation="Horizontal" Spacing="0">
                                             <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
+                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource ValueLabelBlack}"/>
                                         </StackLayout>
                                         <Label Text="{x:Static ResourceManager:AppResources.ZZIacknowledgethattheabovebankaccount}" HorizontalOptions="StartAndExpand"

@@ -30,29 +30,44 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel = App.Locator.UpdateMobilePopUp;
             this.BindingContext = viewModel;
             viewModel.CountryCode = "+966";
+            Label_InternationalnoCode.StyleId = "LTRLabelText";
             Label_InternationalnoCode.Text = "+966";
             
+
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
+            if (App.IsArabic)
+            {
+                Mobile_Entry.HorizontalTextAlignment = TextAlignment.End;
+            }
+            else
+            {
+                Mobile_Entry.HorizontalTextAlignment = TextAlignment.Start;
+            }
         }
 
         // * Forgot password : OTP Verification :
         void OtpFirstEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            if (viewModel.OTPFirstDigit.Length > 0) { OTPSecondEntry.Focus(); }
+            if (viewModel.OTPFirstDigit.Length == 1) { OTPSecondEntry.Focus(); }
         }
 
         void OtpSecondEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            if (viewModel.OTPSecondDigit.Length > 0) { OTPThirdEntry.Focus(); }
+            if (viewModel.OTPSecondDigit.Length == 1) { OTPThirdEntry.Focus(); }
+            else if (viewModel.OTPSecondDigit.Length == 0) { OTPFirstEntry.Focus(); }
         }
 
         void OtpThirdEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            if (viewModel.OTPThirdDigit.Length > 0) { OTPFourthEntry.Focus(); }
+            if (viewModel.OTPThirdDigit.Length == 1) { OTPFourthEntry.Focus(); }
+            else if (viewModel.OTPThirdDigit.Length == 0) { OTPSecondEntry.Focus(); }
         }
 
-        void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e) { }
+        void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPFourthDigit.Length == 0) { OTPThirdEntry.Focus(); }
+        }
 
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {

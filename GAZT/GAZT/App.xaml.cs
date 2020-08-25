@@ -65,7 +65,7 @@ namespace EGAZT
         public static string TaxpayerCorrespondancePageView = "TaxpayerCorrespondancePageView";
         public static string TaxpayerCorrespondanceDetailPageView = "TaxpayerCorrespondanceDetailPageView";
         public static string NewZakatObjectionPageView = "NewZakatObjectionPageView";
-
+        public static string DashboardAnonymousMenuPageView = "DashboardAnonymousMenuPageView";
         //*EST
         public static string ActivityItemPage = nameof(ActivityItemPage);
         public static string EstablishmentRegistrationPage = nameof(EstablishmentRegistrationPage);
@@ -82,7 +82,7 @@ namespace EGAZT
         public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
         public static string RefundAccountPopupPageView = "RefundAccountPopupPageView";
         public static string NewAccountPopPageView = "NewAccountPopPageView";
-
+        public static string VATCreditCarriedForwardPopUpPageView = "VATCreditCarriedForwardPopUpPageView";
 
         // * Taxpayer Profile
         public static string TaxpayerProfilePageView = "TaxpayerProfilePageView";

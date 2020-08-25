@@ -50,11 +50,11 @@
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleWhiteBold}"
                                     FontSize="24"/>
-                    <custom:CustomLabel Margin="0,-15,0,0"
+                    <!--<custom:CustomLabel Margin="0,-15,0,0"
                                     Text="{x:Static ResourceManager:AppResources.TPIndividualSaudi}"
                                     Style="{StaticResource BodyLabelBlack}"
                                     HorizontalOptions="StartAndExpand"
-                                    TextColor="White"/>
+                                    TextColor="White"/>-->
                 </StackLayout>
                 <ScrollView Grid.Row="2">
                     <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,32,24,16">
@@ -104,7 +104,7 @@
                             FocusedColor="#005e4b" ErrorColor="#B00020"
                             InputViewPadding="16,0,16,0" >
                                 <StackLayout Orientation="Horizontal"
-                                         Padding="0,8,0,8"  HorizontalOptions="StartAndExpand">
+                                         Padding="0,8,0,8" >
                                     <!--<OnPlatform x:TypeArguments="View">
                                         <On Platform="iOS">
                                             <custom:CustomLabel Text="+966"
@@ -123,10 +123,10 @@
                                          HeightRequest="1"
                                          BackgroundColor="{StaticResource NeutralLightGrey}"/>-->
 
-                                    <control:BorderlessEntry FlowDirection="LeftToRight" VerticalTextAlignment="Center"
+                                    <Entry x:Name="MobileNumberCodeEntry" FlowDirection="LeftToRight" VerticalTextAlignment="Center"
                                                          Style="{StaticResource DefaultEntry}"
-                                                        IsReadOnly="True" 
-                                                         Text="{Binding MobileNumber}" HorizontalOptions="StartAndExpand"
+                                                         IsReadOnly="True" TextColor="Black" HorizontalOptions="FillAndExpand"
+                                                         Text="{Binding MobileNumber}" 
                                                          />
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>

@@ -35,10 +35,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             if (App.IsArabic)
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+                MobileNumberCodeEntry.HorizontalTextAlignment = TextAlignment.End;
             }
             else
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+                MobileNumberCodeEntry.HorizontalTextAlignment = TextAlignment.Start;
             }
         }
         private void OnMobileEditTapped(object sender, EventArgs e)
