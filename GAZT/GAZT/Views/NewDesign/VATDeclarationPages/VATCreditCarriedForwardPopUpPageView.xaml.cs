@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using EGAZT.ViewModel.NewDesignViewModel;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATCreditCarriedForwardPopUpPageView : PopupPage
     {
+        VATCreditCarriedForwardPopUpPageViewModel viewModel;
         public VATCreditCarriedForwardPopUpPageView()
         {
             InitializeComponent();
+            viewModel = App.Locator.VATCreditCarriedForwardPopUpPageView;
+            BindingContext = viewModel;
         }
 
         private void OnCloseTapped(object sender, EventArgs e)
