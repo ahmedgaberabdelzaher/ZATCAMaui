@@ -4563,6 +4563,15 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregReasonTitle" xml:space="preserve">
     <value>Reason</value>
   </data>
+   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+    <value>Select Start Date</value>
+  </data>
+      <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
+    <value>Select End Date</value>
+  </data>
+      <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+    <value>Select DOB</value>
+  </data>
   <data name="VatDeregDocumentTitle" xml:space="preserve">
     <value>Document Type</value>
   </data>

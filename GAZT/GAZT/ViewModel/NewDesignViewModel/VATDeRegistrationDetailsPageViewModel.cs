@@ -947,9 +947,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public async Task onPageLoad()
         {
-            GetLastICRDate();
             try
             {
+                GetLastICRDate();
+
                 await Task.Run(() =>
                 {
                     IsLoading = true;
