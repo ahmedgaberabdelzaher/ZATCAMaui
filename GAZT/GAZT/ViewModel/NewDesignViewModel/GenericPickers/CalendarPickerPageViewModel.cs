@@ -43,17 +43,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel
             }
         }
 
-        private string _pickerTitle { get; set; }
-        public string PickerTitle
+        private string _datePickerTitle { get; set; }
+        public string DatePickerTitle
         {
             get
             {
-                return _pickerTitle;
+                return _datePickerTitle;
             }
             set
             {
-                _pickerTitle = value;
-                RaisePropertyChanged("PickerTitle");
+                _datePickerTitle = value;
+                RaisePropertyChanged("DatePickerTitle");
             }
         }
         private ObservableCollection<object> _selectedDate;

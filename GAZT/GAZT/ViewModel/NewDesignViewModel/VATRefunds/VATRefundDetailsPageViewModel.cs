@@ -206,6 +206,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsListResultModel = vATRefundsModel;
             VATRefundsHeaderSet = VatRefundsListResultModel.VatRefHeaderSet.Results[0];
             VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet.Results);
+            VATRefundsHeaderSet.RequestedAmt = VATRefundsHeaderSet.RequestedAmt.Replace("-", string.Empty);
 
             try
             {
@@ -303,6 +304,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 Console.WriteLine(ex.Message);
             }
         }
+
+        //private void ConvertAllAmountsToCommaSeperated()
+        //{
+        //    VATRefundsHeaderSet.RequestedAmt = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.RequestedAmt);
+        //    VATRefundsHeaderSet.ReassessAmt = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.ReassessAmt);
+        //    VATRefundsHeaderSet.OffsetTot = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.OffsetTot);
+        //    VATRefundsHeaderSet.NetCreditBal = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.OffsetTot);
+
+        //}
+
+        //private void RemoveCommaSeperatedValues()
+        //{
+
+        //}
 
         public void SelectedIbanTypeFromList()
         {

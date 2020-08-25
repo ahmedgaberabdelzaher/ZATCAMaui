@@ -31,14 +31,16 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             viewModel = App.Locator.VATDeregistrationDetailsPage;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            this.FlowDirection = FlowDirection.LeftToRight;
+            ChangeAeroIcon();
+
+            SetLTR();
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 viewModel.PickerModel = arg;
                 Console.WriteLine(arg);
                 OnAppearing();
             });
-         
+
 
             MessagingCenter.Subscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) => {
                 viewModel.DatePickerModel = arg;
@@ -53,8 +55,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
             //viewModel.FromDate = "DD/MM/YYYY";
-           // viewModel.ToDate = "DD/MM/YYYY";
-      
+            // viewModel.ToDate = "DD/MM/YYYY";
+
 
             Task.Run(async () =>
             {
@@ -64,6 +66,20 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
 
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+
+            }
         }
         public async Task GetVatDeRegistrationData()
         {
@@ -93,6 +109,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
             base.OnAppearing();
 
+            ChangeArrowDirection();
+
 
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
                 viewModel.IsInstructionChecked = arg;
@@ -100,7 +118,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
-               
+
                 if (App.IsArabic)
                 {
                     if (arg.PickerTitle.Contains("IDType"))
@@ -112,9 +130,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.ReasonTitle = arg.SelectedValue;
-                        if(viewModel.ReasonTitle.Contains("Others"))
+                        if (viewModel.ReasonTitle.Contains("Others"))
                         {
-                          //  viewModel.SelectedOthersOption = true;
+                            //  viewModel.SelectedOthersOption = true;
                         }
                     }
                 }
@@ -129,7 +147,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.ReasonTitle = arg.SelectedValue;
                         if (viewModel.ReasonTitle.Contains("Others"))
                         {
-                           // viewModel.SelectedOthersOption = true;
+                            viewModel.IsOthersEditorVisible = !viewModel.IsOthersEditorVisible;
+                        }
+                        else
+                        {
+                            viewModel.IsOthersEditorVisible = false;
                         }
                     }
                 }
@@ -139,16 +161,16 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
             {
-                
+
                 if (App.IsArabic)
                 {
-                    if (arg.PickerTitle.Contains("Select Start Date"))
+                    if (arg.DatePickerTitle.Contains("Select Start Date"))
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
-                    
+
 
                     }
-                    else if (arg.PickerTitle.Contains("Select End Date"))
+                    else if (arg.DatePickerTitle.Contains("Select End Date"))
                     {
                         viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
@@ -160,24 +182,25 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
                 else
                 {
-                    if (arg.PickerTitle.Contains("Select Start Date"))
+                    if (arg.DatePickerTitle.Contains("Select Start Date"))
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
-                    else if(arg.PickerTitle.Contains("Select End Date")) 
+                    else if (arg.DatePickerTitle.Contains("Select End Date"))
                     {
                         viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
-                    }else
+                    }
+                    else
                     {
                         viewModel.DOB = arg.SelectedValue;
                     }
                 }
                 if (viewModel.FromDate < viewModel.LastIcrDate)
                 {
-                    viewModel._dialogService.ShowMessage( AppResources.VatDeregSuspendedDateMismatchException, "Information");
+                    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, "Information");
                 }
-                else if (viewModel.FromDate != DateTime.Now && viewModel.ToDate !=DateTime.Now)
+                else if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
                 {
                     DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
                     DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
@@ -192,7 +215,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
                         }
-                        if(obj.d.dateResults[0].SuspDtto != null)
+                        if (obj.d.dateResults[0].SuspDtto != null)
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
 
@@ -212,7 +235,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                             viewModel.NextFilingEndDate = date;
                         }
-                        if (obj.d.dateResults[0].Duedate!= null)
+                        if (obj.d.dateResults[0].Duedate != null)
                         {
                             DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
 
@@ -223,14 +246,37 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
         }
 
+        public void ChangeAeroIcon()
+        {
+            if (!App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
 
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
-        
-                viewModel.ReasonTitle = string.Empty;
-           
+
+            viewModel.ReasonTitle = string.Empty;
+
             viewModel.AddOutletDocumentOptions();
 
         }
@@ -303,7 +349,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     if (result)
                     {
                         // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-                        string results = WebServiceManager.GAZTDeleteVATDeRegistrationAttachment(attachment.Filename, attachment.Doguid,viewModel.DocTypeString);
+                        string results = WebServiceManager.GAZTDeleteVATDeRegistrationAttachment(attachment.Filename, attachment.Doguid, viewModel.DocTypeString);
                         if (results == "X")
                         {
 
@@ -347,8 +393,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-             VATDeregistrationAttachmentsModel selectedItem = e.AddedItems[0] as VATDeregistrationAttachmentsModel;
-             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(selectedItem);
+            VATDeregistrationAttachmentsModel selectedItem = e.AddedItems[0] as VATDeregistrationAttachmentsModel;
+            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(selectedItem);
             viewModel.SelectedAttachment = e.AddedItems[0] as VATDeregistrationAttachmentsModel;
             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
 
@@ -360,7 +406,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             else
             {
                 attachmentsListView.SelectedItems.Clear();
-                 viewModel.AddAttachmentEx();
+                viewModel.AddAttachmentEx();
             }
         }
 
@@ -382,12 +428,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         async void VATDeregStartDateClicked(System.Object sender, System.EventArgs e)
         {
 
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "Select Start Date";
-            genericPickerModel.PickerId = "StartDateTypePicker";
+            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            genericDatePickerModel.DatePickerTitle = "Select Start Date";
+            genericDatePickerModel.PickerId = "StartDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -402,17 +448,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
             }
 
-           
+
         }
         async void VATDeregEndDateClicked(System.Object sender, System.EventArgs e)
         {
 
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "Select End Date";
-            genericPickerModel.PickerId = "EndDateTypePicker";
+            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            genericDatePickerModel.DatePickerTitle = "Select End Date";
+            genericDatePickerModel.PickerId = "EndDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -422,22 +468,22 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
-        
+
 
         }
         private async void VATDeregDOBClicked(System.Object sender, System.EventArgs e)
         {
 
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.PickerTitle = "Select DOB";
-            genericPickerModel.PickerId = "DOBDateTypePicker";
+            GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+            genericDatePickerModel.DatePickerTitle = "Select DOB";
+            genericDatePickerModel.PickerId = "DOBDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -447,12 +493,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
 
-         
+
         }
         void VatDeregIdClicked(System.Object sender, System.EventArgs e)
         {
@@ -464,12 +510,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = iDTypes;
-            genericPickerModel.PickerTitle = "IDType";
+            genericPickerModel.PickerTitle = AppResources.VatDeregIDType;
             genericPickerModel.PickerId = "idTypePicker";
 
             try
             {
-                 PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -479,7 +525,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                     viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                     viewModel._navigationService.GoBack();
                 });
             }
@@ -721,9 +767,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             //  viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
                             //  viewModel.DOB = vATSignUpData.d.Birthdt10;
-                       
-                           // viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
-                          
+
+                            // viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
+
                             //  EntryName.IsEnabled = false;
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
@@ -845,7 +891,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         else
                         {
 
-                          
+
                             //  EntryName.IsEnabled = false;
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
@@ -946,7 +992,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
         }
 
-        private  void IDNumberEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private void IDNumberEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
             {
@@ -971,7 +1017,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
-             viewModel.AddAttachmentEx();
+            viewModel.AddAttachmentEx();
         }
 
         async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)

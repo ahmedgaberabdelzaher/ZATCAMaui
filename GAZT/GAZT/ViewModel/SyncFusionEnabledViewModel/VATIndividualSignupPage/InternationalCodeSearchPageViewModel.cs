@@ -84,7 +84,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
     public void refreshList()
     {
-        MobileCodes = mobileData;
+            if (mobileData != null)
+            {
+                MobileCodes = mobileData;
+            }
+          
     }
 }
 }

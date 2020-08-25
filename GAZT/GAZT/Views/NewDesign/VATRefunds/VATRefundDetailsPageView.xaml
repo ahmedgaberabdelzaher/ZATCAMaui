@@ -115,6 +115,17 @@
                                             Style="{StaticResource PageTitleBlack}" />
                                 <Label Text="{x:Static ResourceManager:AppResources.VATRReviewInformation}" IsVisible="{Binding VatRefundsListResultModel.IsEditable}" Style="{StaticResource BodyLabelGrey}"
                                        HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding VATRefundsHeaderSet.RefundFbnum}" Margin="5,-10,5,0" Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.Triggers>
+                                         <DataTrigger TargetType="Label" Binding="{Binding  VatRefundsListResultModel.IsEditable}" Value="false">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding  VatRefundsListResultModel.IsEditable}" Value="true">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+
                             </StackLayout>
                             <yummy:PancakeView Grid.Row="0" Grid.Column="1" IsVisible="true" Padding="10,10,10,10" CornerRadius="14" 
                                                WidthRequest="80"  HeightRequest="20" Opacity=".2" BackgroundColor="{StaticResource Secondary}"  BorderThickness="1" VerticalOptions="Center" HorizontalOptions="End" >

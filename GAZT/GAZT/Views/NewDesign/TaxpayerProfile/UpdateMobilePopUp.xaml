@@ -117,14 +117,13 @@
                                         </Image>-->
                                     <custom:CustomLabel FlowDirection="LeftToRight"
                                        x:Name="Label_InternationalnoCode"
-                                                        Margin="0"
+                                                        Margin="5,0,5,0"
                                         
-                                        WidthRequest="120"
                                         TextColor="Gray"
                                         FontSize="Medium"
                                         VerticalTextAlignment="Center"
-                                        HorizontalOptions="Center"
-                                        HorizontalTextAlignment="Center">
+                                      HorizontalOptions="Start"
+                                        HorizontalTextAlignment="Start">
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                         </custom:CustomLabel.GestureRecognizers>
@@ -132,13 +131,14 @@
                                     <!--<StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                         </StackLayout.GestureRecognizers>
-                                    </StackLayout>-->
+                                    </StackLayout> Unfocused="Mobile_entry_Unfocused"-->
 
                                 </inputLayout:SfTextInputLayout.LeadingView>
                                 <control:BorderlessEntry  x:Name="Mobile_entry"  Text="{Binding NewMobileNumberEntryText}"
                                                         FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
-                                                        Keyboard="Telephone" Unfocused="Mobile_entry_Unfocused" TextColor="{StaticResource NeutralBlack}"
+                                                        Keyboard="Telephone"  TextColor="{StaticResource NeutralBlack}"
+                                                          VerticalTextAlignment="Center"
                                                         MaxLength="{Binding MaxDigids}"
                                                         >
                                     <Entry.Behaviors>

@@ -1,7 +1,12 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using EGAZT.Models.ContractRelease;
+using EGAZT.Views.NewDesign;
 using EGAZT.Views.NewDesign.ContractRelease;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
+using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -140,6 +145,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractReleaseViewModel
             {
                 _infoDesc = value;
                 RaisePropertyChanged("InfoDesc");
+            }
+        }
+
+
+        private ContractReleaseFormResponse _contractReleaseData;
+        public ContractReleaseFormResponse ContractReleaseData
+        {
+            get
+            {
+                return _contractReleaseData;
+            }
+            set
+            {
+                _contractReleaseData = value;
+                RaisePropertyChanged("ContractReleaseData");
             }
         }
 
@@ -409,5 +429,114 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractReleaseViewModel
                     break;
             }
         }
+
+        #region OnPageLoad
+
+        public async Task OnPageLoad()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+
+                    IsLoading = true;
+                    ContractReleaseData = null;
+                    try
+                    {
+                        ContractReleaseData = await WebServiceManager.GAZTGetContractReleaseRequestData();
+
+                        PopToRootPage();
+                        // If seesion Expired it will navigate to Dashboard page
+
+                        // EnableSlectionView();
+
+
+                        if (ContractReleaseData != null && ContractReleaseData.d != null)
+                        {
+
+                            await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
+    _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+        .Instructions));
+                          
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
+
+        #endregion
     }
 }
