@@ -65,15 +65,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 App.HideProgressView();
             });
 
-            var _navigation = Application.Current.MainPage.Navigation;
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.SFAnonymousLandingPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
+            //var _navigation = Application.Current.MainPage.Navigation;
+            //foreach (var item in _navigation.NavigationStack)
+            //{
+            //    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+            //    {
+            //        _navigation.RemovePage(item);
+            //        break;
+            //    }
+            //}
 
             App.IsLogOut = true;
             App.IsLoginCalled = false;
@@ -89,9 +89,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
 
             }
-
-            _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-            _navigation.NavigationStack.ToList().Clear();
+            _navigationService.NavigateTo(App.SFLoginPageView);
+            //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+            //_navigation.NavigationStack.ToList().Clear();
             //var _navigation = Application.Current.MainPage.Navigation;
             //_navigation.PopToRootAsync();
         }
