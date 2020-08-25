@@ -509,7 +509,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = iDTypes;
-            genericPickerModel.PickerTitle = "IDType";
+            genericPickerModel.PickerTitle = AppResources.VatDeregIDType;
             genericPickerModel.PickerId = "idTypePicker";
 
             try

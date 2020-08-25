@@ -4522,7 +4522,9 @@
       <data name="VatDeregRequestType" xml:space="preserve">
     <value>نوع الطلب</value>
   </data>
-   
+        <data name="VATDeregistrationEdit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
   <data name="VatDeregIDNumber" xml:space="preserve">
     <value>رقم الهوية</value>
   </data>

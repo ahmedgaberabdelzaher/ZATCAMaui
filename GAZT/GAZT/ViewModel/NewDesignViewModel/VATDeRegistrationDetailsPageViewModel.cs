@@ -978,10 +978,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     IsInstructionChecked = false;
                                 }
-
                             }
-                      
-
                             //Step 5
 
                             if (vATDeRegistration.d.Idnumbr != null)
@@ -994,7 +991,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             VATDeRegistrationDetailsData = vATDeRegistration;
 
                             setData(vATDeRegistration);
-
                         }
                         else
                         {
@@ -1457,13 +1453,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>();
             VATDeregistrationSummaryReasonData.Add(new VATDeregistrationSummaryModel
             {
-                SummaryTitle = "Request Type",
+                SummaryTitle = AppResources.VatDeregRequestType,
                 SummaryData = SelectedOutletOption.ActiveOutletDecisionOptions,
                 IsEditVisible = true
             });
             VATDeregistrationSummaryReasonData.Add(new VATDeregistrationSummaryModel
             {
-                SummaryTitle = "Reason",
+                SummaryTitle = AppResources.VatDeregReasonTitle,
                 SummaryData = ReasonTitle,
                 IsEditVisible = true
             });
@@ -1487,13 +1483,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             });
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
-                SummaryTitle = AppResources.CRDateOfBirth,
+                SummaryTitle = AppResources.VatDeregDOBTitle,
                 SummaryData = DOB,
                 IsEditVisible = true
             });
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
-                SummaryTitle = AppResources.TinDeregistrationContactPersonName,
+                SummaryTitle = AppResources.VatDeregContactPerson,
                 SummaryData = ContactPersonName,
                 IsEditVisible = true
             });
