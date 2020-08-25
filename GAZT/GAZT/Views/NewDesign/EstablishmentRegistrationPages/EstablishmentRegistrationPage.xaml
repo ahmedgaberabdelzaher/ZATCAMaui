@@ -12,7 +12,7 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              ios:Page.UseSafeArea="true"
              NavigationPage.HasNavigationBar="False"
              x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage"
@@ -854,15 +854,15 @@
                             <Image Source="ic_location_Outline.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
-                    <CollectionView VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never">
-                        <CollectionView.ItemsSource>
+                    <CollectionView VerticalOptions="StartAndExpand" ItemsSource="{Binding}" BackgroundColor="AliceBlue" HorizontalOptions="FillAndExpand" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never">
+                        <!--<CollectionView.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>Outlet (34569)</x:String>
                                 <x:String>Outlet (34570)</x:String>
                                 <x:String>Outlet (34571)</x:String>
                                 <x:String>Outlet (34572)</x:String>
                             </x:Array>
-                        </CollectionView.ItemsSource>
+                        </CollectionView.ItemsSource>-->
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                         </CollectionView.ItemsLayout>
@@ -891,8 +891,8 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding .}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
-                                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding .}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,-12,0,0"/>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding Actnm}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Crlicenceno}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,-12,0,0"/>
                                         <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
                                     </Grid>
                                 </cards:SfCardView>
@@ -1285,7 +1285,8 @@
                         <Image.Source>
                             <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                         </Image.Source>
-                        <Image.GestureRecognizers> <!-- Need to replace icon-->
+                        <Image.GestureRecognizers>
+                            <!-- Need to replace icon-->
                             <TapGestureRecognizer Command="{Binding OnVoidOrSaveDraftClick}" NumberOfTapsRequired="1" />
                         </Image.GestureRecognizers>
                     </Image>
@@ -1312,6 +1313,17 @@
             <Grid Grid.Row="2" Padding="20,15" BackgroundColor="White">
                 <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="Next" Command="{Binding OnNextButtonClick}" />
             </Grid>
+            <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"
+               Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <busyindicator:SfBusyIndicator HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+	                        EnableAnimation="True" 
+	                        AnimationType="SingleCircle" 
+	                        IsBusy="True" 
+	                        TextColor="#D99A29"
+	                        ViewBoxWidth="70"
+                            ViewBoxHeight="70"
+                            TitlePlacement="Bottom" />
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

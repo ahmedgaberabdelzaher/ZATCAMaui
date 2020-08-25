@@ -636,6 +636,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         #endregion
 
+        #region Outlet variables
+        private ObservableCollection<Nreg_OutletItem> _outletData = new ObservableCollection<Nreg_OutletItem>();
+        public ObservableCollection<Nreg_OutletItem> OutletData
+        {
+            get => _outletData;
+            private set
+            {
+                if(value != null)
+                {
+                    _outletData = value;
+                    RaisePropertyChanged(nameof(OutletData));
+                }
+            }
+        }
+        #endregion
+
         #region Financial Details Tabs variables
         private ObservableCollection<string> _methodList = new ObservableCollection<string>();
         public ObservableCollection<string> MethodList
@@ -946,7 +962,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public async void OnAppearing()
         {
             var branchTask = GetReportingBranchListFromServer();
-            var nationalityTask = GetPdNationalityListFromServer(null);
+            var nationalityTask = GetPdNationalityListFromServer();
             var citizenTask = GetPdCitizenListFromServer();
             var residenceTask = GetPdResidenceListFromServer();
             await Task.WhenAll(branchTask, nationalityTask, citizenTask, residenceTask);
@@ -1226,7 +1242,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         }
 
-        private async Task GetPdNationalityListFromServer(string nationality)
+        private async Task GetPdNationalityListFromServer(string nationality = null)
         {
             //if (TaxpayerPDNationlityList == null)
             //{
@@ -1295,6 +1311,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
+                IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", "3102448184", "DKOTHI-C@GAZT.GOV.SA");
@@ -1312,7 +1329,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     Nreg_IdItem idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
                     GCCIDType = EnIDType[idItem?.Type];
                     GCCIDTypeIdNumberValue = idItem.Idnumber;
-                    SelectedDOB = taxPayerDetails?.Birthdt.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast;
                     FatherName = taxPayerDetails?.FatherName;
@@ -1334,13 +1351,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => i.Type == "FS0002").FirstOrDefault();
                     PassportNumber = passportItem.Idnumber;
                     SelectedPassportIssueCountry = TaxpayerPDNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault()?.Landx50;
-                    PassportIssueDate = passportItem?.ValidDateFrom.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                    PassportExpireDate = passportItem?.ValidDateTo.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    PassportIssueDate = passportItem?.ValidDateFrom?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    PassportExpireDate = passportItem?.ValidDateTo?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                }else if(_enum == EstablishmentRegistrationTabsEnum.Outlets)
+                {
+                    var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, "3102448184", taxPayerDetails?.Fbnumx);
+                    if (_outletTempData.Count > 0)
+                    {
+                        OutletData.Clear();
+                        _outletTempData.ForEach(_out => OutletData.Add(_out));
+                        RaisePropertyChanged(nameof(OutletData));
+                    }
+
+                    //OutletNumber number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    //taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", number?.Actno, taxPayerDetails?.Fbnumx);
+                    //await WebServiceManager.ESTOutletDropDowns();
+                    //await WebServiceManager.ESTOutletGetActivitySetsList();
+                    //ValidateCR crItem = await WebServiceManager.ESTValidateCRNum(taxPayerDetails?.Nreg_ActivitySet.results?.FirstOrDefault()?.Idnumber);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         #endregion
