@@ -28,6 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand CloseBtnTapped { get; set; }
         public static IsComeFromForAttachment IsComeFromForAttachment;
+        public ICommand OnSaveAsDraftClicked { get; set; }
 
         public ICommand GoBackClick { get; set; }
         public static Decimal AttachmentUploadedSize = 0;
@@ -786,6 +787,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("VatAttachmentsList");
             }
         }
+        private String _stepNumber;
+        public String StepNumber
+        {
+            get
+            {
+                return _stepNumber;
+            }
+            set
+            {
+                _stepNumber = value;
+                RaisePropertyChanged("StepNumber");
+            }
+        }
         private VATDeregistrationAttachmentsModel _selectedAttachment { get; set; }
         public VATDeregistrationAttachmentsModel SelectedAttachment
         {
@@ -882,7 +896,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 TitleText = "Button New";
 
             });
-        
+
+            OnSaveAsDraftClicked = new Command(async () =>
+            {
+               // CreateDataForPost();
+                string operation = "05";// Passed 05 to save the data as a draft
+                VATDeRegistrationDetailsData.d.Operationx = operation;
+                StepNumber = "01";
+                if (IsInstructionChecked == true)
+                {
+                    StepNumber = "02";
+                }
+                //if (IsCheckedTaxPayerDetailsInfo == true)
+                //{
+                //    StepNumber = "03";
+                //}
+                //if (IsDeclarationCheckedForSummary == true)
+                //{
+                //    StepNumber = "04";
+                //}
+                VATDeRegistrationDetailsData.d.StepNumber = StepNumber;
+                VATDeRegistrationDetailsData.d.UserTypx = "TP";
+                //await SaveReturnAndGetReturnAndSetButtons();
+                await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
+            });
 
             //EnableAttachmentsView();
             GoBackBtnTapped = new Command(this.GoBackBtnClicked);
