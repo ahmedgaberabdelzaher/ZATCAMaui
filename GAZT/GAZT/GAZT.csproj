@@ -108,6 +108,9 @@
     <Compile Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml.cs">
       <DependentUpon>UpdatePasswordPopUp.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml.cs">
+      <DependentUpon>DashboardAnonymousMenuPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml.cs">
       <DependentUpon>MorePopUpPageView.xaml</DependentUpon>
     </Compile>
@@ -283,7 +286,7 @@
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATReturnUpdatedUIPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\Template\DashboardMenuPageView.xaml">
+    <EmbeddedResource Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">
