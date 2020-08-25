@@ -842,6 +842,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public bool _isOthersEditorVisible;
+        public bool IsOthersEditorVisible
+        {
+            get
+            {
+                return _isOthersEditorVisible;
+            }
+            set
+            {
+                _isOthersEditorVisible = value;
+                RaisePropertyChanged("IsOthersEditorVisible");
+            }
+        }
+
         public VATDeRegistrationDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -1103,6 +1117,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public  void OnVatRegistrationReasonClicked()
         {
            // ObservableCollection < VATDeregistrationReasonModel> reasonList = new ObservableCollection<VATDeregistrationReasonModel>();
+
             ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
             string reqType = string.Empty;
             if(SelectedOutletOption.ActiveOutletDecisionOptions.Contains("De-Registration of VAT Account"))
@@ -1423,19 +1438,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>();
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
-                SummaryTitle = "ID Type",
+                SummaryTitle = AppResources.IDType,
                 SummaryData = IDType,
                 IsEditVisible = true
             });
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
-                SummaryTitle = "ID Number",
+                SummaryTitle = AppResources.IDNumber,
                 SummaryData = TxtIDNumber,
                 IsEditVisible = true
             });
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
-                SummaryTitle = "Date of Birth",
+                SummaryTitle = AppResources.CRDateOfBirth,
                 SummaryData = DOB,
                 IsEditVisible = true
             });
