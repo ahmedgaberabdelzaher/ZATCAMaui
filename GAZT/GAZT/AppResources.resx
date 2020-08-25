@@ -6019,4 +6019,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDVATLookUP" xml:space="preserve">
     <value>VAT LookUP</value>
   </data>
+  <data name="NDMyNotifications" xml:space="preserve">
+    <value>My  Notifications</value>
+  </data>
 </root>

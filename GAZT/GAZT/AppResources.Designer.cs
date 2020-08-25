@@ -3684,6 +3684,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My  Notifications.
+        /// </summary>
+        public static string NDMyNotifications {
+            get {
+                return ResourceManager.GetString("NDMyNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Reports.
         /// </summary>
         public static string NDMyReports {

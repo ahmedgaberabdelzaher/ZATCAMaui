@@ -5669,4 +5669,7 @@
   <data name="NDVATLookUP" xml:space="preserve">
     <value>VAT LookUP</value>
   </data>
+  <data name="NDMyNotifications" xml:space="preserve">
+    <value>إشعاراتي</value>
+  </data>
 </root>
