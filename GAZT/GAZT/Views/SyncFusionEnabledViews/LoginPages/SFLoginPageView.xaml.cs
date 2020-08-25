@@ -73,7 +73,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     OnAppearing();
                 });
 
-                MessagingCenter.Subscribe<string>(this, "OnActivated", message => {
+                MessagingCenter.Subscribe<string>(this, "OnActivated", message =>
+                {
                     Console.WriteLine("OnActivated");
                     OnAppearing();
                 });
@@ -88,6 +89,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             }
             catch (Exception ex)
             {
+
             }
             // ParentContainer.RaiseChild(BusyIndicator);
         }
@@ -164,10 +166,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             viewModel.email = string.Empty;
             viewModel.Password = string.Empty;
             viewModel.Email = string.Empty;
+            MessagingCenter.Unsubscribe<string>(this, "OnActivated");
         }
-
-
-
 
         protected async override void OnAppearing()
         {
@@ -198,8 +198,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 //else
                 //{
                 //}
-
-               
 
                 viewModel.IsVisibleTinIds = false;
 
