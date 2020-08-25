@@ -1635,6 +1635,9 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
+ <data name="ZVatRefundRequestForVAT" xml:space="preserve">
+    <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
+  </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>معلومات الاسترداد</value>
   </data>
@@ -4709,7 +4712,7 @@
     <value>Objections and Reviews</value>
   </data>
   <data name="NDRefunds" xml:space="preserve">
-    <value>Refunds</value>
+    <value>الإستردادت</value>
   </data>
   <data name="NDReturns" xml:space="preserve">
     <value>الاقرارات</value>
@@ -4934,7 +4937,7 @@
     <value>استردادات المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="VATRefundDetails" xml:space="preserve">
-    <value>Refund Details</value>
+    <value>بيانات الإسترداد</value>
   </data>
   <data name="VATRefundsRequest" xml:space="preserve">
     <value>طلب إسترداد</value>
@@ -4961,7 +4964,7 @@
     <value>IN PROCESS</value>
   </data>
   <data name="VATRefundAmounts" xml:space="preserve">
-    <value>Refund Amounts</value>
+    <value>المبالغ المستدره</value>
   </data>
   <data name="VATRefundsAlRajhiBank" xml:space="preserve">
     <value>Al Rajhi Bank</value>
@@ -5668,5 +5671,8 @@
   </data>
   <data name="NDVATLookUP" xml:space="preserve">
     <value>VAT LookUP</value>
+  </data>
+  <data name="NDMyNotifications" xml:space="preserve">
+    <value>إشعاراتي</value>
   </data>
 </root>

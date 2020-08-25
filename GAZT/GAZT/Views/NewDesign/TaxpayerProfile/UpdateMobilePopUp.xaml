@@ -123,8 +123,8 @@
                                         TextColor="Gray"
                                         FontSize="Medium"
                                         VerticalTextAlignment="Center"
-                                        HorizontalOptions="Center"
-                                        HorizontalTextAlignment="Center">
+                                      
+                                        HorizontalTextAlignment="Start">
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                         </custom:CustomLabel.GestureRecognizers>
