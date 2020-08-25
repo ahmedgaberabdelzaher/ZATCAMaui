@@ -12,7 +12,7 @@ using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
 using GAZT.Manager;
-using GAZT.Models;
+using GAZT.Models;  
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
@@ -129,7 +129,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.ReasonTitle = arg.SelectedValue;
                         if (viewModel.ReasonTitle.Contains("Others"))
                         {
-                           // viewModel.SelectedOthersOption = true;
+                            viewModel.IsOthersEditorVisible = !viewModel.IsOthersEditorVisible;
+                        }
+                        else
+                        {
+                            viewModel.IsOthersEditorVisible = false;
                         }
                     }
                 }
