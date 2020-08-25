@@ -78,12 +78,12 @@
                     </StackLayout>
                     </ScrollView>
                     <StackLayout Grid.Row="1" Spacing="0" Padding="0,8,0,0" BackgroundColor="White">
-                    <!--<buttons:SfButton x:Name="btnprimary" Text="Download Invoice" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>-->
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Form5Finish}" Style="{StaticResource ValueLabelBlackBold}" HorizontalTextAlignment="Center" TextColor="{StaticResource NewDullOrangeColor}">
+                        <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.Form5Finish}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnFinishedTapped"/>
+                        <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Form5Finish}" Style="{StaticResource ValueLabelBlackBold}" HorizontalTextAlignment="Center" TextColor="{StaticResource NewDullOrangeColor}">
                             <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnFinishedTapped" NumberOfTapsRequired="1"/>
                             </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                        </custom:CustomLabel>-->
                     </StackLayout>
                 </Grid>
             </yummy:PancakeView>
