@@ -30,8 +30,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel = App.Locator.UpdateMobilePopUp;
             this.BindingContext = viewModel;
             viewModel.CountryCode = "+966";
+            Label_InternationalnoCode.StyleId = "LTRLabelText";
             Label_InternationalnoCode.Text = "+966";
             
+
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
             if (App.IsArabic)
