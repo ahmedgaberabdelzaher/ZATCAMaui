@@ -28,5 +28,15 @@ namespace EGAZT.Views.NewDesign.Template
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        private void GoBackTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
+        }
+
+        private void ChangeLanguage_Tapped(object sender, EventArgs e)
+        {
+
+        }
     }
 }
