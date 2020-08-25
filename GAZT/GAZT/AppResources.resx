@@ -1622,7 +1622,9 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Void</value>
     <comment>VAT Declaration button</comment>
   </data>
-   <data name="ZVatRefundRequestForVAT" xml:space="preserve">     <value>Refund Request for VAT</value>   </data> 
+   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
+   <value>Refund Request for VAT</value>
+   </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>Refund Information</value>
   </data>

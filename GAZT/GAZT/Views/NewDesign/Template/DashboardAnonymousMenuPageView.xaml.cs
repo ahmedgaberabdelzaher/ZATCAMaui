@@ -1,8 +1,10 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -27,6 +29,10 @@ namespace EGAZT.Views.NewDesign.Template
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
         }
 
         private void GoBackTapped(object sender, EventArgs e)
@@ -36,7 +42,72 @@ namespace EGAZT.Views.NewDesign.Template
 
         private void ChangeLanguage_Tapped(object sender, EventArgs e)
         {
+            if (App.IsArabic)
+            {
+                App.IsArabic = false;
+                App.changeFontFamily(App.appObj);
+                SetLTRDirection();
+                var vUpdatedPage = new DashboardAnonymousMenuPageView();
+                Navigation.InsertPageBefore(vUpdatedPage, this);
+                Navigation.PopAsync();
+            }
+            else
+            {
+                App.IsArabic = true;
+                App.changeFontFamily(App.appObj);
+                SetRTLDirection();
+                var vUpdatedPage = new DashboardAnonymousMenuPageView();
+                Navigation.InsertPageBefore(vUpdatedPage, this);
+                Navigation.PopAsync();
+            }
+        }
 
+        public void SetRTLDirection()
+        {
+            try
+            {
+                String langName = "ar-AE";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                // InitializeComponent();
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            catch (Exception e)
+            {
+
+            }
+            
+        }
+
+
+        public void SetLTRDirection()
+        {
+            try
+            {
+                String langName = "en-US";
+                CultureInfo ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+                //InitializeComponent();
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+        private void OnTaxEvasionTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
+        }
+
+        private void OnSupportTapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnVATRefundTapped(object sender, EventArgs e)
+        {
+        viewModel._navigationService.NavigateTo(App.VATLookUpNewPageView);    
         }
     }
 }

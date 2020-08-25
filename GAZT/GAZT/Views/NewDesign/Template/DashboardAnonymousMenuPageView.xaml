@@ -32,7 +32,7 @@
 
                 <Image Source="close" VerticalOptions="Start" HorizontalOptions="EndAndExpand">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="GoBackTapped"/>
+                        <TapGestureRecognizer Tapped="GoBackTapped" NumberOfTapsRequired="1"/>
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
@@ -55,6 +55,9 @@
 
                             </Image>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasion}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnTaxEvasionTapped" NumberOfTapsRequired="1"/>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
@@ -62,7 +65,10 @@
                             <Image Source="taxEvasion">
 
                             </Image>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATLookUP}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBTaxCheck}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnVATRefundTapped" NumberOfTapsRequired="1"/>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
 
 
@@ -73,6 +79,9 @@
 
                             </Image>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnSupportTapped" NumberOfTapsRequired="1"/>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
@@ -82,7 +91,7 @@
                             </Image>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ChangeLanguage_Tapped"/>
+                                <TapGestureRecognizer Tapped="ChangeLanguage_Tapped" NumberOfTapsRequired="1"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>
