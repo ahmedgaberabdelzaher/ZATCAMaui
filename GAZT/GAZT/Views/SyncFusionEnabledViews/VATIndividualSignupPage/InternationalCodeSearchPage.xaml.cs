@@ -74,17 +74,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             var searchPhrase = e.NewTextValue.Trim();
 
-            if (searchPhrase.Length > 0)
+            try
             {
-                viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(viewModel.MobileCodes.Where(name => name.Telefto.ToLower().Contains(searchPhrase.ToLower())));
+                if (searchPhrase.Length > 0)
+                {
+                    viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(viewModel.MobileCodes.Where(name => name.Telefto.ToLower().Contains(searchPhrase.ToLower())));
+                }
+                else
+                {
+                    viewModel.refreshList();
+                    viewModel.MobileCodes = this.mobileData;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                
-                viewModel.refreshList();
-                viewModel.MobileCodes = this.mobileData;
+                Console.WriteLine(ex.Message);
             }
-
         }
        
         private void List_ItemTapped(object sender, ItemTappedEventArgs e)
