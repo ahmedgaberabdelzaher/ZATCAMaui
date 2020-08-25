@@ -494,7 +494,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                             SiguupModel.ACommId = "";
                                         }
                                         SiguupModel.AEmail = viewModel.TxtEmailAddress;
-                                        SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+
+                                        if (viewModel.TxtPhoneNumber != null || viewModel.TxtPhoneNumber != string.Empty)
+                                        {
+                                            SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                        }
+                                        else
+                                        {
+                                            SiguupModel.APhone = "";
+
+                                        }
+
                                         string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                         SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
                                         SiguupModel.ACountry = viewModel.MobileCountryCode;
@@ -724,7 +734,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                         SiguupModel.ACommId = "";
                                     }
                                     SiguupModel.AEmail = viewModel.TxtEmailAddress;
-                                    SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                    if (viewModel.TxtPhoneNumber != null || viewModel.TxtPhoneNumber != string.Empty)
+                                    {
+                                        SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                    }
+                                    else
+                                    {
+                                        SiguupModel.APhone = "";
+
+                                    }
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
@@ -980,7 +998,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                         SiguupModel.ACommId = "";
                                     }
                                     SiguupModel.AEmail = viewModel.TxtEmailAddress;
-                                    SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                    if (viewModel.TxtPhoneNumber != null || viewModel.TxtPhoneNumber != string.Empty)
+                                    {
+                                        SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                    }
+                                    else
+                                    {
+                                        SiguupModel.APhone = "";
+
+                                    }
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
@@ -1206,7 +1232,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     SiguupModel.ACommId = "";
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
-                                SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                if (!viewModel.TxtPhoneNumber.Contains(string.Empty))
+                                {
+                                    SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                }
+                                else
+                                {
+                                    SiguupModel.APhone = "";
+
+                                }
 
                                 string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                 SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
@@ -1397,7 +1431,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                         SiguupModel.ACommId = "";
                                     }
                                     SiguupModel.AEmail = viewModel.TxtEmailAddress;
-                                    SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+
+                                    if (!viewModel.TxtPhoneNumber.Contains(string.Empty))
+                                    {
+                                        SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                    }
+                                    else
+                                    {
+                                        SiguupModel.APhone = "";
+
+                                    }
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
@@ -1619,7 +1662,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     }
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
-                                SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                if (!viewModel.TxtPhoneNumber.Contains(string.Empty))
+                                {
+                                    SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+                                }
+                                else
+                                {
+                                    SiguupModel.APhone = "";
+
+                                }
 
                                 string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                 SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
