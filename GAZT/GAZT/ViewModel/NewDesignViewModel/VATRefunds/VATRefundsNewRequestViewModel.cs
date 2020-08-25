@@ -573,7 +573,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = idTypeData;
-            genericPickerModel.PickerTitle = AppResources.IDType;
+            genericPickerModel.PickerTitle = AppResources.ZZIDType;
             genericPickerModel.PickerId = "idTypePicker";
 
             await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
