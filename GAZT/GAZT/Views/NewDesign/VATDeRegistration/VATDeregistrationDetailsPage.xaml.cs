@@ -31,7 +31,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             viewModel = App.Locator.VATDeregistrationDetailsPage;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            this.FlowDirection = FlowDirection.LeftToRight;
+            ChangeAeroIcon();
+
+            SetLTR();
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 viewModel.PickerModel = arg;
@@ -65,6 +67,20 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
         }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+
+            }
+        }
         public async Task GetVatDeRegistrationData()
         {
             try
@@ -92,6 +108,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            ChangeArrowDirection();
 
 
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
@@ -227,7 +245,30 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
         }
 
+        public void ChangeAeroIcon()
+        {
+            if (!App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
 
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;

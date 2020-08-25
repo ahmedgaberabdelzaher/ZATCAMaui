@@ -4506,6 +4506,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>Attachment</value>
   </data>
+     <data name="VATDeregistrationEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+      <data name="VatDeregAttachmentsHeaderTitle" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
   <data name="VatDeregAttachmentInputTitle" xml:space="preserve">
     <value>Attachments-Audited Reports</value>
   </data>
@@ -4532,6 +4538,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatDeregIDType" xml:space="preserve">
     <value>ID Type</value>
+  </data>
+  <data name="VatDeregRequestType" xml:space="preserve">
+    <value>Request Type</value>
   </data>
   <data name="VatDeregIDNumber" xml:space="preserve">
     <value>ID Number</value>

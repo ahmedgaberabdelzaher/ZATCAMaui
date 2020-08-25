@@ -7608,6 +7608,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VATDeregistrationEdit {
+            get {
+                return ResourceManager.GetString("VATDeregistrationEdit", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregAttachmentsHeaderTitle {
+            get {
+                return ResourceManager.GetString("VatDeregAttachmentsHeaderTitle", resourceCulture);
+            }
+        }
+        
         public static string VatDeregAttachmentInputTitle {
             get {
                 return ResourceManager.GetString("VatDeregAttachmentInputTitle", resourceCulture);
@@ -7659,6 +7671,12 @@ namespace EGAZT {
         public static string VatDeregIDType {
             get {
                 return ResourceManager.GetString("VatDeregIDType", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregRequestType {
+            get {
+                return ResourceManager.GetString("VatDeregRequestType", resourceCulture);
             }
         }
         
