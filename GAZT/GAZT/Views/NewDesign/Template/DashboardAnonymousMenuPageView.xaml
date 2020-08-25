@@ -31,22 +31,24 @@
                 <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
 
                 <Image Source="close" VerticalOptions="Start" HorizontalOptions="EndAndExpand">
-
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GoBackTapped"/>
+                    </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
             <StackLayout Grid.Row="1" Padding="15,15,0,0">
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24" VerticalOptions="Center" />
                 <ScrollView Margin="0,20,0,0">
                     <StackLayout Spacing="20" Padding="0,0,0,10">
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                        <!--<BoxView BackgroundColor="White" HeightRequest="0.2"/>
                         <StackLayout Orientation="Horizontal" Spacing="20">
                             <Image Source="RealStateVAT">
 
                             </Image>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDRealStateVATMinistryJustice}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
-                        </StackLayout>
+                        </StackLayout>-->
 
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                         <StackLayout Orientation="Horizontal" Spacing="20">
                             <Image Source="taxEvasion">
@@ -54,22 +56,17 @@
                             </Image>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasion}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
                         </StackLayout>
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                         <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image Source="password_key">
+                            <Image Source="taxEvasion">
 
                             </Image>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATLookUP}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
                         </StackLayout>
 
-                        <!--<StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image Source="password_key">
 
-                            </Image>
-                            <custom:CustomLabel Text="VAT Registration Verification" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
-                        </StackLayout>-->
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                         <StackLayout Orientation="Horizontal" Spacing="20">
                             <Image Source="customerService">
@@ -77,93 +74,25 @@
                             </Image>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
                         </StackLayout>
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
-
-                        <!--                        <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image>
-                                <Image.Source>
-                                    <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
-                                </Image.Source>
-                            </Image>
-                            <custom:CustomLabel Text="Tax Management" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                        </StackLayout>
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                         <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image>
-                                <Image.Source>
-                                    <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CashRefund}"/>
-                                </Image.Source>
-                            </Image>
-                            <custom:CustomLabel Text="Refunds" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                        </StackLayout>
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                            <Image Source="language">
 
-                        <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image>
-                                <Image.Source>
-                                    <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FloorPlan}"/>
-                                </Image.Source>
                             </Image>
-                            <custom:CustomLabel Text="Installment Plan" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ChangeLanguage_Tapped"/>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
-
-                        <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image>
-                                <Image.Source>
-                                    <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.React}"/>
-                                </Image.Source>
-                            </Image>
-                            <custom:CustomLabel Text="Objections and Reviews" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                        </StackLayout>
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
-
-                        <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image>
-                                <Image.Source>
-                                    <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.HelpNetwork}"/>
-                                </Image.Source>
-                            </Image>
-                            <custom:CustomLabel Text="Supports" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                        </StackLayout>
-                        <BoxView BackgroundColor="White" HeightRequest="0.2"/>
-
-                        <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image>
-                                <Image.Source>
-                                    <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Logout}"/>
-                                </Image.Source>
-                            </Image>
-                            <custom:CustomLabel Text="Logout" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                        </StackLayout>-->
+                        <BoxView Style="{StaticResource WhiteLineSeperator}"/>
                     </StackLayout>
                 </ScrollView>
 
             </StackLayout>
 
-            <!--<StackLayout Grid.Row="2" Spacing="0" Margin="0,0,0,20" VerticalOptions="EndAndExpand">
-                <BoxView BackgroundColor="White" HeightRequest="0.2"/>
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout Orientation="Horizontal" Padding="15" Spacing="20">
-                        <Image Source="language">
-
-                        </Image>
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center" TextColor="White"/>
-                    </StackLayout>
-                    <BoxView BackgroundColor="White" WidthRequest="0.2"/>
-                    <StackLayout Orientation="Horizontal" Padding="15" Spacing="20">
-                        <Image Source="user_profile">
-
-                        </Image>
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSwitchUser}" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center" TextColor="White"/>
-                    </StackLayout>
-                </StackLayout>
-                <BoxView BackgroundColor="White" HeightRequest="0.2"/>
-            </StackLayout>-->
-
-
-            <Grid Grid.Row="2" RowSpacing="0" Margin="0,0,0,20" VerticalOptions="EndAndExpand">
+            
+            <!--<Grid Grid.Row="2" RowSpacing="0" Margin="0,0,0,20" VerticalOptions="EndAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -192,7 +121,7 @@
                     </StackLayout>
                 </Grid>
                 <BoxView Grid.Row="2" BackgroundColor="White" HeightRequest="0.2"/>
-            </Grid>
+            </Grid>-->
 
 
         </Grid>
