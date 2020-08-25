@@ -4498,6 +4498,15 @@
   <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
     <value>إضافة مرفق جديد (إختياري)</value>
   </data>
+   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+    <value> اختر تاريخ البداية</value>
+  </data>
+      <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
+    <value>اختر تاريخ النهاية</value>
+  </data>
+      <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
+    <value>اختر تاريخ الميلاد</value>
+  </data>
   <data name="VatDeregAttachmentInputsize" xml:space="preserve">
     <value>20MB</value>
   </data>
