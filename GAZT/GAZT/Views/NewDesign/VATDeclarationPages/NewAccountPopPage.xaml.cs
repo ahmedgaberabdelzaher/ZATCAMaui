@@ -40,9 +40,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.AccountText = AppResources.VATREditAccount;
                     viewModel.IbanPartOne = SAremovedIban.Substring(0, 2);
                     viewModel.IbanPartTwo = SAremovedIban.Substring(2, 8);
-                    viewModel.IbanPartThree = SAremovedIban.Substring(9, 4);
-                    viewModel.IbanPartFour = SAremovedIban.Substring(13, 4);
-                    viewModel.IbanPartFive = SAremovedIban.Substring(17, 4);
+                    viewModel.IbanPartThree = SAremovedIban.Substring(10, 4);
+                    viewModel.IbanPartFour = SAremovedIban.Substring(14, 4);
+                    viewModel.IbanPartFive = SAremovedIban.Substring(18, 4);
                     //Bind Iban and remove name
                 }
                 SetLTR();

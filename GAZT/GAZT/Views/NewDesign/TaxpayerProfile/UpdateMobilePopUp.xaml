@@ -117,14 +117,14 @@
                                         </Image>-->
                                     <custom:CustomLabel FlowDirection="LeftToRight"
                                        x:Name="Label_InternationalnoCode"
-                                                        Margin="0"
+                                                        Margin="3,0,0,0"
                                         
                                         WidthRequest="120"
                                         TextColor="Gray"
                                         FontSize="Medium"
                                         VerticalTextAlignment="Center"
-                                        HorizontalOptions="Center"
-                                        HorizontalTextAlignment="Center">
+                                        
+                                        HorizontalTextAlignment="Start">
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                         </custom:CustomLabel.GestureRecognizers>

@@ -2017,8 +2017,8 @@
                 <ScrollView  Grid.Row="1" VerticalScrollBarVisibility="Never" Margin="0,0,0,0" BackgroundColor="White">
                     <StackLayout Padding="0,10,0,0">
                         <!--Taxpayer Details Starts-->
-                        <!--<border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout>
+                        <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <StackLayout BindingContext="{Binding ResponseVATDeclarationD}">
                                 <StackLayout Orientation="Horizontal" Padding="10">
                                     <Frame Style="{StaticResource circleFrame}">
                                     <Image Source="vat_user">
@@ -2032,8 +2032,8 @@
 
                                 <StackLayout Padding="10" Spacing="10">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="TIN" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="111233348878999" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{Binding Gpart}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -2043,16 +2043,16 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="VAT Account Number" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="000443347778999" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVATAccountNumber}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding Fin}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </Grid>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="ID Number" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Q1234567" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatIdentificationNumber}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{Binding Idnumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="Taxpayer Name" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Zaed" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTaxpayersName}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text="{Binding Tpnm}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -2062,12 +2062,12 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="Address" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Column="1" Text="Olaya St, Al Wurud, Riyadh 12253" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatAddress}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
-                        </border:SfBorder>-->
+                        </border:SfBorder>
 
                         <!--Taxpayer Details Ends-->
 
@@ -2254,7 +2254,7 @@
 
                 <buttons:SfButton x:Name="btnprimary" IsEnabled="{Binding IsMainButtonEnabled}"  VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
-                <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZConfirmAndRefundRequest}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>-->
+                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZConfirmAndRefundRequest}" PressedBackgroundColor="White" IsEnabled="{Binding IsRefundButtonEnabled}" Command="{Binding onRefundClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding IsRefundButtonVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
                 
                 <buttons:SfButton Text="{Binding CreditDetailsText}" PressedBackgroundColor="White" IsEnabled="{Binding IsGetSadadNumberEnabled}" Command="{Binding onSecondButtonClicked}" TextColor="{StaticResource NewDullOrangeColor}" IsVisible="{Binding isBtnVisible}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent" Margin="0,-10,0,0"/>
             </StackLayout>
