@@ -4486,7 +4486,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Instructions &amp; Conditions</value>
   </data>
   <data name="VATDeregistrationReasonType1" xml:space="preserve">
-    <value>De-Registration of VAT account</value>
+    <value>De-Registration of VAT Account</value>
   </data>
   <data name="VATDeregistrationReasonType2" xml:space="preserve">
     <value>VAT Return Filing Obligation Suspension</value>

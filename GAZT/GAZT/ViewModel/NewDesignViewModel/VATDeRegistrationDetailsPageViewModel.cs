@@ -1123,6 +1123,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     case ProcessStep.Step3:
                         {
                             EnableAttachmentsView();
+
                             break;
                         }
                     case ProcessStep.Step4:
@@ -1154,7 +1155,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
             string reqType = string.Empty;
-            if(SelectedOutletOption.ActiveOutletDecisionOptions.Contains("De-Registration of VAT Account"))
+            if(SelectedOutletOption.ActiveOutletDecisionOptions.Contains(AppResources.VATDeregistrationReasonType1))
             {
                 reqType = "VT_DREG";
             }
@@ -1379,44 +1380,75 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
 
-        public void EnableAttachmentsView()
+        public async void EnableAttachmentsView()
         {
-            CurrentStep = ProcessStep.Step2;
-            if (OutletDocumentOptions != null)
+            if (ReasonTitle != string.Empty)
             {
-                SelectedDocumentOption = OutletDocumentOptions[0];
+                CurrentStep = ProcessStep.Step2;
+                if (OutletDocumentOptions != null)
+                {
+                    SelectedDocumentOption = OutletDocumentOptions[0];
+                }
+                IsBackButtonVisible = true;
+                IsReasonViewEnabled = false;
+                IsOutletViewEnabled = false;
+                IsAttachmentsViewEnabled = true;
+                IsDeclarationViewEnabled = false;
+                IsSummaryViewEnabled = false;
+
+                AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
             }
-            IsBackButtonVisible = true;
-            IsReasonViewEnabled = false;
-            IsOutletViewEnabled = false;
-            IsAttachmentsViewEnabled = true;
-            IsDeclarationViewEnabled = false;
-            IsSummaryViewEnabled = false;
-
-            AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
-
+            else
+            {
+               await  _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+            }
         }
 
-        public void EnableDeclarationView()
+        public async void EnableDeclarationView()
         {
-            CurrentStep = ProcessStep.Step3;
+            if (AttachmentList.Count != 0)
+            {
+                CurrentStep = ProcessStep.Step3;
 
-            IsReasonViewEnabled = false;
-            IsOutletViewEnabled = false;
-            IsAttachmentsViewEnabled = false;
-            IsDeclarationViewEnabled = true;
-            IsSummaryViewEnabled = false;
+                IsReasonViewEnabled = false;
+                IsOutletViewEnabled = false;
+                IsAttachmentsViewEnabled = false;
+                IsDeclarationViewEnabled = true;
+                IsSummaryViewEnabled = false;
+            }
+            else
+            {
+                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+
+            }
         }
 
-        public void EnableSummaryView()
+        public async void EnableSummaryView()
         {
-            CurrentStep = ProcessStep.Step4;
+            if (IDType == string.Empty)
+            {
+                await _dialogService.ShowMessage(AppResources.ZZPleaseenteravalidID, AppResources.Alerts);
 
-            IsReasonViewEnabled = false;
-            IsOutletViewEnabled = false;
-            IsAttachmentsViewEnabled = false;
-            IsDeclarationViewEnabled = false;
-            IsSummaryViewEnabled = true;
+            }
+            else if (DOB == string.Empty)
+            {
+                await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
+
+            }
+            else if (ContactPersonName == string.Empty) {
+                await _dialogService.ShowMessage(AppResources.ZZPleaseentertheName, AppResources.Alerts);
+
+            }
+            else {
+                CurrentStep = ProcessStep.Step4;
+
+                IsReasonViewEnabled = false;
+                IsOutletViewEnabled = false;
+                IsAttachmentsViewEnabled = false;
+                IsDeclarationViewEnabled = false;
+                IsSummaryViewEnabled = true;
+            }
+            
 
             PopulateSummaryReasonData();
             PopulateSummaryDeclarationData();
