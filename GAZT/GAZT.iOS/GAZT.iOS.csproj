@@ -426,13 +426,13 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Syncfusion.SfRotator.iOS">
-      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\iOS\Syncfusion.SfRotator.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfRotator.XForms">
-      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\iOS\Syncfusion.SfRotator.XForms.dll</HintPath>
+      <HintPath>..\GAZT\GAZTDLL\iOS\Syncfusion.SfRotator.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfRotator.XForms.iOS">
-      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\iOS\Syncfusion.SfRotator.XForms.iOS.dll</HintPath>
+      <HintPath>..\GAZT\GAZTDLL\iOS\Syncfusion.SfRotator.XForms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfRotator.XForms">
+      <HintPath>..\GAZT\GAZTDLL\Syncfusion.SfRotator.XForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

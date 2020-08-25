@@ -91,6 +91,9 @@
     <Folder Include="ViewModel\NewDesignViewModel\TaxpayerProfileVM\" />
     <Folder Include="ViewModel\NewDesignViewModel\EstablishmentRegistration\" />
     <Folder Include="Models\EstablishmentRegistration\" />
+    <Folder Include="GAZTDLL\" />
+    <Folder Include="GAZTDLL\Droid\" />
+    <Folder Include="GAZTDLL\iOS\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
