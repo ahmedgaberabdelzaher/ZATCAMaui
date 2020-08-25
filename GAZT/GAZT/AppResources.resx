@@ -1622,6 +1622,9 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Void</value>
     <comment>VAT Declaration button</comment>
   </data>
+  <data name="ZVatRefundRequestForVAT" xml:space="preserve">
+    <value>Refund Request For VAT</value>
+  </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>Refund Information</value>
   </data>
@@ -4242,7 +4245,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Period</value>
   </data>
   <data name="FORM5RecivedReturn" xml:space="preserve">
-    <value>We Have Received Your Return With Reference Number :</value>
+    <value>We have received your return with reference number :</value>
   </data>
   <data name="FORM5RegistrationInfo" xml:space="preserve">
     <value>Registration Information</value>
@@ -4759,7 +4762,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <comment>New Desing Form5</comment>
   </data>
   <data name="NDReviewBelow" xml:space="preserve">
-    <value>Review the Below Details</value>
+    <value>Review the below details</value>
   </data>
   <data name="ZZZZNextCommitments" xml:space="preserve">
     <value>Next Commitments</value>
@@ -4953,6 +4956,9 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="Hello" xml:space="preserve">
     <value>Hello</value>
     <comment>DashBoard</comment>
+  </data>
+     <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
+    <value>Refund Request for VAT</value>
   </data>
   <data name="VATRefundRequestTtitle" xml:space="preserve">
     <value>VAT Refund Request</value>
@@ -6006,5 +6012,20 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="ZZZDBTaxEvasion" xml:space="preserve">
     <value>Report Tax Evasion</value>
+  </data>
+  <data name="NDRealStateVATMinistryJustice" xml:space="preserve">
+    <value>Real State VAT with Ministry of Justice</value>
+  </data>
+  <data name="NDServices" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="NDSwitchUser" xml:space="preserve">
+    <value>Switch User</value>
+  </data>
+  <data name="NDVATLookUP" xml:space="preserve">
+    <value>VAT LookUP</value>
+  </data>
+  <data name="NDMyNotifications" xml:space="preserve">
+    <value>My  Notifications</value>
   </data>
 </root>

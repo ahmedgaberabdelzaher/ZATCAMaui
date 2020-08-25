@@ -162,6 +162,7 @@ using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 using ZakatInstalmentPlanListViewModel = EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel.ZakatInstalmentPlanListViewModel;
+using EGAZT.Views.NewDesign.Template;
 
 namespace EGAZT
 {
@@ -217,7 +218,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewTaxEvasionFormPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
             SimpleIoc.Default.Register<ZakatObjectionSuccessfullPageViewModel>();
-
+            SimpleIoc.Default.Register<DashboardAnonymousMenuPageViewModel>();
 
 
             #endregion
@@ -344,6 +345,21 @@ namespace EGAZT
         }
 
         #region NewDesignViewModel
+
+        public DashboardAnonymousMenuPageViewModel DashboardAnonymousMenuPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<DashboardAnonymousMenuPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         public SignUpForEstablishmentPageViewModel SignUpForEstablishmentPageView
         {
@@ -2086,6 +2102,7 @@ namespace EGAZT
             navigationService.Configure(App.NewAccountPopPageView, typeof(NewAccountPopUpPageView));
             navigationService.Configure(App.EstablishmentSignUPPageView, typeof(EstablishmentSignUPPageView));
             navigationService.Configure(App.SignUpForEstablishmentPageView, typeof(SignUpForEstablishmentPageView));
+            navigationService.Configure(App.DashboardAnonymousMenuPageView, typeof(DashboardAnonymousMenuPageView));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));

@@ -546,7 +546,7 @@
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATRefundRequestTtitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATRefundRequestDashboardTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="VATRefundRequest_Tapped" />
                                     </StackLayout.GestureRecognizers>
@@ -592,30 +592,31 @@
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsVatRegistrationTileVisible}"/>
-                              <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                              <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
 
                                     </Image>
-                                    <custom:CustomLabel  Text="VAT Deregistration" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATDeregistration}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
                                     </Image>
-                                    <custom:CustomLabel  Text="Instalment Plan" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ZakatInstalmentPlan_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
-                                             <StackLayout Orientation="Horizontal" Spacing="20">
+
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
                                     </Image>
-                                    <custom:CustomLabel  Text="VAT Filling Frequency" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
                                     </StackLayout.GestureRecognizers>
@@ -624,12 +625,12 @@
                                              <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
                                     </Image>
-                                    <custom:CustomLabel  Text="Contract Release" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ContractRelease}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ContractRelease_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
                                  <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">

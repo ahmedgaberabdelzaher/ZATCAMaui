@@ -1635,6 +1635,9 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
+ <data name="ZVatRefundRequestVAT" xml:space="preserve">
+    <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
+  </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>معلومات الاسترداد</value>
   </data>
@@ -4709,7 +4712,7 @@
     <value>Objections and Reviews</value>
   </data>
   <data name="NDRefunds" xml:space="preserve">
-    <value>Refunds</value>
+    <value>الإستردادت</value>
   </data>
   <data name="NDReturns" xml:space="preserve">
     <value>الاقرارات</value>
@@ -4927,6 +4930,9 @@
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
+   <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
+    <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
+  </data>
   <data name="VATRefundRequestTtitle" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
@@ -4934,7 +4940,7 @@
     <value>استردادات المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="VATRefundDetails" xml:space="preserve">
-    <value>Refund Details</value>
+    <value>بيانات الإسترداد</value>
   </data>
   <data name="VATRefundsRequest" xml:space="preserve">
     <value>طلب إسترداد</value>
@@ -4961,7 +4967,7 @@
     <value>IN PROCESS</value>
   </data>
   <data name="VATRefundAmounts" xml:space="preserve">
-    <value>Refund Amounts</value>
+    <value>المبالغ المستدره</value>
   </data>
   <data name="VATRefundsAlRajhiBank" xml:space="preserve">
     <value>Al Rajhi Bank</value>
@@ -4976,10 +4982,10 @@
     <value>إجمالي المبلغ المطلوب</value>
   </data>
   <data name="VATRefundsAddAccount" xml:space="preserve">
-    <value>Add Account</value>
+    <value>إضافة حساب</value>
   </data>
   <data name="VATRefundsNoIdNumber" xml:space="preserve">
-    <value>There are no ID Numbers for this ID Type</value>
+    <value>لا يوجد رقم لنوع الهوية المحدد</value>
   </data>
   <data name="ContractObjectNo" xml:space="preserve">
     <value>Contract Object No.</value>
@@ -5650,5 +5656,26 @@
   </data>
   <data name="ZZZDBTaxEvasion" xml:space="preserve">
     <value>إبلاغ عن تهرب</value>
+  </data>
+  <data name="ChangeFillingPeriodTitle" xml:space="preserve">
+    <value>VAT Filling Frequency</value>
+  </data>
+  <data name="ContractRelease" xml:space="preserve">
+    <value>Contract Release</value>
+  </data>
+  <data name="NDRealStateVATMinistryJustice" xml:space="preserve">
+    <value>Real State VAT with Ministry of Justice</value>
+  </data>
+  <data name="NDServices" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="NDSwitchUser" xml:space="preserve">
+    <value>Switch User</value>
+  </data>
+  <data name="NDVATLookUP" xml:space="preserve">
+    <value>VAT LookUP</value>
+  </data>
+  <data name="NDMyNotifications" xml:space="preserve">
+    <value>إشعاراتي</value>
   </data>
 </root>

@@ -57,13 +57,13 @@
     <Reference Include="Mono.Android.Export" />
     <Reference Include="System.Net.Http" />
     <Reference Include="Syncfusion.SfRotator.Android">
-      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\Android\Syncfusion.SfRotator.Android.dll</HintPath>
+      <HintPath>..\GAZT\GAZTDLL\Droid\Syncfusion.SfRotator.Android.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfRotator.XForms.Android">
-      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\Android\Syncfusion.SfRotator.XForms.Android.dll</HintPath>
+      <HintPath>..\GAZT\GAZTDLL\Droid\Syncfusion.SfRotator.XForms.Android.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfRotator.XForms">
-      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\Android\Syncfusion.SfRotator.XForms.dll</HintPath>
+      <HintPath>..\GAZT\GAZTDLL\Syncfusion.SfRotator.XForms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

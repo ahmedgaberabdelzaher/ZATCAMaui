@@ -2888,6 +2888,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZVatRefundRequestForVAT {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestForVAT", resourceCulture);
+            }
+        }
+        
         public static string ZVatRefundInformation {
             get {
                 return ResourceManager.GetString("ZVatRefundInformation", resourceCulture);
@@ -8472,6 +8478,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VATRefundRequestDashboardTitle {
+            get {
+                return ResourceManager.GetString("VATRefundRequestDashboardTitle", resourceCulture);
+            }
+        }
+        
         public static string VATRefundRequestTtitle {
             get {
                 return ResourceManager.GetString("VATRefundRequestTtitle", resourceCulture);
@@ -10503,6 +10515,36 @@ namespace EGAZT {
         public static string ZZZDBTaxEvasion {
             get {
                 return ResourceManager.GetString("ZZZDBTaxEvasion", resourceCulture);
+            }
+        }
+        
+        public static string NDRealStateVATMinistryJustice {
+            get {
+                return ResourceManager.GetString("NDRealStateVATMinistryJustice", resourceCulture);
+            }
+        }
+        
+        public static string NDServices {
+            get {
+                return ResourceManager.GetString("NDServices", resourceCulture);
+            }
+        }
+        
+        public static string NDSwitchUser {
+            get {
+                return ResourceManager.GetString("NDSwitchUser", resourceCulture);
+            }
+        }
+        
+        public static string NDVATLookUP {
+            get {
+                return ResourceManager.GetString("NDVATLookUP", resourceCulture);
+            }
+        }
+        
+        public static string NDMyNotifications {
+            get {
+                return ResourceManager.GetString("NDMyNotifications", resourceCulture);
             }
         }
     }

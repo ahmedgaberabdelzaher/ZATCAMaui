@@ -22,7 +22,6 @@
     <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.1.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.1.0.54" />
-	<PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.1.0.54" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.7.0" />
@@ -92,6 +91,9 @@
     <Folder Include="ViewModel\NewDesignViewModel\TaxpayerProfileVM\" />
     <Folder Include="ViewModel\NewDesignViewModel\EstablishmentRegistration\" />
     <Folder Include="Models\EstablishmentRegistration\" />
+    <Folder Include="GAZTDLL\" />
+    <Folder Include="GAZTDLL\Droid\" />
+    <Folder Include="GAZTDLL\iOS\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -107,6 +109,9 @@
     </Compile>
     <Compile Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml.cs">
       <DependentUpon>UpdatePasswordPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml.cs">
+      <DependentUpon>DashboardAnonymousMenuPageView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml.cs">
       <DependentUpon>MorePopUpPageView.xaml</DependentUpon>
@@ -283,7 +288,7 @@
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATReturnUpdatedUIPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\Template\DashboardMenuPageView.xaml">
+    <EmbeddedResource Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">
@@ -353,11 +358,11 @@
     <None Remove=".DS_Store" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services" />
+    <Reference Include="Syncfusion.SfRotator.XForms">
+      <HintPath>..\..\..\UX VD Design\RTL_Assembly-468883958\PCL\Syncfusion.SfRotator.XForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.SfRotator.XForms">
-      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\PCL\Syncfusion.SfRotator.XForms.dll</HintPath>
-    </Reference>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 </Project>
