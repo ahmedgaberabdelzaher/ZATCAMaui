@@ -355,11 +355,11 @@
     <None Remove=".DS_Store" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services" />
+    <Reference Include="Syncfusion.SfRotator.XForms">
+      <HintPath>..\..\..\UX VD Design\RTL_Assembly-468883958\PCL\Syncfusion.SfRotator.XForms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.SfRotator.XForms">
-      <HintPath>..\..\..\..\..\..\Downloads\RTL_Assembly-468883958\PCL\Syncfusion.SfRotator.XForms.dll</HintPath>
-    </Reference>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 </Project>
