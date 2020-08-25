@@ -33,6 +33,7 @@ using Metadata = EGAZT.Models.ZakatInstalationModels.Metadata;
 using EGAZT.Models.VATInstalmentModels;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using NotesSet = EGAZT.Models.NotesSet;
+using EGAZT.Models.ContractRelease;
 
 namespace GAZT.Manager
 {
@@ -8208,6 +8209,21 @@ namespace GAZT.Manager
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
                     _requestToVATInstallmentPlanDetails = JsonConvert.DeserializeObject<RequestToVATInstallmentPlanDetails>(detailJson);
 
+                    if (!string.IsNullOrEmpty(detailJson) && _requestToVATInstallmentPlanDetails.d == null)
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                            //ErrorMessageForVAT
+                            throw new GAZTVATRegistrationInProcessException(errorMessage);
+                        }
+                    }
+                
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
@@ -8259,6 +8275,21 @@ namespace GAZT.Manager
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
 
                     _displayInstallmentAgreementSchedulePlan = JsonConvert.DeserializeObject<DisplayInstallmentAgreementSchedulePlan>(detailJson);
+
+                    if (!string.IsNullOrEmpty(detailJson) && _displayInstallmentAgreementSchedulePlan.d == null)
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                            //ErrorMessageForVAT
+                            throw new GAZTVATRegistrationInProcessException(errorMessage);
+                        }
+                    }
 
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
@@ -8314,6 +8345,20 @@ namespace GAZT.Manager
 
                     _vATInstalmentScheduleDetailsModel = JsonConvert.DeserializeObject<VATInstalmentScheduleDetailsModel>(detailJson);
 
+                    if (!string.IsNullOrEmpty(detailJson) && _vATInstalmentScheduleDetailsModel.d == null)
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                            //ErrorMessageForVAT
+                            throw new GAZTVATRegistrationInProcessException(errorMessage);
+                        }
+                    }
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
@@ -8556,6 +8601,87 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+       
+        public async static Task<ZakatInvoiceList> GetZakatInvoicesList()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ZakatInvoiceList invoicesList = new ZakatInvoiceList();
+                string NewToken = string.Empty;
+                try
+                {
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+
+
+                    String url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "01" + "'&$format=json";
+
+                    url = System.Web.HttpUtility.UrlPathEncode(url);
+
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTZakatInvoiceDataResponse = await client.GetAsync(uri);
+                    if (GAZTZakatInvoiceDataResponse != null)
+                    {
+                        if (GAZTZakatInvoiceDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTZakatInvoiceDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String zakatInvoicesData = GAZTZakatInvoiceDataResponse.Content.ReadAsStringAsync().Result;
+                        invoicesList = JsonConvert.DeserializeObject<ZakatInvoiceList>(zakatInvoicesData);
+                        if (!string.IsNullOrEmpty(zakatInvoicesData) && invoicesList.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(zakatInvoicesData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return invoicesList;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
 
         public async static Task<ZakatInstalmentPlanResponse> SaveZakatInstalmentData(ZakatInstalmentPlanRequest _zakatInstalmentDetails)
         {
@@ -8958,6 +9084,133 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        #endregion
+
+
+        #region Contract Release
+
+        public async static Task<ContractReleaseFormResponse> GAZTGetContractReleaseRequestData()
+        {
+            ContractReleaseFormResponse _contractReleaseRequestModel = new ContractReleaseFormResponse();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+                    //taxpayerz = "3102224202";
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //(Auditorz = '', Taxpayerz = '3102224202', RegIdz = '', Submitz = '', Savez = '', Fbnumz = '', Langz = 'E', PeriodKeyz = '', UserTin = '') 
+                    // ?$expand = znotesSet,AttDetSet
+                    String url = Constants.ContractReleaseRequestUrl + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
+                      "Savez='" + "',Fbnumz='" + "',Langz='" + lang + "',PeriodKeyz='" + "'," +
+                      "UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _contractReleaseRequestResponse = await client.GetAsync(uri);
+
+
+
+                    if (_contractReleaseRequestResponse != null)
+                    {
+                        if (_contractReleaseRequestResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _contractReleaseRequestResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _contractReleaseRequestData = _contractReleaseRequestResponse.Content.ReadAsStringAsync().Result;
+                        _contractReleaseRequestModel = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(_contractReleaseRequestData);
+
+                        if (!string.IsNullOrEmpty(_contractReleaseRequestData) && _contractReleaseRequestModel.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_contractReleaseRequestData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _contractReleaseRequestModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        //Request Model and Submit models are same here based on provided api list
+        public async static Task<ContractReleaseFormResponse> GAZTSubmitContractReleaseRequestData(string taxpayerz, object aContDt, object aContEndDt, object aReceiveDt)
+        {
+            ContractReleaseFormResponse _submitRequestData = new ContractReleaseFormResponse();
+            try
+            {
+
+                _submitRequestData = await GAZTGetContractReleaseRequestData();
+                _submitRequestData.d.AContDt = aContDt;
+                _submitRequestData.d.AContEndDt = aContEndDt;
+                _submitRequestData.d.AReceiveDt = aReceiveDt;
+                //  _submitRequestData.d.CurrDatumz = null;
+
+                string LangZ = GetLangZParameterAREN();
+                String url = Constants.ContractReleaseSubmitUrl;
+                var uri = new Uri(url);
+                HttpClient client = new HttpClient(App.httpClientHandler);
+                var serilized = JsonConvert.SerializeObject(_submitRequestData.d);
+                client.DefaultRequestHeaders.Add("Token", App.Token);
+                client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                var _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
+                _submitRequestData = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(_contractReleasesubmitResponse);
+
+            }
+            catch (Exception)
+            {
+
+                App.IsSessionExpired = true;
+                return null;
+            }
+            return _submitRequestData;
+
+
+        }
+
         #endregion
     }
 }

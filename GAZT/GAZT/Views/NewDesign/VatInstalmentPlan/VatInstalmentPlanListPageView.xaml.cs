@@ -54,7 +54,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
                 base.OnAppearing();
                 viewModel.EnableVATLandingPage();
                 viewModel.AddOutletDecisionOptions();
-
+                viewModel.NumberOfInstalmentPlans = "" + AppResources.ZakatInstalmetPlan;
             }
             catch (Exception ex)
             {

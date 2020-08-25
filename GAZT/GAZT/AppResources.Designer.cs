@@ -10577,5 +10577,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDMyNotifications", resourceCulture);
             }
         }
+        
+        public static string ForOfficerAssignmentPool {
+            get {
+                return ResourceManager.GetString("ForOfficerAssignmentPool", resourceCulture);
+            }
+        }
     }
 }

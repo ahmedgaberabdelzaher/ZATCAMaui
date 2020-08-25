@@ -4893,7 +4893,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Amendment by GAZT</value>
   </data>
   <data name="ZakatInstallmentPageTitle" xml:space="preserve">
-    <value>Request Installment Plan</value>
+    <value>Request Instalment Plan</value>
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
@@ -6045,5 +6045,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDMyNotifications" xml:space="preserve">
     <value>My  Notifications</value>
+      </data>
+     <data name="ForOfficerAssignmentPool" xml:space="preserve">
+    <value>For Officer Assignment (Pool)</value>
   </data>
 </root>
