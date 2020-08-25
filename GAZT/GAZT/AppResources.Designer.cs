@@ -3801,6 +3801,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Real State VAT with Ministry of Justice.
+        /// </summary>
+        public static string NDRealStateVATMinistryJustice {
+            get {
+                return ResourceManager.GetString("NDRealStateVATMinistryJustice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reference Number.
         /// </summary>
         public static string NDReferenceNumber {
@@ -3909,6 +3918,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Services.
+        /// </summary>
+        public static string NDServices {
+            get {
+                return ResourceManager.GetString("NDServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string NDSettings {
@@ -3959,6 +3977,15 @@ namespace EGAZT {
         public static string NDSupports {
             get {
                 return ResourceManager.GetString("NDSupports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch User.
+        /// </summary>
+        public static string NDSwitchUser {
+            get {
+                return ResourceManager.GetString("NDSwitchUser", resourceCulture);
             }
         }
         
@@ -4157,6 +4184,15 @@ namespace EGAZT {
         public static string NDUsernameSenttoMobile {
             get {
                 return ResourceManager.GetString("NDUsernameSenttoMobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT LookUP.
+        /// </summary>
+        public static string NDVATLookUP {
+            get {
+                return ResourceManager.GetString("NDVATLookUP", resourceCulture);
             }
         }
         

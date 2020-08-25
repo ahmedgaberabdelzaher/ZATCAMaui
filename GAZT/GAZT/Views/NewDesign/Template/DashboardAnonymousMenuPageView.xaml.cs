@@ -19,6 +19,14 @@ namespace EGAZT.Views.NewDesign.Template
             InitializeComponent();
             viewModel = App.Locator.DashboardAnonymousMenuPageView;
             BindingContext = viewModel;
+            SetLTR();
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
     }
 }

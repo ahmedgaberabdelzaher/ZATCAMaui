@@ -5651,10 +5651,22 @@
   <data name="ZZZDBTaxEvasion" xml:space="preserve">
     <value>إبلاغ عن تهرب</value>
   </data>
-   <data name="ChangeFillingPeriodTitle" xml:space="preserve">
+  <data name="ChangeFillingPeriodTitle" xml:space="preserve">
     <value>VAT Filling Frequency</value>
   </data>
-    <data name="ContractRelease" xml:space="preserve">
+  <data name="ContractRelease" xml:space="preserve">
     <value>Contract Release</value>
+  </data>
+  <data name="NDRealStateVATMinistryJustice" xml:space="preserve">
+    <value>Real State VAT with Ministry of Justice</value>
+  </data>
+  <data name="NDServices" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="NDSwitchUser" xml:space="preserve">
+    <value>Switch User</value>
+  </data>
+  <data name="NDVATLookUP" xml:space="preserve">
+    <value>VAT LookUP</value>
   </data>
 </root>
