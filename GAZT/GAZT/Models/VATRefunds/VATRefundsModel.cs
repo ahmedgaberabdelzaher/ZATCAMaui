@@ -258,8 +258,34 @@ namespace EGAZT.Models.VATRefunds
         public VatRefHeaderSetResult[] Results { get; set; }
     }
 
-    public partial class VatRefHeaderSetResult
+    public partial class VatRefHeaderSetResult : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+
+        private string _requestedAmt { get; set; }
+
+        [JsonProperty("RequestedAmt")]
+        public string RequestedAmt
+        {
+            get
+            {
+                return _requestedAmt;
+            }
+            set
+            {
+                _requestedAmt = value;
+                OnPropertyRaised("RequestedAmt");
+            }
+        }
+
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
@@ -274,9 +300,6 @@ namespace EGAZT.Models.VATRefunds
 
         [JsonProperty("SrNo")]
         public long SrNo { get; set; }
-
-        [JsonProperty("RequestedAmt")]
-        public string RequestedAmt { get; set; }
 
         [JsonProperty("ReassessAmt")]
         public string ReassessAmt { get; set; }
