@@ -149,7 +149,7 @@
                          
                          <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
-                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,0"  Style="{StaticResource GreyBorderFrame}">
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
@@ -164,31 +164,20 @@
                                       <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
-
                                 </StackLayout>
                             </border:SfBorder >
+                             <StackLayout Spacing="2">
+                                    <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
+                                    ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}"
+                                    OutlineCornerRadius="15" FocusedColor="#005e4b" ErrorColor="#B00020">
+
+                                        <Editor Style="{StaticResource DefaultEntry}" HeightRequest="100" />
+                                    </inputLayout:SfTextInputLayout>
+                             </StackLayout>
                     </StackLayout>
                         
                 </Grid>
-                     <!--<StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
-                               <StackLayout.Triggers> <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOthersOption}" Value="0">
-                                    <Setter Property="IsVisible" Value="false" />
-                                </DataTrigger>
-                                
-                            </StackLayout.Triggers>
-                                <custom:CustomLabel Text="Other Options" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />   
-                   <Label Text="Others (Please Specify)" HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />   
-                                        <inputLayout:SfTextInputLayout    LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
-                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
-                                        OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
-
-                                            <Entry Style="{StaticResource DefaultEntry}" Text="Others"  Placeholder="Enter reason" HorizontalTextAlignment="Start" HeightRequest="24"/>
-                                     
-                                                
-                                        </inputLayout:SfTextInputLayout>
-                            </StackLayout>-->
+                     
     <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
       <StackLayout.Triggers> <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
                                     <Setter Property="IsVisible" Value="false" />

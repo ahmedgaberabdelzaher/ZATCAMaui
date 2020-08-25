@@ -43,6 +43,7 @@
                 HorizontalTextAlignment="Center"
                 Opacity="{OnPlatform Default=0,
                                      UWP=1}"
+                StyleId="OnBoardText"
                 Style="{StaticResource SfLabelStyleForOnboarding}"
                 Text="{Binding Header}"
                 TranslationY="{OnPlatform Default=60,
@@ -58,6 +59,8 @@
                 Opacity="{OnPlatform Default=0,
                                      UWP=1}"
                 Style="{StaticResource SfLabelStyleForOnboarding}"
+                  StyleId="OnBoardText"
+
                 Text="{Binding Content}"
                 TranslationY="{OnPlatform Default=60, UWP=0}" 
                 LineHeight=".6"
