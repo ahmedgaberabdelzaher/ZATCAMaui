@@ -952,7 +952,7 @@
                                                                     </Image>-->
                                                                 </StackLayout>
 
-                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpensesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding IsExpensesApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" WidthRequest="140"/>
                                                                 <custom:CustomLabel Grid.Row="1" Grid.Column="1" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsApplicableVisible}" HorizontalTextAlignment="End" StyleId="ValueLabel">
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
