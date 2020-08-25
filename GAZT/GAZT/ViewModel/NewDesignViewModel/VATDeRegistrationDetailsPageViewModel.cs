@@ -1174,7 +1174,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = reasonDescription;
-            genericPickerModel.PickerTitle = "Reason List";
+            genericPickerModel.PickerTitle = AppResources.VatDeregReasonTitle;
             genericPickerModel.PickerId = "reasonTypePicker";
             try
             {
@@ -1227,12 +1227,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             OutletDecisionOptions = new ObservableCollection<VATDeregistrationModel>();
             OutletDecisionOptions.Add(new VATDeregistrationModel
             {
-                ActiveOutletDecisionOptions = "De-Registration of VAT Account",
+                ActiveOutletDecisionOptions = AppResources.VATDeregistrationReasonType1,
                 ActiveOutletDecisionOptionsIsSelected = true
             });
             OutletDecisionOptions.Add(new VATDeregistrationModel
             {
-                ActiveOutletDecisionOptions = "VAT Return Filing Obligation Suspension",
+                ActiveOutletDecisionOptions = AppResources.VATDeregistrationReasonType2,
                 ActiveOutletDecisionOptionsIsSelected = false
             });
 

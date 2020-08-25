@@ -4481,12 +4481,15 @@
     <value>العقود الرسمية</value>
   </data>
   <data name="TinDeregistrationEdit" xml:space="preserve">
-    <value>Edit</value>
+    <value>تعديل</value>
   </data>
   <data name="VATDeregistrationDocumentType4" xml:space="preserve">
     <value>ملفات أخرى</value>
   </data>
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+     <data name="VatDeregAttachmentsHeaderTitle" xml:space="preserve">
     <value>المرفقات</value>
   </data>
   <data name="VatDeregAttachmentInputTitle" xml:space="preserve">
@@ -4516,6 +4519,10 @@
   <data name="VatDeregIDType" xml:space="preserve">
     <value>نوع الهوية</value>
   </data>
+      <data name="VatDeregRequestType" xml:space="preserve">
+    <value>نوع الطلب</value>
+  </data>
+   
   <data name="VatDeregIDNumber" xml:space="preserve">
     <value>رقم الهوية</value>
   </data>
@@ -4544,22 +4551,22 @@
     <value>تأكيد</value>
   </data>
   <data name="VatDeregSuspendedStartDate" xml:space="preserve">
-    <value>Start of Suspension Period</value>
+    <value>بداية فترة الايقاف</value>
   </data>
   <data name="VatDeregSuspendedEndDate" xml:space="preserve">
-    <value>End of Suspension Period</value>
+    <value>نهاية فترة الايقاف</value>
   </data>
   <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
-    <value>Suspended Filing Period</value>
+    <value>فترة الايداع الموقوف</value>
   </data>
   <data name="VatDeregNextFilingPeriod" xml:space="preserve">
-    <value>Next Filing Period</value>
+    <value>فترة الايداع التالية</value>
   </data>
   <data name="VatDeregNextFilingDueDate" xml:space="preserve">
-    <value>Next Filing due date</value>
+    <value>تاريخ استحقاق الايداع التالي</value>
   </data>
   <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
-    <value>The Start Date and End Date lie in the same period</value>
+    <value>يقع تاريخ البدء وتاريخ الانتهاء في نفس الفترة</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
     <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)- تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.- يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
