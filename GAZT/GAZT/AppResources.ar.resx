@@ -1635,7 +1635,7 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
- <data name="ZVatRefundRequestForVAT" xml:space="preserve">
+ <data name="ZVatRefundRequestVAT" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
@@ -4930,6 +4930,9 @@
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
+   <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
+    <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
+  </data>
   <data name="VATRefundRequestTtitle" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
@@ -4979,10 +4982,10 @@
     <value>إجمالي المبلغ المطلوب</value>
   </data>
   <data name="VATRefundsAddAccount" xml:space="preserve">
-    <value>Add Account</value>
+    <value>إضافة حساب</value>
   </data>
   <data name="VATRefundsNoIdNumber" xml:space="preserve">
-    <value>There are no ID Numbers for this ID Type</value>
+    <value>لا يوجد رقم لنوع الهوية المحدد</value>
   </data>
   <data name="ContractObjectNo" xml:space="preserve">
     <value>Contract Object No.</value>
