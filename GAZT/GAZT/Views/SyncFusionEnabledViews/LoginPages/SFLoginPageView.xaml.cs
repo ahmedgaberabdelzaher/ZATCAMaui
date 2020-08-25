@@ -107,7 +107,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 {
                     Console.WriteLine(arg);
                     viewModel.IsLoading = false;
-                    viewModel._navigationService.GoBack();
+                    GoBackToOnaboardingScreen();
                 }
                 if (arg == "LoadingFinished")
                 {
@@ -293,7 +293,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
                                 //hybridWebView.RefreshCommand();
 
-                                LogoffUser();
+                                try
+                                {
+                                    LogoffUser();
+                                    GoBackToOnaboardingScreen();
+                                }
+                                catch (Exception ex)
+                                {
+                                    GoBackToOnaboardingScreen();
+                                }
                             }
 
                             if (data == "success")
@@ -541,7 +549,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
             }
 
-            viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
             _navigation.NavigationStack.ToList().Clear();
 
         }
@@ -593,7 +601,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         if (data == "requestTimedOut")
                         {
                             viewModel.IsLoading = false;
-                            viewModel._navigationService.GoBack();
+                            GoBackToOnaboardingScreen();
                         }
 
                         if (data == "success")
@@ -608,6 +616,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                                GoBackToOnaboardingScreen();
                             });
                         }
                     }
@@ -632,6 +641,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             }
         }
 
+        private void GoBackToOnaboardingScreen()
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+            var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+            _navigation.NavigationStack.ToList().Clear();
+        }
 
         private void OnPasswordVisibilityClicked(object sender, EventArgs e)
         {
