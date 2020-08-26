@@ -32,7 +32,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     viewModel.VATDeclarationDetails = vATDeclaration;
                     onPageLoad();
-                    viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                    
                     viewModel.IsSwichButtonEnable = true;
                     
                     if(App.ICRStatus!="E0001" && App.ICRStatus != "E0013")
@@ -148,7 +148,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         }
                         else
                         {
-                            triggerIban(message);
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                triggerIban(message);
+                            });
                         }
                     }
 
@@ -169,6 +172,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(message))
                 {
                     bool isExist = false;
+                    if(viewModel.IBANList==null)
+                    {
+                        viewModel.IBANList = new ObservableCollection<Result2>();
+                    }
                     if (!string.IsNullOrEmpty(message))
                     {
                         List<Result2> results1D = new List<Result2>();
@@ -189,12 +196,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                         if (results1D != null && results1D.Count != 0)
                         {
-                            if (viewModel.IBANList != null)
-                            {
-                                viewModel.IBANList.Clear();
-                            }
-                            viewModel.IBANList = null;
-                            viewModel.IBANList = new ObservableCollection<Result2>(results1D);
+                            //if (viewModel.IBANList != null)
+                            //{
+                            //    viewModel.IBANList.Clear();
+                            //}
+                            //viewModel.IBANList = null;
+                            
+                                viewModel.IBANList = new ObservableCollection<Result2>(results1D);
+                                viewModel.SelectedIBAN = viewModel.IBANList.FirstOrDefault();
+                           
                         }
 
 
@@ -206,6 +216,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             List<Result2> results = new List<Result2>();
                             results.Add(result2);
                             viewModel.IBANList = new ObservableCollection<Result2>(results);
+                            viewModel.SelectedIBAN = viewModel.IBANList.FirstOrDefault();
                             viewModel.NewAccountText = AppResources.VATREditAccount;
                         }
                     }
@@ -242,18 +253,32 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.d.IBANSet.results);
                     viewModel.IsVATRefunCheckedVisible = false;
                     viewModel.IsEnableCheckedRefund = false;
+                    viewModel.IsNewAccountButtonVisible = false;
                     viewModel.SelectedIBAN = viewModel.IBANList.FirstOrDefault();
+                    viewModel.IsDeclarationCheckedForRefund = false;
                 }
                 else
                 {
+                    viewModel.IBANList = new ObservableCollection<Result2>();
                     viewModel.IsVATRefunCheckedVisible = true;
                     viewModel.IsEnableCheckedRefund = true;
                     viewModel.IsNewAccountButtonVisible = true;
+                    viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                    viewModel.IsDeclarationCheckedForRefund = false;
                 }
             }
             bool value=IsCheckedDraftMode();
             if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
             {
+                if(viewModel.VATDeclarationDetails.d.TcFlg=="1")
+                {
+                    viewModel.IsDeclarationCheckedForRefund = true;
+                }
+                else
+                {
+                    viewModel.IsDeclarationCheckedForRefund = false;
+                }
+
                 if (viewModel.VATDeclarationDetails.d.RefundFg == "1")
                 {
                     viewModel.IsSwichButtonEnable = true;
@@ -274,13 +299,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             Result2 result = new Result2();
                             result.Iban = viewModel.VATDeclarationDetails.d.Iban;
                             viewModel.IBANList.Add(result);
-                            viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                            viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
+                            viewModel.NewAccountText = AppResources.VATREditAccount;
+                        }
+                        else
+                        {
+                            viewModel.IBANList = new ObservableCollection<Result2>();
                         }
                     }
                     else
                     {
                         viewModel.IsTextBoxVisibleForIban = false;
                         viewModel.IsDropdownVisibleForIban = true;
+                        viewModel.IsNewAccountButtonVisible = false;
                         if (!string.IsNullOrEmpty(viewModel.VATDeclarationDetails.d.Iban))
                         {
                             viewModel.SelectedIBAN = viewModel.IBANList.Where(x => x.Iban == viewModel.VATDeclarationDetails.d.Iban).FirstOrDefault();
@@ -477,16 +508,20 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         private async void Confirm_RefundClicked(object sender, EventArgs e)
         {
-            if(CheckValidationsForSubmitButton())
+            
+            if (CheckValidationsForSubmitButton())
             {
+                
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     viewModel.IsNewLoading = true;
+                    this.CloseWhenBackgroundIsClicked = false;
                 });
                 await viewModel.SubmitClicked();
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     viewModel.IsNewLoading = false;
+                    this.CloseWhenBackgroundIsClicked = true;
                 });
             }
         }

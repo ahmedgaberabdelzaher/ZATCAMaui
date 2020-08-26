@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -19,6 +21,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
+using pdfjs.Interfaces;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
@@ -226,6 +229,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public ICommand VATInstalationClicked { get; set; }
         public ICommand NewAttachmentTapped { get; set; }
         public ICommand SuccessGoToDashboardTapped { get; set; }
+        public ICommand DownloadConfirmationTapped { get; set; }
 
         #endregion
 
@@ -645,6 +649,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
+        private string _vATReferanceNumber = string.Empty;
+        public string VATReferanceNumber
+        {
+            get
+            {
+                return _vATReferanceNumber;
+            }
+            set
+            {
+                _vATReferanceNumber = value;
+                RaisePropertyChanged("VATReferanceNumber");
+            }
+        }
+
 
         private CorrespondenceFiltersModel _selectedFilterZakatPrev = null;
         public CorrespondenceFiltersModel SelectedFilterZakatPrev
@@ -816,7 +834,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("SubSetSelectedIndexZakat");
             }
         }
-
+        private string _PathOfPdf;
+        public string PathOfPdf
+        {
+            get
+            {
+                return _PathOfPdf;
+            }
+            set
+            {
+                _PathOfPdf = value;
+                RaisePropertyChanged("PathOfPdf");
+            }
+        }
         private void vatInstallmentBillsList()
         {
             //SelectedBillsList = new ObservableCollection<Models.ZakatInstalationModels.Result>();
@@ -1256,6 +1286,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
         }
+        private Stream _StreamForDownloadURL = null;
+        public Stream StreamForDownloadURL
+        {
+            get
+            {
+                return _StreamForDownloadURL;
+            }
+            set
+            {
+                _StreamForDownloadURL = value;
+                RaisePropertyChanged("StreamForDownloadURL");
+            }
+        }
         private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
         public Color ContinueButtonnBackroundColor
         {
@@ -1354,6 +1397,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             OnZakatInstalmentReasonTapped = new Command(this.OnZakatInstalmentReasonClicked);
             NewAttachmentTapped = new Command(this.NewAttachmentClicked);
             SuccessGoToDashboardTapped = new Command(this.SuccessGoToDashboardClicked);
+            DownloadConfirmationTapped = new Command(this.DownloadConfirmationClicked);
+
             vatInstalmentPlanModel = new VATInstalmentPlanModel();
             SelectedOutletOption = new VATInstalmentPlanModel();
             //LoadVatInstalmentData();
@@ -1533,7 +1578,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 VATBillDueAmount = VatInstalments.d.Totdueamt;
                 try
                 {
-                    VATPenalityAmount = (double.Parse(VATBillDueAmount) - double.Parse(TotalAmountSAR.Replace(" SAR", "").Replace(",", ""))) + "";
+                    
+                    VATPenalityAmount = Math.Abs(double.Parse(VATBillDueAmount) - double.Parse(TotalAmountSAR.Replace(" SAR", "").Replace(",", ""))) + "";
+
                 }
                 catch (Exception e)
                 {
@@ -1666,11 +1713,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
         public async Task EnableSucessScreenAsync()
         {
+            VatInstalments.d.Operationz = "01";
+            VatInstalments.d.Decflg = "1";
+            VatInstalments = await SubmitClicked();
 
-            EnableSlectionView();
+            if (VatInstalments != null && VatInstalments.d != null)
+            {
+                VATReferanceNumber = VatInstalments.d.Fbnumz;
+                EnableSlectionView();
+                await Application.Current.MainPage.Navigation.PushAsync(new VatInstalmentPlanSuccessPage());
+
+            }
 
 
-            await Application.Current.MainPage.Navigation.PushAsync(new VatInstalmentPlanSuccessPage());
+           
+
+
+          
 
 
 
@@ -1696,6 +1755,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             _vATBillDueAmount = "0.00 SAR";
             _isNoDataLableVisible = false;
             AttachmentsListViewData = null;
+
             downPaymentAmount = 00.00;
             inputData = "";
             TotalAmountSAR = "0.00 SAR";
@@ -1922,7 +1982,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         private async void showTermsPopUp()
         {
-            await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatTerms, checkBoxString: AppResources.VatTermsCheckBoxDesc, continueString: AppResources.CRContinue,
+
+            VatInstalments.d.Operationz = "01";
+            VatInstalments.d.Decflg = "1";
+
+            await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatTerms, checkBoxString: AppResources.VatTermsCheckBoxDesc, continueString: AppResources.ZakatInstalmetContinue,
                 _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                     .TermsConditions));
         }
@@ -2032,6 +2096,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 PopToRootPage();
 
 
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public async void DownloadConfirmationClicked()
+        {
+            try
+            {
+                downloadConfirmation();
 
             }
             catch (GAZTUnlockAccountException ex)
@@ -2450,6 +2539,74 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 return response;
             }
 
+        }
+
+        #endregion
+
+
+        #region Download Confirmation
+
+        public void downloadConfirmation()
+        {
+            var localPath = string.Empty;
+            Stream stream = null;
+            try
+            {
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    var dependency = DependencyService.Get<ILocalFileProvider>();
+                    if (dependency == null)
+                    {
+                        // DisplayAlert("Error loading PDF", "Computer says no", "OK");
+                        return;
+                    }
+                    var fileName = Guid.NewGuid().ToString();
+                    // Download PDF locally for viewing
+                    using (System.Net.WebClient client = new System.Net.WebClient())
+                    {
+                        try
+                        {
+
+                            String downloadurl = Constants.downloadFile + "'" + VATReferanceNumber + "')/$value";
+
+                            StreamForDownloadURL = client.OpenRead(downloadurl);
+                            BinaryReader br = new BinaryReader(StreamForDownloadURL);
+                            byte[] result = br.ReadBytes((int)StreamForDownloadURL.Length);
+                            string strBase64 = Convert.ToBase64String(result);
+                            if (string.IsNullOrEmpty(strBase64) != true)
+                            {
+                                byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
+                                stream = new MemoryStream(sPDFDecoded);
+                                StreamForDownloadURL = stream;
+                            }
+                            localPath =
+                          Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
+                        }
+                        catch (Exception)
+                        {
+                        }
+                    }
+                    //    using (var httpClient = new HttpClient())
+                    //{
+                    //    var pdfStream = Task.Run(() => httpClient.GetStreamAsync("https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='C4346B23F48E1ED982858E704178C406',Cotyp='ZVT3')/$value")).Result;
+                    //    localPath =
+                    //        Task.Run(() => dependency.SaveFileToDisk(pdfStream, $"{fileName}.pdf")).Result;
+                    //}
+                    if (string.IsNullOrWhiteSpace(localPath))
+                    {
+                        //   DisplayAlert("Error loading PDF", "Computer says no", "OK");
+                        return;
+                    }
+                }
+                if (Device.RuntimePlatform == Device.Android)
+                    PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
+                //else
+                //    Path = url;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         #endregion

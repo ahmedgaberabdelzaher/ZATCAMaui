@@ -16,9 +16,22 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             viewModel = App.Locator.VATDeregistrationInstructionsPage;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            this.FlowDirection = FlowDirection.LeftToRight;
+            SetLTR();
+            //this.FlowDirection = FlowDirection.LeftToRight;
         }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
 
- 
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+
+            }
+        }
     }
 }

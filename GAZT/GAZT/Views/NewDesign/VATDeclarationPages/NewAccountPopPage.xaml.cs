@@ -34,15 +34,20 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (string.IsNullOrEmpty(viewModel.IbanNumberText))
                 {
                     viewModel.AccountText = AppResources.ZTERNewAccount;
+                    viewModel.IbanPartOne = string.Empty;
+                    viewModel.IbanPartTwo= string.Empty;
+                    viewModel.IbanPartThree= string.Empty;
+                    viewModel.IbanPartFour= string.Empty;
+                    viewModel.IbanPartFive= string.Empty;
                 }
                 else
                 {
                     viewModel.AccountText = AppResources.VATREditAccount;
                     viewModel.IbanPartOne = SAremovedIban.Substring(0, 2);
                     viewModel.IbanPartTwo = SAremovedIban.Substring(2, 8);
-                    viewModel.IbanPartThree = SAremovedIban.Substring(9, 4);
-                    viewModel.IbanPartFour = SAremovedIban.Substring(13, 4);
-                    viewModel.IbanPartFive = SAremovedIban.Substring(17, 4);
+                    viewModel.IbanPartThree = SAremovedIban.Substring(10, 4);
+                    viewModel.IbanPartFour = SAremovedIban.Substring(14, 4);
+                    viewModel.IbanPartFive = SAremovedIban.Substring(18, 4);
                     //Bind Iban and remove name
                 }
                 SetLTR();
@@ -144,5 +149,202 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             PopupNavigation.Instance.PopAsync();
         }
+
+        private void IbanOne_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IbanPartOne != null && viewModel.IbanPartOne.Length >= 2)
+                {
+                    IbanTwo.Focus();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
+        }
+
+        private void IbanTwo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IbanPartTwo != null && viewModel.IbanPartTwo.Length >= 8)
+                {
+                    IbanThree.Focus();
+                }
+                //if (viewModel.IbanPartOne != null && viewModel.IbanPartOne.Length == 2)
+                //{
+
+                //}
+                //else
+                //{
+                //    IbanOne.Focus();
+                //}
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void IbanThree_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IbanPartThree != null && viewModel.IbanPartThree.Length >= 4)
+                {
+                    IbanFour.Focus();
+                }
+                //if (viewModel.IbanPartTwo != null && viewModel.IbanPartTwo.Length == 8)
+                //{
+
+                //}
+                //else
+                //{
+                //    IbanTwo.Focus();
+                //}
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void IbanFour_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IbanPartFour != null && viewModel.IbanPartFour.Length >= 4)
+                {
+                    IbanFive.Focus();
+                }
+                //if (viewModel.IbanPartThree != null && viewModel.IbanPartThree.Length == 4)
+                //{
+
+                //}
+                //else
+                //{
+                //    IbanThree.Focus();
+                //}
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void IbanFive_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IbanPartFive != null && viewModel.IbanPartFive.Length >= 4)
+                {
+                    //IbanFour.Focus();
+                }
+                //if (viewModel.IbanPartFour != null && viewModel.IbanPartFour.Length == 4)
+                //{
+
+                //}
+                //else
+                //{
+                //    IbanFour.Focus();
+                //}
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void IbanOneFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+              //  SetFocus();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void IbanTwoFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+               // SetFocus();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void IbanThreeFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //SetFocus();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void IbanFourFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+               // SetFocus();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void IbanFiveFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+              //  SetFocus();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+
+        public void SetFocus()
+        {
+            try
+            {
+                if (viewModel.IbanPartOne != null && !(viewModel.IbanPartOne.Length == 2))
+                {
+                    IbanOne.Focus();
+                }
+                else if (viewModel.IbanPartTwo != null && !(viewModel.IbanPartTwo.Length == 8))
+                {
+                    IbanTwo.Focus();
+                }
+                else if (viewModel.IbanPartThree != null && !(viewModel.IbanPartThree.Length == 4))
+                {
+                    IbanThree.Focus();
+                }
+                else if (viewModel.IbanPartFour != null && !(viewModel.IbanPartFour.Length == 4))
+                {
+                    IbanFour.Focus();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
     }
 }

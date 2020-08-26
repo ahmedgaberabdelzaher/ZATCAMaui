@@ -35,7 +35,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel = App.Locator.CalendarPickerPageView;
             viewModel.DataSource = _pickerSource;
             viewModel.PickerItemSource = viewModel.DataSource.PickerData;
-            viewModel.PickerTitle = viewModel.DataSource.PickerTitle;
+            viewModel.DatePickerTitle = viewModel.DataSource.DatePickerTitle;
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;

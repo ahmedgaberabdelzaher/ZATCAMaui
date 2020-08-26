@@ -10,7 +10,7 @@ namespace EGAZT.Models
         }
 
         public string PickerId { get; set; }
-        public string PickerTitle { get; set; }
+        public string DatePickerTitle { get; set; }
         public ObservableCollection<string> PickerData { get; set; }
         public string SelectedValue { get; set; }
     }

@@ -95,7 +95,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
 
         public ZakatInstalment d { get; set; }
-       
+
 
         public class AttDetSet
         {
@@ -138,9 +138,23 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string AIvAbtyp { get; set; }
         }
 
+        public class ZInvoiceResult
+        {
+            public Metadata2 __metadata { get; set; }
+            public string AAmtTb { get; set; }
+            public string AClearedAmtTb { get; set; }
+            public string ADueAmtTb { get; set; }
+            public object ADueDtTb { get; set; }
+            public string AIvAmtTb { get; set; }
+            public string AIvNoTb { get; set; }
+            public string AIvSrNoTb { get; set; }
+            public string AIvTb { get; set; }
+            public string AIvAbtyp { get; set; }
+        }
+
         public class ZINVOICEUI5Set
         {
-            public ZINVOICEUI5Set[] results { get; set; }
+            public ZInvoiceResult[] results { get; set; }
         }
 
         public class ZakatInstalment
@@ -333,7 +347,7 @@ namespace EGAZT.Models.ZakatInstalationModels
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public ZakatInstalmentReuqest d { get; set; }
-      
+
 
         public class Metadata2
         {
@@ -342,7 +356,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             public string type { get; set; }
         }
 
-        
+
 
         public class ZakatInstalmentReuqest
         {
@@ -634,6 +648,47 @@ namespace EGAZT.Models.ZakatInstalationModels
             public EvtNotif1Set EvtNotif1Set { get; set; }
         }
     }
+
+    public partial class ZakatInvoiceList
+    {
+        public ZakatInvoices d { get; set; }
+    }
+
+    public partial class ZakatInvoices
+    {
+        public List<ZakatInvoicesResult> results { get; set; }
+    }
+
+    public partial class ZakatInvoicesResult
+    {
+        public Metadata __metadata { get; set; }
+        public string InvCbDeflt { get; set; }
+        public long DueYr { get; set; }
+        public string TotAmt { get; set; }
+        public string Fbnum { get; set; }
+        public string Fbguid { get; set; }
+        public bool Inccbflag { get; set; }
+        public string ReturnId { get; set; }
+        public string Tin { get; set; }
+        public string FormGuid { get; set; }
+        public string Taxtype { get; set; }
+        public string DataVersion { get; set; }
+        public string Euser { get; set; }
+        public string Langz { get; set; }
+        public long LineNo { get; set; }
+        public string RankingOrder { get; set; }
+        public string InvCb { get; set; }
+        public long InvNo { get; set; }
+        public string DueDt { get; set; }
+        public string InvAmt { get; set; }
+        public string ClearedAmt { get; set; }
+        public string DueAmt { get; set; }
+        public string InstReqFor { get; set; }
+        public string Abtyp { get; set; }
+        public string Waers { get; set; }
+    }
+
+   
 
 
 }

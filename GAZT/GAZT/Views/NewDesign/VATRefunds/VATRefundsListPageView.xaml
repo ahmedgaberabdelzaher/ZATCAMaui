@@ -111,7 +111,6 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
-                   
                 </Grid>
                 <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
@@ -185,15 +184,39 @@
                                             </custom:CustomLabel>
                                             <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsReassesmentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding ReassessAmt}" Style="{StaticResource ValueLabelBlack}" />
+                                                <Label  Style="{StaticResource ValueLabelBlack}">
+                                                     <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding ReassessAmt}"/>
+                                                            <Span Text=" "/>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsTotalOffset}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding OffsetTot}" Style="{StaticResource ValueLabelBlack}" />
+                                                <Label Style="{StaticResource ValueLabelBlack}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding OffsetTot}"/>
+                                                            <Span Text=" "/>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsNetCreditBalance}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding NetCreditBal}" Style="{StaticResource ValueLabelBlack}" />
+                                                <Label Style="{StaticResource ValueLabelBlack}">
+                                                     <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding NetCreditBal}"/>
+                                                            <Span Text=" "/>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.VATRefundsRequestDate}" Style="{StaticResource CaptionLabelGrey}"/>

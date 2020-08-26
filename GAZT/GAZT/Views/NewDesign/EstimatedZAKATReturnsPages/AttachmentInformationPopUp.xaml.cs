@@ -27,7 +27,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             PopupNavigation.Instance.PopAsync();
         }
 
-        
+        private void DoneButtonClicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PopAsync();
+        }
 
         private void SetLTR()
         {

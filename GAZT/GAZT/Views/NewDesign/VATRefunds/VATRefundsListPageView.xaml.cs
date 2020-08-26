@@ -28,15 +28,24 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.PopulateVATRefundsList();
-            ChangeArrowDirection();
-            Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "InstructionsConfirmed", (message, arg) =>
+
+            try
             {
-                if (arg == "NavigateToNewRequestPageView")
+                viewModel.PopulateVATRefundsList();
+                ChangeArrowDirection();
+                Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "InstructionsConfirmed", (message, arg) =>
                 {
-                    viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView);
-                }
-            });
+                    if (arg == "NavigateToNewRequestPageView")
+                    {
+                        viewModel._navigationService.NavigateTo(App.VATRefundsNewRequestPageView);
+                    }
+                });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+           
         }
 
         protected override void OnDisappearing()
@@ -88,7 +97,6 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 VatRefHeaderSetResult selectedItem = e.AddedItems[0] as VatRefHeaderSetResult;
                 viewModel.SelectionChanged(selectedItem);
-
 
                 if(selectedItem.Status == AppResources.VATRefundsStatusDraft)
                 {

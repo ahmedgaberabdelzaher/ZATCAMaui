@@ -54,7 +54,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _ibanPartOne;
+        private string _ibanPartOne=string.Empty;
         public string IbanPartOne
         {
             get
@@ -68,7 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _ibanPartTwo;
+        private string _ibanPartTwo = string.Empty;
         public string IbanPartTwo
         {
             get
@@ -82,7 +82,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _ibanPartThree;
+        private string _ibanPartThree = string.Empty;
         public string IbanPartThree
         {
             get
@@ -96,7 +96,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _ibanPartFour;
+        private string _ibanPartFour = string.Empty;
         public string IbanPartFour
         {
             get
@@ -110,7 +110,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _ibanPartFive;
+        private string _ibanPartFive = string.Empty;
         public string IbanPartFive
         {
             get

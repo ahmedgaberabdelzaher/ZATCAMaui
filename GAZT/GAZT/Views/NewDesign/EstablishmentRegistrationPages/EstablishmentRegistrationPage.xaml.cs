@@ -24,12 +24,19 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             SetLTR();
             viewModel = App.Locator.EstablishmentRegistrationPage;
             BindingContext = viewModel;
+
+            MessagingCenter.Subscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) => {
+                viewModel.DatePickerModel = arg;
+                Console.WriteLine(arg);
+                OnAppearing();
+            });
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             viewModel?.OnAppearing();
+            DateMessagingCenterSelector();
         }
 
         protected override void OnDisappearing()
@@ -37,7 +44,46 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             base.OnDisappearing();
         }
 
-        private void SetLTR()
+        private void DateMessagingCenterSelector()
+        {
+            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
+            {
+
+                if (App.IsArabic)
+                {
+                    if (arg.DatePickerTitle.Contains("Issue Date"))
+                    {
+                        viewModel.PassportIssueDate = arg.SelectedValue;
+                    }
+                    else if (arg.DatePickerTitle.Contains("Expiry Date"))
+                    {
+                        viewModel.PassportExpireDate = arg.SelectedValue;
+                    }
+                    else
+                    {
+                        viewModel.SelectedDOB = arg.SelectedValue;
+                    }
+                }
+                else
+                {
+                    if (arg.DatePickerTitle.Contains("Issue Date"))
+                    {
+                        viewModel.PassportIssueDate = arg.SelectedValue;
+                    }
+                    else if (arg.DatePickerTitle.Contains("Expiry Date"))
+                    {
+                        viewModel.PassportExpireDate = arg.SelectedValue;
+                    }
+                    else
+                    {
+                        viewModel.SelectedDOB = arg.SelectedValue;
+                    }
+                }
+            });
+
+        }
+
+    private void SetLTR()
         {
 
             //if (!App.IsArabic)
@@ -53,36 +99,78 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         async void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
 
-            //GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            //genericPickerModel.PickerTitle = "DateofBirthType";
-            //genericPickerModel.PickerId = "DateofBirthTypePicker";
-            //try
-            //{
-            //    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
-            //}
-            //catch (GAZTUnlockAccountException ex)
-            //{
+            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+            genericPickerModel.DatePickerTitle = "Select DOB";
+            genericPickerModel.PickerId = "DOBDateTypePicker";
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
 
-            //}
-            //catch (InternetException ex)
-            //{
-            //    Device.BeginInvokeOnMainThread(async () =>
-            //    {
-            //        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-            //        viewModel._navigationService.GoBack();
-            //    });
-            //}
-
-
-        }
-
-        private void PassportIssueDateClicked(object sender, EventArgs e)
-        {
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._navigationService.GoBack();
+                });
+            }
 
         }
 
-        private void PassportExpiryDateClicked(object sender, EventArgs e)
+        async void PassportIssueDateClicked(System.Object sender, System.EventArgs e)
         {
+
+            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+            genericPickerModel.DatePickerTitle = "Issue Date";
+            genericPickerModel.PickerId = "PassportIssueDateTypePicker";
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._navigationService.GoBack();
+                });
+            }
+
+        }
+
+
+        
+
+        async void PassportExpiryDateClicked(object sender, EventArgs e)
+        {
+            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+            genericPickerModel.DatePickerTitle = "Expiry Date";
+            genericPickerModel.PickerId = "PassportExpityDateTypePicker";
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel._navigationService.GoBack();
+                });
+            }
+
 
         }
 

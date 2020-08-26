@@ -133,7 +133,8 @@
                                 <DataTemplate>
                                     <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                            <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <Image 
+                                                Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
                                                                     Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
                                             </custom:CustomLabel>
@@ -231,9 +232,39 @@
                                                 <Label  Text="{Binding Fbnum}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" 
                                                HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
                                             </StackLayout>
-                                            <border:SfBorder Grid.Row="0" VerticalOptions="Center" Grid.Column="1" Padding="15,5,15,5" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" HorizontalOptions="Center">
-                                                <Label  Text="{Binding FbustTxt}" Style="{StaticResource SmallGoldLabelStyle}" HorizontalTextAlignment="Center" HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>
-                                            </border:SfBorder>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+
+ 
+
+                                                <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="#E5EFED"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
+                                                    <Label Style="{StaticResource CaptionLabelBlack}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                        <Label.Triggers>
+                                                            <DataTrigger TargetType="Label" Binding="{Binding FbustTxt}" Value="{x:Static ResourceManager:AppResources.NDBilled}">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.NDBilled}" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+
+ 
+
+                                                            </DataTrigger>
+                                                            <DataTrigger TargetType="Label" Binding="{Binding FbustTxt}" Value="{x:Static ResourceManager:AppResources.ForOfficerAssignmentPool}">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ForOfficerAssignmentPool}" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Secondary}"  />
+                                                                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                                                            </DataTrigger>
+                                                            
+                                                            <!--Need to add Third value below, If any-->
+                                                            <DataTrigger TargetType="Label" Binding="{Binding FbustTxt}" Value="O">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnPaid}" />
+                                                                <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                                                            </DataTrigger>
+                                                        </Label.Triggers>
+                                                    </Label>
+                                                </yummy:PancakeView>
+
+ 
+
+                                            </StackLayout>
 
                                         </Grid>
                                     </border:SfBorder>
@@ -443,11 +474,10 @@
                             <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPeriodicInstalment}"
-                                      FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" />
-                                    <Label Text="{Binding InstalmentAmount,StringFormat='{0:N} SAR'}" FontSize="Medium"
-                                      FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding InstalmentAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
                                 </StackLayout>
                             </Frame>
                         </Grid>
@@ -457,11 +487,10 @@
                             <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstallmentAgreementPenalty}"
-                                      FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" />
-                                    <Label Text="{Binding PenaltyAmount,StringFormat='{0:N} SAR'}" FontSize="Medium"
-                                      FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding PenaltyAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
                                 </StackLayout>
                             </Frame>
                         </Grid>
@@ -471,11 +500,11 @@
                             <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}"
-                                      FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" />
-                                    <Label Text="{Binding TotalAmount,StringFormat='{0:N} SAR'}" FontSize="Medium"
-                                      FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding TotalAmount,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlackBold}"
+                                           HorizontalOptions="EndAndExpand" />
                                 </StackLayout>
                             </Frame>
                         </Grid>
@@ -702,11 +731,10 @@
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                 <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentPlanListTotalNumberOfMonths}"
-                                      FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" />
-                                <Label Text="{Binding ScheduleNoOfMonths}" FontSize="Medium"
-                                      FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
+                                <Label Text="{Binding ScheduleNoOfMonths}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
                             </StackLayout>
                         </Frame>
                     </Grid>
@@ -715,11 +743,11 @@
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                 <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentPlanListTotalMonthlyInstalments}"
-                                      FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" />
-                                <Label Text="{Binding ScheduleMonthlyInstalment,StringFormat='{0:N} SAR'}" FontSize="Medium"
-                                      FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
+                                <Label Text="{Binding ScheduleMonthlyInstalment,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlackBold}"
+                                       HorizontalOptions="EndAndExpand" />
                             </StackLayout>
                         </Frame>
                     </Grid>
@@ -728,11 +756,11 @@
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                 <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountPaid}"
-                                      FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" />
-                                <Label Text="{Binding ScheduleTotalAmountPaid,StringFormat='{0:N} SAR'}" FontSize="Medium"
-                                      FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
+                                <Label Text="{Binding ScheduleTotalAmountPaid,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlackBold}"
+                                       HorizontalOptions="EndAndExpand" />
                             </StackLayout>
                         </Frame>
                     </Grid>
@@ -740,11 +768,11 @@
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand"
                               Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12"
                               Margin="0,20,0,0" Padding="0">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
                                 <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalAmountRemaining}"
-                                      FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" />
-                                <Label Text="{Binding ScheduleAmountRemaining,StringFormat='{0:N} SAR'}" FontSize="Medium"
-                                      FontAttributes="Bold" TextColor="Black" HorizontalOptions="EndAndExpand" />
+                                      Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
+                                <Label Text="{Binding ScheduleAmountRemaining,StringFormat='{0:N} SAR'}" Style="{StaticResource SectionTitleBlackBold}"
+                                       HorizontalOptions="EndAndExpand" />
                             </StackLayout>
                         </Frame>
                     </Grid>

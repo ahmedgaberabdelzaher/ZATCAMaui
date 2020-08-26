@@ -62,6 +62,17 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                     viewModel.setCurrentTab();
                 }
             });
+
+            //if (App.IsArabic)
+            //{ 
+            //    RefrenceNumber.IsVisible = false;
+            //    RefrenceNumberArabic.IsVisible = true;
+            //}
+            //else
+            //{
+            //    RefrenceNumber.IsVisible = true;
+            //    RefrenceNumberArabic.IsVisible = false;
+           // }
         }
         private async Task LoadData()
         {
