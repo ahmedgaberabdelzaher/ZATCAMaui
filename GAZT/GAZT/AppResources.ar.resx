@@ -4927,7 +4927,7 @@
     <value>Zakat/IncomeTax</value>
   </data>
   <data name="VATAmountDue" xml:space="preserve">
-    <value>Amount Due</value>
+    <value>المبلغ المستحق</value>
   </data>
   <data name="ZZZZPleaseSelectZakatType" xml:space="preserve">
     <value>Instalment Requested for</value>
