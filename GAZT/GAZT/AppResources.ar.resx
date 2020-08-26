@@ -4020,7 +4020,7 @@
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSRegisteredToVATService" xml:space="preserve">
-    <value>لقد سجلت بنجاح في خدمات ضريبة القيمة المضافة.</value>
+    <value>تم التسجيل في خدمات الهيئة العامة للزكاة والدخل بنجاح. لتسجيل الدخول الرجاء استخدام الرقم المميز الخاص بك</value>
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSRegistrationSuccessful" xml:space="preserve">
