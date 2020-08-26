@@ -4489,6 +4489,10 @@
   <data name="VATDeregistrationDocumentType2" xml:space="preserve">
     <value>تقارير مدققه</value>
   </data>
+    
+          <data name="VatDeregistrationVoidMessage" xml:space="preserve">
+    <value>هل تريد إلغاء ايقاف التسجيل؟</value>
+  </data>
   <data name="VATDeregistrationDocumentType3" xml:space="preserve">
     <value>العقود الرسمية</value>
   </data>
@@ -4535,7 +4539,7 @@
     <value>التعهد</value>
   </data>
   <data name="VatDeregDeclarationSubtitle" xml:space="preserve">
-    <value>اكمل المعلومات التالية</value>
+    <value>اكمل البيانات التالية</value>
   </data>
   <data name="VatDeregIDType" xml:space="preserve">
     <value>نوع الهوية</value>

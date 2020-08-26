@@ -7866,6 +7866,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregistrationVoidMessage {
+            get {
+                return ResourceManager.GetString("VatDeregistrationVoidMessage", resourceCulture);
+            }
+        }
+        
         public static string SelectTheOptionAndCompleteDetails {
             get {
                 return ResourceManager.GetString("SelectTheOptionAndCompleteDetails", resourceCulture);

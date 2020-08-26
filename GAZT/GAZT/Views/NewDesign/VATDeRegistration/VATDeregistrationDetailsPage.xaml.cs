@@ -14,6 +14,8 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Java.Text;
+using Java.Util;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -57,7 +59,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             //viewModel.FromDate = "DD/MM/YYYY";
             // viewModel.ToDate = "DD/MM/YYYY";
 
-
+            //viewModel.EnableReasonView();
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
@@ -125,7 +127,18 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     {
                         viewModel.IDType = arg.SelectedValue;
 
+                        if (viewModel.IDType.Contains(AppResources.ZZGCCID))
+                        {
+                            viewModel.IsDOBEditorVisible = false;
+                            IDNumberField.WidthRequest = 300;
+                        }
+                        else
+                        {
+                            IDNumberField.WidthRequest = 140;
 
+                            viewModel.IsDOBEditorVisible = !viewModel.IsDOBEditorVisible;
+
+                        }
                     }
                     else
                     {
@@ -141,6 +154,19 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     if (arg.PickerTitle.Contains(AppResources.VatDeregIDType))
                     {
                         viewModel.IDType = arg.SelectedValue;
+                        if (viewModel.IDType.Contains(AppResources.ZZGCCID))
+                        {
+                            viewModel.IsDOBEditorVisible = false;
+                            IDNumberField.WidthRequest = 320;
+
+                        }
+                        else
+                        {
+                            IDNumberField.WidthRequest = 140;
+
+                            viewModel.IsDOBEditorVisible = !viewModel.IsDOBEditorVisible;
+
+                        }
                     }
                     else
                     {
@@ -196,11 +222,14 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.DOB = arg.SelectedValue;
                     }
                 }
-                if (viewModel.FromDate < viewModel.LastIcrDate)
-                {
-                    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, "Information");
-                }
-                else if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
+                //if (viewModel.FromDate < viewModel.LastIcrDate)
+                //{
+                //    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, "Information");
+                //}
+                //else
+               // DateTime.Today.AddDays(1);
+
+                if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
                 {
                     DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
                     DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
@@ -670,6 +699,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     }
                     if (viewModel.IDType == "GCC ID")
                     {
+                        
                         if (viewModel.TxtIDNumber.Substring(0, 1) == "0")
                         {
                             //Have to change to neww error message
@@ -1072,6 +1102,32 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 viewModel.IsLoading = false;
             });
+        }
+
+        async void voidTapped(System.Object sender, System.EventArgs e)
+        {
+            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
+            if (!result)
+            {
+
+                if (viewModel.VATDeRegistrationDetailsData != null)
+                {
+                    if (viewModel.VATDeRegistrationDetailsData.d != null)
+                    {
+                        if (viewModel.VATDeRegistrationDetailsData.d.Fbnumx != string.Empty)
+                        {
+                            viewModel.setDATA("04");
+                            await viewModel.saveAsDraftVoidAPIMethodCall();
+                            // _navigationService.GoBack();
+                        }
+                        else
+                        {
+                            viewModel._navigationService.GoBack();
+                        }
+                    }
+
+                }
+            }
         }
     }
 }

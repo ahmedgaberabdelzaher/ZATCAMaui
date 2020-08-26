@@ -563,11 +563,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
-                if (outletDecisionOptions == value)
-                {
-                    return;
-                }
-
+    
                 outletDecisionOptions = value;
                 RaisePropertyChanged("OutletDecisionOptions");
             }
@@ -896,6 +892,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public bool _isDOBEditorVisible;
+        public bool IsDOBEditorVisible
+        {
+            get
+            {
+                return _isDOBEditorVisible;
+            }
+            set
+            {
+                _isDOBEditorVisible = value;
+                RaisePropertyChanged("IsDOBEditorVisible");
+            }
+        }
+
         public VATDeRegistrationDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -912,29 +922,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _navigationService.GoBack();
             });
-            CloseBtnTapped = new Command(async () =>
-            {
-                if(VATDeRegistrationDetailsData.d.Fbnumx != string.Empty)
-                {
-
-                    
-                    setDATA("04");
-                    _navigationService.GoBack();
-
-                }
-                else
-                {
-                    _navigationService.GoBack();
-
-                }
-
-
-            });
+            //CloseBtnTapped = new Command(async () =>
+            //{
+            //    voidButtonTapped();
+            
+            //});
 
             OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
             {
                 TitleText = "Button New";
-
             });
 
             //EnableAttachmentsView();
@@ -960,6 +956,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
         }
+
+
         public async Task onPageLoad()
         {
             try
@@ -1094,9 +1092,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 reqType = "VT_SUSP";
             }
-            VATDeregistrationLastICRDateRootObject obj =  WebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
+            try
+            {
+                VATDeregistrationLastICRDateRootObject obj = WebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
 
-            LastIcrDate = obj.d.results[0].Lasticrdt;
+                LastIcrDate = obj.d.results[0].Lasticrdt;
+            }catch(Exception e)
+            {
+
+
+            }
         }
         public void populateAttachments(VATDeRegistrationDetails vATDeRegistrationDetails)
         {
@@ -1184,7 +1189,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         [Obsolete]
         public  void OnVatRegistrationReasonClicked()
         {
-           // ObservableCollection < VATDeregistrationReasonModel> reasonList = new ObservableCollection<VATDeregistrationReasonModel>();
 
             ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
             string reqType = string.Empty;
@@ -1210,7 +1214,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             genericPickerModel.PickerId = "reasonTypePicker";
             try
             {
-                //PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage());
                  PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
             catch (GAZTUnlockAccountException ex)
@@ -1294,19 +1297,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 string attachmentType = string.Empty;
                 if (reqType != null || reqType != string.Empty)
                 {
-                    VATDeRegistrationAttachmentDropdownDetails reasonList = await WebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType);
-                    for (int i = 0; i < reasonList.VatDeregSubItemsSet.Results.Length; i++)
+                    try
                     {
-                        attachmentType = reasonList.VatDeregSubItemsSet.Results[i].Txt50;
-                        DocTypeString = reasonList.VatDeregSubItemsSet.Results[i].DmsTp;
-                        if (attachmentType != string.Empty)
+                        VATDeRegistrationAttachmentDropdownDetails reasonList = await WebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType);
+                        for (int i = 0; i < reasonList.VatDeregSubItemsSet.Results.Length; i++)
                         {
-                            OutletDocumentOptions.Add(new VATDeregistrationModel
+                            attachmentType = reasonList.VatDeregSubItemsSet.Results[i].Txt50;
+                            DocTypeString = reasonList.VatDeregSubItemsSet.Results[i].DmsTp;
+                            if (attachmentType != string.Empty)
                             {
-                                ActiveOutletDocumentOptions = attachmentType,
-                                ActiveOutletDocumentOptionsIsSelected = true
-                            });
+                                OutletDocumentOptions.Add(new VATDeregistrationModel
+                                {
+                                    ActiveOutletDocumentOptions = attachmentType,
+                                    ActiveOutletDocumentOptionsIsSelected = true
+                                });
+                            }
+
                         }
+                    }catch(Exception ex)
+                    {
 
                     }
                 }
@@ -1319,13 +1328,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         public async void ReasonContinueBtnClicked()
-        {
-            
+        { 
             try
             {
                 try
                 {
-                    setDATA("04");
+                    setDATA("05");
+                   await saveAsDraftVoidAPIMethodCall();
                 }
                 catch (InternetException ex)
                 {
@@ -1360,7 +1369,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    setDATA("04");
+                    setDATA("05");
                 }
                 catch (InternetException ex)
                 {
@@ -1393,7 +1402,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    setDATA("04");
+                    setDATA("05");
                 }
                 catch (InternetException ex)
                 {
@@ -1954,7 +1963,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             try
             {
                 string reqType = string.Empty;
-
+                string requestTyp = string.Empty;
                 //Step1
 
                 if (IsInstructionChecked)
@@ -1970,10 +1979,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (SelectedOutletOptionIndex == 0)
                 {
                     reqType = "VT_DREG";
+                    requestTyp = "D";
                 }
                 else
                 {
                     reqType = "VT_SUSP";
+                    requestTyp = "S";
                     
                     VATDeRegistrationDetailsData.d.SuspDtfrom = ConvertDateFormat(SuspendedStartDate);
                     VATDeRegistrationDetailsData.d.SuspDtto = ConvertDateFormat(SuspendedEndDate);
@@ -1986,13 +1997,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData.d.TxnTpx = reqType;
                 VATDeRegistrationDetailsData.d.StepNumber = "2";
                 VATDeRegistrationDetailsData.d.Reason = Reason;
-            
+                VATDeRegistrationDetailsData.d.Agreeflg = true;
+                VATDeRegistrationDetailsData.d.Atype = "2";
+                VATDeRegistrationDetailsData.d.Reqtp = "S";
+
+
                 VATDeRegistrationDetailsData.d.Operationx = operation;
+                if (operation == "05")
+                {
+                    VATDeRegistrationDetailsData.d.Fbustx = "E0013";
+                    VATDeRegistrationDetailsData.d.Statusx = "E0013";
+                }
+                else if (operation == "01")
+                {
+                    VATDeRegistrationDetailsData.d.Fbustx = "E0002";
+                    VATDeRegistrationDetailsData.d.Statusx = "E0002";
+                }
                 //Step3
 
                 //Step 4
 
-             if(IDType == "National ID")
+             if (IDType == "National ID")
                 {
                     VATDeRegistrationDetailsData.d.Type = "ZS0001";
 
@@ -2011,7 +2036,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData.d.Contactnm = ContactPersonName;
                 //VATDeRegistrationDetailsData.d.Taxdt = DOB;
 
-
+                
             }
             catch (Exception ex)
             {
@@ -2032,6 +2057,73 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             ConvertedDate = "" + "/Date(" + unixTime + ")/";
             return ConvertedDate;
 
+        }
+        public async Task<VATDeRegistrationDetails> saveAsDraftVoidAPIMethodCall()
+        {
+            VATDeRegistrationDetails response = new VATDeRegistrationDetails();
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                VATDeRegistrationDetails vATDeRegistrationDetails = new VATDeRegistrationDetails();
+                response = await WebServiceManager.SaveVATDeRegistrationData(VATDeRegistrationDetailsData);
+                // PopToRootPage();
+                if (response != null && response.d != null)
+                {
+                    try
+                    {
+                        if (response != null && response.d != null)
+                        {
+                            if (response.d.Operationx.Equals("04"))
+                            {
+                                string number = response.d.Fbnumx;
+                                string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
+                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                _navigationService.GoBack();
+                            }
+                            if (response.d.Operationx.Equals("05"))
+                            {
+                                //  string number = response.d.Fbnumz;
+                                string displayMessage = AppResources.VATRSaveasdraftMessage;
+                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                            }
+
+                            VATDeRegistrationDetailsData = response;
+
+                            //Set data after api call 
+                            await setDataAfterSubmitAPIAsync(response);
+
+                        }
+                        IsLoading = false;
+                        return response;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                        return null;
+                    }
+                }
+                IsLoading = false;
+                return response;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+                return response;
+            }
+
+            catch (Exception ex)
+            {
+                return response;
+            }
         }
         public async Task<VATDeRegistrationDetails> SubmitClicked()
         {
