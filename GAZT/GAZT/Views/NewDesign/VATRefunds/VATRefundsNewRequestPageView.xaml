@@ -229,7 +229,15 @@
                          <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefundAmounts}" Style="{StaticResource BodyLabelBlack}" />
                     </StackLayout>
                     <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" Padding="16,8,16,0">
-                        <custom:CustomLabel Text="{Binding VatRefundsDisplayDataModel.Rfamt}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
+                        <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand">
+                             <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding VatRefundsDisplayDataModel.Rfamt}" Style="{StaticResource SectionTitleBlackBold}" ></Span>
+                                    <Span Text=" "/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                </FormattedString>
+                             </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
                     </StackLayout>
                     <border:SfBorder Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
                         <StackLayout Margin="8">

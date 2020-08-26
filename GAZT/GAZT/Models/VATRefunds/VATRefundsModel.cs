@@ -282,6 +282,7 @@ namespace EGAZT.Models.VATRefunds
             set
             {
                 _requestedAmt = value;
+                _requestedAmt = _requestedAmt.Replace("-", string.Empty);
                 OnPropertyRaised("RequestedAmt");
             }
         }

@@ -16,7 +16,8 @@
         
     </ContentPage.Resources>
     <ContentPage.Content>
-                <StackLayout IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}" Margin="0" BackgroundColor="Transparent" >
+        <ScrollView>
+                            <StackLayout IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}" Margin="0" BackgroundColor="Transparent" >
                     <Grid HorizontalOptions="Start" IsVisible="true" BackgroundColor="Transparent">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -43,7 +44,7 @@
                         <border:SfBorder   Margin="0,0,0,8"  Style="{StaticResource GreyBorderFrame}">
                    
                             <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                                <Label  Text="Reference Number" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                <Label  Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start" VerticalOptions="Center"/>
                                 <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                 <Label Text="{Binding VatNewReqSummaryData.Fbnumx}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
                             </StackLayout>
@@ -60,5 +61,7 @@
                     
                     </Grid>
                 </StackLayout>
+
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

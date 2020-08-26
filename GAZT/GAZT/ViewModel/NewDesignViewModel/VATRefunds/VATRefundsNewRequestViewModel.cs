@@ -561,6 +561,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 try
                 {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
