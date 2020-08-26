@@ -50,12 +50,12 @@
 
 
                 <StackLayout Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}">
-                    
-                        <!--<WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />-->
-                        
-                        <StackLayout Orientation="Horizontal">
-                            <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
-                                <CheckBox.Triggers>
+
+                    <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
+
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
+                        <CheckBox.Triggers>
                                     <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
                                         <Setter Property="Color" Value="#ff0000" />
                                     </DataTrigger>
@@ -463,7 +463,7 @@
 
                                         <!--Third OTP Digit Start-->
                                         <inputLayout:SfTextInputLayout
-                                                    Grid.Column="2"
+                                                    Grid.Column="2" 
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
@@ -952,7 +952,7 @@
 
 
                 <StackLayout Grid.Row="3" Padding="0,8,0,0" BackgroundColor="White">
-                    <buttons:SfButton x:Name="btnprimary" Text="{Binding NextBTN}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
+                    <buttons:SfButton x:Name="btnprimary" Text="{Binding NextBTN}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}" IsEnabled="{Binding IsMainButtonEnabled}"/>
                 </StackLayout>
                 
                 <StackLayout Grid.Row="1" Padding="0,0,0,8" BackgroundColor="White">
@@ -969,7 +969,7 @@
                         <ColumnDefinition Width="20*"/>
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Column="0" Padding="0,8,0,0">
-                        <Image Source="arrowLeft.png" HorizontalOptions="Start">
+                        <Image Source="arrowLeft.png" x:Name="Image_backArrow" HorizontalOptions="Start">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnBackButtonClick}"/>
                             </Image.GestureRecognizers>

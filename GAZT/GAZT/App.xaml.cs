@@ -580,10 +580,17 @@ namespace EGAZT
 
         public static async void DisplayProgressView()
         {
-            MainThread.BeginInvokeOnMainThread(() =>
+            try
             {
-                PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
-            });
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
+                });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public static async void HideProgressView()

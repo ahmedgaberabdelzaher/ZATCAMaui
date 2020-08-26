@@ -21,6 +21,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
+        private string _ButtonLabelText=AppResources.TPGoToProfile;
+        public string ButtonLabelText
+        {
+            get { return _ButtonLabelText; }
+            set
+            {
+                _ButtonLabelText = value;
+                RaisePropertyChanged("ButtonLabelText");
+            }
+        }
+
         private string _successCaptionLbl;
         public string successCaptionLbl
         {
