@@ -897,7 +897,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView HasShadow="True" BorderColor="{StaticResource NeutralLightGrey}" BackgroundColor="White" BorderWidth="0.7" CornerRadius="10" Margin="0">
-                                    <VisualStateManager.VisualStateGroups>
+                                    <!--<VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup x:Name="CommonStates">
                                             <VisualState x:Name="Normal" />
                                             <VisualState x:Name="Selected">
@@ -909,7 +909,7 @@
                                                 </VisualState.Setters>
                                             </VisualState>
                                         </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
+                                    </VisualStateManager.VisualStateGroups>-->
                                     <Grid x:Name="GridItem" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ColumnSpacing="10" Padding="12">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>

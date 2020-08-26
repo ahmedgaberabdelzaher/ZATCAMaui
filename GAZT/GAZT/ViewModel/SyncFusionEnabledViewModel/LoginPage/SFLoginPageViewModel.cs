@@ -993,14 +993,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        //_navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                         //TODO for continue work on EST added by ashwini
                         //_navigationService.NavigateTo(App.EstablishmentRegistrationPage);
-                        _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
-                        {
-                            openedTab = EstablishmentOutletActivitiesTabsEnum.CRDetails,
-                            taxPayerDetails = null
-                        });
                     });
 
                     //if (App.IsOTPByPassed == true)

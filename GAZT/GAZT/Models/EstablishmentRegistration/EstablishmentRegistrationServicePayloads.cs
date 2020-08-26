@@ -457,6 +457,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Istype { get; set; }
         public string Text { get; set; }
         public string TextShort { get; set; }
+        public override string ToString() => Text;
     }
     public class ActSubgroupSet
     {
@@ -515,6 +516,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string CityCode { get; set; }
         public string Region { get; set; }
         public string CityName { get; set; }
+        public override string ToString() => CityName;
     }
 
     public class CityDropdownSet
@@ -546,6 +548,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Landx50 { get; set; }
         public string Natio50 { get; set; }
         public string PrqSpregt { get; set; }
+        public override string ToString() => Landx50;
     }
 
     public class CountryDropdownSet

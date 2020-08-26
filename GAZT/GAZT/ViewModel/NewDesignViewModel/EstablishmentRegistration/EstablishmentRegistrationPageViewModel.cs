@@ -23,7 +23,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
-        private TaxPayerDetails taxPayerDetails = null;
+        private TaxPayerDetails taxPayerDetails { get; set; } = null;
         private OutletNumber number;
         private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
         public EstablishmentRegistrationTabsEnum currentTab
@@ -1061,17 +1061,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
            
 
             #region Outlet Tabs variable initialization
-            OnNewOutletButtonClick = new Command(() =>
-            {
-                OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
-                //if (OutletData?.Count > 0)
-                //{
-                //    outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
-                //}
-                outletNavigationModels.taxPayerDetails = taxPayerDetails;
-                outletNavigationModels.nextNumber = number;
-                _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
-            });
+            OnNewOutletButtonClick = new Command(() => openNewOutlet());
             #endregion
 
             #region Financial Details Tabs variable initialization
@@ -1126,7 +1116,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             await Task.WhenAll(branchTask, nationalityTask);
             if (taxPayerDetails == null)
             {
-                fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType);
+                fetchTabDataAndBind(currentTab);
             }
         }
 
@@ -1134,41 +1124,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
             {
-                if (FormValidation(currentTab))
-                {
-                    if (PushDatatoServer(currentTab))
-                    {
+                //if (FormValidation(currentTab))
+                //{
+                //    if (PushDatatoServer(currentTab))
+                //    {
                         currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
-                    }
-                    else
-                    {
-                        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
-                    }
-                }
-                else
-                {
-                    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
+                //    }
+                //    else
+                //    {
+                //        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+                //    }
+                //}
+                //else
+                //{
+                //    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
 
-                }
+                //}
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.PassportDetails)
             {
-                if (FormValidation(currentTab))
-                {
-                    if (PushDatatoServer(currentTab))
-                    {
+                //if (FormValidation(currentTab))
+                //{
+                //    if (PushDatatoServer(currentTab))
+                //    {
                         currentTab = EstablishmentRegistrationTabsEnum.Outlets;
-                    }
-                    else
-                    {
-                        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
-                    }
-                }
-                else
-                {
-                    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
+                //    }
+                //    else
+                //    {
+                //        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+                //    }
+                //}
+                //else
+                //{
+                //    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
 
-                }
+                //}
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             {
@@ -1180,23 +1170,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
-                if (FormValidation(currentTab))
-                {
-                    if (PushDatatoServer(currentTab))
-                    {
+                //if (FormValidation(currentTab))
+                //{
+                //    if (PushDatatoServer(currentTab))
+                //    {
                         currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
-                    }
-                    else
-                    {
-                        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+                //    }
+                //    else
+                //    {
+                //        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
 
-                    }
-                }
-                else
-                {
-                    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
+                //    }
+                //}
+                //else
+                //{
+                //    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
 
-                }
+                //}
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
             {
@@ -1698,16 +1688,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     PassportExpireDate = passportItem?.ValidDateTo?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                 }else if(_enum == EstablishmentRegistrationTabsEnum.Outlets)
                 {
-                    var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, "3102448184", taxPayerDetails?.Fbnumx);
-                    if (_outletTempData.Count > 0)
-                    {
-                        OutletData.Clear();
-                        _outletTempData.ForEach(_out => OutletData.Add(_out));
-                        RaisePropertyChanged(nameof(OutletData));
-                    }
+                    Device.BeginInvokeOnMainThread(() => bindingOutletList());
 
                     number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
-                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", number?.Actno, taxPayerDetails?.Fbnumx);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", $"{Int16.Parse(number?.Actno):000}", taxPayerDetails?.Fbnumx);
                     //await WebServiceManager.ESTOutletDropDowns();
                     //await WebServiceManager.ESTOutletGetActivitySetsList();
                     //ValidateCR crItem = await WebServiceManager.ESTValidateCRNum(taxPayerDetails?.Nreg_ActivitySet.results?.FirstOrDefault()?.Idnumber);
@@ -1721,6 +1705,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 IsLoading = false;
             }
+        }
+        private async void bindingOutletList()
+        {
+            var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, "3102448184", taxPayerDetails?.Fbnumx);
+            if (_outletTempData.Count > 0)
+            {
+                OutletData.Clear();
+                _outletTempData.ForEach(_out => OutletData.Add(_out));
+                RaisePropertyChanged(nameof(OutletData));
+            }
+        }
+        private void openNewOutlet()
+        {
+            OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
+            //if (OutletData?.Count > 0)
+            //{
+            //    outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+            //}
+            outletNavigationModels.taxPayerDetails = taxPayerDetails;
+            outletNavigationModels.nextNumber = number;
+            _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
         }
 
         private void ResidenceTypePrePopulateData(TaxPayerDetails taxPayerDetails)

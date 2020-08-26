@@ -22,7 +22,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 _currentTab = value;
                 RaisePropertyChanged(nameof(currentTab));
-                CurrentIndex = (int)_currentTab;
+                CurrentIndex = (int)value;
                 RaisePropertyChanged(nameof(CurrentIndex));
                 switch (value)
                 {
@@ -37,7 +37,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         SelectedOutletTabText = "Outlet Details";
                         break;
                 }
-                fetchTabDataAndBind(value);
+                if (taxPayerDetails != null)
+                {
+                    fetchTabDataAndBind(value);
+                }
             }
         }
 
@@ -118,24 +121,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
-            OnActivityItemButtonClick = new Command((_enum) => {
-                Console.WriteLine(_enum);
-                navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
-                {
-                    openedTab = (EstablishmentOutletActivitiesTabsEnum)_enum,
-                    taxPayerDetails = taxPayerDetails
-                });
-            });
+            OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
         }
         #endregion
 
         #region Method
         public void OnAppearing()
         {
-            if(currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
+            //if(currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
+            //{
+            //    OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
+            //}
+            fetchTabDataAndBind(currentTab);
+        }
+        private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
+        {
+            Console.WriteLine(_enum);
+            _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
             {
-                OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
-            }
+                openedTab = _enum,
+                taxPayerDetails = taxPayerDetails
+            });
         }
         private void navigateToNext()
         {
@@ -163,16 +169,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
             }
         }
-        private void fetchTabDataAndBind(EstablishmentRegistrationOutletTabsEnum _enum)
+        private async void fetchTabDataAndBind(EstablishmentRegistrationOutletTabsEnum _enum)
         {
             try
             {
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
-                    //OutletNumber number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
-                    //OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
-                    //taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", OutletActNumber, taxPayerDetails?.Fbnumx);
+                    OutletNumber number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", OutletActNumber, taxPayerDetails?.Fbnumx);
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
