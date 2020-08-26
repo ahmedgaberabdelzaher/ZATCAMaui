@@ -126,29 +126,79 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 Console.WriteLine(ex.Message);
             }
         }
-        private void OTPFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
+        //email otp text changed events
+
+        private void OTPFirstEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-
-        }
-
-        private void OTPFourthEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void OTPThirdEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
+            if (viewModel.OTPFirstDigit.Length > 0)
+            {
+                OTPSecondEntry.Focus();
+            }
         }
 
         private void OTPSecondEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (viewModel.OTPSecondDigit.Length > 0)
+            {
+                OTPThirdEntry.Focus();
+            }
         }
 
-        private void OTPFirstEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private void OTPThirdEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (viewModel.OTPThirdDigit.Length > 0)
+            {
+                OTPFourthEntry.Focus();
+            }
+        }
 
+        private void OTPFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (viewModel.OTPFourthDigit.Length > 0)
+            {
+                //if (!viewModel.IsResendOTPEnabled)
+                //{
+                //    // viewModel.VerifyOTP();
+                //}
+
+            }
+        }
+
+        //mobile OTP entry text changed events
+        private void MobOTPFirstEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (viewModel.MOTPFirstDigit.Length > 0)
+            {
+                MobOTPSecondEntry.Focus();
+            }
+        }
+
+        private void MobOTPSecondEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (viewModel.MOTPSecondDigit.Length > 0)
+            {
+                MobOTPThirdEntry.Focus();
+            }
+        }
+
+        private void MobOTPThirdEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (viewModel.MOTPThirdDigit.Length > 0)
+            {
+                MobOTPFourthEntry.Focus();
+            }
+        }
+
+        private void MobOTPFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (viewModel.MOTPFourthDigit.Length > 0)
+            {
+                //if (!viewModel.IsResendOTPEnabled)
+                //{
+                //    // viewModel.VerifyMOTP();
+                //}
+
+            }
         }
 
         private void OnNewPasswordTapped(object sender, EventArgs e)
@@ -201,11 +251,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         }
 
-        private void MobOTPFirstEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void OnInCTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new InstructionPopUpPageView());
@@ -233,6 +278,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             viewModel.ImgBackgroundCRNubmer = "FP_unselected_tile";
             viewModel.ImgBackgroundLicenseNubmer = "FP_selected_tile";
+        }
+        private void ImageSeeConfirmPassword_Tapped(object sender, EventArgs e)
+        {
+            viewModel.IsConfirmPasswordEncripted = !viewModel.IsConfirmPasswordEncripted;
+            imageConfirmPassword.Source = viewModel.IsConfirmPasswordEncripted ? "hidePassword.png" : "showPassword.png";
+        }
+        private void ImageSeeNewPassword_Tapped(object sender, EventArgs e)
+        {
+            viewModel.IsPasswordEncripted = !viewModel.IsPasswordEncripted;
+            imageNewPassword.Source = viewModel.IsPasswordEncripted ? "hidePassword.png" : "showPassword.png";
         }
     }
 }
