@@ -981,7 +981,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             setData(vATDeRegistration);
 
-
+                            if (VATDeRegistrationDetailsForAttach != null)
+                            {
+                                if (VATDeRegistrationDetailsForAttach.d != null)
+                                {
+                                    if (VATDeRegistrationDetailsForAttach.d.AttdetSet != null)
+                                    {
+                                        MessagingCenter.Send<Object, AttdetSet>(this, "AttachmentReceived", VATDeRegistrationDetailsForAttach.d.AttdetSet);
+                                    }
+                                }
+                            }
                         }
                         else
                         {

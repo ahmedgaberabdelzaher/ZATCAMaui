@@ -111,8 +111,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             ChangeArrowDirection();
 
-            MessagingCenter.Send<Object, AttdetSet>(this, "AttachmentReceived", viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet);
-
+            
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
                 viewModel.IsInstructionChecked = arg;
                 //Console.WriteLine(arg);
