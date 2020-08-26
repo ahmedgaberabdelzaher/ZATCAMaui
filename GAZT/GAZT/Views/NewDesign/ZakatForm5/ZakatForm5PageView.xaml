@@ -2466,7 +2466,7 @@
                                     </StackLayout>
 
 
-                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}" />
@@ -2474,14 +2474,14 @@
                                                 <Span Text="{Binding ReferenceNumber}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>-->
+                                    </custom:CustomLabel>
 
-                                    <StackLayout  Orientation="Horizontal">
+                                    <!--<StackLayout IsVisible="fal" Orientation="Horizontal" x:Name="RefrenceNumberArabic" FlowDirection="RightToLeft">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
-                                        <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
-                                        <custom:CustomLabel Text="{Binding ReferenceNumber}" WidthRequest="200" Style="{StaticResource ValueLabelBlack}"/>
-                                    </StackLayout>
+                                        <custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Text="{Binding ReferenceNumber}"  Style="{StaticResource ValueLabelBlack}"/>
+                                    </StackLayout>-->
 
 
                                     <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText">
