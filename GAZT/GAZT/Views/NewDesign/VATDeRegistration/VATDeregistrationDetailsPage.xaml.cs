@@ -121,7 +121,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                 if (App.IsArabic)
                 {
-                    if (arg.PickerTitle.Contains("IDType"))
+                    if (arg.PickerTitle.Contains(AppResources.VatDeregIDType))
                     {
                         viewModel.IDType = arg.SelectedValue;
 
@@ -138,7 +138,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
                 else
                 {
-                    if (arg.PickerTitle.Contains("IDType"))
+                    if (arg.PickerTitle.Contains(AppResources.VatDeregIDType))
                     {
                         viewModel.IDType = arg.SelectedValue;
                     }

@@ -12,7 +12,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
 
         #region Variable
-        private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.EstablishmentAccount;
+        private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
         public EstablishmentSignUPTabEnum currentTab
         {
             get => _currentTab;

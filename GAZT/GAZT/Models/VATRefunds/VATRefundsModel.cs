@@ -285,7 +285,7 @@ namespace EGAZT.Models.VATRefunds
                 OnPropertyRaised("RequestedAmt");
             }
         }
-
+       
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 

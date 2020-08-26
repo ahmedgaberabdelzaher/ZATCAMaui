@@ -508,16 +508,20 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         private async void Confirm_RefundClicked(object sender, EventArgs e)
         {
-            if(CheckValidationsForSubmitButton())
+            
+            if (CheckValidationsForSubmitButton())
             {
+                
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     viewModel.IsNewLoading = true;
+                    this.CloseWhenBackgroundIsClicked = false;
                 });
                 await viewModel.SubmitClicked();
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     viewModel.IsNewLoading = false;
+                    this.CloseWhenBackgroundIsClicked = true;
                 });
             }
         }

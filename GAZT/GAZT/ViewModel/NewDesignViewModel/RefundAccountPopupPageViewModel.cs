@@ -730,6 +730,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
+               // MessagingCenter.Send<Object, string>(this, "RefundClicked", "Yes");
                 bool Result = await FirstCall();
                 if (Result)
                 {
@@ -841,6 +842,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             await Task.Delay(5000);
                         }
                         await PopupNavigation.Instance.PopAsync();
+                        MessagingCenter.Send<Object, string>(this, "RefundClicked", "Yes");
                         _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationDetails);
                         // _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
@@ -893,7 +895,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
-
+                              //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
                                 //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                                 WebServiceManager.ErrorMessageForVAT = string.Empty;
                             });
@@ -907,7 +909,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+               // MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
             }
         }
         public async Task<bool> FirstCall()
@@ -1001,6 +1003,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             //ManageEnabledProperty(false);
                             await PopupNavigation.Instance.PopAsync();
+                            MessagingCenter.Send<Object, string>(this, "RefundClicked", "Yes");
                             _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationDetails);
                             //_navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                         }
@@ -1066,7 +1069,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
                             PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
+                            //MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
 
                             //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                             //_navigationService.GoBack();
@@ -1079,6 +1082,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+              //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
                 result = false;
                 return result;
             }
