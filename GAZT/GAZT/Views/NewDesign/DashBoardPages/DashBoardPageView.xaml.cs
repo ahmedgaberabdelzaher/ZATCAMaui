@@ -82,11 +82,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             if (viewModel != null)
             {
                 viewModel.IsLoading = false;
-                viewModel.MenuViewVisible = false;
-                viewModel.HomeViewVisible = true;
-                viewModel.StackMenuColor = Color.White;
-                viewModel.TabbarColor = Color.DarkGray;
-                viewModel.HomeIndicatorColor= Color.DarkGreen;
+               // viewModel.MenuViewVisible = false;
+               // viewModel.HomeViewVisible = true;
+                //viewModel.StackMenuColor = Color.White;
+                //viewModel.TabbarColor = Color.DarkGray;
+                //viewModel.HomeIndicatorColor= Color.DarkGreen;
             }
 
             Task.Run(async () =>
