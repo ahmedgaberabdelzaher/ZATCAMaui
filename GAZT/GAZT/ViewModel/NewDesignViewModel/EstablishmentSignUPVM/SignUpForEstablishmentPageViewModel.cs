@@ -25,6 +25,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged(nameof(CurrentIndex));
             }
         }
+
+        public void setCurrentTab()
+        {
+            currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
+        }
+
+
         private int _currenrIndex = 1;
         public int CurrentIndex
         {
@@ -55,6 +62,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #endregion
 
         #region Propetry
+        private bool _isDeclarationCheckEnabled = false;
+        public bool IsDeclarationCheckEnabled
+        {
+            get
+            {
+                return _isDeclarationCheckEnabled;
+            }
+            set
+            {
+                _isDeclarationCheckEnabled = value;
+                RaisePropertyChanged("IsDeclarationCheckEnabled");
+            }
+        }
+
+        private bool _isMainButtonEnabled = false;
+        public bool IsMainButtonEnabled
+        {
+            get
+            {
+                return _isMainButtonEnabled;
+            }
+            set
+            {
+                if (value == true)
+                {
+                }
+                _isMainButtonEnabled = value;
+                //OnStepButtonClicked.ChangeCanExecute();
+                RaisePropertyChanged("IsMainButtonEnabled");
+            }
+        }
+
+
+
         public string _PageTitle = AppResources.ZVatTermsAndConditions;
         public string PageTitle
         {
@@ -174,15 +215,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #endregion
 
         #region Methods
+        
+
+
         private void navigateToNext()
         {
             switch (currentTab)
             {
                 case EstablishmentSignUPTabEnum.TermsAndConditions:
-                    PageTitle = AppResources.ZZZIndividualInformation;
-                    BodyText = AppResources.ZZZZCompletethebelowdetails;
-                    NextBTN = AppResources.ZZZZContinue;
-                    currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
+                        PageTitle = AppResources.ZZZIndividualInformation;
+                        BodyText = AppResources.ZZZZCompletethebelowdetails;
+                        NextBTN = AppResources.ZZZZContinue;
+                        currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
                     break;
 
                 case EstablishmentSignUPTabEnum.IndividualInformation:
@@ -222,7 +266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-
+        
         private void navigateBack()
         {
             switch (currentTab)
