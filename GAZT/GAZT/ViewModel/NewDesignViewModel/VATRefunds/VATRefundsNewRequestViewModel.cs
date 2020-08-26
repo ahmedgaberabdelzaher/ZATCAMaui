@@ -27,7 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
         public ICommand CloseBtnTapped { get; set; }
         public ICommand IbanIdTypeTapped { get; set; }
         public ICommand IbanIdNumberTapped { get; set; }
-
+        
         #endregion
 
         public ObservableCollection<VATRefundsModel> _vatRefundsModel { get; set; }
@@ -156,21 +156,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {   
                 _pickerModel = value;
 
-                if(PickerModel != null && PickerModel.SelectedValue != null && IBANTypesList!= null)
+                try
                 {
-                    if(PickerModel.PickerId == "idTypePicker")
+                    if (PickerModel != null && PickerModel.SelectedValue != null && IBANTypesList != null)
                     {
-                        SelectedIdtype = PickerModel.SelectedValue;
-                        IBANType idType = IBANTypesList.Where(m => m.Text == PickerModel.SelectedValue).FirstOrDefault();
-                        SelectedIDTypeCode = idType.key;
+                        if (PickerModel.PickerId == "idTypePicker")
+                        {
+                            SelectedIdtype = PickerModel.SelectedValue;
+                            IBANType idType = IBANTypesList.Where(m => m.Text == PickerModel.SelectedValue).FirstOrDefault();
+                            SelectedIDTypeCode = idType.key;
 
-                        SetIBANIdNumber(idType.key);
-                    }
-                    else
-                    {
-                        SelectedIdNumber = PickerModel.SelectedValue;
+                            SetIBANIdNumber(idType.key);
+                        }
+                        else
+                        {
+                            SelectedIdNumber = PickerModel.SelectedValue;
+                        }
                     }
                 }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                
 
                 RaisePropertyChanged("PickerModel");
             }
@@ -272,6 +280,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             IbanIdTypeTapped = new Command(OnIbanIdTypeClicked);
             IbanIdNumberTapped = new Command(OnIbanNumberClicked);
+
             SelectedIdtype = AppResources.ZZIDType;
             SelectedIdNumber = AppResources.IDNumber;
             VatNewReqSummaryData = new VatRefundDisplayDataModel();
@@ -618,6 +627,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        //OnVoidBtnClicked
+
         public void CreateIBANType()
         {
             IBANTypesList = new ObservableCollection<IBANType>();
@@ -770,18 +781,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
         }
 
-        public async void VoidBtnClicked()
+        public async Task OnVoidBtnClicked()
         {
             VatRefundsDisplayDataModel.Operationx = "04";
             VatRefundsDisplayDataModel.Gpartx = App.LoginDataRetrieved.TIN;
             VatRefundsDisplayDataModel.Langx = UtilityManager.GetLanguageParameter();
-
-            //VatRefundsDisplayDataModel.Iban = SelectedIbanData.Iban;
-            //VatRefundsDisplayDataModel.IbanC = SelectedIbanData.Iban;
-            //VatRefundsDisplayDataModel.Idnumber = SelectedIdNumber;
-            //VatRefundsDisplayDataModel.Idnum = SelectedIdNumber;
-            //VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
-            //VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
 
             VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundsRequest;
 
@@ -797,9 +801,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
 
-                Device.BeginInvokeOnMainThread(async () =>
+                await Task.Run(() =>
                 {
-                    _navigationService.NavigateTo(App.VATRefundDetailsPageView, VatNewReqSummaryData);
+                    App.HideProgressView();
                 });
             }
             catch (InternetException ex)

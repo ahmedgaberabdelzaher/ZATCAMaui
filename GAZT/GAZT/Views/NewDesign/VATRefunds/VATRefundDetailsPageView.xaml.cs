@@ -148,5 +148,92 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public async void VoidButton_Tapped(System.Object sender, System.EventArgs e)
+        {
+            if (App.IsArabic)
+            {
+                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZNo, AppResources.ZYes);
+                if (!result)
+                {
+                    try
+                    {
+                        await viewModel.OnVoidBtnClicked();
+
+                        var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(firstPageToRemove);
+
+                        viewModel._navigationService.GoBack();
+                    }
+                    catch (GAZTErrorException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            App.HideProgressView();
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                    catch (InternetException ex)
+                    {
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            viewModel._navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZYes, AppResources.ZNo);
+
+                if (result)
+                {
+                    try
+                    {
+                        await viewModel.OnVoidBtnClicked();
+
+                        var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(firstPageToRemove);
+                       
+                        viewModel._navigationService.GoBack();
+                    }
+                    catch (GAZTErrorException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            App.HideProgressView();
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                    catch (InternetException ex)
+                    {
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            viewModel._navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+        }
     }
 }

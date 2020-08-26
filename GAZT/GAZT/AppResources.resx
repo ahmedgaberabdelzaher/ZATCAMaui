@@ -4486,7 +4486,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Instructions &amp; Conditions</value>
   </data>
   <data name="VATDeregistrationReasonType1" xml:space="preserve">
-    <value>De-Registration of VAT account</value>
+    <value>De-Registration of VAT Account</value>
   </data>
   <data name="VATDeregistrationReasonType2" xml:space="preserve">
     <value>VAT Return Filing Obligation Suspension</value>
@@ -4975,7 +4975,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
-     <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
+  <data name="VATRefundCancelRefund" xml:space="preserve">
+    <value>Do you want to cancel the Refund?</value>
+  </data>
+  <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>
   <data name="VATRefundRequestTtitle" xml:space="preserve">

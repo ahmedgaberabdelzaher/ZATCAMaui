@@ -7667,7 +7667,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        String VatRefundsListResultModelSetResponseJson = VatRefundsResponse.Content.ReadAsStringAsync().Result;
+                            String VatRefundsListResultModelSetResponseJson = VatRefundsResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
                         {
                             VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["d"].ToString();

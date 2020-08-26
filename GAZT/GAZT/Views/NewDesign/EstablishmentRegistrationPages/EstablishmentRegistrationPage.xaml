@@ -236,14 +236,14 @@
                                         </StackLayout>
                                     </border:SfBorder >
                                 </StackLayout>
-                                <StackLayout>
+                                <StackLayout IsVisible="{Binding IsVisbleRentAttachmentmentList}">
                                     <custom:CustomLabel Text="Attachment - Copy of [Rent]" HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />
                                     <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                             <Image Grid.Row="0" Grid.Column="1" Source="newui_ic_pdf" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                            <Label Text="filname.zip" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <Label Text="{Binding SelectedRentFileName}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                 <Image Grid.Row="0" Grid.Column="1" Source="closegrey" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
@@ -433,7 +433,7 @@
                             </StackLayout>
                             <CollectionView  x:Name="OrgNonResidentActivitylistCV" Grid.Row="8"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
-                                                 ItemsSource="{Binding OrgNonResidentActivityList}"  SelectedItem="{Binding SelectedOrgNonResidentActivity, Mode=TwoWay}"
+                                                 ItemsSource="{Binding OrgNonResidentActivityList}"  SelectedItem="{Binding SelectedOrgNonResidentActivityValue, Mode=TwoWay}"
                                                  SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                                 <CollectionView.ItemsLayout>
                                     <LinearItemsLayout Orientation="Vertical"   />
@@ -859,7 +859,7 @@
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                             <Image Grid.Row="0" Grid.Column="1" Source="newui_ic_pdf" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                            <Label Text="filname.pdf" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <Label Text="{Binding SelectedPassportFileName}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                 <Image Grid.Row="0" Grid.Column="1" Source="closegrey" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
