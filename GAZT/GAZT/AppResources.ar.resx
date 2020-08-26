@@ -4226,7 +4226,7 @@
     <value>الفترة من تاريخ</value>
   </data>
   <data name="FORM5RecivedReturn" xml:space="preserve">
-    <value>نفيدكم انه تم استلام اقراركم رقم   </value>
+    <value>نفيدكم انه تم استلام اقراركم رقم :</value>
   </data>
   <data name="FORM5RegistrationInfo" xml:space="preserve">
     <value>معلومات التسجيل</value>
