@@ -433,7 +433,7 @@
                             </StackLayout>
                             <CollectionView  x:Name="OrgNonResidentActivitylistCV" Grid.Row="8"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
-                                                 ItemsSource="{Binding OrgNonResidentActivityList}"  SelectedItem="{Binding SelectedOrgNonResidentActivity, Mode=TwoWay}"
+                                                 ItemsSource="{Binding OrgNonResidentActivityList}"  SelectedItem="{Binding SelectedOrgNonResidentActivityValue, Mode=TwoWay}"
                                                  SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                                 <CollectionView.ItemsLayout>
                                     <LinearItemsLayout Orientation="Vertical"   />

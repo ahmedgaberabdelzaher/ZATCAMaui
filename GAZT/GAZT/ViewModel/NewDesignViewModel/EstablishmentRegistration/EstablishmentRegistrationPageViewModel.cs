@@ -318,6 +318,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             set
             {
                 _selectedOrgNonResidentActivityValue = value;
+
+                if (SelectedOrgNonResidentActivityValue!=null)
+                {
+                    SelectOrgNonResidentActivity(SelectedOrgNonResidentActivityValue);
+                }
                 RaisePropertyChanged(nameof(SelectedOrgNonResidentActivityValue));
             }
         }
@@ -995,7 +1000,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region TaxPayer Variable initialization
 
-            getGenderList();
+            GetGenderList();
 
             OnPDNatinalitySelectButtonClick = new Command(() =>
             {
@@ -1406,7 +1411,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
 
 
-        private void getGenderList()
+        private void GetGenderList()
         {
             GenderList.Clear();
             GenderList.Add("Male");
@@ -1473,7 +1478,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 SelectedPassportFileName = UploadedPassportDocumentsList.FirstOrDefault().FileNameWithExtension;
             }
         }
-       
+
+        private void SelectOrgNonResidentActivity(string selectedOrgNonResidentActivityValue)
+        {
+            if (selectedOrgNonResidentActivityValue == "Derived from an activity which occurs in KSA")
+            {
+                SelectedOrgNonResidentActivity = "1";
+            }
+            else if (selectedOrgNonResidentActivityValue == "Derived from immoviable property located in the Kingdome")
+            {
+                SelectedOrgNonResidentActivity = "2";
+            }
+            else if (selectedOrgNonResidentActivityValue == "Derived from the disposal of shares or a partnership in resident company")
+            {
+                SelectedOrgNonResidentActivity = "3";
+            }
+            else if (selectedOrgNonResidentActivityValue == "Derived from lease of moveable properties used in Kingdome")
+            {
+                SelectedOrgNonResidentActivity = "4";
+            }
+            else if (selectedOrgNonResidentActivityValue == "Derived from Sales or license for use of industrial or intellectual Properties used in Kingdome")
+            {
+                SelectedOrgNonResidentActivity = "5";
+            }
+            else if (selectedOrgNonResidentActivityValue == "Dividends, Managment or directors fees paid by resident company")
+            {
+                SelectedOrgNonResidentActivity = "6";
+            }
+            else if (selectedOrgNonResidentActivityValue == "Amounts paid against services rendered to the company's head office or to an affiliated company")
+            {
+                SelectedOrgNonResidentActivity = "7";
+            }
+            else if (selectedOrgNonResidentActivityValue == "Amounts paid by a resident against serivces performed in whole or in part in the Kingdome")
+            {
+                SelectedOrgNonResidentActivity = "8";
+            }
+            else if (selectedOrgNonResidentActivityValue == "Amounts for exploitation of a natural resource in the kingdome")
+            {
+                SelectedOrgNonResidentActivity = "9";
+            }
+        }
 
         public async Task AddAttachment(string attachmentOfType, int fileCount)
         {
