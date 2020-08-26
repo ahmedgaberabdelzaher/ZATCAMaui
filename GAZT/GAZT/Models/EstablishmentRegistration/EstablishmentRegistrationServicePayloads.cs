@@ -439,6 +439,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Landx50 { get; set; }
         public string Natio50 { get; set; }
         public string PrqSpregt { get; set; }
+        public override string ToString() => Natio50;
     }
 
     public class OutletNumber

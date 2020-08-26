@@ -22,7 +22,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     {
         #region Variable
         private TaxPayerDetails taxPayerDetails = null;
-        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+        private OutletNumber number;
+        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
         public EstablishmentRegistrationTabsEnum currentTab
         {
             get => _currentTab;
@@ -667,7 +668,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ObservableCollection<Nreg_OutletItem> OutletData
         {
             get => _outletData;
-            private set
+            set
             {
                 if(value != null)
                 {
@@ -979,8 +980,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             #region Outlet Tabs variable initialization
             OnNewOutletButtonClick = new Command(() =>
             {
-                System.Diagnostics.Debug.WriteLine("OnNewOutletButtonClick " + navigationService);
-                _navigationService.NavigateTo(App.OutletDetailsPageView, new OutletNavigationModels());
+                OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
+                //if (OutletData?.Count > 0)
+                //{
+                //    outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+                //}
+                outletNavigationModels.taxPayerDetails = taxPayerDetails;
+                outletNavigationModels.nextNumber = number;
+                _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
             });
             #endregion
 
@@ -1032,10 +1039,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             GetMenuListFromServer();
             var branchTask = GetReportingBranchListFromServer();
-            var nationalityTask = GetPdNationalityListFromServer();
-            var citizenTask = GetPdCitizenListFromServer();
-            var residenceTask = GetPdResidenceListFromServer();
-            await Task.WhenAll(branchTask, nationalityTask, citizenTask, residenceTask);
+            var nationalityTask = GetPdNationalityListFromServer(null);
+            await Task.WhenAll(branchTask, nationalityTask);
             if (taxPayerDetails == null)
             {
                 fetchTabDataAndBind(EstablishmentRegistrationTabsEnum.RegistrationType);
@@ -1572,8 +1577,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => i.Type == "FS0002").FirstOrDefault();
                     PassportNumber = passportItem.Idnumber;
                     SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault()?.Landx50;
-                    PassportIssueDate = passportItem?.ValidDateFrom.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                    PassportExpireDate = passportItem?.ValidDateTo.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    PassportIssueDate = passportItem?.ValidDateFrom?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    PassportExpireDate = passportItem?.ValidDateTo?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                 }else if(_enum == EstablishmentRegistrationTabsEnum.Outlets)
                 {
                     var _outletTempData = await WebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, "3102448184", taxPayerDetails?.Fbnumx);
@@ -1584,8 +1589,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         RaisePropertyChanged(nameof(OutletData));
                     }
 
-                    //OutletNumber number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
-                    //taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", number?.Actno, taxPayerDetails?.Fbnumx);
+                    number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", number?.Actno, taxPayerDetails?.Fbnumx);
                     //await WebServiceManager.ESTOutletDropDowns();
                     //await WebServiceManager.ESTOutletGetActivitySetsList();
                     //ValidateCR crItem = await WebServiceManager.ESTValidateCRNum(taxPayerDetails?.Nreg_ActivitySet.results?.FirstOrDefault()?.Idnumber);

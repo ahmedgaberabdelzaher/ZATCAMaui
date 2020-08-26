@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Models.EstablishmentRegistration;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
@@ -9,6 +11,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class OutletDetailsPageViewModel : BaseViewModel
     {
         #region Variable
+        public TaxPayerDetails taxPayerDetails { get; set; } = null;
+        public OutletNumber newNumber { get; set; } = null;
+        //private ActivitySetsList activityList = null;
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
@@ -32,6 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         SelectedOutletTabText = "Outlet Details";
                         break;
                 }
+                fetchTabDataAndBind(value);
             }
         }
 
@@ -63,6 +69,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(SelectedOutletTabText));
             }
         }
+        private string _outletName = string.Empty;
+        public string OutletName
+        {
+            get => _outletName;
+            set
+            {
+                if (value != null)
+                {
+                    _outletName = value;
+                    RaisePropertyChanged(nameof(OutletName));
+                }
+            }
+        }
+        private string _outletActNumber = string.Empty;
+        public string OutletActNumber
+        {
+            get => _outletActNumber;
+            set
+            {
+                if (value != null)
+                {
+                    _outletActNumber = value;
+                    RaisePropertyChanged(nameof(OutletActNumber));
+                }
+            }
+        }
         private bool _postalAsPhysical = false;
         public bool PostalAsPhysical
         {
@@ -90,13 +122,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 Console.WriteLine(_enum);
                 navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                 {
-                    openedTab = (EstablishmentOutletActivitiesTabsEnum)_enum
+                    openedTab = (EstablishmentOutletActivitiesTabsEnum)_enum,
+                    taxPayerDetails = taxPayerDetails
                 });
             });
         }
         #endregion
 
         #region Method
+        public void OnAppearing()
+        {
+            if(currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
+            {
+                OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
+            }
+        }
         private void navigateToNext()
         {
             if(currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
@@ -121,6 +161,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
                 currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
+            }
+        }
+        private void fetchTabDataAndBind(EstablishmentRegistrationOutletTabsEnum _enum)
+        {
+            try
+            {
+                IsLoading = true;
+                if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
+                {
+                    //OutletNumber number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    //OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
+                    //taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", OutletActNumber, taxPayerDetails?.Fbnumx);
+                }
+                else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
+                {
+
+                }
+                else
+                {
+                    //activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
+                }
+            }catch(Exception e)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         #endregion
