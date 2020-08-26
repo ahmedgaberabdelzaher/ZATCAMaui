@@ -4,6 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
             xmlns:custom="clr-namespace:GAZT"
             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
@@ -46,83 +49,372 @@
                 </Grid.RowDefinitions>
 
 
-                <Grid Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.EstablishmentAccount}}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <StackLayout Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}">
+                    
+                        <!--<WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />-->
+                        
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
+                                        <Setter Property="Color" Value="#ff0000" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+                            <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
+                                        <Span Text="&#160;"/>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnInCTapped"/>
+                                </custom:CustomLabel.GestureRecognizers>
+                            </custom:CustomLabel>
+                        </StackLayout>
+                    
+                </StackLayout>
 
-                    <StackLayout Grid.Row="0" Grid.Column="0">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" Style="{StaticResource CaptionLabelGrey}"/>
+                <!--Start-->
+                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.IndividualInformation}}">
+                    <StackLayout>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZAlreadyhaveTIN}" Style="{StaticResource CaptionLabelGrey}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                                <Image Source="{Binding ImgBackgroundYes}">
+                                
+                            </Image>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZYesText}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Padding="16,8,16,8">
+                                    <custom:CustomLabel.Triggers>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ImgBackgroundYes}" Value="re_Tile_Background">
+                                            <Setter Property="TextColor" Value="White"/>
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnYesTapped" NumberOfTapsRequired="1"/>
+                                </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                                <Image x:Name="NoBackGroungImg" Source="{Binding ImgBackgroundNo}">
+
+                            </Image>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZNoText}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Padding="16,8,16,8">
+                                <custom:CustomLabel.Triggers>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ImgBackgroundNo}" Value="re_Tile_Background">
+                                        <Setter Property="TextColor" Value="White"/>
+                                    </DataTrigger>
+                                </custom:CustomLabel.Triggers>
+                            </custom:CustomLabel>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnNoTapped" NumberOfTapsRequired="1"/>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                    </Grid>
+
+                        <StackLayout IsVisible="False">
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTIN}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="4">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="TIN" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="10">
 
                             </control:BorderlessEntry>
-
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="arrowDropdown.png"/>
-                            </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
-                    </StackLayout>
+                            <StackLayout.Triggers>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding ImgBackgroundYes}" Value="re_Tile_Background">
+                                    <Setter Property="IsVisible" Value="True"/>
+                                </DataTrigger>
+                            </StackLayout.Triggers>
+                        </StackLayout>
 
-                    <StackLayout Grid.Row="0" Grid.Column="1">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIDNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <Grid>
+                        <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                        <!--<Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>-->
+
+                            <StackLayout Grid.Row="0">
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" Style="{StaticResource CaptionLabelGrey}"/>
+                                <Grid>
+                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}" VerticalTextAlignment="End"  HeightRequest="51" IsEnabled="False">
+
+                                        </control:BorderlessEntry>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image Source="arrowDropdown.png"/>
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </inputLayout:SfTextInputLayout>
+                                    <Button Clicked="OnIDTypeClicked" BackgroundColor="Transparent"/>
+                                    <syncfusion:SfPicker x:Name="IDTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                        ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" Margin="10,0,10,0" 
+                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        FooterHeight="46" SelectionChanged="IDTypePicker_SelectionChanged">
+                                        <syncfusion:SfPicker.Behaviors>
+                                            <customcontrol:SfPickerBehavior />
+                                        </syncfusion:SfPicker.Behaviors>
+                                    </syncfusion:SfPicker>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIDNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.NDIDNumber}" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="4">
+
+                        </control:BorderlessEntry>
+                    </inputLayout:SfTextInputLayout>
+
+
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <Grid>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="4">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="yyyy/MM/dd" VerticalTextAlignment="End"  HeightRequest="51" IsEnabled="False">
+
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                            <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
+                        </Button>
+                            <custom1:CustomDatePicker 
+								ShowHeader="false"
+								Margin="10,0,10,0" 
+                              BackgroundColor="White"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                    BorderColor="Black"
+                                
+								ShowFooter="False"
+								 ShowColumnHeader="True"
+                                             ColumnHeaderBackgroundColor="#EAF7CC"
+								ColumnHeaderHeight="46"
+                                PickerMode="Dialog"
+								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
+								
+								x:Name="DpDbo"
+                           SelectionChanged="DpDbo_SelectionChanged"
+                             OKButtonTextColor="#006450" 
+                                
+                                             CancelButtonTextColor="#006450"
+                            
+                            SelectedItem="{Binding TodayDate}"
+                            HorizontalOptions="FillAndExpand"
+                                
+								ItemHeight="40">
+                                <custom1:CustomDatePicker.Behaviors>
+                                    <custom1:SfPickerBehavior />
+                                </custom1:CustomDatePicker.Behaviors>
+                            </custom1:CustomDatePicker>
+                        </Grid>
+
+
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZName}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZName}" VerticalTextAlignment="End"  HeightRequest="51">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                     </StackLayout>
+                </ScrollView>
+    <!--End-->      
+                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.BusinessInformation}}" >
+                    <StackLayout>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}" Style="{StaticResource CaptionLabelGrey}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                                <Image Source="{Binding ImgBackgroundCRNubmer}">
 
-                </Grid>
-          
-                <StackLayout Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.VerificationCode}}" >
-                    <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VerificationCode}" Style="{StaticResource PageTitleBlack}" />
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" Style="{StaticResource BodyLabelGrey}"/>
-                    <BoxView BackgroundColor="{StaticResource NeutralGreay}" HeightRequest="1"/>-->
+                            </Image>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Padding="16,8,16,8">
+                                    <custom:CustomLabel.Triggers>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ImgBackgroundCRNubmer}" Value="FP_selected_tile">
+                                            <Setter Property="TextColor" Value="White"/>
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnCRNumberTapped" NumberOfTapsRequired="1"/>
+                                </Grid.GestureRecognizers>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                                <Image x:Name="LicenseBackGroungImg" Source="{Binding ImgBackgroundLicenseNubmer}">
 
-                    <StackLayout Padding="0,15,0,0" >
-                        <!--<custom:CustomLabel Text="{Binding OTPSentOnThisMobileNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>-->
-                        <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}"/>
-                                    <Span Text=" "/>
-                                    <Span Text="xxxxxxx388"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </custom:CustomLabel>
+                            </Image>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" Style="{StaticResource ButtonLabelBlackBold}" VerticalOptions="End" Padding="16,8,16,8">
+                                    <custom:CustomLabel.Triggers>
+                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding ImgBackgroundLicenseNubmer}" Value="FP_selected_tile">
+                                            <Setter Property="TextColor" Value="White"/>
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnLicenseNumberTapped" NumberOfTapsRequired="1"/>
+                                </Grid.GestureRecognizers>
+                        </Grid>
+                    </Grid>
 
-                        <StackLayout Padding="0,0,0,0" >
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid Grid.Row="0" ColumnSpacing="20" Padding="30,20,30,20" FlowDirection="LeftToRight">
+                        <StackLayout IsVisible="False">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZCRNumber}" VerticalTextAlignment="End"  HeightRequest="51">
 
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                            <StackLayout.Triggers>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding ImgBackgroundCRNubmer}" Value="FP_selected_tile">
+                                    <Setter Property="IsVisible" Value="True"/>
+                                </DataTrigger>
+                            </StackLayout.Triggers>
+                        </StackLayout>
+
+                        <StackLayout IsVisible="False">
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" VerticalTextAlignment="End"  HeightRequest="51">
+
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+
+
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <Grid>
+                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}" VerticalTextAlignment="End" IsEnabled="False"  HeightRequest="51">
+
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                            <Button Clicked="OnLicenseIssuedByClicked" BackgroundColor="Transparent"/>
+                            <syncfusion:SfPicker x:Name="LicenseIssuedByPicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                        ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" Margin="10,0,10,0" 
+                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        FooterHeight="46" SelectionChanged="IDTypePicker_SelectionChanged">
+                                <syncfusion:SfPicker.Behaviors>
+                                    <customcontrol:SfPickerBehavior />
+                                </syncfusion:SfPicker.Behaviors>
+                            </syncfusion:SfPicker>
+                        </Grid>
+
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <Grid>
+                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZIssuingCity}" VerticalTextAlignment="End" IsEnabled="False" HeightRequest="51">
+
+                                </control:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+                            <Button Clicked="OnIssuingCityClicked" BackgroundColor="Transparent"/>
+                            <syncfusion:SfPicker x:Name="IssuingCityPicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                        ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" Margin="10,0,10,0" 
+                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        FooterHeight="46" SelectionChanged="IDTypePicker_SelectionChanged">
+                                <syncfusion:SfPicker.Behaviors>
+                                    <customcontrol:SfPickerBehavior />
+                                </syncfusion:SfPicker.Behaviors>
+                            </syncfusion:SfPicker>
+                        </Grid>
+                            <StackLayout.Triggers>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding ImgBackgroundLicenseNubmer}" Value="FP_selected_tile">
+                                    <Setter Property="IsVisible" Value="True"/>
+                                </DataTrigger>
+                            </StackLayout.Triggers>
+                    </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+                
+                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}">
+                    <StackLayout>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51">
+
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+
+
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <StackLayout Orientation="Horizontal">
+                       <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="+966" VerticalTextAlignment="End" IsEnabled="False" HeightRequest="51">
+
+                            </control:BorderlessEntry>
+                            <inputLayout:SfTextInputLayout.LeadingView>
+                                <Image Source="arrowDropdown"/>
+                            </inputLayout:SfTextInputLayout.LeadingView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CountryCodeTapped"/>
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                        </inputLayout:SfTextInputLayout>
+
+                            <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51" >
+
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51">
+
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                    </StackLayout>
+                </ScrollView>
+
+
+                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.EmailVerification}}">
+                    <StackLayout>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51">
+
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoemailaddress}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
+
+                        <StackLayout>
+                            <StackLayout Padding="0,0,0,0" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" ColumnSpacing="20" Padding="30,0,30,20" FlowDirection="LeftToRight">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
 
 
-                                    <!--First OTP Digit Start-->
-                                    <inputLayout:SfTextInputLayout
+                                        <!--First OTP Digit Start-->
+                                        <inputLayout:SfTextInputLayout
                                                     Grid.Column="0"
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
                                                     FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                        <custom:BorderlessEntry
+                                            <custom:BorderlessEntry
                                                         x:Name="OTPFirstEntry"
                                                         FontAttributes="Bold"
                                                         FontSize="Small"
@@ -135,21 +427,21 @@
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
                                                         TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                            <custom:BorderlessEntry.Behaviors>
-                                                <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
-                                            </custom:BorderlessEntry.Behaviors>
-                                        </custom:BorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
-                                    <!--First OTP Digit End-->
+                                                <custom:BorderlessEntry.Behaviors>
+                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
+                                                </custom:BorderlessEntry.Behaviors>
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <!--First OTP Digit End-->
 
-                                    <!--Second OTP Digit Start-->
-                                    <inputLayout:SfTextInputLayout
+                                        <!--Second OTP Digit Start-->
+                                        <inputLayout:SfTextInputLayout
                                                     Grid.Column="1"
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
                                                     FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                        <custom:BorderlessEntry
+                                            <custom:BorderlessEntry
                                                         x:Name="OTPSecondEntry"
                                                         FontAttributes="Bold"
                                                         FontSize="Small"
@@ -162,21 +454,21 @@
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
                                                         TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                            <custom:BorderlessEntry.Behaviors>
-                                                <local:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
-                                            </custom:BorderlessEntry.Behaviors>
-                                        </custom:BorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
-                                    <!--Second OTP Digit End-->
+                                                <custom:BorderlessEntry.Behaviors>
+                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
+                                                </custom:BorderlessEntry.Behaviors>
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <!--Second OTP Digit End-->
 
-                                    <!--Third OTP Digit Start-->
-                                    <inputLayout:SfTextInputLayout
+                                        <!--Third OTP Digit Start-->
+                                        <inputLayout:SfTextInputLayout
                                                     Grid.Column="2"
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
                                                     FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                        <custom:BorderlessEntry
+                                            <custom:BorderlessEntry
                                                         x:Name="OTPThirdEntry"
                                                         FontAttributes="Bold"
                                                         FontSize="Small"
@@ -189,21 +481,21 @@
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
                                                         TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                            <custom:BorderlessEntry.Behaviors>
-                                                <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
-                                            </custom:BorderlessEntry.Behaviors>
-                                        </custom:BorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
-                                    <!--Third OTP Digit End-->
+                                                <custom:BorderlessEntry.Behaviors>
+                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
+                                                </custom:BorderlessEntry.Behaviors>
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <!--Third OTP Digit End-->
 
-                                    <!--Fourth OTP Digit Start-->
-                                    <inputLayout:SfTextInputLayout
+                                        <!--Fourth OTP Digit Start-->
+                                        <inputLayout:SfTextInputLayout
                                                     Grid.Column="3"
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
                                                     FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                        <custom:BorderlessEntry
+                                            <custom:BorderlessEntry
                                                         x:Name="OTPFourthEntry"
                                                         FontAttributes="Bold"
                                                         FontSize="Small"
@@ -215,230 +507,180 @@
                                                         ReturnType="Next"
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
-                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand"
-                                                        Unfocused="OTPFourthEntry_Unfocused">
-                                        </custom:BorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
-                                    <!--Fourth OTP Digit End-->
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand">
+
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <!--Fourth OTP Digit End-->
+
+                                    </Grid>
+                                    
 
                                 </Grid>
-                            </Grid>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                <Image Source="clock">
+                                </Image>
+                                <custom:CustomLabel  Text="{Binding LblCountDownTimer}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
+                            </StackLayout>
+                            <buttons:SfButton  Command="{Binding OnResendOTPClicked}" IsEnabled="{Binding IsResendOTPEnabled}" Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,50,0,0" BackgroundColor="Transparent" TextColor="{StaticResource Primary}"/>
                         </StackLayout>
 
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Image Source="clock">
-                            </Image>
-                            <!--<custom:CustomLabel  Text="{Binding LblCountDownTimer}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />-->
-                            <custom:CustomLabel  Text="0:59" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
-                        </StackLayout>
-                        <buttons:SfButton  Command="{Binding OnResendOTPClicked}" IsEnabled="{Binding IsResendOTPEnabled}" Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,50,0,0" BackgroundColor="Transparent" TextColor="{StaticResource Primary}"/>
-                    </StackLayout>
-
-                </StackLayout>
-                
-                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.Summary}}">
-                    <StackLayout>
-                        <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout>
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Frame Style="{StaticResource circleFrame}">
-                                    <Image Margin="0" Source="ic_company.png">
-
-                                    </Image>
-                                </Frame>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityInformation}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                            </StackLayout>
-
-                            <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-
-                            <StackLayout Padding="10" Spacing="10">
-                                <StackLayout Orientation="Horizontal">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TINS}" Style="{StaticResource ValueLabelGrey}"/>
-                                    <custom:CustomLabel Text="123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                </StackLayout>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="50*"/>
-                                        <ColumnDefinition Width="50*"/>
-                                    </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDComercialName}" Style="{StaticResource ValueLabelGrey}"/>
-                                    <custom:CustomLabel Grid.Column="1"  Text="Zaed Enterprises" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                </Grid>
-                                
-                                <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEndOfFinancialYear}" Style="{StaticResource ValueLabelGrey}"/>
-                                    <custom:CustomLabel Text="31st December" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
-                                    </custom:CustomLabel>
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDLegalEntity}" Style="{StaticResource ValueLabelGrey}"/>
-                                    <custom:CustomLabel Text="Limited" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
-                                    </custom:CustomLabel>
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDAccountingType}" Style="{StaticResource ValueLabelGrey}"/>
-                                    <custom:CustomLabel Text="Retail" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
-                                    </custom:CustomLabel>
-                                </StackLayout>
-
-                                <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Capital}" Style="{StaticResource ValueLabelGrey}"/>
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="50,000.00"/>
-                                                    <Span Text=""/>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </custom:CustomLabel>
-                                </StackLayout>
-                            </StackLayout>
-                        </StackLayout>
-                    </border:SfBorder>
-
-
-                        <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Frame Style="{StaticResource circleFrame}">
-                                        <Image Margin="0" Source="establishments.png">
-
-                                        </Image>
-                                    </Frame>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityBranches}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                                </StackLayout>
-
-                                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-
-                                <StackLayout Padding="10" Spacing="10">
-                                    
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDBranchName}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Hardy Branch" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDBranchLocation}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="King Faisal Road" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDBranchType}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Mall Branch" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZCRNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDMainActivity}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Retail" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
-                                        </custom:CustomLabel>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSubActivity}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Administration" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
-                                        </custom:CustomLabel>
-                                    </StackLayout>
-
-                                    
-                                </StackLayout>
-                            </StackLayout>
-                        </border:SfBorder>
-
-
-                        <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Frame Style="{StaticResource circleFrame}">
-                                        <Image Margin="0" Source="location_Green.png">
-
-                                        </Image>
-                                    </Frame>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityAddress}" Style="{StaticResource SectionTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                                </StackLayout>
-
-                                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-
-                                <StackLayout Padding="10" Spacing="10">
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCountry}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Saudi Arabia" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDStreetName}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="King Faisal Road" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="12613" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5City}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Riyadh" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="50" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
-                                        </custom:CustomLabel>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPOBox}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="Al Murabba,123" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
-                                        </custom:CustomLabel>
-                                    </StackLayout>
-                                </StackLayout>
-                            </StackLayout>
-                        </border:SfBorder>
-
-
-                        <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal" Padding="10">
-                                    <Frame Style="{StaticResource circleFrame}">
-                                        <Image Margin="0" Source="phone_Green.png">
-
-                                        </Image>
-                                    </Frame>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"/>
-
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelWhiteBold}" TextColor="{StaticResource Primary}" VerticalTextAlignment="Center"/>
-
-                                </StackLayout>
-
-                                <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
-
-                                <StackLayout Padding="10" Spacing="10">
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="0111231234" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-
-                                    <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="zaed@gmail.com" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                                    </StackLayout>
-                                </StackLayout>
-                            </StackLayout>
-                        </border:SfBorder>
                     </StackLayout>
                 </ScrollView>
 
+                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.MobileVerification}}">
+                    <StackLayout>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51">
+
+                            </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
+
+                        <StackLayout>
+                            <StackLayout Padding="0,0,0,0" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="0" ColumnSpacing="20" Padding="30,0,30,20" FlowDirection="LeftToRight">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <!--First OTP Digit Start-->
+                                        <inputLayout:SfTextInputLayout
+                                                    Grid.Column="0"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                            <custom:BorderlessEntry
+                                                        x:Name="MobOTPFirstEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPFirstDigit}"
+                                                        TextChanged="OTPFirstEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                                <custom:BorderlessEntry.Behaviors>
+                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
+                                                </custom:BorderlessEntry.Behaviors>
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <!--First OTP Digit End-->
+
+                                        <!--Second OTP Digit Start-->
+                                        <inputLayout:SfTextInputLayout
+                                                    Grid.Column="1"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                            <custom:BorderlessEntry
+                                                        x:Name="MobOTPSecondEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPSecondDigit}"
+                                                        TextChanged="OTPSecondEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                                <custom:BorderlessEntry.Behaviors>
+                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
+                                                </custom:BorderlessEntry.Behaviors>
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <!--Second OTP Digit End-->
+
+                                        <!--Third OTP Digit Start-->
+                                        <inputLayout:SfTextInputLayout
+                                                    Grid.Column="2"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                            <custom:BorderlessEntry
+                                                        x:Name="MobOTPThirdEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPThirdDigit}"
+                                                        TextChanged="OTPThirdEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                                <custom:BorderlessEntry.Behaviors>
+                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
+                                                </custom:BorderlessEntry.Behaviors>
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <!--Third OTP Digit End-->
+
+                                        <!--Fourth OTP Digit Start-->
+                                        <inputLayout:SfTextInputLayout
+                                                    Grid.Column="3"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                            <custom:BorderlessEntry
+                                                        x:Name="MobOTPFourthEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPFourthDigit}"
+                                                        TextChanged="OTPFourthEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand">
+
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <!--Fourth OTP Digit End-->
+
+                                    </Grid>
+
+
+                                </Grid>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                <Image Source="clock">
+                                </Image>
+                                <custom:CustomLabel  Text="{Binding LblCountDownTimer}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
+                            </StackLayout>
+                            <buttons:SfButton  Command="{Binding OnResendOTPClicked}" IsEnabled="{Binding IsResendOTPEnabled}" Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,50,0,0" BackgroundColor="Transparent" TextColor="{StaticResource Primary}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
 
                 <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.Password}}">
                     <StackLayout>
@@ -500,7 +742,7 @@
 
 
                 <StackLayout Grid.Row="3" Padding="0,8,0,0" BackgroundColor="White">
-                    <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
+                    <buttons:SfButton x:Name="btnprimary" Text="{Binding NextBTN}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}"/>
                 </StackLayout>
                 
                 <StackLayout Grid.Row="1" Padding="0,0,0,8" BackgroundColor="White">
