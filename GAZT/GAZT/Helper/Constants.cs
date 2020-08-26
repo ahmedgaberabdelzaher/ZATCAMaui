@@ -224,12 +224,23 @@ namespace GAZT.Helper
         public static string GetDisplayInstallmentAgreementSchedule = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_DISPLAY_SRV/VTIA_HEADERSet(";
         public static string GetInstallmentSchedule = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_DISPLAY_SRV/VTIA_HEADERSet(";
         public static string VATGetFormGUIDURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
+        public static string downloadFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=";
 
         #endregion
 
         #region ZakatInstalment
         public static string GetZAKATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet(";
         public static string GetZAKATPostdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet";
+        public static string GetZAKATInvoices = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/invDtlsSet?$filter=";
+
+        #endregion
+
+        #region Contract Release
+        public static string ContractReleaseApplicationFormUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TP_DASHBOARD_SRV/HeaderSet(";
+
+        public static string ContractReleaseRequestUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotes_tp11Set(";
+        public static string ContractReleaseSubmitUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotes_tp11Set";
+        public static string ContractReleaseAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_SAVE_ATTACH_SRV/AttachSet(";
         #endregion
 
     }

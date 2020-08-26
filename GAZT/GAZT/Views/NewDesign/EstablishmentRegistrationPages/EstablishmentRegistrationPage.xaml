@@ -236,14 +236,14 @@
                                         </StackLayout>
                                     </border:SfBorder >
                                 </StackLayout>
-                                <StackLayout>
+                                <StackLayout IsVisible="{Binding IsVisbleRentAttachmentmentList}">
                                     <custom:CustomLabel Text="Attachment - Copy of [Rent]" HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />
                                     <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                             <Image Grid.Row="0" Grid.Column="1" Source="newui_ic_pdf" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                            <Label Text="filname.zip" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <Label Text="{Binding SelectedRentFileName}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                 <Image Grid.Row="0" Grid.Column="1" Source="closegrey" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
@@ -431,9 +431,9 @@
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
-                            <CollectionView  x:Name="OtherTaxIncomeFromSourceWithInTheSKAlist" Grid.Row="8"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
+                            <CollectionView  x:Name="OrgNonResidentActivitylistCV" Grid.Row="8"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
-                                                 ItemsSource="{Binding TaxableIncomeSourceTypeList}"  SelectedItem="{Binding SelectedTaxIncomeSourceType, Mode=TwoWay}"
+                                                 ItemsSource="{Binding OrgNonResidentActivityList}"  SelectedItem="{Binding SelectedOrgNonResidentActivityValue, Mode=TwoWay}"
                                                  SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                                 <CollectionView.ItemsLayout>
                                     <LinearItemsLayout Orientation="Vertical"   />
@@ -500,27 +500,36 @@
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="ID Number" TextColor="Gray" FontFamily="{StaticResource SSTArBold}"  />
                                     <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding GCCIDTypeIdNumberValue}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" />
                                 </Grid>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start">
-                                    <custom:CustomLabel  Style="{StaticResource forLightLabel}">
-                                        <custom:CustomLabel.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Date of Birth" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
-                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                            </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
-                                    <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding SelectedDOB}" 
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" >
-                                        <buttons:SfButton.ImageSource>
-                                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                   <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand">
+                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Date of Birth" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
+                                        
+                                        <Label x:Name="dob" Text="{Binding SelectedDOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
                                                              Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                        </buttons:SfButton.ImageSource>
-                                        <buttons:SfButton.GestureRecognizers>
-                                            <TapGestureRecognizer x:Name="DateofBirth" Tapped="dOBDateClicked" ></TapGestureRecognizer>
-                                        </buttons:SfButton.GestureRecognizers>
-                                    </buttons:SfButton>
-                                </StackLayout>
+                                                </Image.Source>
+                                            </Image>
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                             <TapGestureRecognizer Tapped="dOBDateClicked" ></TapGestureRecognizer>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </border:SfBorder >
+                            </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="PersonalDetails" Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
                                 <custom:CustomLabel  Text="Identification Details" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
@@ -754,8 +763,8 @@
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                                 </StackLayout>
                             </StackLayout>
-                            <StackLayout Orientation="Vertical"  Grid.Row="3" HorizontalOptions="Start">
-                                <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                            <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand">
+                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="Issue Date" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
@@ -763,20 +772,29 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <buttons:SfButton   ShowIcon="True" ImageAlignment="End" Text="{Binding PassportIssueDate}" 
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" >
-                                    <buttons:SfButton.ImageSource>
-                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20" 
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
+                                        
+                                        <Label x:Name="PassportIssueDate" Text="{Binding PassportIssueDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
                                                              Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                    </buttons:SfButton.ImageSource>
-                                    <buttons:SfButton.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="PassportIssueDate" Tapped="PassportIssueDateClicked" ></TapGestureRecognizer>
-                                    </buttons:SfButton.GestureRecognizers>
-                                </buttons:SfButton>
+                                                </Image.Source>
+                                            </Image>
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                             <TapGestureRecognizer Tapped="PassportIssueDateClicked" ></TapGestureRecognizer>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </border:SfBorder >
                             </StackLayout>
-                            <StackLayout Orientation="Vertical"  Grid.Row="4" HorizontalOptions="Start">
-                                <custom:CustomLabel  Style="{StaticResource forLightLabel}">
+                             <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand">
+                                <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="Expiry Date" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
@@ -784,18 +802,28 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding PassportExpireDate}" 
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" >
-                                    <buttons:SfButton.ImageSource>
-                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
+                                        
+                                        <Label x:Name="PassportExpiryDate" Text="{Binding PassportExpireDate}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
                                                              Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                    </buttons:SfButton.ImageSource>
-                                    <buttons:SfButton.GestureRecognizers>
-                                        <TapGestureRecognizer x:Name="PassportExpiryDate" Tapped="PassportExpiryDateClicked" ></TapGestureRecognizer>
-                                    </buttons:SfButton.GestureRecognizers>
-                                </buttons:SfButton>
+                                                </Image.Source>
+                                            </Image>
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                             <TapGestureRecognizer Tapped="PassportExpiryDateClicked" ></TapGestureRecognizer>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </border:SfBorder >
                             </StackLayout>
+
                             <StackLayout x:Name="PassportAttachmentsMainLayout"  Orientation="Vertical" Grid.Row="5" Margin="0,0,0,10">
                                 <custom:CustomLabel Text="Attachments"  Style="{StaticResource ButtonLabelBlackBold}"/>
                                 <StackLayout Orientation="Horizontal" >
@@ -824,14 +852,14 @@
                                         </StackLayout>
                                     </border:SfBorder >
                                 </StackLayout>
-                                <StackLayout>
+                                <StackLayout IsVisible="{Binding IsVisbleAttachmentPassportList}">
                                     <custom:CustomLabel Text="Attachment - passport details" HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />
                                     <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                             <Image Grid.Row="0" Grid.Column="1" Source="newui_ic_pdf" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                            <Label Text="filname.pdf" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <Label Text="{Binding SelectedPassportFileName}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                 <Image Grid.Row="0" Grid.Column="1" Source="closegrey" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center"></Image>

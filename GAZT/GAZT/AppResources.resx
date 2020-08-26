@@ -4245,7 +4245,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Period</value>
   </data>
   <data name="FORM5RecivedReturn" xml:space="preserve">
-    <value>We have received your return with reference number :</value>
+    <value>We have received your return with reference number </value>
   </data>
   <data name="FORM5RegistrationInfo" xml:space="preserve">
     <value>Registration Information</value>
@@ -4281,7 +4281,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>It is Taxpayer Responsibility to Provide a Correct data Since it is going to affect liabilities calculation</value>
   </data>
   <data name="FORM5To" xml:space="preserve">
-    <value>To:</value>
+    <value>To :</value>
   </data>
   <data name="FORM5ToDate" xml:space="preserve">
     <value>To Date</value>
@@ -4486,7 +4486,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Instructions &amp; Conditions</value>
   </data>
   <data name="VATDeregistrationReasonType1" xml:space="preserve">
-    <value>De-Registration of VAT account</value>
+    <value>De-Registration of VAT Account</value>
   </data>
   <data name="VATDeregistrationReasonType2" xml:space="preserve">
     <value>VAT Return Filing Obligation Suspension</value>
@@ -4890,7 +4890,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Amendment by GAZT</value>
   </data>
   <data name="ZakatInstallmentPageTitle" xml:space="preserve">
-    <value>Request Installment Plan</value>
+    <value>Request Instalment Plan</value>
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
@@ -4971,6 +4971,9 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="Hello" xml:space="preserve">
     <value>Hello</value>
     <comment>DashBoard</comment>
+  </data>
+  <data name="VATRefundCancelRefund" xml:space="preserve">
+    <value>Do you want to cancel the Refund?</value>
   </data>
   <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
     <value>Refund Request for VAT</value>
@@ -6042,6 +6045,9 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDMyNotifications" xml:space="preserve">
     <value>My  Notifications</value>
+  </data>
+  <data name="ForOfficerAssignmentPool" xml:space="preserve">
+    <value>For Officer Assignment (Pool)</value>
   </data>
   <data name="ZZZZConfirmRefund" xml:space="preserve">
     <value>Confirm Refund</value>

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.VATRefunds;
 using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using GAZT.Helper;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -92,6 +94,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, string>(this, "IbanReceived");
+            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
         }
 
         private void SetLTR()
@@ -155,9 +158,87 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
         }
 
-        void VoidButton_Tapped(System.Object sender, System.EventArgs e)
+        public async void VoidButton_Tapped(System.Object sender, System.EventArgs e)
         {
-            viewModel.VoidBtnClicked();
+            if (App.IsArabic)
+            {
+                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZNo, AppResources.ZYes);
+                if (!result)
+                {
+                    try
+                    {
+                        await viewModel.OnVoidBtnClicked();
+                        var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        Navigation.RemovePage(firstPageToRemove);
+                        viewModel._navigationService.GoBack();
+                    }
+                    catch (GAZTErrorException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            App.HideProgressView();
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                    catch (InternetException ex)
+                    {
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            viewModel._navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            else
+            {
+                var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZYes, AppResources.ZNo);
+                if (result)
+                {
+                    try
+                    {
+                        await viewModel.OnVoidBtnClicked();
+
+                        //var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                        //Navigation.RemovePage(firstPageToRemove);
+
+                        viewModel._navigationService.GoBack();
+                    }
+                    catch (GAZTErrorException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            App.HideProgressView();
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                    catch (InternetException ex)
+                    {
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
         }
     }
 }

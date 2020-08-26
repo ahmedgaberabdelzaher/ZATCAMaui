@@ -7,6 +7,7 @@
              NavigationPage.HasNavigationBar="False"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
+xmlns:custom2="clr-namespace:EGAZT"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"             
             xmlns:local="clr-namespace:EGAZT" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              x:Class="EGAZT.Views.NewDesign.VATDeRegistration.VATDeregistrationSuccessPage"
@@ -25,8 +26,8 @@
         <StackLayout>
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
                 <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
-                <Label Text="VAT Deregistration" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text="VAT Deregistration Submitted Successfully"  FontFamily="{StaticResource SSTArabicMedium}"
+                <Label Text="{x:Static custom2:AppResources.VATDeregistration}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text= "{x:Static custom2:AppResources.VatDeregistrationSubmitSuccessful}" FontFamily="{StaticResource SSTArabicMedium}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0" Padding="20"  Margin="0,20,0,0" VerticalOptions="Fill">
@@ -34,9 +35,9 @@
               
                   <border:SfBorder   Margin="0,8,0,8"  Style="{StaticResource GreyBorderFrame}">
                <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                        <Label  Text="Name" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                        <Label  Text="{x:Static custom2:AppResources.VATRSName}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                            <Label Text="Zaey Hardy" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                            <Label x:Name="Label_Name" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
 
                         </StackLayout>
 
@@ -47,10 +48,15 @@
                   <border:SfBorder   Margin="0,0,0,8"  Style="{StaticResource GreyBorderFrame}">
                    
                       <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                        <Label  Text="Application Number" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                        <Label  Text="{x:Static custom2:AppResources.VATRSAppNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                           <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                            <Label Text="123456789" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
-
+                            <Label x:Name="Label_ApplicationNumber" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                <Image>
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                                    </Image.Source>
+                                </Image>
                         </StackLayout>
                    </StackLayout>
                  
@@ -59,9 +65,9 @@
                   <border:SfBorder   Margin="0,0,0,8"  Style="{StaticResource GreyBorderFrame}">
                    
                     <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
-                        <Label  Text="Date" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                        <Label  Text="{x:Static custom2:AppResources.Date}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
                          <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                            <Label Text="08 August 2020" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                            <Label x:Name="Label_Date" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
 
                         </StackLayout>
 

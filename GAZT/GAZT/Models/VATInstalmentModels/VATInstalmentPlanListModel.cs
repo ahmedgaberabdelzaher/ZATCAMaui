@@ -364,7 +364,7 @@ namespace EGAZT.Models.VATInstalmentModels
             public string Fbtyp { get; set; }
             public string UserErrFg { get; set; }
             public string SysFlg { get; set; }
-            public DateTime? Ldate { get; set; }
+            public string Ldate { get; set; }
         }
 
         public class REQTYPSet

@@ -1635,6 +1635,9 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
+  <data name="VATRefundCancelRefund" xml:space="preserve">
+    <value>هل تريد إلغاء طلب الاسترداد؟</value>
+  </data>
   <data name="ZVatRefundRequestVAT" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
@@ -4223,7 +4226,7 @@
     <value>الفترة من تاريخ</value>
   </data>
   <data name="FORM5RecivedReturn" xml:space="preserve">
-    <value>نفيدكم انه تم استلام اقراركم رقم   :</value>
+    <value>نفيدكم انه تم استلام اقراركم رقم   </value>
   </data>
   <data name="FORM5RegistrationInfo" xml:space="preserve">
     <value>معلومات التسجيل</value>
@@ -4259,7 +4262,7 @@
     <value>المكلف مسئول عن دقة البيانات ادناه وذلك لتأثيرها على قيمة الاحتساب</value>
   </data>
   <data name="FORM5To" xml:space="preserve">
-    <value>الى   :</value>
+    <value>الى :</value>
   </data>
   <data name="FORM5ToDate" xml:space="preserve">
     <value>إلى تاريخ</value>
@@ -5695,6 +5698,69 @@
   </data>
   <data name="NDMyNotifications" xml:space="preserve">
     <value>إشعاراتي</value>
+  </data>
+  <data name="VatDueAmountInstruction" xml:space="preserve">
+    <value>يشمل هذا الرقم مبالغ بموجب خطة تقسيط قائمة أو في إطار مراجعة الهيئة العامة للزكاة والدخل</value>
+  </data>
+  <data name="VATInstalmentListInstalmentDisplayInstalmentSchedule" xml:space="preserve">
+    <value>عرض خطة اتفاقية التقسيط</value>
+  </data>
+  <data name="VATInstalmentListInstalmentVatInstalmentPlan" xml:space="preserve">
+    <value>خطة تقسيط ضريبة القيمة المضافة</value>
+  </data>
+  <data name="VATInstalmentRequestToVatDisplayInstalment" xml:space="preserve">
+    <value>عرض خطة التقسيط</value>
+  </data>
+  <data name="VatInstalmetPlanTitle" xml:space="preserve">
+    <value>خطة التقسيط لضريبة القيمة المضافة</value>
+  </data>
+  <data name="VatInstructions" xml:space="preserve">
+    <value>يرجى قراءة التعليمات التالية قبل إكمال نموذج طلب اتفاقية التقسيط:
+1. يرجى ملء المعلومات التالية لكل خطوة
+2. لا يمكن تقديم الطلب بنجاح حتى يتم الانتهاء من جميع الحقول الإلزامية
+3. يجب على المكلفين التأكد من أن تفاصيل المكلفين الحالية كاملة ومحدثة قبل تقديم نموذج اتفاقية التقسيط
+4. يرجى الرجوع إلى قسم الأسئلة الشائعة قبل ملء نموذج اتفاقية التقسيط</value>
+  </data>
+  <data name="VatInstructionsCheckBoxDesc" xml:space="preserve">
+    <value>أقر بأنني قرأت وفهمت المعلومات المذكورة أعلاه</value>
+  </data>
+  <data name="VatTerms" xml:space="preserve">
+    <value>1. يفترض أن يكون المكلفين قد قاموا بقراءة وفهم نظام ولوائح ضريبة القيمة المضافة في المملكة وجميع المعلومات المقدمة حقيقية وصحيحة وكاملة على حد علم المكلفين.
+2. تحتفظ الهيئة العامة للزكاة والدخل بحق طلب الحصول على أي معلومات مالية أو ادارية والحصول على سجلات المكلفين وأعمالهم للمراجعة والتحقق من المعلومات المقدمة في طلب التقسيط.
+3.  تحتفظ الهيئة العامة للزكاة والدخل بحق فتح ملف تدقيق من أجل التحقق من نموذج طلب اتفاقية التقسيط وأي نماذج سابقة بحد أقصى 5 سنوات مما يؤدي الى فرض غرامات وفقا لنظام ولوائح ضريبة القيمة المضافة في المملكة
+4. هذا الطلب لا يضمن الموافقة على اتفاقية التقسيط. سيتم إعلامك بقرار الهيئة العامة للزكاة والدخل في المراسلات اللاحقة
+5. تجدر الإشارة إلى أنه بمجرد الموافقة على اتفاقية التقسيط هذه وسريان مفعولها، فإن المكلفين ملزمون بدفع الأقساط وفقا لجدول التقسيط، بغض النظر عن أي قرارات مستقبلية ناتجة عن مراجعة / تدقيق الهيئة العامة للزكاة والدخل
+6. لن يكون بمقدور المكلفين تقديم التعديلات الذاتية للإقرارات الضريبية المشمولة في خطة التقسيط طالما أن اتفاقية التقسيط نشطة</value>
+  </data>
+  <data name="VatTermsCheckBoxDesc" xml:space="preserve">
+    <value>أتعهد بأن المعلومات الواردة في طلب اتفاقية التقسيط حقيقية وصحيحة وكاملة من جميع النواحي على حد علمي , وأنني الشخص الذي قام بطلب اتفاقية التقسيط أو أنني مخول بالتوقيع نيابة عن هذا الشخص</value>
+  </data>
+  <data name="Instalment" xml:space="preserve">
+    <value>قسط</value>
+  </data>
+  <data name="InstalmentSchedule" xml:space="preserve">
+    <value>جدول التقسيط</value>
+  </data>
+  <data name="VatInstalmentDownload" xml:space="preserve">
+    <value>تحميل</value>
+  </data>
+  <data name="VatInstalmentPlanPleaseReviewTheInstalmentSchedule" xml:space="preserve">
+    <value>الرجاء مراجعة خطة التقسيط</value>
+  </data>
+  <data name="ZakatInstalmentDueDate" xml:space="preserve">
+    <value>تاريخ الاستحقاق</value>
+  </data>
+  <data name="ZakatInstalmentMonthlyInstallment" xml:space="preserve">
+    <value>القسط الشهري</value>
+  </data>
+  <data name="ZakatInstalmentTotalAmountPaid" xml:space="preserve">
+    <value>إجمالي المبلغ المدفوع</value>
+  </data>
+  <data name="ZakatInstalmentTotalAmountRemaining" xml:space="preserve">
+    <value>إجمالي المبلغ المتبقي</value>
+  </data>
+  <data name="ForOfficerAssignmentPool" xml:space="preserve">
+    <value>For Officer Assignment (Pool)</value>
   </data>
   <data name="ZZZZConfirmRefund" xml:space="preserve">
     <value>تأكيد طلب الاسترداد</value>

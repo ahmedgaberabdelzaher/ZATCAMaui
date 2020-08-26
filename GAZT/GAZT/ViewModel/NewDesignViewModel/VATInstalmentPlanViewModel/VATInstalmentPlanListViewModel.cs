@@ -553,6 +553,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             try
             {
 
+               // _navigationService.NavigateTo(App.VatInstalmentPlanSuccessPage);
+
                 _navigationService.NavigateTo(App.VatInstalmentPlanPageView);
             }
             catch (GAZTUnlockAccountException ex)

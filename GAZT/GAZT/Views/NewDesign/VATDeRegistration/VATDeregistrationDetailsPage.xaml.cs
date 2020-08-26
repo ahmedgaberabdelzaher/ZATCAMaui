@@ -111,7 +111,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             ChangeArrowDirection();
 
-
+            
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
                 viewModel.IsInstructionChecked = arg;
                 //Console.WriteLine(arg);
@@ -326,10 +326,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Send<Object, AttdetSet>(this, "AttachmentReceived", viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet);
-            //comment because main button remains enabled
-            //  viewModel.IsSwichButtonEnable = false;
+            MessagingCenter.Unsubscribe<Object, AttdetSet>(this, "AttachmentReceived");
+
             viewModel.IsLoading = false;
+            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
+            MessagingCenter.Unsubscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
+            MessagingCenter.Unsubscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem");
+
         }
         public void SetDocType()
         {

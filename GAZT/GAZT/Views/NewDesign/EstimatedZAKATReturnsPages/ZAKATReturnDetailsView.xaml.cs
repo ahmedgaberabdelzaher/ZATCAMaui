@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GAZT.Manager;
+using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -38,6 +40,11 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
 
             //date.Text = viewModel.Abrzu;
+            getYesCommandToReleaseTheReturn();
+            getYesCommandToAmendTheReturn();
+
+            getNoCommand();
+
         }
 
         private void SetLTR()
@@ -62,34 +69,85 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         protected async void OnReleaseBillsButtonClicked(object sender, EventArgs e)
         {
-            if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
+          
+           await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDoyouwanttoreleasethedeclaration));
+            //if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
+            //{
+            //    if (App.IsArabic)
+            //    {
+            //        var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZCancel, AppResources.ZZZOkayText);
+            //        if (!result)
+            //        {
+            //            await viewModel.OnReleaseOrBillsClicked();
+            //        }
+
+            //    }
+            //    else
+            //    {
+            //        var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZZOkayText, AppResources.ZZCancel);
+            //        if (result)
+            //        {
+            //            await viewModel.OnReleaseOrBillsClicked();
+            //        }
+
+            //    }
+            //}
+            //else
+            //{
+            //    await viewModel.OnReleaseOrBillsClicked();
+            //}
+
+
+
+        }
+
+        public async void getYesCommandToReleaseTheReturn()
+        {
+            try
             {
-                if (App.IsArabic)
+                MessagingCenter.Subscribe<object, string>(this, "YesPressedToReleaseTheReturn", async (sender, arg) =>
                 {
-                    var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZCancel, AppResources.ZZZOkayText);
-                    if (!result)
-                    {
-                        await viewModel.OnReleaseOrBillsClicked();
-                    }
-
-                }
-                else
-                {
-                    var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZZOkayText, AppResources.ZZCancel);
-                    if (result)
-                    {
-                        await viewModel.OnReleaseOrBillsClicked();
-                    }
-
-                }
+                    await viewModel.OnReleaseOrBillsClicked();
+                });
             }
-            else
+            catch (Exception ex)
             {
-                await viewModel.OnReleaseOrBillsClicked();
+
             }
+        }
 
+        public async void getYesCommandToAmendTheReturn()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesPressedToAmendheReturn", async (sender, arg) =>
+                {
+                    string PostOperationID = viewModel.GetConfirmOperationId();
+                    await viewModel.ConfirmClicked(PostOperationID);
 
+                });
+            }
+            catch (Exception ex)
+            {
 
+            }
+        }
+
+        public async void getNoCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
+                {
+                    //await PopupNavigation.Instance.PopAsync();
+                    //await viewModel.VATSetReturnVoidAsync();
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         private void OnEditClicked(object sender, EventArgs e)
         {
@@ -160,30 +218,33 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             if (viewModel.CheckBoxStatus)
             {
-                string PostOperationID = viewModel.GetConfirmOperationId();
+
+
                 if (viewModel.IsCurrentZAKATTaxLess)
                 {
-                    if (App.IsArabic)
-                    {
-                        var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZCancel, AppResources.ZZZOkayText);
-                        if (!result)
-                        {
-                            await viewModel.ConfirmClicked(PostOperationID);
-                        }
+                    await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeartaxpayerbasedonthesubmittedamendments));
+                    //if (App.IsArabic)
+                    //{
+                    //    var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZCancel, AppResources.ZZZOkayText);
+                    //    if (!result)
+                    //    {
+                    //        await viewModel.ConfirmClicked(PostOperationID);
+                    //    }
 
-                    }
-                    else
-                    {
-                        var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZZOkayText, AppResources.ZZCancel);
-                        if (result)
-                        {
-                            await viewModel.ConfirmClicked(PostOperationID);
-                        }
+                    //}
+                    //else
+                    //{
+                    //    var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZZOkayText, AppResources.ZZCancel);
+                    //    if (result)
+                    //    {
+                    //        await viewModel.ConfirmClicked(PostOperationID);
+                    //    }
 
-                    }
+                    //}
                 }
                 else
                 {
+                    string PostOperationID = viewModel.GetConfirmOperationId();
                     await viewModel.ConfirmClicked(PostOperationID);
                 }
             }
