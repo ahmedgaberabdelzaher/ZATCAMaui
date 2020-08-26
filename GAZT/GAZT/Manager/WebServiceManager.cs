@@ -7866,7 +7866,7 @@ namespace GAZT.Manager
             {
                 VatRefundDisplayDataModel _newRequestSummaryDataResponse = new VatRefundDisplayDataModel();
                 string NewToken = string.Empty;
-
+                _newRequestSummaryData.Agrfg = "X";
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -7874,7 +7874,7 @@ namespace GAZT.Manager
                     string url = Constants.VatRefundSubmitData;
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");  
 
                     var uri = new Uri(url);
                     var serilized = JsonConvert.SerializeObject(_newRequestSummaryData);
