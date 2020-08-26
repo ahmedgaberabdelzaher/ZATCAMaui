@@ -4981,6 +4981,9 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
+   <data name="VATRefundAccounts" xml:space="preserve">
+    <value>Accounts</value>
+  </data>
   <data name="VATRefundCancelRefund" xml:space="preserve">
     <value>Do you want to cancel the Refund?</value>
   </data>
