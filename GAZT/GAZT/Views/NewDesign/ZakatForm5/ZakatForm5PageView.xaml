@@ -2447,18 +2447,26 @@
 
                                 <StackLayout Padding="10" Spacing="-5">
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
+                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5Dear}" />
                                                 <Span Text=" "/>
                                                 <Span Text="{Binding Taxpayer}"/>
-                                                <!--<Span Text="{x:Static ResourceManager:AppResources.Comma}"/>-->
+                                                --><!--<Span Text="{x:Static ResourceManager:AppResources.Comma}"/>--><!--
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </custom:CustomLabel>-->
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
+                                    <StackLayout  Orientation="Horizontal">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Dear}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
+                                        <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                        <custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}"/>
+                                    </StackLayout>
+
+
+                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}" />
@@ -2466,19 +2474,33 @@
                                                 <Span Text="{Binding ReferenceNumber}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </custom:CustomLabel>-->
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText">
+                                    <StackLayout  Orientation="Horizontal">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
+                                        <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                        <custom:CustomLabel Text="{Binding ReferenceNumber}" WidthRequest="200" Style="{StaticResource ValueLabelBlack}"/>
+                                    </StackLayout>
+
+
+                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Span Text=" "/>
-                                                <!--<Span Text="{Binding ZakatFromDate}"/>-->
+                                                --><!--<Span Text="{Binding ZakatFromDate}"/>--><!--
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </custom:CustomLabel>-->
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
+                                    <StackLayout  Orientation="Horizontal">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
+                                        <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                    </StackLayout>
+
+                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5From}" Style="{StaticResource ValueLabelGrey}" />
@@ -2486,9 +2508,17 @@
                                                 <Span Text="{Binding ZakatFromDate}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </custom:CustomLabel>-->
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
+                                    <StackLayout  Orientation="Horizontal">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5From}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
+                                        <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                        <custom:CustomLabel Text="{Binding ZakatFromDate}" Style="{StaticResource ValueLabelBlack}"/>
+                                    </StackLayout>
+
+
+                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5To}" Style="{StaticResource ValueLabelGrey}" />
@@ -2497,7 +2527,15 @@
                                                 <Span Text=" "/>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </custom:CustomLabel>-->
+
+
+                                    <StackLayout  Orientation="Horizontal">
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5To}" Style="{StaticResource ValueLabelGrey}"/>
+                                        <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
+                                        <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                        <custom:CustomLabel Text="{Binding ZakatToDate}" Style="{StaticResource ValueLabelBlack}"/>
+                                    </StackLayout>
 
                                     <!--<StackLayout Orientation="Horizontal">
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Period}" Style="{StaticResource ValueLabelGrey}"/>

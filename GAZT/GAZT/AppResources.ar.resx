@@ -1635,10 +1635,10 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
- <data name="VATRefundCancelRefund" xml:space="preserve">
+  <data name="VATRefundCancelRefund" xml:space="preserve">
     <value>هل تريد إلغاء طلب الاسترداد؟</value>
   </data>
- <data name="ZVatRefundRequestVAT" xml:space="preserve">
+  <data name="ZVatRefundRequestVAT" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
@@ -4262,7 +4262,7 @@
     <value>المكلف مسئول عن دقة البيانات ادناه وذلك لتأثيرها على قيمة الاحتساب</value>
   </data>
   <data name="FORM5To" xml:space="preserve">
-    <value>الى   :</value>
+    <value>الى :</value>
   </data>
   <data name="FORM5ToDate" xml:space="preserve">
     <value>إلى تاريخ</value>
@@ -4492,7 +4492,7 @@
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>المرفقات</value>
   </data>
-     <data name="VatDeregAttachmentsHeaderTitle" xml:space="preserve">
+  <data name="VatDeregAttachmentsHeaderTitle" xml:space="preserve">
     <value>المرفقات</value>
   </data>
   <data name="VatDeregAttachmentInputTitle" xml:space="preserve">
@@ -4501,13 +4501,13 @@
   <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
     <value>إضافة مرفق جديد (إختياري)</value>
   </data>
-   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+  <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value> اختر تاريخ البداية</value>
   </data>
-      <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
+  <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
     <value>اختر تاريخ النهاية</value>
   </data>
-      <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
+  <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
     <value>اختر تاريخ الميلاد</value>
   </data>
   <data name="VatDeregAttachmentInputsize" xml:space="preserve">
@@ -4531,10 +4531,10 @@
   <data name="VatDeregIDType" xml:space="preserve">
     <value>نوع الهوية</value>
   </data>
-      <data name="VatDeregRequestType" xml:space="preserve">
+  <data name="VatDeregRequestType" xml:space="preserve">
     <value>نوع الطلب</value>
   </data>
-        <data name="VATDeregistrationEdit" xml:space="preserve">
+  <data name="VATDeregistrationEdit" xml:space="preserve">
     <value>تعديل</value>
   </data>
   <data name="VatDeregIDNumber" xml:space="preserve">
@@ -4951,7 +4951,7 @@
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
-   <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
+  <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="VATRefundRequestTtitle" xml:space="preserve">
@@ -5698,8 +5698,8 @@
   </data>
   <data name="NDMyNotifications" xml:space="preserve">
     <value>إشعاراتي</value>
-     </data>>
-    <data name="VatDueAmountInstruction" xml:space="preserve">
+  </data>
+  <data name="VatDueAmountInstruction" xml:space="preserve">
     <value>يشمل هذا الرقم مبالغ بموجب خطة تقسيط قائمة أو في إطار مراجعة الهيئة العامة للزكاة والدخل</value>
   </data>
   <data name="VATInstalmentListInstalmentDisplayInstalmentSchedule" xml:space="preserve">
@@ -5735,7 +5735,7 @@
   <data name="VatTermsCheckBoxDesc" xml:space="preserve">
     <value>أتعهد بأن المعلومات الواردة في طلب اتفاقية التقسيط حقيقية وصحيحة وكاملة من جميع النواحي على حد علمي , وأنني الشخص الذي قام بطلب اتفاقية التقسيط أو أنني مخول بالتوقيع نيابة عن هذا الشخص</value>
   </data>
-    <data name="Instalment" xml:space="preserve">
+  <data name="Instalment" xml:space="preserve">
     <value>قسط</value>
   </data>
   <data name="InstalmentSchedule" xml:space="preserve">
@@ -5759,7 +5759,7 @@
   <data name="ZakatInstalmentTotalAmountRemaining" xml:space="preserve">
     <value>إجمالي المبلغ المتبقي</value>
   </data>
-     <data name="ForOfficerAssignmentPool" xml:space="preserve">
+  <data name="ForOfficerAssignmentPool" xml:space="preserve">
     <value>For Officer Assignment (Pool)</value>
   </data>
 </root>
