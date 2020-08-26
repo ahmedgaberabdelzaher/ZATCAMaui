@@ -13,7 +13,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         #region Variable
-        private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.EstablishmentAccount;
+        private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
         public EstablishmentSignUPTabEnum currentTab
         {
             get => _currentTab;
@@ -38,10 +38,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     MarkComplete = true;
                     RaisePropertyChanged(nameof(MarkComplete));
                 }
+                else if (MarkComplete==true && _currenrIndex < MaxIndex)
+                {
+                    MarkComplete = false;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
             }
         }
         public bool MarkComplete { get; private set; } = false;
-        public int MaxIndex { get; private set; } = 4;
+        public int MaxIndex { get; private set; } = 7;
         #endregion
 
         #region Commands
@@ -50,7 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #endregion
 
         #region Propetry
-        public string _PageTitle = AppResources.NDEstablishmentAccount;
+        public string _PageTitle = AppResources.ZVatTermsAndConditions;
         public string PageTitle
         {
             get
@@ -64,7 +69,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-        public string _BodyText = AppResources.ZZZZCompletethebelowdetails;
+        public string _BodyText;
         public string BodyText
         {
             get
@@ -78,7 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-        public string _NextBTN = AppResources.ZZZZContinue;
+        public string _NextBTN = AppResources.ZZProceedtoindividualSignup;
         public string NextBTN
         {
             get
@@ -89,6 +94,62 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 _NextBTN = value;
                 RaisePropertyChanged("NextBTN");
+            }
+        }
+
+        public string _ImgBackgroundYes = "re_Property_Tile_Background_White";
+        public string ImgBackgroundYes
+        {
+            get
+            {
+                return _ImgBackgroundYes;
+            }
+            set
+            {
+                _ImgBackgroundYes = value;
+                RaisePropertyChanged("ImgBackgroundYes");
+            }
+        }
+
+        public string _ImgBackgroundNo = "re_Tile_Background";
+        public string ImgBackgroundNo
+        {
+            get
+            {
+                return _ImgBackgroundNo;
+            }
+            set
+            {
+                _ImgBackgroundNo = value;
+                RaisePropertyChanged("ImgBackgroundNo");
+            }
+        }
+
+        public string _ImgBackgroundCRNubmer = "FP_selected_tile";
+        public string ImgBackgroundCRNubmer
+        {
+            get
+            {
+                return _ImgBackgroundCRNubmer;
+            }
+            set
+            {
+                _ImgBackgroundCRNubmer = value;
+                RaisePropertyChanged("ImgBackgroundCRNubmer");
+            }
+        }
+
+        public string _ImgBackgroundLicenseNubmer = "FP_unselected_tile";
+        public string ImgBackgroundLicenseNubmer
+        {
+            get
+            {
+                return _ImgBackgroundLicenseNubmer;
+            }
+            set
+            {
+                _ImgBackgroundLicenseNubmer = value;
+                RaisePropertyChanged("ImgBackgroundLicenseNubmer");
             }
         }
         #endregion
@@ -117,23 +178,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         {
             switch (currentTab)
             {
-                case EstablishmentSignUPTabEnum.EstablishmentAccount:
+                case EstablishmentSignUPTabEnum.TermsAndConditions:
+                    PageTitle = AppResources.ZZZIndividualInformation;
+                    BodyText = AppResources.ZZZZCompletethebelowdetails;
+                    NextBTN = AppResources.ZZZZContinue;
+                    currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
+                    break;
+
+                case EstablishmentSignUPTabEnum.IndividualInformation:
+                    PageTitle = AppResources.ZZZBusinessInformation;
+                    BodyText = AppResources.ZZZZCompletethebelowdetails;
+                    currentTab = EstablishmentSignUPTabEnum.BusinessInformation;
+                    break;
+
+                case EstablishmentSignUPTabEnum.BusinessInformation:
+                    PageTitle = AppResources.ZZZContactInformation;
+                    BodyText = AppResources.ZZZZCompletethebelowdetails;
+                    
+                    currentTab = EstablishmentSignUPTabEnum.ContactInformation;
+                    break;
+
+                case EstablishmentSignUPTabEnum.ContactInformation:
                     PageTitle = AppResources.VerificationCode;
-                    BodyText = AppResources.NDPleaseEnterVerificationSenttomobile;
-                    currentTab = EstablishmentSignUPTabEnum.VerificationCode;
+                    BodyText = AppResources.ZZPleaseenteraccessCode;
+                    NextBTN = AppResources.ZZZZContinue;
+                    currentTab = EstablishmentSignUPTabEnum.EmailVerification;
                     break;
 
-                case EstablishmentSignUPTabEnum.VerificationCode:
-                    PageTitle = AppResources.ZSummary;
-                    BodyText = AppResources.VATRReviewInformation;
-                    NextBTN = AppResources.Confirm;
-                    currentTab = EstablishmentSignUPTabEnum.Summary;
+                case EstablishmentSignUPTabEnum.EmailVerification:
+                    //PageTitle = "Mobile Verification";
+                    //BodyText = AppResources.ZZZZCompletethebelowdetails;
+                    NextBTN = AppResources.ZZZZContinue;
+                    currentTab = EstablishmentSignUPTabEnum.MobileVerification;
                     break;
 
-                case EstablishmentSignUPTabEnum.Summary:
+                case EstablishmentSignUPTabEnum.MobileVerification:
                     PageTitle = AppResources.Password;
                     BodyText = AppResources.CreateASecurePassword;
-                    NextBTN = AppResources.ZZZZContinue;
+                    NextBTN = AppResources.Confirm;
+                    
                     currentTab = EstablishmentSignUPTabEnum.Password;
                     break;
             }
@@ -145,23 +228,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             switch (currentTab)
             {
                 case EstablishmentSignUPTabEnum.Password:
-                    PageTitle = AppResources.ZSummary;
-                    BodyText = AppResources.VATRReviewInformation;
-                    NextBTN = AppResources.Confirm;
-                    currentTab = EstablishmentSignUPTabEnum.Summary;
-                    break;
-
-                case EstablishmentSignUPTabEnum.Summary:
                     PageTitle = AppResources.VerificationCode;
-                    BodyText = AppResources.NDPleaseEnterVerificationSenttomobile;
+                    BodyText = AppResources.ZZPleaseenteraccessCode;
                     NextBTN = AppResources.ZZZZContinue;
-                    currentTab = EstablishmentSignUPTabEnum.VerificationCode;
+                    currentTab = EstablishmentSignUPTabEnum.MobileVerification;
                     break;
 
-                case EstablishmentSignUPTabEnum.VerificationCode:
-                    PageTitle = AppResources.NDEstablishmentAccount;
+                case EstablishmentSignUPTabEnum.MobileVerification:
+                    //PageTitle = "Email Verification";
+                    //BodyText = AppResources.ZZZZCompletethebelowdetails;
+                    //NextBTN = AppResources.Confirm;
+                    currentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                    break;
+
+                case EstablishmentSignUPTabEnum.EmailVerification:
+                    PageTitle = AppResources.ZZZContactInformation;
                     BodyText = AppResources.ZZZZCompletethebelowdetails;
-                    currentTab = EstablishmentSignUPTabEnum.EstablishmentAccount;
+                    //NextBTN = AppResources.Confirm;
+                    currentTab = EstablishmentSignUPTabEnum.ContactInformation;
+                    break;
+
+                case EstablishmentSignUPTabEnum.ContactInformation:
+                    PageTitle = AppResources.ZZZBusinessInformation;
+                    BodyText = AppResources.ZZZZCompletethebelowdetails;
+                    //NextBTN = AppResources.ZZZZContinue;
+                    currentTab = EstablishmentSignUPTabEnum.BusinessInformation;
+                    break;
+
+                case EstablishmentSignUPTabEnum.BusinessInformation:
+                    PageTitle = AppResources.ZZZIndividualInformation;
+                    BodyText = AppResources.ZZZZCompletethebelowdetails;
+                    currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
+                    break;
+
+                case EstablishmentSignUPTabEnum.IndividualInformation:
+                    PageTitle = AppResources.ZVatTermsAndConditions;
+                    BodyText = "";
+                    NextBTN = AppResources.ZZProceedtoindividualSignup;
+                    currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
                     break;
             }
         }

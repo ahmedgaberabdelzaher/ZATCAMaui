@@ -6,9 +6,12 @@ namespace EGAZT.Models.EnumModels
 {
     public enum EstablishmentSignUPTabEnum
     {
-        EstablishmentAccount = 1,
-        VerificationCode = 2,
-        Summary = 3,
-        Password = 4
+        TermsAndConditions=1,
+        IndividualInformation = 2,
+        BusinessInformation = 3,
+        ContactInformation = 4,
+        EmailVerification=5,
+        MobileVerification = 6,
+        Password = 7
     }
 }
