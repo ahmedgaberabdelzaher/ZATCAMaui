@@ -60,6 +60,19 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
+                        <Image Grid.Row="0" Grid.Column="2"  Source="close"  VerticalOptions="Center" HorizontalOptions="End">
+                           <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsNewReqSummary}" Value="true">
+                                     <Setter Property="IsVisible" Value="true" />
+                                </DataTrigger>
+                                 <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsNewReqSummary}" Value="false">
+                                     <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                        </Image.Triggers>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="VoidButton_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
                     </Grid>
                 </Grid>
 

@@ -1635,6 +1635,9 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
+ <data name="VATRefundCancelRefund" xml:space="preserve">
+    <value>هل تريد إلغاء طلب الاسترداد؟</value>
+  </data>
  <data name="ZVatRefundRequestVAT" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
