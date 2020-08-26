@@ -486,6 +486,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("Reason");
             }
         }
+        private decimal _fileSize;
+        public decimal FileSize
+        {
+            get
+            {
+                return _fileSize;
+            }
+            set
+            {
+                _fileSize = value;
+                RaisePropertyChanged("FileSize");
+            }
+        }
         private string _contactPersonName = string.Empty;
         public string ContactPersonName
         {
@@ -497,6 +510,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _contactPersonName = value;
                 RaisePropertyChanged("ContactPersonName");
+            }
+        }
+        private string _OtherField = string.Empty;
+        public string OtherField
+        {
+            get
+            {
+                return _OtherField;
+            }
+            set
+            {
+                _OtherField = value;
+                RaisePropertyChanged("OtherField");
             }
         }
         private GenericPickerModel _pickerModel { get; set; }
@@ -981,16 +1007,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             populateAttachments(vATDeRegistration);
 
-                            if (VATDeRegistrationDetailsForAttach != null)
-                            {
-                                if (VATDeRegistrationDetailsForAttach.d != null)
-                                {
-                                    if (VATDeRegistrationDetailsForAttach.d.AttdetSet != null)
-                                    {
-                                        MessagingCenter.Send<Object, AttdetSet>(this, "AttachmentReceived", VATDeRegistrationDetailsForAttach.d.AttdetSet);
-                                    }
-                                }
-                            }
+                            //if (VATDeRegistrationDetailsForAttach != null)
+                            //{
+                            //    if (VATDeRegistrationDetailsForAttach.d != null)
+                            //    {
+                            //        if (VATDeRegistrationDetailsForAttach.d.AttdetSet != null)
+                            //        {
+                            //            MessagingCenter.Send<Object, AttdetSet>(this, "AttachmentReceived", VATDeRegistrationDetailsForAttach.d.AttdetSet);
+                            //        }
+                            //    }
+                            //}
                         }
                         else
                         {
@@ -1105,6 +1131,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         filterList();
                         CloneAttachmentList(VatAttachmentsList);
                     }
+                }
+                else
+                {
+                    FileName = string.Empty;
+
                 }
             }
         }
@@ -1459,6 +1490,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if (ReasonTitle != string.Empty)
             {
+                //if(OtherField.Text)
+
                 CurrentStep = ProcessStep.Step2;
                 if (OutletDocumentOptions != null)
                 {
@@ -1644,89 +1677,93 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
                                     decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
-
+                                    FileSize = AttachmentSize;
                                     if (Convert.ToDecimal(AttachmentSize) <= 5)
                                     {
                                         if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                         {
                                             bool IsAttachmentPresent = false;
-
-                                            if (IsAttachmentPresent == false)
+                                            foreach (VATDeregAttachment ItemA in VATDeRegistrationDetailsForAttach.d.AttdetSet.results)
                                             {
-                                                string attachmentType = UtilityManager.GetContentType(Extention);
-                                                VATDeregAttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);
-
-                                                // await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
-
-                                               // PopToRootPage();
-
-                                                if (_attachment != null && _attachment.d != null)
+                                                if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
                                                 {
-                                                    AttachmentName = string.Empty;
-                                                    TimeZone localZone = TimeZone.CurrentTimeZone;
-                                                    string standardName = localZone.DaylightName;
-                                                    _attachment.d.Erfdt = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘UTC’ ‘zzz’");
-                                                    string uploadedDate = _attachment.d.Erfdt;
-                                                    uploadedDate = uploadedDate.Replace("’", "");
-                                                    uploadedDate = uploadedDate.Replace("‘", "");
-                                                    uploadedDate = uploadedDate.Replace("UTC", "GMT");
-                                                    _attachment.d.Erfdt = uploadedDate;
-                                                    _attachment.d.Dotyp = DocTypeString;
-                                                    VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Add(_attachment.d);
-                                                    ObservableCollection<VATDeregAttachment> myCollection = new ObservableCollection<VATDeregAttachment>(VATDeRegistrationDetailsForAttach.d.AttdetSet.results as List<VATDeregAttachment>);
-                                                    Device.BeginInvokeOnMainThread(async () =>
-                                                    {
-                                                        VatAttachmentsList = myCollection;
-
-                                                    });
-                                                    VatAttachmentsList = myCollection;
-                                                    foreach (var item in VatAttachmentsList)
-                                                    {
-                                                        try
-                                                        {
-                                                            if (App.IsArabic)
-                                                            {
-                                                                if (item.Erfdt != null)
-                                                                {
-                                                                    //item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                                    //item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                                    item.Erfdt = item.Erfdt;
-                                                                }
-                                                            }
-                                                            else
-                                                            {
-                                                                if (item.Erfdt != null)
-                                                                {
-                                                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                                }
-                                                            }
-                                                        }
-                                                        catch (Exception ex)
-                                                        {
-                                                            await Task.Run(() =>
-                                                            {
-                                                                IsLoading = false;
-                                                            });
-                                                        }
-                                                    }
-                                                    AttachmentCount++;
-                                                    filterList();
-                                                    //CloneAttachmentList(VatAttachmentsListtofilter);
-                                                    CloneAttachmentList(VatAttachmentsList);
-                                                    // TotalAttachmentSize += AttachmentSize;
-                                                    AttachmentName = string.Empty;
-                                                }
-                                                else
-                                                {
-                                                    AttachmentName = string.Empty;
-                                                    await Task.Run(() =>
-                                                    {
-                                                        IsLoading = false;
-                                                    });
-                                                    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                    IsAttachmentPresent = true;
                                                 }
                                             }
+                                            if (IsAttachmentPresent == false)
+                                            {
+                                                   string attachmentType = UtilityManager.GetContentType(Extention);
+                                                    VATDeregAttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);
+
+                                                  
+                                                    if (_attachment != null && _attachment.d != null)
+                                                    {
+                                                        AttachmentName = string.Empty;
+                                                        TimeZone localZone = TimeZone.CurrentTimeZone;
+                                                        string standardName = localZone.DaylightName;
+                                                        _attachment.d.Erfdt = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘UTC’ ‘zzz’");
+                                                        string uploadedDate = _attachment.d.Erfdt;
+                                                        uploadedDate = uploadedDate.Replace("’", "");
+                                                        uploadedDate = uploadedDate.Replace("‘", "");
+                                                        uploadedDate = uploadedDate.Replace("UTC", "GMT");
+                                                        _attachment.d.Erfdt = uploadedDate;
+                                                        _attachment.d.Dotyp = DocTypeString;
+                                                        VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Add(_attachment.d);
+                                                        ObservableCollection<VATDeregAttachment> myCollection = new ObservableCollection<VATDeregAttachment>(VATDeRegistrationDetailsForAttach.d.AttdetSet.results as List<VATDeregAttachment>);
+                                                        Device.BeginInvokeOnMainThread(async () =>
+                                                        {
+                                                            VatAttachmentsList = myCollection;
+
+                                                        });
+                                                        VatAttachmentsList = myCollection;
+                                                        foreach (var item in VatAttachmentsList)
+                                                        {
+                                                            try
+                                                            {
+                                                                if (App.IsArabic)
+                                                                {
+                                                                    if (item.Erfdt != null)
+                                                                    {
+                                                                        //item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                        //item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                        item.Erfdt = item.Erfdt;
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (item.Erfdt != null)
+                                                                    {
+                                                                        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                    }
+                                                                }
+                                                            }
+                                                            catch (Exception ex)
+                                                            {
+                                                                await Task.Run(() =>
+                                                                {
+                                                                    IsLoading = false;
+                                                                });
+                                                            }
+                                                        }
+                                                        AttachmentCount++;
+                                                        filterList();
+                                                        CloneAttachmentList(VatAttachmentsList);
+                                                        AttachmentName = string.Empty;
+                                                        FileName = string.Empty;
+                                                    }
+                                                    else
+                                                    {
+                                                        AttachmentName = string.Empty;
+                                                        await Task.Run(() =>
+                                                        {
+                                                            IsLoading = false;
+                                                        });
+                                                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                    }
+                                            
+                                            }
+
 
                                             else
                                             {
@@ -1896,21 +1933,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     vATAttachment.Enbdele = attachmentList[i].Enbdele;
                     vATAttachment.Visedit = attachmentList[i].Enbdele;
                     vATAttachment.Visdel = attachmentList[i].Enbdele;
-                    //if (App.ICRStatus.Equals("E0045") || App.ICRStatus.Equals("E0006") || App.ICRStatus.Equals("E0056"))
-                    //{
-                    //    if (NumberOfAttachmentComingFromServer > 0 && i < NumberOfAttachmentComingFromServer)
-                    //    {
-                    //        vATAttachment.DeleteImageSource = "ic_Delete_disabled.png";
-                    //    }
-                    //    else
-                    //    {
-                    //        vATAttachment.DeleteImageSource = "ic_delete.png";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    vATAttachment.DeleteImageSource = "ic_delete.png";
-                    //}
+        
 
                     list.Add(vATAttachment);
                 }
