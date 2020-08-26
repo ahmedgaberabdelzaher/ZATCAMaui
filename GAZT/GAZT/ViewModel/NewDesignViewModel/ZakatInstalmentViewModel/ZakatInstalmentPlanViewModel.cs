@@ -95,17 +95,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("VATBillDueAmount");
             }
         }
-        private ZINVOICEUI5Set[] _billsListVAT;
-        public ZINVOICEUI5Set[] BillsListVAT
+        private List<ZakatInvoicesResult> _zakatInvoicesList;
+        public List<ZakatInvoicesResult> ZakatInvoicesList
         {
             get
             {
-                return _billsListVAT;
+                return _zakatInvoicesList;
             }
             set
             {
-                _billsListVAT = value;
-                RaisePropertyChanged("BillsListVAT");
+                _zakatInvoicesList = value;
+                RaisePropertyChanged("ZakatInvoicesList");
             }
         }
         //private VATResults3[] _statementList;
@@ -703,47 +703,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         private void vatInstallmentBillsList()
         {
-            //SelectedBillsList = new ObservableCollection<Models.ZakatInstalationModels.Result>();
+            var selectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
 
+            foreach (var bill in ZakatInstalments.d.Z_INVOICE_UI5Set.results)
+            {
+                selectedBillsList.Add(new ZakatSelectBillModel()
+                {
+                    billNumber = "Bill 1",
+                    amount = "1,200.00 SAR",
+                    saadNumber = "1234568798",
+                    taxPeriod = "2019-2020",
+                    isSelected = false,
+                    billType = "VAT"
+                });
+            }
 
-            //SelectedBillsList = VATInstalmentPlanObject.d.VtiaSet.Results;
-
-            /*SelectedBillsList.Add(new ZakatSelectBillModel()
-            {
-                billNumber = "Bill 1"
-                amount = "1,200.00 SAR",
-                saadNumber = "1234568798",
-                taxPeriod = "2019-2020",
-                isSelected = false,
-                billType = "VAT"
-            });
-            SelectedBillsList.Add(new ZakatSelectBillModel()
-            {
-                billNumber = "Bill 2",
-                amount = "1,300.00 SAR",
-                saadNumber = "1234568798",
-                taxPeriod = "2019-2020",
-                isSelected = false,
-                billType = "VAT"
-            });
-            SelectedBillsList.Add(new ZakatSelectBillModel()
-            {
-                billNumber = "Bill 3",
-                amount = "1,400.00 SAR",
-                saadNumber = "1234568798",
-                taxPeriod = "2019-2020",
-                isSelected = false,
-                billType = "VAT"
-            });
-            SelectedBillsList.Add(new ZakatSelectBillModel()
-            {
-                billNumber = "Bill 4",
-                amount = "1,500.00 SAR",
-                saadNumber = "1234568798",
-                taxPeriod = "2019-2020",
-                isSelected = false,
-                billType = "VAT"
-            });*/
+            SelectedBillsList = selectedBillsList;
         }
 
         //public void PopulateSummaryReasonData()
@@ -922,25 +897,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("ZakatSelectBillModel");
             }
         }
-        //public ObservableCollection<Models.ZakatInstalationModels.VATResults4> selectedBillsList { get; set; }
-        //public ObservableCollection<Models.ZakatInstalationModels.VATResults4> SelectedBillsList
-        //{
-        //    get
-        //    {
-        //        return selectedBillsList;
-        //    }
+        public ObservableCollection<ZakatSelectBillModel> selectedBillsList { get; set; }
+        public ObservableCollection<ZakatSelectBillModel> SelectedBillsList
+        {
+            get
+            {
+                return selectedBillsList;
+            }
 
-        //    set
-        //    {
-        //        if (selectedBillsList == value)
-        //        {
-        //            return;
-        //        }
+            set
+            {
+                if (selectedBillsList == value)
+                {
+                    return;
+                }
 
-        //        selectedBillsList = value;
-        //        RaisePropertyChanged("SelectedBillsList");
-        //    }
-        //}
+                selectedBillsList = value;
+                RaisePropertyChanged("SelectedBillsList");
+            }
+        }
 
         public ObservableCollection<InstalmentAgreementFrequencyModel> zakatAgreementOptions { get; set; }
         public ObservableCollection<InstalmentAgreementFrequencyModel> ZakatAgreementOptions
@@ -1034,7 +1009,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-      
+
 
         private bool _isInstrunctionChecked;
         public bool IsInstrunctionChecked
@@ -1140,14 +1115,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     EnableSlectionView();
                     break;
                 case (int)PagesEnum.ZakatAggrementView:
-                    if (IsZakatSelected)
-                    {
-                        EnableBillView();
-                    }
-                    else if (IsIncomeTaxViewEnabled)
-                    {
-                        EnableVATBillView();
-                    }
+
+                    EnableVATBillView();
+
                     break;
 
                 case (int)PagesEnum.ZakatAttachmentsView:
@@ -1350,7 +1320,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             if (ZakatInstalments.d.Z_INVOICE_UI5Set.results != null)
             {
 
-               // BillsListVAT = ZakatInstalments.d.Z_INVOICE_UI5Set.results;
+                // BillsListVAT = ZakatInstalments.d.Z_INVOICE_UI5Set.results;
             }
 
         }
@@ -1595,22 +1565,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
-                if (IsZakatSelected)
-                {
-                    EnableVATBillView();
-                }
-                else if (IsIncomeTaxViewEnabled)
-                {
-                    EnableVATBillView();
-                }
-                else if (IsVATAmountVisible)
-                {
-                    EnableVATBillView();
-                }
-                else
-                {
-                    await _dialogService.ShowMessage("Please choose a Tax type to continue", "Alert");
-                }
+                GetZaktaInvoiceList();
+
+                
+
+              
+        
 
             }
             catch (GAZTUnlockAccountException ex)
@@ -1667,7 +1627,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
                 setDATA();
-              
+
 
                 var amount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
                 ZakatInstalments.d.ATotalAmt = amount;
@@ -1907,6 +1867,95 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         #endregion
 
+        #region ZakatInvoiceList
+
+        public async Task GetZaktaInvoiceList()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+
+                    IsLoading = true;
+                   
+                    ZakatInvoiceList invoiceList = null;
+                    try
+                    {
+                        invoiceList = await WebServiceManager.GetZakatInvoicesList();
+
+                        if (invoiceList != null && invoiceList.d != null)
+                        {
+                            ZakatInvoicesList = invoiceList.d.results;
+                            EnableVATBillView();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+
+        #endregion
+
 
         #region OnPageLoad
 
@@ -1927,13 +1976,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     try
                     {
                         ZakatInstalments = await WebServiceManager.GetZakatInstalmentPostData();
-                        //VatInstalments = vATInstalment;
-
-                        PopToRootPage();
-                        // If seesion Expired it will navigate to Dashboard page
-
-                        // EnableSlectionView();
-
 
                         if (ZakatInstalments != null && ZakatInstalments.d != null)
                         {
@@ -1956,6 +1998,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                             //    }
 
                             //}
+
+                            BindZakatBillsList();
 
                         }
                         else
@@ -2019,6 +2063,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
+        private void BindZakatBillsList()
+        {
+            vatInstallmentBillsList();
+        }
+
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -2051,17 +2100,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 if (NoOfInstalments == 0)
                 {
 
-                   // VatInstalments.d.Noofinstallment = "2";
+                    // VatInstalments.d.Noofinstallment = "2";
                 }
                 else
                 {
 
-                   // VatInstalments.d.Noofinstallment = NoOfInstalments.ToString();
+                    // VatInstalments.d.Noofinstallment = NoOfInstalments.ToString();
                 }
 
                 //Double dueAmount = Double.Parse(VatInstalments.d.TotInvAmt) + Double.Parse(VatInstalments.d.Peneltyamt);
                 //VatInstalments.d.Totdueamt = Math.Round(dueAmount, 2).ToString();
-               // VatInstalments.d.UserTypz = "TP";
+                // VatInstalments.d.UserTypz = "TP";
 
                 //Step 5
                 //if (IsDeclarationChecked)

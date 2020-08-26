@@ -139,7 +139,7 @@
                         </border:SfBorder>
 
 
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Fill">
 
                             <CheckBox Color="{StaticResource NewDarkGreenColor}"
                                       VerticalOptions="CenterAndExpand" IsChecked="{Binding IsTermsChecked}">
@@ -150,7 +150,7 @@
                                 </CheckBox.Triggers>
 
                             </CheckBox>
-                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}">
+                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" VerticalOptions="Fill">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span

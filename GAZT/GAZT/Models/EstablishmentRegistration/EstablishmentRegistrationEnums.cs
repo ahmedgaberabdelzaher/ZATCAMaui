@@ -11,29 +11,20 @@ namespace EGAZT.Models
         Declaration = 6
     }
 
-    public enum EstablishmentRegistrationNationalityEnum
+    public enum OrgResidenceNationalityEstablishmentRegistrationEnum
     {
         StayMoreThanKSA = 1,
         RentOwnhouseMoreThanThirtyDays = 2,
         NoneOfTheAbove = 3
     }
 
-    public enum EstablishmentRegistrationLegalEntityEnum
+    public enum OrgNonResidentEstablishmentRegistrationEnum
     {
         PermanentEstablishment = 1,
         OtherTaxIncomeFromSourceWithInTheSKA = 2
     }
 
-    public enum EstablishmentRegistrationParmanentEstablishmentEnum
-    {
-        ABranchOfNonResidentCompanyPE = 1,
-        ConstructionSitePE = 2,
-        InstallationPE = 3,
-        AFixedBasePE = 4,
-        NonResidentPartnerPE = 5
-    }
-
-    public enum EstablishmentRegistrationTaxableIncomeSourceTypeEnum
+    public enum OrgNonResidentOptionsEstablishmentEnum
     {
         ABranchOfNonResidentCompanyPE = 1,
         ConstructionSitePE = 2,

@@ -7722,6 +7722,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregStartDatePickerTitle {
+            get {
+                return ResourceManager.GetString("VatDeregStartDatePickerTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregEndDatePickerTitle {
+            get {
+                return ResourceManager.GetString("VatDeregEndDatePickerTitle", resourceCulture);
+            }
+        }
+        
         public static string VatDeregDocumentTitle {
             get {
                 return ResourceManager.GetString("VatDeregDocumentTitle", resourceCulture);
@@ -8493,6 +8505,12 @@ namespace EGAZT {
         public static string Hello {
             get {
                 return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        public static string VATRefundCancelRefund {
+            get {
+                return ResourceManager.GetString("VATRefundCancelRefund", resourceCulture);
             }
         }
         
@@ -10563,6 +10581,12 @@ namespace EGAZT {
         public static string NDMyNotifications {
             get {
                 return ResourceManager.GetString("NDMyNotifications", resourceCulture);
+            }
+        }
+        
+        public static string ForOfficerAssignmentPool {
+            get {
+                return ResourceManager.GetString("ForOfficerAssignmentPool", resourceCulture);
             }
         }
     }

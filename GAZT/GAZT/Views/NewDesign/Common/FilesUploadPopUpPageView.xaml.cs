@@ -80,6 +80,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             //comment because main button remains enabled
             //  viewModel.IsSwichButtonEnable = false;
             viewModel.IsLoading = false;
+            viewModel.AttachmentsList = null;
         }
         public void SetDocType()
         {

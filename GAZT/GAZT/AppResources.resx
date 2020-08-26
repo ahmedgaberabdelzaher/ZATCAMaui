@@ -4486,7 +4486,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Instructions &amp; Conditions</value>
   </data>
   <data name="VATDeregistrationReasonType1" xml:space="preserve">
-    <value>De-Registration of VAT account</value>
+    <value>De-Registration of VAT Account</value>
   </data>
   <data name="VATDeregistrationReasonType2" xml:space="preserve">
     <value>VAT Return Filing Obligation Suspension</value>
@@ -4562,6 +4562,15 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatDeregReasonTitle" xml:space="preserve">
     <value>Reason</value>
+  </data>
+   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+    <value>Select Start Date</value>
+  </data>
+      <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
+    <value>Select End Date</value>
+  </data>
+      <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+    <value>Select DOB</value>
   </data>
   <data name="VatDeregDocumentTitle" xml:space="preserve">
     <value>Document Type</value>
@@ -4884,7 +4893,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Amendment by GAZT</value>
   </data>
   <data name="ZakatInstallmentPageTitle" xml:space="preserve">
-    <value>Request Installment Plan</value>
+    <value>Request Instalment Plan</value>
     <comment>Title</comment>
   </data>
   <data name="ZakatSelectBillsPageViewPlaceholder" xml:space="preserve">
@@ -4966,7 +4975,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
-     <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
+  <data name="VATRefundCancelRefund" xml:space="preserve">
+    <value>Do you want to cancel the Refund?</value>
+  </data>
+  <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>
   <data name="VATRefundRequestTtitle" xml:space="preserve">
@@ -6036,5 +6048,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDMyNotifications" xml:space="preserve">
     <value>My  Notifications</value>
+      </data>
+     <data name="ForOfficerAssignmentPool" xml:space="preserve">
+    <value>For Officer Assignment (Pool)</value>
   </data>
 </root>

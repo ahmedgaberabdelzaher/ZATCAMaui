@@ -840,6 +840,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await Task.Delay(5000);
                         }
+                        await PopupNavigation.Instance.PopAsync();
                         _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationDetails);
                         // _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
@@ -999,6 +1000,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 await Task.Delay(5000);
                             }
                             //ManageEnabledProperty(false);
+                            await PopupNavigation.Instance.PopAsync();
                             _navigationService.NavigateTo(App.VATReturnSuccessfullPageView, VATDeclarationDetails);
                             //_navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                         }
@@ -1284,7 +1286,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                 VATDeclarationDetails.d.Idnum = SelectedIBANIDNumber.Idnumber;
                 }
-           
+            if(IsDeclarationCheckedForRefund)
+            {
+                VATDeclarationDetails.d.TcFlg = "1";
+            }
+            else
+            {
+                VATDeclarationDetails.d.TcFlg = "0";
+            }
         }
         #endregion
     }

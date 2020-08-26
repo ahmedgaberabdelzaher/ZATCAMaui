@@ -206,6 +206,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsListResultModel = vATRefundsModel;
             VATRefundsHeaderSet = VatRefundsListResultModel.VatRefHeaderSet.Results[0];
             VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>(VatRefundsListResultModel.VatRefSubItemsSet.Results);
+            VATRefundsHeaderSet.RequestedAmt = VATRefundsHeaderSet.RequestedAmt.Replace("-", string.Empty);
 
             try
             {
@@ -304,6 +305,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+        //private void ConvertAllAmountsToCommaSeperated()
+        //{
+        //    VATRefundsHeaderSet.RequestedAmt = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.RequestedAmt);
+        //    VATRefundsHeaderSet.ReassessAmt = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.ReassessAmt);
+        //    VATRefundsHeaderSet.OffsetTot = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.OffsetTot);
+        //    VATRefundsHeaderSet.NetCreditBal = UtilityManager.GetCommaSeparatedAmount(VATRefundsHeaderSet.OffsetTot);
+
+        //}
+
+        //private void RemoveCommaSeperatedValues()
+        //{
+
+        //}
+
         public void SelectedIbanTypeFromList()
         {
             IBANTypesList = new ObservableCollection<IBANType>();
@@ -374,6 +389,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
 
         }
+        
+        public async Task OnVoidBtnClicked()
+        {
+            VatNewReqSummaryData.Operationx = "04";
+            VatNewReqSummaryData.Gpartx = App.LoginDataRetrieved.TIN;
+            VatNewReqSummaryData.Langx = UtilityManager.GetLanguageParameter();
+            VatNewReqSummaryData.Rfamt = "-" + VatNewReqSummaryData.Rfamt;
 
+            try
+            {
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+
+                VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatNewReqSummaryData);
+
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+            }
+            catch (InternetException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                });
+            }
+            catch (GAZTErrorException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                string message = ex.Message;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(message, AppResources.Information);
+                });
+            }
+
+        }
     }
 }
