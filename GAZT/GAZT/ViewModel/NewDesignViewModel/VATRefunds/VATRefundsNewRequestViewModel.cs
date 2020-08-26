@@ -734,6 +734,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsDisplayDataModel.IdType = SelectedIDTypeCode;
             VatRefundsDisplayDataModel.Idtype = SelectedIDTypeCode;
             VatRefundsDisplayDataModel.RefundTp = AppResources.VATRefundsRequest;
+            VatNewReqSummaryData.Confirmfg = "X";
+            VatNewReqSummaryData.TcFg = "X";
 
             //VatRefundsDisplayDataModel.Statusx = "E0013";
             VatRefundsDisplayDataModel.TxnTpx = "CRE_VTRF";
@@ -794,10 +796,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                await Task.Run(() =>
-                {
-                    App.DisplayProgressView();
-                });
+               
 
                 VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
 
