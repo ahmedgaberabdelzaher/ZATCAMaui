@@ -979,7 +979,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                      
                             VATDeRegistrationDetailsData = vATDeRegistration;
 
-                            setData(vATDeRegistration);
+                            populateAttachments(vATDeRegistration);
 
                             if (VATDeRegistrationDetailsForAttach != null)
                             {
@@ -1072,7 +1072,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             LastIcrDate = obj.d.results[0].Lasticrdt;
         }
-        public void setData(VATDeRegistrationDetails vATDeRegistrationDetails)
+        public void populateAttachments(VATDeRegistrationDetails vATDeRegistrationDetails)
         {
             if (vATDeRegistrationDetails != null && vATDeRegistrationDetails.d != null)
             {
@@ -1393,7 +1393,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                await SubmitClicked();
+                VATDeRegistrationDetails response = await SubmitClicked();
+                if (response != null)
+                {
+                    _navigationService.NavigateTo(App.VATDeregistrationSuccessPage, response);
+                }
+
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1475,20 +1481,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async void EnableDeclarationView()
         {
-            if (AttachmentList.Count != 0)
+            if (AttachmentList != null)
             {
-                CurrentStep = ProcessStep.Step3;
+                if (AttachmentList.Count != 0)
+                {
+                    CurrentStep = ProcessStep.Step3;
 
-                IsReasonViewEnabled = false;
-                IsOutletViewEnabled = false;
-                IsAttachmentsViewEnabled = false;
-                IsDeclarationViewEnabled = true;
-                IsSummaryViewEnabled = false;
-            }
-            else
-            {
-                await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                    IsReasonViewEnabled = false;
+                    IsOutletViewEnabled = false;
+                    IsAttachmentsViewEnabled = false;
+                    IsDeclarationViewEnabled = true;
+                    IsSummaryViewEnabled = false;
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
 
+                }
             }
         }
 
