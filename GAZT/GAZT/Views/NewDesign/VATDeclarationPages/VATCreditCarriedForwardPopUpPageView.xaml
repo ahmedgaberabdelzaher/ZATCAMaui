@@ -28,16 +28,18 @@
 
             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatcreditcarriedforward}" Style="{StaticResource SectionTitleBlack}"/>
 
-            <!--<ListView
+            <ListView
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"                           
             BackgroundColor="White"
+                  ItemsSource="{Binding CreditCarriedsList}"
+                 IsVisible="{Binding IsListViewVisible}" 
             SeparatorVisibility="None">
                 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>-->
+                        <ViewCell>
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Padding="20" Spacing="-5">
                     <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
@@ -46,7 +48,7 @@
                                                 <FormattedString.Spans>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZVatSerialNumber}"/>
                                     <Span Text=" : "/>
-                                    <Span Text="1"  Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Span Text="{Binding LineNo}"  Style="{StaticResource ValueLabelGrey}"/>
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -58,7 +60,7 @@
                                                 <FormattedString.Spans>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZReturnReferenceNumber}"/>
                                     <Span Text=" : "/>
-                                    <Span Text="65000209453"  Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Span Text="{Binding Fbnum}"  Style="{StaticResource ValueLabelGrey}"/>
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -70,7 +72,7 @@
                                                 <FormattedString.Spans>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZVatDocumentNumber}"/>
                                     <Span Text=" : "/>
-                                    <Span Text="1002811800"  Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Span Text="{Binding DocNo}"  Style="{StaticResource ValueLabelGrey}"/>
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
@@ -82,18 +84,20 @@
                                                 <FormattedString.Spans>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZAmount}"/>
                                     <Span Text=" : "/>
-                                    <Span Text="-8000.00"  Style="{StaticResource ValueLabelGrey}"/>
+                                                    <Span Text="{Binding CreditAmt}"  Style="{StaticResource ValueLabelGrey}"/>
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </custom:CustomLabel>
                                 </StackLayout>
                             </border:SfBorder>
-                        <!--</ViewCell>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>-->
+            </ListView>
 
+            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Nodataavailable}" IsVisible="{Binding IsNoDataLabelVisible}" Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="Center" VerticalOptions="Center" >
+            </custom:CustomLabel>
         </StackLayout>
     </yummy:PancakeView>
 </pages:PopupPage>

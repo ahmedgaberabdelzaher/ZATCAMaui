@@ -31,7 +31,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand onSecondButtonClicked { get; set; }
 
         public ICommand onRefundClicked { get; set; }
+
+        public ICommand onCreditForwardClicked { get; set; }
+
         
+
 
 
 
@@ -161,6 +165,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsMainButtonEnabled");
             }
         }
+        private bool _isCreditForwardBtnVisible = false;
+        public bool IsCreditForwardBtnVisible
+        {
+            get
+            {
+                return _isCreditForwardBtnVisible;
+            }
+            set
+            {
+                _isCreditForwardBtnVisible = value;
+                RaisePropertyChanged("IsCreditForwardBtnVisible");
+            }
+        }
+        
         private bool _isVATReturnFieldCheckForSaveAsDraft = false;
         public bool IsVATReturnFieldCheckForSaveAsDraft
         {
@@ -2017,7 +2035,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             });
 
-            
+            onCreditForwardClicked = new Xamarin.Forms.Command(() =>
+            {
+                try
+                {
+                    PopupNavigation.Instance.PushAsync(new VATCreditCarriedForwardPopUpPageView(VATDeclarationData));
+                }
+                catch(Exception ex)
+                {
+
+                }
+            });
+                
+
+
 
             onSecondButtonClicked = new Xamarin.Forms.Command(async() =>
             {
@@ -2852,6 +2883,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
+                IsCreditForwardBtnVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             //else if(viewModel.currentTab == VATReturnUpdatedUITabEnum.TaxpayerDetails)
@@ -2865,6 +2897,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
+                IsCreditForwardBtnVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Sales)
@@ -2872,6 +2905,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
+                IsCreditForwardBtnVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Purchase)
@@ -2879,6 +2913,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
+                IsCreditForwardBtnVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.TotalVat)
@@ -2886,11 +2921,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 isBtnVisible = false;
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
+                IsCreditForwardBtnVisible = true;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Summery)
             {
-
+                IsCreditForwardBtnVisible = false;
                 if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058") && IsAmendClicked == false)
                 {
                     isBtnVisible = true;

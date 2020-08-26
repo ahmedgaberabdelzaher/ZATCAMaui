@@ -2532,7 +2532,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We have received your return with reference number :.
+        ///   Looks up a localized string similar to We have received your return with reference number .
         /// </summary>
         public static string FORM5RecivedReturn {
             get {
@@ -15263,6 +15263,15 @@ namespace EGAZT {
         public static string ZZZZConfirmEmail {
             get {
                 return ResourceManager.GetString("ZZZZConfirmEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Refund.
+        /// </summary>
+        public static string ZZZZConfirmRefund {
+            get {
+                return ResourceManager.GetString("ZZZZConfirmRefund", resourceCulture);
             }
         }
         

@@ -253,7 +253,7 @@
                         </custom:CustomLabel>
                     </StackLayout>
                     <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsConfirmRefundButtonEnabled}" BackgroundColor="White">
-                <buttons:SfButton Text="Confirm Refund" Clicked="Confirm_RefundClicked"  Margin="0,8,0,0" Style="{StaticResource PrimaryButtonStyle}"/>
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZConfirmRefund}" Clicked="Confirm_RefundClicked"  Margin="0,8,0,0" Style="{StaticResource PrimaryButtonStyle}"/>
                 </StackLayout>
             </Grid>
             

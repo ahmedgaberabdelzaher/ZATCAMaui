@@ -6049,4 +6049,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ForOfficerAssignmentPool" xml:space="preserve">
     <value>For Officer Assignment (Pool)</value>
   </data>
+  <data name="ZZZZConfirmRefund" xml:space="preserve">
+    <value>Confirm Refund</value>
+  </data>
 </root>
