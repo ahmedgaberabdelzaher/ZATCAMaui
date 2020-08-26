@@ -181,8 +181,10 @@
                                     ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}"
                                     OutlineCornerRadius="15" FocusedColor="#005e4b" ErrorColor="#B00020">
 
-                                        <Editor Style="{StaticResource DefaultEntry}" HeightRequest="100" />
+                                        <Entry Style="{StaticResource DefaultEntry}" Text="{Binding OtherField}" HeightRequest="100" MaxLength="1000"/>
+             
                                     </inputLayout:SfTextInputLayout>
+                                 <!--<Label Text="no of characters remaining"/>-->
                              </StackLayout>
                     </StackLayout>
                         
@@ -360,7 +362,7 @@
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
 					                <StackLayout Spacing="2">
-                                        <Label Text="{Binding AttachmentTitle}" HorizontalOptions="StartAndExpand"
+                                        <Label Text="{Binding AttachmentTitle,Mode=TwoWay}" HorizontalOptions="StartAndExpand"
                                                                 Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />   
                                         <inputLayout:SfTextInputLayout  IsEnabled="True"  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
                                         ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
@@ -379,7 +381,7 @@
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                                 
                                         </inputLayout:SfTextInputLayout>
-                    <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsize}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
+                    <Label Text="{Binding FileSize,Mode=TwoWay}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
                                                 Style="{StaticResource CaptionLabelGrey}" /> 
                  </StackLayout>
 
@@ -387,7 +389,7 @@
                         </listView:SfListView.ItemTemplate>
                  </listView:SfListView>
                        <StackLayout Grid.Row="4" Spacing="2" Grid.ColumnSpan="2">
-                  <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputTitle2}"    Style="{StaticResource CaptionLabelGrey}"/>
+                  <Label Text="{x:Static custom2:AppResources.VRNewAttachment}"    Style="{StaticResource CaptionLabelGrey}"/>
                                                     <inputLayout:SfTextInputLayout  Margin="10,-6,0,-6" 
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
@@ -404,7 +406,7 @@
                                             
                                                     </inputLayout:SfTextInputLayout.TrailingView>
                                                     </inputLayout:SfTextInputLayout>
-                                    <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}" Style="{StaticResource CaptionLabelGrey}"/>
+                                    <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}"  Style="{StaticResource CaptionLabelGrey}"/>
                                 </StackLayout>
                  <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,16,0,36" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
@@ -453,7 +455,7 @@
                                         
                                         <Label Text="{Binding IDType}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                      <Image  Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                      <Image  Source="arrowDropdown" Margin="10,0,10,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
                                         </Image>    
                                         </StackLayout>
