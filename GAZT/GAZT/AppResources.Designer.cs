@@ -2894,6 +2894,18 @@ namespace EGAZT {
             }
         }
         
+        public static string ZVatRefundRequestSavedAsDraft {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestSavedAsDraft", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundRequestTotalRequestedAmount {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestTotalRequestedAmount", resourceCulture);
+            }
+        }
+        
         public static string ZVatRefundInformation {
             get {
                 return ResourceManager.GetString("ZVatRefundInformation", resourceCulture);

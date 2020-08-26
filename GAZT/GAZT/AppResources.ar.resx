@@ -1635,7 +1635,13 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
-  <data name="VATRefundCancelRefund" xml:space="preserve">
+   <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
+   <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
+   </data>
+  <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
+   <value>إجمالي المبلغ المطلوب</value>
+   </data>
+ <data name="VATRefundCancelRefund" xml:space="preserve">
     <value>هل تريد إلغاء طلب الاسترداد؟</value>
   </data>
   <data name="ZVatRefundRequestVAT" xml:space="preserve">
