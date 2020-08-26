@@ -4245,7 +4245,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Period</value>
   </data>
   <data name="FORM5RecivedReturn" xml:space="preserve">
-    <value>We have received your return with reference number :</value>
+    <value>We have received your return with reference number </value>
   </data>
   <data name="FORM5RegistrationInfo" xml:space="preserve">
     <value>Registration Information</value>
