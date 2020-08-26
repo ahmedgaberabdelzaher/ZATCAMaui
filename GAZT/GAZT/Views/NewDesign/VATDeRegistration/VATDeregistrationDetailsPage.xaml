@@ -177,7 +177,7 @@
                                 </StackLayout>
                             </border:SfBorder >
                              <StackLayout Spacing="2">
-                                    <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
+                                    <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
                                     ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}"
                                     OutlineCornerRadius="15" FocusedColor="#005e4b" ErrorColor="#B00020">
 
@@ -291,7 +291,7 @@
               </StackLayout>
             </StackLayout>
 
-                  <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                  <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,10"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             </Grid>
@@ -302,7 +302,7 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
-                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
@@ -364,9 +364,12 @@
                                                                 Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />   
                                         <inputLayout:SfTextInputLayout  IsEnabled="True"  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
                                         ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
-                                        OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
+                                        OutlineCornerRadius="12" FocusedColor="#B1B1B1" ErrorColor="#B00020">
 
-                                            <Entry Style="{StaticResource DefaultEntry}" Text="{Binding Filename,Mode=TwoWay}" Placeholder="{x:Static custom2:AppResources.VatDeregAttachmentInputPlaceholder}" HorizontalTextAlignment="Start" HeightRequest="24"/>
+                                            <Entry Style="{StaticResource DefaultEntry}" Text="{Binding Filename,Mode=TwoWay}"
+                                                   Placeholder="{x:Static custom2:AppResources.VatDeregAttachmentInputPlaceholder}" HorizontalTextAlignment="Start"
+                                                   VerticalOptions="Center"/>
+
                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                 <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
                                                     <Image.GestureRecognizers>
@@ -390,7 +393,7 @@
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                                             <!--Attachments-->
                                                 <Entry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                       HorizontalTextAlignment="Start" HeightRequest="24"/>
+                                                       HorizontalTextAlignment="Start" VerticalOptions="Center"/>
   
                                                      <inputLayout:SfTextInputLayout.TrailingView>
                                                         <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png"  >
