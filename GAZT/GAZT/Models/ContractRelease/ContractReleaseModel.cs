@@ -13,9 +13,17 @@ namespace EGAZT.Models.ContractRelease
     public class ContractReleaseFormResponse
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-        public D d { get; set; }
+        public CotractResponse d { get; set; }
 
-        public class Metadata
+    }
+    public class ContractReleaseFormRequest
+    {
+        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        public CotractRequest d { get; set; }
+
+    }
+
+    public class Metadata
         {
             public string id { get; set; }
             public string uri { get; set; }
@@ -26,14 +34,33 @@ namespace EGAZT.Models.ContractRelease
         {
             public List<object> results { get; set; }
         }
+            public class ZnotesSetResult
+          {
+                public ZnotesSet[] results { get; set; }
+            }
 
-        public class ZnotesSet
+
+    public partial class ZnotesSet
         {
-            public List<object> results { get; set; }
+            public Metadata __metadata { get; set; }
+            public string Notenoz { get; set; }
+            public string Refnamez { get; set; }
+            public string XInvoicez { get; set; }
+            public string XObsoletez { get; set; }
+            public string Rcodez { get; set; }
+            public string Erfusrz { get; set; }
+            public object Erfdtz { get; set; }
+            public object Erftmz { get; set; }
+            public string AttByz { get; set; }
+            public string Noteno { get; set; }
+            public long Lineno { get; set; }
+            public long ElemNo { get; set; }
+            public string Tdformat { get; set; }
+            public string Tdline { get; set; }
         }
 
-        public class D
-        {
+        public class CotractResponse
+         {
             public Metadata __metadata { get; set; }
             public string Euser { get; set; }
             public string UserTin { get; set; }
@@ -88,7 +115,7 @@ namespace EGAZT.Models.ContractRelease
             public string AZakatProfitPer { get; set; }
             public string CaseGuid { get; set; }
             public string CreateTxAssesz { get; set; }
-            public DateTime CurrDatumz { get; set; }
+            public string CurrDatumz { get; set; }
             public string Fbnum { get; set; }
             public string FormGuid { get; set; }
             public string LegacyDocNo { get; set; }
@@ -101,9 +128,79 @@ namespace EGAZT.Models.ContractRelease
             public string Textnote { get; set; }
             public string Xvoidz { get; set; }
             public AttDetSet AttDetSet { get; set; }
-            public ZnotesSet znotesSet { get; set; }
+            public ZnotesSetResult znotesSet { get; set; }
         }
 
+    public class CotractRequest
+    {
+        public Metadata __metadata { get; set; }
+        public string Euser { get; set; }
+        public string UserTin { get; set; }
+        public string Auditorz { get; set; }
+        public string Fbnumz { get; set; }
+        public string Langz { get; set; }
+        public string PeriodKeyz { get; set; }
+        public string RegIdz { get; set; }
+        public string Savez { get; set; }
+        public string Submitz { get; set; }
+        public string Taxpayerz { get; set; }
+        public string AAgreeTm { get; set; }
+        public string AOtherDes { get; set; }
+        public object AContEndDt { get; set; }
+        public string AContEndDtCh { get; set; }
+        public string AHijriPeriodFrom { get; set; }
+        public string PeriodKey { get; set; }
+        public string ABranch { get; set; }
+        public string AContEndDtFg { get; set; }
+        public string AHijriPeriodTo { get; set; }
+        public string ACalTp { get; set; }
+        public string AComments { get; set; }
+        public string AContChk { get; set; }
+        public object AContDt { get; set; }
+        public string AContDt1 { get; set; }
+        public string AContDtFg { get; set; }
+        public string AContNm { get; set; }
+        public string AContNo { get; set; }
+        public string AContProfit { get; set; }
+        public string AContProfitPer { get; set; }
+        public string ADoc1 { get; set; }
+        public string ADoc2 { get; set; }
+        public string ADoc3 { get; set; }
+        public string ADueTax { get; set; }
+        public string ADueTot { get; set; }
+        public string ADueZakat { get; set; }
+        public string AInvoiceChk { get; set; }
+        public string AmdRsnz { get; set; }
+        public object APeriodFrom { get; set; }
+        public object APeriodTo { get; set; }
+        public string Approvez { get; set; }
+        public object AReceiveDt { get; set; }
+        public string ARemark { get; set; }
+        public string AReqAmt { get; set; }
+        public string ATaxProfi { get; set; }
+        public string ATaxProfitPer { get; set; }
+        public string ATin { get; set; }
+        public string ATotalAmt { get; set; }
+        public string ATpNm { get; set; }
+        public string AType { get; set; }
+        public string AZakatProfit { get; set; }
+        public string AZakatProfitPer { get; set; }
+        public string CaseGuid { get; set; }
+        public string CreateTxAssesz { get; set; }
+        public string CurrDatumz { get; set; }
+        public string Fbnum { get; set; }
+        public string FormGuid { get; set; }
+        public string LegacyDocNo { get; set; }
+        public string Mandt { get; set; }
+        public string Monthz { get; set; }
+        public string OfficerUidz { get; set; }
+        public string PortalUsrz { get; set; }
+        public string Rejectz { get; set; }
+        public string Status { get; set; }
+        public string Textnote { get; set; }
+        public string Xvoidz { get; set; }
+        public AttDetSet AttDetSet { get; set; }
+        public ZnotesSet[] znotesSet { get; set; }
     }
 
     public class ContractReLeaseApplicationFormModel
@@ -124,7 +221,7 @@ namespace EGAZT.Models.ContractRelease
             public string type { get; set; }
         }
 
-        public class Result
+        public class ContractResult
         {
             public Metadata2 __metadata { get; set; }
             public string Fbnum { get; set; }
@@ -133,14 +230,14 @@ namespace EGAZT.Models.ContractRelease
             public string StatText { get; set; }
             public string Fbtyp { get; set; }
             public string FbtText { get; set; }
-            public DateTime Erfdate { get; set; }
+            public string Erfdate { get; set; }
             public string Erftime { get; set; }
             public string Persl { get; set; }
             public string TaxPeriod { get; set; }
-            public DateTime DueDt { get; set; }
+            public string DueDt { get; set; }
             public string Due { get; set; }
-            public DateTime Abrzu { get; set; }
-            public DateTime Abrzo { get; set; }
+            public string Abrzu { get; set; }
+            public string Abrzo { get; set; }
             public string Incotyp { get; set; }
             public string Incotext { get; set; }
             public string Flag { get; set; }
@@ -154,7 +251,7 @@ namespace EGAZT.Models.ContractRelease
 
         public class ListSet
         {
-            public List<Result> results { get; set; }
+            public List<ContractResult> results { get; set; }
         }
 
         public class AuthServSet

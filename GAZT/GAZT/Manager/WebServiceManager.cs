@@ -9439,6 +9439,103 @@ namespace GAZT.Manager
 
         #region Contract Release
 
+
+
+        public async static Task<ContractReLeaseApplicationFormModel> GetContractReleaseList(string callServ, string zuser, string fbguid, string euser1)
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ContractReLeaseApplicationFormModel _ContractReLeaseApplicationFormDetails = new ContractReLeaseApplicationFormModel();
+                string NewToken = string.Empty;
+                try
+                {
+
+                    callServ = "DCON";
+                    zuser = "MALRUZAYQI@GAZT.GOV.SA";
+                    euser1 = "00001000000008317878";
+                    string euser2 = "null";
+                    string euser3 = "null";
+                    string euser4 = "null";
+                    string euser5 = "null";
+                    fbguid = "005056B1F8FB1EEAB88BF2E3F6A794B0";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //(CallServ = 'DCON', HostName = '', Zuser = 'MALRUZAYQI@GAZT.GOV.SA', Bpnum = '', Auditor = '', Lang = 'E',
+                    // Euser1 = '00001000000008317878', Euser2 = 'null', Euser3 = 'null', Euser4 = 'null', Euser5 = 'null',
+                    // Fbguid = '005056B1F8FB1EEAB88BF2E3F6A794B0') ?$expand=ListSet,AuthServSet
+
+                    String url = Constants.ContractReleaseApplicationFormUrl + "CallServ='" + callServ + "',HostName='" + "',Zuser='" + zuser + "',Bpnum='" + "'," +
+                       "Auditor='" + "'," +
+                     "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
+                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "')?$expand=ListSet,AuthServSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await client.GetAsync(uri);
+
+
+
+                    if (GAZTzakatInstalmentDataResponse != null)
+                    {
+                        if (GAZTzakatInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTzakatInstalmentDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _crApplicationFormData = GAZTzakatInstalmentDataResponse.Content.ReadAsStringAsync().Result;
+                        _ContractReLeaseApplicationFormDetails = JsonConvert.DeserializeObject<ContractReLeaseApplicationFormModel>(_crApplicationFormData);
+
+                        if (!string.IsNullOrEmpty(_crApplicationFormData) && _ContractReLeaseApplicationFormDetails.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_crApplicationFormData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _ContractReLeaseApplicationFormDetails;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
         public async static Task<ContractReleaseFormResponse> GAZTGetContractReleaseRequestData()
         {
             ContractReleaseFormResponse _contractReleaseRequestModel = new ContractReleaseFormResponse();
@@ -9522,23 +9619,23 @@ namespace GAZT.Manager
             }
         }
         //Request Model and Submit models are same here based on provided api list
-        public async static Task<ContractReleaseFormResponse> GAZTSubmitContractReleaseRequestData(string taxpayerz, object aContDt, object aContEndDt, object aReceiveDt)
+        public async static Task<ContractReleaseFormResponse> GAZTSubmitContractReleaseRequestData(ContractReleaseFormRequest contractReleaseFormData)
         {
             ContractReleaseFormResponse _submitRequestData = new ContractReleaseFormResponse();
             try
             {
 
-                _submitRequestData = await GAZTGetContractReleaseRequestData();
-                _submitRequestData.d.AContDt = aContDt;
-                _submitRequestData.d.AContEndDt = aContEndDt;
-                _submitRequestData.d.AReceiveDt = aReceiveDt;
+                //_submitRequestData = await GAZTGetContractReleaseRequestData();
+                //_submitRequestData.d.AContDt = aContDt;
+                //_submitRequestData.d.AContEndDt = aContEndDt;
+                //_submitRequestData.d.AReceiveDt = aReceiveDt;
                 //  _submitRequestData.d.CurrDatumz = null;
 
                 string LangZ = GetLangZParameterAREN();
                 String url = Constants.ContractReleaseSubmitUrl;
                 var uri = new Uri(url);
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                var serilized = JsonConvert.SerializeObject(_submitRequestData.d);
+                var serilized = JsonConvert.SerializeObject(contractReleaseFormData.d);
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                 client.DefaultRequestHeaders.Add("X-Requested-With", "X");

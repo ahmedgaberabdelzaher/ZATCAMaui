@@ -234,7 +234,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         #endregion
 
 
-
         #region Properties
 
         private bool _isBackButtonVisible = true;
@@ -499,6 +498,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 return totalAmountSAR;
             }
         }
+
 
         public string InputData
         {
@@ -899,7 +899,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 summarySelectedBillsList.Add(new ZakatSelectBillModel()
                 {
-                    billNumber = "Bill " + (i + 1).ToString("00"),
+                    billNumber = AppResources.Bill + (i + 1).ToString("00"),
                     amount = "0",
                     saadNumber = selectedList[i].SadadNo,
                     taxPeriod = selectedList[i].Taxperioddsc,
@@ -1318,7 +1318,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             switch (selectedPage)
             {
                 case (int)PagesEnum.ZakatSelectionView:
-
+                    _navigationService.GoBack();
                     break;
                 case (int)PagesEnum.ZakatBillView:
                     EnableSlectionView();
@@ -1532,7 +1532,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         SelectedBillsList.Add(bills);
                     }
-                   // BillsListVAT = BillsListVATData;
+                    // BillsListVAT = BillsListVATData;
 
                 }
             }
@@ -1578,7 +1578,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 VATBillDueAmount = VatInstalments.d.Totdueamt;
                 try
                 {
-                    
+
                     VATPenalityAmount = Math.Abs(double.Parse(VATBillDueAmount) - double.Parse(TotalAmountSAR.Replace(" SAR", "").Replace(",", ""))) + "";
 
                 }
@@ -1726,10 +1726,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
 
 
-           
 
 
-          
+
+
 
 
 
@@ -1957,7 +1957,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                if(AttachmentsListViewData == null)
+                if (AttachmentsListViewData == null)
                 {
                     AttachmentsListViewData = new ObservableCollection<Attachment>();
 
