@@ -212,7 +212,7 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5AccountingMethod}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" HorizontalTextAlignment="End" Text="{Binding AccountMethod}" Style="{StaticResource ValueLabelBlack}" />
+                                            <custom:CustomLabel Grid.Column="1" HorizontalTextAlignment="End" Text="{Binding AccountMethod}" Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel" />
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1249,7 +1249,7 @@
                                                                 </StackLayout>
                                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
                                                                     <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5NotApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>-->
-                                                                    <custom:CustomLabel Text="{Binding IsOtherProfitApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                                    <custom:CustomLabel Text="{Binding IsOtherProfitApplicable}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
 
                                                                     <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsOtherProfitApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
                                                                         <Label.FormattedText>
@@ -2094,7 +2094,7 @@
                                                 <!--</StackLayout>-->
 
 
-                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsOtherComShareApp}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding IsOtherComShareApp}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
 
 
                                                 <!--<custom:CustomLabel Grid.Row="1" Grid.Column="2" Text="{Binding OtherCompanyShare}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" StyleId="ValueLabel"/>-->
@@ -2447,40 +2447,38 @@
 
                                 <StackLayout Padding="10" Spacing="-5">
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel">
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5Dear}" />
                                                 <Span Text=" "/>
                                                 <Span Text="{Binding Taxpayer}"/>
                                                 <!--<Span Text="{x:Static ResourceManager:AppResources.Comma}"/>-->
-                                                <Span Text="{x:Static ResourceManager:AppResources.Comma}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </custom:CustomLabel>
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel">
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}" />
                                                 <Span Text=" "/>
                                                 <Span Text="{Binding ReferenceNumber}"/>
-                                                <Span Text="{x:Static ResourceManager:AppResources.Comma}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </custom:CustomLabel>
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel">
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" Style="{StaticResource ValueLabelGrey}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" Style="{StaticResource ValueLabelGrey}"/>
                                                 <Span Text=" "/>
                                                 <!--<Span Text="{Binding ZakatFromDate}"/>-->
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </custom:CustomLabel>
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel">
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5From}" Style="{StaticResource ValueLabelGrey}" />
@@ -2490,7 +2488,7 @@
                                         </Label.FormattedText>
                                     </custom:CustomLabel>
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel">
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" FlowDirection="LeftToRight">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5To}" Style="{StaticResource ValueLabelGrey}" />
