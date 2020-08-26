@@ -44,6 +44,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsDeclarationCheckedForInstruction = false;
                     viewModel.IsDeclarationCheckedForSummary = false;
                     viewModel.IsCheckedTaxPayerDetailsInfo = false;
+                    viewModel.IsRefundButtonEnabled = true;
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
                  
                 }
@@ -482,6 +483,41 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
+        public async void getRefundClickedCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "RefundClicked", async (sender, arg) =>
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsNewLoading = true;
+                    });
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public async void getRefundClickedForStopLoaderCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "RefundClickedForStop", async (sender, arg) =>
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsNewLoading = false;
+                    });
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public async void getNoCommand()
         {
             try
@@ -663,10 +699,26 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         protected override void OnDisappearing()
         {
-            base.OnDisappearing();
-            MessagingCenter.Unsubscribe<object, string>(this, "CommandReceived");
-            MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
-            MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
+            try
+            {
+                base.OnDisappearing();
+                MessagingCenter.Unsubscribe<object, string>(this, "CommandReceived");
+                MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
+                MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
+                MessagingCenter.Unsubscribe<object, string>(this, "RefundClicked");
+                MessagingCenter.Unsubscribe<object, string>(this, "RefundClickedForStop");
+                
+
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsNewLoading = false;
+                });
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         protected async override void OnAppearing()
@@ -682,6 +734,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             getActionCommand();
             getYesCommand();
             getNoCommand();
+            getRefundClickedCommand();
+            getRefundClickedForStopLoaderCommand();
         }
 
         public async Task IntilizeAsync()

@@ -1622,9 +1622,9 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Void</value>
     <comment>VAT Declaration button</comment>
   </data>
-   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
-   <value>Refund Request for VAT</value>
-   </data>
+  <data name="ZVatRefundRequestForVAT" xml:space="preserve">
+    <value>Refund Request for VAT</value>
+  </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>Refund Information</value>
   </data>
@@ -4506,10 +4506,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>Attachment</value>
   </data>
-     <data name="VATDeregistrationEdit" xml:space="preserve">
+  <data name="VATDeregistrationEdit" xml:space="preserve">
     <value>Edit</value>
   </data>
-      <data name="VatDeregAttachmentsHeaderTitle" xml:space="preserve">
+  <data name="VatDeregAttachmentsHeaderTitle" xml:space="preserve">
     <value>Attachments</value>
   </data>
   <data name="VatDeregAttachmentInputTitle" xml:space="preserve">
@@ -4563,14 +4563,11 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregReasonTitle" xml:space="preserve">
     <value>Reason</value>
   </data>
-   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
-    <value>Select Start Date</value>
-  </data>
-      <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
-    <value>Select End Date</value>
-  </data>
-      <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+  <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value>Select DOB</value>
+  </data>
+  <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
+    <value>Select End Date</value>
   </data>
   <data name="VatDeregDocumentTitle" xml:space="preserve">
     <value>Document Type</value>
@@ -4975,7 +4972,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
-     <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
+  <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>
   <data name="VATRefundRequestTtitle" xml:space="preserve">
@@ -6045,5 +6042,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDMyNotifications" xml:space="preserve">
     <value>My  Notifications</value>
+  </data>
+  <data name="ZZZZConfirmRefund" xml:space="preserve">
+    <value>Confirm Refund</value>
   </data>
 </root>

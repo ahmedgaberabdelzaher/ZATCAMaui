@@ -1635,7 +1635,7 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
- <data name="ZVatRefundRequestVAT" xml:space="preserve">
+  <data name="ZVatRefundRequestVAT" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
@@ -4489,7 +4489,7 @@
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>المرفقات</value>
   </data>
-     <data name="VatDeregAttachmentsHeaderTitle" xml:space="preserve">
+  <data name="VatDeregAttachmentsHeaderTitle" xml:space="preserve">
     <value>المرفقات</value>
   </data>
   <data name="VatDeregAttachmentInputTitle" xml:space="preserve">
@@ -4498,13 +4498,13 @@
   <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
     <value>إضافة مرفق جديد (إختياري)</value>
   </data>
-   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+  <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value> اختر تاريخ البداية</value>
   </data>
-      <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
+  <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
     <value>اختر تاريخ النهاية</value>
   </data>
-      <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
+  <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
     <value>اختر تاريخ الميلاد</value>
   </data>
   <data name="VatDeregAttachmentInputsize" xml:space="preserve">
@@ -4528,10 +4528,10 @@
   <data name="VatDeregIDType" xml:space="preserve">
     <value>نوع الهوية</value>
   </data>
-      <data name="VatDeregRequestType" xml:space="preserve">
+  <data name="VatDeregRequestType" xml:space="preserve">
     <value>نوع الطلب</value>
   </data>
-        <data name="VATDeregistrationEdit" xml:space="preserve">
+  <data name="VATDeregistrationEdit" xml:space="preserve">
     <value>تعديل</value>
   </data>
   <data name="VatDeregIDNumber" xml:space="preserve">
@@ -4948,7 +4948,7 @@
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
-   <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
+  <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="VATRefundRequestTtitle" xml:space="preserve">
@@ -5695,5 +5695,8 @@
   </data>
   <data name="NDMyNotifications" xml:space="preserve">
     <value>إشعاراتي</value>
+  </data>
+  <data name="ZZZZConfirmRefund" xml:space="preserve">
+    <value>تأكيد طلب الاسترداد</value>
   </data>
 </root>
