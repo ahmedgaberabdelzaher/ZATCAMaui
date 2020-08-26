@@ -1137,7 +1137,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                                 }
                             }
                         }
-
+                        IsResendOTPEnabled = false;
                         LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
                     });
                     if (hour == 0 && mins == 0 && counter == 0)
