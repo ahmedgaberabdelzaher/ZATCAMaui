@@ -53,7 +53,7 @@
                 HorizontalOptions="EndAndExpand"
                         Margin="10,30,10,0">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}"/>
+                    <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1"/>
                 </Image.GestureRecognizers>
             </Image>
             <!--<custom:CustomLabel Grid.Row="0"

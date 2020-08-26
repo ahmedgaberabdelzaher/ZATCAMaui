@@ -27,8 +27,39 @@ namespace EGAZT.Views.NewDesign.ContractRelease
 
             viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
+
+            Task.Run(async () =>
+            {
+                viewModel.IsLoading = true;
+                await GetContractReleaseData();
+
+            });
         }
-        
+
+        public async Task GetContractReleaseData()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    await viewModel.OnPageLoad();
+
+                });
+                //await Task.Run(() =>
+                //{
+                //    viewModel.IsLoading = false;
+                //});
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         private void SetLTR()
         {
             if (!App.IsArabic)

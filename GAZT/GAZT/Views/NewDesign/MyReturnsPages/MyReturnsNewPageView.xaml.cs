@@ -53,7 +53,15 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
 
                await viewModel.OnPageLoad();
-              TaxTypePicker.SelectedItem=viewModel.ReturnTypeForFilter.FirstOrDefault();
+                if (TaxTypePicker.SelectedItem != null)
+                {
+                    viewModel.SelectedReturnTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
+                }
+                else
+                {
+                    TaxTypePicker.SelectedItem = viewModel.ReturnTypeForFilter.FirstOrDefault();
+                }
+                
                 viewModel.SelectedChipFilterItem = null;
                // viewModel.FilterAllData();
                 if (viewModel.Index == 0)

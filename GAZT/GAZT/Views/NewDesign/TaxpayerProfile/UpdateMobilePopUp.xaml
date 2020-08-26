@@ -117,13 +117,12 @@
                                         </Image>-->
                                     <custom:CustomLabel FlowDirection="LeftToRight"
                                        x:Name="Label_InternationalnoCode"
-                                                        Margin="0"
+                                                        Margin="5,0,5,0"
                                         
-                                        WidthRequest="120"
                                         TextColor="Gray"
                                         FontSize="Medium"
                                         VerticalTextAlignment="Center"
-                                      
+                                      HorizontalOptions="Start"
                                         HorizontalTextAlignment="Start">
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
@@ -139,6 +138,7 @@
                                                         FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
                                                         Keyboard="Telephone"  TextColor="{StaticResource NeutralBlack}"
+                                                          VerticalTextAlignment="Center"
                                                         MaxLength="{Binding MaxDigids}"
                                                         >
                                     <Entry.Behaviors>

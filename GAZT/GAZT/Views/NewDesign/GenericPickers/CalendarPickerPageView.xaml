@@ -17,7 +17,7 @@
          <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" IsVisible="true">
              <StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
                 <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-                <Label Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}"
+                <Label Text="{Binding DatePickerTitle}"
                                     HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"
                                 Margin="0,16,0,16"  />
                  <custom1:CustomDatePicker IsOpen="True" Style="{StaticResource CalendarPickerStyle}"

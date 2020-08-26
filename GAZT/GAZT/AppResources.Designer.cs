@@ -7608,6 +7608,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VATDeregistrationEdit {
+            get {
+                return ResourceManager.GetString("VATDeregistrationEdit", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregAttachmentsHeaderTitle {
+            get {
+                return ResourceManager.GetString("VatDeregAttachmentsHeaderTitle", resourceCulture);
+            }
+        }
+        
         public static string VatDeregAttachmentInputTitle {
             get {
                 return ResourceManager.GetString("VatDeregAttachmentInputTitle", resourceCulture);
@@ -7662,6 +7674,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregRequestType {
+            get {
+                return ResourceManager.GetString("VatDeregRequestType", resourceCulture);
+            }
+        }
+        
         public static string VatDeregIDNumber {
             get {
                 return ResourceManager.GetString("VatDeregIDNumber", resourceCulture);
@@ -7701,6 +7719,18 @@ namespace EGAZT {
         public static string VatDeregReasonTitle {
             get {
                 return ResourceManager.GetString("VatDeregReasonTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregStartDatePickerTitle {
+            get {
+                return ResourceManager.GetString("VatDeregStartDatePickerTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregEndDatePickerTitle {
+            get {
+                return ResourceManager.GetString("VatDeregEndDatePickerTitle", resourceCulture);
             }
         }
         
@@ -8475,6 +8505,18 @@ namespace EGAZT {
         public static string Hello {
             get {
                 return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        public static string VATRefundCancelRefund {
+            get {
+                return ResourceManager.GetString("VATRefundCancelRefund", resourceCulture);
+            }
+        }
+        
+        public static string VATRefundRequestDashboardTitle {
+            get {
+                return ResourceManager.GetString("VATRefundRequestDashboardTitle", resourceCulture);
             }
         }
         
@@ -10539,6 +10581,12 @@ namespace EGAZT {
         public static string NDMyNotifications {
             get {
                 return ResourceManager.GetString("NDMyNotifications", resourceCulture);
+            }
+        }
+        
+        public static string ForOfficerAssignmentPool {
+            get {
+                return ResourceManager.GetString("ForOfficerAssignmentPool", resourceCulture);
             }
         }
     }

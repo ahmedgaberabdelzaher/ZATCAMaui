@@ -219,7 +219,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
             SimpleIoc.Default.Register<ZakatObjectionSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<DashboardAnonymousMenuPageViewModel>();
-
+            SimpleIoc.Default.Register<VATCreditCarriedForwardPopUpPageViewModel>();
 
             #endregion
 
@@ -346,6 +346,21 @@ namespace EGAZT
 
         #region NewDesignViewModel
 
+
+        public VATCreditCarriedForwardPopUpPageViewModel VATCreditCarriedForwardPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATCreditCarriedForwardPopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public DashboardAnonymousMenuPageViewModel DashboardAnonymousMenuPageView
         {
             get
@@ -360,7 +375,6 @@ namespace EGAZT
                 }
             }
         }
-
         public SignUpForEstablishmentPageViewModel SignUpForEstablishmentPageView
         {
             get
@@ -2103,6 +2117,7 @@ namespace EGAZT
             navigationService.Configure(App.EstablishmentSignUPPageView, typeof(EstablishmentSignUPPageView));
             navigationService.Configure(App.SignUpForEstablishmentPageView, typeof(SignUpForEstablishmentPageView));
             navigationService.Configure(App.DashboardAnonymousMenuPageView, typeof(DashboardAnonymousMenuPageView));
+            navigationService.Configure(App.VATCreditCarriedForwardPopUpPageView, typeof(VATCreditCarriedForwardPopUpPageView));
 
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));

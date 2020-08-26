@@ -62,18 +62,32 @@ namespace GAZT.iOS.CustomRenderer
                         }
                     }
                 }
-                
-                    //Line Spacing between two line in one Label
-                    //if (!string.IsNullOrWhiteSpace(Element.Text))
-                    //{
-                    //    var lineSpacingLabel = (CustomLabel)this.Element;
-                    //    var paragraphStyle = new NSMutableParagraphStyle()
-                    //    {
-                    //        LineSpacing = (nfloat)lineSpacingLabel.LineSpacing
-                    //    };
-                    //    var text = new NSMutableAttributedString(lineSpacingLabel.Text);
-                    //    var style = UIStringAttributeKey.ParagraphStyle;
-                    //    var range = new NSRange(0, text.Length);
+
+                if (e.NewElement != null)
+                {
+                    string StyleId = e.NewElement.StyleId;
+
+                    if (!string.IsNullOrEmpty(StyleId))
+                    {
+                        if (StyleId.Equals("LTRLabelText"))
+                        {
+                            Control.TextAlignment = UITextAlignment.Left;
+                        }
+                    }
+                }
+
+
+                //Line Spacing between two line in one Label
+                //if (!string.IsNullOrWhiteSpace(Element.Text))
+                //{
+                //    var lineSpacingLabel = (CustomLabel)this.Element;
+                //    var paragraphStyle = new NSMutableParagraphStyle()
+                //    {
+                //        LineSpacing = (nfloat)lineSpacingLabel.LineSpacing
+                //    };
+                //    var text = new NSMutableAttributedString(lineSpacingLabel.Text);
+                //    var style = UIStringAttributeKey.ParagraphStyle;
+                //    var range = new NSRange(0, text.Length);
 
                 //    text.AddAttribute(style, paragraphStyle, range);
 

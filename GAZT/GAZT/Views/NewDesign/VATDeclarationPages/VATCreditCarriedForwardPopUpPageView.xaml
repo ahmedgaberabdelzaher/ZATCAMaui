@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:custom="clr-namespace:GAZT"
+                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"        
+                 xmlns:ResourceManager="clr-namespace:EGAZT"                
+                 x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.VATCreditCarriedForwardPopUpPageView">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <yummy:PancakeView VerticalOptions="End" Style="{StaticResource CommonTopCurves}">
+        <StackLayout>
+            <Image HorizontalOptions="EndAndExpand" Source="closeGrey.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatcreditcarriedforward}" Style="{StaticResource SectionTitleBlack}"/>
+
+            <!--<ListView
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"                           
+            BackgroundColor="White"
+            SeparatorVisibility="None">
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>-->
+                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="20" Spacing="-5">
+                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatSerialNumber}"/>
+                                    <Span Text=" : "/>
+                                    <Span Text="1"  Style="{StaticResource ValueLabelGrey}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
+                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZReturnReferenceNumber}"/>
+                                    <Span Text=" : "/>
+                                    <Span Text="65000209453"  Style="{StaticResource ValueLabelGrey}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
+                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatDocumentNumber}"/>
+                                    <Span Text=" : "/>
+                                    <Span Text="1002811800"  Style="{StaticResource ValueLabelGrey}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
+                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZAmount}"/>
+                                    <Span Text=" : "/>
+                                    <Span Text="-8000.00"  Style="{StaticResource ValueLabelGrey}"/>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+                                </StackLayout>
+                            </border:SfBorder>
+                        <!--</ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>

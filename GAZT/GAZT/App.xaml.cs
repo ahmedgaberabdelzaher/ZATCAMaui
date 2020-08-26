@@ -82,7 +82,7 @@ namespace EGAZT
         public static string ZakatObjectionSuccessfullPageView = "ZakatObjectionSuccessfullPageView";
         public static string RefundAccountPopupPageView = "RefundAccountPopupPageView";
         public static string NewAccountPopPageView = "NewAccountPopPageView";
-
+        public static string VATCreditCarriedForwardPopUpPageView = "VATCreditCarriedForwardPopUpPageView";
 
         // * Taxpayer Profile
         public static string TaxpayerProfilePageView = "TaxpayerProfilePageView";

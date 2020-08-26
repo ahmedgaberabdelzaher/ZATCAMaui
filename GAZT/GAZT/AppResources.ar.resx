@@ -1635,7 +1635,10 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
- <data name="ZVatRefundRequestForVAT" xml:space="preserve">
+ <data name="VATRefundCancelRefund" xml:space="preserve">
+    <value>هل تريد إلغاء طلب الاسترداد؟</value>
+  </data>
+ <data name="ZVatRefundRequestVAT" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
@@ -4481,7 +4484,7 @@
     <value>العقود الرسمية</value>
   </data>
   <data name="TinDeregistrationEdit" xml:space="preserve">
-    <value>Edit</value>
+    <value>تعديل</value>
   </data>
   <data name="VATDeregistrationDocumentType4" xml:space="preserve">
     <value>ملفات أخرى</value>
@@ -4489,11 +4492,23 @@
   <data name="VatDeregAttachmentTitle" xml:space="preserve">
     <value>المرفقات</value>
   </data>
+     <data name="VatDeregAttachmentsHeaderTitle" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
   <data name="VatDeregAttachmentInputTitle" xml:space="preserve">
     <value>مرفقات - قوائم مدققه</value>
   </data>
   <data name="VatDeregAttachmentInputTitle2" xml:space="preserve">
     <value>إضافة مرفق جديد (إختياري)</value>
+  </data>
+   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+    <value> اختر تاريخ البداية</value>
+  </data>
+      <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
+    <value>اختر تاريخ النهاية</value>
+  </data>
+      <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
+    <value>اختر تاريخ الميلاد</value>
   </data>
   <data name="VatDeregAttachmentInputsize" xml:space="preserve">
     <value>20MB</value>
@@ -4515,6 +4530,12 @@
   </data>
   <data name="VatDeregIDType" xml:space="preserve">
     <value>نوع الهوية</value>
+  </data>
+      <data name="VatDeregRequestType" xml:space="preserve">
+    <value>نوع الطلب</value>
+  </data>
+        <data name="VATDeregistrationEdit" xml:space="preserve">
+    <value>تعديل</value>
   </data>
   <data name="VatDeregIDNumber" xml:space="preserve">
     <value>رقم الهوية</value>
@@ -4544,22 +4565,22 @@
     <value>تأكيد</value>
   </data>
   <data name="VatDeregSuspendedStartDate" xml:space="preserve">
-    <value>Start of Suspension Period</value>
+    <value>بداية فترة الايقاف</value>
   </data>
   <data name="VatDeregSuspendedEndDate" xml:space="preserve">
-    <value>End of Suspension Period</value>
+    <value>نهاية فترة الايقاف</value>
   </data>
   <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
-    <value>Suspended Filing Period</value>
+    <value>فترة الايداع الموقوف</value>
   </data>
   <data name="VatDeregNextFilingPeriod" xml:space="preserve">
-    <value>Next Filing Period</value>
+    <value>فترة الايداع التالية</value>
   </data>
   <data name="VatDeregNextFilingDueDate" xml:space="preserve">
-    <value>Next Filing due date</value>
+    <value>تاريخ استحقاق الايداع التالي</value>
   </data>
   <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
-    <value>The Start Date and End Date lie in the same period</value>
+    <value>يقع تاريخ البدء وتاريخ الانتهاء في نفس الفترة</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
     <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)- تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.- يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
@@ -4930,6 +4951,9 @@
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
+   <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
+    <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
+  </data>
   <data name="VATRefundRequestTtitle" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
@@ -4979,10 +5003,10 @@
     <value>إجمالي المبلغ المطلوب</value>
   </data>
   <data name="VATRefundsAddAccount" xml:space="preserve">
-    <value>Add Account</value>
+    <value>إضافة حساب</value>
   </data>
   <data name="VATRefundsNoIdNumber" xml:space="preserve">
-    <value>There are no ID Numbers for this ID Type</value>
+    <value>لا يوجد رقم لنوع الهوية المحدد</value>
   </data>
   <data name="ContractObjectNo" xml:space="preserve">
     <value>Contract Object No.</value>
@@ -5664,7 +5688,7 @@
     <value>Real State VAT with Ministry of Justice</value>
   </data>
   <data name="NDServices" xml:space="preserve">
-    <value>Services</value>
+    <value>خدمات</value>
   </data>
   <data name="NDSwitchUser" xml:space="preserve">
     <value>Switch User</value>
@@ -5674,5 +5698,68 @@
   </data>
   <data name="NDMyNotifications" xml:space="preserve">
     <value>إشعاراتي</value>
+     </data>>
+    <data name="VatDueAmountInstruction" xml:space="preserve">
+    <value>يشمل هذا الرقم مبالغ بموجب خطة تقسيط قائمة أو في إطار مراجعة الهيئة العامة للزكاة والدخل</value>
+  </data>
+  <data name="VATInstalmentListInstalmentDisplayInstalmentSchedule" xml:space="preserve">
+    <value>عرض خطة اتفاقية التقسيط</value>
+  </data>
+  <data name="VATInstalmentListInstalmentVatInstalmentPlan" xml:space="preserve">
+    <value>خطة تقسيط ضريبة القيمة المضافة</value>
+  </data>
+  <data name="VATInstalmentRequestToVatDisplayInstalment" xml:space="preserve">
+    <value>عرض خطة التقسيط</value>
+  </data>
+  <data name="VatInstalmetPlanTitle" xml:space="preserve">
+    <value>خطة التقسيط لضريبة القيمة المضافة</value>
+  </data>
+  <data name="VatInstructions" xml:space="preserve">
+    <value>يرجى قراءة التعليمات التالية قبل إكمال نموذج طلب اتفاقية التقسيط:
+1. يرجى ملء المعلومات التالية لكل خطوة
+2. لا يمكن تقديم الطلب بنجاح حتى يتم الانتهاء من جميع الحقول الإلزامية
+3. يجب على المكلفين التأكد من أن تفاصيل المكلفين الحالية كاملة ومحدثة قبل تقديم نموذج اتفاقية التقسيط
+4. يرجى الرجوع إلى قسم الأسئلة الشائعة قبل ملء نموذج اتفاقية التقسيط</value>
+  </data>
+  <data name="VatInstructionsCheckBoxDesc" xml:space="preserve">
+    <value>أقر بأنني قرأت وفهمت المعلومات المذكورة أعلاه</value>
+  </data>
+  <data name="VatTerms" xml:space="preserve">
+    <value>1. يفترض أن يكون المكلفين قد قاموا بقراءة وفهم نظام ولوائح ضريبة القيمة المضافة في المملكة وجميع المعلومات المقدمة حقيقية وصحيحة وكاملة على حد علم المكلفين.
+2. تحتفظ الهيئة العامة للزكاة والدخل بحق طلب الحصول على أي معلومات مالية أو ادارية والحصول على سجلات المكلفين وأعمالهم للمراجعة والتحقق من المعلومات المقدمة في طلب التقسيط.
+3.  تحتفظ الهيئة العامة للزكاة والدخل بحق فتح ملف تدقيق من أجل التحقق من نموذج طلب اتفاقية التقسيط وأي نماذج سابقة بحد أقصى 5 سنوات مما يؤدي الى فرض غرامات وفقا لنظام ولوائح ضريبة القيمة المضافة في المملكة
+4. هذا الطلب لا يضمن الموافقة على اتفاقية التقسيط. سيتم إعلامك بقرار الهيئة العامة للزكاة والدخل في المراسلات اللاحقة
+5. تجدر الإشارة إلى أنه بمجرد الموافقة على اتفاقية التقسيط هذه وسريان مفعولها، فإن المكلفين ملزمون بدفع الأقساط وفقا لجدول التقسيط، بغض النظر عن أي قرارات مستقبلية ناتجة عن مراجعة / تدقيق الهيئة العامة للزكاة والدخل
+6. لن يكون بمقدور المكلفين تقديم التعديلات الذاتية للإقرارات الضريبية المشمولة في خطة التقسيط طالما أن اتفاقية التقسيط نشطة</value>
+  </data>
+  <data name="VatTermsCheckBoxDesc" xml:space="preserve">
+    <value>أتعهد بأن المعلومات الواردة في طلب اتفاقية التقسيط حقيقية وصحيحة وكاملة من جميع النواحي على حد علمي , وأنني الشخص الذي قام بطلب اتفاقية التقسيط أو أنني مخول بالتوقيع نيابة عن هذا الشخص</value>
+  </data>
+    <data name="Instalment" xml:space="preserve">
+    <value>قسط</value>
+  </data>
+  <data name="InstalmentSchedule" xml:space="preserve">
+    <value>جدول التقسيط</value>
+  </data>
+  <data name="VatInstalmentDownload" xml:space="preserve">
+    <value>تحميل</value>
+  </data>
+  <data name="VatInstalmentPlanPleaseReviewTheInstalmentSchedule" xml:space="preserve">
+    <value>الرجاء مراجعة خطة التقسيط</value>
+  </data>
+  <data name="ZakatInstalmentDueDate" xml:space="preserve">
+    <value>تاريخ الاستحقاق</value>
+  </data>
+  <data name="ZakatInstalmentMonthlyInstallment" xml:space="preserve">
+    <value>القسط الشهري</value>
+  </data>
+  <data name="ZakatInstalmentTotalAmountPaid" xml:space="preserve">
+    <value>إجمالي المبلغ المدفوع</value>
+  </data>
+  <data name="ZakatInstalmentTotalAmountRemaining" xml:space="preserve">
+    <value>إجمالي المبلغ المتبقي</value>
+  </data>
+     <data name="ForOfficerAssignmentPool" xml:space="preserve">
+    <value>For Officer Assignment (Pool)</value>
   </data>
 </root>
