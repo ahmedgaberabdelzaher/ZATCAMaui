@@ -4,7 +4,10 @@
              x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.AttachmentInformationPopUp"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                  xmlns:FontImage="clr-namespace:MVP.FontIcons">
+                  xmlns:FontImage="clr-namespace:MVP.FontIcons"
+                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                                    xmlns:ResourceManager="clr-namespace:EGAZT"
+>
 
     <pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -17,7 +20,7 @@
     <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White">
 
         <StackLayout VerticalOptions="Center">
-            <Image HorizontalOptions="EndAndExpand">
+            <!--<Image HorizontalOptions="EndAndExpand">
                 <Image.Source>
                     <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.Close}"/>
@@ -25,9 +28,10 @@
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnCloseTapped"/>
                 </Image.GestureRecognizers>
-            </Image>
+            </Image>-->
 
-            <Label x:Name="InfromatationText" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelGrey}"></Label>
+            <Label x:Name="InfromatationText" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
+                            <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}"/>
 
         </StackLayout>
     </yummy:PancakeView>

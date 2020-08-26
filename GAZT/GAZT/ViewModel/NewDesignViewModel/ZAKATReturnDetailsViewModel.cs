@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -497,7 +499,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     else
                     {
                         Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
+
+                           // await _dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
                         });
                     }
 
@@ -506,7 +510,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessageBox(AppResources.ZZNochangesmadeFormcannotbesubmitted, AppResources.Alerts);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNochangesmadeFormcannotbesubmitted));
+
+                       // await _dialogService.ShowMessageBox(AppResources.ZZNochangesmadeFormcannotbesubmitted, AppResources.Alerts);
                     });
                 }
 
@@ -542,7 +548,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType));
+
+                  //  await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
                 }
                 catch (Exception ex)
                 {
@@ -648,7 +656,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
+                            //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 _navigationService.GoBack();
                             });
                         }
@@ -661,13 +671,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     if (App.IsArabic)
                                     {
-                                        await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended));
+
+                                       // await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
                                         _navigationService.GoBack();
                                         WebServiceManager.ErrorMessage = string.Empty;
                                     }
                                     else
                                     {
-                                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+
+                                     //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                                         _navigationService.GoBack();
                                         WebServiceManager.ErrorMessage = string.Empty;
                                     }
@@ -685,7 +699,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                  //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
                 await Task.Run(() =>
                 {
@@ -807,7 +823,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsEditTextVisible = false;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZNotification);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZReleasedSuccessfully));
+                                   // await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZNotification);
                                 });
 
                             }
@@ -831,7 +848,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     //}
                                     //else
                                     //{
-                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+
+                                 //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                                     _navigationService.GoBack();
                                     WebServiceManager.ErrorMessage = string.Empty;
                                     //}
@@ -864,7 +883,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                           // _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         });
                     }
                 });
@@ -909,7 +930,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessageBox(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason));
+
+                              //  await _dialogService.ShowMessageBox(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason, AppResources.Information);
                             });
 
                         }
@@ -929,13 +952,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
                         {
-                            await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+                         //   await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                             WebServiceManager.ErrorMessage = string.Empty;
                         }
                         else
                         {
-                            await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+
+                            //await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                             _navigationService.GoBack();
                             WebServiceManager.ErrorMessage = string.Empty;
                         }
@@ -993,13 +1020,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
                         {
-                            await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+                           // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                             WebServiceManager.ErrorMessage = string.Empty;
                         }
                         else
                         {
-                            await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+
+                           // await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                             _navigationService.GoBack();
                             WebServiceManager.ErrorMessage = string.Empty;
                         }
