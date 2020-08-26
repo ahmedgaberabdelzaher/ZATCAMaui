@@ -14,8 +14,6 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
-using Java.Text;
-using Java.Util;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -43,7 +41,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 OnAppearing();
             });
 
-
             MessagingCenter.Subscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) => {
                 viewModel.DatePickerModel = arg;
                 Console.WriteLine(arg);
@@ -55,19 +52,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 OnAppearing();
             });
 
-
             //viewModel.FromDate = "DD/MM/YYYY";
             // viewModel.ToDate = "DD/MM/YYYY";
-
-            //viewModel.EnableReasonView();
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
                 await GetVatDeRegistrationData();
             });
-
-
-
         }
         private void SetLTR()
         {
@@ -113,7 +104,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             ChangeArrowDirection();
 
-            
+
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
                 viewModel.IsInstructionChecked = arg;
                 //Console.WriteLine(arg);
@@ -227,7 +218,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 //    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, "Information");
                 //}
                 //else
-               // DateTime.Today.AddDays(1);
+                // DateTime.Today.AddDays(1);
 
                 if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
                 {
@@ -454,8 +445,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void outletDocumentOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
-            viewModel.SelectedOutletOptionIndex = viewModel.OutletDocumentOptions.IndexOf(selectedItem);
+            ResultsAttachmentItemForElgblDocSet selectedItem = e.AddedItems[0] as ResultsAttachmentItemForElgblDocSet;
+            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentTypes.IndexOf(selectedItem);
         }
         async void VATDeregStartDateClicked(System.Object sender, System.EventArgs e)
         {
@@ -699,7 +690,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     }
                     if (viewModel.IDType == "GCC ID")
                     {
-                        
+
                         if (viewModel.TxtIDNumber.Substring(0, 1) == "0")
                         {
                             //Have to change to neww error message
