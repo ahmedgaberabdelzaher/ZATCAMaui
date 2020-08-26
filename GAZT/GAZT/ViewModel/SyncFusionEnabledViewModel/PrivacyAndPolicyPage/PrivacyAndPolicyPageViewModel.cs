@@ -3,6 +3,9 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewModel
 {
     public class PrivacyAndPolicyPageViewModel : ViewModelBase
@@ -12,6 +15,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewMo
         public readonly IDialogService _dialogService;
         #endregion
         #region Property
+
         private string _webUrl = string.Empty;
         public string WebUrl
         {
@@ -26,6 +30,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewMo
             }
         }
         #endregion
+        #region Commands
+        public ICommand BackButtonClicked { get; private set; }
+      
+        #endregion
         #region Constructor
         public PrivacyAndPolicyPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -39,9 +47,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewMo
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+
+            BackButtonClicked = new Command(() => navigateBack());
+
         }
         #endregion
         #region Method
+        private void navigateBack()
+        {
+          _navigationService.GoBack();
+        }
         #endregion
     }
 }

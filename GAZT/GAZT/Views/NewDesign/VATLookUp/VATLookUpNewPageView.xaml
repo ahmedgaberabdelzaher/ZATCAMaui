@@ -185,10 +185,11 @@
                                             ShowColumnHeader="False"
                                             ColumnHeaderHeight="46"
                                             PickerMode="Dialog"
+                                            
                                             HeaderBackgroundColor="#006450"              
                                             BorderColor="Black"
                                             BackgroundColor="white"
-                                            UnSelectedItemTextColor="{StaticResource NeutralBlack}"
+                                            UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             SelectedItemFontAttribute="Bold"
                                             SelectedItemFontSize="15"
                                             ItemHeight="40"
