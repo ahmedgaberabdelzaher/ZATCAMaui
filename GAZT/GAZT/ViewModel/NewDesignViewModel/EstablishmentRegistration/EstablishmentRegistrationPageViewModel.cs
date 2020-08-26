@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZT.Models;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -246,7 +248,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        private string _selectedOrgResidence = null;
+        public string SelectedOrgResidence
+        {
+            get => _selectedOrgResidence;
+            set
+            {
+                _selectedOrgResidence = value;
+                RaisePropertyChanged(nameof(SelectedOrgResidence));
+            }
+        }
+        
+        private string _selectedOrgNonResident = null;
+        public string SelectedOrgNonResident
+        {
+            get => _selectedOrgNonResident;
+            set
+            {
+                _selectedOrgNonResident = value;
+                RaisePropertyChanged(nameof(SelectedOrgNonResident));
+            }
+        }
 
+        private string _selectedOrgNonResidentOptions = null;
+        public string SelectedOrgNonResidentOptions
+        {
+            get => _selectedOrgNonResidentOptions;
+            set
+            {
+                _selectedOrgNonResidentOptions = value;
+                RaisePropertyChanged(nameof(SelectedOrgNonResidentOptions));
+            }
+        }
+        //
+
+        private string _selectedOrgNonResidentActivity = null;
+        public string SelectedOrgNonResidentActivity
+        {
+            get => _selectedOrgNonResidentActivity;
+            set
+            {
+                _selectedOrgNonResidentActivity = value;
+                RaisePropertyChanged(nameof(SelectedOrgNonResidentActivity));
+            }
+        }
 
 
         private ObservableCollection<string> _orgNonResidentActivityList = new ObservableCollection<string>();
@@ -266,14 +311,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedOrgNonResidentActivity = null;
-        public string SelectedOrgNonResidentActivity
+        private string _selectedOrgNonResidentActivityValue = null;
+        public string SelectedOrgNonResidentActivityValue
         {
-            get => _selectedOrgNonResidentActivity;
+            get => _selectedOrgNonResidentActivityValue;
             set
             {
-                _selectedOrgNonResidentActivity = value;
-                RaisePropertyChanged(nameof(SelectedOrgNonResidentActivity));
+                _selectedOrgNonResidentActivityValue = value;
+                RaisePropertyChanged(nameof(SelectedOrgNonResidentActivityValue));
             }
         }
 
@@ -348,18 +393,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedNationalityStatus;
-        public string SelectedNationalityStatus
-        {
-            get => _selectedNationalityStatus;
-            set
-            {
-                _selectedNationalityStatus = value;
-                RaisePropertyChanged(nameof(SelectedNationalityStatus));
-            }
-        }
-
-
         private string _selectedLegalEntity;
         public string SelectedLegalEntity
         {
@@ -371,6 +404,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        private List<UploadedDocumentsList> _uploadedRentDocumentsList = new List<UploadedDocumentsList>();
+        public List<UploadedDocumentsList> UploadedRentDocumentsList
+        {
+            get
+            {
+                return _uploadedRentDocumentsList;
+            }
+            set
+            {
+                _uploadedRentDocumentsList = value;
+                RaisePropertyChanged(nameof(UploadedRentDocumentsList));
+            }
+        }
+        
+
+             private bool _isVisbleRentAttachmentmentList;
+        public bool IsVisbleRentAttachmentmentList
+        {
+            get => _isVisbleRentAttachmentmentList;
+            set
+            {
+                _isVisbleRentAttachmentmentList = value;
+                RaisePropertyChanged(nameof(IsVisbleRentAttachmentmentList));
+            }
+        }
+
+        private string _selectedRentFileName;
+        public string SelectedRentFileName
+        {
+            get => _selectedRentFileName;
+            set
+            {
+                _selectedRentFileName = value;
+                RaisePropertyChanged(nameof(SelectedRentFileName));
+            }
+        }
 
         #endregion
 
@@ -660,6 +729,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        private List<UploadedDocumentsList> _uploadedPassportDocumentsList = new List<UploadedDocumentsList>();
+        public List<UploadedDocumentsList> UploadedPassportDocumentsList
+        {
+            get
+            {
+                return _uploadedPassportDocumentsList;
+            }
+            set
+            {
+                _uploadedPassportDocumentsList = value;
+                RaisePropertyChanged(nameof(UploadedPassportDocumentsList));
+            }
+        }
+
+        private bool _isVisbleAttachmentPassportList = false;
+        public bool IsVisbleAttachmentPassportList
+        {
+            get
+            {
+                return _isVisbleAttachmentPassportList;
+            }
+            set
+            {
+                _isVisbleAttachmentPassportList = value;
+                RaisePropertyChanged("IsVisbleAttachmentPassportList");
+            }
+        }
+
+        private string _passportFileName;
+        public string SelectedPassportFileName
+        {
+            get => _passportFileName;
+            set
+            {
+                _passportFileName = value;
+                RaisePropertyChanged(nameof(SelectedPassportFileName));
+            }
+        }
         #endregion
 
         #region Financial Details Tabs variables
@@ -824,38 +931,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ICommand OnPassportCloseTapped { get; set; }
 
         public ICommand OnDeleteAttachmentClickedTapped { get; set; }
-
-        public byte[] PassportAttachmentByte;
-        int attachmentCount = 0;
-
-        private ObservableCollection<ZakatAttachment> _passportAttachmentsList;
-        public ObservableCollection<ZakatAttachment> PassportAttachmentsList
-        {
-            get
-            {
-                return _passportAttachmentsList;
-            }
-            set
-            {
-                _passportAttachmentsList = value;
-                RaisePropertyChanged("PassportAttachmentsList");
-            }
-        }
-        
-            private bool _isVisbleAttachmentPassportList = false;
-        public bool IsVisbleAttachmentPassportList
-        {
-            get
-            {
-                return _isVisbleAttachmentPassportList;
-            }
-            set
-            {
-                _isVisbleAttachmentPassportList = value;
-                RaisePropertyChanged("IsVisbleAttachmentPassportList");
-            }
-        }
-
         #endregion
 
 
@@ -902,9 +977,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             #endregion
 
             #region Attachment commands 
-            OnERAttachmentCloseTapped = new Command(() => onERAttachmentCloseTapped());
-            OnEstablishmentRegistrationAttachmentTapped = new Command(() => onEstablishmentRegistrationAttachmentTapped());
+            OnERAttachmentCloseTapped = new Command(() => onRentAttachmentdCloseTapped());
+            OnEstablishmentRegistrationAttachmentTapped = new Command(() => onRentAddAttachmentTapped());
             #endregion
+
 
             GetOrgNonResidentActivityList();
 
@@ -959,6 +1035,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnPassportAttachmentTapped = new Command(() => onPassportAttachmentTapped());
             OnPassportCloseTapped = new Command(() => onPassportCloseTapped());
             #endregion
+
+           
 
             #region Outlet Tabs variable initialization
             OnNewOutletButtonClick = new Command(() =>
@@ -1028,11 +1106,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
             {
-                currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+                if (FormValidation(currentTab))
+                {
+                    if (PushDatatoServer(currentTab))
+                    {
+                        currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+                    }
+                    else
+                    {
+                        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+                    }
+                }
+                else
+                {
+                    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
+
+                }
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.PassportDetails)
             {
-                currentTab = EstablishmentRegistrationTabsEnum.Outlets;
+                if (FormValidation(currentTab))
+                {
+                    if (PushDatatoServer(currentTab))
+                    {
+                        currentTab = EstablishmentRegistrationTabsEnum.Outlets;
+                    }
+                    else
+                    {
+                        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+                    }
+                }
+                else
+                {
+                    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
+
+                }
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             {
@@ -1044,7 +1152,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
-                currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
+                if (FormValidation(currentTab))
+                {
+                    if (PushDatatoServer(currentTab))
+                    {
+                        currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
+                    }
+                    else
+                    {
+                        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+
+                    }
+                }
+                else
+                {
+                    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
+
+                }
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
             {
@@ -1075,20 +1199,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        bool ValidateRegistrationForm()
-        {
-            if (SelectedReportingBranch == null)
-            {
-                return false;
-            }
-            else if (SelectedNationalityStatus == null)
-            {
-                return false;
-            }
-           
-
-            return true;
-        }
 
         private void OrgResidenceSelection(OrgResidenceNationalityEstablishmentRegistrationEnum selectedOption)
         {
@@ -1099,8 +1209,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         IsClickedStayMoreThanKSAOption = true;
                         IsClickedOwnRentOption = false;
                         IsClickedNoneOfTheAboveOption = false;
-                        SelectedNationalityStatus = "Stay More than or equal to 183 days in KSA";
-
+                        SelectedOrgResidence = "1";  // SelectedNationalityStatus = "Stay More than or equal to 183 days in KSA";
+                        
                         //Options clear or done false
                         IsClickedPermanentLegalEntity = false;
                         IsClickedOtherTaxableIncomeLegalEntity = false;
@@ -1118,8 +1228,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedStayMoreThanKSAOption = false;
                     IsClickedOwnRentOption = true;
                     IsClickedNoneOfTheAboveOption = false;
-                    SelectedNationalityStatus = "Rent/Own a house more than 30 days";
-
+                    SelectedOrgResidence = "2";// SelectedNationalityStatus = "Rent/Own a house more than 30 days";
+                   
 
                     //Options clear or done false
                     IsClickedPermanentLegalEntity = false;
@@ -1138,7 +1248,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedStayMoreThanKSAOption = false;
                     IsClickedOwnRentOption = false;
                     IsClickedNoneOfTheAboveOption = true;
-                    SelectedNationalityStatus = "None of the Above";
+                    SelectedOrgResidence = "2";// SelectedNationalityStatus = "None of the Above";
 
 
                     //Options clear or done false
@@ -1158,7 +1268,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedStayMoreThanKSAOption = false;
                     IsClickedOwnRentOption = false;
                     IsClickedNoneOfTheAboveOption = false;
-                    SelectedNationalityStatus = "";
+                    SelectedOrgResidence = ""; // SelectedNationalityStatus = "";
                     //Options clear or done false
                     IsClickedPermanentLegalEntity = false;
                     IsClickedOtherTaxableIncomeLegalEntity = false;
@@ -1182,7 +1292,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     IsClickedPermanentLegalEntity = true;
                     IsClickedOtherTaxableIncomeLegalEntity = false;
-                    SelectedLegalEntity = "Permanent Establishment";
+                    SelectedOrgNonResident = "1";// SelectedLegalEntity = "Permanent Establishment";
                     //Options clear or done false
                     IsClickedABranchOfNonResidentCompanyPE = false;
                     IsClickedConstructionSitePE = false;
@@ -1194,7 +1304,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     IsClickedPermanentLegalEntity = false;
                     IsClickedOtherTaxableIncomeLegalEntity = true;
-                    SelectedLegalEntity = "Other Taxable Income from source with in the KSA";
+                    SelectedOrgNonResident = "2";// SelectedLegalEntity = "Other Taxable Income from source with in the KSA";
 
 
                     //Options clear or done false
@@ -1208,7 +1318,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     //Options clear or done false
                     IsClickedPermanentLegalEntity = false;
                     IsClickedOtherTaxableIncomeLegalEntity = false;
-                    SelectedLegalEntity = "";
+                    SelectedOrgNonResident = ""; //SelectedLegalEntity = "";
 
                     IsClickedABranchOfNonResidentCompanyPE = false;
                     IsClickedConstructionSitePE = false;
@@ -1230,6 +1340,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedInstallationPE = false;
                     IsClickedAFixedBasePE = false;
                     IsClickedNonResidentPartnerPE = false;
+                    SelectedOrgNonResidentOptions = "1";
                     break;
                 case OrgNonResidentOptionsEstablishmentEnum.ConstructionSitePE:
                     IsClickedABranchOfNonResidentCompanyPE = false;
@@ -1237,6 +1348,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedInstallationPE = false;
                     IsClickedAFixedBasePE = false;
                     IsClickedNonResidentPartnerPE = false;
+                    SelectedOrgNonResidentOptions = "2";
                     break;
                 case OrgNonResidentOptionsEstablishmentEnum.InstallationPE:
                     IsClickedABranchOfNonResidentCompanyPE = false;
@@ -1244,6 +1356,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedInstallationPE = true;
                     IsClickedAFixedBasePE = false;
                     IsClickedNonResidentPartnerPE = false;
+                    SelectedOrgNonResidentOptions = "3";
                     break;
                 case OrgNonResidentOptionsEstablishmentEnum.AFixedBasePE:
                     IsClickedABranchOfNonResidentCompanyPE = false;
@@ -1251,6 +1364,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedInstallationPE = false;
                     IsClickedAFixedBasePE = true;
                     IsClickedNonResidentPartnerPE = false;
+                    SelectedOrgNonResidentOptions = "4";
                     break;
                 case OrgNonResidentOptionsEstablishmentEnum.NonResidentPartnerPE:
                     IsClickedABranchOfNonResidentCompanyPE = false;
@@ -1258,6 +1372,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedInstallationPE = false;
                     IsClickedAFixedBasePE = false;
                     IsClickedNonResidentPartnerPE = true;
+                    SelectedOrgNonResidentOptions = "5";
                     break;
                 default:
                     //Options clear or done false
@@ -1266,6 +1381,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedInstallationPE = false;
                     IsClickedAFixedBasePE = false;
                     IsClickedNonResidentPartnerPE = false;
+                    SelectedOrgNonResidentOptions = "";
                     break;
 
             }
@@ -1326,184 +1442,141 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
 
 
+        private void onRentAttachmentdCloseTapped()
+        {
+            UploadedRentDocumentsList.Clear();
+            IsVisbleRentAttachmentmentList = false;
+        }
+
+        private async void onRentAddAttachmentTapped()
+        {
+            await AddAttachment("rent", UploadedRentDocumentsList.Count());
+            if (UploadedRentDocumentsList.Count > 0)
+            {
+                IsVisbleRentAttachmentmentList = true;
+                SelectedRentFileName = UploadedRentDocumentsList.FirstOrDefault().FileNameWithExtension;
+            }
+        }
 
         private void onPassportCloseTapped()
         {
+            UploadedPassportDocumentsList.Clear();
             IsVisbleAttachmentPassportList = false;
         }
 
-        private void onPassportAttachmentTapped()
+        private async void onPassportAttachmentTapped()
         {
-            IsVisbleAttachmentPassportList = true;
-             new Xamarin.Forms.Command(async () =>
+            await AddAttachment("passport", UploadedPassportDocumentsList.Count());
+            if (UploadedPassportDocumentsList.Count > 0)
             {
-                try
-                {
-                    string[] filetypes;
+                IsVisbleAttachmentPassportList = true;
+                SelectedPassportFileName = UploadedPassportDocumentsList.FirstOrDefault().FileNameWithExtension;
+            }
+        }
+       
 
-                    filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForZakat();
+        public async Task AddAttachment(string attachmentOfType, int fileCount)
+        {
+            try
+            {
+                decimal TotalAttachmentSize = 0;
+                string[] filetypes;
+                if (fileCount == 0)
+                {
+                    filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
+
                     var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                    PassportAttachmentByte = fileData.DataArray;
-                    await Task.Run(() =>
+                    //if (AttachmentSize < 10)
+                    //{
+                    if (fileData != null)
                     {
-                        IsLoading = true;
-                    });
-                    await Task.Run(async () =>
-                    {
-                        try
+                        var attachmentByte = fileData.DataArray;
+
+                        string base64String = Convert.ToBase64String(attachmentByte, 0, attachmentByte.Length);
+                        var attachmentName = fileData.FileName;
+
+                        float sizemb = (attachmentByte.Length / 1024f) / 1024f;
+                        decimal attachmentSize = 0;
+                        attachmentSize = attachmentSize + (Decimal)sizemb;
+
+                        if (fileData.FileName.Contains("."))
                         {
-                            //AttachmentName = fileData.FileName;
-                            //if (fileData.FileName.Contains("."))
-                            //{
-                            //    string Extention = AttachmentName.Split('.')[1];
-                            //    string ContentType = UtilityManager.GetContentType(Extention);
-                            //    bool isFileAlreayUploaded = IsFileAlreadyAttached(AttachmentName);
-                            //    decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
-
-                            //    if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
-                            //    {
-                            //        if (!isFileAlreayUploaded)
-                            //        {
-                            //            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
-                            //            {
-                            //                if (attachment.Length < 5242880)
-                            //                {
-                            //                    if (ZakatReturnAttachmentsList.Count < 5)
-                            //                    {
-                            //                        AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L", ContentType);
-                            //                        PopToRootPage();
-                            //                        if (_attachment != null && _attachment.d != null)
-                            //                        {
-                            //                            AttachmentName = string.Empty;
-                            //                            EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
-                            //                            _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
-                            //                            _estimateZakatAttachment.Seqno = string.Empty;
-                            //                            _estimateZakatAttachment.SchGuid = string.Empty;
-                            //                            _estimateZakatAttachment.AttBy = string.Empty;// DateTime.Now.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");// string.Empty;
-                            //                            _estimateZakatAttachment.FileExtn = string.Empty;
-                            //                            _estimateZakatAttachment.ByPusr = string.Empty;
-                            //                            _estimateZakatAttachment.OutletRef = string.Empty;
-                            //                            _estimateZakatAttachment.Filename = _attachment.d.Filename;
-                            //                            _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
-                            //                            _estimateZakatAttachment.Dotyp = "FZ01";
-                            //                            _estimateZakatAttachment.Mimetype = string.Empty;
-                            //                            _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
-                            //                            _estimateZakatAttachment.DataVersion = string.Empty;
-                            //                            DateTime currentDate = DateTime.Now.ToLocalTime();
-                            //                            long ticks = currentDate.Ticks;
-                            //                            //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
-                            //                            TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
-                            //                            string unixTime = span.TotalSeconds.ToString("N0");
-                            //                            unixTime = unixTime.Replace(",", "");
-                            //                            _estimateZakatAttachment.Erfdt = "" + "/Date(" + unixTime + ")/";// need to
-                            //                                                                                             //_estimateZakatAttachment.Erfdt = "/Date(" + unixTime + ")/";// need to
-                            //                            SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
-                            //                            ZakatReturnAttachmentsList = CloneAttachmmentListInLocalList(SelectedSalesDetails.estimateZakatAttachment);
-                            //                            IsValueChanged();// 1584987294.32348//1584987210.06955
-                            //                                             // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
-                            //                        }
-                            //                        else
-                            //                        {
-                            //                            Device.BeginInvokeOnMainThread(async () =>
-                            //                            {
-                            //                                AttachmentName = string.Empty;
-                            //                                await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                            //                                IsLoading = false;
-                            //                            });
-                            //                        }
-                            //                    }
-                            //                    else
-                            //                    {
-                            //                        Device.BeginInvokeOnMainThread(async () =>
-                            //                        {
-                            //                            AttachmentName = string.Empty;
-                            //                            await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
-                            //                            IsLoading = false;
-                            //                        });
-                            //                    }
-                            //                }
-                            //                else
-                            //                {
-                            //                    Device.BeginInvokeOnMainThread(async () =>
-                            //                    {
-                            //                        AttachmentName = string.Empty;
-                            //                        await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
-                            //                        IsLoading = false;
-                            //                    });
-                            //                }
-                            //            }
-                            //            else
-                            //            {
-                            //                Device.BeginInvokeOnMainThread(async () =>
-                            //                {
-                            //                    AttachmentName = string.Empty;
-                            //                    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                            //                    IsLoading = false;
-                            //                });
-                            //            }
-                            //        }
-                            //        else
-                            //        {
-                            //            Device.BeginInvokeOnMainThread(async () =>
-                            //            {
-                            //                await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
-                            //                IsLoading = false;
-                            //                AttachmentName = string.Empty;
-                            //            });
-                            //        }
-                            //    }
-                            //    else
-                            //    {
-                            //        AttachmentName = string.Empty;
-                            //        IsLoading = false;
-                            //        Device.BeginInvokeOnMainThread(async () =>
-                            //        {
-                            //            await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                            //        });
-
-
-                            //    }
-
-                            //}
-                            //else
-                            //{
-                            //    Device.BeginInvokeOnMainThread(async () =>
-                            //    {
-                            //        AttachmentName = string.Empty;
-                            //        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                            //        IsLoading = false;
-                            //    });
-                            //}
-                        }
-                        catch (InternetException ex)
-                        {
-                            IsLoading = false;
-                            Device.BeginInvokeOnMainThread(async () =>
+                            string Extention = fileData.FileName.Split('.')[1];//pdf
+                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
                             {
-                                _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            });
+                                if (TotalAttachmentSize <= 30)
+                                {
+                                    attachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 2);
+                                    decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 4);
+                                    if (Convert.ToDecimal(attachmentSize) <= 10)
+                                    {
+                                        if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
+                                        {
+                                            try
+                                            {
+                                                if (attachmentOfType.ToLower() == "passport")
+                                                {
+                                                    UploadedDocumentsList selectedFile = new UploadedDocumentsList();
+                                                    selectedFile.FileNameWithExtension = attachmentName;
+                                                    selectedFile.DocBinaryInBase64 = attachmentByte;
+                                                    selectedFile.Size = attachmentSize.ToString();
+                                                    string attachmentType = UtilityManager.GetContentType(Extention);
+                                                    selectedFile.MimeType = attachmentType;
+
+                                                    if (selectedFile != null)
+                                                    {
+                                                        UploadedPassportDocumentsList.Add(selectedFile);
+                                                    }
+                                                }
+                                                else if (attachmentOfType.ToLower() == "rent")
+                                                {
+
+                                                    UploadedDocumentsList selectedFile = new UploadedDocumentsList();
+                                                    selectedFile.FileNameWithExtension = attachmentName;
+                                                    selectedFile.DocBinaryInBase64 = attachmentByte;
+                                                    selectedFile.Size = attachmentSize.ToString();
+                                                    string attachmentType = UtilityManager.GetContentType(Extention);
+                                                    selectedFile.MimeType = attachmentType;
+
+                                                    if (selectedFile != null)
+                                                    {
+                                                        UploadedRentDocumentsList.Add(selectedFile);
+                                                    }
+                                                }
+
+
+                                                //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
+
+                                            }
+                                            catch (Exception ex)
+                                            {
+                                            }
+                                        }
+                                        else
+                                        {
+                                            attachmentName = string.Empty;
+                                            _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            }
                         }
-                    });
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    }
+
                 }
-                catch (Exception ex)
-                {
-                }
-            });
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+         
+            
         }
-
-        private void onERAttachmentCloseTapped()
-        {
-        }
-
-        private void onEstablishmentRegistrationAttachmentTapped()
-        {
-        }
-
-
+    
         private void OnExpandCollapseGridViewClick(object _enum)
         {
             System.Diagnostics.Debug.WriteLine(_enum);
@@ -1654,6 +1727,173 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
+        }
+
+        private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
+        {
+            try
+            {
+                if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
+                {
+                    if (SelectedReportingBranch == null)
+                    {
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(SelectedOrgResidence))
+                    {
+                        return false;
+                    }
+                    else if (SelectedOrgResidence == "2" && (UploadedRentDocumentsList==null || UploadedRentDocumentsList.Count <= 0))
+                    {
+                        return false;
+                    }
+                    else if (SelectedOrgResidence == "3" && string.IsNullOrEmpty(SelectedOrgNonResident))
+                    {
+                        return false;
+                    }
+                    else if (SelectedOrgResidence == "3" && SelectedOrgNonResident == "1" && string.IsNullOrEmpty(SelectedOrgNonResidentOptions))
+                    {
+                        return false;
+                    }
+                    else if (SelectedOrgResidence == "3" && SelectedOrgNonResident == "2" && string.IsNullOrEmpty(SelectedOrgNonResidentActivity))
+                    {
+                        return false;
+                    }
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+                {
+
+                    if (string.IsNullOrEmpty(SelectedDOB))
+                    {
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(FirstName))
+                    {
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(SelectedGender))
+                    {
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(SelectedTaxpayerPDNationality))
+                    {
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(SelectedCitizen))
+                    {
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(SelectedResidence))
+                    {
+                        return false;
+                    }
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
+                {
+                    if (string.IsNullOrEmpty(PassportNumber))
+                    {
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(SelectedPassportIssueCountry))
+                    {
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(PassportIssueDate))
+                    {
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(PassportExpireDate))
+                    {
+                        return false;
+                    }
+                    else if (UploadedPassportDocumentsList==null || UploadedPassportDocumentsList.Count<=0)
+                    {
+                        return false;
+                    }
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)
+                {
+
+
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
+                {
+
+
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.Declaration)
+                {
+
+
+                }
+
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
+            return true;
+        }
+
+
+        private bool PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
+        {
+            try
+            {
+                if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
+                {
+                    TaxPayerDetails taxPayerDetails = new TaxPayerDetails();
+                    taxPayerDetails.Branchx = SelectedReportingBranch;
+                    taxPayerDetails.Atype = SelectedEntityType;
+                    taxPayerDetails.Tpnationality = SelectedRegNationalityType;
+
+                    taxPayerDetails.Orgresidence = SelectedOrgResidence;
+                    taxPayerDetails.Orgnonresident = SelectedOrgNonResident;
+                    taxPayerDetails.Orgnonresidentoptions = SelectedOrgNonResidentOptions;
+                    taxPayerDetails.Orgnonresidentactivity = SelectedOrgNonResidentActivity;
+                    taxPayerDetails.Rentatt = UploadedRentDocumentsList.FirstOrDefault().DocBinaryInBase64.ToString();
+
+
+                    return true;
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+                {
+                    
+                    //SelectedDOB
+                    //FirstName
+                    //LastName
+                   // FatherName
+                  // GrandFatherName
+                       // FamilyName
+                       //Initial
+                    //SelectedGender
+                    //SelectedTaxpayerPDNationality
+                    //SelectedCitizen
+                    //SelectedResidence
+               
+
+                    return true;
+                }
+                else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
+                {
+                    TaxPayerDetails taxPayerDetails = new TaxPayerDetails();
+                    
+                    //PassportNumber
+                    //SelectedPassportIssueCountry
+                    //PassportIssueDate
+                    //PassportExpireDate
+                    //UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count <= 0)
+
+                    return true;
+                }
+              
+
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+            return false;
         }
         #endregion
     }
