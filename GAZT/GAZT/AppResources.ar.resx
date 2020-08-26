@@ -1635,13 +1635,13 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
-   <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
-   <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
-   </data>
+  <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
+    <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
+  </data>
   <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
-   <value>إجمالي المبلغ المطلوب</value>
-   </data>
- <data name="VATRefundCancelRefund" xml:space="preserve">
+    <value>إجمالي المبلغ المطلوب</value>
+  </data>
+  <data name="VATRefundCancelRefund" xml:space="preserve">
     <value>هل تريد إلغاء طلب الاسترداد؟</value>
   </data>
   <data name="ZVatRefundRequestVAT" xml:space="preserve">
@@ -5422,7 +5422,7 @@
     <value>تم تحديث رقم الجوال</value>
   </data>
   <data name="TPNewEmailUpDated" xml:space="preserve">
-    <value>New Email updated Successfully</value>
+    <value>تم تحديث البريد الالكتروني الجديد بنجاح</value>
   </data>
   <data name="TPPasswordUpdate" xml:space="preserve">
     <value>تم تغيير الرقم السري</value>
