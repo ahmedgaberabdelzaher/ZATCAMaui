@@ -158,7 +158,7 @@
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="16,8,16,8" Orientation="Horizontal">
-                                    <custom:CustomLabel Text="Po Box" Style="{StaticResource BodyLabelGrey}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPobox1}" Style="{StaticResource BodyLabelGrey}"/>
                                     <custom:CustomLabel Text="5545" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                 </StackLayout>
                             </border:SfBorder>
@@ -173,14 +173,14 @@
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" Style="{StaticResource SectionTitleBlack}"/>
                             <border:SfBorder Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="16,8,16,8" Orientation="Horizontal">
-                                    <custom:CustomLabel Text="Local Phone" Style="{StaticResource BodyLabelGrey}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDLocalPhone}" Style="{StaticResource BodyLabelGrey}"/>
                                     <custom:CustomLabel Text="0138277858" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                 </StackLayout>
                             </border:SfBorder>
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="16,8,16,8" Orientation="Horizontal">
-                                    <custom:CustomLabel Text="Opening Hours" Style="{StaticResource BodyLabelGrey}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDOpeningHours}" Style="{StaticResource BodyLabelGrey}"/>
                                     <custom:CustomLabel Text="Sun - Thur 8am - 4pm" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                 </StackLayout>
                             </border:SfBorder>
