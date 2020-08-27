@@ -117,7 +117,7 @@ namespace GAZT.iOS
 
         public override void OnActivated(UIApplication application)
         {
-            MessagingCenter.Send("OnActivated", "OnActivated");
+          //  MessagingCenter.Send("OnActivated", "OnActivated");
             Console.WriteLine("OnActivated called, App is active.");
         }
         public override void WillEnterForeground(UIApplication application)
