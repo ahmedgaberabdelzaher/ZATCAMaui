@@ -13,7 +13,7 @@
              ios:Page.UseSafeArea="true"
              mc:Ignorable="d" FlowDirection="RightToLeft"    
               xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             x:Class="EGAZT.Views.NewDesign.ChangeFillingPeriod.ChangeFillingPeriodPageView" 
+             x:Class="EGAZT.Views.NewDesign.ChangeFillingPeriodPages.ChangeFillingPeriodPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
     <ContentPage.Resources>

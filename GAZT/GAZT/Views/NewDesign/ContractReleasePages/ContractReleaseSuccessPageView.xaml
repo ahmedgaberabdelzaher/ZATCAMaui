@@ -13,7 +13,7 @@
              mc:Ignorable="d"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="EGAZT.Views.NewDesign.ContractRelease.ContractReleaseSuccessPageView"
+             x:Class="EGAZT.Views.NewDesign.ContractReleasePages.ContractReleaseSuccessPageView"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
     <ContentPage.Content>
 
@@ -59,6 +59,9 @@
                                                          Glyph="{x:Static FontImage:IconFonts.ContentCopy}" />
                                     </Image.Source>
                                 </Image>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="RefNumberCopyTapped"/>
+                                </Grid.GestureRecognizers>
                             </Grid>
                         </Frame>
                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10,5,10,5"
@@ -86,15 +89,18 @@
                                                          Glyph="{x:Static FontImage:IconFonts.ContentCopy}" />
                                     </Image.Source>
                                 </Image>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ContractNumberCopyTapped"/>
+                                </Grid.GestureRecognizers>
                             </Grid>
 
                         </Frame>
 
 
-                        <buttons:SfButton x:Name="btnDashboard"
+                        <buttons:SfButton 
                                           Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
-                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
+                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" 
                                           BackgroundColor="#d49504" TextColor="White" />
 
                         <custom:CustomLabel Margin="10,0,10,15"
@@ -102,7 +108,7 @@
                                             TextColor="#d49504" HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
                             <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Dashboard_Tapped" />
+                                <TapGestureRecognizer Tapped="Back_To_ContractList_Tapped" />
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
                     </StackLayout>

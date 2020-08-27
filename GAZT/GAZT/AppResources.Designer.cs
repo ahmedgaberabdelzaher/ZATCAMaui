@@ -7866,6 +7866,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregistrationVoidMessage {
+            get {
+                return ResourceManager.GetString("VatDeregistrationVoidMessage", resourceCulture);
+            }
+        }
+        
         public static string SelectTheOptionAndCompleteDetails {
             get {
                 return ResourceManager.GetString("SelectTheOptionAndCompleteDetails", resourceCulture);
@@ -10611,6 +10617,270 @@ namespace EGAZT {
         public static string ZZZZConfirmRefund {
             get {
                 return ResourceManager.GetString("ZZZZConfirmRefund", resourceCulture);
+            }
+        }
+        
+        public static string VatInstalmentsStatusInDraft {
+            get {
+                return ResourceManager.GetString("VatInstalmentsStatusInDraft", resourceCulture);
+            }
+        }
+        
+        public static string CRInstrCheckDesc {
+            get {
+                return ResourceManager.GetString("CRInstrCheckDesc", resourceCulture);
+            }
+        }
+        
+        public static string CRSupplyforAramco {
+            get {
+                return ResourceManager.GetString("CRSupplyforAramco", resourceCulture);
+            }
+        }
+        
+        public static string CRSupplyandmaintenance {
+            get {
+                return ResourceManager.GetString("CRSupplyandmaintenance", resourceCulture);
+            }
+        }
+        
+        public static string CRsupplymaintenanceandoperating {
+            get {
+                return ResourceManager.GetString("CRsupplymaintenanceandoperating", resourceCulture);
+            }
+        }
+        
+        public static string CRDisassembleinstallationandoperate {
+            get {
+                return ResourceManager.GetString("CRDisassembleinstallationandoperate", resourceCulture);
+            }
+        }
+        
+        public static string CRsupplyinstallationandoperate {
+            get {
+                return ResourceManager.GetString("CRsupplyinstallationandoperate", resourceCulture);
+            }
+        }
+        
+        public static string CRDisassembleinstallationandtransport {
+            get {
+                return ResourceManager.GetString("CRDisassembleinstallationandtransport", resourceCulture);
+            }
+        }
+        
+        public static string CRCleanlinessandmaintenance {
+            get {
+                return ResourceManager.GetString("CRCleanlinessandmaintenance", resourceCulture);
+            }
+        }
+        
+        public static string CRSupplyinstallationanddeliver {
+            get {
+                return ResourceManager.GetString("CRSupplyinstallationanddeliver", resourceCulture);
+            }
+        }
+        
+        public static string CRmaintenanceandoperate {
+            get {
+                return ResourceManager.GetString("CRmaintenanceandoperate", resourceCulture);
+            }
+        }
+        
+        public static string CRtransport {
+            get {
+                return ResourceManager.GetString("CRtransport", resourceCulture);
+            }
+        }
+        
+        public static string CRsupplyandwatertransport {
+            get {
+                return ResourceManager.GetString("CRsupplyandwatertransport", resourceCulture);
+            }
+        }
+        
+        public static string CRconstruction {
+            get {
+                return ResourceManager.GetString("CRconstruction", resourceCulture);
+            }
+        }
+        
+        public static string CRmaintenance {
+            get {
+                return ResourceManager.GetString("CRmaintenance", resourceCulture);
+            }
+        }
+        
+        public static string CRoperate {
+            get {
+                return ResourceManager.GetString("CRoperate", resourceCulture);
+            }
+        }
+        
+        public static string CRDesignandconstruction {
+            get {
+                return ResourceManager.GetString("CRDesignandconstruction", resourceCulture);
+            }
+        }
+        
+        public static string CRsupplyanddesign {
+            get {
+                return ResourceManager.GetString("CRsupplyanddesign", resourceCulture);
+            }
+        }
+        
+        public static string CRsupplyandoprate {
+            get {
+                return ResourceManager.GetString("CRsupplyandoprate", resourceCulture);
+            }
+        }
+        
+        public static string CRsupplyandinstallation {
+            get {
+                return ResourceManager.GetString("CRsupplyandinstallation", resourceCulture);
+            }
+        }
+        
+        public static string CRdesignsupplyandinstallation {
+            get {
+                return ResourceManager.GetString("CRdesignsupplyandinstallation", resourceCulture);
+            }
+        }
+        
+        public static string CRdesignsupplyandopratemaintenance {
+            get {
+                return ResourceManager.GetString("CRdesignsupplyandopratemaintenance", resourceCulture);
+            }
+        }
+        
+        public static string CRequipmentrental {
+            get {
+                return ResourceManager.GetString("CRequipmentrental", resourceCulture);
+            }
+        }
+        
+        public static string CRmaintenancecleanlinessandoprate {
+            get {
+                return ResourceManager.GetString("CRmaintenancecleanlinessandoprate", resourceCulture);
+            }
+        }
+        
+        public static string CRcleanliness {
+            get {
+                return ResourceManager.GetString("CRcleanliness", resourceCulture);
+            }
+        }
+        
+        public static string CRcatering {
+            get {
+                return ResourceManager.GetString("CRcatering", resourceCulture);
+            }
+        }
+        
+        public static string CRSecurityguards {
+            get {
+                return ResourceManager.GetString("CRSecurityguards", resourceCulture);
+            }
+        }
+        
+        public static string CRRoadsmaintenance {
+            get {
+                return ResourceManager.GetString("CRRoadsmaintenance", resourceCulture);
+            }
+        }
+        
+        public static string CRLaborrecruiting {
+            get {
+                return ResourceManager.GetString("CRLaborrecruiting", resourceCulture);
+            }
+        }
+        
+        public static string CRContractingRoadsandTransport {
+            get {
+                return ResourceManager.GetString("CRContractingRoadsandTransport", resourceCulture);
+            }
+        }
+        
+        public static string CRSupply {
+            get {
+                return ResourceManager.GetString("CRSupply", resourceCulture);
+            }
+        }
+        
+        public static string CRSupplyanddeliverytowarehouses {
+            get {
+                return ResourceManager.GetString("CRSupplyanddeliverytowarehouses", resourceCulture);
+            }
+        }
+        
+        public static string CRSupplyanddeliveryport {
+            get {
+                return ResourceManager.GetString("CRSupplyanddeliveryport", resourceCulture);
+            }
+        }
+        
+        public static string CROperationofservicesattheport {
+            get {
+                return ResourceManager.GetString("CROperationofservicesattheport", resourceCulture);
+            }
+        }
+        
+        public static string CRConsultations {
+            get {
+                return ResourceManager.GetString("CRConsultations", resourceCulture);
+            }
+        }
+        
+        public static string CRDesignandconsulting {
+            get {
+                return ResourceManager.GetString("CRDesignandconsulting", resourceCulture);
+            }
+        }
+        
+        public static string CRPrivateConsultante {
+            get {
+                return ResourceManager.GetString("CRPrivateConsultante", resourceCulture);
+            }
+        }
+        
+        public static string CRStudiesandConsulting {
+            get {
+                return ResourceManager.GetString("CRStudiesandConsulting", resourceCulture);
+            }
+        }
+        
+        public static string CROther {
+            get {
+                return ResourceManager.GetString("CROther", resourceCulture);
+            }
+        }
+        
+        public static string CRContractDateshouldnotbegreaterfromcurentdate {
+            get {
+                return ResourceManager.GetString("CRContractDateshouldnotbegreaterfromcurentdate", resourceCulture);
+            }
+        }
+        
+        public static string CRContractEndDateshouldnotbegreaterfromcurentdate {
+            get {
+                return ResourceManager.GetString("CRContractEndDateshouldnotbegreaterfromcurentdate", resourceCulture);
+            }
+        }
+        
+        public static string CRContractEndDateshouldnotbelessfromcontractdate {
+            get {
+                return ResourceManager.GetString("CRContractEndDateshouldnotbelessfromcontractdate", resourceCulture);
+            }
+        }
+        
+        public static string CRRequestContractRelease {
+            get {
+                return ResourceManager.GetString("CRRequestContractRelease", resourceCulture);
+            }
+        }
+        
+        public static string CRContractReleaseApplicationForm {
+            get {
+                return ResourceManager.GetString("CRContractReleaseApplicationForm", resourceCulture);
             }
         }
     }

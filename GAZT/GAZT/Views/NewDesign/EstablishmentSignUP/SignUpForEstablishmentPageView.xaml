@@ -339,7 +339,7 @@
                     <StackLayout>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51">
+                            <control:BorderlessEntry x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -348,7 +348,7 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <StackLayout Orientation="Horizontal">
                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="+966" VerticalTextAlignment="End" IsEnabled="False" HeightRequest="51">
+                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{Binding TxtCountryCode}" VerticalTextAlignment="End" IsEnabled="False" HeightRequest="51">
 
                             </control:BorderlessEntry>
                             <inputLayout:SfTextInputLayout.LeadingView>
@@ -360,7 +360,7 @@
                         </inputLayout:SfTextInputLayout>
 
                             <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51" >
+                                <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51" >
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -369,7 +369,7 @@
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51">
+                            <control:BorderlessEntry x:Name="EntryPhoneNumber" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -532,7 +532,9 @@
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51">
-
+                                <Entry.Behaviors>
+                                    <custom1:OnlyNumericValuesBehaviour/>
+                                </Entry.Behaviors>
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
@@ -571,8 +573,8 @@
                                                         WidthRequest="8"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Text="{Binding OTPFirstDigit}"
-                                                        TextChanged="OTPFirstEntry_TextChanged"
+                                                        Text="{Binding MOTPFirstDigit}"
+                                                        TextChanged="MobOTPFirstEntry_TextChanged"
                                                         ReturnType="Next"
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
@@ -598,8 +600,8 @@
                                                         WidthRequest="8"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Text="{Binding OTPSecondDigit}"
-                                                        TextChanged="OTPSecondEntry_TextChanged"
+                                                        Text="{Binding MOTPSecondDigit}"
+                                                        TextChanged="MobOTPSecondEntry_TextChanged"
                                                         ReturnType="Next"
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
@@ -625,8 +627,8 @@
                                                         WidthRequest="8"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Text="{Binding OTPThirdDigit}"
-                                                        TextChanged="OTPThirdEntry_TextChanged"
+                                                        Text="{Binding MOTPThirdDigit}"
+                                                        TextChanged="MobOTPThirdEntry_TextChanged"
                                                         ReturnType="Next"
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
@@ -651,9 +653,9 @@
                                                         FontSize="Small"
                                                         WidthRequest="8"
                                                         HorizontalTextAlignment="Center"
-                                                        IsEnabled="{Binding IsOTPEntryEnable}"
-                                                        Text="{Binding OTPFourthDigit}"
-                                                        TextChanged="OTPFourthEntry_TextChanged"
+                                                        IsEnabled="{Binding MIsOTPEntryEnable}"
+                                                        Text="{Binding MOTPFourthDigit}"
+                                                        TextChanged="MobOTPFourthEntry_TextChanged"
                                                         ReturnType="Next"
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
@@ -684,24 +686,33 @@
                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDNewPassword}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
 
-                            <control:BorderlessEntry x:Name="NewPassword" Text="{Binding NewPassword}" TextChanged="NewPassword_TextChanged" IsPassword="True">
+                            <control:BorderlessEntry x:Name="NewPassword" Text="{Binding NewPassword}" TextChanged="NewPassword_TextChanged" IsPassword="{Binding IsPasswordEncripted}">
 
                             </control:BorderlessEntry>
 
                             <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="hidePassword.png"/>
+                                <Image Source="showPassword.png" x:Name="imageNewPassword">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ImageSeeNewPassword_Tapped" />
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
 
                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
 
-                            <control:BorderlessEntry x:Name="ConfirmNewPassword" Text="{Binding ConfirmPassword}">
+                            <control:BorderlessEntry x:Name="ConfirmNewPassword" Text="{Binding ConfirmPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}">
 
                             </control:BorderlessEntry>
 
                             <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="showPassword.png"/>
+                                <Image Source="showPassword.png" x:Name="imageConfirmPassword">
+                                     <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
 

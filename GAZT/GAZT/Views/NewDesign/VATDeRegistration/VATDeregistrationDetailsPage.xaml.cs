@@ -41,7 +41,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 OnAppearing();
             });
 
-
             MessagingCenter.Subscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) => {
                 viewModel.DatePickerModel = arg;
                 Console.WriteLine(arg);
@@ -53,19 +52,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 OnAppearing();
             });
 
-
             //viewModel.FromDate = "DD/MM/YYYY";
             // viewModel.ToDate = "DD/MM/YYYY";
-
-
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
                 await GetVatDeRegistrationData();
             });
-
-
-
         }
         private void SetLTR()
         {
@@ -111,7 +104,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             ChangeArrowDirection();
 
-            
+
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
                 viewModel.IsInstructionChecked = arg;
                 //Console.WriteLine(arg);
@@ -125,7 +118,18 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     {
                         viewModel.IDType = arg.SelectedValue;
 
+                        if (viewModel.IDType.Contains(AppResources.ZZGCCID))
+                        {
+                            viewModel.IsDOBEditorVisible = false;
+                            IDNumberField.WidthRequest = 300;
+                        }
+                        else
+                        {
+                            IDNumberField.WidthRequest = 140;
 
+                            viewModel.IsDOBEditorVisible = !viewModel.IsDOBEditorVisible;
+
+                        }
                     }
                     else
                     {
@@ -141,6 +145,19 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     if (arg.PickerTitle.Contains(AppResources.VatDeregIDType))
                     {
                         viewModel.IDType = arg.SelectedValue;
+                        if (viewModel.IDType.Contains(AppResources.ZZGCCID))
+                        {
+                            viewModel.IsDOBEditorVisible = false;
+                            IDNumberField.WidthRequest = 320;
+
+                        }
+                        else
+                        {
+                            IDNumberField.WidthRequest = 140;
+
+                            viewModel.IsDOBEditorVisible = !viewModel.IsDOBEditorVisible;
+
+                        }
                     }
                     else
                     {
@@ -196,11 +213,14 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.DOB = arg.SelectedValue;
                     }
                 }
-                if (viewModel.FromDate < viewModel.LastIcrDate)
-                {
-                    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, "Information");
-                }
-                else if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
+                //if (viewModel.FromDate < viewModel.LastIcrDate)
+                //{
+                //    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, "Information");
+                //}
+                //else
+                // DateTime.Today.AddDays(1);
+
+                if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
                 {
                     DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
                     DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
@@ -425,8 +445,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void outletDocumentOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
-            viewModel.SelectedOutletOptionIndex = viewModel.OutletDocumentOptions.IndexOf(selectedItem);
+            ResultsAttachmentItemForElgblDocSet selectedItem = e.AddedItems[0] as ResultsAttachmentItemForElgblDocSet;
+            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentTypes.IndexOf(selectedItem);
         }
         async void VATDeregStartDateClicked(System.Object sender, System.EventArgs e)
         {
@@ -670,6 +690,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     }
                     if (viewModel.IDType == "GCC ID")
                     {
+
                         if (viewModel.TxtIDNumber.Substring(0, 1) == "0")
                         {
                             //Have to change to neww error message
@@ -1072,6 +1093,32 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 viewModel.IsLoading = false;
             });
+        }
+
+        async void voidTapped(System.Object sender, System.EventArgs e)
+        {
+            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
+            if (!result)
+            {
+
+                if (viewModel.VATDeRegistrationDetailsData != null)
+                {
+                    if (viewModel.VATDeRegistrationDetailsData.d != null)
+                    {
+                        if (viewModel.VATDeRegistrationDetailsData.d.Fbnumx != string.Empty)
+                        {
+                            viewModel.setDATA("04");
+                            await viewModel.saveAsDraftVoidAPIMethodCall();
+                            // _navigationService.GoBack();
+                        }
+                        else
+                        {
+                            viewModel._navigationService.GoBack();
+                        }
+                    }
+
+                }
+            }
         }
     }
 }

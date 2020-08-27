@@ -631,7 +631,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.ContractReleasePageView);
+                viewModel._navigationService.NavigateTo(App.ContractReleaseListPageView);
 
             });
         }
