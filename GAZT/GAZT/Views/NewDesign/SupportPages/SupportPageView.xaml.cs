@@ -34,10 +34,39 @@ namespace EGAZT.Views.NewDesign
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
+        protected override bool OnBackButtonPressed()
+        {
+            viewModel.ChcekCurrentTab();
+            return true;
+        }
         private void OnBackArrowTapped(object sender, EventArgs e)
         {
-            viewModel._navigationService.GoBack();
+            viewModel.ChcekCurrentTab();
+        }
+
+        private void OnBranchLocatorTapped(object sender, EventArgs e)
+        {
+            viewModel.SetBranchLocator();
+        }
+
+        private void Branch_Clicked(object sender, EventArgs e)
+        {
+            BranchLocation.IsOpen = true;
+        }
+
+        private void BranchLocation_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ContactWebView_Navigating(object sender, WebNavigatingEventArgs e)
+        {
+
+        }
+
+        private void ContactWebView_Navigated(object sender, WebNavigatedEventArgs e)
+        {
+
         }
     }
 }
