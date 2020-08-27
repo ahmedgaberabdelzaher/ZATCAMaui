@@ -28,7 +28,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             MessagingCenter.Subscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) => {
                 viewModel.DatePickerModel = arg;
                 Console.WriteLine(arg);
-                OnAppearing();
+                //OnAppearing();
             });
         }
 

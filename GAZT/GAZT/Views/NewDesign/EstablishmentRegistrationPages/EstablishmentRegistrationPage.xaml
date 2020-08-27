@@ -1311,7 +1311,7 @@
                     <Image Grid.Column="1" Grid.Row="0" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
                     <Image Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
                         <Image.Source>
-                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.DotsVertical}"/>
                         </Image.Source>
                         <Image.GestureRecognizers>
                             <!-- Need to replace icon-->

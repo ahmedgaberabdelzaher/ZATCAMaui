@@ -12,7 +12,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     {
         #region Variable
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
-        public OutletNumber newNumber { get; set; } = null;
+        private OutletNumber newNumber = null;
         //private ActivitySetsList activityList = null;
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
@@ -140,7 +140,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
             {
                 openedTab = _enum,
-                taxPayerDetails = taxPayerDetails
+                taxPayerDetails = taxPayerDetails,
+                nextNumber = newNumber
             });
         }
         private void navigateToNext()
@@ -176,7 +177,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
-                    OutletNumber number = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
+                    newNumber = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
                     OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", OutletActNumber, taxPayerDetails?.Fbnumx);
                 }

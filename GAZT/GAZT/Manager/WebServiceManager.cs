@@ -9052,16 +9052,17 @@ namespace GAZT.Manager
             }
             return nationalities;
         }
-        public static async Task<string> ESTAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Doctype, string contentType) //RG16 for Residency, RG19 for passport RG01 for CR copy RG02 licence copy
+        public static async Task<Attachment> ESTAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Doctype, string contentType, string outletref = null) //RG16 for Residency, RG19 for passport RG01 for CR copy RG02 licence copy
         {
             char lang = GetLangZParameter();
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
+                    outletref = (string.IsNullOrEmpty(outletref) || string.IsNullOrWhiteSpace(outletref)) ? string.Empty : outletref;
                     //VATDeregAttachmentRootOject _attachment = new VATDeregAttachmentRootOject();
-                    var uri = new Uri(string.Format("{0}?&$format=json&(RetGuid='{1}',OutletRef='',Flag='N',Dotyp='{2}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
-                        Constants.ESTTaxPayerNationality, RetGuid, Doctype));
+                    var uri = new Uri(string.Format("{0}(RetGuid='{1}',OutletRef='{2}',Flag='N',Dotyp='{3}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
+                        Constants.ESTPostAttachment, RetGuid, outletref, Doctype));
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -9073,8 +9074,9 @@ namespace GAZT.Manager
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
                     var response = await client.PostAsync(uri, baContent);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
-                    //_attachment = JsonConvert.DeserializeObject<VATDeregAttachmentRootOject>(responsestr);
-                    return responsestr;
+                    responsestr = JObject.Parse(responsestr)["d"].ToString();
+                    Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
+                    return _attachment;
                 }
                 catch (Exception ex)
                 {

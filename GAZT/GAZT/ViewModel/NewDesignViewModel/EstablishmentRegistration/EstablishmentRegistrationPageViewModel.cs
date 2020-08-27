@@ -25,7 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Variable
         private TaxPayerDetails taxPayerDetails { get; set; } = null;
         private OutletNumber number;
-        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
         public EstablishmentRegistrationTabsEnum currentTab
         {
             get => _currentTab;
@@ -97,35 +97,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(SelectedTabText));
             }
         }
-
-        private List<string> _draftMenuList = new List<string>();
-        public List<string> DraftMenuList
-        {
-            get
-            {
-                return _draftMenuList;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    _draftMenuList = value;
-                    RaisePropertyChanged(nameof(DraftMenuList));
-                }
-            }
-        }
-
-        private string _selectedMenuList = null;
-        public string SelectedMenuList
-        {
-            get => _selectedMenuList;
-            set
-            {
-                _selectedMenuList = value;
-                RaisePropertyChanged(nameof(SelectedMenuList));
-            }
-        }
-
 
         #region Registration Details Tab Variables
 
@@ -979,7 +950,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
 
-            GetMenuListFromServer();
             #region Registration Tab Variable initialization
 
             NationalityStatusStayMoreThanKSAClick = new Command(() => OrgResidenceSelection(OrgResidenceNationalityEstablishmentRegistrationEnum.StayMoreThanKSA));
@@ -1098,8 +1068,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnVoidOrSaveDraftClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(DraftMenuList);
-                poupWindow.OnItemSelect = (item) => SelectedMenuList = item as string;
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "Save", "Void", "CalenderType" });
+                poupWindow.OnItemSelect = (item) => Console.WriteLine(item);
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
             #endregion
@@ -1110,7 +1080,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         public async void OnAppearing()
         {
-            GetMenuListFromServer();
             var branchTask = GetReportingBranchListFromServer();
             var nationalityTask = GetPdNationalityListFromServer(null);
             await Task.WhenAll(branchTask, nationalityTask);
@@ -1449,15 +1418,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             TaxpayerFullNationlityList = await WebServiceManager.ESTTaxPayerNationality(nationality);
         }
 
-        private void GetMenuListFromServer()
-        {
-            if (DraftMenuList == null && DraftMenuList.Count() == 0)
-            {
-                DraftMenuList = new List<string> { "Save", "Void", "CalenderType" };
-
-                //await WebServiceManager.();
-            }
-        }
 
 
         private void onRentAttachmentdCloseTapped()
@@ -1724,7 +1684,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             //    outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
             //}
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
-            outletNavigationModels.nextNumber = number;
+            //outletNavigationModels.nextNumber = number;
             _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
         }
 

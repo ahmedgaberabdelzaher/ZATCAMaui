@@ -90,10 +90,7 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="0">
-                            <Entry Text="{Binding CRNumber}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
-                            <!--<inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="arrowDropdown.png"/>
-                            </inputLayout:SfTextInputLayout.TrailingView>-->
+                            <Entry Text="{Binding CRNumber}" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -103,7 +100,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding validFrom}" Command="{Binding OnValidFromButtonClick}"
+                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding CRValidFrom}" Command="{Binding OnValidFromButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
@@ -127,7 +124,7 @@
                             </custom:CustomLabel>
                             <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center" />
                         </StackLayout>
-                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Text="{Binding validFrom}" 
+                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfCRChoiceButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
@@ -223,12 +220,9 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="arrowDropdown.png"/>
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseIssueCountry}"  Command="{Binding OnIssueCountrySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -237,12 +231,9 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="arrowDropdown.png"/>
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseIssueBy}"  Command="{Binding OnIssueBySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -251,12 +242,9 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="arrowDropdown.png"/>
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseIssueCity}"  Command="{Binding OnIssueCitySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -266,10 +254,8 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="arrowDropdown.png"/>
-                            </inputLayout:SfTextInputLayout.TrailingView>
+                            <Entry Text="{Binding LicenseNumber}" VerticalTextAlignment="Center" Unfocused="LicenseEntry_Unfocused" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                            
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -279,7 +265,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding validFrom}" 
+                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding ValidFrom}" Command="{Binding OnValidFromButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
@@ -303,7 +289,7 @@
                             </custom:CustomLabel>
                             <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center" />
                         </StackLayout>
-                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Text="{Binding validFrom}" 
+                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfLicenseChoiceButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
@@ -333,12 +319,9 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="arrowDropdown.png"/>
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseMainGroup}" Command="{Binding OnMainGroupSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -347,12 +330,9 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="arrowDropdown.png"/>
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseSubGroup}" Command="{Binding OnSubGroupSelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
@@ -361,12 +341,9 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Source="arrowDropdown.png"/>
-                            </inputLayout:SfTextInputLayout.TrailingView>
-                        </inputLayout:SfTextInputLayout>
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding LicenseAcitivity}" Command="{Binding OnAcitivitySelectButtonClick}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                     </StackLayout>
                 </ScrollView>
             </Grid>

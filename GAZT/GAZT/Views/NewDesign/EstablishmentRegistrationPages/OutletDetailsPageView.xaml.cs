@@ -19,7 +19,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel = App.Locator.OutletDetailsPageView;
             viewModel.currentTab = outletNavigation.openedTab;
             viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
-            viewModel.newNumber = outletNavigation.nextNumber;
+            //viewModel.newNumber = outletNavigation.nextNumber;
             BindingContext = viewModel;
             SetLTR();
         }

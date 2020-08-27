@@ -17,6 +17,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel = App.Locator.ActivityItemPage;
             viewModel.CurrentTab = _activityNavigation.openedTab;
             viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
+            viewModel.newNumber = _activityNavigation.nextNumber;
             BindingContext = viewModel;
             SetLTR();
         }
@@ -41,6 +42,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             base.OnDisappearing();
             viewModel?.OnDisappearing();
+        }
+
+        void CREntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            //viewModel?.
+        }
+
+        void LicenseEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
         }
     }
 }
