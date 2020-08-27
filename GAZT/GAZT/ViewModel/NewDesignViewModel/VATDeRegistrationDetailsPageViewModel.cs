@@ -1195,6 +1195,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public void SetDocType()
+        {
+            // VATRegistrationDetailsForAttach.d.ImFg;
+            //DocTypeString = "ZVTC";
+
+           // SelectedDocumentOption = VATDeRegistrationDetailsForAttach.d.AttdetSet.results[0].Dotyp;
+        }
+
+
         [Obsolete]
         public void OnVatRegistrationReasonClicked()
         {
@@ -1577,11 +1586,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await _dialogService.ShowMessage(AppResources.ZZPleaseenteravalidID, AppResources.Alerts);
 
             }
-            else if (DOB == string.Empty)
-            {
-                await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
+            //else if (DOB == string.Empty)
+            //{
+            //    await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
 
-            }
+            //}
             else if (ContactPersonName == string.Empty)
             {
                 await _dialogService.ShowMessage(AppResources.ZZPleaseentertheName, AppResources.Alerts);
@@ -1707,6 +1716,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (fileData.FileName.Contains("."))
                         {
                             string Extention = fileData.FileName.Split('.')[1];
+
                             if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"
                                 || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png")
                             {
@@ -1722,7 +1732,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             bool IsAttachmentPresent = false;
                                             foreach (VATDeregAttachment ItemA in VATDeRegistrationDetailsForAttach.d.AttdetSet.results)
                                             {
-                                                if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == SelectedDocumentOption.DmsTp))
+                                               // if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == SelectedDocumentOption.DmsTp))
+                                               if(AttachmentName == ItemA.Filename)
                                                 {
                                                     IsAttachmentPresent = true;
                                                 }
@@ -1805,42 +1816,60 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             else
                                             {
                                                 AttachmentName = string.Empty;
-
+                                                await Task.Run(() =>
+                                                {
+                                                    IsLoading = false;
+                                                });
                                                 await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
                                             }
                                         }
                                         else
                                         {
                                             AttachmentName = string.Empty;
-
+                                            await Task.Run(() =>
+                                            {
+                                                IsLoading = false;
+                                            });
                                             await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                         }
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
-
+                                        await Task.Run(() =>
+                                        {
+                                            IsLoading = false;
+                                        });
                                         await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
-
+                                    await Task.Run(() =>
+                                    {
+                                        IsLoading = false;
+                                    });
                                     await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
                                 }
                             }
                             else
                             {
                                 AttachmentName = string.Empty;
-
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
                                 await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
                         else
                         {
                             AttachmentName = string.Empty;
-
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
                             await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                         }
                     }

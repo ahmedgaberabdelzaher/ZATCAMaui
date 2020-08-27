@@ -69,8 +69,15 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         protected async void OnReleaseBillsButtonClicked(object sender, EventArgs e)
         {
-          
-           await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDoyouwanttoreleasethedeclaration));
+            if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
+            {// Call the Post API to release and if response is true then set the Button Name as bills and after tapping on that user needs to be navigated to Bills page 
+                await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDoyouwanttoreleasethedeclaration));
+
+            }
+            else
+            {
+               await viewModel.OnReleaseOrBillsClicked();
+            }
             //if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
             //{
             //    if (App.IsArabic)

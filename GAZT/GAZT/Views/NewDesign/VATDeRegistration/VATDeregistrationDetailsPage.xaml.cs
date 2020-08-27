@@ -57,6 +57,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
+                viewModel.EnableReasonView();
                 await GetVatDeRegistrationData();
             });
         }
@@ -125,9 +126,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         }
                         else
                         {
-                            IDNumberField.WidthRequest = 140;
+                            viewModel.IsDOBEditorVisible = true;
 
-                            viewModel.IsDOBEditorVisible = !viewModel.IsDOBEditorVisible;
 
                         }
                     }
@@ -149,13 +149,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             viewModel.IsDOBEditorVisible = false;
                             IDNumberField.WidthRequest = 320;
+                            
 
                         }
                         else
                         {
-                            IDNumberField.WidthRequest = 140;
 
-                            viewModel.IsDOBEditorVisible = !viewModel.IsDOBEditorVisible;
+                            viewModel.IsDOBEditorVisible = true;
 
                         }
                     }

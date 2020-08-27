@@ -4489,7 +4489,9 @@
   <data name="VATDeregistrationDocumentType2" xml:space="preserve">
     <value>تقارير مدققه</value>
   </data>
-    
+         <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
+    <value> Suspension Date must be 1 day ahead of Last ICR date</value>
+  </data>
           <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>هل تريد إلغاء ايقاف التسجيل؟</value>
   </data>
@@ -5914,4 +5916,7 @@
 <data name="CRContractReleaseApplicationForm" xml:space="preserve">
   <value>Contract Release Application Form</value>
 </data>
+  <data name="ZZZZWrongVerificationCode" xml:space="preserve">
+    <value>رمز التحقق غير صحيح</value>
+  </data>
 </root>
