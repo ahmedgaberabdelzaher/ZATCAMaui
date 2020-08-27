@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:custom="clr-namespace:GAZT"
+             BackgroundImageSource="partials_background.png"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="EGAZT.Views.NewDesign.SupportPageView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0">
+                        <StackLayout Spacing="16" Padding="0,24,0,0">
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
+                                    <Image Source="faQs.png"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZFaq}" Style="{StaticResource ValueLabelBlack}"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
+                                    <Image Source="ColorChat.png"/>
+                                    <custom:CustomLabel Text="Chat" Style="{StaticResource ValueLabelBlack}"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
+                                    <Image Source="customerServiceColor.png"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ValueLabelBlack}"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
+                                    <Image Source="branchLocator.png"/>
+                                    <custom:CustomLabel Text="Branch Locator" Style="{StaticResource ValueLabelBlack}"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </border:SfBorder>
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </yummy:PancakeView>
+
+            <Grid Grid.Row="0" Padding="20,5,20,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="40*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Image Source="arrowLeftwhite.png" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackArrowTapped" NumberOfTapsRequired="1"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

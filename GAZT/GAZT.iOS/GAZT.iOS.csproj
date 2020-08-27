@@ -1876,4 +1876,40 @@
   <ItemGroup>
     <BundleResource Include="Resources\phone_Green%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\branchLocator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\branchLocator%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\branchLocator%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ColorChat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ColorChat%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ColorChat%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customerServiceColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customerServiceColor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customerServiceColor%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\faQs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\faQs%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\faQs%403x.png" />
+  </ItemGroup>
 </Project>
