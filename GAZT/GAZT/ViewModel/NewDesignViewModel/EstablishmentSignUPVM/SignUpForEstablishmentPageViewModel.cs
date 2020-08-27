@@ -1,11 +1,13 @@
 ﻿using EGAZT.Models;
 using EGAZT.Models.EnumModels;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -119,6 +121,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("IsDeclarationCheckEnabled");
             }
         }
+        private bool _isDeclarationCheckedForInstruction = false;
+        public bool IsDeclarationCheckedForInstruction
+        {
+            get
+            {
+                return _isDeclarationCheckedForInstruction;
+            }
+            set
+            {
+                _isDeclarationCheckedForInstruction = value;
+                if (_isDeclarationCheckedForInstruction == true)
+                {
+                    IsMainButtonEnabled = true;
+
+                   // VATDeclarationData.d.TcFg = "1";
+                }
+                else
+                {
+                    IsMainButtonEnabled = false;
+
+                   // VATDeclarationData.d.TcFg = "0";
+                }
+                RaisePropertyChanged("IsDeclarationCheckedForInstruction");
+            }
+        }
 
         private bool _isMainButtonEnabled = false;
         public bool IsMainButtonEnabled
@@ -129,9 +156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             set
             {
-                if (value == true)
-                {
-                }
+                
                 _isMainButtonEnabled = value;
                 //OnStepButtonClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsMainButtonEnabled");
@@ -1196,15 +1221,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
 
 
-        private void navigateToNext()
+        private async void navigateToNext()
         {
             switch (currentTab)
             {
                 case EstablishmentSignUPTabEnum.TermsAndConditions:
+                    if (IsDeclarationCheckedForInstruction == true)
+                    {
+                       // _navigationService.NavigateTo(App.SignUpFormPageView);
                         PageTitle = AppResources.ZZZIndividualInformation;
                         BodyText = AppResources.ZZZZCompletethebelowdetails;
                         NextBTN = AppResources.ZZZZContinue;
                         currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
+                        IsDeclarationCheckedForInstruction = false;
+                    }
+                    else
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZPleaseselecttermsandconditions;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    }
+
+                        
                     break;
 
                 case EstablishmentSignUPTabEnum.IndividualInformation:

@@ -54,14 +54,14 @@
                     <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
 
                     <StackLayout Orientation="Horizontal">
-                        <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsDeclarationCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
-                        <CheckBox.Triggers>
-                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
-                                        <Setter Property="Color" Value="#ff0000" />
-                                    </DataTrigger>
-                                </CheckBox.Triggers>
-                            </CheckBox>
-                            <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
+                        <CheckBox VerticalOptions="CenterAndExpand" IsEnabled="True" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
+                            <CheckBox.Triggers>
+                                <DataTrigger TargetType="CheckBox" Value="false">
+                                    <Setter Property="Color" Value="#ff0000" />
+                                </DataTrigger>
+                            </CheckBox.Triggers>
+                        </CheckBox>
+                        <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />

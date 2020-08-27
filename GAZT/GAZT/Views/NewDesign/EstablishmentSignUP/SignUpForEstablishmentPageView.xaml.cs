@@ -39,6 +39,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel = App.Locator.SignUpForEstablishmentPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+
+
+            viewModel.IsDeclarationCheckedForInstruction = false;
             ChangeAeroIcon();
             SetLTR();
             loadPageData();
@@ -151,22 +154,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-        private void chkDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (chkDeclaration.IsChecked == true)
-            {
-                viewModel.IsMainButtonEnabled = true;
-            }
-            else
-            {
-                viewModel.IsMainButtonEnabled = false;
-            }
-        }
+       
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            
-
+     
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
                // IntnlCodes.Text = arg;
