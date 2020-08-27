@@ -52,6 +52,9 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZFaq}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnFAQTapped"/>
+                                </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -68,6 +71,9 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnContactUsTapped"/>
+                                </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
@@ -89,6 +95,13 @@
                         <WebView x:Name="ContactWebView" WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />
                     </StackLayout>
                     <!--FAQ View End-->
+
+
+                    <!--ContactUs View Starts-->
+                    <StackLayout IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.ContactUs}}">
+                        <WebView x:Name="ContactUsWebView" WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />
+                    </StackLayout>
+                    <!--ContactUs View End-->
 
                     <!--Branch Locator Starts-->
                     <ScrollView Grid.Row="0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.BranchLocator}}">

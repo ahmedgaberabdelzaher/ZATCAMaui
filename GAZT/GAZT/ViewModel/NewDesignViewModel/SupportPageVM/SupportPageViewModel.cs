@@ -87,6 +87,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             PageTitle = AppResources.ZZZSupport;
             currentTab = SupportTabEnum.Parent;
         }
+        public void setFAQ()
+        {
+            PageTitle = AppResources.ZZZFaq;
+            currentTab = SupportTabEnum.FAQ;
+        }
+        public void setContactUs()
+        {
+            PageTitle = AppResources.ZZZContactus;
+            currentTab = SupportTabEnum.ContactUs;
+        }
         public void SetBranchLocator()
         {
             PageTitle = AppResources.NDBranchLocator;

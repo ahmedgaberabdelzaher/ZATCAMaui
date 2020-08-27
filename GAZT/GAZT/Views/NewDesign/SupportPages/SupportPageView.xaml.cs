@@ -68,5 +68,31 @@ namespace EGAZT.Views.NewDesign
         {
 
         }
+
+        private void OnFAQTapped(object sender, EventArgs e)
+        {
+            viewModel.setFAQ();
+            if (App.IsArabic)
+            {
+                ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+            }
+            else
+            {
+                ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+            }
+        }
+
+        private void OnContactUsTapped(object sender, EventArgs e)
+        {
+            viewModel.setContactUs();
+            if (App.IsArabic)
+            {
+                ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+            }
+            else
+            {
+                ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+            }
+        }
     }
 }
