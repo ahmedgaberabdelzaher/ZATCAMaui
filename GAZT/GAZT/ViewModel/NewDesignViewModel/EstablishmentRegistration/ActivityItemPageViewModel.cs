@@ -5,6 +5,7 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
@@ -207,6 +208,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ICommand OnIssueCountrySelectButtonClick { get; set; }
         public ICommand OnIssueBySelectButtonClick { get; set; }
         public ICommand OnIssueCitySelectButtonClick { get; set; }
+        public ICommand OnValidFromButtonClick { get; set; }
+        //public ICommand OnAcitivitySelectButtonClick { get; set; }
         public ICommand OnMainGroupSelectButtonClick { get; set; }
         public ICommand OnSubGroupSelectButtonClick { get; set; }
         public ICommand OnAcitivitySelectButtonClick { get; set; }
@@ -263,6 +266,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
+            });
+            OnValidFromButtonClick = new Command(()=> {
+                PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(new GenericDatePickerModel()
+                {
+                    DatePickerTitle = "Valid From",
+                    PickerId = "ValidFromId"
+                }));
             });
             OnMainGroupSelectButtonClick = new Command(() => {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(activityList?.act_groupSet?.results);
@@ -327,6 +337,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public void OnAppearing()
         {
             fetchTabDataAndBind();
+            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) => {
+                Console.WriteLine(string.Format( "Subscribe {0}, {1}", arg.PickerId, arg.SelectedValue ));
+            });
+        }
+        public void OnDisappearing()
+        {
+
+            MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
         }
 
         private async void fetchTabDataAndBind()
