@@ -26,7 +26,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 {
                     Label_Name.Text = response.d.Contactnm;
                     Label_ApplicationNumber.Text = response.d.Fbnumx;
-                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + response.d.Taxdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + DateTime.Today.Date + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                     Label_Date.Text = StartdateToshow;
                 }
             }

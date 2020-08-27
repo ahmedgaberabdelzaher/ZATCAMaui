@@ -205,108 +205,111 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.DOB = arg.SelectedValue;
                     }
                 }
-                //if (viewModel.FromDate < viewModel.LastIcrDate)
-                //{
-                //    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, "Information");
-                //}
-                //else
-                // DateTime.Today.AddDays(1);
-
-                bool isValid = false;
-                PopUp popUp = new PopUp();
-                StringBuilder Messages = new StringBuilder();
-                popUp.IsLinkAvailable = false;
-
-                if (viewModel.LastIcrDate < viewModel.FromDate)
+             
+                if(arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle)|| arg.DatePickerTitle.Contains(AppResources.VatDeregEndDatePickerTitle))
                 {
-                    isValid = true;
-                }
-                else
-                {
-                    popUp.Message = AppResources.VatDeregistrationSuspendedDateValidation;
-                    isValid = false;
+                    suspendedDateValidation();
                 }
 
-                double quarterrDiff = quarterDiff(viewModel.FromDate, viewModel.ToDate);
-
-                if (quarterrDiff <= 1)
-                {
-                    isValid = false;
-                    if (Messages.Length > 0)
-                    {
-                        Messages.Append(Environment.NewLine);
-                    }
-
-                    Messages.Append(AppResources.VatDeregSuspendedDateMismatchException);
-                }
-
-                if (isValid == true)
-                {
-                    if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
-                    {
-                        DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
-                        DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
-
-                        VATDeregistrationSuspendedDateRootObject obj = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
-                        if (obj != null)
-                        {
-                            if (obj.d.dateResults[0].SuspDtfrom != null)
-                            {
-                                DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
-                                viewModel.SuspendedStartDate = date;
-
-
-                            }
-                            if (obj.d.dateResults[0].SuspDtto != null)
-                            {
-                                DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
-
-                                viewModel.SuspendedEndDate = date;
-
-                            }
-                            if (obj.d.dateResults[0].NextDtfrom != null)
-                            {
-                                DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
-
-                                viewModel.NextFilingStartDate = date;
-
-                            }
-                            if (obj.d.dateResults[0].NextDtfrom != null)
-                            {
-                                DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
-
-                                viewModel.NextFilingEndDate = date;
-                            }
-                            if (obj.d.dateResults[0].Duedate != null)
-                            {
-                                DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
-
-                                viewModel.NextFilingDueDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-
-                    if(isCalled == false)
-                    {
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        isCalled = true;
-                    }
-                }
             });
         }
 
+        public void suspendedDateValidation()
+            {
+            bool isValid = false;
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder();
+            popUp.IsLinkAvailable = false;
+
+            if (viewModel.LastIcrDate < viewModel.FromDate)
+            {
+                isValid = true;
+            }
+            else
+            {
+                popUp.Message = AppResources.VatDeregistrationSuspendedDateValidation;
+                isValid = false;
+            }
+
+            double quarterrDiff = quarterDiff(viewModel.FromDate, viewModel.ToDate);
+
+            if (quarterrDiff <= 1)
+            {
+                isValid = false;
+                if (Messages.Length > 0)
+                {
+                    Messages.Append(Environment.NewLine);
+                }
+
+                Messages.Append(AppResources.VatDeregSuspendedDateMismatchException);
+            }
+
+            if (isValid == true)
+            {
+                if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
+                {
+                    DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
+                    DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
+
+                    VATDeregistrationSuspendedDateRootObject obj = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
+                    if (obj != null)
+                    {
+                        if (obj.d.dateResults[0].SuspDtfrom != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
+                            viewModel.SuspendedStartDate = date;
+
+
+                        }
+                        if (obj.d.dateResults[0].SuspDtto != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
+
+                            viewModel.SuspendedEndDate = date;
+
+                        }
+                        if (obj.d.dateResults[0].NextDtfrom != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
+
+                            viewModel.NextFilingStartDate = date;
+
+                        }
+                        if (obj.d.dateResults[0].NextDtfrom != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
+
+                            viewModel.NextFilingEndDate = date;
+                        }
+                        if (obj.d.dateResults[0].Duedate != null)
+                        {
+                            DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
+
+                            viewModel.NextFilingDueDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+
+                if (isCalled == false)
+                {
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    isCalled = true;
+                }
+            }
+
+        }
         public static double quarterDiff(DateTime first, DateTime second)
         {
             int firstQuarter = getQuarter(first);
@@ -1177,7 +1180,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         void Others_Entry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             //OthersTxt.HelperText
-            viewModel.SetTextCount(e.NewTextValue.Length);
+            if(e.NewTextValue != null)
+            {
+                viewModel.SetTextCount(e.NewTextValue.Length);
+
+            }
         }
     }
 }
