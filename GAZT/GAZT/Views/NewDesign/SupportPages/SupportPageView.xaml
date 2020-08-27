@@ -17,6 +17,12 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="BackButtonArrow" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -37,7 +43,7 @@
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="faQs.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZFaq}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
-                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
                             </border:SfBorder>
 
@@ -45,7 +51,7 @@
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="ColorChat.png"/>
                                     <custom:CustomLabel Text="Chat" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
-                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
                             </border:SfBorder>
 
@@ -53,7 +59,7 @@
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="customerServiceColor.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
-                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
                             </border:SfBorder>
 
@@ -61,7 +67,7 @@
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="branchLocator.png"/>
                                     <custom:CustomLabel Text="Branch Locator" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
-                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
                             </border:SfBorder>
                         </StackLayout>
@@ -76,7 +82,7 @@
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
                 <StackLayout Grid.Column="0">
-                    <Image Source="arrowLeftwhite.png" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"/>
+                    <Image Source="arrowLeftwhite.png" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Style="{DynamicResource BackButtonArrow}"/>
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnBackArrowTapped" NumberOfTapsRequired="1"/>
                     </StackLayout.GestureRecognizers>
