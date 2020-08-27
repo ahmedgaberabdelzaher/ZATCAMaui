@@ -6206,4 +6206,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="SameTincantbeaddedasfinancialrepresentative" xml:space="preserve">
     <value>Same Tin can't be added as financial representative.</value>
   </data>
+  <data name="NDBranchLocator" xml:space="preserve">
+    <value>Branch Locator</value>
+  </data>
+  <data name="NDChat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
 </root>

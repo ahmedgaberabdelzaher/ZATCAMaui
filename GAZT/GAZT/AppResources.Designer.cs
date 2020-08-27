@@ -3721,6 +3721,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Branch Locator.
+        /// </summary>
+        public static string NDBranchLocator {
+            get {
+                return ResourceManager.GetString("NDBranchLocator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Branch Name.
         /// </summary>
         public static string NDBranchName {
@@ -3744,6 +3753,15 @@ namespace EGAZT {
         public static string NDChangeToAccountBasis {
             get {
                 return ResourceManager.GetString("NDChangeToAccountBasis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chat.
+        /// </summary>
+        public static string NDChat {
+            get {
+                return ResourceManager.GetString("NDChat", resourceCulture);
             }
         }
         

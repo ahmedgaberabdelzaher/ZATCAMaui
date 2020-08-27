@@ -5922,4 +5922,10 @@
   <data name="SameTincantbeaddedasfinancialrepresentative" xml:space="preserve">
     <value>نفس المكلف لا يمكن إضافته كممثل مجموعة</value>
   </data>
+  <data name="NDBranchLocator" xml:space="preserve">
+    <value>Branch Locator</value>
+  </data>
+  <data name="NDChat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
 </root>
