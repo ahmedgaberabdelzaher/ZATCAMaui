@@ -4485,6 +4485,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
     <value>Outlets</value>
   </data>
+  <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">     <value>Select DOB</value>   </data>   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">     <value>Select Start Date</value>   </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
   </data>
