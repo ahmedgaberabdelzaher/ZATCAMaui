@@ -1,0 +1,108 @@
+﻿using EGAZT.Models.EnumModels;
+using GalaSoft.MvvmLight.Views;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace EGAZT.ViewModel.NewDesignViewModel
+{
+    public class SupportPageViewModel: BaseViewModel
+    {
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+
+        #region Variable
+        private SupportTabEnum _currentTab = SupportTabEnum.Parent;
+        public SupportTabEnum currentTab
+        {
+            get => _currentTab;
+            private set
+            {
+                _currentTab = value;
+                RaisePropertyChanged(nameof(currentTab));
+                CurrentIndex = (int)_currentTab;
+                RaisePropertyChanged(nameof(CurrentIndex));
+            }
+        }
+
+        private int _currenrIndex = 1;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                if (_currenrIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+                else if (MarkComplete == true && _currenrIndex < MaxIndex)
+                {
+                    MarkComplete = false;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+            }
+        }
+        public bool MarkComplete { get; private set; } = false;
+        public int MaxIndex { get; private set; } = 5;
+        #endregion
+
+        #region Property
+        private string _PageTitle = AppResources.ZZZSupport;
+        public string PageTitle
+        {
+            get
+            {
+                return _PageTitle;
+            }
+            set
+            {
+                _PageTitle = value;
+                RaisePropertyChanged("PageTitle");
+            }
+        }
+        #endregion
+
+        #region Constructor
+        public SupportPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
+        }
+        #endregion
+
+        #region Methods
+        public void setSupportTab()
+        {
+            PageTitle = AppResources.ZZZSupport;
+            currentTab = SupportTabEnum.Parent;
+        }
+        public void SetBranchLocator()
+        {
+            PageTitle = AppResources.NDBranchLocator;
+            currentTab = SupportTabEnum.BranchLocator;
+        }
+        public void ChcekCurrentTab()
+        {
+            if (currentTab == SupportTabEnum.Parent)
+            {
+                _navigationService.GoBack();
+            }
+            else
+            {
+                setSupportTab();
+            }
+        }
+        #endregion
+    }
+}

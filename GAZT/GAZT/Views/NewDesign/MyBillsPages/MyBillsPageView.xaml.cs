@@ -1,7 +1,10 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Essentials;
@@ -148,8 +151,38 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 if (Clipboard.HasText)
                 {
                     var text = await Clipboard.GetTextAsync();
-                    await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
+                    //await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
+
+
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = AppResources.ZSadadInvoiceNumber + " " + text;
+                    if (App.IsArabic)
+                    {
+                        headerAmountInfo.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        headerAmountInfo.FlowDirections = "LeftToRight";
+                    }
+
+
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.Copied;
+
+
+
+                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                 }
                 Device.BeginInvokeOnMainThread(() =>
                 {

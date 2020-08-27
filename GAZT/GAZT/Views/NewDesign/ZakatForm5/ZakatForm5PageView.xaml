@@ -105,18 +105,25 @@
                                             <custom:CustomLabel Grid.Column="1"  Text="{Binding FinancialYear}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
                                         <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5Period}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand">
+                                            <custom:CustomLabel x:Name="PeriodLbl" Text="{x:Static ResourceManager:AppResources.FORM5Period}" Style="{StaticResource ValueLabelGrey}"/>
+                                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{Binding ZakatFromDate}" />
                                                         <Span Text=" - "/>
+                                                        <Span Text="{Binding ZakatToDate}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
+                                                <custom:CustomLabel.Triggers>
+                                                    <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding Source={x:Reference PeriodLbl}, Path=Text}" Value="Period">
+                                                        <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+                                                        <Setter Property="HorizontalTextAlignment" Value="End"/>
+                                                    </DataTrigger>
+                                                </custom:CustomLabel.Triggers>
                                             </custom:CustomLabel>
-                                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding ZakatToDate}">
+                                            <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding ZakatToDate}">
 
-                                            </custom:CustomLabel>
+                                            </custom:CustomLabel>-->
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>

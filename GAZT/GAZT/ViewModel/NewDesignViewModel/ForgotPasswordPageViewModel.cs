@@ -1962,7 +1962,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     //await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.ZError);
-                                    await _dialogService.ShowMessageBox(AppResources.NDInvalidverificationcodeentered, AppResources.ZError);
+                                    await _dialogService.ShowMessageBox(AppResources.ZZZZWrongVerificationCode, AppResources.ZError);
                                 });
                             }
                             else if (currentAttempts == 2)

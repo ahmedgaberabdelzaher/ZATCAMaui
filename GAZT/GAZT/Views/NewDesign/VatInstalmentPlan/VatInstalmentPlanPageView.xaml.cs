@@ -246,29 +246,29 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
 
 
-                        for (int i = 0; i < viewModel.BillsListVAT.Length; i++)
-                    {
+                    //    for (int i = 0; i < viewModel.BillsListVAT.Length; i++)
+                    //{
 
-                        if (viewModel.selectedList.Contains(dataItem))
-                        {
-                            //int index = viewModel.BillsListVAT.IndexOf(dataItem);
+                    //    if (viewModel.selectedList.Contains(dataItem))
+                    //    {
+                    //        //int index = viewModel.BillsListVAT.IndexOf(dataItem);
 
-                            viewModel.BillsListVAT[i].Xsele = "X";
-                            // totalAmount -= Convert.ToDouble(dataItem.Betrh);
-                            //viewModel.selectedList.Remove(dataItem);
+                    //       // viewModel.BillsListVAT[i].Xsele = "X";
+                    //        // totalAmount -= Convert.ToDouble(dataItem.Betrh);
+                    //        //viewModel.selectedList.Remove(dataItem);
 
-                            //viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
-                        }
-                        else
-                        {
-                           // int index = viewModel.BillsListVAT.IndexOf(dataItem);
-                            viewModel.BillsListVAT[i].Xsele = "";
-                            //viewModel.selectedList.Add(dataItem);
+                    //        //viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
+                    //    }
+                    //    else
+                    //    {
+                    //       // int index = viewModel.BillsListVAT.IndexOf(dataItem);
+                    //        //viewModel.BillsListVAT[i].Xsele = "";
+                    //        //viewModel.selectedList.Add(dataItem);
 
-                        }
+                    //    }
 
 
-                    }
+                    //}
 
                     //foreach (VATResults4 listItem in viewModel.selectedList.ToList())
                     //{
@@ -295,7 +295,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 else
                 {
                     viewModel.selectedList.Add(dataItem);
-                    viewModel.BillsListVAT[0].Xsele = "X";
+                    //viewModel.BillsListVAT[0].Xsele = "X";
                    // totalAmount += Convert.ToDouble(dataItem.Betrh);
                    // viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
                 }

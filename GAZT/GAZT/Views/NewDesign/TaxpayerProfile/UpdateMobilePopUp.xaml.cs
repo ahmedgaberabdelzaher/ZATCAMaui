@@ -23,21 +23,25 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
     public partial class UpdateMobilePopUp : PopupPage
     {
         UpdateMobileViewModel viewModel;
-        ObservableCollection<InternationalMobileData> currentMobileData = null;
-
-        public UpdateMobilePopUp(ObservableCollection<InternationalMobileData> mobileData)
+        ObservableCollection<InternationalMobileData> mobileData = null;
+        public UpdateMobilePopUp()
         {
             InitializeComponent();
             viewModel = App.Locator.UpdateMobilePopUp;
             this.BindingContext = viewModel;
             viewModel.CountryCode = "+966";
             Label_InternationalnoCode.StyleId = "LTRLabelText";
-            Label_InternationalnoCode.Text = "+966";
+            // Label_InternationalnoCode.Text = "+966";
 
-            // Setup International Mobile Data
-            currentMobileData = mobileData;
-
-            // Page content direction
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Label_InternationalnoCode.Margin = new Thickness(0);
+            }
+            else
+            {
+                Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
+            }
+            //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
             if (App.IsArabic)
             {
@@ -93,6 +97,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             if (callAPIFlag)
             {
                 bool PWDSuccess = await viewModel.VarifyMobileNumber();
+                //bool PWDSuccess = await APIManager.VarifyMobileNumber(viewModel.CurrentMobileNumberEntryText, viewModel.NewMobileNumberEntryText);
                 System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", PWDSuccess);
 
                 if (PWDSuccess)
@@ -100,7 +105,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     UpdateMobile.IsVisible = false;
                     VerificationView.IsVisible = true;
                     viewModel.BtnEnableFlag = false;
-                    btn.Text = AppResources.Verify;
+                    btn.Text = AppResources.Verify ;
 
                     var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
                     viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
@@ -128,6 +133,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             }
 
             // * Navigating to Verification Screen
+            //TaxPayerProfile TPAPIResponse = await APIManager.VarifyOTPToUpdateMobileNumber(viewModel.EnteredOTP, viewModel.CurrentMobileNumberEntryText, viewModel.NewMobileNumberEntryText);
+
             TaxPayerProfile TPAPIResponse = await viewModel.VarifyOTPToUpdateMobileNumber();
             System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
 
@@ -146,6 +153,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             if (viewModel.countDownSeconds == 0)
             {
                 viewModel.BtnEnableFlag = false;
+                //bool PWDSuccess = await APIManager.VarifyMobileNumber(viewModel.CurrentMobileNumberEntryText, viewModel.NewMobileNumberEntryText);
                 bool PWDSuccess = await viewModel.VarifyMobileNumber();
                 System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", PWDSuccess);
 
@@ -199,28 +207,69 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            if (App.TP.Mobile.Length < 12)
-                viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
+            // Show existing mobile
+            //var resultedNumber = Regex.Match(App.TP.Mobile, UtilityManager.MobileNumberRegX);
+            //viewModel.CurrentMobileNumberEntryText = resultedNumber.ToString();
+            //var result = "+" + App.TP.Mobile.Remove(0, 2);
+            //viewModel.CurrentMobileNumberEntryText = result.ToString();
+
+            // viewModel.CurrentMobileNumberEntryText = App.TP.Mobile;
+            //if (App.TP.Mobile.Length < 12)
+            //{
+            //    viewModel.CurrentMobileNumberEntryText="+966"+ App.TP.Mobile
+
+            //}
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Label_InternationalnoCode.Margin = new Thickness(0);
+            }
             else
+            {
+                Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
+            }
+            if (App.TP.Mobile.Length < 12)
+            {
+                viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
+            }
+            else
+            {
+
                 viewModel.CurrentMobileNumberEntryText = "+" + App.TP.Mobile.Remove(0, 2);
 
+            }
+            //IsLoading = false;
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
-                Label_InternationalnoCode.Text = arg;
+                //if (App.IsArabic)
+                //{
+                //    ArIntnlCodes.Text = arg;
+                //}
+                //else
+                //{
+                //    IntnlCodes.Text = arg;
+                //}
+               // Label_InternationalnoCode.Text = arg;
                 viewModel.CountryCode = arg;
-            });
 
+                //viewModel.TxtCountryCode = arg;
+            });
             RefreshControlsData();
+            try
+            {
+                mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
 
-            // * Worka around - Need to find a solution
-            MessagingCenter.Unsubscribe<InternationalCodeSearchPage, string>(this, "SelectedItem");
-
-            if (viewModel.countDownSeconds != 0)
+            // * Worka aroung - Need to find a solution
+            if(viewModel.countDownSeconds != 0 )
                 viewModel.otpTimer.Stop();
         }
 
@@ -238,7 +287,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.IsLoading = false;
 
             viewModel.NewMobileNumberEntryText = string.Empty;
-            btn.Text = AppResources.TPUpdate;
+            btn.Text =AppResources.TPUpdate ;
         }
 
         private void Mobile_entry_Unfocused(object sender, FocusEventArgs e)
@@ -274,12 +323,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    Frm_mobile.HasError = true;
+                    //Frm_mobile.HasError = true;
                     viewModel.NewMobileNumberEntryText = string.Empty;
                 }
                 else
                 {
-                    Frm_mobile.HasError = false;
+                    //Frm_mobile.HasError = false;
                 }
             }
             else
@@ -292,7 +341,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(currentMobileData));
+            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
         }
     }
-}
+    }
