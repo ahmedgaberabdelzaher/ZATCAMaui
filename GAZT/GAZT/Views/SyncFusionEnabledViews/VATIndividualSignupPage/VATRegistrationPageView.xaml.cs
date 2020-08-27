@@ -2415,7 +2415,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         if (viewModel.VATRegistrationDetailsData.d.Gpartz.Equals(EntryTINNumber.Text))
                         {
                             /// have to change the message
-                            Messages.Append(AppResources.VATRPleaseEnterValidTin);
+                            Messages.Append(AppResources.SameTincantbeaddedasfinancialrepresentative);
 
                             if (Messages.Length > 0)
                             {
