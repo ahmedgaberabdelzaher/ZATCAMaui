@@ -25,7 +25,7 @@
             <custom:CustomLabel Text="{Binding successCaptionLbl}"
                                 HorizontalOptions="Center"
                                 Style="{StaticResource CaptionLabelWhite}"/>
-            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TPGoToProfile}"
+            <custom:CustomLabel Text="{Binding ButtonLabelText}"
                                 VerticalOptions="EndAndExpand"
                                 TextColor="{StaticResource NewDullOrangeColor}"
                                 Style="{StaticResource ButtonLabelBlackBold}"

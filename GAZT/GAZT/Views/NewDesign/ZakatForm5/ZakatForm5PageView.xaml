@@ -2466,7 +2466,34 @@
                                     </StackLayout>
 
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+
+                                    <StackLayout x:Name="RefrenceNumberInArabic" HorizontalOptions="FillAndExpand"  >
+                                    <Label Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}" />
+                                                <Span Text=" "/>
+                                                 <Span Text="{Binding ReferenceNumber}"/>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                 </StackLayout>
+
+                                    <StackLayout x:Name="RefrenceNumberInEnglish" HorizontalOptions="FillAndExpand"  >
+                                    <Label Style="{StaticResource ValueLabelBlack}" StyleId="LTRLabelText" HorizontalOptions="Start" HorizontalTextAlignment="Start" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}" />
+                                                <Span Text=" "/>
+                                                                                     <Span Text="{Binding ReferenceNumber}"/>
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                 </StackLayout>
+
+                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}" />
@@ -2474,7 +2501,7 @@
                                                 <Span Text="{Binding ReferenceNumber}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </custom:CustomLabel>-->
 
                                     <!--<StackLayout IsVisible="fal" Orientation="Horizontal" x:Name="RefrenceNumberArabic" FlowDirection="RightToLeft">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5RecivedReturn}" Style="{StaticResource ValueLabelGrey}"/>

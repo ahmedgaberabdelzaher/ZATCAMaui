@@ -541,10 +541,8 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-
                                  <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return">
-
+                                    <Image Source="refund">
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATRefundRequestDashboardTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
@@ -553,6 +551,15 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
+                                 <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="installment_plan">
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ZakatInstalmentPlan_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return"> </Image>
@@ -593,7 +600,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsVatRegistrationTileVisible}"/>
                               <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return">
+                                    <Image Source="menu_bill">
 
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATDeregistration}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -603,15 +610,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return">
-                                    </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ZakatInstalmentPlan_Tapped" />
-                                    </StackLayout.GestureRecognizers>
-                                </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                              
 
                                 <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">

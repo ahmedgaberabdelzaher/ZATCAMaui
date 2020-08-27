@@ -10,7 +10,7 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:custom2="clr-namespace:EGAZT"
-    x:Class="EGAZT.Views.NewDesign.ContractRelease.ContractReleaseInfoPopup">
+    x:Class="EGAZT.Views.NewDesign.ContractReleasePages.ContractReleaseInfoPopup">
 
     <ContentPage.Resources>
         <ResourceDictionary>

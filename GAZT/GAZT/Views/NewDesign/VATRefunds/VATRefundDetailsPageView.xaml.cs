@@ -158,7 +158,14 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 {
                     try
                     {
+                        await Task.Run(() =>
+                        {
+                            App.DisplayProgressView();
+                        });
+
                         await viewModel.OnVoidBtnClicked();
+
+                       
 
                         var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                         Navigation.RemovePage(firstPageToRemove);
@@ -200,7 +207,17 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 {
                     try
                     {
+                        await Task.Run(() =>
+                        {
+                            App.DisplayProgressView();
+                        });
+
                         await viewModel.OnVoidBtnClicked();
+
+                        await Task.Run(() =>
+                        {
+                            App.HideProgressView();
+                        });
 
                         var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                         Navigation.RemovePage(firstPageToRemove);

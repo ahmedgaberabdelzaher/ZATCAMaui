@@ -31,7 +31,6 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -74,7 +73,7 @@
                         </Image>
                         <Image Grid.Row="0" Grid.Column="2" Source="close" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseBtnTapped}" ></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.voidTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
@@ -85,7 +84,9 @@
     </ContentPage.ControlTemplate>
 
      <ContentPage.Content>
-       <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <Grid>
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
            <Grid>
         
               <Grid IsVisible="{Binding IsReasonViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -115,8 +116,8 @@
                     <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
                 </Grid>
       
-                       <custom:CustomLabel Grid.Row="1" Text="{x:Static ResourceManager:AppResources.VatDeregRequestType}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />   
+                 <custom:CustomLabel Grid.Row="1" Text="{x:Static ResourceManager:AppResources.VatDeregRequestType}" HorizontalOptions="StartAndExpand"
+                                               Style="{StaticResource CaptionLabelGrey}" />   
               <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
@@ -190,8 +191,9 @@
                         
                 </Grid>
                      
-    <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
-      <StackLayout.Triggers> <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
+                    <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                             <StackLayout.Triggers>
+                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
@@ -292,10 +294,8 @@
                             </StackLayout >
               </StackLayout>
             </StackLayout>
-
                   <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,10"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
-
             </Grid>
  <Grid IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
@@ -323,17 +323,15 @@
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
 
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-
-                </Grid>
-                             <listView:SfListView x:Name="outletDocumentOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding OutletDocumentOptions}" SelectedItem="{Binding SelectedDocumentOption, Mode=TwoWay}"  SelectionMode="Single"
+                       <listView:SfListView Grid.Row="3" Grid.Column="0" x:Name="outletDocumentOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding AttachmentTypes}" SelectedItem="{Binding SelectedDocumentOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDocumentOptionsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
 					                <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                                 <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                <Label Text="{Binding ActiveOutletDocumentOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                <Label Text="{Binding Txt50}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
                                                                     Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
                                                 </Label>
                                             </Grid>
@@ -345,7 +343,7 @@
 					                <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
                                                 <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                <Label Text="{Binding ActiveOutletDocumentOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                <Label Text="{Binding Txt50}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
                                                                     Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
                                                 </Label>
                                             </Grid> 
@@ -357,6 +355,8 @@
                             <listView:GridLayout x:Name="GridLayout1" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                         </listView:SfListView.LayoutManager>
                  </listView:SfListView>
+                </Grid>
+               
                 <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding VatAttachmentsList}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" >
                         <listView:SfListView.ItemTemplate>
@@ -389,7 +389,7 @@
                         </listView:SfListView.ItemTemplate>
                  </listView:SfListView>
                        <StackLayout Grid.Row="4" Spacing="2" Grid.ColumnSpan="2">
-                  <Label Text="{x:Static custom2:AppResources.VRNewAttachment}"    Style="{StaticResource CaptionLabelGrey}"/>
+                  <Label Text="{x:Static custom2:AppResources.VATRNewAttachment}"    Style="{StaticResource CaptionLabelGrey}"/>
                                                     <inputLayout:SfTextInputLayout  Margin="10,-6,0,-6" 
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
@@ -468,7 +468,7 @@
                       
 
                     </StackLayout>
-                                <StackLayout Orientation="Horizontal" Grid.Row="1" HorizontalOptions="CenterAndExpand">
+                                <StackLayout x:Name="IDNumberField" Orientation="Horizontal" Grid.Row="1" HorizontalOptions="CenterAndExpand">
                                                                      <StackLayout Grid.Row="1" Grid.Column="0" >
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
@@ -481,7 +481,7 @@
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
-                                                 <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
+                            <StackLayout IsVisible="{Binding IsDOBEditorVisible}" Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
                                 <custom:CustomLabel Margin="30,0,0,0" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="Start"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="30,0,0,10"  Style="{StaticResource GreyBorderFrame}">
@@ -716,6 +716,28 @@
            </Grid>
             
        </ScrollView>
+            
+             <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#D99A29"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+       
 
     </ContentPage.Content>
 </ContentPage>

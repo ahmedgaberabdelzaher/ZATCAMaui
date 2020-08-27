@@ -98,7 +98,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             });
 
             AddOutletDecisionOptions();
-           
+
 
 
             RequestInstalmentButtonTapped = new Command(this.RequestInstalmentButtonClicked);
@@ -401,7 +401,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        
+
 
         private List<VtiaIadtSetResult> _requestForScheduleDetails;
         public List<VtiaIadtSetResult> RequestForScheduleDetails
@@ -553,7 +553,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             try
             {
 
-               // _navigationService.NavigateTo(App.VatInstalmentPlanSuccessPage);
+                // _navigationService.NavigateTo(App.VatInstalmentPlanSuccessPage);
 
                 _navigationService.NavigateTo(App.VatInstalmentPlanPageView);
             }
@@ -594,8 +594,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             if (ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results != null)
             {
-                RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results.Where(w => w.FbtText.Contains("VAT Instalment Plan")).ToList();
-
+                RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results.Where(w => w.Fbtyp.Contains("VTIA")).ToList();
                 if (RequestForInstalmentPlanList.Count > 0)
                 {
                     NumberOfInstalmentPlans = RequestForInstalmentPlanList.Count + " " + AppResources.ZakatInstalmetPlan;
@@ -721,7 +720,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             GetVATInstalmentPlanDetails(index);
 
-         //  PopulateSummaryReasonData();
+            //  PopulateSummaryReasonData();
 
         }
 
@@ -797,7 +796,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         {
 
                             var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", selectedItemFormID.d.Fbguid);
-                            PopulateSummaryReasonData(itemDetails);
+
+                            if (itemDetails != null && itemDetails.d != null)
+                            {
+                                PopulateSummaryReasonData(itemDetails);
+                            }
+
+
                         }
 
 
@@ -877,13 +882,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
 
                     IsLoading = true;
-                   
+
                     try
                     {
 
 
                         var getFormID = await WebServiceManager.GAZTGetVATInstalmentDetailsInputData(App.LoginDataRetrieved.FbGuid, "", App.LoginDataRetrieved.TIN, "E0045");
-                       
+
 
                         if (getFormID.d != null)
                         {
@@ -891,9 +896,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
                             DisplayInstallmentAgreementSchedulePlan itemDetails = await WebServiceManager.GetDisplayInstallmentAgreementSchedulePlan(formGuid: FormGuidValue);
-                           // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
+                            // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
 
-                            if(itemDetails != null && itemDetails.d != null) {
+                            if (itemDetails != null && itemDetails.d != null)
+                            {
 
                                 RequestForScheduleList = itemDetails.d.VtiaIahdSet.Results;
                             }
@@ -986,10 +992,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
                         var itemDetails = await WebServiceManager.GetDisplayInstallmentScheduleDetails(selectedItem.Opbel, FormGuidValue, "");
-                            // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
+                        // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
 
-                            if (itemDetails != null && itemDetails.d != null)
-                            {
+                        if (itemDetails != null && itemDetails.d != null)
+                        {
 
                             RequestForScheduleDetails = itemDetails.d.VtiaIadtSet.Results;
                             // RequestForScheduleList = itemDetails.d.VtiaIahdSet.Results;
@@ -1033,10 +1039,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                             ScheduleMonthlyInstalment = itemDetails.d.TotalInstall;
                             ScheduleTotalAmountPaid = itemDetails.d.TotalAmntPaid;
 
-                            }
+                        }
 
 
-                        
+
 
 
                         PopToRootPage();

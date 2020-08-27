@@ -1,8 +1,15 @@
-﻿using EGAZT.Models.EnumModels;
+﻿using EGAZT.Models;
+using EGAZT.Models.EnumModels;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using GAZT.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -12,6 +19,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public int DefaultMonth;
+        public DateTime dateTime { get; set; }
+        public VATSignUpData vATSignUpData { get; set; }
+        public VATSignUpCaseId SignUpCaseIdD { get; set; }
         #region Variable
         private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
         public EstablishmentSignUPTabEnum currentTab
@@ -25,6 +36,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged(nameof(CurrentIndex));
             }
         }
+
+        public void setCurrentTab()
+        {
+            currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
+        }
+
+
         private int _currenrIndex = 1;
         public int CurrentIndex
         {
@@ -52,9 +70,72 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #region Commands
         public ICommand OnNextButtonClick { get; private set; }
         public ICommand OnBackButtonClick { get; private set; }
+        public ICommand OnResendOTPClicked { get; set; }
         #endregion
 
         #region Propetry
+
+        private string _pkrDBOPrev = string.Empty;
+        public string PkrDBOPrev
+        {
+            get
+            {
+                return _pkrDBOPrev;
+            }
+            set
+            {
+                _pkrDBOPrev = value;
+                RaisePropertyChanged("PkrDBOPrev");
+            }
+        }
+
+        private string _pkrDBO = string.Empty;
+        public string PkrDBO
+        {
+            get
+            {
+                return _pkrDBO;
+            }
+            set
+            {
+                _pkrDBO = value;
+                RaisePropertyChanged("PkrDBO");
+            }
+        }
+        private bool _isDeclarationCheckEnabled = false;
+        public bool IsDeclarationCheckEnabled
+        {
+            get
+            {
+                return _isDeclarationCheckEnabled;
+            }
+            set
+            {
+                _isDeclarationCheckEnabled = value;
+                RaisePropertyChanged("IsDeclarationCheckEnabled");
+            }
+        }
+
+        private bool _isMainButtonEnabled = false;
+        public bool IsMainButtonEnabled
+        {
+            get
+            {
+                return _isMainButtonEnabled;
+            }
+            set
+            {
+                if (value == true)
+                {
+                }
+                _isMainButtonEnabled = value;
+                //OnStepButtonClicked.ChangeCanExecute();
+                RaisePropertyChanged("IsMainButtonEnabled");
+            }
+        }
+
+
+
         public string _PageTitle = AppResources.ZVatTermsAndConditions;
         public string PageTitle
         {
@@ -152,6 +233,759 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("ImgBackgroundLicenseNubmer");
             }
         }
+
+        // *Email OTP Verification Properties
+        private string _oTPFirstDigit;
+        public string OTPFirstDigit
+        {
+            get
+            {
+                return _oTPFirstDigit;
+            }
+            set
+            {
+                _oTPFirstDigit = value;
+                if (!string.IsNullOrEmpty(OTPFirstDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPFirstDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPFirstDigit = string.Empty;
+                    }
+                }
+
+                RaisePropertyChanged("OTPFirstDigit");
+            }
+        }
+
+        private string _OTPSecondDigit;
+        public string OTPSecondDigit
+        {
+            get
+            {
+                return _OTPSecondDigit;
+            }
+            set
+            {
+                _OTPSecondDigit = value;
+                if (!string.IsNullOrEmpty(OTPSecondDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPSecondDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPSecondDigit = string.Empty;
+                    }
+                }
+                RaisePropertyChanged("OTPSecondDigit");
+            }
+        }
+
+        private string _OTPThirdDigit;
+        public string OTPThirdDigit
+        {
+            get
+            {
+                return _OTPThirdDigit;
+            }
+            set
+            {
+                _OTPThirdDigit = value;
+                if (!string.IsNullOrEmpty(OTPThirdDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPThirdDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPThirdDigit = string.Empty;
+                    }
+                }
+                RaisePropertyChanged("OTPThirdDigit");
+            }
+        }
+
+        private string _OTPFourthDigit;
+        public string OTPFourthDigit
+        {
+            get
+            {
+                return _OTPFourthDigit;
+            }
+            set
+            {
+                _OTPFourthDigit = value;
+                if (!string.IsNullOrEmpty(OTPFourthDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(OTPFourthDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        OTPFourthDigit = string.Empty;
+                    }
+                }
+                RaisePropertyChanged("OTPFourthDigit");
+            }
+        }
+        // * End
+        // *Mobile OTP Verification Properties
+        private string _mOTPFirstDigit;
+        public string MOTPFirstDigit
+        {
+            get
+            {
+                return _mOTPFirstDigit;
+            }
+            set
+            {
+                _mOTPFirstDigit = value;
+                if (!string.IsNullOrEmpty(MOTPFirstDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(MOTPFirstDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        MOTPFirstDigit = string.Empty;
+                    }
+                }
+
+                RaisePropertyChanged("MOTPFirstDigit");
+            }
+        }
+
+        private string _mOTPSecondDigit;
+        public string MOTPSecondDigit
+        {
+            get
+            {
+                return _mOTPSecondDigit;
+            }
+            set
+            {
+                _mOTPSecondDigit = value;
+                if (!string.IsNullOrEmpty(MOTPSecondDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(MOTPSecondDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        MOTPSecondDigit = string.Empty;
+                    }
+                }
+                RaisePropertyChanged("MOTPSecondDigit");
+            }
+        }
+
+        private string _mOTPThirdDigit;
+        public string MOTPThirdDigit
+        {
+            get
+            {
+                return _mOTPThirdDigit;
+            }
+            set
+            {
+                _mOTPThirdDigit = value;
+                if (!string.IsNullOrEmpty(MOTPThirdDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(MOTPThirdDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        MOTPThirdDigit = string.Empty;
+                    }
+                }
+                RaisePropertyChanged("MOTPThirdDigit");
+            }
+        }
+
+        private string _mOTPFourthDigit;
+        public string MOTPFourthDigit
+        {
+            get
+            {
+                return _mOTPFourthDigit;
+            }
+            set
+            {
+                _mOTPFourthDigit = value;
+                if (!string.IsNullOrEmpty(MOTPFourthDigit))
+                {
+                    bool isNumberEntered = CheckOnlyNumber(MOTPFourthDigit[0]);
+                    if (!isNumberEntered)
+                    {
+                        MOTPFourthDigit = string.Empty;
+                    }
+                }
+                RaisePropertyChanged("MOTPFourthDigit");
+            }
+        }
+        // * End
+
+        //timer
+        private string _lblCountDownTimer = string.Empty;
+        public string LblCountDownTimer
+        {
+            get
+            {
+                return _lblCountDownTimer;
+            }
+            set
+            {
+                _lblCountDownTimer = value;
+                RaisePropertyChanged("LblCountDownTimer");
+            }
+        }
+        private bool _isResendOTPEnabled = false;
+        public bool IsResendOTPEnabled
+        {
+            get
+            {
+                return _isResendOTPEnabled;
+            }
+            set
+            {
+                _isResendOTPEnabled = value;
+                //if (_isResendOTPEnabled)
+                //{
+                //    ResendOtpButtonColor = Color.DarkGreen;
+                //}
+                //else
+                //{
+                //    ResendOtpButtonColor = Color.FromHex("#999999");
+                //}
+                RaisePropertyChanged("IsResendOTPEnabled");
+            }
+        }
+        private bool _isTimerCancel = false;
+        public bool IsTimerCancel
+        {
+            get
+            {
+                return _isTimerCancel;
+            }
+            set
+            {
+                _isTimerCancel = value;
+                RaisePropertyChanged("IsTimerCancel");
+            }
+        }
+        //end timer
+
+        private bool _isPasswordEncripted = true;
+        public bool IsPasswordEncripted
+        {
+            get
+            {
+                return _isPasswordEncripted;
+            }
+            set
+            {
+                _isPasswordEncripted = value;
+                RaisePropertyChanged("IsPasswordEncripted");
+            }
+        }
+        private bool _isConfirmPasswordEncripted = true;
+        public bool IsConfirmPasswordEncripted
+        {
+            get
+            {
+                return _isConfirmPasswordEncripted;
+            }
+            set
+            {
+                _isConfirmPasswordEncripted = value;
+                RaisePropertyChanged("IsConfirmPasswordEncripted");
+            }
+        }
+        private string _DOB = string.Empty;
+        public string DOB
+        {
+            get
+            {
+                return _DOB;
+            }
+            set
+            {
+                _DOB = value;
+                RaisePropertyChanged("DOB");
+            }
+        }
+
+        private SignUpUsing _selectedSignUpUsing = null;
+        public SignUpUsing SelectedSignUpUsing
+        {
+            get
+            {
+                return _selectedSignUpUsing;
+            }
+            set
+            {
+                _selectedSignUpUsing = value;
+                if (_selectedSignUpUsing != null)
+                {
+                    try
+                    {
+                        if (_selectedSignUpUsing.ID == 1)
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedSignUpUsing.ID == 2)
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedSignUpUsing.ID == 3)
+                        {
+                            MaxLengthID = 15;
+                        }
+                        TxtIDType = _selectedSignUpUsing.SUType;
+                    }
+                    catch (Exception Ex)
+                    {
+                    }
+                }
+                RaisePropertyChanged("SelectedSignUpUsing");
+            }
+        }
+
+        private string _txtName = string.Empty;
+        public string TxtName
+        {
+            get
+            {
+                return _txtName;
+            }
+            set
+            {
+                _txtName = value;
+                RaisePropertyChanged("TxtName");
+            }
+        }
+
+        private SignUpIdType _selectedIdType = null;
+        public SignUpIdType SelectedIdType
+        {
+            get
+            {
+                return _selectedIdType;
+            }
+            set
+            {
+                _selectedIdType = value;
+                if (_selectedIdType != null)
+                {
+                    try
+                    {
+                        if (_selectedIdType.ID.Equals("ZS0015"))
+                        {
+                            MaxLengthID = 10;
+                            SetStateListVisibility = true;
+                            SetCityListVisibility = true;
+                            SetCountryVisibility = true;
+                            SetGCCCountryVisibility = false;
+                            SetEnabilityToCountryList = false;
+                        }
+                        else if (_selectedIdType.ID.Equals("ZS0017"))
+                        {
+                            MaxLengthID = 10;
+                            SetStateListVisibility = true;
+                            SetCityListVisibility = true;
+                            SetCountryVisibility = true;
+                            SetGCCCountryVisibility = false;
+                            SetEnabilityToCountryList = false;
+                        }
+                        else if (_selectedIdType.ID.Equals("ZS0018"))
+                        {
+                            MaxLengthID = 15;
+                            SetStateListVisibility = false;
+                            SetCityListVisibility = false;
+                            SetCountryVisibility = false;
+                            SetGCCCountryVisibility = true;
+                        }
+                        TxtIDType = _selectedIdType.Name;
+                    }
+                    catch (Exception Ex)
+                    {
+                    }
+                }
+                RaisePropertyChanged("SelectedIdType");
+            }
+        }
+        private int _maxLengthID = 10;
+        public int MaxLengthID
+        {
+            get
+            {
+                return _maxLengthID;
+            }
+            set
+            {
+                _maxLengthID = value;
+                RaisePropertyChanged("MaxLengthID");
+            }
+        }
+        public bool _setStateListVisibility = true;
+        public bool SetStateListVisibility
+        {
+            get
+            {
+                return _setStateListVisibility;
+            }
+            set
+            {
+                _setStateListVisibility = value;
+                RaisePropertyChanged("SetStateListVisibility");
+            }
+        }
+        public bool _setCityListVisibility = true;
+        public bool SetCityListVisibility
+        {
+            get
+            {
+                return _setCityListVisibility;
+            }
+            set
+            {
+                _setCityListVisibility = value;
+                RaisePropertyChanged("SetCityListVisibility");
+            }
+        }
+        public bool _setCountryVisibility = true;
+        public bool SetCountryVisibility
+        {
+            get
+            {
+                return _setCountryVisibility;
+            }
+            set
+            {
+                _setCountryVisibility = value;
+                RaisePropertyChanged("SetCountryVisibility");
+            }
+        }
+        public bool _setGCCCountryVisibility = false;
+        public bool SetGCCCountryVisibility
+        {
+            get
+            {
+                return _setGCCCountryVisibility;
+            }
+            set
+            {
+                _setGCCCountryVisibility = value;
+                RaisePropertyChanged("SetGCCCountryVisibility");
+            }
+        }
+        private string _txtIDType = string.Empty;
+        public string TxtIDType
+        {
+            get
+            {
+                return _txtIDType;
+            }
+            set
+            {
+                _txtIDType = value;
+                RaisePropertyChanged("TxtIDType");
+            }
+        }
+        private VATSignUpGCC _selectedGCCCountry = null;
+        public VATSignUpGCC SelectedGCCCountry
+        {
+            get
+            {
+                return _selectedGCCCountry;
+            }
+            set
+            {
+                _selectedGCCCountry = value;
+
+                RaisePropertyChanged("SelectedGCCCountry");
+            }
+        }
+        public int _gelectedGCCCountryIndex;
+        public int SelectedGCCCountryIndex
+        {
+            get
+            {
+                return _gelectedGCCCountryIndex;
+            }
+            set
+            {
+                _gelectedGCCCountryIndex = value;
+                RaisePropertyChanged("SelectedGCCCountryIndex");
+            }
+        }
+        public IList<VATSignUPCityResults> _cityList;
+        public IList<VATSignUPCityResults> CityList
+        {
+            get
+            {
+                return _cityList;
+            }
+            set
+            {
+                _cityList = value;
+                RaisePropertyChanged("CityList");
+            }
+        }
+        public bool _setEnabilityToCountryList = false;
+        public bool SetEnabilityToCountryList
+        {
+            get
+            {
+                return _setEnabilityToCountryList;
+            }
+            set
+            {
+                _setEnabilityToCountryList = value;
+                RaisePropertyChanged("SetEnabilityToCountryList");
+            }
+        }
+        private VATSignUpStateResults _selectedRegion = null;
+        public VATSignUpStateResults SelectedRegion
+        {
+            get
+            {
+                return _selectedRegion;
+            }
+            set
+            {
+                _selectedRegion = value;
+                if (_selectedRegion != null)
+                {
+                    SetCityList();
+                }
+
+                RaisePropertyChanged("SelectedRegion");
+            }
+        }
+        private VATSignUPCityResults _selectedCity = null;
+        public VATSignUPCityResults SelectedCity
+        {
+            get
+            {
+                return _selectedCity;
+            }
+            set
+            {
+                _selectedCity = value;
+
+                RaisePropertyChanged("SelectedCity");
+            }
+        }
+
+        public int _selectedCityIndex;
+        public int SelectedCityIndex
+        {
+            get
+            {
+                return _selectedCityIndex;
+            }
+            set
+            {
+                _selectedCityIndex = value;
+                RaisePropertyChanged("SelectedCityIndex");
+            }
+        }
+        private string _txtCountryCode = "+966";
+        public string TxtCountryCode
+        {
+            get
+            {
+                return _txtCountryCode;
+            }
+            set
+            {
+
+                _txtCountryCode = value;
+                RaisePropertyChanged("TxtCountryCode");
+            }
+        }
+        public string _idNumber;
+        public string IdNumber
+        {
+            get
+            {
+                return _idNumber;
+            }
+            set
+            {
+                _idNumber = value;
+                RaisePropertyChanged("IdNumber");
+            }
+        }
+        private string _name = string.Empty;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged("Name");
+            }
+        }
+        private string _mobileCountryCode = string.Empty;
+        public string MobileCountryCode
+        {
+            get
+            {
+                return _mobileCountryCode;
+            }
+            set
+            {
+                _mobileCountryCode = value;
+                RaisePropertyChanged("MobileCountryCode");
+            }
+        }
+        public string _buildingNumber = "";
+        public string BuildingNumber
+        {
+            get
+            {
+                return _buildingNumber;
+            }
+            set
+            {
+                _buildingNumber = value;
+                RaisePropertyChanged("BuildingNumber");
+            }
+        }
+        public string _unitNumber = "";
+        public string UnitNumber
+        {
+            get
+            {
+                return _unitNumber;
+            }
+            set
+            {
+                _unitNumber = value;
+                RaisePropertyChanged("UnitNumber");
+            }
+        }
+        public string _neighborhood = "";
+        public string Neighborhood
+        {
+            get
+            {
+                return _neighborhood;
+            }
+            set
+            {
+                _neighborhood = value;
+                RaisePropertyChanged("Neighborhood");
+            }
+        }
+        private string _email = string.Empty;
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                _email = value;
+                RaisePropertyChanged("Email");
+            }
+        }
+        private string _mobileNumber = string.Empty;
+        public string MobileNumber
+        {
+            get
+            {
+                return _mobileNumber;
+            }
+            set
+            {
+                _mobileNumber = value;
+                if (_mobileNumber != null && _mobileNumber.Length > 1)
+                {
+                    if (_mobileNumber.Length >= 9)
+                    {
+                        string mystring = _mobileNumber.Substring(_mobileNumber.Length - 4);
+                        EncriptedMobileNumber = "xxxxxx" + mystring;
+
+                    }
+                }
+                RaisePropertyChanged("MobileNumber");
+            }
+        }
+        private string _encriptedMobileNumber = string.Empty;
+        public string EncriptedMobileNumber
+        {
+            get
+            {
+                return _encriptedMobileNumber;
+            }
+            set
+            {
+                _encriptedMobileNumber = value;
+                RaisePropertyChanged("EncriptedMobileNumber");
+            }
+        }
+        private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
+        public Color ButtonDisableColor
+        {
+            get
+            {
+                return _buttonDisableColor;
+            }
+            set
+            {
+                _buttonDisableColor = value;
+                RaisePropertyChanged("ButtonDisableColor");
+            }
+        }
+        private Color _verifybuttonDisableColor = Color.FromHex("#d49504");
+        public Color VerifyButtonDisableColor
+        {
+            get
+            {
+                return _verifybuttonDisableColor;
+            }
+            set
+            {
+                _verifybuttonDisableColor = value;
+                RaisePropertyChanged("VerifyButtonDisableColor");
+            }
+        }
+        private ObservableCollection<object> _todayDate;
+        public ObservableCollection<object> TodayDate
+        {
+            get
+            {
+                return _todayDate;
+            }
+            set
+            {
+                _todayDate = value;
+                RaisePropertyChanged("TodayDate");
+            }
+        }
+        private string _newPassword = string.Empty;
+        public string NewPassword
+        {
+            get
+            {
+                return _newPassword;
+            }
+            set
+            {
+                _newPassword = value;
+                RaisePropertyChanged("NewPassword");
+            }
+        }
+        private string _confirmPassword = string.Empty;
+        public string ConfirmPassword
+        {
+            get
+            {
+                return _confirmPassword;
+            }
+            set
+            {
+                _confirmPassword = value;
+                RaisePropertyChanged("ConfirmPassword");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -170,19 +1004,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
             OnNextButtonClick = new Command(() => navigateToNext());
             OnBackButtonClick = new Command(() => navigateBack());
+            OnResendOTPClicked = new Command(() => ResendOTPAsync());
         }
         #endregion
 
         #region Methods
+
+
+
         private void navigateToNext()
         {
             switch (currentTab)
             {
                 case EstablishmentSignUPTabEnum.TermsAndConditions:
-                    PageTitle = AppResources.ZZZIndividualInformation;
-                    BodyText = AppResources.ZZZZCompletethebelowdetails;
-                    NextBTN = AppResources.ZZZZContinue;
-                    currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
+                        PageTitle = AppResources.ZZZIndividualInformation;
+                        BodyText = AppResources.ZZZZCompletethebelowdetails;
+                        NextBTN = AppResources.ZZZZContinue;
+                        currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
                     break;
 
                 case EstablishmentSignUPTabEnum.IndividualInformation:
@@ -203,6 +1041,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     BodyText = AppResources.ZZPleaseenteraccessCode;
                     NextBTN = AppResources.ZZZZContinue;
                     currentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                    StartTimer(0, 2, 0);
                     break;
 
                 //case EstablishmentSignUPTabEnum.EmailVerification:
@@ -222,7 +1061,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-
+        
         private void navigateBack()
         {
             switch (currentTab)
@@ -246,6 +1085,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     BodyText = AppResources.ZZZZCompletethebelowdetails;
                     //NextBTN = AppResources.Confirm;
                     currentTab = EstablishmentSignUPTabEnum.ContactInformation;
+                    clearVerificationCodeFrom();
                     break;
 
                 case EstablishmentSignUPTabEnum.ContactInformation:
@@ -268,6 +1108,338 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
                     break;
             }
+        }
+
+        public void ClearData()
+        {
+            SetDefaultDate();
+            VerifyButtonDisableColor = Color.FromHex("#d49504");
+            //IsVerifyOTPEnabled = true;
+            IsResendOTPEnabled = false;
+            ButtonDisableColor = Color.Gray;
+            IdNumber = string.Empty;
+            Name = string.Empty;
+            DOB = string.Empty;
+            Email = string.Empty;
+            //ConfirmEmail = string.Empty;
+            MobileNumber = string.Empty;
+            //Password = string.Empty;
+            //ConfirmEmail = string.Empty;
+            //CountryName = string.Empty;
+            //CityName = string.Empty;
+            //Region = string.Empty;
+            Neighborhood = string.Empty;
+            BuildingNumber = string.Empty;
+            UnitNumber = string.Empty;
+            //PostalCode = string.Empty;
+            //BackArrowVisible = true;
+            //ConfirmPassword = string.Empty;
+            //DOBddyymm = string.Empty;
+
+        }
+
+        private void clearVerificationCodeFrom()
+        {
+            OTPFirstDigit = string.Empty;
+            OTPSecondDigit = string.Empty;
+            OTPThirdDigit = string.Empty;
+            OTPFourthDigit = string.Empty;
+
+            MOTPFirstDigit = string.Empty;
+            MOTPSecondDigit = string.Empty;
+            MOTPThirdDigit = string.Empty;
+            MOTPFourthDigit = string.Empty;
+
+            NewPassword = string.Empty;
+            ConfirmPassword = string.Empty;
+        }
+
+        public async Task SetDefaultDate()
+        {
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            //Select today dates
+
+            if (DateTime.Now.Date.Day < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Day);
+            else
+                todaycollection.Add(DateTime.Now.Date.Day.ToString());
+            if (DateTime.Now.Date.Month < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Month);
+            else
+                todaycollection.Add(DateTime.Now.Date.Month.ToString());
+            todaycollection.Add(DateTime.Now.Date.Year.ToString());
+            TodayDate = todaycollection;
+            DefaultMonth = DateTime.Now.Date.Month;
+        }
+
+        private bool CheckOnlyNumber(char letter)
+        {
+            if ((letter >= 48 && letter <= 57))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void StartTimer(int h, int m, int sec)
+        {
+            int hour = h;
+            int mins = m;
+            int counter = sec;
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                if (IsTimerCancel)
+                {
+                    return false;
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        counter = counter - 1;
+                        if (counter < 0)
+                        {
+                            counter = 59;
+                            mins = mins - 1;
+                            if (mins < 0)
+                            {
+                                mins = 59;
+                                hour = hour - 1;
+                                if (hour < 0)
+                                {
+                                    hour = 0;
+                                    mins = 0;
+                                    counter = 0;
+                                }
+                            }
+                        }
+                        IsResendOTPEnabled = false;
+                        LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
+                    });
+                    if (hour == 0 && mins == 0 && counter == 0)
+                    {
+                        IsResendOTPEnabled = true;
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            });
+
+        }
+
+        public void SetCityList()
+        {
+            try
+            {
+                if (!SelectedIdType.ID.Equals("ZS0018"))
+                {
+
+                    CityList = vATSignUpData.d.city_dropdownSet.results;
+                    string selectedRegioncode = SelectedRegion.Bland;
+
+                    CityList = vATSignUpData.d.city_dropdownSet.results.Where(x => x.Region == selectedRegioncode).ToList();
+                    if (CityList != null)
+                    {
+                        CityList = CityList.Where(c => c.Country == "SA").ToList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        private async Task ResendOTPAsync()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            if (IsResendOTPEnabled)
+            {
+                try
+                {
+                    string[] date1 = DOB.Split('/');
+                    //var dateTime = new DateTime(year, month, day, 10, 2, 0, DateTimeKind.Local);
+                    //var dateTimeOffset = new DateTimeOffset(dateTime);
+                    //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
+                    //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
+                    Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                    var Bdt = date1[0] + "-" + date1[1] + "-" + date1[2] + "T00:00:00";
+                    string _City = string.Empty;
+                    string _Region = string.Empty;
+                    string _Country = string.Empty;
+                    if (SelectedIdType != null)
+                    {
+                        if (SelectedIdType.ID.Equals("ZS0018"))
+                        {
+                            if (SelectedGCCCountry != null)
+                            {
+                                _Country = SelectedGCCCountry.CountryCode;
+
+                            }
+                        }
+                        else
+                        {
+                            _Country = "SA";
+                            _Region = SelectedRegion.Bland;
+                            _City = _selectedCity.CityCode;
+
+                        }
+                    }
+                    string newCountryCodeString = TxtCountryCode.Replace("+", "00");
+
+                    string submitValue;
+                    submitValue = "";
+                    VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
+                    {
+                        Type = "1",
+                        IdType = SelectedIdType.ID,//"ZS0018",
+                        Idnumber = IdNumber,
+                        Firstname = Name,
+                        Lastname = ".",
+                        PostCode1 = "00000",
+                        City1 = _City,
+                        //Country = SelectedCountry.Land1,
+                        //Region = SelectedRegion.Land1,
+                        Region = _Region,
+                        //Country = SelectedGCCCountry.CountryCode,
+                        Country = _Country,
+                        MobileCountry = MobileCountryCode,
+                        //Building = BuildingNumber,
+                        //Floor = "",
+                        //Street = "",
+                        Building = BuildingNumber,
+                        Floor = UnitNumber,
+                        Street = Neighborhood,
+                        Begda = "/Date(1593139376000)/",
+                        Endda = "/Date(253402251010000)/",
+                        Email = Email,
+                        Mobile = newCountryCodeString + MobileNumber,
+                        //  Mobile = "00966" + MobileNumber,
+                        CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                        Birthdt = Bdt,//"/Date(1577846576000)/",
+                                      //Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
+                        Password = "",
+                        SmsCode = "",
+                        EmailCode = "",
+                        Submit = submitValue,
+
+                    };
+
+                    string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
+                    if (response != null)
+                    {
+                        StartTimer(0, 2, 0);
+                        ButtonDisableColor = Color.FromHex("#9EA4A9");//9EA4A9
+                        IsResendOTPEnabled = false;
+                        VerifyButtonDisableColor = Color.FromHex("#d49504");
+                        //IsVerifyOTPEnabled = true;
+                    }
+                    VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
+                    VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
+                    if (VatSignUpSubmitResponse.d == null)
+                    {
+                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(response);
+                        StringBuilder Message = new StringBuilder();
+                        foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                        {
+                            if (itemerror.code.Contains("ZD_ZVTX/006"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage6);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/007"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage7);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/008"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage8);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/009"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage9);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/0010"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage10);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/0011"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage11);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/001"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage1);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/002"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage2);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/003"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage3);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/004"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage4);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/005"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage5);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/005"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage5);
+                            }
+                            if (itemerror.code.Contains("ZD_ZREG/303"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErrorMessage303);
+                            }
+
+                        }
+                        _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                    }
+                    else
+                    {
+
+
+
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
         }
 
         #endregion

@@ -824,6 +824,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 if (string.IsNullOrEmpty(OtpFirstDigit) || string.IsNullOrEmpty(OtpSecondDigit) || string.IsNullOrEmpty(OtpThirdDigit) || string.IsNullOrEmpty(OtpFourthDigit))
                 {
                     IsAllValid = false;
+                    IsOtpAPICalled = false;
                     PopMsg.Append(AppResources.AccountUnlockedCompleteRequiedFields);
                 }
                 else
@@ -837,6 +838,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     {
                         popUp.Message = PopMsg.ToString();
                         popUp.IsLinkAvailable = false;
+                        IsOtpAPICalled = false;
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
@@ -872,6 +874,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     catch (GAZTUnlockAccountException ex)
                     {
                         IsOtpAPICalled = false;
+
+                        OtpFirstDigit = string.Empty;
+                        OtpSecondDigit = string.Empty;
+                        OtpThirdDigit = string.Empty;
+                        OtpFourthDigit = string.Empty;
+
+
                         App.HideProgressView();
                         await _dialogService.ShowMessage(ex.Message, AppResources.Information);
 
@@ -890,6 +899,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             IsOtpAPICalled = false;
+
+                            OtpFirstDigit = string.Empty;
+                            OtpSecondDigit = string.Empty;
+                            OtpThirdDigit = string.Empty;
+                            OtpFourthDigit = string.Empty;
+
                             App.HideProgressView();
                             await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         });

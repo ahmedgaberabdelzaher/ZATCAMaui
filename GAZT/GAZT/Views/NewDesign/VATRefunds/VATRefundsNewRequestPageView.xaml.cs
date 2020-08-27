@@ -74,6 +74,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 if(DraftsRequestDataModel == null)
                 {
                     viewModel.ReloadData();
+                    if (viewModel.VatRefundsDisplayDataModel.Fbnumx != string.Empty)
+                    {
+                        
+                    }
                 }
                 else
                 {
@@ -163,80 +167,19 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             if (App.IsArabic)
             {
                 var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZNo, AppResources.ZYes);
+
                 if (!result)
                 {
-                    try
-                    {
-                        await viewModel.OnVoidBtnClicked();
-                        var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                        Navigation.RemovePage(firstPageToRemove);
-                        viewModel._navigationService.GoBack();
-                    }
-                    catch (GAZTErrorException ex)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            App.HideProgressView();
-                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        });
-                    }
-                    catch (InternetException ex)
-                    {
-                        await Task.Run(() =>
-                        {
-                            App.HideProgressView();
-                        });
-
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            viewModel._navigationService.GoBack();
-                        });
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
+                    viewModel.OnVoidBtnClicked();
                 }
             }
             else
             {
                 var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRefundCancelRefund, AppResources.ZYes, AppResources.ZNo);
+
                 if (result)
                 {
-                    try
-                    {
-                        await viewModel.OnVoidBtnClicked();
-
-                        //var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                        //Navigation.RemovePage(firstPageToRemove);
-
-                        viewModel._navigationService.GoBack();
-                    }
-                    catch (GAZTErrorException ex)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            App.HideProgressView();
-                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        });
-                    }
-                    catch (InternetException ex)
-                    {
-                        await Task.Run(() =>
-                        {
-                            App.HideProgressView();
-                        });
-
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        });
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
+                    viewModel.OnVoidBtnClicked();
                 }
             }
         }

@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ResourceManager="clr-namespace:EGAZT"
@@ -8,8 +7,9 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="EGAZT.Views.NewDesign.ContractRelease.ContractReleasePageView"
-             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             x:Class="EGAZT.Views.NewDesign.ContractReleasePages.ContractReleasePageView"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
     <ContentPage.Resources>
@@ -77,8 +77,18 @@
 
     <ContentPage.Content>
 
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+           
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <commonView:PageIndicatorView Margin="20,25,0,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+
+            <Grid Grid.Row="1">
                 <!--Release Contract 1-->
 
                 <Grid IsVisible="{Binding IsReleaseDetailsVisible}" BackgroundColor="Transparent" Margin="20,10,20,0"
@@ -130,7 +140,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry Text="Zaed Hardy"
+                            <custom:BorderlessEntry TextChanged="ContractNameTextChanged"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
                         </border:SfBorder>
@@ -147,7 +157,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry Text="1234567890"
+                            <custom:BorderlessEntry TextChanged="ContractNumberTextChanged"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
                         </border:SfBorder>
@@ -173,7 +183,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="Contract 1"
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding PickedContract}"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
                             
@@ -183,7 +193,9 @@
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
                                                          Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
                                     </Image.Source>
-
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ShowPicker}"/>
+                                    </Image.GestureRecognizers>
                                 </Image>
                             
                             </Grid>
@@ -211,7 +223,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="13 Aug 2020"
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}"
                                                     HorizontalOptions="FillAndExpand"
                                                     Style="{StaticResource BodyLabelBlack}" />
                             <!-- <Image Grid.Row="0"  Grid.Column="1" Source="arrowDropdown" Margin="5" WidthRequest="30" HeightRequest="30" -->
@@ -225,9 +237,9 @@
 
                             </Image>
                             
-                            <custom:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="13 Aug 2020"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}" />
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="2" Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}"
+                                                HorizontalOptions="FillAndExpand"
+                                                Style="{StaticResource BodyLabelBlack}" />
                              
                             <!-- <Image Grid.Row="0" Grid.Column="3" Source="calender" Margin="5" WidthRequest="30" HeightRequest="30" -->
                             <!--        HorizontalOptions="Start" VerticalOptions="Center"/> -->
@@ -237,7 +249,9 @@
                                     <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
                                                      Glyph="{x:Static FontImage:IconFonts.Calendar}" />
                                 </Image.Source>
-
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShowDatePicker}"/>
+                                </Image.GestureRecognizers>
                             </Image>
 
                             </Grid>
@@ -255,9 +269,9 @@
                                             Style="{StaticResource MicroGrayLabelStyle}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry Text="500.00 SAR"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}" />
+                            <custom:BorderlessEntry x:Name="ContractTotalAmountText" Text="{Binding ContractTotalAmount,StringFormat='{0:0}'}"
+                                                     HorizontalOptions="FillAndExpand" TextChanged="HandleTotalAmount"
+                                                     Style="{StaticResource BodyLabelBlack}" Keyboard="Numeric" />
                         </border:SfBorder>
 
                     </Grid>
@@ -272,9 +286,9 @@
                                             Style="{StaticResource MicroGrayLabelStyle}" />
 
                         <border:SfBorder Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                            <custom:BorderlessEntry Text="500.00 SAR"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    Style="{StaticResource BodyLabelBlack}" />
+                            <custom:BorderlessEntry Text="{Binding AmountToRelease,StringFormat='{0:0}'}"
+                                                    HorizontalOptions="FillAndExpand" TextChanged="HandleAmountReleaseTextChange"
+                                                    Style="{StaticResource BodyLabelBlack}" Keyboard="Numeric" />
                         </border:SfBorder>
 
                     </Grid>
@@ -316,7 +330,7 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
                             <custom:CustomLabel Grid.Row="2" Grid.Column="0"
-                                                Text="30%"
+                                                Text="{Binding PickedContractPercent,StringFormat='{0} %'}"
                                                 Margin="0,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlack}" />
@@ -360,7 +374,7 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
                             <custom:CustomLabel Grid.Row="2" Grid.Column="0"
-                                                Text="500.00 SAR"
+                                                Text="{Binding ProfitEstimatedContract,StringFormat='{0:N} SAR'}"
                                                 Margin="0,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlack}" />
@@ -417,13 +431,13 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
                             <custom:CustomLabel Grid.Row="2" Grid.Column="0"
-                                                Text="500.00 SAR"
+                                                Text="{Binding EstimatedProfitForZakatAmount,StringFormat='{0:N} SAR'}"
                                                 Margin="0,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlack}" />
 
                             <custom:CustomLabel Grid.Row="2" Grid.Column="1"
-                                                Text="100%"
+                                                Text="{Binding EstimatedProfitForZakatPercent,StringFormat='{0} %'}"
                                                 Margin="0,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlack}" />
@@ -479,13 +493,13 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
                             <custom:CustomLabel Grid.Row="2" Grid.Column="0"
-                                                Text="500.00 SAR"
+                                                Text="{Binding EstimatedProfitForTaxAmount,StringFormat='{0:N} SAR'}"
                                                 Margin="0,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlack}" />
 
                             <custom:CustomLabel Grid.Row="2" Grid.Column="1"
-                                                Text="100%"
+                                                Text="{Binding EstimatedProfitForTaxPercent,StringFormat='{0} %'}"
                                                 Margin="0,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlack}" />
@@ -529,7 +543,7 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
                             <custom:CustomLabel Grid.Row="2" Grid.Column="0"
-                                                Text="500.00 SAR"
+                                                Text="{Binding ZakatDues,StringFormat='{0:N} SAR'}"
                                                 Margin="0,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlack}" />
@@ -573,7 +587,7 @@
                                                 Style="{StaticResource MicroGrayLabelStyle}" />
 
                             <custom:CustomLabel Grid.Row="2" Grid.Column="0"
-                                                Text="500.00 SAR"
+                                                Text="{Binding TaxDues,StringFormat='{0:N} SAR'}"
                                                 Margin="0,-10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlack}" />
@@ -597,8 +611,8 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="1,000.00 SAR" HorizontalOptions="EndAndExpand"
-                                                Style="{StaticResource SectionTitleBlack}"
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TotalDues,StringFormat='{0:N} SAR'}" HorizontalOptions="EndAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" 
                                                 VerticalTextAlignment="Center" Margin="0,0,8,0"/>
 
                             <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Margin="0,0,5,0">
@@ -613,10 +627,13 @@
                         </Grid>
                     </Frame>
 
-                    <buttons:SfButton Grid.Row="14" Margin="0,16,0,16"
-                                      Text="{x:Static ResourceManager:AppResources.CRContinue}"
-                                      Style="{StaticResource PrimaryButtonStyle}"
-                                      Command="{Binding ReleaseDetailsConBtnTapped}" />
+                    <Grid Grid.Row="14" IsEnabled="{Binding IsReleaseDetailsEnabled}">
+                            
+                        <buttons:SfButton  Margin="0,16,0,16" 
+                                          Text="{x:Static ResourceManager:AppResources.CRContinue}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                          Command="{Binding ReleaseDetailsConBtnTapped}" />
+                    </Grid>
 
                 </Grid>
 
@@ -625,14 +642,14 @@
                       HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,10">
+                    <Grid Grid.Row="0" Margin="0,5,0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -651,13 +668,13 @@
                     </Grid>
 
 
-                    <custom:CustomLabel Grid.Row="1" Grid.ColumnSpan="2"
+                    <custom:CustomLabel Grid.Row="1"
                                         Text="{x:Static ResourceManager:AppResources.CRAttachACopyOfTheContractRequiredToReleaseAndAmounts}"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}" />
 
 
-                    <Grid Grid.Row="2" Margin="0,10,0,10" Grid.ColumnSpan="2">
+                    <!--<Grid Grid.Row="2" Margin="0,10,0,10" Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -693,16 +710,235 @@
                                             Text="{x:Static ResourceManager:AppResources.CR20MB}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyle}" />
+                    </Grid>-->
+
+
+                     <Grid Grid.Row="2" Grid.Column="0">
+                         <Grid.RowDefinitions>
+                             <RowDefinition Height="auto" />
+                             <RowDefinition Height="*" />
+                         </Grid.RowDefinitions>
+
+                        <listView:SfListView HorizontalOptions="Center" Grid.Row="0"
+                                             IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                             VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                             ItemsSource="{Binding ContractCopyAttachmentsListViewData}"
+                                             TapCommand="{Binding NewContractCopyAttachmentTapped}"
+                                             SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent"
+                                             SelectionChanged="ContractAttach_SelectionChanged">
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <border:SfBorder Grid.Row="0" Margin="0,0,0,10" Padding="12"
+                                                         Style="{StaticResource SfStyleGreyBorderFrame}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+
+                                                   <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                       HorizontalOptions="Start" VerticalOptions="Center"/>
+
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                                    Text="{Binding Filename}"
+                                                                    FontSize="Small" TextColor="Black"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    VerticalOptions="Center"/>
+                                                <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       Rotation="90">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
+                                                                         Size="24"
+                                                                         Glyph="{x:Static FontImage:IconFonts.Close}" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </border:SfBorder>
+                                        <custom:CustomLabel Grid.Row="1"
+                                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                                    </Grid>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+                         
+                          <Grid Grid.Row="1" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0"
+                                            Text="{x:Static ResourceManager:AppResources.VRNewAttachment}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                        <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
+                                         Style="{StaticResource SfStyleGreyBorderFrame}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                    Text="{x:Static ResourceManager:AppResources.VRUploadYourDocument}"
+                                                    FontSize="Small" TextColor="Black"
+                                                    HorizontalOptions="FillAndExpand" />
+                                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
+                                       Rotation="90">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                         Glyph="{x:Static FontImage:IconFonts.Attachment}" />
+                                    </Image.Source>
+                                </Image>
+                            </Grid>
+                        </border:SfBorder>
+                        <custom:CustomLabel Grid.Row="2"
+                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NewContractCopyAttachmentTapped}" />
+                        </Grid.GestureRecognizers>
+
+                    </Grid>
                     </Grid>
 
-
-                    <custom:CustomLabel Grid.Row="3" Grid.ColumnSpan="2"
+                   
+                    
+                    <custom:CustomLabel Grid.Row="3"
                                         Text="{x:Static ResourceManager:AppResources.CRAttachacopyofinvoicesandpurchase}"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}" />
 
 
-                    <Grid Grid.Row="4" Margin="0,10,0,10" Grid.ColumnSpan="2">
+                     <Grid Grid.Row="4" Grid.Column="0">
+                         <Grid.RowDefinitions>
+                             <RowDefinition Height="auto" />
+                             <RowDefinition Height="*" />
+                         </Grid.RowDefinitions>
+
+                         <listView:SfListView Grid.Row="0" HorizontalOptions="Center"
+                                              IsScrollBarVisible="False" IsScrollingEnabled="False"
+                                              VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                              ItemsSource="{Binding InvoiceAttachmentsListViewData}"
+                                              TapCommand="{Binding NewInvoiceAttachmentTapped}"
+                                              SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent"
+                                              SelectionChanged="invoiceAttachments_SelectionChanged">
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <border:SfBorder Grid.Row="0" Margin="0,0,0,10" Padding="12"
+                                                         Style="{StaticResource SfStyleGreyBorderFrame}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+
+                                                   <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                       HorizontalOptions="Start" VerticalOptions="Center"/>
+
+
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                                    Text="{Binding Filename}"
+                                                                    FontSize="Small" TextColor="Black"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    VerticalOptions="Center"/>
+                                                <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+                                                       VerticalOptions="Center"
+                                                       Rotation="90">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray"
+                                                                         Size="24"
+                                                                         Glyph="{x:Static FontImage:IconFonts.Close}" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </border:SfBorder>
+                                        <custom:CustomLabel Grid.Row="1"
+                                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                                    </Grid>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+                         
+                         <Grid Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0"
+                                            Text="{x:Static ResourceManager:AppResources.VRNewAttachment}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                        <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
+                                         Style="{StaticResource SfStyleGreyBorderFrame}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0"
+                                                    Text="{x:Static ResourceManager:AppResources.VRUploadYourDocument}"
+                                                    FontSize="Small" TextColor="Black"
+                                                    HorizontalOptions="FillAndExpand" />
+                                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
+                                       Rotation="90">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                         Glyph="{x:Static FontImage:IconFonts.Attachment}" />
+                                    </Image.Source>
+                                </Image>
+                            </Grid>
+                        </border:SfBorder>
+                        <custom:CustomLabel Grid.Row="2"
+                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NewInvoiceAttachmentTapped}" />
+                        </Grid.GestureRecognizers>
+
+                    </Grid>
+                    </Grid>
+                    
+                    
+                    <!--<Grid Grid.Row="4" Margin="0,10,0,10" Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -737,9 +973,9 @@
                                             Text="{x:Static ResourceManager:AppResources.CR20MB}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyle}" />
-                    </Grid>
+                    </Grid>-->
 
-                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16" Grid.ColumnSpan="2"
+                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16" IsEnabled="{Binding IsAttachmentsEnabled}"
                                       Text="{x:Static ResourceManager:AppResources.CRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}"
                                       Command="{Binding AttachmentsConBtnTapped}" />
@@ -785,7 +1021,7 @@
 
                     <border:SfBorder Grid.Row="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <custom:GAZTBorderlessEntry Text="Remark 1"
+                            <custom:GAZTBorderlessEntry TextChanged="RemarksTextChanged"
                                                         PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
                                                         HorizontalOptions="FillAndExpand" />
                         </StackLayout>
@@ -799,7 +1035,7 @@
 
                     <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                            <custom:GAZTBorderlessEntry Text="Contract Release detail description" MaxLength="1000"
+                            <custom:GAZTBorderlessEntry TextChanged="DetailDescriptionTextChanged" MaxLength="1000"
                                                         PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
                                                         HorizontalOptions="FillAndExpand" />
 
@@ -853,7 +1089,7 @@
 
                     <border:SfBorder Grid.Row="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <custom:GAZTBorderlessEntry Text="Remark 1"
+                            <custom:GAZTBorderlessEntry TextChanged="ContactPersonNameTextChanged"
                                                         PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
                                                         HorizontalOptions="FillAndExpand" />
                         </StackLayout>
@@ -868,7 +1104,7 @@
 
                     <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                            <custom:GAZTBorderlessEntry Text="Contract Release detail description"
+                            <custom:GAZTBorderlessEntry TextChanged="DesignationTextChanged"
                                                         PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
                                                         HorizontalOptions="FillAndExpand" />
 
@@ -877,7 +1113,7 @@
 
 
                     <buttons:SfButton Grid.Row="5" Margin="0,16,0,16"
-                                      VerticalOptions="End"
+                                      VerticalOptions="End" IsEnabled="{Binding IsDeclarationEnabled}"
                                       Text="{x:Static ResourceManager:AppResources.CRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}"
                                       Command="{Binding DeclarationConBtnTapped}" />
@@ -972,7 +1208,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="0" Grid.Column="1">
-                                        <Label Text="Zaed Hardy"
+                                        <Label Text="{Binding ContractName}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
@@ -985,7 +1221,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="1" Grid.Column="1">
-                                        <Label Text="1234567890"
+                                        <Label Text="{Binding ContractNumber}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
@@ -998,7 +1234,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="2" Grid.Column="1">
-                                        <Label Text="Contract 1"
+                                        <Label Text="{Binding PickedContract}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
@@ -1011,7 +1247,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="3" Grid.Column="1">
-                                        <Label Text="May 2019-May 2020"
+                                        <Label Text="{Binding FromDate,ToDate,StringFormat='{0:MMM yyyy} - {0:MMM yyyy}'}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
@@ -1024,7 +1260,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="4" Grid.Column="1">
-                                        <Label Text="500.00 SAR"
+                                        <Label Text="{Binding ContractTotalAmount,StringFormat='{0:N} SAR'}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
@@ -1037,7 +1273,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="5" Grid.Column="1">
-                                        <Label Text="500.00 SAR"
+                                        <Label Text="{Binding AmountToRelease,StringFormat='{0:N} SAR'}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
@@ -1055,7 +1291,7 @@
                                                     Style="{StaticResource BodyLabelBlack}"
                                                     VerticalTextAlignment="Center" />
 
-                                <custom:CustomLabel Text="1,000.00 SAR" HorizontalOptions="EndAndExpand"
+                                <custom:CustomLabel Text="{Binding TotalDues,StringFormat='{0:N} SAR'}" HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource SectionTitleBlackBold}"
                                                     VerticalTextAlignment="Center" />
 
@@ -1116,32 +1352,63 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
+                                    
+                                     <listView:SfListView  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" 
+                                      ItemsSource="{Binding ContractCopyAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                        <listView:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Padding="0" RowSpacing="0">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
+                                                               HorizontalOptions="Start"
+                                                               Style="{StaticResource BodyLabelGrey}" />
 
-                                    <Grid Grid.Row="0" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
-                                               HorizontalOptions="Start"
-                                               Style="{StaticResource BodyLabelGrey}" />
+                                                    </Grid>
 
-                                    </Grid>
+                                                    <Grid Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="{Binding Filename}"
+                                                               HorizontalOptions="End"
+                                                               Style="{StaticResource BodyLabelBlack}" />
+                                                    </Grid>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+                                    </listView:SfListView>
+                                    
+                                    <listView:SfListView  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" 
+                                      ItemsSource="{Binding InvoiceAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                        <listView:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Padding="0" RowSpacing="0" >
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}"
+                                                               HorizontalOptions="Start"
+                                                               Style="{StaticResource BodyLabelGrey}" />
+                                                    </Grid>
 
-                                    <Grid Grid.Row="0" Grid.Column="1">
-                                        <Label Text="File1.pdf"
-                                               HorizontalOptions="End"
-                                               Style="{StaticResource BodyLabelBlack}" />
-                                    </Grid>
-
-                                    <Grid Grid.Row="1" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}"
-                                               HorizontalOptions="Start"
-                                               Style="{StaticResource BodyLabelGrey}" />
-
-                                    </Grid>
-
-                                    <Grid Grid.Row="1" Grid.Column="1">
-                                        <Label Text="File2.pdf"
-                                               HorizontalOptions="End"
-                                               Style="{StaticResource BodyLabelBlack}" />
-                                    </Grid>
+                                                    <Grid Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="{Binding Filename}"
+                                                               HorizontalOptions="End"
+                                                               Style="{StaticResource BodyLabelBlack}" />
+                                                    </Grid>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+                                    </listView:SfListView>
 
                                     <Grid Grid.Row="2" Grid.Column="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRRemarks}"
@@ -1151,7 +1418,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="2" Grid.Column="1">
-                                        <Label Text="Remark 1"
+                                        <Label Text="{Binding Remarks}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
@@ -1164,7 +1431,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="3" Grid.Column="1">
-                                        <Label Text="Lorem Ipsum"
+                                        <Label Text="{Binding DetailDescription}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
@@ -1220,66 +1487,38 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
+                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
                                     <Grid Grid.Row="0" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.CRIDType}"
-                                               HorizontalOptions="Start"
-                                               Style="{StaticResource BodyLabelGrey}" />
-
-                                    </Grid>
-
-                                    <Grid Grid.Row="0" Grid.Column="1">
-                                        <Label Text="National ID"
-                                               HorizontalOptions="End"
-                                               Style="{StaticResource BodyLabelBlack}" />
-                                    </Grid>
-
-                                    <Grid Grid.Row="1" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.CRIDNumber}"
-                                               HorizontalOptions="Start"
-                                               Style="{StaticResource BodyLabelGrey}" />
-
-                                    </Grid>
-
-                                    <Grid Grid.Row="1" Grid.Column="1">
-                                        <Label Text="Q1720187"
-                                               HorizontalOptions="End"
-                                               Style="{StaticResource BodyLabelBlack}" />
-                                    </Grid>
-
-                                    <Grid Grid.Row="2" Grid.Column="0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.CRDateOfBirth}"
-                                               HorizontalOptions="Start"
-                                               Style="{StaticResource BodyLabelGrey}" />
-
-                                    </Grid>
-
-                                    <Grid Grid.Row="2" Grid.Column="1">
-                                        <Label Text="7 June 1995"
-                                               HorizontalOptions="End"
-                                               Style="{StaticResource BodyLabelBlack}" />
-                                    </Grid>
-
-                                    <Grid Grid.Row="3" Grid.Column="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRContactPersonName}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
                                     </Grid>
 
-                                    <Grid Grid.Row="3" Grid.Column="1">
-                                        <Label Text="Zaed Hardy"
+                                    <Grid Grid.Row="0" Grid.Column="1">
+                                        <Label Text="{Binding ContactPersonName}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
+                                    <Grid Grid.Row="1" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.CRDesignation}"
+                                               HorizontalOptions="Start"
+                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                    </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="1">
+                                        <Label Text="{Binding Designation}"
+                                               HorizontalOptions="End"
+                                               Style="{StaticResource BodyLabelBlack}" />
+                                    </Grid>
+                                    
                                 </Grid>
                             </StackLayout>
                         </border:SfBorder>
@@ -1332,7 +1571,30 @@
                     </StackLayout>
                 </Grid>
 
+                <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
+                                 Opacity="0.4" VerticalOptions="FillAndExpand" />
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
+                                 Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
+                                                           EnableAnimation="True"
+                                                           AnimationType="SingleCircle"
+                                                           HorizontalOptions="CenterAndExpand"
+                                                           VerticalOptions="CenterAndExpand"
+                                                           IsBusy="True"
+                                                           ViewBoxWidth="70"
+                                                           TitlePlacement="Bottom"
+                                                           ViewBoxHeight="70"
+                                                           TextColor="#D99A29" />
+                            <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
             </Grid>
+                </Grid>
         </ScrollView>
+
     </ContentPage.Content>
+
 </ContentPage>
