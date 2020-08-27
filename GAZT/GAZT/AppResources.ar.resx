@@ -1215,7 +1215,10 @@
     <value>Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number.</value>
   </data>
   <data name="ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount" xml:space="preserve">
-    <value>لن يتم تقديم طلب الا عتراض الا في حال سداد المبلغ غير المعترض عليه بالإضافة % من المبلغ المعترض عليه25الى</value>
+    <value>
+لن يتم تقديم طلب الاعتراض الا في حال سداد المبلغ غير المعترض عليه بالإضافة 25% من المبلغ المعترض عليه
+</value>
+
   </data>
   <data name="ZSADADBillDetails" xml:space="preserve">
     <value>سداد فاتورة تفاصيل</value>
@@ -4489,9 +4492,9 @@
   <data name="VATDeregistrationDocumentType2" xml:space="preserve">
     <value>تقارير مدققه</value>
   </data>
-  <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
-    <value> Suspension Date must be 1 day ahead of Last ICR date</value>
-  </data>
+     <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
+    <value>تاريخ الايقاف يجب ان يكون بعد يوم واحد على الاقل من تاريخ اخر تقديم للاقرار</value>
+        </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>هل تريد إلغاء ايقاف التسجيل؟</value>
   </data>
