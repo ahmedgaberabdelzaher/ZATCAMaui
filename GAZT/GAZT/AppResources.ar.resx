@@ -5771,4 +5771,7 @@
   <data name="ZZZZConfirmRefund" xml:space="preserve">
     <value>تأكيد طلب الاسترداد</value>
   </data>
+  <data name="ZZZZWrongVerificationCode" xml:space="preserve">
+    <value>رمز التحقق غير صحيح</value>
+  </data>
 </root>
