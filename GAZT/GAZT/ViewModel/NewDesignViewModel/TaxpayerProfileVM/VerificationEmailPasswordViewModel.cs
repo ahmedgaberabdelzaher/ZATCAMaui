@@ -283,35 +283,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         {
             IsLoading = true;
             TaxPayerProfile TP = null;
+            string lang = "EN";
+            if (App.IsArabic == true) { lang = "AR"; }
 
             try
             {
-                string lang = "EN";
-                if (App.IsArabic == true) { lang = "AR"; }
-
-                try
-                {
-                    TP = await WebServiceManager.GAZTValidateOTPForEmail(lang,
-                                                                        EnteredOTP,
-                                                                        App.TP.Tin,
-                                                                        _updateEmailData.CurrentEmail, _updateEmailData.NewEmail,
-                                                                        CurrentPasswordEntry, NewPasswordEntry);
-                    IsLoading = false;
-                }
-                catch (Exception ex)
-                {
-                    IsLoading = false;
-                    System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                    });
-                }
+                TP = await WebServiceManager.GAZTValidateOTPForEmail(lang,
+                                                                    EnteredOTP,
+                                                                    App.TP.Tin,
+                                                                    _updateEmailData.CurrentEmail, _updateEmailData.NewEmail,
+                                                                    CurrentPasswordEntry, NewPasswordEntry);
+                IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (Exception ex)
             {
                 IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                });
             }
 
             return TP;
