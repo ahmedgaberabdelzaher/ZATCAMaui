@@ -34,33 +34,33 @@
                     <ScrollView Grid.Row="0">
                         <StackLayout Spacing="16" Padding="0,24,0,0">
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
-                                <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="faQs.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZFaq}" Style="{StaticResource ValueLabelBlack}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZFaq}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </border:SfBorder>
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
-                                <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="ColorChat.png"/>
-                                    <custom:CustomLabel Text="Chat" Style="{StaticResource ValueLabelBlack}"/>
+                                    <custom:CustomLabel Text="Chat" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </border:SfBorder>
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
-                                <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="customerServiceColor.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ValueLabelBlack}"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </border:SfBorder>
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
-                                <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="branchLocator.png"/>
-                                    <custom:CustomLabel Text="Branch Locator" Style="{StaticResource ValueLabelBlack}"/>
+                                    <custom:CustomLabel Text="Branch Locator" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand"  VerticalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </border:SfBorder>
