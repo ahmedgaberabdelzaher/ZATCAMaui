@@ -3,6 +3,7 @@ using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -18,7 +19,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -35,12 +35,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             InitializeComponent();
             BindingContext = viewModel;
-            
+
             viewModel = App.Locator.SignUpForEstablishmentPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+
+            viewModel.IsDeclarationCheckedForInstruction = false;
             ChangeAeroIcon();
             SetLTR();
+
             loadPageData();
 
             if (Device.RuntimePlatform == Device.iOS)
@@ -151,22 +154,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-        private void chkDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
-        {
-            if (chkDeclaration.IsChecked == true)
-            {
-                viewModel.IsMainButtonEnabled = true;
-            }
-            else
-            {
-                viewModel.IsMainButtonEnabled = false;
-            }
-        }
+       
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            
-
+     
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
                // IntnlCodes.Text = arg;
@@ -293,6 +285,59 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         private void CountryCodeTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
+        }
+
+        private void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryCRNumber.Text))
+            {
+                if (EntryCRNumber.Text.Length == 10)
+                {
+                    try
+                    {
+                       // FrmCR.HasError = false;
+                        CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
+                        if (Result != null)
+                        {
+                            if (Result.d != null)
+                            {
+                                if (Result.d.NotFound == "X")
+                                {
+                                    //FrmCR.HasError = true;
+                                    viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
+                                }
+                                else
+                                {
+                                    //FrmCR.HasError = false;
+                                }
+                            }
+                        }
+                    }
+                    catch (InternetException ex)
+                    {
+                        viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    }
+                }
+                else
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZCommercialReiterationNumbershouddbe10digits;
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    //FrmCR.HasError = true;
+                    EntryCRNumber.Text = string.Empty;
+                    EntryCRNumber.Focus();
+                }
+            }
         }
 
         private void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -529,46 +574,45 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void EntryTIN_Unfocused(object sender, FocusEventArgs e)
         {
-        //    PopUp popUp = new PopUp();
-        //    StringBuilder Messages = new StringBuilder();
-        //    if (!string.IsNullOrEmpty(EntryTIN.Text))
-        //    {
-        //        if (EntryTIN.Text.Substring(0, 1) != "3")
-        //        {
-        //            Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
-        //            EntryTIN.Focus();
-        //        }
-        //        if (EntryTIN.Text.Length != 10)
-        //        {
-        //            if (Messages.Length > 0)
-        //            {
-        //                Messages.Append(Environment.NewLine);
-        //            }
-        //            Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
-        //        }
-        //        if (Messages.Length > 0)
-        //        {
-        //            popUp.Message = Messages.ToString();
-        //            popUp.IsLinkAvailable = false;
-        //            if (App.IsArabic)
-        //            {
-        //                popUp.FlowDirections = "RightToLeft";
-        //                popUp.isFontSet = true;
-        //            }
-        //            else
-        //            {
-        //                popUp.FlowDirections = "LeftToRight";
-        //            }
-        //            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-        //            FrmTIN.HasError = true;
-        //            EntryTIN.Text = string.Empty;
-        //        }
-        //        else
-        //        {
-        //            FrmTIN.HasError = false;
-        //        }
-        //    }
-        
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder();
+            if (!string.IsNullOrEmpty(EntryTIN.Text))
+            {
+                if (EntryTIN.Text.Substring(0, 1) != "3")
+                {
+                    Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+                    EntryTIN.Focus();
+                }
+                if (EntryTIN.Text.Length != 10)
+                {
+                    if (Messages.Length > 0)
+                    {
+                        Messages.Append(Environment.NewLine);
+                    }
+                    Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                }
+                if (Messages.Length > 0)
+                {
+                    popUp.Message = Messages.ToString();
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                   // FrmTIN.HasError = true;
+                    EntryTIN.Text = string.Empty;
+                }
+                else
+                {
+                   // FrmTIN.HasError = false;
+                }
+            }
         }
 
 
