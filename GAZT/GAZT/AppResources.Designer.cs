@@ -7566,6 +7566,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregDOBDatePickerTitle {
+            get {
+                return ResourceManager.GetString("VatDeregDOBDatePickerTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregStartDatePickerTitle {
+            get {
+                return ResourceManager.GetString("VatDeregStartDatePickerTitle", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistration {
             get {
                 return ResourceManager.GetString("VATDeregistration", resourceCulture);
@@ -7731,12 +7743,6 @@ namespace EGAZT {
         public static string VatDeregReasonTitle {
             get {
                 return ResourceManager.GetString("VatDeregReasonTitle", resourceCulture);
-            }
-        }
-        
-        public static string VatDeregStartDatePickerTitle {
-            get {
-                return ResourceManager.GetString("VatDeregStartDatePickerTitle", resourceCulture);
             }
         }
         

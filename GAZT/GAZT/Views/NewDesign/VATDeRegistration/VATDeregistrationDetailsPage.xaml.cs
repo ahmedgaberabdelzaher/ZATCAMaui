@@ -16,6 +16,7 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.XForms.TextInputLayout;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -24,6 +25,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
     public partial class VATDeregistrationDetailsPage : ContentPage
     {
         VATDeRegistrationDetailsPageViewModel viewModel;
+        bool isCalled = false;
 
         public VATDeregistrationDetailsPage()
         {
@@ -102,9 +104,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             ChangeArrowDirection();
-
 
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
                 viewModel.IsInstructionChecked = arg;
@@ -127,8 +127,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         else
                         {
                             viewModel.IsDOBEditorVisible = true;
-
-
                         }
                     }
                     else
@@ -149,14 +147,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             viewModel.IsDOBEditorVisible = false;
                             IDNumberField.WidthRequest = 320;
-                            
-
                         }
                         else
                         {
-
                             viewModel.IsDOBEditorVisible = true;
-
                         }
                     }
                     else
@@ -172,22 +166,20 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         }
                     }
                 }
-
-
             });
 
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
             {
-
+                isCalled = false;
                 if (App.IsArabic)
                 {
-                    if (arg.DatePickerTitle.Contains("Select Start Date"))
+                    if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
 
 
                     }
-                    else if (arg.DatePickerTitle.Contains("Select End Date"))
+                    else if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
                     {
                         viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
@@ -199,11 +191,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
                 else
                 {
-                    if (arg.DatePickerTitle.Contains("Select Start Date"))
+                    if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
-                    else if (arg.DatePickerTitle.Contains("Select End Date"))
+                    else if (arg.DatePickerTitle.Contains(AppResources.VatDeregEndDatePickerTitle))
                     {
                         viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
@@ -305,7 +297,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+                    if(isCalled == false)
+                    {
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        isCalled = true;
+                    }
                 }
             });
         }
@@ -508,7 +505,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-            genericDatePickerModel.DatePickerTitle = "Select Start Date";
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
             genericDatePickerModel.PickerId = "StartDateTypePicker";
             try
             {
@@ -533,7 +530,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-            genericDatePickerModel.DatePickerTitle = "Select End Date";
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregEndDatePickerTitle;
             genericDatePickerModel.PickerId = "EndDateTypePicker";
             try
             {
@@ -1175,6 +1172,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                 }
             }
+        }
+
+        void Others_Entry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            //OthersTxt.HelperText
+            viewModel.SetTextCount(e.NewTextValue.Length);
         }
     }
 }
