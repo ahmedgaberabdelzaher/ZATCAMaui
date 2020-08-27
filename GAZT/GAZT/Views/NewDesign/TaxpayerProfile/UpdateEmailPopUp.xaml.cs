@@ -65,9 +65,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         // * Password Validations
         private bool TaxpayerProfileEmailUpdateValidation(string CurrentEmail, string NewEmail, string ConfirmEmail)
         {
-            //CurrentMobileNumber = Regex.Replace(CurrentMobileNumber, @"\s+", "");
-            //NewMobileNumber = Regex.Replace(NewMobileNumber, @"\s+", "");
-
             string validationError = VerifyEmails(CurrentEmail, NewEmail, ConfirmEmail);
 
             if (validationError == string.Empty)
@@ -126,19 +123,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             // Show existing email
             viewModel.CurrentEmailText = App.TP.Email;
-
             RefreshControlsData();
         }
 
-        /*private string RemoveWhiteSpaceFromTheString(string actualString)
-        {
-            string example = actualString;
-            string trimmed = String.Concat(example.Where(c => !Char.IsWhiteSpace(c)));
-
-            return trimmed;
-        }*/
-
-        // * // Reset Enteried
+        // * Reset Enteried
         private void RefreshControlsData()
         {
             viewModel.NewEmailText = string.Empty;
@@ -161,7 +149,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
-                        // popUp.isFontSet = true;
                     }
                     else
                     {
@@ -169,16 +156,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     Frm_NewEmail.HasError = true;
-                    //FrmEmailAddress.HasError = true;
                     viewModel.NewEmailText = string.Empty;
                 }
                 else
                 {
                     Frm_NewEmail.HasError = false;
-                    //FrmEmailAddress.HasError = false;
                 }
             }
         }
+
         public bool IsValid(string emailaddress)
         {
             bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
@@ -210,7 +196,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
-                        // popUp.isFontSet = true;
                     }
                     else
                     {
@@ -218,13 +203,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     Frm_confirmEmail.HasError = true;
-                    //FrmEmailAddress.HasError = true;
                     viewModel.ConfirmEmailText = string.Empty;
                 }
                 else
                 {
                     Frm_confirmEmail.HasError = false;
-                    //FrmEmailAddress.HasError = false;
                 }
             }
         }

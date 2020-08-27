@@ -1,9 +1,11 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -18,6 +20,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
     public partial class TaxpayerProfilePageView : ContentPage
     {
         NewTaxpayerProfileViewModel viewModel;
+        ObservableCollection<InternationalMobileData> mobileData = null;
 
         public TaxpayerProfilePageView()
         {
@@ -27,7 +30,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel = App.Locator.TaxpayerProfilePageView;
             this.BindingContext = viewModel;
             ChangeAeroIcon();
-            //SetLTR();
+
+            // * Page content direction
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
         public void ChangeAeroIcon()
@@ -43,9 +47,24 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 MobileNumberCodeEntry.HorizontalTextAlignment = TextAlignment.Start;
             }
         }
+
         private void OnMobileEditTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new UpdateMobilePopUp());
+            viewModel.IsLoading = true;
+
+            try
+            {
+                if( mobileData == null )
+                    mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+
+                viewModel.IsLoading = false;
+                PopupNavigation.Instance.PushAsync(new UpdateMobilePopUp(mobileData));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                viewModel.IsLoading = false;
+            }
         }
 
         private void OnEmailEditTapped(object sender, EventArgs e)
@@ -66,82 +85,23 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             });
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            // * Last Updated Taxpayer Profile Data
-            /*viewModel.TINLabel = App.TP.Tin;
-
-            var result = Regex.Match(App.TP.Mobile, @"(.{9})\s*$");
-            viewModel.MobileNumber = result.ToString();
-
-            viewModel.EmailEntry = App.TP.Email;
-            viewModel.PasswordEntry = "********";*/
-
-            /*viewModel.TINLabel = "0987654321".Remove(3);  
-            viewModel.MobileNumber = "1234567890";
-            viewModel.EmailEntry = "TESTS@PM.COM";
-            viewModel.PasswordEntry = "********";*/
-
-            // Default
-            viewModel.IsLoading = false;
-
-            TaxPayerProfile TPAPIResponse = await viewModel.GetTPProfileData();
-            System.Diagnostics.Debug.WriteLine("TP SUCCESS RESPONSE: ", TPAPIResponse);
-
-            if (TPAPIResponse != null)
+            if (App.TP != null)
             {
-                // * Update
-                App.TP = TPAPIResponse;
-                App.TP.Userid = TPAPIResponse.Tin;
+                viewModel.TPProfileNameLbl = App.TP.Name;
+                viewModel.TINLabel = App.TP.Tin;
 
-                viewModel.TPProfileNameLbl = TPAPIResponse.Name;
-                viewModel.TINLabel = TPAPIResponse.Tin;
-                String lang = "E";
-                if (App.IsArabic == true)
-                    lang = "A";
-                if (TPAPIResponse != null && TPAPIResponse.Tin != null)
-                {
-                    //try
-                    //{
-                    //    String mobilenumber = await WebServiceManager.GAZTGetTaxPayerProfile(TPAPIResponse.Tin, lang);
-                    //    // PopToRootPage();
-                    //    if (mobilenumber != null)
-                    //    {
-                    //        string MobileNo = "+" + mobilenumber.Substring(mobilenumber.Length - 12);
-                    //        viewModel.MobileNumber = MobileNo;
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{ 
+                if (App.TP.Mobile.Length < 12)
+                    viewModel.MobileNumber = "+966" + App.TP.Mobile.Remove(0, 2);
+                else
+                    viewModel.MobileNumber = "+" + App.TP.Mobile.Remove(0, 2);
 
-                    //}
-                    if (TPAPIResponse.Mobile.Length < 12)
-                    {
-                        viewModel.MobileNumber = "+966" + TPAPIResponse.Mobile.Remove(0, 2);
-                    }
-                    else
-                    {
-                       
-                            viewModel.MobileNumber = "+" + TPAPIResponse.Mobile.Remove(0, 2);
-
-                    }
-
-                    //viewModel.MobileNumber = TPAPIResponse.Mobile;
-                }
-                        viewModel.EmailEntry = TPAPIResponse.Email;
+                viewModel.EmailEntry = App.TP.Email;
                 viewModel.PasswordEntry = "********";
             }
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
-            await viewModel.GetTinStatusDATA();
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
         }
     }
 }

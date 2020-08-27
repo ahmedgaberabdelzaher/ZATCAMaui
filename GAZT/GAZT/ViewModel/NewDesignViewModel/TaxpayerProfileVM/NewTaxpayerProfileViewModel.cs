@@ -23,10 +23,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         private bool _IsLoading = false;
         public bool IsLoading
         {
-            get
-            {
-                return _IsLoading;
-            }
+            get { return _IsLoading; }
             set
             {
                 _IsLoading = value;
@@ -36,10 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         private TINStatus _listTINStatus;
         public TINStatus ListTINStatus
         {
-            get
-            {
-                return _listTINStatus;
-            }
+            get { return _listTINStatus; }
             set
             {
                 _listTINStatus = value;
@@ -133,88 +127,52 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
             if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
             _dialogService = dialogService;
-        }
 
-        public async Task<TaxPayerProfile> GetTPProfileData()
-        {
-            /*await Task.Run(() =>
+            // * TIN STATUS API CALLS
+            Device.BeginInvokeOnMainThread(async () =>
             {
-                IsLoading = true;
-            });*/
-
-            IsLoading = true;
-            TaxPayerProfile APIResponse = null;
-            string lang = "EN";
-            if (App.IsArabic == true) { lang = "AR"; }
-
-            try
-            {
-                await Task.Run(async () =>
-                {
-                    APIResponse = WebServiceManager.SFGAZTGetTaxPayerProfile(App.TP.Tin, lang);
-                    IsLoading = false;
-                });
-
-            }
-            catch (Exception ex)
-            {
-                IsLoading = false;
-                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                });
-            }
-
-            return APIResponse;
+                await this.GetTinStatusDATA();
+            });
         }
 
         public async Task GetTinStatusDATA()
         {
+            IsLoading = true;
             string Lang = UtilityManager.GetLanguageParameter();
             ListTINStatus = new TINStatus();
-            try
-            { 
 
-           
+            try
+            {
                 ListTINStatus = await WebServiceManager.GAZTGetTinStatus(Lang, App.TP.Tin);
                 PopToRootPage();
+                UpdateTinStatus();
                 IsLoading = false;
-                if (ListTINStatus!=null)
-                {
-                    if (ListTINStatus.d != null)
-                    {
-                        if (!String.IsNullOrEmpty(ListTINStatus.d.StatusText))
-                        {
-                            TinStatusLabelText = ListTINStatus.d.StatusText;
-                        }
-                        else
-                        {
-                            TinStatusLabelText = " - ";
-                        }
-                    }
-                    else
-                    {
-                        TinStatusLabelText = " - ";
-                    }
-
-                }
-                else
-                {
-                    TinStatusLabelText = " - ";
-                }
-             
-
-
             }
             catch
             {
-             
-            
+                IsLoading = false;
                 TinStatusLabelText = " - ";
             }
-            
         }
+
+        private void UpdateTinStatus()
+        {
+            if (ListTINStatus != null)
+            {
+                if (ListTINStatus.d != null)
+                {
+                    if (!String.IsNullOrEmpty(ListTINStatus.d.StatusText))
+                        TinStatusLabelText = ListTINStatus.d.StatusText;
+                    else
+                        TinStatusLabelText = " - ";
+                }
+                else
+                    TinStatusLabelText = " - ";
+            }
+            else
+                TinStatusLabelText = " - ";
+        }
+
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -232,8 +190,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     }
                     _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                     _navigation.NavigationStack.ToList().Clear();
-                    //var _navigation = Application.Current.MainPage.Navigation;
-                    //_navigation.PopToRootAsync();
                 });
             }
         }
