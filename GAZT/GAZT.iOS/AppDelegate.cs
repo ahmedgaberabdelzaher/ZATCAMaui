@@ -40,8 +40,8 @@ namespace GAZT.iOS
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
-        { 
-           ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+        {
+            ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             ServicePointManager
             .ServerCertificateValidationCallback +=
             (sender, cert, chain, sslPolicyErrors) => true;
@@ -49,7 +49,7 @@ namespace GAZT.iOS
             Xamarin.Forms.Forms.Init();
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init();
-          //  UINavigationBar.Appearance.TintColor = UIColor.Red;
+            //  UINavigationBar.Appearance.TintColor = UIColor.Red;
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
             App iosapp = new App();
             App.appObj = iosapp;
@@ -117,7 +117,7 @@ namespace GAZT.iOS
 
         public override void OnActivated(UIApplication application)
         {
-            MessagingCenter.Send("OnActivated", "OnActivated");
+            //MessagingCenter.Send("OnActivated", "OnActivated");
             Console.WriteLine("OnActivated called, App is active.");
         }
         public override void WillEnterForeground(UIApplication application)

@@ -162,6 +162,7 @@ using ZakatInstalmentPlanListViewModel = EGAZT.ViewModel.NewDesignViewModel.Zaka
 using EGAZT.Views.NewDesign.Template;
 using EGAZT.Views.NewDesign.ContractReleasePages;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
+using EGAZT.Views.NewDesign;
 
 namespace EGAZT
 {
@@ -220,6 +221,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatObjectionSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<DashboardAnonymousMenuPageViewModel>();
             SimpleIoc.Default.Register<VATCreditCarriedForwardPopUpPageViewModel>();
+            SimpleIoc.Default.Register<SupportPageViewModel>();
 
             #endregion
 
@@ -349,6 +351,20 @@ namespace EGAZT
 
         #region NewDesignViewModel
 
+        public SupportPageViewModel SupportPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SupportPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         public VATCreditCarriedForwardPopUpPageViewModel VATCreditCarriedForwardPopUpPageView
         {
@@ -2121,7 +2137,7 @@ namespace EGAZT
             navigationService.Configure(App.SignUpForEstablishmentPageView, typeof(SignUpForEstablishmentPageView));
             navigationService.Configure(App.DashboardAnonymousMenuPageView, typeof(DashboardAnonymousMenuPageView));
             navigationService.Configure(App.VATCreditCarriedForwardPopUpPageView, typeof(VATCreditCarriedForwardPopUpPageView));
-
+            navigationService.Configure(App.SupportPageView, typeof(SupportPageView));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
 

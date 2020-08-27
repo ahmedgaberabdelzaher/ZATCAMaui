@@ -31,9 +31,16 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             this.BindingContext = viewModel;
             viewModel.CountryCode = "+966";
             Label_InternationalnoCode.StyleId = "LTRLabelText";
-            Label_InternationalnoCode.Text = "+966";
-            
+            // Label_InternationalnoCode.Text = "+966";
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Label_InternationalnoCode.Margin = new Thickness(0);
+            }
+            else
+            {
+                Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
+            }
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
             if (App.IsArabic)
@@ -206,12 +213,20 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             //var result = "+" + App.TP.Mobile.Remove(0, 2);
             //viewModel.CurrentMobileNumberEntryText = result.ToString();
 
-        // viewModel.CurrentMobileNumberEntryText = App.TP.Mobile;
+            // viewModel.CurrentMobileNumberEntryText = App.TP.Mobile;
             //if (App.TP.Mobile.Length < 12)
             //{
             //    viewModel.CurrentMobileNumberEntryText="+966"+ App.TP.Mobile
 
             //}
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Label_InternationalnoCode.Margin = new Thickness(0);
+            }
+            else
+            {
+                Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
+            }
             if (App.TP.Mobile.Length < 12)
             {
                 viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
@@ -233,7 +248,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 //{
                 //    IntnlCodes.Text = arg;
                 //}
-                Label_InternationalnoCode.Text = arg;
+               // Label_InternationalnoCode.Text = arg;
                 viewModel.CountryCode = arg;
 
                 //viewModel.TxtCountryCode = arg;
@@ -308,12 +323,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    Frm_mobile.HasError = true;
+                    //Frm_mobile.HasError = true;
                     viewModel.NewMobileNumberEntryText = string.Empty;
                 }
                 else
                 {
-                    Frm_mobile.HasError = false;
+                    //Frm_mobile.HasError = false;
                 }
             }
             else

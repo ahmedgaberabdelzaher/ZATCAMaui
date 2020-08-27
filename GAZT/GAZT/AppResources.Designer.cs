@@ -7566,6 +7566,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregDOBDatePickerTitle {
+            get {
+                return ResourceManager.GetString("VatDeregDOBDatePickerTitle", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregStartDatePickerTitle {
+            get {
+                return ResourceManager.GetString("VatDeregStartDatePickerTitle", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistration {
             get {
                 return ResourceManager.GetString("VATDeregistration", resourceCulture);
@@ -7734,12 +7746,6 @@ namespace EGAZT {
             }
         }
         
-        public static string VatDeregStartDatePickerTitle {
-            get {
-                return ResourceManager.GetString("VatDeregStartDatePickerTitle", resourceCulture);
-            }
-        }
-        
         public static string VatDeregEndDatePickerTitle {
             get {
                 return ResourceManager.GetString("VatDeregEndDatePickerTitle", resourceCulture);
@@ -7863,6 +7869,12 @@ namespace EGAZT {
         public static string VatDeregistrationSubmitSuccessful {
             get {
                 return ResourceManager.GetString("VatDeregistrationSubmitSuccessful", resourceCulture);
+            }
+        }
+        
+        public static string VatDeregistrationSuspendedDateValidation {
+            get {
+                return ResourceManager.GetString("VatDeregistrationSuspendedDateValidation", resourceCulture);
             }
         }
         
@@ -10881,6 +10893,30 @@ namespace EGAZT {
         public static string CRContractReleaseApplicationForm {
             get {
                 return ResourceManager.GetString("CRContractReleaseApplicationForm", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZWrongVerificationCode {
+            get {
+                return ResourceManager.GetString("ZZZZWrongVerificationCode", resourceCulture);
+            }
+        }
+        
+        public static string SameTincantbeaddedasfinancialrepresentative {
+            get {
+                return ResourceManager.GetString("SameTincantbeaddedasfinancialrepresentative", resourceCulture);
+            }
+        }
+        
+        public static string NDBranchLocator {
+            get {
+                return ResourceManager.GetString("NDBranchLocator", resourceCulture);
+            }
+        }
+        
+        public static string NDChat {
+            get {
+                return ResourceManager.GetString("NDChat", resourceCulture);
             }
         }
     }

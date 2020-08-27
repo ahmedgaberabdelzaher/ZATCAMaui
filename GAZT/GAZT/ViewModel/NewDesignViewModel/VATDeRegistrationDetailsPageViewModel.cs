@@ -676,6 +676,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("DocTypeString");
             }
         }
+
+        public string _textCount { get; set; }
+        public string TextCount
+        {
+            get
+            {
+                return _textCount;
+            }
+            set
+            {
+                _textCount = value;
+                RaisePropertyChanged("TextCount");
+            }
+        }
+
+        //TextCount
         public int _attachmentCount = 0;
         public int AttachmentCount
         {
@@ -930,10 +946,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _navigationService.GoBack();
             });
+
             //CloseBtnTapped = new Command(async () =>
             //{
             //    voidButtonTapped();
-
             //});
 
             OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
@@ -951,25 +967,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
             OnVatRegistrationReasonTapped = new Command(this.OnVatRegistrationReasonClicked);
             OnVatRegistrationDateTapped = new Command(this.OnVatRegistrationReasonDateClicked);
-
-            AddOutletDecisionOptions();
-
-
-            VATDeregistrationModel = new VATDeregistrationModel();
-
-
-            SelectedOutletOption = new VATDeregistrationModel();
-
-            SelectedDocumentOption = new ResultsAttachmentItemForElgblDocSet();
-
-
         }
-
 
         public async Task onPageLoad()
         {
             try
             {
+                VATDeregistrationModel = new VATDeregistrationModel();
+                SelectedOutletOption = new VATDeregistrationModel();
+
+                SelectedDocumentOption = new ResultsAttachmentItemForElgblDocSet();
+                AddOutletDecisionOptions();
+
+                try
+                {
+                    if (VATDeRegistrationDetailsData != null)
+                    {
+                        if (VATDeRegistrationDetailsData.d != null)
+                        {
+                            if (VATDeRegistrationDetailsData.d.Reqtp == "S")
+                            {
+                                SelectedOutletOption = OutletDecisionOptions[1];
+                                SelectedOutletOptionIndex = 1;
+                            }
+                            else
+                            {
+                                SelectedOutletOption = OutletDecisionOptions[0];
+                            }
+                        }
+                        else
+                        {
+                            SelectedOutletOption = OutletDecisionOptions[0];
+                        }
+                    }
+                    else
+                    {
+                        SelectedOutletOption = OutletDecisionOptions[0];
+                    }
+                }
+                catch (Exception ex)
+                {
+                      
+                }
+
                 GetLastICRDate();
 
                 await Task.Run(() =>
@@ -1005,7 +1045,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (vATDeRegistration.d.Idnumbr != null)
 
 
-                                TxtIDNumber = vATDeRegistration.d.Idnumbr;
+                            TxtIDNumber = vATDeRegistration.d.Idnumbr;
                             ContactPersonName = vATDeRegistration.d.Contactnm;
 
 
@@ -1089,7 +1129,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
-        private void GetLastICRDate()
+
+        private async void GetLastICRDate()
         {
             string reqType = string.Empty;
             if (SelectedOutletOptionIndex == 0)
@@ -1102,8 +1143,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             try
             {
-                VATDeregistrationLastICRDateRootObject obj = WebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
-
+                VATDeregistrationLastICRDateRootObject obj = await WebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
                 LastIcrDate = obj.d.results[0].Lasticrdt;
             }
             catch (Exception e)
@@ -1194,6 +1234,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
+
+        public void SetDocType()
+        {
+            // VATRegistrationDetailsForAttach.d.ImFg;
+            //DocTypeString = "ZVTC";
+
+           // SelectedDocumentOption = VATDeRegistrationDetailsForAttach.d.AttdetSet.results[0].Dotyp;
+        }
+
 
         [Obsolete]
         public void OnVatRegistrationReasonClicked()
@@ -1577,11 +1626,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await _dialogService.ShowMessage(AppResources.ZZPleaseenteravalidID, AppResources.Alerts);
 
             }
-            else if (DOB == string.Empty)
-            {
-                await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
+            //else if (DOB == string.Empty)
+            //{
+            //    await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
 
-            }
+            //}
             else if (ContactPersonName == string.Empty)
             {
                 await _dialogService.ShowMessage(AppResources.ZZPleaseentertheName, AppResources.Alerts);
@@ -1707,6 +1756,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         if (fileData.FileName.Contains("."))
                         {
                             string Extention = fileData.FileName.Split('.')[1];
+
                             if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"
                                 || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png")
                             {
@@ -1722,7 +1772,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             bool IsAttachmentPresent = false;
                                             foreach (VATDeregAttachment ItemA in VATDeRegistrationDetailsForAttach.d.AttdetSet.results)
                                             {
-                                                if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == SelectedDocumentOption.DmsTp))
+                                               // if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == SelectedDocumentOption.DmsTp))
+                                               if(AttachmentName == ItemA.Filename)
                                                 {
                                                     IsAttachmentPresent = true;
                                                 }
@@ -1805,42 +1856,60 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             else
                                             {
                                                 AttachmentName = string.Empty;
-
+                                                await Task.Run(() =>
+                                                {
+                                                    IsLoading = false;
+                                                });
                                                 await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
                                             }
                                         }
                                         else
                                         {
                                             AttachmentName = string.Empty;
-
+                                            await Task.Run(() =>
+                                            {
+                                                IsLoading = false;
+                                            });
                                             await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                         }
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
-
+                                        await Task.Run(() =>
+                                        {
+                                            IsLoading = false;
+                                        });
                                         await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
-
+                                    await Task.Run(() =>
+                                    {
+                                        IsLoading = false;
+                                    });
                                     await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
                                 }
                             }
                             else
                             {
                                 AttachmentName = string.Empty;
-
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
                                 await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
                         else
                         {
                             AttachmentName = string.Empty;
-
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
                             await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                         }
                     }
@@ -2241,6 +2310,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //}
                 //IsLoading = false;
             });
+        }
+
+        public void SetTextCount(int length)
+        {
+            TextCount = length + "/" + "1000";
         }
 
         #endregion
