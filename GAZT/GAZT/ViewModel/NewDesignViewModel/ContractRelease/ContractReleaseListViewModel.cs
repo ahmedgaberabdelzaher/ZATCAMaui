@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.ContractRelease;
@@ -9,7 +10,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
-using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
+using static EGAZT.Models.ContractRelease.ContractReleaseSummaryModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 {
@@ -22,6 +23,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         public ICommand CloseClick { get; set; }
         public ICommand RequestContractReleaseBtnTapped { get; set; }
 
+        private ContractReleaseSummaryModel.ContractReleaseSummaryData _contractReleaseSummaryData;
+        public ContractReleaseSummaryModel.ContractReleaseSummaryData ContractReLeaseSummaryData
+        {
+            get
+            {
+                return _contractReleaseSummaryData;
+            }
+            set
+            {
+                _contractReleaseSummaryData = value;
+                RaisePropertyChanged("ContractReLeaseSummaryData");
+            }
+        }
         public ObservableCollection<ContractReLeaseApplicationFormModel.ContractResult> _contractListViewData { get; set; }
 
         public ObservableCollection<ContractReLeaseApplicationFormModel.ContractResult> ContractListViewData
@@ -49,6 +63,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 _summaryVisible = value;
                 RaisePropertyChanged("SummaryVisible");
+            }
+        }
+
+        public string _contractTotalAmount = "";
+
+        public string ContractTotalAmount
+        {
+            get { return _contractTotalAmount; }
+            set
+            {
+                _contractTotalAmount = value;
+                RaisePropertyChanged("ContractTotalAmount");
+            }
+        }
+
+        public string _amountToRelease = "";
+
+        public string AmountToRelease
+        {
+            get { return _amountToRelease; }
+            set
+            {
+                _amountToRelease = value;
+                RaisePropertyChanged("AmountToRelease");
             }
         }
 
@@ -117,6 +155,162 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+        private string _totalDues = "";
+
+        public string TotalDues
+        {
+            get { return _totalDues; }
+            set
+            {
+                _totalDues = value;
+                RaisePropertyChanged("TotalDues");
+            }
+        }
+
+        private string _remarks = "";
+
+        public string Remarks
+        {
+            get { return _remarks; }
+            set
+            {
+                _remarks = value;
+                RaisePropertyChanged("Remarks");
+            }
+        }
+
+        private string _detailDescription = "";
+
+        public string DetailDescription
+        {
+            get { return _detailDescription; }
+            set
+            {
+                _detailDescription = value;
+                RaisePropertyChanged("DetailDescription");
+            }
+        }
+
+        private string _contactPersonName = "";
+
+        public string ContactPersonName
+        {
+            get { return _contactPersonName; }
+            set
+            {
+                _contactPersonName = value;
+                RaisePropertyChanged("ContactPersonName");
+            }
+        }
+
+        private string _designation = "";
+
+        public string Designation
+        {
+            get { return _designation; }
+            set
+            {
+                _designation = value;
+                RaisePropertyChanged("Designation");
+            }
+        }
+
+        private string _pickedContract = "";
+
+        public string PickedContract
+        {
+            get { return _pickedContract; }
+            set
+            {
+                _pickedContract = value;
+                RaisePropertyChanged("PickedContract");
+            }
+        }
+
+        private string _contractName = "";
+
+        public string ContractName
+        {
+            get { return _contractName; }
+            set
+            {
+                _contractName = value;
+                RaisePropertyChanged("ContractName");
+            }
+        }
+
+        private string _contractNumber = "";
+
+        public string ContractNumber
+        {
+            get { return _contractNumber; }
+            set
+            {
+                _contractNumber = value;
+                RaisePropertyChanged("ContractNumber");
+            }
+        }
+
+        private string _fromDate = "";
+
+        public string FromDate
+        {
+            get { return _fromDate; }
+            set
+            {
+                _fromDate = value;
+                RaisePropertyChanged("FromDate");
+            }
+        }
+
+        private string _toDate = "";
+
+        public string ToDate
+        {
+            get { return _toDate; }
+            set
+            {
+                _toDate = value;
+                RaisePropertyChanged("ToDate");
+            }
+        }
+
+        public ObservableCollection<Attachment> contractCopyAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> ContractCopyAttachmentsListViewData
+        {
+            get { return contractCopyAttachmentsListViewData; }
+
+            set
+            {
+                if (contractCopyAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                contractCopyAttachmentsListViewData = value;
+                RaisePropertyChanged("ContractCopyAttachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> invoicesAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> InvoiceAttachmentsListViewData
+        {
+            get { return invoicesAttachmentsListViewData; }
+
+            set
+            {
+                if (invoicesAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                invoicesAttachmentsListViewData = value;
+                RaisePropertyChanged("InvoiceAttachmentsListViewData");
+            }
+        }
+
         public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService) : base(
             navigationService, dialogService)
         {
@@ -148,7 +342,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
             IsBackButtonVisible = true;
             IsContractListsVisible = false;
-            SummaryVisible = false;
+            SummaryVisible = true;
+        }
+
+        private void BindSummaryData()
+        {
+            FromDate = ContractReLeaseSummaryData.ContractDate;
+            ToDate = ContractReLeaseSummaryData.ContractEnddate;
+            ContractTotalAmount = ContractReLeaseSummaryData.TotalAmountofContract;
+            AmountToRelease = ContractReLeaseSummaryData.AmountRequiredtoRelease;
+            PickedContract = ContractReLeaseSummaryData.Type;
+            //ContractReLeaseSummaryData.ContractprofitEstimatedRate = resultData.d.AContProfitPer;
+            //ContractReLeaseSummaryData.ProfitEstimatedforContract = resultData.d.AContProfit;
+            //ContractReLeaseSummaryData.EstimatedProfitforZakat = resultData.d.AZakatProfit;
+            //ContractReLeaseSummaryData.EstimatedProfitforTax = resultData.d.ATaxProfitPer;
+            //ContractReLeaseSummaryData.TheValueofZakatdues = resultData.d.ADueZakat;
+            //ContractReLeaseSummaryData.TheValueofTaxdues = resultData.d.ADueTax;
+            TotalDues = ContractReLeaseSummaryData.TotalDues;
+            var ccAttachments = new ObservableCollection<Attachment>();
+            foreach (var attach in ContractReLeaseSummaryData.AttDetSet.results)
+            {
+                ccAttachments.Add(attach);
+            }
+            ContractCopyAttachmentsListViewData = ccAttachments;
+            InvoiceAttachmentsListViewData = ccAttachments;
+
         }
 
         private void PopulateContractList()
@@ -270,6 +488,111 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+        public async Task GetContractReleaseSummaryData(ContractReLeaseApplicationFormModel.ContractResult selectedItem)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+
+                    IsLoading = true;
+
+                    try
+                    {
+                        ContractReLeaseSummaryData = new ContractReleaseSummaryModel.ContractReleaseSummaryData();
+
+                        var resultData = await WebServiceManager.GAZTGetContractReleaseSummaryData("", selectedItem.Fbnum);
+
+                        ContractReLeaseSummaryData.RequestNumber = resultData.d.Fbnumz;
+                        ContractReLeaseSummaryData.TaxpayerName = resultData.d.ATpNm;
+                        ContractReLeaseSummaryData.ContractingName = resultData.d.AContNm;
+                        ContractReLeaseSummaryData.Number = resultData.d.AContNo;
+                        ContractReLeaseSummaryData.Type = resultData.d.AType;
+
+                        ContractReLeaseSummaryData.ContractDate = resultData.d.AContDt1;
+                        ContractReLeaseSummaryData.ContractEnddate = resultData.d.AContEndDtCh;
+                        ContractReLeaseSummaryData.TotalAmountofContract = resultData.d.ATotalAmt;
+                        ContractReLeaseSummaryData.AmountRequiredtoRelease = resultData.d.AReqAmt;
+                        ContractReLeaseSummaryData.ContractprofitEstimatedRate = resultData.d.AContProfitPer;
+                        ContractReLeaseSummaryData.ProfitEstimatedforContract = resultData.d.AContProfit;
+                        ContractReLeaseSummaryData.EstimatedProfitforZakat = resultData.d.AZakatProfit;
+                        ContractReLeaseSummaryData.EstimatedProfitforTax = resultData.d.ATaxProfitPer;
+                        ContractReLeaseSummaryData.TheValueofZakatdues = resultData.d.ADueZakat;
+                        ContractReLeaseSummaryData.TheValueofTaxdues = resultData.d.ADueTax;
+                        ContractReLeaseSummaryData.TotalDues = resultData.d.ADueTot;
+                        ContractReLeaseSummaryData.AttDetSet = resultData.d.AttDetSet;
+
+
+                        if (ContractReLeaseSummaryData != null)
+                        {
+                            EnableSummaryView();
+                            BindSummaryData();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+
+
+
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
 
         #endregion
 

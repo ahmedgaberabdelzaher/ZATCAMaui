@@ -19,6 +19,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
+using Metadata = EGAZT.Models.ContractRelease.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 {
@@ -967,7 +968,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         public ContractReleaseFormRequest BuildRequestObject()
         {
             ContractReleaseFormRequest request = new ContractReleaseFormRequest();
-
+            request.d = new CotractRequest();
             try
             {
                 request.d.__metadata = ContractReleaseData.d.__metadata;
@@ -982,20 +983,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.APeriodFrom = ContractReleaseData.d.APeriodFrom;
                 request.d.APeriodTo = ContractReleaseData.d.APeriodTo;
                 request.d.Approvez = ContractReleaseData.d.Approvez;
-                request.d.AReceiveDt = ContractReleaseData.d.AReceiveDt;
+                
                 request.d.ARemark = ContractReleaseData.d.ARemark;
                 request.d.ATin = ContractReleaseData.d.ATin;
                 request.d.ATpNm = ContractReleaseData.d.ATpNm;
-                request.d.AttDetSet = ContractReleaseData.d.AttDetSet;
                 request.d.Auditorz = ContractReleaseData.d.Auditorz;
                 request.d.CaseGuid = ContractReleaseData.d.CaseGuid;
                 request.d.CreateTxAssesz = ContractReleaseData.d.CreateTxAssesz;
-                request.d.CurrDatumz = ContractReleaseData.d.CurrDatumz;
+                request.d.CurrDatumz = null;
                 request.d.Euser = ContractReleaseData.d.Euser;
                 request.d.Fbnum = ContractReleaseData.d.Fbnum;
                 request.d.Fbnumz = ContractReleaseData.d.Fbnumz;
                 request.d.FormGuid = ContractReleaseData.d.FormGuid;
-                request.d.Langz = ContractReleaseData.d.Langz;
+                request.d.Langz = GetLangZParameter(); 
                 request.d.LegacyDocNo = ContractReleaseData.d.LegacyDocNo;
                 request.d.Mandt = ContractReleaseData.d.Mandt;
                 request.d.Monthz = ContractReleaseData.d.Monthz;
@@ -1011,6 +1011,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.Textnote = ContractReleaseData.d.Textnote;
                 request.d.UserTin = ContractReleaseData.d.UserTin;
                 request.d.Xvoidz = ContractReleaseData.d.Xvoidz;
+                request.d.AContDtFg = ContractReleaseData.d.AContDtFg;
+                request.d.AContEndDtFg = "G";
                 request.d.AContNm = ContractName;
                 request.d.AContNo = ContractNumber;
                 request.d.AContProfit = ProfitEstimatedContract.ToString();
@@ -1027,51 +1029,93 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.AComments = Remarks.ToString();
                 request.d.ADoc1 = "0";
                 request.d.ADoc2 = "1";
-                request.d.ADoc3 = "3";
-                request.d.AInvoiceChk = "1";
+                request.d.ADoc3 = "1";
+                request.d.AInvoiceChk = "";
                 request.d.AType = PickedContractId;
+              
+                ZnotesSet notes = new ZnotesSet();
+                notes.Tdline = DetailDescription.ToString();
+                Metadata _metdata = new Metadata();
+                _metdata.uri = Constants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
+                _metdata.type = "Z_TP_NOTES_TP11_SRV.znotes";
+                _metdata.id = Constants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
 
-                
+                notes.__metadata = _metdata;
+                notes.AttByz = "TP";
+                notes.ElemNo = 0;
 
-                for (int i = 0; i < ContractReleaseData.d.znotesSet.results.Length; i++)
+                notes.Erfdtz = null;
+                notes.Erftmz = null;
+                notes.Erfusrz = "";
+                notes.Lineno = 1;
+                notes.Noteno = "001";
+                notes.Notenoz = "001";
+                notes.Rcodez = "TP11_NOTE";
+                notes.Refnamez = "";
+                notes.Tdformat = "";
+                notes.XInvoicez = "";
+                notes.XObsoletez = "";
+                request.d.znotesSet = new ZnotesSet[1];
+                request.d.znotesSet[0] = notes;
+
+
+           
+              
+
+              //  request.d.znotesSet = ContractReleaseData.d.znotesSet.results;
+                request.d.AttDetSet = ContractReleaseData.d.AttDetSet.results;
+
+               // var fromDate = (FromDate.Year + "/" + FromDate.Month + "/" + FromDate.Day).ToString();
+                //var toDate = (ToDate.Year + "/" + ToDate.Month + "/" + ToDate.Day).ToString();
+
+
+                var todayDate = DateTime.Now.ToString();
+
+                DateTime dt2 = Convert.ToDateTime(todayDate);
+                JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
                 {
+                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                };
+                //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                var jsonDateTime2 = JsonConvert.SerializeObject(dt2, microsoftDateFormatSettings2);
+                string[] dateList2 = jsonDateTime2.Split('+');
+                jsonDateTime2 = dateList2[0].Replace("\"\\", "");
+                jsonDateTime2 = jsonDateTime2 + ")/";
+                var convretedTodayate = jsonDateTime2;
 
-                    ContractReleaseData.d.znotesSet.results[i].Tdline = DetailDescription.ToString();
+                request.d.AReceiveDt = convretedTodayate;
 
-                }
-
-                request.d.znotesSet = ContractReleaseData.d.znotesSet.results;
-;
-
-
-                DateTime dt = Convert.ToDateTime(FromDate.ToOADate());
+                DateTime dt = Convert.ToDateTime(FromDate.ToString());
                 JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
                 };
                 //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
                 string[] dateList = jsonDateTime.Split('+');
                 jsonDateTime = dateList[0].Replace("\"\\", "");
                 jsonDateTime = jsonDateTime + ")/";
                 var convretedFromDate = jsonDateTime;
 
 
-                DateTime dt1 = Convert.ToDateTime(ToDate.ToOADate());
+                DateTime dt1 = Convert.ToDateTime(ToDate.ToString());
                 JsonSerializerSettings microsoftDateFormatSettings1 = new JsonSerializerSettings
                 {
                     DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
                 };
                 //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                var jsonDateTime1 = JsonConvert.SerializeObject(dt1.Date, microsoftDateFormatSettings);
+                var jsonDateTime1 = JsonConvert.SerializeObject(dt1, microsoftDateFormatSettings);
                 string[] dateList1 = jsonDateTime1.Split('+');
                 jsonDateTime1 = dateList1[0].Replace("\"\\", "");
                 jsonDateTime1 = jsonDateTime1 + ")/";
                 var convretedToDate = jsonDateTime1;
                 request.d.AContDt = convretedFromDate;
                 request.d.AContEndDt = convretedToDate;
-                request.d.AContEndDtCh = (ToDate.Year + "/" + ToDate.Month + "/" + ToDate.Date).ToString();
-                request.d.AContDt1 = (ToDate.Year + "/" + ToDate.Month + "/" + ToDate.Date).ToString();
+                request.d.AContEndDtCh = ToDate.ToString("yyyy/MM/dd");
+
+                //request.d.AContEndDtCh = (ToDate.Year + "/" + ToDate.Month. + "/" + ToDate.Day).ToString();
+                request.d.AContDt1 = FromDate.ToString("yyyy/MM/dd");
+                request.d.Savez = "X";
                 request.d.Submitz = "X";
 
                 
@@ -1085,6 +1129,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             return request;
 
 
+        }
+
+        private static string GetLangZParameter()
+        {
+            if (App.IsArabic)
+                return "A";
+            else
+                return "E";
         }
 
         public async Task<ContractReleaseFormResponse> SubmitClicked()
@@ -1321,7 +1373,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
                     ContractCopyAttachmentsListViewData.ToList(),
-                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseCopy, ContractReleaseData.d.FormGuid));
+                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseCopy, ContractReleaseData.d.CaseGuid));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1352,7 +1404,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
                     InvoiceAttachmentsListViewData.ToList(),
-                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseInvoice, ContractReleaseData.d.RegIdz));
+                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseInvoice, ContractReleaseData.d.CaseGuid));
             }
             catch (GAZTUnlockAccountException ex)
             {

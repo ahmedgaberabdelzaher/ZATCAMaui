@@ -353,6 +353,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     {
                         string[] filetypes;
 
+
                         filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
                         
                         var fileData = await CrossFilePicker.Current.PickFile(filetypes);
@@ -568,8 +569,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 {
                     if (result)
                     {
-                       // int indexToReduceTheSize = GetDeletedAttachmentIndex(attachment);
-                        string results = WebServiceManager.GAZTDeleteAttachment(attachment.Filename, attachment.Doguid);
+                        // int indexToReduceTheSize = GetDeletedAttachmentIndex(attachment);
+
+                        string APiMethod = "Z_SAVE_ATTACH_SRV";
+
+                        if (IsComeForWhichAttachment == WhichAttachment.VATInstalment)
+                        {
+                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                        }
+                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy)
+                        {
+                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                        }
+                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
+                        {
+                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                        }
+                        string results = WebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, attachment.Doguid, APiMethod);
                         PopToRootPage();
                         if (results == "X")
                         {
@@ -655,7 +671,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 try
                 {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveAttachment(attachmentByteData, AttachmentName, returnIdz, Doctype, contentType);
+
+
+                    string APiMethod = "Z_SAVE_ATTACH_SRV";
+
+                    if (IsComeForWhichAttachment == WhichAttachment.VATInstalment)
+                    {
+                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
+                    else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy)
+                    {
+                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
+                    else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
+                    {
+                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
+
+
+                    AttachmentRootOject attachment = await WebServiceManager.GAZTGenericSaveAttachment(attachmentByteData, AttachmentName, returnIdz, Doctype, contentType, APiMethod);
                     
                     if (attachment != null && attachment.d != null)
                     {

@@ -594,7 +594,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             if (ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results != null)
             {
-                RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results.Where(w => w.Fbtyp.Contains("VTIA")).ToList();
+                RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results;
+
                 if (RequestForInstalmentPlanList.Count > 0)
                 {
                     NumberOfInstalmentPlans = RequestForInstalmentPlanList.Count + " " + AppResources.ZakatInstalmetPlan;
@@ -742,7 +743,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 SummarySelectedBillsList.Add(new ZakatSelectBillModel()
                 {
-                    billNumber = "Bill " + (SummarySelectedBillsList.Count + 1).ToString("00"),
+                    billNumber = AppResources.Bill + (SummarySelectedBillsList.Count + 1).ToString("00"),
                     amount = "0.00 SAR",
                     saadNumber = bill.SadadNo,
                     taxPeriod = bill.Taxperioddsc,
@@ -758,10 +759,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 Attachments.Add(attach);
             }
             NoOfInstalments = itemDetails.d.Noofinstallment;
-            InstalmentAmount = itemDetails.d.TotInvAmt;
-            PenaltyAmount = itemDetails.d.Peneltyamt;
-
-            TotalAmount = itemDetails.d.Totliablityamt;
+            InstalmentAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.TotInvAmt)) + " " + AppResources.ZSAR;
+            PenaltyAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Peneltyamt)) + " " + AppResources.ZSAR;
+            TotalAmount = string.Format("{0:N2}", double.Parse(itemDetails.d.Totliablityamt)) + " " + AppResources.ZSAR;
         }
 
 
@@ -1035,14 +1035,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                             }
                             ScheduleNoOfMonths = itemDetails.d.Noofmon;
-                            ScheduleAmountRemaining = itemDetails.d.TotalRemAmnt;
-                            ScheduleMonthlyInstalment = itemDetails.d.TotalInstall;
-                            ScheduleTotalAmountPaid = itemDetails.d.TotalAmntPaid;
+                            ScheduleAmountRemaining = string.Format("{0:N2}", double.Parse(itemDetails.d.TotalRemAmnt)) + " " + AppResources.ZSAR;
+                            ScheduleMonthlyInstalment = string.Format("{0:N2}", double.Parse(itemDetails.d.TotalInstall)) + " " + AppResources.ZSAR;
+                            ScheduleTotalAmountPaid = string.Format("{0:N2}", double.Parse(itemDetails.d.TotalAmntPaid)) + " " + AppResources.ZSAR;
 
                         }
-
-
-
 
 
                         PopToRootPage();

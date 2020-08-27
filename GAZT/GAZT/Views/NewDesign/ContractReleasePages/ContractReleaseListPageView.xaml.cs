@@ -1,4 +1,5 @@
 ﻿using System;
+using EGAZT.Models.ContractRelease;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -61,14 +62,15 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
         }
 
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void ListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
 
         }
 
-        private void ContractsList_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void ContractsList_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-
+            var item = e.ItemData as ContractReLeaseApplicationFormModel.ContractResult;
+            viewModel.GetContractReleaseSummaryData(item);
         }
     }
 }
