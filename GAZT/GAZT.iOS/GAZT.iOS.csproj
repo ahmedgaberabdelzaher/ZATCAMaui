@@ -277,6 +277,9 @@
     <BundleResource Include="Resources\installment_plan.png" />
     <BundleResource Include="Resources\installment_plan%402x.png" />
     <BundleResource Include="Resources\installment_plan%403x.png" />
+    <BundleResource Include="Resources\refund.png" />
+    <BundleResource Include="Resources\refund%402x.png" />
+    <BundleResource Include="Resources\refund%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1878,5 +1881,41 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\phone_Green%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\branchLocator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\branchLocator%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\branchLocator%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ColorChat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ColorChat%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ColorChat%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customerServiceColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customerServiceColor%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\customerServiceColor%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\faQs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\faQs%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\faQs%403x.png" />
   </ItemGroup>
 </Project>

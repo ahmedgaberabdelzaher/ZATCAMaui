@@ -7466,7 +7466,7 @@ namespace GAZT.Manager
 
         #region VATDeregistration Reason
 
-        public static VATDeregistrationLastICRDateRootObject GAZTGETVATDeregSuspensionDate(string selectedType)
+        public async static Task<VATDeregistrationLastICRDateRootObject> GAZTGETVATDeregSuspensionDate(string selectedType)
         {
             if (CrossConnectivity.Current.IsConnected)
             {

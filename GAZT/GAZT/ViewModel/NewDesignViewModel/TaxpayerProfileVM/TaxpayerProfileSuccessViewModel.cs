@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using GAZT.Models;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -8,6 +11,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
     {
         #region Variable
         public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        public int TPProfileSuccessId;
         #endregion
 
         private string _SuccessTitleLbl;
@@ -43,7 +48,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        public TaxpayerProfileSuccessViewModel(INavigationService navigationService)
+        public TaxpayerProfileSuccessViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
             _navigationService = navigationService;

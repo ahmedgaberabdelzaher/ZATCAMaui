@@ -1625,15 +1625,12 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>
-    <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
-   <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
-   </data>
-    <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
-   <value>Total Request Amount</value>
-   </data>
-   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
-   <value>Refund Request for VAT</value>
-   </data>
+  <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
+    <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
+  </data>
+  <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
+    <value>Total Request Amount</value>
+  </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>Refund Information</value>
   </data>
@@ -4488,6 +4485,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
     <value>Outlets</value>
   </data>
+  <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
+    <value />
+  </data>
+  <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+    <value>Select DOB</value>
+  </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
   </data>
@@ -4572,9 +4575,6 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregReasonTitle" xml:space="preserve">
     <value>Reason</value>
   </data>
-  <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
-    <value>Select DOB</value>
-  </data>
   <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
     <value>Select End Date</value>
   </data>
@@ -4642,7 +4642,10 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>VAT Deregistration submitted successfully</value>
   </data>
-         <data name="VatDeregistrationVoidMessage" xml:space="preserve">
+  <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
+    <value> Suspension Date must be 1 day ahead of Last ICR date</value>
+  </data>
+  <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>Do you want to cancel the Deregistration?</value>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
@@ -4984,7 +4987,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
-   <data name="VATRefundAccounts" xml:space="preserve">
+  <data name="VATRefundAccounts" xml:space="preserve">
     <value>Accounts</value>
   </data>
   <data name="VATRefundCancelRefund" xml:space="preserve">
@@ -5727,7 +5730,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Instructions &amp; Conditions</value>
   </data>
   <data name="CRInstructions" xml:space="preserve">
-    <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
+    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
+      2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
   </data>
   <data name="CRInstructionsDesc" xml:space="preserve">
     <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
@@ -6070,10 +6074,6 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VatInstalmentsStatusInDraft" xml:space="preserve">
     <value>In Draft</value>
   </data>
-     <data name="CRInstructions" xml:space="preserve">
-    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
-      2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
-  </data>
   <data name="CRInstrCheckDesc" xml:space="preserve">
     <value>I Agree</value>
   </data>
@@ -6137,25 +6137,25 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="CRdesignsupplyandopratemaintenance" xml:space="preserve">
     <value>design, supply and oprate (maintenance)</value>
   </data>
-<data name="CRequipmentrental" xml:space="preserve">
+  <data name="CRequipmentrental" xml:space="preserve">
     <value>equipment rental</value>
   </data>
   <data name="CRmaintenancecleanlinessandoprate" xml:space="preserve">
     <value>maintenance, cleanliness and oprate</value>
   </data>
-<data name="CRcleanliness" xml:space="preserve">
+  <data name="CRcleanliness" xml:space="preserve">
     <value>cleanliness</value>
   </data>
   <data name="CRcatering" xml:space="preserve">
     <value>catering</value>
   </data>
-<data name="CRSecurityguards" xml:space="preserve">
+  <data name="CRSecurityguards" xml:space="preserve">
     <value>Security guards</value>
   </data>
   <data name="CRRoadsmaintenance" xml:space="preserve">
     <value>Roads maintenance</value>
   </data>
-<data name="CRLaborrecruiting" xml:space="preserve">
+  <data name="CRLaborrecruiting" xml:space="preserve">
     <value>Labor recruiting</value>
   </data>
   <data name="CRContractingRoadsandTransport" xml:space="preserve">
@@ -6197,11 +6197,31 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="CRContractEndDateshouldnotbelessfromcontractdate" xml:space="preserve">
     <value>Contract EndDate should not be less from contract date</value>
   </data>
-    <data name="CRRequestContractRelease" xml:space="preserve">
-  <value>Request Contract Release</value>
-</data>
-<data name="CRContractReleaseApplicationForm" xml:space="preserve">
-  <value>Contract Release Application Form</value>
-</data>
-
+  <data name="CRRequestContractRelease" xml:space="preserve">
+    <value>Request Contract Release</value>
+  </data>
+  <data name="CRContractReleaseApplicationForm" xml:space="preserve">
+    <value>Contract Release Application Form</value>
+  </data>
+  <data name="ZZZZWrongVerificationCode" xml:space="preserve">
+    <value>Wrong verification code</value>
+  </data>
+  <data name="SameTincantbeaddedasfinancialrepresentative" xml:space="preserve">
+    <value>Same Tin can't be added as financial representative.</value>
+  </data>
+  <data name="NDBranchLocator" xml:space="preserve">
+    <value>Branch Locator</value>
+  </data>
+  <data name="NDChat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="NDLocalPhone" xml:space="preserve">
+    <value>Local Phone</value>
+  </data>
+  <data name="NDOpeningHours" xml:space="preserve">
+    <value>Opening Hours</value>
+  </data>
+  <data name="NDPobox1" xml:space="preserve">
+    <value>Po Box</value>
+  </data>
 </root>

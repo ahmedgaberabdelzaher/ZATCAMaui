@@ -668,5 +668,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
         }
+
+        private void OnSupportTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.SupportPageView);
+        }
     }
 }

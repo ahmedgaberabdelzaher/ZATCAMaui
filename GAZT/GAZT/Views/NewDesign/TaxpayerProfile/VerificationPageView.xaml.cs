@@ -17,6 +17,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
     public partial class VerificationPageView : ContentPage
     {
         VerificationEmailPasswordViewModel viewModel;
+
         public VerificationPageView(UpdateEmailDataModel updateEmailData)
         {
             InitializeComponent();
@@ -71,9 +72,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         // * Password + OTP Validations
         private bool TaxpayerProfileOTPEmailUpdateValidation(string CurrentPassword, string NewPassword, string ConfirmPassword)
         {
-            //CurrentMobileNumber = Regex.Replace(CurrentMobileNumber, @"\s+", "");
-            //NewMobileNumber = Regex.Replace(NewMobileNumber, @"\s+", "");
-
             string validationError = VerifyOTPPasswords(CurrentPassword, NewPassword, ConfirmPassword);
 
             if (validationError == string.Empty)
@@ -121,7 +119,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             if( viewModel.countDownSeconds == 0 )
             {
-                //viewModel.LoadingStart();
                 viewModel.BtnEnableFlag = false;
                 viewModel.EnteredOTP = string.Empty;
                 viewModel.OTPFirstDigit = string.Empty;
@@ -155,7 +152,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            if (viewModel.OTPFourthDigit.Length == 0) { OTPThirdEntry.Focus(); }
+            // Work around
+            if (viewModel.OTPFirstDigit.Length == 0) { OTPFirstEntry.Focus(); }
+            else
+                if (viewModel.OTPFourthDigit.Length == 0) { OTPThirdEntry.Focus(); }
         }
 
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
@@ -200,17 +200,13 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            // * Start timer period for valid OTP
-            //var result = Regex.Match(App.TP.Mobile, @"(.{3})\s*$");
-            //viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
-            //viewModel.StartOTPTimer();
-
-            //var result = Regex.Match(viewModel._updateEmailData.CurrentEmail, @"(.{8})\s*$");
-            OTPFirstEntry.Focus();
             viewModel.OTPSentOnThisMobileNumber = AppResources.Email + " " + viewModel._updateEmailData.NewEmail;
             viewModel.StartOTPTimer();
 
             RefreshControlsData();
+
+            // * Set
+            OTPThirdEntry.Unfocus();
         }
 
         protected override void OnDisappearing()
@@ -230,9 +226,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.OTPThirdDigit = string.Empty;
             viewModel.OTPFourthDigit = string.Empty;
             viewModel.EnteredOTP = string.Empty;
-
-            // Work around - need to check
-            OTPThirdEntry.Unfocus();
 
             // Defualt
             viewModel.BtnEnableFlag = false;

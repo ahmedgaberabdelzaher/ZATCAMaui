@@ -83,7 +83,7 @@
                                 </inputLayout:SfTextInputLayout.LeadingView>-->
                                 <Entry  FlowDirection="LeftToRight"  x:Name="Mobile_Entry"
                                                         Text="{Binding CurrentMobileNumberEntryText}"
-                                                        FontSize="Medium"
+                                                       Style="{StaticResource DefaultEntry}"
                                                         VerticalTextAlignment="Center"
                                                         Keyboard="Telephone"
                                               
@@ -95,7 +95,7 @@
                             </inputLayout:SfTextInputLayout>
 
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
-                            <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand"
+                            <!--<inputLayout:SfTextInputLayout FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand"
                                                         ContainerType="Outlined"
                                                            x:Name="Frm_mobile"
                                                            
@@ -105,16 +105,7 @@
                                                         FocusedColor="#005e4b"
                                                         ErrorColor="#B00020" >
                                 <inputLayout:SfTextInputLayout.LeadingView>
-                                    <!--<StackLayout>-->
-                                    <!--<Image HorizontalOptions="StartAndExpand" Rotation="270" >
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="Gray" Size="18"
-                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                            </Image.Source>
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                            </Image.GestureRecognizers>
-                                        </Image>-->
+                                 
                                     <custom:CustomLabel FlowDirection="LeftToRight"
                                        x:Name="Label_InternationalnoCode"
                                                         Margin="5,0,5,0"
@@ -128,25 +119,47 @@
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <!--<StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                                        </StackLayout.GestureRecognizers>
-                                    </StackLayout> Unfocused="Mobile_entry_Unfocused"-->
+                               
 
                                 </inputLayout:SfTextInputLayout.LeadingView>
-                                <control:BorderlessEntry  x:Name="Mobile_entry"  Text="{Binding NewMobileNumberEntryText}"
+                                <control:BorderlessEntry  x:Name="Mobile_entry" MaxLength="{Binding MaxDigids}" Text="{Binding NewMobileNumberEntryText}"
                                                         FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
                                                         Keyboard="Telephone"  TextColor="{StaticResource NeutralBlack}"
                                                           VerticalTextAlignment="Center"
-                                                        MaxLength="{Binding MaxDigids}"
+                                                        
                                                         >
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>
                                 </control:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                            </inputLayout:SfTextInputLayout>-->
+                            <Frame BorderColor="LightGray"   Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">
+                                <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
+                                    <Image HorizontalOptions="Start" Rotation="270" >
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="Black" Size="18"
+                                                                         Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <custom:CustomButton HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black"
+                                                                 Text="{Binding CountryCode}" x:Name="Label_InternationalnoCode" Clicked="TapGestureRecognizer_Tapped"
+                                                                 BackgroundColor="Transparent" >
+                                    </custom:CustomButton>
+                                    <!--<custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
+                                    <custom:BorderlessEntry  x:Name="Mobile_entry" MaxLength="{Binding MaxDigids}" Text="{Binding NewMobileNumberEntryText}"  HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False"  
+                                                                                         Keyboard="Telephone" TextColor="Black"  FontSize="Small" Style="{StaticResource DefaultEntry}">
 
+                                        <Entry.Behaviors>
+                                            <custom1:OnlyNumericValuesBehaviour/>
+                                        </Entry.Behaviors>
+                                    </custom:BorderlessEntry>
+
+                                </StackLayout>
+                            </Frame>
                         </StackLayout>
                     </StackLayout>
 

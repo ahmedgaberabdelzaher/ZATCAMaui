@@ -23,17 +23,25 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
     public partial class UpdateMobilePopUp : PopupPage
     {
         UpdateMobileViewModel viewModel;
-        ObservableCollection<InternationalMobileData> mobileData = null;
-        public UpdateMobilePopUp()
+        ObservableCollection<InternationalMobileData> currentMobileData = null;
+
+        public UpdateMobilePopUp(ObservableCollection<InternationalMobileData> mobileData)
         {
             InitializeComponent();
             viewModel = App.Locator.UpdateMobilePopUp;
             this.BindingContext = viewModel;
             viewModel.CountryCode = "+966";
             Label_InternationalnoCode.StyleId = "LTRLabelText";
-            Label_InternationalnoCode.Text = "+966";
-            
+            // Label_InternationalnoCode.Text = "+966";
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Label_InternationalnoCode.Margin = new Thickness(0);
+            }
+            else
+            {
+                Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
+            }
             //SetLTR();
             this.FlowDirection = UtilityManager.SetLTRAndRTL();
             if (App.IsArabic)
@@ -44,6 +52,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
                 Mobile_Entry.HorizontalTextAlignment = TextAlignment.Start;
             }
+
+            // Setup International Mobile Data
+            currentMobileData = mobileData;
         }
 
         // * Forgot password : OTP Verification :
@@ -98,7 +109,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     UpdateMobile.IsVisible = false;
                     VerificationView.IsVisible = true;
                     viewModel.BtnEnableFlag = false;
-                    btn.Text = AppResources.Verify ;
+                    btn.Text = AppResources.Verify;
 
                     var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
                     viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
@@ -200,61 +211,37 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            // Show existing mobile
-            //var resultedNumber = Regex.Match(App.TP.Mobile, UtilityManager.MobileNumberRegX);
-            //viewModel.CurrentMobileNumberEntryText = resultedNumber.ToString();
-            //var result = "+" + App.TP.Mobile.Remove(0, 2);
-            //viewModel.CurrentMobileNumberEntryText = result.ToString();
-
-        // viewModel.CurrentMobileNumberEntryText = App.TP.Mobile;
-            //if (App.TP.Mobile.Length < 12)
-            //{
-            //    viewModel.CurrentMobileNumberEntryText="+966"+ App.TP.Mobile
-
-            //}
-            if (App.TP.Mobile.Length < 12)
+            if (Device.RuntimePlatform == Device.Android)
             {
-                viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
+                Label_InternationalnoCode.Margin = new Thickness(0);
             }
             else
             {
+                Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
+            }
 
+            if (App.TP.Mobile.Length < 12)
+                viewModel.CurrentMobileNumberEntryText = "+966" + App.TP.Mobile.Remove(0, 2);
+            else
                 viewModel.CurrentMobileNumberEntryText = "+" + App.TP.Mobile.Remove(0, 2);
 
-            }
-            //IsLoading = false;
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {
-                //if (App.IsArabic)
-                //{
-                //    ArIntnlCodes.Text = arg;
-                //}
-                //else
-                //{
-                //    IntnlCodes.Text = arg;
-                //}
                 Label_InternationalnoCode.Text = arg;
                 viewModel.CountryCode = arg;
-
-                //viewModel.TxtCountryCode = arg;
             });
+
             RefreshControlsData();
-            try
-            {
-                mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
 
+            MessagingCenter.Unsubscribe<InternationalCodeSearchPage, string>(this, "SelectedItem");
+
             // * Worka aroung - Need to find a solution
-            if(viewModel.countDownSeconds != 0 )
+            if (viewModel.countDownSeconds != 0)
                 viewModel.otpTimer.Stop();
         }
 
@@ -272,7 +259,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             viewModel.IsLoading = false;
 
             viewModel.NewMobileNumberEntryText = string.Empty;
-            btn.Text =AppResources.TPUpdate ;
+            btn.Text = AppResources.TPUpdate;
         }
 
         private void Mobile_entry_Unfocused(object sender, FocusEventArgs e)
@@ -308,12 +295,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    Frm_mobile.HasError = true;
+                    //Frm_mobile.HasError = true;
                     viewModel.NewMobileNumberEntryText = string.Empty;
                 }
                 else
                 {
-                    Frm_mobile.HasError = false;
+                    //Frm_mobile.HasError = false;
                 }
             }
             else
@@ -326,7 +313,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
+            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(currentMobileData));
         }
     }
-    }
+}

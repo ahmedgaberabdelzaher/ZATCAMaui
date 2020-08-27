@@ -1215,7 +1215,9 @@
     <value>Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number.</value>
   </data>
   <data name="ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount" xml:space="preserve">
-    <value>لن يتم تقديم طلب الا عتراض الا في حال سداد المبلغ غير المعترض عليه بالإضافة % من المبلغ المعترض عليه25الى</value>
+    <value>
+لن يتم تقديم طلب الاعتراض الا في حال سداد المبلغ غير المعترض عليه بالإضافة 25% من المبلغ المعترض عليه
+</value>
   </data>
   <data name="ZSADADBillDetails" xml:space="preserve">
     <value>سداد فاتورة تفاصيل</value>
@@ -1635,12 +1637,12 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
- <data name="VATRefundAccounts" xml:space="preserve">
+  <data name="VATRefundAccounts" xml:space="preserve">
     <value>الحسابات</value>
   </data>
-   <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
-   <value>سيتم حفظ طلبك في مسودة ويجب عليك إكماله خلال 20 يوم عمل أخرى وإلا سيتم إلغاؤه تلقائيًا وتحتاج إلى إعادة تقديم طلب جديد</value>
-   </data>
+  <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
+    <value>سيتم حفظ طلبك في مسودة ويجب عليك إكماله خلال 20 يوم عمل أخرى وإلا سيتم إلغاؤه تلقائيًا وتحتاج إلى إعادة تقديم طلب جديد</value>
+  </data>
   <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
     <value>إجمالي المبلغ المطلوب</value>
   </data>
@@ -4489,8 +4491,10 @@
   <data name="VATDeregistrationDocumentType2" xml:space="preserve">
     <value>تقارير مدققه</value>
   </data>
-    
-          <data name="VatDeregistrationVoidMessage" xml:space="preserve">
+  <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
+    <value>تاريخ الايقاف يجب ان يكون بعد يوم واحد على الاقل من تاريخ اخر تقديم للاقرار</value>
+  </data>
+  <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>هل تريد إلغاء ايقاف التسجيل؟</value>
   </data>
   <data name="VATDeregistrationDocumentType3" xml:space="preserve">
@@ -5778,10 +5782,10 @@
   <data name="ZZZZConfirmRefund" xml:space="preserve">
     <value>تأكيد طلب الاسترداد</value>
   </data>
-   <data name="VatInstalmentsStatusInDraft" xml:space="preserve">
+  <data name="VatInstalmentsStatusInDraft" xml:space="preserve">
     <value>In Draft</value>
   </data>
-     <data name="CRInstructions" xml:space="preserve">
+  <data name="CRInstructions" xml:space="preserve">
     <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
       2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
   </data>
@@ -5848,25 +5852,25 @@
   <data name="CRdesignsupplyandopratemaintenance" xml:space="preserve">
     <value>design, supply and oprate (maintenance)</value>
   </data>
-<data name="CRequipmentrental" xml:space="preserve">
+  <data name="CRequipmentrental" xml:space="preserve">
     <value>equipment rental</value>
   </data>
   <data name="CRmaintenancecleanlinessandoprate" xml:space="preserve">
     <value>maintenance, cleanliness and oprate</value>
   </data>
-<data name="CRcleanliness" xml:space="preserve">
+  <data name="CRcleanliness" xml:space="preserve">
     <value>cleanliness</value>
   </data>
   <data name="CRcatering" xml:space="preserve">
     <value>catering</value>
   </data>
-<data name="CRSecurityguards" xml:space="preserve">
+  <data name="CRSecurityguards" xml:space="preserve">
     <value>Security guards</value>
   </data>
   <data name="CRRoadsmaintenance" xml:space="preserve">
     <value>Roads maintenance</value>
   </data>
-<data name="CRLaborrecruiting" xml:space="preserve">
+  <data name="CRLaborrecruiting" xml:space="preserve">
     <value>Labor recruiting</value>
   </data>
   <data name="CRContractingRoadsandTransport" xml:space="preserve">
@@ -5908,10 +5912,31 @@
   <data name="CRContractEndDateshouldnotbelessfromcontractdate" xml:space="preserve">
     <value>Contract EndDate should not be less from contract date</value>
   </data>
-    <data name="CRRequestContractRelease" xml:space="preserve">
-  <value>Request Contract Release</value>
-</data>
-<data name="CRContractReleaseApplicationForm" xml:space="preserve">
-  <value>Contract Release Application Form</value>
-</data>
+  <data name="CRRequestContractRelease" xml:space="preserve">
+    <value>Request Contract Release</value>
+  </data>
+  <data name="CRContractReleaseApplicationForm" xml:space="preserve">
+    <value>Contract Release Application Form</value>
+  </data>
+  <data name="ZZZZWrongVerificationCode" xml:space="preserve">
+    <value>رمز التحقق غير صحيح</value>
+  </data>
+  <data name="SameTincantbeaddedasfinancialrepresentative" xml:space="preserve">
+    <value>نفس المكلف لا يمكن إضافته كممثل مجموعة</value>
+  </data>
+  <data name="NDBranchLocator" xml:space="preserve">
+    <value>Branch Locator</value>
+  </data>
+  <data name="NDChat" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="NDLocalPhone" xml:space="preserve">
+    <value>Local Phone</value>
+  </data>
+  <data name="NDOpeningHours" xml:space="preserve">
+    <value>Opening Hours</value>
+  </data>
+  <data name="NDPobox1" xml:space="preserve">
+    <value>Po Box</value>
+  </data>
 </root>

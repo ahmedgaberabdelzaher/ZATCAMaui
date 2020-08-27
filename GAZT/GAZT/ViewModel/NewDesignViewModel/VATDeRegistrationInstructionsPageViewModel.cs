@@ -120,6 +120,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         _navigationService.GoBack();
                     });
                 }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
