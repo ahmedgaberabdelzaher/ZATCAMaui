@@ -475,23 +475,22 @@
                                                                      <StackLayout Grid.Row="1" Grid.Column="0" >
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
-                                <inputLayout:SfTextInputLayout  Margin="-2,-6,0,6" WidthRequest="140"
+                                <inputLayout:SfTextInputLayout  Margin="-2,-4,0,6" WidthRequest="180"
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                    <custom:BorderlessEntry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start" Text="{Binding TxtIDNumber}"
+                                    <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Text="{Binding TxtIDNumber}"
                                                             TextColor="#bbbbbb" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
-                                    </custom:BorderlessEntry>
+                                    </Entry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
                             <StackLayout IsVisible="{Binding IsDOBEditorVisible}" Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
                                 <custom:CustomLabel Margin="30,0,0,0" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="Start"
                                                 Style="{StaticResource CaptionLabelGrey}" />   
-                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,0"  Style="{StaticResource GreyBorderFrame}">
 
-                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="180">
                                         
-                                        <Label x:Name="DpDbo" Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Small" HorizontalOptions="Start"/>
+                                        <Label x:Name="DpDbo" Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Micro" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
