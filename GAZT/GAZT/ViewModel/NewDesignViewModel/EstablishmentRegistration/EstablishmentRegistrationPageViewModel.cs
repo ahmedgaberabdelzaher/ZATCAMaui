@@ -1107,24 +1107,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private void navigateToNext()
+        private async void navigateToNext()
         {
+            var fillMandatory = "Please fill all mandatory Fields.";
+            var failedMesage = "Failed to push the data to server";
             if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
             {
                 if (FormValidation(currentTab))
                 {
-                    if (PushDatatoServer(currentTab))
+                    if (await PushDatatoServer(currentTab))
                     {
                         currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
                     }
                     else
                     {
-                        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+                        ShowValidationPopup(failedMesage);
                     }
                 }
                 else
                 {
-                    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
+                    ShowValidationPopup(fillMandatory);
 
                 }
             }
@@ -1132,18 +1134,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (FormValidation(currentTab))
                 {
-                    if (PushDatatoServer(currentTab))
+                    if (await PushDatatoServer(currentTab))
                     {
                         currentTab = EstablishmentRegistrationTabsEnum.Outlets;
                     }
                     else
                     {
-                        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+                        ShowValidationPopup(failedMesage);
                     }
                 }
                 else
                 {
-                    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
+                    ShowValidationPopup(fillMandatory);
 
                 }
             }
@@ -1159,20 +1161,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (FormValidation(currentTab))
                 {
-                    if (PushDatatoServer(currentTab))
+                    if (await PushDatatoServer(currentTab))
                     {
                         currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
                     }
                     else
                     {
-                        _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+                        ShowValidationPopup(failedMesage);// _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
 
                     }
                 }
                 else
                 {
-                    _dialogService.ShowMessage("Please fill all mandatory Fields.", AppResources.Information);
-
+                    ShowValidationPopup(fillMandatory);
                 }
             }
             else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
@@ -1204,6 +1205,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+
+        private  void ShowValidationPopup(string _message)
+        {
+            _dialogService.ShowError(_message, AppResources.Information,"Ok",null);
+        }
 
         private void OrgResidenceSelection(OrgResidenceNationalityEstablishmentRegistrationEnum selectedOption)
         {
@@ -1481,7 +1487,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private void SelectOrgNonResidentActivity(string selectedOrgNonResidentActivityValue)
         {
-            if (selectedOrgNonResidentActivityValue == "Derived from an activity which occurs in KSA")
+            if (selectedOrgNonResidentActivityValue == AppResources.ZakatAmount)// "Derived from an activity which occurs in KSA")
             {
                 SelectedOrgNonResidentActivity = "1";
             }
@@ -1880,13 +1886,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
 
 
-        private bool PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
+        private async  Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    TaxPayerDetails taxPayerDetails = new TaxPayerDetails();
+                    TaxPayerDetails taxPayerDetailstaxPayerRegObj = new TaxPayerDetails();
                     taxPayerDetails.Branchx = SelectedReportingBranch;
                     taxPayerDetails.Atype = SelectedEntityType;
                     taxPayerDetails.Tpnationality = SelectedRegNationalityType;
@@ -1895,38 +1901,96 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Orgnonresident = SelectedOrgNonResident;
                     taxPayerDetails.Orgnonresidentoptions = SelectedOrgNonResidentOptions;
                     taxPayerDetails.Orgnonresidentactivity = SelectedOrgNonResidentActivity;
-                    taxPayerDetails.Rentatt = UploadedRentDocumentsList.FirstOrDefault().DocBinaryInBase64.ToString();
+
+                    if (UploadedRentDocumentsList != null && UploadedRentDocumentsList.Count > 0)
+                    {
+                        var uploadDocumentResult =  await WebServiceManager.ESTAttachment(
+                            UploadedRentDocumentsList.FirstOrDefault().DocBinaryInBase64,
+                            UploadedRentDocumentsList.FirstOrDefault().FileNameWithExtension,
+                            taxPayerDetails?.ReturnIdx, "RG16", UploadedRentDocumentsList.FirstOrDefault().MimeType);
+                        taxPayerDetails.Rentatt = "X";
+                    }
+                    else
+                    {
+                        taxPayerDetails.Rentatt = "";
+                    }
+
+                    taxPayerDetails.Branchx = SelectedReportingBranch;
+
+
+
+                    var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
 
                     return true;
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
-                    
-                    //SelectedDOB
-                    //FirstName
-                    //LastName
-                   // FatherName
-                  // GrandFatherName
-                       // FamilyName
-                       //Initial
-                    //SelectedGender
-                    //SelectedTaxpayerPDNationality
-                    //SelectedCitizen
-                    //SelectedResidence
-               
+                    TaxPayerDetails taxPayerRegObj = new TaxPayerDetails();
+                    taxPayerDetails.Birthdt = Convert.ToDateTime(SelectedDOB);
+                    taxPayerDetails.NameFirst = FirstName;
+                    taxPayerDetails.NameLast = LastName;
+                    taxPayerDetails.FatherName = FatherName;
+                    taxPayerDetails.GrandfatherName = GrandFatherName;
+                    taxPayerDetails.FamilyName = FamilyName;
+                    taxPayerDetails.Initials = Initial;
+                    if (SelectedGender.ToLower()=="male")
+                    {
+                        taxPayerDetails.Xsexm = "X";
+                    }
+                    else if (SelectedGender.ToLower() == "female")
+                    {
+                        taxPayerDetails.Xsexf = "X";
+                    }
+                    taxPayerDetails.Natio = SelectedTaxpayerPDNationality;
+                    taxPayerDetails.Citizen = SelectedCitizen;
+                    taxPayerDetails.Residence = SelectedResidence;
+
+                    var taxPayerDetailsResult = await  WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+
 
                     return true;
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
-                    TaxPayerDetails taxPayerDetails = new TaxPayerDetails();
                     
-                    //PassportNumber
-                    //SelectedPassportIssueCountry
-                    //PassportIssueDate
-                    //PassportExpireDate
-                    //UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count <= 0)
+
+
+                  
+                    Nreg_IdItem passportObj = new Nreg_IdItem();
+                    passportObj.Idnumber = PassportNumber;
+                    passportObj.Country = SelectedPassportIssueCountry;
+                    passportObj.ValidDateFrom = Convert.ToDateTime(PassportIssueDate);
+                    passportObj.ValidDateTo = Convert.ToDateTime(PassportExpireDate);
+
+                    List<Nreg_IdItem> _test = new List<Nreg_IdItem>();
+                    _test.Add(passportObj);
+
+
+                    NregIdSet passportIDObj = new NregIdSet();
+                    passportIDObj.results = _test;
+
+
+                   // TaxPayerDetails taxPayerRegObj = new TaxPayerDetails();
+                    taxPayerDetails.Birthdt = Convert.ToDateTime(SelectedDOB);
+                    taxPayerDetails.Nreg_IdSet = passportIDObj;
+                    if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
+                    {
+                        var uploadPassportDocResult = await WebServiceManager.ESTAttachment(
+                            UploadedPassportDocumentsList.FirstOrDefault().DocBinaryInBase64,
+                            UploadedPassportDocumentsList.FirstOrDefault().FileNameWithExtension,
+                            taxPayerDetails?.ReturnIdx, "RG19", UploadedPassportDocumentsList.FirstOrDefault().MimeType);
+                        taxPayerDetails.Passatt = "X";
+
+                       // taxPayerDetails.AttDetSet = "";
+                    }
+                    else
+                    {
+                        taxPayerDetails.Passatt = "";
+                    }
+                   
+                    var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+
 
                     return true;
                 }
