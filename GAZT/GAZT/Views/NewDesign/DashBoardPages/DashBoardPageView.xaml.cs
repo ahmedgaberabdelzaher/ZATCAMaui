@@ -485,7 +485,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
-                viewModel.ReturnString = AppResources.NDReturns;
+                viewModel.ReturnString = AppResources.ZZZDBMyReturns;
 
                 viewModel.PaidString = AppResources.Paid;
                 viewModel.UnPaidString = AppResources.UnPaid;
@@ -512,7 +512,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
                 viewModel.BillString = AppResources.ZZZDBMyPayments;
-                viewModel.ReturnString = AppResources.NDReturns;
+                viewModel.ReturnString = AppResources.ZZZDBMyReturns;
 
                 viewModel.PaidString = AppResources.Paid;
                 viewModel.UnPaidString = AppResources.UnPaid;
