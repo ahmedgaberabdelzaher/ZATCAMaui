@@ -1,10 +1,12 @@
 ﻿using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -136,7 +138,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         IsLoading = false;
                                     });
-                                    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                   // await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
                                 });
                             }
                         }
@@ -155,7 +158,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     IsLoading = false;
                                 });
-                                await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                //await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
                             });
 
                         }
@@ -168,7 +172,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     IsLoading = false;
                                 });
-                                await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                            //    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
                             });
 
                         }
@@ -412,7 +417,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         IsLoading = false;
 
-                                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                       // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
                                     });
 
@@ -424,7 +430,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     IsLoading = false;
 
-                                    await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
+                                    //await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
 
                                 });
 
@@ -444,7 +451,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                     //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         _navigationService.GoBack();
                     });
                 }
@@ -453,7 +461,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }
@@ -540,12 +549,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
                                 {
-                                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                     _navigationService.GoBack();
                                 }
                                 else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
                                 {
-                                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                     _navigationService.GoBack();
                                 }
                                 else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
@@ -565,7 +576,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                        //await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZYourSessionhasexpiredPleaseLoginagain));
                         PopToRootPage();
                     });
                 }
@@ -573,7 +585,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         PopToRootPage();
                     });
                 }
