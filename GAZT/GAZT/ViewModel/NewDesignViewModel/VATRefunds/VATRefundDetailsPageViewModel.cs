@@ -262,6 +262,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
         }
 
@@ -319,6 +323,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
             }
         }
 
@@ -333,7 +341,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
         //private void RemoveCommaSeperatedValues()
         //{
-
         //}
 
         public void SelectedIbanTypeFromList()
