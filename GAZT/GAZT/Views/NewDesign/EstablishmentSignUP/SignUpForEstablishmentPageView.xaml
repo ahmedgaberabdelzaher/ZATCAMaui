@@ -177,7 +177,7 @@
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry x:Name="EntryIDNumber" Text="{Binding TxtIDNumber}" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.NDIDNumber}"
                                                      VerticalTextAlignment="End" HeightRequest="51" Keyboard="Numeric"
-                                                     MaxLength="4" IsSpellCheckEnabled="False">
+                                                     MaxLength="4" IsSpellCheckEnabled="False" Unfocused="EntryIDNumber_Unfocused" TextChanged="GAZTBorderlessEntry_TextChanged">
 
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
