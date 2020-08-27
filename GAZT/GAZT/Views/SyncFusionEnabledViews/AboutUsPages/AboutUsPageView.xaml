@@ -8,8 +8,9 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:EGAZT;assembly:GAZT" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False"
+              BackgroundColor="#005e4b"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.AboutUs.AboutUsPageView"
-            BackgroundColor="#005e4b">
+           >
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
