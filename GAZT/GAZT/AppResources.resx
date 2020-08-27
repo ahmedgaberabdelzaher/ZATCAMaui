@@ -1625,15 +1625,12 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>
-    <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
-   <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
-   </data>
-    <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
-   <value>Total Request Amount</value>
-   </data>
-   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
-   <value>Refund Request for VAT</value>
-   </data>
+  <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
+    <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
+  </data>
+  <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
+    <value>Total Request Amount</value>
+  </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>Refund Information</value>
   </data>
@@ -4642,6 +4639,9 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>VAT Deregistration submitted successfully</value>
   </data>
+         <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
+    <value> Suspension Date must be 1 day ahead of Last ICR date</value>
+  </data>
          <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>Do you want to cancel the Deregistration?</value>
   </data>
@@ -6204,4 +6204,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <value>Contract Release Application Form</value>
 </data>
 
+  <data name="ZZZZWrongVerificationCode" xml:space="preserve">
+    <value>Wrong verification code</value>
+  </data>
 </root>

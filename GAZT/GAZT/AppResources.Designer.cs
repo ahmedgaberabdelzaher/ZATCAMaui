@@ -7866,6 +7866,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregistrationSuspendedDateValidation {
+            get {
+                return ResourceManager.GetString("VatDeregistrationSuspendedDateValidation", resourceCulture);
+            }
+        }
+        
         public static string VatDeregistrationVoidMessage {
             get {
                 return ResourceManager.GetString("VatDeregistrationVoidMessage", resourceCulture);
@@ -10881,6 +10887,12 @@ namespace EGAZT {
         public static string CRContractReleaseApplicationForm {
             get {
                 return ResourceManager.GetString("CRContractReleaseApplicationForm", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZWrongVerificationCode {
+            get {
+                return ResourceManager.GetString("ZZZZWrongVerificationCode", resourceCulture);
             }
         }
     }
