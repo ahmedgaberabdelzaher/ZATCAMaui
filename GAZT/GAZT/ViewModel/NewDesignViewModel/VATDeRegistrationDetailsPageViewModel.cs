@@ -1586,11 +1586,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await _dialogService.ShowMessage(AppResources.ZZPleaseenteravalidID, AppResources.Alerts);
 
             }
-            else if (DOB == string.Empty)
-            {
-                await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
+            //else if (DOB == string.Empty)
+            //{
+            //    await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
 
-            }
+            //}
             else if (ContactPersonName == string.Empty)
             {
                 await _dialogService.ShowMessage(AppResources.ZZPleaseentertheName, AppResources.Alerts);
