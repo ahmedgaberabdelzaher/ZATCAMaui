@@ -74,6 +74,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #endregion
 
         #region Propetry
+
+        private string _pkrDBOPrev = string.Empty;
+        public string PkrDBOPrev
+        {
+            get
+            {
+                return _pkrDBOPrev;
+            }
+            set
+            {
+                _pkrDBOPrev = value;
+                RaisePropertyChanged("PkrDBOPrev");
+            }
+        }
+
+        private string _pkrDBO = string.Empty;
+        public string PkrDBO
+        {
+            get
+            {
+                return _pkrDBO;
+            }
+            set
+            {
+                _pkrDBO = value;
+                RaisePropertyChanged("PkrDBO");
+            }
+        }
         private bool _isDeclarationCheckEnabled = false;
         public bool IsDeclarationCheckEnabled
         {
@@ -476,6 +504,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("DOB");
             }
         }
+
+        private SignUpUsing _selectedSignUpUsing = null;
+        public SignUpUsing SelectedSignUpUsing
+        {
+            get
+            {
+                return _selectedSignUpUsing;
+            }
+            set
+            {
+                _selectedSignUpUsing = value;
+                if (_selectedSignUpUsing != null)
+                {
+                    try
+                    {
+                        if (_selectedSignUpUsing.ID == 1)
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedSignUpUsing.ID == 2)
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedSignUpUsing.ID == 3)
+                        {
+                            MaxLengthID = 15;
+                        }
+                        TxtIDType = _selectedSignUpUsing.SUType;
+                    }
+                    catch (Exception Ex)
+                    {
+                    }
+                }
+                RaisePropertyChanged("SelectedSignUpUsing");
+            }
+        }
+
+        private string _txtName = string.Empty;
+        public string TxtName
+        {
+            get
+            {
+                return _txtName;
+            }
+            set
+            {
+                _txtName = value;
+                RaisePropertyChanged("TxtName");
+            }
+        }
+
         private SignUpIdType _selectedIdType = null;
         public SignUpIdType SelectedIdType
         {
@@ -702,7 +781,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("SelectedCityIndex");
             }
         }
-        private string _txtCountryCode = string.Empty;
+        private string _txtCountryCode = "+966";
         public string TxtCountryCode
         {
             get

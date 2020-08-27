@@ -1,8 +1,10 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using GAZT.Manager;
+using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using System;
@@ -13,6 +15,7 @@ using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -114,8 +117,26 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            
 
-           
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
+            {
+               // IntnlCodes.Text = arg;
+                viewModel.TxtCountryCode = arg;
+            });
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
+            {
+
+                viewModel.MobileCountryCode = arg;
+            });
+            if (Device.RuntimePlatform == Device.Android)
+            {
+               // IntnlCodes.Margin = new Thickness(0);
+            }
+            else
+            {
+               // IntnlCodes.Margin = new Thickness(12, -12, 12, -12);
+            }
 
             try
             {
@@ -226,6 +247,158 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
         }
 
+        private void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryEmail.Text))
+            {
+                bool flag = IsValid(EntryEmail.Text);
+                if (!flag)
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;//ZZPleaseenteravalidEmailAddress//ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;//ZZZInvalidEmailAddressMessage
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        // popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    //FrmEmailAddress.HasError = true;
+                    EntryEmail.Text = string.Empty;
+                }
+                else
+                {
+                   // FrmEmailAddress.HasError = false;
+                }
+            }
+        }
+
+        private void EntryPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
+            {
+                if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
+                {
+                   // FrmPhoneNumber.HasError = true;
+                }
+                else
+                {
+                   // FrmPhoneNumber.HasError = false;
+                }
+            }
+        }
+
+        private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(EntryPhoneNumber.Text))
+            {
+               // FrmPhoneNumber.HasError = false;
+            }
+            if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
+            {
+                PopUp popUp = new PopUp();
+                StringBuilder Message = new StringBuilder();
+                if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
+                {
+                    Message.Append(AppResources.ZZPhonenumberhastostartwithnumber1);
+                }
+                if (EntryPhoneNumber.Text.Length != 9)
+                {
+                    if (Message.Length > 0)
+                    {
+                        Message.Append(Environment.NewLine);
+                    }
+                    Message.Append(AppResources.ZZPhonenumberlengthcannotbelessthan9digits);
+                }
+                if (Message.Length > 0)
+                {
+                    popUp.Message = Message.ToString();
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    //FrmPhoneNumber.HasError = true;
+                    EntryPhoneNumber.Text = string.Empty;
+                    EntryPhoneNumber.Focus();
+                }
+                else
+                {
+                   // FrmPhoneNumber.HasError = false;
+                }
+            }
+        }
+        private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            StringBuilder Message = new StringBuilder();
+            PopUp popUp = new PopUp();
+            if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
+            {
+
+                if (EntryMobileNumber.Text.Substring(0, 1) == "0")
+                {
+                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
+                }
+                if (EntryMobileNumber.Text.Length < 9)
+                {
+                    if (Message.Length > 0)
+                    {
+                        Message.Append(Environment.NewLine);
+                    }
+                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                }
+                if (Message.Length > 0)
+                {
+                    popUp.Message = Message.ToString();
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    //FrmMobileNumber.HasError = true;
+                    EntryMobileNumber.Text = string.Empty;
+                }
+                else
+                {
+                   // FrmMobileNumber.HasError = false;
+                }
+            }
+            else
+            {
+                Message.Append(AppResources.EnterMobileNumber);
+                popUp.Message = Message.ToString();
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            }
+        }
+
+        public bool IsValid(string emailaddress)
+        {
+            bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            if (isEmail)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         private void OnIDTypeClicked(object sender, EventArgs e)
         {
             IDTypePicker.IsOpen = true;
