@@ -73,7 +73,7 @@
                         </Image>
                         <Image Grid.Row="0" Grid.Column="2" Source="close" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.voidTapped}" ></TapGestureRecognizer>
+                                <TapGestureRecognizer Tapped="voidTapped" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
@@ -178,11 +178,11 @@
                                 </StackLayout>
                             </border:SfBorder >
                              <StackLayout Spacing="2">
-                                    <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
-                                    ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}"
+                                    <inputLayout:SfTextInputLayout x:Name="OthersTxt" LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
+                                    ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}" HelperText="{Binding TextCount}" 
                                     OutlineCornerRadius="15" FocusedColor="#005e4b" ErrorColor="#B00020">
 
-                                        <Entry Style="{StaticResource DefaultEntry}" Text="{Binding OtherField}" HeightRequest="100" MaxLength="1000"/>
+                                        <Entry Style="{StaticResource DefaultEntry}" Text="{Binding OtherField}" TextChanged="Others_Entry_TextChanged"  HeightRequest="100" MaxLength="1000"/>
              
                                     </inputLayout:SfTextInputLayout>
                                  <!--<Label Text="no of characters remaining"/>-->
