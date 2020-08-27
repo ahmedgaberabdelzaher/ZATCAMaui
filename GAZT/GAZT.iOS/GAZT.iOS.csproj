@@ -274,9 +274,6 @@
     <BundleResource Include="Resources\ic_reviewDetails%403x.png" />
     <Compile Include="CustomRenderer\CustomSearchBarRenderer.cs" />
     <Compile Include="Resources\VATDeregistrationDetailsPage.xaml.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <BundleResource Include="Resources\refund.png" />
-    <BundleResource Include="Resources\refund%402x.png" />
-    <BundleResource Include="Resources\refund%403x.png" />
     <BundleResource Include="Resources\installment_plan.png" />
     <BundleResource Include="Resources\installment_plan%402x.png" />
     <BundleResource Include="Resources\installment_plan%403x.png" />
