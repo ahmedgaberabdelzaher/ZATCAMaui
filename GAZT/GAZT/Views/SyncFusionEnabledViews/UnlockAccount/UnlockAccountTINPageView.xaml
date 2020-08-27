@@ -76,7 +76,7 @@
                                                             HorizontalOptions="FillAndExpand" HasError="False" 
                                                                 ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
-                                                            <custom:BorderlessEntry x:Name="EntryTIN" Text="{Binding TxtTIN}" Placeholder="{x:Static custom2:AppResources.TIN}" FontSize="Small" TextColor="Black"
+                                                            <custom:BorderlessEntry x:Name="EntryTIN" Text="{Binding TxtTIN}" MaxLength="10" Placeholder="{x:Static custom2:AppResources.TIN}" FontSize="Small" TextColor="Black"
                                                                                     PlaceholderColor="Gray" Keyboard="Numeric" IsSpellCheckEnabled="False" TextChanged="EntryTINNumber_TextChanged"  Unfocused="FrmTIN_Unfocused"
                                                                                     Focused="FrmTIN_Focused">
                                                                  <Entry.Behaviors>
@@ -155,7 +155,7 @@
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <custom:BorderlessEntry WidthRequest="8" HorizontalTextAlignment="Center" IsEnabled="{Binding IsOTPEntryEnable}" x:Name="OtpFirstEntry" MaxLength="1" ReturnType="Next" Keyboard="Numeric"
-                                                            FontAttributes="Bold"
+                                                            FontAttributes="Bold" 
                                                             FontSize="Small" TextChanged="OtpFirstEntry_TextChanged"
                                                     HorizontalOptions="Center" Text="{Binding OtpFirstDigit}"  IsPassword="True" Style="{StaticResource GAZTOTPEntry}"  TextColor="#bbbbbb" >
                                                     <custom:BorderlessEntry.Behaviors>
