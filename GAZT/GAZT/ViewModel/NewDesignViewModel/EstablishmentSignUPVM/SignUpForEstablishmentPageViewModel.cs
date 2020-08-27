@@ -1,13 +1,16 @@
 ﻿using EGAZT.Models;
 using EGAZT.Models.EnumModels;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,6 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
     public class SignUpForEstablishmentPageViewModel : BaseViewModel
     {
+      
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public int DefaultMonth;
@@ -986,6 +990,168 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("ConfirmPassword");
             }
         }
+
+        //
+
+
+        #endregion
+
+        #region new Properties
+        private List<SignUpUsing> _signUpUsingList = null;
+        public List<SignUpUsing> SignUpUsingList
+        {
+            get
+            {
+                return _signUpUsingList;
+            }
+            set
+            {
+                _signUpUsingList = value;
+                RaisePropertyChanged("SignUpUsingList");
+            }
+        }
+
+        private int _iDTypeIndex = 0;
+        public int IDTypeIndex
+        {
+            get
+            {
+                return _iDTypeIndex;
+            }
+            set
+            {
+                _iDTypeIndex = value;
+                RaisePropertyChanged("IDTypeIndex");
+            }
+        }
+
+        private List<IssuedByResponse> _issuedByList = null;
+        public List<IssuedByResponse> IssuedByList
+        {
+            get
+            {
+                return _issuedByList;
+            }
+            set
+            {
+                _issuedByList = value;
+                RaisePropertyChanged("IssuedByList");
+            }
+        }
+
+        private bool _isCRVisible = false;
+        public bool IsCRVisible
+        {
+            get
+            {
+                return _isCRVisible;
+            }
+            set
+            {
+                _isCRVisible = value;
+                RaisePropertyChanged("IsCRVisible");
+            }
+        }
+
+        private bool _isLicenseVisible = false;
+        public bool IsLicenseVisible
+        {
+            get
+            {
+                return _isLicenseVisible;
+            }
+            set
+            {
+                _isLicenseVisible = value;
+                RaisePropertyChanged("IsLicenseVisible");
+            }
+        }
+
+        private bool _isCRChecked = false;
+        public bool IsCRChecked
+        {
+            get
+            {
+                return _isCRChecked;
+            }
+            set
+            {
+                _isCRChecked = value;
+                if (_isCRChecked == true)
+                {
+                    IsCRVisible = true;
+                }
+                else
+                {
+                    IsCRVisible = false;
+                }
+                RaisePropertyChanged("IsCRChecked");
+            }
+        }
+
+        private bool _isLNChecked = false;
+        public bool IsLNChecked
+        {
+            get
+            {
+                return _isLNChecked;
+            }
+            set
+            {
+                _isLNChecked = value;
+                if (_isLNChecked == true)
+                {
+                    IsLicenseVisible = true;
+                }
+                else
+                {
+                    IsLicenseVisible = false;
+                }
+                RaisePropertyChanged("IsLNChecked");
+            }
+        }
+
+        private string _txtTIN = string.Empty;
+        public string TxtTIN
+        {
+            get
+            {
+                return _txtTIN;
+            }
+            set
+            {
+                _txtTIN = value;
+                RaisePropertyChanged("TxtTIN");
+            }
+        }
+
+        private string _txtIDNumber = string.Empty;
+        public string TxtIDNumber
+        {
+            get
+            {
+                return _txtIDNumber;
+            }
+            set
+            {
+                _txtIDNumber = value;
+                RaisePropertyChanged("TxtIDNumber");
+            }
+        }
+
+        private SignUpUsing _selectedSignUpUsingSetForCancle = null;
+        public SignUpUsing SelectedSignUpUsingSetForCancle
+        {
+            get
+            {
+                return _selectedSignUpUsingSetForCancle;
+            }
+            set
+            {
+                _selectedSignUpUsingSetForCancle = value;
+                RaisePropertyChanged("SelectedSignUpUsingSetForCancle");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -1006,6 +1172,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             OnBackButtonClick = new Command(() => navigateBack());
             OnResendOTPClicked = new Command(() => ResendOTPAsync());
         }
+
+
+        private string _txtCRNumber = string.Empty;
+        public string TxtCRNumber
+        {
+            get
+            {
+                return _txtCRNumber;
+            }
+            set
+            {
+                _txtCRNumber = value;
+                RaisePropertyChanged("TxtCRNumber");
+            }
+        }
+
+
+
         #endregion
 
         #region Methods
@@ -1442,6 +1626,245 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         }
 
+
+
         #endregion
+
+        #region new Methods
+
+
+        public async Task OnPageLoad()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                try
+                {
+                    SignUpUsingList = null;
+                    //  IsCRVisible = true;
+                    // IsLicenseVisible = false;
+                    List<SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
+                    ListSignUpUsing.Add(new SignUpUsing { ID = 1, SUType = AppResources.ZZNationalID });
+                    ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
+                    ListSignUpUsing.Add(new SignUpUsing { ID = 3, SUType = AppResources.ZZGCCID });
+                    SignUpUsingList = ListSignUpUsing;
+                    TxtIDType = AppResources.ZZNationalID;
+                    SignUpUsing SignUpUsingM = new SignUpUsing();
+                    SignUpUsingM.ID = 1;
+                    SignUpUsingM.SUType = AppResources.ZZNationalID;
+                    SelectedSignUpUsing = SignUpUsingM;
+                    //LcTypeList = null;
+                    //List<LicenseOrCRModel> LIstLcType = new List<LicenseOrCRModel>();
+                    //LIstLcType.Add(new LicenseOrCRModel { ID = 1, LCType = AppResources.ZZLicenseNumber });
+                    //LIstLcType.Add(new LicenseOrCRModel { ID = 2, LCType = AppResources.ZZCRNumber });
+                    //LcTypeList = LIstLcType;
+                    LicenseOrCRModel LicenseOrCRModelM = new LicenseOrCRModel();
+                    LicenseOrCRModelM.ID = 2;
+                    LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
+                    //  SelectLCType = LicenseOrCRModelM;
+                    //StringBuilder captcha = GetCaptcha();
+                    //Captcha = captcha.ToString();
+                    //  IDTypeModelRootObject = null;
+                    IDTypeIndex = 0;
+                    //   SelectedLOrC = 1;
+                }
+                catch (Exception ex)
+                {
+                }
+                // PkrDBO = null;
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task SetIssueIdList()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            try
+            {
+                IssuedByList = null;
+                List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
+                var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
+                IssuedByList = new List<IssuedByResponse>(IssuedBy);
+
+            }
+            catch (GAZTException gex)
+            {
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+            }
+
+            catch (HttpRequestException ex)
+            {
+                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+
+                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+            }
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+        }
+        //public async Task SetCityList()
+        //{
+        //    Device.BeginInvokeOnMainThread(async () =>
+        //    {
+        //        IsLoading = true;
+
+        //    });
+
+        //    try
+        //    {
+        //        CityList = null;
+        //        SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
+        //        List<SignupCityResult> CityR = new List<SignupCityResult>();
+        //        IsCRChecked = true;
+        //        IsLNChecked = false;
+        //        CityR = CityListSignup.d.city_dropdownSet.results;
+        //        CityList = CityR;
+        //    }
+        //    catch (GAZTException gex)
+        //    {
+
+        //        // Handle the GAZT custom exception.
+        //        string MessageForTheUser = gex.Message;
+        //        if (gex is GAZTInvalidDataException)
+        //        {
+        //            MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //        }
+        //        if (gex is GAZTNetworkConnectivityIssueException)
+        //        {
+        //            MessageForTheUser = AppResources.NetworkConnectivityIssue;
+        //        }
+        //        else if (gex is GAZTInternetException)
+        //        {
+        //            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+        //        }
+        //        else if (gex is GAZTSessionExpiredException)
+        //        {
+        //            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+        //        }
+
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            IsLoading = false;
+
+        //            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //            //_navigationService.GoBack();
+        //        });
+        //    }
+        //    catch (HttpRequestException ex)
+        //    {
+        //        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            IsLoading = false;
+
+        //            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //            //_navigationService.GoBack();
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            IsLoading = false;
+
+        //            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //            //_navigationService.GoBack();
+        //        });
+        //    }
+        //    Device.BeginInvokeOnMainThread(async () =>
+        //    {
+        //        IsLoading = false;
+
+        //    });
+        //}
+        //public async Task SetDefaultDate()
+        //{
+        //    ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+        //    //Select today dates
+
+        //    if (DateTime.Now.Date.Day < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Day);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Day.ToString());
+        //    if (DateTime.Now.Date.Month < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Month);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Month.ToString());
+        //    todaycollection.Add(DateTime.Now.Date.Year.ToString());
+        //    TodayDate = todaycollection;
+        //    DefaultMonth = DateTime.Now.Date.Month;
+        //}
+
+        #endregion
+
     }
 }

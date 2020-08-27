@@ -41,6 +41,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
+            loadPageData();
 
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -71,7 +72,54 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
         }
+        public async Task loadPageData()
+        {
 
+            await viewModel.SetDefaultDate();
+            ClearFields();
+            await viewModel.OnPageLoad();
+            await viewModel.SetIssueIdList();
+          //  await viewModel.SetCityList();
+
+
+        }
+
+        public void ClearFields()
+        {
+            //viewModel.PkrDBO = string.Empty;
+            //viewModel.TxtLOrCIssuedBy = string.Empty;
+            //viewModel.TxtLOrCIssuedByCity = string.Empty;
+            viewModel.IDTypeIndex = 0;
+            //viewModel.SelectedLOrC = 1;
+            //viewModel.IsLoading = false;
+            //viewModel.SelectedSignUpUsing = null;
+            //viewModel.SignUpUsingList = null;
+            //viewModel.SelectLCType = null;
+            //viewModel.LcTypeList = null;
+            //viewModel.SelectCityList = null;
+            //viewModel.CityList = null;
+            //viewModel.IsCRVisible = true;
+            //viewModel.IsLicenseVisible = false;
+            //viewModel.IsTIN = false;
+            //viewModel.IsTINVisible = false;
+            //viewModel.SelectedIssuedBy = null;
+            //viewModel.IssuedByList = null;
+            //viewModel.TxtTIN = string.Empty;
+            //viewModel.TxtIDNumber = string.Empty;
+            //viewModel.TxtName = string.Empty;
+            //viewModel.TxtCRNumber = string.Empty;
+            //viewModel.TxtLicenseNumber = string.Empty;
+            //viewModel.TxtEmailAddress = string.Empty;
+            //viewModel.TxtCountryCode = string.Empty;
+
+            //viewModel.TxtMobileNumber = string.Empty;
+            //viewModel.TxtPhoneNumber = string.Empty;
+
+            //viewModel.IDTypeModelRootObject = null;
+            //viewModel.SignUpFirstSubmitModel = null;
+            //viewModel.MaximumxD = DateTime.Now;
+           
+        }
         private void SetLTR()
         {
             if (App.IsArabic)
@@ -462,5 +510,108 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.IsPasswordEncripted = !viewModel.IsPasswordEncripted;
             imageNewPassword.Source = viewModel.IsPasswordEncripted ? "hidePassword.png" : "showPassword.png";
         }
+
+        private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //FrmTIN.HasError = false;
+            if (!string.IsNullOrEmpty(EntryTIN.Text))
+            {
+                if (EntryTIN.Text.Substring(0, 1) != "3")
+                {
+                  //  FrmTIN.HasError = true;
+                }
+                else
+                {
+                   // FrmTIN.HasError = false;
+                }
+            }
+        }
+
+        private void EntryTIN_Unfocused(object sender, FocusEventArgs e)
+        {
+        //    PopUp popUp = new PopUp();
+        //    StringBuilder Messages = new StringBuilder();
+        //    if (!string.IsNullOrEmpty(EntryTIN.Text))
+        //    {
+        //        if (EntryTIN.Text.Substring(0, 1) != "3")
+        //        {
+        //            Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+        //            EntryTIN.Focus();
+        //        }
+        //        if (EntryTIN.Text.Length != 10)
+        //        {
+        //            if (Messages.Length > 0)
+        //            {
+        //                Messages.Append(Environment.NewLine);
+        //            }
+        //            Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+        //        }
+        //        if (Messages.Length > 0)
+        //        {
+        //            popUp.Message = Messages.ToString();
+        //            popUp.IsLinkAvailable = false;
+        //            if (App.IsArabic)
+        //            {
+        //                popUp.FlowDirections = "RightToLeft";
+        //                popUp.isFontSet = true;
+        //            }
+        //            else
+        //            {
+        //                popUp.FlowDirections = "LeftToRight";
+        //            }
+        //            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        //            FrmTIN.HasError = true;
+        //            EntryTIN.Text = string.Empty;
+        //        }
+        //        else
+        //        {
+        //            FrmTIN.HasError = false;
+        //        }
+        //    }
+        
+        }
+
+
+        private void DDlIDType_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.TxtIDNumber = string.Empty;
+            EntryName.IsEnabled = true;
+            // SfPicker signUpUsing = (SfPicker)sender;
+            viewModel.SelectedSignUpUsing = (SignUpUsing)IDTypePicker.SelectedItem;
+            viewModel.TxtIDType = viewModel.SelectedSignUpUsing.SUType;
+            if (viewModel.SelectedSignUpUsing != null)
+            {
+                try
+                {
+                    if (viewModel.SelectedSignUpUsing.ID == 1)
+                    {
+                        viewModel.MaxLengthID = 10;
+                    }
+                    else if (viewModel.SelectedSignUpUsing.ID == 2)
+                    {
+                        viewModel.MaxLengthID = 10;
+                    }
+                    else if (viewModel.SelectedSignUpUsing.ID == 3)
+                    {
+                        viewModel.MaxLengthID = 15;
+                    }
+                    //  TxtIDType = _selectedSignUpUsing.SUType;
+                }
+                catch (Exception Ex)
+                {
+                }
+                viewModel.SelectedSignUpUsingSetForCancle = viewModel.SelectedSignUpUsing;
+            }
+        }
+
+        private void EntryName_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.TxtName))
+            {
+               // FrmName.HasError = false;
+            }
+        }
+
+
     }
 }
