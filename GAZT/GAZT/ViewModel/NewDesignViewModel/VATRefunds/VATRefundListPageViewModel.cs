@@ -39,6 +39,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+
+
         private ObservableCollection<VatRefSubItemsSetResult> _vatRefundsSubItemReturnsSet { get; set; }
         public ObservableCollection<VatRefSubItemsSetResult> VATRefundsSubItemReturnsSet
         {
@@ -67,6 +69,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 _vatRefundsSet = value;
                 RaisePropertyChanged("VATRefundsSet");
+            }
+        }
+
+        private ObservableCollection<VatRefHeaderSetResult> _vatRefundsSetCopy { get; set; }
+        public ObservableCollection<VatRefHeaderSetResult> VATRefundsSetCopy
+        {
+            get
+            {
+                return _vatRefundsSetCopy;
+            }
+            set
+            {
+
+                _vatRefundsSetCopy = value;
+                RaisePropertyChanged("VATRefundsSetCopy");
             }
         }
 
@@ -221,6 +238,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsListResultModel = new VatRefundsListResultModel();
             VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>();
             VATRefundsSet = new ObservableCollection<VatRefHeaderSetResult>();
+            VATRefundsSetCopy = new ObservableCollection<VatRefHeaderSetResult>();
+
             IsSearchButtonVisible = true;
             IsCloseButtonVisible = false;
 
@@ -249,7 +268,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             //GAZTGetVAtRefundList
             await Task.Run(() =>
             {
-                App.DisplayProgressView();
+                IsLoading = true;
             });
 
             Task GetRefundListTask = null;
@@ -265,14 +284,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 await Task.Run(() =>
                 {
-                    App.HideProgressView();
+                   IsLoading = false;
                 });
             }
             catch (GAZTErrorException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    App.HideProgressView();
+                   IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
@@ -280,7 +299,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 await Task.Run(() =>
                 {
-                    App.HideProgressView();
+                   IsLoading = false;
                 });
 
                 Device.BeginInvokeOnMainThread(async () =>
@@ -316,7 +335,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 await Task.Run(() =>
                 {
-                    App.DisplayProgressView();
+                    IsLoading = true;
                 });
 
                 VatRefundsDisplayDataModel = await WebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
@@ -326,14 +345,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 await Task.Run(() =>
                 {
-                    App.HideProgressView();
+                   IsLoading = false;
                 });
             }
             catch (InternetException ex)
             {
                 await Task.Run(() =>
                 {
-                    App.HideProgressView();
+                   IsLoading = false;
                 });
 
                 Device.BeginInvokeOnMainThread(async () =>
@@ -345,7 +364,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 await Task.Run(() =>
                 {
-                    App.HideProgressView();
+                   IsLoading = false;
                 });
 
                 string message = ex.Message;

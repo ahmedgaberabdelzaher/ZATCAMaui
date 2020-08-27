@@ -110,6 +110,9 @@ namespace EGAZT
         public static string ChangeFillingPeriodPageView = "ChangeFillingPeriodPageView";
         public static string ContractReleasePageView = "ContractReleasePageView";
         public static string ContractReleaseSuccessPageView = "ContractReleaseSuccessPageView";
+        public static string ChangeFillingPeriodListPageView = "ChangeFillingPeriodListPageView";
+        public static string ChangeFillingPeriodSuccessPage = "ChangeFillingPeriodSuccessPage";
+        public static string ContractReleaseListPageView = "ContractReleaseListPageView";
 
         #endregion
 
@@ -580,10 +583,17 @@ namespace EGAZT
 
         public static async void DisplayProgressView()
         {
-            MainThread.BeginInvokeOnMainThread(() =>
+            try
             {
-                PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
-            });
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
+                });
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public static async void HideProgressView()

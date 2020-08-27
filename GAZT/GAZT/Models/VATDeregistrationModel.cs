@@ -1,16 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using Newtonsoft.Json;
 using static Xamarin.Forms.Internals.Profile;
 
 namespace EGAZT.Models
 {
-    public class VATDeregistrationModel
+    public class VATDeregistrationModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public string ActiveOutletDecisionOptions { get; set; }
-        public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+
+        private string _activeOutletDecisionOptions { get; set; }
+        public string ActiveOutletDecisionOptions
+        {
+            get
+            {
+                return _activeOutletDecisionOptions;
+            }
+            set
+            {
+                _activeOutletDecisionOptions = value;
+                OnPropertyRaised("ActiveOutletDecisionOptions");
+            }
+        }
+
+        private bool _activeOutletDecisionOptionsIsSelected { get; set; }
+        public bool ActiveOutletDecisionOptionsIsSelected
+        {
+            get
+            {
+                return _activeOutletDecisionOptionsIsSelected;
+            }
+            set
+            {
+                _activeOutletDecisionOptionsIsSelected = value;
+                OnPropertyRaised("ActiveOutletDecisionOptionsIsSelected");
+            }
+        }
 
         public string ActiveOutletDocumentOptions { get; set; }
         public bool ActiveOutletDocumentOptionsIsSelected { get; set; }

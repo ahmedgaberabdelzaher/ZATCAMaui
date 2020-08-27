@@ -36,7 +36,9 @@ namespace EGAZT.Models.ZakatInstalationModels
         
         public enum WhichAttachment
         {
-           VATInstalment = 0
+           VATInstalment = 0,
+            ContractReleaseCopy = 2,
+            ContractReleaseInvoice = 3
 
         }
     

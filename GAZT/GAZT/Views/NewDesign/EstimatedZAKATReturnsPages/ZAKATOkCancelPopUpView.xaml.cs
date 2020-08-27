@@ -13,6 +13,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             _confirmationText =  confirmationText.Text = ConfirmationText;
+            SetLTR();
+
         }
 
         protected override void OnAppearing()
@@ -41,6 +43,13 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             MessagingCenter.Send<Object, string>(this, "NoReceived", "No");
             PopupNavigation.Instance.PopAsync();
 
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
     }
 }

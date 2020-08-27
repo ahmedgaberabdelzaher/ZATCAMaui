@@ -206,6 +206,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             //viewModel.StartOTPTimer();
 
             //var result = Regex.Match(viewModel._updateEmailData.CurrentEmail, @"(.{8})\s*$");
+            OTPFirstEntry.Focus();
             viewModel.OTPSentOnThisMobileNumber = AppResources.Email + " " + viewModel._updateEmailData.NewEmail;
             viewModel.StartOTPTimer();
 

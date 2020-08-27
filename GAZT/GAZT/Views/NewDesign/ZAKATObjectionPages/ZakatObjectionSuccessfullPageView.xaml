@@ -33,7 +33,7 @@
             <StackLayout Grid.Row="0" Margin="0,8,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
                 <Image Source="Forget_ic_success"/>
                 <Label Text="{x:Static ResourceManager:AppResources.NDZakatObjection}" Margin="0,0,0,0" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatObjectionIsSubmittedSuccessfully}" TextColor="White" HorizontalTextAlignment="Center" Style="{StaticResource BodyLabelBlack}"/>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDZakatObjectionIsSubmittedSuccessfully}" TextColor="White" HorizontalTextAlignment="Center" Style="{StaticResource BodyLabelBlack}" Margin="0,-5,0,10"/>
             </StackLayout>
 
             <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
@@ -142,7 +142,7 @@
                         </StackLayout>
                     </ScrollView>
                     <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="8" BackgroundColor="White" Padding="0,8,0,0">
-                        <buttons:SfButton Text="invoice" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnInvoiceClicked}"/>
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZVATInvoiceButton}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnInvoiceClicked}"/>
                         <Label Text="{x:Static ResourceManager:AppResources.NDReturns}" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnReturnClicked"/>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EGAZT.Models;
+using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using Xamarin.Forms;
 
@@ -10,13 +11,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
     public partial class OutletDetailsPageView : ContentPage
     {
         private OutletDetailsPageViewModel viewModel;
-        private OutletNavigationModels _outletNavigation;
+        //private OutletNavigationModels _outletNavigation;
         public OutletDetailsPageView(OutletNavigationModels outletNavigation)
         {
             InitializeComponent();
-            _outletNavigation = outletNavigation;
+            //_outletNavigation = outletNavigation;
             viewModel = App.Locator.OutletDetailsPageView;
-            viewModel.currentTab = _outletNavigation.openedTab;
+            viewModel.currentTab = outletNavigation.openedTab;
+            viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
+            viewModel.newNumber = outletNavigation.nextNumber;
             BindingContext = viewModel;
             SetLTR();
         }
@@ -36,6 +39,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            viewModel?.OnAppearing();
         }
 
         void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)

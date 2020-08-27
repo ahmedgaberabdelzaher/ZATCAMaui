@@ -4,7 +4,7 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             x:Class="EGAZT.Views.NewDesign.ChangeFillingPeriod.ChangeFillingPeriodSuccessPage"
+             x:Class="EGAZT.Views.NewDesign.ChangeFillingPeriodPages.ChangeFillingPeriodSuccessPage"
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -36,7 +36,7 @@
                 <yummy:PancakeView BackgroundColor="Transparent" CornerRadius="15,15,0,0" Grid.Row="1"  Padding="0"  Margin="0,8,0,0" VerticalOptions="End">
                     <StackLayout  HorizontalOptions="Center" VerticalOptions="End"  >
                         
-                        <buttons:SfButton  Margin="0,16,0,0"  x:Name="btnDownloadConfirmation" Clicked="btnDownloadConfirmation_Clicked"
+                        <buttons:SfButton  Margin="0,16,0,0"  x:Name="btnDownloadConfirmation" 
                                            Text="VAT Filling Frequency" Style="{StaticResource PrimaryButtonStyle}"/>
 
                         <buttons:SfButton  Margin="0,8,0,16"  x:Name="btnRegistrationDetails" Command="{Binding GoBackToDashBoardTapped}" 

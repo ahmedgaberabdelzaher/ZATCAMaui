@@ -214,6 +214,13 @@ namespace GAZT.Helper
         public static string ESTTaxPayerDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_HeaderSet";
         public static string ESTTaxPayerNationality = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NATIOANALITY_SRV/nationalitySet";
         public static string ESTPostAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_SAVE_ATTACH_SRV_01/AttachSet";
+        public static string ESTOutletNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_GET_OUTLET_NUMBER_SRV/OutNumSet";
+        public static string ESTOutletCityStateCountryDropDown = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/dropdown_headerSet";
+        public static string ESTActiivtyGroupSubGroupList = BaseUrlOfODataServices + "/sap/opu/odata/sap/Z_REG_ACTIVITY_SRV/act_headerSet";
+        public static string ESTValidateCRNum = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_CR_VALDATE_SRV/validatecrSet";
+        public static string ESTOutletList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_OutletSet";
+        //activity address https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ADDR_RETRIEVE_SRV/AddressSet?$filter=IdType eq 'BUP002' and IdNumber eq '4030381482' and Tin eq '3102448184' and TpType eq 'I'
+        //outlet post https://sapgatewayqa.gazt.gov.sa/sap/bc/ui5_ui5/sap/ztax_nreg/index.html?sap-client=300&tSys=HTTPS://SAPGATEWAYQA.GAZT.GOV.SA&sap-ui-language=EN&tPar2=3102448184&tPar1=DKOTHI-C@GAZT.GOV.SA&regType=1&pType=TP
         #endregion
 
         #region VATInstalment

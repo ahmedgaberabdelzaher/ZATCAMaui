@@ -15,17 +15,18 @@ namespace EGAZT.Views.NewDesign
     public partial class InstructionsBottomPopUpView : PopupPage
     {
         private InstructionsBottomPopUpViewModel _viewModel;
-        public InstructionsBottomPopUpView(string instructionString,string checkBoxString,string continueString,InstructionsBottomPopUpViewModel.DialogType _dialogType)
+        public InstructionsBottomPopUpView(string instructionString, string checkBoxString, string continueString, InstructionsBottomPopUpViewModel.DialogType _dialogType)
         {
             InitializeComponent();
             _viewModel = App.Locator.InstructionsBottomPopUpView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            SetLTR();
             this.BindingContext = _viewModel;
             this.FlowDirection = FlowDirection.LeftToRight;
             _viewModel.Description = instructionString;
             _viewModel.CheckBoxDescription = checkBoxString;
             _viewModel.ButtonTitle = continueString;
-          
+
             if (_dialogType == InstructionsBottomPopUpViewModel.DialogType.Instructions)
             {
                 _viewModel.IsInstructions = true;
@@ -38,13 +39,19 @@ namespace EGAZT.Views.NewDesign
             }
 
         }
-        
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             if (_viewModel.IsInstructions)
             {
-                if(_viewModel.IsInstuctionsChecked)
+                if (_viewModel.IsInstuctionsChecked)
                 {
                     MessagingCenter.Send<Object, Boolean>(this, "InstructionsContinue", true);
                 }
@@ -52,9 +59,10 @@ namespace EGAZT.Views.NewDesign
                 {
                     MessagingCenter.Send<Object, Boolean>(this, "InstructionsContinue", false);
                 }
-            }else if (_viewModel.IsTerms)
+            }
+            else if (_viewModel.IsTerms)
             {
-                if(_viewModel.IsTermsChecked)
+                if (_viewModel.IsTermsChecked)
                 {
                     MessagingCenter.Send<Object, Boolean>(this, "TermsContinue", true);
                 }
