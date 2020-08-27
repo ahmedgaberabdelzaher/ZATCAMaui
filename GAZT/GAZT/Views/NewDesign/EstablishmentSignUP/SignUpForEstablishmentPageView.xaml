@@ -176,7 +176,7 @@
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIDNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry x:Name="EntryIDNumber" Text="{Binding TxtIDNumber}" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.NDIDNumber}"
-                                                     VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric"
+                                                     VerticalTextAlignment="End" HeightRequest="51" Keyboard="Numeric"
                                                      MaxLength="4" IsSpellCheckEnabled="False">
 
                         </control:BorderlessEntry>
@@ -293,7 +293,7 @@
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
-                                                     VerticalTextAlignment="End"  HeightRequest="51" Text="{Binding TxtCRNumber}" x:Name="EntryCRNumber" MaxLength="10"
+                                                     VerticalTextAlignment="End"  HeightRequest="51" Text="{Binding TxtCRNumber}" x:Name="EntryCRNumber" Unfocused="EntryCRNumber_Unfocused" MaxLength="10"
                                                      IsSpellCheckEnabled="False">
 
                             </control:BorderlessEntry>
