@@ -57,6 +57,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
+                viewModel.EnableReasonView();
                 await GetVatDeRegistrationData();
             });
         }
@@ -125,9 +126,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         }
                         else
                         {
-                            IDNumberField.WidthRequest = 140;
+                            viewModel.IsDOBEditorVisible = true;
 
-                            viewModel.IsDOBEditorVisible = !viewModel.IsDOBEditorVisible;
 
                         }
                     }
@@ -149,13 +149,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             viewModel.IsDOBEditorVisible = false;
                             IDNumberField.WidthRequest = 320;
+                            
 
                         }
                         else
                         {
-                            IDNumberField.WidthRequest = 140;
 
-                            viewModel.IsDOBEditorVisible = !viewModel.IsDOBEditorVisible;
+                            viewModel.IsDOBEditorVisible = true;
 
                         }
                     }
@@ -220,50 +220,106 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 //else
                 // DateTime.Today.AddDays(1);
 
-                if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
+                bool isValid = false;
+                PopUp popUp = new PopUp();
+                StringBuilder Messages = new StringBuilder();
+                popUp.IsLinkAvailable = false;
+
+                if (viewModel.LastIcrDate < viewModel.FromDate)
                 {
-                    DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
-                    DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
+                    isValid = true;
+                }
+                else
+                {
+                    popUp.Message = AppResources.VatDeregistrationSuspendedDateValidation;
+                    isValid = false;
+                }
 
-                    VATDeregistrationSuspendedDateRootObject obj = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
-                    if (obj != null)
+                double quarterrDiff = quarterDiff(viewModel.FromDate, viewModel.ToDate);
+
+                if (quarterrDiff <= 1)
+                {
+                    isValid = false;
+                    if (Messages.Length > 0)
                     {
-                        if (obj.d.dateResults[0].SuspDtfrom != null)
+                        Messages.Append(Environment.NewLine);
+                    }
+
+                    Messages.Append(AppResources.VatDeregSuspendedDateMismatchException);
+                }
+
+                if (isValid == true)
+                {
+                    if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
+                    {
+                        DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
+                        DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
+
+                        VATDeregistrationSuspendedDateRootObject obj = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
+                        if (obj != null)
                         {
-                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
-                            viewModel.SuspendedStartDate = date;
+                            if (obj.d.dateResults[0].SuspDtfrom != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
+                                viewModel.SuspendedStartDate = date;
 
 
-                        }
-                        if (obj.d.dateResults[0].SuspDtto != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
+                            }
+                            if (obj.d.dateResults[0].SuspDtto != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
 
-                            viewModel.SuspendedEndDate = date;
+                                viewModel.SuspendedEndDate = date;
 
-                        }
-                        if (obj.d.dateResults[0].NextDtfrom != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
+                            }
+                            if (obj.d.dateResults[0].NextDtfrom != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
 
-                            viewModel.NextFilingStartDate = date;
+                                viewModel.NextFilingStartDate = date;
 
-                        }
-                        if (obj.d.dateResults[0].NextDtfrom != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
+                            }
+                            if (obj.d.dateResults[0].NextDtfrom != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
 
-                            viewModel.NextFilingEndDate = date;
-                        }
-                        if (obj.d.dateResults[0].Duedate != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
+                                viewModel.NextFilingEndDate = date;
+                            }
+                            if (obj.d.dateResults[0].Duedate != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
 
-                            viewModel.NextFilingDueDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                                viewModel.NextFilingDueDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            }
                         }
                     }
                 }
+                else
+                {
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                }
             });
+        }
+
+        public static double quarterDiff(DateTime first, DateTime second)
+        {
+            int firstQuarter = getQuarter(first);
+            int secondQuarter = getQuarter(second);
+            return 1 + Math.Abs(firstQuarter - secondQuarter);
+        }
+
+        private static int getQuarter(DateTime date)
+        {
+            return (date.Year * 4) + ((date.Month - 1) / 3);
         }
 
         public void ChangeAeroIcon()
