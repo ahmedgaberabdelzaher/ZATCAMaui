@@ -88,7 +88,14 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.DocTypeString = "ZVTA";
             }
-            
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy)
+            {
+                viewModel.DocTypeString = "N11A";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
+            {
+                viewModel.DocTypeString = "N11B";
+            }
         }
 
         private void SetLTR()

@@ -1625,15 +1625,12 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>
-    <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
-   <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
-   </data>
-    <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
-   <value>Total Request Amount</value>
-   </data>
-   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
-   <value>Refund Request for VAT</value>
-   </data>
+  <data name="ZVatRefundRequestSavedAsDraft" xml:space="preserve">
+    <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
+  </data>
+  <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
+    <value>Total Request Amount</value>
+  </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>Refund Information</value>
   </data>
@@ -4488,6 +4485,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
     <value>Outlets</value>
   </data>
+  <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">     <value>Select DOB</value>   </data>   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">     <value>Select Start Date</value>   </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
   </data>
@@ -4641,6 +4639,12 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="VatDeregistrationSubmitSuccessful" xml:space="preserve">
     <value>VAT Deregistration submitted successfully</value>
+  </data>
+  <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
+    <value> Suspension Date must be 1 day ahead of Last ICR date</value>
+  </data>
+  <data name="VatDeregistrationVoidMessage" xml:space="preserve">
+    <value>Do you want to cancel the Deregistration?</value>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
     <value />
@@ -4981,7 +4985,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
-   <data name="VATRefundAccounts" xml:space="preserve">
+  <data name="VATRefundAccounts" xml:space="preserve">
     <value>Accounts</value>
   </data>
   <data name="VATRefundCancelRefund" xml:space="preserve">
@@ -5724,7 +5728,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Instructions &amp; Conditions</value>
   </data>
   <data name="CRInstructions" xml:space="preserve">
-    <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
+    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
+      2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
   </data>
   <data name="CRInstructionsDesc" xml:space="preserve">
     <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
@@ -6063,5 +6068,149 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="ZZZZConfirmRefund" xml:space="preserve">
     <value>Confirm Refund</value>
+  </data>
+  <data name="VatInstalmentsStatusInDraft" xml:space="preserve">
+    <value>In Draft</value>
+  </data>
+  <data name="CRInstrCheckDesc" xml:space="preserve">
+    <value>I Agree</value>
+  </data>
+  <data name="CRSupplyforAramco" xml:space="preserve">
+    <value>Supply for Aramco</value>
+  </data>
+  <data name="CRSupplyandmaintenance" xml:space="preserve">
+    <value>Supply and maintenance</value>
+  </data>
+  <data name="CRsupplymaintenanceandoperating" xml:space="preserve">
+    <value>supply, maintenance and operating</value>
+  </data>
+  <data name="CRDisassembleinstallationandoperate" xml:space="preserve">
+    <value>Disassemble, installation and operate</value>
+  </data>
+  <data name="CRsupplyinstallationandoperate" xml:space="preserve">
+    <value>supply, installation and operate</value>
+  </data>
+  <data name="CRDisassembleinstallationandtransport" xml:space="preserve">
+    <value>Disassemble, installation and transport</value>
+  </data>
+  <data name="CRCleanlinessandmaintenance" xml:space="preserve">
+    <value>Cleanliness and maintenance</value>
+  </data>
+  <data name="CRSupplyinstallationanddeliver" xml:space="preserve">
+    <value>Supply, installation and deliver</value>
+  </data>
+  <data name="CRmaintenanceandoperate" xml:space="preserve">
+    <value>maintenance and operate</value>
+  </data>
+  <data name="CRtransport" xml:space="preserve">
+    <value>transport</value>
+  </data>
+  <data name="CRsupplyandwatertransport" xml:space="preserve">
+    <value>supply and water transport</value>
+  </data>
+  <data name="CRconstruction" xml:space="preserve">
+    <value>construction</value>
+  </data>
+  <data name="CRmaintenance" xml:space="preserve">
+    <value>maintenance</value>
+  </data>
+  <data name="CRoperate" xml:space="preserve">
+    <value>operate</value>
+  </data>
+  <data name="CRDesignandconstruction" xml:space="preserve">
+    <value>Design and construction</value>
+  </data>
+  <data name="CRsupplyanddesign" xml:space="preserve">
+    <value>supply and design</value>
+  </data>
+  <data name="CRsupplyandoprate" xml:space="preserve">
+    <value>supply and oprate</value>
+  </data>
+  <data name="CRsupplyandinstallation" xml:space="preserve">
+    <value>supply and installation</value>
+  </data>
+  <data name="CRdesignsupplyandinstallation" xml:space="preserve">
+    <value>design, supply and installation</value>
+  </data>
+  <data name="CRdesignsupplyandopratemaintenance" xml:space="preserve">
+    <value>design, supply and oprate (maintenance)</value>
+  </data>
+  <data name="CRequipmentrental" xml:space="preserve">
+    <value>equipment rental</value>
+  </data>
+  <data name="CRmaintenancecleanlinessandoprate" xml:space="preserve">
+    <value>maintenance, cleanliness and oprate</value>
+  </data>
+  <data name="CRcleanliness" xml:space="preserve">
+    <value>cleanliness</value>
+  </data>
+  <data name="CRcatering" xml:space="preserve">
+    <value>catering</value>
+  </data>
+  <data name="CRSecurityguards" xml:space="preserve">
+    <value>Security guards</value>
+  </data>
+  <data name="CRRoadsmaintenance" xml:space="preserve">
+    <value>Roads maintenance</value>
+  </data>
+  <data name="CRLaborrecruiting" xml:space="preserve">
+    <value>Labor recruiting</value>
+  </data>
+  <data name="CRContractingRoadsandTransport" xml:space="preserve">
+    <value>Contracting Roads and Transport</value>
+  </data>
+  <data name="CRSupply" xml:space="preserve">
+    <value>Supply</value>
+  </data>
+  <data name="CRSupplyanddeliverytowarehouses" xml:space="preserve">
+    <value>Supply and delivery to warehouses</value>
+  </data>
+  <data name="CRSupplyanddeliveryport" xml:space="preserve">
+    <value>Supply and delivery port</value>
+  </data>
+  <data name="CROperationofservicesattheport" xml:space="preserve">
+    <value>Operation of services at the port</value>
+  </data>
+  <data name="CRConsultations" xml:space="preserve">
+    <value>Consultations</value>
+  </data>
+  <data name="CRDesignandconsulting" xml:space="preserve">
+    <value>Design and consulting</value>
+  </data>
+  <data name="CRPrivateConsultante" xml:space="preserve">
+    <value>Private Consultante</value>
+  </data>
+  <data name="CRStudiesandConsulting" xml:space="preserve">
+    <value>Studies and Consulting</value>
+  </data>
+  <data name="CROther" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="CRContractDateshouldnotbegreaterfromcurentdate" xml:space="preserve">
+    <value>Contract Date should not be greater from curent date</value>
+  </data>
+  <data name="CRContractEndDateshouldnotbegreaterfromcurentdate" xml:space="preserve">
+    <value>Contract EndDate should not be greater from curent date</value>
+  </data>
+  <data name="CRContractEndDateshouldnotbelessfromcontractdate" xml:space="preserve">
+    <value>Contract EndDate should not be less from contract date</value>
+  </data>
+  <data name="CRRequestContractRelease" xml:space="preserve">
+    <value>Request Contract Release</value>
+  </data>
+  <data name="CRContractReleaseApplicationForm" xml:space="preserve">
+    <value>Contract Release Application Form</value>
+  </data>
+  <data name="ZZZZWrongVerificationCode" xml:space="preserve">
+    <value>Wrong verification code</value>
+  </data>
+  <data name="SameTincantbeaddedasfinancialrepresentative" xml:space="preserve">
+    <value>Same Tin can't be added as financial representative.</value>
+  </data>
+  <data name="NDBranchLocator" xml:space="preserve">
+    <value>Branch Locator</value>
+  </data>
+  <data name="NDChat" xml:space="preserve">
+    <value>Chat</value>
   </data>
 </root>

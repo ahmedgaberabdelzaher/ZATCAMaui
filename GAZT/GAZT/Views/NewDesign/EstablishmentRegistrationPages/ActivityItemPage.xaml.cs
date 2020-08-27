@@ -16,6 +16,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             _activityNavigation = activityNavigation;
             viewModel = App.Locator.ActivityItemPage;
             viewModel.CurrentTab = _activityNavigation.openedTab;
+            viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
             BindingContext = viewModel;
             SetLTR();
         }
@@ -34,6 +35,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            viewModel?.OnAppearing();
         }
     }
 }

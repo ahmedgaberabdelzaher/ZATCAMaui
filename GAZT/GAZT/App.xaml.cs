@@ -93,6 +93,7 @@ namespace EGAZT
         public static string TaxpayerProfileSuccessPage = "TaxpayerProfileSuccessPage";
         public static string EstablishmentSignUPPageView = "EstablishmentSignUPPageView";
         public static string SignUpForEstablishmentPageView = "SignUpForEstablishmentPageView";
+        public static string SupportPageView = "SupportPageView";
         // * End
 
         #endregion
@@ -110,6 +111,9 @@ namespace EGAZT
         public static string ChangeFillingPeriodPageView = "ChangeFillingPeriodPageView";
         public static string ContractReleasePageView = "ContractReleasePageView";
         public static string ContractReleaseSuccessPageView = "ContractReleaseSuccessPageView";
+        public static string ChangeFillingPeriodListPageView = "ChangeFillingPeriodListPageView";
+        public static string ChangeFillingPeriodSuccessPage = "ChangeFillingPeriodSuccessPage";
+        public static string ContractReleaseListPageView = "ContractReleaseListPageView";
 
         #endregion
 

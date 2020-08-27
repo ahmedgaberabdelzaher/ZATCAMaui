@@ -16,6 +16,7 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.XForms.TextInputLayout;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -24,6 +25,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
     public partial class VATDeregistrationDetailsPage : ContentPage
     {
         VATDeRegistrationDetailsPageViewModel viewModel;
+        bool isCalled = false;
 
         public VATDeregistrationDetailsPage()
         {
@@ -41,7 +43,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 OnAppearing();
             });
 
-
             MessagingCenter.Subscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) => {
                 viewModel.DatePickerModel = arg;
                 Console.WriteLine(arg);
@@ -53,19 +54,14 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 OnAppearing();
             });
 
-
             //viewModel.FromDate = "DD/MM/YYYY";
             // viewModel.ToDate = "DD/MM/YYYY";
-
-
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
+                viewModel.EnableReasonView();
                 await GetVatDeRegistrationData();
             });
-
-
-
         }
         private void SetLTR()
         {
@@ -108,10 +104,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             ChangeArrowDirection();
 
-            
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
                 viewModel.IsInstructionChecked = arg;
                 //Console.WriteLine(arg);
@@ -125,7 +119,15 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     {
                         viewModel.IDType = arg.SelectedValue;
 
-
+                        if (viewModel.IDType.Contains(AppResources.ZZGCCID))
+                        {
+                            viewModel.IsDOBEditorVisible = false;
+                            IDNumberField.WidthRequest = 300;
+                        }
+                        else
+                        {
+                            viewModel.IsDOBEditorVisible = true;
+                        }
                     }
                     else
                     {
@@ -141,6 +143,15 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     if (arg.PickerTitle.Contains(AppResources.VatDeregIDType))
                     {
                         viewModel.IDType = arg.SelectedValue;
+                        if (viewModel.IDType.Contains(AppResources.ZZGCCID))
+                        {
+                            viewModel.IsDOBEditorVisible = false;
+                            IDNumberField.WidthRequest = 320;
+                        }
+                        else
+                        {
+                            viewModel.IsDOBEditorVisible = true;
+                        }
                     }
                     else
                     {
@@ -155,22 +166,20 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         }
                     }
                 }
-
-
             });
 
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
             {
-
+                isCalled = false;
                 if (App.IsArabic)
                 {
-                    if (arg.DatePickerTitle.Contains("Select Start Date"))
+                    if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
 
 
                     }
-                    else if (arg.DatePickerTitle.Contains("Select End Date"))
+                    else if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
                     {
                         viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
@@ -182,11 +191,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
                 else
                 {
-                    if (arg.DatePickerTitle.Contains("Select Start Date"))
+                    if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
                     }
-                    else if (arg.DatePickerTitle.Contains("Select End Date"))
+                    else if (arg.DatePickerTitle.Contains(AppResources.VatDeregEndDatePickerTitle))
                     {
                         viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
 
@@ -196,54 +205,118 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.DOB = arg.SelectedValue;
                     }
                 }
-                if (viewModel.FromDate < viewModel.LastIcrDate)
+                //if (viewModel.FromDate < viewModel.LastIcrDate)
+                //{
+                //    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, "Information");
+                //}
+                //else
+                // DateTime.Today.AddDays(1);
+
+                bool isValid = false;
+                PopUp popUp = new PopUp();
+                StringBuilder Messages = new StringBuilder();
+                popUp.IsLinkAvailable = false;
+
+                if (viewModel.LastIcrDate < viewModel.FromDate)
                 {
-                    viewModel._dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, "Information");
+                    isValid = true;
                 }
-                else if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
+                else
                 {
-                    DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
-                    DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
+                    popUp.Message = AppResources.VatDeregistrationSuspendedDateValidation;
+                    isValid = false;
+                }
 
-                    VATDeregistrationSuspendedDateRootObject obj = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
-                    if (obj != null)
+                double quarterrDiff = quarterDiff(viewModel.FromDate, viewModel.ToDate);
+
+                if (quarterrDiff <= 1)
+                {
+                    isValid = false;
+                    if (Messages.Length > 0)
                     {
-                        if (obj.d.dateResults[0].SuspDtfrom != null)
+                        Messages.Append(Environment.NewLine);
+                    }
+
+                    Messages.Append(AppResources.VatDeregSuspendedDateMismatchException);
+                }
+
+                if (isValid == true)
+                {
+                    if (viewModel.FromDate != DateTime.Now && viewModel.ToDate != DateTime.Now)
+                    {
+                        DateTime startDateTime = Convert.ToDateTime(viewModel.FromDate);
+                        DateTime toDateTime = Convert.ToDateTime(viewModel.ToDate);
+
+                        VATDeregistrationSuspendedDateRootObject obj = WebServiceManager.GAZTGETVATDeregReturnFilingDateList(startDateTime, toDateTime);
+                        if (obj != null)
                         {
-                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
-                            viewModel.SuspendedStartDate = date;
+                            if (obj.d.dateResults[0].SuspDtfrom != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].SuspDtfrom;
+                                viewModel.SuspendedStartDate = date;
 
 
-                        }
-                        if (obj.d.dateResults[0].SuspDtto != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
+                            }
+                            if (obj.d.dateResults[0].SuspDtto != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].SuspDtto;
 
-                            viewModel.SuspendedEndDate = date;
+                                viewModel.SuspendedEndDate = date;
 
-                        }
-                        if (obj.d.dateResults[0].NextDtfrom != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
+                            }
+                            if (obj.d.dateResults[0].NextDtfrom != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].NextDtfrom;
 
-                            viewModel.NextFilingStartDate = date;
+                                viewModel.NextFilingStartDate = date;
 
-                        }
-                        if (obj.d.dateResults[0].NextDtfrom != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
+                            }
+                            if (obj.d.dateResults[0].NextDtfrom != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].NextDtto;
 
-                            viewModel.NextFilingEndDate = date;
-                        }
-                        if (obj.d.dateResults[0].Duedate != null)
-                        {
-                            DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
+                                viewModel.NextFilingEndDate = date;
+                            }
+                            if (obj.d.dateResults[0].Duedate != null)
+                            {
+                                DateTime date = (DateTime)obj.d.dateResults[0].Duedate;
 
-                            viewModel.NextFilingDueDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                                viewModel.NextFilingDueDate = date;//.ToString("dd-MM-yyyy", new CultureInfo("en-US"));
+                            }
                         }
                     }
                 }
+                else
+                {
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    if(isCalled == false)
+                    {
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        isCalled = true;
+                    }
+                }
             });
+        }
+
+        public static double quarterDiff(DateTime first, DateTime second)
+        {
+            int firstQuarter = getQuarter(first);
+            int secondQuarter = getQuarter(second);
+            return 1 + Math.Abs(firstQuarter - secondQuarter);
+        }
+
+        private static int getQuarter(DateTime date)
+        {
+            return (date.Year * 4) + ((date.Month - 1) / 3);
         }
 
         public void ChangeAeroIcon()
@@ -425,14 +498,14 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void outletDocumentOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-            VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
-            viewModel.SelectedOutletOptionIndex = viewModel.OutletDocumentOptions.IndexOf(selectedItem);
+            ResultsAttachmentItemForElgblDocSet selectedItem = e.AddedItems[0] as ResultsAttachmentItemForElgblDocSet;
+            viewModel.SelectedOutletOptionIndex = viewModel.AttachmentTypes.IndexOf(selectedItem);
         }
         async void VATDeregStartDateClicked(System.Object sender, System.EventArgs e)
         {
 
             GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-            genericDatePickerModel.DatePickerTitle = "Select Start Date";
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
             genericDatePickerModel.PickerId = "StartDateTypePicker";
             try
             {
@@ -457,7 +530,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-            genericDatePickerModel.DatePickerTitle = "Select End Date";
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregEndDatePickerTitle;
             genericDatePickerModel.PickerId = "EndDateTypePicker";
             try
             {
@@ -670,6 +743,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     }
                     if (viewModel.IDType == "GCC ID")
                     {
+
                         if (viewModel.TxtIDNumber.Substring(0, 1) == "0")
                         {
                             //Have to change to neww error message
@@ -1072,6 +1146,38 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 viewModel.IsLoading = false;
             });
+        }
+
+        async void voidTapped(System.Object sender, System.EventArgs e)
+        {
+            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
+            if (!result)
+            {
+
+                if (viewModel.VATDeRegistrationDetailsData != null)
+                {
+                    if (viewModel.VATDeRegistrationDetailsData.d != null)
+                    {
+                        if (viewModel.VATDeRegistrationDetailsData.d.Fbnumx != string.Empty)
+                        {
+                            viewModel.setDATA("04");
+                            await viewModel.saveAsDraftVoidAPIMethodCall();
+                            // _navigationService.GoBack();
+                        }
+                        else
+                        {
+                            viewModel._navigationService.GoBack();
+                        }
+                    }
+
+                }
+            }
+        }
+
+        void Others_Entry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            //OthersTxt.HelperText
+            viewModel.SetTextCount(e.NewTextValue.Length);
         }
     }
 }

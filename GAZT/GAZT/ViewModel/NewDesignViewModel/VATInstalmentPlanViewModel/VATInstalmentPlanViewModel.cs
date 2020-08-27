@@ -234,7 +234,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         #endregion
 
 
-
         #region Properties
 
         private bool _isBackButtonVisible = true;
@@ -499,6 +498,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 return totalAmountSAR;
             }
         }
+
 
         public string InputData
         {
@@ -899,7 +899,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 summarySelectedBillsList.Add(new ZakatSelectBillModel()
                 {
-                    billNumber = "Bill " + (i + 1).ToString("00"),
+                    billNumber = AppResources.Bill + (i + 1).ToString("00"),
                     amount = "0",
                     saadNumber = selectedList[i].SadadNo,
                     taxPeriod = selectedList[i].Taxperioddsc,
@@ -1318,7 +1318,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             switch (selectedPage)
             {
                 case (int)PagesEnum.ZakatSelectionView:
-
+                    _navigationService.GoBack();
                     break;
                 case (int)PagesEnum.ZakatBillView:
                     EnableSlectionView();
@@ -1532,7 +1532,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         SelectedBillsList.Add(bills);
                     }
-                   // BillsListVAT = BillsListVATData;
+                    // BillsListVAT = BillsListVATData;
 
                 }
             }
@@ -1576,16 +1576,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
                 StatementList = statementList;
                 VATBillDueAmount = VatInstalments.d.Totdueamt;
-                try
-                {
-                    
-                    VATPenalityAmount = Math.Abs(double.Parse(VATBillDueAmount) - double.Parse(TotalAmountSAR.Replace(" SAR", "").Replace(",", ""))) + "";
+                VATPenalityAmount = VatInstalments.d.Peneltyamt;
+                //try
+                //{
 
-                }
-                catch (Exception e)
-                {
+                //    VATPenalityAmount = Math.Abs(double.Parse(VATBillDueAmount) - double.Parse(TotalAmountSAR.Replace(" SAR", "").Replace(",", ""))) + "";
 
-                }
+                //}
+                //catch (Exception e)
+                //{
+
+                //}
 
             }
         }
@@ -1726,10 +1727,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
 
 
-           
 
 
-          
+
+
 
 
 
@@ -1888,8 +1889,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 VatInstalments.d.Operationz = "10";
 
+                
+                for (int i = 0; i < VatInstalments.d.VTIASet.results.ToList().Count; i++)
+                {
 
-                VatInstalments = await SubmitClicked();
+                   
+                    VatInstalments.d.VTIASet.results[i].Xsele = "";
+
+                }
+
+
+                    VatInstalments = await SubmitClicked();
 
 
                 EnableStatementsView();
@@ -1957,7 +1967,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                if(AttachmentsListViewData == null)
+                if (AttachmentsListViewData == null)
                 {
                     AttachmentsListViewData = new ObservableCollection<Attachment>();
 
@@ -2402,9 +2412,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             request.d.__metadata = VatInstalments.d.__metadata;
             request.d.VTADSet = VatInstalments.d.VTADSet.results;
             request.d.ATTACHMENTSet = VatInstalments.d.AttachmentSet.results;
-            request.d.VTIASet = VatInstalments.d.VTIASet.results;
             request.d.VTISSet = VatInstalments.d.VTISSet.results;
             request.d.NOTESSet = VatInstalments.d.NotesSet.results;
+
+
+           
+
+
+            for (int i = 0; i < selectedList.Count; i++)
+            {
+                var dataItem = selectedList[i] as VATResults4;
+
+               
+                int index = VatInstalments.d.VTIASet.results.ToList().FindIndex(item => item.SadadNo == dataItem.SadadNo);
+
+                VatInstalments.d.VTIASet.results[index].Xsele = "X";
+
+                
+            }
+
+
+
+
+                //if (selectedList.Contains(dataItem.SadadNo))
+                //    {
+                //    VatInstalments.d.VTIASet.results[i].Xsele = "X";
+
+                //    }
+                //    else
+                //    {
+                //    VatInstalments.d.VTIASet.results[i].Xsele = "";
+
+                //    }
+
+
+                //}
+
+            request.d.VTIASet = VatInstalments.d.VTIASet.results;
+
 
             if (VatInstalments.d.VTISSet.results.Length != 0)
             {
@@ -2463,6 +2508,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     IsLoading = true;
                 });
+
+                
 
                 request = BuildRequestObject();
 

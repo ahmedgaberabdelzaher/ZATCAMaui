@@ -631,7 +631,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.ContractReleasePageView);
+                viewModel._navigationService.NavigateTo(App.ContractReleaseListPageView);
 
             });
         }
@@ -667,6 +667,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void OnVATNowTapped(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+        }
+
+        private void OnSupportTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.SupportPageView);
         }
     }
 }

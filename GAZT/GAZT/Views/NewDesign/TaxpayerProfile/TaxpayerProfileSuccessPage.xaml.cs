@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Resources;
+using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
+using GAZT.Manager;
 using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.TaxpayerProfile
@@ -34,14 +38,17 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 case 1:
                     viewModel.SuccessTitleLbl = AppResources.TPEmailUpdated;
                     viewModel.successCaptionLbl = AppResources.TPNewEmailUpDated;
+                   viewModel.ButtonLabelText=  AppResources.NDBacktoLogin;
                     break;
                 case 2:
                     viewModel.SuccessTitleLbl = AppResources.TPMobileUpdate;
                     viewModel.successCaptionLbl = AppResources.TPSuccessMobileUpdated;
+                    viewModel.ButtonLabelText = AppResources.TPGoToProfile;
                     break;
                 case 3:
                     viewModel.SuccessTitleLbl = AppResources.TPPasswordUpdate;
                     viewModel.successCaptionLbl = AppResources.NewPasswordUpdatedSuccessfully;
+                    viewModel.ButtonLabelText = AppResources.TPGoToProfile;
                     break;
                 default:
                     break;
@@ -54,17 +61,53 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
                 if (ProfileSuccessId == 1)
                 {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
+                    await Task.Run(() =>
                     {
-                        if (item.GetType().Name == App.VerificationPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
+                        App.DisplayProgressView();
+                    });
+                    if (App.TP != null)
+                        App.TP = null;
+                    if (App.PreviousIsArabic)
+                    {
+                        String langName = "ar-AE";
+                        AppResources.Culture = new CultureInfo(langName);
                     }
-                    _navigation.NavigationStack.ToList().Clear();
-                    viewModel._navigationService.GoBack();
+                    else
+                    {
+                        String langName = "en-US";
+                        AppResources.Culture = new CultureInfo(langName);
+                    }
+
+                    try
+                    {
+                        await WebServiceManager.GAZTLogOff();
+                    }
+                    catch
+                    {
+
+                    }
+
+                    await Task.Run(() =>
+                    {
+                        App.HideProgressView();
+                    });
+
+
+                    App.IsLogOut = true;
+                    App.IsLoginCalled = false;
+                    App.IsSamlApiCalledAndroid = false;
+
+                    try
+                    {
+                        App.httpClientHandler = new HttpClientHandler();
+                        App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                        App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                 }
                 else { viewModel._navigationService.GoBack(); }
             });

@@ -107,7 +107,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             }
         }
 
-       
+
         //private void BPickerButtonZakat_Clicked(object sender, EventArgs e)
         //{
         //    FZakatPicker.IsOpen = true;
@@ -185,80 +185,139 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         }
         private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-
-
+            //BillsVATListVIew.SelectedItem = 0;
             try
             {
-                viewModel.SearchBills();
+                if (SearchItemVAT.Text.Length > 0)
+                {
+                    var itemsSource = viewModel.SelectedBillsList.Where(w => w.SadadNo.Contains(SearchItemVAT.Text)).ToList();
+                    BillsVATListVIew.ItemsSource = itemsSource;
+
+
+
+                    for (int i = 0; i <= itemsSource.Count; i++)
+                    {
+
+                        if (viewModel.selectedList.Contains(itemsSource[i])) {
+                            BillsVATListVIew.SelectedItem = itemsSource[i];
+                        }
+
+  
+                    }
+                }
+                else
+                {
+                    BillsVATListVIew.ItemsSource = viewModel.SelectedBillsList;
+                    for (int i = 0; i <= viewModel.BillsListVAT.Length; i++)
+                    {
+                        if (viewModel.selectedList.Contains(viewModel.SelectedBillsList[i]))
+                        {
+                            BillsVATListVIew.SelectedItem = viewModel.SelectedBillsList[i];
+                        }
+                    }
+                }
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
-
-
-
-
         }
 
         private void Bills_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var dataItem = e.ItemData as VATResults4;
+            
 
-
+            totalAmount = 0.0;
 
             try
             {
                 if (viewModel.selectedList.Count > 0)
                 {
-
-
-
-                    foreach (VATResults4 listItem in viewModel.selectedList)
+                    if (viewModel.selectedList.Contains(dataItem))
                     {
-                        if (viewModel.selectedList.Contains(dataItem))
-                        {
-                            int index = viewModel.BillsListVAT.IndexOf(dataItem);
-
-
-
-                            viewModel.BillsListVAT[index].Xsele = "";
-                            totalAmount -= Convert.ToDouble(dataItem.Betrh);
-                            viewModel.selectedList.Remove(dataItem);
-
-
-
-                            viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
-                        }
-                        else
-                        {
-                            int index = viewModel.BillsListVAT.IndexOf(dataItem);
-                            viewModel.BillsListVAT[index].Xsele = "X";
-                            viewModel.selectedList.Add(dataItem);
-                            totalAmount += Convert.ToDouble(dataItem.Betrh);
-                            viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
-                        }
-
-
-
+                        // totalAmount -= Convert.ToDouble(dataItem.Betrh);
+                        viewModel.selectedList.Remove(dataItem);
+                    }
+                    else {
+                        viewModel.selectedList.Add(dataItem);
                     }
 
 
 
+                    //    for (int i = 0; i < viewModel.BillsListVAT.Length; i++)
+                    //{
+
+                    //    if (viewModel.selectedList.Contains(dataItem))
+                    //    {
+                    //        //int index = viewModel.BillsListVAT.IndexOf(dataItem);
+
+                    //       // viewModel.BillsListVAT[i].Xsele = "X";
+                    //        // totalAmount -= Convert.ToDouble(dataItem.Betrh);
+                    //        //viewModel.selectedList.Remove(dataItem);
+
+                    //        //viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
+                    //    }
+                    //    else
+                    //    {
+                    //       // int index = viewModel.BillsListVAT.IndexOf(dataItem);
+                    //        //viewModel.BillsListVAT[i].Xsele = "";
+                    //        //viewModel.selectedList.Add(dataItem);
+
+                    //    }
+
+
+                    //}
+
+                    //foreach (VATResults4 listItem in viewModel.selectedList.ToList())
+                    //{
+                    //    if (viewModel.selectedList.Contains(dataItem))
+                    //    {
+                    //        int index = viewModel.BillsListVAT.IndexOf(dataItem);
+
+                    //        viewModel.BillsListVAT[index].Xsele = "";
+                    //       // totalAmount -= Convert.ToDouble(dataItem.Betrh);
+                    //        viewModel.selectedList.Remove(dataItem);
+
+                    //        //viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
+                    //    }
+                    //    else
+                    //    {
+                    //        int index = viewModel.BillsListVAT.IndexOf(dataItem);
+                    //        viewModel.BillsListVAT[index].Xsele = "X";
+                    //        viewModel.selectedList.Add(dataItem);
+                           
+                    //    }
+
+                    //}
                 }
                 else
                 {
                     viewModel.selectedList.Add(dataItem);
-                    viewModel.BillsListVAT[0].Xsele = "X";
-                    totalAmount += Convert.ToDouble(dataItem.Betrh);
-                    viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
+                    //viewModel.BillsListVAT[0].Xsele = "X";
+                   // totalAmount += Convert.ToDouble(dataItem.Betrh);
+                   // viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
                 }
 
+                Double dueAmount = 0.0;
+                for (int i = 0; i < viewModel.selectedList.Count; i++)
+                {
+
+                    dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
+
+                    
+                }
+
+              
+                    viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + dataItem.Waers;
+
+                
 
 
             }
-           
-        
+
+
             catch (Exception ex)
             {
 

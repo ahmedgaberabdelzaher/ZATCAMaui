@@ -151,11 +151,8 @@ using EGAZT.Views.NewDesign.TaxpayerProfile;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
-using EGAZT.Views.NewDesign.ChangeFillingPeriod;
-using EGAZT.ViewModel.NewDesignViewModel.ContractReleaseViewModel;
-using EGAZT.Views.NewDesign.ContractRelease;
+using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
 using EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
-using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
 using EGAZT.Views.NewDesign.InstalmentPlan;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
@@ -163,11 +160,15 @@ using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 using ZakatInstalmentPlanListViewModel = EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel.ZakatInstalmentPlanListViewModel;
 using EGAZT.Views.NewDesign.Template;
+using EGAZT.Views.NewDesign.ContractReleasePages;
+using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
+using EGAZT.Views.NewDesign;
 
 namespace EGAZT
 {
     public class ViewModelLocator
     {
+
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
@@ -220,6 +221,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatObjectionSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<DashboardAnonymousMenuPageViewModel>();
             SimpleIoc.Default.Register<VATCreditCarriedForwardPopUpPageViewModel>();
+            SimpleIoc.Default.Register<SupportPageViewModel>();
 
             #endregion
 
@@ -235,11 +237,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<ZakatAcknowledgmentPageViewModel>();
             SimpleIoc.Default.Register<ChangeFillingPeriodViewModel>();
             SimpleIoc.Default.Register<ContractReleaseViewModel>();
-            SimpleIoc.Default.Register<ContractReleaseSuccessViewModel>();
             SimpleIoc.Default.Register<FilesUploadPopUpViewModel>();
             SimpleIoc.Default.Register<InstructionsBottomPopUpViewModel>();
             SimpleIoc.Default.Register<EstablishmentSignUPPageViewModel>();
             SimpleIoc.Default.Register<SignUpForEstablishmentPageViewModel>();
+            SimpleIoc.Default.Register<ContractReleaseListViewModel>();
+            SimpleIoc.Default.Register<ChangeFillingPeriodListPageView>();
+            SimpleIoc.Default.Register<ChangeFillingPeriodSuccessPage>();
+
             #endregion
 
             #region OldIOC
@@ -346,6 +351,20 @@ namespace EGAZT
 
         #region NewDesignViewModel
 
+        public SupportPageViewModel SupportPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SupportPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         public VATCreditCarriedForwardPopUpPageViewModel VATCreditCarriedForwardPopUpPageView
         {
@@ -2118,7 +2137,7 @@ namespace EGAZT
             navigationService.Configure(App.SignUpForEstablishmentPageView, typeof(SignUpForEstablishmentPageView));
             navigationService.Configure(App.DashboardAnonymousMenuPageView, typeof(DashboardAnonymousMenuPageView));
             navigationService.Configure(App.VATCreditCarriedForwardPopUpPageView, typeof(VATCreditCarriedForwardPopUpPageView));
-
+            navigationService.Configure(App.SupportPageView, typeof(SupportPageView));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
             //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
 
@@ -2138,7 +2157,11 @@ namespace EGAZT
             navigationService.Configure(App.ContractReleasePageView, typeof(ContractReleasePageView));
             navigationService.Configure(App.ContractReleaseSuccessPageView, typeof(ContractReleaseSuccessPageView));
             navigationService.Configure(App.VatInstalmentPlanSuccessPage, typeof(VatInstalmentPlanSuccessPage));
+            navigationService.Configure(App.ContractReleaseListPageView, typeof(ContractReleaseListPageView));
+            navigationService.Configure(App.ChangeFillingPeriodListPageView, typeof(ChangeFillingPeriodListPageView));
+            navigationService.Configure(App.ChangeFillingPeriodSuccessPage, typeof(ChangeFillingPeriodSuccessPage));
 
+            
             #endregion
 
             #region SYNCFUSION INTEGRATION
@@ -2404,13 +2427,14 @@ namespace EGAZT
                 }
             }
         }
-        public ContractReleaseSuccessViewModel ContractReleaseSuccessPageView
+
+        public ContractReleaseListViewModel ContractReleasePageListView
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ContractReleaseSuccessViewModel>();
+                    return ServiceLocator.Current.GetInstance<ContractReleaseListViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -2418,6 +2442,7 @@ namespace EGAZT
                 }
             }
         }
+        
         #endregion
 
         #region ChnageFillingPeriod
@@ -2436,6 +2461,22 @@ namespace EGAZT
                 }
             }
         }
+        public ChangeFillingPeriodListViewModel ChangeFillingPeriodListPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangeFillingPeriodListViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
 
         #endregion
 
@@ -2605,4 +2646,6 @@ namespace EGAZT
 
         //
     }
+
+ 
 }

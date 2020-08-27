@@ -39,6 +39,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
+
+
         private ObservableCollection<VatRefSubItemsSetResult> _vatRefundsSubItemReturnsSet { get; set; }
         public ObservableCollection<VatRefSubItemsSetResult> VATRefundsSubItemReturnsSet
         {
@@ -67,6 +69,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 _vatRefundsSet = value;
                 RaisePropertyChanged("VATRefundsSet");
+            }
+        }
+
+        private ObservableCollection<VatRefHeaderSetResult> _vatRefundsSetCopy { get; set; }
+        public ObservableCollection<VatRefHeaderSetResult> VATRefundsSetCopy
+        {
+            get
+            {
+                return _vatRefundsSetCopy;
+            }
+            set
+            {
+
+                _vatRefundsSetCopy = value;
+                RaisePropertyChanged("VATRefundsSetCopy");
             }
         }
 
@@ -221,6 +238,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatRefundsListResultModel = new VatRefundsListResultModel();
             VATRefundsSubItemReturnsSet = new ObservableCollection<VatRefSubItemsSetResult>();
             VATRefundsSet = new ObservableCollection<VatRefHeaderSetResult>();
+            VATRefundsSetCopy = new ObservableCollection<VatRefHeaderSetResult>();
+
             IsSearchButtonVisible = true;
             IsCloseButtonVisible = false;
 

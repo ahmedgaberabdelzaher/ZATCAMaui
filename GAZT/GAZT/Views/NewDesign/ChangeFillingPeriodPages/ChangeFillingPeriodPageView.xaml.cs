@@ -10,7 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
-namespace EGAZT.Views.NewDesign.ChangeFillingPeriod
+namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeFillingPeriodPageView : ContentPage
@@ -25,6 +25,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriod
             try
             {
                 InitializeComponent();
+
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
                 //App.IsArabic = true;
