@@ -484,8 +484,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.TranslateText = AppResources.ZZZSetToEnglish;
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
-                viewModel.BillString = AppResources.Bills;
-                viewModel.ReturnString = AppResources.NDReturns;
+                viewModel.BillString = AppResources.ZZZDBMyPayments;
+                viewModel.ReturnString = AppResources.ZZZDBMyReturns;
 
                 viewModel.PaidString = AppResources.Paid;
                 viewModel.UnPaidString = AppResources.UnPaid;
@@ -511,8 +511,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.TranslateText = AppResources.ZZZSetToArabic;
 
                 viewModel.NextCommitmentsString = AppResources.ZZZZNextCommitments;
-                viewModel.BillString = AppResources.Bills;
-                viewModel.ReturnString = AppResources.NDReturns;
+                viewModel.BillString = AppResources.ZZZDBMyPayments;
+                viewModel.ReturnString = AppResources.ZZZDBMyReturns;
 
                 viewModel.PaidString = AppResources.Paid;
                 viewModel.UnPaidString = AppResources.UnPaid;
