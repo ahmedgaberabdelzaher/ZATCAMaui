@@ -63,16 +63,16 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 }
             });
 
-            if (App.IsArabic)
-            {
-                RefrenceNumberInEnglish.IsVisible = false;
-                RefrenceNumberInArabic.IsVisible = true;
-            }
-            else
-            {
-                RefrenceNumberInEnglish.IsVisible = true;
-                RefrenceNumberInArabic.IsVisible = false;
-            }
+            //if (App.IsArabic)
+            //{
+            //    RefrenceNumberInEnglish.IsVisible = false;
+            //    RefrenceNumberInArabic.IsVisible = true;
+            //}
+            //else
+            //{
+            //    RefrenceNumberInEnglish.IsVisible = true;
+            //    RefrenceNumberInArabic.IsVisible = false;
+            //}
         }
         private async Task LoadData()
         {
