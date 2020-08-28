@@ -693,6 +693,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             viewModel.IsLoading = false;
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
+
+            MessagingCenter.Unsubscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem");
+
+            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
+            MessagingCenter.Unsubscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem");
 
         }
@@ -1365,6 +1370,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 viewModel.FrameIDError = false;
             }
         }
+
 
         void Button_Clicked_1(System.Object sender, System.EventArgs e)
         {

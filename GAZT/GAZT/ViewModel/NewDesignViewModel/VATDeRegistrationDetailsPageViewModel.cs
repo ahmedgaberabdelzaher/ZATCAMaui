@@ -27,6 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand OnContinueButtonClick { get; set; }
         public ICommand GoBackBtnTapped { get; set; }
+        public ICommand BackButtonTapped { get; set; }
         public ICommand CloseBtnTapped { get; set; }
         public static IsComeFromForAttachment IsComeFromForAttachment;
         public ICommand OnSaveAsDraftClicked { get; set; }
@@ -56,6 +57,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             Step2, Step3, Step4, Step5, Step6
         }
 
+
         private bool _isInstructionChecked;
         public bool IsInstructionChecked
         {
@@ -81,7 +83,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
                 _currentStep = value;
+                if (_currentStep != null)
+                {
+                    CurrentOpenedTab = _currentStep;
+                }
+                RaisePropertyChanged(nameof(_currentStep));
+                CurrentIndex = (int)_currentStep;
+                RaisePropertyChanged(nameof(CurrentIndex));
                 RaisePropertyChanged("CurrentStep");
+            }
+        }
+
+        private ProcessStep _currentOpenedTab = ProcessStep.Step1;
+        public ProcessStep CurrentOpenedTab
+        {
+            get
+            {
+                return _currentOpenedTab;
+            }
+            set
+            {
+                _currentOpenedTab = value;
+                RaisePropertyChanged("CurrentOpenedTab");
             }
         }
 
@@ -289,6 +312,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SuspendedEndDate");
             }
         }
+
+        private int _currenrIndex = 1;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                if (_currenrIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+                else
+                {
+                    MarkComplete = false;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+            }
+        }
+        public bool MarkComplete { get; private set; } = false;
+        private int _maxIndex = 3;
+        public int MaxIndex
+        {
+            get
+            {
+                return _maxIndex;
+            }
+            set
+            {
+                _maxIndex = value;
+                RaisePropertyChanged("MaxIndex");
+            }
+        }
+
         private DateTime _nextFilingStartDate = DateTime.Now;
         public DateTime NextFilingStartDate
         {
@@ -959,6 +1018,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             //EnableAttachmentsView();
             GoBackBtnTapped = new Command(this.GoBackBtnClicked);
+            BackButtonTapped = new Command(this.BackButtonClicked);
 
             //EnableSummaryView();
             ReasonContinueBtnTapped = new Command(this.ReasonContinueBtnClicked);
@@ -1197,6 +1257,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void GoBackBtnClicked()
         {
+            _navigationService.GoBack();
+            //try
+            //{
+            //    switch (CurrentStep)
+            //    {
+
+            //        case ProcessStep.Step1:
+            //            {
+            //                _navigationService.GoBack();
+
+            //                break;
+            //            }
+
+            //        case ProcessStep.Step2:
+            //            {
+            //                EnableReasonView();
+            //                break;
+            //            }
+
+            //        case ProcessStep.Step3:
+            //            {
+            //                EnableAttachmentsView();
+
+            //                break;
+            //            }
+            //        case ProcessStep.Step4:
+            //            {
+            //                EnableDeclarationView();
+            //                break;
+            //            }
+            //    }
+
+            //}
+            //catch (GAZTUnlockAccountException ex)
+            //{
+
+            //}
+            //catch (InternetException ex)
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+            //        _navigationService.GoBack();
+            //    });
+            //}
+
+        }
+        public void BackButtonClicked()
+        {
             try
             {
                 switch (CurrentStep)
@@ -1234,7 +1343,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
-
         public void SetDocType()
         {
             // VATRegistrationDetailsForAttach.d.ImFg;
@@ -1250,15 +1358,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             ObservableCollection<string> reasonDescription = new ObservableCollection<string>();
             string reqType = string.Empty;
-            if (SelectedOutletOption.ActiveOutletDecisionOptions.Contains(AppResources.VATDeregistrationReasonType1))
+            if (SelectedOutletOption != null)
             {
-                reqType = "VT_DREG";
+                if (SelectedOutletOption.ActiveOutletDecisionOptions.Contains(AppResources.VATDeregistrationReasonType1))
+                {
+                    reqType = "VT_DREG";
+                }
+                else
+                {
+                    reqType = "VT_SUSP";
+                }
             }
-            else
-            {
-                reqType = "VT_SUSP";
-            }
-
             VATDeregistrationModelRootObject reasonList = WebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
 
             for (int i = 0; i < reasonList.d.results.Count; i++)
@@ -1565,7 +1675,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 }
             }
-            IsBackButtonVisible = false;
+            IsBackButtonVisible = true;
             IsReasonViewEnabled = true;
             IsOutletViewEnabled = false;
             IsAttachmentsViewEnabled = false;
