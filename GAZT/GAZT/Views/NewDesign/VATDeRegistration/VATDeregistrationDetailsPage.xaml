@@ -411,7 +411,11 @@
                                                     </inputLayout:SfTextInputLayout>
                                     <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}"  Style="{StaticResource CaptionLabelGrey}"/>
                                 </StackLayout>
-                 <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,16,0,36" x:Name="btnAttachmentsContinue"
+       <Label HorizontalTextAlignment="Start" Grid.ColumnSpan="2" Grid.Row="5" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" FontSize="Micro" Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                <Label HorizontalTextAlignment="Start" Grid.ColumnSpan="3" Grid.Row="6" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" FontSize="Micro"  Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                     <Label HorizontalTextAlignment="Start" Grid.ColumnSpan="2" Grid.Row="7" Text="{x:Static custom2:AppResources.ZMaximumnoof5attachmentscanbeuploaded}" FontSize="Micro"   Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+
+                 <buttons:SfButton Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,16,0,36" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                 
