@@ -5001,9 +5001,6 @@
   <data name="VATRefundsStatusDraft" xml:space="preserve">
     <value>مسودة</value>
   </data>
-  <data name="VATRefundsStatusInProcess" xml:space="preserve">
-    <value>IN PROCESS</value>
-  </data>
   <data name="VATRefundAmounts" xml:space="preserve">
     <value>المبالغ المستدره</value>
   </data>
@@ -5947,5 +5944,32 @@
   </data>
   <data name="NDPobox1" xml:space="preserve">
     <value>Po Box</value>
+  </data>
+    <data name="VATInstalmentListInstalmentAgreementNumber" xml:space="preserve">
+    <value>رقم اتفاقية التقسيط</value>
+  </data>
+  <data name="VATInstalmentListInstalmentAmountRemaining" xml:space="preserve">
+    <value>المبلغ المتبقي</value>
+  </data>
+  <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
+    <value>الرجاء اختيار فاتورة واحده على الاقل للمتابعة</value>
+  </data>
+  <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
+    <value>تم استلام خطة التقسيط بنجاح</value>
+  </data>
+  <data name="VATInstalmentStatusRefunded" xml:space="preserve">
+    <value>مسترده</value>
+  </data>
+ <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
+    <value>الشهور المتبقية</value>
+  </data>
+ <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
+    <value>عدد الاقساط الشهرية</value>
+  </data>
+ <data name="VATRefundsStatusInProcess" xml:space="preserve">
+    <value>تحت المعالجة</value>
+  </data>
+     <data name="VATInstalementStatusInProcess" xml:space="preserve">
+    <value>تحت المعالجة</value>
   </data>
 </root>

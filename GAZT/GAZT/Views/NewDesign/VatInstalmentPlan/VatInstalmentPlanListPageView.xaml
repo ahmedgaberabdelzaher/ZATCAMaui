@@ -684,8 +684,8 @@
                                                                 <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATInstalmentStatusRefunded}" />
                                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                                             </DataTrigger>
-                                                            <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusInProcess}">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusInProcess}" />
+                                                            <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATInstalementStatusInProcess}">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATInstalementStatusInProcess}" />
                                                                 <Setter Property="TextColor" Value="{StaticResource Secondary}" />
                                                             </DataTrigger>
                                                         </Label.Triggers>

@@ -34,6 +34,7 @@ using EGAZT.Models.VATInstalmentModels;
 using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using NotesSet = EGAZT.Models.NotesSet;
 using EGAZT.Models.ContractRelease;
+using EGAZT.Models.ChageFillingPeriodModel;
 
 namespace GAZT.Manager
 {
@@ -9538,13 +9539,13 @@ namespace GAZT.Manager
                 {
 
                     callServ = "DCON";
-                    zuser = "MALRUZAYQI@GAZT.GOV.SA";
-                    euser1 = "00001000000008317878";
+                    zuser = App.LoginDataRetrieved.TIN;
+                    euser1 = App.LoginDataRetrieved.Euser;
                     string euser2 = "null";
                     string euser3 = "null";
                     string euser4 = "null";
                     string euser5 = "null";
-                    fbguid = "005056B1F8FB1EEAB88BF2E3F6A794B0";
+                    fbguid = App.LoginDataRetrieved.FbGuid;
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -9838,6 +9839,688 @@ namespace GAZT.Manager
         }
 
 
+
+        #endregion
+
+        #region VAT Filling Change
+        public async static Task<VATChangeFillingPeriodRequestModel> GAZTGetVATChangeFillingPeriodRequestData(string eUser, string fbguid)
+        {
+            VATChangeFillingPeriodRequestModel _vATChangeFillingPeriodRequestModel = new VATChangeFillingPeriodRequestModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+                    eUser = "00000001000000088130";
+                    fbguid = "005056B1365C1EDAB5B1CBE1861076A3";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    ///// sap / opu / odata / SAP / ZDP_VAT_TPCV_SRV / UI_HDRSet
+                    ////(Fbnumz = '', PortalUsrz = '', Langz = 'E', Operationz = '', Gpartz = '', Euser = '00000001000000088130', UserTypz = '', Fbguid = '005056B1365C1EDAB5B1CBE1861076A3')
+                    ////? &$expand = EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet
+
+                    String url = Constants.VATChangeFillingPeriodGetURL + "Fbnumz='" + "',PortalUsrz='" + "',Langz='" + lang + "',Operationz='" + "'," +
+                   "Gpartz='" + "',Euser='" + eUser + "',UserTypz='" + "',Fbguid='" + fbguid + "' )?$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vATChangeFillingPeriodGetResponse = await client.GetAsync(uri);
+
+
+
+                    if (_vATChangeFillingPeriodGetResponse != null)
+                    {
+                        if (_vATChangeFillingPeriodGetResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vATChangeFillingPeriodGetResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _VATChangeFillingPeriodRequestData = _vATChangeFillingPeriodGetResponse.Content.ReadAsStringAsync().Result;
+                        _vATChangeFillingPeriodRequestModel = JsonConvert.DeserializeObject<VATChangeFillingPeriodRequestModel>(_VATChangeFillingPeriodRequestData);
+
+                        if (!string.IsNullOrEmpty(_VATChangeFillingPeriodRequestData) && _vATChangeFillingPeriodRequestModel.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_VATChangeFillingPeriodRequestData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATChangeFillingPeriodRequestModel;
+                }
+                catch (GAZTVATChangeFillingPeriodException ex)
+                {
+                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public async static Task<VATChangeFillingPeriodRequestModel> GAZTPostVATChangeFillingPeriodData()
+        {
+            VATChangeFillingPeriodRequestModel _vATChangeFillingPeriodRequestModel = new VATChangeFillingPeriodRequestModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+                    VATchangeFillingPeriodPostModel _VATchangeFillingPeriodPostModel = new VATchangeFillingPeriodPostModel();
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    _vATChangeFillingPeriodRequestModel = await GAZTGetVATChangeFillingPeriodRequestData("", "");
+
+                    VATchangeFillingPeriodPostModel.Metadata _metadata = new VATchangeFillingPeriodPostModel.Metadata();
+                    _metadata.id = _vATChangeFillingPeriodRequestModel.d.__metadata.id;
+                    _metadata.uri = _vATChangeFillingPeriodRequestModel.d.__metadata.uri;
+                    _metadata.type = _vATChangeFillingPeriodRequestModel.d.__metadata.type;
+
+                    _VATchangeFillingPeriodPostModel.d.__metadata = _metadata;
+                    _VATchangeFillingPeriodPostModel.d.Attchk = _vATChangeFillingPeriodRequestModel.d.Attchk;
+                    _VATchangeFillingPeriodPostModel.d.CPersl = _vATChangeFillingPeriodRequestModel.d.CPersl;
+                    _VATchangeFillingPeriodPostModel.d.Fbnumz = _vATChangeFillingPeriodRequestModel.d.Fbnumz;
+                    _VATchangeFillingPeriodPostModel.d.Iagrfg = _vATChangeFillingPeriodRequestModel.d.Iagrfg;
+                    _VATchangeFillingPeriodPostModel.d.Reqfg = _vATChangeFillingPeriodRequestModel.d.Reqfg;
+                    _VATchangeFillingPeriodPostModel.d.StepNumber = _vATChangeFillingPeriodRequestModel.d.StepNumber;
+                    _VATchangeFillingPeriodPostModel.d.Begda = _vATChangeFillingPeriodRequestModel.d.Begda;
+                    _VATchangeFillingPeriodPostModel.d.PortalUsrz = _vATChangeFillingPeriodRequestModel.d.PortalUsrz;
+                    _VATchangeFillingPeriodPostModel.d.Langz = _vATChangeFillingPeriodRequestModel.d.Langz;
+                    _VATchangeFillingPeriodPostModel.d.Gpart = _vATChangeFillingPeriodRequestModel.d.Gpart;
+
+                    _VATchangeFillingPeriodPostModel.d.Operationz = _vATChangeFillingPeriodRequestModel.d.Operationz;
+                    _VATchangeFillingPeriodPostModel.d.Fbtyp = _vATChangeFillingPeriodRequestModel.d.Fbtyp;
+                    _VATchangeFillingPeriodPostModel.d.StepNumberz = _vATChangeFillingPeriodRequestModel.d.StepNumberz;
+                    _VATchangeFillingPeriodPostModel.d.Fbust = _vATChangeFillingPeriodRequestModel.d.Fbust;
+
+
+                    _VATchangeFillingPeriodPostModel.d.ReturnIdz = _vATChangeFillingPeriodRequestModel.d.ReturnIdz;
+                    _VATchangeFillingPeriodPostModel.d.Officerz = _vATChangeFillingPeriodRequestModel.d.Officerz;
+                    _VATchangeFillingPeriodPostModel.d.UserTyp = _vATChangeFillingPeriodRequestModel.d.UserTyp;
+                    _VATchangeFillingPeriodPostModel.d.Gpartz = _vATChangeFillingPeriodRequestModel.d.Gpartz;
+                    _VATchangeFillingPeriodPostModel.d.TransactionType = _vATChangeFillingPeriodRequestModel.d.TransactionType;
+                    _VATchangeFillingPeriodPostModel.d.EditFg = _vATChangeFillingPeriodRequestModel.d.EditFg;
+                    _VATchangeFillingPeriodPostModel.d.Statusz = _vATChangeFillingPeriodRequestModel.d.Statusz;
+                    _VATchangeFillingPeriodPostModel.d.Euser = _vATChangeFillingPeriodRequestModel.d.Euser;
+
+                    _VATchangeFillingPeriodPostModel.d.UserTypz = _vATChangeFillingPeriodRequestModel.d.UserTypz;
+                    _VATchangeFillingPeriodPostModel.d.Fbguid = _vATChangeFillingPeriodRequestModel.d.Fbguid;
+                    _VATchangeFillingPeriodPostModel.d.TxnTpz = _vATChangeFillingPeriodRequestModel.d.TxnTpz;
+                    _VATchangeFillingPeriodPostModel.d.DmodeFlg = _vATChangeFillingPeriodRequestModel.d.DmodeFlg;
+                    _VATchangeFillingPeriodPostModel.d.Formprocz = _vATChangeFillingPeriodRequestModel.d.Formprocz;
+                    _VATchangeFillingPeriodPostModel.d.EvStatus = _vATChangeFillingPeriodRequestModel.d.EvStatus;
+                    _VATchangeFillingPeriodPostModel.d.OfficerTz = _vATChangeFillingPeriodRequestModel.d.OfficerTz;
+                    _VATchangeFillingPeriodPostModel.d.SrcAppz = _vATChangeFillingPeriodRequestModel.d.SrcAppz;
+
+
+                    _VATchangeFillingPeriodPostModel.d.Mandt = _vATChangeFillingPeriodRequestModel.d.Mandt;
+                    _VATchangeFillingPeriodPostModel.d.FormGuid = _vATChangeFillingPeriodRequestModel.d.FormGuid;
+                    _VATchangeFillingPeriodPostModel.d.DataVersion = _vATChangeFillingPeriodRequestModel.d.DataVersion;
+                    _VATchangeFillingPeriodPostModel.d.ReturnId = _vATChangeFillingPeriodRequestModel.d.ReturnId;
+                    _VATchangeFillingPeriodPostModel.d.CureentF = _vATChangeFillingPeriodRequestModel.d.CureentF;
+                    _VATchangeFillingPeriodPostModel.d.FilingF = _vATChangeFillingPeriodRequestModel.d.FilingF;
+                    _VATchangeFillingPeriodPostModel.d.Persl = _vATChangeFillingPeriodRequestModel.d.Persl;
+                    _VATchangeFillingPeriodPostModel.d.Decfg = _vATChangeFillingPeriodRequestModel.d.Decfg;
+
+
+                    _VATchangeFillingPeriodPostModel.d.Decname = _vATChangeFillingPeriodRequestModel.d.Decname;
+                    _VATchangeFillingPeriodPostModel.d.Decdesignation = _vATChangeFillingPeriodRequestModel.d.Decdesignation;
+                    _VATchangeFillingPeriodPostModel.d.Decdate = _vATChangeFillingPeriodRequestModel.d.Decdate;
+                    _VATchangeFillingPeriodPostModel.d.DecidTy = _vATChangeFillingPeriodRequestModel.d.DecidTy;
+                    _VATchangeFillingPeriodPostModel.d.DecidNo = _vATChangeFillingPeriodRequestModel.d.DecidNo;
+                    _VATchangeFillingPeriodPostModel.d.EffDateSet = _vATChangeFillingPeriodRequestModel.d.EffDateSet.results;
+                    // _VATchangeFillingPeriodPostModel.d.UI_BTNSet = _vATChangeFillingPeriodRequestModel.d.UI_BTNSet.results;
+                    _VATchangeFillingPeriodPostModel.d.NOTESSet = _vATChangeFillingPeriodRequestModel.d.NOTESSet.results;
+                    _VATchangeFillingPeriodPostModel.d.ATTACHSet = _vATChangeFillingPeriodRequestModel.d.ATTACHSet.results;
+                    _VATchangeFillingPeriodPostModel.d.ATT_TYPSet = _vATChangeFillingPeriodRequestModel.d.ATT_TYPSet.results;
+                    //_VATchangeFillingPeriodPostModel.d.QuesListSet = _vATChangeFillingPeriodRequestModel.d.QuesListSet;
+
+
+
+
+                    string LangZ = GetLangZParameterAREN();
+                    String url = Constants.VATChangeFillingPeriodPostURL;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var serilized = JsonConvert.SerializeObject(_VATchangeFillingPeriodPostModel.d);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
+                    _vATChangeFillingPeriodRequestModel = JsonConvert.DeserializeObject<VATChangeFillingPeriodRequestModel>(_contractReleasesubmitResponse);
+                    return _vATChangeFillingPeriodRequestModel;
+                }
+                catch (GAZTVATChangeFillingPeriodException ex)
+                {
+                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public async static Task<VATRefillingDropdownModel> GAZTGetVATChangeFillingPeriodDropdownData(string gpart)
+        {
+            VATRefillingDropdownModel _vATRefillingDropdownModel = new VATRefillingDropdownModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //  https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_TPCV_UH_SRV/UI_HDRSet
+                    //(Fbtypz = '', UserTypz = '', TransactionTypez = '', Lang = 'E', Gpart = '3300067427', Status = '') ? &$expand = UI_BTNSet,ATT_TYPSet,EffDateSet
+
+                    String url = Constants.VATChangeFillingPeriodGetDropdownURL + "Fbtypz='" + "',UserTypz='" + "',TransactionTypez='" + "',Lang='" + lang + "'," +
+                     "Gpart='" + gpart + "',Status='" + "' )?$expand = UI_BTNSet,ATT_TYPSet,EffDateSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vATRefillingGetDropdownResponse = await client.GetAsync(uri);
+
+
+
+                    if (_vATRefillingGetDropdownResponse != null)
+                    {
+                        if (_vATRefillingGetDropdownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vATRefillingGetDropdownResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _VATRefillingRequestData = _vATRefillingGetDropdownResponse.Content.ReadAsStringAsync().Result;
+                        _vATRefillingDropdownModel = JsonConvert.DeserializeObject<VATRefillingDropdownModel>(_VATRefillingRequestData);
+
+                        if (!string.IsNullOrEmpty(_VATRefillingRequestData) && _vATRefillingDropdownModel.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_VATRefillingRequestData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATRefillingDropdownModel;
+                }
+                catch (GAZTVATChangeFillingPeriodException ex)
+                {
+                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public async static Task<VATRefillingWorkItemsModel> GAZTGetVATChangeFillingPeriodWorkItemsData(string taxType, string gpart)
+        {
+            VATRefillingWorkItemsModel _vATRefillingWorkItemsModel = new VATRefillingWorkItemsModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet
+                    //(TaxType = 'VT', AudTin = '', Gpart = '3300067427', Lang = 'E', UserTin = '') ? &$expand = ASSLISTSet,STATUSSet,REQTYPSet
+
+                    String url = Constants.VATChangeFillingPeriodWorkItemsURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + gpart + "',Lang='" + lang + "'," +
+                     "UserTin='" + "' )?$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vATChangeFillingGetDropdownResponse = await client.GetAsync(uri);
+
+
+
+                    if (_vATChangeFillingGetDropdownResponse != null)
+                    {
+                        if (_vATChangeFillingGetDropdownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vATChangeFillingGetDropdownResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _VATRefillingRequestData = _vATChangeFillingGetDropdownResponse.Content.ReadAsStringAsync().Result;
+                        _vATRefillingWorkItemsModel = JsonConvert.DeserializeObject<VATRefillingWorkItemsModel>(_VATRefillingRequestData);
+
+                        if (!string.IsNullOrEmpty(_VATRefillingRequestData) && _vATRefillingWorkItemsModel.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_VATRefillingRequestData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATRefillingWorkItemsModel;
+                }
+                catch (GAZTVATChangeFillingPeriodException ex)
+                {
+                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static string GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+
+                    // / sap / opu / odata / SAP / Z_REG_GET_TAXPAYER_SRV / taxpayer_nameSet
+                    //(Tin = '<tin number if any>', Idtype = '<idtype[dropdown key]>', Idnum = '<idnumber>', Country = '', PassExpDt = 'yyyymmdd', TaxpDob = 'yyyymmdd')
+                    String Url = string.Empty;
+                    Url = Constants.VATChangeFillingPeriodValidateIDnumberURL + "Tin='" + tin + "',Idtype='" + idType + "',Idnum='" + idnum + "',Country='" + country + "'" +
+                       ",PassExpDt = '" + passExpdt + "', TaxpDob = '" + taxpDOB + "')";
+
+                    return Url;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        public static string GAZTVATChangeFillingPeriodAckDownload(string fbnum)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+
+                    //  / sap / opu / odata / SAP / Z_GET_ACK_LETTER_SRV / Ack_letterSet(Fbnum = '81000000501') /$value
+                    String Url = string.Empty;
+                    Url = Constants.VATChangeFillingPeriodAcknowledgementdownloadURL + "Fbnum='" + fbnum + "')/$value";
+
+                    return Url;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        public async static Task<VATChangeFillingListModel> GAZTGetVATChangeFillingList(string gpart)
+        {
+            VATChangeFillingListModel _vATChangeFillingListModel = new VATChangeFillingListModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+                    string taxType = "VT";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //  https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(TaxType='VT',AudTin='',
+                    //Gpart = '3100088087',Lang = 'E',UserTin = '')?= &$expand = ASSLISTSet,STATUSSet,REQTYPSet &$format = json
+
+                    String url = Constants.VATChangeFillingListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + gpart + "',Lang='" + lang + "'," +
+                      "UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vatChangeFillingListResponse = await client.GetAsync(uri);
+
+
+
+                    if (_vatChangeFillingListResponse != null)
+                    {
+                        if (_vatChangeFillingListResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vatChangeFillingListResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _vatChangeFillingListData = _vatChangeFillingListResponse.Content.ReadAsStringAsync().Result;
+                        _vATChangeFillingListModel = JsonConvert.DeserializeObject<VATChangeFillingListModel>(_vatChangeFillingListData);
+
+                        if (!string.IsNullOrEmpty(_vatChangeFillingListData) && _vATChangeFillingListModel.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatChangeFillingListData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATChangeFillingListModel;
+                }
+                catch (GAZTVATChangeFillingPeriodException ex)
+                {
+                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        public async static Task<VATChangeFillingSummaryModel> GAZTGetVATChangeFillingSummary(string eUser1, string fbnum, string gpart, string status)
+        {
+            VATChangeFillingSummaryModel _vATChangeFillingSummaryModel = new VATChangeFillingSummaryModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                try
+                {
+                    var inputsData = await GAZTGetVATChangeFillingSummaryInputs(eUser1, fbnum, gpart, status);
+                    string fbguid = string.Empty;
+                    string eUser = string.Empty;
+                    string NewToken = string.Empty;
+                    if (inputsData.d != null)
+                    {
+                        fbguid = inputsData.d.Fbguid;
+                        eUser = inputsData.d.Euser;
+                    }
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VAT_TPCV_SRV/UI_HDRSet
+                    //  (Fbnumz = '', PortalUsrz = '', Langz = 'E', Operationz = '', Gpartz = '', Euser = '00001000000008322132',
+                    //UserTypz = '', Fbguid = '005056B1F8FB1EDAB9F82A3E64053352')
+                    //   ?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json
+
+                    String url = Constants.VATChangeFillingSummaryURL + "Fbnumz='" + "',PortalUsrz='" + "',Langz='" + lang + "'," +
+                      "Operationz='" + "',Gpartz='" + "',Euser='" + eUser + "',UserTypz='" + "',Fbguid='" + fbguid + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vatChangeFillingSumamryResponse = await client.GetAsync(uri);
+
+
+
+                    if (_vatChangeFillingSumamryResponse != null)
+                    {
+                        if (_vatChangeFillingSumamryResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vatChangeFillingSumamryResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _vatChangeFillingSummaryData = _vatChangeFillingSumamryResponse.Content.ReadAsStringAsync().Result;
+                        _vATChangeFillingSummaryModel = JsonConvert.DeserializeObject<VATChangeFillingSummaryModel>(_vatChangeFillingSummaryData);
+
+                        if (!string.IsNullOrEmpty(_vatChangeFillingSummaryData) && _vATChangeFillingSummaryModel.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatChangeFillingSummaryData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATChangeFillingSummaryModel;
+                }
+                catch (GAZTVATChangeFillingPeriodException ex)
+                {
+                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public async static Task<VATChangeFillingSummaryModel> GAZTGetVATChangeFillingSummaryInputs(string eUser1, string fbnum, string gPart, string status)
+        {
+            VATChangeFillingSummaryModel _vATChangeFillingSummaryInputsModel = new VATChangeFillingSummaryModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+                    string fbguid = "undefined";
+                    string fbtyp = "TPCV";
+                    // eUser = "00001000000008322132";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
+                    //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
+
+                    String url = Constants.VATChangeFillingSummaryInputsURL + "Euser1='" + eUser1 + "',Fbguid='" + fbguid + "',Fbnum='" + fbnum + "'," +
+                      "Fbtyp='" + fbtyp + "',Gpart='" + gPart + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _vatChangeFillingSumamryInputResponse = await client.GetAsync(uri);
+
+
+
+                    if (_vatChangeFillingSumamryInputResponse != null)
+                    {
+                        if (_vatChangeFillingSumamryInputResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _vatChangeFillingSumamryInputResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _vatChangeFillingSummaryInputData = _vatChangeFillingSumamryInputResponse.Content.ReadAsStringAsync().Result;
+                        _vATChangeFillingSummaryInputsModel = JsonConvert.DeserializeObject<VATChangeFillingSummaryModel>(_vatChangeFillingSummaryInputData);
+
+                        if (!string.IsNullOrEmpty(_vatChangeFillingSummaryInputData) && _vATChangeFillingSummaryInputsModel.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatChangeFillingSummaryInputData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _vATChangeFillingSummaryInputsModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
 
         #endregion
     }

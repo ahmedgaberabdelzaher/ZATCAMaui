@@ -1846,7 +1846,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (TotalAmountSAR.Equals("0.00 SAR"))
                 {
-                    await _dialogService.ShowMessage("Please Select atleast one bill to continue", "Alert");
+                    await _dialogService.ShowMessage(AppResources.VATInstalmentPlanPleaseSelectAtleastOne, AppResources.Information);
                 }
                 else
                 {

@@ -5036,7 +5036,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>DRAFT</value>
   </data>
   <data name="VATRefundsStatusInProcess" xml:space="preserve">
-    <value />
+    <value> IN PROCESS </value>
   </data>
   <data name="VATRefundAmounts" xml:space="preserve">
     <value>Refund Amounts</value>
@@ -6232,5 +6232,11 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDPobox1" xml:space="preserve">
     <value>Po Box</value>
+  </data>
+    <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
+    <value>Please Select atleast one bill to continue.</value>
+  </data>
+     <data name="VATInstalementStatusInProcess" xml:space="preserve">
+    <value> IN PROCESS </value>
   </data>
 </root>

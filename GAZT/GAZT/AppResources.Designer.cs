@@ -10955,5 +10955,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDPobox1", resourceCulture);
             }
         }
+        
+        public static string VATInstalmentPlanPleaseSelectAtleastOne {
+            get {
+                return ResourceManager.GetString("VATInstalmentPlanPleaseSelectAtleastOne", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalementStatusInProcess {
+            get {
+                return ResourceManager.GetString("VATInstalementStatusInProcess", resourceCulture);
+            }
+        }
     }
 }

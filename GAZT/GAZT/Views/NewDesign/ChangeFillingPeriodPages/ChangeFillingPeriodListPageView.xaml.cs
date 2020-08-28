@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
@@ -21,7 +23,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
-                //App.IsArabic = true;
                 ChangeAeroIcon();
                 SetLTR();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -30,6 +31,8 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 this.BindingContext = viewModel;
 
+                viewModel.ResetData();
+                viewModel.GetVATChangeFillingList();
 
             }
             catch (Exception ex)
@@ -37,8 +40,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
             }
         }
-
-
 
         private void SetLTR()
         {
@@ -57,6 +58,13 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
+        }
+
+        private void Request_Item_Tapped(object sender, ItemTappedEventArgs e)
+        {
+            var item = e.ItemData as VATChangeFillingListModel.ChangeFillingFrequency;
+            viewModel.GetVATChangeFillingSummary(item);
+            viewModel.EnableSummaryView();
         }
     }
 }

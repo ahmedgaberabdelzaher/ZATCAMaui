@@ -257,4 +257,12 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+    public class GAZTVATChangeFillingPeriodException : GAZTException
+    {
+        public GAZTVATChangeFillingPeriodException()
+        { }
+        public GAZTVATChangeFillingPeriodException(string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
 }
