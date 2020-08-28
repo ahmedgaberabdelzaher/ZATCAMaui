@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
+using EGAZT.Views.NewDesign.Common;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
@@ -13,7 +17,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Variable
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         private OutletNumber newNumber = null;
-        //private ActivitySetsList activityList = null;
+        private List<string> IDs = new List<string>() { "BUP002", "ZS0005", "ZS0001", "ZS0002" };
+        private ValidateCR validateCR = null;
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
         {
@@ -98,6 +103,138 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
+
+
+        private string _houseNumber = string.Empty;
+        public string HouseNumber
+        {
+            get => _houseNumber;
+            set
+            {
+                if (value != null)
+                {
+                    _houseNumber = value;
+                    RaisePropertyChanged(nameof(HouseNumber));
+                }
+            }
+        }
+        private string _buildingNumber = string.Empty;
+        public string BuildingNumber
+        {
+            get => _buildingNumber;
+            set
+            {
+                if (value != null)
+                {
+                    _buildingNumber = value;
+                    RaisePropertyChanged(nameof(BuildingNumber));
+                }
+            }
+        }
+        private string _floorNumber = string.Empty;
+        public string FloorNumber
+        {
+            get => _floorNumber;
+            set
+            {
+                if (value != null)
+                {
+                    _floorNumber = value;
+                    RaisePropertyChanged(nameof(FloorNumber));
+                }
+            }
+        }
+        private string _street = string.Empty;
+        public string Street
+        {
+            get => _street;
+            set
+            {
+                if (value != null)
+                {
+                    _street = value;
+                    RaisePropertyChanged(nameof(Street));
+                }
+            }
+        }
+        private string _quarter = string.Empty;
+        public string Quarter
+        {
+            get => _quarter;
+            set
+            {
+                if (value != null)
+                {
+                    _quarter = value;
+                    RaisePropertyChanged(nameof(Quarter));
+                }
+            }
+        }
+        private string _postalCode = string.Empty;
+        public string PostalCode
+        {
+            get => _postalCode;
+            set
+            {
+                if (value != null)
+                {
+                    _postalCode = value;
+                    RaisePropertyChanged(nameof(PostalCode));
+                }
+            }
+        }
+        private string _addNumber = string.Empty;
+        public string AddNumber
+        {
+            get => _addNumber;
+            set
+            {
+                if (value != null)
+                {
+                    _addNumber = value;
+                    RaisePropertyChanged(nameof(AddNumber));
+                }
+            }
+        }
+        private CountryDropdownItem _country = null;
+        public CountryDropdownItem Country
+        {
+            get => _country;
+            set
+            {
+                if (value != null)
+                {
+                    _country = value;
+                    RaisePropertyChanged(nameof(Country));
+                }
+            }
+        }
+        private StateDropdownItem _provinance = null;
+        public StateDropdownItem Provinance
+        {
+            get => _provinance;
+            set
+            {
+                if (value != null)
+                {
+                    _provinance = value;
+                    RaisePropertyChanged(nameof(Provinance));
+                }
+            }
+        }
+        private CityDropdownItem _city = null;
+        public CityDropdownItem City
+        {
+            get => _city;
+            set
+            {
+                if (value != null)
+                {
+                    _city = value;
+                    RaisePropertyChanged(nameof(City));
+                }
+            }
+        }
         private bool _postalAsPhysical = false;
         public bool PostalAsPhysical
         {
@@ -106,6 +243,176 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 _postalAsPhysical = value;
                 RaisePropertyChanged(nameof(PostalAsPhysical));
+                if (value)
+                {
+                    HouseNumberSame = HouseNumber;
+                    BuildingNumberSame = BuildingNumber;
+                    FloorNumberSame = FloorNumber;
+                    StreetSame = Street;
+                    QuarterSame = Quarter;
+                    PostalCodeSame = PostalCode;
+                    AddNumberSame = AddNumber;
+                    CountrySame = Country;
+                    ProvinanceSame = Provinance;
+                    CitySame = City;
+                }
+                else
+                {
+                    HouseNumberSame = string.Empty;
+                    BuildingNumberSame = string.Empty;
+                    FloorNumberSame = string.Empty;
+                    StreetSame = string.Empty;
+                    QuarterSame = string.Empty;
+                    PostalCodeSame = string.Empty;
+                    AddNumberSame = string.Empty;
+                    CountrySame = null;
+                    ProvinanceSame = null;
+                    CitySame = null;
+                }
+            }
+        }
+        private string _houseNumberSame = string.Empty;
+        public string HouseNumberSame
+        {
+            get => _houseNumberSame;
+            set
+            {
+                if (value != null)
+                {
+                    _houseNumberSame = value;
+                    RaisePropertyChanged(nameof(HouseNumberSame));
+                }
+            }
+        }
+        private string _buildingNumberSame = string.Empty;
+        public string BuildingNumberSame
+        {
+            get => _buildingNumberSame;
+            set
+            {
+                if (value != null)
+                {
+                    _buildingNumberSame = value;
+                    RaisePropertyChanged(nameof(BuildingNumberSame));
+                }
+            }
+        }
+        private string _floorNumberSame = string.Empty;
+        public string FloorNumberSame
+        {
+            get => _floorNumberSame;
+            set
+            {
+                if (value != null)
+                {
+                    _floorNumberSame = value;
+                    RaisePropertyChanged(nameof(FloorNumberSame));
+                }
+            }
+        }
+        private string _streetSame = string.Empty;
+        public string StreetSame
+        {
+            get => _streetSame;
+            set
+            {
+                if (value != null)
+                {
+                    _streetSame = value;
+                    RaisePropertyChanged(nameof(StreetSame));
+                }
+            }
+        }
+        private string _quarterSame = string.Empty;
+        public string QuarterSame
+        {
+            get => _quarterSame;
+            set
+            {
+                if (value != null)
+                {
+                    _quarterSame = value;
+                    RaisePropertyChanged(nameof(QuarterSame));
+                }
+            }
+        }
+        private string _postalCodeSame = string.Empty;
+        public string PostalCodeSame
+        {
+            get => _postalCodeSame;
+            set
+            {
+                if (value != null)
+                {
+                    _postalCodeSame = value;
+                    RaisePropertyChanged(nameof(PostalCodeSame));
+                }
+            }
+        }
+        private string _addNumberSame = string.Empty;
+        public string AddNumberSame
+        {
+            get => _addNumberSame;
+            set
+            {
+                if (value != null)
+                {
+                    _addNumberSame = value;
+                    RaisePropertyChanged(nameof(AddNumberSame));
+                }
+            }
+        }
+        private CountryDropdownItem _countrySame = null;
+        public CountryDropdownItem CountrySame
+        {
+            get => _countrySame;
+            set
+            {
+                if (value != null)
+                {
+                    _countrySame = value;
+                    RaisePropertyChanged(nameof(CountrySame));
+                }
+            }
+        }
+        private StateDropdownItem _provinanceSame = null;
+        public StateDropdownItem ProvinanceSame
+        {
+            get => _provinanceSame;
+            set
+            {
+                if (value != null)
+                {
+                    _provinanceSame = value;
+                    RaisePropertyChanged(nameof(ProvinanceSame));
+                }
+            }
+        }
+        private CityDropdownItem _citySame = null;
+        public CityDropdownItem CitySame
+        {
+            get => _citySame;
+            set
+            {
+                if (value != null)
+                {
+                    _citySame = value;
+                    RaisePropertyChanged(nameof(CitySame));
+                }
+            }
+        }
+
+        private OutletDropDowns _outletDropDowns = null;
+        public OutletDropDowns OutletDropDowns
+        {
+            get => _outletDropDowns;
+            set
+            {
+                if (value != null)
+                {
+                    _outletDropDowns = value;
+                    RaisePropertyChanged(nameof(OutletDropDowns));
+                }
             }
         }
         #endregion
@@ -114,24 +421,111 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ICommand OnNextButtonClick { get; private set; }
         public ICommand OnPreButtonClick { get; private set; }
         public ICommand OnActivityItemButtonClick { get; private set; }
+        public ICommand OnCountrySelectButtonClick { get; private set; }
+        public ICommand OnProvinanceSelectButtonClick { get; private set; }
+        public ICommand OnCitySelectButtonClick { get; private set; }
         #endregion
 
         #region Constructor
         public OutletDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnNextButtonClick = new Command(() => navigateToNext());
-            OnPreButtonClick = new Command(() => navigateToPre());
+            OnPreButtonClick = new Command(() => navigationService.GoBack());
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
+            OnCountrySelectButtonClick = new Command((str) => {
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
+                poupWindow.OnItemSelect = (item) =>
+                {
+                    try
+                    {
+                        if(str != null && str.ToString().Equals("same"))
+                        {
+                            CountrySame = item as CountryDropdownItem;
+                        }
+                        else
+                        {
+                            Country = item as CountryDropdownItem;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                };
+                PopupNavigation.Instance.PushAsync(poupWindow);
+            });
+            OnProvinanceSelectButtonClick = new Command((str) => {
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.State_dropdownSet?.results);
+                poupWindow.OnItemSelect = (item) =>
+                {
+                    try
+                    {
+                        if (str != null && str.ToString().Equals("same"))
+                        {
+                            ProvinanceSame = item as StateDropdownItem;
+                        }
+                        else
+                        {
+                            Provinance = item as StateDropdownItem;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                };
+                PopupNavigation.Instance.PushAsync(poupWindow);
+            });
+            OnCountrySelectButtonClick = new Command((str) => {
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
+                poupWindow.OnItemSelect = (item) =>
+                {
+                    try
+                    {
+                        if (str != null && str.ToString().Equals("same"))
+                        {
+                            CountrySame = item as CountryDropdownItem;
+                        }
+                        else
+                        {
+                            Country = item as CountryDropdownItem;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                };
+                PopupNavigation.Instance.PushAsync(poupWindow);
+            });
+            OnCitySelectButtonClick = new Command((str) => {
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.city_dropdownSet?.results);
+                poupWindow.OnItemSelect = (item) =>
+                {
+                    try
+                    {
+                        if (str != null && str.ToString().Equals("same"))
+                        {
+                            CitySame = item as CityDropdownItem;
+                        }
+                        else
+                        {
+                            City = item as CityDropdownItem;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.StackTrace);
+                    }
+                };
+                PopupNavigation.Instance.PushAsync(poupWindow);
+            });
         }
         #endregion
 
         #region Method
         public void OnAppearing()
         {
-            //if(currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
-            //{
-            //    OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
-            //}
             fetchTabDataAndBind(currentTab);
         }
         private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
@@ -148,7 +542,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             if(currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
             {
-                currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+                if (!string.IsNullOrEmpty(validateCR?.Crname))
+                {
+                    _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                    {
+                        openedTab = EstablishmentOutletActivitiesTabsEnum.CRDetails,
+                        taxPayerDetails = taxPayerDetails,
+                        nextNumber = newNumber,
+                        validateCR = validateCR,
+                        cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
+                        goBackAction = () =>
+                        {
+                            currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+                        }
+                    });
+                }
+                else
+                {
+                    currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+                }
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
@@ -180,10 +592,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     newNumber = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
                     OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", OutletActNumber, taxPayerDetails?.Fbnumx);
+                    if(OutletActNumber == "000")
+                    {
+                        validateCR = await WebServiceManager.ESTValidateCRNum(taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault()?.Idnumber);
+                        OutletName = validateCR?.Crname;
+                    }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
-
+                    Nreg_ActivityItem idItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault();
+                    List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(idItem?.Type, idItem?.Idnumber, "3102448184");
+                    if(addressess.Count > 0)
+                    {
+                        var address = addressess.FirstOrDefault();
+                        BuildingNumber = address.BuildingNo;
+                        FloorNumber = address.UnitNo;
+                        Street = address.StreetName;
+                        Quarter = address.DistrictName;
+                        PostalCode = address.Zipcode;
+                        AddNumber = address.AdditionalNo;
+                    }
+                    OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
                 }
                 else
                 {

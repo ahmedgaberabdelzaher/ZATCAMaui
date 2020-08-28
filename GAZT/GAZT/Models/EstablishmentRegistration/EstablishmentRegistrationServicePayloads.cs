@@ -194,8 +194,8 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string RankingOrder { get; set; }
         public string AddrType { get; set; }
         public string Srcidentify { get; set; }
-        public DateTime Begda { get; set; }
-        public DateTime Endda { get; set; }
+        public DateTime? Begda { get; set; }
+        public DateTime? Endda { get; set; }
         public string Gpart { get; set; }
         public string Street { get; set; }
         public string HouseNum1 { get; set; }
@@ -531,6 +531,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Land1 { get; set; }
         public string Bland { get; set; }
         public string Bezei { get; set; }
+        public override string ToString() => Bezei;
     }
 
     public class StateDropdownSet
@@ -565,5 +566,40 @@ namespace EGAZT.Models.EstablishmentRegistration
         public CityDropdownSet city_dropdownSet { get; set; }
         public StateDropdownSet State_dropdownSet { get; set; }
         public CountryDropdownSet country_dropdownSet { get; set; }
+    }
+    public class OutletAddress
+    {
+        public Metadata __metadata { get; set; }
+        public string IdType { get; set; }
+        public string Tin { get; set; }
+        public string TpType { get; set; }
+        public string IdNumber { get; set; }
+        public string MobileNo { get; set; }
+        public string AdditionalNo { get; set; }
+        public string BuildingNo { get; set; }
+        public string Zipcode { get; set; }
+        public string UnitNo { get; set; }
+        public string DistrictName { get; set; }
+        public string StreetName { get; set; }
+        public string CityName { get; set; }
+    }
+    public class FinancialDetail
+    {
+        public Metadata __metadata { get; set; }
+        public string ACaltype { get; set; }
+        public string AMonth { get; set; }
+        public string ACommDate { get; set; }
+        public DateTime? ADateComm { get; set; }
+        public string IDatfm { get; set; }
+        public string IGregdate { get; set; }
+        public string EIsldate { get; set; }
+        public string EIslmedate { get; set; }
+    }
+    public class FinancialDetailRequest
+    {
+        public string ACaltype { get; set; } = "H";
+        public string AMonth { get; set; } = "10";
+        public DateTime ADateComm { get; set; } = DateTime.UtcNow;
+        public string EIslmedate { get; set; } = "09";
     }
 }

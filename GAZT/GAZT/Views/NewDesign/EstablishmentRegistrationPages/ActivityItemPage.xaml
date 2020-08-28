@@ -56,7 +56,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueCountry}"  Command="{Binding OnIssueCountrySelectButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueCountry}"  Command="{Binding OnIssueCountrySelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -67,7 +67,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton  ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueBy}" Command="{Binding OnIssueBySelectButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding CRIssueBy}" Command="{Binding OnIssueBySelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -89,7 +89,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="0">
+                        <inputLayout:SfTextInputLayout IsEnabled="{Binding DisableInputFields}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="0">
                             <Entry Text="{Binding CRNumber}" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -100,7 +100,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding CRValidFrom}" Command="{Binding OnValidFromButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Text="{Binding CRValidFrom}" Command="{Binding OnValidFromButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
@@ -112,7 +112,7 @@
                             <custom:CustomLabel Text="Main Activity" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                             <syncfusion:SfSwitch VisualType="Material" IsOn="{Binding PostalAsPhysical}" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </StackLayout>
-                        <custom:CustomLabel  Text="Attachments" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                        <custom:CustomLabel Text="Attachments" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
                                 <custom:CustomLabel.FormattedText>
@@ -124,7 +124,7 @@
                             </custom:CustomLabel>
                             <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center" />
                         </StackLayout>
-                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfCRChoiceButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG01"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
@@ -132,19 +132,51 @@
                                                              Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
+                        <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding CRsCopies}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="10">
+                                        <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
+                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </Grid>
+                                    </border:SfBorder>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
                         <custom:CustomLabel Text="Attachment - Copy of CR" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,15,0,0"/>
-                        <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="15" CornerRadius="10">
-                            <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                                <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
-                                <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                            </Grid>
-                        </border:SfBorder>
+                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG12"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
+                            <buttons:SfButton.ImageSource>
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
+                            </buttons:SfButton.ImageSource>
+                        </buttons:SfButton>
+                        <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding TransferCRsCopies}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="10">
+                                        <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
+                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </Grid>
+                                    </border:SfBorder>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
                         <custom:CustomLabel Text="Business Activity details" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" Margin="0,15" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,0,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -255,7 +287,7 @@
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
                             <Entry Text="{Binding LicenseNumber}" VerticalTextAlignment="Center" Unfocused="LicenseEntry_Unfocused" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
-                            
+
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -282,7 +314,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Attachment -  Transfer Copy of License"/>
+                                        <Span Text="Attachment - Copy of License"/>
                                         <Span Text="*" TextColor="{StaticResource Secondary}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -297,19 +329,24 @@
                                                              Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
-                        <custom:CustomLabel Text="Attachment - Copy of License" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,15,0,0"/>
-                        <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="15" CornerRadius="10">
-                            <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                                <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
-                                <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                            </Grid>
-                        </border:SfBorder>
+                        <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding LicensesCopies}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <border:SfBorder BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" Padding="10" CornerRadius="10">
+                                        <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
+                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        </Grid>
+                                    </border:SfBorder>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
                         <custom:CustomLabel  Text="Business Activity details" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" Margin="0,15" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,0,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -365,7 +402,7 @@
                     <Image Grid.Column="1" Grid.Row="0" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
                     <Image Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
                         <Image.Source>
-                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="36" Glyph="{x:Static FontImage:IconFonts.DotsVertical}"/>
                         </Image.Source>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" />

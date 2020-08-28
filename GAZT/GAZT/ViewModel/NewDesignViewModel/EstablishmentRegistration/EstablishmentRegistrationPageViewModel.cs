@@ -753,7 +753,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _outletData;
             set
             {
-                if(value != null)
+                if(value != null && value.Count > 0)
                 {
                     _outletData = value;
                     RaisePropertyChanged(nameof(OutletData));
@@ -1653,7 +1653,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault()?.Landx50;
                     PassportIssueDate = passportItem?.ValidDateFrom?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                     PassportExpireDate = passportItem?.ValidDateTo?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                }else if(_enum == EstablishmentRegistrationTabsEnum.Outlets)
+                }
+                else if(_enum == EstablishmentRegistrationTabsEnum.Outlets)
                 {
                     Device.BeginInvokeOnMainThread(() => bindingOutletList());
 
@@ -1662,6 +1663,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     //await WebServiceManager.ESTOutletDropDowns();
                     //await WebServiceManager.ESTOutletGetActivitySetsList();
                     //ValidateCR crItem = await WebServiceManager.ESTValidateCRNum(taxPayerDetails?.Nreg_ActivitySet.results?.FirstOrDefault()?.Idnumber);
+                }
+                else if(_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
+                {
+                    FinancialDetail financialDetail = await WebServiceManager.ESTFinancialMaxDate();
                 }
             }
             catch (Exception e)
@@ -1680,7 +1685,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 OutletData.Clear();
                 _outletTempData.ForEach(_out => OutletData.Add(_out));
-                RaisePropertyChanged(nameof(OutletData));
             }
         }
         private void openNewOutlet()
@@ -1688,7 +1692,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
             //if (OutletData?.Count > 0)
             //{
-            //    outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+            //outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
             //}
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
             //outletNavigationModels.nextNumber = number;

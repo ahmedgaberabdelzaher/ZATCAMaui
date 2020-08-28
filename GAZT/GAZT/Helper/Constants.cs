@@ -219,8 +219,8 @@ namespace GAZT.Helper
         public static string ESTActiivtyGroupSubGroupList = BaseUrlOfODataServices + "/sap/opu/odata/sap/Z_REG_ACTIVITY_SRV/act_headerSet";
         public static string ESTValidateCRNum = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_CR_VALDATE_SRV/validatecrSet";
         public static string ESTOutletList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_OutletSet";
-        //activity address https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ADDR_RETRIEVE_SRV/AddressSet?$filter=IdType eq 'BUP002' and IdNumber eq '4030381482' and Tin eq '3102448184' and TpType eq 'I'
-        //outlet post https://sapgatewayqa.gazt.gov.sa/sap/bc/ui5_ui5/sap/ztax_nreg/index.html?sap-client=300&tSys=HTTPS://SAPGATEWAYQA.GAZT.GOV.SA&sap-ui-language=EN&tPar2=3102448184&tPar1=DKOTHI-C@GAZT.GOV.SA&regType=1&pType=TP
+        public static string ESTOutletAddressFetch = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ADDR_RETRIEVE_SRV/AddressSet";//
+        public static string ESTFinancialMaxDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_FD_MAX_DATE_SRV/fd_end_dateSet";//
         #endregion
 
         #region VATInstalment

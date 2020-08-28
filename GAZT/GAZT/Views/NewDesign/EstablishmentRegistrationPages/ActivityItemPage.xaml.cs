@@ -18,6 +18,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel.CurrentTab = _activityNavigation.openedTab;
             viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
             viewModel.newNumber = _activityNavigation.nextNumber;
+            viewModel.validateCR = _activityNavigation.validateCR;
+            viewModel.cRActivityItem = _activityNavigation.cRActivityItem;
+            viewModel.goBackAction = _activityNavigation.goBackAction;
             BindingContext = viewModel;
             SetLTR();
         }

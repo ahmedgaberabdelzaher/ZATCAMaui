@@ -14,5 +14,8 @@ namespace EGAZT.Models
         public EstablishmentOutletActivitiesTabsEnum openedTab { get; set; } = EstablishmentOutletActivitiesTabsEnum.ActivityList;
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         public OutletNumber nextNumber { get; set; } = null;
+        public ValidateCR validateCR { get; set; } = null;
+        public Nreg_ActivityItem cRActivityItem { get; set; } = null;
+        public Action goBackAction { get; set; } = null;
     }
 }
