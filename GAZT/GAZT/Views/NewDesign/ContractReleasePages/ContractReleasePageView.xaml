@@ -627,9 +627,9 @@
                         </Grid>
                     </Frame>
 
-                    <Grid Grid.Row="14" IsEnabled="{Binding IsReleaseDetailsEnabled}">
+                    <Grid Grid.Row="14">
                             
-                        <buttons:SfButton  Margin="0,16,0,16" 
+                        <buttons:SfButton  Margin="0,16,0,16"  BackgroundColor="{Binding ReleaseDetailsButtonBackGroundColor}"
                                           Text="{x:Static ResourceManager:AppResources.CRContinue}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding ReleaseDetailsConBtnTapped}" />
@@ -975,7 +975,7 @@
                                             Style="{StaticResource MicroGrayLabelStyle}" />
                     </Grid>-->
 
-                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16" IsEnabled="{Binding IsAttachmentsEnabled}"
+                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16" BackgroundColor="{Binding AttachButtonBackGroundColor}"
                                       Text="{x:Static ResourceManager:AppResources.CRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}"
                                       Command="{Binding AttachmentsConBtnTapped}" />
@@ -1112,7 +1112,7 @@
                     </border:SfBorder>
 
 
-                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16"
+                    <buttons:SfButton Grid.Row="5" Margin="0,16,0,16" BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
                                       VerticalOptions="End" IsEnabled="{Binding IsDeclarationEnabled}"
                                       Text="{x:Static ResourceManager:AppResources.CRContinue}"
                                       Style="{StaticResource PrimaryButtonStyle}"

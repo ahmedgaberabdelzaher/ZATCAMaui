@@ -782,6 +782,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 RaisePropertyChanged("CategorySelected_Index");
             }
         }
+        private string _successResponse = AppResources.NDYourTaxEvasionReportissubmittedsuccessfully;
+        public string SuccessResponse
+        {
+            get
+            {
+                return _successResponse;
+            }
+            set
+            {
+                _successResponse = value;
+                RaisePropertyChanged("SuccessResponse");
+            }
+        }
         #endregion
 
         #region Commands
@@ -1327,9 +1340,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (response != null && response.Status == true)
                 {
                     //ZTEReportReportSuccessResponsep1
-                    //var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
-                    //var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
-                    //var newReplacedMsg = newrm.Replace("5", "10");
+                    var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
+                    var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
+                    SuccessResponse = newrm.Replace("5", "10");
 
                     //await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);
                     //var _navigation = Application.Current.MainPage.Navigation;

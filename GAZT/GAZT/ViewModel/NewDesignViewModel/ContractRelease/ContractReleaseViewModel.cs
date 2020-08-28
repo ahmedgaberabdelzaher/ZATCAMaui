@@ -136,7 +136,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             set
             {
                 _isReleaseDetailsEnabled = value;
+                ReleaseDetailsButtonBackGroundColor = Color.FromHex(_isReleaseDetailsEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsReleaseDetailsEnabled");
+            }
+        }
+
+        private Color _releaseDetailsButtonBackGroundColor = Color.FromHex("#d49504");
+        public Color ReleaseDetailsButtonBackGroundColor
+        {
+            get
+            {
+                return _releaseDetailsButtonBackGroundColor;
+            }
+            set
+            {
+                if (_releaseDetailsButtonBackGroundColor == value)
+                {
+                    return;
+                }
+                _releaseDetailsButtonBackGroundColor = value;
+                RaisePropertyChanged("ReleaseDetailsButtonBackGroundColor");
             }
         }
 
@@ -148,7 +167,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             set
             {
                 _isAttachmentsEnabled = value;
+                AttachButtonBackGroundColor = Color.FromHex(_isAttachmentsEnabled ? "#d49504" : "#9EA4A9");
                 RaisePropertyChanged("IsAttachmentsEnabled");
+            }
+        }
+
+        private Color _attachButtonBackGroundColor = Color.FromHex("#d49504");
+        public Color AttachButtonBackGroundColor
+        {
+            get
+            {
+                return _attachButtonBackGroundColor;
+            }
+            set
+            {
+                if (_attachButtonBackGroundColor == value)
+                {
+                    return;
+                }
+                _attachButtonBackGroundColor = value;
+                RaisePropertyChanged("AttachButtonBackGroundColor");
             }
         }
 
@@ -160,7 +198,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             set
             {
                 _isDeclarationEnabled = value;
+                DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
+
                 RaisePropertyChanged("IsDeclarationEnabled");
+            }
+        }
+
+        private Color _declarationButtonBackGroundColor = Color.FromHex("#d49504");
+        public Color DeclarationButtonBackGroundColor
+        {
+            get
+            {
+                return _declarationButtonBackGroundColor;
+            }
+            set
+            {
+                if (_declarationButtonBackGroundColor == value)
+                {
+                    return;
+                }
+                _declarationButtonBackGroundColor = value;
+                RaisePropertyChanged("DeclarationButtonBackGroundColor");
             }
         }
 
@@ -947,7 +1005,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 ContractReleaseData = await SubmitClicked();
 
-                //_navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
+                _navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1034,7 +1092,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.AType = PickedContractId;
               
                 ZnotesSet notes = new ZnotesSet();
-                notes.Tdline = DetailDescription.ToString();
+                if(DetailDescription != null )  {
+
+                    notes.Tdline = DetailDescription.ToString();
+
+                }
+                else
+                {
+                    notes.Tdline = "";
+
+                }
+
+
+
                 Metadata _metdata = new Metadata();
                 _metdata.uri = Constants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
                 _metdata.type = "Z_TP_NOTES_TP11_SRV.znotes";

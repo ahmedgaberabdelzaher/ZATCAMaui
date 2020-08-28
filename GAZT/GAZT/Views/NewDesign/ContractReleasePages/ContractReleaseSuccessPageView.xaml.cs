@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ContractReleasePages
 {
@@ -26,6 +28,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
             viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
+
+            ReferenceNumberTxt.Text = viewModel.ContractReleaseData.d.Fbnumz;
+            ContractNumberTxt.Text = viewModel.ContractReleaseData.d.AContNo;
         }
 
         private void SetLTR()
@@ -49,17 +54,100 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
         private void Dashboard_Tapped(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+            var _navigation = Application.Current.MainPage.Navigation;
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ContractReleasePageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ContractReleaseListPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ContractReleaseSuccessPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+            viewModel._navigationService.NavigateTo(App.ContractReleaseListPageView);
+        
+    }
+
+        private async void ReferenceNumberCopyTapped(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.ContractReleaseData.d.Fbnumz != null)
+                {
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsLoading = true;
+                    });
+
+                    await Clipboard.SetTextAsync(viewModel.ContractReleaseData.d.Fbnumz);
+                    if (Clipboard.HasText)
+                    {
+                        var text = await Clipboard.GetTextAsync();
+                        await viewModel._dialogService.ShowMessageBox(AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
+
+                    }
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
         }
 
-        private void ReferenceNumberCopyTapped(object sender, EventArgs e)
+        private async void ContractNumberCopyTapped(object sender, EventArgs e)
         {
+            try
+            {
+                if (viewModel.ContractReleaseData.d.AContNo != null)
+                {
 
-        }
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsLoading = true;
+                    });
 
-        private void ContractNumberCopyTapped(object sender, EventArgs e)
-        {
+                    await Clipboard.SetTextAsync(viewModel.ContractReleaseData.d.AContNo);
+                    if (Clipboard.HasText)
+                    {
+                        var text = await Clipboard.GetTextAsync();
+                        await viewModel._dialogService.ShowMessageBox(AppResources.CRContractingNumber + " " + text, AppResources.Copied);
 
+                    }
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
         }
     }
 }

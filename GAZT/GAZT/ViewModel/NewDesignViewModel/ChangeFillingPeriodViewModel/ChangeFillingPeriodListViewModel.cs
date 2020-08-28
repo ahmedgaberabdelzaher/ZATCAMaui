@@ -180,7 +180,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         var resultData = await WebServiceManager.GAZTGetVATChangeFillingList(App.LoginDataRetrieved.TIN);
                         if (resultData != null && resultData.d.ASSLISTSet.results.Count > 0)
                         {
-                            var changeFilingFrequencyDataList = resultData.d.ASSLISTSet.results.Where(x => x.FbtText.ToUpper() == "Request to change filing frequency".ToUpper()).ToList();
+                            var changeFilingFrequencyDataList = resultData.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "TPCV".ToUpper()).ToList();
 
                             var myRequestsListViewData = new ObservableCollection<VATChangeFillingListModel.ChangeFillingFrequency>();
 
@@ -262,8 +262,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                     try
                     {
-
-                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingSummary("", "", "","");
+                        
+                     
+                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingSummary(item.Fbnum, item.Fbust);
                         if (resultData != null && resultData.d != null)
                         {
                             vATChangingSummaryData = new VATChangeFillingSummaryModel.VATChangingSummaryData();

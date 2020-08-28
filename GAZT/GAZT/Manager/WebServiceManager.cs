@@ -8172,7 +8172,7 @@ namespace GAZT.Manager
         }
 
         //Get FBGuid for VAT plan details
-        public async static Task<VATInstalmentDetailsInputModel> GAZTGetVATInstalmentDetailsInputData(string fbguid, string fbnum, string gpart, string Status)
+        public async static Task<VATInstalmentDetailsInputModel> GAZTGetFbGuidDetailsInputData(string fbguid, string fbnum, string gpart, string Status, string type)
         {
             VATInstalmentDetailsInputModel _InstalmentDetailsInputs = new VATInstalmentDetailsInputModel();
 
@@ -8182,7 +8182,7 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    string fbtyp = "VTIA";
+                    string fbtyp = type;
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -9678,7 +9678,7 @@ namespace GAZT.Manager
 
 
 
-        public async static Task<ContractReLeaseApplicationFormModel> GetContractReleaseList(string callServ, string zuser, string fbguid, string euser1)
+        public async static Task<ContractReLeaseApplicationFormModel> GetContractReleaseList()
         {
 
             if (CrossConnectivity.Current.IsConnected)
@@ -9688,26 +9688,23 @@ namespace GAZT.Manager
                 try
                 {
 
-                    callServ = "DCON";
-                    zuser = App.LoginDataRetrieved.TIN;
-                    euser1 = App.LoginDataRetrieved.Euser;
                     string euser2 = "null";
                     string euser3 = "null";
                     string euser4 = "null";
                     string euser5 = "null";
-                    fbguid = App.LoginDataRetrieved.FbGuid;
+                   
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     //(CallServ = 'DCON', HostName = '', Zuser = 'MALRUZAYQI@GAZT.GOV.SA', Bpnum = '', Auditor = '', Lang = 'E',
                     // Euser1 = '00001000000008317878', Euser2 = 'null', Euser3 = 'null', Euser4 = 'null', Euser5 = 'null',
-                    // Fbguid = '005056B1F8FB1EEAB88BF2E3F6A794B0') ?$expand=ListSet,AuthServSet
+                    // Fbguid = '005056B1F8FB1EEAB88BF2E3F6A794B0') ?$expand=ListSet,AuthServSet Bpnum
 
-                    String url = Constants.ContractReleaseApplicationFormUrl + "CallServ='" + callServ + "',HostName='" + "',Zuser='" + zuser + "',Bpnum='" + "'," +
+                    String url = Constants.ContractReleaseApplicationFormUrl + "CallServ='DCON',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
                        "Auditor='" + "'," +
-                     "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
-                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "')?$expand=ListSet,AuthServSet&$format=json";
+                     "Lang='" + lang + "',Euser1='" + "''" + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
+                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='"  + "')?$expand=ListSet,AuthServSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTzakatInstalmentDataResponse = await client.GetAsync(uri);
 
@@ -9924,7 +9921,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotes_tp11Set(Auditorz='',Taxpayerz='3102224202',RegIdz='',Submitz='',Savez='',
                     //Fbnumz='035001347905',Langz='E',PeriodKeyz='',UserTin='')?$expand=znotesSet,AttDetSet&$format=json
-                    String url = Constants.ContractReleaseSummaryData + "Auditorz='" + "',Taxpayerz='" + taxpayerz + "',RegIdz='" + "',Submitz='" + "'," +
+                    String url = Constants.ContractReleaseSummaryData + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
                       "Savez='" + "',Fbnumz='" + fbnumz + "',Langz='" + lang + "',PeriodKeyz='" + "'," +
                       "UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
                     var uri = new Uri(url);
@@ -10003,8 +10000,7 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    eUser = "00000001000000088130";
-                    fbguid = "005056B1365C1EDAB5B1CBE1861076A3";
+                   
 
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -10014,7 +10010,7 @@ namespace GAZT.Manager
                     ////? &$expand = EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet
 
                     String url = Constants.VATChangeFillingPeriodGetURL + "Fbnumz='" + "',PortalUsrz='" + "',Langz='" + lang + "',Operationz='" + "'," +
-                   "Gpartz='" + "',Euser='" + eUser + "',UserTypz='" + "',Fbguid='" + fbguid + "' )?$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
+                   "Gpartz='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',UserTypz='" + "',Fbguid='" + "')?$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _vATChangeFillingPeriodGetResponse = await client.GetAsync(uri);
 
@@ -10293,7 +10289,7 @@ namespace GAZT.Manager
                     //(TaxType = 'VT', AudTin = '', Gpart = '3300067427', Lang = 'E', UserTin = '') ? &$expand = ASSLISTSet,STATUSSet,REQTYPSet
 
                     String url = Constants.VATChangeFillingPeriodWorkItemsURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + gpart + "',Lang='" + lang + "'," +
-                     "UserTin='" + "' )?$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
+                     "UserTin='" + "')?$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _vATChangeFillingGetDropdownResponse = await client.GetAsync(uri);
 
@@ -10493,7 +10489,7 @@ namespace GAZT.Manager
         }
 
 
-        public async static Task<VATChangeFillingSummaryModel> GAZTGetVATChangeFillingSummary(string eUser1, string fbnum, string gpart, string status)
+        public async static Task<VATChangeFillingSummaryModel> GAZTGetVATChangeFillingSummary(string fbnum, string status)
         {
             VATChangeFillingSummaryModel _vATChangeFillingSummaryModel = new VATChangeFillingSummaryModel();
 
@@ -10502,7 +10498,7 @@ namespace GAZT.Manager
 
                 try
                 {
-                    var inputsData = await GAZTGetVATChangeFillingSummaryInputs(eUser1, fbnum, gpart, status);
+                    var inputsData = await GAZTGetVATChangeFillingSummaryInputs(fbnum,status);
                     string fbguid = string.Empty;
                     string eUser = string.Empty;
                     string NewToken = string.Empty;
@@ -10586,7 +10582,7 @@ namespace GAZT.Manager
             }
         }
 
-        public async static Task<VATChangeFillingSummaryModel> GAZTGetVATChangeFillingSummaryInputs(string eUser1, string fbnum, string gPart, string status)
+        public async static Task<VATChangeFillingSummaryModel> GAZTGetVATChangeFillingSummaryInputs(string fbnum,string status)
         {
             VATChangeFillingSummaryModel _vATChangeFillingSummaryInputsModel = new VATChangeFillingSummaryModel();
 
@@ -10596,7 +10592,7 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    string fbguid = "undefined";
+                  
                     string fbtyp = "TPCV";
                     // eUser = "00001000000008322132";
 
@@ -10606,8 +10602,8 @@ namespace GAZT.Manager
                     /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
                     //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
 
-                    String url = Constants.VATChangeFillingSummaryInputsURL + "Euser1='" + eUser1 + "',Fbguid='" + fbguid + "',Fbnum='" + fbnum + "'," +
-                      "Fbtyp='" + fbtyp + "',Gpart='" + gPart + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?&$format=json";
+                    String url = Constants.VATChangeFillingSummaryInputsURL + "Euser1='',Fbguid='',Fbnum='" + fbnum + "'," +
+                      "Fbtyp='" + fbtyp + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _vatChangeFillingSumamryInputResponse = await client.GetAsync(uri);
 

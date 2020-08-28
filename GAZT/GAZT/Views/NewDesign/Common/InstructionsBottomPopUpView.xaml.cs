@@ -38,7 +38,7 @@ namespace EGAZT.Views.NewDesign
             }
 
         }
-
+        protected override bool OnBackButtonPressed() => true;
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

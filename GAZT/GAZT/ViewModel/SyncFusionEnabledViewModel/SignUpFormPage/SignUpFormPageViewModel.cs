@@ -239,6 +239,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
                 RaisePropertyChanged("SelectCityList");
             }
         }
+        private string _maxDigids = "9";
+        public string MaxDigids
+        {
+            get
+            {
+                return _maxDigids;
+            }
+            set
+            {
+                _maxDigids = value;
+                RaisePropertyChanged("MaxDigids");
+            }
+        }
 
         private string _mobileCountryCode = string.Empty;
         public string MobileCountryCode
@@ -250,6 +263,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             set
             {
                 _mobileCountryCode = value;
+                if (_mobileCountryCode != null)
+                {
+                    MaxDigids = (14 - _mobileCountryCode.Length).ToString();
+                }
+                else
+                {
+                    MaxDigids = "15";
+                }
+             
                 RaisePropertyChanged("MobileCountryCode");
             }
         }

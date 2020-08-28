@@ -594,11 +594,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             if (ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results != null)
             {
-                RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results;
+                //RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results;
+                RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.results.Where(w => w.Fbtyp.Contains("VTIA")).ToList();
 
                 if (RequestForInstalmentPlanList.Count > 0)
                 {
                     NumberOfInstalmentPlans = RequestForInstalmentPlanList.Count + " " + AppResources.ZakatInstalmetPlan;
+
                 }
             }
         }
@@ -748,7 +750,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     saadNumber = bill.SadadNo,
                     taxPeriod = bill.Taxperioddsc,
                     isSelected = false,
-                    billType = "VAT"
+                    billType = AppResources.ZakatInstalmetSelectTypeVAT
+
                 });
             }
 
@@ -788,7 +791,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         var selectedItem = RequestForInstalmentPlanList[index];
 
 
-                        var selectedItemFormID = await WebServiceManager.GAZTGetVATInstalmentDetailsInputData(App.LoginDataRetrieved.FbGuid, selectedItem.Fbnum, App.LoginDataRetrieved.TIN, selectedItem.Fbust);
+                        var selectedItemFormID = await WebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, selectedItem.Fbnum, App.LoginDataRetrieved.TIN, selectedItem.Fbust, "VTIA");
                         //vATInstalment = await WebServiceManager.GAZTGetVATInstalmentData();
                         //VatInstalments = vATInstalment;
 
@@ -887,7 +890,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
 
 
-                        var getFormID = await WebServiceManager.GAZTGetVATInstalmentDetailsInputData(App.LoginDataRetrieved.FbGuid, "", App.LoginDataRetrieved.TIN, "E0045");
+                        var getFormID = await WebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, "", App.LoginDataRetrieved.TIN, "E0045", "VTIA");
 
 
                         if (getFormID.d != null)

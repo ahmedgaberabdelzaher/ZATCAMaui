@@ -40,7 +40,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 viewModel = App.Locator.ChangeFillingPeriodPageView;
                 this.BindingContext = viewModel;
-
+                viewModel.GetVATChangeFillingData();
                 viewModel.ResetData();
             }
             catch (Exception ex)

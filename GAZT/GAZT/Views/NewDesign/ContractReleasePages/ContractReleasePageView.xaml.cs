@@ -139,10 +139,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
 
             }
-            /*if (viewModel.AmountToRelease>viewModel.ContractTotalAmount)
-            {
-                viewModel.AmountToRelease = viewModel.ContractTotalAmount;
-            }*/
+
             viewModel.MakeCalculations();
         }
 
@@ -158,7 +155,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
 
             }
-
+            viewModel.MakeCalculations();
         }
 
         private void ContractAttach_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)

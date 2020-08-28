@@ -623,7 +623,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodPageView);
+                viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
 
             });
         }
