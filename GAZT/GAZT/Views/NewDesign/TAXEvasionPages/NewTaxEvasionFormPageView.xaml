@@ -340,25 +340,26 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <inputLayout:SfTextInputLayout x:Name="FrmReportDetail" HasError="{Binding IsReportDetailHasError}" Margin="0,-6,0,-6"
-                                    TrailingViewPosition="Inside"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" >
-                                       <Editor  MaxLength="999"
+                                    <StackLayout Orientation="Vertical" Margin="0,16,0,0">
+                                         <Editor  MaxLength="999"
                                                 IsSpellCheckEnabled="False"
                                                 Text="{Binding TReportDetail}"
                                                 FontSize= "Small"
                                                 x:Name="TReportDetail"
-                                                HeightRequest="80"
+                                                HorizontalOptions="FillAndExpand"
                                                 AutoSize="TextChanges"
                                                 Unfocused="TReportDetail_Unfocused"></Editor>
-                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                        
                                             <custom:CustomLabel  Text="{Binding
                                                     Source={x:Reference TReportDetail},
                                                     Path=Text.Length, StringFormat='{0}/1000'}"
-                                                    Margin="0, 20, 0, 0"
                                                     Style="{StaticResource CaptionLabelGrey}"
-                                                    HorizontalOptions="End" VerticalOptions="End" FontSize="Micro"/>
-                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                                    HorizontalOptions="EndAndExpand" VerticalOptions="Start" VerticalTextAlignment="Start" FontSize="Micro"/>
+                                    </StackLayout>
+                                      
+                                        
                             </inputLayout:SfTextInputLayout>
 
 
@@ -366,7 +367,7 @@
                             <Grid>
                                 <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
                                     <inputLayout:SfTextInputLayout.LeadingView>
-                                        <Image Source="newui_ic_pdf" x:Name="Attachment_Tmg"/>
+                                        <Image Source="ic_attachment" x:Name="Attachment_Tmg"/>
                                     </inputLayout:SfTextInputLayout.LeadingView>
                                     <custom:BorderlessEntry  Text="" x:Name="Attachment_Frm"  Style="{StaticResource EntryHeight48}" IsReadOnly="True" >
                                     </custom:BorderlessEntry>
@@ -450,13 +451,13 @@
                                     </Grid.ColumnDefinitions>
 
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource BodyLabelGrey}"/>
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand"/>
 
                                     <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding TMobNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                    <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding TMobNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand"/>
 
                                     <custom:CustomLabel Grid.Row="2" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource BodyLabelGrey}"/>
-                                    <custom:CustomLabel Grid.Row="2" Grid.Column="1" Text="{Binding RLocation}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                    <custom:CustomLabel Grid.Row="2" Grid.Column="1" Text="{Binding RLocation}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="End"/>
                                 </Grid>
 
                             </StackLayout>
@@ -496,25 +497,25 @@
                                         </Grid.ColumnDefinitions>
 
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TFaciName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TFaciName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand"/>
 
                                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionTIN}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding TxtTIN}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding TxtTIN}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand"/>
 
                                         <custom:CustomLabel Grid.Row="2" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionVATNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="2" Grid.Column="1" Text="{Binding TVatNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="2" Grid.Column="1" Text="{Binding TVatNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
 
                                         <custom:CustomLabel Grid.Row="3" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{Binding TxtReportDetailRegion}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{Binding TxtReportDetailRegion}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
 
                                         <custom:CustomLabel Grid.Row="4" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="4" Grid.Column="1" Text="{Binding TxtReportDetailCity}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="1" Text="{Binding TxtReportDetailCity}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
 
                                         <custom:CustomLabel Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{Binding TFDAdress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{Binding TFDAdress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
 
                                         <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" Style="{StaticResource BodyLabelGrey}" WidthRequest="50"/>
-                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding TFSAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding TFSAddress}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
                                     </Grid>
                                     
                                 </StackLayout>
@@ -550,10 +551,10 @@
                                         </Grid.ColumnDefinitions>
 
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource BodyLabelGrey}" WidthRequest="200"/>
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TxtReporttype}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding TxtReporttype}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
 
                                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource BodyLabelGrey}"/>
-                                        <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding TReportDetail}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding TReportDetail}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand"/>
 
                                         <custom:CustomLabel Grid.Row="2" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionAttachments}" Style="{StaticResource BodyLabelGrey}"/>
                                             <!--Attachment List-->
