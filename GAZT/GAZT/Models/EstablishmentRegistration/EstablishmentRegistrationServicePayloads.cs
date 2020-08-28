@@ -59,26 +59,27 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class Nreg_IdItem
     {
+        [DefaultValue("{}")]
         public Metadata __metadata { get; set; }
-        public string Mandt { get; set; }
-        public string FormGuid { get; set; }
-        public string DataVersion { get; set; }
+        public string Mandt { get; set; } = string.Empty;
+        public string FormGuid { get; set; } = string.Empty;
+        public string DataVersion { get; set; } = string.Empty;
         public int LineNo { get; set; }
-        public string RankingOrder { get; set; }
+        public string RankingOrder { get; set; } = string.Empty;
         public string Srcidentify { get; set; }
-        public string Gpart { get; set; }
+        public string Gpart { get; set; } = string.Empty;
         public string Type { get; set; }
         public string Idnumber { get; set; }
         public DateTime? ValidDateFrom { get; set; }
-        public string Institute { get; set; }
-        public string City { get; set; }
+        public string Institute { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
         public object EntryDate { get; set; }
         public DateTime? ValidDateTo { get; set; }
         public string Country { get; set; }
-        public string Region { get; set; }
-        public string Actno { get; set; }
-        public string ValidDateFromC { get; set; }
-        public string ValidDateToC { get; set; }
+        public string Region { get; set; } = string.Empty;
+        public string Actno { get; set; } = string.Empty;
+        public string ValidDateFromC { get; set; } = string.Empty;
+        public string ValidDateToC { get; set; } = string.Empty;
     }
 
     public class NregIdSet
@@ -90,7 +91,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     {
         public List<object> results { get; set; }
     }
-    public class Nreg_OutletItem : INotifyPropertyChanged
+    public class Nreg_OutletItem
     {
         public Metadata __metadata { get; set; }
         public string CityCode { get; set; }
@@ -123,18 +124,6 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Actnm { get; set; }
         public string Actnm2 { get; set; }
         public string ChInd { get; set; }
-
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
     public class NregOutletSet
     {
@@ -427,8 +416,14 @@ namespace EGAZT.Models.EstablishmentRegistration
     }
 
 
-    public class TaxpayerNationality
+    public class TaxpayerNationality : TaxpayerNationalityLandx50
     {
+        public override string ToString() => Natio50;
+    }
+
+    public class TaxpayerNationalityLandx50
+    {
+
         public Metadata __metadata { get; set; }
         public string ANationality { get; set; }
         public string Mandt { get; set; }
@@ -439,7 +434,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Landx50 { get; set; }
         public string Natio50 { get; set; }
         public string PrqSpregt { get; set; }
-        public override string ToString() => Natio50;
+        public override string ToString() => Landx50;
     }
 
     public class OutletNumber
@@ -597,7 +592,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     }
     public class FinancialDetailRequest
     {
-        public string ACaltype { get; set; } = "H";
+        public string ACaltype { get; set; } = "G";
         public string AMonth { get; set; } = "10";
         public DateTime ADateComm { get; set; } = DateTime.UtcNow;
         public string EIslmedate { get; set; } = "09";

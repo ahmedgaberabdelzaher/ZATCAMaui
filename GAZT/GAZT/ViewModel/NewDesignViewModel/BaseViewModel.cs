@@ -37,6 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 throw new ArgumentNullException("dialogService");
             }
+            _dialogService = dialogService;
         }
 
         public void PopToRootPage()

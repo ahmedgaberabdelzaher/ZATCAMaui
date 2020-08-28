@@ -313,8 +313,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedReportingBranch = string.Empty;
-        public string SelectedReportingBranch
+        private BranchesDropDownModel _selectedReportingBranch = null;
+        public BranchesDropDownModel SelectedReportingBranch
         {
             get => _selectedReportingBranch;
             set
@@ -576,12 +576,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             set
             {
                 _taxpayerFullNationlityList = value;
-                RaisePropertyChanged(nameof(TaxpayerPDNationlityList));
+                RaisePropertyChanged(nameof(TaxpayerFullNationlityList));
             }
         }
 
-        private List<string> _taxpayerPDNationlityList;
-        public List<string> TaxpayerPDNationlityList
+        private List<TaxpayerNationalityLandx50> _taxpayerPDNationlityList;
+        public List<TaxpayerNationalityLandx50> TaxpayerPDNationlityList
         {
             get => _taxpayerPDNationlityList;
             set
@@ -591,8 +591,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTaxpayerPDNationality;
-        public string SelectedTaxpayerPDNationality
+        private TaxpayerNationality _selectedTaxpayerPDNationality;
+        public TaxpayerNationality SelectedTaxpayerPDNationality
         {
             get => _selectedTaxpayerPDNationality;
             set
@@ -602,19 +602,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private List<string> _citizenList;
-        public List<string> CitizenList
-        {
-            get => _citizenList;
-            set
-            {
-                _citizenList = value;
-                RaisePropertyChanged(nameof(CitizenList));
-            }
-        }
+        //private List<string> _citizenList;
+        //public List<string> CitizenList
+        //{
+        //    get => _citizenList;
+        //    set
+        //    {
+        //        _citizenList = value;
+        //        RaisePropertyChanged(nameof(CitizenList));
+        //    }
+        //}
 
-        private string _selectedCitizen;
-        public string SelectedCitizen
+        private TaxpayerNationalityLandx50 _selectedCitizen;
+        public TaxpayerNationalityLandx50 SelectedCitizen
         {
             get => _selectedCitizen;
             set
@@ -624,19 +624,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private List<string> _residenceList;
-        public List<string> ResidenceList
-        {
-            get => _residenceList;
-            set
-            {
-                _residenceList = value;
-                RaisePropertyChanged(nameof(ResidenceList));
-            }
-        }
+        //private List<string> _residenceList;
+        //public List<string> ResidenceList
+        //{
+        //    get => _residenceList;
+        //    set
+        //    {
+        //        _residenceList = value;
+        //        RaisePropertyChanged(nameof(ResidenceList));
+        //    }
+        //}
 
-        private string _selectedResidence;
-        public string SelectedResidence
+        private TaxpayerNationalityLandx50 _selectedResidence;
+        public TaxpayerNationalityLandx50 SelectedResidence
         {
             get => _selectedResidence;
             set
@@ -661,19 +661,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private List<string> _passportIssueCountryList;
-        public List<string> PassportIssueCountryList
-        {
-            get => _passportIssueCountryList;
-            set
-            {
-                _passportIssueCountryList = value;
-                RaisePropertyChanged(nameof(PassportIssueCountryList));
-            }
-        }
+        //private List<TaxpayerNationality> _passportIssueCountryList;
+        //public List<TaxpayerNationality> PassportIssueCountryList
+        //{
+        //    get => _passportIssueCountryList;
+        //    set
+        //    {
+        //        _passportIssueCountryList = value;
+        //        RaisePropertyChanged(nameof(PassportIssueCountryList));
+        //    }
+        //}
 
-        private string _selectedPassportIssueCountry;
-        public string SelectedPassportIssueCountry
+        private TaxpayerNationality _selectedPassportIssueCountry;
+        public TaxpayerNationality SelectedPassportIssueCountry
         {
             get => _selectedPassportIssueCountry;
             set
@@ -979,7 +979,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnReportingBranchSelectButtonClick = new Command(() =>
            {
                ListPopUpViewPage poupWindow = new ListPopUpViewPage(ReportingBranchList);
-               poupWindow.OnItemSelect = (item) => SelectedReportingBranch = (item as BranchesDropDownModel)?.Augrp;
+               poupWindow.OnItemSelect = (item) =>
+               {
+                   SelectedReportingBranch = (item as BranchesDropDownModel);
+               };
                PopupNavigation.Instance.PushAsync(poupWindow);
            });
 
@@ -991,25 +994,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnPDNatinalitySelectButtonClick = new Command(() =>
             {
-                TaxpayerPDNationlityList = TaxpayerFullNationlityList.Select(x => x.Natio50).ToList();
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
-                poupWindow.OnItemSelect = (item) => SelectedTaxpayerPDNationality = item as string;
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
+                poupWindow.OnItemSelect = (item) => SelectedTaxpayerPDNationality = item as TaxpayerNationality;
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
 
             OnPDCitizenSelectButtonClick = new Command(() =>
             {
-                CitizenList = TaxpayerFullNationlityList.Select(x => x.Landx50).ToList();
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(CitizenList);
-                poupWindow.OnItemSelect = (item) => SelectedCitizen = item as string;
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
+                poupWindow.OnItemSelect = (item) => SelectedCitizen = item as TaxpayerNationalityLandx50;
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
 
             OnPDResidenceSelectButtonClick = new Command(() =>
             {
-                ResidenceList = TaxpayerFullNationlityList.Select(x => x.Landx50).ToList();
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(ResidenceList);
-                poupWindow.OnItemSelect = (item) => SelectedResidence = item as string;
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
+                poupWindow.OnItemSelect = (item) => SelectedResidence = item as TaxpayerNationalityLandx50;
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
             #endregion
@@ -1018,9 +1018,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnPassportIssueCountryButtonClick = new Command(() =>
             {
-                PassportIssueCountryList = TaxpayerFullNationlityList.Select(x => x.Landx50).ToList();
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(PassportIssueCountryList);
-                poupWindow.OnItemSelect = (item) => SelectedPassportIssueCountry = item as string;
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
+                poupWindow.OnItemSelect = (item) => SelectedPassportIssueCountry = item as TaxpayerNationality;
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
 
@@ -1091,77 +1090,84 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async void navigateToNext()
         {
-            var fillMandatory = "Please fill all mandatory Fields.";
-            var failedMesage = "Failed to push the data to server";
-            if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
+            try
             {
-                if (FormValidation(currentTab))
+                var fillMandatory = "Please fill all mandatory Fields.";
+                var failedMesage = "Failed to push the data to server";
+                if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
-                    if (await PushDatatoServer(currentTab))
+                    if (FormValidation(currentTab))
                     {
-                        currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+                        if (await PushDatatoServer(currentTab))
+                        {
+                            currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
+                        }
+                        else
+                        {
+                            ShowValidationPopup(failedMesage);
+                        }
                     }
                     else
                     {
-                        ShowValidationPopup(failedMesage);
+                        ShowValidationPopup(fillMandatory);
+
                     }
                 }
-                else
+                else if (currentTab == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
-                    ShowValidationPopup(fillMandatory);
-
-                }
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.PassportDetails)
-            {
-                if (FormValidation(currentTab))
-                {
-                    if (await PushDatatoServer(currentTab))
+                    if (FormValidation(currentTab))
                     {
-                        currentTab = EstablishmentRegistrationTabsEnum.Outlets;
+                        if (await PushDatatoServer(currentTab))
+                        {
+                            currentTab = EstablishmentRegistrationTabsEnum.Outlets;
+                        }
+                        else
+                        {
+                            ShowValidationPopup(failedMesage);
+                        }
                     }
                     else
                     {
-                        ShowValidationPopup(failedMesage);
+                        ShowValidationPopup(fillMandatory);
+
                     }
                 }
-                else
+                else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
                 {
-                    ShowValidationPopup(fillMandatory);
-
+                    currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
                 }
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.Declaration;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
-            {
-                if (FormValidation(currentTab))
+                else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                    if (await PushDatatoServer(currentTab))
+                    currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                }
+                else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
+                {
+                    if (FormValidation(currentTab))
                     {
-                        currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
+                        if (await PushDatatoServer(currentTab))
+                        {
+                            currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
+                        }
+                        else
+                        {
+                            ShowValidationPopup(failedMesage);// _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
+
+                        }
                     }
                     else
                     {
-                        ShowValidationPopup(failedMesage);// _dialogService.ShowMessage("Failed to push the data to server", AppResources.Information);
-
+                        ShowValidationPopup(fillMandatory);
                     }
-                }
-                else
-                {
-                    ShowValidationPopup(fillMandatory);
-                }
 
+                }
+                else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
+                {
+                    _navigationService.NavigateTo(App.RegistrationSuccessfulPage);
+                }
             }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
+            catch(Exception e)
             {
-                _navigationService.NavigateTo(App.RegistrationSuccessfulPage);
+
             }
         }
         private void navigateToPre()
@@ -1423,6 +1429,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private async Task GetPdNationalityListFromServer(string nationality)
         {
             TaxpayerFullNationlityList = await WebServiceManager.ESTTaxPayerNationality(nationality);
+            TaxpayerPDNationlityList = new List<TaxpayerNationalityLandx50>();
+            TaxpayerFullNationlityList.ForEach(i => TaxpayerPDNationlityList.Add((TaxpayerNationalityLandx50)i));
         }
 
 
@@ -1615,10 +1623,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", "3102448184", "DKOTHI-C@GAZT.GOV.SA");
-                    SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault().ToString();
+                    SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
-
+                    //FinancialDetail financialDetail = await WebServiceManager.ESTFinancialMaxDate();
                     ResidenceTypePrePopulateData(taxPayerDetails);
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
@@ -1629,7 +1637,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     Nreg_IdItem idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
                     GCCIDType = EnIDType[idItem?.Type];
                     GCCIDTypeIdNumberValue = idItem.Idnumber;
-                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast;
                     FatherName = taxPayerDetails?.FatherName;
@@ -1641,18 +1649,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (taxPayerDetails?.Xsexf == "X")
                         SelectedGender = GenderList.LastOrDefault();
 
-                    SelectedTaxpayerPDNationality = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Natio).FirstOrDefault().Natio50;
-                    SelectedCitizen = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault()?.Landx50;
-                    SelectedResidence = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault()?.Landx50;
+                    SelectedTaxpayerPDNationality = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Natio).FirstOrDefault();
+                    SelectedCitizen = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault();
+                    SelectedResidence = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("02", "3102448184", "DKOTHI-C@GAZT.GOV.SA");
                     Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => i.Type == "FS0002").FirstOrDefault();
                     PassportNumber = passportItem.Idnumber;
-                    SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault()?.Landx50;
-                    PassportIssueDate = passportItem?.ValidDateFrom?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                    PassportExpireDate = passportItem?.ValidDateTo?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
+                    PassportIssueDate = passportItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    PassportExpireDate = passportItem?.ValidDateTo?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
                 else if(_enum == EstablishmentRegistrationTabsEnum.Outlets)
                 {
@@ -1794,6 +1802,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
+            return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -1838,15 +1847,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         return false;
                     }
-                    else if (string.IsNullOrEmpty(SelectedTaxpayerPDNationality))
+                    else if (null == SelectedTaxpayerPDNationality)
                     {
                         return false;
                     }
-                    else if (string.IsNullOrEmpty(SelectedCitizen))
+                    else if (null == SelectedCitizen)
                     {
                         return false;
                     }
-                    else if (string.IsNullOrEmpty(SelectedResidence))
+                    else if (null == SelectedResidence)
                     {
                         return false;
                     }
@@ -1857,7 +1866,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         return false;
                     }
-                    else if (string.IsNullOrEmpty(SelectedPassportIssueCountry))
+                    else if (null == SelectedPassportIssueCountry)
                     {
                         return false;
                     }
@@ -1903,17 +1912,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
+                IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    TaxPayerDetails taxPayerDetailstaxPayerRegObj = new TaxPayerDetails();
-                    taxPayerDetails.Branchx = SelectedReportingBranch;
-                    taxPayerDetails.Atype = SelectedEntityType;
+                    taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
+                    taxPayerDetails.Atype = SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = SelectedRegNationalityType;
-
-                    taxPayerDetails.Orgresidence = SelectedOrgResidence;
-                    taxPayerDetails.Orgnonresident = SelectedOrgNonResident;
-                    taxPayerDetails.Orgnonresidentoptions = SelectedOrgNonResidentOptions;
-                    taxPayerDetails.Orgnonresidentactivity = SelectedOrgNonResidentActivity;
+                    taxPayerDetails.Taxtpdetermination = "1";
+                    taxPayerDetails.Tpresidence = SelectedOrgResidence ;
+                    taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty: SelectedOrgNonResident;
+                    taxPayerDetails.Orgnonresidentoptions = string.IsNullOrEmpty(SelectedOrgNonResidentOptions) ? string.Empty : SelectedOrgNonResidentOptions;
+                    taxPayerDetails.Orgnonresidentactivity = string.IsNullOrEmpty(SelectedOrgNonResidentActivity) ? string.Empty : SelectedOrgNonResidentActivity;
 
                     if (UploadedRentDocumentsList != null && UploadedRentDocumentsList.Count > 0)
                     {
@@ -1928,74 +1937,64 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails.Rentatt = "";
                     }
 
-                    taxPayerDetails.Branchx = SelectedReportingBranch;
-
-
-
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
-
+                    IsLoading = false;
                     return true;
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
-                    TaxPayerDetails taxPayerRegObj = new TaxPayerDetails();
-                    taxPayerDetails.Birthdt = Convert.ToDateTime(SelectedDOB);
+                    DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
+                    taxPayerDetails.Birthdt = dob;
                     taxPayerDetails.NameFirst = FirstName;
                     taxPayerDetails.NameLast = LastName;
                     taxPayerDetails.FatherName = FatherName;
                     taxPayerDetails.GrandfatherName = GrandFatherName;
                     taxPayerDetails.FamilyName = FamilyName;
                     taxPayerDetails.Initials = Initial;
-                    if (SelectedGender.ToLower()=="male")
+                    if (SelectedGender?.ToLower()=="male")
                     {
                         taxPayerDetails.Xsexm = "X";
                     }
-                    else if (SelectedGender.ToLower() == "female")
+                    else if (SelectedGender?.ToLower() == "female")
                     {
                         taxPayerDetails.Xsexf = "X";
                     }
-                    taxPayerDetails.Natio = SelectedTaxpayerPDNationality;
-                    taxPayerDetails.Citizen = SelectedCitizen;
-                    taxPayerDetails.Residence = SelectedResidence;
+                    taxPayerDetails.Natio = SelectedTaxpayerPDNationality?.Land1;
+                    taxPayerDetails.Citizen = SelectedCitizen?.Land1;
+                    taxPayerDetails.Residence = SelectedResidence?.Land1;
 
                     var taxPayerDetailsResult = await  WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
-
+                    IsLoading = false;
                     return true;
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
-                    
-
-
                   
                     Nreg_IdItem passportObj = new Nreg_IdItem();
                     passportObj.Idnumber = PassportNumber;
-                    passportObj.Country = SelectedPassportIssueCountry;
-                    passportObj.ValidDateFrom = Convert.ToDateTime(PassportIssueDate);
-                    passportObj.ValidDateTo = Convert.ToDateTime(PassportExpireDate);
+                    passportObj.Country = SelectedPassportIssueCountry?.Land1;
 
-                    List<Nreg_IdItem> _test = new List<Nreg_IdItem>();
-                    _test.Add(passportObj);
+                    DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
+                    DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime expireDate);
+                    passportObj.ValidDateFrom = issueDate;
+                    passportObj.ValidDateTo = expireDate;
+                    passportObj.Type = "FS0002";
+                    passportObj.Srcidentify = "000";
+                    
+                    taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
 
 
-                    NregIdSet passportIDObj = new NregIdSet();
-                    passportIDObj.results = _test;
-
-
-                   // TaxPayerDetails taxPayerRegObj = new TaxPayerDetails();
-                    taxPayerDetails.Birthdt = Convert.ToDateTime(SelectedDOB);
-                    taxPayerDetails.Nreg_IdSet = passportIDObj;
                     if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
                     {
+
                         var uploadPassportDocResult = await WebServiceManager.ESTAttachment(
                             UploadedPassportDocumentsList.FirstOrDefault().DocBinaryInBase64,
                             UploadedPassportDocumentsList.FirstOrDefault().FileNameWithExtension,
                             taxPayerDetails?.ReturnIdx, "RG19", UploadedPassportDocumentsList.FirstOrDefault().MimeType);
                         taxPayerDetails.Passatt = "X";
 
-                       // taxPayerDetails.AttDetSet = "";
                     }
                     else
                     {
@@ -2004,15 +2003,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                    
                     var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
-
+                    IsLoading = false;
                     return true;
                 }
-              
 
+                IsLoading = false;
             }
             catch (Exception ex)
             {
                 ex.ToString();
+            }
+            finally
+            {
+                IsLoading = false;
             }
             return false;
         }

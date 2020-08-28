@@ -682,7 +682,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     CRIssueBy = EnIssueBy[cRActivityItem?.Institute];
                     CRIssueCity = OutletDropDowns.city_dropdownSet.results.Where(i => i.CityName == validateCR?.CityAry).FirstOrDefault();
                     CRNumber = cRActivityItem?.Idnumber;
-                    CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    //CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     DisableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
                 }
             }

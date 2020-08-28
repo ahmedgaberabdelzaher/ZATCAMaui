@@ -9011,8 +9011,12 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-
-                    HttpContent contentPost = new StringContent(JsonConvert.SerializeObject(taxPayer), Encoding.UTF8, Constants.ContentType);
+                    var serialized = JsonConvert.SerializeObject(taxPayer, new JsonSerializerSettings
+                    {
+                        DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
+                        DateTimeZoneHandling = DateTimeZoneHandling.Utc
+                    });
+                    HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, Constants.ContentType);
 
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(new Uri(string.Format("{0}?sap-language={1}", Constants.ESTTaxPayerDetails, lang)), contentPost);
                     if (ESTBranchesDropDownResponse != null)
@@ -9609,7 +9613,10 @@ namespace GAZT.Manager
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format(Constants.ESTFinancialMaxDate));
-                    var financeData = JsonConvert.SerializeObject(new FinancialDetailRequest());
+                    var financeData = JsonConvert.SerializeObject(new FinancialDetailRequest(), new JsonSerializerSettings {
+                        DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
+                        DateTimeZoneHandling = DateTimeZoneHandling.Utc
+                    });
                     HttpContent contentPost = new StringContent(financeData, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(uri, contentPost);
                     if (ESTBranchesDropDownResponse != null)
