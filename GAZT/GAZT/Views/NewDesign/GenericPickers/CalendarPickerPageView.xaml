@@ -4,7 +4,7 @@
                   xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                   xmlns:custom="clr-namespace:GAZT" xmlns:custom1="clr-namespace:GAZT.CustomControl"
                   x:Class="EGAZT.Views.NewDesign.GenericPickers.CalendarPickerPageView"
-                  xmlns:ResourceManager="clr-namespace:EGAZT" BackgroundClicked="PopupPage_BackgroundClicked">
+                  xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:custom11="clr-namespace:EGAZT.CustomControl" BackgroundClicked="PopupPage_BackgroundClicked">
      <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,20 +15,36 @@
     </ContentPage.Resources>
     <ContentPage.Content>
          <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" IsVisible="true">
-             <StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
-                <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-                <Label Text="{Binding DatePickerTitle}"
-                                    HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"
-                                Margin="0,16,0,16"  />
-                 <custom1:CustomDatePicker IsOpen="True" Style="{StaticResource CalendarPickerStyle}"
-								Margin="2" SelectionChanged="genericPicker_SelectionChanged"
-								x:Name="calendarPicker" SelectedItem="{Binding SelectedDate}"
-								ItemHeight="36" >
-                            <custom1:CustomDatePicker.Behaviors>
-                                    <custom1:SfPickerBehavior />
-                            </custom1:CustomDatePicker.Behaviors>
-                  </custom1:CustomDatePicker>
+             <StackLayout Orientation="Vertical">
+                 <StackLayout IsVisible="{Binding IsCurrentDatePickerVisible}" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
+                    <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
+                    <Label Text="{Binding DatePickerTitle}"
+                                        HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"
+                                    Margin="0,16,0,16"  />
+                     <custom11:GenericCustomDatePicker IsOpen="True" Style="{StaticResource CalendarPickerStyle}"
+								    Margin="2" SelectionChanged="genericPicker_SelectionChanged"
+								    x:Name="calendarPicker" SelectedItem="{Binding SelectedDate}"
+								    ItemHeight="36" >
+                                <custom11:GenericCustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                </custom11:GenericCustomDatePicker.Behaviors>
+                      </custom11:GenericCustomDatePicker>
                </StackLayout>
+                 <StackLayout IsVisible="{Binding IsFutureDatePickerVisible}" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
+                    <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
+                    <Label Text="{Binding DatePickerTitle}"
+                                        HorizontalOptions="StartAndExpand" Style="{StaticResource SectionTitleBlackBold}"
+                                    Margin="0,16,0,16"  />
+                     <custom11:GenericCustomDatePicker IsOpen="True" Style="{StaticResource CalendarPickerStyle}"
+								    Margin="2" SelectionChanged="genericPicker_SelectionChanged"
+								    x:Name="futureCalendarPicker" SelectedItem="{Binding SelectedDate}"
+								    ItemHeight="36" >
+                                <custom11:GenericCustomDatePicker.Behaviors>
+                                        <custom1:SfPickerBehavior />
+                                </custom11:GenericCustomDatePicker.Behaviors>
+                      </custom11:GenericCustomDatePicker>
+               </StackLayout>
+             </StackLayout>
           </yummy:PancakeView>
     </ContentPage.Content>
 </pages:PopupPage>

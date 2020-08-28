@@ -56,6 +56,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CalendarPickerPageViewModel
                 RaisePropertyChanged("DatePickerTitle");
             }
         }
+
+        private bool _isFutureDatePickerVisible = false;
+        public bool IsFutureDatePickerVisible
+        {
+            get
+            {
+                return _isFutureDatePickerVisible;
+            }
+            set
+            {
+                _isFutureDatePickerVisible = value;
+                RaisePropertyChanged("IsFutureDatePickerVisible");
+            }
+        }
+
+        private bool _isCurrentDatePickerVisible = true;
+        public bool IsCurrentDatePickerVisible
+        {
+            get
+            {
+                return _isCurrentDatePickerVisible;
+            }
+            set
+            {
+                _isCurrentDatePickerVisible = value;
+                RaisePropertyChanged("IsCurrentDatePickerVisible");
+            }
+        }
+
         private ObservableCollection<object> _selectedDate;
         public ObservableCollection<object> SelectedDate
         {
