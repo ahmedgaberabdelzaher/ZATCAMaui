@@ -750,7 +750,7 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.CRSummary}" HorizontalOptions="StartAndExpand"
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregSummaryTitle}" HorizontalOptions="StartAndExpand"
                                              Style="{StaticResource PageTitleBlack}" />
 
                             <custom:CustomLabel  Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregSummarySubTitle}" HorizontalOptions="StartAndExpand"

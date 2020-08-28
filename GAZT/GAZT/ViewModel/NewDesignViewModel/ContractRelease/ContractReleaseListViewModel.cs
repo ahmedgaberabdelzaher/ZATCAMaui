@@ -426,7 +426,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
                     try
                     {
-                        cRApplicationFormData = await WebServiceManager.GetContractReleaseList("", "", "", "");
+                      
+                           
+
+                        cRApplicationFormData = await WebServiceManager.GetContractReleaseList();
 
                         //cRApplicationFormData = await WebServiceManager.GAZTGetCRApplicationFormData("", App.LoginDataRetrieved.Euser, 
                         //    App.LoginDataRetrieved.FbGuid, App.LoginDataRetrieved.Euser);

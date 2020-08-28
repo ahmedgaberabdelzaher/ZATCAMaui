@@ -5628,7 +5628,7 @@
     <value>في حال سدادكم مبلغ الفاتورة أعلاه يمكنكم الحصول على الشهادة آلياً</value>
   </data>
   <data name="VATInstalmentRequestToVatInstalment" xml:space="preserve">
-    <value>Create/Display VAT Instalment Plan</value>
+    <value>طلب او عرض خطة تقسيط ضريبة القيمة المضافة</value>
   </data>
   <data name="ZakatFinancialCrisis" xml:space="preserve">
     <value>Financial Crisis</value>
