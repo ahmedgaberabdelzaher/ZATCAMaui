@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -344,6 +345,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             IsContractListsVisible = false;
             SummaryVisible = true;
         }
+        private Dictionary<string, string> ContractTypeIdDictionary = new Dictionary<string, string>
+        {
+            {"1",AppResources.CRSupplyforAramco },
+            { "2",AppResources.CRSupplyandmaintenance},
+            { "3",AppResources.CRsupplymaintenanceandoperating},
+            { "4",AppResources.CRDisassembleinstallationandoperate},
+            { "5",AppResources.CRsupplyinstallationandoperate},
+            { "6",AppResources.CRDisassembleinstallationandtransport},
+            { "7",AppResources.CRCleanlinessandmaintenance},
+            { "8",AppResources.CRSupplyinstallationanddeliver},
+            { "9",AppResources.CRmaintenanceandoperate},
+            { "10",AppResources.CRtransport},
+            { "11",AppResources.CRsupplyandwatertransport},
+            { "12",AppResources.CRconstruction},
+            { "13",AppResources.CRmaintenance},
+            { "14",AppResources.CRoperate},
+            { "15",AppResources.CRDesignandconstruction},
+            { "16",AppResources.CRsupplyanddesign},
+            { "17",AppResources.CRsupplyandoprate},
+            { "18",AppResources.CRsupplyandinstallation},
+            { "19",AppResources.CRdesignsupplyandinstallation},
+            { "20",AppResources.CRdesignsupplyandopratemaintenance},
+            { "21",AppResources.CRequipmentrental},
+            { "22",AppResources.CRmaintenancecleanlinessandoprate},
+            { "23",AppResources.CRcleanliness},
+            { "24",AppResources.CRcatering},
+            { "25",AppResources.CRSecurityguards},
+            { "26",AppResources.CRRoadsmaintenance},
+            { "27",AppResources.CRLaborrecruiting},
+            { "28",AppResources.CRContractingRoadsandTransport},
+            { "29",AppResources.CRSupply},
+            { "30",AppResources.CRSupplyanddeliverytowarehouses},
+            { "31",AppResources.CRSupplyanddeliveryport},
+            { "32",AppResources.CROperationofservicesattheport},
+            { "34",AppResources.CRConsultations},
+            { "35",AppResources.CRPrivateConsultante},
+            { "36",AppResources.CRStudiesandConsulting},
+            { "33",AppResources.CROther},
+        };
 
         private void BindSummaryData()
         {
@@ -351,7 +391,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             ToDate = ContractReLeaseSummaryData.ContractEnddate;
             ContractTotalAmount = ContractReLeaseSummaryData.TotalAmountofContract;
             AmountToRelease = ContractReLeaseSummaryData.AmountRequiredtoRelease;
-            PickedContract = ContractReLeaseSummaryData.Type;
+            PickedContract = ContractTypeIdDictionary[ContractReLeaseSummaryData.Type];
             ContractName = ContractReLeaseSummaryData.ContractingName;
             ContractNumber = ContractReLeaseSummaryData.Number;
             Remarks = ContractReLeaseSummaryData.Remark;
