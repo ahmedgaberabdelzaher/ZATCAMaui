@@ -1490,6 +1490,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
 
                 EnableSummaryView();
+
+                PopulateSummaryReasonData();
+                PopulateSummaryDeclarationData();
+                PopulateAttachmentsListViewTemplate();
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1509,6 +1513,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
+                PopulateAttachmentsListViewTemplate();
                 VATDeRegistrationDetails response = await SubmitClicked();
                 if (response != null)
                 {
@@ -1716,12 +1721,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 SummaryData = TxtIDNumber,
                 IsEditVisible = true
             });
-            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+            if (DOB != string.Empty)
             {
-                SummaryTitle = AppResources.VatDeregDOBTitle,
-                SummaryData = DOB,
-                IsEditVisible = true
-            });
+                VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+                {
+                    SummaryTitle = AppResources.VatDeregDOBTitle,
+                    SummaryData = DOB,
+                    IsEditVisible = true
+                });
+            }
             VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.VatDeregContactPerson,

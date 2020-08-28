@@ -4,6 +4,7 @@ using System.Globalization;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -53,11 +54,24 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
-     
-            viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
 
+            var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+            Navigation.RemovePage(firstPageToRemove);
+            var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+            Navigation.RemovePage(secondPageToRemove);
+            viewModel._navigationService.GoBack();
+        
+        }
+        private async void Image_Copy_Tapped(object sender, EventArgs e)
+        {
+            Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+            if (Clipboard.HasText)
+            {
+                var text = await Clipboard.GetTextAsync();
+                var displayText = AppResources.VATRSAppNumber + " " + text;
+                viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+            }
 
         }
-
     }
 }
