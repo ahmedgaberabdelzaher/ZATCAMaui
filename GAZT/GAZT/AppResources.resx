@@ -1631,6 +1631,15 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
     <value>Total Request Amount</value>
   </data>
+     <data name="ZVatRefundRequestDetailsCreditBalance" xml:space="preserve">
+    <value>Credit Balance</value>
+  </data>
+     <data name="ZVatRefundRequestDetailsReassessedBalance" xml:space="preserve">
+    <value>Reassessed Balance</value>
+  </data>
+     <data name="ZVatRefundRequestDetailsOffset" xml:space="preserve">
+    <value>Offset</value>
+  </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>Refund Information</value>
   </data>

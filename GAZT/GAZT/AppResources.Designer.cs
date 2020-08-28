@@ -2906,6 +2906,24 @@ namespace EGAZT {
             }
         }
         
+        public static string ZVatRefundRequestDetailsCreditBalance {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestDetailsCreditBalance", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundRequestDetailsReassessedBalance {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestDetailsReassessedBalance", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundRequestDetailsOffset {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestDetailsOffset", resourceCulture);
+            }
+        }
+        
         public static string ZVatRefundInformation {
             get {
                 return ResourceManager.GetString("ZVatRefundInformation", resourceCulture);
