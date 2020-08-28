@@ -60,7 +60,7 @@
                                     </Image.Source>
                                 </Image>
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="RefNumberCopyTapped"/>
+                                    <TapGestureRecognizer Tapped="ReferenceNumberCopyTapped"/>
                                 </Grid.GestureRecognizers>
                             </Grid>
                         </Frame>
@@ -97,10 +97,10 @@
                         </Frame>
 
 
-                        <buttons:SfButton 
+                        <buttons:SfButton x:Name="btnDashboard"
                                           Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
-                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" 
+                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
                                           BackgroundColor="#d49504" TextColor="White" />
 
                         <custom:CustomLabel Margin="10,0,10,15"
@@ -108,7 +108,7 @@
                                             TextColor="#d49504" HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
                             <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Back_To_ContractList_Tapped" />
+                                <TapGestureRecognizer Tapped="Dashboard_Tapped" />
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
                     </StackLayout>

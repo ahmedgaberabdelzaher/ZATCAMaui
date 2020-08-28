@@ -77,6 +77,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
             base.OnDisappearing();
             MessagingCenter.Send<Object, Attachments>(this, "AttachmentReceived", viewModel.AttachmentsList);
+            viewModel.AttachmentList = new ObservableCollection<VATAttachment>();
             //comment because main button remains enabled
             //  viewModel.IsSwichButtonEnable = false;
             viewModel.IsLoading = false;

@@ -101,6 +101,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");

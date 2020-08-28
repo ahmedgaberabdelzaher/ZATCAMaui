@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ContractReleasePages
 {
@@ -44,55 +47,17 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
         }
 
+        private void Dashboard_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+        }
+
+        private void ReferenceNumberCopyTapped(object sender, EventArgs e)
+        {
+
+        }
+
         private void ContractNumberCopyTapped(object sender, EventArgs e)
-        {
-
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            var _navigation = Application.Current.MainPage.Navigation;
-
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.VatInstalmentPlanPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
-
-        }
-
-        private void Back_To_ContractList_Tapped(object sender, EventArgs e)
-        {
-            var _navigation = Application.Current.MainPage.Navigation;
-
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.ContractReleaseListPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
-
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.ContractReleaseSuccessPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
-
-            viewModel._navigationService.NavigateTo(App.ContractReleaseListPageView);
-
-        }
-
-        private void RefNumberCopyTapped(object sender, EventArgs e)
         {
 
         }

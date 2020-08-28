@@ -10919,5 +10919,23 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDChat", resourceCulture);
             }
         }
+        
+        public static string NDLocalPhone {
+            get {
+                return ResourceManager.GetString("NDLocalPhone", resourceCulture);
+            }
+        }
+        
+        public static string NDOpeningHours {
+            get {
+                return ResourceManager.GetString("NDOpeningHours", resourceCulture);
+            }
+        }
+        
+        public static string NDPobox1 {
+            get {
+                return ResourceManager.GetString("NDPobox1", resourceCulture);
+            }
+        }
     }
 }

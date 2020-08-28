@@ -433,55 +433,71 @@
 
                     <!--Code for VAT Bill selection-->
 
-                    <Grid IsVisible="{Binding IsVATBillsViewEnabled}" BackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                    <Grid IsVisible="{Binding IsVATBillsViewEnabled}" BackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="15,10,15,10" >
 
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="20,10,20,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="1"/>
-                            </Grid.RowDefinitions>
+                        <listView:SfListView x:Name="BillsVATListVIew" HorizontalOptions="FillAndExpand"
+                                              VerticalOptions="FillAndExpand"
+                                                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                                                  AutoFitMode="DynamicHeight" ItemSpacing="10" RowSpacing="15" SelectionMode="Multiple"
+                                      SelectionBackgroundColor="Transparent" ItemTapped="Bills_ItemTapped" ColumnSpacing="10" IsScrollingEnabled="False">
 
-
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatSelectBillsPageViewSelectBills}" HorizontalOptions="StartAndExpand"
+                       
+                            <listView:SfListView.HeaderTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout>
+                                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatSelectBillsPageViewSelectBills}" HorizontalOptions="StartAndExpand"
                                        Style="{StaticResource PageTitleBlack}" />
-                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatSelectBillsPageViewSelectBillsGray}" HorizontalOptions="StartAndExpand"
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatSelectBillsPageViewSelectBillsGray}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}" />
-                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1"/>
-                        </Grid>
+                                                <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1"/>
 
-                        <Frame Grid.Row="1" Padding="0" Grid.ColumnSpan="3" HasShadow="False"  CornerRadius="12" BorderColor="Gray"  Margin="20,15,20,15">
 
-                            <SearchBar x:Name="SearchItemVAT"  Margin="0" PropertyChanged="SearchItem_PropertyChanged"
+                                                <Frame Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" Grid.ColumnSpan="3" HasShadow="False"  CornerRadius="12" BorderColor="Gray"  Margin="20,15,20,15">
+
+                                                    <SearchBar Text="{Binding InputData}"  Margin="0" PropertyChanged="SearchItem_PropertyChanged"
                            Placeholder="{x:Static ResourceManager:AppResources.ZakatSelectBillsPageViewPlaceholder}"
                            Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="FillAndExpand" />
+                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
 
-                        </Frame>
+                                                </Frame>
 
-                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0">
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </listView:SfListView.HeaderTemplate>
 
-                            <listView:SfListView  x:Name="BillsVATListVIew" HorizontalOptions="FillAndExpand" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" AutoFitMode="DynamicHeight" ItemSpacing="0"
-                                      ItemsSource="{Binding SelectedBillsList}" SelectionMode="Multiple"
-                                      SelectionBackgroundColor="Transparent" ItemTapped="Bills_ItemTapped" ColumnSpacing="10">
+                            <listView:SfListView.FooterTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
 
-                                <listView:SfListView.ItemTemplate>
+                                            <StackLayout>
+                                                <Frame Grid.Row="0"  HorizontalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,20,0,0" Padding="0">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,3,10,2">
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
+                                                        <custom:CustomLabel Text="{Binding TotalAmountSAR}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
+                                                    </StackLayout>
+                                                </Frame>
+
+                                                <buttons:SfButton  Margin="0,16,0,16"  x:Name="btnVATBillsContinue" Command="{Binding BillContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
+                                   Style="{StaticResource PrimaryButtonStyle}"/>
+
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </listView:SfListView.FooterTemplate>
+
+                            <listView:SfListView.ItemTemplate>
 
                                     <DataTemplate>
                                         <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="10"  >
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                                 <Image Source="vat_tile_IbanCard_background_white" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10" >
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto"></RowDefinition>
                                                         <RowDefinition Height="Auto"></RowDefinition>
@@ -492,11 +508,9 @@
                                                         <RowDefinition Height="Auto"></RowDefinition>
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="50*"></ColumnDefinition>
+                                                        <ColumnDefinition Width="50*"></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
-
                                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZVAT}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlack}" />
                                                     <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageAmendment}" HorizontalOptions="StartAndExpand"
@@ -523,8 +537,8 @@
                                         <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="10"  >
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                                 <Image Source="re_Tile_Background_S"  Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                                                   
+                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10" >
+
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto"></RowDefinition>
                                                         <RowDefinition Height="Auto"></RowDefinition>
@@ -538,8 +552,6 @@
                                                         <ColumnDefinition Width="50*"></ColumnDefinition>
                                                         <ColumnDefinition Width="50*"></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
-
-
                                                     <custom:CustomLabel TextColor="White" Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZVAT}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlack}" />
                                                     <custom:CustomLabel TextColor="White" Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageAmendment}" HorizontalOptions="StartAndExpand"
@@ -567,28 +579,7 @@
                                 </listView:SfListView.LayoutManager>
 
                             </listView:SfListView>
-                        </Grid>
 
-
-                        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="20,0,20,0" VerticalOptions="End">
-
-                            <Frame Grid.Row="0"  HorizontalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,20,0,0" Padding="0">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10,3,10,2">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand" />
-                                    <custom:CustomLabel Text="{Binding TotalAmountSAR}" Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand" />
-                                </StackLayout>
-                            </Frame>
-                        </Grid>
-
-                        <Grid Grid.Row="4" VerticalOptions="End" Grid.Column="0" Grid.ColumnSpan="3">
-
-                            <StackLayout>
-
-                                <buttons:SfButton  Margin="20,16,20,16"  x:Name="btnVATBillsContinue" Command="{Binding BillContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
-                                   Style="{StaticResource PrimaryButtonStyle}"/>
-
-                            </StackLayout>
-                        </Grid>
                     </Grid>
 
 

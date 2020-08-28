@@ -14,7 +14,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
     public partial class TaxpayerProfileSuccessPage : ContentPage
     {
         TaxpayerProfileSuccessViewModel viewModel;
-        int ProfileSuccessId;
 
         public TaxpayerProfileSuccessPage(int SuccessId)
         {
@@ -24,7 +23,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             this.BindingContext = viewModel;
 
             // * Update UI
-            ProfileSuccessId = SuccessId;
+            viewModel.TPProfileSuccessId = SuccessId;
             UpdateUI();
 
             // * Need to update - Taxpayer Profile Data
@@ -33,7 +32,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private void UpdateUI()
         {
-            switch (ProfileSuccessId)
+            switch (viewModel.TPProfileSuccessId)
             {
                 case 1:
                     viewModel.SuccessTitleLbl = AppResources.TPEmailUpdated;
@@ -59,7 +58,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                if (ProfileSuccessId == 1)
+                if (viewModel.TPProfileSuccessId != 3)
                 {
                     await Task.Run(() =>
                     {
@@ -91,7 +90,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     {
                         App.HideProgressView();
                     });
-
 
                     App.IsLogOut = true;
                     App.IsLoginCalled = false;

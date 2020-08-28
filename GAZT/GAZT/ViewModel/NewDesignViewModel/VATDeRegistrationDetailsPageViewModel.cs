@@ -916,7 +916,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public bool _isDOBEditorVisible;
+        public bool _isDOBEditorVisible = true;
         public bool IsDOBEditorVisible
         {
             get
@@ -1097,6 +1097,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
 
                 EnableReasonView();
+                IsDOBEditorVisible = true;
 
                 PopulateAttachmentsListViewTemplate();
 
@@ -1362,10 +1363,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
                         VATDeRegistrationAttachmentDropdownDetails reasonList = await WebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType);
-
+                        if (reasonList != null) { 
                         List<ResultsAttachmentItemForElgblDocSet> tempAttachmentList = reasonList.VatDeregSubItemsSet.Results.Where(m => m.Txt50 != string.Empty).ToList();
                         AttachmentTypes = new ObservableCollection<ResultsAttachmentItemForElgblDocSet>(tempAttachmentList);
-
+                    }
                         //for (int i = 0; i < reasonList.VatDeregSubItemsSet.Results.Length; i++)
                         //{
                         //    attachmentType = reasonList.VatDeregSubItemsSet.Results[i].Txt50;
@@ -1566,8 +1567,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = false;
+            try
+            {
+                AddOutletDocumentOptions();
+            }catch(Exception ex)
+            {
 
-            AddOutletDocumentOptions();
+            }
 
         }
 

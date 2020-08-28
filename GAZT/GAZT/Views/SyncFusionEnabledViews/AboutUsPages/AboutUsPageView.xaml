@@ -8,8 +8,9 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:EGAZT;assembly:GAZT" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False"
+              BackgroundColor="#005e4b"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.AboutUs.AboutUsPageView"
-            BackgroundColor="#005e4b">
+           >
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -50,7 +51,7 @@
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.ZZZAboutUs}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
                         <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer      Command="{TemplateBinding BindingContext.BackButtonClicked}" ></TapGestureRecognizer>
+                                <TapGestureRecognizer      Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
                         </Label>
                     </Grid>

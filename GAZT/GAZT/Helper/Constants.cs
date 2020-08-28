@@ -248,6 +248,11 @@ namespace GAZT.Helper
         public static string ContractReleaseRequestUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotes_tp11Set(";
         public static string ContractReleaseSubmitUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotes_tp11Set";
         public static string ContractReleaseAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_SAVE_ATTACH_SRV/AttachSet(";
+        public static string ContractReleaseSummaryData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotes_tp11Set(";
+        public static string GAZTSaveAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachSet(OutletRef=";
+        public static string GAZTDeteleAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachMedSet(OutletRef=";
+
+
         #endregion
 
     }

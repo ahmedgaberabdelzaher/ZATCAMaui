@@ -73,8 +73,8 @@
                                 </StackLayout>
                             </StackLayout>
                             <!--Start of Return Details-->
-                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                                <StackLayout>
+                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" >
+                                <StackLayout >
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
                                         <Image Source="ic_vat_return"> </Image>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
@@ -105,7 +105,7 @@
                                         
                                             </StackLayout>
                                            </StackLayout>
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" HeightRequest="60">
                                             <custom:CustomLabel Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Text="{Binding Fbnum}" Style="{StaticResource HorizontalEnd}"  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="150" StyleId="ValueLabel"/>
                                         </StackLayout>

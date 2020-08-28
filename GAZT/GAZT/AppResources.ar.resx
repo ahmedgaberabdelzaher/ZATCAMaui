@@ -1218,7 +1218,6 @@
     <value>
 لن يتم تقديم طلب الاعتراض الا في حال سداد المبلغ غير المعترض عليه بالإضافة 25% من المبلغ المعترض عليه
 </value>
-
   </data>
   <data name="ZSADADBillDetails" xml:space="preserve">
     <value>سداد فاتورة تفاصيل</value>
@@ -4492,9 +4491,9 @@
   <data name="VATDeregistrationDocumentType2" xml:space="preserve">
     <value>تقارير مدققه</value>
   </data>
-     <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
+  <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
     <value>تاريخ الايقاف يجب ان يكون بعد يوم واحد على الاقل من تاريخ اخر تقديم للاقرار</value>
-        </data>
+  </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>هل تريد إلغاء ايقاف التسجيل؟</value>
   </data>
@@ -5930,5 +5929,14 @@
   </data>
   <data name="NDChat" xml:space="preserve">
     <value>Chat</value>
+  </data>
+  <data name="NDLocalPhone" xml:space="preserve">
+    <value>Local Phone</value>
+  </data>
+  <data name="NDOpeningHours" xml:space="preserve">
+    <value>Opening Hours</value>
+  </data>
+  <data name="NDPobox1" xml:space="preserve">
+    <value>Po Box</value>
   </data>
 </root>

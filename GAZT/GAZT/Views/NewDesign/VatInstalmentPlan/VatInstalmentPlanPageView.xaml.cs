@@ -188,33 +188,44 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             //BillsVATListVIew.SelectedItem = 0;
             try
             {
-                if (SearchItemVAT.Text.Length > 0)
+                if (viewModel.InputData.Length > 0)
                 {
-                    var itemsSource = viewModel.SelectedBillsList.Where(w => w.SadadNo.Contains(SearchItemVAT.Text)).ToList();
+                    var itemsSource = viewModel.SelectedBillsList.Where(w => w.SadadNo.Contains(viewModel.InputData)).ToList();
                     BillsVATListVIew.ItemsSource = itemsSource;
 
 
-
-                    for (int i = 0; i <= itemsSource.Count; i++)
+                    for (int i = 0; i < viewModel.selectedList.Count; i++)
                     {
+                        var dataItem = viewModel.selectedList[i] as VATResults4;
 
-                        if (viewModel.selectedList.Contains(itemsSource[i])) {
-                            BillsVATListVIew.SelectedItem = itemsSource[i];
-                        }
 
-  
+                        int index = itemsSource.ToList().FindIndex(item => item.SadadNo == dataItem.SadadNo);
+
+
+                        BillsVATListVIew.SelectedItem = viewModel.VatInstalments.d.VTIASet.results[index];
+
                     }
+
+
+                
                 }
                 else
                 {
                     BillsVATListVIew.ItemsSource = viewModel.SelectedBillsList;
-                    for (int i = 0; i <= viewModel.BillsListVAT.Length; i++)
+
+
+                    for (int i = 0; i < viewModel.selectedList.Count; i++)
                     {
-                        if (viewModel.selectedList.Contains(viewModel.SelectedBillsList[i]))
-                        {
-                            BillsVATListVIew.SelectedItem = viewModel.SelectedBillsList[i];
-                        }
+                        var dataItem = viewModel.selectedList[i] as VATResults4;
+
+
+                        int index = viewModel.VatInstalments.d.VTIASet.results.ToList().FindIndex(item => item.SadadNo == dataItem.SadadNo);
+
+
+                        BillsVATListVIew.SelectedItem = viewModel.VatInstalments.d.VTIASet.results[index];
+
                     }
+                 
                 }
 
             }

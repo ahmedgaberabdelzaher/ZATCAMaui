@@ -30,14 +30,21 @@ namespace EGAZT.Models.ContractRelease
             public string type { get; set; }
         }
 
-        public class AttDetSet
+       
+        public class AttDetSetResult
         {
-            public List<object> results { get; set; }
+            public AttDetSet[] results { get; set; }
         }
-            public class ZnotesSetResult
+    public class ZnotesSetResult
           {
                 public ZnotesSet[] results { get; set; }
             }
+
+    public partial class AttDetSet {
+
+
+    }
+
 
 
     public partial class ZnotesSet
@@ -127,7 +134,7 @@ namespace EGAZT.Models.ContractRelease
             public string Status { get; set; }
             public string Textnote { get; set; }
             public string Xvoidz { get; set; }
-            public AttDetSet AttDetSet { get; set; }
+            public AttDetSetResult AttDetSet { get; set; }
             public ZnotesSetResult znotesSet { get; set; }
         }
 
@@ -199,7 +206,7 @@ namespace EGAZT.Models.ContractRelease
         public string Status { get; set; }
         public string Textnote { get; set; }
         public string Xvoidz { get; set; }
-        public AttDetSet AttDetSet { get; set; }
+        public AttDetSet[] AttDetSet { get; set; }
         public ZnotesSet[] znotesSet { get; set; }
     }
 

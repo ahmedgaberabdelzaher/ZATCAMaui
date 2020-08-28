@@ -4485,7 +4485,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
     <value>Outlets</value>
   </data>
-  <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">     <value>Select DOB</value>   </data>   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">     <value>Select Start Date</value>   </data>
+  <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
+ <value>Select DOB</value>
+  </data>
+  <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
+    <value>Select Start Date</value>
+  </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>VAT Deregistration</value>
   </data>
@@ -4569,9 +4574,6 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   </data>
   <data name="VatDeregReasonTitle" xml:space="preserve">
     <value>Reason</value>
-  </data>
-  <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
-    <value>Select DOB</value>
   </data>
   <data name="VatDeregEndDatePickerTitle" xml:space="preserve">
     <value>Select End Date</value>
@@ -6212,5 +6214,14 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDChat" xml:space="preserve">
     <value>Chat</value>
+  </data>
+  <data name="NDLocalPhone" xml:space="preserve">
+    <value>Local Phone</value>
+  </data>
+  <data name="NDOpeningHours" xml:space="preserve">
+    <value>Opening Hours</value>
+  </data>
+  <data name="NDPobox1" xml:space="preserve">
+    <value>Po Box</value>
   </data>
 </root>
