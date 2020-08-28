@@ -1587,7 +1587,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (!string.IsNullOrEmpty(viewModel.TxtName))
             {
-                viewModel.IsAllValidDataEntered = false
+                viewModel.IsAllValidDataEntered = false;
                // FrmName.HasError = false;
             }
         }
