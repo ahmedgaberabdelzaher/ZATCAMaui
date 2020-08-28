@@ -10973,5 +10973,269 @@ namespace EGAZT {
                 return ResourceManager.GetString("VATInstalementStatusInProcess", resourceCulture);
             }
         }
+        
+        public static string ESTReportBranchQuestionLabel {
+            get {
+                return ResourceManager.GetString("ESTReportBranchQuestionLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTEntityTypeQuestionLabel {
+            get {
+                return ResourceManager.GetString("ESTEntityTypeQuestionLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTaxpayerTypeQuestionLabel {
+            get {
+                return ResourceManager.GetString("ESTaxpayerTypeQuestionLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTNationalyStatusQuestionLabel {
+            get {
+                return ResourceManager.GetString("ESTNationalyStatusQuestionLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTNationalyStatusOptionOneValue {
+            get {
+                return ResourceManager.GetString("ESTNationalyStatusOptionOneValue", resourceCulture);
+            }
+        }
+        
+        public static string ESTNationalyStatusOptionTwoValue {
+            get {
+                return ResourceManager.GetString("ESTNationalyStatusOptionTwoValue", resourceCulture);
+            }
+        }
+        
+        public static string ESTNationalyStatusOptionThreeValue {
+            get {
+                return ResourceManager.GetString("ESTNationalyStatusOptionThreeValue", resourceCulture);
+            }
+        }
+        
+        public static string ESTResidentOptionValue {
+            get {
+                return ResourceManager.GetString("ESTResidentOptionValue", resourceCulture);
+            }
+        }
+        
+        public static string ESTProvideAttachmentCopyofRentLabel {
+            get {
+                return ResourceManager.GetString("ESTProvideAttachmentCopyofRentLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTAttachmentCopyofRentLabel {
+            get {
+                return ResourceManager.GetString("ESTAttachmentCopyofRentLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTChooseLegalEntityBelowTitleLabel {
+            get {
+                return ResourceManager.GetString("ESTChooseLegalEntityBelowTitleLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTOtherTaxableIncomeFromSourcesWithinTheKSA {
+            get {
+                return ResourceManager.GetString("ESTOtherTaxableIncomeFromSourcesWithinTheKSA", resourceCulture);
+            }
+        }
+        
+        public static string ESTPermanentEstablishmentTypeLabel {
+            get {
+                return ResourceManager.GetString("ESTPermanentEstablishmentTypeLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTABranchOfNonResidentCompanyLabel {
+            get {
+                return ResourceManager.GetString("ESTABranchOfNonResidentCompanyLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTConstuctionSiteLabel {
+            get {
+                return ResourceManager.GetString("ESTConstuctionSiteLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTInstallationLabel {
+            get {
+                return ResourceManager.GetString("ESTInstallationLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTAFixedBaseLabel {
+            get {
+                return ResourceManager.GetString("ESTAFixedBaseLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTANonResidentPartnerLabel {
+            get {
+                return ResourceManager.GetString("ESTANonResidentPartnerLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTSelectTaxableIncomeSourceLabel {
+            get {
+                return ResourceManager.GetString("ESTSelectTaxableIncomeSourceLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTIdentificationDetailsLabel {
+            get {
+                return ResourceManager.GetString("ESTIdentificationDetailsLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTLastNameLabel {
+            get {
+                return ResourceManager.GetString("ESTLastNameLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTFathersNameLabel {
+            get {
+                return ResourceManager.GetString("ESTFathersNameLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTGrandFathersNameLabel {
+            get {
+                return ResourceManager.GetString("ESTGrandFathersNameLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTFamilyNameLabel {
+            get {
+                return ResourceManager.GetString("ESTFamilyNameLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTInitialLabel {
+            get {
+                return ResourceManager.GetString("ESTInitialLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTGenderLabel {
+            get {
+                return ResourceManager.GetString("ESTGenderLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTMaleLabel {
+            get {
+                return ResourceManager.GetString("ESTMaleLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTFemaleLabel {
+            get {
+                return ResourceManager.GetString("ESTFemaleLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTNationalityLabel {
+            get {
+                return ResourceManager.GetString("ESTNationalityLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTCitizenLabel {
+            get {
+                return ResourceManager.GetString("ESTCitizenLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTResidenceLabel {
+            get {
+                return ResourceManager.GetString("ESTResidenceLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTContinueLabel {
+            get {
+                return ResourceManager.GetString("ESTContinueLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTPassportDetailsMandatoryNoteLabel {
+            get {
+                return ResourceManager.GetString("ESTPassportDetailsMandatoryNoteLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTPleaseProvideAllNecessaryDetailsBelow {
+            get {
+                return ResourceManager.GetString("ESTPleaseProvideAllNecessaryDetailsBelow", resourceCulture);
+            }
+        }
+        
+        public static string ESTPassportNumberLabel {
+            get {
+                return ResourceManager.GetString("ESTPassportNumberLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTIssueCountryLabel {
+            get {
+                return ResourceManager.GetString("ESTIssueCountryLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTIssueDateLabel {
+            get {
+                return ResourceManager.GetString("ESTIssueDateLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTExpiryDateLabel {
+            get {
+                return ResourceManager.GetString("ESTExpiryDateLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTPleaseProvideACopyOfAbovePassportDetailsLabel {
+            get {
+                return ResourceManager.GetString("ESTPleaseProvideACopyOfAbovePassportDetailsLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTAttachmentPassportDetails {
+            get {
+                return ResourceManager.GetString("ESTAttachmentPassportDetails", resourceCulture);
+            }
+        }
+        
+        public static string ESTRegTaxTabTitleLabel {
+            get {
+                return ResourceManager.GetString("ESTRegTaxTabTitleLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTTaxpayerPersonalDetailsTabTitleLabel {
+            get {
+                return ResourceManager.GetString("ESTTaxpayerPersonalDetailsTabTitleLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTPassportDetailsTabTitleLabel {
+            get {
+                return ResourceManager.GetString("ESTPassportDetailsTabTitleLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTOutletsTabTitleLabel {
+            get {
+                return ResourceManager.GetString("ESTOutletsTabTitleLabel", resourceCulture);
+            }
+        }
     }
 }

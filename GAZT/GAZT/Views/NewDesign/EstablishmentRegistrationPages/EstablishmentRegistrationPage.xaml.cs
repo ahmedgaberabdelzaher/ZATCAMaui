@@ -83,17 +83,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         }
 
-    private void SetLTR()
+        private void SetLTR()
         {
 
-            //if (!App.IsArabic)
-            //{
+            if (!App.IsArabic)
+            {
                 this.FlowDirection = FlowDirection.LeftToRight;
-            //}
-            //else
-            //{
-            //    this.FlowDirection = FlowDirection.RightToLeft;
-            //}
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
         }
 
         async void dOBDateClicked(System.Object sender, System.EventArgs e)
