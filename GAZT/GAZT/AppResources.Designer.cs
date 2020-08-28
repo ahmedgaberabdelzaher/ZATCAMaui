@@ -2888,6 +2888,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZVatRefundRequestConfirmationMessage {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestConfirmationMessage", resourceCulture);
+            }
+        }
+        
         public static string ZVatRefundRequestForVAT {
             get {
                 return ResourceManager.GetString("ZVatRefundRequestForVAT", resourceCulture);

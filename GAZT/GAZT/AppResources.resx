@@ -1622,6 +1622,9 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Void</value>
     <comment>VAT Declaration button</comment>
   </data>
+   <data name="ZVatRefundRequestConfirmationMessage" xml:space="preserve">
+    <value>Please make sure that the provided ID Type and ID Number match the ones in the bank record for this IBAN.</value>
+  </data>
   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>

@@ -4968,6 +4968,9 @@
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
+<data name="ZVatRefundRequestConfirmationMessage" xml:space="preserve">
+    <value>الرجاء التأكد من ادخال بيانات الهوية مطابقة للهوية المسجلة في البنك لهذا الايبان</value>
+  </data>
   <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
@@ -4978,7 +4981,7 @@
     <value>استردادات المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="VATRefundDetails" xml:space="preserve">
-    <value>بيانات الإسترداد</value>
+    <value>تفاصيل الإسترداد</value>
   </data>
   <data name="VATRefundsRequest" xml:space="preserve">
     <value>طلب إسترداد</value>
@@ -5002,7 +5005,7 @@
     <value>مسودة</value>
   </data>
   <data name="VATRefundAmounts" xml:space="preserve">
-    <value>المبالغ المستدره</value>
+    <value>مبلغ الإسترداد</value>
   </data>
   <data name="VATRefundsAlRajhiBank" xml:space="preserve">
     <value>Al Rajhi Bank</value>
