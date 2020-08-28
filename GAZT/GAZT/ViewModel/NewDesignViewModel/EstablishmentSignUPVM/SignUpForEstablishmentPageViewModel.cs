@@ -1213,6 +1213,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
+        private bool _isAllValidDataEntered = false;
+        public bool IsAllValidDataEntered
+        {
+            get
+            {
+                return _isAllValidDataEntered;
+            }
+            set
+            {
+                _isAllValidDataEntered = value;
+                RaisePropertyChanged("IsAllValidDataEntered");
+            }
+        }
 
 
         #endregion
@@ -1255,9 +1268,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     break;
 
                 case EstablishmentSignUPTabEnum.IndividualInformation:
-                    PageTitle = AppResources.ZZZBusinessInformation;
-                    BodyText = AppResources.ZZZZCompletethebelowdetails;
-                    currentTab = EstablishmentSignUPTabEnum.BusinessInformation;
+                        if (IsAllValidDataEntered)
+                        {
+                            PageTitle = AppResources.ZZZBusinessInformation;
+                            BodyText = AppResources.ZZZZCompletethebelowdetails;
+                            currentTab = EstablishmentSignUPTabEnum.BusinessInformation;
+                        }
+                        else
+                        {
+                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                        }
+                    
                     break;
 
                 case EstablishmentSignUPTabEnum.BusinessInformation:
@@ -1291,6 +1312,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 //    break;
             }
         }
+
 
         
         private void navigateBack()
@@ -1351,6 +1373,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             IdNumber = string.Empty;
             Name = string.Empty;
             DOB = string.Empty;
+            
             Email = string.Empty;
             //ConfirmEmail = string.Empty;
             MobileNumber = string.Empty;

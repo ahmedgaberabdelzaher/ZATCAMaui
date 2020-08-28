@@ -121,7 +121,7 @@
                         <StackLayout IsVisible="False">
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTIN}" Style="{StaticResource CaptionLabelGrey}"/>
                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry  x:Name="EntryTIN" Style="{StaticResource DefaultEntry}" Placeholder="TIN" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="10" TextChanged="EntryTIN_TextChanged" IsSpellCheckEnabled="False"  Text="{Binding TxtTIN}" FontSize="Small" Unfocused="EntryTIN_Unfocused">
+                                <control:BorderlessEntry  x:Name="EntryTIN" Style="{StaticResource DefaultEntry}" Placeholder="TIN" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="10" TextChanged="EntryTIN_TextChanged" IsSpellCheckEnabled="False"  Text="{Binding TxtTIN}" FontSize="Small" Unfocused="EntryTIN_Unfocused" Focused="EntryTIN_focused">
                                     <control:BorderlessEntry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </control:BorderlessEntry.Behaviors>
@@ -164,6 +164,7 @@
                                                          UnSelectedItemTextColor="{StaticResource NeutralBlack}"
                                                          PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                                                          FooterHeight="46" SelectionChanged="IDTypePicker_SelectionChanged" 
+                                                      
                                                          ItemsSource="{Binding SignUpUsingList}" SelectedIndex="{Binding IDTypeIndex}"  OkButtonClicked="DDlIDType_OkayButtonClicked">
                                         <syncfusion:SfPicker.Behaviors>
                                             <customcontrol:SfPickerBehavior />
@@ -177,7 +178,7 @@
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry x:Name="EntryIDNumber" Text="{Binding TxtIDNumber}" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.NDIDNumber}"
                                                      VerticalTextAlignment="End" HeightRequest="51" Keyboard="Numeric"
-                                                     MaxLength="4" IsSpellCheckEnabled="False" Unfocused="EntryIDNumber_Unfocused" TextChanged="GAZTBorderlessEntry_TextChanged">
+                                                     MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False" Unfocused="EntryIDNumber_Unfocused" TextChanged="GAZTBorderlessEntry_TextChanged">
 
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
@@ -186,7 +187,7 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" Style="{StaticResource CaptionLabelGrey}"/>
                         <Grid>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="yyyy/MM/dd" VerticalTextAlignment="End"  HeightRequest="51" IsEnabled="False">
+                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" x:Name="DateEntry" Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused" Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" VerticalTextAlignment="End"  HeightRequest="51" IsEnabled="False">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -202,7 +203,7 @@
                     SelectedItemTextColor="{StaticResource NeutralBlack}"
                     BorderColor="Black"
                                 
-								ShowFooter="False"
+								ShowFooter="True"
 								 ShowColumnHeader="True"
                                              ColumnHeaderBackgroundColor="#EAF7CC"
 								ColumnHeaderHeight="46"
@@ -210,14 +211,17 @@
 								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
 								
 								x:Name="DpDbo"
+                               
                            SelectionChanged="DpDbo_SelectionChanged"
                              OKButtonTextColor="#006450" 
                                 
                                              CancelButtonTextColor="#006450"
+                                Closed="DpDbo_Closed"
                             
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
-                                
+                                OkButtonClicked="DOBpicker_OkButtonClicked"
+                                CancelButtonClicked="DpDbo_CancelButtonClicked"
 								ItemHeight="40">
                                 <custom1:CustomDatePicker.Behaviors>
                                     <custom1:SfPickerBehavior />
