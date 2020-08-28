@@ -146,48 +146,26 @@
                                             </Grid.ColumnDefinitions>
 
 
-
-
-                                            <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical">
+                                               <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical">
                                                 <custom:CustomLabel    Text="{x:Static ResourceManager:AppResources.CRContractReleaseApplicationForm}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlack}" Margin="0,0,0,10" />
-
-
-
-                                                <Label  Text="{Binding Fbnum}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" 
-                                               HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+     
                                             </StackLayout>
-                                           <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
-
- 
-
-                                                <!--  <Button CornerRadius="15" Padding="0" Margin="0" IsEnabled="False" Text="{Binding FbustTxt}" BackgroundColor="#F9F0DF"
-                                                TextColor="DarkGoldenrod" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                                    <Button.Triggers>
-                                                        <DataTrigger TargetType="Button" Binding="{Binding FbustTxt}" Value="{x:Static ResourceManager:AppResources.NDBilled}">
-                                                            <Setter Property="BackgroundColor" Value="#E5EFED"></Setter>
-                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                        </DataTrigger>
-                                                    </Button.Triggers>
-                                                </Button> -->
+                                           <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                                               
+                                               <Label  Text="{Binding Fbnum}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" 
+                                                       HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                               
                                                 <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="#E5EFED"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
-
- 
-
-                                                    <!--for 2nd background color #F9F0DF, E5EFED-->
-                                                    <Label Style="{StaticResource CaptionLabelBlack}" TextColor="DarkGoldenrod" Text="{Binding FbustTxt}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    
+                                                    <Label Style="{StaticResource CaptionLabelBlack}" TextColor="DarkGoldenrod" Text="{Binding StatText}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <Label.Triggers>
 
- 
-
-                                                            <DataTrigger TargetType="Label" Binding="{Binding StatText}" Value="{x:Static ResourceManager:AppResources.NDBilled}">
+                                                             <DataTrigger TargetType="Label" Binding="{Binding StatText}" Value="{x:Static ResourceManager:AppResources.NDBilled}">
                                                                 <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.NDBilled}" />
                                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                                                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                                                             </DataTrigger>
-
- 
-
                                                         </Label.Triggers>
                                                     </Label>
                                                 </yummy:PancakeView>
@@ -195,6 +173,9 @@
  
 
                                             </StackLayout>
+
+                                            
+
 
                                         </Grid>
                                     </border:SfBorder>
@@ -323,9 +304,9 @@
 
                                     </Grid>
 
-                                    <Grid Grid.Row="3" Grid.Column="1">
-                                        <Label Text="{Binding FromDate,ToDate,StringFormat='{0:MMM yyyy} - {0:MMM yyyy}'}"
-                                               HorizontalOptions="End"
+                                    <Grid Grid.Row="3" Grid.Column="1" VerticalOptions="FillAndExpand">
+                                        <Label Text="{Binding ContractPeriod}"
+                                               HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 

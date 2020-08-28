@@ -20,7 +20,6 @@ namespace EGAZT.Views.NewDesign
             InitializeComponent();
             _viewModel = App.Locator.InstructionsBottomPopUpView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            SetLTR();
             this.BindingContext = _viewModel;
             this.FlowDirection = FlowDirection.LeftToRight;
             _viewModel.Description = instructionString;
@@ -39,13 +38,7 @@ namespace EGAZT.Views.NewDesign
             }
 
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

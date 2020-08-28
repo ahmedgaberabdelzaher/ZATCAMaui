@@ -255,5 +255,17 @@ namespace GAZT.Helper
 
         #endregion
 
+        #region Change Filling Period
+        public static string VATChangeFillingPeriodGetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_TPCV_SRV/UI_HDRSet(";
+        public static string VATChangeFillingPeriodPostURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_TPCV_SRV";
+        public static string VATChangeFillingPeriodGetDropdownURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TPCV_UH_SRV/UI_HDRSet(";
+        public static string VATChangeFillingPeriodWorkItemsURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(";
+        public static string VATChangeFillingPeriodValidateIDnumberURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SRV/taxpayer_nameSet(";
+        public static string VATChangeFillingPeriodAcknowledgementdownloadURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(";
+        public static string VATChangeFillingListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(";
+        public static string VATChangeFillingSummaryURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_TPCV_SRV/UI_HDRSet(";
+        public static string VATChangeFillingSummaryInputsURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
+        #endregion
+
     }
 }

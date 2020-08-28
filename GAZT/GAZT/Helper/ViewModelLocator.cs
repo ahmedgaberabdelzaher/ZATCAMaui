@@ -242,7 +242,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<EstablishmentSignUPPageViewModel>();
             SimpleIoc.Default.Register<SignUpForEstablishmentPageViewModel>();
             SimpleIoc.Default.Register<ContractReleaseListViewModel>();
-            SimpleIoc.Default.Register<ChangeFillingPeriodListPageView>();
+            SimpleIoc.Default.Register<ChangeFillingPeriodListViewModel>();
             SimpleIoc.Default.Register<ChangeFillingPeriodSuccessPage>();
 
             #endregion

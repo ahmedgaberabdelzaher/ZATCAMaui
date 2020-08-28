@@ -382,19 +382,19 @@
                                         <Label Text="{Binding ReturnPeriod}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="1" Grid.Column="0" >
-                                        <Label Text="Credit Balance" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsCreditBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="1" Grid.Column="1">
                                         <Label Text="{Binding CreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="2" Grid.Column="0">
-                                        <Label Text="Reassessed Balance" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsReassessedBalance}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="2" Grid.Column="1">
                                         <Label Text="{Binding CreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                     </StackLayout>
                                       <StackLayout Grid.Row="3" Grid.Column="0">
-                                        <Label Text="Offset" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestDetailsOffset}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="3" Grid.Column="1" >
                                         <Label Text="{Binding Offsets}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
@@ -405,12 +405,12 @@
                                     <StackLayout Grid.Row="4" Grid.Column="1" >
                                         <Label Text="{Binding NetCreditBal}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
                                     </StackLayout>
-                                      <!--<StackLayout Grid.Row="5" Grid.Column="0">
+                                      <StackLayout Grid.Row="5" Grid.Column="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.ZStatus}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="5" Grid.Column="1" >
-                                        <Label Text="Transferred" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                    </StackLayout>-->
+                                        <Label Text="{Binding Status}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                    </StackLayout>
                                       <StackLayout Grid.Row="6" Grid.Column="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.VATRefundsLastStatusChange}" Style="{StaticResource BodyLabelGrey}" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                     </StackLayout>

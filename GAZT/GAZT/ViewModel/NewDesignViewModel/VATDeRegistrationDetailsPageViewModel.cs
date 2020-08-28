@@ -1125,8 +1125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
+                   
                 });
             }
         }
@@ -1665,7 +1664,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
 
             AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
-
             AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
             {
                 FieldTitle = AppResources.VatDeregDocumentTitle,

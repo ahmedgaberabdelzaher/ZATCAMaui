@@ -1644,7 +1644,7 @@
     <value>سيتم حفظ طلبك في مسودة ويجب عليك إكماله خلال 20 يوم عمل أخرى وإلا سيتم إلغاؤه تلقائيًا وتحتاج إلى إعادة تقديم طلب جديد</value>
   </data>
   <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
-    <value>إجمالي المبلغ المطلوب</value>
+    <value>المبالغ المستردة</value>
   </data>
   <data name="VATRefundCancelRefund" xml:space="preserve">
     <value>هل تريد إلغاء طلب الاسترداد؟</value>
@@ -4968,6 +4968,9 @@
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
+<data name="ZVatRefundRequestConfirmationMessage" xml:space="preserve">
+    <value>الرجاء التأكد من ادخال بيانات الهوية مطابقة للهوية المسجلة في البنك لهذا الايبان</value>
+  </data>
   <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
     <value>طلب استرداد المدفوعات لضريبة القيمة المضافة</value>
   </data>
@@ -4978,7 +4981,7 @@
     <value>استردادات المدفوعات لضريبة القيمة المضافة</value>
   </data>
   <data name="VATRefundDetails" xml:space="preserve">
-    <value>بيانات الإسترداد</value>
+    <value>تفاصيل الإسترداد</value>
   </data>
   <data name="VATRefundsRequest" xml:space="preserve">
     <value>طلب إسترداد</value>
@@ -5001,11 +5004,8 @@
   <data name="VATRefundsStatusDraft" xml:space="preserve">
     <value>مسودة</value>
   </data>
-  <data name="VATRefundsStatusInProcess" xml:space="preserve">
-    <value>IN PROCESS</value>
-  </data>
   <data name="VATRefundAmounts" xml:space="preserve">
-    <value>المبالغ المستدره</value>
+    <value>مبلغ الإسترداد</value>
   </data>
   <data name="VATRefundsAlRajhiBank" xml:space="preserve">
     <value>Al Rajhi Bank</value>
@@ -5024,6 +5024,15 @@
   </data>
   <data name="VATRefundsNoIdNumber" xml:space="preserve">
     <value>لا يوجد رقم لنوع الهوية المحدد</value>
+  </data>
+         <data name="ZVatRefundRequestDetailsCreditBalance" xml:space="preserve">
+    <value>الرصيد الدائن</value>
+  </data>
+     <data name="ZVatRefundRequestDetailsReassessedBalance" xml:space="preserve">
+    <value>الرصيد بعد التقييم</value>
+  </data>
+     <data name="ZVatRefundRequestDetailsOffset" xml:space="preserve">
+    <value>المقاصة</value>
   </data>
   <data name="ContractObjectNo" xml:space="preserve">
     <value>Contract Object No.</value>
@@ -5068,7 +5077,7 @@
     <value>الصندوق الوارد</value>
   </data>
   <data name="NDReferenceNumber" xml:space="preserve">
-    <value>الرقم التسلسلي</value>
+    <value>رقم المرجع</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
     <value>ادخل الرقم التسلسلي</value>
@@ -5938,5 +5947,32 @@
   </data>
   <data name="NDPobox1" xml:space="preserve">
     <value>Po Box</value>
+  </data>
+    <data name="VATInstalmentListInstalmentAgreementNumber" xml:space="preserve">
+    <value>رقم اتفاقية التقسيط</value>
+  </data>
+  <data name="VATInstalmentListInstalmentAmountRemaining" xml:space="preserve">
+    <value>المبلغ المتبقي</value>
+  </data>
+  <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
+    <value>الرجاء اختيار فاتورة واحده على الاقل للمتابعة</value>
+  </data>
+  <data name="VatInstalmentPlanSubmittedSuccess" xml:space="preserve">
+    <value>تم استلام خطة التقسيط بنجاح</value>
+  </data>
+  <data name="VATInstalmentStatusRefunded" xml:space="preserve">
+    <value>مسترده</value>
+  </data>
+ <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
+    <value>الشهور المتبقية</value>
+  </data>
+ <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
+    <value>عدد الاقساط الشهرية</value>
+  </data>
+ <data name="VATRefundsStatusInProcess" xml:space="preserve">
+    <value>تحت المعالجة</value>
+  </data>
+     <data name="VATInstalementStatusInProcess" xml:space="preserve">
+    <value>تحت المعالجة</value>
   </data>
 </root>

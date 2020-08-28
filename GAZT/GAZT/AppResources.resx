@@ -1622,6 +1622,9 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Void</value>
     <comment>VAT Declaration button</comment>
   </data>
+   <data name="ZVatRefundRequestConfirmationMessage" xml:space="preserve">
+    <value>Please make sure that the provided ID Type and ID Number match the ones in the bank record for this IBAN.</value>
+  </data>
   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
     <value>Refund Request for VAT</value>
   </data>
@@ -1630,6 +1633,15 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   </data>
   <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
     <value>Total Request Amount</value>
+  </data>
+     <data name="ZVatRefundRequestDetailsCreditBalance" xml:space="preserve">
+    <value>Credit Balance</value>
+  </data>
+     <data name="ZVatRefundRequestDetailsReassessedBalance" xml:space="preserve">
+    <value>Reassessed Balance</value>
+  </data>
+     <data name="ZVatRefundRequestDetailsOffset" xml:space="preserve">
+    <value>Offset</value>
   </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
     <value>Refund Information</value>
@@ -5027,7 +5039,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>DRAFT</value>
   </data>
   <data name="VATRefundsStatusInProcess" xml:space="preserve">
-    <value />
+    <value> IN PROCESS </value>
   </data>
   <data name="VATRefundAmounts" xml:space="preserve">
     <value>Refund Amounts</value>
@@ -6223,5 +6235,11 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="NDPobox1" xml:space="preserve">
     <value>Po Box</value>
+  </data>
+    <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
+    <value>Please Select atleast one bill to continue.</value>
+  </data>
+     <data name="VATInstalementStatusInProcess" xml:space="preserve">
+    <value> IN PROCESS </value>
   </data>
 </root>

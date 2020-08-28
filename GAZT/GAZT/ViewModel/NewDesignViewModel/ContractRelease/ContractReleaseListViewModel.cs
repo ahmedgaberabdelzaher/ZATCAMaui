@@ -251,15 +251,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private string _fromDate = "";
+        private string _contractPeriod = "";
 
-        public string FromDate
+        public string ContractPeriod
         {
-            get { return _fromDate; }
+            get { return _contractPeriod; }
             set
             {
-                _fromDate = value;
-                RaisePropertyChanged("FromDate");
+                _contractPeriod = value;
+                RaisePropertyChanged("ContractPeriod");
             }
         }
 
@@ -347,11 +347,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         private void BindSummaryData()
         {
-            FromDate = ContractReLeaseSummaryData.ContractDate;
+            //FromDate = ContractReLeaseSummaryData.ContractDate;
             ToDate = ContractReLeaseSummaryData.ContractEnddate;
             ContractTotalAmount = ContractReLeaseSummaryData.TotalAmountofContract;
             AmountToRelease = ContractReLeaseSummaryData.AmountRequiredtoRelease;
             PickedContract = ContractReLeaseSummaryData.Type;
+            ContractName = ContractReLeaseSummaryData.ContractingName;
+            ContractNumber = ContractReLeaseSummaryData.Number;
+            Remarks = ContractReLeaseSummaryData.Remark;
+            DetailDescription = ContractReLeaseSummaryData.DetaiiledDesc;
+            ContractPeriod = ContractReLeaseSummaryData.ContractDate + " - " + ContractReLeaseSummaryData.ContractEnddate;
+
+
             //ContractReLeaseSummaryData.ContractprofitEstimatedRate = resultData.d.AContProfitPer;
             //ContractReLeaseSummaryData.ProfitEstimatedforContract = resultData.d.AContProfit;
             //ContractReLeaseSummaryData.EstimatedProfitforZakat = resultData.d.AZakatProfit;
@@ -360,12 +367,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             //ContractReLeaseSummaryData.TheValueofTaxdues = resultData.d.ADueTax;
             TotalDues = ContractReLeaseSummaryData.TotalDues;
             var ccAttachments = new ObservableCollection<Attachment>();
+            var invoiceAttachments = new ObservableCollection<Attachment>();
+
             foreach (var attach in ContractReLeaseSummaryData.AttDetSet.results)
             {
-                ccAttachments.Add(attach);
+                if(attach.Dotyp == "N11A") {
+                    invoiceAttachments.Add(attach);
+                }else  {
+                    ccAttachments.Add(attach);
+                }
+
+
             }
+
             ContractCopyAttachmentsListViewData = ccAttachments;
-            InvoiceAttachmentsListViewData = ccAttachments;
+            InvoiceAttachmentsListViewData = invoiceAttachments;
 
         }
 
@@ -512,7 +528,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         ContractReLeaseSummaryData.ContractingName = resultData.d.AContNm;
                         ContractReLeaseSummaryData.Number = resultData.d.AContNo;
                         ContractReLeaseSummaryData.Type = resultData.d.AType;
-
                         ContractReLeaseSummaryData.ContractDate = resultData.d.AContDt1;
                         ContractReLeaseSummaryData.ContractEnddate = resultData.d.AContEndDtCh;
                         ContractReLeaseSummaryData.TotalAmountofContract = resultData.d.ATotalAmt;
@@ -525,7 +540,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         ContractReLeaseSummaryData.TheValueofTaxdues = resultData.d.ADueTax;
                         ContractReLeaseSummaryData.TotalDues = resultData.d.ADueTot;
                         ContractReLeaseSummaryData.AttDetSet = resultData.d.AttDetSet;
+                        ContractReLeaseSummaryData.znotesSet = resultData.d.znotesSet;
+                        ContractReLeaseSummaryData.Remark = resultData.d.ARemark;
 
+                        if(resultData.d.znotesSet.results.Length != 0)
+                        {
+
+                            ContractReLeaseSummaryData.DetaiiledDesc = resultData.d.znotesSet.results[0].Tdline;
+                        }
 
                         if (ContractReLeaseSummaryData != null)
                         {

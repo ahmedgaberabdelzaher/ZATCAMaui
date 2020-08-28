@@ -2888,6 +2888,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZVatRefundRequestConfirmationMessage {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestConfirmationMessage", resourceCulture);
+            }
+        }
+        
         public static string ZVatRefundRequestForVAT {
             get {
                 return ResourceManager.GetString("ZVatRefundRequestForVAT", resourceCulture);
@@ -2903,6 +2909,24 @@ namespace EGAZT {
         public static string ZVatRefundRequestTotalRequestedAmount {
             get {
                 return ResourceManager.GetString("ZVatRefundRequestTotalRequestedAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundRequestDetailsCreditBalance {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestDetailsCreditBalance", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundRequestDetailsReassessedBalance {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestDetailsReassessedBalance", resourceCulture);
+            }
+        }
+        
+        public static string ZVatRefundRequestDetailsOffset {
+            get {
+                return ResourceManager.GetString("ZVatRefundRequestDetailsOffset", resourceCulture);
             }
         }
         
@@ -10935,6 +10959,18 @@ namespace EGAZT {
         public static string NDPobox1 {
             get {
                 return ResourceManager.GetString("NDPobox1", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalmentPlanPleaseSelectAtleastOne {
+            get {
+                return ResourceManager.GetString("VATInstalmentPlanPleaseSelectAtleastOne", resourceCulture);
+            }
+        }
+        
+        public static string VATInstalementStatusInProcess {
+            get {
+                return ResourceManager.GetString("VATInstalementStatusInProcess", resourceCulture);
             }
         }
     }
