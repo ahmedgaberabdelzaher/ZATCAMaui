@@ -5077,7 +5077,7 @@
     <value>الصندوق الوارد</value>
   </data>
   <data name="NDReferenceNumber" xml:space="preserve">
-    <value>الرقم التسلسلي</value>
+    <value>رقم المرجع</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
     <value>ادخل الرقم التسلسلي</value>
