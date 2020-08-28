@@ -26,7 +26,7 @@
                 <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
                     <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
                     <Label  Text="{x:Static local:AppResources.NDTaxEvasionReport}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                    <Label  Text="{x:Static local:AppResources.NDYourTaxEvasionReportissubmittedsuccessfully}"  FontFamily="{StaticResource SSTArabicMedium}"
+                    <Label  Text="{Binding SuccessResponse}"  FontFamily="{StaticResource SSTArabicMedium}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
                 

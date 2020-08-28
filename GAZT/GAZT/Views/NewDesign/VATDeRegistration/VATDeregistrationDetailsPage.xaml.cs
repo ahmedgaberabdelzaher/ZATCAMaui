@@ -107,7 +107,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             ChangeArrowDirection();
 
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
-                viewModel.IsInstructionChecked = arg;
+                if(arg)
+                {
+                    viewModel.IsInstructionChecked = arg;
+
+                }
                 //Console.WriteLine(arg);
             });
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
@@ -187,6 +191,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.DOB = arg.SelectedValue;
+                        try
+                        {
+                            ValidateIDNumberContact();
+                        }catch(Exception e)
+                        {
+
+                        }
                     }
                 }
                 else
@@ -203,6 +214,14 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.DOB = arg.SelectedValue;
+                        try
+                        {
+                            ValidateIDNumberContact();
+                        }
+                        catch (Exception e)
+                        {
+
+                        }
                     }
                 }
              
@@ -211,6 +230,273 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     suspendedDateValidation();
                 }
 
+            });
+        }
+
+        public async void ValidateIDNumberContact()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+            });
+            string dob = viewModel.DOB.Replace("/", "");
+            // EntryName.IsEnabled = true;
+            if (viewModel.IDType == AppResources.NationaID)
+            {
+                if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
+                {
+                    try
+                    {
+
+                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.TxtIDNumber, dob);
+                        VATSignUp vATSignUpData = new VATSignUp();
+                        vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
+                        //   IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
+                        if (vATSignUpData.d == null)
+                        {
+                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                            {
+                                //FrmIDNumber.HasError = true;
+
+                                //viewModel.FrameContactIDError = true;
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                            else
+                            {
+                                //viewModel.FrameContactIDError = false;
+                                //FrmIDNumber.HasError = false;
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                        }
+                        else
+                        {
+                            viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            //  EntryName.IsEnabled = false;
+                            //FrmIDNumber.HasError = false;
+                          //  viewModel.FrameContactIDError = false;
+                        }
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, dob);
+                            IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                            {
+                                //FrmIDNumber.HasError = true;
+                               // viewModel.FrameContactIDError = true;
+                                viewModel.TxtIDNumber = string.Empty;
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                            else
+                            {
+                                //FrmIDNumber.HasError = false;
+                                //viewModel.FrameContactIDError = false;
+
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                        }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (InternetException ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                await Task.Run(() =>
+                                {
+                                    viewModel.IsLoading = false;
+                                });
+                            });
+                        }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
+                    }
+                }
+            }
+            if (viewModel.IDType == AppResources.ZZIqamaID)
+            {
+                //  EntryName.IsEnabled = true;
+                if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
+                {
+                    try
+                    {
+
+                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.TxtIDNumber, dob);
+                        VATSignUp vATSignUpData = new VATSignUp();
+                        vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
+                        if (vATSignUpData.d == null)
+                        {
+                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                            {
+                                // FrmIDNumber.HasError = true;
+                                //viewModel.FrameContactIDError = true;
+                                viewModel.TxtIDNumber = string.Empty;
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                            else
+                            {
+                                //FrmIDNumber.HasError = false;
+                               // viewModel.FrameContactIDError = false;
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                        }
+                        else
+                        {
+                            viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            //  EntryName.IsEnabled = false;
+                            //FrmIDNumber.HasError = false;
+                           // viewModel.FrameContactIDError = false;
+                        }
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, dob);
+                            IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+                            {
+                                //FrmIDNumber.HasError = true;
+                               // viewModel.FrameContactIDError = true;
+                                viewModel.TxtIDNumber = string.Empty;
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                            else
+                            {
+                                //FrmIDNumber.HasError = false;
+                               // viewModel.FrameContactIDError = false;
+                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                            }
+                        }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
+                        catch (InternetException ex)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                await Task.Run(() =>
+                                {
+                                    viewModel.IsLoading = false;
+                                });
+                            });
+                        }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
+                    }
+                }
+            }
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             });
         }
 
@@ -744,7 +1030,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
                     }
-                    if (viewModel.IDType == "GCC ID")
+                    if (viewModel.IDType == AppResources.ZZGCCID)
                     {
 
                         if (viewModel.TxtIDNumber.Substring(0, 1) == "0")
@@ -816,7 +1102,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
             string dob = viewModel.DOB.Replace("/", "");
             // EntryName.IsEnabled = true;
-            if (viewModel.IDType == "National ID")
+            if (viewModel.IDType == AppResources.NationaID)
             {
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
@@ -941,7 +1227,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     }
                 }
             }
-            if (viewModel.IDType == "Iqama ID")
+            if (viewModel.IDType == AppResources.ZZIqamaID)
             {
                 //  EntryName.IsEnabled = true;
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
