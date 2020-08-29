@@ -4614,6 +4614,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
     <value>The Start Date and End Date lie in the same period</value>
   </data>
+      <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
+    <value>End Date cannot be less or same as Start Date</value>
+  </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
     <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.
 
@@ -5743,7 +5746,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="CRInstructions" xml:space="preserve">
     <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
-      2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
+  2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
   </data>
   <data name="CRInstructionsDesc" xml:space="preserve">
     <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>

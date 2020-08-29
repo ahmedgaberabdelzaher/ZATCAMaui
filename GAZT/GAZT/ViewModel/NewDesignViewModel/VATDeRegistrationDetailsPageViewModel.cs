@@ -989,6 +989,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+  
         public VATDeRegistrationDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -1586,6 +1587,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
+               
                 try
                 {
                     setDATA("05");
@@ -1599,11 +1601,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
                 }
 
-                EnableSummaryView();
-
                 PopulateSummaryReasonData();
                 PopulateSummaryDeclarationData();
                 PopulateAttachmentsListViewTemplate();
+                EnableSummaryView();
+
+               
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1741,16 +1744,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async void EnableSummaryView()
         {
-            if (IDType == string.Empty)
+            if (IDType == AppResources.NationaID || IDType ==AppResources.ZZIqamaID)
+            {
+                if (DOB == string.Empty)
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
+
+                }
+            }
+            else if(TxtIDNumber == string.Empty)
             {
                 await _dialogService.ShowMessage(AppResources.ZZPleaseenteravalidID, AppResources.Alerts);
 
             }
-            //else if (DOB == string.Empty)
-            //{
-            //    await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
-
-            //}
             else if (ContactPersonName == string.Empty)
             {
                 await _dialogService.ShowMessage(AppResources.ZZPleaseentertheName, AppResources.Alerts);

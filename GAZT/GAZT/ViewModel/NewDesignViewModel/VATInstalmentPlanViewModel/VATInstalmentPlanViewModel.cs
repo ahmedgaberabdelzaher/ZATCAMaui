@@ -1746,6 +1746,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         }
 
+        private bool _firstTerms = false;
+        public bool FirstTerms
+        {
+            get
+            {
+                return _firstTerms;
+            }
+            set
+            {
+                _firstTerms = value;
+                RaisePropertyChanged("FirstTerms");
+            }
+        }
+
         public void ResetData()
         {
             EnableSlectionView();
@@ -1788,44 +1802,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
         public async void ReasonContinueBtnClicked()
         {
+
             try
             {
+                if (FirstTerms)
+                {
+                    EnableVATBillView();
+                }
+                else
+                {
+                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatInstructions, checkBoxString: AppResources.VatInstructionsCheckBoxDesc, continueString: AppResources.VatInstalmetPlanTitle,
+                        _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType.Instructions));
 
-                EnableVATBillView();
-
-                //if (IsZakatSelected)
-                //{
-                //    EnableBillView();
-                //}
-                //else if (IsIncomeTaxViewEnabled)
-                //{
-                //    EnableVATBillView();
-                //}
-                //else if (IsVATAmountVisible)
-                //{
-                //    if (IsVatTermsChecked)
-                //    {
-                //        EnableVATBillView();
-                //    }
-                //    else
-                //    {
-                //        //await PopupNavigation.Instance.PushAsync(new VatInstalmentPlanBottomPopup());
-
-                //        //await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString:"Test",checkBoxString:"Test",continueString:"VAT Instalment",_dialogType:ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType.Instructions));
-                //    }
-                //}
-                //else
-                //{
-                //    await _dialogService.ShowMessage("Please choose a Tax type to continue", "Alert");
-                //}
-
-
+                }
 
 
 
             }
             catch (GAZTUnlockAccountException ex)
             {
+
+
 
 
 
@@ -1838,6 +1835,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     _navigationService.GoBack();
                 });
             }
+
+
         }
 
         public async void BillContinueBtnClicked()

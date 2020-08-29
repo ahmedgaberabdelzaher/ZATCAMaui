@@ -849,10 +849,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     IsLoading = true;
                     try
                     {
-                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingPeriodRequestData("", "");
+                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingPeriodRequestData();
                         if (resultData != null && resultData.d != null)
                         {
                             //resultData.d;
+
+                            var dropdown = WebServiceManager.GAZTGetVATChangeFillingPeriodDropdownData(App.LoginDataRetrieved.TIN);
                         }
                         else
                         {

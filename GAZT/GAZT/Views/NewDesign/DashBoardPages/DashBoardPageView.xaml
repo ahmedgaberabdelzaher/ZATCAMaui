@@ -517,11 +517,11 @@
 
                             <StackLayout Spacing="20" Padding="0,0,0,10">
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_calendar"></Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBMyCommitements}" Style="{StaticResource ButtonLabelWhiteBold}" />
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_bill"> </Image>
@@ -718,7 +718,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
                                         <Image.Source>
                                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
@@ -729,7 +729,7 @@
                                         <TapGestureRecognizer Tapped="Contactus_Tapped"/>
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image>
@@ -817,8 +817,8 @@
 
             <!--Menu Ends-->
 
-            <StackLayout Grid.Row="1"   BackgroundColor="{Binding StackMenuColor}">
-                <yummy:PancakeView  VerticalOptions="EndAndExpand" BorderColor="{Binding TabbarColor}"  BorderThickness="1" CornerRadius="12,12,0,0" BackgroundColor="White" Padding="20,0,20,20">
+            <StackLayout Grid.Row="1"   BackgroundColor="White">
+                <yummy:PancakeView  VerticalOptions="EndAndExpand" BorderColor="DarkGray"  BorderThickness="1" CornerRadius="12,12,0,0" BackgroundColor="White" Padding="20,0,20,20">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -907,8 +907,17 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </Grid>
+                    <yummy:PancakeView.Triggers>
+                        <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding MenuViewVisible}" Value="True">
+                            <Setter Property="BorderColor" Value="Transparent"/>
+                        </DataTrigger>
+                    </yummy:PancakeView.Triggers>
                 </yummy:PancakeView>
-
+                <StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout" Binding="{Binding MenuViewVisible}" Value="True">
+                        <Setter Property="BackgroundColor" Value="Transparent"/>
+                    </DataTrigger>
+                </StackLayout.Triggers>
             </StackLayout>
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">

@@ -235,7 +235,7 @@
     <value>الشهادة</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>أسم المكلف</value>
+    <value>اسم المكلف</value>
   </data>
   <data name="NewEmail" xml:space="preserve">
     <value>البريد الإلكتروني الجديد</value>
@@ -472,16 +472,16 @@
     <value>كل الفواتير</value>
   </data>
   <data name="Paid" xml:space="preserve">
-    <value>المسددة</value>
+    <value>مدفوعة</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>مسددة جزئيا</value>
+    <value>مدفوعة جزئيا</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
-    <value>غير مسدد</value>
+    <value>غير مدفوعة</value>
   </data>
   <data name="ForgotPasswordORUseName" xml:space="preserve">
-    <value>نسيت كلمة المرور أو اسم المستخدم</value>
+    <value>استرجاع اسم المستخدم او كلمة المرور</value>
   </data>
   <data name="Individual" xml:space="preserve">
     <value>فرد</value>
@@ -4112,7 +4112,7 @@
     <value>حساب البنك</value>
   </data>
   <data name="VATRContactPersonName" xml:space="preserve">
-    <value>اسم المكلف</value>
+    <value>اسم الشخص الذي يمكن الاتصال به</value>
   </data>
   <data name="VATRPleaseEnterValidTin" xml:space="preserve">
     <value>الرجاء ادخال رقم مميز صالح</value>
@@ -4493,6 +4493,9 @@
   </data>
   <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
     <value>تاريخ الايقاف يجب ان يكون بعد يوم واحد على الاقل من تاريخ اخر تقديم للاقرار</value>
+  </data>
+   <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
+    <value>End Date cannot be less or same as Start Date</value>
   </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>هل تريد إلغاء ايقاف التسجيل؟</value>
