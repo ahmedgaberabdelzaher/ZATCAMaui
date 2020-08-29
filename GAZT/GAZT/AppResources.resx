@@ -4614,6 +4614,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
     <value>The Start Date and End Date lie in the same period</value>
   </data>
+      <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
+    <value>End Date cannot be less or same as Start Date</value>
+  </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
     <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.
 
