@@ -4494,7 +4494,7 @@
   <data name="VatDeregistrationSuspendedDateValidation" xml:space="preserve">
     <value>تاريخ الايقاف يجب ان يكون بعد يوم واحد على الاقل من تاريخ اخر تقديم للاقرار</value>
   </data>
-   <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
+  <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
     <value>End Date cannot be less or same as Start Date</value>
   </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
@@ -4971,7 +4971,7 @@
     <value>مرحباً</value>
     <comment>DashBoard</comment>
   </data>
-<data name="ZVatRefundRequestConfirmationMessage" xml:space="preserve">
+  <data name="ZVatRefundRequestConfirmationMessage" xml:space="preserve">
     <value>الرجاء التأكد من ادخال بيانات الهوية مطابقة للهوية المسجلة في البنك لهذا الايبان</value>
   </data>
   <data name="VATRefundRequestDashboardTitle" xml:space="preserve">
@@ -5028,13 +5028,13 @@
   <data name="VATRefundsNoIdNumber" xml:space="preserve">
     <value>لا يوجد رقم لنوع الهوية المحدد</value>
   </data>
-         <data name="ZVatRefundRequestDetailsCreditBalance" xml:space="preserve">
+  <data name="ZVatRefundRequestDetailsCreditBalance" xml:space="preserve">
     <value>الرصيد الدائن</value>
   </data>
-     <data name="ZVatRefundRequestDetailsReassessedBalance" xml:space="preserve">
+  <data name="ZVatRefundRequestDetailsReassessedBalance" xml:space="preserve">
     <value>الرصيد بعد التقييم</value>
   </data>
-     <data name="ZVatRefundRequestDetailsOffset" xml:space="preserve">
+  <data name="ZVatRefundRequestDetailsOffset" xml:space="preserve">
     <value>المقاصة</value>
   </data>
   <data name="ContractObjectNo" xml:space="preserve">
@@ -5538,7 +5538,7 @@
     <value />
   </data>
   <data name="NDSubmittedSuccessfully" xml:space="preserve">
-    <value />
+    <value>تم تقديم الإقرار بنجاح</value>
   </data>
   <data name="NDObjectionSubmittedSuccessfully" xml:space="preserve">
     <value />
@@ -5553,10 +5553,10 @@
     <value>إنتظار الموافقة</value>
   </data>
   <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
-    <value>Total Number of Months</value>
+    <value>الشهور المتبقية</value>
   </data>
   <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
-    <value>Total Monthly Instalments</value>
+    <value>عدد الاقساط الشهرية</value>
   </data>
   <data name="FORM5TaxpayerDetails" xml:space="preserve">
     <value>تفاصيل المكلف</value>
@@ -5951,7 +5951,7 @@
   <data name="NDPobox1" xml:space="preserve">
     <value>Po Box</value>
   </data>
-    <data name="VATInstalmentListInstalmentAgreementNumber" xml:space="preserve">
+  <data name="VATInstalmentListInstalmentAgreementNumber" xml:space="preserve">
     <value>رقم اتفاقية التقسيط</value>
   </data>
   <data name="VATInstalmentListInstalmentAmountRemaining" xml:space="preserve">
@@ -5966,148 +5966,142 @@
   <data name="VATInstalmentStatusRefunded" xml:space="preserve">
     <value>مسترده</value>
   </data>
- <data name="VATInstalmentPlanListTotalNumberOfMonths" xml:space="preserve">
-    <value>الشهور المتبقية</value>
-  </data>
- <data name="VATInstalmentPlanListTotalMonthlyInstalments" xml:space="preserve">
-    <value>عدد الاقساط الشهرية</value>
-  </data>
- <data name="VATRefundsStatusInProcess" xml:space="preserve">
+  <data name="VATRefundsStatusInProcess" xml:space="preserve">
     <value>تحت المعالجة</value>
   </data>
-     <data name="VATInstalementStatusInProcess" xml:space="preserve">
+  <data name="VATInstalementStatusInProcess" xml:space="preserve">
     <value>تحت المعالجة</value>
   </data>
-    <data name="ESTReportBranchQuestionLabel" xml:space="preserve">
+  <data name="ESTReportBranchQuestionLabel" xml:space="preserve">
     <value>فرع الهيئة الرئيسي؟</value>
-    </data>
-    <data name="ESTEntityTypeQuestionLabel" xml:space="preserve">
+  </data>
+  <data name="ESTEntityTypeQuestionLabel" xml:space="preserve">
     <value>نوع الكيان ؟</value>
-    </data>
-    <data name="ESTaxpayerTypeQuestionLabel" xml:space="preserve">
+  </data>
+  <data name="ESTaxpayerTypeQuestionLabel" xml:space="preserve">
     <value>ما هو نوع المكلف؟</value>
-    </data>
-    <data name="ESTNationalyStatusQuestionLabel" xml:space="preserve">
+  </data>
+  <data name="ESTNationalyStatusQuestionLabel" xml:space="preserve">
     <value>حالة الإقامة؟</value>
-    </data>
-    <data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
+  </data>
+  <data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
     <value>مقيم لـ 183 يوم او اكثر في الممكلة العربية السعودية</value>
-    </data>
-    <data name="ESTNationalyStatusOptionTwoValue" xml:space="preserve">
+  </data>
+  <data name="ESTNationalyStatusOptionTwoValue" xml:space="preserve">
     <value>مالك او مستأجر لمنزل اكثر من 30 يوم</value>
-    </data>
-    <data name="ESTNationalyStatusOptionThreeValue" xml:space="preserve">
+  </data>
+  <data name="ESTNationalyStatusOptionThreeValue" xml:space="preserve">
     <value>غير ذلك</value>
-    </data>
-    <data name="ESTResidentOptionValue" xml:space="preserve">
+  </data>
+  <data name="ESTResidentOptionValue" xml:space="preserve">
     <value>مقيم</value>
-    </data>
-     <data name="ESTProvideAttachmentCopyofRentLabel" xml:space="preserve">
+  </data>
+  <data name="ESTProvideAttachmentCopyofRentLabel" xml:space="preserve">
     <value>الرجاء ارفاق نسخه من عقد الإيجار</value>
-    </data>
-    <data name="ESTAttachmentCopyofRentLabel" xml:space="preserve">
+  </data>
+  <data name="ESTAttachmentCopyofRentLabel" xml:space="preserve">
     <value>المرفقات - نسخة من عقد الإيجار</value>
-    </data>
-     <data name="ESTChooseLegalEntityBelowTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTChooseLegalEntityBelowTitleLabel" xml:space="preserve">
     <value>إذا كان غير ذلك الرجاء إختيار الكيان القانوني ادناه</value>
-    </data>
-     <data name="ESTOtherTaxableIncomeFromSourcesWithinTheKSA" xml:space="preserve">
+  </data>
+  <data name="ESTOtherTaxableIncomeFromSourcesWithinTheKSA" xml:space="preserve">
     <value>الدخل الخاضع للضريبة من مصادر داخل المملكة العربية السعودية</value>
-    </data>
-    <data name="ESTPermanentEstablishmentTypeLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPermanentEstablishmentTypeLabel" xml:space="preserve">
     <value>نوع المنشأة الدائمة</value>
-    </data>
-    <data name="ESTABranchOfNonResidentCompanyLabel" xml:space="preserve">
+  </data>
+  <data name="ESTABranchOfNonResidentCompanyLabel" xml:space="preserve">
     <value>فرع لشركة غير مقيمة</value>
-    </data>
-    <data name="ESTConstuctionSiteLabel" xml:space="preserve">
+  </data>
+  <data name="ESTConstuctionSiteLabel" xml:space="preserve">
     <value>موقع العمل</value>
-    </data>
-    <data name="ESTInstallationLabel" xml:space="preserve">
+  </data>
+  <data name="ESTInstallationLabel" xml:space="preserve">
     <value>التركيب</value>
-    </data>
-      <data name="ESTAFixedBaseLabel" xml:space="preserve">
+  </data>
+  <data name="ESTAFixedBaseLabel" xml:space="preserve">
     <value>قاعدة ثابته</value>
-    </data>
-     <data name="ESTANonResidentPartnerLabel" xml:space="preserve">
+  </data>
+  <data name="ESTANonResidentPartnerLabel" xml:space="preserve">
     <value>شريك غير مقيم</value>
-    </data>
-     <data name="ESTSelectTaxableIncomeSourceLabel" xml:space="preserve">
+  </data>
+  <data name="ESTSelectTaxableIncomeSourceLabel" xml:space="preserve">
     <value>اختر مصدر الدخل الخاضع للضريبة</value>
-    </data>
-     <data name="ESTIdentificationDetailsLabel" xml:space="preserve">
+  </data>
+  <data name="ESTIdentificationDetailsLabel" xml:space="preserve">
     <value>بيانات الهوية</value>
-    </data>
-     <data name="ESTLastNameLabel" xml:space="preserve">
+  </data>
+  <data name="ESTLastNameLabel" xml:space="preserve">
     <value>الاسم الأخير</value>
-    </data>
-     <data name="ESTFathersNameLabel" xml:space="preserve">
+  </data>
+  <data name="ESTFathersNameLabel" xml:space="preserve">
     <value>اسم الأب</value>
-    </data>
-     <data name="ESTGrandFathersNameLabel" xml:space="preserve">
+  </data>
+  <data name="ESTGrandFathersNameLabel" xml:space="preserve">
     <value>اسم الجد</value>
-    </data>
-    <data name="ESTFamilyNameLabel" xml:space="preserve">
+  </data>
+  <data name="ESTFamilyNameLabel" xml:space="preserve">
     <value>اسم العائلة</value>
-    </data>
-    <data name="ESTInitialLabel" xml:space="preserve">
+  </data>
+  <data name="ESTInitialLabel" xml:space="preserve">
     <value>في البداية</value>
-    </data>
-     <data name="ESTGenderLabel" xml:space="preserve">
+  </data>
+  <data name="ESTGenderLabel" xml:space="preserve">
     <value>الجنس</value>
-    </data>
-     <data name="ESTMaleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTMaleLabel" xml:space="preserve">
     <value>ذكر</value>
-    </data>
-     <data name="ESTFemaleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTFemaleLabel" xml:space="preserve">
     <value>انثى</value>
-    </data>
-     <data name="ESTNationalityLabel" xml:space="preserve">
+  </data>
+  <data name="ESTNationalityLabel" xml:space="preserve">
     <value>الدولة</value>
-    </data>
-     <data name="ESTCitizenLabel" xml:space="preserve">
+  </data>
+  <data name="ESTCitizenLabel" xml:space="preserve">
     <value>مواطن</value>
-    </data>
-     <data name="ESTResidenceLabel" xml:space="preserve">
+  </data>
+  <data name="ESTResidenceLabel" xml:space="preserve">
     <value>مقيم</value>
-    </data>
-     <data name="ESTContinueLabel" xml:space="preserve">
+  </data>
+  <data name="ESTContinueLabel" xml:space="preserve">
     <value>التالي</value>
-    </data>
-    <data name="ESTPassportDetailsMandatoryNoteLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPassportDetailsMandatoryNoteLabel" xml:space="preserve">
     <value>بيانات الجواز ضرورية للأفراد الغير سعوديين</value>
-    </data>
-     <data name="ESTPleaseProvideAllNecessaryDetailsBelow" xml:space="preserve">
+  </data>
+  <data name="ESTPleaseProvideAllNecessaryDetailsBelow" xml:space="preserve">
     <value>الرجاء تقديم كل البيانات الأساسية</value>
-    </data>
-     <data name="ESTPassportNumberLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPassportNumberLabel" xml:space="preserve">
     <value>رقم الجواز</value>
-    </data>
-     <data name="ESTIssueCountryLabel" xml:space="preserve">
+  </data>
+  <data name="ESTIssueCountryLabel" xml:space="preserve">
     <value>جهة الإصدار</value>
-    </data>
-     <data name="ESTIssueDateLabel" xml:space="preserve">
+  </data>
+  <data name="ESTIssueDateLabel" xml:space="preserve">
     <value>تاريخ الإصدار</value>
-    </data> 
-    <data name="ESTExpiryDateLabel" xml:space="preserve">
+  </data>
+  <data name="ESTExpiryDateLabel" xml:space="preserve">
     <value>تاريخ الإنتهاء</value>
-    </data>
-     <data name="ESTPleaseProvideACopyOfAbovePassportDetailsLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPleaseProvideACopyOfAbovePassportDetailsLabel" xml:space="preserve">
     <value>الرجاء توفير نسخه من جواز السفر</value>
-    </data>
-     <data name="ESTAttachmentPassportDetails" xml:space="preserve">
+  </data>
+  <data name="ESTAttachmentPassportDetails" xml:space="preserve">
     <value>المرفقات - بيانات الجواز</value>
-    </data>
-     <data name="ESTRegTaxTabTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTRegTaxTabTitleLabel" xml:space="preserve">
     <value>التسجيل / نوع المكلف</value>
-    </data>
-     <data name="ESTTaxpayerPersonalDetailsTabTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTTaxpayerPersonalDetailsTabTitleLabel" xml:space="preserve">
     <value>بيانات المكلف الشخصية</value>
-    </data>
-     <data name="ESTPassportDetailsTabTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPassportDetailsTabTitleLabel" xml:space="preserve">
     <value>بيانات جواز السفر</value>
-    </data>
-      <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
     <value>الفروع</value>
-    </data> 
+  </data>
 </root>
