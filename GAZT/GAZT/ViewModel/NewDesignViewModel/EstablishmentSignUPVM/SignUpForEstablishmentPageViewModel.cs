@@ -1742,24 +1742,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         {
             switch (CurrentTab)
             {
-                //case EstablishmentSignUPTabEnum.Password:
-                //    PageTitle = AppResources.VerificationCode;
-                //    BodyText = AppResources.ZZPleaseenteraccessCode;
-                //    NextBTN = AppResources.ZZZZContinue;
-                //    CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
-                //    break;
+                case EstablishmentSignUPTabEnum.TermsAndConditions:
+                    _navigationService.GoBack();
 
-                //case EstablishmentSignUPTabEnum.MobileVerification:
-                //    //PageTitle = "Email Verification";
-                //    //BodyText = AppResources.ZZZZCompletethebelowdetails;
-                //    //NextBTN = AppResources.Confirm;
-                //    CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
-                //    break;
+                    break;
 
                 case EstablishmentSignUPTabEnum.EmailVerification:
                     PageTitle = AppResources.ZZZContactInformation;
                     BodyText = AppResources.ZZZZCompletethebelowdetails;
-                    //NextBTN = AppResources.Confirm;
                     CurrentTab = EstablishmentSignUPTabEnum.ContactInformation;
                     clearVerificationCodeFrom();
                     break;
@@ -1767,7 +1757,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 case EstablishmentSignUPTabEnum.ContactInformation:
                     PageTitle = AppResources.ZZZBusinessInformation;
                     BodyText = AppResources.ZZZZCompletethebelowdetails;
-                    //NextBTN = AppResources.ZZZZContinue;
                     CurrentTab = EstablishmentSignUPTabEnum.BusinessInformation;
                     break;
 
