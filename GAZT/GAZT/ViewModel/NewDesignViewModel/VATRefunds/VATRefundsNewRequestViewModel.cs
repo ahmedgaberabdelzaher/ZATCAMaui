@@ -165,7 +165,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                             SelectedIdtype = PickerModel.SelectedValue;
                             IBANType idType = IBANTypesList.Where(m => m.Text == PickerModel.SelectedValue).FirstOrDefault();
                             SelectedIDTypeCode = idType.key;
-
+                            SelectedIdNumber = AppResources.IDNumber;
                             SetIBANIdNumber(idType.key);
                         }
                         else

@@ -38,29 +38,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 switch (value)
                 {
                     case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
-                        SelectedTabText = "Taxpayer Personal Details";
+                        SelectedTabText = AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel;
                         break;
                     case EstablishmentRegistrationTabsEnum.PassportDetails:
-                        SelectedTabText = "Passport Details";
+                        SelectedTabText = AppResources.ESTPassportDetailsTabTitleLabel;
                         break;
                     case EstablishmentRegistrationTabsEnum.Outlets:
-                        SelectedTabText = "Outlets";
+                        SelectedTabText = AppResources.ESTOutletsTabTitleLabel;
                         break;
                     case EstablishmentRegistrationTabsEnum.FinancialDetail:
-                        SelectedTabText = "Financial Details";
+                        SelectedTabText = AppResources.VATRFinancialDetails;
                         break;
                     case EstablishmentRegistrationTabsEnum.Declaration:
-                        SelectedTabText = "Summary";
+                        SelectedTabText = AppResources.ZVatSummary;
                         break;
                     case EstablishmentRegistrationTabsEnum.RegistrationType:
                     default:
-                        SelectedTabText = "Registration/Taxpayer type";
+                        SelectedTabText = AppResources.ESTRegTaxTabTitleLabel;
                         break;
                 }
                 fetchTabDataAndBind(_currentTab);
             }
         }
-
+        public List<string> TabList { get; set; }
+            = new List<string> { AppResources.ESTRegTaxTabTitleLabel, AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel,
+                AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
+                AppResources. VATRFinancialDetails, AppResources.ZVatSummary };
         public bool MarkComplete { get; set; } = false;
         private int _maxIndex = 6;
         public int MaxIndex
@@ -87,7 +90,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedTabText = "Registration/Taxpayer type";
+        private string _selectedTabText = AppResources.ESTRegTaxTabTitleLabel;
         public string SelectedTabText
         {
             get => _selectedTabText;
@@ -1067,7 +1070,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnVoidOrSaveDraftClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "Save", "Void", "CalenderType" });
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid, AppResources.FORM5CalendarType });
                 poupWindow.OnItemSelect = (item) => Console.WriteLine(item);
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
@@ -1221,6 +1224,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         IsClickedInstallationPE = false;
                         IsClickedAFixedBasePE = false;
                         IsClickedNonResidentPartnerPE = false;
+                        UploadedRentDocumentsList.Clear();
                     }
                     break;
                 case OrgResidenceNationalityEstablishmentRegistrationEnum.RentOwnhouseMoreThanThirtyDays:
@@ -1248,7 +1252,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedStayMoreThanKSAOption = false;
                     IsClickedOwnRentOption = false;
                     IsClickedNoneOfTheAboveOption = true;
-                    SelectedOrgResidence = "2";// SelectedNationalityStatus = "None of the Above";
+                    SelectedOrgResidence = "3";// SelectedNationalityStatus = "None of the Above";
 
 
                     //Options clear or done false
@@ -1262,6 +1266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedInstallationPE = false;
                     IsClickedAFixedBasePE = false;
                     IsClickedNonResidentPartnerPE = false;
+                    UploadedRentDocumentsList.Clear();
 
                     break;
                 default:
@@ -1280,6 +1285,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedInstallationPE = false;
                     IsClickedAFixedBasePE = false;
                     IsClickedNonResidentPartnerPE = false;
+                    UploadedRentDocumentsList.Clear();
                     break;
             }
         }
@@ -1299,20 +1305,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsClickedInstallationPE = false;
                     IsClickedAFixedBasePE = false;
                     IsClickedNonResidentPartnerPE = false;
+                    SelectedOrgNonResidentActivityValue = "";
                     break;
                 case OrgNonResidentEstablishmentRegistrationEnum.OtherTaxIncomeFromSourceWithInTheSKA:
 
                     IsClickedPermanentLegalEntity = false;
                     IsClickedOtherTaxableIncomeLegalEntity = true;
                     SelectedOrgNonResident = "2";// SelectedLegalEntity = "Other Taxable Income from source with in the KSA";
-
-
+                   
+                   
                     //Options clear or done false
                     IsClickedABranchOfNonResidentCompanyPE = false;
                     IsClickedConstructionSitePE = false;
                     IsClickedInstallationPE = false;
                     IsClickedAFixedBasePE = false;
                     IsClickedNonResidentPartnerPE = false;
+
                     break;
                 default:
                     //Options clear or done false
@@ -1409,8 +1417,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private void GetGenderList()
         {
             GenderList.Clear();
-            GenderList.Add("Male");
-            GenderList.Add("Female");
+            GenderList.Add(AppResources.ESTMaleLabel);
+            GenderList.Add(AppResources.ESTFemaleLabel);
 
 
         }
@@ -1802,7 +1810,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -1947,16 +1954,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                     taxPayerDetails.Birthdt = dob;
                     taxPayerDetails.NameFirst = FirstName;
-                    taxPayerDetails.NameLast = LastName;
-                    taxPayerDetails.FatherName = FatherName;
-                    taxPayerDetails.GrandfatherName = GrandFatherName;
-                    taxPayerDetails.FamilyName = FamilyName;
-                    taxPayerDetails.Initials = Initial;
-                    if (SelectedGender?.ToLower()=="male")
+                    taxPayerDetails.NameLast = string.IsNullOrEmpty(LastName) ? string.Empty : LastName;
+                    taxPayerDetails.FatherName = string.IsNullOrEmpty(FatherName) ? string.Empty : FatherName;  
+                    taxPayerDetails.GrandfatherName = string.IsNullOrEmpty(GrandFatherName) ? string.Empty : GrandFatherName;
+                    taxPayerDetails.FamilyName = string.IsNullOrEmpty(FamilyName) ? string.Empty : FamilyName; 
+                    taxPayerDetails.Initials = string.IsNullOrEmpty(Initial) ? string.Empty : Initial; 
+                    if (SelectedGender?.ToLower()== GenderList.FirstOrDefault().ToLower())
                     {
                         taxPayerDetails.Xsexm = "X";
                     }
-                    else if (SelectedGender?.ToLower() == "female")
+                    else if (SelectedGender?.ToLower() == GenderList.LastOrDefault().ToLower())
                     {
                         taxPayerDetails.Xsexf = "X";
                     }
