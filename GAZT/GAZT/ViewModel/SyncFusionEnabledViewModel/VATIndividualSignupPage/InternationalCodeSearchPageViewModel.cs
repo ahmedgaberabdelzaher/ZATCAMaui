@@ -29,7 +29,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             RaisePropertyChanged("MobileCodes");
         }
     }
-    public ObservableCollection<InternationalMobileData> _filteredItems;
+
+
+    public ObservableCollection<InternationalMobileData> _mobileCodesAllValues { get; set; }
+    public ObservableCollection<InternationalMobileData> MobileCodesAllValues
+    {
+        get
+        {
+            return _mobileCodesAllValues;
+        }
+        set
+        {
+            _mobileCodesAllValues = value;
+            RaisePropertyChanged("MobileCodesAllValues");
+        }
+    }
+
+        public ObservableCollection<InternationalMobileData> _filteredItems;
     public ObservableCollection<InternationalMobileData> FilteredItems
     {
         get
@@ -73,22 +89,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         });
         _navigationService = navigationService;
         _dialogService = dialogService;
-
+        MobileCodesAllValues = new ObservableCollection<InternationalMobileData>();
     }
+
     #endregion
     public void onPageLoad()
     {
-         MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodes.OrderBy(x => x.Telefto).ToList());
-
+        try
+        {
+            MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodesAllValues.OrderBy(x => x.Telefto).ToList());
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     public void refreshList()
     {
-            if (mobileData != null)
-            {
-                MobileCodes = mobileData;
-            }
-          
+        if (mobileData != null)
+        {
+            MobileCodes = mobileData;
+        }
     }
 }
 }
