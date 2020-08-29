@@ -1710,7 +1710,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         BodyText = AppResources.ZZPleaseenteraccessCode;
                         NextBTN = AppResources.ZZZZContinue;
                         CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
-                        StartTimer(0, 2, 0);
+                        //StartTimer(0, 2, 0);
+                        TimerStart(numberOfSeconds);
                     }
                     else
                     {
@@ -1861,54 +1862,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-        private void StartTimer(int h, int m, int sec)
-        {
-            int hour = h;
-            int mins = m;
-            int counter = sec;
-            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
-            {
-                if (IsTimerCancel)
-                {
-                    return false;
-                }
-                else
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        counter = counter - 1;
-                        if (counter < 0)
-                        {
-                            counter = 59;
-                            mins = mins - 1;
-                            if (mins < 0)
-                            {
-                                mins = 59;
-                                hour = hour - 1;
-                                if (hour < 0)
-                                {
-                                    hour = 0;
-                                    mins = 0;
-                                    counter = 0;
-                                }
-                            }
-                        }
-                        IsResendOTPEnabled = false;
-                        LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
-                    });
-                    if (hour == 0 && mins == 0 && counter == 0)
-                    {
-                        IsResendOTPEnabled = true;
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-            });
+        //private void StartTimer(int h, int m, int sec)
+        //{
+        //    int hour = h;
+        //    int mins = m;
+        //    int counter = sec;
+        //    Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+        //    {
+        //        if (IsTimerCancel)
+        //        {
+        //            return false;
+        //        }
+        //        else
+        //        {
+        //            Device.BeginInvokeOnMainThread(() =>
+        //            {
+        //                counter = counter - 1;
+        //                if (counter < 0)
+        //                {
+        //                    counter = 59;
+        //                    mins = mins - 1;
+        //                    if (mins < 0)
+        //                    {
+        //                        mins = 59;
+        //                        hour = hour - 1;
+        //                        if (hour < 0)
+        //                        {
+        //                            hour = 0;
+        //                            mins = 0;
+        //                            counter = 0;
+        //                        }
+        //                    }
+        //                }
+        //                IsResendOTPEnabled = false;
+        //                LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
+        //            });
+        //            if (hour == 0 && mins == 0 && counter == 0)
+        //            {
+        //                IsResendOTPEnabled = true;
+        //                return false;
+        //            }
+        //            else
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //    });
 
-        }
+        //}
 
         
 
@@ -1993,7 +1994,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
                     if (response != null)
                     {
-                        StartTimer(0, 2, 0);
+                        //StartTimer(0, 2, 0);
+                        TimerStart(numberOfSeconds);
                         ButtonDisableColor = Color.FromHex("#9EA4A9");//9EA4A9
                         IsResendOTPEnabled = false;
                         VerifyButtonDisableColor = Color.FromHex("#d49504");
@@ -2140,7 +2142,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     //Captcha = captcha.ToString();
                   //IDTypeModelRootObject = null;
                     IDTypeIndex = 0;
-                  //SelectedLOrC = 1;
+                    //SelectedLOrC = 1;
                 }
                 catch (Exception ex)
                 {
@@ -2353,7 +2355,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     {
                         return false;
                     }
-                    else if (!StopTimer)
+                    else if (StopTimer)
                     {
                         return false;
                     }
