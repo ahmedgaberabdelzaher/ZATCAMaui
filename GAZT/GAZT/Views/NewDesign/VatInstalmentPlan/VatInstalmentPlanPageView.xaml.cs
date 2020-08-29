@@ -344,12 +344,15 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, Boolean>(this, "TermsContinue");
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
+            MessagingCenter.Unsubscribe<object, Boolean>(this, "TermsContinueSecond");
+            MessagingCenter.Unsubscribe<object, Boolean>(this, "InstructionsContinue");
         }
         protected async override void OnAppearing()
         {
             try
             {
                 base.OnAppearing();
+
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
@@ -362,13 +365,27 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
                     }
                 });
+                Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "TermsContinueSecond", (sender, arg) =>
+                {
+                    if (arg != null && arg == true)
+                    {
+                        viewModel.EnableSucessScreenAsync();
+                    }
+                });
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "TermsContinue", (sender, arg) =>
                 {
                     if (arg != null)
                     {
 
-                        viewModel.EnableSucessScreenAsync();
+                        //viewModel.EnableSucessScreenAsync();
+                    }
+                });
+                Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "InstructionsContinue", (sender, arg) =>
+                {
+                    if (arg != null && arg == true)
+                    {
+                        viewModel.EnableVATBillView();
                     }
                 });
 
@@ -377,6 +394,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 {
                     //iOS stuff
                     BillsVATListVIew.IsScrollingEnabled = false;
+                    StatementListView.IsScrollingEnabled = false;
                 }
                 else if (Device.RuntimePlatform == Device.Android)
                 {
