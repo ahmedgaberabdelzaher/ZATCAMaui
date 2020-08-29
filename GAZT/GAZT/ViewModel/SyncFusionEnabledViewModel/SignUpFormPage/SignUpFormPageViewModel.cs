@@ -263,15 +263,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             set
             {
                 _mobileCountryCode = value;
-                if (_mobileCountryCode != null)
-                {
-                    MaxDigids = (14 - _mobileCountryCode.Length).ToString();
-                }
-                else
-                {
-                    MaxDigids = "15";
-                }
-             
+         
                 RaisePropertyChanged("MobileCountryCode");
             }
         }
@@ -496,7 +488,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             {
 
                 _txtCountryCode = value;
+                if (_txtCountryCode != null)
+                {
+                    MaxDigids = (14 - _txtCountryCode.Length).ToString();
+                    TxtMobileNumber = string.Empty;
+                }
+                else
+                {
+                    MaxDigids = "15";
+                }
+
                 RaisePropertyChanged("TxtCountryCode");
+            }
+        }
+        private bool _BtnEnableFlag;
+        public bool BtnEnableFlag
+        {
+            get { return _BtnEnableFlag; }
+            set
+            {
+                _BtnEnableFlag = value;
+                RaisePropertyChanged("BtnEnableFlag");
             }
         }
         private string _txtMobileNumber = string.Empty;
@@ -508,7 +520,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             }
             set
             {
+
                 _txtMobileNumber = value;
+                BtnEnableFlag = false;
+                if (value.Length > 0)
+                    BtnEnableFlag = true;
                 RaisePropertyChanged("TxtMobileNumber");
             }
         }
@@ -715,6 +731,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             {
             }
         }
+        //private string NewMobileNumberFormate(string mobileNumber)
+        //{
+        //    string formatedCountryCode = MobileCountryCode.Replace("+", "");
+        //    return formatedCountryCode + TxtMobileNumber;
+        //}
         #endregion
         #region Methods 
         //public bool ValidateCaptcha()

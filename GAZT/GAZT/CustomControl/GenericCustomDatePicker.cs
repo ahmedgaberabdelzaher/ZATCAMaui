@@ -113,7 +113,7 @@ namespace EGAZT.CustomControl
                             {
                                 if (resetDateforMonth(month))
                                 {
-                                    for (int j = 1; j <= DateTime.Today.Day; j++)
+                                    for (int j = 1; j <= 12; j++)
                                     {
                                         if (j < 10)
                                         {
@@ -137,7 +137,7 @@ namespace EGAZT.CustomControl
                                     }
                                 }
 
-                                for (int i = 1; i <= DateTime.Today.Month; i++)
+                                for (int i = 1; i <= 12; i++)
                                 {
                                     if (i < 10)
                                     {
@@ -253,7 +253,7 @@ namespace EGAZT.CustomControl
             //populate months
             try
             {
-                for (int i = 1; i <= DateTime.Today.Month; i++)
+                for (int i = 1; i <= 12; i++)
                 {
                     if (i < 10)
                     {

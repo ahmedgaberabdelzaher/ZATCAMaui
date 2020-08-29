@@ -505,11 +505,11 @@
                                                                      <StackLayout Grid.Row="1" Grid.Column="0" >
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelBlack}" />     
-                                <inputLayout:SfTextInputLayout  Margin="-2,-4,0,6" WidthRequest="180"
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                <inputLayout:SfTextInputLayout  Margin="-2,-6,0,0" WidthRequest="180"
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"  x:Name="FrmIDNumber"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                    <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Text="{Binding TxtIDNumber}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
+                                    <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding TxtIDNumber}"
+                                                            TextColor="Black" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
                                     </Entry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
@@ -544,9 +544,13 @@
                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                        <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.VatDeregContactPerson}" Text="{Binding ContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                        <custom:BorderlessEntry x:Name="ContactName"  Placeholder="{x:Static ResourceManager:AppResources.VatDeregContactPerson}"
+                                                                Text="{Binding ContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                                 VerticalTextAlignment="Start"
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
+                                                     <Entry.Behaviors>
+                                                                <custom1:AlphabetandArabicCharacters/>
+                                                            </Entry.Behaviors>  
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
@@ -612,7 +616,7 @@
                                     
                                     <Label Text="{x:Static ResourceManager:AppResources.VatDeregDetailsTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
-                                <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_1" FontFamily="SSTBold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#006450"/>
+                                <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" IsVisible="False"  Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_1" FontFamily="SSTBold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#006450"/>
                             </Grid>
 
                             <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
@@ -660,7 +664,7 @@
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
                                     <Label Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentsHeaderTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
-                                <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_2" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+                                <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" IsVisible="False" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_2" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
 
                             </Grid>
 
@@ -709,7 +713,7 @@
                                 <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
                                     <Label Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                 </StackLayout>
-                                   <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_3" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+                                   <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" IsVisible="False" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_3" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
 
                             </Grid>
 

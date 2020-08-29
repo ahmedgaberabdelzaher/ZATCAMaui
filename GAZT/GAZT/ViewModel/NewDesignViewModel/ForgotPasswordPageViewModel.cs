@@ -55,7 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Property
 
         // New Property starts
-        private string _iDNumber;
+        private string _iDNumber = String.Empty;
         public string IDNumber
         {
             get
@@ -473,7 +473,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _setIDNumberEnability = false;
+        private bool _setIDNumberEnability = true;
         public bool SetIDNumberEnability
         {
             get
@@ -1339,7 +1339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
 
-
+            SetIDNumberEnability = true;
 
 
             //BackButtonClicked = new Xamarin.Forms.Command(() =>
@@ -1597,6 +1597,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             PasswordTextColor = Color.Black;
             UserNameTextColor = Color.Black;
+            
             //IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
             //string lang = UtilityManager.GetLanguageParameter();
             //try
@@ -2094,17 +2095,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
                 await Task.Run(async () =>
                 {
                     currentAttempts = 0;
+
                     bool isNewPasswordValid = UtilityManager.IsPasswordValid(NewPassword);
-                    bool isConfirmPasswordValid = UtilityManager.IsPasswordValid(ConfirmPassword);
-                    if (isNewPasswordValid && isConfirmPasswordValid)
+                    //bool isConfirmPasswordValid = UtilityManager.IsPasswordValid(ConfirmPassword);
+
+                    if (isNewPasswordValid)
                     {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = true;
+                        });
+
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
                         string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";

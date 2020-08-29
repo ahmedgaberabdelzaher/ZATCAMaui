@@ -15,7 +15,9 @@ using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using System.Threading.Tasks;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Manager;
+using GAZT.Models;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
@@ -35,7 +37,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             DeclarationView,
             SummaryView,
         }
+
+        public enum PickerEnum
+        {
+            IdType,
+            EffectiveDate
+        }
         #endregion
+
+        public PickerEnum selectedPicker = PickerEnum.EffectiveDate;
 
         private bool _isLoading = false;
         public bool IsLoading
@@ -48,6 +58,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private bool _isFrequencyDetailsChecked = false;
+        public bool IsFrequencyDetailsChecked
+        {
+            get
+            {
+                return _isFrequencyDetailsChecked;
+            }
+            set
+            {
+                _isFrequencyDetailsChecked = value;
+                RaisePropertyChanged("IsFrequencyDetailsChecked");
             }
         }
 
@@ -93,9 +117,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 4;
 
-        private DateTime _pickedDate = DateTime.Now;
+        private string _pickedDate = "";
 
-        public DateTime PickedDate
+        public string PickedDate
         {
             get { return _pickedDate; }
             set
@@ -143,6 +167,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
+        private bool _isDOBVisible = false;
+
+        public bool IsDOBVisible
+        {
+            get { return _isDOBVisible; }
+            set
+            {
+                _isDOBVisible = value;
+                RaisePropertyChanged("IsDOBVisible");
+            }
+        }
+
         private string _effectiveDatePicked = "";
 
         public string EffectiveDatePicked
@@ -155,7 +191,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
+        private GenericPickerModel _idTypePickerModel { get; set; }
 
+        public GenericPickerModel IDTypePickerModel
+        {
+            get { return _idTypePickerModel; }
+            set
+            {
+                _idTypePickerModel = value;
+                RaisePropertyChanged("IDTypePickerModel");
+            }
+        }
+
+        private GenericPickerModel _effectiveDatePickerModel { get; set; }
+
+        public GenericPickerModel EffectiveDatePickerModel
+        {
+            get { return _effectiveDatePickerModel; }
+            set
+            {
+                _effectiveDatePickerModel = value;
+                RaisePropertyChanged("EffectiveDatePickerModel");
+            }
+        }
+
+        public List<List<Attachment>> AttachmentsList { get; set; }
 
         public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
 
@@ -199,6 +259,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
+        private VATChangeFillingPeriodRequestModel _changeFillingResponse { get; set; }
+
+        public VATChangeFillingPeriodRequestModel ChangeFillingResponse
+        {
+            get { return _changeFillingResponse; }
+            set
+            {
+                _changeFillingResponse = value;
+                RaisePropertyChanged("ChangeFillingResponse");
+            }
+        }
+
+        private VATRefillingDropdownModel _effectiveDateResponse { get; set; }
+
+        public VATRefillingDropdownModel EffectiveDateResponse
+        {
+            get { return _effectiveDateResponse; }
+            set
+            {
+                _effectiveDateResponse = value;
+                RaisePropertyChanged("EffectiveDateResponse");
+            }
+        }
         public ChangeFillingPeriodViewModel(INavigationService navigationService, IDialogService dialogService) : base(
             navigationService, dialogService)
         {
@@ -220,12 +303,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             EffectiveDateSpinnerClicked = new Command(async () =>
             {
-
+                showEffectiveDatePickerDialog();
             });
 
             IdTypeSpinnerTapped = new Command(async () =>
             {
-
+                showIdTypePickerDialog();
             });
 
             _dialogService = dialogService;
@@ -247,13 +330,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             GoBackToAttachments = new Command(this.GoBackToAttachmentsClicked);
             GoBackToDeclaration = new Command(this.GoBackToDeclarationClicked);
             NewAttachmentTapped = new Command(this.NewAttachmentClicked);
+
             // GoBackToDashBoardTapped = new Command(this.GoBackToDashboardClicked);
 
-            AddOutletDecisionOptions();
-            PopulateFrequencyDetailsListViewData();
-            PopulateChangeFillingAttachmentsListViewData();
-            PopulateDeclarationListViewData();
-            PopulateMyRequestsListViewData();
+            //PopulateFrequencyDetailsListViewData();
+            //PopulateChangeFillingAttachmentsListViewData();
+            //PopulateDeclarationListViewData();
+            //PopulateMyRequestsListViewData();
+
+            setIdPickerModel();
 
             SelectedOutletOption = new ChangeFillingPeriodModel();
 
@@ -265,6 +350,182 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         public void ResetData()
         {
             EnableFrequencyDetailsView();
+        }
+
+        public void ValidateIdNumber()
+        {
+            try
+            {
+                PopUp popUp = new PopUp();
+                StringBuilder Messages = new StringBuilder();
+                if (!string.IsNullOrEmpty(IDNumber))
+                {
+                    if (IDType == AppResources.NationaID)
+                    {
+                        if (IDNumber.Substring(0, 1) != "1")
+                        {
+                            popUp.Message = AppResources.ZZNationalIDstartswith1;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            IDNumber = string.Empty;
+                            //ZZPleaseenteravalidNationalID
+                        }
+                        else
+                        {
+                            if (IDNumber.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZNationalIDlengthis10digit);
+                            }
+                            if (Messages.Length > 0)
+                            {
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                IDNumber = string.Empty;
+                            }
+                            else
+                            {
+
+                                if (!string.IsNullOrEmpty(PickedDate))
+                                {
+                                    ValidateIdNumberFromApi();
+                                }
+
+
+                            }
+                        }
+
+
+                    }
+                    if (IDType == AppResources.VFCIqamaID)
+                    {
+                        if (IDNumber.Substring(0, 1) != "2")
+                        {
+                            popUp.Message = AppResources.ZZIqamaIDstartswith2;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            IDNumber = string.Empty;
+                        }
+                        else
+                        {
+                            if (IDNumber.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+                            }
+                            if (Messages.Length > 0)
+                            {
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                IDNumber = string.Empty;
+                            }
+                            else
+                            {
+                                if (!string.IsNullOrEmpty(PickedDate))
+                                {
+                                    ValidateIdNumberFromApi();
+                                }
+                            }
+                        }
+
+
+                    }
+                    if (IDType == AppResources.VFCGCCID)
+                    {
+
+                        if (IDNumber.Substring(0, 1) == "0")
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            IDNumber = string.Empty;
+                        }
+                        else if (!(IDNumber.Length <= 15 && IDNumber.Length >= 7))
+                        {
+                            popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            IDNumber = string.Empty;
+                            // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                        }
+
+
+                    }
+                }
+                else
+                {
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private async void showDatePickerDialog()
@@ -285,6 +546,132 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     _navigationService.GoBack();
                 });
             }
+        }
+
+        private async void showEffectiveDatePickerDialog()
+        {
+            try
+            {
+                selectedPicker = PickerEnum.EffectiveDate;
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(EffectiveDatePickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        private async void showIdTypePickerDialog()
+        {
+            try
+            {
+                selectedPicker = PickerEnum.IdType;
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(IDTypePickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public void updateEffectiveDatePicker()
+        {
+            EffectiveDatePicked = EffectiveDatePickerModel.SelectedValue;
+        }
+
+        public void updateIdTypePicker()
+        {
+            IDType = IDTypePickerModel.SelectedValue;
+            if (IDType == AppResources.VFCGCCID)
+            {
+                IsDOBVisible = false;
+            }
+            else
+            {
+                IsDOBVisible = true;
+            }
+        }
+
+        /*public void ValidateIDNumber()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+            });
+            
+            // EntryName.IsEnabled = true;
+            if (IDType == AppResources.VFCNationalID)
+            {
+                if (!string.IsNullOrEmpty(IDNumber))
+                {
+                    ValidateIdNumberFromApi();
+                }
+            }
+            if (IDType == AppResources.VFCIqamaID)
+            {
+                //  EntryName.IsEnabled = true;
+                if (!string.IsNullOrEmpty(IDNumber))
+                {
+                    ValidateIdNumberFromApi();
+                }
+            }
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Run(() =>
+                {
+                   IsLoading = false;
+                });
+            });
+        }*/
+
+        private void setEffectiveDatePickerModel()
+        {
+            var list = new ObservableCollection<string>();
+
+            foreach (var date in EffectiveDateResponse.d.EffDateSet.results)
+            {
+                list.Add(date.Txt50);
+            }
+
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = list;
+            genericPickerModel.PickerTitle = AppResources.CRContractType;
+            genericPickerModel.PickerId = "Effective Date";
+
+            EffectiveDatePickerModel = genericPickerModel;
+        }
+
+        private void setIdPickerModel()
+        {
+            ObservableCollection<string> iDTypes = new ObservableCollection<string>();
+            iDTypes.Add(AppResources.VFCNationalID);
+            iDTypes.Add(AppResources.VFCIqamaID);
+            iDTypes.Add(AppResources.VFCGCCID);
+
+
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = iDTypes;
+            genericPickerModel.PickerTitle = AppResources.CRContractType;
+            genericPickerModel.PickerId = "ID Type";
+
+            IDTypePickerModel = genericPickerModel;
         }
 
         public async void NewAttachmentClicked()
@@ -523,24 +910,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        public void AddOutletDecisionOptions()
+        public void AddAttachmentOptions()
         {
             OutletDecisionOptions = new ObservableCollection<ChangeFillingPeriodModel>();
-            OutletDecisionOptions.Add(new ChangeFillingPeriodModel
+
+            foreach (var attach in EffectiveDateResponse.d.ATT_TYPSet.results)
             {
-                ActiveOutletDecisionOptions = AppResources.ChangeFillingPeriodAttachmentsTwoYears,
-                ActiveOutletDecisionOptionsIsSelected = true
-            });
-            OutletDecisionOptions.Add(new ChangeFillingPeriodModel
-            {
-                ActiveOutletDecisionOptions = AppResources.ChangeFillingPeriodAttachmentsTwelveMonths,
-                ActiveOutletDecisionOptionsIsSelected = false
-            });
-            OutletDecisionOptions.Add(new ChangeFillingPeriodModel
-            {
-                ActiveOutletDecisionOptions = AppResources.ChangeFillingPeriodAttachmentsOtherDocuments,
-                ActiveOutletDecisionOptionsIsSelected = false
-            });
+                OutletDecisionOptions.Add(new ChangeFillingPeriodModel
+                {
+                    ActiveOutletDecisionOptions = attach.Txt50,
+                    ActiveOutletDecisionOptionsIsSelected = false
+                });
+            }
 
         }
 
@@ -562,6 +943,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         {
             try
             {
+                if (!IsFrequencyDetailsChecked)
+                {
+                    return;
+                }
                 EnableAttachmentsView();
             }
             catch (GAZTUnlockAccountException ex)
@@ -677,14 +1062,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public void PopulateAttachments(List<Attachment> attachments)
         {
-            var attachmentsListViewData = new ObservableCollection<Attachment>();
+            AttachmentsList[SelectedOutletOptionIndex] = attachments;
+            AttachmentsListViewData = new ObservableCollection<Attachment>();
 
-            foreach (Attachment attachemnt in attachments)
+            foreach (var attachment in attachments)
             {
-                attachmentsListViewData.Add(attachemnt);
+                AttachmentsListViewData.Add(attachment);
             }
 
-            AttachmentsListViewData = attachmentsListViewData;
         }
 
         public async void MyRequestsButtonClicked()
@@ -711,7 +1096,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         {
             try
             {
-                EnableSummaryView();
+                if (IDType != "" && IDNumber != "" && ContactPersonName != "")
+                {
+                    EnableSummaryView();
+                }
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -742,6 +1130,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 EffectiveDate = "Quarter 4 - 2020",
                 ReleaseDate = "09th August 2020"
             });
+
+        }
+
+        public void SetAttachmentsListViewData()
+        {
+            AttachmentsListViewData = new ObservableCollection<Attachment>();
+            if (AttachmentsList != null && AttachmentsList[SelectedOutletOptionIndex] != null)
+            {
+                foreach (var attachment in AttachmentsList[SelectedOutletOptionIndex])
+                {
+                    AttachmentsListViewData.Add(attachment);
+                }
+            }
 
         }
 
@@ -849,10 +1250,157 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     IsLoading = true;
                     try
                     {
-                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingPeriodRequestData("", "");
+                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingPeriodRequestData();
                         if (resultData != null && resultData.d != null)
                         {
                             //resultData.d;
+                            ChangeFillingResponse = resultData;
+                            CurrentFrequency = resultData.d.CureentF;
+                            NewFrequency = resultData.d.FilingF;
+
+                            GetEffectiveDateList();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATChangeFillingPeriodException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATChangeFillingPeriodException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task GetEffectiveDateList()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    try
+                    {
+                        var resultData = await WebServiceManager.GAZTGetVATChangeFillingPeriodDropdownData(App.LoginDataRetrieved.TIN);
+                        if (resultData != null && resultData.d != null)
+                        {
+                            EffectiveDateResponse = resultData;
+                            setEffectiveDatePickerModel();
+                            AddAttachmentOptions();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                        IsLoading = false;
+                    }
+                    catch (GAZTVATChangeFillingPeriodException ex)
+                    {
+                        throw ex;
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATChangeFillingPeriodException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task ValidateIdNumberFromApi()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    IsLoading = true;
+                    try
+                    {
+                        var resultData = await WebServiceManager.GAZTVATChangeFillingPeriodValidateIDnumber(App.LoginDataRetrieved.TIN, "ZS0001", IDNumber, "", "", PickedDate.Replace("/", ""));
+                        if (resultData != null)
+                        {
+
                         }
                         else
                         {

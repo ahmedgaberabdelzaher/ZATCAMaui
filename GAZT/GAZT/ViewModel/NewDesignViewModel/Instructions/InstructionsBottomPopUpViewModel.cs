@@ -143,6 +143,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 if (_isTermsChecked)
                 {
+                    InstructionsContinue();
                     await PopupNavigation.Instance.PopAsync();
                 }
                 else
@@ -156,6 +157,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 if (_isInstuctionsChecked)
                 {
+                    InstructionsContinue();
                     await PopupNavigation.Instance.PopAsync();
                 }
                 else
@@ -169,6 +171,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 await PopupNavigation.Instance.PopAsync();
             });
+
+
+             void InstructionsContinue() {
+
+                if (IsInstructions)
+                {
+                    if (IsInstuctionsChecked)
+                    {
+                        MessagingCenter.Send<Object, Boolean>(this, "InstructionsContinue", true);
+                    }
+
+                    else
+                    {
+                        MessagingCenter.Send<Object, Boolean>(this, "InstructionsContinue", false);
+                    }
+                    if (CheckBoxDescription.Equals(AppResources.VatTermsCheckBoxDesc))
+                    {
+                        MessagingCenter.Send<Object, Boolean>(this, "TermsContinueSecond", true);
+                    }
+                }
+                else if (IsTerms)
+                {
+                    if (IsTermsChecked)
+                    {
+                        MessagingCenter.Send<Object, Boolean>(this, "TermsContinue", true);
+
+                        if (CheckBoxDescription.Equals(AppResources.VatTermsCheckBoxDesc))
+                        {
+                            MessagingCenter.Send<Object, Boolean>(this, "TermsContinueSecond", true);
+                        }
+                    }
+                    else
+                    {
+                        MessagingCenter.Send<Object, Boolean>(this, "TermsContinue", false);
+                    }
+                }
+
+            }
+
         }
     }
 }

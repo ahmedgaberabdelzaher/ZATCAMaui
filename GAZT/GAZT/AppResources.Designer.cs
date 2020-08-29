@@ -7824,6 +7824,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregSuspendedEndDateMismatchException {
+            get {
+                return ResourceManager.GetString("VatDeregSuspendedEndDateMismatchException", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistrationInstructions {
             get {
                 return ResourceManager.GetString("VATDeregistrationInstructions", resourceCulture);
@@ -11235,6 +11241,78 @@ namespace EGAZT {
         public static string ESTOutletsTabTitleLabel {
             get {
                 return ResourceManager.GetString("ESTOutletsTabTitleLabel", resourceCulture);
+            }
+        }
+        
+        public static string VFCEffectiveDate {
+            get {
+                return ResourceManager.GetString("VFCEffectiveDate", resourceCulture);
+            }
+        }
+        
+        public static string VFCFrequencyDetailsCheckBoxString {
+            get {
+                return ResourceManager.GetString("VFCFrequencyDetailsCheckBoxString", resourceCulture);
+            }
+        }
+        
+        public static string VFCAttachmnetsInfo {
+            get {
+                return ResourceManager.GetString("VFCAttachmnetsInfo", resourceCulture);
+            }
+        }
+        
+        public static string VFCIDType {
+            get {
+                return ResourceManager.GetString("VFCIDType", resourceCulture);
+            }
+        }
+        
+        public static string VFCDateofBirth {
+            get {
+                return ResourceManager.GetString("VFCDateofBirth", resourceCulture);
+            }
+        }
+        
+        public static string VFCIDNumber {
+            get {
+                return ResourceManager.GetString("VFCIDNumber", resourceCulture);
+            }
+        }
+        
+        public static string VFCContactPersonName {
+            get {
+                return ResourceManager.GetString("VFCContactPersonName", resourceCulture);
+            }
+        }
+        
+        public static string VFCNationalID {
+            get {
+                return ResourceManager.GetString("VFCNationalID", resourceCulture);
+            }
+        }
+        
+        public static string VFCGCCID {
+            get {
+                return ResourceManager.GetString("VFCGCCID", resourceCulture);
+            }
+        }
+        
+        public static string VFCIqamaID {
+            get {
+                return ResourceManager.GetString("VFCIqamaID", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentPlanCreate_Display {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentPlanCreate_Display", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentPlanRevokeZAKAT {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentPlanRevokeZAKAT", resourceCulture);
             }
         }
     }

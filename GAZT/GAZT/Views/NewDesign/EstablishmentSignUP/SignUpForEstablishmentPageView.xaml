@@ -13,8 +13,10 @@
             xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:local="clr-namespace:EGAZT.CustomControl"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:models="clr-namespace:EGAZT.Models.EnumModels"
+             NavigationPage.HasNavigationBar="False"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"             x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.SignUpForEstablishmentPageView">
@@ -49,7 +51,7 @@
                 </Grid.RowDefinitions>
 
 
-                <StackLayout Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}">
+                <StackLayout Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}">
 
                     <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
 
@@ -78,7 +80,7 @@
                 </StackLayout>
 
                 <!--Start-->
-                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.IndividualInformation}}">
+                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.IndividualInformation}}">
                     <StackLayout>
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZAlreadyhaveTIN}" Style="{StaticResource CaptionLabelGrey}"/>
                     <Grid>
@@ -239,7 +241,7 @@
                     </StackLayout>
                 </ScrollView>
     <!--End-->      
-                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.BusinessInformation}}" >
+                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.BusinessInformation}}" >
                     <StackLayout>
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}" Style="{StaticResource CaptionLabelGrey}"/>
                     <Grid>
@@ -362,12 +364,12 @@
                     </StackLayout>
                 </ScrollView>
                 
-                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}">
+                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.ContactInformation}}">
                     <StackLayout>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51">
-
+                            <control:BorderlessEntry x:Name="EntryEmail" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51"
+                                Text="{Binding TxtEmailAddress}" Unfocused="EntryEmail_TextChanged">
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
@@ -375,9 +377,9 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <StackLayout Orientation="Horizontal">
                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
-                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{Binding TxtCountryCode}" VerticalTextAlignment="End" IsEnabled="False" HeightRequest="51">
+                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{Binding TxtCountryCode}" Text="{Binding TxtCountryCode}" x:Name="IntnlCodes">
 
-                            </control:BorderlessEntry>
+                                </control:BorderlessEntry>
                             <inputLayout:SfTextInputLayout.LeadingView>
                                 <Image Source="arrowDropdown"/>
                             </inputLayout:SfTextInputLayout.LeadingView>
@@ -389,14 +391,14 @@
                             <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51" >
 
-                            </control:BorderlessEntry>
+                                </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry x:Name="EntryPhoneNumber" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51">
+                            <control:BorderlessEntry x:Name="EntryPhoneNumber" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51" MaxLength="9" Text="{Binding TxtPhoneNumber}">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -404,12 +406,12 @@
                 </ScrollView>
 
 
-                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.EmailVerification}}">
+                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.EmailVerification}}">
                     <StackLayout>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51">
-
+                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51"
+                                Text="{Binding TxtEmailAddress}"  IsEnabled="False">
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
@@ -558,14 +560,15 @@
                         <StackLayout>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51">
-                                <Entry.Behaviors>
-                                    <custom1:OnlyNumericValuesBehaviour/>
-                                </Entry.Behaviors>
+                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51"
+                                                     Text="{Binding TxtMobileNumber}"  IsEnabled="False">
+                                   
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
+                            
+
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
 
                         <StackLayout>
                             <StackLayout Padding="0,0,0,0" >
@@ -701,10 +704,11 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                 <Image Source="clock">
                                 </Image>
-                                <custom:CustomLabel  Text="{Binding LblCountDownTimer}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
+
+                                    <custom:CustomLabel  FontFamily="{StaticResource SSTArBold}"  FontSize="10" Style="{StaticResource InformationRedColorLabel}" Text="{Binding OTPValidDuration}"/>
+                                </StackLayout>
+                                <buttons:SfButton  Command="{Binding OnResendOTPClicked}"  Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,50,0,0"  BackgroundColor="{Binding ButtonDisableColor}" IsEnabled="{Binding IsResendOTPEnabled}" FontAttributes="Bold"  TextColor="{Binding ButtonDisableTextColor}"/>
                             </StackLayout>
-                            <buttons:SfButton  Command="{Binding OnResendOTPClicked}" IsEnabled="{Binding IsResendOTPEnabled}" Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,50,0,0" BackgroundColor="Transparent" TextColor="{StaticResource Primary}"/>
-                        </StackLayout>
                     </StackLayout>
                     <!--Verification Mobile Ends-->
                         
@@ -713,9 +717,9 @@
                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDNewPassword}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
 
-                            <control:BorderlessEntry x:Name="NewPassword" Text="{Binding NewPassword}" TextChanged="NewPassword_TextChanged" IsPassword="{Binding IsPasswordEncripted}">
+                                <control:BorderlessEntry Text="{Binding TxtPassword}" TextChanged="EntryPass_TextChanged"  x:Name="EntryPass" IsPassword="{Binding IsPasswordEncripted}">
 
-                            </control:BorderlessEntry>
+                                </control:BorderlessEntry>
 
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Image Source="showPassword.png" x:Name="imageNewPassword">
@@ -729,9 +733,9 @@
                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
 
-                            <control:BorderlessEntry x:Name="ConfirmNewPassword" Text="{Binding ConfirmPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}">
+                                <control:BorderlessEntry TextChanged="EntryCfrmPass_TextChanged" Text="{Binding TxtConfirmPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}" x:Name="EntryCfrmPass">
 
-                            </control:BorderlessEntry>
+                                </control:BorderlessEntry>
 
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Image Source="showPassword.png" x:Name="imageConfirmPassword">
@@ -778,7 +782,7 @@
                     </StackLayout>
                 </ScrollView>
 
-                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.MobileVerification}}">
+                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.MobileVerification}}">
                     <!--<StackLayout>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
@@ -930,7 +934,7 @@
                     </StackLayout>-->
                 </ScrollView>
 
-                <ScrollView Grid.Row="2" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.Password}}">
+                <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.Password}}">
                     <!--<StackLayout>
                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDNewPassword}" Padding="0,0,0,0" Style="{StaticResource CaptionLabelGrey}"/>
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
@@ -990,7 +994,7 @@
 
 
                 <StackLayout Grid.Row="3" Padding="0,8,0,0" BackgroundColor="White">
-                    <buttons:SfButton x:Name="btnprimary" Text="{Binding NextBTN}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnNextButtonClick}" IsEnabled="{Binding IsMainButtonEnabled}"/>
+                    <buttons:SfButton x:Name="btnprimary" Text="{Binding NextBTN}" Style="{StaticResource PrimaryButtonStyle}"  Clicked="btnSubmitNext_Clicked" />
                 </StackLayout>
                 
                 <StackLayout Grid.Row="1" Padding="0,0,0,8" BackgroundColor="White">
@@ -999,6 +1003,32 @@
                     <custom:CustomLabel Text="{Binding BodyText}" Style="{StaticResource BodyLabelGrey}" Padding="0,0,0,8"/>
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
                 </StackLayout>
+
+                <Grid Grid.Row="0" Grid.RowSpan="4"
+                      Grid.Column="0"
+                      IsVisible="{Binding IsLoading}"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70"
+
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70"
+                                       TextColor="#D99A29"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+
+
 
                 <Grid Grid.Row="0" BackgroundColor="White">
                     <Grid.ColumnDefinitions>
@@ -1020,7 +1050,9 @@
                     </StackLayout>
                     <StackLayout Grid.Column="2" Padding="0,8,0,0">
                         <Image Source="closeGrey.png" HorizontalOptions="End">
-
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Closed_Tapped"/>
+                            </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
                 </Grid>

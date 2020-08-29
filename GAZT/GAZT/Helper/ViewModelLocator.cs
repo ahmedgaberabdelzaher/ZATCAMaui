@@ -1,6 +1,7 @@
 ﻿using CommonServiceLocator;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 
 #region OldUsing
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
@@ -158,7 +159,6 @@ using EGAZT.Views.NewDesign.InstalmentPlan;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
-using ZakatInstalmentPlanListViewModel = EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel.ZakatInstalmentPlanListViewModel;
 using EGAZT.Views.NewDesign.Template;
 using EGAZT.Views.NewDesign.ContractReleasePages;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;

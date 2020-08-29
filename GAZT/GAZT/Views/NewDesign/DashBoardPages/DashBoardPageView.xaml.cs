@@ -163,6 +163,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         #endregion
 
+        public void setDashBoardVisible()
+        {
+            viewModel.MenuViewVisible = false;
+            viewModel.HomeViewVisible = true;
+            viewModel.HomeIndicatorColor = Color.DarkGreen;
+            viewModel.MenuIndicatorColor = Color.White;
+            viewModel.TabbarColor = Color.DarkGray;
+            viewModel.StackMenuColor = Color.White;
+        }
         private void OnHomeTapped(object sender, EventArgs e)
         {
             viewModel.MenuViewVisible = false;
@@ -181,6 +190,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
+            if (!viewModel.IsVatRegistrationTileVisible)
+            { 
             viewModel.MenuViewVisible = true;
             viewModel.HomeViewVisible = false;
             viewModel.HomeIndicatorColor = Color.White;
@@ -188,11 +199,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.MenuIndicatorColor = Color.DarkGreen;
             viewModel.StackMenuColor = Color.Transparent;
             viewModel.TabbarColor = Color.Transparent;
-            //HomeView.IsVisible = false;
-            //MenuView.IsVisible = true;
-            //HomeIndicator.BackgroundColor = Color.White;
-            //MenuIndicator.BackgroundColor = Color.DarkGreen;
-            //stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
+                //HomeView.IsVisible = false;
+                //MenuView.IsVisible = true;
+                //HomeIndicator.BackgroundColor = Color.White;
+                //MenuIndicator.BackgroundColor = Color.DarkGreen;
+                //stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
+            }
+            else
+            {
+                PopupNavigation.Instance.PushAsync(new InfoPopUpPage());
+            }
         }
         private async void TappedOnMyBills(object sender, EventArgs e)
         {
@@ -648,7 +664,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
             });
         }
-        protected override bool OnBackButtonPressed() => true;
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+            //if (viewModel.MenuViewVisible)
+            //{
+            //    setDashBoardVisible();
+            //    return true;
+            //}
+            //else
+            //{ 
+            //    return true;
+            //}
+        }
 
         private async  void TaxEvasion_Tapped(object sender, EventArgs e)
         {

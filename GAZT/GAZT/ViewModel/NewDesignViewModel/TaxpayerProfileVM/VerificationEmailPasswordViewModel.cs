@@ -288,9 +288,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
             try
             {
-                TP = await WebServiceManager.GAZTValidateOTPForEmail(lang,
-                                                                    EnteredOTP,
-                                                                    App.TP.Tin,
+                System.Diagnostics.Debug.WriteLine("NEW EMAIL : ", _updateEmailData.NewEmail);
+                System.Diagnostics.Debug.WriteLine("CONFIRM EMAIL : ", _updateEmailData.CurrentEmail);
+                System.Diagnostics.Debug.WriteLine("CURRENT PWD : ", CurrentPasswordEntry);
+                System.Diagnostics.Debug.WriteLine("NEW EMAIL : ", NewPasswordEntry);
+
+                TP = await WebServiceManager.GAZTValidateOTPForEmail(lang, EnteredOTP, App.TP.Tin,
                                                                     _updateEmailData.CurrentEmail, _updateEmailData.NewEmail,
                                                                     CurrentPasswordEntry, NewPasswordEntry);
                 IsLoading = false;

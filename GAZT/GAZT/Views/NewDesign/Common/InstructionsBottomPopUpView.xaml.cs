@@ -38,32 +38,12 @@ namespace EGAZT.Views.NewDesign
             }
 
         }
-        protected override bool OnBackButtonPressed() => true;
+        //protected override bool OnBackButtonPressed() => true;
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            if (_viewModel.IsInstructions)
-            {
-                if (_viewModel.IsInstuctionsChecked)
-                {
-                    MessagingCenter.Send<Object, Boolean>(this, "InstructionsContinue", true);
-                }
-                else
-                {
-                    MessagingCenter.Send<Object, Boolean>(this, "InstructionsContinue", false);
-                }
-            }
-            else if (_viewModel.IsTerms)
-            {
-                if (_viewModel.IsTermsChecked)
-                {
-                    MessagingCenter.Send<Object, Boolean>(this, "TermsContinue", true);
-                }
-                else
-                {
-                    MessagingCenter.Send<Object, Boolean>(this, "TermsContinue", false);
-                }
-            }
+           
+
         }
     }
 }

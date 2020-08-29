@@ -169,13 +169,13 @@
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <custom:CustomLabel Grid.Row="0" Text="Effective Date" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VFCEffectiveDate}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
 
                         <Frame Grid.Row="1" HasShadow="False" Margin="0,5,0,0"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                                 <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding EffectiveDatePicked}" Placeholder="{x:Static ResourceManager:AppResources.ZakatSelectBillsPageViewPlaceholder}" 
-                                                    PlaceholderColor="Gray" x:Name="SearchItemVAT" FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" />
+                                                    PlaceholderColor="Gray"  FontSize="Small" TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" />
                                 <Image Source="arrowDropdown.png" WidthRequest="20" HeightRequest="20" Margin="0,0,5,0">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding EffectiveDateSpinnerClicked}"/>
@@ -188,13 +188,20 @@
 
                     <StackLayout Grid.Row="3" Margin="10,25,10,0" Orientation="Horizontal" Grid.ColumnSpan="2">
 
-                        <buttons:SfCheckBox />
-                        <custom:CustomLabel Text="I want to apply for an exception to file quarterly due to severe cash flow implications caused by monthly VAT collections." Style="{StaticResource MiniNewGrayLabelStyle}" CharacterSpacing="0" VerticalOptions="CenterAndExpand"/>
+                        <CheckBox Color="{StaticResource NewDarkGreenColor}"
+                                  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsFrequencyDetailsChecked}">
+                            <CheckBox.Triggers>
+                                <DataTrigger TargetType="CheckBox" Value="false">
+                                    <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                                </DataTrigger>
+                            </CheckBox.Triggers>
+                        </CheckBox>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VFCFrequencyDetailsCheckBoxString}" Style="{StaticResource MiniNewGrayLabelStyle}" CharacterSpacing="0" VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
 
                     <Frame Margin="-20,0,-20,0" Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="End" HasShadow="False">
 
-                        <buttons:SfButton  x:Name="btnZakatContinue" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}" Command="{Binding FrequencyContinueBtnTapped}" />
 
                     </Frame>
@@ -244,7 +251,7 @@
 
 
                         <StackLayout Grid.Row="0" Grid.Column="0">
-                            <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
+                            <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
                                       SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
 
@@ -294,7 +301,7 @@
                     </Grid>
               
                
-                     <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                     <Grid Grid.Row="2" IsVisible="{Binding ShowAttachments}" Grid.Column="0" Grid.ColumnSpan="2">
                          <Grid.RowDefinitions>
                              <RowDefinition Height="auto" />
                              <RowDefinition Height="*" />
@@ -405,11 +412,9 @@
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="ic_vat_info" HeightRequest="20" WidthRequest="20"/>
-                                <custom:CustomLabel Text="Attachments" Style="{StaticResource CaptionLabelBlack}" CharacterSpacing="0" VerticalOptions="CenterAndExpand"/>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Attachments}" Style="{StaticResource CaptionLabelBlack}" CharacterSpacing="0" VerticalOptions="CenterAndExpand"/>
                             </StackLayout>
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="In Case you have revenue below SAR40 and want to request for quarterly filing kindly attach evidence that you have been filing for 2 years with a monthly Tax Period and your Revenurs during last 12 months. 
-                                                &#10; 
-                                                In Case you want to request for an exception for quarterly filing, Kindly provide your previous 12 months average Days sales Outstanding"  />
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.VFCAttachmnetsInfo}"  />
                         </StackLayout>
                     </Frame>
 
@@ -459,7 +464,7 @@
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <custom:CustomLabel Grid.Row="0" Padding="10" Text="ID Type" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="0" Padding="10" Text="{x:Static ResourceManager:AppResources.VFCIDType}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
 
                         <Frame Grid.Row="1" HasShadow="False"   HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
@@ -475,21 +480,40 @@
                         </Frame>
 
                     </Grid>
-
-                    <Grid Grid.Row="2" Grid.Column="0"  Margin="10,25,0,0"  >
+                    
+                    <Grid Grid.Row="2" Grid.Column="0"  Margin="0,25,10,0"  >
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <custom:CustomLabel Grid.Row="0" Padding="0,0,10,0" Text="Date of Birth" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="0" Padding="0,0,10,0" Text="{x:Static ResourceManager:AppResources.VFCIDNumber}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
+
+                        <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
+                               <custom:GAZTBorderlessEntry TextChanged="IdNumberTextChanged" Unfocused="OnIDNumberFocusChanged" FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
+
+                            </StackLayout>
+                        </Frame>
+
+                    </Grid>
+
+                    <Grid Grid.Row="2" IsVisible="{Binding IsDOBVisible}" Grid.Column="1"  Margin="10,25,0,0"  >
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <custom:CustomLabel Grid.Row="0" Padding="0,0,10,0" Text="{x:Static ResourceManager:AppResources.VFCDateofBirth}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MiniNewGrayLabelStyle}"/>
 
                         <Frame Grid.Row="1" HasShadow="False"  HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                                 <custom:GAZTBorderlessEntry IsEnabled="False" Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}" 
-                                                   FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
+                                                            FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
                                 <Image Source="calendar.png" WidthRequest="20" HeightRequest="20" Margin="0,0,5,0">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ShowDatePicker}"/>
@@ -500,27 +524,6 @@
 
                     </Grid>
 
-                    <Grid Grid.Row="2" Grid.Column="1"  Margin="0,25,10,0"  >
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <custom:CustomLabel Grid.Row="0" Padding="0,0,10,0" Text="IDNumber" HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource MiniNewGrayLabelStyle}"/>
-
-                        <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                                <custom:GAZTBorderlessEntry Text="{Binding IDNumber}" 
-                                                   FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
-
-                            </StackLayout>
-                        </Frame>
-
-                    </Grid>
-
-
                     <Grid Grid.Row="3" Grid.ColumnSpan="2" ColumnSpacing="0" RowSpacing="0" Margin="0,25,0,0"  >
 
                         <Grid.RowDefinitions>
@@ -528,7 +531,7 @@
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <custom:CustomLabel Grid.Row="0" Padding="0,0,0,10" Text="Contact Person Name" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="0" Padding="0,0,0,10" Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource MiniNewGrayLabelStyle}"/>
 
                         <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
@@ -625,7 +628,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid Grid.Row="0" Grid.Column="0">
-                                        <Label Text="Current Frequency"
+                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodCurrentFrequency}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -638,7 +641,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="1" Grid.Column="0">
-                                        <Label Text="New Frequency"
+                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodNewFrequency}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -650,14 +653,14 @@
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
-                                    <Grid Grid.Row="2" Grid.Column="0">
-                                        <Label Text="Effective Date"
+                                    <Grid Grid.Row="2" IsVisible="{Binding IsDOBVisible}" Grid.Column="0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCEffectiveDate}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
                                     </Grid>
 
-                                    <Grid Grid.Row="2" Grid.Column="1">
+                                    <Grid Grid.Row="2" IsVisible="{Binding IsDOBVisible}" Grid.Column="1">
                                         <Label Text="{Binding EffectiveDatePicked}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
@@ -809,7 +812,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid Grid.Row="0" Grid.Column="0">
-                                        <Label Text="Item Type"
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCIDType}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -822,20 +825,19 @@
                                     </Grid>
 
                                     <Grid Grid.Row="1" Grid.Column="0">
-                                        <Label Text="ID Number"
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCIDNumber}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
                                     </Grid>
 
                                     <Grid Grid.Row="1" Grid.Column="1">
-                                        <Label Text="{Binding IDNumber}"
-                                               HorizontalOptions="End"
+                                        <Label HorizontalOptions="End" Text="{Binding IDNumber}"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
                                     <Grid Grid.Row="2" Grid.Column="0">
-                                        <Label Text="Date Of Birth"
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCDateofBirth}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -848,7 +850,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="3" Grid.Column="0">
-                                        <Label Text="Contract Person Name"
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -866,7 +868,7 @@
 
                         <StackLayout Grid.Row="6"  Grid.ColumnSpan="2">
 
-                            <buttons:SfButton  Margin="0,16,0,16"  x:Name="SummarybtnContinue" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
+                            <buttons:SfButton  Margin="0,16,0,16" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}" Clicked="SummarybtnContinue_Clicked" />
 
                         </StackLayout>
