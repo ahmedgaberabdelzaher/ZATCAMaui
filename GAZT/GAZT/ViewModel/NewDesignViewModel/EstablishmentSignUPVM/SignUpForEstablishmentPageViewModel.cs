@@ -81,6 +81,136 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         #region Propetry
 
+        private string _txtLicenseNumber = string.Empty;
+        public string TxtLicenseNumber
+        {
+            get
+            {
+                return _txtLicenseNumber;
+            }
+            set
+            {
+                _txtLicenseNumber = value;
+                RaisePropertyChanged("TxtLicenseNumber");
+            }
+        }
+        private bool _issuedByTapped = false;
+        public bool IssuedByTapped
+        {
+            get
+            {
+                return _issuedByTapped;
+            }
+            set
+            {
+                _issuedByTapped = value;
+                RaisePropertyChanged("IssuedByTapped");
+            }
+        }
+        private bool _issuedByCityTapped = false;
+        public bool IssuedByCityTapped
+        {
+            get
+            {
+                return _issuedByCityTapped;
+            }
+            set
+            {
+                _issuedByCityTapped = value;
+                RaisePropertyChanged("IssuedByCityTapped");
+            }
+        }
+
+        private string _txtLOrCIssuedBy = string.Empty;
+        public string TxtLOrCIssuedBy
+        {
+            get
+            {
+                return _txtLOrCIssuedBy;
+            }
+            set
+            {
+                _txtLOrCIssuedBy = value;
+                RaisePropertyChanged("TxtLOrCIssuedBy");
+            }
+        }
+
+        private IssuedByResponse _selectedIssuedBy = null;
+        public IssuedByResponse SelectedIssuedBy
+        {
+            get
+            {
+                return _selectedIssuedBy;
+            }
+            set
+            {
+                _selectedIssuedBy = value;
+                if (_selectedIssuedBy != null)
+                {
+                    TxtLOrCIssuedBy = _selectedIssuedBy.txt50;
+                }
+                RaisePropertyChanged("SelectedIssuedBy");
+            }
+        }
+        private IssuedByResponse _selectedIssuedByPrev = null;
+        public IssuedByResponse SelectedIssuedByPrev
+        {
+            get
+            {
+                return _selectedIssuedByPrev;
+            }
+            set
+            {
+                _selectedIssuedByPrev = value;
+                RaisePropertyChanged("SelectedIssuedByPrev");
+            }
+        }
+
+        private SignupCityResult _selectCityListPrev = null;
+        public SignupCityResult SelectCityListPrev
+        {
+            get
+            {
+                return _selectCityListPrev;
+            }
+            set
+            {
+                _selectCityListPrev = value;
+                RaisePropertyChanged("SelectCityListPrev");
+            }
+        }
+
+        private SignupCityResult _selectCityList = null;
+        public SignupCityResult SelectCityList
+        {
+            get
+            {
+                return _selectCityList;
+            }
+            set
+            {
+                _selectCityList = value;
+                if (_selectCityList != null)
+                {
+                    TxtLOrCIssuedByCity = _selectCityList.CityName;
+                }
+                RaisePropertyChanged("SelectCityList");
+            }
+        }
+        private string _txtLOrCIssuedByCity = string.Empty;
+        public string TxtLOrCIssuedByCity
+        {
+            get
+            {
+                return _txtLOrCIssuedByCity;
+            }
+            set
+            {
+                _txtLOrCIssuedByCity = value;
+                RaisePropertyChanged("TxtLOrCIssuedByCity");
+            }
+        }
+
         private string _pkrDBOPrev = string.Empty;
         public string PkrDBOPrev
         {
@@ -738,8 +868,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("SelectedGCCCountryIndex");
             }
         }
-        public IList<VATSignUPCityResults> _cityList;
-        public IList<VATSignUPCityResults> CityList
+        public IList<SignupCityResult> _cityList;
+        public IList<SignupCityResult> CityList
         {
             get
             {
@@ -1164,6 +1294,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
+       
+
         private SignUpUsing _selectedSignUpUsingSetForCancle = null;
         public SignUpUsing SelectedSignUpUsingSetForCancle
         {
@@ -1227,6 +1359,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
+        private bool _isAllValidCRNumberEntered = false;
+        public bool IsAllValidCRNumberEntered
+        {
+            get
+            {
+                return _isAllValidCRNumberEntered;
+            }
+            set
+            {
+                _isAllValidCRNumberEntered = value;
+                RaisePropertyChanged("IsAllValidCRNumberEntered");
+            }
+        }
+
+
 
         #endregion
 
@@ -1282,10 +1429,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     break;
 
                 case EstablishmentSignUPTabEnum.BusinessInformation:
-                    PageTitle = AppResources.ZZZContactInformation;
-                    BodyText = AppResources.ZZZZCompletethebelowdetails;
+
+                    //CRNumber Tile
+                    if (IsCRChecked == true)
+                    {
+                        if (IsAllValidCRNumberEntered)
+                        {
+                            PageTitle = AppResources.ZZZContactInformation;
+                            BodyText = AppResources.ZZZZCompletethebelowdetails;
+
+                            currentTab = EstablishmentSignUPTabEnum.ContactInformation;
+                        }
+                        else
+                        {
+                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                        }
+                    }
+                    //License Number Validation
+                    else
+                    {
+                        Console.WriteLine(TxtLOrCIssuedByCity);
+                        Console.WriteLine(TxtLOrCIssuedBy);
+
+                        //AllValid Data Entered
+                        if (!string.IsNullOrEmpty(TxtLicenseNumber)
+                            &&TxtLicenseNumber.Length == 20
+                            && IssuedByTapped
+                            && IssuedByCityTapped)
+                            
+                        {
+                            PageTitle = AppResources.ZZZContactInformation;
+                            BodyText = AppResources.ZZZZCompletethebelowdetails;
+
+                            currentTab = EstablishmentSignUPTabEnum.ContactInformation;
+
+                        }
+                        else {
+                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                        }
+                        
+                    }
                     
-                    currentTab = EstablishmentSignUPTabEnum.ContactInformation;
                     break;
 
                 case EstablishmentSignUPTabEnum.ContactInformation:
@@ -1487,29 +1671,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         }
 
-        public void SetCityList()
-        {
-            try
-            {
-                if (!SelectedIdType.ID.Equals("ZS0018"))
-                {
-
-                    CityList = vATSignUpData.d.city_dropdownSet.results;
-                    string selectedRegioncode = SelectedRegion.Bland;
-
-                    CityList = vATSignUpData.d.city_dropdownSet.results.Where(x => x.Region == selectedRegioncode).ToList();
-                    if (CityList != null)
-                    {
-                        CityList = CityList.Where(c => c.Country == "SA").ToList();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-        }
+        
 
         private async Task ResendOTPAsync()
         {
@@ -1713,9 +1875,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 });
                 try
                 {
-                    SignUpUsingList = null;
-                    //  IsCRVisible = true;
-                    // IsLicenseVisible = false;
+                     SignUpUsingList = null;
+                    IsCRVisible = true;
+                    IsLicenseVisible = false;
                     List<SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
                     ListSignUpUsing.Add(new SignUpUsing { ID = 1, SUType = AppResources.ZZNationalID });
                     ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
@@ -1734,12 +1896,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     LicenseOrCRModel LicenseOrCRModelM = new LicenseOrCRModel();
                     LicenseOrCRModelM.ID = 2;
                     LicenseOrCRModelM.LCType = AppResources.ZZCRNumber;
-                    //  SelectLCType = LicenseOrCRModelM;
-                    //StringBuilder captcha = GetCaptcha();
+                  //SelectLCType = LicenseOrCRModelM;
+                                       //StringBuilder captcha = GetCaptcha();
                     //Captcha = captcha.ToString();
-                    //  IDTypeModelRootObject = null;
+                  //IDTypeModelRootObject = null;
                     IDTypeIndex = 0;
-                    //   SelectedLOrC = 1;
+                  //SelectedLOrC = 1;
                 }
                 catch (Exception ex)
                 {
@@ -1838,101 +2000,85 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             });
 
         }
-        //public async Task SetCityList()
-        //{
-        //    Device.BeginInvokeOnMainThread(async () =>
-        //    {
-        //        IsLoading = true;
 
-        //    });
+        public async Task SetCityList()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                IsLoading = true;
 
-        //    try
-        //    {
-        //        CityList = null;
-        //        SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
-        //        List<SignupCityResult> CityR = new List<SignupCityResult>();
-        //        IsCRChecked = true;
-        //        IsLNChecked = false;
-        //        CityR = CityListSignup.d.city_dropdownSet.results;
-        //        CityList = CityR;
-        //    }
-        //    catch (GAZTException gex)
-        //    {
+            });
 
-        //        // Handle the GAZT custom exception.
-        //        string MessageForTheUser = gex.Message;
-        //        if (gex is GAZTInvalidDataException)
-        //        {
-        //            MessageForTheUser = AppResources.ZZSomethingwentwrong;
-        //        }
-        //        if (gex is GAZTNetworkConnectivityIssueException)
-        //        {
-        //            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-        //        }
-        //        else if (gex is GAZTInternetException)
-        //        {
-        //            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-        //        }
-        //        else if (gex is GAZTSessionExpiredException)
-        //        {
-        //            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-        //        }
+            try
+            {
+                CityList = null;
+                SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
+                List<SignupCityResult> CityR = new List<SignupCityResult>();
+                IsCRChecked = true;
+                IsLNChecked = false;
+                CityR = CityListSignup.d.city_dropdownSet.results;
+                CityList = CityR;
+            }
+            catch (GAZTException gex)
+            {
 
-        //        Device.BeginInvokeOnMainThread(async () =>
-        //        {
-        //            IsLoading = false;
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
 
-        //            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-        //            //_navigationService.GoBack();
-        //        });
-        //    }
-        //    catch (HttpRequestException ex)
-        //    {
-        //        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
 
-        //        Device.BeginInvokeOnMainThread(async () =>
-        //        {
-        //            IsLoading = false;
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+            }
+            catch (HttpRequestException ex)
+            {
+                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
-        //            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-        //            //_navigationService.GoBack();
-        //        });
-        //    }
-        //    catch (Exception ex)
-        //    {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
 
-        //        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-        //        Device.BeginInvokeOnMainThread(async () =>
-        //        {
-        //            IsLoading = false;
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
 
-        //            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-        //            //_navigationService.GoBack();
-        //        });
-        //    }
-        //    Device.BeginInvokeOnMainThread(async () =>
-        //    {
-        //        IsLoading = false;
+                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
 
-        //    });
-        //}
-        //public async Task SetDefaultDate()
-        //{
-        //    ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-        //    //Select today dates
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+            }
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                IsLoading = false;
 
-        //    if (DateTime.Now.Date.Day < 10)
-        //        todaycollection.Add("0" + DateTime.Now.Date.Day);
-        //    else
-        //        todaycollection.Add(DateTime.Now.Date.Day.ToString());
-        //    if (DateTime.Now.Date.Month < 10)
-        //        todaycollection.Add("0" + DateTime.Now.Date.Month);
-        //    else
-        //        todaycollection.Add(DateTime.Now.Date.Month.ToString());
-        //    todaycollection.Add(DateTime.Now.Date.Year.ToString());
-        //    TodayDate = todaycollection;
-        //    DefaultMonth = DateTime.Now.Date.Month;
-        //}
+            });
+        }
 
         #endregion
 

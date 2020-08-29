@@ -86,21 +86,62 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             ClearFields();
             await viewModel.OnPageLoad();
             await viewModel.SetIssueIdList();
-          //  await viewModel.SetCityList();
+            await viewModel.SetCityList();
 
 
         }
 
+        private void LIssuedBy_Clicked(object sender, EventArgs e)
+        {
+            ddlLIssuedBy.IsOpen = true;
+        }
+
+        private void ddlLIssuedBy_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            if ((IssuedByResponse)e.NewValue != null)
+            {
+                IssuedByResponse issuedByResponse = (IssuedByResponse)e.NewValue;
+                ddlLIssuedBy.SelectedItem = issuedByResponse;
+                viewModel.SelectedIssuedBy = issuedByResponse;
+                viewModel.SelectedIssuedByPrev = issuedByResponse;
+                viewModel.TxtLOrCIssuedBy = issuedByResponse.txt50;
+                viewModel.IssuedByTapped = true;
+            }
+        }
+        private void ddlLIssuedBy_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedIssuedBy = viewModel.SelectedIssuedByPrev;
+            ddlLIssuedBy.SelectedItem = viewModel.SelectedIssuedByPrev;
+            if (viewModel.SelectedIssuedByPrev == null)
+            {
+                viewModel.TxtLOrCIssuedBy = string.Empty;
+            }
+           
+        }
+        private void ddlLIssuedByCity_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectCityList = viewModel.SelectCityListPrev;
+            ddlLIssuedByCity.SelectedItem = viewModel.SelectCityListPrev;
+            if (viewModel.SelectCityListPrev == null)
+            {
+                viewModel.TxtLOrCIssuedByCity = string.Empty;
+            }
+            
+        }
+        private void LIssuedByCity_Clicked(object sender, EventArgs e)
+        {
+            ddlLIssuedByCity.IsOpen = true;
+        }
         public void ClearFields()
         {
             //viewModel.PkrDBO = string.Empty;
-            //viewModel.TxtLOrCIssuedBy = string.Empty;
-            //viewModel.TxtLOrCIssuedByCity = string.Empty;
+            viewModel.TxtLOrCIssuedBy = string.Empty;
+            viewModel.TxtLOrCIssuedByCity = string.Empty;
             viewModel.IDTypeIndex = 0;
             //viewModel.SelectedLOrC = 1;
             //viewModel.IsLoading = false;
-            //viewModel.SelectedSignUpUsing = null;
-            //viewModel.SignUpUsingList = null;
+            viewModel.SelectedSignUpUsing = null;
+            viewModel.SignUpUsingList = null;
             //viewModel.SelectLCType = null;
             //viewModel.LcTypeList = null;
             //viewModel.SelectCityList = null;
@@ -115,7 +156,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtIDNumber = string.Empty;
             viewModel.TxtName = string.Empty;
             viewModel.TxtCRNumber = string.Empty;
-           // viewModel.TxtLicenseNumber = string.Empty;
+            viewModel.TxtLicenseNumber = string.Empty;
             //viewModel.TxtEmailAddress = string.Empty;
             //viewModel.TxtCountryCode = string.Empty;
 
@@ -289,6 +330,81 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         private void CountryCodeTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
+        }
+
+        public bool ValidateCRNumber()
+        {
+            if (!string.IsNullOrEmpty(EntryCRNumber.Text))
+            {
+                if (EntryCRNumber.Text.Length == 10)
+                {
+                    try
+                    {
+                        // FrmCR.HasError = false;
+                        CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
+                        if (Result != null)
+                        {
+                            if (Result.d != null)
+                            {
+                                if (Result.d.NotFound == "X")
+                                {
+                                    //FrmCR.HasError = true;
+                                    viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
+
+                                    return false;
+                                }
+                                else
+                                {
+                                    viewModel.IsAllValidCRNumberEntered = true;
+                                    return true;
+                                    //FrmCR.HasError = false;
+                                }
+                               
+                            }
+                            else
+                            {
+                                return false;
+                            }
+
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    catch (InternetException ex)
+                    {
+                    
+                        viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                        return false;
+                    }
+                }
+                else
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZZCommercialReiterationNumbershouddbe10digits;
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    //FrmCR.HasError = true;
+                    EntryCRNumber.Text = string.Empty;
+    
+                    EntryCRNumber.Focus();
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
@@ -980,16 +1096,21 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 DpDbo.SelectedItem = todaycollection;
             }
         }
-        private void OnLicenseIssuedByClicked(object sender, EventArgs e)
-        {
-            LicenseIssuedByPicker.IsOpen = true;
-        }
+        
 
-        private void OnIssuingCityClicked(object sender, EventArgs e)
+        
+        private void ddlLIssuedByCity_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            IssuingCityPicker.IsOpen = true;
+            if ((SignupCityResult)e.NewValue != null)
+            {
+                SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
+                ddlLIssuedByCity.SelectedItem = selectedcity;
+                viewModel.SelectCityList = selectedcity;
+                viewModel.SelectCityListPrev = selectedcity;
+                viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
+                viewModel.IssuedByCityTapped = true;
+            }
         }
-
         private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
            // FrmDBO.HasError = false;
@@ -1462,12 +1583,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             viewModel.ImgBackgroundCRNubmer = "FP_selected_tile";
             viewModel.ImgBackgroundLicenseNubmer = "FP_unselected_tile";
+            viewModel.IsCRChecked = true;
         }
 
         private void OnLicenseNumberTapped(object sender, EventArgs e)
         {
             viewModel.ImgBackgroundCRNubmer = "FP_unselected_tile";
             viewModel.ImgBackgroundLicenseNubmer = "FP_selected_tile";
+            viewModel.IsCRChecked = false;
+          
         }
         private void ImageSeeConfirmPassword_Tapped(object sender, EventArgs e)
         {
@@ -1587,11 +1711,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (!string.IsNullOrEmpty(viewModel.TxtName))
             {
-                viewModel.IsAllValidDataEntered = false
+                viewModel.IsAllValidDataEntered = false;
                // FrmName.HasError = false;
             }
         }
-
-
     }
 }
