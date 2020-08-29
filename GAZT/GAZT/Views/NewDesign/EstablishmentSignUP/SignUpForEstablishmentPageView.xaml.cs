@@ -417,6 +417,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 return false;
             }
         }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            viewModel.StopTimer = false;
+
+            //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            //{
+            //    Page pg = Navigation.NavigationStack[index];
+            //    Navigation.RemovePage(pg);
+            //}
+        }
 
         private void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
         {
@@ -1860,19 +1872,25 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     EstablishmentSignUpDataAsync();
                 }
             }
+
+            //Final CreateGAZT Account
+            else if(viewModel.CurrentTab == EstablishmentSignUPTabEnum.EmailVerification)
+            {
+                CreateGAZTAccount();
+            }
             else
             {
                 viewModel.navigateToNext();
             }
         }
 
-        private void NewUseSignup()
+    public void CreateGAZTAccount()
         {
             StringBuilder PopMsg = new StringBuilder();
             bool IsAllValid = true;
             if (string.IsNullOrEmpty(viewModel.TxtEmailCode))
             {
-               //rmEmailCode.HasError = true;
+            //  frmEmailCode.HasError = true;
                 PopMsg.Append(AppResources.ZZPleaseenterconfirmationcodesenttoyouremailaddress);
                 IsAllValid = false;
             }
@@ -1920,7 +1938,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 bool IsValidPass = UtilityManager.IsPasswordValid(viewModel.TxtPassword);
                 if (!IsValidPass)
                 {
-                 // frmPass.HasError = true;
+                  //frmPass.HasError = true;
                     if (PopMsg.Length > 0)
                     {
                         PopMsg.Append(Environment.NewLine);
@@ -1935,11 +1953,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
                 else
                 {
-                 // frmPass.HasError = false;
+                   //rmPass.HasError = false;
                 }
                 if (viewModel.TxtPassword != viewModel.TxtConfirmPassword)
                 {
-                   //rmPass.HasError = true;
+                  //frmPass.HasError = true;
                     if (PopMsg.Length > 0)
                     {
                         PopMsg.Append(Environment.NewLine);
@@ -1954,7 +1972,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
                 else
                 {
-                 // frmCfrmPass.HasError = false;
+                   //rmCfrmPass.HasError = false;
                 }
             }
             if (IsAllValid == true)
@@ -1982,6 +2000,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
         }
 
+       
         private void EntryCfrmPass_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryCfrmPass.Text))
@@ -2017,7 +2036,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.IsResendOTPEnabled = false;
                 viewModel.IsOTPEntryEnable = true;
 
-
+                
 
 
                 viewModel.SignUpModelRootObjectM = ResultFirstSubmitModel;
@@ -2025,7 +2044,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 string mobileno = ResultFirstSubmitModel.d.AMobile;
                 viewModel.TxtMobileNumber = "XXXXXXXXXX" + mobileno.Substring(mobileno.Length - 4, 4);
 
-                viewModel.TimerStart(viewModel.numberOfSeconds);
+                await Task.Run(() =>
+                {
+                    viewModel.TimerStart(viewModel.numberOfSeconds);
+
+                });
+                
+                OTPFirstEntry.Focus();
             }
             catch(Exception ex)
             {
@@ -2171,31 +2196,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         else
                                         {
-                                        viewModel.PageTitle = AppResources.VerificationCode;
-                                        viewModel.BodyText = AppResources.ZZPleaseenteraccessCode;
-                                        viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                                        NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
-                                        viewModel.TimerStart(viewModel.numberOfSeconds);
-                                        viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
-                                        viewModel.ButtonDisableTextColor = Color.Gray;
-                                        viewModel.VerifyButtonDisableColor = Color.FromHex("#006450");
-                                        viewModel.VerifyButtonDisableTextColor = Color.White;
-                                        viewModel.IsResendOTPEnabled = false;
-                                        viewModel.IsOTPEntryEnable = true;
-
-                                        await Task.Run(() =>
-                                        {
-                                            Task.Delay(100);
-                                        });
-
-
-                                        viewModel.SignUpModelRootObjectM = ResultFirstSubmitModel;
-                                        viewModel.TxtEmailAddress = ResultFirstSubmitModel.d.AEmail;
-                                        string mobileno = ResultFirstSubmitModel.d.AMobile;
-                                        viewModel.TxtMobileNumber = "XXXXXXXXXX" + mobileno.Substring(mobileno.Length - 4, 4);
-
-                                      
-                                        }
+                                    }
                                     }
                                     else if (ResultDuplicateCR.d.Flag == "X")
                                     {
