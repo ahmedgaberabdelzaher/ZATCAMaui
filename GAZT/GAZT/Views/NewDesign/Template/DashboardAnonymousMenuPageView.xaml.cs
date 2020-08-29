@@ -102,7 +102,7 @@ namespace EGAZT.Views.NewDesign.Template
 
         private void OnSupportTapped(object sender, EventArgs e)
         {
-
+            viewModel._navigationService.NavigateTo(App.SupportPageView);
         }
 
         private void OnVATRefundTapped(object sender, EventArgs e)

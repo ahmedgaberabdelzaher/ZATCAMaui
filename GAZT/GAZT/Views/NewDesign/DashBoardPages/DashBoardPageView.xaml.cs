@@ -163,6 +163,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         #endregion
 
+        public void setDashBoardVisible()
+        {
+            viewModel.MenuViewVisible = false;
+            viewModel.HomeViewVisible = true;
+            viewModel.HomeIndicatorColor = Color.DarkGreen;
+            viewModel.MenuIndicatorColor = Color.White;
+            viewModel.TabbarColor = Color.DarkGray;
+            viewModel.StackMenuColor = Color.White;
+        }
         private void OnHomeTapped(object sender, EventArgs e)
         {
             viewModel.MenuViewVisible = false;
@@ -655,7 +664,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
             });
         }
-        protected override bool OnBackButtonPressed() => true;
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+            //if (viewModel.MenuViewVisible)
+            //{
+            //    setDashBoardVisible();
+            //    return true;
+            //}
+            //else
+            //{ 
+            //    return true;
+            //}
+        }
 
         private async  void TaxEvasion_Tapped(object sender, EventArgs e)
         {

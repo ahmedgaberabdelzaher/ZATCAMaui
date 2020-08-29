@@ -824,7 +824,7 @@
                                                                  BackgroundColor="Transparent" >
                                                                 </custom:CustomButton>
                                                                 <!--<custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
-                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}"  x:Name="EntryMobileNumber" Placeholder="{x:Static local:AppResources.ZZMobileNumber}"   HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False" MaxLength="15"   FontFamily="{StaticResource SSTArLight}"
+                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}" MaxLength="{Binding MaxDigids}"  x:Name="EntryMobileNumber" Placeholder="{x:Static local:AppResources.ZZMobileNumber}"   HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False"    FontFamily="{StaticResource SSTArLight}"
                                                                                         Unfocused="EntryMobileNumber_Unfocused"  Keyboard="Telephone" TextColor="Black"  FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                                                     <Entry.Behaviors>

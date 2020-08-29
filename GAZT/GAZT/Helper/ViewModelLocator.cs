@@ -1,6 +1,7 @@
 ﻿using CommonServiceLocator;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 
 #region OldUsing
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;

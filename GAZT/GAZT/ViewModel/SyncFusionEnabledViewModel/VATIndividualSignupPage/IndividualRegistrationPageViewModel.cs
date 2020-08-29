@@ -93,6 +93,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsPasswordEncripted");
             }
         }
+        private string _maxDigids = "9";
+        public string MaxDigids
+        {
+            get
+            {
+                return _maxDigids;
+            }
+            set
+            {
+                _maxDigids = value;
+                RaisePropertyChanged("MaxDigids");
+            }
+        }
         private bool _isConfirmPasswordEncripted = true;
         public bool IsConfirmPasswordEncripted
         {
@@ -159,6 +172,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
 
                 _txtCountryCode = value;
+                if (_txtCountryCode != null)
+                {
+                    MaxDigids = (14 - _txtCountryCode.Length).ToString();
+                    MobileNumber = string.Empty;
+                }
+                else
+                {
+                    MaxDigids = "15";
+                }
+
                 RaisePropertyChanged("TxtCountryCode");
             }
         }

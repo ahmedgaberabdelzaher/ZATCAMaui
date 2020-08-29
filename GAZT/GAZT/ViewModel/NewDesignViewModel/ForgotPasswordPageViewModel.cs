@@ -2094,17 +2094,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
                 await Task.Run(async () =>
                 {
                     currentAttempts = 0;
+
                     bool isNewPasswordValid = UtilityManager.IsPasswordValid(NewPassword);
-                    bool isConfirmPasswordValid = UtilityManager.IsPasswordValid(ConfirmPassword);
-                    if (isNewPasswordValid && isConfirmPasswordValid)
+                    //bool isConfirmPasswordValid = UtilityManager.IsPasswordValid(ConfirmPassword);
+
+                    if (isNewPasswordValid)
                     {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = true;
+                        });
+
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
                         string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
