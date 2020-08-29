@@ -27,7 +27,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             UpdateUI();
 
             // * Need to update - Taxpayer Profile Data
-
         }
 
         private void UpdateUI()
@@ -42,12 +41,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 case 2:
                     viewModel.SuccessTitleLbl = AppResources.TPMobileUpdate;
                     viewModel.successCaptionLbl = AppResources.TPSuccessMobileUpdated;
-                    viewModel.ButtonLabelText = AppResources.TPGoToProfile;
+                    viewModel.ButtonLabelText = AppResources.NDBacktoLogin;
                     break;
                 case 3:
                     viewModel.SuccessTitleLbl = AppResources.TPPasswordUpdate;
                     viewModel.successCaptionLbl = AppResources.NewPasswordUpdatedSuccessfully;
-                    viewModel.ButtonLabelText = AppResources.TPGoToProfile;
+                    viewModel.ButtonLabelText = AppResources.NDBacktoLogin;
                     break;
                 default:
                     break;
@@ -58,7 +57,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                if (viewModel.TPProfileSuccessId != 3)
+                if (viewModel.TPProfileSuccessId != 4) // Need to check
                 {
                     await Task.Run(() =>
                     {

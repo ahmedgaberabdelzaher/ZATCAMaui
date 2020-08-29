@@ -204,8 +204,11 @@
                                 <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
 
-                                    <control:BorderlessEntry x:Name="CurrentPassword" Style="{StaticResource DefaultEntry}"
-                                                         Text="{Binding CurrentPasswordEntry}" IsPassword="True" >
+                                    <control:BorderlessEntry x:Name="CurrentPassword"
+                                                             Style="{StaticResource DefaultEntry}"
+                                                             Text="{Binding CurrentPasswordEntry}"
+                                                             IsPassword="True"
+                                                             MaxLength="16">
                                     </control:BorderlessEntry>
 
                                     <inputLayout:SfTextInputLayout.TrailingView >
@@ -226,8 +229,10 @@
                                 <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
                                     <control:BorderlessEntry x:Name="NewPassword"
-                                                         Style="{StaticResource DefaultEntry}"
-                                                         Text="{Binding NewPasswordEntry}" IsPassword="True" >
+                                                             Style="{StaticResource DefaultEntry}"
+                                                             Text="{Binding NewPasswordEntry}"
+                                                             IsPassword="True"
+                                                             MaxLength="16">
                                     </control:BorderlessEntry>
 
                                     <inputLayout:SfTextInputLayout.TrailingView >
@@ -247,8 +252,10 @@
                                 <inputLayout:SfTextInputLayout Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
                                     <control:BorderlessEntry x:Name="ConfirmPassword"
-                                                         Style="{StaticResource DefaultEntry}"
-                                                         Text="{Binding ConfirmPasswordEntry}" IsPassword="True" >
+                                                             Style="{StaticResource DefaultEntry}"
+                                                             Text="{Binding ConfirmPasswordEntry}"
+                                                             IsPassword="True"
+                                                             MaxLength="16">
                                     </control:BorderlessEntry>
 
                                     <inputLayout:SfTextInputLayout.TrailingView >
