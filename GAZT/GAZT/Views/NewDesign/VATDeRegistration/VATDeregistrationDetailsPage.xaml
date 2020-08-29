@@ -505,11 +505,11 @@
                                                                      <StackLayout Grid.Row="1" Grid.Column="0" >
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelBlack}" />     
-                                <inputLayout:SfTextInputLayout  Margin="-2,-4,0,6" WidthRequest="180"
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                <inputLayout:SfTextInputLayout  Margin="-2,-6,0,0" WidthRequest="180"
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"  x:Name="FrmIDNumber"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                    <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Text="{Binding TxtIDNumber}"
-                                                            TextColor="#bbbbbb" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
+                                    <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding TxtIDNumber}"
+                                                            TextColor="Black" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
                                     </Entry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
