@@ -84,6 +84,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 // API Calls
                 await Task.Run(async () =>
                 {
+                    System.Diagnostics.Debug.WriteLine("NEW EMAIL : ", NewEmailText);
+                    System.Diagnostics.Debug.WriteLine("CONFIRM EMAIL : ", ConfirmEmailText);
+
                     APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, CurrentEmailText, NewEmailText);
 
                     // setup updated email's

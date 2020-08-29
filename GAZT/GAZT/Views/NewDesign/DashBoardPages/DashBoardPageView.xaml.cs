@@ -181,6 +181,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
+            if (!viewModel.IsVatRegistrationTileVisible)
+            { 
             viewModel.MenuViewVisible = true;
             viewModel.HomeViewVisible = false;
             viewModel.HomeIndicatorColor = Color.White;
@@ -188,11 +190,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.MenuIndicatorColor = Color.DarkGreen;
             viewModel.StackMenuColor = Color.Transparent;
             viewModel.TabbarColor = Color.Transparent;
-            //HomeView.IsVisible = false;
-            //MenuView.IsVisible = true;
-            //HomeIndicator.BackgroundColor = Color.White;
-            //MenuIndicator.BackgroundColor = Color.DarkGreen;
-            //stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
+                //HomeView.IsVisible = false;
+                //MenuView.IsVisible = true;
+                //HomeIndicator.BackgroundColor = Color.White;
+                //MenuIndicator.BackgroundColor = Color.DarkGreen;
+                //stackMenu.BackgroundColor=Tabbar.BorderColor = Color.Transparent;
+            }
+            else
+            {
+                PopupNavigation.Instance.PushAsync(new InfoPopUpPage());
+            }
         }
         private async void TappedOnMyBills(object sender, EventArgs e)
         {

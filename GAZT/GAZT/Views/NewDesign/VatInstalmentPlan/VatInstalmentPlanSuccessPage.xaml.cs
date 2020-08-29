@@ -73,6 +73,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
             Device.BeginInvokeOnMainThread(() =>
             {
+
+              
                 var _navigation = Application.Current.MainPage.Navigation;
 
 
@@ -107,9 +109,9 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                     }
                 }
 
-                viewModel._navigationService.NavigateTo(App.InstalmentPlanPageView);
+                viewModel._navigationService.NavigateTo(App.VatInstalmentPlanListPageView);
 
-
+                MessagingCenter.Send<Object, Boolean>(this, "ISCallBackFromSuccess", true);
 
                 //Application.Current.MainPage.Navigation.PopAsync();
 
@@ -159,32 +161,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         {
             base.OnAppearing();
 
-            var _navigation = Application.Current.MainPage.Navigation;
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.VatInstalmentPlanPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
-
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.VatInstalmentPlanListPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
-            foreach (var item in _navigation.NavigationStack)
-            {
-                if (item.GetType().Name == App.InstalmentPlanPageView)
-                {
-                    _navigation.RemovePage(item);
-                    break;
-                }
-            }
+          
         }
 
     }

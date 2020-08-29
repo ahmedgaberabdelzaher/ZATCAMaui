@@ -7824,6 +7824,12 @@ namespace EGAZT {
             }
         }
         
+        public static string VatDeregSuspendedEndDateMismatchException {
+            get {
+                return ResourceManager.GetString("VatDeregSuspendedEndDateMismatchException", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistrationInstructions {
             get {
                 return ResourceManager.GetString("VATDeregistrationInstructions", resourceCulture);
