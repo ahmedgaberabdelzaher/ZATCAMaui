@@ -167,19 +167,19 @@
                                         HorizontalTextAlignment="Center"></Label>
 
                         </inputLayout:SfTextInputLayout.LeadingView>
-                        <control:BorderlessEntry x:Name="Mobile_Entry"
+                        <Entry x:Name="Mobile_Entry" FlowDirection="LeftToRight"
                                                         Text="{Binding MobileNumber}"
                                                         Unfocused="Mobile_Entry_Unfocused"
                                                         FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
-                                                        TextColor="White"
+                                                        TextColor="Black"
                                                         PlaceholderColor="Gray"
                                                         Keyboard="Telephone"
                                                         MaxLength="9">
                             <Entry.Behaviors>
                                 <custom1:OnlyNumericValuesBehaviour/>
                             </Entry.Behaviors>
-                        </control:BorderlessEntry>
+                        </Entry>
                     </inputLayout:SfTextInputLayout>
 
                 </StackLayout>
