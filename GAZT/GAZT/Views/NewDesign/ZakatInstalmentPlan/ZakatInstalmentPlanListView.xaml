@@ -82,54 +82,124 @@
 
     <ContentPage.Content>
          <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-           <Grid>
-               
-               <StackLayout IsVisible="{Binding CreateZakatInstalmentBtnVisible}">
-                 <Grid  BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid>
+
+                <Grid IsVisible="{Binding IsZakatLandingPageVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                     <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyRequests}" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATCertificates}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="1 VAT Change Filling Period Request" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentVatInstalmentPlan}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"/>
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                     </Grid>
 
+                    <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                    <cards:SfCardView Grid.Row="1" Margin="0,20,0,0" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
+                        <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand"   VerticalOptions="StartAndExpand" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
+                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
 
-                        <Grid >
+                            <listView:SfListView.ItemTemplate>
+
+                                <DataTemplate>
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                            <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                    Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                            </custom:CustomLabel>
+                                        </Grid>
+                                    </cards:SfCardView>
+
+                                </DataTemplate>
+
+                            </listView:SfListView.ItemTemplate>
+
+                            <listView:SfListView.SelectedItemTemplate>
+
+                                <DataTemplate>
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                            <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                    Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                            </custom:CustomLabel>
+                                        </Grid>
+                                    </cards:SfCardView>
+
+                                </DataTemplate>
+
+                            </listView:SfListView.SelectedItemTemplate>
+
+                            <listView:SfListView.LayoutManager>
+
+                                <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+
+                            </listView:SfListView.LayoutManager>
+
+                        </listView:SfListView>
+
+                    </Grid>
+                </Grid>
+
+                <StackLayout IsVisible="{Binding CreateZakatInstalmentBtnVisible}">
+                    <Grid  BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="1"/>
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Row="0" Grid.Column="0" Source="ic_add1" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ReqInstalmentBtnTapped}"> </TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyRequests}" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource SectionTitleBlack}" />
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="1 VAT Change Filling Period Request" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource BodyLabelGrey}"/>
+                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
+
                         </Grid>
 
-                       
-                    </cards:SfCardView>
 
-                </Grid>
-               
-                <Grid IsVisible="{Binding IsDisplayListVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    
+                        <cards:SfCardView Grid.Row="1" Margin="0,20,0,0" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
+
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ReqInstalmentBtnTapped}"></TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+
+
+                        </cards:SfCardView>
+
+                    </Grid>
+
+                    <Grid IsVisible="{Binding IsDisplayListVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
                         <listView:SfListView  Grid.Row="0" x:Name="VATInstalmentDisplayViewPage" HorizontalOptions="CenterAndExpand" IsScrollBarVisible="False" Margin="0" Padding="0"
                                                   IsScrollingEnabled="False" VerticalOptions="Center" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="DisplayListView_ItemTapped" 
                                       ItemsSource="{Binding RequestForScheduleList}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
@@ -173,8 +243,8 @@
                                                     <Label Text="{Binding RemainingAmt}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
-                                                <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentRelevantTax}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding PeriodText}" Style="{StaticResource ValueLabelBlack}" />
+                                                    <Label Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentRelevantTax}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <Label Text="{Binding PeriodText}" Style="{StaticResource ValueLabelBlack}" />
                                                 </StackLayout>
                                             </Grid>
 
@@ -183,11 +253,11 @@
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
                         </listView:SfListView>
-                    
-                </Grid>
-               </StackLayout>
+
+                    </Grid>
+                </StackLayout>
                 <!--Summary View-->
-                  <Grid IsVisible="{Binding IsZakatPlanViewVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsZakatPlanViewVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -444,8 +514,38 @@
                     </Grid>
                 </Grid>
 
-               </Grid>
-       </ScrollView>
+
+                <Grid IsVisible="{Binding IsRevokZakatInstalmentVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentSummary}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource SectionTitleBlackBold}" />
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                        <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                        
+                        </border:SfBorder>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
 

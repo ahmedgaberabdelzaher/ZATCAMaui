@@ -6103,5 +6103,41 @@
   </data>
   <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
     <value>الفروع</value>
+    </data> 
+    <data name="VFCEffectiveDate" xml:space="preserve">
+    <value>Effective Date</value>
+  </data>
+  <data name="VFCFrequencyDetailsCheckBoxString" xml:space="preserve">
+    <value>I want to apply for an exception to file quarterly due to severe cash flow implications caused by monthly VAT collections.</value>
+  </data>
+<data name="VFCAttachmnetsInfo" xml:space="preserve">
+    <value>In Case you have revenue below SAR40 and want to request for quarterly filing kindly attach evidence that you have been filing for 2 years with a monthly Tax Period and your Revenurs during last 12 months.&#10;In Case you want to request for an exception for quarterly filing, Kindly provide your previous 12 months average Days sales Outstanding</value>
+  </data>
+  <data name="VFCIDType" xml:space="preserve">
+    <value>ID Type</value>
+  </data>
+  <data name="VFCDateofBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="VFCIDNumber" xml:space="preserve">
+    <value>ID Number</value>
+  </data>
+  <data name="VFCContactPersonName" xml:space="preserve">
+    <value>Contact Person Name</value>
+  </data>
+  <data name="VFCNationalID" xml:space="preserve">
+    <value>National ID</value>
+  </data>
+  <data name="VFCGCCID" xml:space="preserve">
+    <value>GCC ID</value>
+  </data>
+  <data name="VFCIqamaID" xml:space="preserve">
+    <value>Iqama ID</value>
+  </data>
+    <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+    <value>Create/Display for ZAKAT Instalment Plan</value>
+  </data>
+  <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
+    <value>Revoke ZAKAT Instalment Plan</value>
   </data>
 </root>

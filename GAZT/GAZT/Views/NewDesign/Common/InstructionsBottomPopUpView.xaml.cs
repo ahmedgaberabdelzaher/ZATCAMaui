@@ -42,38 +42,7 @@ namespace EGAZT.Views.NewDesign
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            if (_viewModel.IsInstructions)
-            {
-                if (_viewModel.IsInstuctionsChecked)
-                {
-                    MessagingCenter.Send<Object, Boolean>(this, "InstructionsContinue", true);
-                }
-
-                else
-                {
-                    MessagingCenter.Send<Object, Boolean>(this, "InstructionsContinue", false);
-                }
-                if (_viewModel.CheckBoxDescription.Equals(AppResources.VatTermsCheckBoxDesc))
-                    {
-                        MessagingCenter.Send<Object, Boolean>(this, "TermsContinueSecond", true);
-                    }
-            }
-            else if (_viewModel.IsTerms)
-            {
-                if (_viewModel.IsTermsChecked)
-                {
-                    MessagingCenter.Send<Object, Boolean>(this, "TermsContinue", true);
-
-                    if (_viewModel.CheckBoxDescription.Equals(AppResources.VatTermsCheckBoxDesc))
-                    {
-                        MessagingCenter.Send<Object, Boolean>(this, "TermsContinueSecond", true);
-                    }
-                }
-                else
-                {
-                    MessagingCenter.Send<Object, Boolean>(this, "TermsContinue", false);
-                }
-            }
+           
 
         }
     }
