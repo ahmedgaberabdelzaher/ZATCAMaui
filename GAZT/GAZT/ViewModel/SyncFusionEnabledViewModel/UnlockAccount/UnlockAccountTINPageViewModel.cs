@@ -502,6 +502,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isResendOTPEnabled = value;
+                OnResendOTPClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
