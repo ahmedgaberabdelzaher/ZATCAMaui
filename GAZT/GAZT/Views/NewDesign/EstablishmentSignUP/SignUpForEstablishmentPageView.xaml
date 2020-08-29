@@ -13,8 +13,10 @@
             xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:local="clr-namespace:EGAZT.CustomControl"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:models="clr-namespace:EGAZT.Models.EnumModels"
+             NavigationPage.HasNavigationBar="False"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"             x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.SignUpForEstablishmentPageView">
@@ -1002,6 +1004,32 @@
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
                 </StackLayout>
 
+                <Grid Grid.Row="0" Grid.RowSpan="4"
+                      Grid.Column="0"
+                      IsVisible="{Binding IsLoading}"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70"
+
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70"
+                                       TextColor="#D99A29"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+
+
+
                 <Grid Grid.Row="0" BackgroundColor="White">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="20*"/>
@@ -1022,7 +1050,9 @@
                     </StackLayout>
                     <StackLayout Grid.Column="2" Padding="0,8,0,0">
                         <Image Source="closeGrey.png" HorizontalOptions="End">
-
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Closed_Tapped"/>
+                            </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
                 </Grid>

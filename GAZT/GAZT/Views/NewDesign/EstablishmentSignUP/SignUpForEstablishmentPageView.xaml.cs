@@ -90,6 +90,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
         }
+        private void Closed_Tapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PopAsync();
+        }
+
         public async Task loadPageData()
         {
 
