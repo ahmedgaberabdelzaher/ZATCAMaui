@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using EGAZT.Models.EstablishmentRegistration;
 
 namespace EGAZT.Models
 {
+    public delegate void ActicityListDelegate(List<Nreg_ActivityItem> list);
     public class OutletNavigationModels
     {
         public EstablishmentRegistrationOutletTabsEnum openedTab { get; set; } = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
@@ -15,7 +17,7 @@ namespace EGAZT.Models
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         public OutletNumber nextNumber { get; set; } = null;
         public ValidateCR validateCR { get; set; } = null;
-        public Nreg_ActivityItem cRActivityItem { get; set; } = null;
-        public Action goBackAction { get; set; } = null;
+        public List<Nreg_ActivityItem> newActivityItems { get; set; } = new List<Nreg_ActivityItem>();
+        public ActicityListDelegate goBackAction { get; set; } = null;
     }
 }

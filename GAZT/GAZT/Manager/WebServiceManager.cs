@@ -9012,11 +9012,14 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    var serialized = JsonConvert.SerializeObject(taxPayer, new JsonSerializerSettings
+                    var serializeOptions = new JsonSerializerSettings
                     {
                         DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
                         DateTimeZoneHandling = DateTimeZoneHandling.Utc
-                    });
+                    };
+                    serializeOptions.Converters.Add(new JsonFieldListConverter());
+                    var serialized = JsonConvert.SerializeObject(taxPayer, serializeOptions);
+
                     HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, Constants.ContentType);
 
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(new Uri(string.Format("{0}?sap-language={1}", Constants.ESTTaxPayerDetails, lang)), contentPost);
@@ -9264,7 +9267,8 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
-                    var uri = new Uri(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json", Constants.ESTOutletCityStateCountryDropDown, lang));
+                    var uri = new Uri(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json",
+                        Constants.ESTOutletCityStateCountryDropDown, lang));
                     
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
@@ -9611,8 +9615,11 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format(Constants.ESTFinancialMaxDate));
                     var financeData = JsonConvert.SerializeObject(new FinancialDetailRequest(), new JsonSerializerSettings {
                         DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,

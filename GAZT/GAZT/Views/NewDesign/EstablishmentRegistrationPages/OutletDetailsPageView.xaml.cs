@@ -17,9 +17,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             InitializeComponent();
             //_outletNavigation = outletNavigation;
             viewModel = App.Locator.OutletDetailsPageView;
-            viewModel.currentTab = outletNavigation.openedTab;
             viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
             //viewModel.newNumber = outletNavigation.nextNumber;
+            viewModel.currentTab = outletNavigation.openedTab;
             BindingContext = viewModel;
             SetLTR();
         }
