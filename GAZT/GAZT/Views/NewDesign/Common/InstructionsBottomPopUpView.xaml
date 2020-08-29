@@ -139,7 +139,7 @@
                         </border:SfBorder>
 
 
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Fill">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
 
                             <CheckBox Color="{StaticResource NewDarkGreenColor}"
                                       VerticalOptions="CenterAndExpand" IsChecked="{Binding IsTermsChecked}">

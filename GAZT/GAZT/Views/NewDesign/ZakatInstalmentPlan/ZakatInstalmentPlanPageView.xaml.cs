@@ -231,22 +231,61 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
 
 
+
             try
             {
-                /*if (SearchItemVAT.Text.Length > 0)
-                {*/
-
-                /*
-                var itemsSource = viewModel.BillsListVAT.Where(w => w.SadadNo.Contains(SearchItemVAT.Text));
-                  BillsVATListVIew.ItemsSource = itemsSource;
-                  */
+                if (viewModel.InputData.Length > 0)
+                {
+                    var itemsSource = viewModel.ZakatInvoicesList.Where(w => w.InvNo.ToString().Contains(viewModel.InputData)).ToList();
 
 
-                /*}
+
+                    BillsVATListVIew.ItemsSource = itemsSource;
+
+
+
+
+                    for (int i = 0; i < itemsSource.Count(); i++)
+                    {
+                        var dataItem = itemsSource[i] as ZakatInvoicesResult;
+                        if (viewModel.selectedList.Contains(dataItem))
+                        {
+                            BillsVATListVIew.SelectedItem = itemsSource[i];
+                        }
+
+
+
+                    }
+
+
+
+
+                }
                 else
                 {
-                    BillsVATListVIew.ItemsSource = viewModel.BillsListVAT;
-                }*/
+                    BillsVATListVIew.ItemsSource = viewModel.ZakatInvoicesList;
+
+
+
+
+                    for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
+                    {
+                        var dataItem = viewModel.ZakatInvoicesList[i] as ZakatInvoicesResult;
+                        if (viewModel.selectedList.Contains(dataItem))
+                        {
+                            BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[i];
+                        }
+
+
+
+                    }
+
+
+
+                }
+
+
+
             }
             catch (Exception ex)
             {
@@ -258,53 +297,47 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
+
+
         private void Bills_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-          /*  var dataItem = e.ItemData as EGAZT.Models.ZakatInstalationModels.VATResults4;
+            var dataItem = e.ItemData as ZakatInvoicesResult;
+
+
+
+            totalAmount = 0.0;
+
+
 
             try
             {
                 if (viewModel.selectedList.Count > 0)
                 {
-
-
-
-                    foreach (VATResults4 listItem in viewModel.selectedList)
+                    if (viewModel.selectedList.Contains(dataItem))
                     {
-                        if (viewModel.selectedList.Contains(listItem))
-                        {
-                            int index = viewModel.BillsListVAT.IndexOf(listItem);
-
-                            viewModel.BillsListVAT[index].Xsele = "";
-                            totalAmount -= Convert.ToDouble(dataItem.Betrh);
-                            viewModel.selectedList.Remove(listItem);
-
-
-                            viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
-                        }
-                        else
-                        {
-                            int index = viewModel.BillsListVAT.IndexOf(listItem);
-                            viewModel.BillsListVAT[index].Xsele = "X";
-                            viewModel.selectedList.Add(dataItem);
-                            totalAmount += Convert.ToDouble(dataItem.Betrh);
-                            viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
-                        }
-
+                        viewModel.selectedList.Remove(dataItem);
                     }
+                    else
+                    {
+                        viewModel.selectedList.Add(dataItem);
+                    }
+
+
 
                 }
                 else
                 {
                     viewModel.selectedList.Add(dataItem);
-                    viewModel.BillsListVAT[0].Xsele = "X";
-                    totalAmount += Convert.ToDouble(dataItem.Betrh);
-                    viewModel.TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " " + dataItem.Waers;
+                }
+                /*Double dueAmount = 0.0;
+                for (int i = 0; i < viewModel.selectedList.Count; i++)
+                {
+                    dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
                 }
 
+ 
 
-
-
+                viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + dataItem.Waers;*/
             }
             catch (Exception ex)
             {
@@ -312,7 +345,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
             }
-          */
         }
 
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
