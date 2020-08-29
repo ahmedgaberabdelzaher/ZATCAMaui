@@ -47,14 +47,44 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
         }
 
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<object, Boolean>(this, "ISCallBackFromSuccess");
+
+       }
         protected async override void OnAppearing()
         {
             try
             {
                 base.OnAppearing();
+
+
                 viewModel.EnableVATLandingPage();
                 viewModel.AddOutletDecisionOptions();
+
+                Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "ISCallBackFromSuccess", (sender, arg) =>
+                {
+                    if (arg != null && arg == true)
+                    {
+                        viewModel.EnableVAtInstalmentPlan();
+                        viewModel.GetVATInstalmentPlanList();
+                    }
+                    else {
+
+                        viewModel.EnableVATLandingPage();
+                        viewModel.AddOutletDecisionOptions();
+                    }
+
+                });
+
+
                 viewModel.NumberOfInstalmentPlans = "" + AppResources.ZakatInstalmetPlan;
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -81,11 +111,11 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             }
         }
 
-        void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
-
+            await Task.Delay(1000);
             if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 0)
             {
                 viewModel.EnableVAtInstalmentPlan();
@@ -96,7 +126,6 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
                 viewModel.EnableDisplayInstalment();
                 viewModel.GetVATDisplaySchedule();
             }
-
 
         }
 

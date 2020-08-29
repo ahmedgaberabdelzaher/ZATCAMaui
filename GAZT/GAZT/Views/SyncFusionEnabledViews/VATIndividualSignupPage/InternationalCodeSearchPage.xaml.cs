@@ -31,6 +31,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             this.mobileData = countryCodeData;
             viewModel.MobileCodes = this.mobileData;
+            viewModel.MobileCodesAllValues = this.mobileData;
 
             SetLTR();
         }
@@ -78,7 +79,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 if (searchPhrase.Length > 0)
                 {
-                    viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(viewModel.MobileCodes.Where(name => name.Telefto.ToLower().Contains(searchPhrase.ToLower())));
+                    viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(viewModel.MobileCodesAllValues.Where(name => name.Telefto.ToLower().Contains(searchPhrase.ToLower())));
                 }
                 else
                 {

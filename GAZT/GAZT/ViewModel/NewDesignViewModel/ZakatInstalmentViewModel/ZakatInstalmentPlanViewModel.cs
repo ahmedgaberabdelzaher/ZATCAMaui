@@ -30,7 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         public readonly IDialogService _dialogService;
         private bool _isLoading = true;
         //public System.Collections.Generic.List<VATResults4> selectedList = new System.Collections.Generic.List<VATResults4>();
-
+        public System.Collections.Generic.List<ZakatInvoicesResult> selectedList = new System.Collections.Generic.List<ZakatInvoicesResult>();
         public bool IsLoading
         {
             get

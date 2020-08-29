@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -27,25 +28,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public readonly IDialogService _dialogService;
         public int DefaultMonth;
         public DateTime dateTime { get; set; }
+        public int numberOfSeconds = 120;
+        int TotalSec;
+        public bool StopTimer = false;
         public VATSignUpData vATSignUpData { get; set; }
         public VATSignUpCaseId SignUpCaseIdD { get; set; }
         #region Variable
         private EstablishmentSignUPTabEnum _currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
-        public EstablishmentSignUPTabEnum currentTab
+        public EstablishmentSignUPTabEnum CurrentTab
         {
             get => _currentTab;
-            private set
+            set
             {
                 _currentTab = value;
-                RaisePropertyChanged(nameof(currentTab));
+                RaisePropertyChanged(nameof(CurrentTab));
                 CurrentIndex = (int)_currentTab;
                 RaisePropertyChanged(nameof(CurrentIndex));
+            }
+        }
+        private string _txtConfirmPassword = string.Empty;
+        public string TxtConfirmPassword
+        {
+            get
+            {
+                return _txtConfirmPassword;
+            }
+            set
+            {
+                _txtConfirmPassword = value;
+                RaisePropertyChanged("TxtConfirmPassword");
             }
         }
 
         public void setCurrentTab()
         {
-            currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
+            CurrentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
         }
 
 
@@ -894,6 +911,98 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("SetEnabilityToCountryList");
             }
         }
+
+        private bool _isOTPEntryEnable = true;
+        public bool IsOTPEntryEnable
+        {
+            get
+            {
+                return _isOTPEntryEnable;
+            }
+            set
+            {
+                _isOTPEntryEnable = value;
+                RaisePropertyChanged(() => IsOTPEntryEnable);
+            }
+        }
+        private string _oTPValidDuration;
+        public string OTPValidDuration
+        {
+            get
+            {
+                return _oTPValidDuration;
+            }
+            set
+            {
+                _oTPValidDuration = value;
+                if (_oTPValidDuration.Equals(" 00:00"))
+                {
+                    ButtonDisableColor = Color.FromHex("#006450");
+                    ButtonDisableTextColor = Color.White;
+                    IsResendOTPEnabled = true;
+                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    VerifyButtonDisableTextColor = Color.Gray;
+                    IsVerifyOTPEnabled = false;
+                    IsOTPEntryEnable = false;
+                }
+                RaisePropertyChanged("OTPValidDuration");
+            }
+        }
+
+        private bool _isVerifyOTPEnabled = true;
+        public bool IsVerifyOTPEnabled
+        {
+            get
+            {
+                return _isVerifyOTPEnabled;
+            }
+            set
+            {
+                _isVerifyOTPEnabled = value;
+                RaisePropertyChanged("IsVerifyOTPEnabled");
+            }
+        }
+        private Color _verifybuttonDisableTextColor = Color.White;
+        public Color VerifyButtonDisableTextColor
+        {
+            get
+            {
+                return _verifybuttonDisableTextColor;
+            }
+            set
+            {
+                _verifybuttonDisableTextColor = value;
+                RaisePropertyChanged("VerifyButtonDisableTextColor");
+            }
+        }
+        private Color _buttonDisableTextColor = Color.Gray;
+        public Color ButtonDisableTextColor
+        {
+            get
+            {
+                return _buttonDisableTextColor;
+            }
+            set
+            {
+                _buttonDisableTextColor = value;
+                RaisePropertyChanged("ButtonDisableTextColor");
+            }
+        }
+
+
+        private SignUpModelRootObject _signUpFirstSubmitModel = null;
+        public SignUpModelRootObject SignUpFirstSubmitModel
+        {
+            get
+            {
+                return _signUpFirstSubmitModel;
+            }
+            set
+            {
+                _signUpFirstSubmitModel = value;
+                RaisePropertyChanged("SignUpFirstSubmitModel");
+            }
+        }
         private VATSignUpStateResults _selectedRegion = null;
         public VATSignUpStateResults SelectedRegion
         {
@@ -938,6 +1047,82 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 _selectedCityIndex = value;
                 RaisePropertyChanged("SelectedCityIndex");
+            }
+        }
+        private string _txtEmailAddress = string.Empty;
+        public string TxtEmailAddress
+        {
+            get
+            {
+                return _txtEmailAddress;
+            }
+            set
+            {
+                _txtEmailAddress = value;
+                RaisePropertyChanged("TxtEmailAddress");
+            }
+        }
+
+        private bool _isTIN = false;
+        public bool IsTIN
+        {
+            get
+            {
+                return _isTIN;
+            }
+            set
+            {
+                _isTIN = value;
+                if (_isTIN == true)
+                {
+                    IsTINVisible = true;
+                    TxtTIN = string.Empty;
+                }
+                else
+                {
+                    IsTINVisible = false;
+                    TxtTIN = string.Empty;
+                }
+                RaisePropertyChanged("IsTIN");
+            }
+        }
+        private bool _isTINVisible = false;
+        public bool IsTINVisible
+        {
+            get
+            {
+                return _isTINVisible;
+            }
+            set
+            {
+                _isTINVisible = value;
+                RaisePropertyChanged("IsTINVisible");
+            }
+        }
+        private string _txtPhoneNumber = string.Empty;
+        public string TxtPhoneNumber
+        {
+            get
+            {
+                return _txtPhoneNumber;
+            }
+            set
+            {
+                _txtPhoneNumber = value;
+                RaisePropertyChanged("TxtPhoneNumber");
+            }
+        }
+        private string _txtMobileNumber = string.Empty;
+        public string TxtMobileNumber
+        {
+            get
+            {
+                return _txtMobileNumber;
+            }
+            set
+            {
+                _txtMobileNumber = value;
+                RaisePropertyChanged("TxtMobileNumber");
             }
         }
         private string _txtCountryCode = "+966";
@@ -1345,6 +1530,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
+        private bool _isAllValidContactDataEnteredEmail = false;
+        public bool IsAllValidContactDataEnteredEmail
+        {
+            get
+            {
+                return _isAllValidContactDataEnteredEmail;
+            }
+            set
+            {
+                _isAllValidContactDataEnteredEmail = value;
+                RaisePropertyChanged("IsAllValidContactDataEnteredEmail");
+            }
+        }
+        private bool _isAllValidContactDataEnteredMobileNbr = false;
+        public bool IsAllValidContactDataEnteredMobileNbr
+        {
+            get
+            {
+                return _isAllValidContactDataEnteredMobileNbr;
+            }
+            set
+            {
+                _isAllValidContactDataEnteredMobileNbr = value;
+                RaisePropertyChanged("IsAllValidContactDataEnteredMobileNbr");
+            }
+        }
+
+        private bool _isAllValidContactDataEnteredPhoneNbr = false;
+        public bool IsAllValidContactDataEnteredPhoneNbr
+        {
+            get
+            {
+                return _isAllValidContactDataEnteredPhoneNbr;
+            }
+            set
+            {
+                _isAllValidContactDataEnteredPhoneNbr = value;
+                RaisePropertyChanged("IsAllValidContactDataEnteredPhoneNbr");
+            }
+        }
+
         private bool _isAllValidDataEntered = false;
         public bool IsAllValidDataEntered
         {
@@ -1381,9 +1607,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
 
 
-        private async void navigateToNext()
+   public async void navigateToNext()
         {
-            switch (currentTab)
+            switch (CurrentTab)
             {
                 case EstablishmentSignUPTabEnum.TermsAndConditions:
                     if (IsDeclarationCheckedForInstruction == true)
@@ -1392,8 +1618,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         PageTitle = AppResources.ZZZIndividualInformation;
                         BodyText = AppResources.ZZZZCompletethebelowdetails;
                         NextBTN = AppResources.ZZZZContinue;
-                        currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
+                        CurrentTab = EstablishmentSignUPTabEnum.IndividualInformation;
+                       
                         IsDeclarationCheckedForInstruction = false;
+                        IsMainButtonEnabled = true;
                     }
                     else
                     {
@@ -1419,8 +1647,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         {
                             PageTitle = AppResources.ZZZBusinessInformation;
                             BodyText = AppResources.ZZZZCompletethebelowdetails;
-                            currentTab = EstablishmentSignUPTabEnum.BusinessInformation;
-                        }
+                        CurrentTab = EstablishmentSignUPTabEnum.BusinessInformation;
+                    }
                         else
                         {
                             _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
@@ -1438,7 +1666,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             PageTitle = AppResources.ZZZContactInformation;
                             BodyText = AppResources.ZZZZCompletethebelowdetails;
 
-                            currentTab = EstablishmentSignUPTabEnum.ContactInformation;
+                            CurrentTab = EstablishmentSignUPTabEnum.ContactInformation;
                         }
                         else
                         {
@@ -1461,7 +1689,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             PageTitle = AppResources.ZZZContactInformation;
                             BodyText = AppResources.ZZZZCompletethebelowdetails;
 
-                            currentTab = EstablishmentSignUPTabEnum.ContactInformation;
+                            CurrentTab = EstablishmentSignUPTabEnum.ContactInformation;
 
                         }
                         else {
@@ -1473,18 +1701,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     break;
 
                 case EstablishmentSignUPTabEnum.ContactInformation:
-                    PageTitle = AppResources.VerificationCode;
-                    BodyText = AppResources.ZZPleaseenteraccessCode;
-                    NextBTN = AppResources.ZZZZContinue;
-                    currentTab = EstablishmentSignUPTabEnum.EmailVerification;
-                    StartTimer(0, 2, 0);
+
+                    if (IsAllValidContactDataEnteredEmail &&
+                        IsAllValidContactDataEnteredMobileNbr&&
+                        IsAllValidContactDataEnteredPhoneNbr)
+                    {
+                        PageTitle = AppResources.VerificationCode;
+                        BodyText = AppResources.ZZPleaseenteraccessCode;
+                        NextBTN = AppResources.ZZZZContinue;
+                        CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                        StartTimer(0, 2, 0);
+                    }
+                    else
+                    {
+                        _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                    }
+
                     break;
 
                 //case EstablishmentSignUPTabEnum.EmailVerification:
                 //    //PageTitle = "Mobile Verification";
                 //    //BodyText = AppResources.ZZZZCompletethebelowdetails;
                 //    NextBTN = AppResources.ZZZZContinue;
-                //    currentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                //    CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
                 //    break;
 
                 //case EstablishmentSignUPTabEnum.MobileVerification:
@@ -1492,7 +1731,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 //    BodyText = AppResources.CreateASecurePassword;
                 //    NextBTN = AppResources.Confirm;
                     
-                //    currentTab = EstablishmentSignUPTabEnum.Password;
+                //    CurrentTab = EstablishmentSignUPTabEnum.Password;
                 //    break;
             }
         }
@@ -1501,27 +1740,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         
         private void navigateBack()
         {
-            switch (currentTab)
+            switch (CurrentTab)
             {
                 //case EstablishmentSignUPTabEnum.Password:
                 //    PageTitle = AppResources.VerificationCode;
                 //    BodyText = AppResources.ZZPleaseenteraccessCode;
                 //    NextBTN = AppResources.ZZZZContinue;
-                //    currentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                //    CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
                 //    break;
 
                 //case EstablishmentSignUPTabEnum.MobileVerification:
                 //    //PageTitle = "Email Verification";
                 //    //BodyText = AppResources.ZZZZCompletethebelowdetails;
                 //    //NextBTN = AppResources.Confirm;
-                //    currentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                //    CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
                 //    break;
 
                 case EstablishmentSignUPTabEnum.EmailVerification:
                     PageTitle = AppResources.ZZZContactInformation;
                     BodyText = AppResources.ZZZZCompletethebelowdetails;
                     //NextBTN = AppResources.Confirm;
-                    currentTab = EstablishmentSignUPTabEnum.ContactInformation;
+                    CurrentTab = EstablishmentSignUPTabEnum.ContactInformation;
                     clearVerificationCodeFrom();
                     break;
 
@@ -1529,20 +1768,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     PageTitle = AppResources.ZZZBusinessInformation;
                     BodyText = AppResources.ZZZZCompletethebelowdetails;
                     //NextBTN = AppResources.ZZZZContinue;
-                    currentTab = EstablishmentSignUPTabEnum.BusinessInformation;
+                    CurrentTab = EstablishmentSignUPTabEnum.BusinessInformation;
                     break;
 
                 case EstablishmentSignUPTabEnum.BusinessInformation:
                     PageTitle = AppResources.ZZZIndividualInformation;
                     BodyText = AppResources.ZZZZCompletethebelowdetails;
-                    currentTab = EstablishmentSignUPTabEnum.IndividualInformation;
+                    CurrentTab = EstablishmentSignUPTabEnum.IndividualInformation;
                     break;
 
                 case EstablishmentSignUPTabEnum.IndividualInformation:
                     PageTitle = AppResources.ZVatTermsAndConditions;
                     BodyText = "";
                     NextBTN = AppResources.ZZProceedtoindividualSignup;
-                    currentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
+                    CurrentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
                     break;
             }
         }
@@ -2080,6 +2319,192 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             });
         }
 
+        public void TimerStart(int Seconds)
+        {
+            IsVerifyOTPEnabled = true;
+            CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
+            TotalSec = Seconds;
+            CancellationTokenSource CTS = _CancellationTokenSource;
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                if (App.IsComingFromSleepMode)
+                {
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                        App.IsComingFromSleepMode = false;
+                        // StopTimer = true;
+                    }
+                    else
+                    {
+                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                        App.IsComingFromSleepMode = false;
+                        StopTimer = true;
+                        // TimerStart(TotalSec);
+                    }
+                }
+                if (CTS.IsCancellationRequested)
+                {
+                    return false;
+                }
+                else
+                {
+                    if (TotalSec == 0)
+                    {
+                        return false;
+                    }
+                    else if (!StopTimer)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                    }
+                    if (TotalSec < 0)
+                    {
+                        OTPValidDuration = " 0:00";
+                        ButtonDisableColor = Color.FromHex("#006450");
+                        ButtonDisableTextColor = Color.White;
+                        IsResendOTPEnabled = true;
+                        VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                        VerifyButtonDisableTextColor = Color.Gray;
+                        IsVerifyOTPEnabled = false;
+                        IsOTPEntryEnable = false;
+                        return false;
+                    }
+                    //else if(TotalSec <0)
+                    //{
+                    //    TotalSec = 120;
+                    //}
+                    TotalSec = TotalSec - 1;
+                    numberOfSeconds = TotalSec;
+                    TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
+                    });
+                    return true;
+                }
+            });
+        }
+
+        private string _txtMobileNumberCode = string.Empty;
+        public string TxtMobileNumberCode
+        {
+            get
+            {
+                return _txtMobileNumberCode;
+            }
+            set
+            {
+                _txtMobileNumberCode = value;
+                RaisePropertyChanged("TxtMobileNumberCode");
+            }
+        }
+        private string _txtPassword = string.Empty;
+        public string TxtPassword
+        {
+            get
+            {
+                return _txtPassword;
+            }
+            set
+            {
+                _txtPassword = value;
+                RaisePropertyChanged("TxtPassword");
+            }
+        }
+        private SignUpModelRootObject _signUpModelRootObjectM = null;
+        public SignUpModelRootObject SignUpModelRootObjectM
+        {
+            get
+            {
+                return _signUpModelRootObjectM;
+            }
+            set
+            {
+                _signUpModelRootObjectM = value;
+                RaisePropertyChanged("SignUpModelRootObjectM");
+            }
+        }
+        private string _txtEmailCode = string.Empty;
+        public string TxtEmailCode
+        {
+            get
+            {
+                return _txtEmailCode;
+            }
+            set
+            {
+                _txtEmailCode = value;
+                RaisePropertyChanged("TxtEmailCode");
+            }
+        }
+        public async void CreateGaZTAccount()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                CreateGaztAccountModel CreateModel = new CreateGaztAccountModel();
+                CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
+                CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
+                CreateModel.ACityCode = SignUpModelRootObjectM.d.ACityCode;
+                CreateModel.ACommId = SignUpModelRootObjectM.d.ACommId;
+                CreateModel.AEmail = SignUpModelRootObjectM.d.AEmail;
+                CreateModel.AFirstname = SignUpModelRootObjectM.d.AFirstname;
+                CreateModel.AIdnumber = SignUpModelRootObjectM.d.AIdnumber;
+                CreateModel.AIdtype = SignUpModelRootObjectM.d.AIdtype;
+                CreateModel.AIssuedBy = SignUpModelRootObjectM.d.AIssuedBy;
+                CreateModel.ALang = SignUpModelRootObjectM.d.ALang;
+                CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
+                CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
+                CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
+                CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
+                CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
+                CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
+                CreateModel.AType = SignUpModelRootObjectM.d.AType;
+                CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
+                CreateModel.APassword = TxtPassword;
+                CreateModel.ASmsCode = TxtMobileNumberCode;
+                CreateModel.AEmailCode = TxtEmailCode;
+                CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
+                CreateModel.ASubmit = "X";
+                CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
+                string ResultFirstSubmit = await WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
+                if (ResultFirstSubmit != null)
+                {
+                    SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                    if (ResultFirstSubmitModel.d == null)
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                        _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+
+                    }
+                    else
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                        _navigationService.NavigateTo(App.AccountCreatedPageView);
+                    }
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+            }
+        }
         #endregion
 
     }
