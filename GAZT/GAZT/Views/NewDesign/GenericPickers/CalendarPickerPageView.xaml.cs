@@ -26,7 +26,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel.SetDefaultDate();
             viewModel.IsFutureDatePickerVisible = false;
             viewModel.IsCurrentDatePickerVisible = true;
-
+            
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
         }
@@ -37,7 +37,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel = App.Locator.CalendarPickerPageView;
             viewModel.IsFutureDatePickerVisible = false;
             viewModel.IsCurrentDatePickerVisible = true;
-
+            viewModel.SetDefaultDate();
             viewModel.DataSource = _pickerSource;
             viewModel.PickerItemSource = viewModel.DataSource.PickerData;
             viewModel.DatePickerTitle = viewModel.DataSource.DatePickerTitle;
@@ -53,7 +53,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             viewModel = App.Locator.CalendarPickerPageView;
             viewModel.IsFutureDatePickerVisible = true;
             viewModel.IsCurrentDatePickerVisible = false;
-
+            viewModel.SetDefaultDate();
             viewModel.DataSource = _pickerSource;
             viewModel.PickerItemSource = viewModel.DataSource.PickerData;
             viewModel.DatePickerTitle = viewModel.DataSource.DatePickerTitle;
