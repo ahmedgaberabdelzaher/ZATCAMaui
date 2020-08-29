@@ -243,7 +243,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
             });
             string dob = viewModel.DOB.Replace("/", "");
-            // EntryName.IsEnabled = true;
+            ContactName.IsEnabled = true;
             if (viewModel.IDType == AppResources.NationaID)
             {
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
@@ -275,7 +275,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         else
                         {
                             viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                            //  EntryName.IsEnabled = false;
+                             ContactName.IsEnabled = false;
                             //FrmIDNumber.HasError = false;
                           //  viewModel.FrameContactIDError = false;
                         }
@@ -370,7 +370,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
             if (viewModel.IDType == AppResources.ZZIqamaID)
             {
-                //  EntryName.IsEnabled = true;
+                  ContactName.IsEnabled = true;
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
@@ -399,7 +399,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         else
                         {
                             viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                            //  EntryName.IsEnabled = false;
+                              ContactName.IsEnabled = false;
                             //FrmIDNumber.HasError = false;
                            // viewModel.FrameContactIDError = false;
                         }
