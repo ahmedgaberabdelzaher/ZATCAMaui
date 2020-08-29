@@ -1056,7 +1056,7 @@ namespace GAZT.Manager
                             }
                             else
                             {
-                                throw new Exception(AppResources.InvalidEmail);
+                                throw new Exception(AppResources.NDNewEmailCannotBeSameAsOldEmail);
                             }
                         }
                         else
@@ -1071,6 +1071,10 @@ namespace GAZT.Manager
                     if (string.Equals(ex.Message, AppResources.InvalidEmail))
                     {
                         throw new Exception(AppResources.InvalidEmail);
+                    }
+                    else if(string.Equals(ex.Message, AppResources.NDNewEmailCannotBeSameAsOldEmail))
+                    {
+                        throw new Exception(AppResources.NDNewEmailCannotBeSameAsOldEmail);
                     }
                     else
                     {
@@ -1144,7 +1148,7 @@ namespace GAZT.Manager
                 {
                     if (string.Equals(ex.Message, AppResources.Invalidverificationcodeentered))
                     {
-                        throw new Exception(AppResources.InvalidEmail);
+                        throw new Exception(AppResources.Invalidverificationcodeentered);
                     }
                     else
                     {

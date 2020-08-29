@@ -55,7 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Property
 
         // New Property starts
-        private string _iDNumber;
+        private string _iDNumber = String.Empty;
         public string IDNumber
         {
             get
@@ -473,7 +473,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _setIDNumberEnability = false;
+        private bool _setIDNumberEnability = true;
         public bool SetIDNumberEnability
         {
             get
@@ -1339,7 +1339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
 
-
+            SetIDNumberEnability = true;
 
 
             //BackButtonClicked = new Xamarin.Forms.Command(() =>
@@ -1597,6 +1597,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             PasswordTextColor = Color.Black;
             UserNameTextColor = Color.Black;
+            
             //IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
             //string lang = UtilityManager.GetLanguageParameter();
             //try

@@ -6104,4 +6104,7 @@
   <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
     <value>الفروع</value>
   </data>
+  <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
+    <value>البريد الالكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
+  </data>
 </root>
