@@ -353,6 +353,9 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             {
                 base.OnAppearing();
 
+                viewModel.FirstTerms = false;
+                viewModel.SecondTerms = false;
+
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
@@ -369,7 +372,15 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 {
                     if (arg != null && arg == true)
                     {
-                        viewModel.EnableSucessScreenAsync();
+                        viewModel.SecondTerms = true;
+                    }
+                });
+
+                Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "InstructionsContinue", (sender, arg) =>
+                {
+                    if (arg != null && arg == true)
+                    {
+                        viewModel.FirstTerms = true;
                     }
                 });
 
@@ -381,13 +392,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                         //viewModel.EnableSucessScreenAsync();
                     }
                 });
-                Xamarin.Forms.MessagingCenter.Subscribe<object, Boolean>(this, "InstructionsContinue", (sender, arg) =>
-                {
-                    if (arg != null && arg == true)
-                    {
-                        viewModel.EnableVATBillView();
-                    }
-                });
+              
 
 
                 if (Device.RuntimePlatform == Device.iOS)

@@ -159,7 +159,6 @@ using EGAZT.Views.NewDesign.InstalmentPlan;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
-using ZakatInstalmentPlanListViewModel = EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel.ZakatInstalmentPlanListViewModel;
 using EGAZT.Views.NewDesign.Template;
 using EGAZT.Views.NewDesign.ContractReleasePages;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;

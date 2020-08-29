@@ -60,6 +60,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 RaisePropertyChanged("VATDueAmount");
             }
         }
+        private bool _secondTerms = false;
+        public bool SecondTerms
+        {
+            get
+            {
+                return _secondTerms;
+            }
+            set
+            {
+                _secondTerms = value;
+                RaisePropertyChanged("SecondTerms");
+            }
+        }
         private string _vATPenalityAmount = "0.00";
         public string VATPenalityAmount
         {
@@ -1765,12 +1778,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             EnableSlectionView();
 
             _isLoading = false;
+            SecondTerms = false;
             _vATPenalityAmount = "0.00";
             _vATLiabilityAmount = "0.00 SAR";
             _vATBillDueAmount = "0.00 SAR";
             _isNoDataLableVisible = false;
             AttachmentsListViewData = null;
-
+            FirstTerms = false;
             downPaymentAmount = 00.00;
             inputData = "";
             TotalAmountSAR = "0.00 SAR";
@@ -1992,12 +2006,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         private async void showTermsPopUp()
         {
 
+
+
             VatInstalments.d.Operationz = "01";
             VatInstalments.d.Decflg = "1";
-
-            await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatTerms, checkBoxString: AppResources.VatTermsCheckBoxDesc, continueString: AppResources.ZakatInstalmetContinue,
-                _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
-                    .TermsConditions));
+            if (SecondTerms)
+            {
+                EnableSucessScreenAsync();
+            }
+            else
+            {
+                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VatTerms, checkBoxString: AppResources.VatTermsCheckBoxDesc, continueString: AppResources.ZakatInstalmetContinue,
+                    _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
+                        .TermsConditions));
+            }
         }
 
         public async void SummaryContinueBtnClicked()

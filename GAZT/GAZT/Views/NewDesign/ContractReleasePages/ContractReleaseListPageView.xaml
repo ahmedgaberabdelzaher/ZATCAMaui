@@ -242,7 +242,7 @@
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                <Grid Padding="15,15,15,0" RowSpacing="8">
+                                <Grid Padding="15,15,15,0" RowSpacing="8" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
@@ -256,46 +256,46 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Grid Grid.Row="0" Grid.Column="0">
+                                    <Grid Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRContractonName}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
                                     </Grid>
 
-                                    <Grid Grid.Row="0" Grid.Column="1">
+                                    <Grid Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand">
                                         <Label Text="{Binding ContractName}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
-                                    <Grid Grid.Row="1" Grid.Column="0">
+                                    <Grid Grid.Row="1" Grid.Column="0" VerticalOptions="FillAndExpand">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRContractNumber}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
                                     </Grid>
 
-                                    <Grid Grid.Row="1" Grid.Column="1">
+                                    <Grid Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand">
                                         <Label Text="{Binding ContractNumber}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
-                                    <Grid Grid.Row="2" Grid.Column="0">
+                                    <Grid Grid.Row="2" Grid.Column="0" VerticalOptions="FillAndExpand">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRContractType}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
                                     </Grid>
 
-                                    <Grid Grid.Row="2" Grid.Column="1">
+                                    <Grid Grid.Row="2" Grid.Column="1" VerticalOptions="FillAndExpand">
                                         <Label Text="{Binding PickedContract}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
-                                    <Grid Grid.Row="3" Grid.Column="0">
+                                    <Grid Grid.Row="3" Grid.Column="0" VerticalOptions="FillAndExpand">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRContractPeriod}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
@@ -304,31 +304,31 @@
 
                                     <Grid Grid.Row="3" Grid.Column="1" VerticalOptions="FillAndExpand">
                                         <Label Text="{Binding ContractPeriod}"
-                                               HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
+                                               HorizontalOptions="EndAndExpand"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
-                                    <Grid Grid.Row="4" Grid.Column="0">
+                                    <Grid Grid.Row="4" Grid.Column="0" VerticalOptions="FillAndExpand">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
                                     </Grid>
 
-                                    <Grid Grid.Row="4" Grid.Column="1">
+                                    <Grid Grid.Row="4" Grid.Column="1" VerticalOptions="FillAndExpand">
                                         <Label Text="{Binding ContractTotalAmount,StringFormat='{0:N} SAR'}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
-                                    <Grid Grid.Row="5" Grid.Column="0">
+                                    <Grid Grid.Row="5" Grid.Column="0" VerticalOptions="FillAndExpand">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
                                     </Grid>
 
-                                    <Grid Grid.Row="5" Grid.Column="1">
+                                    <Grid Grid.Row="5" Grid.Column="1" VerticalOptions="FillAndExpand">
                                         <Label Text="{Binding AmountToRelease,StringFormat='{0:N} SAR'}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />

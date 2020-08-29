@@ -9919,7 +9919,7 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    taxpayerz = "3102224202";
+                    
                     //fbnumz = "035001347905";
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -10210,7 +10210,7 @@ namespace GAZT.Manager
                     //(Fbtypz = '', UserTypz = '', TransactionTypez = '', Lang = 'E', Gpart = '3300067427', Status = '') ? &$expand = UI_BTNSet,ATT_TYPSet,EffDateSet
 
                     String url = Constants.VATChangeFillingPeriodGetDropdownURL + "Fbtypz='" + "',UserTypz='" + "',TransactionTypez='" + "',Lang='" + lang + "'," +
-                     "Gpart='" + gpart + "',Status='" + "')?$expand = UI_BTNSet,ATT_TYPSet,EffDateSet&$format=json";
+                     "Gpart='" + gpart + "',Status='" + "')?$expand=UI_BTNSet,ATT_TYPSet,EffDateSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _vATRefillingGetDropdownResponse = await client.GetAsync(uri);
 
@@ -10358,7 +10358,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static string GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
+        public async static Task<string> GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -10502,16 +10502,7 @@ namespace GAZT.Manager
 
                 try
                 {
-                    var inputsData = await GAZTGetVATChangeFillingSummaryInputs(fbnum,status);
-                    string fbguid = string.Empty;
-                    string eUser = string.Empty;
                     string NewToken = string.Empty;
-                    if (inputsData.d != null)
-                    {
-                        fbguid = inputsData.d.Fbguid;
-                        eUser = inputsData.d.Euser;
-                    }
-
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -10520,10 +10511,10 @@ namespace GAZT.Manager
                     //UserTypz = '', Fbguid = '005056B1F8FB1EDAB9F82A3E64053352')
                     //   ?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json
 
-                    String url = Constants.VATChangeFillingSummaryURL + "Fbnumz='" + "',PortalUsrz='" + "',Langz='" + lang + "'," +
-                      "Operationz='" + "',Gpartz='" + "',Euser='" + eUser + "',UserTypz='" + "',Fbguid='" + fbguid + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
+                    String url = Constants.VATChangeFillingSummaryURL + "Fbnumz='" + fbnum + "',PortalUsrz='" + "',Langz='" + lang + "'," +
+                      "Operationz='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',UserTypz='" + "',Fbguid='" + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
                     var uri = new Uri(url);
-                    HttpResponseMessage _vatChangeFillingSumamryResponse = await client.GetAsync(uri);
+                     HttpResponseMessage _vatChangeFillingSumamryResponse = await client.GetAsync(uri);
 
 
 

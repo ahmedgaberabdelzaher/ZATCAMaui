@@ -585,6 +585,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }
+                        else if (IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod12Months || IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod2Years || IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriodOtherDoc)
+                        {
+                            APiMethod = "ZDP_INDTAX_ATT_SRV";
+                        }
                         string results = WebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, attachment.Doguid, APiMethod);
                         PopToRootPage();
                         if (results == "X")

@@ -54,7 +54,7 @@
                             <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="1" Grid.Row="0"
-                               Text="{x:Static ResourceManager:AppResources.ContractRelease}"
+                               Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodTitle}"
                                TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
                                FontSize="Large" />
                         <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}"
@@ -272,7 +272,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid Grid.Row="0" Grid.Column="0">
-                                        <Label Text="Current Frequency"
+                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodCurrentFrequency}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -285,7 +285,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="1" Grid.Column="0">
-                                        <Label Text="New Frequency"
+                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodNewFrequency}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -298,7 +298,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="2" Grid.Column="0">
-                                        <Label Text="Effective Date"
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCEffectiveDate}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -441,7 +441,7 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid Grid.Row="0" Grid.Column="0">
-                                        <Label Text="Item Type"
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCIDType}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -454,7 +454,7 @@
                                     </Grid>
 
                                     <Grid Grid.Row="1" Grid.Column="0">
-                                        <Label Text="ID Number"
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCIDNumber}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -467,20 +467,20 @@
                                     </Grid>
 
                                     <Grid Grid.Row="2" Grid.Column="0">
-                                        <Label Text="Date Of Birth"
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCDateofBirth}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
                                     </Grid>
 
                                     <Grid Grid.Row="2" Grid.Column="1">
-                                        <Label Text="{Binding PickedDate,StringFormat='{0:dd MMM yyyy}'}"
+                                        <Label Text="{Binding PickedDate}"
                                                HorizontalOptions="End"
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </Grid>
 
                                     <Grid Grid.Row="3" Grid.Column="0">
-                                        <Label Text="Contract Person Name"
+                                        <Label Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}"
                                                HorizontalOptions="Start"
                                                Style="{StaticResource BodyLabelGrey}" />
 
@@ -495,8 +495,6 @@
                                 </Grid>
                             </StackLayout>
                         </border:SfBorder >
-
-                        
 
                     </Grid>
 

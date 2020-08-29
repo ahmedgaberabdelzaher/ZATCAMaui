@@ -42,7 +42,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 this.BindingContext = viewModel;
 
                 viewModel.showInstructionsDialog();
-                 GetZakatInstalmentData();
+                GetZakatInstalmentData();
             }
             catch (Exception ex)
             {
@@ -230,19 +230,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
 
-
-
             try
             {
                 if (viewModel.InputData.Length > 0)
                 {
                     var itemsSource = viewModel.ZakatInvoicesList.Where(w => w.InvNo.ToString().Contains(viewModel.InputData)).ToList();
 
-
-
                     BillsVATListVIew.ItemsSource = itemsSource;
-
-
 
 
                     for (int i = 0; i < itemsSource.Count(); i++)
@@ -253,19 +247,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                             BillsVATListVIew.SelectedItem = itemsSource[i];
                         }
 
-
-
                     }
-
-
 
 
                 }
                 else
                 {
                     BillsVATListVIew.ItemsSource = viewModel.ZakatInvoicesList;
-
-
 
 
                     for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
@@ -276,15 +264,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                             BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[i];
                         }
 
-
-
                     }
 
-
-
                 }
-
-
 
             }
             catch (Exception ex)
@@ -293,21 +275,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
 
 
-
-
         }
-
-
 
         private void Bills_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
             var dataItem = e.ItemData as ZakatInvoicesResult;
 
-
-
             totalAmount = 0.0;
-
-
 
             try
             {
@@ -322,8 +296,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         viewModel.selectedList.Add(dataItem);
                     }
 
-
-
                 }
                 else
                 {
@@ -335,14 +307,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
                 }
 
- 
-
                 viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + dataItem.Waers;*/
             }
             catch (Exception ex)
             {
-
-
 
             }
         }
@@ -369,7 +337,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     if (arg != null)
                     {
 
-                       // viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
+                        // viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
                         viewModel.PopulateAttachments(arg.results);
 
 
