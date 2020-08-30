@@ -22,6 +22,12 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             SetLTR();
         }
 
+        protected override void OnAppearingAnimationEnd()
+        {
+            base.OnAppearingAnimationEnd();
+            viewModel.ReloadData();
+        }
+
         private void SetLTR()
         {
             if (App.IsArabic)

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.VATRefunds;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 
@@ -309,6 +311,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 });
             }
         }
+
+       
 
         public void SelectionChanged(VatRefHeaderSetResult vatRefHeaderSetResult)
         {

@@ -275,7 +275,7 @@
                                                             <custom:BorderlessEntry Text="{Binding Password}" IsPassword="{Binding IsPasswordEncripted}"
                                                                                     FontSize="Small" TextColor="Black"
                                                                                     PlaceholderColor="Gray" Keyboard="Default" IsSpellCheckEnabled="False" MaxLength="16"
-                                                                                    Placeholder="{x:Static custom2:AppResources.NDNewPassword}">
+                                                                                    Placeholder="{x:Static custom2:AppResources.NDNewPassword}" TextChanged="NewPassword_TextChanged" >
                                                                  
                                                             </custom:BorderlessEntry>
                                                             <inputLayout:SfTextInputLayout.TrailingView>
@@ -320,47 +320,35 @@
 
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
+                        <StackLayout x:Name="PasswordChecks" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,16,0,0">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding MinEight}">
 
-                            <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,16,0,0">
-                                <StackLayout Orientation="Horizontal">
-                                       <Image HorizontalOptions="Start">
-                                            <Image.Source>
-                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                        Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
-                                            </Image.Source>
                                         </Image>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZAtleast8characterslong}" Style="{StaticResource CaptionLabelBlack}" Padding="5,0,0,0"/>
-                                </StackLayout>
-                              
-                                <StackLayout Orientation="Horizontal">
-                                    <Image HorizontalOptions="Start">
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                    Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
-                                        </Image.Source>
-                                    </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZEnglishcapitalandsmallletters}" Style="{StaticResource CaptionLabelBlack}" Padding="5,0,0,0"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Image HorizontalOptions="Start">
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                    Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
-                                        </Image.Source>
-                                    </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}" Style="{StaticResource CaptionLabelBlack}" Padding="5,0,0,0"/>
-                                </StackLayout>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDAtleast8character}" Style="{StaticResource CaptionLabelBlack}" Padding="5,0,0,0"/>
+                                    </StackLayout>
 
-                                <StackLayout Orientation="Horizontal">
-                                    <Image HorizontalOptions="Start">
-                                        <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
-                    Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
-                                        </Image.Source>
-                                    </Image>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNumbersandsymbols}" Style="{StaticResource CaptionLabelBlack}" Padding="5,0,0,0"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding CapsSmall}">
+
+                                        </Image>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEnglishcapitalandsmallletters}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding MaxSixteen}">
+
+                                        </Image>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding NumSymbol}">
+
+                                        </Image>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNumbersAndSymbols}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
                     </Grid>
                 
                     <buttons:SfButton x:Name="btnConfirmNewPassword" Text="{x:Static custom2:AppResources.Submit}" Command="{Binding ConfirmPasswordBtnClicked}"  CornerRadius="10"

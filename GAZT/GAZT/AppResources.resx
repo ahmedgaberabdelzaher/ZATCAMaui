@@ -5002,6 +5002,13 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
+   <data name="VatRefundsConfirmDetails" xml:space="preserve">
+    <value>I hereby confirm that I will pay any outstanding liabilities and submit all due returns in GAZT before submitting the refund request or GAZT will offset the outstanding liabilities from my VAT credit balance before the refund paid. GAZT have also the right to reject my refund request if I have any overdue declaration.</value>
+  </data>
+
+   <data name="VatRefundsConfirmationTit" xml:space="preserve">
+    <value>Confirmation</value>
+  </data> 
   <data name="VATRefundAccounts" xml:space="preserve">
     <value>Accounts</value>
   </data>

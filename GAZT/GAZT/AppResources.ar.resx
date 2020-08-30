@@ -1637,6 +1637,14 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
+  <data name="VatRefundsConfirmDetails" xml:space="preserve">
+    <value>أتعهد بأن اقوم بسداد جميع التزاماتي المالية وتقديم جميع الاقرارات المستحقة لدى الهيئة قبل تقديم طلب الإسترداد وأني قد فوضت الهيئة بخصم أي مستحقات قائمة من رصيدي لدى الهيئة قبل الإسترداد. ويحق للهيئة برفض الطلب عند وجود أي إقرارات متأخرة لم أقم بتقديمها.</value>
+  </data>
+
+   <data name="VatRefundsConfirmationTit" xml:space="preserve">
+    <value>تأكيد</value>
+  </data> 
+
   <data name="VATRefundAccounts" xml:space="preserve">
     <value>الحسابات</value>
   </data>
