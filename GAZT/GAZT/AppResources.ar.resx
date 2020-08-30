@@ -6139,11 +6139,10 @@
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
     <value>Revoke ZAKAT Instalment Plan</value>
   </data>
-<<<<<<< HEAD
   <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
     <value>البريد الالكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
   </data>
-=======
+
    <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
   <value>Estimated Profit percentage based on contract type</value>
 </data>
@@ -6165,5 +6164,4 @@
 <data name="CRTotalDuesDesc" xml:space="preserve">
   <value>Value of zakat due + value of TAX due</value>
  </data>
->>>>>>> 7d9acdb... Bug Fixes on Contract Release
 </root>
