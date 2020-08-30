@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
+using EGAZT.Models.InstalmentPlanModel;
+using EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -61,6 +64,36 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
+
+        async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
+            await Task.Delay(1000);
+
+            if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 0)
+            {
+                viewModel.EnableCreateZakatInstalment();
+            }
+            else if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 1)
+            {
+                viewModel.EnableRevokZakatInstalment();
+            }
+
+        }
+
+        protected async override void OnAppearing()
+        {
+            try
+            {
+                base.OnAppearing();
+                viewModel.EnableZakatLandingPage();
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
 
         private void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {

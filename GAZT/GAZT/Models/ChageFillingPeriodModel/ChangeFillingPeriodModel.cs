@@ -263,7 +263,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string type { get; set; }
         }
 
-        public class Result2
+        public class EffDate
         {
             public Metadata3 __metadata { get; set; }
             public string Mandt { get; set; }
@@ -274,7 +274,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
 
         public class EffDateSet
         {
-            public List<Result2> results { get; set; }
+            public List<EffDate> results { get; set; }
         }
 
         public class Metadata4

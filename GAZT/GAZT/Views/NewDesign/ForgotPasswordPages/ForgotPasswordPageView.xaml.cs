@@ -96,7 +96,9 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.PasswordTextColor = Color.Black;
             viewModel.UserNameTextColor = Color.White;
             viewModel.SetIDNumberEnability = true;// Enabling IDNumber Field as per tapping on Password Tile
-
+            
+            viewModel.IndividualOrPersonalBusinessCardBackgroundImg = "FP_selected_tile";
+            viewModel.IndividualOrPersonalBusinessTextColor = Color.White;
 
             viewModel.Email = string.Empty;
             viewModel.TxtTIN = string.Empty;

@@ -83,7 +83,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private string VerifyEmails(string CurrentEmail, string NewEmail, string ConfirmEmail)
         {
-            bool compareStringFlag = string.Equals(NewEmail, ConfirmEmail);
+            bool compareStringFlag = false;
+            int iEmailCompared = String.Compare(NewEmail, ConfirmEmail,true);
+            
+            if (iEmailCompared == 0)
+                compareStringFlag = true;
 
             if (CurrentEmail == null || NewEmail == null
                                         || ConfirmEmail == null

@@ -40,8 +40,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 viewModel = App.Locator.ChangeFillingPeriodPageView;
                 this.BindingContext = viewModel;
-                viewModel.GetVATChangeFillingData();
+
                 viewModel.ResetData();
+
+                viewModel.GetVATChangeFillingData();
             }
             catch (Exception ex)
             {
@@ -75,15 +77,24 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 (sender, arg) =>
                 {
 
-                    viewModel.PickedDate = Convert.ToDateTime(arg.SelectedValue);
+                    viewModel.PickedDate = arg.SelectedValue;
+                    viewModel.ValidateIdNumber();
 
                 });
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 //viewModel.PickerModel = arg;
                 //viewModel.updatePicker();
-                Console.WriteLine(arg);
-                OnAppearing();
+                if (viewModel.selectedPicker == ChangeFillingPeriodViewModel.PickerEnum.EffectiveDate)
+                {
+                    viewModel.EffectiveDatePickerModel = arg;
+                    viewModel.updateEffectiveDatePicker();
+                }
+                else if (viewModel.selectedPicker == ChangeFillingPeriodViewModel.PickerEnum.IdType)
+                {
+                    viewModel.IDTypePickerModel = arg;
+                    viewModel.updateIdTypePicker();
+                }
             });
 
             Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
@@ -108,7 +119,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             ChangeFillingPeriodModel selectedItem = e.AddedItems[0] as ChangeFillingPeriodModel;
-            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
 
             viewModel.ShowAttachments = true;
 
@@ -118,20 +128,23 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 {
                     case 0:
                         {
-                            viewModel.SelectedAttachmentText = "Attachment - 2 years monthly return";
-                            viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
+                            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+                            viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
+                            viewModel.SetAttachmentsListViewData();
                             return;
                         }
                     case 1:
                         {
-                            viewModel.SelectedAttachmentText = "Attachment - 12 Months Taxable Revenue";
-                            viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
+                            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+                            viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
+                            viewModel.SetAttachmentsListViewData();
                             return;
                         }
                     case 2:
                         {
-                            viewModel.SelectedAttachmentText = "Attachment - Other Document";
-                            viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
+                            viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
+                            viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
+                            viewModel.SetAttachmentsListViewData();
                             return;
                         }
                 }
@@ -146,5 +159,14 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
         }
 
+        private void OnIDNumberFocusChanged(object sender, FocusEventArgs focusEventArgs)
+        {
+            viewModel.ValidateIdNumber();
+        }
+
+        private void IdNumberTextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.IDNumber = e.NewTextValue;
+        }
     }
 }

@@ -369,6 +369,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             VatNewReqSummaryData.Gpartx = App.LoginDataRetrieved.TIN;
             VatNewReqSummaryData.Langx = UtilityManager.GetLanguageParameter();
             VatNewReqSummaryData.Rfamt = "-" + VatNewReqSummaryData.Rfamt;
+            VatNewReqSummaryData.TcFg = "X";
+            VatNewReqSummaryData.Confirmfg = "X";
+            VatNewReqSummaryData.Agrfg = "X";
+            VatNewReqSummaryData.Decflg = "X";
 
             try
             {

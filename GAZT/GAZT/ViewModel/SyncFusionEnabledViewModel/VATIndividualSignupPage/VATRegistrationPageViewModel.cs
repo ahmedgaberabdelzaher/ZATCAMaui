@@ -24,6 +24,40 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public readonly IDialogService _dialogService;
         public static IsComeFromForAttachment IsComeFromForAttachment;
 
+        #region Variable
+
+        //private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.BasicInformation;
+        //public ZakatForm5TabEnum currentTab
+        //{
+        //    get => _currentTab;
+        //    private set
+        //    {
+        //        _currentTab = value;
+        //        RaisePropertyChanged(nameof(currentTab));
+        //        CurrentIndex = (int)_currentTab;
+        //        RaisePropertyChanged(nameof(CurrentIndex));
+        //    }
+        //}
+        private int _currenrIndex = 1;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                if (_currenrIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+            }
+        }
+        public bool MarkComplete { get; private set; } = false;
+        public int MaxIndex { get; private set; } = 5;
+        #endregion
+
+
         #region Properties
         private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
         public Color ContinueButtonnBackroundColor

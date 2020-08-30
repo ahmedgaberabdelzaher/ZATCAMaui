@@ -225,7 +225,7 @@
                                 </StackLayout>
                                 <StackLayout>
                                     <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" IsEnabled="True">
                                             <Label Text="{x:Static ResourceManager:AppResources.Attachments}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                 <Image Grid.Row="0" Grid.Column="1" Source="ic_attachment" Margin="5,0" WidthRequest="20" HeightRequest="20"
@@ -237,23 +237,36 @@
                                         </StackLayout>
                                     </border:SfBorder >
                                 </StackLayout>
-                                <StackLayout IsVisible="{Binding IsVisbleRentAttachmentmentList}">
+                                <StackLayout  IsVisible="{Binding IsVisbleRentAttachmentmentList}" >
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyofRentLabel}"  HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />
-                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                            <Image Grid.Row="0" Grid.Column="1" Source="newui_ic_pdf" Margin="5,0" WidthRequest="15" HeightRequest="15"
-                                               HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                            <Label Text="{Binding SelectedRentFileName}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                                <Image Grid.Row="0" Grid.Column="1" Source="closegrey" Margin="5,0" WidthRequest="15" HeightRequest="15"
-                                               HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                            </StackLayout>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnERAttachmentCloseTapped}" ></TapGestureRecognizer>
-                                            </StackLayout.GestureRecognizers>
-                                        </StackLayout>
-                                    </border:SfBorder>
+                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="5" Margin="0,5,0,0"
+                                                 BindableLayout.ItemsSource="{Binding UploadedRentDocumentsList,Mode=TwoWay}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                               <border:SfBorder BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}" BorderColor="{StaticResource NeutralGreay}"
+                                                                Padding="10" CornerRadius="10">
+                                                   <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center"  ColumnSpacing="0" RowSpacing="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                        <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0"
+                                                                            Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                                                                            HorizontalTextAlignment="Start" />
+                                                        <Image Grid.Column="2" Source="closeGrey.png"  HorizontalOptions="Center" VerticalOptions="Center">
+                                                            <Image.GestureRecognizers>
+                                                                <!--<ClickGestureRecognizer Clicked="removeRentAttachmentClicked"/>-->
+                                                                <TapGestureRecognizer CommandParameter="Rentcommand" Tapped="TapRentDeleteGestureRecognizer_Tapped"/>
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                    </Grid>
+                                                </border:SfBorder>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="NoneOfTheAboveOptionsLayout" IsVisible="{Binding IsClickedNoneOfTheAboveOption}" Orientation="Vertical" Grid.Row="7" Margin="0,0,0,10">
@@ -434,7 +447,7 @@
                             </StackLayout>
                             <CollectionView  x:Name="OrgNonResidentActivitylistCV" Grid.Row="8"  ItemSizingStrategy="MeasureFirstItem" IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}" 
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
-                                                 ItemsSource="{Binding OrgNonResidentActivityList}"  SelectedItem="{Binding SelectedOrgNonResidentActivityValue, Mode=TwoWay}"
+                                                 ItemsSource="{Binding OrgNonResidentActivityList}"  SelectedItem="{Binding SelectedOrgNonResidentActivityItem, Mode=TwoWay}"
                                                  SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never">
                                 <CollectionView.ItemsLayout>
                                     <LinearItemsLayout Orientation="Vertical"   />
@@ -858,6 +871,36 @@
                                 <StackLayout IsVisible="{Binding IsVisbleAttachmentPassportList}">
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTAttachmentPassportDetails}" HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />
+                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="5" Margin="0,5,0,0"
+                                                 BindableLayout.ItemsSource="{Binding UploadedRentDocumentsList,Mode=TwoWay}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                               <border:SfBorder BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}" BorderColor="{StaticResource NeutralGreay}"
+                                                                Padding="10" CornerRadius="10">
+                                                   <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center"  ColumnSpacing="0" RowSpacing="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                        <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0"
+                                                                            Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                                                                            HorizontalTextAlignment="Start" />
+                                                        <Image Grid.Column="2" Source="closeGrey.png"  HorizontalOptions="Center" VerticalOptions="Center">
+                                                            <Image.GestureRecognizers>
+                                                                <!--<ClickGestureRecognizer Clicked="removeRentAttachmentClicked"/>-->
+                                                                <TapGestureRecognizer Tapped="TapPassportDeleteGestureRecognizer_Tapped"/>
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                    </Grid>
+                                                </border:SfBorder>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+
+
+
                                     <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                             <Image Grid.Row="0" Grid.Column="1" Source="newui_ic_pdf" Margin="5,0" WidthRequest="15" HeightRequest="15"
@@ -981,17 +1024,17 @@
                                 </DataTemplate>
                             </listView:SfListView.SelectedItemTemplate>
                         </listView:SfListView>
-                        <custom:CustomLabel  Text="End of Financial Year" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
-                        <custom:CustomLabel  Text="End of Fiscal Month" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="End of Financial Year" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                        <custom:CustomLabel Text="End of Fiscal Month" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <buttons:SfButton IsVisible="{Binding SelectedMethod, Converter={StaticResource methodToVisibilityConverter}, ConverterParameter='Accounts'}" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding FiscalMonth}" Command="{Binding OnMonthSelectButtonClick}" Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                         <custom:CustomLabel IsVisible="{Binding SelectedMethod, Converter={StaticResource methodToVisibilityConverter}, ConverterParameter='Estimate'}" Text="{Binding FiscalMonth}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
-                        <custom:CustomLabel  Text="End of Fiscal Day" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="End of Fiscal Day" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <buttons:SfButton IsVisible="{Binding SelectedMethod, Converter={StaticResource methodToVisibilityConverter}, ConverterParameter='Accounts'}" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding FiscalDay}" Command="{Binding OnDaySelectButtonClick}" Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                         <custom:CustomLabel IsVisible="{Binding SelectedMethod, Converter={StaticResource methodToVisibilityConverter}, ConverterParameter='Estimate'}" Text="{Binding FiscalDay}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
-                        <custom:CustomLabel  Text="Business Commencement Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <custom:CustomLabel  Text="1432/11/21" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
-                        <custom:CustomLabel  Text="Taxable Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
-                        <custom:CustomLabel Text="1432/11/20" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
+                        <custom:CustomLabel Text="Business Commencement Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="{Binding CommDate}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
+                        <custom:CustomLabel Text="Taxable Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="{Binding TaxDate}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
                     </StackLayout>
                 </ScrollView>
                 <ScrollView Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}">

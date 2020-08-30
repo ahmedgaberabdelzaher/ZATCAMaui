@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Linq;
+using GAZT.Models;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -183,5 +184,24 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
             catch (Exception) { }
         }
+
+        
+
+        void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
+        {
+            var item = sender as Image;
+            var data = item.BindingContext as Attachment;
+            viewModel.OnRentAttachmentCloseTapped(data);
+        }
+
+
+
+        void TapPassportDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
+        {
+            var item = sender as Image;
+            var data = item.BindingContext as Attachment;
+            viewModel.OnPassportCloseButtonTapped(data);
+        }
+
     }
 }

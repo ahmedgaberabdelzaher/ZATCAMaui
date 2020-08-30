@@ -238,7 +238,7 @@
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSalesDetails}" Style="{StaticResource SectionTitleBlack}"/>
                                         <!--{ Binding IsEditTextVisible}-->
 
-                                        <custom:CustomLabel IsVisible="{Binding IsEditTextVisible}" HorizontalOptions="EndAndExpand" Text="Edit" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
+                                        <custom:CustomLabel IsVisible="{Binding IsEditTextVisible}" HorizontalOptions="EndAndExpand" Text="{x:Static local:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnEditClicked"/>
                                             </custom:CustomLabel.GestureRecognizers>

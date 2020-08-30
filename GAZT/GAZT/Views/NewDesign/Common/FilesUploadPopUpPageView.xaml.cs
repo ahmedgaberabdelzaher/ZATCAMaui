@@ -97,6 +97,18 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.DocTypeString = "N11B";
             }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod2Years)
+            {
+                viewModel.DocTypeString = "ZTPA";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod12Months)
+            {
+                viewModel.DocTypeString = "ZTPB";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriodOtherDoc)
+            {
+                viewModel.DocTypeString = "ZTPC";
+            }
         }
 
         private void SetLTR()

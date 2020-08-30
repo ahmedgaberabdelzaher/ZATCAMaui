@@ -1056,7 +1056,7 @@ namespace GAZT.Manager
                             }
                             else
                             {
-                                throw new Exception(AppResources.InvalidEmail);
+                                throw new Exception(AppResources.NDNewEmailCannotBeSameAsOldEmail);
                             }
                         }
                         else
@@ -1071,6 +1071,10 @@ namespace GAZT.Manager
                     if (string.Equals(ex.Message, AppResources.InvalidEmail))
                     {
                         throw new Exception(AppResources.InvalidEmail);
+                    }
+                    else if(string.Equals(ex.Message, AppResources.NDNewEmailCannotBeSameAsOldEmail))
+                    {
+                        throw new Exception(AppResources.NDNewEmailCannotBeSameAsOldEmail);
                     }
                     else
                     {
@@ -1144,7 +1148,7 @@ namespace GAZT.Manager
                 {
                     if (string.Equals(ex.Message, AppResources.Invalidverificationcodeentered))
                     {
-                        throw new Exception(AppResources.InvalidEmail);
+                        throw new Exception(AppResources.Invalidverificationcodeentered);
                     }
                     else
                     {
@@ -9012,11 +9016,14 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    var serialized = JsonConvert.SerializeObject(taxPayer, new JsonSerializerSettings
+                    var serializeOptions = new JsonSerializerSettings
                     {
                         DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
                         DateTimeZoneHandling = DateTimeZoneHandling.Utc
-                    });
+                    };
+                    serializeOptions.Converters.Add(new JsonFieldListConverter());
+                    var serialized = JsonConvert.SerializeObject(taxPayer, serializeOptions);
+
                     HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, Constants.ContentType);
 
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(new Uri(string.Format("{0}?sap-language={1}", Constants.ESTTaxPayerDetails, lang)), contentPost);
@@ -9264,7 +9271,8 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
-                    var uri = new Uri(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json", Constants.ESTOutletCityStateCountryDropDown, lang));
+                    var uri = new Uri(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json",
+                        Constants.ESTOutletCityStateCountryDropDown, lang));
                     
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
@@ -9458,9 +9466,9 @@ namespace GAZT.Manager
             }
             return validate;
         }
-        public static async Task<List<Nreg_OutletItem>> ESTOutletList(string email, string gpart, string fbnum)
+        public static async Task<List<OutletItem>> ESTOutletList(string email, string gpart, string fbnum)
         {
-            List<Nreg_OutletItem> outlets = new List<Nreg_OutletItem>();
+            List<OutletItem> outlets = new List<OutletItem>();
             if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
@@ -9501,7 +9509,7 @@ namespace GAZT.Manager
                         {
                             ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
                             ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
-                            outlets = JsonConvert.DeserializeObject<List<Nreg_OutletItem>>(ESTBranchesDropDownResponseJSON);
+                            outlets = JsonConvert.DeserializeObject<List<OutletItem>>(ESTBranchesDropDownResponseJSON);
                         }
                     }
                 }
@@ -9598,7 +9606,7 @@ namespace GAZT.Manager
             }
             return address;
         }
-        public static async Task<FinancialDetail> ESTFinancialMaxDate()
+        public static async Task<FinancialDetail> ESTFinancialMaxDate(FinancialDetailRequest financialDetailRequest)
         {
             FinancialDetail financial = null;
             if (CrossConnectivity.Current.IsConnected)
@@ -9611,10 +9619,13 @@ namespace GAZT.Manager
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(string.Format(Constants.ESTFinancialMaxDate));
-                    var financeData = JsonConvert.SerializeObject(new FinancialDetailRequest(), new JsonSerializerSettings {
+                    var financeData = JsonConvert.SerializeObject(financialDetailRequest, new JsonSerializerSettings {
                         DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
                         DateTimeZoneHandling = DateTimeZoneHandling.Utc
                     });
@@ -9915,7 +9926,7 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    taxpayerz = "3102224202";
+                    
                     //fbnumz = "035001347905";
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -10206,7 +10217,7 @@ namespace GAZT.Manager
                     //(Fbtypz = '', UserTypz = '', TransactionTypez = '', Lang = 'E', Gpart = '3300067427', Status = '') ? &$expand = UI_BTNSet,ATT_TYPSet,EffDateSet
 
                     String url = Constants.VATChangeFillingPeriodGetDropdownURL + "Fbtypz='" + "',UserTypz='" + "',TransactionTypez='" + "',Lang='" + lang + "'," +
-                     "Gpart='" + gpart + "',Status='" + "')?$expand = UI_BTNSet,ATT_TYPSet,EffDateSet&$format=json";
+                     "Gpart='" + gpart + "',Status='" + "')?$expand=UI_BTNSet,ATT_TYPSet,EffDateSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage _vATRefillingGetDropdownResponse = await client.GetAsync(uri);
 
@@ -10354,7 +10365,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static string GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
+        public async static Task<string> GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -10498,16 +10509,7 @@ namespace GAZT.Manager
 
                 try
                 {
-                    var inputsData = await GAZTGetVATChangeFillingSummaryInputs(fbnum,status);
-                    string fbguid = string.Empty;
-                    string eUser = string.Empty;
                     string NewToken = string.Empty;
-                    if (inputsData.d != null)
-                    {
-                        fbguid = inputsData.d.Fbguid;
-                        eUser = inputsData.d.Euser;
-                    }
-
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -10516,10 +10518,10 @@ namespace GAZT.Manager
                     //UserTypz = '', Fbguid = '005056B1F8FB1EDAB9F82A3E64053352')
                     //   ?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json
 
-                    String url = Constants.VATChangeFillingSummaryURL + "Fbnumz='" + "',PortalUsrz='" + "',Langz='" + lang + "'," +
-                      "Operationz='" + "',Gpartz='" + "',Euser='" + eUser + "',UserTypz='" + "',Fbguid='" + fbguid + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
+                    String url = Constants.VATChangeFillingSummaryURL + "Fbnumz='" + fbnum + "',PortalUsrz='" + "',Langz='" + lang + "'," +
+                      "Operationz='" + "',Euser='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',UserTypz='" + "',Fbguid='" + "')?&$expand=EffDateSet,UI_BTNSet,NOTESSet,ATTACHSet,ATT_TYPSet,QuesListSet&$format=json";
                     var uri = new Uri(url);
-                    HttpResponseMessage _vatChangeFillingSumamryResponse = await client.GetAsync(uri);
+                     HttpResponseMessage _vatChangeFillingSumamryResponse = await client.GetAsync(uri);
 
 
 

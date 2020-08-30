@@ -294,7 +294,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     string lang = UtilityManager.GetLanguageParameter();
                     MyBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
-
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (MyBills != null && MyBills.Count != 0)
@@ -383,34 +382,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }        
         public async Task PopToRootPage()
         {
-            if (App.IsSessionExpired)
+            try
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                if (App.IsSessionExpired)
                 {
-                    if (App.TP != null)
-                        App.TP = null;
-                    if (App.PreviousIsArabic)
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        String langName = "ar-SA";
-                        AppResources.Culture = new CultureInfo(langName);
-                    }
-                    else
-                    {
-                        String langName = "en-US";
-                        AppResources.Culture = new CultureInfo(langName);
-                    }
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
-                    {
-                        if (item.GetType().Name == App.SFLoginPageView)
+                        if (App.TP != null)
+                            App.TP = null;
+                        if (App.PreviousIsArabic)
                         {
-                            _navigation.RemovePage(item);
-                            break;
+                            String langName = "ar-SA";
+                            AppResources.Culture = new CultureInfo(langName);
                         }
-                    }
-                    _navigationService.NavigateTo(App.SFLoginPageView);
-                    _navigation.NavigationStack.ToList().Clear();
-                });
+                        else
+                        {
+                            String langName = "en-US";
+                            AppResources.Culture = new CultureInfo(langName);
+                        }
+                        var _navigation = Application.Current.MainPage.Navigation;
+                        foreach (var item in _navigation.NavigationStack)
+                        {
+                            if (item.GetType().Name == App.SFLoginPageView)
+                            {
+                                _navigation.RemovePage(item);
+                                break;
+                            }
+                        }
+                    // _navigationService.NavigateTo(App.SFLoginPageView);
+                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                        _navigation.NavigationStack.ToList().Clear();
+                    });
+                }
+
+            }
+            catch(Exception ex)
+            {
+
             }
         }
         #endregion
