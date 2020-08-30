@@ -988,8 +988,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsDOBEditorVisible");
             }
         }
+        public bool _VoidIsVisible = true;
+        public bool VoidIsVisible
+        {
+            get
+            {
+                return _VoidIsVisible;
+            }
+            set
+            {
+                _VoidIsVisible = value;
+                RaisePropertyChanged("VoidIsVisible");
+            }
+        }
 
-  
         public VATDeRegistrationDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -1159,7 +1171,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 EnableReasonView();
                 IsDOBEditorVisible = true;
-
+                VoidIsVisible = false;
                 PopulateAttachmentsListViewTemplate();
 
 
@@ -1328,6 +1340,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             EnableDeclarationView();
                             break;
                         }
+                    case ProcessStep.Step5:
+                        {
+                            EnableSummaryView();
+                            break;
+                        }
                 }
 
             }
@@ -1370,38 +1387,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     reqType = "VT_SUSP";
                 }
             }
-            VATDeregistrationModelRootObject reasonList = WebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
-
-            for (int i = 0; i < reasonList.d.results.Count; i++)
-            {
-                reasonDescription.Add(reasonList.d.results[i].Rdesc);
-                Reason = reasonList.d.results[i].Reason;
-            }
-            GenericPickerModel genericPickerModel = new GenericPickerModel();
-            genericPickerModel.PickerData = reasonDescription;
-            genericPickerModel.PickerTitle = AppResources.VatDeregReasonTitle;
-            genericPickerModel.PickerId = "reasonTypePicker";
             try
             {
-                PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
+                VATDeregistrationModelRootObject reasonList = WebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
+                if (reasonList != null)
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+                    for (int i = 0; i < reasonList.d.results.Count; i++)
+                    {
+                        reasonDescription.Add(reasonList.d.results[i].Rdesc);
+                        Reason = reasonList.d.results[i].Reason;
+                    }
 
+                    GenericPickerModel genericPickerModel = new GenericPickerModel();
+                    genericPickerModel.PickerData = reasonDescription;
+                    genericPickerModel.PickerTitle = AppResources.VatDeregReasonTitle;
+                    genericPickerModel.PickerId = "reasonTypePicker";
+                    try
+                    {
+                        PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    }
+                    catch (GAZTUnlockAccountException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }catch(Exception ex)
+            {
+
+            }
         }
 
         public async void OnVatRegistrationReasonDateClicked()
@@ -1522,6 +1547,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     setDATA("05");
                     await saveAsDraftVoidAPIMethodCall();
+                    VoidIsVisible = true;
                 }
                 catch (InternetException ex)
                 {
@@ -1774,31 +1800,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
 
 
-            PopulateSummaryReasonData();
-            PopulateSummaryDeclarationData();
+           // PopulateSummaryReasonData();
+            //PopulateSummaryDeclarationData();
         }
 
 
         #region Attachments View
         public void PopulateAttachmentsListViewTemplate()
         {
-            //AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
+            if (VatAttachmentsList != null)
+            {
+                //AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
+                for (int i = 0; i < VatAttachmentsList.Count; i++)
+                {
 
-            AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
-            AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
-            {
-                FieldTitle = AppResources.VatDeregDocumentTitle,
-                FieldSubTitle = AppResources.TinDeregistration20MB,
-                AttachmentName = SelectedDocumentOption.Txt50,
-                IsAttachmentAttached = true
-            });
-            AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
-            {
-                FieldTitle = AppResources.VatDeregAttachmentTitle,
-                FieldSubTitle = AppResources.TinDeregistration50MBMax,
-                AttachmentName = FileName,
-                IsAttachmentAttached = false
-            });
+                    try
+                    {
+                        AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
+                        if (SelectedDocumentOption != null)
+                        {
+                            AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
+                            {
+                                FieldTitle = AppResources.VatDeregDocumentTitle,
+                                FieldSubTitle = AppResources.TinDeregistration20MB,
+                                AttachmentName = SelectedDocumentOption.Txt50,
+                                IsAttachmentAttached = true
+                            });
+                        }
+
+                        AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
+                        {
+                            FieldTitle = AppResources.VatDeregAttachmentTitle,
+                            FieldSubTitle = AppResources.TinDeregistration50MBMax,
+                            AttachmentName = VatAttachmentsList[i].Filename,
+                            IsAttachmentAttached = false
+                        });
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
+                }
+
+                
+            }
 
         }
         #endregion
@@ -2242,12 +2287,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 //Step 4
 
-                if (IDType == "National ID")
+                if (IDType == AppResources.NationaID)
                 {
                     VATDeRegistrationDetailsData.d.Type = "ZS0001";
 
                 }
-                else if (IDType == "Iqama ID")
+                else if (IDType == AppResources.ZZIqamaID)
                 {
                     VATDeRegistrationDetailsData.d.Type = "ZS0002";
 
