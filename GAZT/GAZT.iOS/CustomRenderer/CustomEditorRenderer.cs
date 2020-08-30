@@ -16,7 +16,10 @@ namespace GAZT.iOS.CustomRenderer
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
             base.OnElementChanged(e);
-            Control.TintColor = UIColor.White;
+            if(Control != null)
+            {
+                Control.TintColor = UIColor.White;
+            }
         }
 
     }
