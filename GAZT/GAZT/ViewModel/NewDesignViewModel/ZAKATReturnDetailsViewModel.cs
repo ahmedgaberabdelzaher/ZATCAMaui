@@ -32,13 +32,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnEditClicked { get; set; }
         public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
         List<EstimateZakatAttachment> EstimateZakatAttachmentList = new List<EstimateZakatAttachment>();
-        public string Fbguid { get; set; }
+        public static string Fbguid { get; set; }
         public bool IsCurrentZAKATTaxLess = false;
         public bool isThresholdValueLessThanTotalVATSales;
         public const string SubmitPostOperation = "05";
         public const string ConfirmPostOperationWithoutObjection = "65";
         public const string ConfirmPostOperationWithObjection = "66";
         public string Estsl { get; set; }
+
         public double existingZakatBase = 0.00;
         public static ZakatReturnDetailsD ZakatReturnDetailToCompare = new ZakatReturnDetailsD();
 
