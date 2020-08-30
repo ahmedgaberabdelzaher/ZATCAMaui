@@ -5805,138 +5805,305 @@
   <data name="VatInstalmentsStatusInDraft" xml:space="preserve">
     <value>In Draft</value>
   </data>
+  <data name="ContractRelease" xml:space="preserve">
+    <value>الإفراج عن عقد</value>
+  </data>
+  <data name="CRReleaseDetails" xml:space="preserve">
+    <value>تفاصيل الإفصاح</value>
+  </data>
+  <data name="CRCompleteBelowDetails" xml:space="preserve">
+    <value>اكمل البيانات التالية</value>
+  </data>
+  <data name="CRNameOnContract" xml:space="preserve">
+    <value>الاسم المسجل في العقد</value>
+  </data>
+  <data name="CRContractNumber" xml:space="preserve">
+    <value>رقم العقد</value>
+  </data>
+  <data name="CRContractType" xml:space="preserve">
+    <value>نوع العقد</value>
+  </data>
+  <data name="CRContractPeriod" xml:space="preserve">
+    <value>تاريخ العقد</value>
+  </data>
+  <data name="CRTotalAmountOfContract" xml:space="preserve">
+    <value>إجمالي المستحق</value>
+  </data>
+  <data name="CRAmountRequiredToRelease" xml:space="preserve">
+    <value>المبلغ المطلوب الافراج عنه</value>
+  </data>
+  <data name="CRProfitEstimatedForContract" xml:space="preserve">
+    <value>الربح التقديري للعقد</value>
+  </data>
+  <data name="CREstimatedProfitforZakat" xml:space="preserve">
+    <value>الربح التقديري الخاضع للزكاة</value>
+  </data>
+  <data name="CREstimatedProfitforTax" xml:space="preserve">
+    <value>الربح التقديري الخاضع للضريبة </value>
+  </data>
+  <data name="CRTheValueTaxDues" xml:space="preserve">
+    <value>قيمة الضريبة المستحقة</value>
+  </data>
+  <data name="CRTotalDues" xml:space="preserve">
+    <value>اجمالي المستحق</value>
+  </data>
+  <data name="CRAmount" xml:space="preserve">
+    <value>المبلغ</value>
+  </data>
+  <data name="CRPercentage" xml:space="preserve">
+    <value>النسبة</value>
+  </data>
+  <data name="CRContinue" xml:space="preserve">
+    <value>المتابعة</value>
+  </data>
+  <data name="CRAttachments" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="CRAttachACopyOfTheContractRequiredToReleaseAndAmounts" xml:space="preserve">
+    <value>Attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certiied translation Office.</value>
+  </data>
+  <data name="CRAttachContract" xml:space="preserve">
+    <value>Attach Contract</value>
+  </data>
+  <data name="CRAttachacopyofinvoicesandpurchase" xml:space="preserve">
+    <value>صورة من الفواتير وأوامر الشراء المطلوب الإفراج عن قيمتها</value>
+  </data>
+  <data name="CRAttachInvoiceCopy" xml:space="preserve">
+    <value>إرفاق صورة الفاتورة</value>
+  </data>
+  <data name="CR20MB" xml:space="preserve">
+    <value>20MB</value>
+  </data>
+  <data name="CRRemarksAndDescription" xml:space="preserve">
+    <value>الملاحظات و الوصف</value>
+  </data>
+  <data name="CRRemarks" xml:space="preserve">
+    <value>ملاحظات</value>
+  </data>
+  <data name="CRDetailDescription" xml:space="preserve">
+    <value>تفاصيل الوصف</value>
+  </data>
+  <data name="CRDeclaration" xml:space="preserve">
+    <value>التفويض</value>
+  </data>
+  <data name="CRContactPersonName" xml:space="preserve">
+    <value>اسم جهة الاتصال</value>
+  </data>
+  <data name="CRDesignation" xml:space="preserve">
+    <value>تعيين</value>
+  </data>
+  <data name="CRSummary" xml:space="preserve">
+    <value>الملخص</value>
+  </data>
+  <data name="CRReviewthebelowinformation" xml:space="preserve">
+    <value>مراجعة البيانات التالية</value>
+  </data>
+  <data name="CREdit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="CRContractonName" xml:space="preserve">
+    <value>الاسم المسجل في العقد</value>
+  </data>
+  <data name="CRIDType" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+  <data name="CRIDNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+  <data name="CRDateOfBirth" xml:space="preserve">
+    <value>تريخ الميلاد</value>
+  </data>
+  <data name="CRInformation" xml:space="preserve">
+    <value>معلومات</value>
+  </data>
+  <data name="CRIherebycertify" xml:space="preserve">
+    <value>أقر بموجب هذا بأنني مفوض لملء هذا النموذج للشخص الخاضع للضريبة وأن جميع المعلومات الواردة صحيحة</value>
+  </data>
+  <data name="CRContractprofitEstimatedRate" xml:space="preserve">
+    <value>الربح التقديري للعقد</value>
+  </data>
+  <data name="CRTheValueofZakatdues" xml:space="preserve">
+    <value>قيمة الضريبة المستحقة</value>
+  </data>
+  <data name="CRYourContractisreleasedsuccessfully" xml:space="preserve">
+    <value>تم الإفراج عن العقد بنجاح</value>
+  </data>
+  <data name="CRReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي</value>
+  </data>
+  <data name="CRDownloadConfirmation" xml:space="preserve">
+    <value>تحميل إشعار تسليم الطلب</value>
+  </data>
   <data name="CRInstructions" xml:space="preserve">
-    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
-2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
+    <value> 1 - تتيح الخدمة تقديم طلب شهادة الإفراج عن عقد بعد سداد الزكاة أو الضريبة عن هذا العقد، والتي تستخدم من قبل المنشآت لصرف المستحقات المرتبطة بهذا العقد.
+2 - يجب إرفاق الملفات الاتية لإستكمال الطلب:
+- صورة العقد المطلوب الإفراج عنه باللغة العربية أو مترجم من جهة معتمدة.
+- صورة من الفواتير وأوامر الشراء المطلوب الإفراج عن قيمتها.
+        </value>
+  </data>
+  <data name="CRContractingNumber" xml:space="preserve">
+    <value>رقم التعاقد</value>
+  </data>
+  <data name="CRInstructionsandConditions" xml:space="preserve">
+    <value>التعليمات والشروط</value>
+  </data>
+
+  <data name="CRInstructionsDesc" xml:space="preserve">
+    <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
+  </data>
+  <data name="CRDone" xml:space="preserve">
+    <value>النهاية</value>
+  </data>
+  <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
+    <value>نسبة الربح التقديرية بناء على نوع العقد</value>
+  </data>
+  <data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
+    <value>حاصل ضرب "المبلغ المطلوب الإفراج عنه" مع "نسبة الربح التقديرية للعقد"</value>
+  </data>
+  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك السعودي %"</value>
+  </data>
+  <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك الغير السعودي %"</value>
+  </data>
+  <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري الخاضع للزكاة" في "2.5 %"</value>
+  </data>
+  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري الخاضع للضريبة" في "20 %"</value>
+  </data>
+  <data name="CRTotalDuesDesc" xml:space="preserve">
+    <value>حاصل جمع "قيمة الزكاة المستحقة" مع "قيمة الضريبة المستحقة"</value>
+>>>>>>> Stashed changes
   </data>
   <data name="CRInstrCheckDesc" xml:space="preserve">
-    <value>I Agree</value>
+    <value>أنا أوافق</value>
   </data>
   <data name="CRSupplyforAramco" xml:space="preserve">
-    <value>Supply for Aramco</value>
+    <value>توريد لشركة ارامكو السعودية</value>
   </data>
   <data name="CRSupplyandmaintenance" xml:space="preserve">
-    <value>Supply and maintenance</value>
+    <value>توريد وصيانة</value>
   </data>
   <data name="CRsupplymaintenanceandoperating" xml:space="preserve">
-    <value>supply, maintenance and operating</value>
+    <value>توريد وصيانة وتشغيل</value>
   </data>
   <data name="CRDisassembleinstallationandoperate" xml:space="preserve">
-    <value>Disassemble, installation and operate</value>
+    <value>فك وتركيب وتشغيل</value>
   </data>
   <data name="CRsupplyinstallationandoperate" xml:space="preserve">
-    <value>supply, installation and operate</value>
+    <value>توريد وتركيب وتشغيل</value>
   </data>
   <data name="CRDisassembleinstallationandtransport" xml:space="preserve">
-    <value>Disassemble, installation and transport</value>
+    <value>فك ونقل وتركيب</value>
   </data>
   <data name="CRCleanlinessandmaintenance" xml:space="preserve">
-    <value>Cleanliness and maintenance</value>
+    <value>نظافة وصيانة</value>
   </data>
   <data name="CRSupplyinstallationanddeliver" xml:space="preserve">
-    <value>Supply, installation and deliver</value>
+    <value>توريد وتركيب وتسليم</value>
   </data>
   <data name="CRmaintenanceandoperate" xml:space="preserve">
-    <value>maintenance and operate</value>
+    <value>صيانة وتشغيل</value>
   </data>
   <data name="CRtransport" xml:space="preserve">
-    <value>transport</value>
+    <value>نقل</value>
   </data>
   <data name="CRsupplyandwatertransport" xml:space="preserve">
-    <value>supply and water transport</value>
+    <value>توريد ونقل مياه</value>
   </data>
   <data name="CRconstruction" xml:space="preserve">
-    <value>construction</value>
+    <value>إنشاء ومقاولات</value>
   </data>
   <data name="CRmaintenance" xml:space="preserve">
-    <value>maintenance</value>
+    <value>صيانة </value>
   </data>
   <data name="CRoperate" xml:space="preserve">
-    <value>operate</value>
+    <value>تشغيل</value>
   </data>
   <data name="CRDesignandconstruction" xml:space="preserve">
-    <value>Design and construction</value>
+    <value>تصميم وإنشاء</value>
   </data>
   <data name="CRsupplyanddesign" xml:space="preserve">
-    <value>supply and design</value>
+    <value>توريد وتصميم</value>
   </data>
   <data name="CRsupplyandoprate" xml:space="preserve">
-    <value>supply and oprate</value>
+    <value>توريد وتشغيل</value>
   </data>
   <data name="CRsupplyandinstallation" xml:space="preserve">
-    <value>supply and installation</value>
+    <value>توريد وتركيب</value>
   </data>
   <data name="CRdesignsupplyandinstallation" xml:space="preserve">
-    <value>design, supply and installation</value>
+    <value>تصميم وتوريد وتركيب</value>
   </data>
   <data name="CRdesignsupplyandopratemaintenance" xml:space="preserve">
-    <value>design, supply and oprate (maintenance)</value>
+    <value>تصميم توريد وتشغيل (صيانة)</value>
   </data>
   <data name="CRequipmentrental" xml:space="preserve">
-    <value>equipment rental</value>
+    <value>تأجير معدات</value>
   </data>
   <data name="CRmaintenancecleanlinessandoprate" xml:space="preserve">
-    <value>maintenance, cleanliness and oprate</value>
+    <value>صيانة ونظافة وتشغيل</value>
   </data>
   <data name="CRcleanliness" xml:space="preserve">
-    <value>cleanliness</value>
+    <value>نظافة</value>
   </data>
   <data name="CRcatering" xml:space="preserve">
-    <value>catering</value>
+    <value>تأمين الاعاشة</value>
   </data>
   <data name="CRSecurityguards" xml:space="preserve">
-    <value>Security guards</value>
+    <value>حراسات أمنية</value>
   </data>
   <data name="CRRoadsmaintenance" xml:space="preserve">
-    <value>Roads maintenance</value>
+    <value>صيانة طرق</value>
   </data>
   <data name="CRLaborrecruiting" xml:space="preserve">
-    <value>Labor recruiting</value>
+    <value>تأمين عمالة</value>
   </data>
   <data name="CRContractingRoadsandTransport" xml:space="preserve">
-    <value>Contracting Roads and Transport</value>
+    <value>مقاولات طرق ومواصلات</value>
   </data>
   <data name="CRSupply" xml:space="preserve">
-    <value>Supply</value>
+    <value>توريد</value>
   </data>
   <data name="CRSupplyanddeliverytowarehouses" xml:space="preserve">
-    <value>Supply and delivery to warehouses</value>
+    <value>توريد وتسليم للمستودعات</value>
   </data>
   <data name="CRSupplyanddeliveryport" xml:space="preserve">
-    <value>Supply and delivery port</value>
+    <value>توريد وتسليم الميناء</value>
   </data>
   <data name="CROperationofservicesattheport" xml:space="preserve">
-    <value>Operation of services at the port</value>
+    <value>خدمات تشغيل في الميناء</value>
   </data>
   <data name="CRConsultations" xml:space="preserve">
-    <value>Consultations</value>
+    <value>استشارات</value>
   </data>
   <data name="CRDesignandconsulting" xml:space="preserve">
-    <value>Design and consulting</value>
+    <value>تصميم واستشارة</value>
   </data>
   <data name="CRPrivateConsultante" xml:space="preserve">
-    <value>Private Consultante</value>
+    <value>مستشار خاص</value>
   </data>
   <data name="CRStudiesandConsulting" xml:space="preserve">
-    <value>Studies and Consulting</value>
+    <value>الدراسات واستشارات</value>
   </data>
   <data name="CROther" xml:space="preserve">
-    <value>Other</value>
+    <value>اخرى </value>
   </data>
   <data name="CRContractDateshouldnotbegreaterfromcurentdate" xml:space="preserve">
-    <value>Contract Date should not be greater from curent date</value>
+    <value>تاريخ العقد لا يمكن ان يكون اكبر من التاريخ الحالي</value>
   </data>
   <data name="CRContractEndDateshouldnotbegreaterfromcurentdate" xml:space="preserve">
-    <value>Contract EndDate should not be greater from curent date</value>
+    <value>تاريخ نهاية العقد يجب ان يكون اقل التاريخ الحالي</value>
   </data>
   <data name="CRContractEndDateshouldnotbelessfromcontractdate" xml:space="preserve">
-    <value>Contract EndDate should not be less from contract date</value>
+    <value>تاريخ نهاية العقد يجب ان لا يكون اقل تاريخ التعاقد</value>
   </data>
   <data name="CRRequestContractRelease" xml:space="preserve">
-    <value>Request Contract Release</value>
+    <value>طلب الإفراج عن عقد</value>
   </data>
   <data name="CRContractReleaseApplicationForm" xml:space="preserve">
-    <value>Contract Release Application Form</value>
+    <value>نموذج طلب الإفراج عن عقد</value>
   </data>
   <data name="ZZZZWrongVerificationCode" xml:space="preserve">
     <value>رمز التحقق غير صحيح</value>
@@ -6203,5 +6370,25 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>تفاصيل الائتمان المنقولة</value>
   </data>
-
+   <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
+  <value>Estimated Profit percentage based on contract type</value>
+</data>
+<data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
+  <value>Multiply released amount with Estimated profit for contract</value>
+</data>
+<data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for contract with Saudi share %</value>
+</data>
+<data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
+</data>
+<data name="CRTheValueofZakatduesDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
+</data>
+<data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for TAX with 20 %</value>
+</data>
+<data name="CRTotalDuesDesc" xml:space="preserve">
+  <value>Value of zakat due + value of TAX due</value>
+ </data>
 </root>

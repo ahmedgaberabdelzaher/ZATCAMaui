@@ -1033,13 +1033,12 @@
                                         Style="{StaticResource BodyLabelGrey}" />
 
 
-                    <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                            <custom:GAZTBorderlessEntry TextChanged="DetailDescriptionTextChanged" MaxLength="1000"
+                     <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
+                           
+                            <custom:GAZTBorderlessEditor TextChanged="DetailDescriptionTextChanged" MaxLength="1000"
                                                         PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
-                                                        HorizontalOptions="FillAndExpand" />
+                                    MinimumHeightRequest="150" HorizontalOptions="FillAndExpand" />
 
-                        </StackLayout>
                     </border:SfBorder>
 
 
@@ -1235,11 +1234,22 @@
                                                HorizontalOptions="StartAndExpand"
                                                Style="{StaticResource BodyLabelGrey}" />
                                         
-                                        <Label Text="{Binding FromDate,ToDate,StringFormat='{0:MMM yyyy} - {0:MMM yyyy}'}"
-                                               Margin="5,0,0,0"
-                                               HorizontalOptions="End"
-                                               
-                                               Style="{StaticResource BodyLabelBlack}" />
+                                        <!-- <Label Text="{Binding FromDate,ToDate,StringFormat='{0:MMM yyyy} - {1:MMM yyyy}'}" -->
+                                        <!--        Margin="5,0,0,0" -->
+                                        <!--        HorizontalOptions="End" -->
+                                        <!--         -->
+                                        <!--        Style="{StaticResource BodyLabelBlack}" /> -->
+                                        <Label FontSize="14">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{Binding FromDate,StringFormat='{0:MMM yyyy}'}"  />
+                                                        <Span Text=" - "  />
+                                                        <Span Text="{Binding ToDate,StringFormat='{0:MMM yyyy}'}"  />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal" Grid.Row="4">
@@ -1328,32 +1338,23 @@
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                <Grid Padding="15,15,15,0" RowSpacing="8">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                   
+                                <StackLayout Padding="15,15,15,0">
                                     
-                                     <listView:SfListView  Grid.Row="0"  HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
-                                      ItemsSource="{Binding ContractCopyAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                    <listView:SfListView  Grid.Row="0" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
+                                                          ItemsSource="{Binding ContractCopyAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Padding="0" RowSpacing="0">
-                                                    
+                                               
                                                     <StackLayout Orientation="Horizontal">
                                                         <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
                                                                HorizontalOptions="StartAndExpand"
                                                                Style="{StaticResource BodyLabelGrey}" />
-
+                                                        
                                                         <Label Text="{Binding Filename}"
-                                                               HorizontalOptions="End"
-                                                               Margin="5,0,0,0"
+                                                               HorizontalOptions="EndAndExpand"
                                                                Style="{StaticResource BodyLabelBlack}" />
                                                     </StackLayout>
-                                                </Grid>
+                                              
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                     </listView:SfListView>
@@ -1362,18 +1363,15 @@
                                       ItemsSource="{Binding InvoiceAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Padding="0" RowSpacing="0" >
                                                     <StackLayout Orientation="Horizontal">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
+                                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}"
                                                                HorizontalOptions="StartAndExpand"
                                                                Style="{StaticResource BodyLabelGrey}" />
-
+                                                   
                                                         <Label Text="{Binding Filename}"
-                                                               Margin="5,0,0,0"
-                                                               HorizontalOptions="End"
+                                                               HorizontalOptions="EndAndExpand"
                                                                Style="{StaticResource BodyLabelBlack}" />
                                                     </StackLayout>
-                                                </Grid>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                     </listView:SfListView>
@@ -1401,7 +1399,7 @@
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </StackLayout>
 
-                                </Grid>
+                                </StackLayout>
                             </StackLayout>
                         </border:SfBorder>
 
@@ -1521,7 +1519,7 @@
                         </border:SfBorder>
 
                         <buttons:SfButton Margin="0,16,0,16"
-                                          Text="{x:Static ResourceManager:AppResources.CRContinue}"
+                                          Text="{x:Static ResourceManager:AppResources.Confirm}"
                                           Style="{StaticResource PrimaryButtonStyle}"
                                           Command="{Binding SummaryConBtnTapped}" />
 

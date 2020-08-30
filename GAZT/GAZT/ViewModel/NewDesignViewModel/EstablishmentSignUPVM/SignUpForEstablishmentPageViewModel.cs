@@ -1647,7 +1647,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         {
                             PageTitle = AppResources.ZZZBusinessInformation;
                             BodyText = AppResources.ZZZZCompletethebelowdetails;
-                        CurrentTab = EstablishmentSignUPTabEnum.BusinessInformation;
+                            CurrentTab = EstablishmentSignUPTabEnum.BusinessInformation;
                     }
                         else
                         {
@@ -2345,8 +2345,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 CreateModel.AType = SignUpModelRootObjectM.d.AType;
                 CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
                 CreateModel.APassword = TxtPassword;
-                CreateModel.ASmsCode = TxtMobileNumberCode;
-                CreateModel.AEmailCode = TxtEmailCode;
+                string FinalSMSCode = MOTPFirstDigit+ MOTPSecondDigit + MOTPThirdDigit + MOTPFourthDigit;
+
+                CreateModel.ASmsCode = FinalSMSCode;
+                string FinalEMailCode = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
+                CreateModel.AEmailCode = FinalEMailCode;
                 CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
                 CreateModel.ASubmit = "X";
                 CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;

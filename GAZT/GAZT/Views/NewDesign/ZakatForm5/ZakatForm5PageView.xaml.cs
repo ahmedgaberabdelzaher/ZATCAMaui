@@ -53,7 +53,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
 
             Task.Run(async () =>
             {
-                await LoadData();
+               // await LoadData();
 
                 if (viewModel != null)
                 {
@@ -110,17 +110,38 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
         }
         public async Task IntialiseAsync()
         {
-            try
+            //try
+            //{
+            //    await viewModel.LoadZakatForm5Data();
+            //    if (viewModel.ZakatForm5DataResult != null )
+            //    {
+            //       // BPicker.SelectedIndex = 14;
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //}
+
+
+
+            Device.BeginInvokeOnMainThread(() =>
             {
-                await viewModel.LoadZakatForm5Data();
-                if (viewModel.ZakatForm5DataResult != null )
-                {
-                   // BPicker.SelectedIndex = 14;
-                }
-            }
-            catch (Exception e)
+                viewModel.IsLoading = true;
+            });
+
+
+
+            Device.BeginInvokeOnMainThread(() =>
             {
-            }
+                LoadData();
+            });
+
+
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
 
         private void SetLTR()

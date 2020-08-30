@@ -215,23 +215,58 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        public List<List<Attachment>> AttachmentsList { get; set; }
 
-        public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
+        public ObservableCollection<Attachment> yearsattachmentsListViewData { get; set; }
 
-        public ObservableCollection<Attachment> AttachmentsListViewData
+        public ObservableCollection<Attachment> YearsattachmentsListViewData
         {
-            get { return attachmentsListViewData; }
+            get { return yearsattachmentsListViewData; }
 
             set
             {
-                if (attachmentsListViewData == value)
+                if (yearsattachmentsListViewData == value)
                 {
                     return;
                 }
 
-                attachmentsListViewData = value;
-                RaisePropertyChanged("AttachmentsListViewData");
+                yearsattachmentsListViewData = value;
+                RaisePropertyChanged("YearsattachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> monthsattachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> MonthsattachmentsListViewData
+        {
+            get { return monthsattachmentsListViewData; }
+
+            set
+            {
+                if (monthsattachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                monthsattachmentsListViewData = value;
+                RaisePropertyChanged("MonthsattachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> otherAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> OtherAttachmentsListViewData
+        {
+            get { return otherAttachmentsListViewData; }
+
+            set
+            {
+                if (otherAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                otherAttachmentsListViewData = value;
+                RaisePropertyChanged("InvoiceAttachmentsListViewData");
             }
         }
 
@@ -345,6 +380,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             genericDatePickerModel = new GenericDatePickerModel();
             genericDatePickerModel.DatePickerTitle = "Select Date";
             genericDatePickerModel.PickerId = "DatePicker";
+
         }
 
         public void ResetData()
@@ -676,15 +712,52 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public async void NewAttachmentClicked()
         {
-            if (AttachmentsListViewData == null)
-            {
-                AttachmentsListViewData = new ObservableCollection<Attachment>();
-            }
+
             try
             {
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                    AttachmentsListViewData.ToList(),
-                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseCopy, ""));
+
+                if(_selectedOutletOptionIndex == 0) {
+
+                    if(YearsattachmentsListViewData == null) {
+
+                        YearsattachmentsListViewData = new ObservableCollection<Attachment>();
+
+                    }
+
+
+                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                 YearsattachmentsListViewData.ToList(),
+                 Models.ZakatInstalationModels.WhichAttachment.ChnageFillingPeriod2Years, ChangeFillingResponse.d.ReturnIdz));
+                }
+                else if (_selectedOutletOptionIndex == 1)
+                {
+
+                    if (MonthsattachmentsListViewData == null)
+                    {
+
+                        MonthsattachmentsListViewData = new ObservableCollection<Attachment>();
+
+                    }
+                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                 MonthsattachmentsListViewData.ToList(),
+                 Models.ZakatInstalationModels.WhichAttachment.ChnageFillingPeriod12Months, ChangeFillingResponse.d.ReturnIdz));
+                }
+                else {
+
+                    if (OtherAttachmentsListViewData == null)
+                    {
+
+                        OtherAttachmentsListViewData = new ObservableCollection<Attachment>();
+
+                    }
+                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                 OtherAttachmentsListViewData.ToList(),
+                 Models.ZakatInstalationModels.WhichAttachment.ChnageFillingPeriodOtherDoc, ChangeFillingResponse.d.ReturnIdz));
+
+                }
+
+
+             
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -947,7 +1020,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 {
                     return;
                 }
-                EnableAttachmentsView();
+
+                if (CurrentFrequency == "Quarterly" && NewFrequency== "Monthly") {
+
+                    EnableDeclarationView();
+                }
+                else {
+
+                    EnableAttachmentsView();
+
+                }
+
+
+                
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1062,13 +1147,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public void PopulateAttachments(List<Attachment> attachments)
         {
-            AttachmentsList[SelectedOutletOptionIndex] = attachments;
-            AttachmentsListViewData = new ObservableCollection<Attachment>();
 
-            foreach (var attachment in attachments)
+            var attachmentsListViewData = new ObservableCollection<Attachment>();
+
+            foreach (Attachment attachemnt in attachments)
             {
-                AttachmentsListViewData.Add(attachment);
+                attachmentsListViewData.Add(attachemnt);
             }
+
+
+
+            
+
+            if (_selectedOutletOptionIndex == 0)
+            {
+                YearsattachmentsListViewData = attachmentsListViewData;
+            }
+            else if (_selectedOutletOptionIndex == 1)
+            {
+                MonthsattachmentsListViewData = attachmentsListViewData;
+            }
+            else
+            {
+                OtherAttachmentsListViewData = attachmentsListViewData;
+            }
+
+            EnableAttachmentsView();
+
 
         }
 
@@ -1133,18 +1238,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         }
 
-        public void SetAttachmentsListViewData()
-        {
-            AttachmentsListViewData = new ObservableCollection<Attachment>();
-            if (AttachmentsList != null && AttachmentsList[SelectedOutletOptionIndex] != null)
-            {
-                foreach (var attachment in AttachmentsList[SelectedOutletOptionIndex])
-                {
-                    AttachmentsListViewData.Add(attachment);
-                }
-            }
+     
 
-        }
+       
 
 
         public ObservableCollection<InstalmentAgreementAttachmentsModel> FrequencyDetailsListViewData { get; private set; }

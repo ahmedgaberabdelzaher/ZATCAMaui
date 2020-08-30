@@ -52,9 +52,6 @@
 
 
                 <StackLayout Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}">
-
-                    <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
-
                     <StackLayout Orientation="Horizontal">
                         <CheckBox VerticalOptions="CenterAndExpand" IsEnabled="True" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
                             <CheckBox.Triggers>
@@ -64,18 +61,21 @@
                             </CheckBox.Triggers>
                         </CheckBox>
                         <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
-                                        <Span Text="&#160;"/>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                                <custom:CustomLabel.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnInCTapped"/>
-                                </custom:CustomLabel.GestureRecognizers>
-                            </custom:CustomLabel>
-                        </StackLayout>
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
+                                    <Span Text="&#160;"/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnInCTapped"/>
+                            </custom:CustomLabel.GestureRecognizers>
+                        </custom:CustomLabel>
+                    </StackLayout>
+                    <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
+
+                   
                     
                 </StackLayout>
 
