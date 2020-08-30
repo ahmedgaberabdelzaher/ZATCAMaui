@@ -1622,7 +1622,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <value>Void</value>
     <comment>VAT Declaration button</comment>
   </data>
-   <data name="ZVatRefundRequestConfirmationMessage" xml:space="preserve">
+  <data name="ZVatRefundRequestConfirmationMessage" xml:space="preserve">
     <value>Please make sure that the provided ID Type and ID Number match the ones in the bank record for this IBAN.</value>
   </data>
   <data name="ZVatRefundRequestForVAT" xml:space="preserve">
@@ -1634,13 +1634,13 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
   <data name="ZVatRefundRequestTotalRequestedAmount" xml:space="preserve">
     <value>Total Request Amount</value>
   </data>
-     <data name="ZVatRefundRequestDetailsCreditBalance" xml:space="preserve">
+  <data name="ZVatRefundRequestDetailsCreditBalance" xml:space="preserve">
     <value>Credit Balance</value>
   </data>
-     <data name="ZVatRefundRequestDetailsReassessedBalance" xml:space="preserve">
+  <data name="ZVatRefundRequestDetailsReassessedBalance" xml:space="preserve">
     <value>Reassessed Balance</value>
   </data>
-     <data name="ZVatRefundRequestDetailsOffset" xml:space="preserve">
+  <data name="ZVatRefundRequestDetailsOffset" xml:space="preserve">
     <value>Offset</value>
   </data>
   <data name="ZVatRefundInformation" xml:space="preserve">
@@ -4498,7 +4498,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Outlets</value>
   </data>
   <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
- <value>Select DOB</value>
+    <value>Select DOB</value>
   </data>
   <data name="VatDeregStartDatePickerTitle" xml:space="preserve">
     <value>Select Start Date</value>
@@ -4614,7 +4614,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
     <value>The Start Date and End Date lie in the same period</value>
   </data>
-      <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
+  <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
     <value>End Date cannot be less or same as Start Date</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
@@ -5002,6 +5002,13 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Hello</value>
     <comment>DashBoard</comment>
   </data>
+   <data name="VatRefundsConfirmDetails" xml:space="preserve">
+    <value>I hereby confirm that I will pay any outstanding liabilities and submit all due returns in GAZT before submitting the refund request or GAZT will offset the outstanding liabilities from my VAT credit balance before the refund paid. GAZT have also the right to reject my refund request if I have any overdue declaration.</value>
+  </data>
+
+   <data name="VatRefundsConfirmationTit" xml:space="preserve">
+    <value>Confirmation</value>
+  </data> 
   <data name="VATRefundAccounts" xml:space="preserve">
     <value>Accounts</value>
   </data>
@@ -5746,7 +5753,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="CRInstructions" xml:space="preserve">
     <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
-  2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
+2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
   </data>
   <data name="CRInstructionsDesc" xml:space="preserve">
     <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
@@ -5755,25 +5762,25 @@ Applicant should ensure that there is no pending return filing or any outstandin
     <value>Done</value>
   </data>
   <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
-    <value>Estimated Profit percentage based on contract type.</value>
+    <value>Estimated Profit percentage based on contract type</value>
   </data>
   <data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
-    <value>Estimated Profit percentage based on contract type.</value>
+    <value>Multiply released amount with Estimated profit for contract</value>
   </data>
   <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-    <value>Estimated Profit percentage based on contract type.</value>
+    <value>Multiply Estimated profit for contract with Saudi share %</value>
   </data>
   <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
-    <value>Estimated Profit percentage based on contract type.</value>
+    <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
   </data>
   <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
-    <value>Estimated Profit percentage based on contract type.</value>
+    <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
   </data>
   <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-    <value>Estimated Profit percentage based on contract type.</value>
+    <value>Multiply Estimated profit for TAX with 20 %</value>
   </data>
   <data name="CRTotalDuesDesc" xml:space="preserve">
-    <value>The value off Zakat due+value of tax due</value>
+    <value>Value of zakat due + value of TAX due</value>
   </data>
   <data name="ZakatInstalmentDueDate" xml:space="preserve">
     <value>Due Date</value>
@@ -6239,142 +6246,142 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDPobox1" xml:space="preserve">
     <value>Po Box</value>
   </data>
-    <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
+  <data name="VATInstalmentPlanPleaseSelectAtleastOne" xml:space="preserve">
     <value>Please Select atleast one bill to continue.</value>
   </data>
-     <data name="VATInstalementStatusInProcess" xml:space="preserve">
+  <data name="VATInstalementStatusInProcess" xml:space="preserve">
     <value> IN PROCESS </value>
   </data>
-    <data name="ESTReportBranchQuestionLabel" xml:space="preserve">
+  <data name="ESTReportBranchQuestionLabel" xml:space="preserve">
     <value>What is your reporting branch?</value>
-    </data>
-    <data name="ESTEntityTypeQuestionLabel" xml:space="preserve">
+  </data>
+  <data name="ESTEntityTypeQuestionLabel" xml:space="preserve">
     <value>What is your entity type (from signup)?</value>
-    </data>
-    <data name="ESTaxpayerTypeQuestionLabel" xml:space="preserve">
+  </data>
+  <data name="ESTaxpayerTypeQuestionLabel" xml:space="preserve">
     <value>What is your Taxpayer type(from signup)?</value>
-    </data>
-    <data name="ESTNationalyStatusQuestionLabel" xml:space="preserve">
+  </data>
+  <data name="ESTNationalyStatusQuestionLabel" xml:space="preserve">
     <value>What is your Nationality Status?</value>
-    </data>
-    <data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
+  </data>
+  <data name="ESTNationalyStatusOptionOneValue" xml:space="preserve">
     <value>Stay More than or equal to 183 days in KSA</value>
-    </data>
-    <data name="ESTNationalyStatusOptionTwoValue" xml:space="preserve">
+  </data>
+  <data name="ESTNationalyStatusOptionTwoValue" xml:space="preserve">
     <value>Rent/Own a house more than 30 days</value>
-    </data>
-    <data name="ESTNationalyStatusOptionThreeValue" xml:space="preserve">
+  </data>
+  <data name="ESTNationalyStatusOptionThreeValue" xml:space="preserve">
     <value>None of Above</value>
-    </data>
-    <data name="ESTResidentOptionValue" xml:space="preserve">
+  </data>
+  <data name="ESTResidentOptionValue" xml:space="preserve">
     <value>Resident</value>
-    </data>
-    <data name="ESTProvideAttachmentCopyofRentLabel" xml:space="preserve">
+  </data>
+  <data name="ESTProvideAttachmentCopyofRentLabel" xml:space="preserve">
     <value>Provide an attachment - Copy of [Rent]</value>
-    </data>
-    <data name="ESTAttachmentCopyofRentLabel" xml:space="preserve">
+  </data>
+  <data name="ESTAttachmentCopyofRentLabel" xml:space="preserve">
     <value>Attachment - Copy of [Rent]</value>
-    </data>
-     <data name="ESTChooseLegalEntityBelowTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTChooseLegalEntityBelowTitleLabel" xml:space="preserve">
     <value>If None of the above,  then please choose legal entity below</value>
-    </data>
-     <data name="ESTOtherTaxableIncomeFromSourcesWithinTheKSA" xml:space="preserve">
+  </data>
+  <data name="ESTOtherTaxableIncomeFromSourcesWithinTheKSA" xml:space="preserve">
     <value>Other Taxable income from sources within the KSA</value>
-    </data>
-    <data name="ESTPermanentEstablishmentTypeLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPermanentEstablishmentTypeLabel" xml:space="preserve">
     <value>Permanent Establishment type</value>
-    </data>
-    <data name="ESTABranchOfNonResidentCompanyLabel" xml:space="preserve">
+  </data>
+  <data name="ESTABranchOfNonResidentCompanyLabel" xml:space="preserve">
     <value>A branch of Non-Resident Company</value>
-    </data>
-    <data name="ESTConstuctionSiteLabel" xml:space="preserve">
+  </data>
+  <data name="ESTConstuctionSiteLabel" xml:space="preserve">
     <value>Constuction Site</value>
-    </data>
-    <data name="ESTInstallationLabel" xml:space="preserve">
+  </data>
+  <data name="ESTInstallationLabel" xml:space="preserve">
     <value>Installation</value>
-    </data>
-     <data name="ESTAFixedBaseLabel" xml:space="preserve">
+  </data>
+  <data name="ESTAFixedBaseLabel" xml:space="preserve">
     <value>A fixed base</value>
-    </data>
-     <data name="ESTANonResidentPartnerLabel" xml:space="preserve">
+  </data>
+  <data name="ESTANonResidentPartnerLabel" xml:space="preserve">
     <value>A Non-Resident Partner</value>
-    </data>
-     <data name="ESTSelectTaxableIncomeSourceLabel" xml:space="preserve">
+  </data>
+  <data name="ESTSelectTaxableIncomeSourceLabel" xml:space="preserve">
     <value>Select Taxable Income Source</value>
-    </data>
-     <data name="ESTIdentificationDetailsLabel" xml:space="preserve">
+  </data>
+  <data name="ESTIdentificationDetailsLabel" xml:space="preserve">
     <value>Identification Details</value>
-    </data>
-     <data name="ESTLastNameLabel" xml:space="preserve">
+  </data>
+  <data name="ESTLastNameLabel" xml:space="preserve">
     <value>Last Name</value>
-    </data>
-     <data name="ESTFathersNameLabel" xml:space="preserve">
+  </data>
+  <data name="ESTFathersNameLabel" xml:space="preserve">
     <value>Fathers Name</value>
-    </data>
-     <data name="ESTGrandFathersNameLabel" xml:space="preserve">
+  </data>
+  <data name="ESTGrandFathersNameLabel" xml:space="preserve">
     <value>GrandFathers Name</value>
-    </data>
-    <data name="ESTFamilyNameLabel" xml:space="preserve">
+  </data>
+  <data name="ESTFamilyNameLabel" xml:space="preserve">
     <value>Family Name</value>
-    </data>
-    <data name="ESTInitialLabel" xml:space="preserve">
+  </data>
+  <data name="ESTInitialLabel" xml:space="preserve">
     <value>Initial</value>
-    </data>
-     <data name="ESTGenderLabel" xml:space="preserve">
+  </data>
+  <data name="ESTGenderLabel" xml:space="preserve">
     <value>Gender</value>
-    </data>
-     <data name="ESTMaleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTMaleLabel" xml:space="preserve">
     <value>Male</value>
-    </data>
-     <data name="ESTFemaleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTFemaleLabel" xml:space="preserve">
     <value>Female</value>
-    </data>
-     <data name="ESTNationalityLabel" xml:space="preserve">
+  </data>
+  <data name="ESTNationalityLabel" xml:space="preserve">
     <value>Nationality</value>
-    </data>
-     <data name="ESTCitizenLabel" xml:space="preserve">
+  </data>
+  <data name="ESTCitizenLabel" xml:space="preserve">
     <value>Citizen</value>
-    </data>
-     <data name="ESTResidenceLabel" xml:space="preserve">
+  </data>
+  <data name="ESTResidenceLabel" xml:space="preserve">
     <value>Residence</value>
-    </data>
-     <data name="ESTContinueLabel" xml:space="preserve">
+  </data>
+  <data name="ESTContinueLabel" xml:space="preserve">
     <value>Continue</value>
-    </data>
-    <data name="ESTPassportDetailsMandatoryNoteLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPassportDetailsMandatoryNoteLabel" xml:space="preserve">
     <value>Passport Details are mandatory for Non-Saudi Individuals.</value>
-    </data>
-     <data name="ESTPleaseProvideAllNecessaryDetailsBelow" xml:space="preserve">
+  </data>
+  <data name="ESTPleaseProvideAllNecessaryDetailsBelow" xml:space="preserve">
     <value>Please provide all necessary details below</value>
-    </data>
-     <data name="ESTPassportNumberLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPassportNumberLabel" xml:space="preserve">
     <value>Passport Number</value>
-    </data>
-     <data name="ESTIssueCountryLabel" xml:space="preserve">
+  </data>
+  <data name="ESTIssueCountryLabel" xml:space="preserve">
     <value>Issue Country</value>
-    </data>
-     <data name="ESTIssueDateLabel" xml:space="preserve">
+  </data>
+  <data name="ESTIssueDateLabel" xml:space="preserve">
     <value>Issue Date</value>
-    </data> 
-    <data name="ESTExpiryDateLabel" xml:space="preserve">
+  </data>
+  <data name="ESTExpiryDateLabel" xml:space="preserve">
     <value>Expiry Date</value>
-    </data>
-     <data name="ESTPleaseProvideACopyOfAbovePassportDetailsLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPleaseProvideACopyOfAbovePassportDetailsLabel" xml:space="preserve">
     <value>Please provide a copy of above passport details</value>
-    </data>
-     <data name="ESTAttachmentPassportDetails" xml:space="preserve">
+  </data>
+  <data name="ESTAttachmentPassportDetails" xml:space="preserve">
     <value>Attachment - passport details</value>
-    </data>
-    <data name="ESTRegTaxTabTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTRegTaxTabTitleLabel" xml:space="preserve">
     <value>Registration/Taxpayer type</value>
-    </data>
-     <data name="ESTTaxpayerPersonalDetailsTabTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTTaxpayerPersonalDetailsTabTitleLabel" xml:space="preserve">
     <value>Taxpayer Personal Details</value>
-    </data>
-     <data name="ESTPassportDetailsTabTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPassportDetailsTabTitleLabel" xml:space="preserve">
     <value>Passport Details</value>
-    </data>
-     <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
+  </data>
+  <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
     <value>Outlets</value>
     </data>
     <data name="ESTOrgNonResidentActivityValueOne" xml:space="preserve">
@@ -6404,4 +6411,48 @@ Applicant should ensure that there is no pending return filing or any outstandin
      <data name="ESTOrgNonResidentActivityValueNine" xml:space="preserve">
     <value>Amounts for exploitation of a natural resource in the kingdom.</value>
     </data> 
+  <data name="VFCEffectiveDate" xml:space="preserve">
+    <value>Effective Date</value>
+  </data>
+  <data name="VFCFrequencyDetailsCheckBoxString" xml:space="preserve">
+    <value>I want to apply for an exception to file quarterly due to severe cash flow implications caused by monthly VAT collections.</value>
+  </data>
+  <data name="VFCAttachmnetsInfo" xml:space="preserve">
+    <value>In Case you have revenue below SAR40 and want to request for quarterly filing kindly attach evidence that you have been filing for 2 years with a monthly Tax Period and your Revenurs during last 12 months.
+In Case you want to request for an exception for quarterly filing, Kindly provide your previous 12 months average Days sales Outstanding</value>
+  </data>
+  <data name="VFCIDType" xml:space="preserve">
+    <value>ID Type</value>
+  </data>
+  <data name="VFCDateofBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="VFCIDNumber" xml:space="preserve">
+    <value>ID Number</value>
+  </data>
+  <data name="VFCContactPersonName" xml:space="preserve">
+    <value>Contact Person Name</value>
+  </data>
+  <data name="VFCNationalID" xml:space="preserve">
+    <value>National ID</value>
+  </data>
+  <data name="VFCGCCID" xml:space="preserve">
+    <value>GCC ID</value>
+  </data>
+  <data name="VFCIqamaID" xml:space="preserve">
+    <value>Iqama ID</value>
+  </data>
+  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+    <value>Create/Display for ZAKAT Instalment Plan</value>
+  </data>
+  <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
+    <value>Revoke ZAKAT Instalment Plan</value>
+  </data>
+  <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
+    <value>The new email must not match the old email</value>
+  </data>
+  <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
+    <value>Carried Credit Details</value>
+  </data>
+
 </root>

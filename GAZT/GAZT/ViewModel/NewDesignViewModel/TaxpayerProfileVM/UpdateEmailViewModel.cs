@@ -87,7 +87,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     System.Diagnostics.Debug.WriteLine("NEW EMAIL : ", NewEmailText);
                     System.Diagnostics.Debug.WriteLine("CONFIRM EMAIL : ", ConfirmEmailText);
 
-                    APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, CurrentEmailText, NewEmailText);
+                    if((String.Compare(CurrentEmailText, NewEmailText,true) !=0) && ((String.Compare(NewEmailText, ConfirmEmailText, true)==0)))
+                        APIResponse = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Tin, CurrentEmailText, NewEmailText);
+                    else
+                    {
+                        if (String.Compare(CurrentEmailText, NewEmailText, true) == 0)
+                            throw new Exception(AppResources.NDNewEmailCannotBeSameAsOldEmail);
+                        else if (String.Compare(NewEmailText, ConfirmEmailText, true) != 0)
+                            throw new Exception(AppResources.ZZZZEmailandconfirmemailshouldmatchup);
+                    }
 
                     // setup updated email's
                     UpdateEmailDataModel updateEmailData = new UpdateEmailDataModel();

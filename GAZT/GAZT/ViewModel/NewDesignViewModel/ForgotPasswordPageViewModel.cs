@@ -1339,7 +1339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
 
-
+            // SetIDNumberEnability = true;
 
 
             //BackButtonClicked = new Xamarin.Forms.Command(() =>
@@ -1411,7 +1411,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                                _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                                _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                             }
                         }
 
@@ -1441,7 +1441,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                                 else
                                 {
-                                    _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                                    _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+
                                 }
                             }
 
@@ -1478,7 +1479,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+                            _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
 
                         }
                     }
@@ -1492,7 +1493,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+                        _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                     }
 
 
@@ -1597,6 +1598,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             PasswordTextColor = Color.Black;
             UserNameTextColor = Color.Black;
+
             //IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
             //string lang = UtilityManager.GetLanguageParameter();
             //try
@@ -1837,6 +1839,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
+
+                                SetIDNumberEnability = true;
+                                IDNumber = String.Empty;
+                              //  UserIDLayoutVisibility = true;
                             });
                         }
                     }
@@ -1855,6 +1861,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await Task.Run(() =>
                 {
                     IsLoading = false;
+
+                    SetIDNumberEnability = true;
+                    IDNumber = String.Empty;
+                   // UserIDLayoutVisibility = true;
                 });
             }
         }
@@ -2073,7 +2083,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
                         });
-
                     }
                 });
                 await Task.Run(async () =>
@@ -2214,8 +2223,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             break;
                         }
                     }
-                    _navigationService.NavigateTo(App.SFLoginPageView);
+                    //_navigationService.NavigateTo(App.SFLoginPageView);
+                    //_navigation.NavigationStack.ToList().Clear();
+
+                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                     _navigation.NavigationStack.ToList().Clear();
+
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
                 });
@@ -2487,7 +2500,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             IsAPICalledSuccessfully = false;
             SetIDNumberEnability = false;
-            PasswordCardBackgroundImg = "FP_selected_tile";
+            PasswordCardBackgroundImg = "FP_unselected_tile";
             PasswordIcon = "password_key";
             UserNameCardBackgroundImg = "FP_unselected_tile";
             UserIcon = "vat_user";

@@ -2,9 +2,51 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace EGAZT.Models.EstablishmentRegistration
 {
+    public class JsonFieldListConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(NregIdSet) || objectType == typeof(NregOutletSet) || objectType == typeof(NregActivitySet) || objectType == typeof(NregAddressSet);
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if(value is NregIdSet)
+            {
+                List<Nreg_IdItem> results = (value as NregIdSet)?.results;
+                JArray jArray = JArray.FromObject(results, serializer);
+                jArray.WriteTo(writer);
+            }
+            if (value is NregOutletSet)
+            {
+                List<Nreg_OutletItem> results = (value as NregOutletSet)?.results;
+                JArray jArray = JArray.FromObject(results, serializer);
+                jArray.WriteTo(writer);
+            }
+            if (value is NregActivitySet)
+            {
+                List<Nreg_ActivityItem> results = (value as NregActivitySet)?.results;
+                JArray jArray = JArray.FromObject(results, serializer);
+                jArray.WriteTo(writer);
+            }
+            if (value is NregAddressSet)
+            {
+                List<Nreg_AddressItem> results = (value as NregAddressSet)?.results;
+                JArray jArray = JArray.FromObject(results, serializer);
+                jArray.WriteTo(writer);
+            }
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
     public class Metadata
     {
         public string id { get; set; }
@@ -14,6 +56,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class BranchesDropDownModel
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Spras { get; set; }
         public string Auobj { get; set; }
@@ -27,6 +70,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class Nreg_CpersonItem
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public bool Cpoldfg { get; set; }
         public string Mandt { get; set; }
@@ -59,7 +103,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class Nreg_IdItem
     {
-        [DefaultValue("{}")]
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Mandt { get; set; } = string.Empty;
         public string FormGuid { get; set; } = string.Empty;
@@ -91,8 +135,9 @@ namespace EGAZT.Models.EstablishmentRegistration
     {
         public List<object> results { get; set; }
     }
-    public class Nreg_OutletItem
+    public class OutletItem
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string CityCode { get; set; }
         public string City1 { get; set; }
@@ -125,43 +170,55 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Actnm2 { get; set; }
         public string ChInd { get; set; }
     }
+    public class Nreg_OutletItem
+    {
+        public string Actnm { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Actno { get; set; }
+        public string Actcat { get; set; } = "S";
+        public string Caltp { get; set; }
+        public string Oldmst { get; set; } = string.Empty;
+        public string Outdocdreg { get; set; } = string.Empty;
+    }
     public class NregOutletSet
     {
         public List<Nreg_OutletItem> results { get; set; }
     }
     public class Nreg_ActivityItem
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
-        public string CityCode { get; set; }
-        public string ActSgrp { get; set; }
-        public string Crstat { get; set; }
-        public string Mncrfg { get; set; }
-        public object Crexpdt { get; set; }
-        public string Hstfg { get; set; }
+        public string CityCode { get; set; } = string.Empty;
+        public string ActSgrp { get; set; } = string.Empty;
+        public string Crstat { get; set; } = string.Empty;
+        public string Mncrfg { get; set; } = string.Empty;
+        public DateTime? Crexpdt { get; set; }
+        public string Hstfg { get; set; } = string.Empty;
         public int Srno { get; set; }
-        public string Mandt { get; set; }
-        public string FormGuid { get; set; }
-        public string Oldmst { get; set; }
-        public string Actdocdreg { get; set; }
-        public string DataVersion { get; set; }
-        public string Idnm { get; set; }
+        public string Mandt { get; set; } = string.Empty;
+        public string FormGuid { get; set; } = string.Empty;
+        public string Oldmst { get; set; } = string.Empty;
+        public string Actdocdreg { get; set; } = string.Empty;
+        public string DataVersion { get; set; } = string.Empty;
+        public string Idnm { get; set; } = string.Empty;
         public int LineNo { get; set; }
-        public string RankingOrder { get; set; }
-        public string Actno { get; set; }
+        public string RankingOrder { get; set; } = string.Empty;
+        public string Actno { get; set; } = string.Empty;
         public string Type { get; set; }
-        public string Idnumber { get; set; }
-        public object ValidDateFrom { get; set; }
-        public object ValidDateTo { get; set; }
-        public string ValidDateType { get; set; }
-        public string Country { get; set; }
-        public string Institute { get; set; }
-        public string City { get; set; }
-        public string Crclsattfg { get; set; }
-        public string Crattfg { get; set; }
-        public string Crtrfattfg { get; set; }
-        public string Activity { get; set; }
-        public string Actcat { get; set; }
-        public string ActMgrp { get; set; }
+        public string Idnumber { get; set; } = string.Empty;
+        public DateTime? ValidDateFrom { get; set; }
+        public DateTime? ValidDateTo { get; set; }
+        public string ValidDateType { get; set; } = string.Empty;
+        public string Country { get; set; } = string.Empty;
+        public string Institute { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
+        public string Crclsattfg { get; set; } = string.Empty;
+        public string Crattfg { get; set; } = string.Empty;
+        public string Crtrfattfg { get; set; } = string.Empty;
+        public string Activity { get; set; } = string.Empty;
+        public string Actcat { get; set; } = string.Empty;
+        public string ActMgrp { get; set; } = string.Empty;
     }
     public class NregActivitySet
     {
@@ -169,33 +226,34 @@ namespace EGAZT.Models.EstablishmentRegistration
     }
     public class Nreg_AddressItem
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string CityCode { get; set; }
         public string HouseNum2 { get; set; }
         public string Sameasphy { get; set; }
-        public string Mandt { get; set; }
+        public string Mandt { get; set; } = string.Empty;
         public string Building { get; set; }
-        public string FormGuid { get; set; }
-        public string DataVersion { get; set; }
+        public string FormGuid { get; set; } = string.Empty;
+        public string DataVersion { get; set; } = string.Empty;
         public string Floor { get; set; }
         public string City2 { get; set; }
         public int LineNo { get; set; }
-        public string RankingOrder { get; set; }
+        public string RankingOrder { get; set; } = string.Empty;
         public string AddrType { get; set; }
         public string Srcidentify { get; set; }
         public DateTime? Begda { get; set; }
         public DateTime? Endda { get; set; }
-        public string Gpart { get; set; }
+        public string Gpart { get; set; } = string.Empty;
         public string Street { get; set; }
         public string HouseNum1 { get; set; }
         public string PostCode1 { get; set; }
         public string City1 { get; set; }
         public string Country { get; set; }
         public string Region { get; set; }
-        public string StrSuppl1 { get; set; }
-        public string StrSuppl2 { get; set; }
-        public string StdAddrnumber { get; set; }
-        public string CorAddrnumber { get; set; }
+        public string StrSuppl1 { get; set; } = string.Empty;
+        public string StrSuppl2 { get; set; } = string.Empty;
+        public string StdAddrnumber { get; set; } = string.Empty;
+        public string CorAddrnumber { get; set; } = string.Empty;
     }
     public class NregAddressSet
     {
@@ -209,7 +267,8 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class AttDetItem
     {
-        public Metadata4 __metadata { get; set; }
+        [JsonIgnore]
+        public Metadata __metadata { get; set; }
         public bool Enbedit { get; set; }
         public string Doguid { get; set; }
         public string RetGuid { get; set; }
@@ -239,7 +298,8 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class Nreg_BtnItem
     {
-        public Metadata5 __metadata { get; set; }
+        [JsonIgnore]
+        public Metadata __metadata { get; set; }
         public string WfReason { get; set; }
         public string Mandt { get; set; }
         public string Fbtyp { get; set; }
@@ -256,6 +316,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class NregFormEdit
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Mandt { get; set; }
         public string Fbtyp { get; set; }
@@ -276,6 +337,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class TaxPayerDetails
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Smartregflg { get; set; }
         public string Abpkindold { get; set; }
@@ -342,7 +404,7 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Fdcalender { get; set; }
         public string Fdcalold { get; set; }
         public string Fdday { get; set; }
-        public object Fdenddt { get; set; }
+        public DateTime? Fdenddt { get; set; }
         public string Fdmonth { get; set; }
         public object Fdnewtaxdt { get; set; }
         public string Fdtypold { get; set; }
@@ -423,7 +485,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class TaxpayerNationalityLandx50
     {
-
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string ANationality { get; set; }
         public string Mandt { get; set; }
@@ -439,6 +501,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class OutletNumber
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Fbnum { get; set; }
         public string Gpart { get; set; }
@@ -446,6 +509,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     }
     public class ActivityGroupSubGroup
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Spras { get; set; }
         public string IndSector { get; set; }
@@ -469,6 +533,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     }
     public class ActivitySetsList
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Spras { get; set; }
         public string IndSector { get; set; }
@@ -482,6 +547,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class ValidateCR
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Crnum { get; set; }
         public string CityAry { get; set; }
@@ -505,6 +571,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class CityDropdownItem
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Langu { get; set; }
         public string Country { get; set; }
@@ -521,6 +588,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class StateDropdownItem
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Spras { get; set; }
         public string Land1 { get; set; }
@@ -536,6 +604,7 @@ namespace EGAZT.Models.EstablishmentRegistration
 
     public class CountryDropdownItem
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Spras { get; set; }
         public string Land1 { get; set; }
@@ -553,6 +622,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     }
     public class OutletDropDowns
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string Spras { get; set; }
         public string Land1 { get; set; }
@@ -564,6 +634,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     }
     public class OutletAddress
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string IdType { get; set; }
         public string Tin { get; set; }
@@ -580,6 +651,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     }
     public class FinancialDetail
     {
+        [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string ACaltype { get; set; }
         public string AMonth { get; set; }
@@ -593,8 +665,8 @@ namespace EGAZT.Models.EstablishmentRegistration
     public class FinancialDetailRequest
     {
         public string ACaltype { get; set; } = "G";
-        public string AMonth { get; set; } = "10";
-        public DateTime ADateComm { get; set; } = DateTime.UtcNow;
-        public string EIslmedate { get; set; } = "09";
+        public string AMonth { get; set; } = string.Empty;
+        public DateTime? ADateComm { get; set; }
+        public string EIslmedate { get; set; } = string.Empty;
     }
 }

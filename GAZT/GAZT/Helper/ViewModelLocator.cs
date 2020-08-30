@@ -2,7 +2,7 @@
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
-
+using EGAZT.ViewModel.SyncFusionEnabledViewModel;
 #region OldUsing
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AccountCreatedPage_ViewModel;
@@ -159,11 +159,11 @@ using EGAZT.Views.NewDesign.InstalmentPlan;
 using EGAZT.Views.NewDesign.EstablishmentRegistrationPages;
 using EGAZT.Views.NewDesign.EstablishmentSignUP;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
-using ZakatInstalmentPlanListViewModel = EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel.ZakatInstalmentPlanListViewModel;
 using EGAZT.Views.NewDesign.Template;
 using EGAZT.Views.NewDesign.ContractReleasePages;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
 using EGAZT.Views.NewDesign;
+using EGAZT.Views.NewDesign.VATRefunds;
 
 namespace EGAZT
 {
@@ -512,6 +512,20 @@ namespace EGAZT
             }
         }
         public GAZTNewDesignDashBoardPageViewModel GAZTNewDesignDashBoardPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }  
+        public GAZTNewDesignDashBoardPageViewModel InfoPopUpPage
         {
             get
             {
@@ -2160,7 +2174,7 @@ namespace EGAZT
             navigationService.Configure(App.VatInstalmentPlanSuccessPage, typeof(VatInstalmentPlanSuccessPage));
             navigationService.Configure(App.ContractReleaseListPageView, typeof(ContractReleaseListPageView));
             navigationService.Configure(App.ChangeFillingPeriodListPageView, typeof(ChangeFillingPeriodListPageView));
-            navigationService.Configure(App.ChangeFillingPeriodSuccessPage, typeof(ChangeFillingPeriodSuccessPage));
+            navigationService.Configure(App.InfoPopUpPage, typeof(InfoPopUpPage));
 
             
             #endregion

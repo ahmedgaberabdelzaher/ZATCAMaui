@@ -205,6 +205,7 @@ namespace EGAZT
         public static string VATRefundsInstructionsPageView = "VATRefundsInstructionsPageView";
         public static string MorePopUpPageView = "MorePopUpPageView";
         public static string ShowVatInformationConfirmationPageView = "ShowVatInformationConfirmationPageView";
+        public static string InfoPopUpPage = "InfoPopUpPage";
 
 
 

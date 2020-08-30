@@ -29,7 +29,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string Fbtyp { get; set; }
             public string UserErrFg { get; set; }
             public string SysFlg { get; set; }
-            public DateTime? Ldate { get; set; }
+            public string Ldate { get; set; }
         }
 
         public class REQTYPSet
@@ -84,7 +84,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string WfSub { get; set; }
             public string Fbust { get; set; }
             public string FbustTxt { get; set; }
-            public DateTime Receipt { get; set; }
+            public string Receipt { get; set; }
             public string AssignUsr { get; set; }
             public string LoginUsr { get; set; }
             public string AssignMe { get; set; }
@@ -198,7 +198,7 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string FileExtn { get; set; }
             public string Mimetype { get; set; }
             public string ByPusr { get; set; }
-            public DateTime Erfdt { get; set; }
+            public string Erfdt { get; set; }
             public string Erftm { get; set; }
             public string DataVersion { get; set; }
             public string DocUrl { get; set; }

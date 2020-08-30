@@ -767,8 +767,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Outlet variables
-        private ObservableCollection<Nreg_OutletItem> _outletData = new ObservableCollection<Nreg_OutletItem>();
-        public ObservableCollection<Nreg_OutletItem> OutletData
+        private ObservableCollection<OutletItem> _outletData = new ObservableCollection<OutletItem>();
+        public ObservableCollection<OutletItem> OutletData
         {
             get => _outletData;
             set
@@ -783,8 +783,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Financial Details Tabs variables
-        private ObservableCollection<string> _methodList = new ObservableCollection<string>();
-        public ObservableCollection<string> MethodList
+        private Dictionary<string, string> EnMethodList = new Dictionary<string, string>()
+        {
+            {"A", "Accounting" },
+            {"E", "Estimated" }
+        };
+        private Dictionary<string, string> EnCalendarTypeList = new Dictionary<string, string>()
+        {
+            {"2", "hijri" },
+            {"1", "Gregorian" }
+        };
+        private List<string> _methodList = new List<string>();
+        public List<string> MethodList
         {
             get => _methodList;
             set
@@ -809,8 +819,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        private ObservableCollection<string> _calendarTypeList = new ObservableCollection<string>();
-        public ObservableCollection<string> CalendarTypeList
+        private List<string> _calendarTypeList = new List<string>();
+        public List<string> CalendarTypeList
         {
             get => _calendarTypeList;
             set
@@ -832,7 +842,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(CalendarType));
             }
         }
-        private string _fiscalMonth = "09";
+        private string _fiscalMonth = string.Empty;
         public string FiscalMonth
         {
             get => _fiscalMonth;
@@ -842,7 +852,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(FiscalMonth));
             }
         }
-        private string _fiscalDay = "28";
+        private string _fiscalDay = string.Empty;
         public string FiscalDay
         {
             get => _fiscalDay;
@@ -850,6 +860,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 _fiscalDay = value;
                 RaisePropertyChanged(nameof(FiscalDay));
+            }
+        }
+        private string _commDate = string.Empty;
+        public string CommDate
+        {
+            get => _commDate;
+            set
+            {
+                _commDate = value;
+                RaisePropertyChanged(nameof(CommDate));
+            }
+        }
+        private string _taxDate = string.Empty;
+        public string TaxDate
+        {
+            get => _taxDate;
+            set
+            {
+                _taxDate = value;
+                RaisePropertyChanged(nameof(TaxDate));
             }
         }
         #endregion
@@ -1049,12 +1079,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region Financial Details Tabs variable initialization
             MethodList.Clear();
-            MethodList.Add("Accounts");
-            MethodList.Add("Estimate");
+            MethodList.AddRange(EnMethodList.Values);
+
+            //MethodList.Add("Accounts");
+            //MethodList.Add("Estimate");
 
             CalendarTypeList.Clear();
-            CalendarTypeList.Add("Hijri");
-            CalendarTypeList.Add("Gregorian");
+            CalendarTypeList.AddRange(EnCalendarTypeList.Values);
+            //CalendarTypeList.Add("Hijri");
+            //CalendarTypeList.Add("Gregorian");
 
             SelectedMethod = MethodList.FirstOrDefault();
             CalendarType = CalendarTypeList.LastOrDefault();
@@ -1081,7 +1114,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnVoidOrSaveDraftClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid, AppResources.FORM5CalendarType });
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid });
                 poupWindow.OnItemSelect = (item) => Console.WriteLine(item);
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
@@ -1658,7 +1691,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
-                    //FinancialDetail financialDetail = await WebServiceManager.ESTFinancialMaxDate();
+                    
                     ResidenceTypePrePopulateData(taxPayerDetails);
                     RentAttachmentPrePopulateCheck(taxPayerDetails);
                 }
@@ -1708,7 +1741,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if(_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                    FinancialDetail financialDetail = await WebServiceManager.ESTFinancialMaxDate();
+                    FinancialDetail financialDetail = await WebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest() {
+                        ADateComm = taxPayerDetails?.Commdt
+                    });
+                    SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
+                    CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
+                    FiscalMonth = taxPayerDetails?.Fdmonth;
+                    FiscalDay = taxPayerDetails?.Fdday;
+                    CommDate = taxPayerDetails?.Commdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    TaxDate = taxPayerDetails?.Fdenddt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
             }
             catch (Exception e)
@@ -1836,6 +1877,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
+            
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -1943,11 +1985,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async  Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
+            
             try
             {
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
+                    
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = SelectedRegNationalityType;
@@ -1965,7 +2009,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         taxPayerDetails.Rentatt = "";
                     }
-
+                    taxPayerDetails.StepNumberx = "01";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -1973,6 +2017,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
+                    
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                     taxPayerDetails.Birthdt = dob;
                     taxPayerDetails.NameFirst = FirstName;
@@ -1993,14 +2038,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Citizen = SelectedCitizen?.Land1;
                     taxPayerDetails.Residence = SelectedResidence?.Land1;
 
-                    var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                    taxPayerDetails.StepNumberx = "02";
+                    var taxPayerDetailsResult = await  WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+
 
                     IsLoading = false;
                     return true;
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
-
                     Nreg_IdItem passportObj = new Nreg_IdItem();
                     passportObj.Idnumber = PassportNumber;
                     passportObj.Country = SelectedPassportIssueCountry?.Land1;
@@ -2012,16 +2058,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     passportObj.Type = "FS0002";
                     passportObj.Srcidentify = "000";
 
+                    taxPayerDetails.Nreg_IdSet.results.Clear();
                     taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
 
                     if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
                     {
+
                         taxPayerDetails.Passatt = "X";
                     }
                     else
                     {
                         taxPayerDetails.Passatt = "";
                     }
+
+                    taxPayerDetails.StepNumberx = "02";
 
                     var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
