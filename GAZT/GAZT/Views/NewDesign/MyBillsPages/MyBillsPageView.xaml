@@ -191,7 +191,12 @@
                                             
                                             <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5">
                                                 <Label Text="{x:Static ResourceManager:AppResources.NDPeriod}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                <Label Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" />
+                                                <!--<Label Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" />-->
+                                                <StackLayout Orientation="Horizontal">
+                                                    <custom:CustomLabel Text="{Binding PeriodPart1}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" />
+                                                    <custom:CustomLabel Text="-" Style="{StaticResource ValueLabelBlack}" />
+                                                    <custom:CustomLabel HorizontalOptions="StartAndExpand" Text="{Binding PeriodPart2}" FlowDirection="LeftToRight" Style="{StaticResource ValueLabelBlack}" />
+                                                </StackLayout>
                                             </StackLayout>
                                             <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5" Grid.ColumnSpan="2">
                                                 <Label Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>

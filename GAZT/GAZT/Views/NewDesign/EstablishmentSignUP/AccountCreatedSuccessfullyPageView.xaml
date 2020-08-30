@@ -4,11 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
             NavigationPage.HasNavigationBar="False"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              BackgroundImageSource="partials_background"             
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.AccountCreatedSuccessfullyPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -22,8 +24,8 @@
         <StackLayout Padding="24,0,24,16">
             <Image Source="Forget_ic_success.png" Margin="0,75,0,0"/>
             <custom:CustomLabel Margin="0,25,0,0" Text="{x:Static ResourceManager:AppResources.ZZZZRegistrationSuccessful}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalTextAlignment="Center"/>
-            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZAccountCreatedSuccessfully}" Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White"/>
-            <buttons:SfButton x:Name="btnprimary" VerticalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.Clickhereforlogin}" Style="{StaticResource PrimaryButtonStyle}"/>
+            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDYouSuccessfullyRegisteredGAZTServies}" Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White"/>
+            <buttons:SfButton x:Name="btnprimary" VerticalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}" Style="{StaticResource PrimaryButtonStyle}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

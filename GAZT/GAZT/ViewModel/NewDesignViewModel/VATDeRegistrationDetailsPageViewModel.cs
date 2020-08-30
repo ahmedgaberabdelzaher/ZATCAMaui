@@ -1176,8 +1176,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsDOBEditorVisible = true;
                 VoidIsVisible = false;
                 PopulateAttachmentsListViewTemplate();
-
-
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -2282,8 +2280,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData.d.Reason = Reason;
                 VATDeRegistrationDetailsData.d.Agreeflg = true;
                 VATDeRegistrationDetailsData.d.Atype = "2";
-                VATDeRegistrationDetailsData.d.Reqtp = "S";
-
 
                 VATDeRegistrationDetailsData.d.Operationx = operation;
                 if (operation == "05")

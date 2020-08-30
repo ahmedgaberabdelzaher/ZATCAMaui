@@ -100,17 +100,52 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" x:Name="FrmNumber" HasError="{Binding IsTmobileHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <!--<inputLayout:SfTextInputLayout FlowDirection="LeftToRight" x:Name="FrmNumber" HasError="{Binding IsTmobileHasError}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 
                                     <StackLayout Orientation="Horizontal" Margin="16,0,0,0" >
                                         <custom:BorderlessEntry FlowDirection="LeftToRight" Placeholder="+966" IsReadOnly="True" Style="{StaticResource EntryHeight48}" />
                                         <BoxView Style="{StaticResource lineSeperator}"  WidthRequest="1" HeightRequest="20" Margin="5"/>
 
 
-                                    <custom:BorderlessEntry x:Name="TMobNumber" TextChanged="TMobNumber_TextChanged" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" IsReadOnly="True"  HorizontalOptions="FillAndExpand" MaxLength="15" >
-                                </custom:BorderlessEntry>
+                                    <Entry x:Name="TMobNumber" FlowDirection="LeftToRight" TextChanged="TMobNumber_TextChanged" Text="{Binding TMobNumber}" Style="{StaticResource EntryHeight48}" IsReadOnly="True"  HorizontalOptions="FillAndExpand" MaxLength="15" >
+                                </Entry>
                                 </StackLayout>
-                            </inputLayout:SfTextInputLayout>
+                            </inputLayout:SfTextInputLayout>-->
+
+                            <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand"
+                                                        ContainerType="Outlined"
+                                                        x:Name="FrmNumber"
+                                                        LeadingViewPosition="Inside"
+                                                        UnfocusedColor="#B1B1B1"
+                                                        OutlineCornerRadius="8"
+                                                        FocusedColor="#005e4b"
+                                                        ErrorColor="#B00020">
+                        <inputLayout:SfTextInputLayout.LeadingView>
+
+                            <Label FlowDirection="LeftToRight"
+                                        Margin="0"
+                                        x:Name="mobileNumberPrefix"
+                                        Text="+966  |"
+                                        WidthRequest="80"
+                                        TextColor="Gray"
+                                        FontSize="Medium"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"></Label>
+
+                        </inputLayout:SfTextInputLayout.LeadingView>
+                        <Entry x:Name="TMobNumber" FlowDirection="LeftToRight"
+                                                        Text="{Binding TMobNumber}"
+                                                        FontSize="Medium"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        TextColor="Black"
+                                                        PlaceholderColor="Gray"
+                                                        Keyboard="Telephone"
+                                                        IsReadOnly="True"
+                                                        MaxLength="9">
+                                                        
+                        </Entry>
+                    </inputLayout:SfTextInputLayout>
 
                             <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource CaptionLabelGrey}"/>-->
                                 <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
@@ -122,8 +157,8 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <inputLayout:SfTextInputLayout  Grid.Row="2" Grid.Column="0"   Margin="0,-10,0,0">
-                                <custom:BorderlessEntry  Text="{Binding RLocation}"  IsReadOnly="True" >
-                                </custom:BorderlessEntry>
+                                <Editor  Text="{Binding RLocation}" AutoSize="TextChanges"  IsReadOnly="True" >
+                                </Editor>
 
                                 <inputLayout:SfTextInputLayout.TrailingView >
                                     <Image Source="ic_location_Outline.png"/>
