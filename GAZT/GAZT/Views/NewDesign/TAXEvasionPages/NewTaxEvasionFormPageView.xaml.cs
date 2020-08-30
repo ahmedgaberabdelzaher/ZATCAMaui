@@ -164,7 +164,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         }
 
                         Position position = new Position(lat, lon);
-                        MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                        MapSpan mapSpan = new MapSpan(position, 0.01, 0.01);
                         mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = lat;
                         viewModel.Longitude = lon;
@@ -498,9 +498,9 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
         }
 
-        private void mapView_MapClicked(object sender, MapClickedEventArgs e)
-        {
+        //private void mapView_MapClicked(object sender, MapClickedEventArgs e)
+        //{
 
-        }
+        //}
     }
 }
