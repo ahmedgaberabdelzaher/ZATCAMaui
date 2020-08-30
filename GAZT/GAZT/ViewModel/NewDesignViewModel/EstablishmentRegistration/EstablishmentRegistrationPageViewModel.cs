@@ -25,7 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Variable
         private TaxPayerDetails taxPayerDetails { get; set; } = null;
         private OutletNumber number;
-        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.Outlets;
+        private EstablishmentRegistrationTabsEnum _currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
         public EstablishmentRegistrationTabsEnum currentTab
         {
             get => _currentTab;
@@ -77,7 +77,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
 
-        private int _currenrIndex = (int)EstablishmentRegistrationTabsEnum.Outlets;
+        private int _currenrIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
         public int CurrentIndex
         {
             get => _currenrIndex;
@@ -1078,8 +1078,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             //CalendarTypeList.Add("Hijri");
             //CalendarTypeList.Add("Gregorian");
 
-            //SelectedMethod = MethodList.FirstOrDefault();
-            //CalendarType = CalendarTypeList.LastOrDefault();
+            SelectedMethod = MethodList.FirstOrDefault();
+            CalendarType = CalendarTypeList.LastOrDefault();
 
             OnMonthSelectButtonClick = new Command(() =>
             {

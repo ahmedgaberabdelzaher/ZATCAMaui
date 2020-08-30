@@ -582,29 +582,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
         public void AddNewIban(string newIban)
         {
-            if(IbanData == null)
+            try
             {
-                IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>();
+                if (IbanData == null)
+                {
+                    IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>();
+                }
+
+                VarRefundIbanDataModelMetadataResult newIbanModel = new VarRefundIbanDataModelMetadataResult();
+                newIbanModel.Iban = newIban;
+                IbanData.Add(newIbanModel);
+
+                if (VatRefundsIbanDataModel.IbanSet == null)
+                {
+                    VatRefundsIbanDataModel.IbanSet = new NSet();
+                }
+
+                if (VatRefundsIbanDataModel.IbanSet.Results == null)
+                {
+                    VatRefundsIbanDataModel.IbanSet.Results = new VarRefundIbanDataModelMetadataResult[1000];
+                }
+
+                List<VarRefundIbanDataModelMetadataResult> tempNewIbanList = new List<VarRefundIbanDataModelMetadataResult>();
+                tempNewIbanList.Add(newIbanModel);
+
+                VatRefundsIbanDataModel.IbanSet.Results = tempNewIbanList.ToArray();
+
+                if (VatRefundsIbanDataModel.IbanSet.Results.Count() > 0)
+                {
+                    IsAddAccountVisisble = false;
+                }
             }
-
-            VarRefundIbanDataModelMetadataResult newIbanModel = new VarRefundIbanDataModelMetadataResult();
-            newIbanModel.Iban = newIban;
-            IbanData.Add(newIbanModel);
-
-            if(VatRefundsIbanDataModel.IbanSet == null)
+            catch(Exception ex)
             {
-                VatRefundsIbanDataModel.IbanSet = new NSet();
+                Console.WriteLine(ex.Message);
             }
-
-            if(VatRefundsIbanDataModel.IbanSet.Results == null)
-            {
-                VatRefundsIbanDataModel.IbanSet.Results = new VarRefundIbanDataModelMetadataResult[1000];
-            }
-
-            List<VarRefundIbanDataModelMetadataResult> tempNewIbanList = new List<VarRefundIbanDataModelMetadataResult>();
-            tempNewIbanList.Add(newIbanModel);
-
-            VatRefundsIbanDataModel.IbanSet.Results = tempNewIbanList.ToArray();
 
             //VatRefundsIbanDataModel.IbanSet.Results
         }
@@ -786,6 +798,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 });
 
                 VatNewReqSummaryData = await WebServiceManager.GAZTVATRefundSubmitRequest(VatRefundsDisplayDataModel);
+
+                if (VatNewReqSummaryData.Operationx.Equals("05"))
+                {
+                    //  string number = response.d.Fbnumz;
+                    string displayMessage = AppResources.VATRSaveasdraftMessage;
+                    await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                }
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
