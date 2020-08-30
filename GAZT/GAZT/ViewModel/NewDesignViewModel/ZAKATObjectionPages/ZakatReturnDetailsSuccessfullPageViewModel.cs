@@ -18,6 +18,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public readonly IDialogService _dialogService;
         public ICommand OnInvoiceClicked { get; set; }
         string Cokey = "";
+        public bool IsrefreshEnabled = false;
         string Cotyp = "";
         #endregion
 
@@ -93,8 +94,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 RaisePropertyChanged("ReferenceNumber");
             }
         }
-        
 
+        private string _refreshIconImageSource = "ic_refresh.png";
+        public string RefreshIconImageSource
+        {
+            get
+            {
+                return _refreshIconImageSource;
+            }
+            set
+            {
+                _refreshIconImageSource = value;
+                RaisePropertyChanged("RefreshIconImageSource");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -131,7 +144,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             {
                 try
                 {
-                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, zakatReturnDetailsD.Fbguid); // Method to get the invoice
+                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(zakatReturnDetailsD.Fbnum, ZAKATReturnDetailsViewModel.Fbguid); // Method to get the invoice
                   //  PopToRootPage();
                     if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                     {
@@ -143,14 +156,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
                             EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
-                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel)) ;
-                            //  IsrefreshEnabled = true;
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel)) 
+                            {
+                                IsrefreshEnabled = true;
+                                RefreshIconImageSource = "ic_refresh.png";
+                            }
+                            else
+                            {
+                                ReferenceNumber = EstimatedZAKATSADADNumber.Sopbel;
+                                SADADNumber = EstimatedZAKATSADADNumber.Sadadid;
+                                ZAKATAmount = EstimatedZAKATSADADNumber.Stotamt;
+                                IsrefreshEnabled = false;
+                                RefreshIconImageSource = "";
+
+                            }
                             //  RefreshIconImageSource = "ic_refresh.png";
                             //else
                             //    IsrefreshEnabled = false;
-                            ReferenceNumber = EstimatedZAKATSADADNumber.Sopbel;
-                            SADADNumber = EstimatedZAKATSADADNumber.Sadadid;
-                            ZAKATAmount = EstimatedZAKATSADADNumber.Stotamt;
                         }
                         else
                         {
@@ -158,17 +180,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = false;
                             estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = true;
-                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                          
 
-                            ReferenceNumber = EstimatedZAKATSADADNumber.Sopbel;
-                            SADADNumber = EstimatedZAKATSADADNumber.Sadadid;
-                            ZAKATAmount = EstimatedZAKATSADADNumber.Stotamt;
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel)) 
+                            {
+                                IsrefreshEnabled = true;
+                                RefreshIconImageSource = "ic_refresh.png";
 
-                           // if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel)) ;
-                           //IsrefreshEnabled = true;
-                           //    RefreshIconImageSource = "ic_refresh.png";
-                           //else
-                           //    IsrefreshEnabled = false;
+                            }
+                            else
+                            {
+                                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+
+                                ReferenceNumber = EstimatedZAKATSADADNumber.Sopbel;
+                                SADADNumber = EstimatedZAKATSADADNumber.Sadadid;
+                                ZAKATAmount = EstimatedZAKATSADADNumber.Stotamt;
+                                IsrefreshEnabled = false;
+                                RefreshIconImageSource = "";
+
+                            }
+
+                            //    RefreshIconImageSource = "ic_refresh.png";
+                            //else
+                            //    IsrefreshEnabled = false;
                         }
                         GetUpdatedDataAfterAddingComma();
                     }
@@ -245,6 +279,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
+
+        public void ClearData()
+        {
+
+            IsrefreshEnabled = false;
+        }
         #endregion
 
 

@@ -42,23 +42,24 @@
                     </Grid.RowDefinitions>
                    
 
-               <yummy:PancakeView Grid.Row="1" BackgroundColor="White" CornerRadius="15,15,0,0" Padding="0,0,0,0">
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="White" CornerRadius="15,15,0,0" Padding="0,0,0,0">
                     <Grid RowSpacing="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-
-                        <Grid Grid.Row="1" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                       
+                        <Grid Grid.Row="1" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White"
+                              x:Name="VATRMainGrid">
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
 
                             <ContentPresenter VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Grid.Column="0"
-                        Grid.Row="0" BackgroundColor="White"/>
+                                HorizontalOptions="FillAndExpand"
+                                Grid.Column="0"
+                                Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
 
                         <StackLayout Orientation="Horizontal" BackgroundColor="White" Grid.Row="0" VerticalOptions="CenterAndExpand" >
@@ -68,18 +69,16 @@
                                     <TapGestureRecognizer Command="{TemplateBinding BindingContext.BackButtonTapped}"  />
                                 </custom:CustomLabel.GestureRecognizers>
                             </custom:CustomLabel>
-
-
-                                <commonView:PageIndicatorView Margin="0,35,0,0"  
+                            <commonView:PageIndicatorView Margin="0,35,0,0"  
                                                               Grid.Row="1" Grid.Column="0" MaxNum="{TemplateBinding BindingContext.MaxIndex}"
                                                               MinNum="{TemplateBinding BindingContext.CurrentIndex}"
                                                               Completed="{TemplateBinding BindingContext.MarkComplete}" VerticalOptions="CenterAndExpand"/>
-
-                          
                         </StackLayout>
                     </Grid>
                 </yummy:PancakeView>
-                             <Grid Padding="0,10,0,10" Grid.Row="0" Margin="8,0">
+
+                    <Grid Padding="0,10,0,10" Grid.Row="0" Margin="8,0">
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -108,476 +107,15 @@
     </ContentPage.ControlTemplate>
 
      <ContentPage.Content>
-
         <Grid>
             <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-           <Grid>
-        
-              <Grid IsVisible="{Binding IsReasonViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                  <Grid.RowDefinitions>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="50*"/>
-                </Grid.ColumnDefinitions>
-
-               
-                 <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                    <Grid.RowDefinitions>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="1"/>
-                    </Grid.RowDefinitions>
-                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregDetailsTitle}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource SectionTitleBlack}" />
-                     
-                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationSubtitle}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}"/>
-                    <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
-                </Grid>
-      
-                 <custom:CustomLabel Grid.Row="1" Text="{x:Static ResourceManager:AppResources.VatDeregRequestType}" HorizontalOptions="StartAndExpand"
-                                               Style="{StaticResource CaptionLabelGrey}" />   
-              <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
-                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
-                        <listView:SfListView.ItemTemplate>
-                            <DataTemplate>
-					                <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
-                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                                <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                                                    Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
-                                                </Label>
-                                            </Grid>
-                                    </cards1:SfCardView>
-			                </DataTemplate>
-                        </listView:SfListView.ItemTemplate>
-                      <listView:SfListView.SelectedItemTemplate>
-                            <DataTemplate>
-					                <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
-                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                                <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                                                    Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
-                                                </Label>
-                                            </Grid> 
-                                    </cards1:SfCardView>
-			                </DataTemplate>
-                       </listView:SfListView.SelectedItemTemplate>
-                        <listView:SfListView.LayoutManager>
-                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
-                        </listView:SfListView.LayoutManager>
-                 </listView:SfListView>
-                             <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                    <Grid.RowDefinitions>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="1"/>
-                    </Grid.RowDefinitions>
-
-                    <StackLayout Grid.Row="0" Grid.Column="0">
-                         
-                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />   
-                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
-
-                                <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                        
-                                    <Label Text="{Binding ReasonTitle}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
-                                               HorizontalOptions="Start" VerticalOptions="Center">
-
-                                        </Image>
-
-                                    </StackLayout>
-                                      <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
-                                    </StackLayout.GestureRecognizers>
-                                </StackLayout>
-                            </border:SfBorder >
-                             <StackLayout Spacing="2">
-                                    <inputLayout:SfTextInputLayout x:Name="OthersTxt" LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
-                                    ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}" HelperText="{Binding TextCount}" 
-                                    OutlineCornerRadius="15" FocusedColor="#005e4b" ErrorColor="#B00020">
-
-                                        <Entry Style="{StaticResource DefaultEntry}" Text="{Binding OtherField}" TextChanged="Others_Entry_TextChanged"  HeightRequest="100" MaxLength="1000"/>
-             
-                                    </inputLayout:SfTextInputLayout>
-                                 <!--<Label Text="no of characters remaining"/>-->
-                             </StackLayout>
-                    </StackLayout>
-                        
-                </Grid>
-                     
-                    <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
-                             <StackLayout.Triggers>
-                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
-                                    <Setter Property="IsVisible" Value="false" />
-                                </DataTrigger>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
-                                    <Setter Property="IsVisible" Value="true" />
-                                </DataTrigger>
-                            </StackLayout.Triggers>
-                    <StackLayout>
-                    <StackLayout>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />   
-                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
-
-                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                                         <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                                </Image.Source>
-                                            </Image>
-
-                                        </StackLayout>
-                                                      <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer x:Name="StartDate" Tapped="VATDeregStartDateClicked" ></TapGestureRecognizer>
-                                         </StackLayout.GestureRecognizers>
-
-                                    </StackLayout>
-                                    
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                                         <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                        <StackLayout HorizontalOptions="End" Orientation="Horizontal" >
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                                </Image.Source>
-                                            </Image>
-
-                                        </StackLayout>
-
-                                        <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer x:Name="EndDate" Tapped="VATDeregEndDateClicked" ></TapGestureRecognizer>
-                                         </StackLayout.GestureRecognizers>
-
-                                    </StackLayout>
-                                    </StackLayout>
-                                </border:SfBorder >
-                            </StackLayout>
-                              <StackLayout Orientation="Vertical">
-                                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedFilingPeriod}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" /> 
-                                   <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
-
-                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                         <Label Text="{Binding SuspendedStartDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                                </Image.Source>
-                                            </Image>
-                                      <Label Text="{Binding SuspendedEndDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
-
-
-                                    </StackLayout>
-                                </border:SfBorder >
-                             </StackLayout >
-                            <StackLayout Orientation="Vertical" >
-                                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingPeriod}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" /> 
-                                   <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
-
-                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                         <Label  Text="{Binding NextFilingStartDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                            <Image Margin="5,0" HorizontalOptions="Center">
-                                                <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                                </Image.Source>
-                                            </Image>
-                                      <Label  Text="{Binding NextFilingEndDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
-
-                                    </StackLayout>
-                                </border:SfBorder >
-                            </StackLayout >
-                               <StackLayout Orientation="Vertical" >
-                                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingDueDate}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" /> 
-                                   <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
-
-                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                         <Label Text="{Binding NextFilingDueDate,StringFormat='{0:dd MMM yyyy}' }" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
-                     
-                                    </StackLayout>
-                                </border:SfBorder >
-                            </StackLayout >
-              </StackLayout>
-            </StackLayout>
-                  <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
-                                   Style="{StaticResource PrimaryButtonStyle}"/>
-              
-            </Grid>
- <Grid IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Grid.RowDefinitions>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="50*"/>
-                </Grid.ColumnDefinitions>
-                 <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                    <Grid.RowDefinitions>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="1"/>
-                        </Grid.RowDefinitions>
-                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentsHeaderTitle}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlack}" />
-                     
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregDocumentselectionTitle}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
-
-                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                       <listView:SfListView Grid.Row="3" Grid.Column="0" x:Name="outletDocumentOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding AttachmentTypes}" SelectedItem="{Binding SelectedDocumentOption, Mode=TwoWay}"  SelectionMode="Single"
-                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDocumentOptionsListView_SelectionChanged" >
-                        <listView:SfListView.ItemTemplate>
-                            <DataTemplate>
-					                <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
-                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                                <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                <Label Text="{Binding Txt50}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                                                    Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
-                                                </Label>
-                                            </Grid>
-                                    </cards1:SfCardView>
-			                </DataTemplate>
-                        </listView:SfListView.ItemTemplate>
-                      <listView:SfListView.SelectedItemTemplate>
-                            <DataTemplate>
-					                <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
-                                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
-                                                <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                                <Label Text="{Binding Txt50}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
-                                                                    Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
-                                                </Label>
-                                            </Grid> 
-                                    </cards1:SfCardView>
-			                </DataTemplate>
-                       </listView:SfListView.SelectedItemTemplate>
-
-                        <listView:SfListView.LayoutManager>
-                            <listView:GridLayout x:Name="GridLayout1" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
-                        </listView:SfListView.LayoutManager>
-                 </listView:SfListView>
-                </Grid>
-               
-                <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding VatAttachmentsList}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" >
-                        <listView:SfListView.ItemTemplate>
-                            <DataTemplate>
-					                <StackLayout Spacing="2">
-                                        <Label Text="{Binding AttachmentTitle,Mode=TwoWay}" HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />   
-                                        <inputLayout:SfTextInputLayout  IsEnabled="True"  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
-                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
-                                        OutlineCornerRadius="12" FocusedColor="#B1B1B1" ErrorColor="#B00020">
-
-                                            <Entry Style="{StaticResource DefaultEntry}" IsEnabled="False" Text="{Binding Filename,Mode=TwoWay}"
-                                                   Placeholder="{x:Static custom2:AppResources.VatDeregAttachmentInputPlaceholder}" HorizontalTextAlignment="Start"
-                                                   VerticalOptions="Center"/>
-
-                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
-                                                    </Image.GestureRecognizers>
-                                                </Image>
-                                            </inputLayout:SfTextInputLayout.TrailingView>
-                                                
-                                        </inputLayout:SfTextInputLayout>
-                    <Label Text="{Binding FileSize,Mode=TwoWay}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
-                                                Style="{StaticResource CaptionLabelGrey}" /> 
-                 </StackLayout>
-
-			                </DataTemplate>
-                        </listView:SfListView.ItemTemplate>
-                 </listView:SfListView>
-                       <StackLayout Grid.Row="4" Spacing="2" Grid.ColumnSpan="2">
-                  <Label Text="{x:Static custom2:AppResources.VATRNewAttachment}"    Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <inputLayout:SfTextInputLayout  Margin="10,-6,0,-6" 
-                                            ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
-                                            OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
-                                                            <!--Attachments-->
-                                                <Entry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                       HorizontalTextAlignment="Start" VerticalOptions="Center"/>
-  
-                                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                                        <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png"  >
-                                                            <Image.GestureRecognizers>
-                                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                                            </Image.GestureRecognizers>
-                                                        </Image>
-                                            
-                                                    </inputLayout:SfTextInputLayout.TrailingView>
-                                                    </inputLayout:SfTextInputLayout>
-                                    <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}"  Style="{StaticResource CaptionLabelGrey}"/>
-                                </StackLayout>
-     <StackLayout Grid.Row ="5" Orientation="Vertical" Grid.ColumnSpan="2" Margin="10,0,10,0">
-       <Label HorizontalTextAlignment="Start"   Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}"  Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand"  Style="{StaticResource CaptionLabelGrey}"/>
-                <Label HorizontalTextAlignment="Start"  Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}"   Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-                     <Label HorizontalTextAlignment="Start"   Text="{x:Static custom2:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"   Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-         </StackLayout>
-                 <buttons:SfButton  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36" x:Name="btnAttachmentsContinue"
-                                   Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
-                                   Style="{StaticResource PrimaryButtonStyle}"/>
-                    
- 
-            </Grid>
-              <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
+               <Grid>
+                  <Grid IsVisible="{Binding IsReasonViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                      <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="50*"/>
-                    </Grid.ColumnDefinitions>
-                         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-                            <Grid.RowDefinitions>
-                             <RowDefinition Height="auto"/>
-                             <RowDefinition Height="auto"/>
-                             <RowDefinition Height="1"/>
-                            </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5Declaration}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource SectionTitleBlack}" />
-                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource BodyLabelGrey}"/>
-                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
-                        </Grid>
-                         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                            <Grid.RowDefinitions>
-                             <RowDefinition Height="auto"/>
-                             <RowDefinition Height="auto"/>
-                             <RowDefinition Height="1"/>
-                            </Grid.RowDefinitions>
-                            <StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-
-                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />   
-                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"   Style="{StaticResource GreyBorderFrame}">
-
-                                <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                        
-                                        <Label Text="{Binding IDType}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                      <Image  Source="arrowDropdown" Margin="10,0,10,0" WidthRequest="15" HeightRequest="15"
-                                               HorizontalOptions="Start" VerticalOptions="Center">
-                                        </Image>    
-                                        </StackLayout>
-                                                                 
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="VatDeregIdClicked"></TapGestureRecognizer>
-                                        </StackLayout.GestureRecognizers>
-                                </StackLayout>
-                            </border:SfBorder >
-                      
-
-                    </StackLayout>
-                                <StackLayout x:Name="IDNumberField" Orientation="Horizontal" Grid.Row="1" HorizontalOptions="CenterAndExpand">
-                                                                     <StackLayout Grid.Row="1" Grid.Column="0" >
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelBlack}" />     
-                                <inputLayout:SfTextInputLayout  Margin="-2,-6,0,0" WidthRequest="180"
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"  x:Name="FrmIDNumber"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                    <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding TxtIDNumber}"
-                                                            TextColor="Black" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
-                                        <Entry.Behaviors>
-                                                                <custom1:OnlyNumericValuesBehaviour/>
-                                                            </Entry.Behaviors> 
-                                    </Entry>
-                                </inputLayout:SfTextInputLayout>
-                            </StackLayout>
-                            <StackLayout IsVisible="{Binding IsDOBEditorVisible}" Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
-                                <custom:CustomLabel Margin="30,0,0,0" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="Start"
-                                                Style="{StaticResource CaptionLabelGrey}" />   
-                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,0"  Style="{StaticResource GreyBorderFrame}">
-
-                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="180">
-                                        
-                                        <Label x:Name="DpDbo" Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Micro" HorizontalOptions="Start"/>
-                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                                </Image.Source>
-                                            </Image>
-                                        </StackLayout>
-
-                                        <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer Tapped="VATDeregDOBClicked" ></TapGestureRecognizer>
-                                         </StackLayout.GestureRecognizers>
-
-                                    </StackLayout>
-                                </border:SfBorder >
-                            </StackLayout>
-                            </StackLayout>
-                                      <StackLayout>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregContactPerson}" HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource CaptionLabelGrey}" />     
-                                    <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                        <custom:BorderlessEntry x:Name="ContactName"  Placeholder="{x:Static ResourceManager:AppResources.VatDeregContactPerson}"
-                                                                Text="{Binding ContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start"
-                                                                TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
-                                                     <Entry.Behaviors>
-                                                                <custom1:AlphabetandArabicCharacters/>
-                                                            </Entry.Behaviors>  
-                                        </custom:BorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
-                                </StackLayout>
-                                        <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
-                <StackLayout Margin="8">
-                    <StackLayout Orientation="Horizontal" Spacing="0">
-                       <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
-                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource ValueLabelBlack}"/>
-                    </StackLayout>
-                    <Label Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationAgreement}" HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource CaptionLabelGrey}" />
-                
-                </StackLayout>
-            </border:SfBorder>
-                                   
-                                <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36" x:Name="btnDeclarationContinue"
-                                   Command="{Binding DeclarationContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
-                                   Style="{StaticResource PrimaryButtonStyle}"/>
-                            </StackLayout>
-                         </Grid>
-                     </Grid>
-              <Grid IsVisible="{Binding IsSummaryViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
@@ -585,197 +123,652 @@
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+
+               
+                     <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="1"/>
-                         <RowDefinition Height="auto"/>
-                         <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregSummaryTitle}" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregDetailsTitle}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource SectionTitleBlack}" />
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
-                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-
-                        <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Padding="0">
-                            <Grid Padding="15" RowSpacing="0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
-                                </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"   Source="details"/>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    
-                                    <Label Text="{x:Static ResourceManager:AppResources.VatDeregDetailsTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                </StackLayout>
-                                <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" IsVisible="False"  Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_1" FontFamily="SSTBold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#006450"/>
-                            </Grid>
-
-                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding VATDeregistrationSummaryReasonData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
-                                <listView:SfListView.ItemTemplate>
-                                    <DataTemplate>
-					                        <Grid Padding="0" RowSpacing="0">
-                                                <Grid.RowDefinitions >
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
-                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                                </StackLayout>
-                                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
-                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                                </StackLayout>
-                                            </Grid>
-			                        </DataTemplate>
-                                </listView:SfListView.ItemTemplate>
-                              </listView:SfListView>
-                        </StackLayout>
-                    </border:SfBorder >
-                     <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Padding="0">
-                            <Grid Padding="15" RowSpacing="0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
-                                </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_attachment"/>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentsHeaderTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                </StackLayout>
-                                <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" IsVisible="False" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_2" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
-
-                            </Grid>
-
-                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryAttachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
-                                <listView:SfListView.ItemTemplate>
-                                    <DataTemplate>
-					                        <Grid Padding="0" RowSpacing="0">
-                                                <Grid.RowDefinitions >
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <StackLayout Grid.Row="0" Grid.Column="0">
-                                                    <Label Text="{Binding FieldTitle}" BackgroundColor="Red" Style="{StaticResource BodyLabelGrey}" FontSize="Small" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                                </StackLayout>
-                                                <StackLayout Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="{Binding AttachmentName}" BackgroundColor="Red" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                                </StackLayout>
-                                            </Grid>
-			                        </DataTemplate>
-                                </listView:SfListView.ItemTemplate>
-                              </listView:SfListView>
-                        </StackLayout>
-                    </border:SfBorder >
-                                          <border:SfBorder Margin="0,16,0,10" Grid.Row="5" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Padding="0">
-                            <Grid Padding="15" RowSpacing="0" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
-                                </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="declaration"/>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
-                                </StackLayout>
-                                   <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" IsVisible="False" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_3" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
-
-                            </Grid>
-
-                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                             <listView:SfListView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryDeclarationListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding VATDeregistrationSummaryDeclarationData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
-                                <listView:SfListView.ItemTemplate>
-                                    <DataTemplate>
-					                        <Grid Padding="0" RowSpacing="0">
-                                                <Grid.RowDefinitions >
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <StackLayout Grid.Row="0" Grid.Column="0">
-                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
-                                                </StackLayout>
-                                                <StackLayout Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
-                                                </StackLayout>
-                                            </Grid>
-			                        </DataTemplate>
-                                </listView:SfListView.ItemTemplate>
-                              </listView:SfListView>
-                        </StackLayout>
-                    </border:SfBorder >
+                     
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationSubtitle}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}"/>
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
                     </Grid>
-                 <buttons:SfButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36"  x:Name="btnContinueSummary" Command="{Binding SummaryContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
-                                   Style="{StaticResource PrimaryButtonStyle}"/>
-               </Grid>
+      
+                     <custom:CustomLabel Grid.Row="1" Text="{x:Static ResourceManager:AppResources.VatDeregRequestType}" HorizontalOptions="StartAndExpand"
+                                                   Style="{StaticResource CaptionLabelGrey}" />   
+                  <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
+                                          ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
+                                          SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged" >
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+					                    <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                                    <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                        Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                    </Label>
+                                                </Grid>
+                                        </cards1:SfCardView>
+			                    </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                          <listView:SfListView.SelectedItemTemplate>
+                                <DataTemplate>
+					                    <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                                    <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <Label Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                        Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                    </Label>
+                                                </Grid> 
+                                        </cards1:SfCardView>
+			                    </DataTemplate>
+                           </listView:SfListView.SelectedItemTemplate>
+                            <listView:SfListView.LayoutManager>
+                                <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+                            </listView:SfListView.LayoutManager>
+                     </listView:SfListView>
+                                 <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
 
-           </Grid>
-            
-       </ScrollView>
-            
-             <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout Grid.Row="0" Grid.Column="0">
+                         
+                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}" />   
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                        
+                                        <Label Text="{Binding ReasonTitle}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
+                                                   HorizontalOptions="Start" VerticalOptions="Center">
+
+                                            </Image>
+
+                                        </StackLayout>
+                                          <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnVatRegistrationReasonTapped}" ></TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </border:SfBorder >
+                                 <StackLayout Spacing="2">
+                                        <inputLayout:SfTextInputLayout x:Name="OthersTxt" LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="10,0,10,0" 
+                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1" IsVisible="{Binding IsOthersEditorVisible}" HelperText="{Binding TextCount}" 
+                                        OutlineCornerRadius="15" FocusedColor="#005e4b" ErrorColor="#B00020">
+
+                                            <Entry Style="{StaticResource DefaultEntry}" Text="{Binding OtherField}" TextChanged="Others_Entry_TextChanged"  HeightRequest="100" MaxLength="1000"/>
+             
+                                        </inputLayout:SfTextInputLayout>
+                                     <!--<Label Text="no of characters remaining"/>-->
+                                 </StackLayout>
+                        </StackLayout>
+                        
+                    </Grid>
+                     
+                        <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                                 <StackLayout.Triggers>
+                                     <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="0">
+                                        <Setter Property="IsVisible" Value="false" />
+                                    </DataTrigger>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedOutletOptionIndex}" Value="1">
+                                        <Setter Property="IsVisible" Value="true" />
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                        <StackLayout>
+                        <StackLayout>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}" />   
+                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
+
+                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                             <Label Text="{Binding FromDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                <Image Margin="5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                    </Image.Source>
+                                                </Image>
+
+                                            </StackLayout>
+                                                          <StackLayout.GestureRecognizers>
+                                                 <TapGestureRecognizer x:Name="StartDate" Tapped="VATDeregStartDateClicked" ></TapGestureRecognizer>
+                                             </StackLayout.GestureRecognizers>
+
+                                        </StackLayout>
+                                    
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                             <Label Text="{Binding ToDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <StackLayout HorizontalOptions="End" Orientation="Horizontal" >
+                                                <Image Margin="5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                    </Image.Source>
+                                                </Image>
+
+                                            </StackLayout>
+
+                                            <StackLayout.GestureRecognizers>
+                                                 <TapGestureRecognizer x:Name="EndDate" Tapped="VATDeregEndDateClicked" ></TapGestureRecognizer>
+                                             </StackLayout.GestureRecognizers>
+
+                                        </StackLayout>
+                                        </StackLayout>
+                                    </border:SfBorder >
+                                </StackLayout>
+                                  <StackLayout Orientation="Vertical">
+                                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedFilingPeriod}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}" /> 
+                                       <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
+
+                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                             <Label Text="{Binding SuspendedStartDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
+                                                <Image Margin="5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                                 Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                    </Image.Source>
+                                                </Image>
+                                          <Label Text="{Binding SuspendedEndDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
+
+
+                                        </StackLayout>
+                                    </border:SfBorder >
+                                 </StackLayout >
+                                <StackLayout Orientation="Vertical" >
+                                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingPeriod}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}" /> 
+                                       <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
+
+                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                             <Label  Text="{Binding NextFilingStartDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                                <Image Margin="5,0" HorizontalOptions="Center">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                                 Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                    </Image.Source>
+                                                </Image>
+                                          <Label  Text="{Binding NextFilingEndDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="End"/>
+
+                                        </StackLayout>
+                                    </border:SfBorder >
+                                </StackLayout >
+                                   <StackLayout Orientation="Vertical" >
+                                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingDueDate}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}" /> 
+                                       <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="10,0,10,0"  Style="{StaticResource GreyBorderFrame}">
+
+                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                             <Label Text="{Binding NextFilingDueDate,StringFormat='{0:dd MMM yyyy}' }" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Center"/>
+                     
+                                        </StackLayout>
+                                    </border:SfBorder >
+                                </StackLayout >
+                  </StackLayout>
+                </StackLayout>
+                      <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36"  x:Name="btnReasonContinue" Command="{Binding ReasonContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                       Style="{StaticResource PrimaryButtonStyle}"/>
+              
+                </Grid>
+                  <Grid IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
+                         <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                     <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="1"/>
+                            </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentsHeaderTitle}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+                     
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregDocumentselectionTitle}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
+
+                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                           <listView:SfListView Grid.Row="3" Grid.Column="0" x:Name="outletDocumentOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                          ItemsSource="{Binding AttachmentTypes}" SelectedItem="{Binding SelectedDocumentOption, Mode=TwoWay}"  SelectionMode="Single"
+                                          SelectionBackgroundColor="Transparent" SelectionChanged="outletDocumentOptionsListView_SelectionChanged" >
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+					                    <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                                    <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <Label Text="{Binding Txt50}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                        Margin="20,0,20,20" TextColor="Black" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                    </Label>
+                                                </Grid>
+                                        </cards1:SfCardView>
+			                    </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                          <listView:SfListView.SelectedItemTemplate>
+                                <DataTemplate>
+					                    <cards1:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="100">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                                    <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <Label Text="{Binding Txt50}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                        Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start" LineHeight="0.8">
+                                                    </Label>
+                                                </Grid> 
+                                        </cards1:SfCardView>
+			                    </DataTemplate>
+                           </listView:SfListView.SelectedItemTemplate>
+
+                            <listView:SfListView.LayoutManager>
+                                <listView:GridLayout x:Name="GridLayout1" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+                            </listView:SfListView.LayoutManager>
+                     </listView:SfListView>
+                    </Grid>
+               
+                    <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                          ItemsSource="{Binding VatAttachmentsList}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" >
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+					                    <StackLayout Spacing="2">
+                                            <Label Text="{Binding AttachmentTitle,Mode=TwoWay}" HorizontalOptions="StartAndExpand"
+                                                                    Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />   
+                                            <inputLayout:SfTextInputLayout  IsEnabled="True"  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
+                                            ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
+                                            OutlineCornerRadius="12" FocusedColor="#B1B1B1" ErrorColor="#B00020">
+
+                                                <Entry Style="{StaticResource DefaultEntry}" IsEnabled="False" Text="{Binding Filename,Mode=TwoWay}"
+                                                       Placeholder="{x:Static custom2:AppResources.VatDeregAttachmentInputPlaceholder}" HorizontalTextAlignment="Start"
+                                                       VerticalOptions="Center"/>
+
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                                
+                                            </inputLayout:SfTextInputLayout>
+                        <Label Text="{Binding FileSize,Mode=TwoWay}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
+                                                    Style="{StaticResource CaptionLabelGrey}" /> 
+                     </StackLayout>
+
+			                    </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                     </listView:SfListView>
+                           <StackLayout Grid.Row="4" Spacing="2" Grid.ColumnSpan="2">
+                      <Label Text="{x:Static custom2:AppResources.VATRNewAttachment}"    Style="{StaticResource CaptionLabelGrey}"/>
+                                                        <inputLayout:SfTextInputLayout  Margin="10,-6,0,-6" 
+                                                ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
+                                                OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
+                                                                <!--Attachments-->
+                                                    <Entry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                                           HorizontalTextAlignment="Start" VerticalOptions="Center"/>
+  
+                                                         <inputLayout:SfTextInputLayout.TrailingView>
+                                                            <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png"  >
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                            
+                                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                                        </inputLayout:SfTextInputLayout>
+                                        <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}"  Style="{StaticResource CaptionLabelGrey}"/>
+                                    </StackLayout>
+         <StackLayout Grid.Row ="5" Orientation="Vertical" Grid.ColumnSpan="2" Margin="10,0,10,0">
+           <Label HorizontalTextAlignment="Start"   Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}"  Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand"  Style="{StaticResource CaptionLabelGrey}"/>
+                    <Label HorizontalTextAlignment="Start"  Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}"   Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+                         <Label HorizontalTextAlignment="Start"   Text="{x:Static custom2:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"   Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
+             </StackLayout>
+                     <buttons:SfButton  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36" x:Name="btnAttachmentsContinue"
+                                       Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                       Style="{StaticResource PrimaryButtonStyle}"/>
+                    
+ 
+                </Grid>
+                  <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                             <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                 <RowDefinition Height="auto"/>
+                                 <RowDefinition Height="auto"/>
+                                 <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5Declaration}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource SectionTitleBlack}" />
+                                <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource BodyLabelGrey}"/>
+                                <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
+                            </Grid>
+                             <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid.RowDefinitions>
+                                 <RowDefinition Height="auto"/>
+                                 <RowDefinition Height="auto"/>
+                                 <RowDefinition Height="1"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+
+                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}" />   
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"   Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                        
+                                            <Label Text="{Binding IDType}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                          <Image  Source="arrowDropdown" Margin="10,0,10,0" WidthRequest="15" HeightRequest="15"
+                                                   HorizontalOptions="Start" VerticalOptions="Center">
+                                            </Image>    
+                                            </StackLayout>
+                                                                 
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="VatDeregIdClicked"></TapGestureRecognizer>
+                                            </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </border:SfBorder >
+                      
+
+                        </StackLayout>
+                                    <StackLayout x:Name="IDNumberField" Orientation="Horizontal" Grid.Row="1" HorizontalOptions="CenterAndExpand">
+                                                                         <StackLayout Grid.Row="1" Grid.Column="0" >
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelBlack}" />     
+                                    <inputLayout:SfTextInputLayout  Margin="-2,-6,0,0" WidthRequest="180"
+							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"  x:Name="FrmIDNumber"
+							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
+                                        <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding TxtIDNumber}"
+                                                                TextColor="Black" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
+                                            <Entry.Behaviors>
+                                                                    <custom1:OnlyNumericValuesBehaviour/>
+                                                                </Entry.Behaviors> 
+                                        </Entry>
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout IsVisible="{Binding IsDOBEditorVisible}" Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
+                                    <custom:CustomLabel Margin="30,0,0,0" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="Start"
+                                                    Style="{StaticResource CaptionLabelGrey}" />   
+                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,0"  Style="{StaticResource GreyBorderFrame}">
+
+                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="180">
+                                        
+                                            <Label x:Name="DpDbo" Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Micro" HorizontalOptions="Start"/>
+                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                <Image Margin="5,0">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                                 Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                    </Image.Source>
+                                                </Image>
+                                            </StackLayout>
+
+                                            <StackLayout.GestureRecognizers>
+                                                 <TapGestureRecognizer Tapped="VATDeregDOBClicked" ></TapGestureRecognizer>
+                                             </StackLayout.GestureRecognizers>
+
+                                        </StackLayout>
+                                    </border:SfBorder >
+                                </StackLayout>
+                                </StackLayout>
+                                          <StackLayout>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregContactPerson}" HorizontalOptions="StartAndExpand"
+                                                        Style="{StaticResource CaptionLabelGrey}" />     
+                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							                ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							                OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                            <custom:BorderlessEntry x:Name="ContactName"  Placeholder="{x:Static ResourceManager:AppResources.VatDeregContactPerson}"
+                                                                    Text="{Binding ContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                                    VerticalTextAlignment="Start"
+                                                                    TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
+                                                         <Entry.Behaviors>
+                                                                    <custom1:AlphabetandArabicCharacters/>
+                                                                </Entry.Behaviors>  
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                    </StackLayout>
+                                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
+                    <StackLayout Margin="8">
+                        <StackLayout Orientation="Horizontal" Spacing="0">
+                           <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
+                           <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource ValueLabelBlack}"/>
+                        </StackLayout>
+                        <Label Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationAgreement}" HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource CaptionLabelGrey}" />
+                
+                    </StackLayout>
+                </border:SfBorder>
+                                   
+                                    <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36" x:Name="btnDeclarationContinue"
+                                       Command="{Binding DeclarationContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                       Style="{StaticResource PrimaryButtonStyle}"/>
+                                </StackLayout>
+                             </Grid>
+                         </Grid>
+                  <Grid IsVisible="{Binding IsSummaryViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Grid.RowDefinitions>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="1"/>
+                             <RowDefinition Height="auto"/>
+                             <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VatDeregSummaryTitle}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource SectionTitleBlack}" />
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
+                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                            <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <StackLayout Padding="0">
+                                <Grid Padding="15" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                    HasShadow="False">
+                                    </Frame> 
+                                    <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"   Source="details"/>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                    
+                                        <Label Text="{x:Static ResourceManager:AppResources.VatDeregDetailsTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    </StackLayout>
+                                    <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" IsVisible="False"  Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_1" FontFamily="SSTBold" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#006450"/>
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                 <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                          ItemsSource="{Binding VATDeregistrationSummaryReasonData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                                    <listView:SfListView.ItemTemplate>
+                                        <DataTemplate>
+					                            <Grid Padding="0" RowSpacing="0">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                                                        <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                        <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                </Grid>
+			                            </DataTemplate>
+                                    </listView:SfListView.ItemTemplate>
+                                  </listView:SfListView>
+                            </StackLayout>
+                        </border:SfBorder >
+                         <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <StackLayout Padding="0">
+                                <Grid Padding="15" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                    HasShadow="False">
+                                    </Frame> 
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_attachment"/>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentsHeaderTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    </StackLayout>
+                                    <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" IsVisible="False" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_2" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                 <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryAttachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                          ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                                    <listView:SfListView.ItemTemplate>
+                                        <DataTemplate>
+					                            <Grid Padding="0" RowSpacing="0">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="{Binding FieldTitle}" BackgroundColor="Transparent" Style="{StaticResource BodyLabelGrey}" FontSize="Small" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="{Binding AttachmentName}" BackgroundColor="Transparent" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                </Grid>
+			                            </DataTemplate>
+                                    </listView:SfListView.ItemTemplate>
+                                  </listView:SfListView>
+                            </StackLayout>
+                        </border:SfBorder >
+                                              <border:SfBorder Margin="0,16,0,10" Grid.Row="5" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <StackLayout Padding="0">
+                                <Grid Padding="15" RowSpacing="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                    HasShadow="False">
+                                    </Frame> 
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="declaration"/>
+                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    </StackLayout>
+                                       <Button Grid.Row="0" Grid.Column="2" BackgroundColor="Transparent" IsVisible="False" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Clicked="Button_Clicked_3" FontFamily="SSTBold" HorizontalOptions="End" VerticalOptions="Center" TextColor="#006450"/>
+
+                                </Grid>
+
+                                <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                 <listView:SfListView  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" x:Name="summaryDeclarationListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                          ItemsSource="{Binding VATDeregistrationSummaryDeclarationData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                                    <listView:SfListView.ItemTemplate>
+                                        <DataTemplate>
+					                            <Grid Padding="0" RowSpacing="0">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    </StackLayout>
+                                                </Grid>
+			                            </DataTemplate>
+                                    </listView:SfListView.ItemTemplate>
+                                  </listView:SfListView>
+                            </StackLayout>
+                        </border:SfBorder >
+                        </Grid>
+                     <buttons:SfButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36"  x:Name="btnContinueSummary" Command="{Binding SummaryContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                       Style="{StaticResource PrimaryButtonStyle}"/>
+                   </Grid>
+               </Grid>
+            </ScrollView>
+             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
+                                            EnableAnimation="True"
+                                        AnimationType="SingleCircle"
+                                            HorizontalOptions="CenterAndExpand"
+                                            VerticalOptions="CenterAndExpand"
+                                            IsBusy="True"
+                                        ViewBoxWidth = "70" 
                                          
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                       TextColor="#D99A29"/>
+                                        TitlePlacement="Bottom"
+                                        ViewBoxHeight="70" 
+                                        TextColor="#D99A29"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>
-        </Grid>
-       
 
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

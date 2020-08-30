@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.EstablishmentSignUP
@@ -15,6 +16,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         public EstablishmentSignUpRegistrationSuccessfullPageView()
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
     }
 }

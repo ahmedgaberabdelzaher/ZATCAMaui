@@ -477,17 +477,6 @@
                                         </Label.FormattedText>
                                     </Label>
                                 </StackLayout>
-                                 <border:SfBorder Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  BorderColor="#B1B1B1" BorderWidth="1"  Margin="-8,40,-8,10"  Style="{StaticResource GreyBorderFrame}">
-                                    <StackLayout Margin="8">
-                                        <StackLayout Orientation="Horizontal" Spacing="0">
-                                            <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource ValueLabelBlack}"/>
-                                        </StackLayout>
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestSavedAsDraft}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />
-                                    </StackLayout>
-                                </border:SfBorder>
                             </Grid>
                                 <StackLayout Grid.Row="2" Margin="0,30">
                                    <buttons:SfButton   x:Name="btnConfirmSummary" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Clicked="ConfirmSummaryButton_Tapped" Text="{x:Static ResourceManager:AppResources.Confirm}"

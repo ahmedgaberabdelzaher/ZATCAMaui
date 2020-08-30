@@ -32,13 +32,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnEditClicked { get; set; }
         public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
         List<EstimateZakatAttachment> EstimateZakatAttachmentList = new List<EstimateZakatAttachment>();
-        public string Fbguid { get; set; }
+        public static string Fbguid { get; set; }
         public bool IsCurrentZAKATTaxLess = false;
         public bool isThresholdValueLessThanTotalVATSales;
         public const string SubmitPostOperation = "05";
         public const string ConfirmPostOperationWithoutObjection = "65";
         public const string ConfirmPostOperationWithObjection = "66";
         public string Estsl { get; set; }
+
         public double existingZakatBase = 0.00;
         public static ZakatReturnDetailsD ZakatReturnDetailToCompare = new ZakatReturnDetailsD();
 
@@ -635,7 +636,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         ToDate =" - "  +  toDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                         SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
-                         isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales();
+                         isThresholdValueLessThanTotalVATSales = IsThresholdValueLessThanTotalVATSales(ZakatReturnDetails.d.TvtslI);
                         if (isThresholdValueLessThanTotalVATSales)
                         {
                             SetReadOnlyToOtherThanTotalVATSales = true;
@@ -1479,22 +1480,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        public bool IsThresholdValueLessThanTotalVATSales()
+        public bool IsThresholdValueLessThanTotalVATSales(string TotalVATSales)
         {
             string TotalVatSalesAmount = string.Empty ;
             if (ZakatReturnDetails.d.TvtslI.Contains(","))
             {
-                TotalVatSalesAmount = ZakatReturnDetails.d.TvtslI.Replace("'", "");
+                TotalVatSalesAmount = TotalVATSales.Replace(",", "");
             }
             else
             {
                 TotalVatSalesAmount = ZakatReturnDetails.d.TvtslI;
             }
-            
-            double d = Convert.ToDouble(TotalVatSalesAmount);
-            double d1 = Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value);
-            bool IsThresholdGreaterLessVATAmount = d1 < d;
-            if (Convert.ToDouble(ZakatReturnDetails.d.TvtslE) > Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value))
+           double totalVatSalesAmount = Convert.ToDouble(TotalVatSalesAmount);
+            if (totalVatSalesAmount > Convert.ToDouble(ZakatReturnDetails.d.ThresholdSet.results[0].Value))
             {
                 return true;
             }
@@ -1680,6 +1678,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetConfirmButtonVisibility = false;
             ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
             DesClaimerVisibility = true;
+
+            //if (isThresholdValueLessThanTotalVATSales)
+            //{
+            //    SetReadOnlyToOtherThanTotalVATSales = true;
+            //    SetReadOnlyToTotalVATSales = false;
+            //}
+            //else
+            //{
+            //    SetReadOnlyToOtherThanTotalVATSales = false;
+            //    SetReadOnlyToTotalVATSales = true;
+            //}
         }
 
         private void SetLayoutVisibilityAfterSuccessfulAmendement()

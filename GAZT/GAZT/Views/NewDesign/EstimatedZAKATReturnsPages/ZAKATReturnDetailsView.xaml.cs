@@ -28,7 +28,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
             viewModel.ClearData();
             ChangeAeroIcon();
-            viewModel.Fbguid = fbguid;
+            ZAKATReturnDetailsViewModel.Fbguid = fbguid;
 
             SetLTR();
 

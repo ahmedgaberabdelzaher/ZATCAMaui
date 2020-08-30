@@ -130,21 +130,21 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                         {
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            viewModel.SetAttachmentsListViewData();
+                            //viewModel.SetAttachmentsListViewData();
                             return;
                         }
                     case 1:
                         {
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            viewModel.SetAttachmentsListViewData();
+                            //viewModel.SetAttachmentsListViewData();
                             return;
                         }
                     case 2:
                         {
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            viewModel.SetAttachmentsListViewData();
+                            //viewModel.SetAttachmentsListViewData();
                             return;
                         }
                 }

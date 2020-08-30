@@ -16,7 +16,7 @@
               NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png"
                BackgroundColor="#005e4b">
     <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
+        <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />3100001695194001billl
     </ContentPage.ToolbarItems>-->
     <ContentPage.Resources>
         <ResourceDictionary>

@@ -138,7 +138,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isOutletViewEnabled = true;
+        private bool _isOutletViewEnabled ;
         public bool IsOutletViewEnabled
         {
             get
@@ -152,7 +152,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isAttachmentsViewEnabled = true;
+        private bool _isAttachmentsViewEnabled ;
         public bool IsAttachmentsViewEnabled
         {
             get
@@ -166,7 +166,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isDeclarationViewEnabled = true;
+        private bool _isDeclarationViewEnabled ;
         public bool IsDeclarationViewEnabled
         {
             get
@@ -180,7 +180,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isReturnFilingViewEnabled = true;
+        private bool _isReturnFilingViewEnabled ;
         public bool IsReturnFilingViewEnabled
         {
             get
@@ -193,7 +193,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsReturnFilingViewEnabled");
             }
         }
-        private bool _isSummaryViewEnabled = true;
+        private bool _isSummaryViewEnabled ;
         public bool IsSummaryViewEnabled
         {
             get
@@ -623,6 +623,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
+                if(value!=null)
                 outletDecisionOptions = value;
                 RaisePropertyChanged("OutletDecisionOptions");
             }
@@ -669,6 +670,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             set
             {
 
+                if(value!=null)
                 _attachmentTypes = value;
                 RaisePropertyChanged("AttachmentTypes");
             }
@@ -684,7 +686,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
-                attachmentsListViewData = value;
+
+                if (value != null)
+                    attachmentsListViewData = value;
                 RaisePropertyChanged("AttachmentsListViewData");
             }
         }
@@ -699,12 +703,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
-                if (_vatDeregistrationSummaryReasonData == value)
+                if (value != null)
                 {
-                    return;
+                    _vatDeregistrationSummaryReasonData = value;
                 }
 
-                _vatDeregistrationSummaryReasonData = value;
                 RaisePropertyChanged("VATDeregistrationSummaryReasonData");
             }
         }
@@ -800,12 +803,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             set
             {
-                if (_vatDeregistrationSummaryDeclarationData == value)
+                if (value != null)
                 {
-                    return;
+                    _vatDeregistrationSummaryDeclarationData = value;
                 }
-
-                _vatDeregistrationSummaryDeclarationData = value;
                 RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
             }
         }
@@ -888,6 +889,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if(value!=null)
                 _vatAttachmentsList = value;
                 RaisePropertyChanged("VatAttachmentsList");
             }
@@ -942,6 +944,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             set
             {
+                if(value!=null)
                 _fileAttachments = value;
                 RaisePropertyChanged("FileAttachments");
             }
@@ -1173,8 +1176,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsDOBEditorVisible = true;
                 VoidIsVisible = false;
                 PopulateAttachmentsListViewTemplate();
-
-
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
@@ -1497,7 +1498,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     try
                     {
 
-                        VATDeRegistrationAttachmentDropdownDetails reasonList = await WebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType);
+                        VATDeRegistrationAttachmentDropdownDetails reasonList = await WebServiceManager.GAZTGETVATDeregAttachmentsDropdownList(reqType).ConfigureAwait(true);
                         if (reasonList != null) { 
                         List<ResultsAttachmentItemForElgblDocSet> tempAttachmentList = reasonList.VatDeregSubItemsSet.Results.Where(m => m.Txt50 != string.Empty).ToList();
                         AttachmentTypes = new ObservableCollection<ResultsAttachmentItemForElgblDocSet>(tempAttachmentList);
@@ -1609,7 +1610,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public async void DeclarationContinueBtnClicked()
+        public  void DeclarationContinueBtnClicked()
         {
             try
             {
@@ -1810,16 +1811,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             if (VatAttachmentsList != null)
             {
+                //AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
+                List<VATDeregistrationAttachmentsModel> check = new List<VATDeregistrationAttachmentsModel>();
                 //AttachmentTitle = SelectedDocumentOption.ActiveOutletDocumentOptions;
                 for (int i = 0; i < VatAttachmentsList.Count; i++)
                 {
 
                     try
                     {
-                        AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>();
                         if (SelectedDocumentOption != null)
                         {
-                            AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
+                            check.Add(new VATDeregistrationAttachmentsModel
                             {
                                 FieldTitle = AppResources.VatDeregDocumentTitle,
                                 FieldSubTitle = AppResources.TinDeregistration20MB,
@@ -1827,8 +1829,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsAttachmentAttached = true
                             });
                         }
-
-                        AttachmentsListViewData.Add(new VATDeregistrationAttachmentsModel
+                        else
+                            check.Add(new VATDeregistrationAttachmentsModel
                         {
                             FieldTitle = AppResources.VatDeregAttachmentTitle,
                             FieldSubTitle = AppResources.TinDeregistration50MBMax,
@@ -1841,8 +1843,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     }
                 }
+                AttachmentsListViewData = new ObservableCollection<VATDeregistrationAttachmentsModel>(check);
 
-                
+
+
             }
 
         }
@@ -1851,52 +1855,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Summary View
         public void PopulateSummaryReasonData()
         {
-            VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>();
-            VATDeregistrationSummaryReasonData.Add(new VATDeregistrationSummaryModel
+            VATDeregistrationSummaryReasonData = null;
+            List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
+            check.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.VatDeregRequestType,
                 SummaryData = SelectedOutletOption.ActiveOutletDecisionOptions,
                 IsEditVisible = true
             });
-            VATDeregistrationSummaryReasonData.Add(new VATDeregistrationSummaryModel
+            check.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.VatDeregReasonTitle,
                 SummaryData = ReasonTitle,
                 IsEditVisible = true
             });
 
+            VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
+
         }
 
         public void PopulateSummaryDeclarationData()
         {
-            VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>();
-            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+            //VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>();
+            List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
+
+            check.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.IDType,
                 SummaryData = IDType,
                 IsEditVisible = true
             });
-            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+            check.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.IDNumber,
                 SummaryData = TxtIDNumber,
                 IsEditVisible = true
             });
-            if (DOB != string.Empty)
+            if (string.IsNullOrEmpty(DOB))
             {
-                VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+                check.Add(new VATDeregistrationSummaryModel
                 {
                     SummaryTitle = AppResources.VatDeregDOBTitle,
                     SummaryData = DOB,
                     IsEditVisible = true
                 });
             }
-            VATDeregistrationSummaryDeclarationData.Add(new VATDeregistrationSummaryModel
+            check.Add(new VATDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.VatDeregContactPerson,
                 SummaryData = ContactPersonName,
                 IsEditVisible = true
             });
+
+            VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
         }
 
         public void setDocType()
@@ -2269,8 +2280,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData.d.Reason = Reason;
                 VATDeRegistrationDetailsData.d.Agreeflg = true;
                 VATDeRegistrationDetailsData.d.Atype = "2";
-                VATDeRegistrationDetailsData.d.Reqtp = "S";
-
 
                 VATDeRegistrationDetailsData.d.Operationx = operation;
                 if (operation == "05")

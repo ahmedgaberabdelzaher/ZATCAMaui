@@ -6383,7 +6383,34 @@ Applicant should ensure that there is no pending return filing or any outstandin
   </data>
   <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
     <value>Outlets</value>
-  </data>
+    </data>
+    <data name="ESTOrgNonResidentActivityValueOne" xml:space="preserve">
+    <value>Derived from an activity which occurs in KSA.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueTwo" xml:space="preserve">
+    <value>Derived from immoviable property located in the Kingdom</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueThree" xml:space="preserve">
+    <value>Derived from the disposal of shares or a partnership in resident company.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueFour" xml:space="preserve">
+    <value>Derived from lease of moveable properties used in Kingdom</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueFive" xml:space="preserve">
+    <value>Derived from sales or license for use of industrial or intellectual Properties used in Kingdom.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueSix" xml:space="preserve">
+    <value>Dividends, managment or directors'fees paid by resident company.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueSeven" xml:space="preserve">
+    <value>Amounts paid against services rendered to the company's head office or to an affiliated company</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueEight" xml:space="preserve">
+    <value>Amounts paid by a resident against serivces performed in whole or in part in the Kingdom.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueNine" xml:space="preserve">
+    <value>Amounts for exploitation of a natural resource in the kingdom.</value>
+    </data> 
   <data name="VFCEffectiveDate" xml:space="preserve">
     <value>Effective Date</value>
   </data>
@@ -6427,4 +6454,5 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>Carried Credit Details</value>
   </data>
+
 </root>

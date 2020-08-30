@@ -9902,10 +9902,15 @@ namespace GAZT.Manager
                         String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                         errorMessage = WithReplacedString;
                         //ErrorMessageForVAT
+
                         throw new GAZTVATRegistrationInProcessException(errorMessage);
                     }
                 }
             
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                throw new GAZTVATRegistrationInProcessException(ex.Message);
             }
             catch (Exception)
             {
