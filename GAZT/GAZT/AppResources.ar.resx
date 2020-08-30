@@ -1637,6 +1637,14 @@
     <value>إلغاء</value>
     <comment>VAT Declaration button</comment>
   </data>
+  <data name="VatRefundsConfirmDetails" xml:space="preserve">
+    <value>أتعهد بأن اقوم بسداد جميع التزاماتي المالية وتقديم جميع الاقرارات المستحقة لدى الهيئة قبل تقديم طلب الإسترداد وأني قد فوضت الهيئة بخصم أي مستحقات قائمة من رصيدي لدى الهيئة قبل الإسترداد. ويحق للهيئة برفض الطلب عند وجود أي إقرارات متأخرة لم أقم بتقديمها.</value>
+  </data>
+
+   <data name="VatRefundsConfirmationTit" xml:space="preserve">
+    <value>تأكيد</value>
+  </data> 
+
   <data name="VATRefundAccounts" xml:space="preserve">
     <value>الحسابات</value>
   </data>
@@ -6103,7 +6111,34 @@
   </data>
   <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
     <value>الفروع</value>
-  </data>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueOne" xml:space="preserve">
+    <value>Derived from an activity which occurs in KSA.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueTwo" xml:space="preserve">
+    <value>Derived from immoviable property located in the Kingdom</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueThree" xml:space="preserve">
+    <value>Derived from the disposal of shares or a partnership in resident company.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueFour" xml:space="preserve">
+    <value>Derived from lease of moveable properties used in Kingdom</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueFive" xml:space="preserve">
+    <value>Derived from sales or license for use of industrial or intellectual Properties used in Kingdom.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueSix" xml:space="preserve">
+    <value>Dividends, managment or directors'fees paid by resident company.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueSeven" xml:space="preserve">
+    <value>Amounts paid against services rendered to the company's head office or to an affiliated company</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueEight" xml:space="preserve">
+    <value>Amounts paid by a resident against serivces performed in whole or in part in the Kingdom.</value>
+    </data> 
+     <data name="ESTOrgNonResidentActivityValueNine" xml:space="preserve">
+    <value>Amounts for exploitation of a natural resource in the kingdom.</value>
+    </data> 
   <data name="VFCEffectiveDate" xml:space="preserve">
     <value>Effective Date</value>
   </data>
@@ -6165,4 +6200,8 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="CRTotalDuesDesc" xml:space="preserve">
     <value>Value of zakat due + value of TAX due</value>
   </data>
+  <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
+    <value>تفاصيل الائتمان المنقولة</value>
+  </data>
+
 </root>

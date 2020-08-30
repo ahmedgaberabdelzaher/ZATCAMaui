@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesApp.Controls;
 using Rg.Plugins.Popup.Pages;
@@ -311,6 +312,37 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
             //{
             //    Console.WriteLine(ex.Message);
             //}
+        }
+
+        // * Password Validation
+        void NewPassword_TextChanged(object sender, FocusEventArgs e)
+        {
+            this.ResetPasswordValidationConditions();
+
+            bool ValidPassword = UtilityManager.ValidateNewPassword(viewModel.Password);
+
+            if (ValidPassword)
+            {
+                viewModel.MinEight = "check_oval";
+                viewModel.CapsSmall = "check_oval";
+                viewModel.MaxSixteen = "check_oval";
+                viewModel.NumSymbol = "check_oval";
+            }
+            else
+            {
+                if (UtilityManager.ValidMinEight) { viewModel.MinEight = "check_oval"; }
+                if (UtilityManager.ValidSmallL && UtilityManager.ValidCapsL) { viewModel.CapsSmall = "check_oval"; }
+                if (UtilityManager.ValidMaxSixteen) { viewModel.MaxSixteen = "check_oval"; }
+                if (UtilityManager.ValidNumber && UtilityManager.ValidSymbol) { viewModel.NumSymbol = "check_oval"; }
+            }
+        }
+
+        void ResetPasswordValidationConditions()
+        {
+            viewModel.MinEight = "error";
+            viewModel.CapsSmall = "error";
+            viewModel.MaxSixteen = "error";
+            viewModel.NumSymbol = "error";
         }
     }
 }

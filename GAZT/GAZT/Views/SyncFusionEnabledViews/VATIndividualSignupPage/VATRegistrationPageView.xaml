@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:EGAZT"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:custom="clr-namespace:GAZT"
@@ -2634,13 +2635,8 @@
                             </StackLayout>-->
                             <!--Temp Added Ends-->
                             <StackLayout  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Padding="10,0,0,10" BackgroundColor="White" HorizontalOptions="FillAndExpand">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" >
-                                    <BoxView x:Name="BoxOne" HeightRequest="10"  CornerRadius="5" />
-                                    <BoxView x:Name="BoxTwo" HeightRequest="10"  CornerRadius="5" />
-                                    <BoxView x:Name="BoxThree" HeightRequest="10"  CornerRadius="5" />
-                                    <BoxView x:Name="BoxFour" HeightRequest="10"  CornerRadius="5" />
-                                    <BoxView x:Name="BoxFive" HeightRequest="10"  CornerRadius="5"/>
-                                </StackLayout>
+                                <commonView:PageIndicatorView MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12"/>
+  
                             </StackLayout>
 
                             <!--<StackLayout Orientation="Horizontal">
@@ -2674,13 +2670,6 @@
                             <Button x:Name="SideMenu" Grid.Row="0" Grid.RowSpan="2" BackgroundColor="Transparent" Clicked="SideMenu_Clicked"/>
                         </Grid>-->
                             <!--
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" Padding="10,0,0,10" BackgroundColor="White">
-                        <BoxView x:Name="BoxOne" CornerRadius="25" BackgroundColor="DarkGreen"/>
-                        <BoxView x:Name="BoxTwo" CornerRadius="25" BackgroundColor="LightGray"/>
-                        <BoxView x:Name="BoxThree" CornerRadius="25" BackgroundColor="LightGray"/>
-                        <BoxView x:Name="BoxFour" CornerRadius="25" BackgroundColor="LightGray"/>
-                        <BoxView x:Name="BoxFive" CornerRadius="25" BackgroundColor="LightGray"/>
                     </StackLayout>-->
                         </Grid>
                     </StackLayout>

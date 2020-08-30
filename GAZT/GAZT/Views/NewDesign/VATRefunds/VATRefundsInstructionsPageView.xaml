@@ -2,7 +2,7 @@
 <pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:custom="clr-namespace:GAZT" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsInstructionsPageView"  xmlns:ResourceManager="clr-namespace:EGAZT"
+                 x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsInstructionsPageView"  xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
                  NavigationPage.HasNavigationBar="False">
      <ContentPage.Resources>
         <ResourceDictionary>
@@ -13,13 +13,22 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" IsVisible="true">
-        <StackLayout BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
+    <yummy:PancakeView  IsVisible="{Binding IsInstructionsVisible}"  Grid.Row="0" Grid.Column="0" BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" >
+            <StackLayout  Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
             <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZInstructions}" HorizontalOptions="StartAndExpand"
                             Style="{StaticResource SectionTitleBlackBold}" Margin="0,0,0,16"  />
             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
-                <StackLayout Margin="8">
+                <ScrollView VerticalScrollBarVisibility="Never">
+                    <StackLayout Margin="8">
+                    <StackLayout Orientation="Horizontal" Spacing="0">
+                       <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
+                       <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VatRefundsConfirmationTit}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource ValueLabelBlack}"/>
+                    </StackLayout>
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatRefundsConfirmDetails}" HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}" />
+
                     <StackLayout Orientation="Horizontal" Spacing="0">
                        <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZInstructions}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
@@ -29,6 +38,7 @@
                             Style="{StaticResource CaptionLabelGrey}" />
                 
                 </StackLayout>
+                </ScrollView>
             </border:SfBorder>
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="End"> 
                 <CheckBox x:Name="chkDeclaration" Color="{StaticResource NewDarkBlueGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstructionsChecked, Mode=TwoWay}">
@@ -58,7 +68,7 @@
                     </DataTrigger>
                 </buttons:SfButton.Triggers>
            </buttons:SfButton>
-    </StackLayout>
+        </StackLayout>
     </yummy:PancakeView>
 
 </pages:PopupPage>

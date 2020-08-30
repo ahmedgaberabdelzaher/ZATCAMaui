@@ -39,6 +39,38 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public int TotalSec;
         public bool StopTimer = false;
 
+        #region Variable
+
+        //private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.BasicInformation;
+        //public ZakatForm5TabEnum currentTab
+        //{
+        //    get => _currentTab;
+        //    private set
+        //    {
+        //        _currentTab = value;
+        //        RaisePropertyChanged(nameof(currentTab));
+        //        CurrentIndex = (int)_currentTab;
+        //        RaisePropertyChanged(nameof(CurrentIndex));
+        //    }
+        //}
+        private int _currenrIndex = 1;
+        public int CurrentIndex
+        {
+            get => _currenrIndex;
+            set
+            {
+                _currenrIndex = value;
+                RaisePropertyChanged(nameof(CurrentIndex));
+                if (_currenrIndex == MaxIndex)
+                {
+                    MarkComplete = true;
+                    RaisePropertyChanged(nameof(MarkComplete));
+                }
+            }
+        }
+        public bool MarkComplete { get; private set; } = false;
+        public int MaxIndex { get; private set; } = 5;
+        #endregion
 
         #region Properties
         private ObservableCollection<object> _todayDate;
@@ -1554,6 +1586,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 ContactInformationView = false;
                 SummeryView = true;
+                CurrentIndex = 4;
                 ContinueButtonText = AppResources.Confirm;
                // currentStep++;
             }
@@ -1600,6 +1633,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 NationalAddressView = false;
                 ContactInformationView = true;
+                CurrentIndex = 3;
                 ContinueButtonText = AppResources.ZZZZContinue;
                 //currentStep++;
             }
@@ -1638,6 +1672,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         IndividualRegistrationView = false;
                         NationalAddressView = true;
+                        CurrentIndex = 2;
                       //  currentStep++;
                         flag = true;
                         SetVisibilityToNationalAddressContent();
@@ -2279,6 +2314,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         SummeryView = false;
                         PasswordView = true;
+                        CurrentIndex = 5;
                       //  currentStep++;
                         
                             int timeToExpireOTP = 120;
@@ -2620,6 +2656,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 BoxColorThree = Color.FromHex("#DDDDDD");
                 BoxColorFour = Color.FromHex("#DDDDDD");
                 BoxColorFive = Color.FromHex("#DDDDDD");
+                CurrentIndex = 1;
             }
             else if (visiliblityItemName.Equals("NationalAddressView"))
             {
@@ -2628,6 +2665,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 BoxColorThree = Color.FromHex("#DDDDDD");
                 BoxColorFour = Color.FromHex("#DDDDDD");
                 BoxColorFive = Color.FromHex("#DDDDDD");
+                CurrentIndex = 2;
             }
             //ContactInformationView
             else if (visiliblityItemName.Equals("ContactInformationView"))
@@ -2637,6 +2675,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 BoxColorThree = Color.FromHex("#006450");
                 BoxColorFour = Color.FromHex("#DDDDDD");
                 BoxColorFive = Color.FromHex("#DDDDDD");
+                CurrentIndex = 3;
             }
             else if (visiliblityItemName.Equals("SummeryView"))
             {
@@ -2645,6 +2684,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 BoxColorThree = Color.FromHex("#006450");
                 BoxColorFour = Color.FromHex("#006450");
                 BoxColorFive = Color.FromHex("#DDDDDD");
+                CurrentIndex = 4;
             }
             else if (visiliblityItemName.Equals("PasswordView"))
             {
