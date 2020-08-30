@@ -2,7 +2,7 @@
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
-
+using EGAZT.ViewModel.SyncFusionEnabledViewModel;
 #region OldUsing
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AccountCreatedPage_ViewModel;
@@ -163,6 +163,7 @@ using EGAZT.Views.NewDesign.Template;
 using EGAZT.Views.NewDesign.ContractReleasePages;
 using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
 using EGAZT.Views.NewDesign;
+using EGAZT.Views.NewDesign.VATRefunds;
 
 namespace EGAZT
 {

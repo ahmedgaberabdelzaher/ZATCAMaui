@@ -692,9 +692,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             });
         }
 
-        private void OnVATNowTapped(object sender, EventArgs e)
+        private async  void OnVATNowTapped(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+
+            });
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+
+            });
+           
         }
 
         private void OnSupportTapped(object sender, EventArgs e)

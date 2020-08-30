@@ -30,6 +30,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
+                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
+          
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10"/>
@@ -41,6 +43,7 @@
             <Style TargetType="Button">
                 <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
             </Style>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -2670,9 +2673,8 @@
                     </StackLayout>-->
                         </Grid>
                     </StackLayout>
-                    <StackLayout Grid.Row="2" Grid.Column="0"  Margin="0,0,0,0" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
-                        <buttons:SfButton x:Name="MainButtonName" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding CurrentStep}" CornerRadius="0" VerticalOptions="End" FontAttributes="Bold" 
-                                  HeightRequest="56" Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}"  Margin="0,0,0,0" FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
+                    <StackLayout Grid.Row="2" Grid.Column="0"  Padding="15,0,15,10" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
+                        <buttons:SfButton x:Name="MainButtonName"  Text="{Binding CurrentStep}"  Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}"    CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
                     </StackLayout>
                 </Grid>
             </yummy:PancakeView>

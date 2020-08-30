@@ -61,7 +61,23 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 viewModel.EnableReasonView();
                 await GetVatDeRegistrationData();
             });
+
+            viewModel.VoidIsVisible = false;
         }
+
+        public void ChangeArrowDirection()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
+
         private void MessagingCenterCallBacks()
         {
             MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
@@ -118,7 +134,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.ReasonTitle = arg.SelectedValue;
-                        if (viewModel.ReasonTitle.Contains("Others"))
+                        if (viewModel.ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                         {
                             viewModel.IsOthersEditorVisible = !viewModel.IsOthersEditorVisible;
                         }
@@ -235,14 +251,31 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             }
         }
-
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
             ChangeArrowDirection();
 
-           
+            if (viewModel.VATDeRegistrationDetailsData != null)
+            {
+                if (viewModel.VATDeRegistrationDetailsData.d != null)
+                {
+                    if (viewModel.VATDeRegistrationDetailsData.d.Fbnumx == string.Empty)
+                    {
+                        viewModel.VoidIsVisible = false;
+                    }
+                    else
+                    {
+                        viewModel.VoidIsVisible = true;
+
+                    }
+                }
+            }
+            viewModel.PopulateSummaryReasonData();
+            viewModel.PopulateSummaryDeclarationData();
+            viewModel.PopulateAttachmentsListViewTemplate();
+
+           // summaryAttachmentsListView.ItemsSource = viewModel.AttachmentsListViewData;  
         }
 
         public async void ValidateIDNumberContact()
@@ -640,18 +673,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
         }
 
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
 
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
@@ -1482,6 +1504,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         else
                         {
                             viewModel._navigationService.GoBack();
+
                         }
                     }
 
