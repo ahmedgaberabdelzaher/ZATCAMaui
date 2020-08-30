@@ -95,12 +95,26 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>
+
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.AppVersion}"/>
+                                        <Span Text="&#160;&#160;"/>
+                                        <Span  Text="{Binding AppVersion}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </custom:CustomLabel>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                        
                     </StackLayout>
                 </ScrollView>
 
             </StackLayout>
 
-            
+
             <!--<Grid Grid.Row="2" RowSpacing="0" Margin="0,0,0,20" VerticalOptions="EndAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>

@@ -11315,5 +11315,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZakatInstalmentPlanRevokeZAKAT", resourceCulture);
             }
         }
+        
+        public static string NDNewEmailCannotBeSameAsOldEmail {
+            get {
+                return ResourceManager.GetString("NDNewEmailCannotBeSameAsOldEmail", resourceCulture);
+            }
+        }
     }
 }

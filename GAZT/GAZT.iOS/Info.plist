@@ -42,7 +42,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>E-GAZT</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.Keyura.Tracking</string>
+	<string>com.gazt.egazt</string>
 	<key>CFBundleName</key>
 	<string>E-GAZT</string>
 	<key>XSAppIconAssets</key>
@@ -90,7 +90,7 @@
 		<true/>
 	</dict>
 	<key>CFBundleVersion</key>
-	<string>1.0.48</string>
+	<string>1.0.50</string>
 	<key>CFBundleShortVersionString</key>
 	<string>3.0.1.2</string>
 </dict>

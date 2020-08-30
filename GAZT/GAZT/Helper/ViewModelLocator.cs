@@ -523,6 +523,20 @@ namespace EGAZT
                     return null;
                 }
             }
+        }  
+        public GAZTNewDesignDashBoardPageViewModel InfoPopUpPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
         }
 
         public ZakatForm5PageViewModel ZakatForm5PageView
@@ -2159,7 +2173,7 @@ namespace EGAZT
             navigationService.Configure(App.VatInstalmentPlanSuccessPage, typeof(VatInstalmentPlanSuccessPage));
             navigationService.Configure(App.ContractReleaseListPageView, typeof(ContractReleaseListPageView));
             navigationService.Configure(App.ChangeFillingPeriodListPageView, typeof(ChangeFillingPeriodListPageView));
-            navigationService.Configure(App.ChangeFillingPeriodSuccessPage, typeof(ChangeFillingPeriodSuccessPage));
+            navigationService.Configure(App.InfoPopUpPage, typeof(InfoPopUpPage));
 
             
             #endregion

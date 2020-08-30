@@ -2211,9 +2211,9 @@
                         <!--VAT On Total End-->
 
                         <StackLayout Orientation="Horizontal">
-                            <CheckBox VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsSummaryCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForSummary}">
+                            <CheckBox x:Name="chkForDeclarationSummary" VerticalOptions="CenterAndExpand" IsEnabled="{Binding IsSummaryCheckEnabled}" IsChecked="{Binding IsDeclarationCheckedForSummary}">
                                 <CheckBox.Triggers>
-                                    <DataTrigger TargetType="CheckBox"  Value="false">
+                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkForDeclarationSummary}, Path=IsChecked}" Value="false">
                                         <Setter Property="Color" Value="#ff0000" />
                                     </DataTrigger>
                                 </CheckBox.Triggers>
