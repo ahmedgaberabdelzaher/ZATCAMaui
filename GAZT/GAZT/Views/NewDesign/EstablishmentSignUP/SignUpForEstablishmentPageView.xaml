@@ -157,16 +157,18 @@
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </inputLayout:SfTextInputLayout>
                                     <Button Clicked="OnIDTypeClicked" BackgroundColor="Transparent"/>
-                                    <syncfusion:SfPicker x:Name="IDTypePicker" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
+                                    <syncfusion:SfPicker x:Name="IDTypePicker" 
+                                                         HeaderHeight="55"
+                                                         HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 
                                                          PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" 
-                                                         BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False" ItemHeight="40" 
+                                                         BackgroundColor="White" SelectedItemFontSize="15"
+                                                         ShowFooter="False" ItemHeight="40" 
                                                          DisplayMemberPath="SUType" Margin="10,0,10,0" PickerHeight="250" 
                                                          SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" 
                                                          UnSelectedItemTextColor="{StaticResource NeutralBlack}"
-                                                         PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                                                         PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="True" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                                                          FooterHeight="46" SelectionChanged="IDTypePicker_SelectionChanged" 
-                                                      
                                                          ItemsSource="{Binding SignUpUsingList}" SelectedIndex="{Binding IDTypeIndex}"  OkButtonClicked="DDlIDType_OkayButtonClicked">
                                         <syncfusion:SfPicker.Behaviors>
                                             <customcontrol:SfPickerBehavior />
@@ -196,7 +198,7 @@
                             <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
                         </Button>
                             <custom1:CustomDatePicker 
-								ShowHeader="false"
+								ShowHeader="True"
 								Margin="10,0,10,0" 
                               BackgroundColor="White"
                                 OKButtonBackgroundColor="#EAF7CC"
@@ -207,7 +209,7 @@
                                 
 								ShowFooter="True"
 								 ShowColumnHeader="True"
-                                             ColumnHeaderBackgroundColor="#EAF7CC"
+                                 ColumnHeaderBackgroundColor="#EAF7CC"
 								ColumnHeaderHeight="46"
                                 PickerMode="Dialog"
 								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
@@ -318,10 +320,10 @@
                                 <Button Clicked="LIssuedBy_Clicked" BackgroundColor="Transparent"/>
                                 <syncfusion:SfPicker x:Name="ddlLIssuedBy" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                        ShowFooter="True" ItemHeight="40" Margin="10,0,10,0" 
+                        ShowFooter="true" ItemHeight="40" Margin="10,0,10,0" 
                         PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" 
                         OKButtonTextColor="#006450" CancelButtonTextColor="#006450" 
-                        ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        ShowHeader="true" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                         ItemsSource="{Binding IssuedByList}" DisplayMemberPath="txt50"
                         OkButtonClicked="ddlLIssuedBy_OkButtonClicked"
                         CancelButtonClicked="ddlLIssuedBy_CancelButtonClicked"
@@ -341,14 +343,15 @@
                                     </control:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                                 <Button Clicked="LIssuedByCity_Clicked" BackgroundColor="Transparent"/>
-                                <syncfusion:SfPicker x:Name="ddlLIssuedByCity" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
+                                <syncfusion:SfPicker x:Name="ddlLIssuedByCity"
+                                                     HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" 
                                                      HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ItemHeight="40" Margin="10,0,10,0" 
                                                  OkButtonClicked="ddlLIssuedByCity_OkButtonClicked"
                                     CancelButtonClicked="ddlLIssuedByCity_CancelButtonClicked"
                       ShowFooter="True"  ItemsSource="{Binding CityList}" DisplayMemberPath="CityName"
-                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="True" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                         FooterHeight="46">
                                 <syncfusion:SfPicker.Behaviors>
                                     <customcontrol:SfPickerBehavior />

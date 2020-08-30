@@ -1874,6 +1874,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         viewModel.IsAllValidContactDataEnteredMobileNbr &&
                         viewModel.IsAllValidContactDataEnteredPhoneNbr)
                 {
+                    viewModel.PageTitle = AppResources.VerificationCode;
+                    viewModel.BodyText = AppResources.ZZPleaseenteraccessCode;
+                    viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+
+                    viewModel.TimerStart(viewModel.numberOfSeconds);
+
                     EstablishmentSignUpDataAsync();
                 }
             }
@@ -2029,11 +2035,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             try
             {
-                viewModel.PageTitle = AppResources.VerificationCode;
-                viewModel.BodyText = AppResources.ZZPleaseenteraccessCode;
-                viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
-
                 
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel.IsLoading = false;
+
+
+                });
                 viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
                 viewModel.ButtonDisableTextColor = Color.Gray;
                 viewModel.VerifyButtonDisableColor = Color.FromHex("#006450");
@@ -2041,20 +2049,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.IsResendOTPEnabled = false;
                 viewModel.IsOTPEntryEnable = true;
 
-                
-
-
                 viewModel.SignUpModelRootObjectM = ResultFirstSubmitModel;
                 viewModel.TxtEmailAddress = ResultFirstSubmitModel.d.AEmail;
                 string mobileno = ResultFirstSubmitModel.d.AMobile;
                 viewModel.TxtMobileNumber = "XXXXXXXXXX" + mobileno.Substring(mobileno.Length - 4, 4);
-
-                await Task.Run(() =>
-                {
-                    viewModel.TimerStart(viewModel.numberOfSeconds);
-
-                });
-                
                 OTPFirstEntry.Focus();
             }
             catch(Exception ex)
@@ -2065,13 +2063,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         public async Task EstablishmentSignUpDataAsync()
         {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
+            
+           
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
-            });
+            
                 if (viewModel.SelectedSignUpUsing.ID == 1)
                 {
                     try
@@ -3377,6 +3375,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 }
                                 else
                                 {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    viewModel.IsLoading = true;
+
+                                    
+                                });
                                 NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                   //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }

@@ -242,6 +242,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<InstructionsBottomPopUpViewModel>();
             SimpleIoc.Default.Register<EstablishmentSignUPPageViewModel>();
             SimpleIoc.Default.Register<SignUpForEstablishmentPageViewModel>();
+            SimpleIoc.Default.Register<AccountCreatedSuccessfullyPageViewModel>();
             SimpleIoc.Default.Register<ContractReleaseListViewModel>();
             SimpleIoc.Default.Register<ChangeFillingPeriodListViewModel>();
             SimpleIoc.Default.Register<ChangeFillingPeriodSuccessPage>();
@@ -1626,6 +1627,20 @@ namespace EGAZT
                 }
             }
         }
+        public AccountCreatedSuccessfullyPageViewModel AccountCreatedSuccessfullyPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountCreatedSuccessfullyPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         #endregion
 
         #region OldSFViewModels
@@ -2136,6 +2151,7 @@ namespace EGAZT
             navigationService.Configure(App.NewAccountPopPageView, typeof(NewAccountPopUpPageView));
             navigationService.Configure(App.EstablishmentSignUPPageView, typeof(EstablishmentSignUPPageView));
             navigationService.Configure(App.SignUpForEstablishmentPageView, typeof(SignUpForEstablishmentPageView));
+            navigationService.Configure(App.AccountCreatedSuccessfullyPageView, typeof(AccountCreatedSuccessfullyPageView));
             navigationService.Configure(App.DashboardAnonymousMenuPageView, typeof(DashboardAnonymousMenuPageView));
             navigationService.Configure(App.VATCreditCarriedForwardPopUpPageView, typeof(VATCreditCarriedForwardPopUpPageView));
             navigationService.Configure(App.SupportPageView, typeof(SupportPageView));
