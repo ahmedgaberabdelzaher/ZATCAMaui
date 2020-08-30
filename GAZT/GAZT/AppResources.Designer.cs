@@ -8568,6 +8568,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VatRefundsConfirmDetails {
+            get {
+                return ResourceManager.GetString("VatRefundsConfirmDetails", resourceCulture);
+            }
+        }
+        
+        public static string VatRefundsConfirmationTit {
+            get {
+                return ResourceManager.GetString("VatRefundsConfirmationTit", resourceCulture);
+            }
+        }
+        
         public static string VATRefundAccounts {
             get {
                 return ResourceManager.GetString("VATRefundAccounts", resourceCulture);
@@ -11244,6 +11256,60 @@ namespace EGAZT {
             }
         }
         
+        public static string ESTOrgNonResidentActivityValueOne {
+            get {
+                return ResourceManager.GetString("ESTOrgNonResidentActivityValueOne", resourceCulture);
+            }
+        }
+        
+        public static string ESTOrgNonResidentActivityValueTwo {
+            get {
+                return ResourceManager.GetString("ESTOrgNonResidentActivityValueTwo", resourceCulture);
+            }
+        }
+        
+        public static string ESTOrgNonResidentActivityValueThree {
+            get {
+                return ResourceManager.GetString("ESTOrgNonResidentActivityValueThree", resourceCulture);
+            }
+        }
+        
+        public static string ESTOrgNonResidentActivityValueFour {
+            get {
+                return ResourceManager.GetString("ESTOrgNonResidentActivityValueFour", resourceCulture);
+            }
+        }
+        
+        public static string ESTOrgNonResidentActivityValueFive {
+            get {
+                return ResourceManager.GetString("ESTOrgNonResidentActivityValueFive", resourceCulture);
+            }
+        }
+        
+        public static string ESTOrgNonResidentActivityValueSix {
+            get {
+                return ResourceManager.GetString("ESTOrgNonResidentActivityValueSix", resourceCulture);
+            }
+        }
+        
+        public static string ESTOrgNonResidentActivityValueSeven {
+            get {
+                return ResourceManager.GetString("ESTOrgNonResidentActivityValueSeven", resourceCulture);
+            }
+        }
+        
+        public static string ESTOrgNonResidentActivityValueEight {
+            get {
+                return ResourceManager.GetString("ESTOrgNonResidentActivityValueEight", resourceCulture);
+            }
+        }
+        
+        public static string ESTOrgNonResidentActivityValueNine {
+            get {
+                return ResourceManager.GetString("ESTOrgNonResidentActivityValueNine", resourceCulture);
+            }
+        }
+        
         public static string VFCEffectiveDate {
             get {
                 return ResourceManager.GetString("VFCEffectiveDate", resourceCulture);
@@ -11319,6 +11385,12 @@ namespace EGAZT {
         public static string NDNewEmailCannotBeSameAsOldEmail {
             get {
                 return ResourceManager.GetString("NDNewEmailCannotBeSameAsOldEmail", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZCarriedCreditDetails {
+            get {
+                return ResourceManager.GetString("ZZZZCarriedCreditDetails", resourceCulture);
             }
         }
     }
