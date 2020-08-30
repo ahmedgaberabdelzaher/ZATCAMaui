@@ -3,6 +3,7 @@
              x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.OutletDetailsPageView"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
              NavigationPage.HasNavigationBar="False"
              BackgroundImageSource="partials_background.png"
              xmlns:models="clr-namespace:EGAZT.Models"
