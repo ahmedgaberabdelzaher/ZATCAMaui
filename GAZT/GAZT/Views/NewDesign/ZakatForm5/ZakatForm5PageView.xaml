@@ -1210,38 +1210,28 @@
 
 
                                                             <StackLayout Orientation="Horizontal" Spacing="0">
-
-                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GovernmentContractProfile}"  Style="{StaticResource ValueLabelGrey}"/>
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GovernmentContractProfile}"  Style="{StaticResource ValueLabelGrey}" WidthRequest="200" />
                                                                 <!--<Image HorizontalOptions="StartAndExpand" VerticalOptions="Start" Margin="0,10,0,0" Source="ic_vat_info"></Image>-->
-
                                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
-                                                                    <!--<custom:CustomLabel Text="{Binding IsGovenmentApplicable}" Style="{StaticResource ValueLabelBlack}" WidthRequest="170" HorizontalTextAlignment="End"/>-->
                                                                     <custom:CustomLabel Text="{Binding IsGovenmentApplicable}" Style="{StaticResource ValueLabelBlack}" WidthRequest="170" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
-                                                            
-
-
-                                                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsGovenmentApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">-->
                                                                     <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsGovenmentApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
-                                                                       <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            <Span Text="{Binding GovtContractProf}" />
-                                                                            <Span Text=" "/>
-                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </custom:CustomLabel>
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding GovtContractProf}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
                                                                 </StackLayout>
-
                                                             </StackLayout>
 
 
                                                             <StackLayout Orientation="Horizontal" Spacing="0">
-
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ProfitFromCivilContracting}" Style="{StaticResource ValueLabelGrey}"/>
                                                                 <!--<Image Margin="-20,0,0,0" HorizontalOptions="StartAndExpand" Source="ic_vat_info"></Image>-->
                                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
                                                                     <custom:CustomLabel Text="{Binding IsCivilProfitApplicable}" Style="{StaticResource ValueLabelBlack}" WidthRequest="170" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
-
                                                                     <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsCivilProfitApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
