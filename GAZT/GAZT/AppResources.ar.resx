@@ -5299,15 +5299,15 @@
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionReporterName" xml:space="preserve">
-    <value>إسم المبلغ</value>
+    <value>اسم مقدم البلاغ</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionMobileNumber" xml:space="preserve">
-    <value>رقم التواصل</value>
+    <value>رقم الجوال</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionReporterLocation" xml:space="preserve">
-    <value>موقع البلاغ</value>
+    <value>الموقع</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionFacilityName" xml:space="preserve">
@@ -5331,11 +5331,11 @@
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionDistrict" xml:space="preserve">
-    <value>الحي</value>
+    <value>عنوان المنطقة للمنشأة</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionStreet" xml:space="preserve">
-    <value>الشارع</value>
+    <value>عنوان الشارع للمنشأة</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionReportType" xml:space="preserve">
@@ -5343,7 +5343,7 @@
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionReportDetails" xml:space="preserve">
-    <value>بيانات البلاغ</value>
+    <value>تفاصيل البلاغ</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="NDTaxEvasionAttachments" xml:space="preserve">
@@ -5798,7 +5798,8 @@
     <value>In Draft</value>
   </data>
   <data name="CRInstructions" xml:space="preserve">
-    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.&#10;2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
+    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
+2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
   </data>
   <data name="CRInstrCheckDesc" xml:space="preserve">
     <value>I Agree</value>
@@ -6102,15 +6103,16 @@
   </data>
   <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
     <value>الفروع</value>
-    </data> 
-    <data name="VFCEffectiveDate" xml:space="preserve">
+  </data>
+  <data name="VFCEffectiveDate" xml:space="preserve">
     <value>Effective Date</value>
   </data>
   <data name="VFCFrequencyDetailsCheckBoxString" xml:space="preserve">
     <value>I want to apply for an exception to file quarterly due to severe cash flow implications caused by monthly VAT collections.</value>
   </data>
-<data name="VFCAttachmnetsInfo" xml:space="preserve">
-    <value>In Case you have revenue below SAR40 and want to request for quarterly filing kindly attach evidence that you have been filing for 2 years with a monthly Tax Period and your Revenurs during last 12 months.&#10;In Case you want to request for an exception for quarterly filing, Kindly provide your previous 12 months average Days sales Outstanding</value>
+  <data name="VFCAttachmnetsInfo" xml:space="preserve">
+    <value>In Case you have revenue below SAR40 and want to request for quarterly filing kindly attach evidence that you have been filing for 2 years with a monthly Tax Period and your Revenurs during last 12 months.
+In Case you want to request for an exception for quarterly filing, Kindly provide your previous 12 months average Days sales Outstanding</value>
   </data>
   <data name="VFCIDType" xml:space="preserve">
     <value>ID Type</value>
@@ -6133,7 +6135,7 @@
   <data name="VFCIqamaID" xml:space="preserve">
     <value>Iqama ID</value>
   </data>
-    <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
     <value>Create/Display for ZAKAT Instalment Plan</value>
   </data>
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
@@ -6142,26 +6144,25 @@
   <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
     <value>البريد الالكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
   </data>
-
-   <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
-  <value>Estimated Profit percentage based on contract type</value>
-</data>
-<data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
-  <value>Multiply released amount with Estimated profit for contract</value>
-</data>
-<data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-  <value>Multiply Estimated profit for contract with Saudi share %</value>
-</data>
-<data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
-  <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
-</data>
-<data name="CRTheValueofZakatduesDesc" xml:space="preserve">
-  <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
-</data>
-<data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-  <value>Multiply Estimated profit for TAX with 20 %</value>
-</data>
-<data name="CRTotalDuesDesc" xml:space="preserve">
-  <value>Value of zakat due + value of TAX due</value>
- </data>
+  <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
+    <value>Estimated Profit percentage based on contract type</value>
+  </data>
+  <data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
+    <value>Multiply released amount with Estimated profit for contract</value>
+  </data>
+  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+    <value>Multiply Estimated profit for contract with Saudi share %</value>
+  </data>
+  <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
+    <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
+  </data>
+  <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
+    <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
+  </data>
+  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+    <value>Multiply Estimated profit for TAX with 20 %</value>
+  </data>
+  <data name="CRTotalDuesDesc" xml:space="preserve">
+    <value>Value of zakat due + value of TAX due</value>
+  </data>
 </root>
