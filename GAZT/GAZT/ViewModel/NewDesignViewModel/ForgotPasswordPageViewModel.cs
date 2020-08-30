@@ -1842,7 +1842,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 SetIDNumberEnability = true;
                                 IDNumber = String.Empty;
-                                UserIDLayoutVisibility = true;
+                              //  UserIDLayoutVisibility = true;
                             });
                         }
                     }
@@ -1864,7 +1864,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     SetIDNumberEnability = true;
                     IDNumber = String.Empty;
-                    UserIDLayoutVisibility = true;
+                   // UserIDLayoutVisibility = true;
                 });
             }
         }
@@ -2500,7 +2500,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             IsAPICalledSuccessfully = false;
             SetIDNumberEnability = false;
-            PasswordCardBackgroundImg = "FP_selected_tile";
+            PasswordCardBackgroundImg = "FP_unselected_tile";
             PasswordIcon = "password_key";
             UserNameCardBackgroundImg = "FP_unselected_tile";
             UserIcon = "vat_user";
