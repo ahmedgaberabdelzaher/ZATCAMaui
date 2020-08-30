@@ -15,12 +15,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             InitializeComponent();
             _activityNavigation = activityNavigation;
             viewModel = App.Locator.ActivityItemPage;
-            viewModel.CurrentTab = _activityNavigation.openedTab;
             viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
             viewModel.newNumber = _activityNavigation.nextNumber;
             viewModel.validateCR = _activityNavigation.validateCR;
-            viewModel.cRActivityItem = _activityNavigation.cRActivityItem;
+            //viewModel.cRActivityItem = _activityNavigation.cRActivityItem;
             viewModel.goBackAction = _activityNavigation.goBackAction;
+            viewModel.CurrentTab = _activityNavigation.openedTab;
             BindingContext = viewModel;
             SetLTR();
         }
@@ -49,11 +49,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void CREntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            //viewModel?.
-        }
-
-        void LicenseEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
-        {
+            viewModel?.validateCRNumber();
         }
     }
 }

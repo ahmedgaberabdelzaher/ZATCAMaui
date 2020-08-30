@@ -15,6 +15,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class OutletDetailsPageViewModel : BaseViewModel
     {
         #region Variable
+        public List<Nreg_ActivityItem> activityItems = new List<Nreg_ActivityItem>();
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         private OutletNumber newNumber = null;
         private List<string> IDs = new List<string>() { "BUP002", "ZS0005", "ZS0001", "ZS0002" };
@@ -408,11 +409,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _outletDropDowns;
             set
             {
-                if (value != null)
-                {
-                    _outletDropDowns = value;
-                    RaisePropertyChanged(nameof(OutletDropDowns));
-                }
+                //if (value != null)
+                //{
+                _outletDropDowns = value;
+                RaisePropertyChanged(nameof(OutletDropDowns));
+                //}
             }
         }
         #endregion
@@ -432,13 +433,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigationService.GoBack());
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
-            OnCountrySelectButtonClick = new Command((str) => {
+            OnCountrySelectButtonClick = new Command((str) =>
+            {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
                 poupWindow.OnItemSelect = (item) =>
                 {
                     try
                     {
-                        if(str != null && str.ToString().Equals("same"))
+                        if (str != null && str.ToString().Equals("same"))
                         {
                             CountrySame = item as CountryDropdownItem;
                         }
@@ -454,7 +456,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
-            OnProvinanceSelectButtonClick = new Command((str) => {
+            OnProvinanceSelectButtonClick = new Command((str) =>
+            {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.State_dropdownSet?.results);
                 poupWindow.OnItemSelect = (item) =>
                 {
@@ -476,29 +479,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
-            OnCountrySelectButtonClick = new Command((str) => {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
-                poupWindow.OnItemSelect = (item) =>
-                {
-                    try
-                    {
-                        if (str != null && str.ToString().Equals("same"))
-                        {
-                            CountrySame = item as CountryDropdownItem;
-                        }
-                        else
-                        {
-                            Country = item as CountryDropdownItem;
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.StackTrace);
-                    }
-                };
-                PopupNavigation.Instance.PushAsync(poupWindow);
-            });
-            OnCitySelectButtonClick = new Command((str) => {
+            OnCitySelectButtonClick = new Command((str) =>
+            {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.city_dropdownSet?.results);
                 poupWindow.OnItemSelect = (item) =>
                 {
@@ -526,7 +508,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         public void OnAppearing()
         {
-            fetchTabDataAndBind(currentTab);
+            //if(string.IsNullOrEmpty(OutletActNumber))
+            //    fetchTabDataAndBind(currentTab);
         }
         private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
@@ -535,12 +518,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
-                nextNumber = newNumber
+                nextNumber = newNumber,
+                newActivityItems = activityItems,
+                goBackAction = (List<Nreg_ActivityItem> list) => addActivities(list)
             });
         }
-        private void navigateToNext()
+
+        private async void navigateToNext()
         {
-            if(currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
+            if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
             {
                 if (!string.IsNullOrEmpty(validateCR?.Crname))
                 {
@@ -550,11 +536,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails = taxPayerDetails,
                         nextNumber = newNumber,
                         validateCR = validateCR,
-                        cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
-                        goBackAction = () =>
-                        {
-                            currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
-                        }
+                        //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
+                        newActivityItems = activityItems,
+                        goBackAction = (List<Nreg_ActivityItem> list) => addActivities(list)
                     });
                 }
                 else
@@ -568,8 +552,89 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
             {
-                _navigationService.GoBack();
+                try
+                {
+                    IsLoading = true;
+                    taxPayerDetails?.Nreg_AddressSet.results?.Clear();
+                    Nreg_AddressItem defaultAddress = new Nreg_AddressItem();
+                    defaultAddress.HouseNum1 = HouseNumber;
+                    defaultAddress.Building = BuildingNumber;
+                    defaultAddress.Floor = FloorNumber;
+                    defaultAddress.Street = Street;
+                    defaultAddress.City2 = Quarter;
+                    defaultAddress.PostCode1 = PostalCode;
+                    defaultAddress.HouseNum2 = AddNumber;
+                    defaultAddress.Country = Country.Land1;
+                    defaultAddress.Region = Provinance.Land1;
+                    defaultAddress.City1 = City.CityName;
+                    defaultAddress.CityCode = City.CityCode;
+                    defaultAddress.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
+                    defaultAddress.AddrType = "XXDEFAULT";
+                    defaultAddress.Srcidentify = OutletActNumber;
+                    defaultAddress.Begda = DateTime.UtcNow;
+                    defaultAddress.Endda = DateTime.MaxValue;
+                    taxPayerDetails?.Nreg_AddressSet.results?.Add(defaultAddress);
+
+                    Nreg_AddressItem _address = new Nreg_AddressItem();
+                    _address.HouseNum1 = HouseNumberSame;
+                    _address.Building = BuildingNumberSame;
+                    _address.Floor = FloorNumberSame;
+                    _address.Street = StreetSame;
+                    _address.City2 = QuarterSame;
+                    _address.PostCode1 = PostalCodeSame;
+                    _address.HouseNum2 = AddNumberSame;
+                    _address.Country = CountrySame.Land1;
+                    _address.Region = ProvinanceSame.Land1;
+                    _address.City1 = CitySame.CityName;
+                    _address.CityCode = CitySame.CityCode;
+                    _address.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
+                    _address.AddrType = "0001";
+                    _address.Srcidentify = OutletActNumber;
+                    _address.Begda = DateTime.UtcNow;
+                    _address.Endda = DateTime.MaxValue;
+                    taxPayerDetails?.Nreg_AddressSet.results?.Add(_address);
+
+                    taxPayerDetails?.Nreg_OutletSet?.results?.Clear();
+                    Nreg_OutletItem outletItem = new Nreg_OutletItem();
+                    outletItem.Actnm = OutletName;
+                    outletItem.Actno = OutletActNumber;
+                    outletItem.Caltp = "G";
+                    outletItem.Actcat = "S";
+                    outletItem.Conatt = "X";
+                    taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
+                    taxPayerDetails.StepNumberx = "03";
+                    await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                    IsLoading = false;
+                }
+                catch (Exception e)
+                {
+                    IsLoading = false;
+                    Console.WriteLine(e.StackTrace);
+                }
+                finally
+                {
+                    _navigationService.GoBack();
+                }
             }
+        }
+        private void addActivities(List<Nreg_ActivityItem> list)
+        {
+            taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+            var newList = new List<Nreg_ActivityItem>();
+            newList.Insert(0, new Nreg_ActivityItem()
+            {
+                ValidDateType = "X"
+            });
+            newList.AddRange(list);
+            newList.Insert(2, new Nreg_ActivityItem()
+            {
+                Type = "ZS0007",
+                ValidDateType = "X",
+                Actno = OutletActNumber,
+                Actcat = "M"
+            });
+            taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
+            currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
         }
         private void navigateToPre()
         {
@@ -592,33 +657,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     newNumber = await WebServiceManager.ESTOutletNumber(taxPayerDetails?.Fbnumx);
                     OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", "3102448184", "DKOTHI-C@GAZT.GOV.SA", OutletActNumber, taxPayerDetails?.Fbnumx);
-                    if(OutletActNumber == "000")
+                    if (OutletActNumber == "000")
                     {
-                        validateCR = await WebServiceManager.ESTValidateCRNum(taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault()?.Idnumber);
-                        OutletName = validateCR?.Crname;
+                        var CRNum = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault()?.Idnumber;
+                        validateCR = await WebServiceManager.ESTValidateCRNum(CRNum);
+                        if (string.IsNullOrEmpty(validateCR?.Crname))
+                        {
+                            OutletName = validateCR?.Crname;
+                            validateCR.Crnum = CRNum;
+                        }
                     }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
-                    Nreg_ActivityItem idItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault();
-                    List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(idItem?.Type, idItem?.Idnumber, "3102448184");
-                    if(addressess.Count > 0)
-                    {
-                        var address = addressess.FirstOrDefault();
-                        BuildingNumber = address.BuildingNo;
-                        FloorNumber = address.UnitNo;
-                        Street = address.StreetName;
-                        Quarter = address.DistrictName;
-                        PostalCode = address.Zipcode;
-                        AddNumber = address.AdditionalNo;
-                    }
                     OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
+                    Nreg_ActivityItem idItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault();
+                    if (idItem != null)
+                    {
+                        List<OutletAddress> addressess = await WebServiceManager.ESTOutletAddress(idItem?.Type, idItem?.Idnumber, "3102448184");
+                        if (addressess.Count > 0)
+                        {
+                            var address = addressess.FirstOrDefault();
+                            BuildingNumber = address.BuildingNo;
+                            FloorNumber = address.UnitNo;
+                            Street = address.StreetName;
+                            Quarter = address.DistrictName;
+                            PostalCode = address.Zipcode;
+                            AddNumber = address.AdditionalNo;
+                        }
+                    }
                 }
                 else
                 {
                     //activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
                 }
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
 
             }

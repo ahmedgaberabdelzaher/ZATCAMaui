@@ -1070,7 +1070,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnVoidOrSaveDraftClick = new Command(() =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid, AppResources.FORM5CalendarType });
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid });
                 poupWindow.OnItemSelect = (item) => Console.WriteLine(item);
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
@@ -1810,6 +1810,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
+            
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -1922,6 +1923,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
+                    
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = SelectedRegNationalityType;
@@ -1943,7 +1945,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         taxPayerDetails.Rentatt = "";
                     }
-
+                    taxPayerDetails.StepNumberx = "01";
                     var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -1951,6 +1953,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
+                    
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                     taxPayerDetails.Birthdt = dob;
                     taxPayerDetails.NameFirst = FirstName;
@@ -1970,7 +1973,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.Natio = SelectedTaxpayerPDNationality?.Land1;
                     taxPayerDetails.Citizen = SelectedCitizen?.Land1;
                     taxPayerDetails.Residence = SelectedResidence?.Land1;
-
+                    taxPayerDetails.StepNumberx = "02";
                     var taxPayerDetailsResult = await  WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -1978,7 +1981,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
-                  
+                    
                     Nreg_IdItem passportObj = new Nreg_IdItem();
                     passportObj.Idnumber = PassportNumber;
                     passportObj.Country = SelectedPassportIssueCountry?.Land1;
@@ -1989,13 +1992,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     passportObj.ValidDateTo = expireDate;
                     passportObj.Type = "FS0002";
                     passportObj.Srcidentify = "000";
-                    
+                    taxPayerDetails.Nreg_IdSet.results.Clear();
                     taxPayerDetails.Nreg_IdSet.results.Add(passportObj);
 
 
                     if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
                     {
-
                         var uploadPassportDocResult = await WebServiceManager.ESTAttachment(
                             UploadedPassportDocumentsList.FirstOrDefault().DocBinaryInBase64,
                             UploadedPassportDocumentsList.FirstOrDefault().FileNameWithExtension,
@@ -2007,7 +2009,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         taxPayerDetails.Passatt = "";
                     }
-                   
+                    taxPayerDetails.StepNumberx = "02";
                     var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
