@@ -188,7 +188,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             break;
                         }
                     }
-                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                    //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                    //_navigation.NavigationStack.ToList().Clear();
+
+                    _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                     _navigation.NavigationStack.ToList().Clear();
                 });
             }
