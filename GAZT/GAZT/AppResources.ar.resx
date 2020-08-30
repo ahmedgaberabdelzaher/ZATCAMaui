@@ -6165,4 +6165,7 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="CRTotalDuesDesc" xml:space="preserve">
     <value>Value of zakat due + value of TAX due</value>
   </data>
+  <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
+    <value>تفاصيل الائتمان المنقولة</value>
+  </data>
 </root>
