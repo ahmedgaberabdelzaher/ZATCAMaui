@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -555,6 +556,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 try
                 {
                     IsLoading = true;
+                    DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+
                     taxPayerDetails?.Nreg_AddressSet.results?.Clear();
                     Nreg_AddressItem defaultAddress = new Nreg_AddressItem();
                     defaultAddress.HouseNum1 = HouseNumber;
@@ -572,7 +575,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     defaultAddress.AddrType = "XXDEFAULT";
                     defaultAddress.Srcidentify = OutletActNumber;
                     defaultAddress.Begda = DateTime.UtcNow;
-                    defaultAddress.Endda = DateTime.MaxValue;
+                    defaultAddress.Endda = maxDate;
                     taxPayerDetails?.Nreg_AddressSet.results?.Add(defaultAddress);
 
                     Nreg_AddressItem _address = new Nreg_AddressItem();
@@ -591,7 +594,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     _address.AddrType = "0001";
                     _address.Srcidentify = OutletActNumber;
                     _address.Begda = DateTime.UtcNow;
-                    _address.Endda = DateTime.MaxValue;
+                    _address.Endda = maxDate;
                     taxPayerDetails?.Nreg_AddressSet.results?.Add(_address);
 
                     taxPayerDetails?.Nreg_OutletSet?.results?.Clear();
@@ -599,8 +602,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     outletItem.Actnm = OutletName;
                     outletItem.Actno = OutletActNumber;
                     outletItem.Caltp = "G";
-                    outletItem.Actcat = "S";
-                    outletItem.Conatt = "X";
+                    outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
+                    //outletItem.Conatt = "X";
                     taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
                     taxPayerDetails.StepNumberx = "03";
                     await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
@@ -619,22 +622,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         private void addActivities(List<Nreg_ActivityItem> list)
         {
-            taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
-            var newList = new List<Nreg_ActivityItem>();
-            newList.Insert(0, new Nreg_ActivityItem()
+            try
             {
-                ValidDateType = "X"
-            });
-            newList.AddRange(list);
-            newList.Insert(2, new Nreg_ActivityItem()
+                taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+                var newList = new List<Nreg_ActivityItem>();
+                //newList.Insert(0, new Nreg_ActivityItem()
+                //{
+                //    ValidDateType = "X"
+                //});
+                newList.AddRange(list);
+                //newList.Insert(2, new Nreg_ActivityItem()
+                //{
+                //    Type = "ZS0007",
+                //    ValidDateType = "X",
+                //    Actno = OutletActNumber,
+                //    Actcat = "M"
+                //});
+                taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
+                currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+            }catch(Exception e)
             {
-                Type = "ZS0007",
-                ValidDateType = "X",
-                Actno = OutletActNumber,
-                Actcat = "M"
-            });
-            taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
-            currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+                Console.WriteLine(e.StackTrace);
+            }
         }
         private void navigateToPre()
         {
