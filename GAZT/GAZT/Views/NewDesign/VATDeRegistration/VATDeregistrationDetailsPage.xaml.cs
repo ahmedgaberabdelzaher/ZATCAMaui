@@ -58,7 +58,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
-                viewModel.EnableReasonView();
+                //viewModel.EnableReasonView();
                 await GetVatDeRegistrationData();
             });
 
