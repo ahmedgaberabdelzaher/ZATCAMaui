@@ -60,7 +60,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"   HorizontalOptions="StartAndExpand">
+                        <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="StartAndExpand">
                         </Image>
 
                         <custom:CustomLabel Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
@@ -82,7 +82,7 @@
                             <ScrollView>
                                 <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNextCommitments}"    Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="{Binding NextCommitmentsString}" Style="{StaticResource SectionTitleBlack}" VerticalOptions="Center"/>
                                     <!--<Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand"/>-->
                                     <!--    <Image.Source>
                                                 <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
@@ -622,7 +622,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
-                                 <StackLayout Orientation="Horizontal" Spacing="20">
+                                 <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ContractRelease}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -630,7 +630,7 @@
                                         <TapGestureRecognizer Tapped="ContractRelease_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
                                  <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">

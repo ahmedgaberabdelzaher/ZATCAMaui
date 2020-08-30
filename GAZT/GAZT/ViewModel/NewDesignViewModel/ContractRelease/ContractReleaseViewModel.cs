@@ -1017,7 +1017,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 ContractReleaseData = await SubmitClicked();
 
-                _navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
+                if(ContractReleaseData.d != null)
+                {
+                    _navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
+                }
+
+                
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1274,7 +1279,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //_navigationService.GoBack();
+                    _navigationService.GoBack();
 
                 });
                 return response;
@@ -1456,9 +1461,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             try
             {
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                    ContractCopyAttachmentsListViewData.ToList(),
-                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseCopy, ContractReleaseData.d.CaseGuid));
+                if (ContractCopyAttachmentsListViewData.Count == 0)
+                {
+                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                        ContractCopyAttachmentsListViewData.ToList(),
+                        Models.ZakatInstalationModels.WhichAttachment.ContractReleaseCopy, ContractReleaseData.d.CaseGuid));
+                }
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1487,9 +1495,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             try
             {
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                    InvoiceAttachmentsListViewData.ToList(),
-                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseInvoice, ContractReleaseData.d.CaseGuid));
+                if (InvoiceAttachmentsListViewData.Count == 0)
+                {
+                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                        InvoiceAttachmentsListViewData.ToList(),
+                        Models.ZakatInstalationModels.WhichAttachment.ContractReleaseInvoice,
+                        ContractReleaseData.d.CaseGuid));
+                }
             }
             catch (GAZTUnlockAccountException ex)
             {
