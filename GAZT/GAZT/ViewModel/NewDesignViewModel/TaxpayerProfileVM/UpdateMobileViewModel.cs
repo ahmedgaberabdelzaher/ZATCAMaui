@@ -71,6 +71,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("CountryCode");
             }
         }
+        private string _mobileCountryCode = string.Empty;
+        public string MobileCountryCode
+        {
+            get
+            {
+                return _mobileCountryCode;
+            }
+            set
+            {
+                _mobileCountryCode = value;
+                RaisePropertyChanged("MobileCountryCode");
+            }
+        }
         private string _CurrentMobileNumberEntryText;
         public string CurrentMobileNumberEntryText
         {
@@ -298,7 +311,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
             string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
             string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
-
+           // MobileCountry = MobileCountryCode;
             try
             {
                 await Task.Run(async () =>
