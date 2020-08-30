@@ -6454,5 +6454,198 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>Carried Credit Details</value>
   </data>
-
+   <data name="ESTAddOutlet" xml:space="preserve">
+    <value>Add Outlet</value>
+    </data> 
+     <data name="ESTOutletCommercialName" xml:space="preserve">
+    <value>Outlet Commercial Name</value>
+    </data> 
+     <data name="ESTActivityDetails" xml:space="preserve">
+    <value>Activity Details</value>
+    </data> 
+     <data name="ESTAddCRAndOrLicenseDetails" xml:space="preserve">
+    <value>Add your CR and/or License Details</value>
+    </data> 
+     <data name="ESTCommercialRegistration" xml:space="preserve">
+    <value>Commercial Registration</value>
+    </data> 
+     <data name="ESTLicenseDetails" xml:space="preserve">
+    <value>License Details</value>
+    </data> 
+     <data name="ESTCommercialRegistrationNumberInfo" xml:space="preserve">
+    <value>You can enter one CR (Commercial Registration Number) and multiple license numbers(maximum 4)while registering outlet message Strip Information</value>
+    </data> 
+     <data name="ESTCommercialRegistrationNumberInfoTwo" xml:space="preserve">
+    <value>You need to select only one main CR or License that is linked to the main activity for this outlet. This will represent the main CR or License</value>
+    </data> 
+     <data name="ESTIssueBy" xml:space="preserve">
+    <value>Issue By</value>
+    </data> 
+     <data name="ESTIssueCity" xml:space="preserve">
+    <value>Issue City</value>
+    </data> 
+     <data name="ESTMainActivity" xml:space="preserve">
+    <value>Main Activity</value>
+    </data> 
+     <data name="ESTAttachmentTransferCopyOfCRLabel" xml:space="preserve">
+    <value>Attachment - Transfer Copy of CR</value>
+    </data> 
+     <data name="ESTAttachmentCopyOfCRLabel" xml:space="preserve">
+    <value>Attachment - Copy of CR</value>
+    </data> 
+     <data name="ESTBusinessActivityDetails" xml:space="preserve">
+    <value>Business Activity details</value>
+    </data> 
+     <data name="ESTMainGroup" xml:space="preserve">
+    <value>Main Group</value>
+    </data> 
+   <data name="ESTSubGroup" xml:space="preserve">
+    <value>Sub Group</value>
+    </data>
+     <data name="ESTActivity" xml:space="preserve">
+    <value>Activity</value>
+    </data>
+    <data name="ESTAddLicense" xml:space="preserve">
+    <value>Add License</value>
+    </data>
+    <data name="ESTLicenseOne" xml:space="preserve">
+    <value>License 1</value>
+    </data>
+    <data name="ESTLicenseTwo" xml:space="preserve">
+    <value>License 2</value>
+    </data>
+    <data name="ESTAttachmentCopyOfLicense" xml:space="preserve">
+    <value>Attachment - Copy of License</value>
+    </data>
+    <data name="ESTAddressDetails" xml:space="preserve">
+    <value>Address Details</value>
+    </data>
+    <data name="ESTPhycicalAddress" xml:space="preserve">
+    <value>Phycical Address</value>
+    </data>
+    <data name="ESTHouseNumber" xml:space="preserve">
+    <value>House Number</value>
+    </data>
+    <data name="ESTFloorNumber" xml:space="preserve">
+    <value>Floor Number</value>
+    </data>
+    <data name="ESTQuarter" xml:space="preserve">
+    <value>Quarter</value>
+    </data>
+     <data name="ESTAddNumber" xml:space="preserve">
+    <value>Add Number</value>
+    </data>
+     <data name="ESTProvinance" xml:space="preserve">
+    <value>Provinance</value>
+    </data>
+     <data name="ESTPostalAddress" xml:space="preserve">
+    <value>Postal Address</value>
+    </data>
+    <data name="ESTSameAsPhycical" xml:space="preserve">
+    <value>Same as Phycical</value>
+    </data>
+     <data name="ESTEstimatedMethod" xml:space="preserve">
+    <value>Estimated Method</value>
+    </data>
+     <data name="ESTEndOfFinancialYear" xml:space="preserve">
+    <value>End of Financial Year</value>
+    </data>
+     <data name="ESTEndOfFiscalDay" xml:space="preserve">
+    <value>End of Fiscal Day</value>
+    </data>
+     <data name="ESTBusinessCommencementDate" xml:space="preserve">
+    <value>Business Commencement Date</value>
+    </data>
+     <data name="ESTTaxableDate" xml:space="preserve">
+    <value>Taxable Date</value>
+    </data>
+     <data name="ESTPledgeLabel" xml:space="preserve">
+    <value>Given Pledge that the information on this form is correct and that I am Authorized to sign this application</value>
+    </data>
+     <data name="ESTReviewTheBelowInformation" xml:space="preserve">
+    <value>Review the below Information</value>
+    </data>
+     <data name="ESTEdit" xml:space="preserve">
+    <value>Edit</value>
+    </data>
+     <data name="ESTReportingBranch" xml:space="preserve">
+    <value>Reporting branch</value>
+    </data>
+     <data name="ESTResidencyStatus" xml:space="preserve">
+    <value>Residency Status</value>
+    </data>
+     <data name="ESTOutletName" xml:space="preserve">
+    <value>Outlet Name</value>
+    </data>
+     <data name="ESTOutletCity" xml:space="preserve">
+    <value>Outlet City</value>
+    </data>
+     <data name="ESTCRlicense" xml:space="preserve">
+    <value>CR/license</value>
+    </data>
+     <data name="ESTMethodOfFinancialRecordMaintained" xml:space="preserve">
+    <value>Method of Financial Record Maintained</value>
+    </data>
+    <data name="ESTEndOfFiscalMonth" xml:space="preserve">
+    <value>End of Fiscal Month</value>
+    </data>
+    <data name="ESTConfirm" xml:space="preserve">
+    <value>Confirm</value>
+    </data>
+    <data name="ESTRegistrationSuccessful" xml:space="preserve">
+    <value>Registration Successful</value>
+    </data>
+    <data name="ESTGAZTAcknowledgesTheReceiptRegApplication" xml:space="preserve">
+    <value>GAZT acknowledges the receipt of your registration application</value>
+    </data> 
+    <data name="ESTName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="ESTReferenceNumber" xml:space="preserve">
+    <value>Reference Number</value>
+    </data>
+    <data name="ESTFutureRefernceAndCommunicationFinalMsg" xml:space="preserve">
+    <value>Please retain this number for future refernce and communication. GAZT will process your request and if needed contact for any additional information. You have late registration penalty and we verifying it, You will be informed when registration application processed For futher information, Please contact help desl @ 1993</value>
+    </data>
+    <data name="ESTGoToDashboard" xml:space="preserve">
+    <value>Go to Dashboard</value>
+    </data>
+    <data name="ESTQurayyatOffice" xml:space="preserve">
+    <value>Qurayyat Office</value>
+    </data>
+    <data name="ESTAlmajmaahOffice" xml:space="preserve">
+    <value>Almajmaah Office</value>
+    </data>
+    <data name="ESTMuhayilAsirOffice" xml:space="preserve">
+    <value>Muhayil Asir Office</value>
+    </data>
+    
+   
+    
+    <!--
+     <data name="ESTIndividual" xml:space="preserve">
+    <value>Individual</value>
+  </data>
+    <data name="ESTTradeBusiness" xml:space="preserve">
+    <value>Trade/Business</value>
+  </data>
+   <data name="ESTGCC" xml:space="preserve">
+    <value>GCC</value>
+  </data>
+     <data name="ESTIdType" xml:space="preserve">
+    <value>ID Type</value>
+  </data>
+    <data name="ESTGccID" xml:space="preserve">
+    <value>GCC ID</value>
+  </data>
+    <data name="ESTGccID" xml:space="preserve">
+    <value>GCC ID</value>
+  </data>
+    <data name="ESTIdNumber" xml:space="preserve">
+    <value>ID Number</value>
+  </data>
+    <data name="ESTGccID" xml:space="preserve">
+    <value>GCC ID</value>
+  </data>-->
+     
 </root>

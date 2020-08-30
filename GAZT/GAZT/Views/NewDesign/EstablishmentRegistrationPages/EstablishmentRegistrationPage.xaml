@@ -903,9 +903,9 @@
                     </ScrollView>
                 </StackLayout>
                 <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
-                    <buttons:SfButton ShowIcon="True" Text="Add Outlet" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewOutletButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
+                    <buttons:SfButton ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewOutletButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                        <Entry Placeholder="Search" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                        <Entry Placeholder="{x:Static ResourceManager:AppResources.SearchText}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
                         <inputLayout:SfTextInputLayout.TrailingView>
                             <Image Source="search.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>
@@ -950,7 +950,7 @@
                 </StackLayout>
                 <ScrollView Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
                     <StackLayout Spacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
-                        <custom:CustomLabel Text="Method of financial records maintained" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMethodOfFinancialRecordMaintained}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding MethodList}" SelectedItem="{Binding SelectedMethod, Mode=TwoWay}"  AutoFitMode="Height" ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False" IsScrollingEnabled="False">
                             <listView:SfListView.LayoutManager>
                                 <listView:GridLayout SpanCount="2" />
@@ -978,7 +978,7 @@
                                 </DataTemplate>
                             </listView:SfListView.SelectedItemTemplate>
                         </listView:SfListView>
-                        <custom:CustomLabel Text="Calendar Type" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5CalendarType}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding CalendarTypeList}" SelectedItem="{Binding CalendarType, Mode=TwoWay}"  AutoFitMode="Height" ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False" IsScrollingEnabled="False">
                             <listView:SfListView.LayoutManager>
                                 <listView:GridLayout SpanCount="2" />
@@ -1006,16 +1006,16 @@
                                 </DataTemplate>
                             </listView:SfListView.SelectedItemTemplate>
                         </listView:SfListView>
-                        <custom:CustomLabel Text="End of Financial Year" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
-                        <custom:CustomLabel Text="End of Fiscal Month" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTEndOfFinancialYear}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTEndOfFiscalMonth}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <buttons:SfButton IsVisible="{Binding SelectedMethod, Converter={StaticResource methodToVisibilityConverter}, ConverterParameter='Accounting'}" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding FiscalMonth}" Command="{Binding OnMonthSelectButtonClick}" Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                         <custom:CustomLabel IsVisible="{Binding SelectedMethod, Converter={StaticResource methodToVisibilityConverter}, ConverterParameter='Estimated'}" Text="{Binding FiscalMonth}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
-                        <custom:CustomLabel Text="End of Fiscal Day" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTEndOfFiscalDay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <buttons:SfButton IsVisible="{Binding SelectedMethod, Converter={StaticResource methodToVisibilityConverter}, ConverterParameter='Accounting'}" ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding FiscalDay}" Command="{Binding OnDaySelectButtonClick}" Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" />
                         <custom:CustomLabel IsVisible="{Binding SelectedMethod, Converter={StaticResource methodToVisibilityConverter}, ConverterParameter='Estimated'}" Text="{Binding FiscalDay}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
-                        <custom:CustomLabel Text="Business Commencement Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTBusinessCommencementDate}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <custom:CustomLabel Text="{Binding CommDate}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
-                        <custom:CustomLabel Text="Taxable Date" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTTaxableDate}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <custom:CustomLabel Text="{Binding TaxDate}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
                     </StackLayout>
                 </ScrollView>
