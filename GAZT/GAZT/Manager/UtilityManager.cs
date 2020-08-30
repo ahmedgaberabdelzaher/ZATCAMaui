@@ -743,6 +743,54 @@ namespace GAZT.Manager
             {
                 Month = "Rabi II";
             }
+            else if (Month == "01")
+            {
+                Month = "Muharram";
+            }
+            else if (Month == "02")
+            {
+                Month = "Safar";
+            }
+            else if (Month == "03")
+            {
+                Month = "Rabi I";
+            }
+            else if (Month == "04")
+            {
+                Month = "Rabi II";
+            }
+            else if (Month == "05")
+            {
+                Month = "Jumada I";
+            }
+            else if (Month == "06")
+            {
+                Month = "Jumada II";
+            }
+            else if (Month == "07")
+            {
+                Month = "Rajab";
+            }
+            else if (Month == "08")
+            {
+                Month = "Sha ban";
+            }
+            else if (Month == "09")
+            {
+                Month = "Ramadan";
+            }
+            else if (Month == "10")
+            {
+                Month = "shawwal";
+            }
+            else if (Month == "11")
+            {
+                Month = "Dhul-Qi dah";
+            }
+            else if (Month == "12")
+            {
+                Month = "Dhul-Hijjah";
+            }
             return Month;
         }
         public static string GetMonthNameHijriArabic(string Month)
