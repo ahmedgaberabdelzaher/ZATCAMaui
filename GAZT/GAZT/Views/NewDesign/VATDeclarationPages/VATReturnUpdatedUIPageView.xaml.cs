@@ -811,12 +811,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
-                MainGrid.Margin = new Thickness(0);
+               // MainGrid.Margin = new Thickness(0);
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
-                MainGrid.Margin = new Thickness(-36,0,36,0);
+                //MainGrid.Margin = new Thickness(-36,0,36,0);
             }
         }
 
