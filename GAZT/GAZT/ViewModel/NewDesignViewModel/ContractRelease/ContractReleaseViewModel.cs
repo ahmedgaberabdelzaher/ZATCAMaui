@@ -23,7 +23,7 @@ using Metadata = EGAZT.Models.ContractRelease.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 {
-    public class ContractReleaseViewModel : BaseViewModel
+    public class ContractReleaseViewModel : ViewModelBase
     {
         #region Enums
 
@@ -89,6 +89,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 _isReleaseDetailsVisible = value;
                 RaisePropertyChanged("IsReleaseDetailsVisible");
+            }
+        }
+
+
+        private bool _isLoading = false;
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
             }
         }
 
@@ -222,7 +235,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        public bool fromDatePicker = true;
+        public bool fromDatePicker = false;
 
         private bool _summaryVisible = false;
 
@@ -680,9 +693,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         int selectedPage = (int)PagesEnum.CrReleaseDetailsView;
 
-        public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService) : base(
-            navigationService, dialogService)
-        {
+        public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService) { 
             _navigationService = navigationService;
 
             _dialogService = dialogService;
@@ -745,8 +756,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
             ShowDatePicker = new Command(async () =>
             {
-                showDatePickerDialog();
                 fromDatePicker = !fromDatePicker;
+                showDatePickerDialog();
+                
             });
 
             ShowPicker = new Command(async () => { showPickerDialog(); });
@@ -1217,13 +1229,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
 
 
+           
+               
+
+            await Task.Run(() => { IsLoading = true; });
+
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
 
+                IsLoading = true;
                 request = BuildRequestObject();
 
 
@@ -1268,6 +1282,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
             catch (Exception ex)
             {
+                IsLoading = false;
                 return response;
             }
 
@@ -1593,7 +1608,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             IsReleaseDetailsEnabled = false;
             IsAttachmentsEnabled = false;
             IsDeclarationEnabled = false;
-            fromDatePicker = true;
+            fromDatePicker = false;
             InfoTitle = "";
             InfoDesc = "";
             PickedContract = "";

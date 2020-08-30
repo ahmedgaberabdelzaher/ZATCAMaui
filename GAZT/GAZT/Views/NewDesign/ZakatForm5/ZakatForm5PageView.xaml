@@ -104,7 +104,7 @@
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDFinancialYear}" Style="{StaticResource ValueLabelGrey}"/>
                                             <custom:CustomLabel Grid.Column="1"  Text="{Binding FinancialYear}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                         </Grid>
-                                        <StackLayout Orientation="Horizontal">
+                                        <StackLayout>
                                             <custom:CustomLabel x:Name="PeriodLbl" Text="{x:Static ResourceManager:AppResources.FORM5Period}" Style="{StaticResource ValueLabelGrey}"/>
                                             <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight">
                                                 <Label.FormattedText>
@@ -121,9 +121,28 @@
                                                     </DataTrigger>
                                                 </custom:CustomLabel.Triggers>
                                             </custom:CustomLabel>-->
-                                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Period}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End">
 
-                                            </custom:CustomLabel>
+                                            <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Period}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"></custom:CustomLabel>-->
+
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5From}" Style="{StaticResource ValueLabelGrey}"/>
+                                                <!--<custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>-->
+                                                <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                                <custom:CustomLabel Text="{Binding ZakatFromDate}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+
+
+
+                                            <StackLayout  Orientation="Horizontal">
+                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5To}" Style="{StaticResource ValueLabelGrey}"/>
+                                                <!--<custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>-->
+                                                <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                                <custom:CustomLabel Text="{Binding ZakatToDate}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            </StackLayout>
+
+
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
@@ -219,7 +238,7 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.FORM5AccountingMethod}" Style="{StaticResource ValueLabelGrey}"/>
-                                            <custom:CustomLabel Grid.Column="1" HorizontalTextAlignment="End" Text="{Binding AccountMethod}" Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel" />
+                                            <custom:CustomLabel Grid.Column="1" HorizontalTextAlignment="End" Text="{Binding AccountMethod}" Style="{StaticResource ValueLabelBlack}" StyleId="ValueLabel" HorizontalOptions="EndAndExpand" />
                                         </Grid>
                                         <Grid>
                                             <Grid.RowDefinitions>
@@ -1191,38 +1210,28 @@
 
 
                                                             <StackLayout Orientation="Horizontal" Spacing="0">
-
-                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GovernmentContractProfile}"  Style="{StaticResource ValueLabelGrey}"/>
+                                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5GovernmentContractProfile}"  Style="{StaticResource ValueLabelGrey}" WidthRequest="200" />
                                                                 <!--<Image HorizontalOptions="StartAndExpand" VerticalOptions="Start" Margin="0,10,0,0" Source="ic_vat_info"></Image>-->
-
                                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
-                                                                    <!--<custom:CustomLabel Text="{Binding IsGovenmentApplicable}" Style="{StaticResource ValueLabelBlack}" WidthRequest="170" HorizontalTextAlignment="End"/>-->
                                                                     <custom:CustomLabel Text="{Binding IsGovenmentApplicable}" Style="{StaticResource ValueLabelBlack}" WidthRequest="170" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
-                                                            
-
-
-                                                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsGovenmentApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">-->
                                                                     <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsGovenmentApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
-                                                                       <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            <Span Text="{Binding GovtContractProf}" />
-                                                                            <Span Text=" "/>
-                                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </custom:CustomLabel>
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding GovtContractProf}" />
+                                                                                <Span Text=" "/>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </custom:CustomLabel>
                                                                 </StackLayout>
-
                                                             </StackLayout>
 
 
                                                             <StackLayout Orientation="Horizontal" Spacing="0">
-
                                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ProfitFromCivilContracting}" Style="{StaticResource ValueLabelGrey}"/>
                                                                 <!--<Image Margin="-20,0,0,0" HorizontalOptions="StartAndExpand" Source="ic_vat_info"></Image>-->
                                                                 <StackLayout Grid.Row="0" Spacing="0" Grid.Column="1">
                                                                     <custom:CustomLabel Text="{Binding IsCivilProfitApplicable}" Style="{StaticResource ValueLabelBlack}" WidthRequest="170" HorizontalTextAlignment="End" StyleId="ValueLabel"/>
-
                                                                     <custom:CustomLabel  Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsCivilProfitApplicableVisible}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" WidthRequest="200" StyleId="ValueLabel">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
@@ -2473,18 +2482,18 @@
 
                                  
 
-                                    <StackLayout  Orientation="Horizontal">
+                                    <StackLayout >
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ForPeriod}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
+                                        <!--<custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>-->
                                         <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
                                     </StackLayout>
 
                                  
 
-                                    <StackLayout  Orientation="Horizontal">
+                                    <!--<StackLayout  Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5From}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
-                                        <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                        --><!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>--><!--
                                         <custom:CustomLabel Text="{Binding ZakatFromDate}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight"/>
                                     </StackLayout>
 
@@ -2494,11 +2503,13 @@
                                     <StackLayout  Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5To}" Style="{StaticResource ValueLabelGrey}"/>
                                         <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}"/>
-                                        <!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>-->
+                                        --><!--<custom:CustomLabel Text="{Binding Taxpayer}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>--><!--
                                         <custom:CustomLabel Text="{Binding ZakatToDate}" Style="{StaticResource ValueLabelBlack}" FlowDirection="LeftToRight"/>
-                                    </StackLayout>
+                                    </StackLayout>-->
+                                    <!--<custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Period}" FlowDirection="LeftToRight" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"></custom:CustomLabel>-->
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Period}" FlowDirection="LeftToRight" ></custom:CustomLabel>
 
-                                   
+
                                 </StackLayout>
 
                             </border:SfBorder>

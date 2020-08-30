@@ -15,7 +15,7 @@ using static EGAZT.Models.ContractRelease.ContractReleaseSummaryModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 {
-    public class ContractReleaseListViewModel : BaseViewModel
+    public class ContractReleaseListViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -312,8 +312,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService) : base(
-            navigationService, dialogService)
+        public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService) 
         {
             _navigationService = navigationService;
             _dialogService = dialogService;

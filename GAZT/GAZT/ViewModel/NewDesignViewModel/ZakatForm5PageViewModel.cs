@@ -1700,7 +1700,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             FinancialYear = ZakatForm5DataResult.PerslText;
                             IsConditionRadio = true;
 
-                            Period = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd MMM yyyy", new CultureInfo("en-US")) + " - " + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
+                            Period = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " - " + Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
 
                             //Taxpayer Detials
@@ -2641,8 +2641,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 int IsZakatFlag = 0;
                                 // information
                                 ReferenceNumber = ZakatForm5DataResult.Fbnum.ToString();
-                                ZakatFromDate = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
-                                ZakatToDate = Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd MMM yyyy", new CultureInfo("en-US"));
+                                ZakatFromDate = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                ZakatToDate = Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                             /// use same period property for which is used in Basic Information section.
 
                             AknowledgementList = ZakatForm5SummaryDataResult.SadadSet.results;
