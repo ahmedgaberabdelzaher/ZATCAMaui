@@ -104,80 +104,101 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                            IsLoading = true;
                         });
-                           
-                        if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
+                        if (_selectedListItem.Open != null)
                         {
-                            //zakat
-
-                            if (_selectedListItem.Fbtyp.Equals("FZ12"))
+                            if (_selectedListItem.Open)
                             {
-                                App.IsZakatLoadingFromMyReturns = true;
-                                Device.BeginInvokeOnMainThread(() =>
+                                if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
                                 {
-                                    _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
-                                });
+                                    //zakat
 
-                            }
-                            else if (_selectedListItem.Fbtyp.Equals("ZKTE"))
-                            {
+                                    if (_selectedListItem.Fbtyp.Equals("FZ12"))
+                                    {
+                                        App.IsZakatLoadingFromMyReturns = true;
+                                        Device.BeginInvokeOnMainThread(() =>
+                                        {
+                                            _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
+                                        });
 
-                                App.IsZakatLoadingFromMyReturns = true;
-                                Device.BeginInvokeOnMainThread(() =>
+                                    }
+                                    else if (_selectedListItem.Fbtyp.Equals("ZKTE"))
+                                    {
+
+                                        App.IsZakatLoadingFromMyReturns = true;
+                                        Device.BeginInvokeOnMainThread(() =>
+                                        {
+                                            _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
+                                        });
+
+
+                                    }
+                                    else
+                                    {
+
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await Task.Run(async () =>
+                                            {
+                                                IsLoading = false;
+                                            });
+                                            // await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+                                        });
+                                    }
+                                }
+
+                                if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
                                 {
-                                    _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
-                                });
-                              
+                                    //Vat
+                                    GetVATAllReturnsAsync(_selectedListItem);
+                                }
+                                if (_selectedListItem.TaxType.Equals("ETAX"))
+                                {
+                                    //ET
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await Task.Run(async () =>
+                                        {
+                                            IsLoading = false;
+                                        });
+                                        //await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+                                    });
 
+                                }
+                                if (_selectedListItem.TaxType.Equals("WHTX"))
+                                {
+                                    //WT
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await Task.Run(async () =>
+                                        {
+                                            IsLoading = false;
+                                        });
+                                        //    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+                                    });
+
+                                }
                             }
                             else
                             {
-
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await Task.Run(async () =>
                                     {
                                         IsLoading = false;
                                     });
-                                   // await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+                                    string messageTodisplay = string.Empty;
+                                    messageTodisplay = _selectedListItem.Msg;
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
                                 });
+                              
                             }
-                        }
-
-                        if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
-                        {
-                            //Vat
-                            GetVATAllReturnsAsync(_selectedListItem);
-                        }
-                        if (_selectedListItem.TaxType.Equals("ETAX"))
-                        {
-                            //ET
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await Task.Run(async () =>
-                                {
-                                    IsLoading = false;
-                                });
-                                //await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
-                            });
 
                         }
-                        if (_selectedListItem.TaxType.Equals("WHTX"))
-                        {
-                            //WT
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await Task.Run(async () =>
-                                {
-                                    IsLoading = false;
-                                });
-                            //    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
-                            });
 
-                        }
-                    
+
                     });
                   
                 }
