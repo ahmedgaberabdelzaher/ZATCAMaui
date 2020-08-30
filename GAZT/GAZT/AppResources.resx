@@ -6620,32 +6620,4 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
     <value>Muhayil Asir Office</value>
     </data>
     
-   
-    
-    <!--
-     <data name="ESTIndividual" xml:space="preserve">
-    <value>Individual</value>
-  </data>
-    <data name="ESTTradeBusiness" xml:space="preserve">
-    <value>Trade/Business</value>
-  </data>
-   <data name="ESTGCC" xml:space="preserve">
-    <value>GCC</value>
-  </data>
-     <data name="ESTIdType" xml:space="preserve">
-    <value>ID Type</value>
-  </data>
-    <data name="ESTGccID" xml:space="preserve">
-    <value>GCC ID</value>
-  </data>
-    <data name="ESTGccID" xml:space="preserve">
-    <value>GCC ID</value>
-  </data>
-    <data name="ESTIdNumber" xml:space="preserve">
-    <value>ID Number</value>
-  </data>
-    <data name="ESTGccID" xml:space="preserve">
-    <value>GCC ID</value>
-  </data>-->
-     
 </root>
