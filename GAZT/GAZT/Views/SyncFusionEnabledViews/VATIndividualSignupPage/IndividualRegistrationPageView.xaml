@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:EGAZT"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -1297,27 +1298,9 @@
                                         <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
                                     </Label.GestureRecognizers>
                                 </Label>
-                                <!--<Image x:Name="Image_backArrow" HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding BackArrowVisible}" >-->
-                                <!--Rotation="270"-->
-                                <!--
-                                <Image.Source>
-                                    <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
-                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                </Image.Source>
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
-                                </Image.GestureRecognizers>
-                            </Image>-->
+                               
                                 <Image Grid.Row="0" Grid.Column="1" Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
-                                <!--<Image HorizontalOptions="End" VerticalOptions="Start">
-                                <Image.Source>
-                                    <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
-                                     Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                                </Image.Source>
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
-                                </Image.GestureRecognizers>
-                            </Image>-->
+                               
                                 <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
@@ -1325,14 +1308,14 @@
                                 </Label>
 
                             </Grid>
-
-                            <StackLayout Orientation="Horizontal" Padding="10,0,0,10" Margin="10,0,10,0">
+                        <commonView:PageIndicatorView Padding="10,0,0,0" Margin="10,0,10,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12"/>
+                        <!--<StackLayout Orientation="Horizontal" Padding="10,0,0,10" Margin="10,0,10,0">
                                 <BoxView x:Name="BoxOne" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorOne}"/>
                                 <BoxView x:Name="BoxTwo" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorTwo}"/>
                                 <BoxView x:Name="BoxThree" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorThree}"/>
                                 <BoxView x:Name="BoxFour" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorFour}"/>
                                 <BoxView x:Name="BoxFive" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorFive}"/>
-                            </StackLayout>
+                            </StackLayout>-->
                         </StackLayout>
                         <!-- Dot Images End-->
                     </Grid>
