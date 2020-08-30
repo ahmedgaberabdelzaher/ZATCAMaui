@@ -5798,8 +5798,7 @@
     <value>In Draft</value>
   </data>
   <data name="CRInstructions" xml:space="preserve">
-    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
-      2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
+    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.&#10;2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
   </data>
   <data name="CRInstrCheckDesc" xml:space="preserve">
     <value>I Agree</value>
@@ -6140,7 +6139,31 @@
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
     <value>Revoke ZAKAT Instalment Plan</value>
   </data>
+<<<<<<< HEAD
   <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
     <value>البريد الالكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
   </data>
+=======
+   <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
+  <value>Estimated Profit percentage based on contract type</value>
+</data>
+<data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
+  <value>Multiply released amount with Estimated profit for contract</value>
+</data>
+<data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for contract with Saudi share %</value>
+</data>
+<data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
+</data>
+<data name="CRTheValueofZakatduesDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
+</data>
+<data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for TAX with 20 %</value>
+</data>
+<data name="CRTotalDuesDesc" xml:space="preserve">
+  <value>Value of zakat due + value of TAX due</value>
+ </data>
+>>>>>>> 7d9acdb... Bug Fixes on Contract Release
 </root>
