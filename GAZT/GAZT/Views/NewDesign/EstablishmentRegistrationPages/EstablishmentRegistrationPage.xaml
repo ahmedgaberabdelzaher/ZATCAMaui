@@ -872,7 +872,7 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTAttachmentPassportDetails}" HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}" />
                                     <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="5" Margin="0,5,0,0"
-                                                 BindableLayout.ItemsSource="{Binding UploadedRentDocumentsList,Mode=TwoWay}">
+                                                 BindableLayout.ItemsSource="{Binding UploadedPassportDocumentsList,Mode=TwoWay}">
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
                                                <border:SfBorder BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}" BorderColor="{StaticResource NeutralGreay}"
@@ -889,7 +889,6 @@
                                                                             HorizontalTextAlignment="Start" />
                                                         <Image Grid.Column="2" Source="closeGrey.png"  HorizontalOptions="Center" VerticalOptions="Center">
                                                             <Image.GestureRecognizers>
-                                                                <!--<ClickGestureRecognizer Clicked="removeRentAttachmentClicked"/>-->
                                                                 <TapGestureRecognizer Tapped="TapPassportDeleteGestureRecognizer_Tapped"/>
                                                             </Image.GestureRecognizers>
                                                         </Image>
@@ -898,23 +897,6 @@
                                             </DataTemplate>
                                         </BindableLayout.ItemTemplate>
                                     </StackLayout>
-
-
-
-                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                        <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                            <Image Grid.Row="0" Grid.Column="1" Source="newui_ic_pdf" Margin="5,0" WidthRequest="15" HeightRequest="15"
-                                               HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                            <Label Text="{Binding SelectedPassportFileName}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                                <Image Grid.Row="0" Grid.Column="1" Source="closegrey" Margin="5,0" WidthRequest="15" HeightRequest="15"
-                                               HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                            </StackLayout>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OnPassportCloseTapped}" ></TapGestureRecognizer>
-                                            </StackLayout.GestureRecognizers>
-                                        </StackLayout>
-                                    </border:SfBorder >
                                 </StackLayout>
                             </StackLayout>
                         </Grid>

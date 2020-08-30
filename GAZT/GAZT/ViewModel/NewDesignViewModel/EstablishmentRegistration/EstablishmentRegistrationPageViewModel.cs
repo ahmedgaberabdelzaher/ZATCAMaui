@@ -1531,39 +1531,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             if (selectedOrgNonResidentActivityValue == AppResources.ESTOrgNonResidentActivityValueOne)
             {
-                SelectedOrgNonResidentActivity = "01";
+                SelectedOrgNonResidentActivity = "O1";
             }
             else if (selectedOrgNonResidentActivityValue == AppResources.ESTOrgNonResidentActivityValueTwo)
             {
-                SelectedOrgNonResidentActivity = "02";
+                SelectedOrgNonResidentActivity = "O2";
             }
             else if (selectedOrgNonResidentActivityValue == AppResources.ESTOrgNonResidentActivityValueThree)
             {
-                SelectedOrgNonResidentActivity = "03";
+                SelectedOrgNonResidentActivity = "O3";
             }
             else if (selectedOrgNonResidentActivityValue == AppResources.ESTOrgNonResidentActivityValueFour)
             {
-                SelectedOrgNonResidentActivity = "04";
+                SelectedOrgNonResidentActivity = "O4";
             }
             else if (selectedOrgNonResidentActivityValue == AppResources.ESTOrgNonResidentActivityValueFive)
             {
-                SelectedOrgNonResidentActivity = "05";
+                SelectedOrgNonResidentActivity = "O5";
             }
             else if (selectedOrgNonResidentActivityValue == AppResources.ESTOrgNonResidentActivityValueSix)
             {
-                SelectedOrgNonResidentActivity = "06";
+                SelectedOrgNonResidentActivity = "O6";
             }
             else if (selectedOrgNonResidentActivityValue == AppResources.ESTOrgNonResidentActivityValueSeven)
             {
-                SelectedOrgNonResidentActivity = "07";
+                SelectedOrgNonResidentActivity = "O7";
             }
             else if (selectedOrgNonResidentActivityValue == AppResources.ESTOrgNonResidentActivityValueEight)
             {
-                SelectedOrgNonResidentActivity = "08";
+                SelectedOrgNonResidentActivity = "O8";
             }
             else if (selectedOrgNonResidentActivityValue == AppResources.ESTOrgNonResidentActivityValueNine)
             {
-                SelectedOrgNonResidentActivity = "09";
+                SelectedOrgNonResidentActivity = "O9";
             }
         }
 
@@ -1829,6 +1829,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (taxPayerDetails.Orgnonresident == "2")
                 {
                     OrgNonResidentSelection(OrgNonResidentEstablishmentRegistrationEnum.OtherTaxIncomeFromSourceWithInTheSKA);
+                    SelectedOrgNonResidentActivityItem = "";
                     if (taxPayerDetails.Orgnonresidentactivity== "O1")
                     {
                         SelectedOrgNonResidentActivityItem = AppResources.ESTOrgNonResidentActivityValueOne;
