@@ -88,12 +88,20 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
     private void OnGotoReportPageClicked(object sender, EventArgs e)
     {
-            if (Navigation.NavigationStack.Count > 0)
+            try
             {
-                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(pg);
+                if (Navigation.NavigationStack.Count > 0)
+                {
+                    Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                    Navigation.RemovePage(pg);
+                }
+                viewModel._navigationService.GoBack();
             }
-            viewModel._navigationService.GoBack();
+            catch(Exception ex)
+            {
+
+            }
+           
         }
 
     
