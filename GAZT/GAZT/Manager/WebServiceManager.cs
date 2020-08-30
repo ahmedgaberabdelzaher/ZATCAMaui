@@ -9466,9 +9466,9 @@ namespace GAZT.Manager
             }
             return validate;
         }
-        public static async Task<List<Nreg_OutletItem>> ESTOutletList(string email, string gpart, string fbnum)
+        public static async Task<List<OutletItem>> ESTOutletList(string email, string gpart, string fbnum)
         {
-            List<Nreg_OutletItem> outlets = new List<Nreg_OutletItem>();
+            List<OutletItem> outlets = new List<OutletItem>();
             if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
@@ -9509,7 +9509,7 @@ namespace GAZT.Manager
                         {
                             ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
                             ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
-                            outlets = JsonConvert.DeserializeObject<List<Nreg_OutletItem>>(ESTBranchesDropDownResponseJSON);
+                            outlets = JsonConvert.DeserializeObject<List<OutletItem>>(ESTBranchesDropDownResponseJSON);
                         }
                     }
                 }
@@ -9606,7 +9606,7 @@ namespace GAZT.Manager
             }
             return address;
         }
-        public static async Task<FinancialDetail> ESTFinancialMaxDate()
+        public static async Task<FinancialDetail> ESTFinancialMaxDate(FinancialDetailRequest financialDetailRequest)
         {
             FinancialDetail financial = null;
             if (CrossConnectivity.Current.IsConnected)
@@ -9625,7 +9625,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var uri = new Uri(string.Format(Constants.ESTFinancialMaxDate));
-                    var financeData = JsonConvert.SerializeObject(new FinancialDetailRequest(), new JsonSerializerSettings {
+                    var financeData = JsonConvert.SerializeObject(financialDetailRequest, new JsonSerializerSettings {
                         DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
                         DateTimeZoneHandling = DateTimeZoneHandling.Utc
                     });
