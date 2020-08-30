@@ -55,7 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Property
 
         // New Property starts
-        private string _iDNumber = String.Empty;
+        private string _iDNumber;
         public string IDNumber
         {
             get
@@ -473,7 +473,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _setIDNumberEnability = true;
+        private bool _setIDNumberEnability = false;
         public bool SetIDNumberEnability
         {
             get
@@ -1339,7 +1339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
 
-            SetIDNumberEnability = true;
+           // SetIDNumberEnability = true;
 
 
             //BackButtonClicked = new Xamarin.Forms.Command(() =>
@@ -1411,7 +1411,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                                _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                                _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                             }
                         }
 
@@ -1441,7 +1441,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                                 else
                                 {
-                                    _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
+                                    _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+                                    
                                 }
                             }
 
@@ -1478,7 +1479,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+                            _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
 
                         }
                     }
@@ -1492,7 +1493,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Information);
+                        _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                     }
 
 
@@ -1838,6 +1839,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
+
+                                SetIDNumberEnability = true;
+                                IDNumber = String.Empty;
+                                UserIDLayoutVisibility = true;
                             });
                         }
                     }
@@ -1856,7 +1861,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 await Task.Run(() =>
                 {
                     IsLoading = false;
-                });
+
+                    SetIDNumberEnability = true;
+                    IDNumber = String.Empty;
+                    UserIDLayoutVisibility = true;
+                });               
             }
         }
         private async Task ValidateOTP()
@@ -2074,7 +2083,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
                         });
-
                     }
                 });
                 await Task.Run(async () =>

@@ -6413,7 +6413,6 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
     <value>Revoke ZAKAT Instalment Plan</value>
   </data>
-  </data>
   <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
     <value>The new email must not match the old email</value>
   </data>
