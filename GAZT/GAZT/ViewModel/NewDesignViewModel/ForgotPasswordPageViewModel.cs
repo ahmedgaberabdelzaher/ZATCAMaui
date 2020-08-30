@@ -2496,7 +2496,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             IsAPICalledSuccessfully = false;
             SetIDNumberEnability = false;
-            PasswordCardBackgroundImg = "FP_selected_tile";
+            PasswordCardBackgroundImg = "FP_unselected_tile";
             PasswordIcon = "password_key";
             UserNameCardBackgroundImg = "FP_unselected_tile";
             UserIcon = "vat_user";
