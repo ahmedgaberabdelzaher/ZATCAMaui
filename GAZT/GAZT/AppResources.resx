@@ -5744,9 +5744,8 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="CRInstructionsandConditions" xml:space="preserve">
     <value>Instructions &amp; Conditions</value>
   </data>
-  <data name="CRInstructions" xml:space="preserve">
-    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.
-  2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
+    <data name="CRInstructions" xml:space="preserve">
+    <value>1. Must attached a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certified translation Office.&#10;2. Must attached a copy of invoices and purchase orders required the release of their amount values.</value>
   </data>
   <data name="CRInstructionsDesc" xml:space="preserve">
     <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
@@ -6416,4 +6415,25 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
     <value>The new email must not match the old email</value>
   </data>
+  <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
+  <value>Estimated Profit percentage based on contract type</value>
+</data>
+<data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
+  <value>Multiply released amount with Estimated profit for contract</value>
+</data>
+<data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for contract with Saudi share %</value>
+</data>
+<data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
+</data>
+<data name="CRTheValueofZakatduesDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
+</data>
+<data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+  <value>Multiply Estimated profit for TAX with 20 %</value>
+</data>
+<data name="CRTotalDuesDesc" xml:space="preserve">
+  <value>Value of zakat due + value of TAX due</value>
+  </data>      
 </root>

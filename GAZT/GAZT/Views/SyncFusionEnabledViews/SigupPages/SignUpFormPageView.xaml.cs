@@ -390,25 +390,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             {
                 FrmMobileNumber.HasError = false;
             }
-            //if (string.IsNullOrEmpty(viewModel.EnteredCaptchaValue))
-            //{
-            //    FrmEnteredCaptcha.HasError = true;
-            //    IsNextValid = false;
-            //}
-            //else
-            //{
-            //    FrmEnteredCaptcha.HasError = false;
-            //    bool IsCapValid = viewModel.ValidateCaptcha();
-            //    if (IsCapValid == false)
-            //    {
-            //        FrmEnteredCaptcha.HasError = true;
-            //        IsNextValid = false;
-            //    }
-            //    else
-            //    {
-            //        FrmEnteredCaptcha.HasError = false;
-            //    }
-            //}
+    
             if (IsNextValid == false)
             {
                 viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
@@ -419,9 +401,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 {
                     try
                     {
-                        DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty, string.Empty);
-                        if (ResultDuplicate.d.Flag == "")
-                        {
+                       // DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty, string.Empty);
+                        //if (ResultDuplicate.d.Flag == "")
+                        //{
                             if (viewModel.IsCRChecked == true)
                             {
                                 try
@@ -853,11 +835,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 });
                                 }
                             }
-                        }
-                        else
-                        {
-                            viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                        }
+                        //}
+                        //else
+                        //{
+                        //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                        //}
                     }
                     catch (GAZTException gex)
                     {
@@ -922,9 +904,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 }
                 if (viewModel.SelectedSignUpUsing.ID == 2)
                 {
-                    DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty, string.Empty);
-                    if (ResultDuplicate.d.Flag == "")
-                    {
+                   // DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty, string.Empty);
+                    //if (ResultDuplicate.d.Flag == "")
+                    //{
                         if (viewModel.IsCRChecked == true)
                         {
                             try
@@ -1347,17 +1329,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             });
                             }
                         }
-                    }
-                    else
-                    {
-                        viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                    //}
                 }
                 if (viewModel.SelectedSignUpUsing.ID == 3)
                 {
                     try
                     {
-                        DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty, string.Empty);
+                        //DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty, string.Empty);
                         if (viewModel.IsCRChecked == true)
                         {
                             try
