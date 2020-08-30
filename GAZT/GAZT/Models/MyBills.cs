@@ -52,7 +52,73 @@ namespace EGAZT.Models
                 _TestDueAmount = value;
             }
         }
-        public string Period { get; set; }
+        private string _Period;
+        public string Period
+        {
+            get
+            {
+                return _Period;
+            }
+            set
+            {
+                _Period = value;
+                if (!string.IsNullOrEmpty(_Period))
+                {
+
+
+                    string[] partsofperid = _Period.Split('-');
+                    {
+                        PeriodPart1 = partsofperid[0];
+                        PeriodPart2 = partsofperid[1];
+                        if (CalTyp != null)
+                        {
+                            
+                                if(PeriodPart1!=null)
+                                { 
+                                    string year = PeriodPart1.Substring(0, 4);
+                                    string month = PeriodPart1.Substring(4, 2);
+                                    string day = PeriodPart1.Substring(6, 2);
+                                if (CalTyp.Equals("G"))
+                                {
+                                    PeriodPart1 = UtilityManager.FormatAccordingToDeviceForVAT(day + "/" + month + "/" + year);
+                                }
+                                else
+                                {
+                                    PeriodPart1 = UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
+                                }
+
+                                }
+                            if (PeriodPart2 != null)
+                            {
+                                string year = PeriodPart2.Substring(0, 4);
+                                string month = PeriodPart2.Substring(4, 2);
+                                string day = PeriodPart2.Substring(6, 2);
+                                if (CalTyp.Equals("G"))
+                                {
+                                    PeriodPart2 = UtilityManager.FormatAccordingToDeviceForVAT(day + "/" + month + "/" + year);
+                                }
+                                else
+                                {
+                                    PeriodPart2 = UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
+                                }
+
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        }
+
+
+        private string _PeriodPart1;
+        public string PeriodPart1 { get; set; }
+        
+        
+        
+        private string _PeriodPart2;
+        public string PeriodPart2 { get; set; }
         public string Txt30 { get; set; }
         public string _Faednar;
         public string Faednar
@@ -68,7 +134,17 @@ namespace EGAZT.Models
                     {
                         if (!CalTyp.Equals("G"))
                         {
-                            FormatedFaedn = UtilityManager.FormatAccordingToDeviceHijriEnglish(_Faednar);
+                            if (App.IsArabic)
+                            {
+                                string[] dts = _Faednar.Split('/');
+                                FormatedFaedn = UtilityManager.FormatAccordingToDeviceHijriEnglish(dts[2] + "-" + dts[1] + "-" + dts[0]);
+                            }
+                            else
+                            {
+                                FormatedFaedn = UtilityManager.FormatAccordingToDeviceHijriEnglish(_Faednar);
+                            }
+                            
+                          
                         }
                       
                     }
