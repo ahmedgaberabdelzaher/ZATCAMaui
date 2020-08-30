@@ -8,6 +8,19 @@ namespace EGAZT.Models
     {
         public string Abtypt { get; set; } //TaxType
         public string VTRE2 { get; set; } //SadadPaymentNumber
+        public string _cal_typ = String.Empty;
+        public string CalTyp
+        {
+            get
+            {
+
+                return _cal_typ;
+            }
+            set
+            {
+                _cal_typ = value;
+            }
+        }
         private string _BETRW = string.Empty;
         public string BETRW { 
             get
@@ -41,9 +54,30 @@ namespace EGAZT.Models
         }
         public string Period { get; set; }
         public string Txt30 { get; set; }
-        public string Faednar { get; set; } //DueDate
-       // public string Faedn { get; set; } //DueDate
-        
+        public string _Faednar;
+        public string Faednar
+        {
+            get { return _Faednar; }
+
+            set
+            {
+                _Faednar = value;
+                if (_Faednar != null)
+                {
+                    if (CalTyp != null)
+                    {
+                        if (!CalTyp.Equals("G"))
+                        {
+                            FormatedFaedn = UtilityManager.FormatAccordingToDeviceHijriEnglish(_Faednar);
+                        }
+                      
+                    }
+                   
+                }
+            } 
+        } //DueDate
+                                            // public string Faedn { get; set; } //DueDate
+        public string FormattedFaednar { get; set; } //DueDate
         public string StatusImage { get; set; }
         public string Colorcode { get; set; }
        // FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
@@ -60,7 +94,11 @@ namespace EGAZT.Models
                 _faedn = value;
                 if (_faedn != null)
                 {
-                    FormatedFaedn = _faedn.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    if (CalTyp.Equals("G"))
+                    {
+                        FormatedFaedn = _faedn.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    }
+                    
                 }
             }
         }
@@ -95,18 +133,18 @@ namespace EGAZT.Models
             }
         }
 
-        public string _cal_typ = String.Empty;
-        public string CalTyp
-        {
-            get
-            {
+        //public string _cal_typ = String.Empty;
+        //public string CalTyp
+        //{
+        //    get
+        //    {
                 
-                return _cal_typ;
-            }
-            set
-            {
-                _cal_typ = value;
-            }
-        }
+        //        return _cal_typ;
+        //    }
+        //    set
+        //    {
+        //        _cal_typ = value;
+        //    }
+        //}
     }
 }

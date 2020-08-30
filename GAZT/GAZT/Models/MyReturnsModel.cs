@@ -31,7 +31,42 @@ namespace GAZT.Models
         public string FbtText { get; set; }
         public string Fbsta { get; set; }
         public string Fbust { get; set; }
-        public string CalendarTyp { get; set; }
+        private string _CalendarTyp;
+        public string CalendarTyp 
+        {
+            get
+            {
+                return _CalendarTyp;
+            }
+            set
+            {
+                _CalendarTyp = value;
+                if (_CalendarTyp != null)
+                {
+                    if (!_CalendarTyp.Equals("G"))
+                    {
+
+                        if (AbrzuC!=null)
+                        {
+
+                            string[] dts = AbrzuC.Split('/');
+                            string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
+                            FormatedAbrzu = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                        }
+                        if (AbrzoC!=null)
+                        {
+                            string[] dts = AbrzoC.Split('/');
+
+                            string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
+                            FormatedAbrzo = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                        }
+                    }
+                }
+              
+            }
+            } 
+        public string Msg { get; set; } 
+        public bool Open { get; set; }
         public string Due 
         {get;set;}
 
@@ -96,7 +131,41 @@ namespace GAZT.Models
                 _abrzu = value;
                 if (_abrzu != null)
                 {
-                    FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    if (CalendarTyp != null)
+                    {
+                        if (CalendarTyp.Equals("G"))
+                        {
+
+                            FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        }
+
+                    }  
+                }
+            }
+        }
+        private string _AbrzuC;
+        public string AbrzuC
+        {
+            get
+            {
+                return _AbrzuC;
+            }
+            set
+            {
+                _AbrzuC = value;
+                if (_AbrzuC != null)
+                {
+                    if (CalendarTyp != null)
+                    {
+                        if (!CalendarTyp.Equals("G"))
+                        {
+                            //string[] dts = null;
+
+                            string[] dts = _AbrzuC.Split('/');
+                            string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
+                            FormatedAbrzu = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                        }
+                    }
                 }
             }
         }
@@ -112,10 +181,46 @@ namespace GAZT.Models
                 _abrzo = value;
                 if (_abrzo != null)
                 {
-                    FormatedAbrzo = _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    if (CalendarTyp != null)
+                    {
+                        if (CalendarTyp.Equals("G"))
+                        {
+
+                            FormatedAbrzo = _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        }
+                        
+                    }
+                    
                 }
             }
         }
+        private string _AbrzoC;
+        public string AbrzoC
+        {
+            get
+            {
+                return _AbrzoC;
+            }
+            set
+            {
+                _AbrzoC = value;
+                if (_AbrzoC != null)
+                {
+                    if (CalendarTyp != null)
+                    {
+                        if (!CalendarTyp.Equals("G"))
+                        {
+                            //dts = null;
+
+                            string[] dts = _AbrzoC.Split('/');
+                            string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
+                            FormatedAbrzo = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                        }
+                    }
+                }
+                }
+        }
+
         public string SadadDoc1 { get; set; }
         public string SadadDoc2 { get; set; }
         private DateTime _dueDt;
@@ -130,13 +235,48 @@ namespace GAZT.Models
                 _dueDt = value;
                 if (_dueDt != null)
                 {
-                    FormatedSingleDueDate = _dueDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    if (CalendarTyp != null)
+                    {
+                        if (CalendarTyp.Equals("G"))
+                        {
+                            FormatedSingleDueDate = _dueDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        }
+                    }
+                    
+                    
                 }
             }
         }
         public string Stat { get; set; }
         public string RetStatTxt { get; set; }
-        public string DueDtC { get; set; }
+        private string _dueDTC;
+        public string DueDtC 
+        {
+            get 
+            {
+                return _dueDTC;
+            }
+            set 
+            {
+                _dueDTC = value;
+                if (_dueDTC != null)
+                {
+                    if (CalendarTyp != null)
+                    {
+                        if (!CalendarTyp.Equals("G"))
+                        {
+                            string[] dts = null;
+                           
+                                dts = _dueDTC.Split('/');
+                            string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
+                                FormatedSingleDueDate = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                        }
+                    }
+                    
+                }
+                
+            } 
+        }
    
         public string Sortperiod { get; set; }
         public string TaxType { get; set; }
