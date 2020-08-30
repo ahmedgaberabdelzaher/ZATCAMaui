@@ -225,7 +225,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SetVisibility();
                     viewModel.IsTaxPayersVisible = true;
                     SetsecondBoxColor();
-                   
+
 
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep2)
@@ -233,13 +233,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                  //SetthirdBoxColor();
                     step2Validation();
                     setAttachmentImporterExporterVisibility();
+                    
+
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep3)
                 {
                     step3Validation();
+                    //if (viewModel.CurrentIndex == 2)
+                    //    viewModel.CurrentIndex++;
+
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep4)
                 {
+                    
+
                     if (viewModel.RegTypeCode == "N")
                     {
                         if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.results.Count > 0)
@@ -251,6 +258,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.IsFinancialVisible = true;
                             //SetfifthBoxColor();
                             SetfourthBoxColor();
+                            if (viewModel.CurrentIndex == 3)
+                                viewModel.CurrentIndex++;
                         }
                         else
                         {
@@ -270,6 +279,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep5)
                 {
+
                     //viewModel.IsDeclarationChecked = false;
                     //viewModel.CurrentStep = "Submit";
                     viewModel.CurrentStep =AppResources.ZTEReportCategorySubmitBtn;
@@ -278,6 +288,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsSummaryVisible = true;
                     //SetfifthBoxColor();
                     SetfifthBoxColor();
+                    if (viewModel.CurrentIndex == 4)
+                        viewModel.CurrentIndex++;
                 }
                 else if (viewModel.CurrentStep == AppResources.ZTEReportCategorySubmitBtn)
                 {
@@ -424,7 +436,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
                 SetsecondBoxColor();
-               
+                if (viewModel.CurrentIndex == 1)
+                    viewModel.CurrentIndex++;
                 setdefaultvalueforTPDetailscreen();
                 if (string.IsNullOrEmpty(viewModel.VatEligibleStartDate))
                 {
@@ -486,6 +499,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsSalesVisible = true;
                     //SetfourthBoxColor();
                     SetthirdBoxColor();
+                    if (viewModel.CurrentIndex == 2)
+                        viewModel.CurrentIndex++;
                     viewModel.IsFDNameMobEmailEnable = false;
 
                     viewModel.Attachments = AppResources.Attachments;
@@ -1328,44 +1343,44 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         #region SetColor
         public void SetfirstBoxColor()
         {
-            BoxOne.BackgroundColor = Color.DarkGreen;
-            BoxTwo.BackgroundColor = Color.LightGray;
-            BoxThree.BackgroundColor = Color.LightGray;
-            BoxFour.BackgroundColor = Color.LightGray;
-            BoxFive.BackgroundColor = Color.LightGray;
+            //BoxOne.BackgroundColor = Color.DarkGreen;
+            //BoxTwo.BackgroundColor = Color.LightGray;
+            //BoxThree.BackgroundColor = Color.LightGray;
+            //BoxFour.BackgroundColor = Color.LightGray;
+            //BoxFive.BackgroundColor = Color.LightGray;
 
         }
         public void SetsecondBoxColor()
         {
-            BoxOne.BackgroundColor = Color.LightGray;
-            BoxTwo.BackgroundColor = Color.DarkGreen;
-            BoxThree.BackgroundColor = Color.LightGray;
-            BoxFour.BackgroundColor = Color.LightGray;
-            BoxFive.BackgroundColor = Color.LightGray;
+            //BoxOne.BackgroundColor = Color.LightGray;
+            //BoxTwo.BackgroundColor = Color.DarkGreen;
+            //BoxThree.BackgroundColor = Color.LightGray;
+            //BoxFour.BackgroundColor = Color.LightGray;
+            //BoxFive.BackgroundColor = Color.LightGray;
         }
         public void SetthirdBoxColor()
         {
-            BoxOne.BackgroundColor = Color.LightGray;
-            BoxTwo.BackgroundColor = Color.LightGray;
-            BoxThree.BackgroundColor = Color.DarkGreen;
-            BoxFour.BackgroundColor = Color.LightGray;
-            BoxFive.BackgroundColor = Color.LightGray;
+            //BoxOne.BackgroundColor = Color.LightGray;
+            //BoxTwo.BackgroundColor = Color.LightGray;
+            //BoxThree.BackgroundColor = Color.DarkGreen;
+            //BoxFour.BackgroundColor = Color.LightGray;
+            //BoxFive.BackgroundColor = Color.LightGray;
         }
         public void SetfourthBoxColor()
         {
-            BoxOne.BackgroundColor = Color.LightGray;
-            BoxTwo.BackgroundColor = Color.LightGray;
-            BoxThree.BackgroundColor = Color.LightGray;
-            BoxFour.BackgroundColor = Color.DarkGreen;
-            BoxFive.BackgroundColor = Color.LightGray;
+            //BoxOne.BackgroundColor = Color.LightGray;
+            //BoxTwo.BackgroundColor = Color.LightGray;
+            //BoxThree.BackgroundColor = Color.LightGray;
+            //BoxFour.BackgroundColor = Color.DarkGreen;
+            //BoxFive.BackgroundColor = Color.LightGray;
         }
         public void SetfifthBoxColor()
         {
-            BoxOne.BackgroundColor = Color.LightGray;
-            BoxTwo.BackgroundColor = Color.LightGray;
-            BoxThree.BackgroundColor = Color.LightGray;
-            BoxFour.BackgroundColor = Color.LightGray;
-            BoxFive.BackgroundColor = Color.DarkGreen;
+            //BoxOne.BackgroundColor = Color.LightGray;
+            //BoxTwo.BackgroundColor = Color.LightGray;
+            //BoxThree.BackgroundColor = Color.LightGray;
+            //BoxFour.BackgroundColor = Color.LightGray;
+            //BoxFive.BackgroundColor = Color.DarkGreen;
         }
 
         #endregion
@@ -1376,6 +1391,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
+                viewModel.CurrentIndex = 1;
                 viewModel.CurrentStep = AppResources.VATRStep2;
                 SetfirstBoxColor();
                 if (viewModel.IsInstrunctionChecked)
@@ -1387,6 +1403,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
+                viewModel.CurrentIndex = 2;
                 viewModel.CurrentStep = AppResources.VATRStep3;
                 SetsecondBoxColor();
                 setAttachmentImporterExporterVisibility();
@@ -1395,6 +1412,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.SetVisibility();
                 viewModel.IsSalesVisible = true;
+                viewModel.CurrentIndex = 3;
                 viewModel.CurrentStep = AppResources.VATRStep4;
                 SetthirdBoxColor();
             }
@@ -1402,6 +1420,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.SetVisibility();
                 viewModel.IsFinancialVisible = true;
+                viewModel.CurrentIndex = 4;
                 viewModel.CurrentStep = AppResources.VATRStep5;
                 SetfourthBoxColor();
             }
