@@ -37,22 +37,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             SetLTR();
 
-            //MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
-            //    viewModel.PickerModel = arg;
-            //    Console.WriteLine(arg);
-            //    OnAppearing();
-            //});
-
-            //MessagingCenter.Subscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) => {
-            //    viewModel.DatePickerModel = arg;
-            //    Console.WriteLine(arg);
-            //    OnAppearing();
-            //});
-            //MessagingCenter.Subscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem", (sender, arg) => {
-            //    viewModel.IsInstructionChecked = arg;
-            //    //Console.WriteLine(arg);
-            //    OnAppearing();
-            //});
+       
             MessagingCenterCallBacks();
           
             Task.Run(async () =>
@@ -845,7 +830,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             genericDatePickerModel.PickerId = "StartDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel,true));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -870,7 +855,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             genericDatePickerModel.PickerId = "EndDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel,true));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1510,8 +1495,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                 }
             }
+            viewModel.clearData();
         }
 
+     
         void Others_Entry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
             //OthersTxt.HelperText
