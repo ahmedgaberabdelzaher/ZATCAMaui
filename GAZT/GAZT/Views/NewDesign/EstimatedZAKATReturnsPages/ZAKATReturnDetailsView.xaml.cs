@@ -32,14 +32,15 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
             SetLTR();
 
-            viewModel.OnPageLoad(fbguid);
 
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
-
+            base.OnAppearing();
             //date.Text = viewModel.Abrzu;
+           await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
+
             getYesCommandToReleaseTheReturn();
             getYesCommandToAmendTheReturn();
 

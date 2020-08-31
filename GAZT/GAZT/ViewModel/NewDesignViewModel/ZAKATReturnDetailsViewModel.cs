@@ -998,6 +998,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, PostOperation);
                 if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
+                    SetConfirmButtonVisibility = false;
+                    DesClaimerVisibility = false;
                     if (PostOperation.Equals(ConfirmPostOperationWithoutObjection))
                     {
                         Device.BeginInvokeOnMainThread(async () =>
