@@ -792,8 +792,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         };
         private Dictionary<string, string> EnCalendarTypeList = new Dictionary<string, string>()
         {
-            {"2", "hijri" },
-            {"1", "Gregorian" }
+            {"2", AppResources.Hijri },
+            {"1", AppResources.Gregorian }
         };
         private List<string> _methodList = new List<string>();
         public List<string> MethodList

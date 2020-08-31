@@ -17670,5 +17670,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
             }
         }
+        
+        public static string Gregorian {
+            get {
+                return ResourceManager.GetString("Gregorian", resourceCulture);
+            }
+        }
+        
+        public static string Hijri {
+            get {
+                return ResourceManager.GetString("Hijri", resourceCulture);
+            }
+        }
     }
 }
