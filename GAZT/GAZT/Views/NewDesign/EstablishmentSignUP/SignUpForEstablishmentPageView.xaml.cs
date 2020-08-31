@@ -43,7 +43,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel = App.Locator.SignUpForEstablishmentPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-
+            viewModel.IsAllValidDataEntered = true;
             viewModel.IsDeclarationCheckedForInstruction = false;
             ChangeAeroIcon();
             SetLTR();
@@ -1746,7 +1746,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void EntryName_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(viewModel.TxtName))
+            if (string.IsNullOrEmpty(viewModel.TxtName))
             {
                 viewModel.IsAllValidDataEntered = false;
                 // FrmName.HasError = false;

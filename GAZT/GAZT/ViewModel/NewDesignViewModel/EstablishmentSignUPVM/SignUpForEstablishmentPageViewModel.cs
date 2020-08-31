@@ -1571,7 +1571,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-        private bool _isAllValidDataEntered = false;
+        private bool _isAllValidDataEntered = true;
         public bool IsAllValidDataEntered
         {
             get
@@ -1651,7 +1651,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information); _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                         }
                     
                     break;
