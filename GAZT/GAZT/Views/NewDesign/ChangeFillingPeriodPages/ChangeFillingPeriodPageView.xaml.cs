@@ -154,10 +154,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             }
         }
 
-        private void SummarybtnContinue_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
-        }
+        //private void SummarybtnContinue_Clicked(object sender, EventArgs e)
+        //{
+        //    Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
+        //}
 
         private void OnIDNumberFocusChanged(object sender, FocusEventArgs focusEventArgs)
         {
