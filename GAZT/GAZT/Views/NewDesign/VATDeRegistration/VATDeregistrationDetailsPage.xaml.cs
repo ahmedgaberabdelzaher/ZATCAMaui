@@ -36,7 +36,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             ChangeAeroIcon();
 
             SetLTR();
-
+            ChangeArrowDirection();
             MessagingCenterCallBacks();
           
             Task.Run(async () =>
@@ -47,6 +47,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
 
             viewModel.VoidIsVisible = false;
+            ContactName.IsEnabled = true;
         }
 
         public void ChangeArrowDirection()
@@ -255,6 +256,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     }
                 }
             }
+            if (viewModel.IDType != null) {
+                        MessagingCenterCallBacks();
+                    }
             viewModel.PopulateSummaryReasonData();
             viewModel.PopulateSummaryDeclarationData();
             viewModel.PopulateAttachmentsListViewTemplate();
@@ -272,9 +276,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
             });
             string dob = viewModel.DOB.Replace("/", "");
-            ContactName.IsEnabled = true;
+           
             if (viewModel.IDType == AppResources.NationaID)
             {
+                ContactName.IsEnabled = false;
+
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
@@ -305,6 +311,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
                              ContactName.IsEnabled = false;
+                            
                             FrmIDNumber.HasError = false;
                           //  viewModel.FrameContactIDError = false;
                         }
@@ -399,7 +406,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
             if (viewModel.IDType == AppResources.ZZIqamaID)
             {
-                  ContactName.IsEnabled = true;
+                ContactName.IsEnabled = false;
+
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
@@ -519,6 +527,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         }
                     }
                 }
+            }
+            else
+            {
+                ContactName.IsEnabled = true;
             }
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -875,7 +887,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-            genericDatePickerModel.DatePickerTitle = "Select DOB";
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregDOBDatePickerTitle;
             genericDatePickerModel.PickerId = "DOBDateTypePicker";
             try
             {

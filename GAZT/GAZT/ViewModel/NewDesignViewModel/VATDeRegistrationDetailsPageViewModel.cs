@@ -1826,6 +1826,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     await _dialogService.ShowMessage(AppResources.ZZPleaseentertheBirthDate, AppResources.Alerts);
 
                 }
+                else
+                {
+                    CurrentStep = ProcessStep.Step4;
+
+                    IsReasonViewEnabled = false;
+                    IsOutletViewEnabled = false;
+                    IsAttachmentsViewEnabled = false;
+                    IsDeclarationViewEnabled = false;
+                    IsSummaryViewEnabled = true;
+                }
             }
             else if(TxtIDNumber == string.Empty)
             {
@@ -1947,7 +1957,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SummaryData = TxtIDNumber,
                     IsEditVisible = true
                 });
-                if (DOB != string.Empty)
+                if (DOB != string.Empty && IDType != AppResources.ZZGCCID)
                 {
                     check.Add(new VATDeregistrationSummaryModel
                     {
@@ -2335,7 +2345,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
 
                 VATDeRegistrationDetailsData.d.TxnTpx = reqType;
-                VATDeRegistrationDetailsData.d.StepNumber = "2";
+                VATDeRegistrationDetailsData.d.Reqtp = requestTyp;
+                VATDeRegistrationDetailsData.d.StepNumber = "03";
+                VATDeRegistrationDetailsData.d.StepNumberx = "03";
                 VATDeRegistrationDetailsData.d.Reason = Reason;
                 VATDeRegistrationDetailsData.d.Agreeflg = true;
                 VATDeRegistrationDetailsData.d.Atype = "2";
