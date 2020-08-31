@@ -214,6 +214,7 @@ namespace GAZT.Helper
         public static string ESTTaxPayerDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_HeaderSet";
         public static string ESTTaxPayerNationality = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NATIOANALITY_SRV/nationalitySet";
         public static string ESTPostAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_SAVE_ATTACH_SRV_01/AttachSet";
+        public static string ESTDeleteAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_SAVE_ATTACH_SRV_01/AttachMedSet";
         public static string ESTOutletNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_GET_OUTLET_NUMBER_SRV/OutNumSet";
         public static string ESTOutletCityStateCountryDropDown = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/dropdown_headerSet";
         public static string ESTActiivtyGroupSubGroupList = BaseUrlOfODataServices + "/sap/opu/odata/sap/Z_REG_ACTIVITY_SRV/act_headerSet";
