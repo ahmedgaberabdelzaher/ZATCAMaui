@@ -10305,11 +10305,11 @@ namespace GAZT.Manager
             }
         }
 
+
         public async static Task<ValidateIDResponse> GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
         {
 
             ValidateIDResponse _validateIDResponse = new ValidateIDResponse();
-
             if (CrossConnectivity.Current.IsConnected)
             {
                 VATSignUp vATSignUp = new VATSignUp();
@@ -10320,18 +10320,15 @@ namespace GAZT.Manager
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
                     String Url = Constants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + idType + "',Idnum='" + idnum + "',Country='',PassExpDt='',TaxpDob='" + taxpDOB + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
                     //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
 
-
                     /*String Url = string.Empty;
                     Url = Constants.VATChangeFillingPeriodValidateIDnumberURL + "Tin='" + tin + "',Idtype='" + idType + "',Idnum='" + idnum + "',Country='" + country + "'" +
                           ",PassExpDt = '" + passExpdt + "', TaxpDob = '" + taxpDOB + "')";*/
-
                     var uri = new Uri(Url);
                     HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
                     if (VATSignUpIdValidateObject != null)
@@ -10358,7 +10355,6 @@ namespace GAZT.Manager
                         }
                         SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
                         _validateIDResponse = JsonConvert.DeserializeObject<ValidateIDResponse>(SignUpCityList);
-
                         if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
@@ -10369,21 +10365,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                PopUp popUp = new PopUp();
-                                popUp.HeaderText = "";
-                                popUp.Message = errorMessage;
-                                popUp.IsLinkAvailable = false;
-                                if (App.IsArabic)
-                                {
-                                    popUp.FlowDirections = "RightToLeft";
-                                    popUp.isFontSet = true;
-                                }
-                                else
-                                {
-                                    popUp.FlowDirections = "LeftToRight";
-                                }
-
-                               // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                _validateIDResponse.errorMessage = errorMessage;
                                 //ErrorMessageForVAT
                                 //throw new GAZTVATChangeFillingPeriodException(errorMessage);
                             }
@@ -10391,7 +10373,6 @@ namespace GAZT.Manager
                     }
                     return _validateIDResponse;// tINStatus;
                 }
-
                 catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
@@ -10412,7 +10393,6 @@ namespace GAZT.Manager
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
-
                 //catch (Exception ex)
                 //{
                 //    return null;
@@ -10423,6 +10403,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
         public static string GAZTVATChangeFillingPeriodAckDownload(string fbnum)
         {
             if (CrossConnectivity.Current.IsConnected)

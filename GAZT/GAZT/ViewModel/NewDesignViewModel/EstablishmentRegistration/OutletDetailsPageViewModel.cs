@@ -34,14 +34,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 switch (value)
                 {
                     case EstablishmentRegistrationOutletTabsEnum.ActivityDetails:
-                        SelectedOutletTabText = "Activity Details";
+                        SelectedOutletTabText = AppResources.ESTActivityDetails;
                         break;
                     case EstablishmentRegistrationOutletTabsEnum.AddressDetails:
-                        SelectedOutletTabText = "Address Details";
+                        SelectedOutletTabText = AppResources.ESTAddressDetails;
                         break;
                     case EstablishmentRegistrationOutletTabsEnum.OutletDetail:
                     default:
-                        SelectedOutletTabText = "Outlet Details";
+                        SelectedOutletTabText = AppResources.TinDeregistrationOutletDetails;
                         break;
                 }
                 if (taxPayerDetails != null)
@@ -68,8 +68,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        public string SelectedTabText { get; private set; } = "Outlets";
-        private string _selectedOutletTabText = "Address Details";
+        public string SelectedTabText { get; private set; } = AppResources.TinDeregistrationRegistrationOutlets;
+        private string _selectedOutletTabText = AppResources.ESTAddressDetails;
         public string SelectedOutletTabText
         {
             get => _selectedOutletTabText;

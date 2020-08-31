@@ -188,7 +188,7 @@
 
                     <StackLayout Grid.Row="3" Margin="10,25,10,0" Orientation="Horizontal" Grid.ColumnSpan="2">
 
-                        <CheckBox Color="{StaticResource NewDarkGreenColor}"
+                        <CheckBox Color="{StaticResource NewDarkGreenColor}" CheckedChanged="OnFrequechCheckChanged"
                                   VerticalOptions="CenterAndExpand" IsChecked="{Binding IsFrequencyDetailsChecked}">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox" Value="false">
@@ -201,7 +201,7 @@
 
                     <Frame Margin="-20,0,-20,0" Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="End" HasShadow="False">
 
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" BackgroundColor="{Binding FrequencyDetailsButtonBackGroundColor}"
                                    Style="{StaticResource PrimaryButtonStyle}" Command="{Binding FrequencyContinueBtnTapped}" />
 
                     </Frame>
@@ -420,7 +420,7 @@
 
                     <Frame Margin="-20,0,-20,0" Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="End" HasShadow="False" HorizontalOptions="FillAndExpand">
 
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" BackgroundColor="{Binding AttachButtonBackGroundColor}"
                                    Style="{StaticResource PrimaryButtonStyle}" Command="{Binding AttachmentsContinueBtnTapped}" HorizontalOptions="FillAndExpand" />
 
                     </Frame>
@@ -493,7 +493,7 @@
 
                         <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                               <custom:GAZTBorderlessEntry TextChanged="IdNumberTextChanged" Unfocused="OnIDNumberFocusChanged" FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
+                               <custom:GAZTBorderlessEntry TextChanged="IdNumberTextChanged" Text="{Binding IDNumber}" Unfocused="OnIDNumberFocusChanged" FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
 
                             </StackLayout>
                         </Frame>
@@ -536,7 +536,7 @@
 
                         <Frame Grid.Row="1" HasShadow="False" HorizontalOptions="FillAndExpand" CornerRadius="12" BorderColor="Gray" Padding="10,3,10,3">
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                                <custom:GAZTBorderlessEntry Text="{Binding ContactPersonName}"
+                                <custom:GAZTBorderlessEntry x:Name="ContactPersonEntry" Unfocused="ContactPersonTextUnFocus" Text="{Binding ContactPersonName}" IsEnabled="{Binding ContractPersonEditable}"
                                                    FontAttributes="Bold" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" />
                             </StackLayout>
                         </Frame>
@@ -545,7 +545,7 @@
 
                     <Frame Margin="-20,0,-20,0" Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="End" HasShadow="False" HorizontalOptions="FillAndExpand">
 
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
                                    Style="{StaticResource PrimaryButtonStyle}" Command="{Binding DeclarationContinueBtnTapped}" HorizontalOptions="FillAndExpand" />
 
                     </Frame>
@@ -869,7 +869,7 @@
                         <StackLayout Grid.Row="6"  Grid.ColumnSpan="2">
 
                             <buttons:SfButton  Margin="0,16,0,16" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
-                                   Style="{StaticResource PrimaryButtonStyle}" Command="{Binding SummaryContinueBtnTapped}" />
+                                   Style="{StaticResource PrimaryButtonStyle}" Clicked="SummarybtnContinue_Clicked" />
 
                         </StackLayout>
 

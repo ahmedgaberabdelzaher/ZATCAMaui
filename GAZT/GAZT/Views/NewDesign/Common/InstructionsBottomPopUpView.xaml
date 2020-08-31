@@ -4,6 +4,7 @@
                  xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  mc:Ignorable="d"
+                 FlowDirection="RightToLeft"  
                  xmlns:FontImage="clr-namespace:MVP.FontIcons"
                  xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
                  xmlns:ResourceManager="clr-namespace:EGAZT"

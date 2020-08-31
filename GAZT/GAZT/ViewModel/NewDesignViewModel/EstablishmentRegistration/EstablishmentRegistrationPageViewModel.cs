@@ -1750,11 +1750,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", "3102448184", "DKOTHI-C@GAZT.GOV.SA");
-                    if (!string.IsNullOrEmpty(taxPayerDetails?.Fbnumx))
-                    {
-                        IsLoading = false;
-                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
-                    }
+                    //if (!string.IsNullOrEmpty(taxPayerDetails?.Fbnumx))
+                    //{
+                    //    IsLoading = false;
+                    //    _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                    //}
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
@@ -1981,7 +1981,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -2096,7 +2095,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    return true;
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = SelectedRegNationalityType;
@@ -2122,7 +2120,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
-                    return true;
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                     taxPayerDetails.Birthdt = dob;
                     taxPayerDetails.NameFirst = FirstName;
@@ -2152,7 +2149,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
-                    return true;
                     Nreg_IdItem passportObj = new Nreg_IdItem();
                     passportObj.Idnumber = PassportNumber;
                     passportObj.Country = SelectedPassportIssueCountry?.Land1;
