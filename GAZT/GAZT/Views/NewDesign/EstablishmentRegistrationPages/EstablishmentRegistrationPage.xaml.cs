@@ -191,7 +191,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             var item = sender as Image;
             var data = item.BindingContext as Attachment;
-            viewModel.OnRentAttachmentCloseTapped(data);
+            viewModel.OnRentAttachmentDeleteButtonTapped(data);
         }
 
 
@@ -200,7 +200,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             var item = sender as Image;
             var data = item.BindingContext as Attachment;
-            viewModel.OnPassportCloseButtonTapped(data);
+            viewModel.OnPassportAttachmentDeleteButtonTapped(data);
         }
 
     }
