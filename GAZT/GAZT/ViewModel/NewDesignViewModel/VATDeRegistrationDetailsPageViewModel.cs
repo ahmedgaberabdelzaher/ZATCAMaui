@@ -1535,45 +1535,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    bool isValid;
-                    int result;
-                    double quarterrDiff = quarterDiff(FromDate, ToDate);
-                    result = DateTime.Compare(ToDate, FromDate);
-
-
-                    if (ReasonTitle == string.Empty)
+                    if (SelectedOutletOptionIndex == 1)
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-
-                    }
-                
-                    else if (LastIcrDate >= FromDate)
-                    {
-
-                        await _dialogService.ShowMessage(AppResources.VatDeregistrationSuspendedDateValidation, AppResources.Alerts);
-                       
-                    }
+                        bool isValid;
+                        int result;
+                        double quarterrDiff = quarterDiff(FromDate, ToDate);
+                        result = DateTime.Compare(ToDate, FromDate);
 
 
-                    else if (result == 0 || result < 0)
-                    {
-                       
-                        await _dialogService.ShowMessage(AppResources.VatDeregSuspendedEndDateMismatchException, AppResources.Alerts);
+                        if (ReasonTitle == string.Empty)
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+                        }
+                        else if (LastIcrDate >= FromDate)
+                        {
 
-                    }
-                    else if (quarterrDiff <= 1)
-                    {
-                        await _dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, AppResources.Alerts);
+                            await _dialogService.ShowMessage(AppResources.VatDeregistrationSuspendedDateValidation, AppResources.Alerts);
 
-                    }
-                    else
-                 
-                    {
-
-                          setDATA("05");
+                        }
+                        else if (result == 0 || result < 0)
+                        {
+                            await _dialogService.ShowMessage(AppResources.VatDeregSuspendedEndDateMismatchException, AppResources.Alerts);
+                        }
+                        else if (quarterrDiff <= 1)
+                        {
+                            await _dialogService.ShowMessage(AppResources.VatDeregSuspendedDateMismatchException, AppResources.Alerts);
+                        }
+                        else
+                        {
+                            setDATA("05");
                             await saveAsDraftVoidAPIMethodCall();
                             VoidIsVisible = true;
-                        EnableAttachmentsView();
+                            EnableAttachmentsView();
+                        }
+                    }
+                    else
+
+                    {
+                        if (ReasonTitle == string.Empty)
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
+
+                        }
+                        else
+                        {
+                            setDATA("05");
+                            await saveAsDraftVoidAPIMethodCall();
+                            VoidIsVisible = true;
+                            EnableAttachmentsView();
+                        }
 
                     }
 
@@ -1606,7 +1616,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             TxtIDNumber = string.Empty;
             ReasonTitle = string.Empty;
-            VatAttachmentsList.Clear();
+            if (VatAttachmentsList != null)
+            {
+                VatAttachmentsList.Clear();
+            }
             IDType = string.Empty;
 
 
@@ -1865,7 +1878,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsAttachmentAttached = true
                             });
                         }
-                        else
+                        
                             check.Add(new VATDeregistrationAttachmentsModel
                         {
                             FieldTitle = AppResources.VatDeregAttachmentTitle,
@@ -1934,7 +1947,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     SummaryData = TxtIDNumber,
                     IsEditVisible = true
                 });
-                if (string.IsNullOrEmpty(DOB))
+                if (DOB != string.Empty)
                 {
                     check.Add(new VATDeregistrationSummaryModel
                     {

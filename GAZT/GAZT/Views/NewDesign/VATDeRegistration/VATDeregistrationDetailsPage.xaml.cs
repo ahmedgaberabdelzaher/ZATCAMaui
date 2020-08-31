@@ -37,7 +37,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             SetLTR();
 
-       
             MessagingCenterCallBacks();
           
             Task.Run(async () =>
@@ -1484,6 +1483,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             viewModel.setDATA("04");
                             await viewModel.saveAsDraftVoidAPIMethodCall();
+
+                            viewModel.clearData();
+
                             // _navigationService.GoBack();
                         }
                         else
@@ -1495,7 +1497,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                 }
             }
-            viewModel.clearData();
         }
 
      
