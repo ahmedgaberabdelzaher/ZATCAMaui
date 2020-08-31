@@ -230,6 +230,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 Label_InternationalnoCode.Text = arg;
                 viewModel.CountryCode = arg;
             });
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
+            {
+
+                viewModel.MobileCountryCode = arg;
+            });
 
             RefreshControlsData();
         }
