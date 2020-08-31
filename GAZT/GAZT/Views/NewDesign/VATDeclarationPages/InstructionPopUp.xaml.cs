@@ -46,5 +46,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
             }
         }
+
+        private void OnClickedFAQ(object sender, EventArgs e)
+        {
+            string FaqUrl = string.Empty;
+            if (App.IsArabic)
+            {
+                FaqUrl = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                FaqUrl = "https://www.vat.gov.sa/en/vat-rate";
+            }
+            Device.OpenUri(new Uri(FaqUrl));
+        }
     }
 }

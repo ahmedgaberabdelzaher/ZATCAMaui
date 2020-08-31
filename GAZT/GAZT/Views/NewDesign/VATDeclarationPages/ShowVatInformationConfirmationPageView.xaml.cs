@@ -68,12 +68,53 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
         private void YesButtonClicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send<Object, string>(this, "YesReceived", "Yes");
+            try
+            {
+                if (viewModel.HeaderWithInfoList != null)
+                {
+                    var message = viewModel.HeaderWithInfoList.Where(x => x.Message == AppResources.ZZZRefundEnableMessage).FirstOrDefault();
+                    if (message != null)
+                    {
+                        MessagingCenter.Send<Object, string>(this, "YesReceived", AppResources.ZZZRefundEnableMessage);
+                    }
+                    var messageForVoid = viewModel.HeaderWithInfoList.Where(x => x.Message == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost).FirstOrDefault();
+                    if (messageForVoid != null)
+                    {
+                        MessagingCenter.Send<Object, string>(this, "YesReceived", AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+        //            MessagingCenter.Send<Object, string>(this, "YesReceived", "Yes");
         }
 
         private void NoButtonClicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send<Object, string>(this, "NoReceived", "No");
+            try
+            {
+                if (viewModel.HeaderWithInfoList != null)
+                {
+                    var message = viewModel.HeaderWithInfoList.Where(x => x.Message == AppResources.ZZZRefundEnableMessage).FirstOrDefault();
+                    if (message != null)
+                    {
+                        MessagingCenter.Send<Object, string>(this, "NoReceived", AppResources.ZZZRefundEnableMessage);
+                    }
+                    var messageForVoid = viewModel.HeaderWithInfoList.Where(x => x.Message == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost).FirstOrDefault();
+                    if (messageForVoid != null)
+                    {
+                        MessagingCenter.Send<Object, string>(this, "NoReceived", AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            //MessagingCenter.Send<Object, string>(this, "NoReceived", "No");
         }
     }
 }
