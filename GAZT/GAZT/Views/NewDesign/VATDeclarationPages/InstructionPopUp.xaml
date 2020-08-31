@@ -60,7 +60,7 @@
 
             <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZVatClickFaqInstructions}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}" TextColor="{StaticResource NewDullOrangeColor}">
                 <custom:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer />
+                    <TapGestureRecognizer Tapped="OnClickedFAQ"/>
                 </custom:CustomLabel.GestureRecognizers>
             </custom:CustomLabel>
 
