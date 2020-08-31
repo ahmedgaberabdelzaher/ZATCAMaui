@@ -34,7 +34,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public ICommand onCreditForwardClicked { get; set; }
 
+        public ICommand ChangeRegistrationClicked { get; set; }
+
         
+
+
+
+
 
 
 
@@ -2046,7 +2052,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 }
             });
-                
+
+            ChangeRegistrationClicked = new Xamarin.Forms.Command(() =>
+            {
+                try
+                {
+                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                    headerAmountInfo.IsLinkAvailable = false;
+                    headerAmountInfo.Message = AppResources.ZZZChangeRegistationNote;
+
+                    headerWithInfos.Add(headerAmountInfo);
+
+
+                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+                }
+                catch(Exception ex)
+                {
+
+                }
+               // await _dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
+            });
+
 
 
 
