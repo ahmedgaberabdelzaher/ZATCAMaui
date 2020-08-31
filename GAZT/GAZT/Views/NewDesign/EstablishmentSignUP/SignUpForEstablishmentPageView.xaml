@@ -73,7 +73,7 @@
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
                     </StackLayout>
-                    <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
+                    <!--<WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />-->
 
                    
                     

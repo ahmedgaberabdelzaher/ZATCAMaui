@@ -1057,14 +1057,14 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="reporting branch" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="Qurayyat Office" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="Entity Type" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="Individual" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="Taxpayer Type" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="Trade/Business" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTReportBranchQuestionLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{Binding SelectedReportingBranch}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ESTEntityTypeQuestionLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="{Binding SelectedEntityType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ESTaxpayerTypeQuestionLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="{Binding SelectedTaxPayerType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="Nationality" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="GCC" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="{Binding SelectedRegNationalityType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="Residency Status" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="Rent/own a house more than 30 days" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <buttons:SfChip Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" ShowIcon="True" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Transparent" 

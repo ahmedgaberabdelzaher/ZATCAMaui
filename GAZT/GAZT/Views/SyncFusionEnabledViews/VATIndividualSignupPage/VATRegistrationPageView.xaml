@@ -100,20 +100,20 @@
                                                 <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Style="{StaticResource GAZTSmallGoldLabel}" Margin="0"/>
 
 
-                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource GAZTSmallGoldLabel}"  Margin="0">
-                                                    <Label.FormattedText>
+                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource CaptionLabelBlack}"  Margin="0">
+                                                    <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"/>
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}" TextColor="{StaticResource Secondary}"/>
                                                             <Span Text="&#160;"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" TextColor="#005e4b">
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}"  TextColor="#005e4b">
                                                                 <Span.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
                                                                 </Span.GestureRecognizers>
                                                             </Span>
                                                             <Span Text="&#160;"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}"/>
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}" TextColor="{StaticResource NeutralGreay}"/>
                                                         </FormattedString>
-                                                    </Label.FormattedText>
+                                                    </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
                                                 

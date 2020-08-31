@@ -840,8 +840,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _calendarType;
             set
             {
-                _calendarType = value;
-                RaisePropertyChanged(nameof(CalendarType));
+                if (value != null)
+                {
+                    _calendarType = value;
+                    RaisePropertyChanged(nameof(CalendarType));
+                    if(EnCalendarTypeList.FirstOrDefault(i => i.Value == value).Key == "E")
+                    {
+                        updateDatesAccordingMethods();
+                    }
+                }
             }
         }
         private string _fiscalMonth = string.Empty;
@@ -1083,13 +1090,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             MethodList.Clear();
             MethodList.AddRange(EnMethodList.Values);
 
-            //MethodList.Add("Accounts");
-            //MethodList.Add("Estimate");
 
             CalendarTypeList.Clear();
             CalendarTypeList.AddRange(EnCalendarTypeList.Values);
-            //CalendarTypeList.Add("Hijri");
-            //CalendarTypeList.Add("Gregorian");
 
             SelectedMethod = MethodList.FirstOrDefault();
             CalendarType = CalendarTypeList.LastOrDefault();
@@ -1135,7 +1138,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnVoidOrSaveDraftClick = new Command(() =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid });
-                poupWindow.OnItemSelect = (item) => Console.WriteLine(item);
+                poupWindow.OnItemSelect = async (item) => {
+                    var actionName = item as string;
+                    Console.WriteLine(item);
+                    if(actionName == AppResources.Save)
+                    {
+                        IsLoading = true;
+                        taxPayerDetails.Draftfg = "X";
+                        taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                        IsLoading = false;
+                    }
+                    if (actionName == AppResources.ZZVoid)
+                    {
+                        IsLoading = true;
+                        taxPayerDetails.Operationx = "04";
+                        taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                        IsLoading = false;
+                    }
+                };
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
             #endregion
@@ -1246,7 +1266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if(await PushDatatoServer(currentTab))
                     {
-                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage);
+                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
                     else
                     {
@@ -1730,6 +1750,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", "3102448184", "DKOTHI-C@GAZT.GOV.SA");
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Fbnumx))
+                    {
+                        IsLoading = false;
+                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                    }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
@@ -1798,12 +1823,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         if(taxPayerDetails?.Accmethod == "E")
                         {
-                            DateTime _new = DateTime.UtcNow;
-                            _new.AddYears(1);
-                            _new.AddDays(-1);
-                            TaxDate = _new.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                            FiscalMonth = _new.Month.ToString();
-                            FiscalDay = _new.Day.ToString();
+                            updateDatesAccordingMethods();
                         }
                     }
                 }
@@ -1816,6 +1836,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 IsLoading = false;
             }
+        }
+        private void updateDatesAccordingMethods()
+        {
+            DateTime _new = new DateTime((long)(taxPayerDetails.Commdt?.AddDays(-1).AddYears(1).Ticks));
+            TaxDate = _new.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+            FiscalMonth = _new.Month.ToString();
+            FiscalDay = _new.Day.ToString();
         }
         private void udpdateDates(FinancialDetail financialDetail)
         {
@@ -1954,7 +1981,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
-            
+            return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -2065,10 +2092,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             
             try
             {
+
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    
+                    return true;
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = SelectedRegNationalityType;
@@ -2094,7 +2122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
-                    
+                    return true;
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                     taxPayerDetails.Birthdt = dob;
                     taxPayerDetails.NameFirst = FirstName;
@@ -2124,6 +2152,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
+                    return true;
                     Nreg_IdItem passportObj = new Nreg_IdItem();
                     passportObj.Idnumber = PassportNumber;
                     passportObj.Country = SelectedPassportIssueCountry?.Land1;
@@ -2150,13 +2179,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.StepNumberx = "02";
 
-                    var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                    var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
                     return true;
                 }
                 else if(_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
+                    
                     DateTime.TryParseExact(CommDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Commdt);
                     DateTime.TryParseExact(TaxDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
                     taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
@@ -2168,15 +2198,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.Gpartx = "3102448184";
                     taxPayerDetails.StepNumberx = "04";
-                    var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                    var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
                     return true;
-                }else if(_enum == EstablishmentRegistrationTabsEnum.Declaration)
+                }
+                else if(_enum == EstablishmentRegistrationTabsEnum.Declaration)
                 {
                     taxPayerDetails.Decfg = "X";
                     taxPayerDetails.Operationx = "01";
-                    var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
                     return true;
