@@ -56,14 +56,13 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>Apple Development: Mahesh Babu (ZV5Y4YXVK6)</CodesignKey>
+    <CodesignKey>iPhone Developer: ghazi alanzi (NMD3JCYGR3)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>true</MtouchFastDev>
-    <CodesignProvision>ColludeExternal</CodesignProvision>
     <OptimizePNGs>false</OptimizePNGs>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchInterpreter>-all</MtouchInterpreter>
@@ -551,7 +550,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}</Project>
+      <Project>{9B350CEC-F646-4D16-B1A3-73B40DD7DFE9}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>

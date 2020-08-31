@@ -36,7 +36,9 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.Fbguid = Fbguid;
             //viewModel.z = true;
             //viewModel.IsNoDataLabelVisible = false;
-            IntialiseAsync();
+            viewModel.LoadZakatForm5Data();
+
+           // IntialiseAsync();
           //  ZakatEstimationList.IsVisible = viewModel.IsZakatEstListVisible;
         }
 
@@ -47,7 +49,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             App.IsComingFromSleepMode = false;
             if (viewModel != null)
             {
-                viewModel.IsLoading = false;
+            //    viewModel.IsLoading = false;
                
             }
 
@@ -57,7 +59,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
 
                 if (viewModel != null)
                 {
-                    viewModel.IsLoading = false;
+                   // viewModel.IsLoading = false;
                     viewModel.NextText = AppResources.ZZNext;
                     viewModel.setCurrentTab();
                 }
@@ -78,12 +80,8 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
         {
             try
             {
-                //App.DisplayProgressView();
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                await viewModel.LoadZakatForm5Data();
+               
+              
                 //Device.BeginInvokeOnMainThread(() => {
 
                 //    ////App.HideProgressView();
@@ -94,10 +92,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 //    });
 
                 //}
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+              
             }
             catch (Exception ex)
             {
@@ -123,25 +118,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             //}
 
 
-
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                viewModel.IsLoading = true;
-            });
-
-
-
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                LoadData();
-            });
-
-
-
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+         //  LoadZakatForm5Data();
         }
 
         private void SetLTR()
