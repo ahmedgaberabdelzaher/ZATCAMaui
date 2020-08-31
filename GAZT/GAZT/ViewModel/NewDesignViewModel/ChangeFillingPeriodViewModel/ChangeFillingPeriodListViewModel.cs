@@ -65,6 +65,94 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
+        private string _contactPersonName = "";
+
+        public string ContactPersonName
+        {
+            get { return _contactPersonName; }
+            set
+            {
+                _contactPersonName = value;
+                RaisePropertyChanged("ContactPersonName");
+            }
+        }
+
+        private string _currentFrequency = "";
+        public string CurrentFrequency
+        {
+            get
+            {
+                return _currentFrequency;
+            }
+            set
+            {
+                _currentFrequency = value;
+                RaisePropertyChanged("CurrentFrequency");
+            }
+        }
+
+        private string _newFrequency = "";
+        public string NewFrequency
+        {
+            get
+            {
+                return _newFrequency;
+            }
+            set
+            {
+                _newFrequency = value;
+                RaisePropertyChanged("NewFrequency");
+            }
+        }
+
+        private string _effectiveDatePicked = "";
+
+        public string EffectiveDatePicked
+        {
+            get { return _effectiveDatePicked; }
+            set
+            {
+                _effectiveDatePicked = value;
+                RaisePropertyChanged("EffectiveDatePicked");
+            }
+        }
+
+        private string _idNumber = "";
+
+        public string IDNumber
+        {
+            get { return _idNumber; }
+            set
+            {
+                _idNumber = value;
+                RaisePropertyChanged("IDNumber");
+            }
+        }
+
+        private string _pickedDate = "";
+
+        public string PickedDate
+        {
+            get { return _pickedDate; }
+            set
+            {
+                _pickedDate = value;
+                RaisePropertyChanged("PickedDate");
+            }
+        }
+
+        private string _idType = "";
+
+        public string IDType
+        {
+            get { return _idType; }
+            set
+            {
+                _idType = value;
+                RaisePropertyChanged("IDType");
+            }
+        }
+
         public ObservableCollection<VATChangeFillingListModel.ChangeFillingFrequency> _myRequestsListViewData { get; set; }
 
         public ObservableCollection<VATChangeFillingListModel.ChangeFillingFrequency> MyRequestsListViewData
@@ -82,6 +170,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 RaisePropertyChanged("MyRequestsListViewData");
             }
         }
+
+        private Dictionary<string, string> IDTypeDictionary = new Dictionary<string, string>
+        {
+            {"ZS0001",AppResources.VFCNationalID},
+            {"ZS0002",AppResources.VFCIqamaID},
+            {"ZS0003",AppResources.VFCGCCID},
+        };
 
         public ChangeFillingPeriodListViewModel(INavigationService navigationService, IDialogService dialogService) : base(
             navigationService, dialogService)
@@ -262,8 +357,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                     try
                     {
-                        
-                     
+
+
                         var resultData = await WebServiceManager.GAZTGetVATChangeFillingSummary(item.Fbnum, item.Fbust);
                         if (resultData != null && resultData.d != null)
                         {
@@ -278,9 +373,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             vATChangingSummaryData.DecidNo = resultData.d.DecidNo;
                             vATChangingSummaryData.DecidTy = resultData.d.DecidTy;
                             vATChangingSummaryData.AttachmentList = resultData.d.ATTACHSet;
-                            vATChangingSummaryData.NOTESSet = resultData.d.NOTESSet;
+                            //vATChangingSummaryData.NOTESSet = resultData.d.NOTESSet;
 
-
+                            CurrentFrequency = vATChangingSummaryData.CureentF;
+                            NewFrequency = vATChangingSummaryData.FilingF;
+                            EffectiveDatePicked = vATChangingSummaryData.Persl;
+                            IDType = IDTypeDictionary[vATChangingSummaryData.DecidTy];
+                            IDNumber = vATChangingSummaryData.DecidNo;
+                            PickedDate = vATChangingSummaryData.Decfg;
+                            ContactPersonName = vATChangingSummaryData.Decname;
                         }
                         else
                         {

@@ -4456,7 +4456,7 @@
     <value>نسخة من العقد بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
-    <value>رفع المرفقات</value>
+    <value>تحميل المرفقات</value>
   </data>
   <data name="TinDeregistration20MB" xml:space="preserve">
     <value>20MB</value>
@@ -5086,7 +5086,7 @@
     <value>الصندوق الوارد</value>
   </data>
   <data name="NDReferenceNumber" xml:space="preserve">
-    <value>رقم المرجع</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
     <value>ادخل الرقم التسلسلي</value>
@@ -5855,10 +5855,10 @@
     <value>المرفقات</value>
   </data>
   <data name="CRAttachACopyOfTheContractRequiredToReleaseAndAmounts" xml:space="preserve">
-    <value>Attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certiied translation Office.</value>
+    <value>الرجاء إرفاق صورة العقد المطلوب الإفراج عنه باللغة العربية أو مترجم من جهة معتمدة</value>
   </data>
   <data name="CRAttachContract" xml:space="preserve">
-    <value>Attach Contract</value>
+    <value>إرفاق العقد</value>
   </data>
   <data name="CRAttachacopyofinvoicesandpurchase" xml:space="preserve">
     <value>صورة من الفواتير وأوامر الشراء المطلوب الإفراج عن قيمتها</value>
@@ -5949,25 +5949,13 @@
     <value>النهاية</value>
   </data>
   <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
-    <value>Estimated Profit percentage based on contract type</value>
+    <value>نسبة الربح التقديرية بناء على نوع العقد</value>
   </data>
   <data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
-    <value>Multiply released amount with Estimated profit for contract</value>
-  </data>
-  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for contract with Saudi share %</value>
-  </data>
-  <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
-  </data>
-  <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
-  </data>
-  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for TAX with 20 %</value>
+    <value>حاصل ضرب "المبلغ المطلوب الإفراج عنه" مع "نسبة الربح التقديرية للعقد"</value>
   </data>
   <data name="CRTotalDuesDesc" xml:space="preserve">
-    <value>Value of zakat due + value of TAX due</value>
+    <value>حاصل جمع "قيمة الزكاة المستحقة" مع "قيمة الضريبة المستحقة"</value>
   </data>
   <data name="CRInstrCheckDesc" xml:space="preserve">
     <value>أنا أوافق</value>
@@ -6339,6 +6327,12 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
     <value>البريد الالكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
   </data>
+  <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك الغير السعودي %"</value>
+  </data>
+  <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري الخاضع للزكاة" في "2.5 %"</value>
+  </data>
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>تفاصيل الائتمان المنقولة</value>
   </data>
@@ -6507,4 +6501,10 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ESTMuhayilAsirOffice" xml:space="preserve">
     <value>مكتب محايل عسير</value>
   </data>
+<data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+  <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك السعودي %"</value>
+</data>
+<data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+  <value>حاصل ضرب "الربح التقديري الخاضع للضريبة" في "20 %"</value>
+</data>
 </root>

@@ -401,15 +401,26 @@
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
                                                
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
-                                                           HorizontalOptions="StartAndExpand"
-                                                           Style="{StaticResource BodyLabelGrey}" />
-                                                    
-                                                    <Label Text="{Binding Filename}"
-                                                           HorizontalOptions="EndAndExpand"
-                                                           Style="{StaticResource BodyLabelBlack}" />
-                                                </StackLayout>
+                                                <Grid Padding="0" RowSpacing="0">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
+                                                               HorizontalOptions="StartAndExpand"
+                                                               Style="{StaticResource BodyLabelGrey}" />
+                                                    </Grid>
+                                                    <Grid Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="{Binding Filename}"
+                                                               HorizontalOptions="End"
+                                                               LineBreakMode="CharacterWrap"
+                                                               Style="{StaticResource BodyLabelBlack}" />
+                                                    </Grid>
+                                                </Grid>
 
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
@@ -420,15 +431,26 @@
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
                                                 
-                                                    <StackLayout Orientation="Horizontal">
+                                                 <Grid Padding="0" RowSpacing="0">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50*"/>
+                                                        <ColumnDefinition Width="50*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Row="0" Grid.Column="0" VerticalOptions="StartAndExpand" >
                                                         <Label Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}"
                                                                HorizontalOptions="StartAndExpand"
                                                                Style="{StaticResource BodyLabelGrey}" />
-                                                    
+                                                    </Grid>
+                                                    <Grid Grid.Row="0" Grid.Column="1" VerticalOptions="EndAndExpand">
                                                         <Label Text="{Binding Filename}"
-                                                               HorizontalOptions="EndAndExpand"
+                                                               HorizontalOptions="End"
+                                                               LineBreakMode="WordWrap"
                                                                Style="{StaticResource BodyLabelBlack}" />
-                                                    </StackLayout>
+                                                    </Grid>
+                                                </Grid>
                                                 
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
