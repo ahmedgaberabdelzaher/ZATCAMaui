@@ -49,10 +49,11 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-
+<!-- step 1 -->
 
                 <StackLayout Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}">
                     <StackLayout Orientation="Horizontal">
+                        <!--terms and condition  CheckBox -->
                         <CheckBox VerticalOptions="CenterAndExpand" IsEnabled="True" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox" Value="false">
@@ -121,6 +122,8 @@
                     </Grid>
 
                         <StackLayout IsVisible="False">
+                            
+                            <!-- TIN -->
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTIN}" Style="{StaticResource CaptionLabelGrey}"/>
                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <control:BorderlessEntry  x:Name="EntryTIN" Style="{StaticResource DefaultEntry}" Placeholder="TIN" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="10" TextChanged="EntryTIN_TextChanged" IsSpellCheckEnabled="False"  Text="{Binding TxtTIN}" FontSize="Small" Unfocused="EntryTIN_Unfocused" Focused="EntryTIN_focused">
@@ -146,6 +149,7 @@
                         </Grid.ColumnDefinitions>-->
 
                             <StackLayout Grid.Row="0">
+                                <!-- ID Type-->
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" Style="{StaticResource CaptionLabelGrey}"/>
                                 <Grid>
                                     <inputLayout:SfTextInputLayout x:Name="txtEntryName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
@@ -177,8 +181,10 @@
                                 </Grid>
                             </StackLayout>
                         </Grid>
+                        
+                        <!-- ID Number -->
 
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIDNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIDNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry x:Name="EntryIDNumber" Text="{Binding TxtIDNumber}" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.NDIDNumber}"
                                                      VerticalTextAlignment="End" HeightRequest="51" Keyboard="Numeric"
@@ -187,6 +193,7 @@
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
+                        <!-- DOB-->
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" Style="{StaticResource CaptionLabelGrey}"/>
                         <Grid>
@@ -233,7 +240,7 @@
                             </custom1:CustomDatePicker>
                         </Grid>
 
-
+                    <!-- Name -->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZName}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="{Binding TxtName}" IsSpellCheckEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZName}" VerticalTextAlignment="End"  HeightRequest="51">
@@ -282,11 +289,13 @@
                                 </Grid.GestureRecognizers>
                         </Grid>
                     </Grid>
-
+                        
+                        <!-- CR Number -->
                         <StackLayout IsVisible="False">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry x:Name="EntryCRNumber" Style="{StaticResource DefaultEntry}" MaxLength="10" Placeholder="{x:Static ResourceManager:AppResources.ZZCRNumber}" Text="{Binding TxtCRNumber}"  Unfocused="EntryCRNumber_Unfocused" VerticalTextAlignment="End"  HeightRequest="51">
+                                <control:BorderlessEntry x:Name="EntryCRNumber" Style="{StaticResource DefaultEntry}" MaxLength="10" Placeholder="{x:Static ResourceManager:AppResources.ZZCRNumber}" 
+                                                         Text="{Binding TxtCRNumber}"  Unfocused="EntryCRNumber_Unfocused" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
