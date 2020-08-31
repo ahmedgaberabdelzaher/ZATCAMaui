@@ -9159,7 +9159,7 @@ namespace GAZT.Manager
                 try
                 {
                     outletref = (string.IsNullOrEmpty(outletref) || string.IsNullOrWhiteSpace(outletref)) ? string.Empty : outletref;
-                    //VATDeregAttachmentRootOject _attachment = new VATDeregAttachmentRootOject();
+                    
                     var uri = new Uri(string.Format("{0}(RetGuid='{1}',OutletRef='{2}',Flag='N',Dotyp='{3}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
                         Constants.ESTPostAttachment, RetGuid, outletref, Doctype));
 
@@ -9180,6 +9180,47 @@ namespace GAZT.Manager
                 catch (Exception ex)
                 {
                     return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        public static string ESTDeleteAttachment(string fileName, string RetGuid, string docType, string docguid)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string DeleteToken = string.Empty;
+                try
+                {
+                    var uri = new Uri(string.Format("{0}(RetGuid='{1}',Flag='N',OutletRef='',Dotyp='{2}',SchGuid='',Srno=1,Doguid='{3}',AttBy='X')/$value",
+                        Constants.ESTDeleteAttachment, RetGuid, docType, docguid));
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+
+                    HttpResponseMessage response = client.DeleteAsync(uri).Result;
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    responsestr = JObject.Parse(responsestr)["d"].ToString();
+                    Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
+                    if (response != null)
+                    {
+                        HttpHeaders headers = response.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("delete", out values))
+                        {
+                            DeleteToken = values.First();
+                        }
+                    }
+                    return DeleteToken;
+                }
+                catch (Exception ex)
+                {
+                    return DeleteToken;
                 }
             }
             else
