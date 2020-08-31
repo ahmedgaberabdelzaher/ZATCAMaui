@@ -1138,7 +1138,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnVoidOrSaveDraftClick = new Command(() =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.Save, AppResources.ZZVoid });
-                poupWindow.OnItemSelect = (item) => Console.WriteLine(item);
+                poupWindow.OnItemSelect = async (item) => {
+                    var actionName = item as string;
+                    Console.WriteLine(item);
+                    if(actionName == AppResources.Save)
+                    {
+                        IsLoading = true;
+                        taxPayerDetails.Draftfg = "X";
+                        taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                        IsLoading = false;
+                    }
+                    if (actionName == AppResources.ZZVoid)
+                    {
+                        IsLoading = true;
+                        taxPayerDetails.Operationx = "04";
+                        taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                        IsLoading = false;
+                    }
+                };
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
             #endregion
@@ -1249,7 +1266,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if(await PushDatatoServer(currentTab))
                     {
-                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage);
+                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                     }
                     else
                     {
@@ -1733,6 +1750,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", "3102448184", "DKOTHI-C@GAZT.GOV.SA");
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Fbnumx))
+                    {
+                        IsLoading = false;
+                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                    }
                     SelectedReportingBranch = ReportingBranchList.Where(i => i.Augrp == taxPayerDetails?.Augrp).FirstOrDefault();
                     SelectedEntityType = Int16.Parse(taxPayerDetails?.Atype) == 1 ? "Individual" : "Company";
                     SelectedRegNationalityType = taxPayerDetails?.Tpnationality;
@@ -2067,13 +2089,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async  Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
+            
             try
             {
+
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    
+                    return true;
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = SelectedRegNationalityType;
@@ -2099,7 +2122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
-                    
+                    return true;
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                     taxPayerDetails.Birthdt = dob;
                     taxPayerDetails.NameFirst = FirstName;
@@ -2129,6 +2152,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
+                    return true;
                     Nreg_IdItem passportObj = new Nreg_IdItem();
                     passportObj.Idnumber = PassportNumber;
                     passportObj.Country = SelectedPassportIssueCountry?.Land1;
@@ -2155,13 +2179,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.StepNumberx = "02";
 
-                    var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                    var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
                     return true;
                 }
                 else if(_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
+                    
                     DateTime.TryParseExact(CommDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Commdt);
                     DateTime.TryParseExact(TaxDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
                     taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
@@ -2173,15 +2198,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     taxPayerDetails.Gpartx = "3102448184";
                     taxPayerDetails.StepNumberx = "04";
-                    var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                    var taxPayerDetailsResult = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
                     return true;
-                }else if(_enum == EstablishmentRegistrationTabsEnum.Declaration)
+                }
+                else if(_enum == EstablishmentRegistrationTabsEnum.Declaration)
                 {
                     taxPayerDetails.Decfg = "X";
                     taxPayerDetails.Operationx = "01";
-                    var taxPayerDetailsResult = WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
                     return true;
