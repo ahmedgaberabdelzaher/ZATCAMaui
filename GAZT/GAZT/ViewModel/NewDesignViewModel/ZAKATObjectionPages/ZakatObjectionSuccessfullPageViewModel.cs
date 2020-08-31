@@ -3,11 +3,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
@@ -123,6 +125,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             {
                                 IsrefreshEnabled = true;
                                 RefreshIconImageSource = "ic_refresh.png";
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVatAcknowledgmentWaitingText));
+
                             }
                             else
                             {
