@@ -215,7 +215,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
             SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
             SimpleIoc.Default.Register<ActivityItemPageViewModel>();
-            SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
+            SimpleIoc.Default.Register<RegistrationSuccessfulViewModel>();
             SimpleIoc.Default.Register<ZakatReturnDetailsSuccessfullPageViewModel>();
             SimpleIoc.Default.Register<NewTaxEvasionFormPageViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
@@ -709,13 +709,13 @@ namespace EGAZT
                 }
             }
         }
-        public RegistrationSuccessfulPageViewModel RegistrationSuccessfulPage
+        public RegistrationSuccessfulViewModel RegistrationSuccessfulPage
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<RegistrationSuccessfulPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<RegistrationSuccessfulViewModel>();
                 }
                 catch (Exception)
                 {

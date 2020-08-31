@@ -39,19 +39,19 @@
                             <border:SfBorder CornerRadius="10" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                                     <custom:CustomLabel Text="Name" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
-                                    <custom:CustomLabel Text="Abdul" Style="{StaticResource ValueLabelBlack}"/>
+                                    <custom:CustomLabel Text="{Binding Name}" Style="{StaticResource ValueLabelBlack}"/>
                                 </StackLayout>
                             </border:SfBorder>
                             <border:SfBorder CornerRadius="10" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                                     <custom:CustomLabel Text="Reference Number" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
-                                    <custom:CustomLabel Text="10001154942" Style="{StaticResource ValueLabelBlack}"/>
+                                    <custom:CustomLabel Text="{Binding Fbnumx}" Style="{StaticResource ValueLabelBlack}"/>
                                 </StackLayout>
                             </border:SfBorder>
                             <border:SfBorder CornerRadius="10" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
                                     <custom:CustomLabel Text="Date" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
-                                    <custom:CustomLabel Text="1441/11/29" Style="{StaticResource ValueLabelBlack}"/>
+                                    <custom:CustomLabel Text="{Binding DateText}" Style="{StaticResource ValueLabelBlack}"/>
                                 </StackLayout>
                             </border:SfBorder>
                             <border:SfBorder CornerRadius="10" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
