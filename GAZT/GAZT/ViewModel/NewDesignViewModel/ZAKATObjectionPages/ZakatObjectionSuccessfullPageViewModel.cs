@@ -17,6 +17,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnInvoiceClicked { get; set; }
+        public bool IsrefreshEnabled = false;
 
         //============================start===================================================
         string Cokey = "";
@@ -49,6 +50,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             {
                 _estimatedZAKATSADADNumber = value;
                 RaisePropertyChanged("EstimatedZAKATSADADNumber");
+            }
+        }
+
+
+        private string _refreshIconImageSource = "ic_refresh.png";
+        public string RefreshIconImageSource
+        {
+            get
+            {
+                return _refreshIconImageSource;
+            }
+            set
+            {
+                _refreshIconImageSource = value;
+                RaisePropertyChanged("RefreshIconImageSource");
             }
         }
 
@@ -94,7 +110,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             {
                 try
                 {
-                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(ZakatReturnDetail.Fbnum, ZakatReturnDetail.Fbguid); // Method to get the invoice
+                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(ZakatReturnDetail.Fbnum, ZAKATReturnDetailsViewModel.Fbguid); // Method to get the invoice
                     PopToRootPage();
                     if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                     {
@@ -102,10 +118,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                         {
                             Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
                             Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
-                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
-                          
+
+                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Sopbel))
+                            {
+                                IsrefreshEnabled = true;
+                                RefreshIconImageSource = "ic_refresh.png";
+                            }
+                            else
+                            {
+                                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
+                                IsrefreshEnabled = false;
+                                RefreshIconImageSource = "";
+                                GetUpdatedDataAfterAddingComma();
+
+                            }
+
                         }
-                        GetUpdatedDataAfterAddingComma();
                     }
                     else
                     {
@@ -176,7 +204,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         }
         public void ClearData()
         {
-           }
+
+            IsrefreshEnabled = false;
+        }
         private void GetUpdatedDataAfterAddingComma()
         {
             if (EstimatedZAKATSADADNumber != null)
