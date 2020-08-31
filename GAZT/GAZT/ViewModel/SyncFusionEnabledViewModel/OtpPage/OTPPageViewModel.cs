@@ -644,7 +644,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                         else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsMobile)
                         {
                             EmailOrMobileNumber = AppResources.MobileNumber;
-                            bool response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                            string MobileCountry = string.Empty;
+                            bool response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile,MobileCountry);
                             if (response)
                             {
                                 bool IsNavigatingFromLogin = true;
@@ -840,7 +841,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                             {
                                 lang = "AR";
                             }
-                            TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                            string MobileCountry = string.Empty;
+                            TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, OTP, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile,MobileCountry);
                             await PopToRootPage();
                             if (TP != null)
                             {

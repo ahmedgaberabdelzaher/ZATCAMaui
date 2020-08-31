@@ -257,6 +257,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                         }
                         //string newCountryCodeString = TxtCountryCode.Replace("+", "00");
                         string MobileNumber = TxtCountryCode + NewMobile;
+
                         //string MobileNumber = "+9665" + NewMobile;
                        bool isValidMobileNumber = IsValidMobileNumber(NewMobile);
                         bool isNewMobileNumberSameAsOldMobileNumber;
@@ -272,7 +273,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                         {
                             if (!isNewMobileNumberSameAsOldMobileNumber)
                             {
-                                response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber);
+                                string MobileCountry = string.Empty;
+                                response = await WebServiceManager.GAZTValidateMobileNumber(lang, TaxPayerProfile.Tin, TaxPayerProfile.Mobile, mobileNumber,MobileCountry);
                                 await PopToRootPage();
                             }
                             else

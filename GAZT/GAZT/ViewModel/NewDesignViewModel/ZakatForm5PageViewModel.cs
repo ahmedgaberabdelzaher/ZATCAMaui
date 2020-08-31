@@ -1668,12 +1668,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public async Task LoadZakatForm5Data()
         {
-            IsLoading = true;
-            ZakatForm5DataResult = null;
+            // IsLoading = true;
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
           
 
+                
+
+            await Task.Run(async() =>
+            {
                 try
                 {
+                    ZakatForm5DataResult = null;
 
                     ZakatForm5CityDataResult ZakatForm5CityDataResults = await WebServiceManager.GAZTZakatForm5CityData();
 
@@ -1717,7 +1725,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 ZakatForm5DataResult.Line8 + "," +
                                 ZakatForm5DataResult.Line9;
 
-                        Address = addAddress.ToString();
+                            Address = addAddress.ToString();
                             UserEmail = ZakatForm5DataResult.AEmail;
                             MobileNumber = ZakatForm5DataResult.AMobile;
 
@@ -1783,18 +1791,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     if (ZakatForm5DataResult.SCH_GP01.results[i].Expenses != "0.00")
                                     {
                                         //ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP01.results[i].IsApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP01.results[i].IsApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
-                                    // ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP01.results[i].IsApplicableVisible = false;
+                                        // ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP01.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP01.results[i].IsApplicableVisible = false;
 
+                                    }
                                 }
-                            }
                                 Cabs = ZakatForm5DataResult.SCH_GP01.results;
                             }
                             //Professionals
@@ -1834,15 +1842,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     if (ZakatForm5DataResult.SCH_GP02.results[i].Expenses != "0.00")
                                     {
                                         ZakatForm5DataResult.SCH_GP02.results[i].IsApplicable = AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP02.results[i].IsApplicableVisible = true;
-                                }
+                                        ZakatForm5DataResult.SCH_GP02.results[i].IsApplicableVisible = true;
+                                    }
                                     else
                                     {
                                         ZakatForm5DataResult.SCH_GP02.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP02.results[i].IsApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP02.results[i].IsApplicableVisible = false;
 
+                                    }
                                 }
-                            }
                                 Professionals = ZakatForm5DataResult.SCH_GP02.results;
                             }
                             //Sell & Buy
@@ -1895,36 +1903,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                     if (ZakatForm5DataResult.SCH_GP03.results[i].SuppCon != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].IsApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].IsApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicableVisible = false;
 
-                                }
+                                    }
 
-                                //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTrade == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods == "0.00" )&& (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals == "0.00"))
-                                //{
-                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
+                                    //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTrade == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods == "0.00" )&& (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals == "0.00"))
+                                    //{
+                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = false;
 
-                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZNo.ToString();
-                                //}
-                                //else
-                                //{
-                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
+                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZNo.ToString();
+                                    //}
+                                    //else
+                                    //{
+                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
 
-                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZYes.ToString();
+                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZYes.ToString();
 
-                                //}
+                                    //}
 
 
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00")
+                                    if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00")
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].IsImportVisible = true;
-                                       
+
 
                                         ZakatForm5DataResult.SCH_GP03.results[i].IsImport = AppResources.ZYes.ToString();
 
@@ -1951,61 +1959,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     if (ZakatForm5DataResult.SCH_GP03.results[i].GenTrade != "0.00")
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicable = AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsGeneralApplicableVisible = false;
 
-                                }
+                                    }
 
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods != "0.00")
+                                    if (ZakatForm5DataResult.SCH_GP03.results[i].Livelihoods != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLiveLihoodsApplicableVisible = false;
 
-                                }
+                                    }
 
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals != "0.00")
+                                    if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimals != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Imp_IsLivestockApplicableVisible = false;
 
-                                }
+                                    }
 
-                                //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI == "0.00"))
-                                //{
-                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
+                                    //if ((ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI == "0.00") && (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI == "0.00"))
+                                    //{
+                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = false;
 
-                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZNo.ToString();
+                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZNo.ToString();
 
-                                //}
-                                //else
-                                //{
+                                    //}
+                                    //else
+                                    //{
 
 
-                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZYes.ToString();
-                                //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
-                                //}
+                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZYes.ToString();
+                                    //    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
+                                    //}
 
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00")
+                                    if (ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00")
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].IsProcurement = AppResources.ZYes.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].IsProcurementVisible = true;
                                     }
                                     else if (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI != "0.00")
                                     {
@@ -2029,46 +2037,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                     if (ZakatForm5DataResult.SCH_GP03.results[i].GenTradeI != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsGeneralApplicableVisible = false;
 
-                                }
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI != "0.00")
+                                    }
+                                    if (ZakatForm5DataResult.SCH_GP03.results[i].LivelihoodsI != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLiveLihoodsApplicableVisible = false;
 
-                                }
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI != "0.00")
+                                    }
+                                    if (ZakatForm5DataResult.SCH_GP03.results[i].LiveStkAnimalsI != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP03.results[i].Pro_IsLivestockApplicableVisible = false;
 
-                                }
+                                    }
 
 
 
-                                if (ZakatForm5DataResult.SCH_GP03.results[i].SuppCon != "0.00")
+                                    if (ZakatForm5DataResult.SCH_GP03.results[i].SuppCon != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable =AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP03.results[i].IsApplicable = AppResources.FORM5Applicable.ToString();
                                     }
                                     else
                                     {
@@ -2116,17 +2124,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                     if (ZakatForm5DataResult.SCH_GP04.results[i].Expenses != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP04.results[i].IsExpensesApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP04.results[i].IsApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP04.results[i].IsExpensesApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP04.results[i].IsApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP04.results[i].IsExpensesApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP04.results[i].IsApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP04.results[i].IsApplicableVisible = false;
 
+                                    }
                                 }
-                            }
 
                                 LabourOccup = ZakatForm5DataResult.SCH_GP04.results;
                             }
@@ -2202,43 +2210,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                     if (ZakatForm5DataResult.SCH_GP06.results[i].GovtContractProf != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP06.results[i].IsGovenmentApplicableVisible = false;
 
-                                }
+                                    }
 
-                                if (ZakatForm5DataResult.SCH_GP06.results[i].CivilContrRev != "0.00")
+                                    if (ZakatForm5DataResult.SCH_GP06.results[i].CivilContrRev != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP06.results[i].IsCivilProfitApplicableVisible = false;
 
-                                }
+                                    }
 
-                                if (ZakatForm5DataResult.SCH_GP06.results[i].OtherIncome != "0.00")
+                                    if (ZakatForm5DataResult.SCH_GP06.results[i].OtherIncome != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP06.results[i].IsOtherProfitApplicableVisible = false;
 
+                                    }
                                 }
-                            }
 
 
                                 Contracting = ZakatForm5DataResult.SCH_GP06.results;
@@ -2279,7 +2287,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         for (int j = 0; j < ZakatForm5CityDataResults.zcitySet.results.Count(); j++)
                                         {
-                                            if(ZakatForm5DataResult.SCH_GP07.results[i].City == ZakatForm5CityDataResults.zcitySet.results[j].CityCode)
+                                            if (ZakatForm5DataResult.SCH_GP07.results[i].City == ZakatForm5CityDataResults.zcitySet.results[j].CityCode)
                                             {
                                                 ZakatForm5DataResult.SCH_GP07.results[i].City = ZakatForm5CityDataResults.zcitySet.results[j].CityName;
                                             }
@@ -2293,17 +2301,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                     if (ZakatForm5DataResult.SCH_GP07.results[i].Expenses != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP07.results[i].IsExpencesApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP07.results[i].IsApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP07.results[i].IsExpencesApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP07.results[i].IsApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP07.results[i].IsExpencesApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP07.results[i].IsApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP07.results[i].IsApplicableVisible = false;
 
+                                    }
                                 }
-                            }
 
 
 
@@ -2378,17 +2386,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                     if (ZakatForm5DataResult.SCH_GP08.results[i].Expenses != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP08.results[i].IsExpApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP08.results[i].IsApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP08.results[i].IsExpApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP08.results[i].IsApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP08.results[i].IsExpApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP08.results[i].IsApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP08.results[i].IsApplicableVisible = false;
 
+                                    }
                                 }
-                            }
 
                                 Hotels = ZakatForm5DataResult.SCH_GP08.results;
                             }
@@ -2426,17 +2434,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                     if (ZakatForm5DataResult.SCH_GP09.results[i].Expenses != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP09.results[i].IsExpApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP09.results[i].IsApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP09.results[i].IsExpApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP09.results[i].IsApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP09.results[i].IsExpApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP09.results[i].IsApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP09.results[i].IsApplicableVisible = false;
 
+                                    }
                                 }
-                            }
 
                                 Edu_Health = ZakatForm5DataResult.SCH_GP09.results;
                             }
@@ -2478,17 +2486,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                     if (ZakatForm5DataResult.SCH_GP10.results[i].IncrInCap != "0.00")
                                     {
-                                        ZakatForm5DataResult.SCH_GP10.results[i].IsIncCapApplicable =AppResources.FORM5Applicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP10.results[i].IsApplicableVisible = true;
+                                        ZakatForm5DataResult.SCH_GP10.results[i].IsIncCapApplicable = AppResources.FORM5Applicable.ToString();
+                                        ZakatForm5DataResult.SCH_GP10.results[i].IsApplicableVisible = true;
 
-                                }
-                                else
+                                    }
+                                    else
                                     {
                                         ZakatForm5DataResult.SCH_GP10.results[i].IsIncCapApplicable = AppResources.FORM5NotApplicable.ToString();
-                                    ZakatForm5DataResult.SCH_GP10.results[i].IsApplicableVisible = false;
+                                        ZakatForm5DataResult.SCH_GP10.results[i].IsApplicableVisible = false;
 
+                                    }
                                 }
-                            }
 
                                 Poultry_FishFarm = ZakatForm5DataResult.SCH_GP10.results;
                             }
@@ -2597,20 +2605,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             if (ZakatForm5DataResult.APlShareChk == "1")
                             {
-                                ZakatForm5DataResult.IsOtherShareApplicable =AppResources.FORM5Applicable.ToString();
-                            ZakatForm5DataResult.IsOtherShareApplicableVisible = true;
+                                ZakatForm5DataResult.IsOtherShareApplicable = AppResources.FORM5Applicable.ToString();
+                                ZakatForm5DataResult.IsOtherShareApplicableVisible = true;
 
-                        }
-                        else
+                            }
+                            else
                             {
                                 ZakatForm5DataResult.IsOtherShareApplicable = AppResources.FORM5NotApplicable.ToString();
-                            ZakatForm5DataResult.IsOtherShareApplicableVisible = false;
+                                ZakatForm5DataResult.IsOtherShareApplicableVisible = false;
 
-                        }
+                            }
 
-                        OtherCompanyShare = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.APlShare);
+                            OtherCompanyShare = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.APlShare);
                             IsOtherComShareApp = ZakatForm5DataResult.IsOtherShareApplicable;
-                        IsOtherComShareAppVisible = ZakatForm5DataResult.IsOtherShareApplicableVisible;
+                            IsOtherComShareAppVisible = ZakatForm5DataResult.IsOtherShareApplicableVisible;
                             ZakatBase = UtilityManager.GetCommaSeparatedAmount(ZakatForm5DataResult.ACapital);
 
 
@@ -2643,10 +2651,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 ReferenceNumber = ZakatForm5DataResult.Fbnum.ToString();
                                 ZakatFromDate = Convert.ToDateTime(ZakatForm5DataResult.AFromDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 ZakatToDate = Convert.ToDateTime(ZakatForm5DataResult.AToDt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            /// use same period property for which is used in Basic Information section.
+                                /// use same period property for which is used in Basic Information section.
 
-                            AknowledgementList = ZakatForm5SummaryDataResult.SadadSet.results;
-                            
+                                AknowledgementList = ZakatForm5SummaryDataResult.SadadSet.results;
+
                                 if (ZakatForm5SummaryDataResult.SchGP01Set.results.Any())
                                 {
                                     //Cabs GP1
@@ -2873,19 +2881,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             }
 
-                            IsLoading = false;
+                          //  IsLoading = false;
 
                         }
                         else
                         {
                             isNoDataLableVisible = true;
-                            IsLoading = false;
+                         //   IsLoading = false;
                         }
                     }
                     else
                     {
                         isNoDataLableVisible = true;
-                        IsLoading = false;
+                       // IsLoading = false;
                     }
                 }
                 catch (Exception e)
@@ -2898,8 +2906,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
                     IsLoading = false;
                 }
-           
-            IsLoading = false;
+            });
+
+            await Task.Run(async() =>
+            {
+                IsLoading = false;
+            });
+            //IsLoading = false;
         }
 
         public async Task PopToRootPage()

@@ -24,7 +24,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             if (AttachmentPopUpViewModel.SalesDetailList != null)
                 AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
-          //  NavigationPage.SetBackButtonTitle(this, " ");
+           Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
 
             viewModel.ClearData();
             ChangeAeroIcon();

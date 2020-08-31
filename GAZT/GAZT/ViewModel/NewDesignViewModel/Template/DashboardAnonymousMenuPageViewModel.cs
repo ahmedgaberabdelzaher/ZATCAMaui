@@ -9,6 +9,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     public class DashboardAnonymousMenuPageViewModel : BaseViewModel
     {
 
+        private bool _IsLoading=false ;
+        public bool IsLoading
+        {
+            get
+            {
+                return _IsLoading;
+            }
+            set
+            {
+                _IsLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         private string _appVersion = App.AppVersion;
         public string AppVersion
         {

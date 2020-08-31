@@ -311,14 +311,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
             string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
             string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
-           // MobileCountry = MobileCountryCode;
+           string  MobileCountry = MobileCountryCode;
             try
             {
                 await Task.Run(async () =>
                 {
                     callAPIFlag = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin,
                                                                                 currentMobileNumber,
-                                                                                newMobileNumber);
+                                                                                newMobileNumber,MobileCountry);
                     IsLoading = false;
                 });
             }
@@ -348,10 +348,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 {
                     string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
                     string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
+                    string MobileCountry = MobileCountryCode;
                     TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, EnteredOTP,
                                                                                 App.TP.Tin,
                                                                                 currentMobileNumber,
-                                                                                newMobileNumber);
+                                                                                newMobileNumber,MobileCountry);
                     IsLoading = false;
                 });
             }
