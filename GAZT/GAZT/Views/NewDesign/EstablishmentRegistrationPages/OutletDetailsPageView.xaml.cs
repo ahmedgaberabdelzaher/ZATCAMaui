@@ -26,14 +26,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         private void SetLTR()
         {
 
-            //if (!App.IsArabic)
-            //{
+            if (!App.IsArabic)
+            {
                 this.FlowDirection = FlowDirection.LeftToRight;
-            //}
-            //else
-            //{
-            //    this.FlowDirection = FlowDirection.RightToLeft;
-            //}
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
         }
 
         protected override void OnAppearing()

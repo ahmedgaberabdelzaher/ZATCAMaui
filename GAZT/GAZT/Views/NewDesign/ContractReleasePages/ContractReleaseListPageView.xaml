@@ -118,7 +118,7 @@
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Source="ic_add1" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
+                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.CRRequestContractRelease}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding RequestContractReleaseBtnTapped}"></TapGestureRecognizer>
@@ -264,7 +264,7 @@
 
                                     <StackLayout Orientation="Horizontal" Grid.Row="0">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRContractonName}"
-                                               HorizontalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand"
                                                Style="{StaticResource BodyLabelGrey}" />
                                         
                                         <Label Text="{Binding ContractName}"
@@ -275,7 +275,7 @@
 
                                     <StackLayout Orientation="Horizontal" Grid.Row="1">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRContractNumber}"
-                                               HorizontalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand"
                                                Style="{StaticResource BodyLabelGrey}" />
                                         
                                         <Label Text="{Binding ContractNumber}"
@@ -286,7 +286,7 @@
 
                                     <StackLayout Orientation="Horizontal" Grid.Row="2">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRContractType}"
-                                               HorizontalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand"
                                                Style="{StaticResource BodyLabelGrey}" />
                                         
                                         <Label Text="{Binding PickedContract}"
@@ -298,7 +298,7 @@
 
                                     <StackLayout Orientation="Horizontal" Grid.Row="3" >
                                         <Label Text="{x:Static ResourceManager:AppResources.CRContractPeriod}"
-                                               HorizontalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand"
                                                Style="{StaticResource BodyLabelGrey}" />
                                         
                                         <Label Text="{Binding FromDate,ToDate,StringFormat='{0:MMM yyyy} - {0:MMM yyyy}'}"
@@ -310,7 +310,7 @@
 
                                     <StackLayout Orientation="Horizontal" Grid.Row="4">
                                         <Label Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}"
-                                               HorizontalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand"
                                                Style="{StaticResource BodyLabelGrey}" />
                                         
                                         <Label Text="{Binding ContractTotalAmount,StringFormat='{0:N} SAR'}"
@@ -322,7 +322,7 @@
 
                                     <StackLayout Orientation="Horizontal" Grid.Row="5" >
                                         <Label Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}"
-                                               HorizontalOptions="StartAndExpand"
+                                               HorizontalOptions="FillAndExpand"
                                                Style="{StaticResource BodyLabelGrey}" />
                                         
                                         <Label Text="{Binding AmountToRelease,StringFormat='{0:N} SAR'}"
@@ -394,32 +394,23 @@
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                <Grid Padding="15,15,15,0" RowSpacing="8">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                   
+                                <StackLayout Padding="15,15,15,0">
                                     
-                                     <listView:SfListView  Grid.Row="0"  HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
+                                     <listView:SfListView  Grid.Row="0" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
                                       ItemsSource="{Binding ContractCopyAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Padding="0" RowSpacing="0">
+                                               
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
+                                                           HorizontalOptions="StartAndExpand"
+                                                           Style="{StaticResource BodyLabelGrey}" />
                                                     
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
-                                                               HorizontalOptions="StartAndExpand"
-                                                               Style="{StaticResource BodyLabelGrey}" />
+                                                    <Label Text="{Binding Filename}"
+                                                           HorizontalOptions="EndAndExpand"
+                                                           Style="{StaticResource BodyLabelBlack}" />
+                                                </StackLayout>
 
-                                                        <Label Text="{Binding Filename}"
-                                                               HorizontalOptions="End"
-                                                               Margin="5,0,0,0"
-                                                               Style="{StaticResource BodyLabelBlack}" />
-                                                    </StackLayout>
-                                                </Grid>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                     </listView:SfListView>
@@ -428,18 +419,17 @@
                                       ItemsSource="{Binding InvoiceAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid Padding="0" RowSpacing="0" >
+                                                
                                                     <StackLayout Orientation="Horizontal">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
+                                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}"
                                                                HorizontalOptions="StartAndExpand"
                                                                Style="{StaticResource BodyLabelGrey}" />
-
+                                                    
                                                         <Label Text="{Binding Filename}"
-                                                               Margin="5,0,0,0"
-                                                               HorizontalOptions="End"
+                                                               HorizontalOptions="EndAndExpand"
                                                                Style="{StaticResource BodyLabelBlack}" />
                                                     </StackLayout>
-                                                </Grid>
+                                                
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                     </listView:SfListView>
@@ -467,7 +457,7 @@
                                                Style="{StaticResource BodyLabelBlack}" />
                                     </StackLayout>
 
-                                </Grid>
+                                </StackLayout>
                             </StackLayout>
                         </border:SfBorder>
 
@@ -548,6 +538,7 @@
                         
                     </StackLayout>
                 </Grid>
+                
                 <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
                                  Opacity="0.4" VerticalOptions="FillAndExpand" />

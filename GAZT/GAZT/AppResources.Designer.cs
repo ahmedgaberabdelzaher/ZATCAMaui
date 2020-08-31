@@ -11393,5 +11393,335 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZCarriedCreditDetails", resourceCulture);
             }
         }
+        
+        public static string ESTAddOutlet {
+            get {
+                return ResourceManager.GetString("ESTAddOutlet", resourceCulture);
+            }
+        }
+        
+        public static string ESTOutletCommercialName {
+            get {
+                return ResourceManager.GetString("ESTOutletCommercialName", resourceCulture);
+            }
+        }
+        
+        public static string ESTActivityDetails {
+            get {
+                return ResourceManager.GetString("ESTActivityDetails", resourceCulture);
+            }
+        }
+        
+        public static string ESTAddCRAndOrLicenseDetails {
+            get {
+                return ResourceManager.GetString("ESTAddCRAndOrLicenseDetails", resourceCulture);
+            }
+        }
+        
+        public static string ESTCommercialRegistration {
+            get {
+                return ResourceManager.GetString("ESTCommercialRegistration", resourceCulture);
+            }
+        }
+        
+        public static string ESTLicenseDetails {
+            get {
+                return ResourceManager.GetString("ESTLicenseDetails", resourceCulture);
+            }
+        }
+        
+        public static string ESTCommercialRegistrationNumberInfo {
+            get {
+                return ResourceManager.GetString("ESTCommercialRegistrationNumberInfo", resourceCulture);
+            }
+        }
+        
+        public static string ESTCommercialRegistrationNumberInfoTwo {
+            get {
+                return ResourceManager.GetString("ESTCommercialRegistrationNumberInfoTwo", resourceCulture);
+            }
+        }
+        
+        public static string ESTIssueBy {
+            get {
+                return ResourceManager.GetString("ESTIssueBy", resourceCulture);
+            }
+        }
+        
+        public static string ESTIssueCity {
+            get {
+                return ResourceManager.GetString("ESTIssueCity", resourceCulture);
+            }
+        }
+        
+        public static string ESTMainActivity {
+            get {
+                return ResourceManager.GetString("ESTMainActivity", resourceCulture);
+            }
+        }
+        
+        public static string ESTAttachmentTransferCopyOfCRLabel {
+            get {
+                return ResourceManager.GetString("ESTAttachmentTransferCopyOfCRLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTAttachmentCopyOfCRLabel {
+            get {
+                return ResourceManager.GetString("ESTAttachmentCopyOfCRLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTBusinessActivityDetails {
+            get {
+                return ResourceManager.GetString("ESTBusinessActivityDetails", resourceCulture);
+            }
+        }
+        
+        public static string ESTMainGroup {
+            get {
+                return ResourceManager.GetString("ESTMainGroup", resourceCulture);
+            }
+        }
+        
+        public static string ESTSubGroup {
+            get {
+                return ResourceManager.GetString("ESTSubGroup", resourceCulture);
+            }
+        }
+        
+        public static string ESTActivity {
+            get {
+                return ResourceManager.GetString("ESTActivity", resourceCulture);
+            }
+        }
+        
+        public static string ESTAddLicense {
+            get {
+                return ResourceManager.GetString("ESTAddLicense", resourceCulture);
+            }
+        }
+        
+        public static string ESTLicenseOne {
+            get {
+                return ResourceManager.GetString("ESTLicenseOne", resourceCulture);
+            }
+        }
+        
+        public static string ESTLicenseTwo {
+            get {
+                return ResourceManager.GetString("ESTLicenseTwo", resourceCulture);
+            }
+        }
+        
+        public static string ESTAttachmentCopyOfLicense {
+            get {
+                return ResourceManager.GetString("ESTAttachmentCopyOfLicense", resourceCulture);
+            }
+        }
+        
+        public static string ESTAddressDetails {
+            get {
+                return ResourceManager.GetString("ESTAddressDetails", resourceCulture);
+            }
+        }
+        
+        public static string ESTPhycicalAddress {
+            get {
+                return ResourceManager.GetString("ESTPhycicalAddress", resourceCulture);
+            }
+        }
+        
+        public static string ESTHouseNumber {
+            get {
+                return ResourceManager.GetString("ESTHouseNumber", resourceCulture);
+            }
+        }
+        
+        public static string ESTFloorNumber {
+            get {
+                return ResourceManager.GetString("ESTFloorNumber", resourceCulture);
+            }
+        }
+        
+        public static string ESTQuarter {
+            get {
+                return ResourceManager.GetString("ESTQuarter", resourceCulture);
+            }
+        }
+        
+        public static string ESTAddNumber {
+            get {
+                return ResourceManager.GetString("ESTAddNumber", resourceCulture);
+            }
+        }
+        
+        public static string ESTProvinance {
+            get {
+                return ResourceManager.GetString("ESTProvinance", resourceCulture);
+            }
+        }
+        
+        public static string ESTPostalAddress {
+            get {
+                return ResourceManager.GetString("ESTPostalAddress", resourceCulture);
+            }
+        }
+        
+        public static string ESTSameAsPhycical {
+            get {
+                return ResourceManager.GetString("ESTSameAsPhycical", resourceCulture);
+            }
+        }
+        
+        public static string ESTEstimatedMethod {
+            get {
+                return ResourceManager.GetString("ESTEstimatedMethod", resourceCulture);
+            }
+        }
+        
+        public static string ESTEndOfFinancialYear {
+            get {
+                return ResourceManager.GetString("ESTEndOfFinancialYear", resourceCulture);
+            }
+        }
+        
+        public static string ESTEndOfFiscalDay {
+            get {
+                return ResourceManager.GetString("ESTEndOfFiscalDay", resourceCulture);
+            }
+        }
+        
+        public static string ESTBusinessCommencementDate {
+            get {
+                return ResourceManager.GetString("ESTBusinessCommencementDate", resourceCulture);
+            }
+        }
+        
+        public static string ESTTaxableDate {
+            get {
+                return ResourceManager.GetString("ESTTaxableDate", resourceCulture);
+            }
+        }
+        
+        public static string ESTPledgeLabel {
+            get {
+                return ResourceManager.GetString("ESTPledgeLabel", resourceCulture);
+            }
+        }
+        
+        public static string ESTReviewTheBelowInformation {
+            get {
+                return ResourceManager.GetString("ESTReviewTheBelowInformation", resourceCulture);
+            }
+        }
+        
+        public static string ESTEdit {
+            get {
+                return ResourceManager.GetString("ESTEdit", resourceCulture);
+            }
+        }
+        
+        public static string ESTReportingBranch {
+            get {
+                return ResourceManager.GetString("ESTReportingBranch", resourceCulture);
+            }
+        }
+        
+        public static string ESTResidencyStatus {
+            get {
+                return ResourceManager.GetString("ESTResidencyStatus", resourceCulture);
+            }
+        }
+        
+        public static string ESTOutletName {
+            get {
+                return ResourceManager.GetString("ESTOutletName", resourceCulture);
+            }
+        }
+        
+        public static string ESTOutletCity {
+            get {
+                return ResourceManager.GetString("ESTOutletCity", resourceCulture);
+            }
+        }
+        
+        public static string ESTCRlicense {
+            get {
+                return ResourceManager.GetString("ESTCRlicense", resourceCulture);
+            }
+        }
+        
+        public static string ESTMethodOfFinancialRecordMaintained {
+            get {
+                return ResourceManager.GetString("ESTMethodOfFinancialRecordMaintained", resourceCulture);
+            }
+        }
+        
+        public static string ESTEndOfFiscalMonth {
+            get {
+                return ResourceManager.GetString("ESTEndOfFiscalMonth", resourceCulture);
+            }
+        }
+        
+        public static string ESTConfirm {
+            get {
+                return ResourceManager.GetString("ESTConfirm", resourceCulture);
+            }
+        }
+        
+        public static string ESTRegistrationSuccessful {
+            get {
+                return ResourceManager.GetString("ESTRegistrationSuccessful", resourceCulture);
+            }
+        }
+        
+        public static string ESTGAZTAcknowledgesTheReceiptRegApplication {
+            get {
+                return ResourceManager.GetString("ESTGAZTAcknowledgesTheReceiptRegApplication", resourceCulture);
+            }
+        }
+        
+        public static string ESTName {
+            get {
+                return ResourceManager.GetString("ESTName", resourceCulture);
+            }
+        }
+        
+        public static string ESTReferenceNumber {
+            get {
+                return ResourceManager.GetString("ESTReferenceNumber", resourceCulture);
+            }
+        }
+        
+        public static string ESTFutureRefernceAndCommunicationFinalMsg {
+            get {
+                return ResourceManager.GetString("ESTFutureRefernceAndCommunicationFinalMsg", resourceCulture);
+            }
+        }
+        
+        public static string ESTGoToDashboard {
+            get {
+                return ResourceManager.GetString("ESTGoToDashboard", resourceCulture);
+            }
+        }
+        
+        public static string ESTQurayyatOffice {
+            get {
+                return ResourceManager.GetString("ESTQurayyatOffice", resourceCulture);
+            }
+        }
+        
+        public static string ESTAlmajmaahOffice {
+            get {
+                return ResourceManager.GetString("ESTAlmajmaahOffice", resourceCulture);
+            }
+        }
+        
+        public static string ESTMuhayilAsirOffice {
+            get {
+                return ResourceManager.GetString("ESTMuhayilAsirOffice", resourceCulture);
+            }
+        }
     }
 }
