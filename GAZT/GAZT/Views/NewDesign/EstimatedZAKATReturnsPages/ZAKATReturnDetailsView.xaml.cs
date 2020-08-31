@@ -259,7 +259,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             else
             {
                   Device.BeginInvokeOnMainThread(async () => {
-                        await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                      await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
+
+                     // await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
                     });
                
             }
