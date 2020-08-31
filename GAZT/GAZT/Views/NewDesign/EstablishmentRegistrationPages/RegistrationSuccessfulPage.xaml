@@ -6,6 +6,7 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
              BackgroundImageSource="partials_background.png"
              ios:Page.UseSafeArea="true"
              NavigationPage.HasNavigationBar="False">
@@ -25,8 +26,8 @@
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" Margin="0,45,0,0" Padding="20" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
                 <Image Source="Forget_ic_success"/>
-                <custom:CustomLabel Margin="0,20,0,10" Text="Registration Successful" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
-                <custom:CustomLabel Text="GAZT acknowledges the receipt of your registration application" Style="{StaticResource BodyLabelBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" LineBreakMode="WordWrap" LineHeight="0.7"/>
+                <custom:CustomLabel Margin="0,20,0,10" Text="{x:Static ResourceManager:AppResources.ESTRegistrationSuccessful}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTGAZTAcknowledgesTheReceiptRegApplication}" Style="{StaticResource BodyLabelBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" LineBreakMode="WordWrap" LineHeight="0.7"/>
             </StackLayout>
             <yummy:PancakeView Grid.Row="1" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CommonTopCurves}">
                 <Grid VerticalOptions="Fill" HorizontalOptions="Fill" RowSpacing="15">
@@ -38,28 +39,28 @@
                         <StackLayout VerticalOptions="StartAndExpand" Spacing="15">
                             <border:SfBorder CornerRadius="10" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                                    <custom:CustomLabel Text="Name" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTName}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
                                     <custom:CustomLabel Text="{Binding Name}" Style="{StaticResource ValueLabelBlack}"/>
                                 </StackLayout>
                             </border:SfBorder>
                             <border:SfBorder CornerRadius="10" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                                    <custom:CustomLabel Text="Reference Number" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTReferenceNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
                                     <custom:CustomLabel Text="{Binding Fbnumx}" Style="{StaticResource ValueLabelBlack}"/>
                                 </StackLayout>
                             </border:SfBorder>
                             <border:SfBorder CornerRadius="10" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10">
-                                    <custom:CustomLabel Text="Date" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Date}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
                                     <custom:CustomLabel Text="{Binding DateText}" Style="{StaticResource ValueLabelBlack}"/>
                                 </StackLayout>
                             </border:SfBorder>
                             <border:SfBorder CornerRadius="10" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
-                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" Text="Please retain this number for future reference and communication. GAZT will process your request and if needed contact for any additional information. You have late registration penalty and we verifying it, You will be informed when registration application processed For further information, Please contact help desk @ 1993" />
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.ESTFutureRefernceAndCommunicationFinalMsg}" />
                             </border:SfBorder>
                         </StackLayout>
                     </ScrollView>
-                    <buttons:SfButton Grid.Row="1" Text="Go to Dashboard" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="White" TextColor="#d49504" Command="{Binding GoToDashBoardButtonClick}" />
+                    <buttons:SfButton Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ESTGoToDashboard}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="White" TextColor="#d49504" Command="{Binding GoToDashBoardButtonClick}" />
                 </Grid>
             </yummy:PancakeView>
         </Grid>
