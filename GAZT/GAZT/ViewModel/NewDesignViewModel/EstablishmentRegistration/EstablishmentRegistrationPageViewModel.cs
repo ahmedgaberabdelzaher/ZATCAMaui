@@ -840,8 +840,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             get => _calendarType;
             set
             {
-                _calendarType = value;
-                RaisePropertyChanged(nameof(CalendarType));
+                if (value != null)
+                {
+                    _calendarType = value;
+                    RaisePropertyChanged(nameof(CalendarType));
+                    if(EnCalendarTypeList.FirstOrDefault(i => i.Value == value).Key == "E")
+                    {
+                        updateDatesAccordingMethods();
+                    }
+                }
             }
         }
         private string _fiscalMonth = string.Empty;
@@ -1083,13 +1090,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             MethodList.Clear();
             MethodList.AddRange(EnMethodList.Values);
 
-            //MethodList.Add("Accounts");
-            //MethodList.Add("Estimate");
 
             CalendarTypeList.Clear();
             CalendarTypeList.AddRange(EnCalendarTypeList.Values);
-            //CalendarTypeList.Add("Hijri");
-            //CalendarTypeList.Add("Gregorian");
 
             SelectedMethod = MethodList.FirstOrDefault();
             CalendarType = CalendarTypeList.LastOrDefault();
@@ -1798,12 +1801,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         if(taxPayerDetails?.Accmethod == "E")
                         {
-                            DateTime _new = DateTime.UtcNow;
-                            _new.AddYears(1);
-                            _new.AddDays(-1);
-                            TaxDate = _new.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                            FiscalMonth = _new.Month.ToString();
-                            FiscalDay = _new.Day.ToString();
+                            updateDatesAccordingMethods();
                         }
                     }
                 }
@@ -1816,6 +1814,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 IsLoading = false;
             }
+        }
+        private void updateDatesAccordingMethods()
+        {
+            DateTime _new = new DateTime((long)(taxPayerDetails.Commdt?.AddDays(-1).AddYears(1).Ticks));
+            TaxDate = _new.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+            FiscalMonth = _new.Month.ToString();
+            FiscalDay = _new.Day.ToString();
         }
         private void udpdateDates(FinancialDetail financialDetail)
         {
@@ -1953,7 +1958,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
-            
+            return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -2061,7 +2066,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async  Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-            
+            return true;
             try
             {
                 IsLoading = true;
