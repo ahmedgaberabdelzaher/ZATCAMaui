@@ -310,6 +310,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 });
             }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                    Console.WriteLine(ex.Message);
+                });
+            }
         }
 
        
@@ -375,6 +383,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(message, AppResources.Information);
+                });
+            }
+            catch (Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                    Console.WriteLine(ex.Message);
                 });
             }
         }

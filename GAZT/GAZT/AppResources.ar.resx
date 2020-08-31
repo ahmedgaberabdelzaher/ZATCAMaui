@@ -5974,7 +5974,7 @@
   </data>
   <data name="CRTotalDuesDesc" xml:space="preserve">
     <value>حاصل جمع "قيمة الزكاة المستحقة" مع "قيمة الضريبة المستحقة"</value>
->>>>>>> Stashed changes
+
   </data>
   <data name="CRInstrCheckDesc" xml:space="preserve">
     <value>أنا أوافق</value>
@@ -6370,6 +6370,172 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>تفاصيل الائتمان المنقولة</value>
   </data>
+    <data name="ESTAddOutlet" xml:space="preserve">
+    <value>إضافة فرع</value>
+    </data> 
+     <data name="ESTOutletCommercialName" xml:space="preserve">
+    <value>الإسم التجاري للفرع</value>
+    </data> 
+     <data name="ESTActivityDetails" xml:space="preserve">
+    <value>بيانات الأنشطة</value>
+    </data> 
+     <data name="ESTAddCRAndOrLicenseDetails" xml:space="preserve">
+    <value>الرجاء إدخال رقم السجل التجاري أو رقم الرخصة التجاري</value>
+    </data> 
+     <data name="ESTCommercialRegistration" xml:space="preserve">
+    <value>السجل التجاري</value>
+    </data> 
+     <data name="ESTLicenseDetails" xml:space="preserve">
+    <value>الرخصة التجارية</value>
+    </data> 
+     <data name="ESTCommercialRegistrationNumberInfo" xml:space="preserve">
+    <value>تستطيع إضافة سجل تجاري واحد وعدة ارقام للرخص التجارية بحد اقصى 4 رخص</value>
+    </data> 
+     <data name="ESTCommercialRegistrationNumberInfoTwo" xml:space="preserve">
+    <value>تستطيع ربط سجل تجاري واحد و الرخص التجارية المرتبطه بالنشاط الرئيسي</value>
+    </data> 
+     <data name="ESTIssueBy" xml:space="preserve">
+    <value>تاريخ الإصدار</value>
+    </data> 
+     <data name="ESTIssueCity" xml:space="preserve">
+    <value>جهة الإصدار</value>
+    </data> 
+     <data name="ESTMainActivity" xml:space="preserve">
+    <value>النشاط الرئيسي</value>
+    </data> 
+     <data name="ESTAttachmentTransferCopyOfCRLabel" xml:space="preserve">
+    <value>المرفقات - نسخة من نقل السجل التجاري</value>
+    </data> 
+     <data name="ESTAttachmentCopyOfCRLabel" xml:space="preserve">
+    <value>المرفقات - نسخة من السجل التجاري</value>
+    </data> 
+     <data name="ESTBusinessActivityDetails" xml:space="preserve">
+    <value>نشاطات العمل التجاري</value>
+    </data> 
+     <data name="ESTMainGroup" xml:space="preserve">
+    <value>المجموعة الرئيسية</value>
+    </data> 
+   <data name="ESTSubGroup" xml:space="preserve">
+    <value>المجموعة الفرعية</value>
+    </data>
+     <data name="ESTActivity" xml:space="preserve">
+    <value>النشاط</value>
+    </data>
+    <data name="ESTAddLicense" xml:space="preserve">
+    <value>إضافة رخصه</value>
+    </data>
+    <data name="ESTLicenseOne" xml:space="preserve">
+    <value>الرخصة الأولى</value>
+    </data>
+    <data name="ESTLicenseTwo" xml:space="preserve">
+    <value>الرخصة الثانية</value>
+    </data>
+    <data name="ESTAttachmentCopyOfLicense" xml:space="preserve">
+    <value>المرفقات - نسخة من الرخصة</value>
+    </data>
+    <data name="ESTAddressDetails" xml:space="preserve">
+    <value>بيانات العنوان</value>
+    </data>
+    <data name="ESTPhycicalAddress" xml:space="preserve">
+    <value>العنوان الحالي</value>
+    </data>
+    <data name="ESTHouseNumber" xml:space="preserve">
+    <value>رقم المنزل</value>
+    </data>
+    <data name="ESTFloorNumber" xml:space="preserve">
+    <value>رقم الطابق</value>
+    </data>
+    <data name="ESTQuarter" xml:space="preserve">
+    <value>الحي</value>
+    </data>
+     <data name="ESTAddNumber" xml:space="preserve">
+    <value>إضافة رقم</value>
+    </data>
+     <data name="ESTProvinance" xml:space="preserve">
+    <value>المنطقة</value>
+    </data>
+     <data name="ESTPostalAddress" xml:space="preserve">
+    <value>العنوان البريدي</value>
+    </data>
+    <data name="ESTSameAsPhycical" xml:space="preserve">
+    <value>مطابق للعنوان الحالي</value>
+    </data>
+    <data name="ESTEstimatedMethod" xml:space="preserve">
+    <value>طريقة الحسبة التقديرية</value>
+    </data>
+     <data name="ESTEndOfFinancialYear" xml:space="preserve">
+    <value>نهاية السنة المالية</value>
+    </data>
+     <data name="ESTEndOfFiscalDay" xml:space="preserve">
+    <value>نهاية اليوم المالي</value>
+    </data>
+     <data name="ESTBusinessCommencementDate" xml:space="preserve">
+    <value>تاريخ بدء العمل</value>
+    </data>
+     <data name="ESTTaxableDate" xml:space="preserve">
+    <value>تاريخ بدء تطبيق الضريبة</value>
+    </data>
+    <data name="ESTPledgeLabel" xml:space="preserve">
+    <value>أتعهد بان المعلومات المقدمة صحيحة وأنا مخول لإكمال هذا النموذج </value>
+    </data>
+     <data name="ESTReviewTheBelowInformation" xml:space="preserve">
+    <value>مراجعة البيانات التالية</value>
+    </data>
+     <data name="ESTEdit" xml:space="preserve">
+    <value>تعديل</value>
+    </data>
+     <data name="ESTReportingBranch" xml:space="preserve">
+    <value>فرع الهيئة الرئيسي</value>
+    </data>
+     <data name="ESTResidencyStatus" xml:space="preserve">
+    <value>حالة الإقامة</value>
+    </data>
+     <data name="ESTOutletName" xml:space="preserve">
+    <value>اسم الفرع</value>
+    </data>
+     <data name="ESTOutletCity" xml:space="preserve">
+    <value>مدينة الفرع</value>
+    </data>
+     <data name="ESTCRlicense" xml:space="preserve">
+    <value>سجل تجاري / رخصه</value>
+    </data>
+     <data name="ESTMethodOfFinancialRecordMaintained" xml:space="preserve">
+    <value>طريقة المحافظة على القوائم المالية</value>
+    </data>
+    <data name="ESTEndOfFiscalMonth" xml:space="preserve">
+    <value>نهاية الشهر المالي</value>
+    </data>
+    <data name="ESTConfirm" xml:space="preserve">
+    <value>تأكيد</value>
+    </data>
+    <data name="ESTRegistrationSuccessful" xml:space="preserve">
+    <value>تم التسجيل بنجاح</value>
+    </data>
+    <data name="ESTGAZTAcknowledgesTheReceiptRegApplication" xml:space="preserve">
+    <value>تم استلام طلب التسجيل في خدمات الهيئة العامة للزكاة والدخل</value>
+    </data> 
+    <data name="ESTName" xml:space="preserve">
+        <value>الاسم</value>
+    </data>
+    <data name="ESTReferenceNumber" xml:space="preserve">
+    <value>الرقم المرجعي</value>
+    </data>
+    <data name="ESTFutureRefernceAndCommunicationFinalMsg" xml:space="preserve">
+    <value>الرجاء الاحتفاظ بهذا الرقم للتواصل مستقبلا. الهيئة العامة للزكاة والدخل تقوم بمعالجة طلبك وعند الحاجة لبيانات إضافية او عند فرض عقوبة التاخير في التسجيل والتاكد منها سيتم التواصل معكم .ويمكنك الاتصال بنا على الرقم 19993</value>
+    </data>
+    <data name="ESTGoToDashboard" xml:space="preserve">
+    <value>الذهاب للصفحة الرئيسية</value>
+    </data>
+     <data name="ESTQurayyatOffice" xml:space="preserve">
+    <value>مكتب القريات</value>
+    </data>
+     <data name="ESTAlmajmaahOffice" xml:space="preserve">
+    <value>مكتب المجمعة</value>
+    </data>
+    <data name="ESTMuhayilAsirOffice" xml:space="preserve">
+    <value>مكتب محايل عسير</value>
+    </data>
+        
    <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
   <value>Estimated Profit percentage based on contract type</value>
 </data>
