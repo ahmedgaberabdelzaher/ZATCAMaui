@@ -648,7 +648,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopToRootPage();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
                 Device.BeginInvokeOnMainThread(async () =>

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign
@@ -19,6 +20,7 @@ namespace EGAZT.Views.NewDesign
             InitializeComponent();
             viewModel = App.Locator.SupportPageView;
             BindingContext = viewModel;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
 
         protected override void OnAppearing()

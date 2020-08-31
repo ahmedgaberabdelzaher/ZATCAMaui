@@ -2027,8 +2027,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if(checkforrefundclicked())
                         {
-                            SetDataForRefundPopup();
-                            PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(VATDeclarationData));
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = AppResources.ZZZRefundEnableMessage;
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
+
+                            PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+
+
+                            
                         }
                       
                     }
