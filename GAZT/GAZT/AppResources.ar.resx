@@ -2767,7 +2767,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال10  أيام عمل</value>
+    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال5  أيام عمل</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -6501,10 +6501,10 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ESTMuhayilAsirOffice" xml:space="preserve">
     <value>مكتب محايل عسير</value>
   </data>
-<data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-  <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك السعودي %"</value>
-</data>
-<data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-  <value>حاصل ضرب "الربح التقديري الخاضع للضريبة" في "20 %"</value>
-</data>
+  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك السعودي %"</value>
+  </data>
+  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري الخاضع للضريبة" في "20 %"</value>
+  </data>
 </root>

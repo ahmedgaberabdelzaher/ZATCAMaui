@@ -1342,7 +1342,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     //ZTEReportReportSuccessResponsep1
                     var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
                     var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
-                    SuccessResponse = newrm.Replace("5", "10");
+                    // SuccessResponse = newrm.Replace("5", "10");
+                    SuccessResponse = newrm;
 
                     //await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);
                     //var _navigation = Application.Current.MainPage.Navigation;
