@@ -478,7 +478,7 @@ namespace GAZT.Manager
             }
         }
         //done internet exception handling
-        public static async Task<TaxPayerProfile> GAZTValidateOTPForMobileNumber(String Lang, String OTP, String Tin, string CurrentMobileNumber, string NewMobileNumber)
+        public static async Task<TaxPayerProfile> GAZTValidateOTPForMobileNumber(String Lang, String OTP, String Tin, string CurrentMobileNumber, string NewMobileNumber,string mobileCountry)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -491,7 +491,7 @@ namespace GAZT.Manager
                     NewMobileNumber = "00" + NewMobileNumber;
                     CurrentMobileNumber = "00" + CurrentMobileNumber;
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTValidateOTPForMobile + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
+                    String url = Constants.GAZTValidateOTPForMobile + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber +"',MobileCountry='"+mobileCountry+ "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     ////client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
@@ -553,7 +553,7 @@ namespace GAZT.Manager
             }
         }
         //done internet exception handling
-        public static async Task<bool> GAZTValidateMobileNumber(String Lang, String Tin, string CurrentMobileNumber, string NewMobileNumber)
+        public static async Task<bool> GAZTValidateMobileNumber(String Lang, String Tin, string CurrentMobileNumber, string NewMobileNumber, string mobileCountry)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -566,7 +566,8 @@ namespace GAZT.Manager
                     CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
                     NewMobileNumber = "00" + NewMobileNumber;
                     CurrentMobileNumber = "00" + CurrentMobileNumber;
-                    String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
+                    String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" +"',MobileCountry='" + mobileCountry + "',CurrMobile='" + CurrentMobileNumber +
+                        "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
 
                     //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -649,7 +650,7 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=enabled&sap-language=" + Lang;
+                    String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + ""+"',MobileCountry='"+"" + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     ////client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
@@ -1018,7 +1019,7 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
+                    String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail +"',MobileCountry='"+""+ "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
@@ -1098,7 +1099,7 @@ namespace GAZT.Manager
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     ////client.DefaultRequestHeaders.Add("Token", App.Token);
-                    String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=enabled&sap-language=" + Lang;
+                    String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail +"',MobileCountry='"+""+ "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
