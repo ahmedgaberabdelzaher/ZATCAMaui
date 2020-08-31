@@ -10091,7 +10091,7 @@ namespace GAZT.Manager
             }
         }
 
-        public async static Task<VATChangeFillingPeriodRequestModel> GAZTPostVATChangeFillingPeriodData()
+        public async static Task<VATChangeFillingPeriodRequestModel> GAZTPostVATChangeFillingPeriodData(VATchangeFillingPeriodPostModel request)
         {
             VATChangeFillingPeriodRequestModel _vATChangeFillingPeriodRequestModel = new VATChangeFillingPeriodRequestModel();
 
@@ -10102,75 +10102,9 @@ namespace GAZT.Manager
                 try
                 {
                     VATchangeFillingPeriodPostModel _VATchangeFillingPeriodPostModel = new VATchangeFillingPeriodPostModel();
+                    _VATchangeFillingPeriodPostModel = request;
                     Char lang = WebServiceManager.GetLangZParameter();
                     //_vATChangeFillingPeriodRequestModel = await GAZTGetVATChangeFillingPeriodRequestData();
-
-                    VATchangeFillingPeriodPostModel.Metadata _metadata = new VATchangeFillingPeriodPostModel.Metadata();
-                    _metadata.id = _vATChangeFillingPeriodRequestModel.d.__metadata.id;
-                    _metadata.uri = _vATChangeFillingPeriodRequestModel.d.__metadata.uri;
-                    _metadata.type = _vATChangeFillingPeriodRequestModel.d.__metadata.type;
-
-                    _VATchangeFillingPeriodPostModel.d.__metadata = _metadata;
-                    _VATchangeFillingPeriodPostModel.d.Attchk = _vATChangeFillingPeriodRequestModel.d.Attchk;
-                    _VATchangeFillingPeriodPostModel.d.CPersl = _vATChangeFillingPeriodRequestModel.d.CPersl;
-                    _VATchangeFillingPeriodPostModel.d.Fbnumz = _vATChangeFillingPeriodRequestModel.d.Fbnumz;
-                    _VATchangeFillingPeriodPostModel.d.Iagrfg = _vATChangeFillingPeriodRequestModel.d.Iagrfg;
-                    _VATchangeFillingPeriodPostModel.d.Reqfg = _vATChangeFillingPeriodRequestModel.d.Reqfg;
-                    _VATchangeFillingPeriodPostModel.d.StepNumber = _vATChangeFillingPeriodRequestModel.d.StepNumber;
-                    _VATchangeFillingPeriodPostModel.d.Begda = _vATChangeFillingPeriodRequestModel.d.Begda;
-                    _VATchangeFillingPeriodPostModel.d.PortalUsrz = _vATChangeFillingPeriodRequestModel.d.PortalUsrz;
-                    _VATchangeFillingPeriodPostModel.d.Langz = _vATChangeFillingPeriodRequestModel.d.Langz;
-                    _VATchangeFillingPeriodPostModel.d.Gpart = _vATChangeFillingPeriodRequestModel.d.Gpart;
-
-                    _VATchangeFillingPeriodPostModel.d.Operationz = _vATChangeFillingPeriodRequestModel.d.Operationz;
-                    _VATchangeFillingPeriodPostModel.d.Fbtyp = _vATChangeFillingPeriodRequestModel.d.Fbtyp;
-                    _VATchangeFillingPeriodPostModel.d.StepNumberz = _vATChangeFillingPeriodRequestModel.d.StepNumberz;
-                    _VATchangeFillingPeriodPostModel.d.Fbust = _vATChangeFillingPeriodRequestModel.d.Fbust;
-
-
-                    _VATchangeFillingPeriodPostModel.d.ReturnIdz = _vATChangeFillingPeriodRequestModel.d.ReturnIdz;
-                    _VATchangeFillingPeriodPostModel.d.Officerz = _vATChangeFillingPeriodRequestModel.d.Officerz;
-                    _VATchangeFillingPeriodPostModel.d.UserTyp = _vATChangeFillingPeriodRequestModel.d.UserTyp;
-                    _VATchangeFillingPeriodPostModel.d.Gpartz = _vATChangeFillingPeriodRequestModel.d.Gpartz;
-                    _VATchangeFillingPeriodPostModel.d.TransactionType = _vATChangeFillingPeriodRequestModel.d.TransactionType;
-                    _VATchangeFillingPeriodPostModel.d.EditFg = _vATChangeFillingPeriodRequestModel.d.EditFg;
-                    _VATchangeFillingPeriodPostModel.d.Statusz = _vATChangeFillingPeriodRequestModel.d.Statusz;
-                    _VATchangeFillingPeriodPostModel.d.Euser = _vATChangeFillingPeriodRequestModel.d.Euser;
-
-                    _VATchangeFillingPeriodPostModel.d.UserTypz = _vATChangeFillingPeriodRequestModel.d.UserTypz;
-                    _VATchangeFillingPeriodPostModel.d.Fbguid = _vATChangeFillingPeriodRequestModel.d.Fbguid;
-                    _VATchangeFillingPeriodPostModel.d.TxnTpz = _vATChangeFillingPeriodRequestModel.d.TxnTpz;
-                    _VATchangeFillingPeriodPostModel.d.DmodeFlg = _vATChangeFillingPeriodRequestModel.d.DmodeFlg;
-                    _VATchangeFillingPeriodPostModel.d.Formprocz = _vATChangeFillingPeriodRequestModel.d.Formprocz;
-                    _VATchangeFillingPeriodPostModel.d.EvStatus = _vATChangeFillingPeriodRequestModel.d.EvStatus;
-                    _VATchangeFillingPeriodPostModel.d.OfficerTz = _vATChangeFillingPeriodRequestModel.d.OfficerTz;
-                    _VATchangeFillingPeriodPostModel.d.SrcAppz = _vATChangeFillingPeriodRequestModel.d.SrcAppz;
-
-
-                    _VATchangeFillingPeriodPostModel.d.Mandt = _vATChangeFillingPeriodRequestModel.d.Mandt;
-                    _VATchangeFillingPeriodPostModel.d.FormGuid = _vATChangeFillingPeriodRequestModel.d.FormGuid;
-                    _VATchangeFillingPeriodPostModel.d.DataVersion = _vATChangeFillingPeriodRequestModel.d.DataVersion;
-                    _VATchangeFillingPeriodPostModel.d.ReturnId = _vATChangeFillingPeriodRequestModel.d.ReturnId;
-                    _VATchangeFillingPeriodPostModel.d.CureentF = _vATChangeFillingPeriodRequestModel.d.CureentF;
-                    _VATchangeFillingPeriodPostModel.d.FilingF = _vATChangeFillingPeriodRequestModel.d.FilingF;
-                    _VATchangeFillingPeriodPostModel.d.Persl = _vATChangeFillingPeriodRequestModel.d.Persl;
-                    _VATchangeFillingPeriodPostModel.d.Decfg = _vATChangeFillingPeriodRequestModel.d.Decfg;
-
-
-                    _VATchangeFillingPeriodPostModel.d.Decname = _vATChangeFillingPeriodRequestModel.d.Decname;
-                    _VATchangeFillingPeriodPostModel.d.Decdesignation = _vATChangeFillingPeriodRequestModel.d.Decdesignation;
-                    _VATchangeFillingPeriodPostModel.d.Decdate = _vATChangeFillingPeriodRequestModel.d.Decdate;
-                    _VATchangeFillingPeriodPostModel.d.DecidTy = _vATChangeFillingPeriodRequestModel.d.DecidTy;
-                    _VATchangeFillingPeriodPostModel.d.DecidNo = _vATChangeFillingPeriodRequestModel.d.DecidNo;
-                    _VATchangeFillingPeriodPostModel.d.EffDateSet = _vATChangeFillingPeriodRequestModel.d.EffDateSet.results;
-                    // _VATchangeFillingPeriodPostModel.d.UI_BTNSet = _vATChangeFillingPeriodRequestModel.d.UI_BTNSet.results;
-                    _VATchangeFillingPeriodPostModel.d.NOTESSet = _vATChangeFillingPeriodRequestModel.d.NOTESSet.results;
-                    _VATchangeFillingPeriodPostModel.d.ATTACHSet = _vATChangeFillingPeriodRequestModel.d.ATTACHSet.results;
-                    _VATchangeFillingPeriodPostModel.d.ATT_TYPSet = _vATChangeFillingPeriodRequestModel.d.ATT_TYPSet.results;
-                    //_VATchangeFillingPeriodPostModel.d.QuesListSet = _vATChangeFillingPeriodRequestModel.d.QuesListSet;
-
-
-
 
                     string LangZ = GetLangZParameterAREN();
                     String url = Constants.VATChangeFillingPeriodPostURL;
@@ -10370,25 +10304,118 @@ namespace GAZT.Manager
             }
         }
 
-        public async static Task<string> GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
+        public async static Task<ValidateIDResponse> GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
         {
+
+            ValidateIDResponse _validateIDResponse = new ValidateIDResponse();
+
             if (CrossConnectivity.Current.IsConnected)
             {
+                VATSignUp vATSignUp = new VATSignUp();
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                String SignUpCityList = string.Empty;
                 try
                 {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
-                    // / sap / opu / odata / SAP / Z_REG_GET_TAXPAYER_SRV / taxpayer_nameSet
-                    //(Tin = '<tin number if any>', Idtype = '<idtype[dropdown key]>', Idnum = '<idnumber>', Country = '', PassExpDt = 'yyyymmdd', TaxpDob = 'yyyymmdd')
-                    String Url = string.Empty;
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    String Url = Constants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + idType + "',Idnum='" + idnum + "',Country='',PassExpDt='',TaxpDob='" + taxpDOB + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
+
+
+                    /*String Url = string.Empty;
                     Url = Constants.VATChangeFillingPeriodValidateIDnumberURL + "Tin='" + tin + "',Idtype='" + idType + "',Idnum='" + idnum + "',Country='" + country + "'" +
-                       ",PassExpDt = '" + passExpdt + "', TaxpDob = '" + taxpDOB + "')";
+                          ",PassExpDt = '" + passExpdt + "', TaxpDob = '" + taxpDOB + "')";*/
 
-                    return Url;
+                    var uri = new Uri(Url);
+                    HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
+                    if (VATSignUpIdValidateObject != null)
+                    {
+                        if (VATSignUpIdValidateObject.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = VATSignUpIdValidateObject.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
+                        _validateIDResponse = JsonConvert.DeserializeObject<ValidateIDResponse>(SignUpCityList);
+
+                        if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                PopUp popUp = new PopUp();
+                                popUp.HeaderText = "";
+                                popUp.Message = errorMessage;
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+
+                               // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //ErrorMessageForVAT
+                                //throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                            }
+                        }
+                    }
+                    return _validateIDResponse;// tINStatus;
                 }
-                catch (Exception ex)
+
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
                 }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
             }
             else
             {
