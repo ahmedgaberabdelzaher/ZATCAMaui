@@ -116,7 +116,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     App.DisplayProgressView();
                 });
 
-                ZakatDeregDataData = await WebServiceManager.GaztTinDeregistrationNewRequestData("","");
+                ZakatDeregDataData = new TinDeregistrationResponseModel();
+                ZakatDeregDataData.Approvez = "";
+                ZakatDeregDataData.Rejectz = "";
+
+                ZakatDeregDataData = await WebServiceManager.GaztTinDeregistrationNewRequestData(ZakatDeregDataData);
 
                 //VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
                 //IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
@@ -149,13 +153,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     Console.WriteLine(mex.Message);
                 }
             }
-            catch(GAZTTinDeregistrationErrorException ex)
-            {
-                await Task.Run(() =>
-                {
-                    App.HideProgressView();
-                });
-            }
             catch (GAZTErrorException ex)
             {
                 await Task.Run(() =>
@@ -167,22 +164,54 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 try
                 {
-                    PopUp popUp = new PopUp();
-                    StringBuilder PopMsg = new StringBuilder();
-
-                    popUp.Message = message;
-                    popUp.HeaderText = AppResources.Information;
-
-                    if (App.IsArabic)
+                    if(message.Contains("206"))
                     {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
+                        if(ZakatRegListData == null)
+                        {
+                            ZakatDeregDataData = new TinDeregistrationResponseModel();
+                            ZakatDeregDataData.Approvez = "";
+                            ZakatDeregDataData.Rejectz = "X";
+                        }
+                        else
+                        {
+                            ZakatDeregDataData.Approvez = "";
+                            ZakatDeregDataData.Rejectz = "X";
+                        }
+                        message = AppResources.TinDeregistrationChangeApplicationInDraftError;
+                      
+                        await _dialogService.ShowMessage(message, AppResources.Information, AppResources.ZYes, AppResources.ZNo, (async(bool isConfirmed) =>
+                        {
+                            if(isConfirmed == true)
+                            {
+                                ZakatDeregDataData = await WebServiceManager.GaztTinDeregistrationNewRequestData(ZakatDeregDataData);
+                                _navigationService.NavigateTo(App.TINDeregistrationPageView);
+                            }
+                        }));
                     }
-                    else
+                    else if(message.Contains("112"))
                     {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
+                        if (ZakatRegListData == null)
+                        {
+                            ZakatDeregDataData = new TinDeregistrationResponseModel();
+                            ZakatDeregDataData.Approvez = "X";
+                            ZakatDeregDataData.Rejectz = "";
+                        }
+                        else
+                        {
+                            ZakatDeregDataData.Approvez = "X";
+                            ZakatDeregDataData.Rejectz = "";
+                        }
+                        message = AppResources.TinDeregistrationChangeApplicationInDraftError;
 
+                        await _dialogService.ShowMessage(message, AppResources.Information, AppResources.ZYes, AppResources.ZNo, (async (bool isConfirmed) =>
+                        {
+                            if (isConfirmed == true)
+                            {
+                                ZakatDeregDataData = await WebServiceManager.GaztTinDeregistrationNewRequestData(ZakatDeregDataData);
+                                _navigationService.NavigateTo(App.TINDeregistrationPageView);
+                            }
+                        }));
+                    }
                     await _dialogService.ShowMessage(message, AppResources.Information);
                 }
                 catch (Exception mex)

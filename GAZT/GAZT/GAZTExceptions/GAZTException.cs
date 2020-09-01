@@ -272,9 +272,7 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
     {
         public GAZTTinDeregistrationErrorException()
         { }
-        public GAZTTinDeregistrationErrorException(string ExceptionMessage) : base(ExceptionMessage)
-        { }
-        public GAZTTinDeregistrationErrorException(ErrorObj errorObj)
+        public GAZTTinDeregistrationErrorException(string errorCode, string errorMessage)
         { }
     }
 }

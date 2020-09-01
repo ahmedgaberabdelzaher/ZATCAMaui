@@ -5600,7 +5600,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ChangeFillingPeriodNewFrequency" xml:space="preserve">
     <value>New Frequency</value>
   </data>
-  <data name="ChangeFillingPeriodTitle" xml:space="preserve">
+  <data name="ChangeFillingPeriod" xml:space="preserve">
     <value>VAT Filling Frequency</value>
   </data>
   <data name="ChangeFillingPeriodAttachmentsOtherDocuments" xml:space="preserve">

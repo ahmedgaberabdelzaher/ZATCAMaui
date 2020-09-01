@@ -45,29 +45,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         }
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
         {
-            //  viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
-            try
-            {
-                var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(firstPageToRemove);
+            var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+            Navigation.RemovePage(firstPageToRemove);
 
-                var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(secondPageToRemove);
-
-                var thirdPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(thirdPageToRemove);
-
-                viewModel._navigationService.GoBack();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            viewModel._navigationService.GoBack();
         }
 
-   
         protected override bool OnBackButtonPressed() => true;
-
 
         private async void Image_Copy_Tapped(object sender, EventArgs e)
         {
@@ -90,12 +74,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                 Navigation.RemovePage(firstPageToRemove);
-
-                var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(secondPageToRemove);
-
-                var thirdPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(thirdPageToRemove);
 
                 viewModel._navigationService.GoBack();
             }

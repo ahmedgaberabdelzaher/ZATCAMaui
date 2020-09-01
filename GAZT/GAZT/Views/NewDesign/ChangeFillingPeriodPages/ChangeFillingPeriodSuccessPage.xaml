@@ -31,7 +31,7 @@
                 <Image HeightRequest="120" WidthRequest="120"
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
                        Source="Forget_ic_success" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodTitle}" Margin="0,20,0,0"
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" Margin="0,20,0,0"
                                     FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VFCSuccessDesc}"
                                     Margin="0,15,0,0"
@@ -80,7 +80,7 @@
                                           BackgroundColor="#d49504" TextColor="White" />
 
                         <custom:CustomLabel Margin="10,0,10,15"
-                                            Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodTitle}"
+                                            Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}"
                                             TextColor="#d49504" HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
                             <custom:CustomLabel.GestureRecognizers>

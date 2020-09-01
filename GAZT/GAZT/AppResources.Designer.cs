@@ -9720,9 +9720,9 @@ namespace EGAZT {
             }
         }
         
-        public static string ChangeFillingPeriodTitle {
+        public static string ChangeFillingPeriod {
             get {
-                return ResourceManager.GetString("ChangeFillingPeriodTitle", resourceCulture);
+                return ResourceManager.GetString("ChangeFillingPeriod", resourceCulture);
             }
         }
         
