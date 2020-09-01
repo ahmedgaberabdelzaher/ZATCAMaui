@@ -1546,15 +1546,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             PopupNavigation.Instance.PushAsync(new InstructionPopUpPageView());
         }
 
-        private void OnYesTapped(object sender, EventArgs e)
-        {
-            viewModel.ImgBackgroundNo = "re_Property_Tile_Background_White";
-            viewModel.ImgBackgroundYes = "re_Tile_Background";
-            viewModel.TxtTIN = string.Empty;
-            EntryTIN.Focus();
-            //EntryTIN.Unfocus();
-
-        }
+       
         private void EntryTIN_focused(object sender, FocusEventArgs e)
         {
             PopUp popUp = new PopUp();
@@ -1610,6 +1602,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
         }
 
+
+        private void OnYesTapped(object sender, EventArgs e)
+        {
+            viewModel.ImgBackgroundNo = "re_Property_Tile_Background_White";
+            viewModel.ImgBackgroundYes = "re_Tile_Background";
+            viewModel.TxtTIN = string.Empty;
+            EntryTIN.Focus();
+            //EntryTIN.Unfocus();
+
+        }
         private void OnNoTapped(object sender, EventArgs e)
         {
             viewModel.ImgBackgroundNo = "re_Tile_Background";

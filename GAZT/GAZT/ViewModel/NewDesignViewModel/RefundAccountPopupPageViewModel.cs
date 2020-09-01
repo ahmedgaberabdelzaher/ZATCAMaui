@@ -818,6 +818,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     var res = await SaveReturnAndGetReturnAndSetButtons();
                     if (res != null && res.d != null)
                     {
+                        MessagingCenter.Send<Object, string>(this, "Refundsubmitted", "Refundsubmitted");
                         //Device.BeginInvokeOnMainThread(async () =>
                         //{
                         //    ManageEnabledProperty(false);
@@ -978,6 +979,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (resNew.d.SubmitFg == "" || resNew.d.SubmitFg == string.Empty)
                         {
+                            MessagingCenter.Send<Object, string>(this, "Refundsubmitted", "Refundsubmitted");
                             //Device.BeginInvokeOnMainThread(async () =>
                             //{
                             //    ManageEnabledProperty(false);

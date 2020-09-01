@@ -130,7 +130,7 @@
 
                     <StackLayout Grid.Row="4" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" IsEnabled="{Binding IsIbansEnabled}">
 
-
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
                         <CollectionView  x:Name="OtherIbanlist"   ItemSizingStrategy="MeasureFirstItem" 
                                          HeightRequest="100"
                                                  VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
@@ -232,9 +232,9 @@
                 </CollectionView>-->
                 </StackLayout>
                     <StackLayout Orientation="Horizontal" Grid.Row="5" IsEnabled="{Binding IsRefundCheckboxEnabled}" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
-                        <CheckBox VerticalOptions="CenterAndExpand"  IsChecked="{Binding IsDeclarationCheckedForRefund}">
+                        <CheckBox x:Name="chkForDeclarationRefund" VerticalOptions="CenterAndExpand"  IsChecked="{Binding IsDeclarationCheckedForRefund}">
                             <CheckBox.Triggers>
-                                <DataTrigger TargetType="CheckBox"  Value="false">
+                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkForDeclarationRefund}, Path=IsChecked}" Value="false">
                                     <Setter Property="Color" Value="#ff0000" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
