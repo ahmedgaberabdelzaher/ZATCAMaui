@@ -337,7 +337,7 @@ namespace EGAZT.Models
 
     public class AttdetSet
     {
-        public List<VATDeregAttachment> results { get; set; }
+        public List<Attachment> results { get; set; }
     }
 
     public class VATDeregistrationSummaryModel

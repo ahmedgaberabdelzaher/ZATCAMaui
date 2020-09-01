@@ -6492,7 +6492,7 @@ namespace GAZT.Manager
 
                             //RequestVATDeclaration.d.SubmitFg = "";
                             AttdetSet aTTACHSet = new AttdetSet();
-                            aTTACHSet.results = new List<VATDeregAttachment>();
+                            aTTACHSet.results = new List<Attachment>();
                             RequestVATDeRegistration.d.AttdetSet = aTTACHSet;
                             //if (vATRegistration.d.VatTaxDt == null)
                             //{
@@ -6538,7 +6538,7 @@ namespace GAZT.Manager
                                 if (_vATDeRegistration.d.AttdetSet == null)
                                 {
                                     AttdetSet aTTDETSet = new AttdetSet();
-                                    aTTDETSet.results = new List<VATDeregAttachment>();
+                                    aTTDETSet.results = new List<Attachment>();
                                     _vATDeRegistration.d.AttdetSet = aTTDETSet;
                                 }
 
@@ -7171,13 +7171,13 @@ namespace GAZT.Manager
         #endregion
 
         #region VAT Deregistration
-        public static async Task<VATDeregAttachmentRootOject> GAZTSaveVATDeregAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
+        public static async Task<AttachmentRootOject> GAZTSaveVATDeregAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
-                    VATDeregAttachmentRootOject _attachment = new VATDeregAttachmentRootOject();
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
                     string AttBy = "TP";
                     String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
@@ -7194,7 +7194,7 @@ namespace GAZT.Manager
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
                     var response = await client.PostAsync(url, baContent);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
-                    _attachment = JsonConvert.DeserializeObject<VATDeregAttachmentRootOject>(responsestr);
+                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
                 catch (Exception ex)
@@ -8065,6 +8065,10 @@ namespace GAZT.Manager
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
                     string AttBy = "TP";
+                   if(Dotyp == null)
+                    {
+                        Dotyp = string.Empty;
+                    }
                     String url = Constants.GAZTSaveAttachmentGeneric + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
                     url = url.Replace("attachmentServiceurl", apiServiceUrl);
                     var uri = new Uri(url);

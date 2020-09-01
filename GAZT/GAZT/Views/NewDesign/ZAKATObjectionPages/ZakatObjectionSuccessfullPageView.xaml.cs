@@ -26,6 +26,8 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             this.BindingContext = viewModel;
            // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
             SetLTR();
+            ChangeAeroIcon();
+
             viewModel.ClearData();
             viewModel.OnPageLoad(ZakatReturnDetail);
             this._zakatReturnDetail = ZakatReturnDetail;
@@ -45,6 +47,17 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
 
         }
 
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
 
         protected async Task OnRefreshButtonClicked()
         {
