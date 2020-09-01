@@ -106,6 +106,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 {
                     viewModel.IsVatRegistrationTileVisible = true;
                 }
+
+                if (App.LoginDataRetrieved.ZkReg == null)
+                {
+                    viewModel.IsEstablishmentRegistrationTileVisible = true;
+                }
+                else if (App.LoginDataRetrieved.ZkReg != "X")
+                {
+                    viewModel.IsEstablishmentRegistrationTileVisible = true;
+                }
+
             }
             catch
             {

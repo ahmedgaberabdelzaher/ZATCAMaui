@@ -11,7 +11,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     {
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof(NregIdSet) || objectType == typeof(NregOutletSet) || objectType == typeof(NregActivitySet) || objectType == typeof(NregAddressSet);
+            return objectType == typeof(NregIdSet) || objectType == typeof(NregOutletSet) || objectType == typeof(NregActivitySet) || objectType == typeof(NregAddressSet) || objectType == typeof(OffNotesSet);
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -37,6 +37,12 @@ namespace EGAZT.Models.EstablishmentRegistration
             if (value is NregAddressSet)
             {
                 List<Nreg_AddressItem> results = (value as NregAddressSet)?.results;
+                JArray jArray = JArray.FromObject(results, serializer);
+                jArray.WriteTo(writer);
+            }
+            if(value is OffNotesSet)
+            {
+                List<OffNotes> results = (value as OffNotesSet)?.results;
                 JArray jArray = JArray.FromObject(results, serializer);
                 jArray.WriteTo(writer);
             }
@@ -324,10 +330,30 @@ namespace EGAZT.Models.EstablishmentRegistration
         public string Bpkind { get; set; }
         public bool EditFg { get; set; }
     }
-
+    public class OffNotes
+    {
+        [JsonIgnore]
+        public Metadata __metadata { get; set; }
+        public string Notenoz { get; set; } = "1";
+        public string Refnamez { get; set; } = string.Empty;
+        public string DataVersionz { get; set; } = string.Empty;//"00000"
+        public string XInvoicez { get; set; } = string.Empty;
+        public string XObsoletez { get; set; } = string.Empty;
+        public string Rcodez { get; set; } = "REJ_NOTES";
+        public string Erfusrz { get; set; } = string.Empty;
+        public object Erfdtz { get; set; } = null;
+        public object Erftmz { get; set; } = null;
+        public string ByGpartz { get; set; }
+        public string AttByz { get; set; } = "TP";
+        public string Noteno { get; set; } = "1";
+        public int Lineno { get; set; } = 1;
+        public int ElemNo { get; set; }
+        public string Tdformat { get; set; } = string.Empty;
+        public string Tdline { get; set; }
+    }
     public class OffNotesSet
     {
-        public List<object> results { get; set; }
+        public List<OffNotes> results { get; set; }
     }
 
     public class NregMSGSet

@@ -2767,7 +2767,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال10  أيام عمل</value>
+    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال5  أيام عمل</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -4456,7 +4456,7 @@
     <value>نسخة من العقد بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
-    <value>رفع المرفقات</value>
+    <value>تحميل المرفقات</value>
   </data>
   <data name="TinDeregistration20MB" xml:space="preserve">
     <value>20MB</value>
@@ -5086,7 +5086,7 @@
     <value>الصندوق الوارد</value>
   </data>
   <data name="NDReferenceNumber" xml:space="preserve">
-    <value>رقم المرجع</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
     <value>ادخل الرقم التسلسلي</value>
@@ -5360,7 +5360,7 @@
     <value>مراجعة البيانات التالية</value>
   </data>
   <data name="NDFacilityInformation" xml:space="preserve">
-    <value>بيانات المنشأة</value>
+    <value>معلومات المنشأة</value>
   </data>
   <data name="NDReporterInformation" xml:space="preserve">
     <value>معلومات المبلغ</value>
@@ -5855,10 +5855,10 @@
     <value>المرفقات</value>
   </data>
   <data name="CRAttachACopyOfTheContractRequiredToReleaseAndAmounts" xml:space="preserve">
-    <value>Attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certiied translation Office.</value>
+    <value>الرجاء إرفاق صورة العقد المطلوب الإفراج عنه باللغة العربية أو مترجم من جهة معتمدة</value>
   </data>
   <data name="CRAttachContract" xml:space="preserve">
-    <value>Attach Contract</value>
+    <value>إرفاق العقد</value>
   </data>
   <data name="CRAttachacopyofinvoicesandpurchase" xml:space="preserve">
     <value>صورة من الفواتير وأوامر الشراء المطلوب الإفراج عن قيمتها</value>
@@ -5949,25 +5949,13 @@
     <value>النهاية</value>
   </data>
   <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
-    <value>Estimated Profit percentage based on contract type</value>
+    <value>نسبة الربح التقديرية بناء على نوع العقد</value>
   </data>
   <data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
-    <value>Multiply released amount with Estimated profit for contract</value>
-  </data>
-  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for contract with Saudi share %</value>
-  </data>
-  <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
-  </data>
-  <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
-  </data>
-  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for TAX with 20 %</value>
+    <value>حاصل ضرب "المبلغ المطلوب الإفراج عنه" مع "نسبة الربح التقديرية للعقد"</value>
   </data>
   <data name="CRTotalDuesDesc" xml:space="preserve">
-    <value>Value of zakat due + value of TAX due</value>
+    <value>حاصل جمع "قيمة الزكاة المستحقة" مع "قيمة الضريبة المستحقة"</value>
   </data>
   <data name="CRInstrCheckDesc" xml:space="preserve">
     <value>أنا أوافق</value>
@@ -6273,31 +6261,31 @@
     <value>الفروع</value>
   </data>
   <data name="ESTOrgNonResidentActivityValueOne" xml:space="preserve">
-    <value>Derived from an activity which occurs in KSA.</value>
+    <value> مشتقة من نشاط يحدث في المملكة العربية السعودية.</value>
   </data>
   <data name="ESTOrgNonResidentActivityValueTwo" xml:space="preserve">
-    <value>Derived from immoviable property located in the Kingdom</value>
+    <value>مشتقة من الممتلكات غير المنقولة الموجودة في المملكة</value>
   </data>
   <data name="ESTOrgNonResidentActivityValueThree" xml:space="preserve">
-    <value>Derived from the disposal of shares or a partnership in resident company.</value>
+    <value> ناشئة عن بيع أسهم أو شراكة في شركة مقيمة.</value>
   </data>
   <data name="ESTOrgNonResidentActivityValueFour" xml:space="preserve">
-    <value>Derived from lease of moveable properties used in Kingdom</value>
+    <value> مشتقة من تأجير الممتلكات المنقولة المستخدمة في المملكة</value>
   </data>
   <data name="ESTOrgNonResidentActivityValueFive" xml:space="preserve">
-    <value>Derived from sales or license for use of industrial or intellectual Properties used in Kingdom.</value>
+    <value> مشتقة من بيع أو ترخيص لاستخدام الممتلكات الصناعية أو الفكرية المستخدمة في المملكة.</value>
   </data>
   <data name="ESTOrgNonResidentActivityValueSix" xml:space="preserve">
-    <value>Dividends, managment or directors'fees paid by resident company.</value>
+    <value> أرباح الأسهم أو أتعاب الإدارة أو أعضاء مجلس الإدارة التي تدفعها الشركة المقيمة.</value>
   </data>
   <data name="ESTOrgNonResidentActivityValueSeven" xml:space="preserve">
-    <value>Amounts paid against services rendered to the company's head office or to an affiliated company</value>
+    <value> المبالغ المدفوعة مقابل الخدمات المقدمة للمركز الرئيسي للشركة أو لشركة تابعة</value>
   </data>
   <data name="ESTOrgNonResidentActivityValueEight" xml:space="preserve">
-    <value>Amounts paid by a resident against serivces performed in whole or in part in the Kingdom.</value>
+    <value> المبالغ التي يدفعها مقيم مقابل الخدمات التي يتم أداؤها كليًا أو جزئيًا في المملكة.</value>
   </data>
   <data name="ESTOrgNonResidentActivityValueNine" xml:space="preserve">
-    <value>Amounts for exploitation of a natural resource in the kingdom.</value>
+    <value> مبالغ لاستغلال مورد طبيعي في المملكة.</value>
   </data>
   <data name="VFCEffectiveDate" xml:space="preserve">
     <value>Effective Date</value>
@@ -6338,6 +6326,12 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   </data>
   <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
     <value>البريد الالكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
+  </data>
+  <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك الغير السعودي %"</value>
+  </data>
+  <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري الخاضع للزكاة" في "2.5 %"</value>
   </data>
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>تفاصيل الائتمان المنقولة</value>
@@ -6506,6 +6500,18 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   </data>
   <data name="ESTMuhayilAsirOffice" xml:space="preserve">
     <value>مكتب محايل عسير</value>
+  </data>
+  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك السعودي %"</value>
+  </data>
+  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري الخاضع للضريبة" في "20 %"</value>
+  </data>
+  <data name="Gregorian" xml:space="preserve">
+    <value>ميلادي</value>
+  </data>
+  <data name="Hijri" xml:space="preserve">
+    <value>هجري</value>
   </data>
   <data name="ZZZZNoIdNumberMsg" xml:space="preserve">
     <value>لا يوجد رقم هوية يوافق نوع الهوية المحدد</value>

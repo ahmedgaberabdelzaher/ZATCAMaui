@@ -44,6 +44,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Propetry
+        public string _IndividualBackImg = "FP_unselected_tile.png";
+        public string IndividualBackImg
+        {
+            get
+            {
+                return _IndividualBackImg;
+            }
+            set
+            {
+                _IndividualBackImg = value;
+                RaisePropertyChanged("IndividualBackImg");
+            }
+        }
+
+        public string _EstablishmentBackImg = "FP_unselected_tile.png";
+        public string EstablishmentBackImg
+        {
+            get
+            {
+                return _EstablishmentBackImg;
+            }
+            set
+            {
+                _EstablishmentBackImg = value;
+                RaisePropertyChanged("EstablishmentBackImg");
+            }
+        }
         public string _PageTitle = AppResources.ZTERNewAccount;
         public string PageTitle
         {

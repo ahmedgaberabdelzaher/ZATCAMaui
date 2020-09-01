@@ -27,26 +27,38 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetLTR();
+            ChangeAeroIcon();
 
             viewModel.OnPageLoad(ZakatReturnDetail);
+
             ToolbarItem Refresh = new ToolbarItem
             {
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
                 Command = new Command(async () =>
                 {
-                    await OnRefreshButtonClicked();
+                  //  await OnRefreshButtonClicked();
                     // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                 })
             };
             this.ToolbarItems.Add(Refresh);
-            Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
+          //  Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
 
 
         }
 
-
-        protected async Task OnRefreshButtonClicked()
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
+        }
+        private async void OnRefreshButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -66,6 +78,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
            
         }
 
+      
         private void SetLTR()
         {
             if (!App.IsArabic)

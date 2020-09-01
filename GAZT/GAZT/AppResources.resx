@@ -2756,7 +2756,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>The report is submitted successfully with reference number (Report Number),  you will receive GAZT response within 10 working days.</value>
+    <value>The report is submitted successfully with reference number (Report Number),  you will receive GAZT response within 5 working days.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -6617,6 +6617,14 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   </data>
   <data name="ESTMuhayilAsirOffice" xml:space="preserve">
     <value>Muhayil Asir Office</value>
+    </data>
+     <data name="Gregorian" xml:space="preserve">
+    <value>Gregorian</value>
+    </data>
+     <data name="Hijri" xml:space="preserve">
+    <value>Hijri</value>
+    </data>
+   
   </data>
   <data name="ZZZZNoIdNumberMsg" xml:space="preserve">
     <value>There is no corresponding ID Number for the selected ID type</value>

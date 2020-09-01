@@ -7,8 +7,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using EGAZT.Models;
+using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -36,7 +38,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             ChangeAeroIcon();
 
             SetLTR();
-
+            ChangeArrowDirection();
             MessagingCenterCallBacks();
           
             Task.Run(async () =>
@@ -47,6 +49,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
 
             viewModel.VoidIsVisible = false;
+            ContactName.IsEnabled = true;
         }
 
         public void ChangeArrowDirection()
@@ -94,7 +97,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     else
                     {
                         viewModel.ReasonTitle = arg.SelectedValue;
-                        if (viewModel.ReasonTitle.Contains("Others"))
+                        if (viewModel.ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                         {
                             //  viewModel.SelectedOthersOption = true;
                         }
@@ -255,6 +258,20 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     }
                 }
             }
+            Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            {
+                if (arg != null)
+                {
+
+                    //viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
+                  viewModel.PopulateAttachments(arg.results);
+
+
+                }
+            });
+            if (viewModel.IDType != null) {
+                        MessagingCenterCallBacks();
+                    }
             viewModel.PopulateSummaryReasonData();
             viewModel.PopulateSummaryDeclarationData();
             viewModel.PopulateAttachmentsListViewTemplate();
@@ -272,9 +289,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
             });
             string dob = viewModel.DOB.Replace("/", "");
-            ContactName.IsEnabled = true;
+           
             if (viewModel.IDType == AppResources.NationaID)
             {
+                ContactName.IsEnabled = false;
+
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
@@ -305,6 +324,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             viewModel.ContactPersonName = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
                              ContactName.IsEnabled = false;
+                            
                             FrmIDNumber.HasError = false;
                           //  viewModel.FrameContactIDError = false;
                         }
@@ -399,7 +419,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
             if (viewModel.IDType == AppResources.ZZIqamaID)
             {
-                  ContactName.IsEnabled = true;
+                ContactName.IsEnabled = false;
+
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
@@ -519,6 +540,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         }
                     }
                 }
+            }
+            else
+            {
+                ContactName.IsEnabled = true;
             }
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -685,7 +710,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 {
                     if (viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results.Count != 0)
                     {
-                        ObservableCollection<VATDeregAttachment> myCollection = new ObservableCollection<VATDeregAttachment>(viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results as List<VATDeregAttachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeRegistrationDetailsForAttach.d.AttdetSet.results as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
 
                         try
@@ -714,11 +739,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            MessagingCenter.Unsubscribe<Object, AttdetSet>(this, "AttachmentReceived");
 
             viewModel.IsLoading = false;
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
+            MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
 
             MessagingCenter.Unsubscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem");
 
@@ -732,7 +757,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             viewModel.setDocType();
         }
 
-        public async Task DeleteAttachment(bool result, VATDeregAttachment attachment)
+        public async Task DeleteAttachment(bool result, Attachment attachment)
         {
             try
             {
@@ -750,10 +775,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
 
 
-                            VATDeregAttachment listitem = (from itm in viewModel.VatAttachmentsList
+                          Attachment listitem = (from itm in viewModel.VatAttachmentsList
                                                            where itm.Doguid == attachment.Doguid.ToString()
                                                            select itm)
-                                            .FirstOrDefault<VATDeregAttachment>();
+                                            .FirstOrDefault<Attachment>();
 
                             if (listitem != null)
                                 viewModel.VatAttachmentsList.Remove(listitem);
@@ -801,8 +826,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
             else
             {
-                attachmentsListView.SelectedItems.Clear();
-                viewModel.AddAttachmentEx();
+                //attachmentsListView.SelectedItems.Clear();
+             //   viewModel.AddAttachmentEx();
             }
         }
 
@@ -875,7 +900,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
 
             GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
-            genericDatePickerModel.DatePickerTitle = "Select DOB";
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregDOBDatePickerTitle;
             genericDatePickerModel.PickerId = "DOBDateTypePicker";
             try
             {
@@ -1413,13 +1438,38 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             viewModel.EnableDeclarationView();
         }
 
-        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
-        {
-            viewModel.AddAttachmentEx();
-        }
+        //async void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (viewModel.VatAttachmentsList != null)
+        //        {
+        //            await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(viewModel.VatAttachmentsList.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATDeregistration, viewModel.VATDeRegistrationDetailsForAttach.d.ReturnIdx));
+        //            // await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(AttachmentsListViewData.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATInstalment, VatInstalments.d.ReturnIdz));
+        //        }
+        //    }
+        //    catch (GAZTUnlockAccountException ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    catch (InternetException ex)
+        //    {
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+        //            //_navigationService.GoBack();
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    // viewModel.AddAttachmentEx();
+        //}
 
         async void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
         {
+           
             try
             {
                 try
@@ -1429,7 +1479,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.IsLoading = true;
                     });
                     Image arrowImage = sender as Image;
-                    VATDeregAttachment attachment = (VATDeregAttachment)arrowImage.BindingContext;
+                  Attachment attachment = (Attachment)arrowImage.BindingContext;
                     //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                     //{
 

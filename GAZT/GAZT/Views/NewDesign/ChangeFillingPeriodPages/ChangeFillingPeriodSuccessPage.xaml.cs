@@ -14,7 +14,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
     public partial class ChangeFillingPeriodSuccessPage : ContentPage
     {
        
-            public ChangeFillingPeriodViewModel viewModel;
+          //  public ChangeFillingPeriodViewModel viewModel;
 
             public ChangeFillingPeriodSuccessPage()
             {
@@ -27,7 +27,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                // viewModel = App.Locator.ChangeFillingPeriodSuccessPage;
 
-                this.BindingContext = viewModel;
+               // this.BindingContext = viewModel;
             }
 
             private void SetLTR()

@@ -56,7 +56,7 @@
                             <Image Source="taxEvasion">
 
                             </Image>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasion}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBTaxEvasion}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnTaxEvasionTapped" NumberOfTapsRequired="1"/>
                             </StackLayout.GestureRecognizers>
