@@ -109,6 +109,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.DocTypeString = "ZTPC";
             }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
+            {
+                viewModel.DocTypeString = "ZVTI";
+            }
         }
 
         private void SetLTR()

@@ -6492,7 +6492,7 @@ namespace GAZT.Manager
 
                             //RequestVATDeclaration.d.SubmitFg = "";
                             AttdetSet aTTACHSet = new AttdetSet();
-                            aTTACHSet.results = new List<VATDeregAttachment>();
+                            aTTACHSet.results = new List<Attachment>();
                             RequestVATDeRegistration.d.AttdetSet = aTTACHSet;
                             //if (vATRegistration.d.VatTaxDt == null)
                             //{
@@ -6538,7 +6538,7 @@ namespace GAZT.Manager
                                 if (_vATDeRegistration.d.AttdetSet == null)
                                 {
                                     AttdetSet aTTDETSet = new AttdetSet();
-                                    aTTDETSet.results = new List<VATDeregAttachment>();
+                                    aTTDETSet.results = new List<Attachment>();
                                     _vATDeRegistration.d.AttdetSet = aTTDETSet;
                                 }
 
@@ -6921,9 +6921,18 @@ namespace GAZT.Manager
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     char lang = GetLangZParameter();
+                    string Lang = "";
+                    if (App.IsArabic == true)
+                    {
+                        Lang = "A";
+                    }
+                    else
+                    {
+                        Lang = "E";
+                    }
 
                     //string url = Constants.Z_RET_F05_ZKTE+"(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='00000000000000000000',Fbguid='005056B1F8FB1EEAB680B9ED5E358961')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
-                    string url = Constants.Z_RET_F05_ZKTE + "(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='E',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='" + App.TP.Userid + "',Fbguid='" + Fbguid + "')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
+                    string url = Constants.Z_RET_F05_ZKTE + "(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='" + Lang + "',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='" + App.TP.Userid + "',Fbguid='" + Fbguid + "')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet";
 
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
@@ -7162,13 +7171,13 @@ namespace GAZT.Manager
         #endregion
 
         #region VAT Deregistration
-        public static async Task<VATDeregAttachmentRootOject> GAZTSaveVATDeregAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
+        public static async Task<AttachmentRootOject> GAZTSaveVATDeregAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
-                    VATDeregAttachmentRootOject _attachment = new VATDeregAttachmentRootOject();
+                    AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
                     string AttBy = "TP";
                     String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
@@ -7185,7 +7194,7 @@ namespace GAZT.Manager
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
                     var response = await client.PostAsync(url, baContent);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
-                    _attachment = JsonConvert.DeserializeObject<VATDeregAttachmentRootOject>(responsestr);
+                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
                 catch (Exception ex)
@@ -8056,6 +8065,10 @@ namespace GAZT.Manager
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
                     string AttBy = "TP";
+                   if(Dotyp == null)
+                    {
+                        Dotyp = string.Empty;
+                    }
                     String url = Constants.GAZTSaveAttachmentGeneric + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
                     url = url.Replace("attachmentServiceurl", apiServiceUrl);
                     var uri = new Uri(url);

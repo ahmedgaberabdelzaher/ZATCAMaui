@@ -793,8 +793,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         };
         private Dictionary<string, string> EnCalendarTypeList = new Dictionary<string, string>()
         {
-            {"2", "hijri" },
-            {"1", "Gregorian" }
+            {"2", AppResources.Hijri },
+            {"1", AppResources.Gregorian }
         };
         private List<string> _methodList = new List<string>();
         public List<string> MethodList
@@ -1518,10 +1518,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
 
-        public void OnRentAttachmentCloseTapped(Attachment obj)
+        public void OnRentAttachmentDeleteButtonTapped(Attachment obj)
         {
-            UploadedRentDocumentsList.Remove(obj);
-            RaisePropertyChanged(nameof(UploadedRentDocumentsList));
+            
+
+           var delStatus = DeleteAttachment(obj.Filename, obj.RetGuid,obj.Dotyp, obj.Doguid);
+
+            if (delStatus.ToLower()=="delete")
+            {
+                UploadedRentDocumentsList.Remove(obj);
+            }
+            else
+            {
+                ShowValidationPopup("Something went wrong");
+            }
             if (UploadedRentDocumentsList==null ||  UploadedRentDocumentsList.Count()==0)
             {
                 IsVisbleRentAttachmentmentList = false;
@@ -1547,10 +1557,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
           
         }
 
-        public void OnPassportCloseButtonTapped(Attachment obj)
+        public void OnPassportAttachmentDeleteButtonTapped(Attachment obj)
         {
-            UploadedPassportDocumentsList.Remove(obj);
-            RaisePropertyChanged(nameof(UploadedPassportDocumentsList));
+            var delStatus = DeleteAttachment(obj.Filename, obj.RetGuid, obj.Dotyp, obj.Doguid);
+
+            if (delStatus.ToLower() == "delete")
+            {
+                UploadedPassportDocumentsList.Remove(obj);
+            }
+            else
+            {
+                ShowValidationPopup("Something went wrong");
+            }
+
             if (UploadedPassportDocumentsList==null ||  UploadedPassportDocumentsList.Count() == 0)
             {
                 IsVisbleAttachmentPassportList = false;
@@ -1615,6 +1634,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        private string DeleteAttachment(string fileName, string RetGuid, string docType, string docguid)
+        {
+            return WebServiceManager.ESTDeleteAttachment(fileName, RetGuid, docType, docguid);
+        }
 
         private async Task AddAttachment(string docType)
         {

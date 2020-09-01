@@ -370,6 +370,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             {
                                 hybridWebView.Opacity = 0;
                                 viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+                                //viewModel._navigationService.NavigateTo(App.EstablishmentSignUPPageView);
                             }
                             
                             if (data == "navigateBackToLoginPage")

@@ -839,7 +839,7 @@
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleWhiteBold}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
 
                 <StackLayout Grid.Row="0" Grid.Column="0">
                     <Image IsVisible="{Binding IsBackBtnVisible}" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">

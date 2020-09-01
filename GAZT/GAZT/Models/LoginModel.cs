@@ -29,6 +29,9 @@ namespace GAZT.Models
         [JsonProperty("EtReg")]
         public string EtReg { get; set; }
 
+        [JsonProperty("ZkReg")]
+        public string ZkReg { get; set; }
+
         [JsonProperty("ExeDate")]
         public DateTimeOffset ExeDate { get; set; }
 
@@ -55,6 +58,9 @@ namespace GAZT.Models
 
         [JsonProperty("Appversion")]
         public string AppVersion { get; set; }
+
+        [JsonProperty("Emailid")]
+        public string Emailid { get; set; }
 
         public string ResponseStatusMessage { get; set; }
 
