@@ -199,7 +199,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
                 new ChipModel(){Text =AppResources.ZTEReportReportOpen, TemplateType = AppResources.ZTEReportReportOpen, ImageSource="ic_star_border.png"},
-                               new ChipModel(){Text =AppResources.ZReportStatusClose, TemplateType = AppResources.ZReportStatusClose,ImageSource = "ic_money.png"}
+                               new ChipModel(){Text =AppResources.ZTEReportStatusCompleted, TemplateType = AppResources.ZReportStatusClose,ImageSource = "ic_money.png"}
             };
             }
             catch (Exception ex)

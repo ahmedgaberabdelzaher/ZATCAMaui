@@ -95,7 +95,7 @@
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
                 </Grid>
-                <custom:CustomLabel Margin="5,0,0,0" Text="{Binding CountLabel}" Style="{StaticResource CaptionLabelGrey}">
+                <custom:CustomLabel HorizontalOptions="StartAndExpand" Margin="5,0,5,0" Text="{Binding CountLabel}" Style="{StaticResource CaptionLabelGrey}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.NDCount}" Style="{StaticResource CaptionLabelGrey}"></Span>

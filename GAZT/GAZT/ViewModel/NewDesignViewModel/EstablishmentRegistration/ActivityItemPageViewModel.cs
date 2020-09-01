@@ -40,20 +40,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 switch (value)
                 {
                     case EstablishmentOutletActivitiesTabsEnum.LicenseDetails:
-                        ActivityTitle = "Add License";
+                        ActivityTitle = AppResources.ESTAddLicense;
                         break;
                     case EstablishmentOutletActivitiesTabsEnum.ActivityList:
-                        ActivityTitle = "License Details";
+                        ActivityTitle = AppResources.ESTLicenseDetails; 
                         break;
                     case EstablishmentOutletActivitiesTabsEnum.CRDetails:
                     default:
-                        ActivityTitle = "Commercial Registration";
+                        ActivityTitle = AppResources.ESTCommercialRegistration; 
                         break;
                 }
                 fetchTabDataAndBind();
             }
         }
-        private string _activityTitle = "Commercial Registration";
+        private string _activityTitle = AppResources.ESTCommercialRegistration;
         public string ActivityTitle
         {
             get => _activityTitle;

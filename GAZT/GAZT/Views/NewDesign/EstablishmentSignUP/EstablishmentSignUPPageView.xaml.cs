@@ -23,7 +23,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void OnEstablishmentTapped(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
+            viewModel.IndividualBackImg = "FP_unselected_tile.png";
+            viewModel.EstablishmentBackImg = "FP_selected_tile.png";
+            //viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
+        }
+
+        private void OnIndividualTapped(object sender, EventArgs e)
+        {
+            viewModel.IndividualBackImg = "FP_selected_tile.png";
+            viewModel.EstablishmentBackImg = "FP_unselected_tile.png";
+            //viewModel._navigationService.NavigateTo(App.indivi);
         }
     }
 }

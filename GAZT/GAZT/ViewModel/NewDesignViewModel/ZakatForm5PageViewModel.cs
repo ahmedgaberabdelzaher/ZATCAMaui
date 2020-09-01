@@ -1731,7 +1731,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             //Registration Information
                             NumberOfOutlet = ZakatForm5DataResult.ANoOfOutlet.ToString();
+
+                            if(ZakatForm5DataResult.AResidency == "Resident")
+                            {
+                                if (App.IsArabic)
+                                {
+                                    Residency_Status = "مقيم";
+
+                                }
+                                else
+                                {
+                                    Residency_Status = "Resident";
+                                }
+                            }
+                            else if (ZakatForm5DataResult.AResidency == "مقيم")
+                            {
+                                if (App.IsArabic)
+                                {
+                                    Residency_Status = "مقيم";
+
+                                }
+                                else
+                                {
+                                    Residency_Status = "Resident";
+                                }
+                            }
+                            else
+                            {
                             Residency_Status = ZakatForm5DataResult.AResidency;
+                            }
+
                             MainOutlet = ZakatForm5DataResult.AMainact;
                             AccountMethod = ZakatForm5DataResult.AActmethod;
                             FinancialPeriod = ZakatForm5DataResult.AFiscalPeriod;

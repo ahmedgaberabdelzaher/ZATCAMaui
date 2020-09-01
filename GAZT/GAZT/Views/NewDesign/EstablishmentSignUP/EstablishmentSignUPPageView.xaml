@@ -8,6 +8,8 @@
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="partials_background.png"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.EstablishmentSignUPPageView">
     <ContentPage.Resources>
@@ -30,8 +32,63 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-
                 <Grid Grid.Row="2" x:Name="ParentView">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Image Source="{Binding IndividualBackImg}"/>
+                        <StackLayout VerticalOptions="End" Padding="15,0,16,16">
+                            <Image HorizontalOptions="Start" Source="menu_individual.png">
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image" Binding="{Binding IndividualBackImg}" Value="FP_unselected_tile.png">
+                                        <Setter Property="Source" Value="individual_32.png"/>
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIndividuals}" Style="{StaticResource ValueLabelWhiteMedium}">
+                                <custom:CustomLabel.Triggers>
+                                    <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IndividualBackImg}" Value="FP_unselected_tile.png">
+                                        <Setter Property="TextColor" Value="Black"/>
+                                    </DataTrigger>
+                                </custom:CustomLabel.Triggers>
+                            </custom:CustomLabel>
+                        </StackLayout>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnIndividualTapped"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Image Source="{Binding EstablishmentBackImg}"/>
+                        <StackLayout VerticalOptions="End" Padding="15,0,16,16">
+                            <Image HorizontalOptions="Start" Source="establishments.png">
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image" Binding="{Binding IndividualBackImg}" Value="FP_unselected_tile.png">
+                                        <Setter Property="Source" Value="establishments_White.png"/>
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEstablishments}" Style="{StaticResource ValueLabelWhiteMedium}">
+                                <custom:CustomLabel.Triggers>
+                                    <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding EstablishmentBackImg}" Value="FP_unselected_tile.png">
+                                        <Setter Property="TextColor" Value="Black"/>
+                                    </DataTrigger>
+                                </custom:CustomLabel.Triggers>
+                            </custom:CustomLabel>
+                        </StackLayout>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnEstablishmentTapped"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Grid>
+
+                <!--<Grid Grid.Row="2" x:Name="ParentView">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -74,7 +131,7 @@
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDOthers}" Style="{StaticResource ValueLabelBlackMedium}"/>
                         </StackLayout>
                     </Grid>
-                </Grid>
+                </Grid>-->
                 
                 
                 
