@@ -19,8 +19,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnInvoiceClicked { get; set; }
-        public bool IsrefreshEnabled = false;
+        public ICommand OnBackButtonClicked { get; set; }
 
+        public bool IsrefreshEnabled = false;
+       
+            
         //============================start===================================================
         string Cokey = "";
         string Cotyp = "";
@@ -91,6 +94,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 OnDownLoadInvoiceClicked();
             });
 
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
         }
         #endregion
 
