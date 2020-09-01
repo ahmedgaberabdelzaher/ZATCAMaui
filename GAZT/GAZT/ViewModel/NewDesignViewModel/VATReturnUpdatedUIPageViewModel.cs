@@ -1384,6 +1384,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //    }
         //}
 
+        public bool _isNavigatedToSubmitted;
+        public bool IsNavigatedToSubmitted
+        {
+            get
+            {
+                return _isNavigatedToSubmitted;
+            }
+            set
+            {
+                _isNavigatedToSubmitted = value;
+                RaisePropertyChanged("IsNavigatedToSubmitted");
+            }
+        }
+
         public bool _isBtnVisible;
         public bool isBtnVisible
         {
@@ -1846,6 +1860,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        //private bool _isNavigatedToBilled = false;
+        //public bool IsNavigatedToBilled
+        //{
+        //    get
+        //    {
+        //        return _isNavigatedToBilled;
+        //    }
+        //    set
+        //    {
+        //        _isNavigatedToBilled = value;
+        //        RaisePropertyChanged("IsNavigatedToBilled");
+        //    }
+        //}
+
 
         private bool _isFivePersenctVisible = false;
         public bool IsFivePersenctVisible
@@ -2010,7 +2038,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnMoreClicked = new Xamarin.Forms.Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new MorePopUpPageView(ListOfActionButtonsApplicable));
+                if (IsNavigatedToSubmitted == false)
+                {
+                    PopupNavigation.Instance.PushAsync(new MorePopUpPageView(ListOfActionButtonsApplicable));
+                }
             });
 
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
@@ -2022,34 +2053,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    bool value = IsCheckedDraftMode();
-                    if (IsDeclarationCheckedForSummary)
-                    {
-                        if(checkforrefundclicked())
+                  
+                        bool value = IsCheckedDraftMode();
+                        if (IsDeclarationCheckedForSummary)
+                        {
+                            if (checkforrefundclicked())
+                            {
+                                List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                                HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                                NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                                headerAmountInfo.IsLinkAvailable = false;
+                                headerAmountInfo.Message = AppResources.ZZZRefundEnableMessage;
+
+                                headerWithInfos.Add(headerAmountInfo);
+
+
+                                newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                                newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                                newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
+
+                                PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+
+
+
+                            }
+
+                        }
+                        else
                         {
                             List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                             HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                             NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
                             headerAmountInfo.IsLinkAvailable = false;
-                            headerAmountInfo.Message = AppResources.ZZZRefundEnableMessage;
+                            headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
 
                             headerWithInfos.Add(headerAmountInfo);
 
 
                             newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                             newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                            newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                            PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
-
-
-                            
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                         }
-                      
-                    }
-                    // _navigationService.NavigateTo(App.RefundAccountPopupPageView,VATDeclarationData);
-                    //_navigationService.GoBack();
+                        // _navigationService.NavigateTo(App.RefundAccountPopupPageView,VATDeclarationData);
+                        //_navigationService.GoBack();
+                    
                 }
                 catch(Exception ex)
                 {
@@ -2104,21 +2155,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (CreditDetailsText == AppResources.ZZZZConfirmandGenerateSADADBill)
                 {
-                    if (IsDeclarationCheckedForSummary && (IsVoidClicked==false && IsResetClicked==false))
-                    {
-                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus=="E0001" ||IsCheckedDraftMode()))
+                   
+                        if (IsDeclarationCheckedForSummary)
                         {
-                            Device.BeginInvokeOnMainThread(() =>
+                            if (IsDeclarationCheckedForSummary && (IsVoidClicked == false && IsResetClicked == false))
                             {
-                                IsNewLoading = true;
-                            });
-                            await SubmitClicked();
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                IsNewLoading = false;
-                            });
+                                if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus == "E0001" || IsCheckedDraftMode()))
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        IsNewLoading = true;
+                                    });
+                                    await SubmitClicked();
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        IsNewLoading = false;
+                                    });
+                                }
+                            }
                         }
-                    }
+                        else
+                        {
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
+
+                            headerWithInfos.Add(headerAmountInfo);
+
+
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        }
+                    
                 }
                 else if(CreditDetailsText == AppResources.ZZGeneralMessage_GetAcknowledgement)
                 {
@@ -2993,19 +3067,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    if (Convert.ToDouble(NetdueVat) < 0)
+                    if (IsNavigatedToSubmitted == false)
                     {
-                        isBtnVisible = false;
-                        IsMainButtonVisible = true;
-                        IsRefundButtonVisible = true;
-                        ContinueText = AppResources.ZZZZConfirmAndCarryForward;
-                    }
-                    else
-                    {
-                        isBtnVisible = true;
-                        IsMainButtonVisible = false;
-                        IsRefundButtonVisible = false;
-                        CreditDetailsText = AppResources.ZZZZConfirmandGenerateSADADBill;
+                        if (Convert.ToDouble(NetdueVat) < 0)
+                        {
+                            isBtnVisible = false;
+                            IsMainButtonVisible = true;
+                            IsRefundButtonVisible = true;
+                            ContinueText = AppResources.ZZZZConfirmAndCarryForward;
+                        }
+                        else
+                        {
+                            isBtnVisible = true;
+                            IsMainButtonVisible = false;
+                            IsRefundButtonVisible = false;
+                            CreditDetailsText = AppResources.ZZZZConfirmandGenerateSADADBill;
+                        }
                     }
                 }
             }
@@ -3451,6 +3528,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             IsRefundButtonVisible = false;
                             isBtnVisible = false;
                             IsEnableSwitchToggledFor15PercentChange = false;
+                            IsNavigatedToSubmitted = true;
                             //IsMainButtonVisible = false;
                             //IsSwichButtonEnableToTap = false;
                             //IsEnableIBAN = false;
@@ -3609,6 +3687,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsRefundButtonVisible = false;
                                 isBtnVisible = false;
                                 IsEnableSwitchToggledFor15PercentChange = false;
+                                IsNavigatedToSubmitted = true;
                                 //IsMainButtonVisible = false;
                                 //IsSwichButtonEnableToTap = false;
                                 //IsEnableIBAN = false;

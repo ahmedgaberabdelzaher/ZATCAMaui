@@ -94,7 +94,7 @@
 
                         <Image Grid.Row="0" Grid.Column="2" Source="WhiteCircle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnVATNowTapped" NumberOfTapsRequired="1"/>
+                                <TapGestureRecognizer Tapped="OnZakatNowTapped" NumberOfTapsRequired="1"/>
                             </Image.GestureRecognizers>
                         </Image>
 
@@ -387,7 +387,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_bill"> </Image>
+                                    <Image Source="ic_Payments"> </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZDBMyPayments}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="Label_MyBills"/>
@@ -405,7 +405,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                  <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="refund">
+                                    <Image Source="amount_white.png">
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATRefundRequestDashboardTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
@@ -415,7 +415,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
                                  <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="installment_plan">
+                                    <Image Source="ic_Installplan.png">
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
@@ -425,7 +425,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return"> </Image>
+                                    <Image Source="ic_menu_Tax_check.png"> </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZDBTaxCheck}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="VATLookUp_Tapped" />
@@ -433,7 +433,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return">
+                                    <Image Source="ic_certificate.png">
 
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZDBMyCertificates}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -443,7 +443,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return">
+                                    <Image Source="ic_ReportTaxEvasion.png">
 
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZDBTaxEvasion}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -453,7 +453,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                 <StackLayout Orientation="Horizontal" Spacing="20" IsVisible="{Binding IsVatRegistrationTileVisible}">
-                                    <Image Source="menu_return">
+                                    <Image Source="password_key.png">
 
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationTile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -463,7 +463,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsVatRegistrationTileVisible}"/>
                               <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_bill">
+                                    <Image Source="ic_vatDe.png">
 
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VATDeregistration}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -555,10 +555,8 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Account}"/>
-                                        </Image.Source>
+                                    <Image Source="user_profile.png">
+
                                     </Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TaxpayerProfile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
@@ -569,10 +567,8 @@
 
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
-                                        </Image.Source>
+                                    <Image Source="ic_Gazt.png">
+
                                     </Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
@@ -595,10 +591,8 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
-                                        </Image.Source>
+                                    <Image Source="ic_PrivacyPolicy.png">
+
                                     </Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZPrivacyandPolicy}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
@@ -608,10 +602,8 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image>
-                                        <Image.Source>
-                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
-                                        </Image.Source>
+                                    <Image Source="language.png">
+
                                     </Image>
                                     <custom:CustomLabel Text="{Binding TranslateText}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
@@ -621,7 +613,10 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_help.png">
+                                    <!--<Image Source="menu_help.png">
+
+                                    </Image>-->
+                                    <Image Source="customerService.png">
 
                                     </Image>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -632,7 +627,7 @@
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                 
                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Image Source="menu_return"></Image>
+                                    <Image Source="ic_Version.png"></Image>
                                     <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
                                         <Label.FormattedText>
                                         <FormattedString>
