@@ -96,7 +96,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         {
                             viewModel.IsContactPersonEnabled = true;
                             viewModel.IsDOBEditorVisible = false;
-                            IDNumberField.WidthRequest = 320;
+                          //  IDNumberField.WidthRequest = 320;
                         }
                         else
                         {
@@ -124,7 +124,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         if (viewModel.IDType.Contains(AppResources.ZZGCCID))
                         {
                             viewModel.IsDOBEditorVisible = false;
-                            IDNumberField.WidthRequest = 320;
+                           // IDNumberField.WidthRequest = 320;
                         }
                         else
                         {

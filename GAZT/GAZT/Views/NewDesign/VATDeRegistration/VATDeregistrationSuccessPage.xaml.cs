@@ -45,8 +45,24 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         }
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+            //  viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+            try
+            {
+                var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(firstPageToRemove);
 
+                var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(secondPageToRemove);
+
+                var thirdPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(thirdPageToRemove);
+
+                viewModel._navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
    
