@@ -538,7 +538,7 @@
 
                               
 
-                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -546,7 +546,7 @@
                                         <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
 
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
