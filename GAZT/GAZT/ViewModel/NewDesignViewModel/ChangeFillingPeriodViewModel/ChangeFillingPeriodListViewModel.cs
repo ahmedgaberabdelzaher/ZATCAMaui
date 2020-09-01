@@ -273,7 +273,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     {
 
                         var resultData = await WebServiceManager.GAZTGetVATChangeFillingList(App.LoginDataRetrieved.TIN);
-                        if (resultData != null && resultData.d.ASSLISTSet.results.Count > 0)
+                        if (resultData != null)
                         {
                             var changeFilingFrequencyDataList = resultData.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "TPCV".ToUpper()).ToList();
 

@@ -598,7 +598,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }
-                        else if (IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod12Months || IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod2Years || IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriodOtherDoc)
+                        else if (IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod12Months || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod2Years || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriodOtherDoc)
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
                         }else if(IsComeForWhichAttachment == WhichAttachment.VATDeregistration)

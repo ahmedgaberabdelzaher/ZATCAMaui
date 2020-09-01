@@ -114,15 +114,15 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.DocTypeString = "N11B";
             }
-            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod2Years)
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod2Years)
             {
                 viewModel.DocTypeString = "ZTPA";
             }
-            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod12Months)
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod12Months)
             {
                 viewModel.DocTypeString = "ZTPB";
             }
-            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriodOtherDoc)
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriodOtherDoc)
             {
                 viewModel.DocTypeString = "ZTPC";
             }

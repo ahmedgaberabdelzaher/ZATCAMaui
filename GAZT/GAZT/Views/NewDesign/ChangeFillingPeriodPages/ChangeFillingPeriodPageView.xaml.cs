@@ -129,23 +129,57 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 {
                     case 0:
                         {
+                            viewModel.IsTwoYearsAtachmentsVisible = true;
+                            viewModel.IsMonthsAtachmentsVisible = false;
+                            viewModel.IsOthersAtachmentsVisible = false;
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            viewModel.SetAttachmentsListViewData();
+
+
+                            //if (viewModel.YearsattachmentsListViewData == null)
+                            //{
+                            //    viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
+                            //}
+                            //else
+                            //{
+                            //    viewModel.AttachmentsListViewData = viewModel.YearsattachmentsListViewData;
+                            //}
                             return;
                         }
                     case 1:
                         {
+
+                            viewModel.IsTwoYearsAtachmentsVisible = false;
+                            viewModel.IsMonthsAtachmentsVisible = true;
+                            viewModel.IsOthersAtachmentsVisible = false;
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            viewModel.SetAttachmentsListViewData();
+
+                            //if (viewModel.MonthsattachmentsListViewData == null)
+                            //{
+                            //    viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
+                            //}
+                            //else
+                            //{
+                            //    viewModel.AttachmentsListViewData = viewModel.MonthsattachmentsListViewData;
+                            //}
                             return;
                         }
                     case 2:
                         {
+                            viewModel.IsTwoYearsAtachmentsVisible = false;
+                            viewModel.IsMonthsAtachmentsVisible = false;
+                            viewModel.IsOthersAtachmentsVisible = true;
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            viewModel.SetAttachmentsListViewData();
+                            //if (viewModel.OtherAttachmentsListViewData == null)
+                            //{
+                            //    viewModel.AttachmentsListViewData = new ObservableCollection<Attachment>();
+                            //}
+                            //else
+                            //{
+                            //    viewModel.AttachmentsListViewData = viewModel.OtherAttachmentsListViewData;
+                            //}
                             return;
                         }
                 }
@@ -155,10 +189,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             }
         }
 
-        private void SummarybtnContinue_Clicked(object sender, EventArgs e)
+        /*private void SummarybtnContinue_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
-        }
+            //Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
+        }*/
 
         private void OnIDNumberFocusChanged(object sender, FocusEventArgs focusEventArgs)
         {

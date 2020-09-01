@@ -11765,5 +11765,41 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZPleaseSelectTheIbanMsg", resourceCulture);
             }
         }
+        
+        public static string VFCChangeFillingSuccessSubmitted {
+            get {
+                return ResourceManager.GetString("VFCChangeFillingSuccessSubmitted", resourceCulture);
+            }
+        }
+        
+        public static string VFCInstructions {
+            get {
+                return ResourceManager.GetString("VFCInstructions", resourceCulture);
+            }
+        }
+        
+        public static string VFCCheckBoxDesc {
+            get {
+                return ResourceManager.GetString("VFCCheckBoxDesc", resourceCulture);
+            }
+        }
+        
+        public static string VFCQuarterly {
+            get {
+                return ResourceManager.GetString("VFCQuarterly", resourceCulture);
+            }
+        }
+        
+        public static string VFCMonthly {
+            get {
+                return ResourceManager.GetString("VFCMonthly", resourceCulture);
+            }
+        }
+        
+        public static string VFCSuccessDesc {
+            get {
+                return ResourceManager.GetString("VFCSuccessDesc", resourceCulture);
+            }
+        }
     }
 }

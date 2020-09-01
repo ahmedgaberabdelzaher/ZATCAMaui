@@ -1,57 +1,108 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeFillingPeriodSuccessPage : ContentPage
     {
-       
-          //  public ChangeFillingPeriodViewModel viewModel;
+        public ChangeFillingPeriodViewModel viewModel;
 
-            public ChangeFillingPeriodSuccessPage()
+        public ChangeFillingPeriodSuccessPage()
+        {
+            InitializeComponent();
+
+            ChangeAeroIcon();
+            SetLTR();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+             viewModel = App.Locator.ChangeFillingPeriodPageView;
+
+            this.BindingContext = viewModel;
+
+           // ReferenceNumberTxt.Text = viewModel.ChangeFillingResponse.d.Fbnumz;
+        }
+
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
             {
-                InitializeComponent();
-
-                App.IsArabic = true;
-                ChangeAeroIcon();
-                SetLTR();
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
-               // viewModel = App.Locator.ChangeFillingPeriodSuccessPage;
-
-               // this.BindingContext = viewModel;
+                this.FlowDirection = FlowDirection.LeftToRight;
             }
+        }
 
-            private void SetLTR()
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
             {
-                if (!App.IsArabic)
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
+        private void Dashboard_Tapped(object sender, EventArgs e)
+        {
+            var _navigation = Application.Current.MainPage.Navigation;
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ChangeFillingPeriodPageView)
                 {
-                    this.FlowDirection = FlowDirection.LeftToRight;
+                    _navigation.RemovePage(item);
+                    break;
                 }
             }
-            public void ChangeAeroIcon()
+
+            foreach (var item in _navigation.NavigationStack)
             {
-                if (App.IsArabic)
+                if (item.GetType().Name == App.ChangeFillingPeriodListPageView)
                 {
-                    Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-                }
-                else
-                {
-                    Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                    _navigation.RemovePage(item);
+                    break;
                 }
             }
 
-        
-        
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.ChangeFillingPeriodSuccessPage)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
 
+            viewModel._navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
+        }
 
+        private async void ReferenceNumberCopyTapped(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.ChangeFillingResponse.d.Fbnumz != null)
+                {
+                    Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = true; });
+
+                    await Clipboard.SetTextAsync("");
+                    if (Clipboard.HasText)
+                    {
+                        var text = await Clipboard.GetTextAsync();
+                        await viewModel._dialogService.ShowMessageBox(
+                            AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
+                    }
+
+                    Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = false; });
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

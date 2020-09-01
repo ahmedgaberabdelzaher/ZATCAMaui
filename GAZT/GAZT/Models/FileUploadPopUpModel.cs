@@ -39,9 +39,9 @@ namespace EGAZT.Models.ZakatInstalationModels
            VATInstalment = 0,
             ContractReleaseCopy = 2,
             ContractReleaseInvoice = 3,
-            ChnageFillingPeriod2Years = 4,
-            ChnageFillingPeriod12Months=5,
-            ChnageFillingPeriodOtherDoc=6,
+            ChangeFillingPeriod2Years = 4,
+            ChangeFillingPeriod12Months = 5,
+            ChangeFillingPeriodOtherDoc = 6,
             VATDeregistration = 7,
         }
     
