@@ -1716,7 +1716,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         //NextBTN = AppResources.ZZZZContinue;
 //                        CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
                         //StartTimer(0, 2, 0);
-                        TimerStart(numberOfSeconds);
+                        //TimerStart(numberOfSeconds);
                     }
                     else
                     {
@@ -1756,10 +1756,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     break;
 
                 case EstablishmentSignUPTabEnum.EmailVerification:
-                    PageTitle = AppResources.CRSummary;
-                    BodyText = AppResources.CRReviewthebelowinformation;
-                    NextBTN = AppResources.ZZZZContinue;
-                    CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                                            PageTitle = AppResources.CRSummary;
+                        BodyText = AppResources.CRReviewthebelowinformation;
+                        NextBTN = AppResources.ZZZZContinue;
+                        CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
                     break;
 
                 case EstablishmentSignUPTabEnum.MobileVerification:

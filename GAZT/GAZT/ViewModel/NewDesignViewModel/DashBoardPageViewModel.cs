@@ -375,6 +375,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsVatRegistrationTileVisible");
             }
         }
+
+        private bool _isEstablishmentRegistrationTileVisible = false;
+        public bool IsEstablishmentRegistrationTileVisible
+        {
+            get
+            {
+                return _isEstablishmentRegistrationTileVisible;
+            }
+            set
+            {
+                _isEstablishmentRegistrationTileVisible = value;
+                RaisePropertyChanged("IsEstablishmentRegistrationTileVisible");
+            }
+        }
         public bool MenuViewVisible
         {
             get
