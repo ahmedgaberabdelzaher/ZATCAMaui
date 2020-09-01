@@ -97,12 +97,8 @@
                                         <border:SfBorder  Margin="0"  Style="{StaticResource GreyBorderFrameWithShadow}" BorderWidth="1" BorderColor="{StaticResource DarkGrayTextColor}" >
 
                                             <StackLayout Orientation="Horizontal" Padding="0,10,0,10">
-                                                <Image>
-                                                    <Image.Source>
-                                                        <FontImageSource FontFamily="UserIconFont" Color="Red" Size="25"
-                                             Glyph="{x:Static FontImage:IconFonts.FilePdf}"/>
-                                                    </Image.Source>
-
+                                                <Image Source="{Binding FileImage}"  HeightRequest="25" WidthRequest="25" Margin="5">
+                                                  
                                                 </Image>
 
                                                 <Label Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
