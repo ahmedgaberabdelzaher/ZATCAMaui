@@ -389,7 +389,7 @@
                                         
                                             <custom:CustomLabel  Text="{Binding
                                                     Source={x:Reference TReportDetail},
-                                                    Path=Text.Length, StringFormat='{0}/1000'}"
+                                                    Path=Text.Length, StringFormat='{0}/999'}"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     HorizontalOptions="EndAndExpand" VerticalOptions="Start" VerticalTextAlignment="Start" FontSize="Micro"/>
                                     </StackLayout>
