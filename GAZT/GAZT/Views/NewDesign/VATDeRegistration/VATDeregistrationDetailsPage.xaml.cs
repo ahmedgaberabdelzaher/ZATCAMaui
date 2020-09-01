@@ -39,7 +39,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             SetLTR();
             ChangeArrowDirection();
-            MessagingCenterCallBacks();
+            
           
             Task.Run(async () =>
             {
@@ -63,6 +63,14 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
 
         private void MessagingCenterCallBacks()
@@ -77,7 +85,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             });
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
-
+                viewModel.IsContactPersonEnabled = false;
                 if (App.IsArabic)
                 {
                     if (arg.PickerTitle.Contains(AppResources.VatDeregIDType))
@@ -86,6 +94,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                         if (viewModel.IDType.Contains(AppResources.ZZGCCID))
                         {
+                            viewModel.IsContactPersonEnabled = true;
                             viewModel.IsDOBEditorVisible = false;
                             IDNumberField.WidthRequest = 320;
                         }
@@ -99,7 +108,11 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.ReasonTitle = arg.SelectedValue;
                         if (viewModel.ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                         {
-                            //  viewModel.SelectedOthersOption = true;
+                            viewModel.IsOthersEditorVisible = true;
+                        }
+                        else
+                        {
+                            viewModel.IsOthersEditorVisible = false;
                         }
                     }
                 }
@@ -123,7 +136,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.ReasonTitle = arg.SelectedValue;
                         if (viewModel.ReasonTitle.Contains(AppResources.VatDeregistrationofReturnReason4))
                         {
-                            viewModel.IsOthersEditorVisible = !viewModel.IsOthersEditorVisible;
+                            viewModel.IsOthersEditorVisible = true;
                         }
                         else
                         {
@@ -138,22 +151,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 isCalled = false;
                 if (App.IsArabic)
                 {
-                    if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
+                    if(arg.PickerId == "StartDateTypePicker")
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
-
-
                     }
-                    else if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
+                    else if (arg.PickerId == "EndDateTypePicker")
                     {
                         viewModel.ToDate = Convert.ToDateTime(arg.SelectedValue);
-
                     }
                     else
                     {
                         viewModel.DOB = arg.SelectedValue;
-
-
                         try
                         {
                             if (viewModel.TxtIDNumber != string.Empty && viewModel.DOB != string.Empty)
@@ -169,6 +177,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
                 else
                 {
+
                     if (arg.DatePickerTitle.Contains(AppResources.VatDeregStartDatePickerTitle))
                     {
                         viewModel.FromDate = Convert.ToDateTime(arg.SelectedValue);
@@ -242,6 +251,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
             base.OnAppearing();
             ChangeArrowDirection();
+            MessagingCenterCallBacks();
 
             if (viewModel.VATDeRegistrationDetailsData != null)
             {
@@ -270,7 +280,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
             });
             if (viewModel.IDType != null) {
-                        MessagingCenterCallBacks();
+                        //MessagingCenterCallBacks();
                     }
             viewModel.PopulateSummaryReasonData();
             viewModel.PopulateSummaryDeclarationData();
@@ -742,13 +752,13 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             viewModel.IsLoading = false;
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
-            MessagingCenter.Unsubscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
+            MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
 
             MessagingCenter.Unsubscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem");
 
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
-            MessagingCenter.Unsubscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
+            MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<VATDeRegistrationInstructionsPageViewModel, bool>(this, "SelectedCheckboxItem");
 
         }

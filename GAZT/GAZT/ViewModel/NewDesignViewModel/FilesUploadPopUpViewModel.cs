@@ -127,6 +127,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("DateSubmitted");
             }
         }
+        private string _dmsType = string.Empty;
+        public string DmsType
+        {
+            get
+            {
+                return _dmsType;
+            }
+            set
+            {
+                _dmsType = value;
+                RaisePropertyChanged("DmsType");
+            }
+        }
         private string _attachmentName = "";
         public string AttachmentName
         {
@@ -799,7 +812,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
+                    //await _navigation.PopToRootAsync();
                 });
             }
         }

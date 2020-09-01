@@ -253,7 +253,6 @@ namespace GAZT.Helper
         public static string GAZTSaveAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachSet(OutletRef=";
         public static string GAZTDeteleAttachmentGeneric = BaseUrlOfODataServices + "/sap/opu/odata/SAP/attachmentServiceurl/AttachMedSet(OutletRef=";
 
-
         #endregion
 
         #region Change Filling Period
@@ -266,6 +265,13 @@ namespace GAZT.Helper
         public static string VATChangeFillingListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/HEADERSet(";
         public static string VATChangeFillingSummaryURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_TPCV_SRV/UI_HDRSet(";
         public static string VATChangeFillingSummaryInputsURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_ITAP_SRV/TPFILLSet(";
+        #endregion
+
+        #region TIN Deregistration
+
+        public static string TinDeregistrationNewRequestUrl = BaseUrlOfODataServices + "/sap/opu/odata/sap/Z_DEREGISTRATION_NEW_SRV/DRG_HeaderSet(";
+        
+
         #endregion
 
     }

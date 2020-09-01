@@ -4374,6 +4374,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
     <value>Kindly complete the required fields to be able to proceed.</value>
   </data>
+   <data name="TinDeregistrationDetails" xml:space="preserve">     <value>Registration Details</value>   </data>    <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">     <value>Dear Taxpayer, you have a Registration Change Application saved in draft mode, do you want to discard it and proceed for Deregistration Application?</value>   </data>   <data name="TinDeregistration" xml:space="preserve">     <value>Deregister for TIN</value>   </data>
   <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
   </data>

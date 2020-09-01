@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using static GAZT.ErrorMessage;
+
 namespace GAZTeServicesBusinessLibrary.GAZTExceptions
 {
     public class GAZTException : Exception
@@ -264,5 +266,15 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         public GAZTVATChangeFillingPeriodException(string ExceptionMessage) : base(ExceptionMessage)
         {
         }
+    }
+
+    public class GAZTTinDeregistrationErrorException : GAZTException
+    {
+        public GAZTTinDeregistrationErrorException()
+        { }
+        public GAZTTinDeregistrationErrorException(string ExceptionMessage) : base(ExceptionMessage)
+        { }
+        public GAZTTinDeregistrationErrorException(ErrorObj errorObj)
+        { }
     }
 }

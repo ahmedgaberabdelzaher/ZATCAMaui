@@ -4356,8 +4356,14 @@
   <data name="UnlockAccountPasswordsSecurityPolicy" xml:space="preserve">
     <value>كلمة المرور المدخلة غير متوافقة مع قواعد إنشاء كلمة المرور، ان لا تقل عن 8 احرف ولا تزيد عن 16 ، تحتوي على احرف كبيرة وصغيرة وأرقام ورموز.</value>
   </data>
+   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
+    <value>عزيزي المكلف, يوجد لديك طلب تغيير تسجيل محفوظ كمسودة, هل تريد حذفه وإكمال طلب ايقاف التسجيل؟</value>
+  </data>
+    <data name="TinDeregistrationDetails" xml:space="preserve">
+    <value>Registration Details</value>
+  </data>
   <data name="TinDeregistration" xml:space="preserve">
-    <value>TIN Deregistration</value>
+    <value>إيقاف الرقم المميز</value>
   </data>
   <data name="TinDeregistrationReason" xml:space="preserve">
     <value>الأسباب</value>
@@ -4633,7 +4639,7 @@
     <value>Legal orders for temporary suspension of economic activities</value>
   </data>
   <data name="VatDeregistrationofReturnReason4" xml:space="preserve">
-    <value>Others (please specify)</value>
+    <value>خرى – الرجاء التحديد</value>
   </data>
   <data name="VatDeregistrationApplicationNumber" xml:space="preserve">
     <value>رقم الطلب</value>

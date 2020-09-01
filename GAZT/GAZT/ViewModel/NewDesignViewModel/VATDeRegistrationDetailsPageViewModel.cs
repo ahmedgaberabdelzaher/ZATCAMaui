@@ -78,6 +78,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsInstructionChecked");
             }
         }
+
+        private bool _isContactPersonEnabled;
+        public bool IsContactPersonEnabled
+        {
+            get
+            {
+                return _isContactPersonEnabled;
+            }
+            set
+            {
+                _isContactPersonEnabled = value;
+
+
+                RaisePropertyChanged("IsContactPersonEnabled");
+            }
+        }
+
+        //
         private ProcessStep _currentStep { get; set; }
         public ProcessStep CurrentStep
         {
@@ -1205,7 +1223,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             try
             {
                 await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(VatAttachmentsList.ToList(), Models.ZakatInstalationModels.WhichAttachment.VATDeregistration
-                    , ReturnIDx));
+                    , ReturnIDx, SelectedDocumentOption.DmsTp));
 
             }
             catch (GAZTUnlockAccountException ex)

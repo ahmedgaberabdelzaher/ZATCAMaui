@@ -63,7 +63,7 @@
 
                         <StackLayout Orientation="Horizontal" BackgroundColor="White" Grid.Row="0" VerticalOptions="CenterAndExpand" >
 
-                            <custom:CustomLabel BackgroundColor="Transparent" Padding="0,35,0,0" Margin="0" HorizontalOptions="Start" Style="{StaticResource IconLabelStyle}" Text="{DynamicResource Back}">
+                            <custom:CustomLabel BackgroundColor="Transparent" Padding="0,35,0,0" Margin="0" HorizontalOptions="Start" Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}">
                                 <custom:CustomLabel.GestureRecognizers>
                                     <TapGestureRecognizer Command="{TemplateBinding BindingContext.BackButtonTapped}"  />
                                 </custom:CustomLabel.GestureRecognizers>
@@ -88,7 +88,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VATDeregistration}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Image Grid.Row="0" Grid.Column="0" Style="{DynamicResource BackButtonArrow}"  IsVisible="{TemplateBinding BindingContext.IsBackButtonVisible}" Source="arrowLeftwhite"  VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" ></TapGestureRecognizer>
                             </Image.GestureRecognizers>
@@ -330,6 +330,7 @@
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
+                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
@@ -475,7 +476,7 @@
                 <Label HorizontalTextAlignment="Start"  Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}"   Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
                      <Label HorizontalTextAlignment="Start"   Text="{x:Static custom2:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"   Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
          </StackLayout>-->
-                 <buttons:SfButton  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36" x:Name="btnAttachmentsContinue"
+                 <buttons:SfButton  Grid.Row="6" HeightRequest="48"  Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,36" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                     
@@ -536,62 +537,62 @@
                       
 
                     </StackLayout>
-                                <StackLayout x:Name="IDNumberField" Orientation="Horizontal" Grid.Row="1" HorizontalOptions="CenterAndExpand">
-                                                                     <StackLayout Grid.Row="1" Grid.Column="0" >
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelBlack}" />     
-                                <inputLayout:SfTextInputLayout  Margin="-2,-6,0,0" WidthRequest="180"
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"  x:Name="FrmIDNumber"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                    <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding TxtIDNumber}"
-                                                            TextColor="Black" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
-                                        <Entry.Behaviors>
-                                                                <custom1:OnlyNumericValuesBehaviour/>
-                                                            </Entry.Behaviors> 
-                                    </Entry>
-                                </inputLayout:SfTextInputLayout>
-                            </StackLayout>
-                            <StackLayout IsVisible="{Binding IsDOBEditorVisible}" Grid.Row="1" Grid.Column="1" HorizontalOptions="End">
-                                <custom:CustomLabel Margin="30,0,0,0" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="Start"
-                                                Style="{StaticResource CaptionLabelGrey}" />   
-                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,0"  Style="{StaticResource GreyBorderFrame}">
+                    <StackLayout x:Name="IDNumberField" Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand">
+                        <StackLayout >
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}" />     
+                            <inputLayout:SfTextInputLayout  Margin="-2,-6,0,0" WidthRequest="180"
+						        ContainerType="Outlined" UnfocusedColor="#B1B1B1"  x:Name="FrmIDNumber"
+						        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
+                                <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding TxtIDNumber}"
+                                                        TextColor="Black" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
+                                    <Entry.Behaviors>
+                                                            <custom1:OnlyNumericValuesBehaviour/>
+                                                        </Entry.Behaviors> 
+                                </Entry>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding IsDOBEditorVisible}" HorizontalOptions="End">
+                            <custom:CustomLabel Margin="0,0,0,0" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="Start"
+                                            Style="{StaticResource CaptionLabelGrey}" />   
+                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,0"  Style="{StaticResource GreyBorderFrame}">
 
-                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="180">
+                                <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="180">
                                         
-                                        <Label x:Name="DpDbo" Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Micro" HorizontalOptions="Start"/>
-                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                                </Image.Source>
-                                            </Image>
-                                        </StackLayout>
-
-                                        <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer Tapped="VATDeregDOBClicked" ></TapGestureRecognizer>
-                                         </StackLayout.GestureRecognizers>
-
+                                    <Label x:Name="DpDbo" Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontSize="Micro" HorizontalOptions="Start"/>
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                        <Image Margin="5,0">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                            </Image.Source>
+                                        </Image>
                                     </StackLayout>
-                                </border:SfBorder >
-                            </StackLayout>
-                            </StackLayout>
-                                      <StackLayout>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregContactPerson}" HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource CaptionLabelGrey}" />     
-                                    <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                        <custom:BorderlessEntry x:Name="ContactName"  Placeholder="{x:Static ResourceManager:AppResources.VatDeregContactPerson}"
-                                                                Text="{Binding ContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start"
-                                                                TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
-                                                     <Entry.Behaviors>
-                                                                <custom1:AlphabetandArabicCharacters/>
-                                                            </Entry.Behaviors>  
-                                        </custom:BorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
+
+                                    <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="VATDeregDOBClicked" ></TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+
                                 </StackLayout>
+                            </border:SfBorder >
+                        </StackLayout>
+                        </StackLayout>
+                         <StackLayout>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregContactPerson}" IsEnabled="{Binding IsContactPersonEnabled}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}" />     
+                            <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
+							    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							    OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" HorizontalOptions="StartAndExpand">
+                                <custom:BorderlessEntry x:Name="ContactName"  Placeholder="{x:Static ResourceManager:AppResources.VatDeregContactPerson}"
+                                                        Text="{Binding ContactPersonName}" FontSize="Small"  HorizontalTextAlignment="Start"
+                                                        VerticalTextAlignment="Start"
+                                                        TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
+                                                <Entry.Behaviors>
+                                                        <custom1:AlphabetandArabicCharacters/>
+                                                    </Entry.Behaviors>  
+                                </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
                                         <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
                 <StackLayout Margin="8">
                     <StackLayout Orientation="Horizontal" Spacing="0">
@@ -604,7 +605,7 @@
                 
                 </StackLayout>
             </border:SfBorder>
-                                <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36" x:Name="btnDeclarationContinue"
+                                <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,36" x:Name="btnDeclarationContinue"
                                    Command="{Binding DeclarationContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                             </StackLayout>
