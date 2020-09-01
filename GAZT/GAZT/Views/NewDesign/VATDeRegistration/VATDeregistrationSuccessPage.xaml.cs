@@ -64,12 +64,15 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         }
         private async void Image_Copy_Tapped(object sender, EventArgs e)
         {
-            Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
-            if (Clipboard.HasText)
+            if (Label_ApplicationNumber != null)
             {
-                var text = await Clipboard.GetTextAsync();
-                var displayText = AppResources.VATRSAppNumber + " " + text;
-                viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+                if (Clipboard.HasText)
+                {
+                    var text = await Clipboard.GetTextAsync();
+                    var displayText = AppResources.VATRSAppNumber + " " + text;
+                    viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                }
             }
 
         }

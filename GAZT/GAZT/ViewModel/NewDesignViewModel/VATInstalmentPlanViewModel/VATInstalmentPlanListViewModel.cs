@@ -773,6 +773,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public async Task GetVATInstalmentPlanDetails(int index)
         {
+
+            SummarySelectedBillsList = null;
             try
             {
                 await Task.Run(() =>

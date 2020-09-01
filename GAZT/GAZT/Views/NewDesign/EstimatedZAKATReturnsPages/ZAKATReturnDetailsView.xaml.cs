@@ -32,14 +32,15 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
             SetLTR();
 
-            viewModel.OnPageLoad(fbguid);
 
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
-
+            base.OnAppearing();
             //date.Text = viewModel.Abrzu;
+           await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
+
             getYesCommandToReleaseTheReturn();
             getYesCommandToAmendTheReturn();
 
@@ -258,7 +259,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             else
             {
                   Device.BeginInvokeOnMainThread(async () => {
-                        await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                      await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
+
+                     // await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
                     });
                
             }

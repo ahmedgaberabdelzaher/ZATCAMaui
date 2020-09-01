@@ -902,7 +902,8 @@
                         </Grid>
                     </ScrollView>
                 </StackLayout>
-                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
+                <StackLayout x:Name="OutletsTabMainLayout"
+                             Orientation="Vertical" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
                     <buttons:SfButton ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewOutletButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
                         <Entry Placeholder="{x:Static ResourceManager:AppResources.SearchText}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
@@ -948,7 +949,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </StackLayout>
-                <ScrollView Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
+                <ScrollView x:Name="FinancialDetailMainTab" Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
                     <StackLayout Spacing="0" VerticalOptions="Fill" HorizontalOptions="Fill">
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMethodOfFinancialRecordMaintained}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" />
                         <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding MethodList}" SelectedItem="{Binding SelectedMethod, Mode=TwoWay}"  AutoFitMode="Height" ItemSpacing="5" SelectionMode="Single" Margin="0" IsScrollBarVisible="False" IsScrollingEnabled="False">
@@ -1019,9 +1020,9 @@
                         <custom:CustomLabel Text="{Binding TaxDate}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" FontFamily="{StaticResource SSTArabicMedium}" />
                     </StackLayout>
                 </ScrollView>
-                <ScrollView Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}">
+                <ScrollView x:Name="DeclarationMainTab" Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}">
                     <StackLayout HorizontalOptions="Fill" VerticalOptions="Start" Spacing="10">
-                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
+                        <cards:SfCardView x:Name="RegistrationTaxpayerTypeSummaryView"  HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16">
                                     <Grid.ColumnDefinitions>
@@ -1035,12 +1036,12 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
                                     </border:SfBorder>
-                                    <custom:CustomLabel Grid.Column="1" Text="Taxpayer Type" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
+                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.IDType}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="Edit" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
                                 </Grid>
                                 <StackLayout Orientation="Vertical" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">
                                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}" Margin="0,0,0,16" />
@@ -1063,9 +1064,9 @@
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="{Binding SelectedEntityType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ESTaxpayerTypeQuestionLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="{Binding SelectedTaxPayerType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="Nationality" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="{Binding SelectedRegNationalityType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="Residency Status" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="{x:Static ResourceManager:AppResources.ESTResidencyStatus}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="Rent/own a house more than 30 days" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <buttons:SfChip Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" ShowIcon="True" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Transparent" 
                                                         ImageSource="newui_ic_pdf.png" Text="File1.pdf" ImageAlignment="End" ImageWidth="24" TextColor="{StaticResource NeutralBlack}" />
@@ -1073,7 +1074,7 @@
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
+                        <cards:SfCardView x:Name="TaxpayerDetailsSummaryView"  HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16" >
                                     <Grid.ColumnDefinitions>
@@ -1090,16 +1091,16 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
                                     </border:SfBorder>
-                                    <custom:CustomLabel Grid.Column="1" Text="Taxpayer Details" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
+                                    <custom:CustomLabel Grid.Column="1"  Text="{x:Static ResourceManager:AppResources.FORM5TaxpayerDetails}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="Edit" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
                                 </Grid>
                                 <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
                                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}" Margin="0,0,0,16"/>
-                                    <custom:CustomLabel  Text="Identification Details" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" HorizontalOptions="Start" Padding="16,0" />
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTIdentificationDetailsLabel}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" HorizontalOptions="Start" Padding="16,0" />
                                     <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16,0,16,16">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -1110,14 +1111,14 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="ID Type" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="GCC ID" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="ID Number" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="219546785649159" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="Date of Birth" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="1441/08/26" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.VatDeregIDType}"  HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{Binding GCCIDType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{x:Static ResourceManager:AppResources.VatDeregIDNumber}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="{Binding GCCIDTypeIdNumberValue}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.VatDeregDOBTitle}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="{Binding SelectedDOB}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                     </Grid>
-                                    <custom:CustomLabel  Text="Personal Infromation" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" HorizontalOptions="Start" Padding="16,0" />
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZPersonalInformation}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" HorizontalOptions="Start" Padding="16,0" />
                                     <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16,0,16,16">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -1132,22 +1133,22 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="First Name" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="Abdul" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="Father's Name" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="Rahim" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="Faimly Name" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="Khan" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="Last Name" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="Khan" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="GrandFather's Name" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="Abdul" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="5" Text="Initial" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="5" Text="A.K." HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="6" Text="Gender" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="6" Text="Male" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0"  Text="{Binding FirstName}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ESTFathersNameLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="{Binding FatherName}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ESTFamilyNameLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="{Binding FamilyName}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="{x:Static ResourceManager:AppResources.ESTLastNameLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="{Binding LastName}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="{x:Static ResourceManager:AppResources.ESTGrandFathersNameLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="{Binding GrandFatherName}"  HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="5" Text="{x:Static ResourceManager:AppResources.ESTInitialLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="5" Text="{Binding Initial}"  HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="6" Text="{x:Static ResourceManager:AppResources.ESTGenderLabel}"  HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="6" Text="{Binding SelectedGender}"  HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                     </Grid>
-                                    <custom:CustomLabel  Text="Nationality" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" HorizontalOptions="Start" Padding="16,0" />
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" HorizontalOptions="Start" Padding="16,0" />
                                     <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16,0,16,16">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -1158,17 +1159,17 @@
                                             <RowDefinition Height="*"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="Nationality" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="United Arb Emirates" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="Citizen" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="United Arb Emirates" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="Residence" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="United Arb Emirates" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{Binding SelectedTaxpayerPDNationality}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ESTCitizenLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="{Binding SelectedCitizen}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ESTResidenceLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="{Binding SelectedResidence}" Style="{StaticResource ValueLabelBlack}" />
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
+                        <cards:SfCardView x:Name="PassportSummaryView"  HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16">
                                     <Grid.ColumnDefinitions>
@@ -1182,12 +1183,12 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
                                     </border:SfBorder>
-                                    <custom:CustomLabel Grid.Column="1" Text="Passport Details" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
+                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ESTPassportDetailsTabTitleLabel}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="Edit" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
                                 </Grid>
                                 <StackLayout Orientation="Vertical" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}}">
                                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}" Margin="0,0,0,16"/>
@@ -1201,17 +1202,17 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="Passport Number" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="83704236" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="Passport Details" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTPassportNumberLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{Binding PassportNumber}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ESTAttachmentPassportDetails}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="File2.pdf" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="Issue Date" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="1441/05/26" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="{Binding PassportIssueDate}"  HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
+                        <cards:SfCardView x:Name="OutletSummaryView" HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16">
                                     <Grid.ColumnDefinitions>
@@ -1225,14 +1226,14 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
                                     </border:SfBorder>
-                                    <custom:CustomLabel Grid.Column="1" Text="Outlets" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
+                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ESTOutletsTabTitleLabel}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="Edit" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
                                 </Grid>
-                                <StackLayout Orientation="Vertical" BindableLayout.ItemsSource="{Binding OutletList}" HorizontalOptions="Fill" VerticalOptions="Start" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
+                                <StackLayout Orientation="Vertical" BindableLayout.ItemsSource="{Binding OutletData}" HorizontalOptions="Fill" VerticalOptions="Start" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16,0,16,16">
@@ -1244,20 +1245,23 @@
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
-                                                <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="Passport Number" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                                <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="83704236" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                                <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="Passport Details" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                                <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="File2.pdf" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
-                                                <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="Issue Date" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                                <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="1441/05/26" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                                <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletNumber}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                                <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{Binding Actno}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                                <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ESTOutletName}"  HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                                <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="{Binding Actnm}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                                <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ESTOutletCity}"  HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                                <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="{Binding City1}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                                 <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="{x:Static ResourceManager:AppResources.ESTCRlicense}"  HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
+                                                <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="{Binding Crlicenceno}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                             </Grid>
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
+                        <cards:SfCardView x:Name="FinancialDetailSummaryView" HasShadow="True" BackgroundColor="Transparent" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1" Padding="0">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0" Padding="16">
                                     <Grid.ColumnDefinitions>
@@ -1271,12 +1275,12 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}" NumberOfTapsRequired="1" />
                                         </border:SfBorder.GestureRecognizers>
                                     </border:SfBorder>
-                                    <custom:CustomLabel Grid.Column="1" Text="Finanical Details" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
+                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZZVATREFinancialDetails}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start" VerticalOptions="Center" Padding="10,0" >
                                         <custom:CustomLabel.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="Edit" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
                                 </Grid>
                                 <StackLayout Orientation="Vertical" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
                                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}" Margin="0,0,0,16" />
@@ -1293,23 +1297,24 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="Methods of Financial Record Maintained" LineBreakMode="WordWrap" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}"  />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="Estimated Method" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="Calendar Type"  Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="Hijri" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="End of Fiscal Month"  Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="3" HorizontalOptions="End"  VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="End of Fiscal Day"  Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="23" HorizontalOptions="End"  VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="Business Commencement Date" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="1436/12/16" HorizontalOptions="End"  VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
-                                        <custom:CustomLabel Grid.Column="0" Grid.Row="5" Text="Taxable Date" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="5" Text="1431/12/16" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTMethodOfFinancialRecordMaintained}"  LineBreakMode="WordWrap" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}"  />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{Binding SelectedMethod}" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{x:Static ResourceManager:AppResources.FORM5CalendarType}"  Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="{Binding CalendarType}" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ESTEndOfFiscalMonth}" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="2"  Text="{Binding FiscalMonth}" HorizontalOptions="End"  VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="{x:Static ResourceManager:AppResources.ESTEndOfFiscalDay}"  Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="{Binding FiscalDay}" HorizontalOptions="End"  VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="{x:Static ResourceManager:AppResources.ESTBusinessCommencementDate}" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="{Binding CommDate}" HorizontalOptions="End"  VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="0" Grid.Row="5" Text="{x:Static ResourceManager:AppResources.ESTTaxableDate}" Style="{StaticResource BodyLabelGrey}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="5" Text="{Binding TaxDate}" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}" />
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <buttons:SfCheckBox HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" LineBreakMode="WordWrap" Visual="Material" CheckedColor="{StaticResource Primary}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="{StaticResource NeutralBlack}" Text="Given Pledge that the information on this form is correct and that I am Authorized to sign this application"/>
+                        <buttons:SfCheckBox HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" LineBreakMode="WordWrap" Visual="Material" CheckedColor="{StaticResource Primary}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="{StaticResource NeutralBlack}"
+                                            Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}" />
                     </StackLayout>
                 </ScrollView>
             </Grid>

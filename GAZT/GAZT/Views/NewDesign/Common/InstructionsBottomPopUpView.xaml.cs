@@ -21,7 +21,6 @@ namespace EGAZT.Views.NewDesign
             _viewModel = App.Locator.InstructionsBottomPopUpView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
-            this.FlowDirection = FlowDirection.LeftToRight;
             _viewModel.Description = instructionString;
             _viewModel.CheckBoxDescription = checkBoxString;
             _viewModel.ButtonTitle = continueString;
@@ -37,6 +36,36 @@ namespace EGAZT.Views.NewDesign
                 _viewModel.IsInstructions = false;
             }
 
+        }
+
+        protected async override void OnAppearing()
+        {
+            try
+            {
+                base.OnAppearing();
+
+
+
+                SetLTR();
+
+
+
+            }
+            catch (Exception e) { }
+        }
+
+
+
+
+        private void SetLTR()
+
+
+
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
         //protected override bool OnBackButtonPressed() => true;
         protected override void OnDisappearing()

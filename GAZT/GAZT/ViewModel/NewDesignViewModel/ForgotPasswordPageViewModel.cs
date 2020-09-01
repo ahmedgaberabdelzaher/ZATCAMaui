@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System.Timers;
+using Rg.Plugins.Popup.Services;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {//TEST
@@ -1411,7 +1413,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                                _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+                                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
+
+                             //   _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                             }
                         }
 
@@ -1441,7 +1445,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 }
                                 else
                                 {
-                                    _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
+
+                                 //   _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
 
                                 }
                             }
@@ -1459,7 +1465,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            _dialogService.ShowMessageBox(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
+
+                           // _dialogService.ShowMessageBox(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber, AppResources.Information);
 
                         }
                     }
@@ -1473,13 +1481,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
-                                _dialogService.ShowMessageBox(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch));
+
+                              //  _dialogService.ShowMessageBox(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch, AppResources.Information);
                             }
 
                         }
                         else
                         {
-                            _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
+
+                       //     _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
 
                         }
                     }
@@ -1493,14 +1505,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
+
+                    //    _dialogService.ShowMessageBox(AppResources.NDTypeyourIDNumber, AppResources.Information);
                     }
 
 
                 }
                 else if (IsUserNameCardTapped == false && IsPasswordCardTapped == false)
                 {
-                    _dialogService.ShowMessageBox(AppResources.ZZZZPleaseSelect, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZPleaseSelect));
+
+                  //  _dialogService.ShowMessageBox(AppResources.ZZZZPleaseSelect, AppResources.Information);
 
                 }
                 else
@@ -1838,7 +1854,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             IsAPICalledSuccessfully = false;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
+
+                             //   await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
 
                                 SetIDNumberEnability = true;
                                 IDNumber = String.Empty;
@@ -1857,7 +1875,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+             //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1934,7 +1954,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleasechangepassword));
+
+                             //   await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
                             });
                             OTPLayoutVisibility = false;
                             NewPasswordLayoutVisibility = true;
@@ -1959,8 +1981,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     messagefordialogue = messagefordialogue.Replace("}0{", "3");
                                 }
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messagefordialogue));
 
-                                await _dialogService.ShowMessageBox(messagefordialogue, AppResources.Information);
+                              //  await _dialogService.ShowMessageBox(messagefordialogue, AppResources.Information);
                                 _navigationService.GoBack();
                             });
                         }
@@ -1972,7 +1995,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     //await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.ZError);
-                                    await _dialogService.ShowMessageBox(AppResources.ZZZZWrongVerificationCode, AppResources.ZError);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZWrongVerificationCode));
+
+                                   // await _dialogService.ShowMessageBox(AppResources.ZZZZWrongVerificationCode, AppResources.ZError);
                                 });
                             }
                             else if (currentAttempts == 2)
@@ -1981,7 +2006,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     String message = String.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
-                                    await _dialogService.ShowMessageBox(message, AppResources.ZError);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+
+                                  //  await _dialogService.ShowMessageBox(message, AppResources.ZError);
                                 });
                             }
                             else
@@ -1996,7 +2023,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.EnterVerificationCode));
+
+                          //  await _dialogService.ShowMessageBox(AppResources.EnterVerificationCode, AppResources.Information);
                         });
                     }
                 });
@@ -2007,7 +2036,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+               // await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2081,7 +2112,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         IDNumber = string.Empty;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
+
+                         //   await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
                         });
                     }
                 });
@@ -2092,7 +2125,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.ZError);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+             //   await _dialogService.ShowMessageBox(ex.Message, AppResources.ZError);
                 await Task.Run(async () =>
                 {
                     IsLoading = false;
@@ -2174,7 +2209,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+                                   // await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                                 });
                             }
                         }
@@ -2182,7 +2219,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessageBox(AppResources.Boththepasswordfieldsshouldmatch, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Boththepasswordfieldsshouldmatch));
+
+                              //  await _dialogService.ShowMessageBox(AppResources.Boththepasswordfieldsshouldmatch, AppResources.Information);
                             });
                         }
                     }
@@ -2190,7 +2229,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessageBox(AppResources.PasswordGuidelineText, AppResources.Alerts);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PasswordGuidelineText));
+
+                          //  await _dialogService.ShowMessageBox(AppResources.PasswordGuidelineText, AppResources.Alerts);
                         });
                     }
                 });
@@ -2201,7 +2242,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.Alerts);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+             //   await _dialogService.ShowMessageBox(ex.Message, AppResources.Alerts);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2272,7 +2315,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     IsVisibleTinIds = false;
-                                    await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NoTINsAvailable));
+
+                                   // await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
                                 });
                                 //IsVisibleTinIds = false;
                             }
@@ -2289,7 +2334,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 IsVisibleTinIds = false;
-                                await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
+
+                              //  await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
                             });
                             await Task.Run(() =>
                             {
@@ -2299,7 +2346,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     catch (InternetException ex)
                     {
-                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                      //  await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                         await Task.Run(() =>
                         {
                             IsLoading = false;
@@ -2446,7 +2495,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsVisibleTinIds = false;
-                    await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZMandatorydatanotentered));
+
+                 //   await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
                     await Task.Run(() =>
                     {
                         IsLoading = false;
@@ -2501,7 +2552,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             IsAPICalledSuccessfully = false;
             SetIDNumberEnability = false;
             PasswordCardBackgroundImg = "FP_unselected_tile";
-            PasswordIcon = "password_key";
+            PasswordIcon = "Green_Key";
             UserNameCardBackgroundImg = "FP_unselected_tile";
             UserIcon = "vat_user";
             Email = string.Empty;

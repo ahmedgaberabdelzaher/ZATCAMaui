@@ -43,6 +43,8 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 viewModel.ResetData();
 
+                viewModel.showInstructionDialog();
+
                 viewModel.GetVATChangeFillingData();
             }
             catch (Exception ex)
@@ -79,7 +81,6 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                     viewModel.PickedDate = arg.SelectedValue;
                     viewModel.ValidateIdNumber();
-
                 });
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
@@ -130,21 +131,21 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                         {
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            //viewModel.SetAttachmentsListViewData();
+                            viewModel.SetAttachmentsListViewData();
                             return;
                         }
                     case 1:
                         {
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            //viewModel.SetAttachmentsListViewData();
+                            viewModel.SetAttachmentsListViewData();
                             return;
                         }
                     case 2:
                         {
                             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
                             viewModel.SelectedAttachmentText = AppResources.Attachment + " - " + selectedItem.ActiveOutletDecisionOptions;
-                            //viewModel.SetAttachmentsListViewData();
+                            viewModel.SetAttachmentsListViewData();
                             return;
                         }
                 }
@@ -154,10 +155,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             }
         }
 
-        //private void SummarybtnContinue_Clicked(object sender, EventArgs e)
-        //{
-        //    Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
-        //}
+        private void SummarybtnContinue_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
+        }
 
         private void OnIDNumberFocusChanged(object sender, FocusEventArgs focusEventArgs)
         {
@@ -166,7 +167,18 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
         private void IdNumberTextChanged(object sender, TextChangedEventArgs e)
         {
-            viewModel.IDNumber = e.NewTextValue;
+            viewModel._idNumber = e.NewTextValue;
+        }
+
+        private void OnFrequechCheckChanged(object sender, CheckedChangedEventArgs e)
+        {
+            viewModel.EnableFrequencyDetails();
+        }
+
+        private void ContactPersonTextUnFocus(object sender, FocusEventArgs e)
+        {
+            viewModel.ContactPersonName = ContactPersonEntry.Text;
+            viewModel.EnableDeclaration();
         }
     }
 }
