@@ -52,6 +52,10 @@ xmlns:custom2="clr-namespace:EGAZT"
                           <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                             <Label x:Name="Label_ApplicationNumber" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
                                 <Image>
+                                      <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                              Tapped="Image_Copy_Tapped"/>
+                                    </Image.GestureRecognizers>
                                     <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
