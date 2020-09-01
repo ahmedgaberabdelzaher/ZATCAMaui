@@ -2011,4 +2011,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\amount_white%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Generic_attachment_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Generic_attachment_icon%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Generic_attachment_icon%403x.png" />
+  </ItemGroup>
 </Project>
