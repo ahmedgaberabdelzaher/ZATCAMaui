@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.NewDesign.EstablishmentSignUP
@@ -19,6 +20,21 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             InitializeComponent();
             viewModel = App.Locator.EstablishmentSignUPPageView;
             BindingContext = viewModel;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
 
         private void OnEstablishmentTapped(object sender, EventArgs e)
@@ -26,13 +42,23 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.IndividualBackImg = "FP_unselected_tile.png";
             viewModel.EstablishmentBackImg = "FP_selected_tile.png";
             //viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
+
+            });
         }
 
         private void OnIndividualTapped(object sender, EventArgs e)
         {
             viewModel.IndividualBackImg = "FP_selected_tile.png";
             viewModel.EstablishmentBackImg = "FP_unselected_tile.png";
-            //viewModel._navigationService.NavigateTo(App.indivi);
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView);
+
+            });
         }
     }
 }

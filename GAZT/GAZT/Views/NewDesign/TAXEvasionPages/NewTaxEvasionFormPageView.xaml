@@ -389,7 +389,7 @@
                                         
                                             <custom:CustomLabel  Text="{Binding
                                                     Source={x:Reference TReportDetail},
-                                                    Path=Text.Length, StringFormat='{0}/1000'}"
+                                                    Path=Text.Length, StringFormat='{0}/999'}"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     HorizontalOptions="EndAndExpand" VerticalOptions="Start" VerticalTextAlignment="Start" FontSize="Micro"/>
                                     </StackLayout>
@@ -427,7 +427,7 @@
                                         <StackLayout>
                                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,0,0,0" LeadingViewPosition="Inside">
                                                 <inputLayout:SfTextInputLayout.LeadingView>
-                                                    <Image Source="newui_ic_pdf" x:Name="Attachment_Tmg"/>
+                                                        <Image Source="{Binding CorrespondingImageAccoringtoext}" x:Name="Attachment_Tmg"/>
                                                 </inputLayout:SfTextInputLayout.LeadingView>
                                                 <custom:BorderlessEntry  Text="{Binding FileNameWithExtension}" x:Name="Attachment_Frm"  Style="{StaticResource EntryHeight48}" IsReadOnly="True">
                                                 </custom:BorderlessEntry>
@@ -579,6 +579,7 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -601,14 +602,14 @@
                                                                     HeightRequest="300"
                                                                     VerticalOptions="Start"
                                                                     BackgroundColor="White"
-                                                                    Grid.Row="2" Grid.Column="1"
+                                                                    Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                                                                     >
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <Grid>
                                                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,10,0,0" LeadingViewPosition="Inside">
                                                                 <inputLayout:SfTextInputLayout.LeadingView>
-                                                                    <Image Source="newui_ic_pdf" x:Name="Attachment_Tmg"/>
+                                                                    <Image Source="{Binding CorrespondingImageAccoringtoext}" x:Name="Attachment_Tmg"/>
                                                                 </inputLayout:SfTextInputLayout.LeadingView>
                                                                 <custom:BorderlessEntry  Text="{Binding FileNameWithExtension}" x:Name="Attachment_Frm"  Style="{StaticResource EntryHeight48}" IsReadOnly="True">
                                                                 </custom:BorderlessEntry>

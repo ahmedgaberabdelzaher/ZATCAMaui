@@ -44,6 +44,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Propetry
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         public string _IndividualBackImg = "FP_unselected_tile.png";
         public string IndividualBackImg
         {

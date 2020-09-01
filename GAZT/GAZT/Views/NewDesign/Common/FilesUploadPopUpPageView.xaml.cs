@@ -23,6 +23,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
     public partial class FilesUploadPopUpPageView : PopupPage
     {
         private FilesUploadPopUpViewModel viewModel;
+        private string dmsTypeString = string.Empty;
+
         public FilesUploadPopUpPageView(List<Attachment> attachments,WhichAttachment whichAttachment,string returnIdz)
         {
             InitializeComponent();
@@ -35,8 +37,22 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             attachement.results = attachments;
             onPageLoad(attachement, whichAttachment,returnIdz);
         }
-        
-         public void onPageLoad(Attachments attachments,WhichAttachment whichAttachment,string returnIdz)
+
+        public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz, string dmsType)
+        {
+            InitializeComponent();
+            App.IsArabic = false;
+            viewModel = App.Locator.FilesUploadPopUpView;
+            this.BindingContext = viewModel;
+            dmsTypeString = dmsType;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            SetLTR();
+            var attachement = new Attachments();
+            attachement.results = attachments;
+            onPageLoad(attachement, whichAttachment, returnIdz);
+        }
+
+        public void onPageLoad(Attachments attachments,WhichAttachment whichAttachment,string returnIdz)
         {
             viewModel.IsComeForWhichAttachment = whichAttachment;
             viewModel.returnIdz = returnIdz;
@@ -73,6 +89,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -97,21 +114,21 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 viewModel.DocTypeString = "N11B";
             }
-            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod2Years)
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod2Years)
             {
                 viewModel.DocTypeString = "ZTPA";
             }
-            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriod12Months)
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod12Months)
             {
                 viewModel.DocTypeString = "ZTPB";
             }
-            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChnageFillingPeriodOtherDoc)
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriodOtherDoc)
             {
                 viewModel.DocTypeString = "ZTPC";
             }
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
             {
-                viewModel.DocTypeString = "ZVTI";
+                viewModel.DocTypeString = dmsTypeString;
             }
         }
 

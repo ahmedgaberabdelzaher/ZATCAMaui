@@ -113,11 +113,11 @@ namespace EGAZT.Models.ChageFillingPeriodModel
             public string DecidTy { get; set; }
             public string DecidNo { get; set; }
             public List<object> EffDateSet { get; set; }
-            public List<object> UI_BTNSet { get; set; }
+            public VATChangeFillingPeriodRequestModel.UIBTNSet UI_BTNSet { get; set; }
             public List<object> NOTESSet { get; set; }
             public List<object> ATTACHSet { get; set; }
             public List<object> ATT_TYPSet { get; set; }
-            public List<object> QuesListSet { get; set; }
+            public VATChangeFillingPeriodRequestModel.QuesListSet QuesListSet { get; set; }
         }
 
 

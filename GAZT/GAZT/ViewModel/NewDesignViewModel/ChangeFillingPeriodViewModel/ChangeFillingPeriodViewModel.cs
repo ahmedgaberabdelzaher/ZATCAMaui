@@ -20,14 +20,18 @@ using EGAZT.Views.NewDesign;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Manager;
 using GAZT.Models;
+using Newtonsoft.Json;
+using EGAZT.Views.NewDesign.ChangeFillingPeriodPages;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
-    public class ChangeFillingPeriodViewModel : BaseViewModel
+    public class ChangeFillingPeriodViewModel : ViewModelBase
     {
+
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public bool isSubmitted = false;
         int selectedPage = (int)PagesEnum.FrequencyDetailsView;
         #endregion
 
@@ -91,6 +95,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         public ICommand EffectiveDateSpinnerClicked { get; set; }
         public ICommand IdTypeSpinnerTapped { get; set; }
         public ICommand NewAttachmentTapped { get; set; }
+        public ICommand SummaryContinueBtnTapped { get; set; }
         #endregion
 
         private int _currenrIndex = 1;
@@ -156,6 +161,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
+        private bool isIDVerified = false;
+        public bool IsIDVerified
+        {
+            get { return isIDVerified; }
+            set
+            {
+                isIDVerified = value;
+                RaisePropertyChanged("IsIDVerified");
+            }
+        }
+        private bool _contractPersonEditable = false;
+        public bool ContractPersonEditable
+        {
+            get { return _contractPersonEditable; }
+            set
+            {
+                _contractPersonEditable = value;
+                RaisePropertyChanged("ContractPersonEditable");
+            }
+        }
+
         private string _idType = "";
 
         public string IDType
@@ -180,27 +206,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        private bool _contractPersonEditable = false;
+        private bool _isAtachmentsVisible = false;
 
-        public bool ContractPersonEditable
+        public bool IsAtachmentsVisible
         {
-            get { return _contractPersonEditable; }
+            get { return _isAtachmentsVisible; }
             set
             {
-                _contractPersonEditable = value;
-                RaisePropertyChanged("ContractPersonEditable");
-            }
-        }
-
-        private bool isIDVerified = false;
-
-        public bool IsIDVerified
-        {
-            get { return isIDVerified; }
-            set
-            {
-                isIDVerified = value;
-                RaisePropertyChanged("IsIDVerified");
+                _isAtachmentsVisible = value;
+                RaisePropertyChanged("IsAtachmentsVisible");
             }
         }
 
@@ -240,8 +254,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        private bool _isFrequencyDetailsEnabled = false;
 
+        private bool _isFrequencyDetailsEnabled = false;
         public bool IsFrequencyDetailsEnabled
         {
             get { return _isFrequencyDetailsEnabled; }
@@ -252,7 +266,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 RaisePropertyChanged("IsFrequencyDetailsEnabled");
             }
         }
-
         private Color _frequencyDetailsButtonBackGroundColor = Color.FromHex("#9EA4A9");
         public Color FrequencyDetailsButtonBackGroundColor
         {
@@ -270,9 +283,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 RaisePropertyChanged("FrequencyDetailsButtonBackGroundColor");
             }
         }
-
-        private bool _isAttachmentsEnabled = true;
-
+        private bool _isAttachmentsEnabled = false;
         public bool IsAttachmentsEnabled
         {
             get { return _isAttachmentsEnabled; }
@@ -283,7 +294,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 RaisePropertyChanged("IsAttachmentsEnabled");
             }
         }
-
         private Color _attachButtonBackGroundColor = Color.FromHex("#9EA4A9");
         public Color AttachButtonBackGroundColor
         {
@@ -301,9 +311,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 RaisePropertyChanged("AttachButtonBackGroundColor");
             }
         }
-
         private bool _isDeclarationEnabled = false;
-
         public bool IsDeclarationEnabled
         {
             get { return _isDeclarationEnabled; }
@@ -311,11 +319,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 _isDeclarationEnabled = value;
                 DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
-
                 RaisePropertyChanged("IsDeclarationEnabled");
             }
         }
-
         private Color _declarationButtonBackGroundColor = Color.FromHex("#9EA4A9");
         public Color DeclarationButtonBackGroundColor
         {
@@ -334,7 +340,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        public List<List<Attachment>> AttachmentsList { get; set; }
+        public ObservableCollection<Attachment> yearsattachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> YearsattachmentsListViewData
+        {
+            get { return yearsattachmentsListViewData; }
+
+            set
+            {
+                if (yearsattachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                yearsattachmentsListViewData = value;
+                RaisePropertyChanged("YearsattachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> monthsattachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> MonthsattachmentsListViewData
+        {
+            get { return monthsattachmentsListViewData; }
+
+            set
+            {
+                if (monthsattachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                monthsattachmentsListViewData = value;
+                RaisePropertyChanged("MonthsattachmentsListViewData");
+            }
+        }
+
+        public ObservableCollection<Attachment> otherAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> OtherAttachmentsListViewData
+        {
+            get { return otherAttachmentsListViewData; }
+
+            set
+            {
+                if (otherAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                otherAttachmentsListViewData = value;
+                RaisePropertyChanged("OtherAttachmentsListViewData");
+            }
+        }
 
         public ObservableCollection<Attachment> attachmentsListViewData { get; set; }
 
@@ -366,7 +424,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     break;
 
                 case (int)PagesEnum.DeclarationView:
-                    EnableAttachmentsView();
+                    if (IsAtachmentsVisible)
+                    {
+                        EnableAttachmentsView();
+                    }
+                    else
+                    {
+                        EnableFrequencyDetailsView();
+                    }
+
                     break;
                 case (int)PagesEnum.SummaryView:
                     EnableDeclarationView();
@@ -401,8 +467,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 RaisePropertyChanged("EffectiveDateResponse");
             }
         }
-        public ChangeFillingPeriodViewModel(INavigationService navigationService, IDialogService dialogService) : base(
-            navigationService, dialogService)
+
+        private Dictionary<string, string> IDTypeDictionary = new Dictionary<string, string>
+        {
+            {AppResources.VFCNationalID,"ZS0001"},
+            {AppResources.VFCIqamaID,"ZS0002"},
+            {AppResources.VFCGCCID,"ZS0003"},
+        };
+
+        public ChangeFillingPeriodViewModel(INavigationService navigationService, IDialogService dialogService)
         {
 
             if (navigationService == null)
@@ -448,6 +521,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             GoBackToAttachments = new Command(this.GoBackToAttachmentsClicked);
             GoBackToDeclaration = new Command(this.GoBackToDeclarationClicked);
             NewAttachmentTapped = new Command(this.NewAttachmentClicked);
+            SummaryContinueBtnTapped = new Command(this.SummaryContinueBtnClicked);
+
             // GoBackToDashBoardTapped = new Command(this.GoBackToDashboardClicked);
 
             //PopulateFrequencyDetailsListViewData();
@@ -462,11 +537,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             genericDatePickerModel = new GenericDatePickerModel();
             genericDatePickerModel.DatePickerTitle = "Select Date";
             genericDatePickerModel.PickerId = "DatePicker";
+
         }
 
         public void ResetData()
         {
             EnableFrequencyDetailsView();
+            IsFrequencyDetailsChecked = false;
+            ContactPersonName = "";
+            IDNumber = "";
+            IsAtachmentsVisible = false;
+            IsIDVerified = false;
+            ContractPersonEditable = false;
+            IDType = "";
+            IsDOBVisible = false;
+            EffectiveDatePicked = "";
+            AttachmentsListViewData = null;
+            YearsattachmentsListViewData = null;
+            MonthsattachmentsListViewData = null;
+            OtherAttachmentsListViewData = null;
+            IsFrequencyDetailsEnabled = false;
+            IsAttachmentsEnabled = false;
+            IsDeclarationEnabled = false;
+            CurrentFrequency = "";
+            NewFrequency = "";
+            isSubmitted = false;
+            IsTwoYearsAtachmentsVisible = false;
+            IsMonthsAtachmentsVisible = false;
+            IsOthersAtachmentsVisible = false;
         }
 
         public void ValidateIdNumber()
@@ -474,6 +572,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             try
             {
                 IsIDVerified = false;
+                EnableDeclaration();
                 PopUp popUp = new PopUp();
                 StringBuilder Messages = new StringBuilder();
                 if (!string.IsNullOrEmpty(IDNumber))
@@ -654,13 +753,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         public async void showInstructionDialog()
         {
             await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
-                instructionString: AppResources.CRInstructions, checkBoxString: AppResources.CRInstrCheckDesc,
+                instructionString: AppResources.VFCInstructions, checkBoxString: AppResources.VFCCheckBoxDesc,
                 continueString: AppResources.CRContinue,
                 _dialogType: InstructionsBottomPopUpViewModel.DialogType
                     .Instructions));
 
         }
-
         private async void showDatePickerDialog()
         {
 
@@ -746,6 +844,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             ValidateIdNumber();
         }
 
+
         /*public void ValidateIDNumber()
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -792,7 +891,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = list;
-            genericPickerModel.PickerTitle = AppResources.CRContractType;
+            genericPickerModel.PickerTitle = AppResources.VFCEffectiveDate;
             genericPickerModel.PickerId = "Effective Date";
 
             EffectiveDatePickerModel = genericPickerModel;
@@ -808,7 +907,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             GenericPickerModel genericPickerModel = new GenericPickerModel();
             genericPickerModel.PickerData = iDTypes;
-            genericPickerModel.PickerTitle = AppResources.CRContractType;
+            genericPickerModel.PickerTitle = AppResources.VFCIDType;
             genericPickerModel.PickerId = "ID Type";
 
             IDTypePickerModel = genericPickerModel;
@@ -816,15 +915,55 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public async void NewAttachmentClicked()
         {
-            if (AttachmentsListViewData == null)
-            {
-                AttachmentsListViewData = new ObservableCollection<Attachment>();
-            }
+
             try
             {
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                    AttachmentsListViewData.ToList(),
-                    Models.ZakatInstalationModels.WhichAttachment.ContractReleaseCopy, ""));
+
+                if (_selectedOutletOptionIndex == 0)
+                {
+
+                    if (YearsattachmentsListViewData == null)
+                    {
+
+                        YearsattachmentsListViewData = new ObservableCollection<Attachment>();
+
+                    }
+
+
+                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                 YearsattachmentsListViewData.ToList(),
+                 Models.ZakatInstalationModels.WhichAttachment.ChangeFillingPeriod2Years, ChangeFillingResponse.d.ReturnIdz));
+                }
+                else if (_selectedOutletOptionIndex == 1)
+                {
+
+                    if (MonthsattachmentsListViewData == null)
+                    {
+
+                        MonthsattachmentsListViewData = new ObservableCollection<Attachment>();
+
+                    }
+                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                 MonthsattachmentsListViewData.ToList(),
+                 Models.ZakatInstalationModels.WhichAttachment.ChangeFillingPeriod12Months, ChangeFillingResponse.d.ReturnIdz));
+                }
+                else
+                {
+
+                    if (OtherAttachmentsListViewData == null)
+                    {
+
+                        OtherAttachmentsListViewData = new ObservableCollection<Attachment>();
+
+                    }
+                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                 OtherAttachmentsListViewData.ToList(),
+                 Models.ZakatInstalationModels.WhichAttachment.ChangeFillingPeriodOtherDoc, ChangeFillingResponse.d.ReturnIdz));
+
+                }
+
+
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1002,6 +1141,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
+
+        private string _referenceNumber = "";
+        public string ReferenceNumber
+        {
+            get
+            {
+                return _referenceNumber;
+            }
+            set
+            {
+                _referenceNumber = value;
+                RaisePropertyChanged("ReferenceNumber");
+            }
+        }
+
         private string _currentFrequency = "";
         public string CurrentFrequency
         {
@@ -1027,6 +1181,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 _newFrequency = value;
                 RaisePropertyChanged("NewFrequency");
+            }
+        }
+
+        private bool _isTwoYearsAtachmentsVisible = false;
+        public bool IsTwoYearsAtachmentsVisible
+        {
+            get { return _isTwoYearsAtachmentsVisible; }
+            set
+            {
+                _isTwoYearsAtachmentsVisible = value;
+                RaisePropertyChanged("IsTwoYearsAtachmentsVisible");
+            }
+        }
+        private bool _isMonthsAtachmentsVisible = false;
+        public bool IsMonthsAtachmentsVisible
+        {
+            get { return _isMonthsAtachmentsVisible; }
+            set
+            {
+                _isMonthsAtachmentsVisible = value;
+                RaisePropertyChanged("IsMonthsAtachmentsVisible");
+            }
+        }
+        private bool _isOthersAtachmentsVisible = false;
+        public bool IsOthersAtachmentsVisible
+        {
+            get { return _isOthersAtachmentsVisible; }
+            set
+            {
+                _isOthersAtachmentsVisible = value;
+                RaisePropertyChanged("IsOthersAtachmentsVisible");
             }
         }
 
@@ -1087,7 +1272,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 {
                     return;
                 }
-                EnableAttachmentsView();
+
+                if (!IsAtachmentsVisible)
+                {
+
+                    EnableDeclarationView();
+                }
+                else
+                {
+
+                    EnableAttachmentsView();
+
+                }
+
+
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1107,6 +1306,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         {
             try
             {
+
                 if (!IsAttachmentsEnabled)
                 {
                     return;
@@ -1206,13 +1406,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public void PopulateAttachments(List<Attachment> attachments)
         {
-            AttachmentsList[SelectedOutletOptionIndex] = attachments;
-            AttachmentsListViewData = new ObservableCollection<Attachment>();
 
-            foreach (var attachment in attachments)
+            var attachmentsListViewData = new ObservableCollection<Attachment>();
+
+            foreach (Attachment attachemnt in attachments)
             {
-                AttachmentsListViewData.Add(attachment);
+                attachmentsListViewData.Add(attachemnt);
             }
+
+            if (_selectedOutletOptionIndex == 0)
+            {
+                YearsattachmentsListViewData = attachmentsListViewData;
+            }
+            else if (_selectedOutletOptionIndex == 1)
+            {
+                MonthsattachmentsListViewData = attachmentsListViewData;
+            }
+            else
+            {
+                OtherAttachmentsListViewData = attachmentsListViewData;
+            }
+
+            AttachmentsListViewData = attachmentsListViewData;
+
+            EnableAttachments();
+
 
         }
 
@@ -1227,12 +1445,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 IsFrequencyDetailsEnabled = true;
             }
         }
-
         public void EnableAttachments()
         {
-            IsAttachmentsEnabled = true;
+            if (YearsattachmentsListViewData != null && MonthsattachmentsListViewData != null)
+            {
+                if (YearsattachmentsListViewData.Count != 0 && MonthsattachmentsListViewData.Count != 0)
+                {
+                    IsAttachmentsEnabled = true;
+                }
+                else
+                {
+                    IsAttachmentsEnabled = false;
+                }
+            }
+            else
+            {
+                IsAttachmentsEnabled = false;
+            }
         }
-
         public void EnableDeclaration()
         {
             if (ContactPersonName == "" || !IsIDVerified)
@@ -1245,28 +1475,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        public async void MyRequestsButtonClicked()
-        {
-            try
-            {
-                EnableFrequencyDetailsView();
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-        }
 
         public async void DeclarationContinueBtnClicked()
         {
+
             try
             {
                 if (!IsDeclarationEnabled)
@@ -1289,6 +1501,110 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
+        public async void SummaryContinueBtnClicked()
+        {
+            try
+            {
+                if (!isSubmitted) {
+
+                    isSubmitted = true;
+
+                    ChangeFillingResponse = await SubmitClicked();
+
+                    if (ChangeFillingResponse.d != null)
+                    {
+
+                        ReferenceNumber = ChangeFillingResponse.d.Fbnumz;
+                        // _navigationService.NavigateTo(App.ChangeFillingPeriodSuccessPage);
+                        await Application.Current.MainPage.Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
+
+                    }
+                }
+
+                
+
+
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public async Task<VATChangeFillingPeriodRequestModel> SubmitClicked()
+        {
+            VATChangeFillingPeriodRequestModel response = new VATChangeFillingPeriodRequestModel();
+            VATchangeFillingPeriodPostModel request = new VATchangeFillingPeriodPostModel();
+
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+
+
+                request = BuildRequestObject();
+
+                response = await WebServiceManager.GAZTPostVATChangeFillingPeriodData(request);
+                PopToRootPage();
+                if (response != null && response.d != null)
+                {
+                    try
+                    {
+                        if (response != null && response.d != null)
+                        {
+
+                            // VatInstalments = response;
+
+                            //Set data after api call 
+                            //setDataAfterSubmitAPIAsync(response);
+
+                        }
+                        IsLoading = false;
+                        return response;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                        return null;
+
+                    }
+                }
+                IsLoading = false;
+                return response;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+
+                });
+                return response;
+            }
+
+            catch (Exception ex)
+            {
+                return response;
+            }
+
+        }
+
+
         public ObservableCollection<MyRequestsListModel> MyRequestsListViewData { get; private set; }
 
         public void PopulateMyRequestsListViewData()
@@ -1307,18 +1623,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         }
 
-        public void SetAttachmentsListViewData()
-        {
-            AttachmentsListViewData = new ObservableCollection<Attachment>();
-            if (AttachmentsList != null && AttachmentsList[SelectedOutletOptionIndex] != null)
-            {
-                foreach (var attachment in AttachmentsList[SelectedOutletOptionIndex])
-                {
-                    AttachmentsListViewData.Add(attachment);
-                }
-            }
 
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
         }
+
 
 
         public ObservableCollection<InstalmentAgreementAttachmentsModel> FrequencyDetailsListViewData { get; private set; }
@@ -1431,6 +1748,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             ChangeFillingResponse = resultData;
                             CurrentFrequency = resultData.d.CureentF;
                             NewFrequency = resultData.d.FilingF;
+                            if (resultData.d.Attchk == "Q")
+                            {
+                                IsAtachmentsVisible = true;
+
+                            }
+                            else
+                            {
+                                IsAtachmentsVisible = false;
+                            }
+
+                            if (resultData.d.Attchk == "M")
+                            {
+                                IsAtachmentsVisible = false;
+                            }
+                            else
+                            {
+                                IsAtachmentsVisible = true;
+                            }
 
                             GetEffectiveDateList();
                         }
@@ -1630,8 +1965,108 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        #endregion
 
+        public VATchangeFillingPeriodPostModel BuildRequestObject()
+        {
+
+            VATchangeFillingPeriodPostModel request = new VATchangeFillingPeriodPostModel();
+            request.d = new VATchangeFillingPeriodPostModel.RequestVATFillingPeriod();
+            try
+            {
+                VATchangeFillingPeriodPostModel.Metadata _metadata = new VATchangeFillingPeriodPostModel.Metadata();
+                _metadata.id = ChangeFillingResponse.d.__metadata.id;
+                _metadata.uri = ChangeFillingResponse.d.__metadata.uri;
+                _metadata.type = ChangeFillingResponse.d.__metadata.type;
+
+                request.d.__metadata = _metadata;
+                request.d.Attchk = ChangeFillingResponse.d.Attchk;
+                request.d.CPersl = ChangeFillingResponse.d.CPersl;
+                request.d.Fbnumz = ChangeFillingResponse.d.Fbnumz;
+                request.d.Iagrfg = ChangeFillingResponse.d.Iagrfg;
+                request.d.Reqfg = ChangeFillingResponse.d.Reqfg;
+                request.d.StepNumber = ChangeFillingResponse.d.StepNumber;
+                request.d.Begda = ChangeFillingResponse.d.Begda;
+                request.d.PortalUsrz = ChangeFillingResponse.d.PortalUsrz;
+                request.d.Langz = ChangeFillingResponse.d.Langz;
+                request.d.Gpart = ChangeFillingResponse.d.Gpart;
+
+                request.d.Operationz = "01";
+                request.d.Fbtyp = ChangeFillingResponse.d.Fbtyp;
+                request.d.StepNumberz = ChangeFillingResponse.d.StepNumberz;
+                request.d.Fbust = ChangeFillingResponse.d.Fbust;
+
+
+                request.d.ReturnIdz = ChangeFillingResponse.d.ReturnIdz;
+                request.d.Officerz = ChangeFillingResponse.d.Officerz;
+                request.d.UserTyp = ChangeFillingResponse.d.UserTyp;
+                request.d.Gpartz = ChangeFillingResponse.d.Gpartz;
+                request.d.TransactionType = ChangeFillingResponse.d.TransactionType;
+                request.d.EditFg = ChangeFillingResponse.d.EditFg;
+                request.d.Statusz = ChangeFillingResponse.d.Statusz;
+                request.d.Euser = ChangeFillingResponse.d.Euser;
+
+                request.d.Fbguid = ChangeFillingResponse.d.Fbguid;
+                request.d.TxnTpz = ChangeFillingResponse.d.TxnTpz;
+                request.d.DmodeFlg = ChangeFillingResponse.d.DmodeFlg;
+                request.d.Formprocz = ChangeFillingResponse.d.Formprocz;
+                request.d.EvStatus = ChangeFillingResponse.d.EvStatus;
+                request.d.OfficerTz = ChangeFillingResponse.d.OfficerTz;
+                request.d.SrcAppz = ChangeFillingResponse.d.SrcAppz;
+
+
+                request.d.Mandt = ChangeFillingResponse.d.Mandt;
+                request.d.FormGuid = ChangeFillingResponse.d.FormGuid;
+                request.d.DataVersion = ChangeFillingResponse.d.DataVersion;
+                request.d.ReturnId = ChangeFillingResponse.d.ReturnId;
+                request.d.CureentF = ChangeFillingResponse.d.CureentF;
+                request.d.FilingF = ChangeFillingResponse.d.FilingF;
+                request.d.Persl = ChangeFillingResponse.d.Persl;
+
+                request.d.EffDateSet = ChangeFillingResponse.d.EffDateSet.results;
+                request.d.UI_BTNSet = ChangeFillingResponse.d.UI_BTNSet;
+                request.d.NOTESSet = ChangeFillingResponse.d.NOTESSet.results;
+                request.d.ATTACHSet = ChangeFillingResponse.d.ATTACHSet.results;
+                request.d.ATT_TYPSet = ChangeFillingResponse.d.ATT_TYPSet.results;
+                request.d.QuesListSet = ChangeFillingResponse.d.QuesListSet;
+
+
+                var todayDate = DateTime.Now.ToString();
+
+                DateTime dt2 = Convert.ToDateTime(todayDate);
+                JsonSerializerSettings microsoftDateFormatSettings2 = new JsonSerializerSettings
+                {
+                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                };
+                //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                var jsonDateTime2 = JsonConvert.SerializeObject(dt2, microsoftDateFormatSettings2);
+                string[] dateList2 = jsonDateTime2.Split('+');
+                jsonDateTime2 = dateList2[0].Replace("\"\\", "");
+                jsonDateTime2 = jsonDateTime2 + ")/";
+                var convretedTodayate = jsonDateTime2;
+
+                request.d.Decdate = convretedTodayate;
+                request.d.DecidTy = IDTypeDictionary[IDType];
+                request.d.Decname = ContactPersonName;
+                request.d.Decdesignation = "";
+                request.d.Decfg = ChangeFillingResponse.d.Decfg;
+                request.d.DecidNo = IDNumber;
+                request.d.TransType = "CRE_TPCV";
+                request.d.UserTypz = "TP";
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+
+
+            return request;
+
+
+        }
+
+
+        #endregion
 
     }
 
