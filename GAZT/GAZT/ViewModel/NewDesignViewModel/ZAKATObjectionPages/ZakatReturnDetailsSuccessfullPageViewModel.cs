@@ -296,6 +296,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public void ClearData()
         {
 
+            ReferenceNumber = string.Empty;
+            SADADNumber = string.Empty;
+            ZAKATAmount = string.Empty;
+
             IsrefreshEnabled = false;
         }
         #endregion
