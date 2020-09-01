@@ -4306,6 +4306,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gregorian.
+        /// </summary>
+        public static string Gregorian {
+            get {
+                return ResourceManager.GetString("Gregorian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello.
         /// </summary>
         public static string Hello {
@@ -4320,6 +4329,15 @@ namespace EGAZT {
         public static string Hi {
             get {
                 return ResourceManager.GetString("Hi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hijri.
+        /// </summary>
+        public static string Hijri {
+            get {
+                return ResourceManager.GetString("Hijri", resourceCulture);
             }
         }
         
@@ -17285,6 +17303,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is no corresponding ID Number for the selected ID type.
+        /// </summary>
+        public static string ZZZZNoIdNumberMsg {
+            get {
+                return ResourceManager.GetString("ZZZZNoIdNumberMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not exceed 16 characters.
         /// </summary>
         public static string ZZZZNotexceed16characters {
@@ -17321,11 +17348,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please agree to the Terms and Conditions.
+        /// </summary>
+        public static string ZZZZPleaseAgreeTandCMsg {
+            get {
+                return ResourceManager.GetString("ZZZZPleaseAgreeTandCMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please Select.
         /// </summary>
         public static string ZZZZPleaseSelect {
             get {
                 return ResourceManager.GetString("ZZZZPleaseSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the preferred IBAN Number.
+        /// </summary>
+        public static string ZZZZPleaseSelectTheIbanMsg {
+            get {
+                return ResourceManager.GetString("ZZZZPleaseSelectTheIbanMsg", resourceCulture);
             }
         }
         
@@ -17668,18 +17713,6 @@ namespace EGAZT {
         public static string ZZZZYouhavesuccessfullyregisteredtoGAZTServices {
             get {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
-            }
-        }
-        
-        public static string Gregorian {
-            get {
-                return ResourceManager.GetString("Gregorian", resourceCulture);
-            }
-        }
-        
-        public static string Hijri {
-            get {
-                return ResourceManager.GetString("Hijri", resourceCulture);
             }
         }
     }

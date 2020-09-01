@@ -1467,6 +1467,56 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetAmendButtonVisibility = false;
             isThresholdValueLessThanTotalVATSales = false;
             DesClaimerVisibility = false;
+            if(ZakatReturnDetail != null)
+            {
+
+                ZakatReturnDetail.TvtslI = string.Empty; 
+                ZakatReturnDetail.TvtslE = string.Empty;
+                ZakatReturnDetail.LabnoI = string.Empty;
+                ZakatReturnDetail.LabnoE = string.Empty;
+                ZakatReturnDetail.ImpvalI = string.Empty;
+                ZakatReturnDetail.ImpvalE = string.Empty;
+                ZakatReturnDetail.PtoslI = string.Empty;
+                ZakatReturnDetail.Sumcnt = string.Empty;
+                ZakatReturnDetail.EtimadI = string.Empty;
+                ZakatReturnDetail.Sumcnt = string.Empty;
+                ZakatReturnDetail.ExamtI = string.Empty;
+                ZakatReturnDetail.Sumcnt = string.Empty;
+                ZakatReturnDetail.PramtI = string.Empty;
+                ZakatReturnDetail.PramtE = string.Empty;
+                ZakatReturnDetail.Cpamt = string.Empty;
+                ZakatReturnDetail.Estsl = string.Empty;
+                ZakatReturnDetail.Zbamt = string.Empty;
+                ZakatReturnDetail.Zkamt = string.Empty;
+                ZakatReturnDetail.Persl = string.Empty;
+                ZakatReturnDetail.Fbnum = string.Empty;
+
+
+                FromDate = string.Empty;
+                ToDate = string.Empty;
+                
+
+                //       ZakatReturnDetailsD obj = new ZakatReturnDetailsD();
+                //       Metadata metadata = new Metadata();
+                //             ReasonSet reasonSet = new ReasonSet();
+                //AttachSet attachSet = new AttachSet();
+                //       InvoiceSet invoiceSet = new InvoiceSet();
+                //       ThresholdSet thresholdSet = new ThresholdSet();
+                //       metadata.uri = "";
+                //       metadata.id = "";
+
+                //       metadata.type = "";
+
+                //       obj.AttachSet = attachSet;
+                //       obj.ReasonSet = reasonSet;
+                //       obj.InvoiceSet = invoiceSet;
+                //       obj.ThresholdSet = thresholdSet;
+                //       obj.__metadata = metadata;
+
+                //       ZakatReturnDetail = obj;
+            }
+
+
         }
 
         public void SetChangeFromEstimateTAccountringBasisButtonVisibility(string ButtonStatus)
