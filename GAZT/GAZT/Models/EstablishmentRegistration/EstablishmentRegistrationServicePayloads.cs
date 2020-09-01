@@ -690,7 +690,7 @@ namespace EGAZT.Models.EstablishmentRegistration
     }
     public class FinancialDetailRequest
     {
-        public string ACaltype { get; set; } = "G";
+        public string ACaltype { get; set; } = "H";
         public string AMonth { get; set; } = string.Empty;
         public DateTime? ADateComm { get; set; }
         public string EIslmedate { get; set; } = string.Empty;

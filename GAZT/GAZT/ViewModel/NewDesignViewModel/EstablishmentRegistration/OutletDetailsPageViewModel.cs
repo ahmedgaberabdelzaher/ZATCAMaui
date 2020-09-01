@@ -583,7 +583,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     defaultAddress.CityCode = City.CityCode;
                     defaultAddress.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
                     defaultAddress.AddrType = "XXDEFAULT";
-                    defaultAddress.Srcidentify = OutletActNumber;
+                    defaultAddress.Srcidentify = string.Format("O{0}",OutletActNumber);
                     defaultAddress.Begda = DateTime.UtcNow;
                     defaultAddress.Endda = maxDate;
                     taxPayerDetails?.Nreg_AddressSet.results?.Add(defaultAddress);
@@ -602,7 +602,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     _address.CityCode = CitySame.CityCode;
                     _address.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
                     _address.AddrType = "0001";
-                    _address.Srcidentify = OutletActNumber;
+                    _address.Srcidentify = string.Format("O{0}", OutletActNumber);
                     _address.Begda = DateTime.UtcNow;
                     _address.Endda = maxDate;
                     taxPayerDetails?.Nreg_AddressSet.results?.Add(_address);
