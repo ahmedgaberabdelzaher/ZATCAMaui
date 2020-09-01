@@ -6624,8 +6624,6 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
      <data name="Hijri" xml:space="preserve">
     <value>Hijri</value>
     </data>
-   
-  </data>
   <data name="ZZZZNoIdNumberMsg" xml:space="preserve">
     <value>There is no corresponding ID Number for the selected ID type</value>
   </data>
@@ -6635,4 +6633,6 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ZZZZPleaseSelectTheIbanMsg" xml:space="preserve">
     <value>Please select the preferred IBAN Number</value>
   </data>
+
+  
 </root>

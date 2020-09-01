@@ -45,6 +45,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsDeclarationCheckedForSummary = false;
                     viewModel.IsCheckedTaxPayerDetailsInfo = false;
                     viewModel.IsRefundButtonEnabled = true;
+                    viewModel.IsNavigatedToSubmitted = false;
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
                  
                 }
@@ -495,6 +496,46 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
         }
 
+        public async void getSubmittedFromRefundCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "Refundsubmitted", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                      //  viewModel.IsNavigatedToBilled = true;
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            viewModel.ManageEnabledProperty(false);
+                            viewModel.IsGetSadadNumberEnabled = false;
+                            viewModel.IsMainButtonEnabled = false;
+                            viewModel.IsMainButtonVisible = false;
+                            viewModel.IsRefundButtonEnabled = false;
+                            viewModel.IsRefundButtonVisible = false;
+                            viewModel.isBtnVisible = false;
+                            viewModel.IsEnableSwitchToggledFor15PercentChange = false;
+                            viewModel.IsNavigatedToSubmitted = true;
+                            //IsMainButtonVisible = false;
+                            //IsSwichButtonEnableToTap = false;
+                            //IsEnableIBAN = false;
+                            //IsEnableCheckedRefund = false;
+                            //IsEnableIBANType = false;
+                            //IsEnableIBANIdNumber = false;
+                            //IsGetAcknowledgementClicked = true;
+                            //IsMoreButtonEnabled = false;
+                        });
+                    }
+
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public async void getRefundClickedCommand()
         {
             try
@@ -731,7 +772,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
                 MessagingCenter.Unsubscribe<object, string>(this, "RefundClicked");
                 MessagingCenter.Unsubscribe<object, string>(this, "RefundClickedForStop");
-                
+                MessagingCenter.Unsubscribe<object, string>(this, "Refundsubmitted");
+
 
 
                 Device.BeginInvokeOnMainThread(() =>
@@ -759,6 +801,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             getYesCommand();
             getNoCommand();
             getRefundClickedCommand();
+            getSubmittedFromRefundCommand();
             getRefundClickedForStopLoaderCommand();
         }
 
@@ -8043,43 +8086,44 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                     else if (viewModel.ContinueText == AppResources.ZZZZConfirmAndCarryForward)
                     {
-                    if (viewModel.IsDeclarationCheckedForSummary)
-                    {
-                        if (viewModel.IsDeclarationCheckedForSummary && (viewModel.IsVoidClicked == false && viewModel.IsResetClicked == false))
+                   
+                        if (viewModel.IsDeclarationCheckedForSummary)
                         {
-                            if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (App.ICRStatus == "E0001" || viewModel.IsCheckedDraftMode()))
+                            if (viewModel.IsDeclarationCheckedForSummary && (viewModel.IsVoidClicked == false && viewModel.IsResetClicked == false))
                             {
-                                Device.BeginInvokeOnMainThread(() =>
+                                if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (App.ICRStatus == "E0001" || viewModel.IsCheckedDraftMode()))
                                 {
-                                    viewModel.IsNewLoading = true;
-                                });
-                                await viewModel.SubmitClicked();
-                                Device.BeginInvokeOnMainThread(() =>
-                                {
-                                    viewModel.IsNewLoading = false;
-                                });
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        viewModel.IsNewLoading = true;
+                                    });
+                                    await viewModel.SubmitClicked();
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        viewModel.IsNewLoading = false;
+                                    });
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                        else
+                        {
+                            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
 
-                        headerAmountInfo.IsLinkAvailable = false;
-                        headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
+                            headerAmountInfo.IsLinkAvailable = false;
+                            headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
 
-                        headerWithInfos.Add(headerAmountInfo);
+                            headerWithInfos.Add(headerAmountInfo);
 
 
-                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-                    }
-
+                            PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        }
+                   
 
                     //if (viewModel.IsDeclarationCheckedForSummary && (App.ICRStatus == "E0001" || App.ICRStatus == "E0013"))
                     //    {
