@@ -94,7 +94,7 @@
                                                     <custom:CustomLabel Text="{Binding TicketId}" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
                                                 </StackLayout>
                                                 <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
-                                                    <buttons:SfButton  Text="{Binding Status}" HeightRequest="32"  Padding="12,0,12,0" CornerRadius="15">
+                                                    <buttons:SfButton FontFamily="{StaticResource SSTArRoman}" Text="{Binding Status}" HeightRequest="32"  Padding="12,0,12,0" CornerRadius="15">
                                                         <!--BackgroundColor="{StaticResource LightGreenColor}"
                                                         TextColor="{StaticResource Primary}"-->
                                                         <buttons:SfButton.Triggers>
