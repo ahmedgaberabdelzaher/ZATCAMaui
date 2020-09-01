@@ -529,6 +529,68 @@ namespace GAZT.Manager
             }
             return dt;
         }
+
+        public static string GetFileImage(string Extention)
+        {
+            if (Extention.ToLower() == "doc")
+            {
+               return "file.png";
+
+            }
+            else if (Extention.ToLower() == "docx")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "jpg")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "jpeg")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "pdf")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "xlsx")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "xls")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "png")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "ppt")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "pptx")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "gif")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "txt")
+            {
+                return "file.png";
+            }
+            else if (Extention.ToLower() == "bmp")
+            {
+                return "file.png";
+            }
+            else
+            {
+                return null;
+            }
+
+        }
         public static string GetContentType(String Extention)
         {
             if (Extention.ToLower() == "doc")

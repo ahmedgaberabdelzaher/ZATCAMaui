@@ -10,6 +10,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using Plugin.FilePicker;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
@@ -258,7 +259,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                     Device.BeginInvokeOnMainThread(async () =>
                                                     {
                                                         AttachmentName = string.Empty;
-                                                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+                                                     //   await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                                         IsLoading = false;
                                                     });
                                                 }
@@ -268,7 +271,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                 Device.BeginInvokeOnMainThread(async () =>
                                                 {
                                                     AttachmentName = string.Empty;
-                                                    await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
+                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoucannotuploadmorethan5attachment));
+
+                                                   // await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
                                                     IsLoading = false;
                                                 });
                                             }
@@ -278,7 +283,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             Device.BeginInvokeOnMainThread(async () =>
                                             {
                                                 AttachmentName = string.Empty;
-                                                await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
+                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFilesizemustbelessthan5MB));
+
+                                              //  await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
                                                 IsLoading = false;
                                             });
                                         }
@@ -288,7 +295,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
                                             AttachmentName = string.Empty;
-                                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+
+                                         //   await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                             IsLoading = false;
                                         });
                                     }
@@ -297,7 +306,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
+
+                                        //await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
                                         IsLoading = false;
                                         AttachmentName = string.Empty;
                                     });
@@ -309,7 +320,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsLoading = false;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+                                   // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                 });
 
 
@@ -321,7 +334,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 AttachmentName = string.Empty;
-                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+
+                              //  await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                 IsLoading = false;
                             });
                         }
@@ -331,7 +346,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         IsLoading = false;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                          //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         });
                     }
                 });
@@ -414,7 +431,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
+                      //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             });
@@ -439,12 +458,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     _zakatAttachment.Doguid = obj.Doguid;
                     _zakatAttachment.AttBy = obj.AttBy;
                     _zakatAttachment.Filename = obj.Filename;
-                    _zakatAttachment.FileExtn = obj.FileExtn;
+                    _zakatAttachment.FileExtn = obj.Filename.Split('.')[1]; 
+                    _zakatAttachment.FileImage =UtilityManager.GetFileImage(_zakatAttachment.FileExtn);
+
                     _zakatAttachment.Mimetype = obj.Mimetype;
                     _zakatAttachment.ByPusr = obj.ByPusr;
                     _zakatAttachment.Erfdt = obj.Erfdt;
-                    _zakatAttachment.DataVersion = obj.
-                        DataVersion;
+                    _zakatAttachment.DataVersion = obj.DataVersion;
+
                     _zakatAttachment.DocUrl = obj.DocUrl;
                     _zakatAttachment.OutletRef = obj.OutletRef;
                     string unixDate = GetUnixDate(_zakatAttachment.Erfdt);
@@ -568,6 +589,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
 
         }
+     
         #endregion
 
     }
