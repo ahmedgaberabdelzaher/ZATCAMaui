@@ -53,7 +53,7 @@
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                         <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image Source="taxEvasion">
+                            <Image Source="ic_ReportTaxEvasion.png">
 
                             </Image>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBTaxEvasion}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
@@ -64,7 +64,7 @@
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                         <StackLayout Orientation="Horizontal" Spacing="20">
-                            <Image Source="taxEvasion">
+                            <Image Source="ic_menu_Tax_check.png">
 
                             </Image>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZDBTaxCheck}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
@@ -99,6 +99,7 @@
                         <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                         <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image Source="ic_Version.png"></Image>
                             <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}">
                                 <Label.FormattedText>
                                     <FormattedString>

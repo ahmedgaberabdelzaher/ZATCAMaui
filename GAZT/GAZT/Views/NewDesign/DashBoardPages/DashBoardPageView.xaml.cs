@@ -721,5 +721,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             viewModel._navigationService.NavigateTo(App.SupportPageView);
         }
+
+        private void OnZakatNowTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
+        }
     }
 }
