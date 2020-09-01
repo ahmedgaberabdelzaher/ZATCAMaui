@@ -54,13 +54,24 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
+            try
+            {
+                var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(firstPageToRemove);
 
-            var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-            Navigation.RemovePage(firstPageToRemove);
-            var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-            Navigation.RemovePage(secondPageToRemove);
-            viewModel._navigationService.GoBack();
-        
+                var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(secondPageToRemove);
+
+                var thirdPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(thirdPageToRemove);
+
+                viewModel._navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
         private async void Image_Copy_Tapped(object sender, EventArgs e)
         {

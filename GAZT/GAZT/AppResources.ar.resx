@@ -4507,7 +4507,7 @@
     <value>تاريخ الايقاف يجب ان يكون بعد يوم واحد على الاقل من تاريخ اخر تقديم للاقرار</value>
   </data>
   <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
-    <value>End Date cannot be less or same as Start Date</value>
+    <value>تاريخ نهاية العقد يجب أن لايكون قبل تاريخ البدء</value>
   </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>هل تريد إلغاء ايقاف التسجيل؟</value>
