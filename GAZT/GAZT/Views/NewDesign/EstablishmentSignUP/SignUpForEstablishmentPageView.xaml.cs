@@ -92,7 +92,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         private void Closed_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            // PopupNavigation.Instance.PopAsync();
+            viewModel._navigationService.GoBack();
         }
 
         public async Task loadPageData()
@@ -356,7 +357,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     try
                     {
-                        // FrmCR.HasError = false;
+                         FrmCR.HasError = false;
                         CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
                         if (Result != null)
                         {
@@ -364,7 +365,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 if (Result.d.NotFound == "X")
                                 {
-                                    //FrmCR.HasError = true;
+                                    FrmCR.HasError = true;
                                     viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
 
                                     return false;
@@ -372,8 +373,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 else
                                 {
                                     viewModel.IsAllValidCRNumberEntered = true;
+                                    FrmCR.HasError = false;
                                     return true;
-                                    //FrmCR.HasError = false;
                                 }
 
                             }
@@ -410,7 +411,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    //FrmCR.HasError = true;
+                    FrmCR.HasError = true;
                     EntryCRNumber.Text = string.Empty;
 
                     EntryCRNumber.Focus();
@@ -443,7 +444,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     try
                     {
-                        // FrmCR.HasError = false;
+                        FrmCR.HasError = false;
                         CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
                         if (Result != null)
                         {
@@ -451,12 +452,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 if (Result.d.NotFound == "X")
                                 {
-                                    //FrmCR.HasError = true;
+                                    FrmCR.HasError = true;
                                     viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
                                 }
                                 else
                                 {
-                                    //FrmCR.HasError = false;
+                                    FrmCR.HasError = false;
                                 }
                             }
                         }
@@ -481,7 +482,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    //FrmCR.HasError = true;
+                    FrmCR.HasError = true;
                     EntryCRNumber.Text = string.Empty;
                     EntryCRNumber.Focus();
                 }
@@ -508,14 +509,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    //FrmEmailAddress.HasError = true;
+                    FrmEmailAddress.HasError = true;
                     EntryEmail.Text = string.Empty;
                     viewModel.IsAllValidContactDataEnteredEmail = false;
                 }
                 else
                 {
                     viewModel.IsAllValidContactDataEnteredEmail = true;
-                    // FrmEmailAddress.HasError = false;
+                     FrmEmailAddress.HasError = false;
                 }
             }
         }
@@ -527,12 +528,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
                 {
                     viewModel.IsAllValidContactDataEnteredPhoneNbr = false;
-                    // FrmPhoneNumber.HasError = true;
+                     FrmPhoneNumber.HasError = true;
                 }
                 else
                 {
                     viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
-                    // FrmPhoneNumber.HasError = false;
+                     FrmPhoneNumber.HasError = false;
                 }
             }
         }
@@ -542,7 +543,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             if (string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
 
-                // FrmPhoneNumber.HasError = false;
+                 FrmPhoneNumber.HasError = false;
             }
             if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
@@ -574,7 +575,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    //FrmPhoneNumber.HasError = true;
+                    FrmPhoneNumber.HasError = true;
 
                     EntryPhoneNumber.Text = string.Empty;
                     EntryPhoneNumber.Focus();
@@ -583,7 +584,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
                     //  viewModel.IsAllValidContactDataEntered = true;
-                    // FrmPhoneNumber.HasError = false;
+                     FrmPhoneNumber.HasError = false;
                 }
             }
         }
@@ -604,6 +605,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     {
                         Message.Append(Environment.NewLine);
                     }
+
                     Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
                 }
                 if (Message.Length > 0)
@@ -620,13 +622,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    //FrmMobileNumber.HasError = true;
+                    FrmMobileNumber.HasError = true;
                     EntryMobileNumber.Text = string.Empty;
                 }
                 else
                 {
                     viewModel.IsAllValidContactDataEnteredMobileNbr = true;
-                    // FrmMobileNumber.HasError = false;
+                     FrmMobileNumber.HasError = false;
                 }
             }
             else
@@ -689,7 +691,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 popUp.FlowDirections = "LeftToRight";
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            // FrmIDNumber.HasError = true;
+                             FrmIDNumber.HasError = true;
                             viewModel.IsAllValidDataEntered = false;
                             EntryName.Text = string.Empty;
                             //ZZPleaseenteravalidNationalID
@@ -718,14 +720,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     popUp.FlowDirections = "LeftToRight";
                                 }
                                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                                // FrmIDNumber.HasError = true;
+                                 FrmIDNumber.HasError = true;
                                 viewModel.IsAllValidDataEntered = false;
                                 EntryName.Text = string.Empty;
                             }
                             else
                             {
                                 // viewModel.IsAllValidDataEntered = true;
-                                // FrmIDNumber.HasError = false;
+                                 FrmIDNumber.HasError = false;
                                 ValidateIDNumber();
                             }
                         }
@@ -746,7 +748,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 popUp.FlowDirections = "LeftToRight";
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            // FrmIDNumber.HasError = true;
+                             FrmIDNumber.HasError = true;
                             viewModel.IsAllValidDataEntered = false;
                             EntryName.Text = string.Empty;
                         }
@@ -774,14 +776,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     popUp.FlowDirections = "LeftToRight";
                                 }
                                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                                // FrmIDNumber.HasError = true;
+                                 FrmIDNumber.HasError = true;
                                 viewModel.IsAllValidDataEntered = false;
                                 EntryName.Text = string.Empty;
                             }
                             else
                             {
                                 // viewModel.IsAllValidDataEntered = true;
-                                // FrmIDNumber.HasError = false;
+                                 FrmIDNumber.HasError = false;
                                 ValidateIDNumber();
                             }
                         }
@@ -803,7 +805,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 popUp.FlowDirections = "LeftToRight";
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            //  FrmIDNumber.HasError = true;
+                              FrmIDNumber.HasError = true;
                             viewModel.IsAllValidDataEntered = false;
                             EntryName.Text = string.Empty;
                         }
@@ -821,7 +823,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 popUp.FlowDirections = "LeftToRight";
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            //  FrmIDNumber.HasError = true;
+                              FrmIDNumber.HasError = true;
                             viewModel.IsAllValidDataEntered = false;
                             EntryName.Text = string.Empty;
                             // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
@@ -831,14 +833,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     {
                         ValidateIDNumber();
                         // viewModel.IsAllValidDataEntered = true;
-                        // FrmIDNumber.HasError = false;
+                         FrmIDNumber.HasError = false;
                     }
                 }
             }
             else
             {
                 viewModel.IsAllValidDataEntered = false;
-                // FrmIDNumber.HasError = false;
+                 FrmIDNumber.HasError = false;
             }
         }
         public void OnDateEntryFocussed(object sender, EventArgs args)
@@ -855,6 +857,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         public async void ValidateIDNumber()
         {
+            viewModel.IsAllValidDataEntered = true;
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await Task.Run(() =>
@@ -886,13 +889,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                //FrmIDNumber.HasError = true;
+                                FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                // FrmIDNumber.HasError = false;
+                                 FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -901,7 +904,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                             EntryName.IsEnabled = false;
                             viewModel.IsAllValidDataEntered = true;
-                            //FrmIDNumber.HasError = false;
+                            FrmIDNumber.HasError = false;
                         }
                     }
                     catch
@@ -913,13 +916,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                // FrmIDNumber.HasError = true;
+                                 FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                //FrmIDNumber.HasError = false;
+                                FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1006,13 +1009,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                //FrmIDNumber.HasError = true;
+                                FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                //FrmIDNumber.HasError = false;
+                                FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1021,7 +1024,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             viewModel.IsAllValidDataEntered = true;
                             viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                             EntryName.IsEnabled = false;
-                            // FrmIDNumber.HasError = false;
+                            FrmIDNumber.HasError = false;
                         }
                     }
                     catch
@@ -1033,13 +1036,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                // FrmIDNumber.HasError = true;
+                                FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                //FrmIDNumber.HasError = false;
+                                FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1200,13 +1203,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 if (EntryIDNumber.Text.Substring(0, 1) != "1")
                                 {
                                     viewModel.IsAllValidDataEntered = false;
-                                    // FrmIDNumber.HasError = true;
+                                     FrmIDNumber.HasError = true;
                                     EntryName.Text = string.Empty;
                                 }
                                 else
                                 {
                                     viewModel.IsAllValidDataEntered = true;
-                                    // FrmIDNumber.HasError = false;
+                                     FrmIDNumber.HasError = false;
                                     if (EntryIDNumber.Text.Length == 10)
                                     {
                                         try
@@ -1222,7 +1225,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                                                     {
                                                         viewModel.IsAllValidDataEntered = false;
-                                                        // FrmIDNumber.HasError = true;
+                                                         FrmIDNumber.HasError = true;
                                                         EntryName.Text = string.Empty;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                                         //  viewModel.TxtIDNumber = string.Empty;
@@ -1230,14 +1233,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     else
                                                     {
                                                         viewModel.IsAllValidDataEntered = false;
-                                                        // FrmIDNumber.HasError = false;
+                                                         FrmIDNumber.HasError = false;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                                     }
                                                 }
                                                 else
                                                 {
                                                     viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                    // FrmIDNumber.HasError = false;
+                                                     FrmIDNumber.HasError = false;
                                                     viewModel.IsAllValidDataEntered = true;
                                                     EntryName.IsEnabled = false;
                                                 }
@@ -1254,7 +1257,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                                                     if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                                                     {
-                                                        // FrmIDNumber.HasError = true;
+                                                         FrmIDNumber.HasError = true;
                                                         viewModel.IsAllValidDataEntered = false;
                                                         EntryName.Text = string.Empty;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
@@ -1262,7 +1265,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     }
                                                     else
                                                     {
-                                                        // FrmIDNumber.HasError = false;
+                                                         FrmIDNumber.HasError = false;
                                                         viewModel.IsAllValidDataEntered = false;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                                     }
@@ -1337,12 +1340,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 if (EntryIDNumber.Text.Substring(0, 1) != "2")
                                 {
                                     viewModel.IsAllValidDataEntered = false;
-                                    // FrmIDNumber.HasError = true;
+                                     FrmIDNumber.HasError = true;
                                     EntryName.Text = string.Empty;
                                 }
                                 else
                                 {
-                                    // FrmIDNumber.HasError = false;
+                                     FrmIDNumber.HasError = false;
                                     viewModel.IsAllValidDataEntered = true;
                                     if (EntryIDNumber.Text.Length == 10)
                                     {
@@ -1358,7 +1361,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                                                     if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                                                     {
-                                                        // FrmIDNumber.HasError = true;
+                                                         FrmIDNumber.HasError = true;
                                                         viewModel.IsAllValidDataEntered = false;
                                                         EntryName.Text = string.Empty;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
@@ -1367,7 +1370,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     else
                                                     {
                                                         viewModel.IsAllValidDataEntered = false;
-                                                        // FrmIDNumber.HasError = false;
+                                                         FrmIDNumber.HasError = false;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                                                     }
                                                 }
@@ -1376,7 +1379,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                                                     EntryName.IsEnabled = false;
                                                     viewModel.IsAllValidDataEntered = true;
-                                                    //FrmIDNumber.HasError = false;
+                                                    FrmIDNumber.HasError = false;
                                                 }
                                             }
                                         }
@@ -1391,7 +1394,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                                                     if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                                                     {
-                                                        // FrmIDNumber.HasError = true;
+                                                         FrmIDNumber.HasError = true;
                                                         EntryName.Text = string.Empty;
                                                         viewModel.IsAllValidDataEntered = false;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
@@ -1399,7 +1402,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     }
                                                     else
                                                     {
-                                                        // FrmIDNumber.HasError = false;
+                                                         FrmIDNumber.HasError = false;
                                                         viewModel.IsAllValidDataEntered = false;
                                                         viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                                                     }
@@ -1471,7 +1474,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
-                                // FrmIDNumber.HasError = false;
+                                 FrmIDNumber.HasError = false;
                             }
                         }
                     }
@@ -1586,7 +1589,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     viewModel.IsAllValidDataEntered = false;
-                    // FrmTIN.HasError = true;
+                     FrmTIN.HasError = true;
                     EntryTIN.Text = string.Empty;
                 }
                 else
@@ -1594,7 +1597,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     // ValidateIDNumber();
                     // viewModel.IsAllValidDataEntered = true;
 
-                    // FrmTIN.HasError = false;
+                     FrmTIN.HasError = false;
                 }
             }
             //eMPTY tin
@@ -1602,7 +1605,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
 
                 viewModel.IsAllValidDataEntered = false;
-                // FrmTIN.HasError = true;
+                FrmTIN.HasError = true;
                 EntryTIN.Text = string.Empty;
             }
         }
@@ -1643,18 +1646,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //FrmTIN.HasError = false;
+            FrmTIN.HasError = false;
             if (!string.IsNullOrEmpty(EntryTIN.Text))
             {
                 if (EntryTIN.Text.Substring(0, 1) != "3")
                 {
                     viewModel.IsAllValidDataEntered = false;
-                    //  FrmTIN.HasError = true;
+                     FrmTIN.HasError = true;
                 }
                 else
                 {
                     // viewModel.IsAllValidDataEntered = true;
-                    // FrmTIN.HasError = false;
+                    FrmTIN.HasError = false;
                 }
             }
             else
@@ -1699,15 +1702,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     viewModel.IsAllValidDataEntered = false;
-                    // FrmTIN.HasError = true;
-                    // EntryTIN.Text = string.Empty;
+                    FrmTIN.HasError = true;
+                     EntryTIN.Text = string.Empty;
                 }
                 else
                 {
                     ValidateIDNumber();
                     // viewModel.IsAllValidDataEntered = true;
 
-                    // FrmTIN.HasError = false;
+                     FrmTIN.HasError = false;
                 }
             }
         }
@@ -1746,10 +1749,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void EntryName_Unfocused(object sender, FocusEventArgs e)
         {
-            if (string.IsNullOrEmpty(viewModel.TxtName))
+            if (!string.IsNullOrEmpty(viewModel.TxtName))
             {
-                viewModel.IsAllValidDataEntered = false;
-                // FrmName.HasError = false;
+                viewModel.IsAllValidDataEntered = true;
+                 FrmName.HasError = false;
             }
         }
 
@@ -1866,6 +1869,35 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
             }
         }
+        //private async void btnSubmitNext_Clicked(object sender, EventArgs e)
+        //{
+        //    if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.ContactInformation)
+        //    {
+        //        if (viewModel.IsAllValidContactDataEnteredEmail &&
+        //                viewModel.IsAllValidContactDataEnteredMobileNbr &&
+        //                viewModel.IsAllValidContactDataEnteredPhoneNbr)
+        //        {
+        //            viewModel.PageTitle = AppResources.VerificationCode;
+        //            viewModel.BodyText = AppResources.ZZPleaseenteraccessCode;
+        //            viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+
+        //            viewModel.TimerStart(viewModel.numberOfSeconds);
+
+        //            EstablishmentSignUpDataAsync();
+        //        }
+        //    }
+
+        //    //Final CreateGAZT Account
+        //    else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.EmailVerification)
+        //    {
+        //        CreateGAZTAccount();
+        //    }
+        //    else
+        //    {
+        //        viewModel.navigateToNext();
+        //    }
+        //}
+
         private async void btnSubmitNext_Clicked(object sender, EventArgs e)
         {
             if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.ContactInformation)
@@ -1874,13 +1906,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         viewModel.IsAllValidContactDataEnteredMobileNbr &&
                         viewModel.IsAllValidContactDataEnteredPhoneNbr)
                 {
-                    viewModel.PageTitle = AppResources.VerificationCode;
-                    viewModel.BodyText = AppResources.ZZPleaseenteraccessCode;
-                    viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
-
-                    viewModel.TimerStart(viewModel.numberOfSeconds);
-
-                    EstablishmentSignUpDataAsync();
+                    viewModel.PageTitle = AppResources.CRSummary;
+                    viewModel.BodyText = AppResources.CRReviewthebelowinformation;
+                    viewModel.NextBTN = AppResources.ZZZZContinue;
+                    viewModel.CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                    //viewModel.TimerStart(viewModel.numberOfSeconds);
+                    //EstablishmentSignUpDataAsync();
                 }
             }
 
@@ -1888,6 +1919,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.EmailVerification)
             {
                 CreateGAZTAccount();
+            }
+            else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.MobileVerification)
+            {
+                viewModel.PageTitle = AppResources.VerificationCode;
+                viewModel.BodyText = AppResources.ZZPleaseenteraccessCode;
+                viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                viewModel.TimerStart(viewModel.numberOfSeconds);
+                EstablishmentSignUpDataAsync();
             }
             else
             {
