@@ -18,7 +18,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
+//MobileVerification = SummaryView
+//EmailVerificatiom =VerificationView
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
     public class SignUpForEstablishmentPageViewModel : BaseViewModel
@@ -87,7 +88,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
         public bool MarkComplete { get; private set; } = false;
-        public int MaxIndex { get; private set; } = 5;
+        public int MaxIndex { get; private set; } = 6;
         #endregion
 
         #region Commands
@@ -1706,10 +1707,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         IsAllValidContactDataEnteredMobileNbr&&
                         IsAllValidContactDataEnteredPhoneNbr)
                     {
-                        PageTitle = AppResources.VerificationCode;
-                        BodyText = AppResources.ZZPleaseenteraccessCode;
+                        PageTitle = AppResources.CRSummary;
+                        BodyText = AppResources.CRReviewthebelowinformation;
                         NextBTN = AppResources.ZZZZContinue;
-                        CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                        CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                        //PageTitle = AppResources.VerificationCode;
+                        //BodyText = AppResources.ZZPleaseenteraccessCode;
+                        //NextBTN = AppResources.ZZZZContinue;
+//                        CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
                         //StartTimer(0, 2, 0);
                         TimerStart(numberOfSeconds);
                     }
@@ -1720,20 +1725,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                     break;
 
-                //case EstablishmentSignUPTabEnum.EmailVerification:
-                //    //PageTitle = "Mobile Verification";
-                //    //BodyText = AppResources.ZZZZCompletethebelowdetails;
-                //    NextBTN = AppResources.ZZZZContinue;
-                //    CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
-                //    break;
+                case EstablishmentSignUPTabEnum.MobileVerification:
+                    PageTitle = AppResources.VerificationCode;
+                    BodyText = AppResources.ZZPleaseenteraccessCode;
+                    NextBTN = AppResources.ZZZZContinue;
+                    CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                    //StartTimer(0, 2, 0);
+                    TimerStart(numberOfSeconds);
+                    break;
 
-                //case EstablishmentSignUPTabEnum.MobileVerification:
-                //    PageTitle = AppResources.Password;
-                //    BodyText = AppResources.CreateASecurePassword;
-                //    NextBTN = AppResources.Confirm;
-                    
-                //    CurrentTab = EstablishmentSignUPTabEnum.Password;
-                //    break;
+                    //case EstablishmentSignUPTabEnum.MobileVerification:
+                    //    PageTitle = AppResources.Password;
+                    //    BodyText = AppResources.CreateASecurePassword;
+                    //    NextBTN = AppResources.Confirm;
+
+                    //    CurrentTab = EstablishmentSignUPTabEnum.Password;
+                    //    break;
             }
         }
 
@@ -1749,6 +1756,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     break;
 
                 case EstablishmentSignUPTabEnum.EmailVerification:
+                    PageTitle = AppResources.CRSummary;
+                    BodyText = AppResources.CRReviewthebelowinformation;
+                    NextBTN = AppResources.ZZZZContinue;
+                    CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                    break;
+
+                case EstablishmentSignUPTabEnum.MobileVerification:
                     PageTitle = AppResources.ZZZContactInformation;
                     BodyText = AppResources.ZZZZCompletethebelowdetails;
                     CurrentTab = EstablishmentSignUPTabEnum.ContactInformation;
