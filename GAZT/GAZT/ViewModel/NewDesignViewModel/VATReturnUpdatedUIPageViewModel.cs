@@ -2048,6 +2048,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                       
                     }
+                    else
+                    {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
+
+                        headerWithInfos.Add(headerAmountInfo);
+
+
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    }
                     // _navigationService.NavigateTo(App.RefundAccountPopupPageView,VATDeclarationData);
                     //_navigationService.GoBack();
                 }
@@ -2104,20 +2122,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (CreditDetailsText == AppResources.ZZZZConfirmandGenerateSADADBill)
                 {
-                    if (IsDeclarationCheckedForSummary && (IsVoidClicked==false && IsResetClicked==false))
+                    if (IsDeclarationCheckedForSummary)
                     {
-                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus=="E0001" ||IsCheckedDraftMode()))
+                        if (IsDeclarationCheckedForSummary && (IsVoidClicked == false && IsResetClicked == false))
                         {
-                            Device.BeginInvokeOnMainThread(() =>
+                            if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus == "E0001" || IsCheckedDraftMode()))
                             {
-                                IsNewLoading = true;
-                            });
-                            await SubmitClicked();
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                IsNewLoading = false;
-                            });
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    IsNewLoading = true;
+                                });
+                                await SubmitClicked();
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    IsNewLoading = false;
+                                });
+                            }
                         }
+                    }
+                    else
+                    {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
+
+                        headerWithInfos.Add(headerAmountInfo);
+
+
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                     }
                 }
                 else if(CreditDetailsText == AppResources.ZZGeneralMessage_GetAcknowledgement)

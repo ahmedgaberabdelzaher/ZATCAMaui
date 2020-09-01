@@ -6507,4 +6507,13 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ESTMuhayilAsirOffice" xml:space="preserve">
     <value>مكتب محايل عسير</value>
   </data>
+  <data name="ZZZZNoIdNumberMsg" xml:space="preserve">
+    <value>لا يوجد رقم هوية يوافق نوع الهوية المحدد</value>
+  </data>
+  <data name="ZZZZPleaseAgreeTandCMsg" xml:space="preserve">
+    <value>الرجاء الموافقة على الشروط والاحكام</value>
+  </data>
+  <data name="ZZZZPleaseSelectTheIbanMsg" xml:space="preserve">
+    <value>الرجاء اختيار رقم الآيبان المفضل</value>
+  </data>
 </root>

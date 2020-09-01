@@ -8043,21 +8043,41 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                     else if (viewModel.ContinueText == AppResources.ZZZZConfirmAndCarryForward)
                     {
-
-                    if (viewModel.IsDeclarationCheckedForSummary && (viewModel.IsVoidClicked == false && viewModel.IsResetClicked == false))
+                    if (viewModel.IsDeclarationCheckedForSummary)
                     {
-                        if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (App.ICRStatus == "E0001" || viewModel.IsCheckedDraftMode()))
+                        if (viewModel.IsDeclarationCheckedForSummary && (viewModel.IsVoidClicked == false && viewModel.IsResetClicked == false))
                         {
-                            Device.BeginInvokeOnMainThread(() =>
+                            if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (viewModel.IsAmendClicked == true)) || (App.ICRStatus == "E0001" || viewModel.IsCheckedDraftMode()))
                             {
-                                viewModel.IsNewLoading = true;
-                            });
-                            await viewModel.SubmitClicked();
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                viewModel.IsNewLoading = false;
-                            });
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    viewModel.IsNewLoading = true;
+                                });
+                                await viewModel.SubmitClicked();
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    viewModel.IsNewLoading = false;
+                                });
+                            }
                         }
+                    }
+                    else
+                    {
+                        List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                        HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                        NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+
+                        headerAmountInfo.IsLinkAvailable = false;
+                        headerAmountInfo.Message = AppResources.ZZZZPleaseAgreeTandCMsg;
+
+                        headerWithInfos.Add(headerAmountInfo);
+
+
+                        newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                        newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                        newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+                        PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                     }
 
 
