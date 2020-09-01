@@ -59,6 +59,9 @@ namespace GAZT.Models
         [JsonProperty("Appversion")]
         public string AppVersion { get; set; }
 
+        [JsonProperty("Emailid")]
+        public string Emailid { get; set; }
+
         public string ResponseStatusMessage { get; set; }
 
         public string ResponseStatusCode { get; set; }

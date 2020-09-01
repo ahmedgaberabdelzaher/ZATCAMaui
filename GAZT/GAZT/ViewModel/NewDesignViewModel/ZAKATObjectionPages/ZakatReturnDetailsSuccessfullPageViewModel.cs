@@ -99,7 +99,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
-        private string _refreshIconImageSource = "ic_refresh.png";
+        private string _refreshIconImageSource = "";
         public string RefreshIconImageSource
         {
             get

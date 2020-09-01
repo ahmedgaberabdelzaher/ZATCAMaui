@@ -38,7 +38,7 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
                 Priority = 1,
                 Command = new Command(async () =>
                 {
-                    await OnRefreshButtonClicked();
+                   // await OnRefreshButtonClicked();
                     // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                 })
             };
@@ -95,6 +95,25 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             viewModel._navigationService.GoBack();
         }
 
+        private async void OnRefreshButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsrefreshEnabled)
+                {
+                    await viewModel.OnPageLoad(_zakatReturnDetail);
+                }
+                else
+                {
+                    // put Mesage already latest SADADID available
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

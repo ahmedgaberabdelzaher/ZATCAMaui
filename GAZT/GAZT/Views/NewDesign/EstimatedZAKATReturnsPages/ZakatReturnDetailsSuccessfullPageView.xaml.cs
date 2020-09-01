@@ -30,18 +30,19 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             ChangeAeroIcon();
 
             viewModel.OnPageLoad(ZakatReturnDetail);
+
             ToolbarItem Refresh = new ToolbarItem
             {
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
                 Command = new Command(async () =>
                 {
-                    await OnRefreshButtonClicked();
+                  //  await OnRefreshButtonClicked();
                     // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                 })
             };
             this.ToolbarItems.Add(Refresh);
-            Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
+          //  Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
 
 
         }
@@ -57,7 +58,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        protected async Task OnRefreshButtonClicked()
+        private async void OnRefreshButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -77,6 +78,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
            
         }
 
+      
         private void SetLTR()
         {
             if (!App.IsArabic)

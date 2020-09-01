@@ -46,6 +46,8 @@ namespace EGAZT.Models
         public string Doguid { get; set; }// Comp
         public string AttBy { get; set; }
         public string Filename { get; set; }
+        public string FileImage { get; set; }
+
         public string FileExtn { get; set; }
         public string Mimetype { get; set; }
         public string ByPusr { get; set; }
