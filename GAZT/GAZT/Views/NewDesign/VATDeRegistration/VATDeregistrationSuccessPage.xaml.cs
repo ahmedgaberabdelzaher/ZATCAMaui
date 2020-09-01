@@ -52,7 +52,23 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
    
         protected override bool OnBackButtonPressed() => true;
 
-        private void btnDashboard_Clicked(object sender, EventArgs e)
+
+        private async void Image_Copy_Tapped(object sender, EventArgs e)
+        {
+            if (Label_ApplicationNumber != null)
+            {
+                Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+                if (Clipboard.HasText)
+                {
+                    var text = await Clipboard.GetTextAsync();
+                    var displayText = AppResources.VATRSAppNumber + " " + text;
+                    viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                }
+            }
+
+        }
+
+        void btnDash_Clicked(System.Object sender, System.EventArgs e)
         {
             try
             {
@@ -71,21 +87,6 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
 
             }
-
-        }
-        private async void Image_Copy_Tapped(object sender, EventArgs e)
-        {
-            if (Label_ApplicationNumber != null)
-            {
-                Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
-                if (Clipboard.HasText)
-                {
-                    var text = await Clipboard.GetTextAsync();
-                    var displayText = AppResources.VATRSAppNumber + " " + text;
-                    viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
-                }
-            }
-
         }
     }
 }

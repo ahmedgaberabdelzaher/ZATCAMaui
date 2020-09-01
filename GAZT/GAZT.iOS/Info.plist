@@ -90,8 +90,8 @@
 		<true/>
 	</dict>
 	<key>CFBundleVersion</key>
-	<string>1.0.52</string>
+	<string>1.0.53</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.2.0.1</string>
+	<string>3.2.0.2</string>
 </dict>
 </plist>
