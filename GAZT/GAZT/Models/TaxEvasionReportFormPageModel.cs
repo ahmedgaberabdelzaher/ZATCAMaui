@@ -172,9 +172,24 @@ namespace GAZT.Models
     public class UploadedDocumentsList
     {
         public byte[] DocBinaryInBase64 { get; set; }
-        public string FileNameWithExtension { get; set; }
+        private string _fileNameWithExtension;
+        public string FileNameWithExtension
+        {
+            get { return _fileNameWithExtension; }
+            set
+            {
+                _fileNameWithExtension = value;
+                if (!string.IsNullOrEmpty(_fileNameWithExtension))
+                {
+                    string extension = _fileNameWithExtension.Split('.')[1]; ;
+                    CorrespondingImageAccoringtoext = Manager.UtilityManager.GetFileImage(extension);
+                }
+            }
+                
+        }
         public string MimeType { get; set; }
         public string Size { get; set; }
+        public string CorrespondingImageAccoringtoext { get; set; }
     }
     public class TaxEvasionReportTobeUsedToSubmit
     {
