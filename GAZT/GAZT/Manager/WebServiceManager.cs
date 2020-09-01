@@ -9159,7 +9159,7 @@ namespace GAZT.Manager
                 try
                 {
                     outletref = (string.IsNullOrEmpty(outletref) || string.IsNullOrWhiteSpace(outletref)) ? string.Empty : outletref;
-                    //VATDeregAttachmentRootOject _attachment = new VATDeregAttachmentRootOject();
+                    
                     var uri = new Uri(string.Format("{0}(RetGuid='{1}',OutletRef='{2}',Flag='N',Dotyp='{3}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
                         Constants.ESTPostAttachment, RetGuid, outletref, Doctype));
 
@@ -9180,6 +9180,47 @@ namespace GAZT.Manager
                 catch (Exception ex)
                 {
                     return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        public static string ESTDeleteAttachment(string fileName, string RetGuid, string docType, string docguid)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string DeleteToken = string.Empty;
+                try
+                {
+                    var uri = new Uri(string.Format("{0}(RetGuid='{1}',Flag='N',OutletRef='',Dotyp='{2}',SchGuid='',Srno=1,Doguid='{3}',AttBy='X')/$value",
+                        Constants.ESTDeleteAttachment, RetGuid, docType, docguid));
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+
+                    HttpResponseMessage response = client.DeleteAsync(uri).Result;
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    responsestr = JObject.Parse(responsestr)["d"].ToString();
+                    Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
+                    if (response != null)
+                    {
+                        HttpHeaders headers = response.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("delete", out values))
+                        {
+                            DeleteToken = values.First();
+                        }
+                    }
+                    return DeleteToken;
+                }
+                catch (Exception ex)
+                {
+                    return DeleteToken;
                 }
             }
             else
@@ -10305,11 +10346,11 @@ namespace GAZT.Manager
             }
         }
 
+
         public async static Task<ValidateIDResponse> GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
         {
 
             ValidateIDResponse _validateIDResponse = new ValidateIDResponse();
-
             if (CrossConnectivity.Current.IsConnected)
             {
                 VATSignUp vATSignUp = new VATSignUp();
@@ -10320,18 +10361,15 @@ namespace GAZT.Manager
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
                     String Url = Constants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + idType + "',Idnum='" + idnum + "',Country='',PassExpDt='',TaxpDob='" + taxpDOB + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
                     //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
 
-
                     /*String Url = string.Empty;
                     Url = Constants.VATChangeFillingPeriodValidateIDnumberURL + "Tin='" + tin + "',Idtype='" + idType + "',Idnum='" + idnum + "',Country='" + country + "'" +
                           ",PassExpDt = '" + passExpdt + "', TaxpDob = '" + taxpDOB + "')";*/
-
                     var uri = new Uri(Url);
                     HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
                     if (VATSignUpIdValidateObject != null)
@@ -10358,7 +10396,6 @@ namespace GAZT.Manager
                         }
                         SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
                         _validateIDResponse = JsonConvert.DeserializeObject<ValidateIDResponse>(SignUpCityList);
-
                         if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
@@ -10369,21 +10406,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                PopUp popUp = new PopUp();
-                                popUp.HeaderText = "";
-                                popUp.Message = errorMessage;
-                                popUp.IsLinkAvailable = false;
-                                if (App.IsArabic)
-                                {
-                                    popUp.FlowDirections = "RightToLeft";
-                                    popUp.isFontSet = true;
-                                }
-                                else
-                                {
-                                    popUp.FlowDirections = "LeftToRight";
-                                }
-
-                               // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                _validateIDResponse.errorMessage = errorMessage;
                                 //ErrorMessageForVAT
                                 //throw new GAZTVATChangeFillingPeriodException(errorMessage);
                             }
@@ -10391,7 +10414,6 @@ namespace GAZT.Manager
                     }
                     return _validateIDResponse;// tINStatus;
                 }
-
                 catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
@@ -10412,7 +10434,6 @@ namespace GAZT.Manager
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
-
                 //catch (Exception ex)
                 //{
                 //    return null;
@@ -10423,6 +10444,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
         public static string GAZTVATChangeFillingPeriodAckDownload(string fbnum)
         {
             if (CrossConnectivity.Current.IsConnected)

@@ -472,7 +472,6 @@ namespace EGAZT.Models.ChageFillingPeriodModel
     #endregion
 
     #region ValidateIdNumber
-
     public class Metadata
     {
         public string id { get; set; }
@@ -525,11 +524,10 @@ namespace EGAZT.Models.ChageFillingPeriodModel
         public string BpkindDesc { get; set; }
         public string RegionDesc { get; set; }
     }
-
     public class ValidateIDResponse
     {
         public D d { get; set; }
+        public string errorMessage { get; set; }
     }
-
     #endregion
 }

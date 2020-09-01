@@ -472,8 +472,20 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
                 {
-                    await PopupNavigation.Instance.PopAsync();
-                    await viewModel.VATSetReturnVoidAsync();
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                            await viewModel.VATSetReturnVoidAsync();
+                        }
+                        else if(arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                            viewModel.SetDataForRefundPopup();
+                            PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView(viewModel.VATDeclarationData));
+                        }
+                    }
                
                 });
             }
@@ -524,7 +536,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
                 {
-                    await PopupNavigation.Instance.PopAsync();
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                    }
+
+                    //await PopupNavigation.Instance.PopAsync();
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }

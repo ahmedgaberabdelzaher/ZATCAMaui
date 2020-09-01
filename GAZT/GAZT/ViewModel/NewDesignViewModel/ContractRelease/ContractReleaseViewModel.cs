@@ -66,6 +66,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         #endregion
 
+        public bool isSubmitted = false;
+
         private bool _isInvoiceAttachments = true;
 
         private bool _isBackButtonVisible = true;
@@ -104,6 +106,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 RaisePropertyChanged("IsLoading");
             }
         }
+
+
 
         private bool _attachmentsVisible = false;
 
@@ -1015,12 +1019,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
-                ContractReleaseData = await SubmitClicked();
 
-                if(ContractReleaseData.d != null)
+
+                if (!isSubmitted)
                 {
-                    _navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
+                    isSubmitted = true;
+                    ContractReleaseData = await SubmitClicked();
+                    if (ContractReleaseData.d != null)
+                    {
+                        _navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
+                    }
                 }
+
+                
+
+              
 
                 
             }
@@ -1621,6 +1634,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             IsAttachmentsEnabled = false;
             IsDeclarationEnabled = false;
             fromDatePicker = false;
+            isSubmitted = false;
             InfoTitle = "";
             InfoDesc = "";
             PickedContract = "";
@@ -1651,6 +1665,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         public void bindDataToUI()
         {
+            try
+            {
+                EstimatedProfitForZakatPercent = Convert.ToDouble(ContractReleaseData.d.AZakatProfit);
+                EstimatedProfitForTaxPercent = Convert.ToDouble(ContractReleaseData.d.ATaxProfi);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         #endregion

@@ -1640,11 +1640,9 @@
   <data name="VatRefundsConfirmDetails" xml:space="preserve">
     <value>أتعهد بأن اقوم بسداد جميع التزاماتي المالية وتقديم جميع الاقرارات المستحقة لدى الهيئة قبل تقديم طلب الإسترداد وأني قد فوضت الهيئة بخصم أي مستحقات قائمة من رصيدي لدى الهيئة قبل الإسترداد. ويحق للهيئة برفض الطلب عند وجود أي إقرارات متأخرة لم أقم بتقديمها.</value>
   </data>
-
-   <data name="VatRefundsConfirmationTit" xml:space="preserve">
+  <data name="VatRefundsConfirmationTit" xml:space="preserve">
     <value>تأكيد</value>
-  </data> 
-
+  </data>
   <data name="VATRefundAccounts" xml:space="preserve">
     <value>الحسابات</value>
   </data>
@@ -2769,7 +2767,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال10  أيام عمل</value>
+    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال5  أيام عمل</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -4458,7 +4456,7 @@
     <value>نسخة من العقد بعد إغلاق / تحديث</value>
   </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
-    <value>رفع المرفقات</value>
+    <value>تحميل المرفقات</value>
   </data>
   <data name="TinDeregistration20MB" xml:space="preserve">
     <value>20MB</value>
@@ -5088,7 +5086,7 @@
     <value>الصندوق الوارد</value>
   </data>
   <data name="NDReferenceNumber" xml:space="preserve">
-    <value>رقم المرجع</value>
+    <value>الرقم المرجعي</value>
   </data>
   <data name="NDTypeYourReferenceNumber" xml:space="preserve">
     <value>ادخل الرقم التسلسلي</value>
@@ -5540,7 +5538,7 @@
     <value>فرد سعودي (اقامة)</value>
   </data>
   <data name="ZZZZVATReturnsubmitted" xml:space="preserve">
-    <value>تمتقديمإقرارضريبةالقيمةالمضافةبنجاح</value>
+    <value>تم تقديم إقرار ضريبة القيمة المضافة بنجاح</value>
   </data>
   <data name="NDInvoiceDetail" xml:space="preserve">
     <value />
@@ -5719,7 +5717,7 @@
     <value>VAT Filling Frequency</value>
   </data>
   <data name="ContractRelease" xml:space="preserve">
-    <value>Contract Release</value>
+    <value>الإفراج عن عقد</value>
   </data>
   <data name="NDRealStateVATMinistryJustice" xml:space="preserve">
     <value>Real State VAT with Ministry of Justice</value>
@@ -5805,9 +5803,6 @@
   <data name="VatInstalmentsStatusInDraft" xml:space="preserve">
     <value>In Draft</value>
   </data>
-  <data name="ContractRelease" xml:space="preserve">
-    <value>الإفراج عن عقد</value>
-  </data>
   <data name="CRReleaseDetails" xml:space="preserve">
     <value>تفاصيل الإفصاح</value>
   </data>
@@ -5860,10 +5855,10 @@
     <value>المرفقات</value>
   </data>
   <data name="CRAttachACopyOfTheContractRequiredToReleaseAndAmounts" xml:space="preserve">
-    <value>Attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and in the case of the contract in English, must submit translated Arabic version approved by certiied translation Office.</value>
+    <value>الرجاء إرفاق صورة العقد المطلوب الإفراج عنه باللغة العربية أو مترجم من جهة معتمدة</value>
   </data>
   <data name="CRAttachContract" xml:space="preserve">
-    <value>Attach Contract</value>
+    <value>إرفاق العقد</value>
   </data>
   <data name="CRAttachacopyofinvoicesandpurchase" xml:space="preserve">
     <value>صورة من الفواتير وأوامر الشراء المطلوب الإفراج عن قيمتها</value>
@@ -5947,7 +5942,6 @@
   <data name="CRInstructionsandConditions" xml:space="preserve">
     <value>التعليمات والشروط</value>
   </data>
-
   <data name="CRInstructionsDesc" xml:space="preserve">
     <value>If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
   </data>
@@ -5960,21 +5954,8 @@
   <data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
     <value>حاصل ضرب "المبلغ المطلوب الإفراج عنه" مع "نسبة الربح التقديرية للعقد"</value>
   </data>
-  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك السعودي %"</value>
-  </data>
-  <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
-    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك الغير السعودي %"</value>
-  </data>
-  <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
-    <value>حاصل ضرب "الربح التقديري الخاضع للزكاة" في "2.5 %"</value>
-  </data>
-  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-    <value>حاصل ضرب "الربح التقديري الخاضع للضريبة" في "20 %"</value>
-  </data>
   <data name="CRTotalDuesDesc" xml:space="preserve">
     <value>حاصل جمع "قيمة الزكاة المستحقة" مع "قيمة الضريبة المستحقة"</value>
-
   </data>
   <data name="CRInstrCheckDesc" xml:space="preserve">
     <value>أنا أوافق</value>
@@ -6278,34 +6259,34 @@
   </data>
   <data name="ESTOutletsTabTitleLabel" xml:space="preserve">
     <value>الفروع</value>
-    </data> 
-     <data name="ESTOrgNonResidentActivityValueOne" xml:space="preserve">
-    <value>Derived from an activity which occurs in KSA.</value>
-    </data> 
-     <data name="ESTOrgNonResidentActivityValueTwo" xml:space="preserve">
-    <value>Derived from immoviable property located in the Kingdom</value>
-    </data> 
-     <data name="ESTOrgNonResidentActivityValueThree" xml:space="preserve">
-    <value>Derived from the disposal of shares or a partnership in resident company.</value>
-    </data> 
-     <data name="ESTOrgNonResidentActivityValueFour" xml:space="preserve">
-    <value>Derived from lease of moveable properties used in Kingdom</value>
-    </data> 
-     <data name="ESTOrgNonResidentActivityValueFive" xml:space="preserve">
-    <value>Derived from sales or license for use of industrial or intellectual Properties used in Kingdom.</value>
-    </data> 
-     <data name="ESTOrgNonResidentActivityValueSix" xml:space="preserve">
-    <value>Dividends, managment or directors'fees paid by resident company.</value>
-    </data> 
-     <data name="ESTOrgNonResidentActivityValueSeven" xml:space="preserve">
-    <value>Amounts paid against services rendered to the company's head office or to an affiliated company</value>
-    </data> 
-     <data name="ESTOrgNonResidentActivityValueEight" xml:space="preserve">
-    <value>Amounts paid by a resident against serivces performed in whole or in part in the Kingdom.</value>
-    </data> 
-     <data name="ESTOrgNonResidentActivityValueNine" xml:space="preserve">
-    <value>Amounts for exploitation of a natural resource in the kingdom.</value>
-    </data> 
+  </data>
+  <data name="ESTOrgNonResidentActivityValueOne" xml:space="preserve">
+    <value> مشتقة من نشاط يحدث في المملكة العربية السعودية.</value>
+  </data>
+  <data name="ESTOrgNonResidentActivityValueTwo" xml:space="preserve">
+    <value>مشتقة من الممتلكات غير المنقولة الموجودة في المملكة</value>
+  </data>
+  <data name="ESTOrgNonResidentActivityValueThree" xml:space="preserve">
+    <value> ناشئة عن بيع أسهم أو شراكة في شركة مقيمة.</value>
+  </data>
+  <data name="ESTOrgNonResidentActivityValueFour" xml:space="preserve">
+    <value> مشتقة من تأجير الممتلكات المنقولة المستخدمة في المملكة</value>
+  </data>
+  <data name="ESTOrgNonResidentActivityValueFive" xml:space="preserve">
+    <value> مشتقة من بيع أو ترخيص لاستخدام الممتلكات الصناعية أو الفكرية المستخدمة في المملكة.</value>
+  </data>
+  <data name="ESTOrgNonResidentActivityValueSix" xml:space="preserve">
+    <value> أرباح الأسهم أو أتعاب الإدارة أو أعضاء مجلس الإدارة التي تدفعها الشركة المقيمة.</value>
+  </data>
+  <data name="ESTOrgNonResidentActivityValueSeven" xml:space="preserve">
+    <value> المبالغ المدفوعة مقابل الخدمات المقدمة للمركز الرئيسي للشركة أو لشركة تابعة</value>
+  </data>
+  <data name="ESTOrgNonResidentActivityValueEight" xml:space="preserve">
+    <value> المبالغ التي يدفعها مقيم مقابل الخدمات التي يتم أداؤها كليًا أو جزئيًا في المملكة.</value>
+  </data>
+  <data name="ESTOrgNonResidentActivityValueNine" xml:space="preserve">
+    <value> مبالغ لاستغلال مورد طبيعي في المملكة.</value>
+  </data>
   <data name="VFCEffectiveDate" xml:space="preserve">
     <value>Effective Date</value>
   </data>
@@ -6346,215 +6327,190 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
     <value>البريد الالكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
   </data>
-  <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
-    <value>Estimated Profit percentage based on contract type</value>
-  </data>
-  <data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
-    <value>Multiply released amount with Estimated profit for contract</value>
-  </data>
-  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for contract with Saudi share %</value>
-  </data>
   <data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
+    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك الغير السعودي %"</value>
   </data>
   <data name="CRTheValueofZakatduesDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
-  </data>
-  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-    <value>Multiply Estimated profit for TAX with 20 %</value>
-  </data>
-  <data name="CRTotalDuesDesc" xml:space="preserve">
-    <value>Value of zakat due + value of TAX due</value>
+    <value>حاصل ضرب "الربح التقديري الخاضع للزكاة" في "2.5 %"</value>
   </data>
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>تفاصيل الائتمان المنقولة</value>
   </data>
-    <data name="ESTAddOutlet" xml:space="preserve">
+  <data name="ESTAddOutlet" xml:space="preserve">
     <value>إضافة فرع</value>
-    </data> 
-     <data name="ESTOutletCommercialName" xml:space="preserve">
+  </data>
+  <data name="ESTOutletCommercialName" xml:space="preserve">
     <value>الإسم التجاري للفرع</value>
-    </data> 
-     <data name="ESTActivityDetails" xml:space="preserve">
+  </data>
+  <data name="ESTActivityDetails" xml:space="preserve">
     <value>بيانات الأنشطة</value>
-    </data> 
-     <data name="ESTAddCRAndOrLicenseDetails" xml:space="preserve">
+  </data>
+  <data name="ESTAddCRAndOrLicenseDetails" xml:space="preserve">
     <value>الرجاء إدخال رقم السجل التجاري أو رقم الرخصة التجاري</value>
-    </data> 
-     <data name="ESTCommercialRegistration" xml:space="preserve">
+  </data>
+  <data name="ESTCommercialRegistration" xml:space="preserve">
     <value>السجل التجاري</value>
-    </data> 
-     <data name="ESTLicenseDetails" xml:space="preserve">
+  </data>
+  <data name="ESTLicenseDetails" xml:space="preserve">
     <value>الرخصة التجارية</value>
-    </data> 
-     <data name="ESTCommercialRegistrationNumberInfo" xml:space="preserve">
+  </data>
+  <data name="ESTCommercialRegistrationNumberInfo" xml:space="preserve">
     <value>تستطيع إضافة سجل تجاري واحد وعدة ارقام للرخص التجارية بحد اقصى 4 رخص</value>
-    </data> 
-     <data name="ESTCommercialRegistrationNumberInfoTwo" xml:space="preserve">
+  </data>
+  <data name="ESTCommercialRegistrationNumberInfoTwo" xml:space="preserve">
     <value>تستطيع ربط سجل تجاري واحد و الرخص التجارية المرتبطه بالنشاط الرئيسي</value>
-    </data> 
-     <data name="ESTIssueBy" xml:space="preserve">
+  </data>
+  <data name="ESTIssueBy" xml:space="preserve">
     <value>تاريخ الإصدار</value>
-    </data> 
-     <data name="ESTIssueCity" xml:space="preserve">
+  </data>
+  <data name="ESTIssueCity" xml:space="preserve">
     <value>جهة الإصدار</value>
-    </data> 
-     <data name="ESTMainActivity" xml:space="preserve">
+  </data>
+  <data name="ESTMainActivity" xml:space="preserve">
     <value>النشاط الرئيسي</value>
-    </data> 
-     <data name="ESTAttachmentTransferCopyOfCRLabel" xml:space="preserve">
+  </data>
+  <data name="ESTAttachmentTransferCopyOfCRLabel" xml:space="preserve">
     <value>المرفقات - نسخة من نقل السجل التجاري</value>
-    </data> 
-     <data name="ESTAttachmentCopyOfCRLabel" xml:space="preserve">
+  </data>
+  <data name="ESTAttachmentCopyOfCRLabel" xml:space="preserve">
     <value>المرفقات - نسخة من السجل التجاري</value>
-    </data> 
-     <data name="ESTBusinessActivityDetails" xml:space="preserve">
+  </data>
+  <data name="ESTBusinessActivityDetails" xml:space="preserve">
     <value>نشاطات العمل التجاري</value>
-    </data> 
-     <data name="ESTMainGroup" xml:space="preserve">
+  </data>
+  <data name="ESTMainGroup" xml:space="preserve">
     <value>المجموعة الرئيسية</value>
-    </data> 
-   <data name="ESTSubGroup" xml:space="preserve">
+  </data>
+  <data name="ESTSubGroup" xml:space="preserve">
     <value>المجموعة الفرعية</value>
-    </data>
-     <data name="ESTActivity" xml:space="preserve">
+  </data>
+  <data name="ESTActivity" xml:space="preserve">
     <value>النشاط</value>
-    </data>
-    <data name="ESTAddLicense" xml:space="preserve">
+  </data>
+  <data name="ESTAddLicense" xml:space="preserve">
     <value>إضافة رخصه</value>
-    </data>
-    <data name="ESTLicenseOne" xml:space="preserve">
+  </data>
+  <data name="ESTLicenseOne" xml:space="preserve">
     <value>الرخصة الأولى</value>
-    </data>
-    <data name="ESTLicenseTwo" xml:space="preserve">
+  </data>
+  <data name="ESTLicenseTwo" xml:space="preserve">
     <value>الرخصة الثانية</value>
-    </data>
-    <data name="ESTAttachmentCopyOfLicense" xml:space="preserve">
+  </data>
+  <data name="ESTAttachmentCopyOfLicense" xml:space="preserve">
     <value>المرفقات - نسخة من الرخصة</value>
-    </data>
-    <data name="ESTAddressDetails" xml:space="preserve">
+  </data>
+  <data name="ESTAddressDetails" xml:space="preserve">
     <value>بيانات العنوان</value>
-    </data>
-    <data name="ESTPhycicalAddress" xml:space="preserve">
+  </data>
+  <data name="ESTPhycicalAddress" xml:space="preserve">
     <value>العنوان الحالي</value>
-    </data>
-    <data name="ESTHouseNumber" xml:space="preserve">
+  </data>
+  <data name="ESTHouseNumber" xml:space="preserve">
     <value>رقم المنزل</value>
-    </data>
-    <data name="ESTFloorNumber" xml:space="preserve">
+  </data>
+  <data name="ESTFloorNumber" xml:space="preserve">
     <value>رقم الطابق</value>
-    </data>
-    <data name="ESTQuarter" xml:space="preserve">
+  </data>
+  <data name="ESTQuarter" xml:space="preserve">
     <value>الحي</value>
-    </data>
-     <data name="ESTAddNumber" xml:space="preserve">
+  </data>
+  <data name="ESTAddNumber" xml:space="preserve">
     <value>إضافة رقم</value>
-    </data>
-     <data name="ESTProvinance" xml:space="preserve">
+  </data>
+  <data name="ESTProvinance" xml:space="preserve">
     <value>المنطقة</value>
-    </data>
-     <data name="ESTPostalAddress" xml:space="preserve">
+  </data>
+  <data name="ESTPostalAddress" xml:space="preserve">
     <value>العنوان البريدي</value>
-    </data>
-    <data name="ESTSameAsPhycical" xml:space="preserve">
+  </data>
+  <data name="ESTSameAsPhycical" xml:space="preserve">
     <value>مطابق للعنوان الحالي</value>
-    </data>
-    <data name="ESTEstimatedMethod" xml:space="preserve">
+  </data>
+  <data name="ESTEstimatedMethod" xml:space="preserve">
     <value>طريقة الحسبة التقديرية</value>
-    </data>
-     <data name="ESTEndOfFinancialYear" xml:space="preserve">
+  </data>
+  <data name="ESTEndOfFinancialYear" xml:space="preserve">
     <value>نهاية السنة المالية</value>
-    </data>
-     <data name="ESTEndOfFiscalDay" xml:space="preserve">
+  </data>
+  <data name="ESTEndOfFiscalDay" xml:space="preserve">
     <value>نهاية اليوم المالي</value>
-    </data>
-     <data name="ESTBusinessCommencementDate" xml:space="preserve">
+  </data>
+  <data name="ESTBusinessCommencementDate" xml:space="preserve">
     <value>تاريخ بدء العمل</value>
-    </data>
-     <data name="ESTTaxableDate" xml:space="preserve">
+  </data>
+  <data name="ESTTaxableDate" xml:space="preserve">
     <value>تاريخ بدء تطبيق الضريبة</value>
-    </data>
-    <data name="ESTPledgeLabel" xml:space="preserve">
+  </data>
+  <data name="ESTPledgeLabel" xml:space="preserve">
     <value>أتعهد بان المعلومات المقدمة صحيحة وأنا مخول لإكمال هذا النموذج </value>
-    </data>
-     <data name="ESTReviewTheBelowInformation" xml:space="preserve">
+  </data>
+  <data name="ESTReviewTheBelowInformation" xml:space="preserve">
     <value>مراجعة البيانات التالية</value>
-    </data>
-     <data name="ESTEdit" xml:space="preserve">
+  </data>
+  <data name="ESTEdit" xml:space="preserve">
     <value>تعديل</value>
-    </data>
-     <data name="ESTReportingBranch" xml:space="preserve">
+  </data>
+  <data name="ESTReportingBranch" xml:space="preserve">
     <value>فرع الهيئة الرئيسي</value>
-    </data>
-     <data name="ESTResidencyStatus" xml:space="preserve">
+  </data>
+  <data name="ESTResidencyStatus" xml:space="preserve">
     <value>حالة الإقامة</value>
-    </data>
-     <data name="ESTOutletName" xml:space="preserve">
+  </data>
+  <data name="ESTOutletName" xml:space="preserve">
     <value>اسم الفرع</value>
-    </data>
-     <data name="ESTOutletCity" xml:space="preserve">
+  </data>
+  <data name="ESTOutletCity" xml:space="preserve">
     <value>مدينة الفرع</value>
-    </data>
-     <data name="ESTCRlicense" xml:space="preserve">
+  </data>
+  <data name="ESTCRlicense" xml:space="preserve">
     <value>سجل تجاري / رخصه</value>
-    </data>
-     <data name="ESTMethodOfFinancialRecordMaintained" xml:space="preserve">
+  </data>
+  <data name="ESTMethodOfFinancialRecordMaintained" xml:space="preserve">
     <value>طريقة المحافظة على القوائم المالية</value>
-    </data>
-    <data name="ESTEndOfFiscalMonth" xml:space="preserve">
+  </data>
+  <data name="ESTEndOfFiscalMonth" xml:space="preserve">
     <value>نهاية الشهر المالي</value>
-    </data>
-    <data name="ESTConfirm" xml:space="preserve">
+  </data>
+  <data name="ESTConfirm" xml:space="preserve">
     <value>تأكيد</value>
-    </data>
-    <data name="ESTRegistrationSuccessful" xml:space="preserve">
+  </data>
+  <data name="ESTRegistrationSuccessful" xml:space="preserve">
     <value>تم التسجيل بنجاح</value>
-    </data>
-    <data name="ESTGAZTAcknowledgesTheReceiptRegApplication" xml:space="preserve">
+  </data>
+  <data name="ESTGAZTAcknowledgesTheReceiptRegApplication" xml:space="preserve">
     <value>تم استلام طلب التسجيل في خدمات الهيئة العامة للزكاة والدخل</value>
-    </data> 
-    <data name="ESTName" xml:space="preserve">
-        <value>الاسم</value>
-    </data>
-    <data name="ESTReferenceNumber" xml:space="preserve">
+  </data>
+  <data name="ESTName" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="ESTReferenceNumber" xml:space="preserve">
     <value>الرقم المرجعي</value>
-    </data>
-    <data name="ESTFutureRefernceAndCommunicationFinalMsg" xml:space="preserve">
+  </data>
+  <data name="ESTFutureRefernceAndCommunicationFinalMsg" xml:space="preserve">
     <value>الرجاء الاحتفاظ بهذا الرقم للتواصل مستقبلا. الهيئة العامة للزكاة والدخل تقوم بمعالجة طلبك وعند الحاجة لبيانات إضافية او عند فرض عقوبة التاخير في التسجيل والتاكد منها سيتم التواصل معكم .ويمكنك الاتصال بنا على الرقم 19993</value>
-    </data>
-    <data name="ESTGoToDashboard" xml:space="preserve">
+  </data>
+  <data name="ESTGoToDashboard" xml:space="preserve">
     <value>الذهاب للصفحة الرئيسية</value>
-    </data>
-     <data name="ESTQurayyatOffice" xml:space="preserve">
+  </data>
+  <data name="ESTQurayyatOffice" xml:space="preserve">
     <value>مكتب القريات</value>
-    </data>
-     <data name="ESTAlmajmaahOffice" xml:space="preserve">
+  </data>
+  <data name="ESTAlmajmaahOffice" xml:space="preserve">
     <value>مكتب المجمعة</value>
-    </data>
-    <data name="ESTMuhayilAsirOffice" xml:space="preserve">
+  </data>
+  <data name="ESTMuhayilAsirOffice" xml:space="preserve">
     <value>مكتب محايل عسير</value>
-    </data>
-        
-   <data name="CRContractprofitEstimatedRateDesc" xml:space="preserve">
-  <value>Estimated Profit percentage based on contract type</value>
-</data>
-<data name="CRProfitEstimatedForContractDesc" xml:space="preserve">
-  <value>Multiply released amount with Estimated profit for contract</value>
-</data>
+  </data>
 <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-  <value>Multiply Estimated profit for contract with Saudi share %</value>
-</data>
-<data name="CREstimatedProfitforTaxDesc" xml:space="preserve">
-  <value>Multiply Estimated profit for contract with Non-Saudi share%</value>
-</data>
-<data name="CRTheValueofZakatduesDesc" xml:space="preserve">
-  <value>Multiply Estimated profit for ZAKAT with 2.5 %</value>
+  <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك السعودي %"</value>
 </data>
 <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-  <value>Multiply Estimated profit for TAX with 20 %</value>
+  <value>حاصل ضرب "الربح التقديري الخاضع للضريبة" في "20 %"</value>
 </data>
-<data name="CRTotalDuesDesc" xml:space="preserve">
-  <value>Value of zakat due + value of TAX due</value>
- </data>
+     <data name="Gregorian" xml:space="preserve">
+    <value>ميلادي</value>
+    </data>
+     <data name="Hijri" xml:space="preserve">
+    <value>هجري</value>
+    </data>
 </root>

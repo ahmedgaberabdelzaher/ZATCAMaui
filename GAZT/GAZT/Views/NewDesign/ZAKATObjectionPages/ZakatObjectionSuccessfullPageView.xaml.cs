@@ -16,6 +16,8 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
     public partial class ZakatObjectionSuccessfullPageView : ContentPage
     { 
         ZakatObjectionSuccessfullPageViewModel viewModel;
+        ZakatReturnDetailsD _zakatReturnDetail;
+
         public ZakatObjectionSuccessfullPageView(ZakatReturnDetailsD ZakatReturnDetail)
         {
             InitializeComponent();
@@ -24,9 +26,46 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             this.BindingContext = viewModel;
            // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
             SetLTR();
-
+            viewModel.ClearData();
             viewModel.OnPageLoad(ZakatReturnDetail);
+            this._zakatReturnDetail = ZakatReturnDetail;
+
+            ToolbarItem Refresh = new ToolbarItem
+            {
+                Order = ToolbarItemOrder.Primary,
+                Priority = 1,
+                Command = new Command(async () =>
+                {
+                    await OnRefreshButtonClicked();
+                    // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                })
+            };
+            this.ToolbarItems.Add(Refresh);
+            Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
+
         }
+
+
+        protected async Task OnRefreshButtonClicked()
+        {
+            try
+            {
+                if (viewModel.IsrefreshEnabled)
+                {
+                    await viewModel.OnPageLoad(_zakatReturnDetail);
+                }
+                else
+                {
+                    // put Mesage already latest SADADID available
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
 
         private void SetLTR()
         {
