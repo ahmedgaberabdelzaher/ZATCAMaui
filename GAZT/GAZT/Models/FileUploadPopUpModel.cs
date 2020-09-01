@@ -42,6 +42,7 @@ namespace EGAZT.Models.ZakatInstalationModels
             ChnageFillingPeriod2Years = 4,
             ChnageFillingPeriod12Months=5,
             ChnageFillingPeriodOtherDoc=6,
-    }
+            VATDeregistration = 7,
+        }
     
 }

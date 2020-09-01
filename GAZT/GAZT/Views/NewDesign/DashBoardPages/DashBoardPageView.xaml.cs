@@ -106,6 +106,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 {
                     viewModel.IsVatRegistrationTileVisible = true;
                 }
+
+                if (App.LoginDataRetrieved.ZkReg == null)
+                {
+                    viewModel.IsEstablishmentRegistrationTileVisible = true;
+                }
+                else if (App.LoginDataRetrieved.ZkReg != "X")
+                {
+                    viewModel.IsEstablishmentRegistrationTileVisible = true;
+                }
+
             }
             catch
             {
@@ -710,6 +720,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         private void OnSupportTapped(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.SupportPageView);
+        }
+
+        private void OnZakatNowTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.EstablishmentRegistrationPage);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             IsGoingFirstTimeOnAttachmentPage = true;
            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
 
-            viewModel.ClearData();
+          
             ChangeAeroIcon();
             ZAKATReturnDetailsViewModel.Fbguid = fbguid;
 
@@ -35,6 +35,11 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.ClearData();
+        }
         protected async override void OnAppearing()
         {
             base.OnAppearing();

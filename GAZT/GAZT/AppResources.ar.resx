@@ -5360,7 +5360,7 @@
     <value>مراجعة البيانات التالية</value>
   </data>
   <data name="NDFacilityInformation" xml:space="preserve">
-    <value>بيانات المنشأة</value>
+    <value>معلومات المنشأة</value>
   </data>
   <data name="NDReporterInformation" xml:space="preserve">
     <value>معلومات المبلغ</value>
@@ -6501,16 +6501,25 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ESTMuhayilAsirOffice" xml:space="preserve">
     <value>مكتب محايل عسير</value>
   </data>
-<data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
-  <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك السعودي %"</value>
-</data>
-<data name="CRTheValueTaxDuesDesc" xml:space="preserve">
-  <value>حاصل ضرب "الربح التقديري الخاضع للضريبة" في "20 %"</value>
-</data>
-     <data name="Gregorian" xml:space="preserve">
+  <data name="CREstimatedProfitforZakatDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري للعقد" مع "حصة الشريك السعودي %"</value>
+  </data>
+  <data name="CRTheValueTaxDuesDesc" xml:space="preserve">
+    <value>حاصل ضرب "الربح التقديري الخاضع للضريبة" في "20 %"</value>
+  </data>
+  <data name="Gregorian" xml:space="preserve">
     <value>ميلادي</value>
-    </data>
-     <data name="Hijri" xml:space="preserve">
+  </data>
+  <data name="Hijri" xml:space="preserve">
     <value>هجري</value>
-    </data>
+  </data>
+  <data name="ZZZZNoIdNumberMsg" xml:space="preserve">
+    <value>لا يوجد رقم هوية يوافق نوع الهوية المحدد</value>
+  </data>
+  <data name="ZZZZPleaseAgreeTandCMsg" xml:space="preserve">
+    <value>الرجاء الموافقة على الشروط والاحكام</value>
+  </data>
+  <data name="ZZZZPleaseSelectTheIbanMsg" xml:space="preserve">
+    <value>الرجاء اختيار رقم الآيبان المفضل</value>
+  </data>
 </root>

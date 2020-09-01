@@ -20,6 +20,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
     public partial class AttachmentPopUp : PopupPage
     {
         AttachmentPopUpViewModel viewModel;
+        ZakatAttachment estimateZakatAttachment;
         public AttachmentPopUp(ZakatReturnDetailsD ZakatReturnDetail)
         {
             try
@@ -38,6 +39,33 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
           
     }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            getYesCommandToDeleteTheAttachment();
+
+        }
+
+        public async void getYesCommandToDeleteTheAttachment()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesCommandToDeleteTheAttachment", async (sender, arg) =>
+                {
+                    if(estimateZakatAttachment != null)
+                    {
+                        await viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename, estimateZakatAttachment.Doguid);
+                    }
+                    //  await viewModel.OnReleaseOrBillsClicked();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -58,17 +86,19 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         private async void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
         {
             Image deleteImage = sender as Image;
-            ZakatAttachment estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
+             estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
             if (estimateZakatAttachment != null)
             {
-                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                if (result)
-                {
-                    await viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename, estimateZakatAttachment.Doguid);
-                }
-                else
-                {
-                }
+                await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText));
+
+                //var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                //if (result)
+                //{
+                //    await viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename, estimateZakatAttachment.Doguid);
+                //}
+                //else
+                //{
+                //}
             }
         }
         public async Task email(string doguid, ZakatAttachment attachment)

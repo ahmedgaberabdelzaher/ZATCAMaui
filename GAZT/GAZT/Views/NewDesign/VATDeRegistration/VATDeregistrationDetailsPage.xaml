@@ -382,7 +382,7 @@
                  </listView:SfListView>
                 </Grid>
                
-                <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                <!--<listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding VatAttachmentsList}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -412,7 +412,7 @@
 
 			                </DataTemplate>
                         </listView:SfListView.ItemTemplate>
-                                       <!--<listView:SfListView.ItemTemplate>
+                                       <listView:SfListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ContentView>
@@ -447,9 +447,9 @@
                                 </ContentView>
                             </ViewCell>
                         </DataTemplate>
-                    </listView:SfListView.ItemTemplate>-->
+                    </listView:SfListView.ItemTemplate>
 
-                 </listView:SfListView>
+                 </listView:SfListView>-->
                        <StackLayout Grid.Row="4" Spacing="2" Grid.ColumnSpan="2">
                   <Label Text="{x:Static custom2:AppResources.VATRNewAttachment}"    Style="{StaticResource CaptionLabelGrey}"/>
                                                     <inputLayout:SfTextInputLayout  Margin="10,-6,0,-6" 
@@ -462,7 +462,7 @@
                                                      <inputLayout:SfTextInputLayout.TrailingView>
                                                         <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png"  >
                                                             <Image.GestureRecognizers>
-                                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                                                <TapGestureRecognizer Command="{Binding NewAttachmentTapped}" />
                                                             </Image.GestureRecognizers>
                                                         </Image>
                                             
@@ -470,11 +470,11 @@
                                                     </inputLayout:SfTextInputLayout>
                                     <Label Text="{x:Static custom2:AppResources.VatDeregAttachmentInputsizeLarge}"  Style="{StaticResource CaptionLabelGrey}"/>
                                 </StackLayout>
-     <StackLayout Grid.Row ="5" Orientation="Vertical" Grid.ColumnSpan="2" Margin="10,0,10,0">
+     <!--<StackLayout Grid.Row ="5" Orientation="Vertical" Grid.ColumnSpan="2" Margin="10,0,10,0">
        <Label HorizontalTextAlignment="Start"   Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}"  Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand"  Style="{StaticResource CaptionLabelGrey}"/>
                 <Label HorizontalTextAlignment="Start"  Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}"   Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
                      <Label HorizontalTextAlignment="Start"   Text="{x:Static custom2:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"   Margin="0,0,0,0" TextColor="#005e4b" HorizontalOptions="StartAndExpand" Style="{StaticResource CaptionLabelGrey}"/>
-         </StackLayout>
+         </StackLayout>-->
                  <buttons:SfButton  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="8,10,0,36" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
