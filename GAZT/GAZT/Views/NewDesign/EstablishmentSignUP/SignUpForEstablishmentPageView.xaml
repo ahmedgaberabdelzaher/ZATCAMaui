@@ -19,7 +19,9 @@
              NavigationPage.HasNavigationBar="False"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:ResourceManager="clr-namespace:EGAZT"             x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.SignUpForEstablishmentPageView">
+             xmlns:ResourceManager="clr-namespace:EGAZT"             
+BackgroundImageSource="partials_background.png"
+             x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.SignUpForEstablishmentPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

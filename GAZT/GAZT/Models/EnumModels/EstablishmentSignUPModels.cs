@@ -10,8 +10,8 @@ namespace EGAZT.Models.EnumModels
         IndividualInformation = 2,
         BusinessInformation = 3,
         ContactInformation = 4,
-        EmailVerification=5,
-        MobileVerification = 6,
+        MobileVerification = 5,
+        EmailVerification = 6,
         Password = 7
     }
 }

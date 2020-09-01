@@ -8,6 +8,8 @@
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="partials_background.png"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.EstablishmentSignUPPageView">
     <ContentPage.Resources>
