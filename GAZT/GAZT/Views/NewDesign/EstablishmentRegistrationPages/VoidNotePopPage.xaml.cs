@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
-namespace EGAZT.Views.NewDesign.Common
+namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
- 
-    public partial class ListPopUpViewPage : PopupPage
+    public partial class VoidNotePopPage : PopupPage
     {
-        public delegate void OnItemSelectDelegate(object item);
-        public OnItemSelectDelegate OnItemSelect { get; set; } = null;
-        public ListPopUpViewPage(object data)
+        public delegate void OnItemSelectDelegate(string note);
+        public OnItemSelectDelegate OnVoidSelect { get; set; } = null;
+        public VoidNotePopPage()
         {
             InitializeComponent();
-            PopupList.ItemsSource = (System.Collections.IEnumerable)data;
             SetLTR();
         }
         private void SetLTR()
@@ -30,9 +27,15 @@ namespace EGAZT.Views.NewDesign.Common
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
-        async void PopupList_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+
+        async void Void_Button_Clicked(System.Object sender, System.EventArgs e)
         {
-            OnItemSelect?.Invoke(e.CurrentSelection.FirstOrDefault());
+            OnVoidSelect?.Invoke(notes.Text);
+            await PopupNavigation.Instance.PopAsync();
+        }
+
+        async void CancelButton_Clicked(System.Object sender, System.EventArgs e)
+        {
             await PopupNavigation.Instance.PopAsync();
         }
     }

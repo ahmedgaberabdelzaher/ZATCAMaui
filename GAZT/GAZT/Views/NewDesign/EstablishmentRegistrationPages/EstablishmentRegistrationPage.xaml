@@ -17,7 +17,8 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage"
              BackgroundImageSource="partials_background.png"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons">
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             x:Name="ESTRegistrationPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:EstablishmentTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
@@ -911,26 +912,13 @@
                             <Image Source="search.png"/>
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
-                    <CollectionView VerticalOptions="StartAndExpand" ItemsSource="{Binding OutletData}" HorizontalOptions="FillAndExpand" SelectionMode="Single" Margin="0" VerticalScrollBarVisibility="Never">
+                    <CollectionView VerticalOptions="StartAndExpand" ItemsSource="{Binding OutletData}" HorizontalOptions="FillAndExpand" SelectionMode="None" Margin="0" VerticalScrollBarVisibility="Never">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView HasShadow="True" BorderColor="{StaticResource NeutralLightGrey}" BackgroundColor="White" BorderWidth="0.7" CornerRadius="10" Margin="0">
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup x:Name="CommonStates">
-                                            <VisualState x:Name="Normal" />
-                                            <VisualState x:Name="Selected">
-                                                <VisualState.Setters>
-                                                    <Setter Property="BackgroundColor" Value="White" />
-                                                    <Setter Property="ShadowColor" Value="White" />
-                                                    <Setter Property="CornerRadius" Value="10" />
-                                                    <Setter TargetName="GridItem" Property="Grid.BackgroundColor" Value="White" />
-                                                </VisualState.Setters>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
                                     <Grid x:Name="GridItem" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ColumnSpacing="10" Padding="12">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -942,7 +930,11 @@
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding Actnm}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
                                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Crlicenceno}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,-12,0,0"/>
-                                        <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnDeleteOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
                                     </Grid>
                                 </cards:SfCardView>
                             </DataTemplate>

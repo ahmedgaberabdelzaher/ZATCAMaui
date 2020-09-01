@@ -9218,8 +9218,8 @@ namespace GAZT.Manager
 
                     HttpResponseMessage response = client.DeleteAsync(uri).Result;
                     var responsestr = response.Content.ReadAsStringAsync().Result;
-                    responsestr = JObject.Parse(responsestr)["d"].ToString();
-                    Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
+                    //responsestr = JObject.Parse(responsestr)["d"].ToString();
+                    //Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
                     if (response != null)
                     {
                         HttpHeaders headers = response.Headers;
@@ -9229,7 +9229,7 @@ namespace GAZT.Manager
                             DeleteToken = values.First();
                         }
                     }
-                    return DeleteToken;
+                    return "delete";
                 }
                 catch (Exception ex)
                 {
@@ -9660,6 +9660,47 @@ namespace GAZT.Manager
                 throw new GAZTInternetException();
             }
             return address;
+        }
+        public static string ESTDeleteOutletItem(string fbnumx, string actno, string email)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string DeleteToken = string.Empty;
+                try
+                {
+                    var uri = new Uri(string.Format("{0}(Fbnumx='{1}',Actno='{2}',PortalUsrx='{3}',Gpartx='')",
+                        Constants.ESTOutletList, fbnumx, actno, email));
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    //client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+
+                    HttpResponseMessage response = client.DeleteAsync(uri).Result;
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    //responsestr = JObject.Parse(responsestr)["d"].ToString();
+                    //Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
+                    if (response != null)
+                    {
+                        HttpHeaders headers = response.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("delete", out values))
+                        {
+                            DeleteToken = values.First();
+                        }
+                    }
+                    return "delete";
+                }
+                catch (Exception ex)
+                {
+                    return DeleteToken;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
         }
         public static async Task<FinancialDetail> ESTFinancialMaxDate(FinancialDetailRequest financialDetailRequest)
         {
