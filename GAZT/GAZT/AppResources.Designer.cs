@@ -8966,7 +8966,7 @@ namespace EGAZT {
         ///− For taxpayers &lt;40M SAR annual taxable revenues requesting monthly VAT Tax Period:
         ///Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years with a monthly Tax Period with the last 12 months revenues being below SAR 40M
         ///− For taxpayers &lt;40M SAR annual taxable revenues requesting quarterly VAT Tax Period:
-        ///Taxpayer is required to provide evidence that he has been [rest of string was truncated]&quot;;.
+        ///Taxpayer is required to provide evidence that he has  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VFCInstructions {
             get {
