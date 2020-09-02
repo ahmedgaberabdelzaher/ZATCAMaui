@@ -18,7 +18,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class OutletDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        public List<Nreg_ActivityItem> activityItems = new List<Nreg_ActivityItem>();
+        //public List<Nreg_ActivityItem> activityItems = new List<Nreg_ActivityItem>();
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
         private OutletNumber newNumber = null;
         private List<string> IDs = new List<string>() { "BUP002", "ZS0005", "ZS0001", "ZS0002" };
@@ -526,12 +526,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
             Console.WriteLine(_enum);
+            if (_enum == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+            {
+                var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "BUP002").ToList();
+                if (mainactivity.Count() == 1)
+                {
+                    return;
+                }
+            }
+            if(_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+            {
+                var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
+                if (mainactivity.Count() == 4)
+                {
+                    return;
+                }
+            }
             _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
             {
                 openedTab = _enum,
                 taxPayerDetails = taxPayerDetails,
                 nextNumber = newNumber,
-                newActivityItems = activityItems,
+                //newActivityItems = activityItems,
                 goBackAction = (List<Nreg_ActivityItem> list) => addActivities(list)
             });
         }
@@ -551,7 +567,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             nextNumber = newNumber,
                             validateCR = validateCR,
                             //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
-                            newActivityItems = activityItems,
+                            //newActivityItems = activityItems,
                             goBackAction = (List<Nreg_ActivityItem> list) => addActivities(list)
                         });
                     }
