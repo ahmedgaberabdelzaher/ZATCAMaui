@@ -30,7 +30,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public List<Nreg_ActivityItem> NregActivityList = new List<Nreg_ActivityItem>();
         //public Nreg_ActivityItem cRActivityItem { get; set; } = null;
         public ActicityListDelegate goBackAction = null;
-        Attachment dd;
         private EstablishmentOutletActivitiesTabsEnum _currentTab = EstablishmentOutletActivitiesTabsEnum.CRDetails;
         public EstablishmentOutletActivitiesTabsEnum CurrentTab
         {
@@ -900,7 +899,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 string outletref = $"{Int16.Parse(newNumber?.Actno):000-}" + CRLicenseNo;
 
-                 dd = await WebServiceManager.ESTAttachment(attachmentByteData, fileName, taxPayerDetails?.ReturnIdx, docType, contentType, outletref);
+                Attachment dd = await WebServiceManager.ESTAttachment(attachmentByteData, fileName, taxPayerDetails?.ReturnIdx, docType, contentType, outletref);
 
                 if (docType == "RG01")
                 {
@@ -960,7 +959,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     || CRIssueCity == null
                     || string.IsNullOrEmpty(CRNumber)
                     || string.IsNullOrEmpty(CRValidFrom)
-                    || dd == null
+                    || CRsCopies.Count == 0
                     || CRMainGroup == null
                     || CRSubGroup == null)
                 {
@@ -978,7 +977,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                    || LicenseIssueCity == null
                                    || string.IsNullOrEmpty(LicenseNumber)
                                    || string.IsNullOrEmpty(ValidFrom)
-                                   || dd == null
+                                   || LicensesCopies.Count == 0
                                    || LicenseMainGroup == null
                                    || LicenseSubGroup == null
                                    || LicenseAcitivity == null)

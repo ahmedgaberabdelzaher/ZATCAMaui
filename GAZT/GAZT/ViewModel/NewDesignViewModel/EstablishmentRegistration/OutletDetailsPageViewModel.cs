@@ -7,6 +7,7 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
@@ -635,7 +636,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                await _dialogService.ShowError(AppResources.ZZMandatorydatanotentered, AppResources.Information, "Ok", null);
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }
         }
         private void addActivities(List<Nreg_ActivityItem> list)
@@ -657,7 +658,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 //    Actcat = "M"
                 //});
                 taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
-                currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+                //currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
             }
             catch (Exception e)
             {
@@ -737,8 +738,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
-                var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Actcat == "M");
-                if (taxPayerDetails?.Nreg_ActivitySet.results?.Count == 0 && mainactivity.Count() == 1)
+                var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Actcat == "M").ToList();
+                var count = mainactivity.Count();
+                if (taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
                 {
                     return false;
                 }
