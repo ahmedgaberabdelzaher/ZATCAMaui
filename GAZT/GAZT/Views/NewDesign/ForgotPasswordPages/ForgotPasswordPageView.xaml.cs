@@ -273,5 +273,14 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             ConfirmNewPasswordIcon.Source = "hidePassword";
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            // * Worka aroung - Need to find a solution
+            if (viewModel.countDownSeconds != 0)
+                viewModel.otpTimer.Stop();
+        }
+
     }
 }

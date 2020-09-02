@@ -2020,4 +2020,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\Generic_attachment_icon%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32White%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_BigGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_BigGreen%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\establishments_BigGreen%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32White.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_32White%402x.png" />
+  </ItemGroup>
 </Project>
