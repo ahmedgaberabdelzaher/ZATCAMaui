@@ -23,9 +23,9 @@
     <ContentPage.Content>
         <StackLayout Padding="24,0,24,16">
             <Image Source="Forget_ic_success.png" Margin="0,75,0,0"/>
-            <custom:CustomLabel Margin="0,25,0,0" Text="{x:Static ResourceManager:AppResources.ZZZZRegistrationSuccessful}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalTextAlignment="Center"/>
-            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDYouSuccessfullyRegisteredGAZTServies}" Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White"/>
-            <buttons:SfButton x:Name="btnprimary" VerticalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}" Style="{StaticResource PrimaryButtonStyle}"/>
+            <custom:CustomLabel Margin="0,25,0,0" Text="{x:Static ResourceManager:AppResources.ZZAccountCreatedSuccessfully}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalTextAlignment="Center"/>
+            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDYouSuccessfullyRegisteredGAZTServies}" Style="{StaticResource BodyLabelBlack}" HorizontalTextAlignment="Center" TextColor="White"/>-->
+            <buttons:SfButton x:Name="btnprimary" VerticalOptions="EndAndExpand" Text="{x:Static ResourceManager:AppResources.Clickhereforlogin}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnGoToLoginClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
