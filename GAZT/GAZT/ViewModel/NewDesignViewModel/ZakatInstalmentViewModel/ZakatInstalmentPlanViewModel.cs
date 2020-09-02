@@ -1212,6 +1212,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             InstallmentDetailsBtnTapped = new Command(async () =>
             {
                 EnableDisplayInstalmentsView();
+
+                 ZakatInstalments = await SubmitClicked();
                 //                EnableInstalmentsScheduleView();
             });
 
@@ -1697,10 +1699,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
                 var amount = TotalAmountSAR.Replace(" SAR", "").Replace(",", "");
-                ZakatInstalments.d.ATotalAmt = amount;
 
 
-                // ZakatInstalments = await SubmitClicked();
+                 //ZakatInstalments = await SubmitClicked();
 
 
                 EnableStatementsView();
@@ -2236,12 +2237,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 if (NoOfInstalments == 0)
                 {
 
-                    // VatInstalments.d.Noofinstallment = "2";
+                     ZakatInstalments.d.PlanDur = "2";
                 }
                 else
                 {
 
-                    // VatInstalments.d.Noofinstallment = NoOfInstalments.ToString();
+                    ZakatInstalments.d.PlanDur = NoOfInstalments.ToString();
                 }
 
                 //Double dueAmount = Double.Parse(VatInstalments.d.TotInvAmt) + Double.Parse(VatInstalments.d.Peneltyamt);
@@ -2277,184 +2278,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
             _postData.d = new ZakatInstalmentReuqest();
 
-            _postData.d.Percentage = ZakatInstalments.d.Percentage;
-            _postData.d.UserTin = ZakatInstalments.d.UserTin;
+           
             _postData.d.Euser = ZakatInstalments.d.Euser;
             _postData.d.Fbguid = ZakatInstalments.d.Fbguid;
-            _postData.d.Auditorz = ZakatInstalments.d.Auditorz;
             _postData.d.Langz = ZakatInstalments.d.Langz;
-            _postData.d.Taxpayerz = ZakatInstalments.d.Taxpayerz;
-            _postData.d.Savez = ZakatInstalments.d.Savez;
-            _postData.d.Fbnumz = ZakatInstalments.d.Fbnumz;
-            _postData.d.PeriodKeyz = ZakatInstalments.d.PeriodKeyz;
-            _postData.d.Submitz = ZakatInstalments.d.Submitz;
-            _postData.d.AAgree = ZakatInstalments.d.AAgree;
-            _postData.d.ADwPaymentReqLetter = ZakatInstalments.d.ADwPaymentReqLetter;
-            _postData.d.AEffectiveCalTp = ZakatInstalments.d.AEffectiveCalTp;
-            _postData.d.Euser1 = ZakatInstalments.d.Euser1;
-            _postData.d.FbtypDescr = ZakatInstalments.d.FbtypDescr;
             _postData.d.FormGuid = ZakatInstalments.d.FormGuid;
-
-            _postData.d.ZauditorFlag = ZakatInstalments.d.ZauditorFlag;
-            _postData.d.ANoOfInstTp = ZakatInstalments.d.ANoOfInstTp;
-            _postData.d.ARev1yrTbFg = ZakatInstalments.d.ARev1yrTbFg;
-            _postData.d.SavNot = ZakatInstalments.d.SavNot;
-            _postData.d.ARev2yrTbFg = ZakatInstalments.d.ARev2yrTbFg;
-            _postData.d.ALegalEnty1 = ZakatInstalments.d.ALegalEnty1;
-            _postData.d.ARev3yrTbFg = ZakatInstalments.d.ARev3yrTbFg;
-            _postData.d.Rejectz = ZakatInstalments.d.Rejectz;
-            _postData.d.ANi2yrTbFg = ZakatInstalments.d.ANi2yrTbFg;
-            _postData.d.CaseGuid = ZakatInstalments.d.CaseGuid;
-            _postData.d.ANi3yrTbFg = ZakatInstalments.d.ANi3yrTbFg;
-            _postData.d.AEffectiveCalTp = ZakatInstalments.d.AEffectiveCalTp;
-            _postData.d.AStep = ZakatInstalments.d.AStep;
-            _postData.d.ACb1yrTbFg = ZakatInstalments.d.ACb1yrTbFg;
-            _postData.d.ACb2yrTbFg = ZakatInstalments.d.ACb2yrTbFg;
-
-            _postData.d.ALegalEnty2 = ZakatInstalments.d.ALegalEnty2;
-            _postData.d.ACb3yrTbFg = ZakatInstalments.d.ACb3yrTbFg;
-            _postData.d.ASi1yrTbFg = ZakatInstalments.d.ASi1yrTbFg;
-            _postData.d.ASi2yrTbFg = ZakatInstalments.d.ASi2yrTbFg;
-            _postData.d.ACb2yrTbFg = ZakatInstalments.d.ACb2yrTbFg;
-            _postData.d.RegIdz = ZakatInstalments.d.RegIdz;
-            _postData.d.ASi3yrTbFg = ZakatInstalments.d.ASi3yrTbFg;
-            _postData.d.ATa1yrTbFg = ZakatInstalments.d.ATa1yrTbFg;
-            _postData.d.ATa2yrTbFg = ZakatInstalments.d.ATa2yrTbFg;
-            _postData.d.ATa3yrTbFg = ZakatInstalments.d.ATa3yrTbFg;
             _postData.d.Fbnum = ZakatInstalments.d.Fbnum;
-            _postData.d.ATl1yrTbFg = ZakatInstalments.d.ATl1yrTbFg;
-
-            _postData.d.ATin = ZakatInstalments.d.ATin;
-            _postData.d.ATl2yrTbFg = ZakatInstalments.d.ATl2yrTbFg;
-            _postData.d.ATaxpayerNm = ZakatInstalments.d.ATaxpayerNm;
-            _postData.d.ATl3yrTbFg = ZakatInstalments.d.ATl3yrTbFg;
-            _postData.d.ADeb1yrTbFg = ZakatInstalments.d.ADeb1yrTbFg;
-            _postData.d.ATelNo = ZakatInstalments.d.ATelNo;
-            _postData.d.ADeb2yrTbFg = ZakatInstalments.d.ADeb2yrTbFg;
-            _postData.d.AMobNo = ZakatInstalments.d.AMobNo;
-
-
-            _postData.d.ADeb3yrTbFg = ZakatInstalments.d.ADeb3yrTbFg;
-            _postData.d.AEmail = ZakatInstalments.d.AEmail;
-            _postData.d.ACr1yrTbFg = ZakatInstalments.d.ACr1yrTbFg;
-            _postData.d.AInstReqFor = ZakatInstalments.d.AInstReqFor;
-            _postData.d.ACr2yrTbFg = ZakatInstalments.d.ACr2yrTbFg;
-            _postData.d.AInstReqReason = ZakatInstalments.d.AInstReqReason;
-            _postData.d.ABnkStat3mhChk = ZakatInstalments.d.ABnkStat3mhChk;
-
-            _postData.d.ACr3yrTbFg = ZakatInstalments.d.ACr3yrTbFg;
-            _postData.d.AFinStat3yrChk = ZakatInstalments.d.AFinStat3yrChk;
-            _postData.d.ARe1yrTbFg = ZakatInstalments.d.ARe1yrTbFg;
-            _postData.d.AOtherDocChk = ZakatInstalments.d.AOtherDocChk;
-            _postData.d.ARe2yrTbFg = ZakatInstalments.d.ARe2yrTbFg;
-            _postData.d.AHoldFinStat = ZakatInstalments.d.AHoldFinStat;
-
-            _postData.d.ARe3yrTbFg = ZakatInstalments.d.ARe3yrTbFg;
-            _postData.d.ADpAmtFg = ZakatInstalments.d.ADpAmtFg;
-            _postData.d.AItTb = ZakatInstalments.d.AItTb;
-            _postData.d.AOneYrTb = ZakatInstalments.d.AOneYrTb;
-            _postData.d.ATwoYrTb = ZakatInstalments.d.ATwoYrTb;
-            _postData.d.AThreeYrTb = ZakatInstalments.d.AThreeYrTb;
-            _postData.d.ADpAmt = ZakatInstalments.d.ADpAmt;
-            _postData.d.APlanDurNo = ZakatInstalments.d.APlanDurNo;
-            _postData.d.APlanDurPeri = ZakatInstalments.d.APlanDurPeri;
-            _postData.d.APaymentFreq = ZakatInstalments.d.APaymentFreq;
-            _postData.d.ACoPlanDurPeri = ZakatInstalments.d.ACoPlanDurPeri;
-            _postData.d.ACoPaymentFreq = ZakatInstalments.d.ACoPaymentFreq;
-            _postData.d.ADpRequ = ZakatInstalments.d.ADpRequ;
-            _postData.d.ADpPer = ZakatInstalments.d.ADpPer;
-            _postData.d.ACoDpAmt = ZakatInstalments.d.ACoDpAmt;
-            _postData.d.ADpRecAmt = ZakatInstalments.d.ADpRecAmt;
-            _postData.d.AAppInstAmt = ZakatInstalments.d.AAppInstAmt;
-            _postData.d.AInstDpAmt = ZakatInstalments.d.AInstDpAmt;
-
-            _postData.d.ABalAmt = ZakatInstalments.d.ABalAmt;
-            _postData.d.ACoBoRev = ZakatInstalments.d.ACoBoRev;
-            _postData.d.ACoBoNm = ZakatInstalments.d.ACoBoNm;
-            _postData.d.ACoBoRd = ZakatInstalments.d.ACoBoRd;
-            _postData.d.ACmBoRev = ZakatInstalments.d.ACmBoRev;
-            _postData.d.ACmBoNm = ZakatInstalments.d.ACmBoNm;
-            _postData.d.ACmBoRd = ZakatInstalments.d.ACmBoRd;
-            _postData.d.ACoHoRev = ZakatInstalments.d.ACoHoRev;
-            _postData.d.ACoHoNm = ZakatInstalments.d.ACoHoNm;
-            _postData.d.ACoHoRd = ZakatInstalments.d.ACoHoRd;
-
-            _postData.d.ACmHoRev = ZakatInstalments.d.ACmHoRev;
-            _postData.d.ACmHoNm = ZakatInstalments.d.ACmHoNm;
-            _postData.d.ACmHoRd = ZakatInstalments.d.ACmHoRd;
-            _postData.d.AMofApprChk = ZakatInstalments.d.AMofApprChk;
-            _postData.d.AOtherSuppDocChk = ZakatInstalments.d.AOtherSuppDocChk;
-            _postData.d.ARejReason = ZakatInstalments.d.ARejReason;
-            _postData.d.ACoPlanDurNo = ZakatInstalments.d.ACoPlanDurNo;
-            _postData.d.ARev1yrTb = ZakatInstalments.d.ARev1yrTb;
-            _postData.d.ARev2yrTb = ZakatInstalments.d.ARev2yrTb;
-            _postData.d.ARev3yrTb = ZakatInstalments.d.ARev3yrTb;
-            _postData.d.ANi1yrTb = ZakatInstalments.d.ANi1yrTb;
-            _postData.d.ANi2yrTb = ZakatInstalments.d.ANi2yrTb;
-
-            _postData.d.ANi3yrTb = ZakatInstalments.d.ANi3yrTb;
-            _postData.d.ACb1yrTb = ZakatInstalments.d.ACb1yrTb;
-            _postData.d.ACb2yrTb = ZakatInstalments.d.ACb2yrTb;
-            _postData.d.ACb3yrTb = ZakatInstalments.d.ACb3yrTb;
-            _postData.d.ASi1yrTb = ZakatInstalments.d.ASi1yrTb;
-            _postData.d.ASi2yrTb = ZakatInstalments.d.ASi2yrTb;
-            _postData.d.ASi3yrTb = ZakatInstalments.d.ASi3yrTb;
-            _postData.d.ATa1yrTb = ZakatInstalments.d.ATa1yrTb;
-
-            _postData.d.ATa2yrTb = ZakatInstalments.d.ATa2yrTb;
-            _postData.d.ATa3yrTb = ZakatInstalments.d.ATa3yrTb;
-            _postData.d.ATl1yrTb = ZakatInstalments.d.ATl1yrTb;
-            _postData.d.ATl2yrTb = ZakatInstalments.d.ATl2yrTb;
-            _postData.d.ATl3yrTb = ZakatInstalments.d.ATl3yrTb;
-            _postData.d.ADeb1yrTb = ZakatInstalments.d.ADeb1yrTb;
-            _postData.d.ADeb2yrTb = ZakatInstalments.d.ADeb2yrTb;
-            _postData.d.ADeb3yrTb = ZakatInstalments.d.ADeb3yrTb;
-            _postData.d.ACr1yrTb = ZakatInstalments.d.ACr1yrTb;
-            _postData.d.ACr2yrTb = ZakatInstalments.d.ACr2yrTb;
-
-            _postData.d.ACr3yrTb = ZakatInstalments.d.ACr3yrTb;
-            _postData.d.ARe1yrTb = ZakatInstalments.d.ARe1yrTb;
-            _postData.d.ARe2yrTb = ZakatInstalments.d.ARe2yrTb;
-            _postData.d.ARe3yrTb = ZakatInstalments.d.ARe3yrTb;
-            _postData.d.APr1yrTb = ZakatInstalments.d.APr1yrTb;
-            _postData.d.APr2yrTb = ZakatInstalments.d.APr2yrTb;
-            _postData.d.APr3yrTb = ZakatInstalments.d.APr3yrTb;
-            _postData.d.ACrt1yrTb = ZakatInstalments.d.ACrt1yrTb;
-            _postData.d.ACrt2yrTb = ZakatInstalments.d.ACrt2yrTb;
-            _postData.d.ACrt3yrTb = ZakatInstalments.d.ACrt3yrTb;
-            _postData.d.APc1yrTb = ZakatInstalments.d.APc1yrTb;
-
-            _postData.d.APc2yrTb = ZakatInstalments.d.APc2yrTb;
-            _postData.d.APc3yrTb = ZakatInstalments.d.APc3yrTb;
-            _postData.d.APerAmtRd = ZakatInstalments.d.APerAmtRd;
-            _postData.d.ADpRequDrp = ZakatInstalments.d.ADpRequDrp;
-            _postData.d.APer = ZakatInstalments.d.APer;
-            _postData.d.AFormStatus = ZakatInstalments.d.AFormStatus;
-            _postData.d.ADownLetterChk = ZakatInstalments.d.ADownLetterChk;
-            _postData.d.ADownYear = ZakatInstalments.d.ADownYear;
-            _postData.d.ADownMonth = ZakatInstalments.d.ADownMonth;
-            _postData.d.ADownToYear = ZakatInstalments.d.ADownToYear;
-            _postData.d.ADownToMonth = ZakatInstalments.d.ADownToMonth;
-            _postData.d.ABranch = ZakatInstalments.d.ABranch;
-            _postData.d.ASaudiShare = ZakatInstalments.d.ASaudiShare;
-            _postData.d.ANonsaudiShare = ZakatInstalments.d.ANonsaudiShare;
-            _postData.d.AMainAct = ZakatInstalments.d.AMainAct;
-            _postData.d.AMainActDesc = ZakatInstalments.d.AMainActDesc;
-            _postData.d.APoBox = ZakatInstalments.d.APoBox;
-            _postData.d.APostalCode = ZakatInstalments.d.APostalCode;
-
-            _postData.d.AFaxNo = ZakatInstalments.d.AFaxNo;
-            _postData.d.ABuilding = ZakatInstalments.d.ABuilding;
-            _postData.d.AStreet = ZakatInstalments.d.AStreet;
-            _postData.d.ADistrict = ZakatInstalments.d.ADistrict;
-            _postData.d.ACity = ZakatInstalments.d.ACity;
-            _postData.d.ALvError = ZakatInstalments.d.ALvError;
-            _postData.d.ATotalAmt = ZakatInstalments.d.ATotalAmt;
-            _postData.d.Status = ZakatInstalments.d.Status;
-            _postData.d.AttDetSet = ZakatInstalments.d.AttDetSet.results;
-            _postData.d.Off_notesSet = ZakatInstalments.d.Off_notesSet.results;
-            _postData.d.z_invoiceSet = ZakatInstalments.d.z_invoiceSet.results;
-            _postData.d.z_proposedinsSet = ZakatInstalments.d.z_proposedinsSet.results;
+            
 
             //List<ZINVOICEUI5Set> lstZINVOICEUI5Set = new List<ZINVOICEUI5Set>();
             //for (int i = 0; i < _zakatInstalmentDetails.d.Z_INVOICE_UI5Set.results.Count; i++)
@@ -2484,7 +2314,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             //_d.Z_INVOICE_UI5Set = lstZINVOICEUI5Set;
 
 
-            _postData.d.__metadata = ZakatInstalments.d.__metadata;
 
             return _postData;
 
@@ -2531,20 +2360,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     {
                         if (response != null && response.d != null)
                         {
-                            if (response.d.Submitz.Equals("X"))
-                            {
-                                string number = response.d.Fbnumz;
-                                string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                                _navigationService.GoBack();
-                            }
-                            if (response.d.Submitz.Equals("05"))
-                            {
-                                //  string number = response.d.Fbnumz;
-                                string displayMessage = AppResources.VATRSaveasdraftMessage;
-                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                            //if (response.d.Submitz.Equals("X"))
+                            //{
+                            //    string number = response.d.Fbnumz;
+                            //    string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
+                            //    await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                            //    _navigationService.GoBack();
+                            //}
+                            //if (response.d.Submitz.Equals("05"))
+                            //{
+                            //    //  string number = response.d.Fbnumz;
+                            //    string displayMessage = AppResources.VATRSaveasdraftMessage;
+                            //    await _dialogService.ShowMessage(displayMessage, AppResources.Information);
 
-                            }
+                            //}
 
 
 
