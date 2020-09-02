@@ -1021,7 +1021,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
 
             OnNextButtonClick = new Command(() => navigateToNext());
-            OnPreButtonClick = new Command(() => navigateToPre());
+            OnPreButtonClick = new Command(() => _navigationService.GoBack());
 
             #region Registration Tab Variable initialization
 
