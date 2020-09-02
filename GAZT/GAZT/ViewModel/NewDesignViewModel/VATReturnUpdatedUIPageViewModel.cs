@@ -3084,6 +3084,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             CreditDetailsText = AppResources.ZZZZConfirmandGenerateSADADBill;
                         }
                     }
+                    else
+                    {
+                        isBtnVisible = false;
+                        IsMainButtonVisible = false;
+                        IsRefundButtonVisible = false;
+                    }
                 }
             }
         }

@@ -45,23 +45,14 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         }
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
-
-        }
-
-   
-        protected override bool OnBackButtonPressed() => true;
-
-        private void btnDashboard_Clicked(object sender, EventArgs e)
-        {
-
             var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
             Navigation.RemovePage(firstPageToRemove);
-            var secondPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-            Navigation.RemovePage(secondPageToRemove);
+
             viewModel._navigationService.GoBack();
-        
         }
+
+        protected override bool OnBackButtonPressed() => true;
+
         private async void Image_Copy_Tapped(object sender, EventArgs e)
         {
             if (Label_ApplicationNumber != null)
@@ -75,6 +66,21 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
             }
 
+        }
+
+        void btnDash_Clicked(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                var firstPageToRemove = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(firstPageToRemove);
+
+                viewModel._navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

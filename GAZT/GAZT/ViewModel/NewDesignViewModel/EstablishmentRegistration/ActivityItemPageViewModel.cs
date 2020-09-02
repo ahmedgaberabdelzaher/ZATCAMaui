@@ -457,6 +457,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ICommand OnNewLicenseButtonClick { get; private set; }
 
         public ICommand OnTransferCopyOfLicenseChoiceButtonClick { get; set; }
+        public ICommand OnDeleteCRsCopyButtonClick { get; set; }
+        public ICommand OnDeleteTransferCRsCopyButtonClick { get; set; }
+        public ICommand OnDeleteLicenseCopyButtonClick { get; set; }
         #endregion
 
         #region Constructor
@@ -633,7 +636,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
+
+
+            OnDeleteCRsCopyButtonClick = new Command((item) => OnDeleteAttachment(item as Attachment, "RG01"));
+            OnDeleteTransferCRsCopyButtonClick = new Command((item) => OnDeleteAttachment(item as Attachment, "RG12"));
+            OnDeleteLicenseCopyButtonClick =  new Command((item) => OnDeleteAttachment(item as Attachment, "RG02"));
         }
+
         #endregion
 
         #region Method
@@ -736,18 +745,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                             {
                                                 string attachmentType = UtilityManager.GetContentType(Extention);
                                                 await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
-                                                //if (docType == "RG01")
-                                                //{
-                                                //    CRsCopies.Add(new Attachment());
-                                                //}
-                                                //else if (docType == "RG12")
-                                                //{
-                                                //    TransferCRsCopies.Add(new Attachment());
-                                                //}
-                                                //else if (docType == "RG02")
-                                                //{
-                                                //    LicensesCopies.Add(new Attachment());
-                                                //}
                                             }
                                             catch (Exception ex)
                                             {
@@ -914,6 +911,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             finally
             {
                 IsLoading = false;
+            }
+        }
+        private async void OnDeleteAttachment(Attachment item, string docType)
+        {
+            IsLoading = true;
+            var delete = WebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
+            if(!string.IsNullOrEmpty(delete) && delete == "delete")
+            {
+                if (docType == "RG01")
+                {
+                    CRsCopies.Remove(item);
+                }
+                else if (docType == "RG12")
+                {
+                    TransferCRsCopies.Remove(item);
+                }
+                else if (docType == "RG02")
+                {
+                    LicensesCopies.Remove(item);
+                }
+                IsLoading = false;
+            }
+            else
+            {
+                IsLoading = false;
+                await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
             }
         }
         #endregion

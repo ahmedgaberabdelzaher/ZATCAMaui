@@ -1020,11 +1020,11 @@
 
 
                     <border:SfBorder Grid.Row="2" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                            <custom:GAZTBorderlessEntry TextChanged="RemarksTextChanged"
-                                                        PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
-                                                        HorizontalOptions="FillAndExpand" />
-                        </StackLayout>
+                            <custom:BorderlessEntry x:Name="RemarksText" 
+                                                     HorizontalOptions="FillAndExpand" TextChanged="RemarksTextChanged"
+                                                     Style="{StaticResource BodyLabelBlack}"/>
+               
+                      
                     </border:SfBorder>
 
                     <custom:CustomLabel Grid.Row="3"
@@ -1036,8 +1036,8 @@
                      <border:SfBorder Grid.Row="4" Margin="0,0,0,10" Padding="10" Style="{StaticResource GreyBorderFrame}">
                            
                             <custom:GAZTBorderlessEditor TextChanged="DetailDescriptionTextChanged" MaxLength="1000"
-                                                        PlaceholderColor="Gray" FontSize="Small" TextColor="Black"
-                                    MinimumHeightRequest="150" HorizontalOptions="FillAndExpand" />
+                                                        PlaceholderColor="Gray" FontSize="Small"
+                                    MinimumHeightRequest="150" HorizontalOptions="FillAndExpand" Style="{StaticResource BodyLabelBlack}" />
 
                     </border:SfBorder>
 

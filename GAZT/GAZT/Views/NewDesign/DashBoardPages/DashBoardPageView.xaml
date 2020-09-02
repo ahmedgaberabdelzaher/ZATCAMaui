@@ -467,6 +467,16 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="refund">
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>-->
+
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="ic_Installplan.png">
                                     </Image>
@@ -526,17 +536,15 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                              
-
-                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">

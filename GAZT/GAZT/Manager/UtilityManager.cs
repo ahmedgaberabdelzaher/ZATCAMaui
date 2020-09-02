@@ -534,56 +534,56 @@ namespace GAZT.Manager
         {
             if (Extention.ToLower() == "doc")
             {
-               return "file.png";
+               return "Generic_attachment_icon.png";
 
             }
             else if (Extention.ToLower() == "docx")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "jpg")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "jpeg")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "pdf")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "xlsx")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "xls")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "png")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "ppt")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "pptx")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "gif")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "txt")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else if (Extention.ToLower() == "bmp")
             {
-                return "file.png";
+                return "Generic_attachment_icon.png";
             }
             else
             {

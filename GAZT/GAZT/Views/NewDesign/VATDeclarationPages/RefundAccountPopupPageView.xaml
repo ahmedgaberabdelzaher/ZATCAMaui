@@ -58,7 +58,7 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
                     <Grid>
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" BackgroundColor="White">
-                            <control:BorderlessEntry   Text="{Binding TxtSelectedIBANType}"   Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" >
+                                <control:BorderlessEntry   Text="{Binding TxtSelectedIBANType}"   Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="Text" VerticalTextAlignment="End"  Margin="10,0,10,0" Keyboard="Numeric" >
 
                         </control:BorderlessEntry>
 
@@ -88,7 +88,7 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
                     <Grid>
                     <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" BackgroundColor="White">
-                            <control:BorderlessEntry   Text="{Binding TxtSelectedIBANIDNumber}"  BackgroundColor="White"  Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="End"  HeightRequest="51" >
+                                <control:BorderlessEntry   Text="{Binding TxtSelectedIBANIDNumber}"  BackgroundColor="White"  Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="Text" VerticalTextAlignment="End"  Margin="10,0,10,0" >
 
                         </control:BorderlessEntry>
 
