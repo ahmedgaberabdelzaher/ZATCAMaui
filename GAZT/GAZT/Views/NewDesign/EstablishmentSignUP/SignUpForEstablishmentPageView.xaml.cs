@@ -43,7 +43,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel = App.Locator.SignUpForEstablishmentPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            viewModel.IsAllValidDataEntered = true;
+            viewModel.IsAllValidDataEntered = false;
             viewModel.IsDeclarationCheckedForInstruction = false;
             ChangeAeroIcon();
             SetLTR();
@@ -174,8 +174,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtName = string.Empty;
             viewModel.TxtCRNumber = string.Empty;
             viewModel.TxtLicenseNumber = string.Empty;
-            //viewModel.TxtEmailAddress = string.Empty;
-            //viewModel.TxtCountryCode = string.Empty;
+            viewModel.TxtEmailAddress = string.Empty;
+            viewModel.TxtCountryCode = string.Empty;
 
             viewModel.TxtMobileNumber = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
@@ -279,9 +279,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (viewModel.OTPFourthDigit.Length > 0)
             {
-                //if (!viewModel.IsResendOTPEnabled)
+                //if (!viewmodel.isresendotpenabled)
                 //{
-                //    // viewModel.VerifyOTP();
+                //    // viewmodel.verifyotp();
                 //}
 
             }
@@ -623,6 +623,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmMobileNumber.HasError = true;
+                    viewModel.IsAllValidContactDataEnteredMobileNbr = false;
+
                     EntryMobileNumber.Text = string.Empty;
                 }
                 else
@@ -726,7 +728,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
-                                // viewModel.IsAllValidDataEntered = true;
+                                viewModel.IsAllValidDataEntered = true;
                                  FrmIDNumber.HasError = false;
                                 ValidateIDNumber();
                             }
@@ -832,7 +834,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     else
                     {
                         ValidateIDNumber();
-                        // viewModel.IsAllValidDataEntered = true;
+                         viewModel.IsAllValidDataEntered = true;
                          FrmIDNumber.HasError = false;
                     }
                 }
@@ -857,7 +859,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         public async void ValidateIDNumber()
         {
-            viewModel.IsAllValidDataEntered = true;
+           // viewModel.IsAllValidDataEntered = true;
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await Task.Run(() =>
@@ -1658,13 +1660,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
                 else
                 {
-                    // viewModel.IsAllValidDataEntered = true;
+                    ////
+                     viewModel.IsAllValidDataEntered = true;
                     FrmTIN.HasError = false;
                 }
             }
             else
             {
-                //  viewModel.IsAllValidDataEntered = false;
+                /////
+                 viewModel.IsAllValidDataEntered = false;
             }
         }
 
@@ -3510,6 +3514,30 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     viewModel.IsLoading = false;
                 });
             });
+        }
+
+        private void EntryLicenceNumber_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber))
+            {
+                FrmLicenseNumber.HasError = true;
+                viewModel.IsAllValidCRNumberEntered = false;
+
+                // IsNextValid = false;
+            }
+            else if(viewModel.TxtLicenseNumber.Length < 15)
+            {
+                FrmLicenseNumber.HasError = true;
+                viewModel.IsAllValidCRNumberEntered = false;
+
+            }
+            else
+            {
+                viewModel.IsAllValidCRNumberEntered = true;
+
+                FrmLicenseNumber.HasError = false;
+            }
+
         }
     }
 
