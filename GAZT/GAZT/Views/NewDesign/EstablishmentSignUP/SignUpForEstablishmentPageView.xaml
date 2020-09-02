@@ -305,7 +305,7 @@
                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                             <inputLayout:SfTextInputLayout x:Name="FrmCR" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <control:BorderlessEntry x:Name="EntryCRNumber" Style="{StaticResource DefaultEntry}" MaxLength="10" Placeholder="{x:Static ResourceManager:AppResources.ZZCRNumber}" 
-                                                         Text="{Binding TxtCRNumber}"  Unfocused="EntryCRNumber_Unfocused" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric">
+                                                         Text="{Binding TxtCRNumber}" TextChanged="EntryCRNumber_TextChanged" Unfocused="EntryCRNumber_Unfocused" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>

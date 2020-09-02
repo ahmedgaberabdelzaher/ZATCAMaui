@@ -440,6 +440,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
         {
+            viewModel.IsLoading = true;
             if (!string.IsNullOrEmpty(EntryCRNumber.Text))
             {
                 if (EntryCRNumber.Text.Length == 10)
@@ -490,6 +491,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     EntryCRNumber.Focus();
                 }
             }
+            viewModel.IsLoading = false;
+
         }
 
         private void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -3547,6 +3550,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 FrmLicenseNumber.HasError = false;
             }
 
+        }
+
+        private void EntryCRNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(EntryCRNumber.Text.Length == 10)
+            {
+                EntryCRNumber.Unfocus();
+            }
         }
     }
 
