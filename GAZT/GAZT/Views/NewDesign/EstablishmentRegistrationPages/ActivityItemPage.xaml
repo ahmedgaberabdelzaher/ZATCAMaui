@@ -7,6 +7,9 @@
              BackgroundImageSource="partials_background.png"
              xmlns:models="clr-namespace:EGAZT.Models"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:customOne="clr-namespace:GAZT"
+               xmlns:GAZTBehaviors="clr-namespace:EGAZT"
+
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -76,7 +79,7 @@
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCity}"/>
+                                    <Span />
                                     <Span Text="*" TextColor="{StaticResource Secondary}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
@@ -93,7 +96,12 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="0">
-                            <Entry Text="{Binding CRNumber}" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                            <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16">
+
+                                  <customOne:GAZTBorderlessEntry.Behaviors>
+                                       <custom:NumericValidationBehavior/>
+                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -112,7 +120,7 @@
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainActivity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                             <syncfusion:SfSwitch VisualType="Material" IsOn="{Binding MainActivity}" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </StackLayout>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Attachments}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
@@ -127,12 +135,10 @@
                             </custom:CustomLabel>
                             <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center" />
                         </StackLayout>
-                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfCRChoiceButtonClick}"
-                                          CommandParameter="RG01" Style="{StaticResource NoBackgroundButtonStyle}"
-                                          Text="{x:Static ResourceManager:AppResources.VRUploadYourDocument}"
-                                          BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
-                                          TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
-                            <buttons:SfButton.ImageSource> 
+                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG01"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
+                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
+                            <buttons:SfButton.ImageSource>
                                 <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
                                                              Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
                             </buttons:SfButton.ImageSource>
@@ -147,7 +153,7 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
                                             <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
                                             <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center">
                                                 <Image.GestureRecognizers>
@@ -161,8 +167,7 @@
                         </StackLayout>
                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyOfCRLabel}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,15,0,0"/>
                         <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG12"
-                                          Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
-                                          Text="{x:Static ResourceManager:AppResources.VRUploadYourDocument}"
+                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
                                 <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
@@ -179,7 +184,7 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
                                             <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
                                             <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" >
                                                 <Image.GestureRecognizers>
@@ -295,7 +300,13 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry Text="{Binding LicenseNumber}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+
+                            <custom:GAZTBorderlessEntry Text="{Binding LicenseNumber}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
+
+                                  <customOne:GAZTBorderlessEntry.Behaviors>
+                                       <custom:NumericValidationBehavior/>
+                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
 
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -352,7 +363,7 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
                                             <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
                                             <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center">
                                                 <Image.GestureRecognizers>

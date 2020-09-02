@@ -13,6 +13,9 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:customOne="clr-namespace:GAZT"
+                          xmlns:GAZTBehaviors="clr-namespace:EGAZT"
+
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
@@ -213,7 +216,11 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry VerticalTextAlignment="Center" Text="{Binding AddNumber}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                            <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" Text="{Binding AddNumber}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
+                                  <customOne:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="100" numberOfDigitAfterDecimal="0" numberOfDigitBeforDecimal="5" isNegativeEnable="False"/>
+                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -328,7 +335,11 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                                <Entry VerticalTextAlignment="Center" Text="{Binding PostalCodeSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" Text="{Binding PostalCodeSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
+                                     <customOne:GAZTBorderlessEntry.Behaviors>
+                                                            <custom:NumericValidationBehavior/>
+                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                                 <custom:CustomLabel.FormattedText>
@@ -339,7 +350,11 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                                <Entry VerticalTextAlignment="Center" Text="{Binding AddNumberSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" Text="{Binding AddNumberSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
+                                  <customOne:GAZTBorderlessEntry.Behaviors>
+                                       <custom:NumericValidationBehavior/>
+                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                                 <custom:CustomLabel.FormattedText>

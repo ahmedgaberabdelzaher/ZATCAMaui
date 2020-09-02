@@ -14,10 +14,13 @@
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              ios:Page.UseSafeArea="true"
+                                       xmlns:GAZTBehaviors="clr-namespace:EGAZT"
+                          xmlns:customOne="clr-namespace:GAZT"
+
              NavigationPage.HasNavigationBar="False"
              x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.EstablishmentRegistrationPage"
              BackgroundImageSource="partials_background.png"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:GAZTBehaviors1="clr-namespace:GAZT.CustomControl"
              x:Name="ESTRegistrationPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -763,7 +766,18 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                                 <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10">
-                                    <Entry Text="{Binding PassportNumber}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                  <custom:GAZTBorderlessEntry Text="{Binding PassportNumber}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Start"
+                                                              Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                                                              HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
+                                                              TextColor="{StaticResource NeutralBlack}"
+                                                              IsSpellCheckEnabled="false"
+                                                              FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
+                                  <customOne:GAZTBorderlessEntry.Behaviors>
+                                                            <GAZTBehaviors1:RestrictSpecialCharactorsBehaviour/>
+                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+
+                                    </custom:GAZTBorderlessEntry>
+
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
                             <StackLayout Orientation="Vertical"  Grid.Row="2" HorizontalOptions="Start" Margin="0,0,0,10">
