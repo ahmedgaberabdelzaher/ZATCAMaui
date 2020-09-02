@@ -99,6 +99,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         #region Propetry
 
+        private string _maxDigids = "9";
+        public string MaxDigids
+        {
+            get
+            {
+                return _maxDigids;
+            }
+            set
+            {
+                _maxDigids = value;
+                RaisePropertyChanged("MaxDigids");
+            }
+        }
+
+
         private string _txtLicenseNumber = string.Empty;
         public string TxtLicenseNumber
         {
@@ -1137,11 +1152,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
 
                 _txtCountryCode = value;
+                if (_txtCountryCode != null)
+                {
+                    MaxDigids = (14 - _txtCountryCode.Length).ToString();
+                }
+                else
+                {
+                    MaxDigids = "15";
+                }
                 RaisePropertyChanged("TxtCountryCode");
             }
         }
 
-        private string _txtMobileNumberwithCountryCode = string.Empty;
+        private string _txtMobileNumberwithCountryCode = "";
         public string TxtMobileNumberwithCountryCode
         {
             get
@@ -1935,6 +1958,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         private async Task ResendOTPAsync()
         {
+            OTPFirstDigit = string.Empty;
+            OTPSecondDigit = string.Empty;
+            OTPThirdDigit = string.Empty;
+            OTPFourthDigit = string.Empty;
+
+            MOTPFirstDigit = string.Empty;
+            MOTPSecondDigit = string.Empty;
+            MOTPThirdDigit = string.Empty;
+            MOTPFourthDigit = string.Empty;
+
             try
             {
                 await Task.Run(async () =>

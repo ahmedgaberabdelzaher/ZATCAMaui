@@ -176,10 +176,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtCRNumber = string.Empty;
             viewModel.TxtLicenseNumber = string.Empty;
             viewModel.TxtEmailAddress = string.Empty;
-            viewModel.TxtCountryCode = string.Empty;
+           viewModel.TxtCountryCode = "+966";
 
             viewModel.TxtMobileNumber = string.Empty;
-            viewModel.TxtMobileNumberwithCountryCode = string.Empty;
+           // viewModel.TxtMobileNumberwithCountryCode = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
 
             //iewModel.IDTypeModelRootObject = null;
@@ -533,12 +533,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
                 {
-                    viewModel.IsAllValidContactDataEnteredPhoneNbr = false;
+                   // viewModel.IsAllValidContactDataEnteredPhoneNbr = false;
                      FrmPhoneNumber.HasError = true;
                 }
                 else
                 {
-                    viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
+                    //viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
                      FrmPhoneNumber.HasError = false;
                 }
             }
@@ -628,7 +628,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmMobileNumber.HasError = true;
+                   // FrmMobileNumber.HasError = true;
                     viewModel.IsAllValidContactDataEnteredMobileNbr = false;
 
                     EntryMobileNumber.Text = string.Empty;
@@ -636,7 +636,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 else
                 {
                     viewModel.IsAllValidContactDataEnteredMobileNbr = true;
-                     FrmMobileNumber.HasError = false;
+                    // FrmMobileNumber.HasError = false;
                 }
             }
             else
@@ -2110,7 +2110,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.SignUpModelRootObjectM = ResultFirstSubmitModel;
                 viewModel.TxtEmailAddress = ResultFirstSubmitModel.d.AEmail;
                 string mobileno = ResultFirstSubmitModel.d.AMobile;
-                viewModel.TxtMobileNumberwithCountryCode = ResultFirstSubmitModel.d.AMobile;
+                viewModel.TxtMobileNumberwithCountryCode = mobileno;
                 viewModel.TxtMobileNumber = "XXXXXXXXXX" + mobileno.Substring(mobileno.Length - 4, 4);
                 OTPFirstEntry.Focus();
             }
