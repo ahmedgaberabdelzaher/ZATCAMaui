@@ -6584,7 +6584,7 @@
     <value>تم استلام طلب تغيير فترة تقديم إقرارات ضريبة القيمة المضافة بنجاح</value>
   </data>
   <data name="NDRegisterZAKAT" xml:space="preserve">
-    <value>Register in ZAKAT</value>
+    <value>سجل في الزكاة</value>
   </data>
   <data name="NDRegZakatin5mins" xml:space="preserve">
     <value>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</value>
