@@ -12065,5 +12065,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZakatInstalmentAttachmentFInancialStatement", resourceCulture);
             }
         }
+        
+        public static string VoidReasonHint {
+            get {
+                return ResourceManager.GetString("VoidReasonHint", resourceCulture);
+            }
+        }
     }
 }

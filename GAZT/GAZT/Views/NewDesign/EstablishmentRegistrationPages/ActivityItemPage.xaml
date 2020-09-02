@@ -328,7 +328,11 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                 <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                    </Image>
                         </StackLayout>
                         <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfLicenseChoiceButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 

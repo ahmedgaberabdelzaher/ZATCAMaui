@@ -6642,4 +6642,7 @@
 <data name="ZakatCashBank" xml:space="preserve">
     <value>المدينون</value>
   </data>
+     <data name="VoidReasonHint" xml:space="preserve">
+    <value>Reason for void</value>
+  </data>
 </root>

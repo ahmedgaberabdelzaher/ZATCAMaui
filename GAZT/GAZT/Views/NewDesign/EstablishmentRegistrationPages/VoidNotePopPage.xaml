@@ -34,7 +34,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <inputLayout:SfTextInputLayout Grid.Row="0" x:Name="notesInputLayout" ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}" Hint="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" ContainerType="Outlined" ShowHint="False">
+                <inputLayout:SfTextInputLayout Grid.Row="0" x:Name="notesInputLayout" ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}" Hint="{x:Static ResourceManager:AppResources.VoidReasonHint}" ContainerType="Outlined" ShowHint="True">
                     <custom:CustomEntry x:Name="notes" MaxLength="132" />
                 </inputLayout:SfTextInputLayout>
                 <StackLayout HorizontalOptions="End" VerticalOptions="EndAndExpand" Grid.Row="1" Orientation="Horizontal">
