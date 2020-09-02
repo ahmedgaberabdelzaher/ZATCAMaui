@@ -431,6 +431,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Filling Frequency.
+        /// </summary>
+        public static string ChangeFillingPeriod {
+            get {
+                return ResourceManager.GetString("ChangeFillingPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachments.
         /// </summary>
         public static string ChangeFillingPeriodAttachments {
@@ -544,15 +553,6 @@ namespace EGAZT {
         public static string ChangeFillingPeriodNewFrequency {
             get {
                 return ResourceManager.GetString("ChangeFillingPeriodNewFrequency", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to VAT Filling Frequency.
-        /// </summary>
-        public static string ChangeFillingPeriodTitle {
-            get {
-                return ResourceManager.GetString("ChangeFillingPeriodTitle", resourceCulture);
             }
         }
         
@@ -5278,6 +5278,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register in ZAKAT.
+        /// </summary>
+        public static string NDRegisterZAKAT {
+            get {
+                return ResourceManager.GetString("NDRegisterZAKAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register now for Zakat in less than 5 minutes.
+        /// </summary>
+        public static string NDRegZakatin5mins {
+            get {
+                return ResourceManager.GetString("NDRegZakatin5mins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reporter Information.
         /// </summary>
         public static string NDReporterInformation {
@@ -6592,6 +6610,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, you have a Registration Change Application saved in draft mode, do you want to discard it and proceed for Deregistration Application?.
+        /// </summary>
+        public static string TinDeregistrationChangeApplicationInDraftError {
+            get {
+                return ResourceManager.GetString("TinDeregistrationChangeApplicationInDraftError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close all Outlets.
         /// </summary>
         public static string TinDeregistrationCloseAllOutlets {
@@ -6642,6 +6669,15 @@ namespace EGAZT {
         public static string TinDeregistrationDesignation {
             get {
                 return ResourceManager.GetString("TinDeregistrationDesignation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Details.
+        /// </summary>
+        public static string TinDeregistrationDetails {
+            get {
+                return ResourceManager.GetString("TinDeregistrationDetails", resourceCulture);
             }
         }
         
@@ -8845,6 +8881,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Contract is released successfully.
+        /// </summary>
+        public static string VFCChangeFillingSuccessSubmitted {
+            get {
+                return ResourceManager.GetString("VFCChangeFillingSuccessSubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I agree with these instructions and process further.
+        /// </summary>
+        public static string VFCCheckBoxDesc {
+            get {
+                return ResourceManager.GetString("VFCCheckBoxDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact Person Name.
         /// </summary>
         public static string VFCContactPersonName {
@@ -8908,6 +8962,19 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1. Check eligibility and review potential consequences of request
+        ///− For taxpayers &lt;40M SAR annual taxable revenues requesting monthly VAT Tax Period:
+        ///Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years with a monthly Tax Period with the last 12 months revenues being below SAR 40M
+        ///− For taxpayers &lt;40M SAR annual taxable revenues requesting quarterly VAT Tax Period:
+        ///Taxpayer is required to provide evidence that he has been [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string VFCInstructions {
+            get {
+                return ResourceManager.GetString("VFCInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Iqama ID.
         /// </summary>
         public static string VFCIqamaID {
@@ -8917,11 +8984,38 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Monthly.
+        /// </summary>
+        public static string VFCMonthly {
+            get {
+                return ResourceManager.GetString("VFCMonthly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to National ID.
         /// </summary>
         public static string VFCNationalID {
             get {
                 return ResourceManager.GetString("VFCNationalID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quarterly.
+        /// </summary>
+        public static string VFCQuarterly {
+            get {
+                return ResourceManager.GetString("VFCQuarterly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your VAT Filling Frequency change request is successfully submitted.
+        /// </summary>
+        public static string VFCSuccessDesc {
+            get {
+                return ResourceManager.GetString("VFCSuccessDesc", resourceCulture);
             }
         }
         

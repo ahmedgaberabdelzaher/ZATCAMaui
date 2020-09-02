@@ -4374,6 +4374,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="AccountUnlockedCompleteRequiedFields" xml:space="preserve">
     <value>Kindly complete the required fields to be able to proceed.</value>
   </data>
+  <data name="TinDeregistrationDetails" xml:space="preserve">
+    <value>Registration Details</value>
+  </data>
+  <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
+    <value>Dear Taxpayer, you have a Registration Change Application saved in draft mode, do you want to discard it and proceed for Deregistration Application?</value>
+  </data>
   <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
   </data>
@@ -5591,7 +5597,7 @@ Applicant should ensure that there is no pending return filing or any outstandin
   <data name="ChangeFillingPeriodNewFrequency" xml:space="preserve">
     <value>New Frequency</value>
   </data>
-  <data name="ChangeFillingPeriodTitle" xml:space="preserve">
+  <data name="ChangeFillingPeriod" xml:space="preserve">
     <value>VAT Filling Frequency</value>
   </data>
   <data name="ChangeFillingPeriodAttachmentsOtherDocuments" xml:space="preserve">
@@ -6617,13 +6623,13 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   </data>
   <data name="ESTMuhayilAsirOffice" xml:space="preserve">
     <value>Muhayil Asir Office</value>
-    </data>
-     <data name="Gregorian" xml:space="preserve">
+  </data>
+  <data name="Gregorian" xml:space="preserve">
     <value>Gregorian</value>
-    </data>
-     <data name="Hijri" xml:space="preserve">
+  </data>
+  <data name="Hijri" xml:space="preserve">
     <value>Hijri</value>
-    </data>
+  </data>
   <data name="ZZZZNoIdNumberMsg" xml:space="preserve">
     <value>There is no corresponding ID Number for the selected ID type</value>
   </data>
@@ -6633,6 +6639,35 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ZZZZPleaseSelectTheIbanMsg" xml:space="preserve">
     <value>Please select the preferred IBAN Number</value>
   </data>
-
-  
+  <data name="VFCChangeFillingSuccessSubmitted" xml:space="preserve">
+    <value>Your Contract is released successfully</value>
+  </data>
+  <data name="VFCInstructions" xml:space="preserve">
+    <value>1. Check eligibility and review potential consequences of request
+− For taxpayers &lt;40M SAR annual taxable revenues requesting monthly VAT Tax Period:
+Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years with a monthly Tax Period with the last 12 months revenues being below SAR 40M
+− For taxpayers &lt;40M SAR annual taxable revenues requesting quarterly VAT Tax Period:
+Taxpayer is required to provide evidence that he has been filing for 2 years with a monthly Tax Period and that revenues during last 12 months were below Riyal 40M
+− Exception: quarterly VAT tax period for taxpayers &gt;40M SAR annual taxable revenues: Might be granted by GAZT if taxpayer provides evidence that average Days Sales Outstanding for the previous 12 months have been significantly greater than VAT tax period and are hence severely affecting the taxpayer’s cash flow.
+2. Fill out the request form and submit
+− Upload required documentation if taxpayer wants to change to quarterly filing</value>
+  </data>
+  <data name="VFCCheckBoxDesc" xml:space="preserve">
+    <value>I agree with these instructions and process further</value>
+  </data>
+  <data name="VFCQuarterly" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+  <data name="VFCMonthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="VFCSuccessDesc" xml:space="preserve">
+    <value>Your VAT Filling Frequency change request is successfully submitted</value>
+  </data>
+  <data name="NDRegisterZAKAT" xml:space="preserve">
+    <value>Register in ZAKAT</value>
+  </data>
+  <data name="NDRegZakatin5mins" xml:space="preserve">
+    <value>Register now for Zakat in less than 5 minutes</value>
+  </data>
 </root>

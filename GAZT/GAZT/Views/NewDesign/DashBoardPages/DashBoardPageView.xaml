@@ -143,7 +143,7 @@
                                 <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="StartAndExpand">
                                 </Image>
 
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="Register in ZAKAT" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.NDRegisterZAKAT}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
 
                                 <Image Grid.Row="0" Grid.Column="2" Source="WhiteCircle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                                     <Image.GestureRecognizers>
@@ -151,7 +151,7 @@
                                     </Image.GestureRecognizers>
                                 </Image>
 
-                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="Register now for Zakat in less than 5 minutes" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
+                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
                             </Grid>
                             <StackLayout>
                                 <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
@@ -467,6 +467,16 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
+                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image Source="refund">
+                                    </Image>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>-->
+
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="ic_Installplan.png">
                                     </Image>
@@ -526,17 +536,15 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                              
-
-                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">
                                     </Image>
-                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodTitle}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" />-->
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="menu_return">

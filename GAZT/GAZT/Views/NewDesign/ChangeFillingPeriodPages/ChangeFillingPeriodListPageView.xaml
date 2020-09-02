@@ -54,7 +54,7 @@
                             <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="1" Grid.Row="0"
-                               Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodTitle}"
+                               Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}"
                                TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"
                                FontSize="Large" />
                         <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}"
@@ -97,14 +97,39 @@
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyRequests}" HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlack}" />
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="1 VAT Change Filling Period Request" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}"/>
+                        
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                     </Grid>
 
+                     <Grid Grid.Row="1"   BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                    <cards:SfCardView Grid.Row="1" Margin="0,20,0,0" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
+                     <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <border:SfBorder Grid.Row="0" CornerRadius="15" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" Padding="12" HasShadow="true" Style="{StaticResource GreyBorderFrameWithShadow}" >
+                            <Grid >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodButtonText}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding MyRequestsButtonTapped}"></TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </border:SfBorder>
+
+                         </Grid>
+
+
+                    <!--<cards:SfCardView Grid.Row="1" Margin="0,20,0,0" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
 
                         <Grid >
                             <Grid.RowDefinitions>
@@ -120,8 +145,9 @@
                                 <TapGestureRecognizer Command="{Binding MyRequestsButtonTapped}"> </TapGestureRecognizer>
                             </Grid.GestureRecognizers>
                         </Grid>
+
                         
-                    </cards:SfCardView>
+                    </cards:SfCardView>-->
 
                     <Grid Grid.Row="2" VerticalOptions="Start">
 
@@ -129,38 +155,54 @@
                                       ItemsSource="{Binding MyRequestsListViewData}" ItemTapped="Request_Item_Tapped" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView  Margin="0,15,0,0" Padding="7" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
-                                    
-                                        <Grid Padding="0" Margin="10,5,10,0" ColumnSpacing="0" RowSpacing="0">
+                                    <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0" HasShadow="True" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <Grid Padding="0" RowSpacing="0" Margin="0">
                                         
-                                            <Grid.RowDefinitions >
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
+                                             <Grid.RowDefinitions >
                                                 <RowDefinition Height="auto"/>
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
-
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="0" Orientation="Vertical" HorizontalOptions="StartAndExpand">
+
+
+                                            <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Spacing="0" Orientation="Vertical" HorizontalOptions="StartAndExpand">
 
                                                 <custom:CustomLabel Text="{Binding FbtText}" Style="{StaticResource SectionTitleBlackBold}"  HorizontalOptions="StartAndExpand" Margin="0" Padding="0"/>
-                                                <custom:CustomLabel Text="{Binding Fbnum}" HorizontalOptions="StartAndExpand" Margin="0" Padding="0"
-                                                            Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+
 
                                             </StackLayout>
 
 
-                                            <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End">
-                                                <cards:SfCardView  CornerRadius="15" HasShadow="False" BackgroundColor="{StaticResource NeturalInProgress}"
-                                                              BorderColor="Gold" BorderWidth="0.5" HorizontalOptions="Center" Padding="5" VerticalOptions="Center">
-                                                    <custom:CustomLabel Text="{Binding FbustTxt}" HorizontalOptions="Center"
-                                                        Style="{StaticResource GAZTSmallGoldLabelStyle}" FontAttributes="Bold"/>
-                                                </cards:SfCardView>
+                                            <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
+
+                                                <Label  Text="{Binding Fbnum}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" 
+                                                       HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                               
                                             </StackLayout>
+                                           <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                                               
+
+                                                <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="#E5EFED"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
+                                                    
+                                                    <Label Style="{StaticResource CaptionLabelBlack}" TextColor="DarkGoldenrod" Text="{Binding FbustTxt}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                        <Label.Triggers>
+
+                                                             <DataTrigger TargetType="Label" Binding="{Binding FbustTxt}" Value="{x:Static ResourceManager:AppResources.NDBilled}">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.NDBilled}" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                                                            </DataTrigger>
+                                                        </Label.Triggers>
+                                                    </Label>
+                                                </yummy:PancakeView>
+                                            </StackLayout>
+
+
+                                           
 
                                             <!--<BoxView Grid.Row="1" Grid.Column="0" Margin="0,8,0,8" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
@@ -195,7 +237,7 @@
                                             </StackLayout>-->
 
                                         </Grid>
-                                    </cards:SfCardView>
+                                       </border:SfBorder>
 
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
@@ -317,7 +359,7 @@
                         <!-- Attachments Section -->
 
                        
-                        <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.ColumnSpan="2"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <border:SfBorder  Margin="0,16,0,10" Grid.Row="4" Grid.ColumnSpan="2"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
 
                             <StackLayout Padding="0">
 
@@ -339,7 +381,14 @@
                                     <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1" Padding="8,0">
                                         <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachments}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                     </StackLayout>
-                                    
+                                    <StackLayout HorizontalOptions="Center" Grid.Row="0" Grid.Column="2" Padding="8,0">
+                                        <Label Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryEdit}"
+                                           VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Medium">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GoBackToAttachments}" ></TapGestureRecognizer>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </StackLayout>
                                 </Grid>
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
@@ -369,7 +418,7 @@
                                 </Grid>
                                 
                                 <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
-                                      ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                      ItemsSource="{Binding YearsattachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
                                                 <Grid Padding="0" RowSpacing="0">
@@ -381,7 +430,65 @@
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
                                                     <Grid Grid.Row="0" Grid.Column="0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.CRAttachContract}"
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwoYears}"
+                                                               HorizontalOptions="Start"
+                                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                                    </Grid>
+
+                                                    <Grid Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="{Binding Filename}"
+                                                               HorizontalOptions="End"
+                                                               Style="{StaticResource BodyLabelBlack}" />
+                                                    </Grid>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+                                    </listView:SfListView>
+                                
+                                <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
+                                      ItemsSource="{Binding MonthsattachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                        <listView:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Padding="0" RowSpacing="0">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwelveMonths}"
+                                                               HorizontalOptions="Start"
+                                                               Style="{StaticResource BodyLabelGrey}" />
+
+                                                    </Grid>
+
+                                                    <Grid Grid.Row="0" Grid.Column="1">
+                                                        <Label Text="{Binding Filename}"
+                                                               HorizontalOptions="End"
+                                                               Style="{StaticResource BodyLabelBlack}" />
+                                                    </Grid>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+                                    </listView:SfListView>
+                                
+                                <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" 
+                                      ItemsSource="{Binding OtherAttachmentsListViewData}" SelectionMode="None" SelectionBackgroundColor="Transparent">
+                                        <listView:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Padding="0" RowSpacing="0">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Row="0" Grid.Column="0">
+                                                        <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsOtherDocuments}"
                                                                HorizontalOptions="Start"
                                                                Style="{StaticResource BodyLabelGrey}" />
 
