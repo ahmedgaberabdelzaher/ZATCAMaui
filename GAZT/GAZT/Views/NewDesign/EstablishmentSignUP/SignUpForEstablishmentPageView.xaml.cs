@@ -44,6 +44,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             viewModel.IsAllValidDataEntered = false;
+            viewModel.IsAllValidCRNumberEntered = false;
             viewModel.IsDeclarationCheckedForInstruction = false;
             ChangeAeroIcon();
             SetLTR();
@@ -458,6 +459,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 else
                                 {
                                     FrmCR.HasError = false;
+                                    viewModel.IsAllValidCRNumberEntered = true;
                                 }
                             }
                         }
@@ -3521,19 +3523,19 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber))
             {
                 FrmLicenseNumber.HasError = true;
-                viewModel.IsAllValidCRNumberEntered = false;
+                viewModel.IsAllValidDataEntered = false;
 
                 // IsNextValid = false;
             }
             else if(viewModel.TxtLicenseNumber.Length < 15)
             {
                 FrmLicenseNumber.HasError = true;
-                viewModel.IsAllValidCRNumberEntered = false;
+                viewModel.IsAllValidDataEntered = false;
 
             }
             else
             {
-                viewModel.IsAllValidCRNumberEntered = true;
+                viewModel.IsAllValidDataEntered = true;
 
                 FrmLicenseNumber.HasError = false;
             }
