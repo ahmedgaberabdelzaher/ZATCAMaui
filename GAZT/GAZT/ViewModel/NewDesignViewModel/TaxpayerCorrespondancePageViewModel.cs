@@ -633,6 +633,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void SetAllCorrespondancedata()
         {
             ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListAllCorrespondance) ;
+            if (ListToDisplay != null)
+            {
+                ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+            }
         }
         public async void ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
         {
@@ -664,6 +668,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.Where(x => x.IsFav==true).ToList());
                     }
                 }
+            if (ListToDisplay != null)
+            {
+                ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
+            }
+            
         }
             #endregion
     }
