@@ -255,7 +255,7 @@
                                                             <ColumnDefinition Width="*"/>
                                                             <ColumnDefinition Width="auto"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                        <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
                                                         <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0"
                                                                             Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
                                                                             HorizontalTextAlignment="Start" />
@@ -886,7 +886,7 @@
                                                             <ColumnDefinition Width="*"/>
                                                             <ColumnDefinition Width="auto"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                        <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
                                                         <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0"
                                                                             Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
                                                                             HorizontalTextAlignment="Start" />
@@ -1067,7 +1067,7 @@
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="{x:Static ResourceManager:AppResources.ESTResidencyStatus}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="{Binding SelectedTpresidence, Converter={StaticResource residentialStatusConverter}}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <buttons:SfChip Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" ShowIcon="True" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Transparent" 
-                                                        ImageSource="newui_ic_pdf.png" Text="File1.pdf" ImageAlignment="End" ImageWidth="24" TextColor="{StaticResource NeutralBlack}" />
+                                                        ImageSource="Generic_attachment_icon.png" Text="File1.pdf" ImageAlignment="End" ImageWidth="24" TextColor="{StaticResource NeutralBlack}" />
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>
