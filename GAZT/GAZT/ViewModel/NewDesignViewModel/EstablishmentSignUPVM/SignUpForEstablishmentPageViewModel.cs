@@ -1572,7 +1572,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-        private bool _isAllValidDataEntered = true;
+        private bool _isAllValidDataEntered = false;
         public bool IsAllValidDataEntered
         {
             get
@@ -1731,6 +1731,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     NextBTN = AppResources.ZZZZContinue;
                     CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
                     //StartTimer(0, 2, 0);
+                    //ResendOTPAsync();
                     TimerStart(numberOfSeconds);
                     break;
 
