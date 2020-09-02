@@ -24,9 +24,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         }
 
-        protected override void OnAppearing()
+        protected override async  void OnAppearing()
         {
             base.OnAppearing();
+
+          
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+
+            });
             if (App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
@@ -37,10 +44,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-        private void OnEstablishmentTapped(object sender, EventArgs e)
+        private async void OnEstablishmentTapped(object sender, EventArgs e)
         {
-            viewModel.IndividualBackImg = "FP_unselected_tile.png";
-            viewModel.EstablishmentBackImg = "FP_selected_tile.png";
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+                viewModel.IndividualBackImg = "FP_unselected_tile.png";
+                viewModel.EstablishmentBackImg = "FP_selected_tile.png";
+
+            });
+
             //viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -49,10 +62,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             });
         }
 
-        private void OnIndividualTapped(object sender, EventArgs e)
+        private async  void OnIndividualTapped(object sender, EventArgs e)
         {
-            viewModel.IndividualBackImg = "FP_selected_tile.png";
-            viewModel.EstablishmentBackImg = "FP_unselected_tile.png";
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+                viewModel.IndividualBackImg = "FP_selected_tile.png";
+                viewModel.EstablishmentBackImg = "FP_unselected_tile.png";
+
+            });
 
             Device.BeginInvokeOnMainThread(() =>
             {
