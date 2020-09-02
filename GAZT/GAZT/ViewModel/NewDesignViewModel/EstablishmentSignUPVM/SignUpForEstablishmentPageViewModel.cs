@@ -1140,6 +1140,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("TxtCountryCode");
             }
         }
+
+        private string _txtMobileNumberwithCountryCode = string.Empty;
+        public string TxtMobileNumberwithCountryCode
+        {
+            get
+            {
+                return _txtMobileNumberwithCountryCode;
+            }
+            set
+            {
+                _txtMobileNumberwithCountryCode = value;
+                RaisePropertyChanged("TxtMobileNumberwithCountryCode");
+            }
+        }
+
+
         public string _idNumber;
         public string IdNumber
         {

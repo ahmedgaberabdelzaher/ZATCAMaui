@@ -43,6 +43,9 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <Grid>
+            
+       
         <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,16,24,24">
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
@@ -859,13 +862,13 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <!--<Frame Style="{StaticResource circleFrame}">
+                                    <Frame Style="{StaticResource circleFrame}">
                                         <Image Margin="0" Source="ic_vat_return.png">
 
  
 
                                         </Image>
-                                    </Frame>-->
+                                    </Frame>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZIndividualInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                 </StackLayout>
 
@@ -921,12 +924,12 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <!--<Frame Style="{StaticResource circleFrame}">
+                                    <Frame Style="{StaticResource circleFrame}">
                                         <Image Margin="0" Source="ic_vat_return.png">
 
 
                                         </Image>
-                                    </Frame>-->
+                                    </Frame>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZBusinessInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                 </StackLayout>
 
@@ -988,13 +991,13 @@
                         <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="10">
-                                    <!--<Frame Style="{StaticResource circleFrame}">
+                                    <Frame Style="{StaticResource circleFrame}">
                                         <Image Margin="0" Source="ic_vat_return.png">
 
  
 
                                         </Image>
-                                    </Frame>-->
+                                    </Frame>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
                                 </StackLayout>
 
@@ -1014,7 +1017,7 @@
 
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding TxtMobileNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Text="{Binding TxtMobileNumberwithCountryCode}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </StackLayout>
 
 
@@ -1044,29 +1047,7 @@
                     <BoxView Style="{StaticResource SeparatorStyle}"/>
                 </StackLayout>
 
-                <Grid Grid.Row="0" Grid.RowSpan="4"
-                      Grid.Column="0"
-                      IsVisible="{Binding IsLoading}"
-                      HorizontalOptions="Center"
-                      VerticalOptions="Center">
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                    </StackLayout>
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70"
-
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70"
-                                       TextColor="#D99A29"/>
-                        </StackLayout>
-                    </StackLayout>
-                </Grid>
+               
 
 
 
@@ -1096,7 +1077,32 @@
                         </Image>
                     </StackLayout>
                 </Grid>
+
+               
             </Grid>
         </yummy:PancakeView>
+
+
+
+            <Grid Grid.Row="0"   IsVisible="{Binding IsLoading}" Margin="0,-20,0,0">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70"
+                                        
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70"
+                                       TextColor="#D99A29"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
