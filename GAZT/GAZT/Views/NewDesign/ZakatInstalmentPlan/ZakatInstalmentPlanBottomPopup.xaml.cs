@@ -29,7 +29,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             this.FlowDirection = FlowDirection.LeftToRight;
         }
 
-       
+
 
         //private void Close_Tapped(object sender, EventArgs e)
         //{
