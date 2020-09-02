@@ -1005,8 +1005,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
-            CurrentIndex = (int)EstablishmentRegistrationTabsEnum.PassportDetails;
+            currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+            CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
 
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());

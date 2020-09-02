@@ -687,6 +687,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             validateCR.Crnum = CRNum;
                         }
                     }
+                    else
+                    {
+                        validateCR = null;
+                    }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
