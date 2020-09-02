@@ -5719,7 +5719,7 @@
   <data name="ZZZDBTaxEvasion" xml:space="preserve">
     <value>إبلاغ عن تهرب</value>
   </data>
-   <data name="ChangeFillingPeriod" xml:space="preserve">
+  <data name="ChangeFillingPeriod" xml:space="preserve">
     <value>فترة تقديم إقرارات ضريبة القيمة المضافة</value>
   </data>
   <data name="ContractRelease" xml:space="preserve">
@@ -6587,6 +6587,6 @@
     <value>Register in ZAKAT</value>
   </data>
   <data name="NDRegZakatin5mins" xml:space="preserve">
-    <value>Register now for Zakat in less than 5 minutes</value>
+    <value>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</value>
   </data>
 </root>
