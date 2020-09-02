@@ -1,4 +1,5 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -69,17 +70,19 @@ namespace EGAZT.Views.NewDesign.VATLookUp
         {
             if (viewModel.SelectedParameterType != null)
             {
-                PopUp popUp = new PopUp();//SetPlaceholderText();
-                popUp.Message = viewModel.VATACCOrCRNOOrVATCER;
-                if (App.IsArabic)
-                {
-                    popUp.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    popUp.FlowDirections = "LeftToRight";
-                }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                //PopUp popUp = new PopUp();//SetPlaceholderText();
+                //popUp.Message = viewModel.VATACCOrCRNOOrVATCER;
+                //if (App.IsArabic)
+                //{
+                //    popUp.FlowDirections = "RightToLeft";
+                //}
+                //else
+                //{
+                //    popUp.FlowDirections = "LeftToRight";
+                //}
+                //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(viewModel.VATACCOrCRNOOrVATCER));
+
             }
         }
 
