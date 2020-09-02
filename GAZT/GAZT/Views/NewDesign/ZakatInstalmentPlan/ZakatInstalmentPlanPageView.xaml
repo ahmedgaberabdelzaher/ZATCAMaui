@@ -1481,11 +1481,15 @@
                 <!-- Code for Zakat & VAT Attachments -->
 
 
+
                 <Grid IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
@@ -1501,8 +1505,13 @@
                         <BoxView Grid.Row="2" Margin="0,15,0,0" Grid.Column="0" BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1"/>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                        <listView:SfListView  x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                      ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" SelectionChanged="attachmentsListView_SelectionChanged">
+                        <listView:SfListView  x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False"
+                                              IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                              ItemsSource="{Binding BankStatementsAttachmentsListViewData}"
+                                              SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent"
+                                              SelectionChanged="attachmentsListView_SelectionChanged"
+                                               TapCommand="{Binding BankStatementsAttachmentTapped}">
+                           
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid HeightRequest="200">
@@ -1514,8 +1523,8 @@
                                             <Label Text="{Binding FieldTitle}" HorizontalOptions="StartAndExpand"
                                                                 Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />
 
-                                            <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
-                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1" 
+                                            <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0"
+                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
 
                                                 <Entry Style="{StaticResource EntryStyle}" Text="{Binding Filename}" HorizontalTextAlignment="Start" />
@@ -1545,7 +1554,7 @@
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <custom:CustomLabel Grid.Row="0"
-                                            Text="{x:Static ResourceManager:AppResources.VRNewAttachment}"
+                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentBankSettlement}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyle}" />
                         <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
@@ -1570,17 +1579,103 @@
                                 </Image>
                             </Grid>
                         </border:SfBorder>
-                        <custom:CustomLabel Grid.Row="2" 
+                        <custom:CustomLabel Grid.Row="2"
                                             Text="{x:Static ResourceManager:AppResources.VR20MB}"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyle}" />
 
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NewAttachmentTapped}"/>
+                            <TapGestureRecognizer Command="{Binding BankStatementsAttachmentTapped}"/>
                         </Grid.GestureRecognizers>
 
                     </Grid>
-                    <Grid Grid.Row="3" VerticalOptions="End" Grid.Column="0" Grid.ColumnSpan="2">
+
+                    <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                        <listView:SfListView   HorizontalOptions="Center" IsScrollBarVisible="False"
+                                              IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                              ItemsSource="{Binding FinanceAttachmentsListViewData}"
+                                              SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent"
+                                               TapCommand="{Binding FinanceAttachmentTapped}">
+
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HeightRequest="200">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Grid.Row="0" Orientation="Vertical">
+                                            <Label Text="{Binding FieldTitle}" HorizontalOptions="StartAndExpand"
+                                                                Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />
+
+                                            <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0"
+                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+                                        OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
+
+                                                <Entry Style="{StaticResource EntryStyle}" Text="{Binding Filename}" HorizontalTextAlignment="Start" />
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Image HorizontalOptions="Center" VerticalOptions="Center" Rotation="90">
+                                                        <Image.Source>
+                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                                 Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
+                                                        </Image.Source>
+
+                                                    </Image>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+                                        <Label Grid.Row="1" Text="Test" HorizontalOptions="StartAndExpand"
+                                           Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />
+                                    </Grid>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+                    </Grid>
+
+                    <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <custom:CustomLabel Grid.Row="0"
+                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachmentFInancialStatement}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+                        <border:SfBorder Grid.Row="1" Margin="0,0,0,10" Padding="10"
+                                         Style="{StaticResource SfStyleGreyBorderFrame}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VRUploadYourDocument}"
+                                                    FontSize="Small" TextColor="Black"
+                                                    HorizontalOptions="FillAndExpand" />
+                                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
+                                       Rotation="90">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                                         Glyph="{x:Static FontImage:IconFonts.Attachment}" />
+                                    </Image.Source>
+                                </Image>
+                            </Grid>
+                        </border:SfBorder>
+                        <custom:CustomLabel Grid.Row="2"
+                                            Text="{x:Static ResourceManager:AppResources.VR20MB}"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" />
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FinanceAttachmentTapped}"/>
+                        </Grid.GestureRecognizers>
+
+                    </Grid>
+
+                    <Grid Grid.Row="5" VerticalOptions="End" Grid.Column="0" Grid.ColumnSpan="2">
                         <StackLayout>
                             <buttons:SfButton  Margin="0,16,0,16"  x:Name="btnAttachmentContinue" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}" Command="{Binding AttachmentsContinueBtnTapped}"/>
@@ -1588,8 +1683,6 @@
                     </Grid>
 
                 </Grid>
-
-
 
 
 
@@ -2111,7 +2204,7 @@
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPeriodicInstalment}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                                    <custom:CustomLabel  Text="{Binding TotalAmountSAR}" HorizontalOptions="EndAndExpand"
+                                    <custom:CustomLabel  Text="{Binding PeriodicInstalment}" HorizontalOptions="EndAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}" VerticalTextAlignment="Center"/>
 
                                 </StackLayout>
