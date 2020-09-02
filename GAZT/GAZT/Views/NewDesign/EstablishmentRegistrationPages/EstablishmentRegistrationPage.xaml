@@ -24,6 +24,8 @@
             <converters:EstablishmentTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:EstablishmentFinanicalMethodsToVisibilityConverter x:Key="methodToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
+            <converters:ESTOutletDeleteActionVisibilityConverter x:Key="deleteActionVisibilityConverter" />
+            <converters:ESTresidentialStatusConverter x:Key="residentialStatusConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -930,7 +932,7 @@
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding Actnm}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
                                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Crlicenceno}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,-12,0,0"/>
-                                        <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding Actno, Converter={StaticResource deleteActionVisibilityConverter}}">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnDeleteOutletButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
                                             </Image.GestureRecognizers>
@@ -1033,7 +1035,11 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center">
+                                        <custom:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}" NumberOfTapsRequired="1" />
+                                        </custom:CustomLabel.GestureRecognizers>
+                                    </custom:CustomLabel>
                                 </Grid>
                                 <StackLayout Orientation="Vertical" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}}">
                                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}" Margin="0,0,0,16" />
@@ -1059,7 +1065,7 @@
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="3" Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="3" Text="{Binding SelectedRegNationalityType}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="4" Text="{x:Static ResourceManager:AppResources.ESTResidencyStatus}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="Rent/own a house more than 30 days" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <custom:CustomLabel Grid.Column="1" Grid.Row="4" Text="{Binding SelectedTpresidence, Converter={StaticResource residentialStatusConverter}}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <buttons:SfChip Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" ShowIcon="True" HorizontalOptions="End" VerticalOptions="End" BackgroundColor="Transparent" 
                                                         ImageSource="newui_ic_pdf.png" Text="File1.pdf" ImageAlignment="End" ImageWidth="24" TextColor="{StaticResource NeutralBlack}" />
                                     </Grid>
@@ -1088,7 +1094,11 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center">
+                                        <custom:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}" NumberOfTapsRequired="1" />
+                                        </custom:CustomLabel.GestureRecognizers>
+                                    </custom:CustomLabel>
                                 </Grid>
                                 <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}}">
                                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}" Margin="0,0,0,16"/>
@@ -1180,7 +1190,11 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center">
+                                        <custom:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}" NumberOfTapsRequired="1" />
+                                        </custom:CustomLabel.GestureRecognizers>
+                                    </custom:CustomLabel>
                                 </Grid>
                                 <StackLayout Orientation="Vertical" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}}">
                                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}" Margin="0,0,0,16"/>
@@ -1191,13 +1205,19 @@
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="*"/>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ESTPassportNumberLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="0" Text="{Binding PassportNumber}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ESTAttachmentPassportDetails}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
-                                        <custom:CustomLabel Grid.Column="1" Grid.Row="1" Text="File2.pdf" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                        <StackLayout Grid.Column="1" Grid.Row="1" BindableLayout.ItemsSource="{Binding UploadedPassportDocumentsList}">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <custom:CustomLabel Text="{Binding Filename}" HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
                                         <custom:CustomLabel Grid.Column="0" Grid.Row="2" Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" HorizontalOptions="Start" Style="{StaticResource BodyLabelGrey}" />
                                         <custom:CustomLabel Grid.Column="1" Grid.Row="2" Text="{Binding PassportIssueDate}"  HorizontalOptions="End" Style="{StaticResource ValueLabelBlack}" />
                                     </Grid>
@@ -1223,7 +1243,11 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center">
+                                        <custom:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}" NumberOfTapsRequired="1" />
+                                        </custom:CustomLabel.GestureRecognizers>
+                                    </custom:CustomLabel>
                                 </Grid>
                                 <StackLayout Orientation="Vertical" BindableLayout.ItemsSource="{Binding OutletData}" HorizontalOptions="Fill" VerticalOptions="Start" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}">
                                     <BindableLayout.ItemTemplate>
@@ -1272,7 +1296,11 @@
                                             <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}" NumberOfTapsRequired="1" />
                                         </custom:CustomLabel.GestureRecognizers>
                                     </custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Grid.Column="2" Text="{x:Static ResourceManager:AppResources.ESTEdit}" Style="{StaticResource ValueLabelPrimary}" VerticalOptions="Center">
+                                        <custom:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}" NumberOfTapsRequired="1" />
+                                        </custom:CustomLabel.GestureRecognizers>
+                                    </custom:CustomLabel>
                                 </Grid>
                                 <StackLayout Orientation="Vertical" IsVisible="{Binding SummaryExpendedCard, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}}">
                                     <BoxView HeightRequest="1" BackgroundColor="{StaticResource NeutralLightGrey}" Margin="0,0,0,16" />
@@ -1305,7 +1333,7 @@
                                 </StackLayout>
                             </StackLayout>
                         </cards:SfCardView>
-                        <buttons:SfCheckBox HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" LineBreakMode="WordWrap" Visual="Material" CheckedColor="{StaticResource Primary}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="{StaticResource NeutralBlack}"
+                        <buttons:SfCheckBox IsChecked="{Binding ESTLedge}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" LineBreakMode="WordWrap" Visual="Material" CheckedColor="{StaticResource Primary}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="{StaticResource NeutralBlack}"
                                             Text="{x:Static ResourceManager:AppResources.ESTPledgeLabel}" />
                     </StackLayout>
                 </ScrollView>

@@ -916,6 +916,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
+        private bool _eSTLedge = false;
+        public bool ESTLedge
+        {
+            get => _eSTLedge;
+            set
+            {
+                _eSTLedge = value;
+                RaisePropertyChanged(nameof(ESTLedge));
+            }
+        }
         #endregion
 
         #endregion
@@ -998,6 +1008,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         #region Summary Tabs commands
         public ICommand OnExpendGridViewClick { get; set; }
+        public ICommand OnEditPageViewClick { get; set; }
         #endregion
 
         #endregion
@@ -1005,8 +1016,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            currentTab = EstablishmentRegistrationTabsEnum.PassportDetails;
-            CurrentIndex = (int)EstablishmentRegistrationTabsEnum.PassportDetails;
+            currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+            CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
 
             OnNextButtonClick = new Command(() => navigateToNext());
             OnPreButtonClick = new Command(() => navigateToPre());
@@ -1124,6 +1135,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region Summary Tabs variable initialization
             OnExpendGridViewClick = new Command((_enum) => OnExpandCollapseGridViewClick(_enum));
+            OnEditPageViewClick = new Command((_enum) => {
+                currentTab = (EstablishmentRegistrationTabsEnum)_enum;
+            });
             OutletList.Clear();
             OutletList.Add("1");
             OutletList.Add("2");
@@ -1234,12 +1248,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
                 {
-                    currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
+                    if (FormValidation(currentTab))
+                    {
+                        currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
+                    }
+                    else
+                    {
+                        ShowValidationPopup(fillMandatory);
+
+                    }
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                    if (FormValidation(currentTab))
-                    {
+                   
                         if (await PushDatatoServer(currentTab))
                         {
                             currentTab = EstablishmentRegistrationTabsEnum.Declaration;
@@ -1248,12 +1269,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             ShowValidationPopup(failedMesage);
                         }
-                    }
-                    else
-                    {
-                        ShowValidationPopup(fillMandatory);
-
-                    }
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
@@ -1277,13 +1292,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
                 {
-                    if (await PushDatatoServer(currentTab))
+                    if (FormValidation(currentTab))
                     {
-                        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        if (await PushDatatoServer(currentTab))
+                        {
+                            _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        }
+                        else
+                        {
+                            ShowValidationPopup(failedMesage);
+                        }
                     }
                     else
                     {
-                        ShowValidationPopup(failedMesage);
+                        ShowValidationPopup(fillMandatory);
                     }
                 }
             }
@@ -1974,7 +1996,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             IsLoading = true;
             Console.WriteLine(item.ToString());
-            var delete = WebServiceManager.ESTDeleteOutletItem(item.Fbnumx, item.Actno, App.LoginDataRetrieved.Emailid);
+            var delete = WebServiceManager.ESTDeleteOutletItem(taxPayerDetails?.Fbnumx, item?.Actno, taxPayerDetails?.PortalUsrx);
             if (!string.IsNullOrEmpty(delete) && delete == "delete")
             {
                 bindingOutletList();
@@ -2159,18 +2181,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)
                 {
-
-
+                    if (OutletData.Count == 0)
+                    {
+                        return false;
+                    }
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-
-
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Declaration)
                 {
-
-
+                    if (!ESTLedge)
+                    {
+                        return false;
+                    }
                 }
 
             }
@@ -2282,7 +2306,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-
+                    return true;
                     //DateTime.TryParseExact(CommDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Commdt);
                     DateTime.TryParseExact(TaxDate, string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.EIsldate)), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
                     taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
@@ -2301,6 +2325,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Declaration)
                 {
+                    return true;
                     taxPayerDetails.Decfg = "X";
                     taxPayerDetails.Operationx = "01";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
