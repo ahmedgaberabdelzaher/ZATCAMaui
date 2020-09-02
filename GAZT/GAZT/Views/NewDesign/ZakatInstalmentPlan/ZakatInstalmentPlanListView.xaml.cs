@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
-using EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
+using static EGAZT.Models.ZakatInstalationModels.ZakatInstalmentPlanRequestListModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
@@ -73,10 +73,13 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 0)
             {
                 viewModel.EnableCreateZakatInstalment();
+                viewModel.GetZakatInstalmentPlanList();
+
             }
             else if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 1)
             {
                 viewModel.EnableRevokZakatInstalment();
+                viewModel.GetZakatRevokList();
             }
 
         }
@@ -97,10 +100,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         private void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-            /*var item = e.ItemData as Result31;
-            var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
-            viewModel.GetDetailsClicked(index);
-            viewModel.EnableVAtInstalmentSummary();*/
+            /*  var item = e.ItemData as Result;
+              var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
+              viewModel.GetSummaryDetailsClickedAsync(index);
+              viewModel.EnableZakatInstalmentSummary();*/
         }
 
 
@@ -108,5 +111,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
 
         }
+
+
+
     }
 }

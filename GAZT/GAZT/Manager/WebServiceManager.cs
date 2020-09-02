@@ -31,10 +31,12 @@ using ZakatForm5Model;
 using static GAZT.ErrorMessage;
 using Metadata = EGAZT.Models.ZakatInstalationModels.Metadata;
 using EGAZT.Models.VATInstalmentModels;
-using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using NotesSet = EGAZT.Models.NotesSet;
 using EGAZT.Models.ContractRelease;
 using EGAZT.Models.ChageFillingPeriodModel;
+using EGAZT.Models.ZakatInstalmentModels;
+using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
+using RequestToVATInstallmentPlanDetails = EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 
 namespace GAZT.Manager
 {
@@ -8282,7 +8284,7 @@ namespace GAZT.Manager
         //Request To VAT Installment Plan Details
         public static async Task<RequestToVATInstallmentPlanDetails> GetRequestToVATInstalmentPlanDetails(string euser, string formGuid)
         {
-            RequestToVATInstallmentPlanDetails _requestToVATInstallmentPlanDetails = new RequestToVATInstallmentPlanDetails();
+            RequestToVATInstallmentPlanDetails _requestToVATInstallmentPlanDetails = new EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails();
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -10876,6 +10878,392 @@ namespace GAZT.Manager
                 catch (GAZTErrorException ex)
                 {
                     throw new GAZTErrorException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        #endregion
+
+        #region Zakat
+        public async static Task<ZakatInstalmentPlanRequestListModel> GAZTGetZakatInstalmentPlanRequestList(string zuser, string fbguid, string euser1)
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ZakatInstalmentPlanRequestListModel _ZakatInstalmentPlanRequestList = new ZakatInstalmentPlanRequestListModel();
+                string NewToken = string.Empty;
+                try
+                {
+
+                    string callServ = "IPRA";
+                    zuser = "";
+                    euser1 = "null";
+                    string auditor = "null";
+                    string euser2 = "null";
+                    string euser3 = "null";
+                    string euser4 = "null";
+                    string euser5 = "null";
+                    fbguid = "";
+                    string userTyp = "TP";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+
+
+                    /// sap / opu / odata / SAP / ZDP_IPRF_WI_SRV / HdrSet(CallServ = 'IPRA', HostName = '', Zuser = 'ABURAKAN1385@GMAIL.COM', Bpnum = '', 
+                    //Auditor = 'null', Lang = 'E', Euser1 = '00000000001008320632', Euser2 = 'null', Euser3 = 'null', Euser4 = 'null', Euser5 = 'null',
+                    //Fbguid = '005056B1F8FB1EEAB9BB446F7D6CB7D2', 
+                    //UserTin = '', Fbnum = '', UserTyp = 'TP') ?$expand = WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet &$format = json
+
+
+                    String url = Constants.ZakatListOfInstalmentplanRequestUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
+                       "Auditor='" + auditor + "'," +
+                     "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
+                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "',UserTin='" + "',Fbnum='" + "',UserTyp='" + userTyp + "')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await client.GetAsync(uri);
+
+
+
+                    if (GAZTzakatInstalmentDataResponse != null)
+                    {
+                        if (GAZTzakatInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTzakatInstalmentDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        var _zakatInstalmentRequestData = GAZTzakatInstalmentDataResponse.Content.ReadAsStringAsync().Result;
+                        _ZakatInstalmentPlanRequestList = JsonConvert.DeserializeObject<ZakatInstalmentPlanRequestListModel>(_zakatInstalmentRequestData);
+
+                        if (!string.IsNullOrEmpty(_zakatInstalmentRequestData) && _ZakatInstalmentPlanRequestList.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatInstalmentRequestData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _ZakatInstalmentPlanRequestList;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        public async static Task<ZakatRevokeList> GAZTGetZakatRevokeList(string zuser, string fbguid, string euser1)
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ZakatRevokeList _zakatRevokeList = new ZakatRevokeList();
+                string NewToken = string.Empty;
+                try
+                {
+
+                    string callServ = "IPRR";
+                    zuser = "";
+                    euser1 = "null";
+                    string auditor = "null";
+                    string euser2 = "null";
+                    string euser3 = "null";
+                    string euser4 = "null";
+                    string euser5 = "null";
+                    fbguid = "";
+                    string userTyp = "TP";
+
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+
+                    //     / sap / opu / odata / SAP / ZDP_IPRF_WI_SRV / HdrSet(CallServ = 'IPRR', HostName = '',
+                    //Zuser = 'ABURAKAN1385@GMAIL.COM', Bpnum = '', Auditor = 'null', Lang = 'E', Euser1 = '00001000000008320614', Euser2 = 'null', Euser3 = 'null',
+                    //Euser4 = 'null', Euser5 = 'null', Fbguid = '005056B1F8FB1EEAB9BBAD0725EE38FF', UserTin = '', Fbnum = '', UserTyp = 'TP')
+                    // ?$expand = WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet &$format = json
+
+                    //
+                    String url = Constants.ZakatRevokeRequestListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
+                       "Auditor='" + auditor + "'," +
+                     "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
+                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "',UserTin='" + "',Fbnum='" + "',UserTyp='" + userTyp + "')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTzakatRevokeInstalmentDataResponse = await client.GetAsync(uri);
+
+
+                    if (GAZTzakatRevokeInstalmentDataResponse != null)
+                    {
+                        if (GAZTzakatRevokeInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTzakatRevokeInstalmentDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String _zakatRevokeInstalmentRequestData = GAZTzakatRevokeInstalmentDataResponse.Content.ReadAsStringAsync().Result;
+                        _zakatRevokeList = JsonConvert.DeserializeObject<ZakatRevokeList>(_zakatRevokeInstalmentRequestData);
+
+                        if (!string.IsNullOrEmpty(_zakatRevokeInstalmentRequestData) && _zakatRevokeList.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatRevokeInstalmentRequestData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _zakatRevokeList;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+
+
+        public async static Task<ZakatRequestDisplayModel> GAZTGetZakatRequestDisplayData(string fbnum, string status)
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ZakatRequestDisplayModel _zakatRequestDisplayModel = new ZakatRequestDisplayModel();
+                string NewToken = string.Empty;
+                try
+                {
+
+                    var summaryInputs = await GAZTGetZakatSummaryInputData(fbnum, status);
+
+                    string euser = "00000000000000000000";
+                    //         string fbguid = summaryInputs.d.Fbguid;
+                    string fbguid = "005056B1F8FB1EDABAF675538BB331C8";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet
+                    //    (Auditorz = '', Taxpayerz = '', Fbnumz = '', PeriodKeyz = '', Langz = 'E', Euser = '00000000000000000000',
+                    //Fbguid = '005056B1F8FB1EEAB9D3137F3DD4F7DA', Submitz = '', Savez = '', UserTin = '')
+                    //    ?&$expand = Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet
+
+                    String url = Constants.ZakatRequestDisplayUrl + "Auditorz='" + "'," +
+                "Taxpayerz='" + "',Fbnumz='" + "',PeriodKeyz='" + "',Langz='" + lang + "'," +
+                "Euser='" + euser + "',Fbguid='" + fbguid + "',Submitz='" + "',Savez='" + "',UserTin='" + "')?&$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTzakatDisplayResponse = await client.GetAsync(uri);
+
+
+
+                    if (GAZTzakatDisplayResponse != null)
+                    {
+                        if (GAZTzakatDisplayResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTzakatDisplayResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _zakatDisplayRequestData = GAZTzakatDisplayResponse.Content.ReadAsStringAsync().Result;
+                        _zakatRequestDisplayModel = JsonConvert.DeserializeObject<ZakatRequestDisplayModel>(_zakatDisplayRequestData);
+
+                        if (!string.IsNullOrEmpty(_zakatDisplayRequestData) && _zakatRequestDisplayModel.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatDisplayRequestData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _zakatRequestDisplayModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        // public static string GetZAKATSummaryInputURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/UserFillSet(";
+
+        public async static Task<ZakatSummaryInputModel> GAZTGetZakatSummaryInputData(string fbnum, string status)
+        {
+            ZakatSummaryInputModel _zakatSummaryInputModel = new ZakatSummaryInputModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+                    string fbtyp = "IPRF";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    /*https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/UserFillSet(Euser1='00000000000000000000',Fbguid='',Fbnum='010001119386',Fbtyp='IPRF',
+                     Gpart = '3100000567',Lang = 'EN',Persl = '',Status = 'IP014',TaxOffUid = '')?$format = json*/
+
+
+
+                    String url = Constants.GetZAKATSummaryInputURL + "Euser1='00000000000000000000',Fbguid='" + "',Fbnum='" + fbnum + "',Fbtyp='" + fbtyp + "'," +
+                     "Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',TaxOffUid='" + "')?$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage _zakatSumamryInputResponse = await client.GetAsync(uri);
+
+
+                    if (_zakatSumamryInputResponse != null)
+                    {
+                        if (_zakatSumamryInputResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _zakatSumamryInputResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String _ZakatSummaryInputData = _zakatSumamryInputResponse.Content.ReadAsStringAsync().Result;
+                        _zakatSummaryInputModel = JsonConvert.DeserializeObject<ZakatSummaryInputModel>(_ZakatSummaryInputData);
+
+
+
+                        if (!string.IsNullOrEmpty(_ZakatSummaryInputData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_ZakatSummaryInputData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                    }
+                    return _zakatSummaryInputModel;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception ex)
                 {

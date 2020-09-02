@@ -89,7 +89,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 {
                     Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = true; });
 
-                    await Clipboard.SetTextAsync("");
+                    await Clipboard.SetTextAsync(viewModel.ChangeFillingResponse.d.Fbnumz);
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();

@@ -5719,8 +5719,8 @@
   <data name="ZZZDBTaxEvasion" xml:space="preserve">
     <value>إبلاغ عن تهرب</value>
   </data>
-  <data name="ChangeFillingPeriod" xml:space="preserve">
-    <value>VAT Filling Frequency</value>
+   <data name="ChangeFillingPeriod" xml:space="preserve">
+    <value>فترة تقديم إقرارات ضريبة القيمة المضافة</value>
   </data>
   <data name="ContractRelease" xml:space="preserve">
     <value>الإفراج عن عقد</value>
