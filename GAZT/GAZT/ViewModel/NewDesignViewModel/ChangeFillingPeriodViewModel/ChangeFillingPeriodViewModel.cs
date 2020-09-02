@@ -535,7 +535,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             SelectedOutletOption = new ChangeFillingPeriodModel();
 
             genericDatePickerModel = new GenericDatePickerModel();
-            genericDatePickerModel.DatePickerTitle = "Select Date";
+            genericDatePickerModel.DatePickerTitle = AppResources.VatDeregDOBDatePickerTitle;
             genericDatePickerModel.PickerId = "DatePicker";
 
         }
@@ -577,7 +577,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 StringBuilder Messages = new StringBuilder();
                 if (!string.IsNullOrEmpty(IDNumber))
                 {
-                    if (IDType == AppResources.NationaID)
+                    if (IDType.Equals(AppResources.VFCNationalID))
                     {
                         if (IDNumber.Substring(0, 1) != "1")
                         {
@@ -636,7 +636,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
 
                     }
-                    if (IDType == AppResources.VFCIqamaID)
+                    if (IDType.Equals(AppResources.VFCIqamaID))
                     {
                         if (IDNumber.Substring(0, 1) != "2")
                         {
@@ -691,7 +691,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
 
                     }
-                    if (IDType == AppResources.VFCGCCID)
+                    if (IDType.Equals(AppResources.VFCGCCID))
                     {
 
                         if (IDNumber.Substring(0, 1) == "0")
