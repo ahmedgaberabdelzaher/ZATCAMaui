@@ -29,6 +29,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
         private void OnVATNowTapped(object sender, EventArgs e)
         {
 
@@ -149,6 +154,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
           //  viewModel._navigationService.GoBack();
           viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
            
+        }
+
+        private void OnZakatNowTapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

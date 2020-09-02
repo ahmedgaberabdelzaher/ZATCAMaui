@@ -17,8 +17,11 @@
         </ResourceDictionary>
     </pages:PopupPage.Resources>
     <yummy:PancakeView VerticalOptions="EndAndExpand" Style="{StaticResource CommonTopCurves}" BackgroundColor="{StaticResource NewDullOrangeColor}">
-        <Grid ColumnSpacing="16" RowSpacing="4">
+        <StackLayout>
+            <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsVatRegistrationTileVisible}">
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -28,10 +31,10 @@
                 <ColumnDefinition Width="*"/>
                 <!--<ColumnDefinition Width="auto"/>-->
             </Grid.ColumnDefinitions>
-            <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="StartAndExpand">
+            <Image x:Name="VATInfoImg" Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="StartAndExpand">
             </Image>
 
-            <custom:CustomLabel Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
+            <custom:CustomLabel x:Name="VATTitle" Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
 
             <!--<Image Grid.Row="0" Grid.Column="2" Source="WhiteCircle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
                 <Image.GestureRecognizers>
@@ -39,11 +42,38 @@
                 </Image.GestureRecognizers>
             </Image>-->
 
-            <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDLessThan5MinRegister}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
-            <buttons:SfButton x:Name="btnLogout" Grid.Row="2" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static ResourceManager:AppResources.ZLogout}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                <custom:CustomLabel x:Name="VATDecp" Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDLessThan5MinRegister}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
+            </Grid>
+
+            <!--Zakat Starts-->
+            <Grid ColumnSpacing="16" RowSpacing="4" IsVisible="{Binding IsEstablishmentRegistrationTileVisible}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                   
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="0" Grid.Column="0" Source="ic_White_info.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="StartAndExpand">
+                </Image>
+
+                <custom:CustomLabel Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Text="{x:Static ResourceManager:AppResources.NDRegisterZAKAT}" Style="{StaticResource SectionTitleBlack}" TextColor="White"/>
+
+                <!--<Image Grid.Row="0" Grid.Column="2" Source="WhiteCircle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnZakatNowTapped" NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>-->
+
+                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}" Style="{StaticResource BodyLabelBlack}" TextColor="White" LineSpacing="0.7" VerticalOptions="Center"/>
+            </Grid>
+            <!--Zakat Ends-->
+
+            <buttons:SfButton x:Name="btnLogout" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static ResourceManager:AppResources.ZLogout}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                     Clicked="btnLogout_Clicked" Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource PrimaryButtonStyle}"  />
-
-        </Grid>
+        </StackLayout>
     </yummy:PancakeView>
 </pages:PopupPage>
