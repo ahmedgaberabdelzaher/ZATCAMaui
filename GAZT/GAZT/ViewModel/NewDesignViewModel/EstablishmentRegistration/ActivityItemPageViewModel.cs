@@ -8,6 +8,7 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -650,36 +651,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
-                if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                if (ValidateForm())
                 {
-                    DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime crIssueDate);
-                    DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
-                    DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
-                    Nreg_ActivityItem item = new Nreg_ActivityItem
-                    {
-                        Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
-                        ValidDateFrom = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? crIssueDate : issueDate,
-                        ValidDateTo = maxDate,
-                        Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
-                        Country = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCountry.Land1 : LicenseIssueCountry.Land1,
-                        Institute = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? EnIssueBy.FirstOrDefault(i => i.Value == CRIssueBy).Key : EnIssueBy.FirstOrDefault(i => i.Value == LicenseIssueBy).Key,
-                        City = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityName : LicenseIssueCity.CityName,
-                        CityCode = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityCode : LicenseIssueCity.CityCode,
-                        Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRAcitivity.IndSector : LicenseAcitivity.IndSector,
-                        ActMgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRMainGroup.IndSector : LicenseMainGroup.IndSector,
-                        ActSgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRSubGroup.IndSector : LicenseSubGroup.IndSector,
-                        Actcat = MainActivity ? "M" : "S",
-                        Actno = $"{Int16.Parse(newNumber?.Actno):000}",
-                        Crattfg = CRsCopies.Count > 0 ? "X" : string.Empty
-                    };
 
-                    NregActivityList.Add(item);
-                    CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
+
+                    if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                    {
+                        DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime crIssueDate);
+                        DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
+                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        Nreg_ActivityItem item = new Nreg_ActivityItem
+                        {
+                            Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
+                            ValidDateFrom = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? crIssueDate : issueDate,
+                            ValidDateTo = maxDate,
+                            Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
+                            Country = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCountry.Land1 : LicenseIssueCountry.Land1,
+                            Institute = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? EnIssueBy.FirstOrDefault(i => i.Value == CRIssueBy).Key : EnIssueBy.FirstOrDefault(i => i.Value == LicenseIssueBy).Key,
+                            City = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityName : LicenseIssueCity.CityName,
+                            CityCode = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityCode : LicenseIssueCity.CityCode,
+                            Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRAcitivity.IndSector : LicenseAcitivity.IndSector,
+                            ActMgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRMainGroup.IndSector : LicenseMainGroup.IndSector,
+                            ActSgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRSubGroup.IndSector : LicenseSubGroup.IndSector,
+                            Actcat = MainActivity ? "M" : "S",
+                            Actno = $"{Int16.Parse(newNumber?.Actno):000}",
+                            Crattfg = CRsCopies.Count > 0 ? "X" : string.Empty
+                        };
+
+                        NregActivityList.Add(item);
+                        CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
+                    }
+                    else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.ActivityList)
+                    {
+                        goBackAction?.Invoke(NregActivityList);
+                        _navigationService.GoBack();
+                    }
                 }
-                else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.ActivityList)
+                else
                 {
-                    goBackAction?.Invoke(NregActivityList);
-                    _navigationService.GoBack();
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                 }
             }
             catch (Exception e)
@@ -938,6 +948,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = false;
                 await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
             }
+        }
+
+        private bool ValidateForm()
+        {
+            if(CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+            {
+                if(CRIssueCountry == null
+                    ||string.IsNullOrEmpty(CRIssueBy)
+                    || CRIssueCity == null
+                    || string.IsNullOrEmpty(CRNumber)
+                    || string.IsNullOrEmpty(CRValidFrom)
+                    || CRsCopies.Count == 0
+                    || CRMainGroup == null
+                    || CRSubGroup == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else if(CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+            {
+                if (LicenseIssueCountry == null
+                                   || string.IsNullOrEmpty(LicenseIssueBy)
+                                   || LicenseIssueCity == null
+                                   || string.IsNullOrEmpty(LicenseNumber)
+                                   || string.IsNullOrEmpty(ValidFrom)
+                                   || LicensesCopies.Count == 0
+                                   || LicenseMainGroup == null
+                                   || LicenseSubGroup == null
+                                   || LicenseAcitivity == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return true;
         }
         #endregion
     }

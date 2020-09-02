@@ -34,4 +34,17 @@ namespace EGAZT.NewDesignConverters
             return isInvertValue;
         }
     }
+    public class ESTOutletDeleteActionVisibilityConverter : IValueConverter
+    {
+        private bool isVisible { get; set; } = false;
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value.ToString() != "000";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return isVisible;
+        }
+    }
 }

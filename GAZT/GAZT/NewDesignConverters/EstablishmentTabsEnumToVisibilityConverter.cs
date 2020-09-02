@@ -86,4 +86,31 @@ namespace EGAZT.NewDesignConverters
             return isVisible;
         }
     }
+
+    public class ESTresidentialStatusConverter : IValueConverter
+    {
+        private string status { get; set; } = AppResources.ESTNationalyStatusOptionTwoValue;
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if(value == null)
+            {
+                return string.Empty;
+            }
+            switch (value.ToString())
+            {
+                case "1":
+                    return AppResources.ESTNationalyStatusOptionOneValue;
+                case "2":
+                    return AppResources.ESTNationalyStatusOptionTwoValue;
+                case "3":
+                default:
+                    return AppResources.ESTNationalyStatusOptionThreeValue;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return status;
+        }
+    }
 }

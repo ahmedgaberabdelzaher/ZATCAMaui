@@ -7,6 +7,7 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
@@ -54,12 +55,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         public ObservableCollection<string> OutletTabSfChipTabList { get; set; }
           = new ObservableCollection<string>{ AppResources.TinDeregistrationOutletDetails, AppResources.ESTActivityDetails,
-                AppResources.ZZZZVATREFinancialDetails};
+                AppResources.ESTAddressDetails};
         public ObservableCollection<string> OutletTabSfChipGroupTabList { get; set; }
            = new ObservableCollection<string>{ AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
-                AppResources.ESTAddressDetails};
+                AppResources.ZZZZVATREFinancialDetails};
 
-        
+
 
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 3;
@@ -537,98 +538,105 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async void navigateToNext()
         {
-            if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
+            if (validateForm())
             {
-                if (!string.IsNullOrEmpty(validateCR?.Crname))
+                if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
-                    _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                    if (!string.IsNullOrEmpty(validateCR?.Crname))
                     {
-                        openedTab = EstablishmentOutletActivitiesTabsEnum.CRDetails,
-                        taxPayerDetails = taxPayerDetails,
-                        nextNumber = newNumber,
-                        validateCR = validateCR,
-                        //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
-                        newActivityItems = activityItems,
-                        goBackAction = (List<Nreg_ActivityItem> list) => addActivities(list)
-                    });
+                        _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                        {
+                            openedTab = EstablishmentOutletActivitiesTabsEnum.CRDetails,
+                            taxPayerDetails = taxPayerDetails,
+                            nextNumber = newNumber,
+                            validateCR = validateCR,
+                            //cRActivityItem = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault(),
+                            newActivityItems = activityItems,
+                            goBackAction = (List<Nreg_ActivityItem> list) => addActivities(list)
+                        });
+                    }
+                    else
+                    {
+                        currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+                    }
                 }
-                else
+                else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
                 {
-                    currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
+                    currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+                }
+                else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+
+                        taxPayerDetails?.Nreg_AddressSet.results?.Clear();
+                        Nreg_AddressItem defaultAddress = new Nreg_AddressItem();
+                        defaultAddress.HouseNum1 = HouseNumber;
+                        defaultAddress.Building = BuildingNumber;
+                        defaultAddress.Floor = FloorNumber;
+                        defaultAddress.Street = Street;
+                        defaultAddress.City2 = Quarter;
+                        defaultAddress.PostCode1 = PostalCode;
+                        defaultAddress.HouseNum2 = AddNumber;
+                        defaultAddress.Country = Country.Land1;
+                        defaultAddress.Region = Provinance.Land1;
+                        defaultAddress.City1 = City.CityName;
+                        defaultAddress.CityCode = City.CityCode;
+                        defaultAddress.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
+                        defaultAddress.AddrType = "XXDEFAULT";
+                        defaultAddress.Srcidentify = string.Format("O{0}", OutletActNumber);
+                        defaultAddress.Begda = DateTime.UtcNow;
+                        defaultAddress.Endda = maxDate;
+                        taxPayerDetails?.Nreg_AddressSet.results?.Add(defaultAddress);
+
+                        Nreg_AddressItem _address = new Nreg_AddressItem();
+                        _address.HouseNum1 = HouseNumberSame;
+                        _address.Building = BuildingNumberSame;
+                        _address.Floor = FloorNumberSame;
+                        _address.Street = StreetSame;
+                        _address.City2 = QuarterSame;
+                        _address.PostCode1 = PostalCodeSame;
+                        _address.HouseNum2 = AddNumberSame;
+                        _address.Country = CountrySame.Land1;
+                        _address.Region = ProvinanceSame.Land1;
+                        _address.City1 = CitySame.CityName;
+                        _address.CityCode = CitySame.CityCode;
+                        _address.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
+                        _address.AddrType = "0001";
+                        _address.Srcidentify = string.Format("O{0}", OutletActNumber);
+                        _address.Begda = DateTime.UtcNow;
+                        _address.Endda = maxDate;
+                        taxPayerDetails?.Nreg_AddressSet.results?.Add(_address);
+
+                        taxPayerDetails?.Nreg_OutletSet?.results?.Clear();
+                        Nreg_OutletItem outletItem = new Nreg_OutletItem();
+                        outletItem.Actnm = OutletName;
+                        outletItem.Actno = OutletActNumber;
+                        outletItem.Caltp = "G";
+                        outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
+                        //outletItem.Conatt = "X";
+                        taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
+                        taxPayerDetails.StepNumberx = "03";
+                        taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                        await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                        IsLoading = false;
+                    }
+                    catch (Exception e)
+                    {
+                        IsLoading = false;
+                        Console.WriteLine(e.StackTrace);
+                    }
+                    finally
+                    {
+                        _navigationService.GoBack();
+                    }
                 }
             }
-            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
+            else
             {
-                currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
-            }
-            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
-            {
-                try
-                {
-                    IsLoading = true;
-                    DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
-
-                    taxPayerDetails?.Nreg_AddressSet.results?.Clear();
-                    Nreg_AddressItem defaultAddress = new Nreg_AddressItem();
-                    defaultAddress.HouseNum1 = HouseNumber;
-                    defaultAddress.Building = BuildingNumber;
-                    defaultAddress.Floor = FloorNumber;
-                    defaultAddress.Street = Street;
-                    defaultAddress.City2 = Quarter;
-                    defaultAddress.PostCode1 = PostalCode;
-                    defaultAddress.HouseNum2 = AddNumber;
-                    defaultAddress.Country = Country.Land1;
-                    defaultAddress.Region = Provinance.Land1;
-                    defaultAddress.City1 = City.CityName;
-                    defaultAddress.CityCode = City.CityCode;
-                    defaultAddress.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
-                    defaultAddress.AddrType = "XXDEFAULT";
-                    defaultAddress.Srcidentify = string.Format("O{0}",OutletActNumber);
-                    defaultAddress.Begda = DateTime.UtcNow;
-                    defaultAddress.Endda = maxDate;
-                    taxPayerDetails?.Nreg_AddressSet.results?.Add(defaultAddress);
-
-                    Nreg_AddressItem _address = new Nreg_AddressItem();
-                    _address.HouseNum1 = HouseNumberSame;
-                    _address.Building = BuildingNumberSame;
-                    _address.Floor = FloorNumberSame;
-                    _address.Street = StreetSame;
-                    _address.City2 = QuarterSame;
-                    _address.PostCode1 = PostalCodeSame;
-                    _address.HouseNum2 = AddNumberSame;
-                    _address.Country = CountrySame.Land1;
-                    _address.Region = ProvinanceSame.Land1;
-                    _address.City1 = CitySame.CityName;
-                    _address.CityCode = CitySame.CityCode;
-                    _address.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
-                    _address.AddrType = "0001";
-                    _address.Srcidentify = string.Format("O{0}", OutletActNumber);
-                    _address.Begda = DateTime.UtcNow;
-                    _address.Endda = maxDate;
-                    taxPayerDetails?.Nreg_AddressSet.results?.Add(_address);
-
-                    taxPayerDetails?.Nreg_OutletSet?.results?.Clear();
-                    Nreg_OutletItem outletItem = new Nreg_OutletItem();
-                    outletItem.Actnm = OutletName;
-                    outletItem.Actno = OutletActNumber;
-                    outletItem.Caltp = "G";
-                    outletItem.Actcat = OutletActNumber == "000" ? "M" : "S";
-                    //outletItem.Conatt = "X";
-                    taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
-                    taxPayerDetails.StepNumberx = "03";
-                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
-                    await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
-                    IsLoading = false;
-                }
-                catch (Exception e)
-                {
-                    IsLoading = false;
-                    Console.WriteLine(e.StackTrace);
-                }
-                finally
-                {
-                    _navigationService.GoBack();
-                }
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }
         }
         private void addActivities(List<Nreg_ActivityItem> list)
@@ -650,8 +658,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 //    Actcat = "M"
                 //});
                 taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
-                currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
-            }catch(Exception e)
+                //currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
             }
@@ -687,6 +696,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             validateCR.Crnum = CRNum;
                         }
                     }
+                    else
+                    {
+                        validateCR = null;
+                    }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
@@ -720,6 +733,73 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 IsLoading = false;
             }
+        }
+        private bool validateForm()
+        {
+            if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
+            {
+                var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Actcat == "M").ToList();
+                var count = mainactivity.Count();
+                if (taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
+                {
+                    return false;
+                }
+            }
+            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
+            {
+                if (string.IsNullOrEmpty(BuildingNumber) && string.IsNullOrEmpty(BuildingNumberSame))
+                {
+                    return false;
+                }
+                else if (string.IsNullOrEmpty(BuildingNumber) && string.IsNullOrEmpty(BuildingNumberSame))
+                {
+                    return false;
+                }
+                else if (string.IsNullOrEmpty(FloorNumber) && string.IsNullOrEmpty(FloorNumber))
+                {
+                    return false;
+                }
+                else if (string.IsNullOrEmpty(Street) && string.IsNullOrEmpty(StreetSame))
+                {
+                    return false;
+                }
+                else if (string.IsNullOrEmpty(Quarter) && string.IsNullOrEmpty(QuarterSame))
+                {
+                    return false;
+                }
+                else if (string.IsNullOrEmpty(PostalCode) && string.IsNullOrEmpty(PostalCodeSame))
+                {
+                    return false;
+                }
+                else if (PostalCode.Length != 5 && PostalCodeSame.Length != 5)
+                {
+                    return false;
+                }
+                else if (Country == null && CountrySame == null)
+                {
+                    return false;
+                }
+                else if (Provinance == null && ProvinanceSame == null)
+                {
+                    return false;
+                }
+                else if (Country == null && CountrySame == null)
+                {
+                    return false;
+                }
+                else if (City == null && CitySame == null)
+                {
+                    return false;
+                }
+            }
+            else if (currentTab == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
+            {
+                if (string.IsNullOrEmpty(OutletName))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         #endregion
     }

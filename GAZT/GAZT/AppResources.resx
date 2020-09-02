@@ -3025,7 +3025,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Correspondence</comment>
   </data>
   <data name="NoAppointmentText" xml:space="preserve">
-    <value>No Upcoming Commitments</value>
+    <value>No Commitments Available</value>
   </data>
   <data name="ZReturnStatus" xml:space="preserve">
     <value>Return Status</value>
