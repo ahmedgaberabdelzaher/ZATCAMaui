@@ -21,6 +21,7 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"  
              BackgroundImageSource="partials_background.png"
+              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.SignUpForEstablishmentPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -212,7 +213,8 @@
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                     <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry"
                                                          Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused"
-                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" VerticalTextAlignment="End"  IsEnabled="False">
+                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
+                                                             VerticalTextAlignment="End"  IsEnabled="False">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -224,13 +226,14 @@
                               BackgroundColor="White"
                                 OKButtonBackgroundColor="#EAF7CC"
                                 CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#006450"
+                                     HeaderBackgroundColor="#EAF7CC"
                     SelectedItemTextColor="{StaticResource NeutralBlack}"
                     BorderColor="Black"
                                 
+                                
 								ShowFooter="False"
 								 ShowColumnHeader="True"
-                                 ColumnHeaderBackgroundColor="#EAF7CC"
+                                 ColumnHeaderBackgroundColor="White"
 								ColumnHeaderHeight="46"
                                 PickerMode="Dialog"
 								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
@@ -463,9 +466,9 @@
 <!-- Mobile number-->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <StackLayout Orientation="Horizontal">
-                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside" >
+                            <!--<inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside" >
                                     <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{Binding TxtCountryCode}" Text="{Binding TxtCountryCode}"
-                        x:Name="IntnlCodes">
+                        x:Name="IntnlCodes" IsReadOnly="True">
                                         <control:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
                                         </control:BorderlessEntry.Behaviors>
@@ -476,16 +479,49 @@
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="CountryCodeTapped"/>
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                        </inputLayout:SfTextInputLayout>
+                        </inputLayout:SfTextInputLayout>-->
 
-                            <inputLayout:SfTextInputLayout x:Name="FrmMobileNumber" HorizontalOptions="FillAndExpand" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                            <!--<inputLayout:SfTextInputLayout x:Name="FrmMobileNumber" HorizontalOptions="FillAndExpand" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                     <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End"
                                                          Keyboard="Numeric" MaxLength="15" >
 
                                 </control:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
-                        </StackLayout>
+                        </inputLayout:SfTextInputLayout>-->
+
+                                <Frame BorderColor="LightGray"   Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">
+                                    <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
+                                        <Image HorizontalOptions="Start" Rotation="270" >
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="Black" Size="18"
+                                                                         Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="CountryCodeTapped"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <custom:CustomButton  HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black"
+                                                                 Text="{Binding TxtCountryCode}" x:Name="IntnlCodes" Clicked="CountryCodeTapped"
+                                                                 BackgroundColor="Transparent"  >
+                                        </custom:CustomButton>
+                                        <!--<custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
+                                        <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End"
+                                                         Keyboard="Numeric" MaxLength="{Binding MaxDigids}" >
+
+                                            <control:BorderlessEntry.Behaviors>
+                                                <custom1:OnlyNumericValuesBehaviour/>
+                                            </control:BorderlessEntry.Behaviors>
+                                        </control:BorderlessEntry>
+
+                                    </StackLayout>
+                                </Frame>
+
+
+
+
+
+                            </StackLayout>
 
 <!-- Phone Number -->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" Style="{StaticResource CaptionLabelGrey}"/>
