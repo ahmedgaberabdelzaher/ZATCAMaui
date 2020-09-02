@@ -316,11 +316,11 @@
                         <StackLayout IsVisible="False">
                             <!-- Licence Number -->
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" Style="{StaticResource CaptionLabelGrey}"/>
-                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="{Binding TxtLicenseNumber}" MaxLength="20" 
+                            <inputLayout:SfTextInputLayout x:Name="FrmLicenseNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <control:BorderlessEntry x:Name="EntryLicenceNumber" Style="{StaticResource DefaultEntry}" Text="{Binding TxtLicenseNumber}"  MaxLength="20" 
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
                                                      VerticalTextAlignment="End"  HeightRequest="51"
-                                                     IsSpellCheckEnabled="False">
+                                                     IsSpellCheckEnabled="False" Unfocused="EntryLicenceNumber_Unfocused">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -442,8 +442,9 @@
 <!-- Mobile number-->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <StackLayout Orientation="Horizontal">
-                            <inputLayout:SfTextInputLayout x:Name="FrmMobileNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
-                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{Binding TxtCountryCode}" Text="{Binding TxtCountryCode}" x:Name="IntnlCodes">
+                            <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside">
+                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{Binding TxtCountryCode}" Text="{Binding TxtCountryCode}"
+                                                         x:Name="IntnlCodes">
 
                                 </control:BorderlessEntry>
                             <inputLayout:SfTextInputLayout.LeadingView>
@@ -454,8 +455,10 @@
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
                         </inputLayout:SfTextInputLayout>
 
-                            <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51" >
+                            <inputLayout:SfTextInputLayout x:Name="FrmMobileNumber" HorizontalOptions="FillAndExpand" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource DefaultEntry}"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End"
+                                                         Keyboard="Numeric" HeightRequest="51" MaxLength="15" >
 
                                 </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>

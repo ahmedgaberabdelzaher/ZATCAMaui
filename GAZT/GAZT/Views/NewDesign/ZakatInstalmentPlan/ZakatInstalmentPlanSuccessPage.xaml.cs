@@ -30,8 +30,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-       
+
     }
 
-   
+
 }

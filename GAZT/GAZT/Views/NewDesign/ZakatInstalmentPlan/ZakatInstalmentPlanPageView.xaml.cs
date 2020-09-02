@@ -22,7 +22,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         #region Variable
         ZakatInstalmentPlanViewModel viewModel;
 
-        double totalAmount = 0.0;
+        double totalAmountDue = 0.0;
         #endregion
 
         public ZakatInstalmentPlanPageView()
@@ -68,10 +68,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     await viewModel.OnPageLoad();
 
                 });
-                //await Task.Run(() =>
-                //{
-                //    viewModel.IsLoading = false;
-                //});
+
             }
             catch (Exception ex)
             {
@@ -130,102 +127,29 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IsIncomeTaxViewEnabled = false;
                 viewModel.IsSubIncomeTaxViewEnabled = false;
                 viewModel.IsVATAmountVisible = true;
-                Task.Run(async () =>
-                {
-                    viewModel.IsLoading = true;
-                    //await GetVAtInstalmentData();
+                /*  Task.Run(async () =>
+                  {
+                      viewModel.IsLoading = true;
+                      //await GetVAtInstalmentData();
 
-                });
+                  });*/
 
 
-
-                //PopupNavigation.Instance.PushAsync(new ZakatInstalmentPlanBottomPopup());
             }
-            /* else
-             {
-                 viewModel.IsZakatSelected = true;
-                 viewModel.IsIncomeTaxViewEnabled = true;
-                 viewModel.IsVATAmountVisible = false;
-
-             }*/
-
 
 
         }
-        //private void BPickerButtonZakat_Clicked(object sender, EventArgs e)
-        //{
-        //    FZakatPicker.IsOpen = true;
-        //}
 
-        //private void FPickerZakat_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        //{
-        //    CorrespondenceFiltersModel selectedZakat = (CorrespondenceFiltersModel)e.NewValue;
-        //    FZakatPicker.SelectedItem = selectedZakat;
-        //    viewModel.SelectedFilterZakat = selectedZakat;//selectedregion
-        //    viewModel.SelectedFilterZakatPrev = selectedZakat;//selectedregion
-        //    viewModel.TxtSelectedStatusZakat = selectedZakat.Filter;
-        //    viewModel.IsSubIncomeTaxViewEnabled = true;
-        //}
-        //private void FPickerZakat_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        FZakatPicker.SelectedItem = viewModel.SelectedFilterZakatPrev;
-        //        viewModel.SelectedFilterZakat = viewModel.SelectedFilterZakatPrev;//selectedregion
-        //        if (viewModel.SelectedFilterZakatPrev == null)
-        //        {
-        //            viewModel.TxtSelectedStatusZakat = string.Empty;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-
-        //}
-        //private void SubBPickerButtonZakat_Clicked(object sender, EventArgs e)
-        //{
-        //    SubFZakatPicker.IsOpen = true;
-        //}
-
-        //private void SubFPickerZakat_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        //{
-        //    CorrespondenceFiltersModel selectedZakat = (CorrespondenceFiltersModel)e.NewValue;
-        //    SubFZakatPicker.SelectedItem = selectedZakat;
-        //    viewModel.SubSelectedFilterZakat = selectedZakat;//selectedregion
-        //    viewModel.SubSelectedFilterZakatPrev = selectedZakat;//selectedregion
-        //    viewModel.SubTxtSelectedStatusZakat = selectedZakat.Filter;
-        //}
-        //private void SubFPickerZakat_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        SubFZakatPicker.SelectedItem = viewModel.SubSelectedFilterZakatPrev;
-        //        viewModel.SubSelectedFilterZakat = viewModel.SubSelectedFilterZakatPrev;//selectedregion
-        //        if (viewModel.SelectedFilterZakatPrev == null)
-        //        {
-        //            viewModel.SubTxtSelectedStatusZakat = string.Empty;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-
-        //}
         private void DownPayment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
             viewModel.DownPaymentAmount = args.NewValue;
-
-
+            downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
         }
 
         private void Installment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
             var newVal = args.NewValue;
             viewModel.NoOfInstalments = Convert.ToInt32(newVal);
-
-
         }
         private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -238,7 +162,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                     BillsVATListVIew.ItemsSource = itemsSource;
 
-
                     for (int i = 0; i < itemsSource.Count(); i++)
                     {
                         var dataItem = itemsSource[i] as ZakatInvoicesResult;
@@ -249,12 +172,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                     }
 
-
                 }
                 else
                 {
                     BillsVATListVIew.ItemsSource = viewModel.ZakatInvoicesList;
-
 
                     for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
                     {
@@ -263,7 +184,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         {
                             BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[i];
                         }
-
                     }
 
                 }
@@ -274,22 +194,27 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 Console.WriteLine(ex.Message);
             }
 
-
         }
 
-        private void Bills_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        private async void Bills_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-            var dataItem = e.ItemData as ZakatInvoicesResult;
+            ZakatInvoicesResult dataItem = e.ItemData as ZakatInvoicesResult;
 
-            totalAmount = 0.0;
+            totalAmountDue = 0.0;
 
             try
             {
                 if (viewModel.selectedList.Count > 0)
                 {
-                    if (viewModel.selectedList.Contains(dataItem))
+                    if (viewModel.selectedList.Contains(dataItem) && dataItem.InvCb == "")
                     {
                         viewModel.selectedList.Remove(dataItem);
+                    }
+                    else if (dataItem.InvCb == "X")
+                    {
+                        await Task.Delay(100);
+                        var index = viewModel.ZakatInvoicesList.IndexOf(item => item.Equals(dataItem));
+                        BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[index];
                     }
                     else
                     {
@@ -299,15 +224,27 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
                 else
                 {
-                    viewModel.selectedList.Add(dataItem);
-                }
-                /*Double dueAmount = 0.0;
-                for (int i = 0; i < viewModel.selectedList.Count; i++)
-                {
-                    dueAmount = dueAmount + Convert.ToDouble(viewModel.selectedList[i].Betrh);
+                    if (dataItem.InvCb == "X")
+                    {
+                        await Task.Delay(100);
+                        var index = viewModel.ZakatInvoicesList.IndexOf(item => item.Equals(dataItem));
+                        BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[index];
+                    }
+                    else
+                    {
+                        viewModel.selectedList.Add(dataItem);
+                    }
                 }
 
-                viewModel.TotalAmountSAR = string.Format("{0:N2}", dueAmount) + " " + dataItem.Waers;*/
+                for (int i = 0; i < viewModel.selectedList.Count; i++)
+                {
+                    totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.selectedList[i].DueAmt);
+                }
+
+                viewModel.VATBillDueAmount = string.Format("{0:N2}", totalAmountDue) + " " + dataItem.Waers;
+                viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+
             }
             catch (Exception ex)
             {
@@ -325,6 +262,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             base.OnDisappearing();
 
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
+            MessagingCenter.Unsubscribe<object, bool>(this, "InvoiceBillsLoaded");
+            viewModel.ResetData();
+
         }
         protected async override void OnAppearing()
         {
@@ -344,13 +284,90 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
 
+                Xamarin.Forms.MessagingCenter.Subscribe<object, bool>(this, "InvoiceBillsLoaded", (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        totalAmountDue = 0;
+                        for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
+                        {
+                            var dataItem = viewModel.ZakatInvoicesList[i] as ZakatInvoicesResult;
+                            if (viewModel.selectedList.Contains(dataItem))
+                            {
+                                BillsVATListVIew.SelectedItem = viewModel.ZakatInvoicesList[i];
+                                totalAmountDue = totalAmountDue + Convert.ToDouble(viewModel.selectedList[i].DueAmt);
+                            }
+                        }
+                        viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                        viewModel.MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+
+                        viewModel.PeriodicInstalment = Math.Round(totalAmountDue - viewModel.MinAmount);
+
+
+                    }
+                });
+
             }
             catch (Exception ex)
             {
             }
         }
 
+        private void downPaymentEntry_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (Double.Parse(downPaymentEntry.Text) > 2000000)
+                {
+                    viewModel.showDialog(AppResources.ZakatInstalmentCannotExceed);
+                    downPaymentEntry.Text = viewModel.MinAmount.ToString();
+                    downPaymentSlider.Value = viewModel.MinAmount;
+                }
+                else if (Double.Parse(downPaymentEntry.Text) < viewModel.MinAmount)
+                {
+                    viewModel.showDialog(AppResources.ZakatInstalmentCannotBeLessThan + viewModel.MinAmount);
+                    downPaymentEntry.Text = viewModel.MinAmount.ToString();
+                    downPaymentSlider.Value = viewModel.MinAmount;
+                }
+                else
+                {
+                    viewModel.DownPaymentAmount = Math.Round(Double.Parse(downPaymentEntry.Text), 2);
+                    downPaymentSlider.Value = viewModel.DownPaymentAmount;
+                }
+            }
+            catch (Exception ex)
+            {
 
+            }
+        }
 
+        private void downPaymentEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (downPaymentEntry.Text.Length > 0)
+                {
+                    if (Double.Parse(downPaymentEntry.Text) > 2000000)
+                    {
+                        downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
+                    }
+                    else if (Double.Parse(downPaymentEntry.Text) < viewModel.MinAmount)
+                    {
+                        downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
+                    }
+                    else
+                    {
+                        viewModel.DownPaymentAmount = Math.Round(Double.Parse(downPaymentEntry.Text), 2);
+                        downPaymentSlider.Value = viewModel.DownPaymentAmount;
+                        var dueAmount = viewModel.VATBillDueAmount.Replace("SAR", "");
+                        viewModel.PeriodicInstalment = Math.Round(double.Parse(dueAmount) - double.Parse(downPaymentEntry.Text));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

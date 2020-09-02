@@ -48,7 +48,7 @@
                         <Grid Grid.Row="0" Grid.Column="0">
                             <Image Source="{Binding IndividualBackImg}"/>
                             <StackLayout VerticalOptions="End" Padding="15,0,16,16">
-                                <Image HorizontalOptions="Start" Source="menu_individual.png">
+                                <Image HorizontalOptions="Start" Source="individual_32White.png">
                                     <Image.Triggers>
                                         <DataTrigger TargetType="Image" Binding="{Binding IndividualBackImg}" Value="FP_unselected_tile.png">
                                             <Setter Property="Source" Value="individual_32.png"/>
@@ -73,7 +73,7 @@
                                 <Image HorizontalOptions="Start" Source="establishments_White.png">
                                     <Image.Triggers>
                                         <DataTrigger TargetType="Image" Binding="{Binding EstablishmentBackImg}" Value="FP_unselected_tile.png">
-                                            <Setter Property="Source" Value="establishments.png"/>
+                                            <Setter Property="Source" Value="establishments_BigGreen.png"/>
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>

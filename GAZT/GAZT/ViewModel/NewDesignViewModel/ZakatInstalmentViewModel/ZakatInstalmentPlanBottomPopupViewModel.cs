@@ -9,57 +9,57 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
-    
-        public class ZakatInstalmentPlanBottomPopupViewModel : ViewModelBase
+
+    public class ZakatInstalmentPlanBottomPopupViewModel : ViewModelBase
+    {
+        #region Variable
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        public ICommand GoBackClick { get; set; }
+        #endregion
+
+        public ICommand ZakatInstalationClicked { get; set; }
+
+        public ZakatInstalmentPlanBottomPopupViewModel(INavigationService navigationService, IDialogService dialogService)
         {
-            #region Variable
-            public readonly INavigationService _navigationService;
-            public readonly IDialogService _dialogService;
-            public ICommand GoBackClick { get; set; }
-            #endregion
-
-            public ICommand ZakatInstalationClicked { get; set; }
-
-            public ZakatInstalmentPlanBottomPopupViewModel(INavigationService navigationService, IDialogService dialogService)
+            if (navigationService == null)
             {
-                if (navigationService == null)
-                {
-                    throw new ArgumentNullException("navigationService");
-                }
-                _navigationService = navigationService;
-                if (dialogService == null)
-                {
-                    throw new ArgumentNullException("dialogService");
-                }
-                _dialogService = dialogService;
-                GoBackClick = new Command(async () =>
-                {
-                    _navigationService.GoBack();
-                });
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
+            });
 
             ZakatInstalationClicked = new Command(this.ZakatInstalationTapped);
-            }
+        }
 
-            public async void ZakatInstalationTapped()
+        public async void ZakatInstalationTapped()
+        {
+            try
             {
-                try
-                {
-                    await PopupNavigation.Instance.PopAsync();
-                   // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
-                }
-                catch (GAZTUnlockAccountException ex)
-                {
+                await PopupNavigation.Instance.PopAsync();
+                // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
 
-                }
-                catch (InternetException ex)
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                }
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
             }
         }
-    
+    }
+
 }
