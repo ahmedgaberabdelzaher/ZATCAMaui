@@ -6734,7 +6734,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Amount cannot be less than </value>
   </data>
   <data name="ZakatInstalmentCannotExceed" xml:space="preserve">
-    <value>Amount cannot exceed 2,000,000.00</value>
+    <value>Amount cannot exceed</value>
   </data>
   <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
     <value>Instalment Amount</value>
@@ -6790,4 +6790,10 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
     <value>Zakat and Tax</value>
   </data>
-</root>
+     <data name="ZakatInstalmentAttachmentBankSettlement" xml:space="preserve">
+    <value>Attachment - Bank Statements for the last 3 months</value>
+  </data>
+  <data name="ZakatInstalmentAttachmentFInancialStatement" xml:space="preserve">
+    <value>Attachment - Financial Statements for the last 3 years</value>
+  </data>
+  </root>
