@@ -179,6 +179,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtCountryCode = string.Empty;
 
             viewModel.TxtMobileNumber = string.Empty;
+            viewModel.TxtMobileNumberwithCountryCode = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
 
             //iewModel.IDTypeModelRootObject = null;
@@ -1834,6 +1835,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
             SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+            viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
             SiguupModel.ACountry = viewModel.MobileCountryCode;
 
             // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
@@ -2105,6 +2107,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.SignUpModelRootObjectM = ResultFirstSubmitModel;
                 viewModel.TxtEmailAddress = ResultFirstSubmitModel.d.AEmail;
                 string mobileno = ResultFirstSubmitModel.d.AMobile;
+                viewModel.TxtMobileNumberwithCountryCode = ResultFirstSubmitModel.d.AMobile;
                 viewModel.TxtMobileNumber = "XXXXXXXXXX" + mobileno.Substring(mobileno.Length - 4, 4);
                 OTPFirstEntry.Focus();
             }
@@ -2215,7 +2218,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                         string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                         SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                        SiguupModel.ACountry = viewModel.MobileCountryCode;
+                                    viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                    SiguupModel.ACountry = viewModel.MobileCountryCode;
                                         // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                         if (viewModel.SelectedSignUpUsing.ID == 1)
                                         {
@@ -2455,8 +2459,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-
-                                    SiguupModel.ACountry = viewModel.MobileCountryCode;
+                                viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                     // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                     if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -2722,8 +2726,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                    // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-                                    SiguupModel.ACountry = viewModel.MobileCountryCode;
+                                viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                     if (viewModel.SelectedSignUpUsing.ID == 1)
                                     {
@@ -2957,8 +2962,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                 SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-
-                                SiguupModel.ACountry = viewModel.MobileCountryCode;
+                            viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                            SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                 // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                 if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -3158,7 +3163,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                    SiguupModel.ACountry = viewModel.MobileCountryCode;
+                                viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                     // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
 
@@ -3389,7 +3395,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                 SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                SiguupModel.ACountry = viewModel.MobileCountryCode;
+                            viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                            SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                 // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
 

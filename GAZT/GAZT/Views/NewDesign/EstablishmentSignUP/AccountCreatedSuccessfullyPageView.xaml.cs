@@ -25,8 +25,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (Navigation.NavigationStack.Count > 0)
             {
-                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                 Navigation.RemovePage(pg);
+                Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(pg1);
             }
             viewModel._navigationService.GoBack();
         }
