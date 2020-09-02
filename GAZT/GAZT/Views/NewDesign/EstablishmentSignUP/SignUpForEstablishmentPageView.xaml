@@ -131,8 +131,8 @@
                             <!-- TIN -->
                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTIN}" Style="{StaticResource CaptionLabelGrey}"/>
                             <inputLayout:SfTextInputLayout x:Name="FrmTIN" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry  x:Name="EntryTIN" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" VerticalTextAlignment="End"
-                                                          HeightRequest="51" Keyboard="Numeric" MaxLength="10" TextChanged="EntryTIN_TextChanged" 
+                                    <control:BorderlessEntry  x:Name="EntryTIN" Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" VerticalTextAlignment="End"
+                                                           Keyboard="Numeric" MaxLength="10" TextChanged="EntryTIN_TextChanged" 
                                                           IsSpellCheckEnabled="False"  Text="{Binding TxtTIN}" FontSize="Small" 
                                                           Unfocused="EntryTIN_Unfocused" Focused="EntryTIN_focused">
                                     <control:BorderlessEntry.Behaviors>
@@ -161,9 +161,10 @@
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" Style="{StaticResource CaptionLabelGrey}"/>
                                 <Grid>
                                     <inputLayout:SfTextInputLayout x:Name="txtEntryName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Text="{Binding TxtIDType}" Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}" VerticalTextAlignment="End"  HeightRequest="51" IsEnabled="False">
-
-                                        </control:BorderlessEntry>
+                                            <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="{Binding TxtIDType}" Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
+                                                                 VerticalTextAlignment="End"   IsEnabled="False">
+                                               
+                                            </control:BorderlessEntry>
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Source="arrowDropdown.png"/>
                                         </inputLayout:SfTextInputLayout.TrailingView>
@@ -194,11 +195,14 @@
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIDNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout x:Name="FrmIDNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry x:Name="EntryIDNumber" Text="{Binding TxtIDNumber}" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.NDIDNumber}"
-                                                     VerticalTextAlignment="End" HeightRequest="51" Keyboard="Numeric"
+                                <control:BorderlessEntry x:Name="EntryIDNumber" Text="{Binding TxtIDNumber}" Style="{StaticResource InputTableEntryLayoutStyle}"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.NDIDNumber}"
+                                                     VerticalTextAlignment="End" Keyboard="Numeric"
                                                      MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False" Unfocused="EntryIDNumber_Unfocused" TextChanged="GAZTBorderlessEntry_TextChanged">
-
-                        </control:BorderlessEntry>
+                                    <control:BorderlessEntry.Behaviors>
+                                        <custom1:OnlyNumericValuesBehaviour/>
+                                    </control:BorderlessEntry.Behaviors>
+                                </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
                         <!-- DOB-->
@@ -206,7 +210,9 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" Style="{StaticResource CaptionLabelGrey}"/>
                         <Grid>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" x:Name="DateEntry" Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused" Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" VerticalTextAlignment="End"  HeightRequest="51" IsEnabled="False">
+                                    <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry"
+                                                         Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused"
+                                                         Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" VerticalTextAlignment="End"  IsEnabled="False">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -252,9 +258,13 @@
                     <!-- Name -->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZName}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout x:Name="FrmName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="{Binding TxtName}" IsSpellCheckEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZName}" VerticalTextAlignment="End"  HeightRequest="51">
-
-                            </control:BorderlessEntry>
+                            <control:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="{Binding TxtName}" IsSpellCheckEnabled="False"
+                                                     Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
+                                                     VerticalTextAlignment="End" >
+                                    <control:BorderlessEntry.Behaviors>
+                                        <custom1:AlphabetandArabicCharacters/>
+                                    </control:BorderlessEntry.Behaviors>
+                                </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                     </StackLayout>
                 </ScrollView>
@@ -304,10 +314,14 @@
                         <StackLayout IsVisible="False">
                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                             <inputLayout:SfTextInputLayout x:Name="FrmCR" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry x:Name="EntryCRNumber" Style="{StaticResource DefaultEntry}" MaxLength="10" Placeholder="{x:Static ResourceManager:AppResources.ZZCRNumber}" 
-                                                         Text="{Binding TxtCRNumber}" TextChanged="EntryCRNumber_TextChanged" Unfocused="EntryCRNumber_Unfocused" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric">
-
-                            </control:BorderlessEntry>
+                                    <control:BorderlessEntry x:Name="EntryCRNumber" Style="{StaticResource InputTableEntryLayoutStyle}"
+                                                         MaxLength="10" Placeholder="{x:Static ResourceManager:AppResources.ZZCRNumber}" 
+                                                         Text="{Binding TxtCRNumber}" TextChanged="EntryCRNumber_TextChanged"
+                                                         Unfocused="EntryCRNumber_Unfocused" VerticalTextAlignment="End"  Keyboard="Numeric">
+                                        <control:BorderlessEntry.Behaviors>
+                                            <custom1:OnlyNumericValuesBehaviour/>
+                                        </control:BorderlessEntry.Behaviors>
+                                    </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                             <StackLayout.Triggers>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding ImgBackgroundCRNubmer}" Value="FP_selected_tile">
@@ -320,20 +334,23 @@
                             <!-- Licence Number -->
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                             <inputLayout:SfTextInputLayout x:Name="FrmLicenseNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry x:Name="EntryLicenceNumber" Style="{StaticResource DefaultEntry}" Text="{Binding TxtLicenseNumber}"  MaxLength="20" 
+                                    <control:BorderlessEntry x:Name="EntryLicenceNumber" Style="{StaticResource InputTableEntryLayoutStyle}" Text="{Binding TxtLicenseNumber}"  MaxLength="20" 
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
-                                                     VerticalTextAlignment="End"  HeightRequest="51"
+                                                     VerticalTextAlignment="End" 
                                                      IsSpellCheckEnabled="False" Unfocused="EntryLicenceNumber_Unfocused">
+                                        <control:BorderlessEntry.Behaviors>
+                                            <custom1:RestrictSpecialCharactorsBehaviour/>
+                                        </control:BorderlessEntry.Behaviors>
 
-                            </control:BorderlessEntry>
+                                    </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
 <!-- Licence number issued by -->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}" Style="{StaticResource CaptionLabelGrey}"/>
                         <Grid>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}" 
-                                                     VerticalTextAlignment="End" IsEnabled="False"  HeightRequest="51"
+                                        <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}" 
+                                                     VerticalTextAlignment="End" IsEnabled="False"  
                                                      IsSpellCheckEnabled="False" Text="{Binding TxtLOrCIssuedBy}">
 
                             </control:BorderlessEntry>
@@ -379,8 +396,8 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIssuingCity}" Style="{StaticResource CaptionLabelGrey}"/>
                         <Grid>
                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                    <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
-                                                         VerticalTextAlignment="End" IsEnabled="False" HeightRequest="51" Text="{Binding TxtLOrCIssuedByCity}">
+                                        <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
+                                                         VerticalTextAlignment="End" IsEnabled="False" Text="{Binding TxtLOrCIssuedByCity}">
 
                                     </control:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
@@ -437,7 +454,8 @@
                         <!-- Email -->
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry x:Name="EntryEmail" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51"
+                                <control:BorderlessEntry x:Name="EntryEmail" Style="{StaticResource InputTableEntryLayoutStyle}" 
+                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" 
                                 Text="{Binding TxtEmailAddress}" Unfocused="EntryEmail_TextChanged">
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -446,10 +464,12 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <StackLayout Orientation="Horizontal">
                             <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" LeadingViewPosition="Inside" >
-                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{Binding TxtCountryCode}" Text="{Binding TxtCountryCode}"
-                        HeightRequest="51" x:Name="IntnlCodes">
-
-                                </control:BorderlessEntry>
+                                    <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{Binding TxtCountryCode}" Text="{Binding TxtCountryCode}"
+                        x:Name="IntnlCodes">
+                                        <control:BorderlessEntry.Behaviors>
+                                            <custom1:OnlyNumericValuesBehaviour/>
+                                        </control:BorderlessEntry.Behaviors>
+                                    </control:BorderlessEntry>
                             <inputLayout:SfTextInputLayout.LeadingView>
                                     <Image HeightRequest="55" Source="arrowDropdown"/>
                             </inputLayout:SfTextInputLayout.LeadingView>
@@ -459,9 +479,9 @@
                         </inputLayout:SfTextInputLayout>
 
                             <inputLayout:SfTextInputLayout x:Name="FrmMobileNumber" HorizontalOptions="FillAndExpand" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource DefaultEntry}"
+                                    <control:BorderlessEntry x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" Style="{StaticResource InputTableEntryLayoutStyle}"
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End"
-                                                         Keyboard="Numeric" HeightRequest="51" MaxLength="15" >
+                                                         Keyboard="Numeric" MaxLength="15" >
 
                                 </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -471,10 +491,12 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZPhoneNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                             <control:BorderlessEntry x:Name="EntryPhoneNumber" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused"
-                                                     Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
-                                                     VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51" MaxLength="9" Text="{Binding TxtPhoneNumber}">
-
-                            </control:BorderlessEntry>
+                                                     Style="{StaticResource InputTableEntryLayoutStyle}" Placeholder="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
+                                                     VerticalTextAlignment="End" Keyboard="Numeric" MaxLength="9" Text="{Binding TxtPhoneNumber}">
+                                    <control:BorderlessEntry.Behaviors>
+                                        <custom1:OnlyNumericValuesBehaviour/>
+                                    </control:BorderlessEntry.Behaviors>
+                                </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                     </StackLayout>
                 </ScrollView>
@@ -484,7 +506,9 @@
                     <StackLayout>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                            <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}" VerticalTextAlignment="End" Keyboard="Email" HeightRequest="51"
+                                <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                                         VerticalTextAlignment="End" Keyboard="Email" 
                                 Text="{Binding TxtEmailAddress}"  IsEnabled="False">
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -634,7 +658,8 @@
                         <StackLayout>
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" HeightRequest="51"
+                                    <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" 
+                                                             Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" 
                                                      Text="{Binding TxtMobileNumber}"  IsEnabled="False">
                                    
                             </control:BorderlessEntry>
