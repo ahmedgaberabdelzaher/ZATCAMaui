@@ -1223,7 +1223,7 @@
 
                         <StackLayout Grid.Row="6"  Grid.ColumnSpan="2">
 
-                            <buttons:SfButton  Margin="0,16,0,16" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
+                            <buttons:SfButton  Margin="0,16,0,16" Text="{x:Static ResourceManager:AppResources.Submit}"
                                    Style="{StaticResource PrimaryButtonStyle}"  Command="{Binding SummaryContinueBtnTapped}" />
 
                         </StackLayout>

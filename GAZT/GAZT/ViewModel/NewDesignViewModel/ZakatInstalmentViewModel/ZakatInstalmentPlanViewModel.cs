@@ -1765,6 +1765,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
+        private void PopulateSummaryReasonData()
+        {
+            var summarySelectedBillsList = new ObservableCollection<ZakatSelectBillModel>();
+
+
+
+            for (int i = 0; i < selectedList.Count; i++)
+            {
+                summarySelectedBillsList.Add(new ZakatSelectBillModel()
+                {
+                    billNumber = AppResources.Bill + (i + 1).ToString("00"),
+                    amount = "0",
+                    saadNumber = selectedList[i].InvNo.ToString(),
+                    taxPeriod = selectedList[i].DueDt,
+                    isSelected = false,
+                    billType = AppResources.ZakatInstalmetSelectTypeZakat
+                });
+            }
+            SummarySelectedBillsList = summarySelectedBillsList;
+        }
         public async void AttachmentsContinueBtnClicked()
         {
             try
@@ -1772,7 +1792,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
                 EnableSummaryView();
-                //PopulateSummaryReasonData();
+                PopulateSummaryReasonData();
             }
             catch (GAZTUnlockAccountException ex)
             {

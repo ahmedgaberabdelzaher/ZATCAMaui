@@ -28,7 +28,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         public FilesUploadPopUpPageView(List<Attachment> attachments,WhichAttachment whichAttachment,string returnIdz)
         {
             InitializeComponent();
-            App.IsArabic = false;
+            //App.IsArabic = false;
             viewModel = App.Locator.FilesUploadPopUpView;
             this.BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -41,7 +41,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         public FilesUploadPopUpPageView(List<Attachment> attachments, WhichAttachment whichAttachment, string returnIdz, string dmsType)
         {
             InitializeComponent();
-            App.IsArabic = false;
+            //App.IsArabic = false;
             viewModel = App.Locator.FilesUploadPopUpView;
             this.BindingContext = viewModel;
             dmsTypeString = dmsType;
@@ -129,6 +129,14 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
             {
                 viewModel.DocTypeString = dmsTypeString;
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements)
+            {
+                viewModel.DocTypeString = "IPR1";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
+            {
+                viewModel.DocTypeString = "IPR1";
             }
         }
 

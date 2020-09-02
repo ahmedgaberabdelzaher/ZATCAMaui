@@ -5648,49 +5648,45 @@
   <data name="ZakatFinancialCrisis" xml:space="preserve">
     <value>Financial Crisis</value>
   </data>
-  <data name="ZakatDisputeInFavorOfGAZT" xml:space="preserve">
-    <value>Dispute in Favor of GAZT</value>
+ <data name="ZakatDisputeInFavorOfGAZT" xml:space="preserve">
+    <value>حالة نزاع انتهت لصالح الهيئة العامة للزكاة والدخل</value>
   </data>
-  <data name="ZakatOtherReason" xml:space="preserve">
-    <value>Other Reason</value>
+ <data name="ZakatOtherReason" xml:space="preserve">
+    <value>سبب آخر</value>
   </data>
   <data name="ZakatInstructions" xml:space="preserve">
-    <value>1. I acknowledge that I do not have sufficient liquidity to pay the full amount.
-2. I pledge to provide the General Authority for Zakat &amp; Tax with all recent bank statements of the business activity, as well as my personal account statements for the past three months.
-3. I pledge to provide the General Authority for Zakat &amp; Tax with any documents that are requested for the purpose of processing the application.
-4. The General Authority for Zakat &amp; Tax has the right to estimate the amount and period of the instalment plan, as appropriate.
-5. I pledge to pay at least 20% of total debts that requested for instalment.
-6. The General Authority for Zakat &amp; Tax has the right to cancel the instalment plan, in case of having financial unsuitability to pay the full amount of the dues.
-7. I acknowledge that In case of default in paying two sequential instalments, the General Authority for Zakat &amp; Tax has the right to cancel the instalment plan, and no other instalment plan could be requested for the same invoices.
-8. The General Authority for Zakat &amp; Tax has the right to implement the collection procedures, in the case of cancellation of the instalment plan.
-9. The General Authority for Zakat &amp; Tax has the right to cancel the instalment plan, in case of reassessment of the amount that has been approved for the instalment plan.</value>
+    <value>
+            1. اقر بأنه لا يوجد لدي سيولة مالية كافيه لسداد المبلغ كاملاً.
+2. اتعهد بأن ازود الهيئة العامة للزكاة والدخل بكشوفات حديثة لجميع حسابات النشاط البنكية وكذلك حساباتي الشخصية لآخر ثلاثة أشهر.
+3. أتعهد بتزويد الهيئة العامة للزكاة والدخل بأي مستندات يتم طلبها لأغراض دراسة الطلب.
+4. للهيئة العامة للزكاة و الدخل الحق في تقدير مبلغ وفترة الاقساط حسب ما تراه مناسباً.
+5. أقر بسداد ما لا يقل عن 20 % من قيمة اجمالي المديونيات المطلوب تقسيطها.
+6 يحق للهيئة العامة للزكاة والدخل إلغاء خطة التقسيط في حال ثبوت ملائمتكم المالية لسداد كامل المستحقات.
+7. اقر بأنه في حال التعثر في سداد قسطين متتاليين، فإنه يحق للهيئة العامة للزكاة والدخل إلغاء خطة التقسيط ولا يمكن طلب خطة تقسيط أخرى لنفس المستحقات.
+8.للهيئة العامة للزكاة والدخل الحق في تطبيق إجراءات التحصيل النظامية في حال إلغاء خطة التقسيط.
+9. يحق للهيئة العامة للزكاة والدخل الغاء خطة التقسيط في حال وجود إعادة تقييم على المبالغ التي تم الموافقة على تقسيطها
+     </value>
   </data>
   <data name="ZakatInstructionsCheckBoxDesc" xml:space="preserve">
-    <value>I Agree</value>
+    <value>أنا أوافق</value>
   </data>
   <data name="ZakatInvoiceAmount" xml:space="preserve">
-    <value>Invoice Amount</value>
+    <value>مبلغ الفاتورة</value>
   </data>
   <data name="ZakatClearedAmount" xml:space="preserve">
     <value>Cleared Amount</value>
   </data>
   <data name="ZakatDueAmount" xml:space="preserve">
-    <value>Due Amount</value>
+     <value>مبلغ الفاتورة</value>
   </data>
   <data name="ZakatYear" xml:space="preserve">
     <value>Year</value>
   </data>
-  <data name="ZakatCashBank" xml:space="preserve">
-    <value>Cash + Bank</value>
+   <data name="ZakatShortTermInvestment" xml:space="preserve">
+    <value>استثمار قصير المدى</value>
   </data>
-  <data name="ZakatShortTermInvestment" xml:space="preserve">
-    <value>Short Term Investment</value>
-  </data>
-  <data name="ZakatDebitors" xml:space="preserve">
-    <value>Debitors</value>
-  </data>
-  <data name="ZakatInventory" xml:space="preserve">
-    <value>Inventory</value>
+ <data name="ZakatInventory" xml:space="preserve">
+    <value>المخزون</value>
   </data>
   <data name="ZakatYearOne" xml:space="preserve">
     <value>Year 1</value>
@@ -6293,12 +6289,6 @@
   <data name="ESTOrgNonResidentActivityValueNine" xml:space="preserve">
     <value> مبالغ لاستغلال مورد طبيعي في المملكة.</value>
   </data>
-  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
-    <value>Create/Display for ZAKAT Instalment Plan</value>
-  </data>
-  <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
-    <value>Revoke ZAKAT Instalment Plan</value>
-  </data>
   <data name="NDNewEmailCannotBeSameAsOldEmail" xml:space="preserve">
     <value>البريد الالكتروني الجديد يجب أن لا يتطابق مع البريد الإلكتروني القديم</value>
   </data>
@@ -6595,4 +6585,61 @@
     <data name="VRNewAttachment" xml:space="preserve">
   <value>مرفق جديد</value>
 </data>
+    <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+    <value>طلب او عرض خطة تقسيط الزكاة</value>
+  </data>
+  <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
+    <value>إلغاء خطة تقسيط الزكاة</value>
+  </data>
+  <data name="ZakatInstalmentCannotBeLessThan" xml:space="preserve">
+    <value>لا يمكن أن يكون المبلغ أقل من</value>
+  </data>
+  <data name="ZakatInstalmentCannotExceed" xml:space="preserve">
+    <value>لا يمكن أن يتجاوز المبلغ </value>
+  </data>
+ <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
+    <value>الاستحقاق</value>
+  </data>
+  <data name="ZakatInstalmentNumberOfInstalments" xml:space="preserve">
+    <value>عدد الأقساط</value>
+  </data>
+  <data name="ZakatInstalmentSubmissionDate" xml:space="preserve">
+    <value>تاريخ التقديم</value>
+  </data>
+  <data name="ZakatInstalmentPlanSubTitle" xml:space="preserve">
+    <value>خطة تقسيط الزكاة</value>
+  </data>
+  <data name="ZakatInstalmentRequestCount" xml:space="preserve">
+    <value>طلب خطة تقسيط للزكاة</value>
+  </data>
+  <data name="ZakatInstalmentInvoiceNumber" xml:space="preserve">
+    <value>رقم الفاتورة</value>
+  </data>
+  <data name="ZakatInstalmentPlanDuration" xml:space="preserve">
+    <value>مدة الخطة</value>
+  </data>
+  <data name="ZakatInstalmentRevok" xml:space="preserve">
+    <value>إلغاء طلب الزكاة</value>
+  </data>
+  <data name="ZakatInstalmentRevokSubTitle" xml:space="preserve">
+    <value>خطة التقسيط القديمة</value>
+  </data>
+  <data name="ZakatInstalmentCreateNewRequest" xml:space="preserve">
+    <value>طلب جديد</value>
+  </data>
+  <data name="ZakatInstalmentFinancialInformation" xml:space="preserve">
+    <value>البيانات المالية</value>
+  </data>
+  <data name="ZakatInstalmentPleaseChooseOneReason" xml:space="preserve">
+    <value>الرجاء اختيار سبب واحد للمتابعة</value>
+  </data>
+  <data name="ZakatInstalmentReasonForRequestInstalment" xml:space="preserve">
+    <value>سبب طلب خطة التقسيط</value>
+  </data>
+    <data name="ZakatDebitors" xml:space="preserve">
+    <value>المدينون</value>
+  </data>
+<data name="ZakatCashBank" xml:space="preserve">
+    <value>المدينون</value>
+  </data>
 </root>

@@ -713,6 +713,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     {
                         APiMethod = "ZDP_INDTAX_ATT_SRV";
                     }
+                    else if (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements)
+                    {
+                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
+                    else if (IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
+                    {
+                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
 
                     AttachmentRootOject attachment = await WebServiceManager.GAZTGenericSaveAttachment(attachmentByteData, AttachmentName, returnIdz, Doctype, contentType, APiMethod);
                     

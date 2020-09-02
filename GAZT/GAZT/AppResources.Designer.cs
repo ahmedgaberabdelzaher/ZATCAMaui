@@ -12053,5 +12053,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZakatInstalmentZakatAndTax", resourceCulture);
             }
         }
+        
+        public static string ZakatInstalmentAttachmentBankSettlement {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentAttachmentBankSettlement", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentAttachmentFInancialStatement {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentAttachmentFInancialStatement", resourceCulture);
+            }
+        }
     }
 }
