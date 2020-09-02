@@ -22,6 +22,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             base.OnAppearing();
             viewModel?.OnAppearing();
         }
+
+        
+       private void GoToDashBoardButtonClick(object sender, EventArgs e)
+        {
+            if (Navigation.NavigationStack.Count > 0)
+            {
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(pg);
+                Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Navigation.RemovePage(pg1);
+            }
+            viewModel._navigationService.GoBack();
+        }
+
         private void SetLTR()
         {
 

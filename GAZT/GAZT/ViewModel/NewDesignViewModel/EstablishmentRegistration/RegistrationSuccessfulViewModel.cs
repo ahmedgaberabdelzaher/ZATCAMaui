@@ -54,8 +54,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
         public RegistrationSuccessfulViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoToDashBoardButtonClick = new Command(() => navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView));
+           // GoToDashBoardButtonClick = new Command(() => navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView));
+            GoToDashBoardButtonClick = new Command(() => BackToDashboard());
+
         }
+
+        public void BackToDashboard()
+        {
+
+        }
+
         public void OnAppearing()
         {
             Fbnumx = taxPayerDetails?.Fbnumx;
