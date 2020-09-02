@@ -8805,32 +8805,32 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    if (_zakatInstalmentDetails.d.Savez == "X")
-                    {
+                    //if (_zakatInstalmentDetails.d.Savez == "X")
+                    //{
 
-                        var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails.d);
-                        client.DefaultRequestHeaders.Add("Token", "123");
-                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    //    var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails.d);
+                    //    client.DefaultRequestHeaders.Add("Token", "123");
+                    //    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    //    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    //    client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                        HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                        var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
-                        _zakatResponseObject = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
-                        if (_zakatResponseObject == null || _zakatResponseObject.d == null)
-                        {
-                            ErrorMessage = string.Empty;
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
-                            }
-                        }
-                        return _zakatResponseObject;
-                    }
-                    else
-                    {
+                    //    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    //    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    //    var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                    //    _zakatResponseObject = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
+                    //    if (_zakatResponseObject == null || _zakatResponseObject.d == null)
+                    //    {
+                    //        ErrorMessage = string.Empty;
+                    //        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                    //        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    //        {
+                    //            ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
+                    //        }
+                    //    }
+                    //    return _zakatResponseObject;
+                    //}
+                    //else
+                    //{
                         var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails);
                         client.DefaultRequestHeaders.Add("Token", "123");
                         client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -8851,7 +8851,7 @@ namespace GAZT.Manager
                             }
                         }
                         return _zakatResponseObject;
-                    }
+                  //  }
 
 
 
