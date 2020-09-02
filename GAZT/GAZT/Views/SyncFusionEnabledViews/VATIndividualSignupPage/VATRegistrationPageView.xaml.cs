@@ -290,11 +290,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     SetfifthBoxColor();
                     if (viewModel.CurrentIndex == 4)
                         viewModel.CurrentIndex++;
+                    if (viewModel.IsDeclarationChecked)
+                    {
+                    viewModel.IsContinueButtonEnable = true;
+
+                    }
+                    else
+                    {
+                        viewModel.IsContinueButtonEnable = false;
+                    }
                 }
                 else if (viewModel.CurrentStep == AppResources.ZTEReportCategorySubmitBtn)
                 {
-
-                    step5Validation();
+                    if (viewModel.IsContinueButtonEnable)
+                    {
+                        step5Validation();
+                    }
+                    
 
                 }
 

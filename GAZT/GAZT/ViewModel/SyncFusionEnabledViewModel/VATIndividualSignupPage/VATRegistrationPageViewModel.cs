@@ -505,6 +505,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isFinancialVisible = value;
+                if (_isFinancialVisible)
+                {
+                    IsContinueButtonEnable = true;
+                }
                 RaisePropertyChanged("IsFinancialVisible");
             }
         }
@@ -818,11 +822,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isDeclarationChecked = value;
+               if(_isDeclarationChecked!=null)
+                {  
                 if (_isDeclarationChecked)
                 {
                     IsContinueButtonEnable = true;
                 }
-
+                else
+                {
+                    IsContinueButtonEnable = false;
+                }
+                }
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
