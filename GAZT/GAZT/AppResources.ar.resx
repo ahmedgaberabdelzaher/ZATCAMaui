@@ -6589,10 +6589,10 @@
   <data name="NDRegZakatin5mins" xml:space="preserve">
     <value>سجل الان في خدمات الزكاة خلال اقل من خمس دقائق</value>
   </data>
-    <data name="VRUploadYourDocument" xml:space="preserve">
-  <value>تحميل المرفقات</value>
-    </data>
-    <data name="VRNewAttachment" xml:space="preserve">
-  <value>مرفق جديد</value>
-</data>
+  <data name="VRUploadYourDocument" xml:space="preserve">
+    <value>تحميل المرفقات</value>
+  </data>
+  <data name="VRNewAttachment" xml:space="preserve">
+    <value>مرفق جديد</value>
+  </data>
 </root>
