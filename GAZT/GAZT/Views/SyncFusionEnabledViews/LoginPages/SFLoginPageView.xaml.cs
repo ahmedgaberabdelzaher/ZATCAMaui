@@ -474,7 +474,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 }
 
                                 viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-                                _navigation.NavigationStack.ToList().Clear();
+                                 _navigation.NavigationStack.ToList().Clear();
 
                             }
                         }
