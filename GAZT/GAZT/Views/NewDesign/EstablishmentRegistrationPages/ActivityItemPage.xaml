@@ -19,7 +19,8 @@
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-              xmlns:ResourceManager="clr-namespace:EGAZT">
+             xmlns:ResourceManager="clr-namespace:EGAZT"
+             x:Name="ESTActivityItemPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:EstablishmentRegistrationActivityTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
@@ -145,8 +146,12 @@
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
                                             <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                                            <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
-                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
+                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnDeleteCRsCopyButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
                                         </Grid>
                                     </border:SfBorder>
                                 </DataTemplate>
@@ -173,7 +178,11 @@
                                             </Grid.ColumnDefinitions>
                                             <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
                                             <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
-                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" >
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnDeleteTransferCRsCopyButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
                                         </Grid>
                                     </border:SfBorder>
                                 </DataTemplate>
@@ -338,7 +347,11 @@
                                             </Grid.ColumnDefinitions>
                                             <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
                                             <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
-                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnDeleteLicenseCopyButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
                                         </Grid>
                                     </border:SfBorder>
                                 </DataTemplate>

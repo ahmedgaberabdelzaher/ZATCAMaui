@@ -4356,8 +4356,14 @@
   <data name="UnlockAccountPasswordsSecurityPolicy" xml:space="preserve">
     <value>كلمة المرور المدخلة غير متوافقة مع قواعد إنشاء كلمة المرور، ان لا تقل عن 8 احرف ولا تزيد عن 16 ، تحتوي على احرف كبيرة وصغيرة وأرقام ورموز.</value>
   </data>
+   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
+    <value>عزيزي المكلف, يوجد لديك طلب تغيير تسجيل محفوظ كمسودة, هل تريد حذفه وإكمال طلب ايقاف التسجيل؟</value>
+  </data>
+    <data name="TinDeregistrationDetails" xml:space="preserve">
+    <value>Registration Details</value>
+  </data>
   <data name="TinDeregistration" xml:space="preserve">
-    <value>TIN Deregistration</value>
+    <value>إيقاف الرقم المميز</value>
   </data>
   <data name="TinDeregistrationReason" xml:space="preserve">
     <value>الأسباب</value>
@@ -4501,7 +4507,7 @@
     <value>تاريخ الايقاف يجب ان يكون بعد يوم واحد على الاقل من تاريخ اخر تقديم للاقرار</value>
   </data>
   <data name="VatDeregSuspendedEndDateMismatchException" xml:space="preserve">
-    <value>End Date cannot be less or same as Start Date</value>
+    <value>تاريخ نهاية العقد يجب أن لايكون قبل تاريخ البدء</value>
   </data>
   <data name="VatDeregistrationVoidMessage" xml:space="preserve">
     <value>هل تريد إلغاء ايقاف التسجيل؟</value>
@@ -4633,7 +4639,7 @@
     <value>Legal orders for temporary suspension of economic activities</value>
   </data>
   <data name="VatDeregistrationofReturnReason4" xml:space="preserve">
-    <value>Others (please specify)</value>
+    <value>خرى – الرجاء التحديد</value>
   </data>
   <data name="VatDeregistrationApplicationNumber" xml:space="preserve">
     <value>رقم الطلب</value>
@@ -5713,7 +5719,7 @@
   <data name="ZZZDBTaxEvasion" xml:space="preserve">
     <value>إبلاغ عن تهرب</value>
   </data>
-  <data name="ChangeFillingPeriodTitle" xml:space="preserve">
+  <data name="ChangeFillingPeriod" xml:space="preserve">
     <value>VAT Filling Frequency</value>
   </data>
   <data name="ContractRelease" xml:space="preserve">
@@ -6287,37 +6293,6 @@
   <data name="ESTOrgNonResidentActivityValueNine" xml:space="preserve">
     <value> مبالغ لاستغلال مورد طبيعي في المملكة.</value>
   </data>
-  <data name="VFCEffectiveDate" xml:space="preserve">
-    <value>Effective Date</value>
-  </data>
-  <data name="VFCFrequencyDetailsCheckBoxString" xml:space="preserve">
-    <value>I want to apply for an exception to file quarterly due to severe cash flow implications caused by monthly VAT collections.</value>
-  </data>
-  <data name="VFCAttachmnetsInfo" xml:space="preserve">
-    <value>In Case you have revenue below SAR40 and want to request for quarterly filing kindly attach evidence that you have been filing for 2 years with a monthly Tax Period and your Revenurs during last 12 months.
-In Case you want to request for an exception for quarterly filing, Kindly provide your previous 12 months average Days sales Outstanding</value>
-  </data>
-  <data name="VFCIDType" xml:space="preserve">
-    <value>ID Type</value>
-  </data>
-  <data name="VFCDateofBirth" xml:space="preserve">
-    <value>Date of Birth</value>
-  </data>
-  <data name="VFCIDNumber" xml:space="preserve">
-    <value>ID Number</value>
-  </data>
-  <data name="VFCContactPersonName" xml:space="preserve">
-    <value>Contact Person Name</value>
-  </data>
-  <data name="VFCNationalID" xml:space="preserve">
-    <value>National ID</value>
-  </data>
-  <data name="VFCGCCID" xml:space="preserve">
-    <value>GCC ID</value>
-  </data>
-  <data name="VFCIqamaID" xml:space="preserve">
-    <value>Iqama ID</value>
-  </data>
   <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
     <value>Create/Display for ZAKAT Instalment Plan</value>
   </data>
@@ -6521,5 +6496,88 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   </data>
   <data name="ZZZZPleaseSelectTheIbanMsg" xml:space="preserve">
     <value>الرجاء اختيار رقم الآيبان المفضل</value>
+  </data>
+    <data name="ChangeFillingPeriodAttachments" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="ChangeFillingPeriodAttachmentsSub" xml:space="preserve">
+    <value>اكمل البيانات التالية</value>
+  </data>
+  <data name="ChangeFillingPeriodCurrentFrequency" xml:space="preserve">
+    <value>فترة التقديم الحالية</value>
+  </data>
+  <data name="ChangeFillingPeriodFrequencyDetails" xml:space="preserve">
+    <value>تفاصيل التقديم</value>
+  </data>
+  <data name="ChangeFillingPeriodFrequencyDetailsSub" xml:space="preserve">
+    <value>اكمل البيانات التالية</value>
+  </data>
+  <data name="ChangeFillingPeriodNewFrequency" xml:space="preserve">
+    <value>فترة التقديم القادمة</value>
+  </data>
+  <data name="ChangeFillingPeriodTitle" xml:space="preserve">
+    <value>فترة تقديم إقرارات ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ChangeFillingPeriodAttachmentsOtherDocuments" xml:space="preserve">
+    <value>ملفات أخرى</value>
+  </data>
+  <data name="ChangeFillingPeriodAttachmentsTwelveMonths" xml:space="preserve">
+    <value>إيرادات الـ 12 شهر الماضية </value>
+  </data>
+  <data name="ChangeFillingPeriodAttachmentsTwoYears" xml:space="preserve">
+    <value>إقرارت السنتين الماضية</value>
+  </data>
+  <data name="ChangeFillingPeriodDeclaration" xml:space="preserve">
+    <value>التعهد</value>
+  </data>
+  <data name="ChangeFillingPeriodDeclarationSub" xml:space="preserve">
+    <value>اكمل البيانات التالية</value>
+  </data>
+  <data name="ChangeFillingPeriodButtonText" xml:space="preserve">
+    <value> تغيير فترة تقديم إقرارات ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ChangeFillingPeriodMyRequests" xml:space="preserve">
+    <value>طلباتي</value>
+  </data>
+    <data name="VFCEffectiveDate" xml:space="preserve">
+    <value>تاريخ الفعالية</value>
+  </data>
+  <data name="VFCFrequencyDetailsCheckBoxString" xml:space="preserve">
+    <value>أرغب في التقدم بطلب الحصول على استثناء لتقديم الإقرارات ربع سنوياً بسبب الآثار الشديدة على التدفق النقدي الناجمة عن التحصيل الشهري لضريبة القيمة المضافة</value>
+  </data>
+<data name="VFCAttachmnetsInfo" xml:space="preserve">
+    <value>"في حال كانت إيراداتك تقل عن 40 مليون ريال وترغب في طلب تقديم الإقرارات ربع سنوياً، يرجى إرفاق الأدلة على تقديم إقراراتك من خلال الفترة الضريبية الشهرية لمدة سنتين، وكذلك تقديم دليل على إيراداتك خلال فترة الاثني عشر شهراً الأخيرة.
+ في حال كنت ترغب في طلب استثناء لتقديم الإقرارات ربع سنوياً، يرجى تقديم متوسط أيام تحصيل المبيعات لفترة الـ 12 شهراً الماضية.
+</value>
+  </data>
+  <data name="VFCIDType" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+  <data name="VFCDateofBirth" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="VFCIDNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+  <data name="VFCContactPersonName" xml:space="preserve">
+    <value>اسم جهة الاتصال</value>
+  </data>
+  <data name="VFCNationalID" xml:space="preserve">
+    <value>رقم الهوية الوطنية</value>
+  </data>
+  <data name="VFCGCCID" xml:space="preserve">
+    <value>رقم الهوية الخليجية</value>
+  </data>
+  <data name="VFCIqamaID" xml:space="preserve">
+    <value>رقم الإقامة</value>
+  </data>
+  <data name="VFCInstructions" xml:space="preserve">
+    <value>على المكلف التحقق من أهليته لتقديم هذا الطلب ومراجعة الآثار المترتبة على ذلك حسب التالي&#10;للمكلفين الذين يطلبون تغيير فترة تقديم الإقرارات الضريبية من فترة شهرية إلى فترة ربع سنوية لضريبة القيمة المضافة:&#10;سيكون الطلب متاحاً دون تقديم أية أدلة (مرفقات اختيارية)، كما يحق للمكلف الرجوع إلى فترة ربع سنوية بعد تقديم الإقرارات لمدة سنتين من خلال فترة ضريبية شهرية وأن تكون الإيرادات خلال الاثني عشر شهراً الأخيرة أقل من 40 مليون ريال. للمكلفين الذين يطلبون تغيير فترة تقديم الإقرارات الضريبة من فترة ربع سنوية إلى فترة شهرية لضريبة القيمة المضافة:يجب على المكلفين تقديم أدلة (مرفقات إلزامية) تثبت قيامهم بتقديم الإقرارات لمدة سنتين من خلال فترة ضريبية شهرية وأن الإيرادات خلال الاثني عشر شهراً الأخيرة كانت أقل من 40 مليون ريالاستثناء: يمكن للهيئة العامة للزكاة والدخل الموافقة على طلب الفترة الضريبية الربع سنوية للمكلفين الذين تتجاوز إيراداتهم السنوية الخاضعة للضريبة مبلغ 40 مليون ريال في حال قيام المكلف بتقديم دليل على أن متوسط أيام تحصيل المبيعات لفترة الاثني عشر شهراً الأخيرة أكبر بكثير من الفترة الضريبية، وبالتالي يؤثر ذلك بشدة على التدفق النقدي للمكلف.2. املأ نموذج الطلب وقم بتسليمه&#10;إرفاق الوثائق المطلوبة إذا كان المكلف يرغب في التغيير إلى تقديم الاقرارات الربع السنوية</value>
+  </data>
+  <data name="VFCCheckBoxDesc" xml:space="preserve">
+    <value>أوافق على التعليمات والشروط والانتقال الى الخطوة التالية</value>
+  </data>
+     <data name="VFCSuccessDesc" xml:space="preserve">
+    <value>تم استلام طلب تغيير فترة تقديم إقرارات ضريبة القيمة المضافة بنجاح</value>
   </data>
 </root>

@@ -81,8 +81,8 @@ xmlns:custom2="clr-namespace:EGAZT"
                   <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static custom2:AppResources.VatDeregistrationRegistrationServices}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                        Clicked="btnVATRegistration_Clicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource PrimaryButtonStyle}"  /> 
-                    <buttons:SfButton x:Name="btnDashboard"   Text="{x:Static local:AppResources.ZZZZGotoDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                    <buttons:SfButton x:Name="btnDash"   Text="{x:Static local:AppResources.ZZZZGotoDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                                      HeightRequest="46" Clicked="btnDash_Clicked" FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="#d49504" />
                 </StackLayout>
             </yummy:PancakeView>

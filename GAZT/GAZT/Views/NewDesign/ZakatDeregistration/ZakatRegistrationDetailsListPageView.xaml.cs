@@ -23,6 +23,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             this.BindingContext = viewModel;
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            
+        }
+
         private void SetLTR()
         {
             if (App.IsArabic)
@@ -47,11 +53,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
         }
 
-        void registrationDetailsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        public void registrationDetailsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             try
             {
-                viewModel._navigationService.NavigateTo(App.TINDeregistrationPageView);
+                viewModel.GetNewTinDeregistrationDataCliked();
             }
             catch(Exception ex)
             {

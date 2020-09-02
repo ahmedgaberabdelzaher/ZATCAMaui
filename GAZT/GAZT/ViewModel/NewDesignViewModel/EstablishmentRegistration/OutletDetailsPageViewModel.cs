@@ -616,6 +616,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     //outletItem.Conatt = "X";
                     taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
                     taxPayerDetails.StepNumberx = "03";
+                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                     IsLoading = false;
                 }

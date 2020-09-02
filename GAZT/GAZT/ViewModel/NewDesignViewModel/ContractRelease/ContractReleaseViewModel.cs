@@ -1027,7 +1027,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     ContractReleaseData = await SubmitClicked();
                     if (ContractReleaseData.d != null)
                     {
-                        _navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
+                        await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView());
+                        //_navigationService.NavigateTo(App.ContractReleaseSuccessPageView);
                     }
                 }
 

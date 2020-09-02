@@ -13,7 +13,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
     public partial class TINDeregistrationPageView : ContentPage
     {
         TINDeregistrationPageViewModel viewModel;
-        public TINDeregistrationPageView()
+        public TINDeregistrationPageView(TinDeregistrationResponseModel tinDeregistrationResponseModel)
         {
             InitializeComponent();
 
