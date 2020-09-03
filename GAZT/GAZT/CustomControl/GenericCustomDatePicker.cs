@@ -250,6 +250,8 @@ namespace EGAZT.CustomControl
 
         private void PopulateFutureDateCollection()
         {
+            int year = DateTime.Now.Year;
+            int month = DateTime.Now.Month;
             //populate months
             try
             {
@@ -279,7 +281,7 @@ namespace EGAZT.CustomControl
                     Year.Add(i.ToString());
                 }
                 //populate Days
-                for (int i = 1; i <= DateTime.Today.Day; i++)
+                for (int i = 1; i <= DateTime.DaysInMonth(year, month); i++)
                 {
                     if (i < 10)
                     {

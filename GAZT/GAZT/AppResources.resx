@@ -1194,7 +1194,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>25% of Disputed Amount</value>
   </data>
   <data name="ZChooseonlyfilewithextension" xml:space="preserve">
-    <value>Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt.</value>
+    <value>Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls.</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>File size should not be more than 5MB</value>
@@ -4625,12 +4625,15 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>End Date cannot be less or same as Start Date</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
-    <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.
-
-Please fill the requested information for each step. The application cannot be successfully submitted until all of the mandatory fields and attachments have been completed.
-
-Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
+    <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.</value>
   </data>
+      <data name="VATDeregInstructionsAndConditionsFirst" xml:space="preserve">
+    <value>Please fill the requested information for each step. This application cannot be successfully submitted until all of the mandatory fields and attachments have been completed.</value>
+  </data>
+      <data name="VATDeregInstructionsAndConditionsSecond" xml:space="preserve">
+    <value>Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
+  </data>
+    
   <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
     <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
   </data>
