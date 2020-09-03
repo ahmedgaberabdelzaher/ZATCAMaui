@@ -4380,6 +4380,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>Dear Taxpayer, you have a Registration Change Application saved in draft mode, do you want to discard it and proceed for Deregistration Application?</value>
   </data>
+    <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">     <value>Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?</value>   </data>
   <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
   </data>
@@ -6664,85 +6665,67 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="NDRegZakatin5mins" xml:space="preserve">
     <value>Register now for Zakat in less than 5 minutes</value>
   </data>
-    <data name="VFCInstructions" xml:space="preserve">
-  <value>1. Check eligibility and review potential consequences of request&#10;− For taxpayers &lt;40M SAR annual taxable revenues requesting monthly VAT Tax Period:&#10;Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years with a monthly Tax Period with the last 12 months revenues being below SAR 40M&#10;− For taxpayers &lt;40M SAR annual taxable revenues requesting quarterly VAT Tax Period:&#10;Taxpayer is required to provide evidence that he has been filing for 2 years with a monthly Tax Period and that revenues during last 12 months were below Riyal 40M&#10;− Exception: quarterly VAT tax period for taxpayers >40M SAR annual taxable revenues: Might be granted by GAZT if taxpayer provides evidence that average Days Sales Outstanding for the previous 12 months have been significantly greater than VAT tax period and are hence severely affecting the taxpayer’s cash flow.&#10;2. Fill out the request form and submit&#10;− Upload required documentation if taxpayer wants to change to quarterly filing</value>
-</data> 
-<data name="VFCCheckBoxDesc" xml:space="preserve">
-  <value>I agree with these instructions and process further</value>
-</data>
   <data name="VatReview" xml:space="preserve">
-  <value>VAT Review</value>
-</data>
-<data name="VRReviewReason" xml:space="preserve">
-  <value>Review Reason</value>
-</data>
-<data name="VRCompleteTheBelowDetails" xml:space="preserve">
-  <value>Complete the below details</value>
-</data>
-<data name="VRReviewReason" xml:space="preserve">
-  <value>Review Reason</value>
-</data>
-<data name="VRSelectAReason" xml:space="preserve">
-  <value>Select a Reason</value>
-</data>
-<data name="VRReviewSubReason" xml:space="preserve">
-  <value>Review Sub-Reason</value>
-</data>
-<data name="VRSelectASubReason" xml:space="preserve">
-  <value>Select a Sub-Reason</value>
-</data>
-<data name="VRApplicationReferenceNumber" xml:space="preserve">
-  <value>Application Reference Number</value>
-</data>
-<data name="VRRequestDate" xml:space="preserve">
-  <value>Request Date</value>
-</data>
-<data name="VRContinue" xml:space="preserve">
-  <value>Continue</value>
-</data>
-<data name="VRViewApplication" xml:space="preserve">
-  <value>View Application</value>
-</data>
-<data name="VRReviewDetails" xml:space="preserve">
-  <value>Review Details</value>
-</data>
-<data name="VRReportDetails" xml:space="preserve">
-  <value>Report Details</value>
-</data>
-<data name="VRHelperText" xml:space="preserve">
-  <value>Helper text</value>
-</data>
-<data name="VRAttachment" xml:space="preserve">
-  <value>Attachment</value>
-</data>
-<data name="VR20MB" xml:space="preserve">
-  <value>20MB</value>
-</data>
-<data name="VRNewAttachment" xml:space="preserve">
-  <value>New Attachment</value>
-</data>
-<data name="VRUploadYourDocument" xml:space="preserve">
-  <value>Upload your document</value>
-</data>
-<data name="VRPleaseCompleteTheDescription" xml:space="preserve">
-  <value>Please complete the description</value>
-</data>
-<data name="VRDeclaration" xml:space="preserve">
-  <value>Declaration</value>
-</data>
-<data name="VRIDType" xml:space="preserve">
-  <value>ID Type</value>
-</data>
-<data name="VRIDNumber" xml:space="preserve">
-  <value>ID Number</value>
-</data>
-<data name="VRDateOfBirth" xml:space="preserve">
-  <value>Date of Birth</value>
-</data>
-<data name="VRContactPersonName" xml:space="preserve">
-  <value>Contact Person Name</value>
-</data>  
-<data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
+    <value>VAT Review</value>
+  </data>
+  <data name="VRReviewReason" xml:space="preserve">
+    <value>Review Reason</value>
+  </data>
+  <data name="VRCompleteTheBelowDetails" xml:space="preserve">
+    <value>Complete the below details</value>
+  </data>
+  <data name="VRSelectAReason" xml:space="preserve">
+    <value>Select a Reason</value>
+  </data>
+  <data name="VRReviewSubReason" xml:space="preserve">
+    <value>Review Sub-Reason</value>
+  </data>
+  <data name="VRSelectASubReason" xml:space="preserve">
+    <value>Select a Sub-Reason</value>
+  </data>
+  <data name="VRApplicationReferenceNumber" xml:space="preserve">
+    <value>Application Reference Number</value>
+  </data>
+  <data name="VRRequestDate" xml:space="preserve">
+    <value>Request Date</value>
+  </data>
+  <data name="VRContinue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="VRViewApplication" xml:space="preserve">
+    <value>View Application</value>
+  </data>
+  <data name="VRReviewDetails" xml:space="preserve">
+    <value>Review Details</value>
+  </data>
+  <data name="VRReportDetails" xml:space="preserve">
+    <value>Report Details</value>
+  </data>
+  <data name="VRHelperText" xml:space="preserve">
+    <value>Helper text</value>
+  </data>
+  <data name="VRAttachment" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="VRPleaseCompleteTheDescription" xml:space="preserve">
+    <value>Please complete the description</value>
+  </data>
+  <data name="VRDeclaration" xml:space="preserve">
+    <value>Declaration</value>
+  </data>
+  <data name="VRIDType" xml:space="preserve">
+    <value>ID Type</value>
+  </data>
+  <data name="VRIDNumber" xml:space="preserve">
+    <value>ID Number</value>
+  </data>
+  <data name="VRDateOfBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="VRContactPersonName" xml:space="preserve">
+    <value>Contact Person Name</value>
+  </data>
+  <data name="ZakatInstalmentPlanCreate_Display" xml:space="preserve">
     <value>Create/Display for ZAKAT Instalment Plan</value>
   </data>
   <data name="ZakatInstalmentPlanRevokeZAKAT" xml:space="preserve">
@@ -6752,9 +6735,9 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Amount cannot be less than </value>
   </data>
   <data name="ZakatInstalmentCannotExceed" xml:space="preserve">
-    <value>Amount cannot exceed 2,000,000.00</value>
+    <value>Amount cannot exceed</value>
   </data>
- <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
+  <data name="ZakatInstalmentInstalmentAmount" xml:space="preserve">
     <value>Instalment Amount</value>
   </data>
   <data name="ZakatInstalmentNumberOfInstalments" xml:space="preserve">
@@ -6793,7 +6776,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatInstalmentReasonForRequestInstalment" xml:space="preserve">
     <value>Reason for requesting Instalment</value>
   </data>
-<data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
+  <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
     <value>Net Cash Flow From Operation</value>
   </data>
   <data name="ZakatInstalmentNetIncome" xml:space="preserve">
@@ -6807,5 +6790,14 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
   <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
     <value>Zakat and Tax</value>
+  </data>
+     <data name="ZakatInstalmentAttachmentBankSettlement" xml:space="preserve">
+    <value>Attachment - Bank Statements for the last 3 months</value>
+  </data>
+  <data name="ZakatInstalmentAttachmentFInancialStatement" xml:space="preserve">
+    <value>Attachment - Financial Statements for the last 3 years</value>
+  </data>
+    <data name="VoidReasonHint" xml:space="preserve">
+    <value>Reason for void</value>
   </data>
   </root>

@@ -231,7 +231,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            if (!viewModel.IsVatRegistrationTileVisible)
+            if (!viewModel.IsVatRegistrationTileVisible || !viewModel.IsEstablishmentRegistrationTileVisible)
             { 
             viewModel.MenuViewVisible = true;
             viewModel.HomeViewVisible = false;

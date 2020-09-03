@@ -43,7 +43,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
                 viewModel.ResetData();
 
-                viewModel.showInstructionDialog();
+                //viewModel.showInstructionDialog();
 
                 viewModel.GetVATChangeFillingData();
             }

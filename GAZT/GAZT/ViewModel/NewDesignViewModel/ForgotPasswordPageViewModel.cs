@@ -119,7 +119,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _userNameLabelText = AppResources.IDNumber;
+        private string _userNameLabelText = AppResources.UserName;
         public string UserNameLabelText
         {
             get

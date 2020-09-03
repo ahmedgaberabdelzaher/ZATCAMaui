@@ -176,10 +176,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtCRNumber = string.Empty;
             viewModel.TxtLicenseNumber = string.Empty;
             viewModel.TxtEmailAddress = string.Empty;
-            viewModel.TxtCountryCode = string.Empty;
+           viewModel.TxtCountryCode = "+966";
 
             viewModel.TxtMobileNumber = string.Empty;
-            viewModel.TxtMobileNumberwithCountryCode = string.Empty;
+           // viewModel.TxtMobileNumberwithCountryCode = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
 
             //iewModel.IDTypeModelRootObject = null;
@@ -440,6 +440,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
         {
+            viewModel.IsLoading = true;
             if (!string.IsNullOrEmpty(EntryCRNumber.Text))
             {
                 if (EntryCRNumber.Text.Length == 10)
@@ -490,6 +491,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     EntryCRNumber.Focus();
                 }
             }
+            else
+            {
+                if(viewModel.IsCRChecked == false)
+                {
+                    viewModel.IsAllValidCRNumberEntered = true;
+                }
+            }
+            viewModel.IsLoading = false;
+
         }
 
         private void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
@@ -530,13 +540,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
                 {
-                    viewModel.IsAllValidContactDataEnteredPhoneNbr = false;
+                   // viewModel.IsAllValidContactDataEnteredPhoneNbr = false;
                      FrmPhoneNumber.HasError = true;
                 }
                 else
                 {
-                    viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
+                    //viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
                      FrmPhoneNumber.HasError = false;
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
+                {
+                    viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
                 }
             }
         }
@@ -545,8 +562,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
-
-                 FrmPhoneNumber.HasError = false;
+                viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
+                FrmPhoneNumber.HasError = false;
             }
             if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
@@ -625,7 +642,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmMobileNumber.HasError = true;
+                   // FrmMobileNumber.HasError = true;
                     viewModel.IsAllValidContactDataEnteredMobileNbr = false;
 
                     EntryMobileNumber.Text = string.Empty;
@@ -633,7 +650,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 else
                 {
                     viewModel.IsAllValidContactDataEnteredMobileNbr = true;
-                     FrmMobileNumber.HasError = false;
+                    // FrmMobileNumber.HasError = false;
                 }
             }
             else
@@ -642,6 +659,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 popUp.Message = Message.ToString();
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
+
+            EntryPhoneNumber.Focus();
         }
 
         public bool IsValid(string emailaddress)
@@ -733,7 +752,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsAllValidDataEntered = true;
                                  FrmIDNumber.HasError = false;
-                                ValidateIDNumber();
+                               // ValidateIDNumber();
                             }
                         }
                     }
@@ -789,7 +808,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 // viewModel.IsAllValidDataEntered = true;
                                  FrmIDNumber.HasError = false;
-                                ValidateIDNumber();
+                               // ValidateIDNumber();
                             }
                         }
                     }
@@ -1631,6 +1650,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.ImgBackgroundCRNubmer = "FP_selected_tile";
             viewModel.ImgBackgroundLicenseNubmer = "FP_unselected_tile";
             viewModel.IsCRChecked = true;
+           
         }
 
         private void OnLicenseNumberTapped(object sender, EventArgs e)
@@ -1798,6 +1818,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             SiguupModel.AIdnumber = viewModel.TxtIDNumber;
             if (viewModel.IsCRChecked == true)
             {
+
                 SiguupModel.ACommId = viewModel.TxtCRNumber;
                 SiguupModel.ALicenceNo = "";
                 SiguupModel.AIssuedBy = "";
@@ -2107,7 +2128,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.SignUpModelRootObjectM = ResultFirstSubmitModel;
                 viewModel.TxtEmailAddress = ResultFirstSubmitModel.d.AEmail;
                 string mobileno = ResultFirstSubmitModel.d.AMobile;
-                viewModel.TxtMobileNumberwithCountryCode = ResultFirstSubmitModel.d.AMobile;
+                viewModel.TxtMobileNumberwithCountryCode = mobileno;
                 viewModel.TxtMobileNumber = "XXXXXXXXXX" + mobileno.Substring(mobileno.Length - 4, 4);
                 OTPFirstEntry.Focus();
             }
@@ -2135,7 +2156,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         {
                             if (viewModel.IsCRChecked == true)
                             {
-                                try
+                            viewModel.IsAllValidCRNumberEntered = false;
+                            try
                                 {
                                     //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
                                     DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
@@ -2374,6 +2396,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
 
                                     });
+
                                 }
 
 
@@ -2381,7 +2404,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
-                                try
+                            viewModel.IsAllValidCRNumberEntered = false;
+                            try
                                 {
                                     CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
                                     SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
@@ -3546,6 +3570,61 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                 FrmLicenseNumber.HasError = false;
             }
+        }
+
+        private void EntryCRNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(EntryCRNumber.Text.Length == 10)
+            {
+                EntryCRNumber.Unfocus();
+            }
+        }
+
+
+        public void IndividualValidationCheck()
+        {
+
+            if (string.IsNullOrEmpty(EntryTIN.Text))
+            {
+                FrmTIN.HasError = true;
+            }
+
+            if (string.IsNullOrEmpty(EntryIDNumber.Text))
+            {
+                FrmIDNumber.HasError = true;
+            }
+
+            if (string.IsNullOrEmpty(DateEntry.Text))
+            {
+                FrmDBO.HasError = true;
+            }
+
+            if (string.IsNullOrEmpty(EntryName.Text))
+            {
+                FrmName.HasError = true;
+
+            }
+
+           if((FrmIDNumber.HasError == true)&&(FrmDBO.HasError == true)&&(FrmName.HasError == true))
+            {
+                viewModel.IsAllValidDataEntered = false;
+            }
+
+
+        }
+        public void BussinessValidationCheck()
+        {
+
+
+        }
+        public void ContactInformationValidationCheck()
+        {
+
+
+        }
+        public void OTPValidationCheck()
+        {
+
 
         }
     }

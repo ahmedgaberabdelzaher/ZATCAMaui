@@ -265,7 +265,7 @@ namespace GAZT.CustomControl
                 // Month.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
             }
             //populate year
-            for (int i = 1900; i <= DateTime.Today.Year; i++)
+            for (int i = 1100; i <= DateTime.Today.Year; i++)
             {
                 Year.Add(i.ToString());
             }

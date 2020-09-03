@@ -1838,6 +1838,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         if (resultData != null && resultData.d != null)
                         {
                             EffectiveDateResponse = resultData;
+                            showInstructionDialog();
                             setEffectiveDatePickerModel();
                             AddAttachmentOptions();
                         }

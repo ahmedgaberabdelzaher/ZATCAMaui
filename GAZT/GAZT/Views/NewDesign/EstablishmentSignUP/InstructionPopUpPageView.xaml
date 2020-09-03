@@ -16,6 +16,18 @@
         </ResourceDictionary>
     </pages:PopupPage.Resources>
     <yummy:PancakeView VerticalOptions="End" Margin="0,150,0,0" Style="{StaticResource CommonTopCurves}">
-        <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <WebView x:Name="TCWebView" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" WidthRequest="1000" HeightRequest="880"/>
+            </StackLayout>
+        </Grid>
+        
     </yummy:PancakeView>
 </pages:PopupPage>

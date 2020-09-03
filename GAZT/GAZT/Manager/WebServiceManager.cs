@@ -10890,6 +10890,101 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+        public async static Task<TinDeregistrationReasonSetDataModel> GaztTinDeregistrationReasonData()
+        {
+            TinDeregistrationReasonSetDataModel _tinDeregistrationReasonSetDataModel = new TinDeregistrationReasonSetDataModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                string NewToken = string.Empty;
+                try
+                {
+                    // eUser = "00001000000008322132";
+
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
+                    //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
+                    ////https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_DREGRESN_SRV/ZDS_DETSet(Partner='3000363416',Spars='E')?&$expand=REASONSet
+                    String url = Constants.TinDeregistrationReasonSetUrl + "Partner='"+App.LoginDataRetrieved.TIN+"',Spars='"+ lang + "')?&$expand=REASONSet&$format=json";
+                    var uri = new Uri(url);
+
+                    HttpResponseMessage _tinDeregReasonRequestResponse = await client.GetAsync(uri);
+
+                    if (_tinDeregReasonRequestResponse != null)
+                    {
+                        if (_tinDeregReasonRequestResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _tinDeregReasonRequestResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String _responseData = _tinDeregReasonRequestResponse.Content.ReadAsStringAsync().Result;
+                        if (_tinDeregReasonRequestResponse.StatusCode == HttpStatusCode.BadRequest)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
+                                ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+
+                                String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                ErrorMessageForUnlockAccount = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTErrorException(ErrorMessageForUnlockAccount);
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(_responseData))
+                        {
+                            _responseData = JObject.Parse(_responseData)["d"].ToString();
+                            _tinDeregistrationReasonSetDataModel = JsonConvert.DeserializeObject<TinDeregistrationReasonSetDataModel>(_responseData);
+                            if (_tinDeregistrationReasonSetDataModel == null)
+                            {
+                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        }
+                    }
+
+                    return _tinDeregistrationReasonSetDataModel;
+                }
+                catch (GAZTErrorException ex)
+                {
+                    throw new GAZTErrorException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
         #endregion
 
         #region Zakat
@@ -11276,6 +11371,8 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+
         #endregion
     }
 }

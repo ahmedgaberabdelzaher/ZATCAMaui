@@ -43,6 +43,8 @@ namespace EGAZT.Models.ZakatInstalationModels
             ChangeFillingPeriod12Months = 5,
             ChangeFillingPeriodOtherDoc = 6,
             VATDeregistration = 7,
-        }
+            ZakatInstalmentBankStatements = 8,
+             ZakatInstalmentFinance = 9
+    }
     
 }

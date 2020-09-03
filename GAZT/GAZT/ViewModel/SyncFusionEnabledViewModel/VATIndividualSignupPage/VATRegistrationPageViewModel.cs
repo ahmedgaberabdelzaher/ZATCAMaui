@@ -1832,19 +1832,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
-                            if (vATRegistration.d.AgrFg != null)
-                            {
-                                if (vATRegistration.d.AgrFg == "1")
-                                {
-                                    IsInstrunctionChecked = true;
-
-                                }
-                                if (vATRegistration.d.AgrFg == "0")
-                                {
-                                    IsInstrunctionChecked = false;
-                                }
-
-                            }
+                            
                             //step 4 and 5 data set
                             if (vATRegistration.d.CONTACT_PERSONSet != null)
                             {
@@ -1872,6 +1860,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             else if (vATRegistration.d.Decfg == "0")
                             {
                                 IsDeclarationChecked = false;
+                            }
+                            if (vATRegistration.d.AgrFg != null)
+                            {
+                                if (vATRegistration.d.AgrFg == "1")
+                                {
+                                    IsInstrunctionChecked = true;
+
+                                }
+                                if (vATRegistration.d.AgrFg == "0")
+                                {
+                                    IsInstrunctionChecked = false;
+                                }
+
                             }
                             if (vATRegistration.d.DecidTy != null && vATRegistration.d.DecidTy!="")
                             {

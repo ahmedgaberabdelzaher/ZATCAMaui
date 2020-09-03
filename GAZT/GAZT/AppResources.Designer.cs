@@ -7356,6 +7356,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationPermitApplicationInDraftError {
+            get {
+                return ResourceManager.GetString("TinDeregistrationPermitApplicationInDraftError", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistration {
             get {
                 return ResourceManager.GetString("TinDeregistration", resourceCulture);
@@ -12051,6 +12057,24 @@ namespace EGAZT {
         public static string ZakatInstalmentZakatAndTax {
             get {
                 return ResourceManager.GetString("ZakatInstalmentZakatAndTax", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentAttachmentBankSettlement {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentAttachmentBankSettlement", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentAttachmentFInancialStatement {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentAttachmentFInancialStatement", resourceCulture);
+            }
+        }
+        
+        public static string VoidReasonHint {
+            get {
+                return ResourceManager.GetString("VoidReasonHint", resourceCulture);
             }
         }
     }

@@ -989,6 +989,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         public ICommand OnPassportAttachmentTapped { get; set; }
 
+        public ICommand TappedOnAttachmentInformationIcon { get; set; }
+        
         public ICommand OnPassportCloseTapped { get; set; }
 
         public ICommand OnDeleteAttachmentClickedTapped { get; set; }
@@ -1095,7 +1097,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnPassportAttachmentTapped = new Command(() => OnPassportAddAttachmentButtonTapped());
             #endregion
 
-
+            TappedOnAttachmentInformationIcon = new Command(() =>
+            ShowValidationPopup(
+                AppResources.ZFilesizeshouldnotbemorethan5MB
+                + System.Environment.NewLine
+                + AppResources.ZZChooseonlyfilewithextensionForZAKAT
+                + System.Environment.NewLine + AppResources.ZMaximumnoof5attachmentscanbeuploaded
+                ));
 
             #region Outlet Tabs variable initialization
             OnNewOutletButtonClick = new Command(() => openNewOutlet());
@@ -1333,6 +1341,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
             }
+            else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
+            {
+                _navigationService.GoBack();
+            }
+          
         }
 
 

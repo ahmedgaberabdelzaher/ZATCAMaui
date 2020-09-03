@@ -197,7 +197,7 @@
                                                                         <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">
                                                                             <custom:CustomLabel.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Text="{Binding Day}" ></Span>
+                                                                                    <Span Text="{Binding Day}" Style="{StaticResource ValueLabelWhiteMedium}" ></Span>
                                                                                     <Span Text="&#10;"/>
                                                                                     <Span Text="{Binding Month}" ></Span>
                                                                                 </FormattedString>
@@ -212,11 +212,11 @@
                                                                 </cards:SfCardView>
 
                                                                 <StackLayout Padding="10,1,10,1" VerticalOptions="Center" Spacing="0" >
-                                                                    <custom:CustomLabel Text="{Binding Incotext}" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsUnSubmittedReturn}" />
+                                                                    <custom:CustomLabel Text="{Binding Incotext}" Style="{StaticResource ValueLabelBlackMedium}" IsVisible="{Binding IsUnSubmittedReturn}" />
 
-                                                                    <custom:CustomLabel Text="{Binding Txt50}" Style="{StaticResource BodyLabelBlack}" IsVisible="{Binding IsPaymentOverdue}" />
+                                                                    <custom:CustomLabel Text="{Binding Txt50}" Style="{StaticResource ValueLabelBlackMedium}" IsVisible="{Binding IsPaymentOverdue}"/>
 
-                                                                    <custom:CustomLabel  IsVisible="{Binding IsUnSubmittedReturn}" Style="{StaticResource ValueLabelBlack}" LineBreakMode="WordWrap">
+                                                                    <custom:CustomLabel  IsVisible="{Binding IsUnSubmittedReturn}" Style="{StaticResource BodyLabelBlack}" LineBreakMode="WordWrap">
                                                                         <custom:CustomLabel.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}"></Span>
@@ -227,7 +227,7 @@
 
                                                                     </custom:CustomLabel>
 
-                                                                    <custom:CustomLabel    IsVisible="{Binding IsPaymentOverdue}" Style="{StaticResource ValueLabelBlack}" LineBreakMode="WordWrap">
+                                                                    <custom:CustomLabel    IsVisible="{Binding IsPaymentOverdue}" Style="{StaticResource BodyLabelBlack}" LineBreakMode="WordWrap">
                                                                         <custom:CustomLabel.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZAmount}"></Span>
@@ -243,11 +243,8 @@
                                                                     <!--<custom:CustomLabel Text="200,000,00 SAR" TextColor="Black"  />-->
                                                                 </StackLayout>
 
-                                                                <Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand" Margin="10,0">
-                                                                    <!--                                                                <Image.Source>
-                                                                    <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRight}"/>
-                                                                </Image.Source>-->
-                                                                </Image>
+                                                                <!--<Image Source="circle_arrow_right.png"  Style="{DynamicResource BackButtonArrow}" HorizontalOptions="EndAndExpand" Margin="10,0">
+                                                                </Image>-->
                                                             </StackLayout>
                                                         </cards:SfCardView>
                                                     </StackLayout>
@@ -467,7 +464,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
-                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="refund">
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -475,7 +472,7 @@
                                         <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>-->
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="ic_Installplan.png">
