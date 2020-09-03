@@ -2353,6 +2353,11 @@
                                             </Image>
                                         </Frame>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
+                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnEditSalesClicked"/>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
                                         <!--<custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>-->
                                     </StackLayout>
 
@@ -2419,6 +2424,11 @@
                                             </Image>
                                         </Frame>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
+                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnEditPurcahseClicked"/>
+                                            </custom:CustomLabel.GestureRecognizers>
+                                        </custom:CustomLabel>
                                         <!--<custom:CustomLabel Text="Edit" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" TextColor="{StaticResource GreenLabelTextColor}"/>-->
                                     </StackLayout>
 
