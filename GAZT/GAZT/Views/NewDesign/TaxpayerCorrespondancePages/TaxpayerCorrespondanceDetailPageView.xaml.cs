@@ -36,6 +36,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             }
             try
             {
+                viewModel.IsAttachmentEnabled = false;
                 CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
                 if ((CorrespondenceD != null) && (CorrespondenceD.d != null) && (CorrespondenceD.d.results != null))
                 {
@@ -49,7 +50,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                         //Attachment_Label.GestureRecognizers.Clear();
                         //Attachment_Label.TextColor = Color.FromHex("#A9A9A9");
                         //viewModel.IsAttachmentEnabled = false;
-                        viewModel.IsAttachmentEnabled = false;
+                      //  viewModel.IsAttachmentEnabled = false;
                     }
                 }
                 PopToRootPage();

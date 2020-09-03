@@ -21,6 +21,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             BindingContext = App.Locator.AccountCreatedSuccessfullyPageView;
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
         private void OnGoToLoginClicked(object sender, EventArgs e)
         {
             if (Navigation.NavigationStack.Count > 0)

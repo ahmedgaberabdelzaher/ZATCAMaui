@@ -884,34 +884,37 @@
 
 
 
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="check_oval.png">
 
-                            </Image>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDAtleast8character}" Style="{StaticResource CaptionLabelBlack}" Padding="5,0,0,0"/>
-                        </StackLayout>
+                                <StackLayout x:Name="PasswordChecks" >
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding MinEight}">
 
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="check_oval.png">
+                                        </Image>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDAtleast8character}" Style="{StaticResource CaptionLabelBlack}" Padding="5,0,0,0"/>
+                                    </StackLayout>
 
-                            </Image>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEnglishcapitalandsmallletters}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
-                        </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding CapsSmall}">
 
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="error.png">
+                                        </Image>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEnglishcapitalandsmallletters}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
+                                    </StackLayout>
 
-                            </Image>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
-                        </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding MaxSixteen}">
 
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="error.png">
+                                        </Image>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
+                                    </StackLayout>
 
-                            </Image>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNumbersAndSymbols}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
-                        </StackLayout>
-                        </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding NumSymbol}">
+
+                                        </Image>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDNumbersAndSymbols}" Style="{StaticResource CaptionLabelBlack}" VerticalTextAlignment="Center" Padding="5,0,0,0"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
                         <!--Password Ends-->
                         
                     </StackLayout>

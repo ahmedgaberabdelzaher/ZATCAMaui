@@ -538,15 +538,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
+                    viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryPhoneNumber.Text;
                 if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
                 {
                    // viewModel.IsAllValidContactDataEnteredPhoneNbr = false;
                      FrmPhoneNumber.HasError = true;
+
                 }
                 else
                 {
                     //viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
                      FrmPhoneNumber.HasError = false;
+
                 }
             }
             else
@@ -1856,7 +1859,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
             SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-            viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+          //  viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
             SiguupModel.ACountry = viewModel.MobileCountryCode;
 
             // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
@@ -2102,10 +2105,39 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
             }
         }
-
+        void ResetPasswordValidationConditions()
+        {
+            viewModel.MinEight = "error";
+            viewModel.CapsSmall = "error";
+            viewModel.MaxSixteen = "error";
+            viewModel.NumSymbol = "error";
+        }
         private void EntryPass_TextChanged(object sender, TextChangedEventArgs e)
         {
-           //rmPass.HasError = false;
+            //rmPass.HasError = false;
+
+            this.ResetPasswordValidationConditions();
+
+            bool ValidPassword = UtilityManager.ValidateNewPassword(viewModel.TxtPassword);
+
+            if (ValidPassword)
+            {
+                viewModel.MinEight = "check_oval";
+                viewModel.CapsSmall = "check_oval";
+                viewModel.MaxSixteen = "check_oval";
+                viewModel.NumSymbol = "check_oval";
+
+                // check the new and confirm password condition
+            }
+            else
+            {
+                if (UtilityManager.ValidMinEight) { viewModel.MinEight = "check_oval"; }
+                if (UtilityManager.ValidSmallL && UtilityManager.ValidCapsL) { viewModel.CapsSmall = "check_oval"; }
+                if (UtilityManager.ValidMaxSixteen) { viewModel.MaxSixteen = "check_oval"; }
+                if (UtilityManager.ValidNumber && UtilityManager.ValidSymbol) { viewModel.NumSymbol = "check_oval"; }
+            }
+
+
         }
         public async Task NavigateToVerifyOTPScreenAsync(SignUpModelRootObject ResultFirstSubmitModel)
         {
@@ -2128,7 +2160,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.SignUpModelRootObjectM = ResultFirstSubmitModel;
                 viewModel.TxtEmailAddress = ResultFirstSubmitModel.d.AEmail;
                 string mobileno = ResultFirstSubmitModel.d.AMobile;
-                viewModel.TxtMobileNumberwithCountryCode = mobileno;
+                //viewModel.TxtMobileNumberwithCountryCode = mobileno;
                 viewModel.TxtMobileNumber = "XXXXXXXXXX" + mobileno.Substring(mobileno.Length - 4, 4);
                 OTPFirstEntry.Focus();
             }
@@ -2140,8 +2172,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         public async Task EstablishmentSignUpDataAsync()
         {
-            
-           
+
+            viewModel.IsLoading = true;
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
@@ -2240,7 +2272,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                         string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                         SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                    viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                   // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
                                     SiguupModel.ACountry = viewModel.MobileCountryCode;
                                         // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                         if (viewModel.SelectedSignUpUsing.ID == 1)
@@ -2483,7 +2515,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                              //  viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
                                 SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                     // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
@@ -2641,10 +2673,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            // IsLoading = false;
+                            viewModel.IsLoading = false;
 
                             await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            //_navigationService.GoBack();
+                            viewModel._navigationService.GoBack();
                         });
                     }
                     catch (Exception ex)
@@ -2653,10 +2685,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            // IsLoading = false;
+                            viewModel.IsLoading = false;
 
                             await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            //_navigationService.GoBack();
+                            viewModel._navigationService.GoBack();
                         });
                     }
                 }
@@ -2750,7 +2782,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                               // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
                                 // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                 SiguupModel.ACountry = viewModel.MobileCountryCode;
 
@@ -2887,10 +2919,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    // IsLoading = false;
+                                    viewModel.IsLoading = false;
 
                                     await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    //_navigationService.GoBack();
+                                    viewModel._navigationService.GoBack();
                                 });
                             }
                             catch (Exception ex)
@@ -2899,10 +2931,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    // IsLoading = false;
+                                    viewModel.IsLoading = false;
 
                                     await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    //_navigationService.GoBack();
+                                    viewModel._navigationService.GoBack();
                                 });
                             }
                         }
@@ -2986,7 +3018,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                 SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                            viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                           // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
                             SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                 // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
@@ -3071,10 +3103,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    // IsLoading = false;
+                                    viewModel.IsLoading = false;
 
                                     await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    //_navigationService.GoBack();
+                                    viewModel._navigationService.GoBack();
                                 });
                             }
                             catch (Exception ex)
@@ -3083,10 +3115,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    // IsLoading = false;
+                                    viewModel.IsLoading = false;
 
                                     await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    //_navigationService.GoBack();
+                                    viewModel._navigationService.GoBack();
                                 });
                             }
                         }
@@ -3187,7 +3219,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                //viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
                                 SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                     // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
@@ -3263,7 +3295,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         if (result == true)
                                         {
                                             CRDuplicateCheck();
-                                            // _navigationService.GoBack();
+                                        viewModel._navigationService.GoBack();
 
                                         }
                                         else // if it's equal to NO
@@ -3323,10 +3355,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    // IsLoading = false;
+                                    viewModel.IsLoading = false;
 
                                     await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    //_navigationService.GoBack();
+                                    viewModel._navigationService.GoBack();
                                 });
                             }
                             catch (Exception ex)
@@ -3335,10 +3367,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    // IsLoading = false;
+                                    viewModel.IsLoading = false;
 
                                     await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    //_navigationService.GoBack();
+                                    viewModel._navigationService.GoBack();
                                 });
                             }
                         }
@@ -3419,7 +3451,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                 SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                            viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                            //viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
                             SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                                 // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
@@ -3511,10 +3543,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    // IsLoading = false;
+                                    viewModel.IsLoading = false;
 
                                     await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    //_navigationService.GoBack();
+                                    viewModel._navigationService.GoBack();
                                 });
                             }
                             catch (Exception ex)
@@ -3523,10 +3555,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    // IsLoading = false;
+                                    viewModel.IsLoading = false;
 
                                     await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                    //_navigationService.GoBack();
+                                    viewModel._navigationService.GoBack();
                                 });
                             }
                         }
@@ -3547,6 +3579,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     viewModel.IsLoading = false;
                 });
             });
+            viewModel.IsLoading = false;
         }
 
         private void EntryLicenceNumber_Unfocused(object sender, FocusEventArgs e)
