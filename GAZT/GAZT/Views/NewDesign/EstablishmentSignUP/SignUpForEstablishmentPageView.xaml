@@ -163,7 +163,7 @@
                                 <Grid>
                                     <inputLayout:SfTextInputLayout x:Name="txtEntryName" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                             <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="{Binding TxtIDType}" Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
-                                                                 VerticalTextAlignment="End"   IsEnabled="False">
+                                                                 VerticalTextAlignment="End"   IsEnabled="False" TextColor="{StaticResource NeutralBlack}">
                                                
                                             </control:BorderlessEntry>
                                         <inputLayout:SfTextInputLayout.TrailingView>
@@ -214,7 +214,7 @@
                                     <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry"
                                                          Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused"
                                                          Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
-                                                             VerticalTextAlignment="End"  IsEnabled="False">
+                                                             VerticalTextAlignment="End"  IsEnabled="False" TextColor="{StaticResource NeutralBlack}">
 
                             </control:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>

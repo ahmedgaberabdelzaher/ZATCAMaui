@@ -3549,7 +3549,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                 FrmLicenseNumber.HasError = false;
             }
-
         }
 
         private void EntryCRNumber_TextChanged(object sender, TextChangedEventArgs e)
@@ -3559,6 +3558,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 EntryCRNumber.Unfocus();
             }
         }
+
+
+
     }
 
 }
