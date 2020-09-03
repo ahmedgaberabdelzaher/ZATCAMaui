@@ -210,7 +210,7 @@
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" Style="{StaticResource CaptionLabelGrey}"/>
                         <Grid>
-                        <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
+                                <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                     <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry"
                                                          Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused"
                                                          Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
