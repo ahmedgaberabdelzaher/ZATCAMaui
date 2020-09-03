@@ -84,18 +84,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         public void OnDataLoad()
         {
+            if (viewModel != null)
+            {
+                viewModel.IsLoading = false;
+                // viewModel.MenuViewVisible = false;
+                // viewModel.HomeViewVisible = true;
+                //viewModel.StackMenuColor = Color.White;
+                //viewModel.TabbarColor = Color.DarkGray;
+                //viewModel.HomeIndicatorColor= Color.DarkGreen;
+            }
             if (App.HasToRefreshLoaderOnDashboard == true)
             {
                 App.IsComingFromSleepMode = false;
-                if (viewModel != null)
-                {
-                    viewModel.IsLoading = false;
-                    // viewModel.MenuViewVisible = false;
-                    // viewModel.HomeViewVisible = true;
-                    //viewModel.StackMenuColor = Color.White;
-                    //viewModel.TabbarColor = Color.DarkGray;
-                    //viewModel.HomeIndicatorColor= Color.DarkGreen;
-                }
+              
 
                 Task.Run(async () =>
                 {
