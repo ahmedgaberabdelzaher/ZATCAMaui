@@ -548,10 +548,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }, CanExecuteClickCommand);
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
             {
-                Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
-                await AddAttachment(type as string);
+                var typeValue = type as string;
+                if (CRsCopies.Count<5 && typeValue=="RG01")
+                {
+                    Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
+                    await AddAttachment(type as string);
+                }
+                else if (TransferCRsCopies.Count < 5 && typeValue == "RG12")
+                {
+                    Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
+                    await AddAttachment(type as string);
+                }
+                else if (TransferCRsCopies.Count == 5|| CRsCopies.Count ==5)
+                {
+                    await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                }
+
             });
-            OnTransferCopyOfLicenseChoiceButtonClick = new Command(async (type) => await AddAttachment("RG02"));
+            OnTransferCopyOfLicenseChoiceButtonClick = new Command(async (type) =>
+            {
+                if (LicensesCopies.Count < 5)//
+                {
+                    await AddAttachment(type as string);
+                }
+                else
+                {
+                await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                }
+            });
 
             OnMainGroupSelectButtonClick = new Command(() =>
             {
@@ -640,7 +664,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             TappedOnAttachmentInformationIcon = new Command(() =>
             ShowAlertPopup(
-                AppResources.ZFilesizeshouldnotbemorethan5MB
+                AppResources.ESTAttachmentSizeNotfication
                 + System.Environment.NewLine
                 + AppResources.ZZChooseonlyfilewithextensionForZAKAT
                 + System.Environment.NewLine + AppResources.ZMaximumnoof5attachmentscanbeuploaded
@@ -959,6 +983,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool ValidateForm()
         {
+            return true;
             if(CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
             {
                 if(CRIssueCountry == null

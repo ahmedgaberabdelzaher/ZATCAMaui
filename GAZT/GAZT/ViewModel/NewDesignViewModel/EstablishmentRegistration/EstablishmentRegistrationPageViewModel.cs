@@ -1099,7 +1099,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             TappedOnAttachmentInformationIcon = new Command(() =>
             ShowValidationPopup(
-                AppResources.ZFilesizeshouldnotbemorethan5MB
+                AppResources.ESTAttachmentSizeNotfication
                 + System.Environment.NewLine
                 + AppResources.ZZChooseonlyfilewithextensionForZAKAT
                 + System.Environment.NewLine + AppResources.ZMaximumnoof5attachmentscanbeuploaded
@@ -1215,7 +1215,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
-                var failedMesage = "Failed to push the data to server";
+                var failedMesage = AppResources.Somethingwentwrong;
                 if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
                     if (FormValidation(currentTab))
@@ -1589,7 +1589,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("Something went wrong");
+                ShowValidationPopup(AppResources.Somethingwentwrong);
             }
             if (UploadedRentDocumentsList == null || UploadedRentDocumentsList.Count() == 0)
             {
@@ -1611,7 +1611,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("You can add max 5 attachments only");
+                ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
             }
 
         }
@@ -1626,7 +1626,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("Something went wrong");
+                ShowValidationPopup(AppResources.Somethingwentwrong);
             }
 
             if (UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count() == 0)
@@ -1649,7 +1649,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("You can add max 5 attachments only");
+                ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
             }
         }
 

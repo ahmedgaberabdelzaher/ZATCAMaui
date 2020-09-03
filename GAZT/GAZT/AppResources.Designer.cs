@@ -12077,5 +12077,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("VoidReasonHint", resourceCulture);
             }
         }
+        
+        public static string ESTAttachmentSizeNotfication {
+            get {
+                return ResourceManager.GetString("ESTAttachmentSizeNotfication", resourceCulture);
+            }
+        }
     }
 }

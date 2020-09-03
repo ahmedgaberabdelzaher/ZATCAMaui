@@ -6800,4 +6800,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <data name="VoidReasonHint" xml:space="preserve">
     <value>Reason for void</value>
   </data>
+    <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
+    <value>File size should not be more than 10 MB.</value>
+  </data>
   </root>

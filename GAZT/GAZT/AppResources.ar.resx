@@ -6630,4 +6630,7 @@
      <data name="VoidReasonHint" xml:space="preserve">
     <value>Reason for void</value>
   </data>
+     <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
+    <value>يجب أن يكون حجم الملف أقل من 10 ميجا بايت.</value>
+  </data>
 </root>
