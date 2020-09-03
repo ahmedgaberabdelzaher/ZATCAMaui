@@ -4380,6 +4380,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>Dear Taxpayer, you have a Registration Change Application saved in draft mode, do you want to discard it and proceed for Deregistration Application?</value>
   </data>
+    <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">     <value>Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?</value>   </data>
   <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
   </data>
