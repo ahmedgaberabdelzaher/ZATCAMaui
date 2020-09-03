@@ -706,7 +706,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         var CRNum = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => IDs.Contains(i.Type)).FirstOrDefault()?.Idnumber;
                         validateCR = await WebServiceManager.ESTValidateCRNum(CRNum);
-                        if (string.IsNullOrEmpty(validateCR?.Crname))
+                        if (!string.IsNullOrEmpty(validateCR?.Crname))
                         {
                             OutletName = validateCR?.Crname;
                             validateCR.Crnum = CRNum;
