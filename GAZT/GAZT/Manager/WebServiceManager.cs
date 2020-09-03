@@ -8643,9 +8643,10 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GetZAKATInstalmentdata + "Auditorz='" + "',Taxpayerz='" + "',Fbnumz='" + "',PeriodKeyz='" + "',Langz='" + lang + "'," +
-                      "FormGuid='" + "',Euser='" + "',UserTin='" + App.LoginDataRetrieved.TIN + "',Submitz='" + "',Savez='" + "')?&$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";
 
+                    string formMode = "N";
+                    // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(Tin='3102206579',Euser='',Fbguid='',Fbnum='',FormMode='N',Langz='EN')?&$format=json
+                    String url = Constants.GetZAKATInstalmentdata + "Tin='" + App.LoginDataRetrieved.TIN + "',Euser='" + "',Fbguid='" + "',Fbnum='" + "',FormMode='" + formMode + "',Langz='" + lang + "')?&$format=json";
 
                     //client.DefaultRequestHeaders.Add("Token", "123");
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -8676,7 +8677,7 @@ namespace GAZT.Manager
                         }
                         String zakatInstalmentData = GAZTZakatInstalmentDataResponse.Content.ReadAsStringAsync().Result;
                         zakatInstalmentDetails = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(zakatInstalmentData);
-                        if (!string.IsNullOrEmpty(zakatInstalmentData) && zakatInstalmentDetails.d == null)
+                        if (!string.IsNullOrEmpty(zakatInstalmentData))
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(zakatInstalmentData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
@@ -8720,8 +8721,6 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-
-
 
                     String url = Constants.GetZAKATInvoices + "Tin eq '" + App.LoginDataRetrieved.TIN + "'and " + "Fbnum eq '" + "' and " + "Langz eq '" + lang + "' and " + "InstReqFor eq '" + "01" + "'&$format=json";
 
@@ -8841,7 +8840,7 @@ namespace GAZT.Manager
                         HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                         var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
                         _zakatResponseObject = JsonConvert.DeserializeObject<ZakatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
-                        if (_zakatResponseObject == null || _zakatResponseObject.d == null)
+                        if (_zakatResponseObject == null )
                         {
                             ErrorMessage = string.Empty;
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);

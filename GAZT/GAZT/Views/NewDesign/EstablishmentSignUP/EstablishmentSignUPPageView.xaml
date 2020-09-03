@@ -152,7 +152,9 @@
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0" Padding="0,8,0,0">
                             <Image Source="arrowLeft.png" Rotation="270" HorizontalOptions="Start">
-
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnBackArrowTapped"/>
+                                </Image.GestureRecognizers>
                             </Image>
                         </StackLayout>
                         <StackLayout Grid.Column="1">

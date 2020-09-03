@@ -1202,9 +1202,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         public async void OnAppearing()
         {
-            var branchTask = GetReportingBranchListFromServer();
-            var nationalityTask = GetPdNationalityListFromServer(null);
-            await Task.WhenAll(branchTask, nationalityTask);
+            //var branchTask = GetReportingBranchListFromServer();
+            //var nationalityTask = GetPdNationalityListFromServer(null);
+            //await Task.WhenAll(branchTask, nationalityTask);
             if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
             {
                 fetchTabDataAndBind(currentTab);
@@ -1560,10 +1560,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task GetReportingBranchListFromServer()
         {
-            if (ReportingBranchList == null || ReportingBranchList?.Count == 0)
-            {
+            //if (ReportingBranchList == null || ReportingBranchList?.Count == 0)
+            //{
                 ReportingBranchList = await WebServiceManager.ESTBranchesDropDown();
-            }
+            //}
 
         }
 
@@ -1817,6 +1817,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
+                    var branchTask = GetReportingBranchListFromServer();
+                    var nationalityTask = GetPdNationalityListFromServer(null);
+                    await Task.WhenAll(branchTask, nationalityTask);
                     taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("01", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     if (!string.IsNullOrEmpty(taxPayerDetails?.Fbsta) && taxPayerDetails?.Fbsta != "IP011")
                     {

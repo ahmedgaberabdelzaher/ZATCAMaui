@@ -78,5 +78,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             });
         }
+
+        private void OnBackArrowTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
+        }
     }
 }

@@ -232,6 +232,7 @@ namespace EGAZT
         public static string Otp = String.Empty;
         public static bool IsSessionExpired = false;
         public static bool IsLogOut = false;
+        public static bool HasToRefreshLoaderOnDashboard = true;
         public static string AppVersion { get; set; }
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;
@@ -599,6 +600,60 @@ namespace EGAZT
             }
         }
 
+
+
+        public static void StartTimer(int h, int m, int sec)
+        {
+            int hour = h;
+            int mins = m;
+            int counter = sec;
+            Xamarin.Forms.Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+            {
+                //if (IsTimerCancel)
+                //{
+                //    return false;
+                //}
+                //else
+                //{
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    counter = counter - 1;
+                    if (counter < 0)
+                    {
+                        counter = 59;
+                        mins = mins - 1;
+                        if (mins < 0)
+                        {
+                            mins = 59;
+                            hour = hour - 1;
+                            if (hour < 0)
+                            {
+                                hour = 0;
+                                mins = 0;
+                                counter = 0;
+                            }
+                        }
+                    }
+
+
+
+                    // LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
+                });
+                if (hour == 0 && mins == 0 && counter == 0)
+                {
+                    App.HasToRefreshLoaderOnDashboard = true;
+                    MessagingCenter.Send<Object, string>(Application.Current, "StartTimerForDashboard", "StartTimerForDashboard");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+                // }
+            });
+        }
+
+
         public static async void HideProgressView()
         {
             MainThread.BeginInvokeOnMainThread(() =>
@@ -606,5 +661,7 @@ namespace EGAZT
                 PopupNavigation.Instance.PopAsync(true);
             });
         }
+
+
     }
 }

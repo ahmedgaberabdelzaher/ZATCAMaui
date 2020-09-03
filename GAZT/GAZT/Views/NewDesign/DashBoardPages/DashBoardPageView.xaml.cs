@@ -78,55 +78,87 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            App.IsComingFromSleepMode = false;
-            if (viewModel != null)
-            {
-                viewModel.IsLoading = false;
-               // viewModel.MenuViewVisible = false;
-               // viewModel.HomeViewVisible = true;
-                //viewModel.StackMenuColor = Color.White;
-                //viewModel.TabbarColor = Color.DarkGray;
-                //viewModel.HomeIndicatorColor= Color.DarkGreen;
-            }
+            OnDataLoad();
+            RefreshDashboardCommand();
+        }
 
-            Task.Run(async () =>
-            {
-                await LoadData();
-
-                if (viewModel != null)
+        public void OnDataLoad()
+        {
+              if (viewModel != null)
+                {
                     viewModel.IsLoading = false;
-            });
+                    // viewModel.MenuViewVisible = false;
+                    // viewModel.HomeViewVisible = true;
+                    //viewModel.StackMenuColor = Color.White;
+                    //viewModel.TabbarColor = Color.DarkGray;
+                    //viewModel.HomeIndicatorColor= Color.DarkGreen;
+                }
+            if (App.HasToRefreshLoaderOnDashboard == true)
+            {
+                App.IsComingFromSleepMode = false;
+              
+
+                Task.Run(async () =>
+                {
+                    await LoadData();
+
+                    if (viewModel != null)
+                        viewModel.IsLoading = false;
+                });
+                try
+                {
+                    if (App.LoginDataRetrieved.VtReg == null)
+                    {
+                        viewModel.IsVatRegistrationTileVisible = true;
+                    }
+                    else if (App.LoginDataRetrieved.VtReg != "X")
+                    {
+                        viewModel.IsVatRegistrationTileVisible = true;
+                    }
+
+                    if (App.LoginDataRetrieved.ZkReg == null)
+                    {
+                        viewModel.IsEstablishmentRegistrationTileVisible = true;
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg != "X")
+                    {
+                        viewModel.IsEstablishmentRegistrationTileVisible = true;
+                    }
+
+                }
+                catch
+                {
+                    viewModel.IsVatRegistrationTileVisible = true;
+                }
+                ChangeArrowDirection();
+                App.HasToRefreshLoaderOnDashboard = false;
+                App.StartTimer(0,2,0);
+            }
+            else
+            {
+
+            }
+        }
+
+        public async void RefreshDashboardCommand()
+        {
             try
             {
-                if (App.LoginDataRetrieved.VtReg == null)
-                { 
-                    viewModel.IsVatRegistrationTileVisible = true;
-                }
-                else if (App.LoginDataRetrieved.VtReg != "X")
+                MessagingCenter.Subscribe<object, string>(this, "StartTimerForDashboard", async (sender, arg) =>
                 {
-                    viewModel.IsVatRegistrationTileVisible = true;
-                }
-
-                if (App.LoginDataRetrieved.ZkReg == null)
-                {
-                    viewModel.IsEstablishmentRegistrationTileVisible = true;
-                }
-                else if (App.LoginDataRetrieved.ZkReg != "X")
-                {
-                    viewModel.IsEstablishmentRegistrationTileVisible = true;
-                }
-
+                    OnDataLoad();
+                });
             }
-            catch
+            catch (Exception ex)
             {
-                viewModel.IsVatRegistrationTileVisible = true;
+
             }
-            ChangeArrowDirection();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            MessagingCenter.Unsubscribe<object, string>(this, "StartTimerForDashboard");
         }
         private async Task LoadData()
         {
@@ -472,6 +504,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.Contactus = AppResources.ZZZContactus;
                     viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
                     viewModel.Logout = AppResources.ZLogout;
+                    App.HasToRefreshLoaderOnDashboard = true;
                 }
                 else
                 {
@@ -489,6 +522,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.Contactus = AppResources.ZZZContactus;
                     viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
                     viewModel.Logout = AppResources.ZLogout;
+                    App.HasToRefreshLoaderOnDashboard = true;
                 }
 
                 OnAppearing();
