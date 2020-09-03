@@ -1534,6 +1534,58 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("SelectedSignUpUsingSetForCancle");
             }
         }
+
+
+
+
+
+
+
+        // * Password
+        private string _MinEight;
+        public string MinEight
+        {
+            get { return _MinEight; }
+            set
+            {
+                _MinEight = value;
+                RaisePropertyChanged("MinEight");
+            }
+        }
+
+        private string _CapsSmall;
+        public string CapsSmall
+        {
+            get { return _CapsSmall; }
+            set
+            {
+                _CapsSmall = value;
+                RaisePropertyChanged("CapsSmall");
+            }
+        }
+
+        private string _MaxSixteen;
+        public string MaxSixteen
+        {
+            get { return _MaxSixteen; }
+            set
+            {
+                _MaxSixteen = value;
+                RaisePropertyChanged("MaxSixteen");
+            }
+        }
+
+        private string _NumSymbol;
+        public string NumSymbol
+        {
+            get { return _NumSymbol; }
+            set
+            {
+                _NumSymbol = value;
+                RaisePropertyChanged("NumSymbol");
+            }
+        }
+        // * End
         #endregion
 
         #region Constructor
