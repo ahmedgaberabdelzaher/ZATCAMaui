@@ -218,7 +218,7 @@
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
                             <custom:GAZTBorderlessEntry  VerticalTextAlignment="Center" IsSpellCheckEnabled="false"  Text="{Binding AddNumber}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
                                   <customOne:GAZTBorderlessEntry.Behaviors>
-                                                            <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="100" numberOfDigitAfterDecimal="0" numberOfDigitBeforDecimal="5" isNegativeEnable="False"/>
+                                                            <customOne:NumericValidationBehavior />
                                                         </customOne:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>

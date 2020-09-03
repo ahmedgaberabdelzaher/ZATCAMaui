@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
+using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -18,6 +19,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             InitializeComponent();
 
             viewModel = App.Locator.TINDeregistrationPageView;
+
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -27,6 +29,29 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
+                viewModel.PickerModel = arg;
+                Console.WriteLine(arg);
+            });
+
+            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
+            {
+                if (arg.PickerId == "DeregDatePicker")
+                {
+                    viewModel.DeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
+                }
+                Console.WriteLine(arg);
+            });
+
+            viewModel.LoadReasonSet();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
         }
 
         private void SetLTR()
@@ -90,6 +115,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 attachmentsListView.SelectedItems.Clear();
                 viewModel.AddAttachmentEx();
             }
-        }
+        }   
     }
 }

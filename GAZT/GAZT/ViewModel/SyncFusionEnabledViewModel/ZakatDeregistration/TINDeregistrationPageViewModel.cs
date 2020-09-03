@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -343,6 +344,403 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         #endregion
 
+
+        #region New Properties
+
+        private TinDeregistrationResponseModel _tinDeregistrationData { get; set; }
+        public TinDeregistrationResponseModel TinDeregistrationData
+        {
+            get
+            {
+                return _tinDeregistrationData;
+            }
+            set
+            {
+                _tinDeregistrationData = value;
+                //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
+                RaisePropertyChanged("TinDeregistrationData");
+            }
+        }
+
+        private TinDeregistrationReasonSetDataModel _tinDeregistrationReasonSetData { get; set; }
+        public TinDeregistrationReasonSetDataModel TinDeregistrationReasonSetData
+        {
+            get
+            {
+                return _tinDeregistrationReasonSetData;
+            }
+            set
+            {
+                _tinDeregistrationReasonSetData = value;
+                //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
+                RaisePropertyChanged("TinDeregistrationReasonSetData");
+            }
+        }
+
+        private TinDeregReasonSetResult _selectedReason { get; set; }
+        public TinDeregReasonSetResult SelectedReason
+        {
+            get
+            {
+                return _selectedReason;
+            }
+            set
+            {
+                _selectedReason = value;
+                //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
+                RaisePropertyChanged("SelectedReason");
+            }
+        }
+
+        public ObservableCollection<TinDeregReasonSetResult> _tinDeregReasons { get; set; }
+        public ObservableCollection<TinDeregReasonSetResult> TinDeregReasons
+        {
+            get
+            {
+                return _tinDeregReasons;
+            }
+
+            set
+            {
+                _tinDeregReasons = value;
+                RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
+            }
+        }
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get
+            {
+                return _pickerModel;
+            }
+            set
+            {
+                _pickerModel = value;
+
+                try
+                {
+                    if (PickerModel != null && PickerModel.SelectedValue != null)
+                    {
+                        if (PickerModel.PickerId == "reasonPicker")
+                        {
+                            string tempSelectedReason = PickerModel.SelectedValue;
+                            SelectedReason = TinDeregReasons.Where(m => m.ReasonDesc == PickerModel.SelectedValue).FirstOrDefault();
+                            AddOutletDecisionOptions();
+                        }
+                        else
+                        {
+                            //SelectedIdNumber = PickerModel.SelectedValue;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                RaisePropertyChanged("PickerModel");
+            }
+        }
+
+        private DateTime _deregistrationDate = DateTime.Now;
+        public DateTime DeregistrationDate
+        {
+            get
+            {
+                return _deregistrationDate;
+            }
+            set
+            {
+                _deregistrationDate = value;
+                RaisePropertyChanged("DeregistrationDate");
+            }
+        }
+
+        private FieldValidations _tinText { get; set; }
+        public FieldValidations TinText
+        {
+            get
+            {
+                return _tinText;
+            }
+            set
+            {
+                _tinText = value;
+                RaisePropertyChanged("TinText");
+            }
+        }
+
+        private FieldValidations _idTypeText { get; set; }
+        public FieldValidations IdTypeText
+        {
+            get
+            {
+                return _idTypeText;
+            }
+            set
+            {
+                _idTypeText = value;
+                RaisePropertyChanged("IdTypeText");
+            }
+        }
+
+        private FieldValidations _idNumberText { get; set; }
+        public FieldValidations IdNumberText
+        {
+            get
+            {
+                return _idNumberText;
+            }
+            set
+            {
+                _idNumberText = value;
+                RaisePropertyChanged("IdNumberText");
+            }
+        }
+
+        private FieldValidations _dobText { get; set; }
+        public FieldValidations DobText
+        {
+            get
+            {
+                return _dobText;
+            }
+            set
+            {
+                _dobText = value;
+                RaisePropertyChanged("DobText");
+            }
+        }
+
+
+        private FieldValidations _firstNameText { get; set; }
+        public FieldValidations FirstNameText
+        {
+            get
+            {
+                return _firstNameText;
+            }
+            set
+            {
+                _firstNameText = value;
+                RaisePropertyChanged("FirstNameText");
+            }
+        }
+
+        private FieldValidations _surnameText { get; set; }
+        public FieldValidations SurnameText
+        {
+            get
+            {
+                return _surnameText;
+            }
+            set
+            {
+                _surnameText = value;
+                RaisePropertyChanged("SurnameText");
+            }
+        }
+
+        private FieldValidations _fathersNameText { get; set; }
+        public FieldValidations FathersNameText
+        {
+            get
+            {
+                return _fathersNameText;
+            }
+            set
+            {
+                _fathersNameText = value;
+                RaisePropertyChanged("FathersNameText");
+            }
+        }
+
+        private FieldValidations _grandFathersNameText { get; set; }
+        public FieldValidations GrandFathersNameText
+        {
+            get
+            {
+                return _grandFathersNameText;
+            }
+            set
+            {
+                _grandFathersNameText = value;
+                RaisePropertyChanged("GrandFathersNameText");
+            }
+        }
+
+        private FieldValidations _familyNameText { get; set; }
+        public FieldValidations FamilyNameText
+        {
+            get
+            {
+                return _familyNameText;
+            }
+            set
+            {
+                _familyNameText = value;
+                RaisePropertyChanged("FamilyNameText");
+            }
+        }
+
+        public void CompanyIdTypeSelected()
+        {
+            TinText.IsMandatory = false;
+            TinText.IsVisible = true;
+            TinText.IsEditable = true;
+
+            IdTypeText.IsMandatory = true;
+            IdTypeText.IsVisible = true;
+            IdTypeText.IsEditable = true;
+
+            IdNumberText.IsMandatory = true;
+            IdNumberText.IsVisible = true;
+            IdNumberText.IsEditable = true;
+
+            DobText.IsMandatory = false;
+            DobText.IsVisible = false;
+            DobText.IsEditable = false;
+
+            FirstNameText.IsMandatory = false;
+            FirstNameText.IsVisible = true;
+            FirstNameText.IsEditable = false;
+
+            SurnameText.IsMandatory = false;
+            SurnameText.IsVisible = true;
+            SurnameText.IsEditable = false;
+
+            FathersNameText.IsMandatory = false;
+            FathersNameText.IsVisible = false;
+            FathersNameText.IsEditable = false;
+
+            GrandFathersNameText.IsMandatory = false;
+            GrandFathersNameText.IsVisible = false;
+            GrandFathersNameText.IsEditable = false;
+
+            FamilyNameText.IsMandatory = false;
+            FamilyNameText.IsVisible = false;
+            FamilyNameText.IsEditable = false;
+        }
+
+        public void NationalTypeSelected()
+        {
+            TinText.IsMandatory = false;
+            TinText.IsVisible = true;
+            TinText.IsEditable = true;
+
+            IdTypeText.IsMandatory = true;
+            IdTypeText.IsVisible = true;
+            IdTypeText.IsEditable = true;
+
+            IdNumberText.IsMandatory = true;
+            IdNumberText.IsVisible = true;
+            IdNumberText.IsEditable = true;
+
+            DobText.IsMandatory = false;
+            DobText.IsVisible = false;
+            DobText.IsEditable = false;//Non Editable after validation
+
+            FirstNameText.IsMandatory = false;
+            FirstNameText.IsVisible = true;
+            FirstNameText.IsEditable = false;
+
+            SurnameText.IsMandatory = false;
+            SurnameText.IsVisible = true;
+            SurnameText.IsEditable = false;
+
+            FathersNameText.IsMandatory = false;
+            FathersNameText.IsVisible = true;
+            FathersNameText.IsEditable = false;
+
+            GrandFathersNameText.IsMandatory = false;
+            GrandFathersNameText.IsVisible = true;
+            GrandFathersNameText.IsEditable = false;
+
+            FamilyNameText.IsMandatory = false;
+            FamilyNameText.IsVisible = true;
+            FamilyNameText.IsEditable = false;
+        }
+
+        public void GCCIdTypeSelected()
+        {
+            TinText.IsMandatory = false;
+            TinText.IsVisible = true;
+            TinText.IsEditable = true;
+
+            IdTypeText.IsMandatory = true;
+            IdTypeText.IsVisible = true;
+            IdTypeText.IsEditable = true;
+
+            IdNumberText.IsMandatory = true;
+            IdNumberText.IsVisible = true;
+            IdNumberText.IsEditable = true;
+
+            DobText.IsMandatory = false;
+            DobText.IsVisible = false;
+            DobText.IsEditable = false;
+
+            FirstNameText.IsMandatory = true;
+            FirstNameText.IsVisible = true;
+            FirstNameText.IsEditable = true;
+
+            SurnameText.IsMandatory = true;
+            SurnameText.IsVisible = true;
+            SurnameText.IsEditable = true;
+
+            FathersNameText.IsMandatory = false;
+            FathersNameText.IsVisible = true;
+            FathersNameText.IsEditable = true;
+
+            GrandFathersNameText.IsMandatory = false;
+            GrandFathersNameText.IsVisible = true;
+            GrandFathersNameText.IsEditable = true;
+
+            FamilyNameText.IsMandatory = false;
+            FamilyNameText.IsVisible = true;
+            FamilyNameText.IsEditable = true;
+        }
+
+        public void IqamaTypeSelected()
+        {
+            TinText.IsMandatory = false;
+            TinText.IsVisible = true;
+            TinText.IsEditable = true;
+
+            IdTypeText.IsMandatory = true;
+            IdTypeText.IsVisible = true;
+            IdTypeText.IsEditable = true;
+
+            IdNumberText.IsMandatory = true;
+            IdNumberText.IsVisible = true;
+            IdNumberText.IsEditable = true;
+
+            DobText.IsMandatory = false;
+            DobText.IsVisible = false;
+            DobText.IsEditable = false;//Non Editable after validation
+
+            FirstNameText.IsMandatory = false;
+            FirstNameText.IsVisible = true;
+            FirstNameText.IsEditable = false;
+
+            SurnameText.IsMandatory = false;
+            SurnameText.IsVisible = true;
+            SurnameText.IsEditable = false;
+
+            FathersNameText.IsMandatory = false;
+            FathersNameText.IsVisible = true;
+            FathersNameText.IsEditable = false;
+
+            GrandFathersNameText.IsMandatory = false;
+            GrandFathersNameText.IsVisible = true;
+            GrandFathersNameText.IsEditable = false;
+
+            FamilyNameText.IsMandatory = false;
+            FamilyNameText.IsVisible = true;
+            FamilyNameText.IsEditable = false;
+        }
+
+        #endregion
+
         public TINDeregistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -371,39 +769,148 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             OnTinRegistrationReasonTapped = new Command(this.OnTinRegisrtationReasonClicked);
             TinDeregistrationModel = new TINDeregistrationModel();
             SelectedOutletOption = new TINDeregistrationModel();
+            TinDeregistrationData = new TinDeregistrationResponseModel();
+            TinDeregistrationReasonSetData = new TinDeregistrationReasonSetDataModel();
+            TinText = new FieldValidations();
+            IdTypeText = new FieldValidations();
+            IdNumberText = new FieldValidations();
+            DobText = new FieldValidations();
+            FirstNameText = new FieldValidations();
+            SurnameText = new FieldValidations();
+            FathersNameText = new FieldValidations();
+            FamilyNameText = new FieldValidations();
+            GrandFathersNameText = new FieldValidations();
 
-            AddOutletDecisionOptions();
+            //AddOutletDecisionOptions();
             PopulateAttachmentsListViewTemplate();
             PopulateSummaryReasonData();
             PopulateSummaryDeclarationData();
             EnableReasonView();
         }
 
+        public async void LoadReasonSet()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    App.DisplayProgressView();
+                });
+
+                TinDeregistrationReasonSetData = await WebServiceManager.GaztTinDeregistrationReasonData();
+                TinDeregReasons = new ObservableCollection<TinDeregReasonSetResult>(TinDeregistrationReasonSetData.ReasonSet.Results);
+
+                //TinDeregistrationReasonSetData.ReasonSet.Results.
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+            }
+            catch (InternetException ex)
+            {
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
+
+                try
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+                }
+                catch (Exception mex)
+                {
+                    Console.WriteLine(mex.Message);
+                }
+            }
+            catch (GAZTErrorException ex)
+            {
+            }
+        }
+
+        public async void OnTinRegisrtationReasonClicked()
+        {
+            try
+            {
+                ObservableCollection<string> reasonData = new ObservableCollection<string>();
+
+                foreach (TinDeregReasonSetResult reasonDataDesc in TinDeregReasons)
+                {
+                    reasonData.Add(reasonDataDesc.ReasonDesc);
+                }
+
+                GenericPickerModel genericPickerModel = new GenericPickerModel();
+                genericPickerModel.PickerData = reasonData;
+                genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
+                genericPickerModel.PickerId = "reasonPicker";
+
+                await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+
         public void AddOutletDecisionOptions()
         {
+            if(OutletDecisionOptions == null)
             OutletDecisionOptions = new ObservableCollection<TINDeregistrationModel>();
-            OutletDecisionOptions.Add(new TINDeregistrationModel
+
+            OutletDecisionOptions.Clear();
+
+            if (SelectedReason.ReasonDesc == AppResources.TinDeregistrationReasonBankruptcy || SelectedReason.ReasonDesc == AppResources.TinDeregistrationReasonDeath
+                || SelectedReason.ReasonDesc == AppResources.TinDeregistrationReasonLiquidation)
             {
-                ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseAllOutlets,
-                ActiveOutletDecisionOptionsIsSelected = true
-            });
-            OutletDecisionOptions.Add(new TINDeregistrationModel
+                OutletDecisionOptions.Add(new TINDeregistrationModel
+                {
+                    ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseAllOutlets,
+                    ActiveOutletDecisionOptionsIsSelected = true
+                });
+                OutletDecisionOptions.Add(new TINDeregistrationModel
+                {
+                    ActiveOutletDecisionOptions = AppResources.TinDeregistrationTransferAllOutletsToSingle,
+                    ActiveOutletDecisionOptionsIsSelected = false
+                });
+                OutletDecisionOptions.Add(new TINDeregistrationModel
+                {
+                    ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseOutletsIndividually,
+                    ActiveOutletDecisionOptionsIsSelected = false
+                });
+            }
+            else
             {
-                ActiveOutletDecisionOptions = AppResources.TinDeregistrationTransferAllOutletsToSingle,
-                ActiveOutletDecisionOptionsIsSelected = false
-            });
-            OutletDecisionOptions.Add(new TINDeregistrationModel
-            {
-                ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseOutletsIndividually,
-                ActiveOutletDecisionOptionsIsSelected = false
-            });
+                OutletDecisionOptions.Add(new TINDeregistrationModel
+                {
+                    ActiveOutletDecisionOptions = AppResources.TinDeregistrationTransferAllOutletsToSingle,
+                    ActiveOutletDecisionOptionsIsSelected = false
+                });
+            }
         }
 
         public void EnableReasonView()
         {
             CurrentStep = ProcessStep.Step1;
-            SelectedOutletOption = OutletDecisionOptions[0];
-            SelectedOutletOptionIndex = 0;
+
+            //SelectedOutletOption = OutletDecisionOptions[0];
+            //SelectedOutletOptionIndex = 0;
+
             IsBackButtonVisible = false;
             IsReasonViewEnabled = true;
             IsOutletViewEnabled = false;
@@ -597,42 +1104,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        public async void OnTinRegisrtationReasonClicked()
-        {
-            try
-            {
-                ObservableCollection<string> reasonData = new ObservableCollection<string>();
-                reasonData.Add(AppResources.TinDeregistrationReasonBankruptcy);
-                reasonData.Add(AppResources.TinDeregistrationReasonDeath);
-                reasonData.Add(AppResources.TinDeregistrationReasonLiquidation);
-                reasonData.Add(AppResources.TinDeregistrationReasonEstablishmentToCompany);
-
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(reasonData));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-        }
-
+       
         public async void OnTinRegisrtationReasonDateClicked()
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView());
+                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
+                genericDatePickerModel.PickerId = "DeregDatePicker";
+                try
+                {
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -854,5 +1349,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 Console.WriteLine(ex.Message);
             }
         }
+
+        
     }
 }

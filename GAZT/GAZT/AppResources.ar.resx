@@ -4359,24 +4359,9 @@
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>عزيزي المكلف, يوجد لديك طلب تغيير تسجيل محفوظ كمسودة, هل تريد حذفه وإكمال طلب ايقاف التسجيل؟</value>
   </data>
-  <data name="TinDeregistrationDetails" xml:space="preserve">
-    <value>Registration Details</value>
-  </data>
-  <data name="TinDeregistration" xml:space="preserve">
-    <value>إيقاف الرقم المميز</value>
-  </data>
-  <data name="TinDeregistrationReason" xml:space="preserve">
-    <value>الأسباب</value>
-  </data>
-  <data name="TinDeregistrationReasonBankruptcy" xml:space="preserve">
-    <value>Bankruptcy</value>
-  </data>
-  <data name="TinDeregistrationReasonDeath" xml:space="preserve">
-    <value>Death</value>
-  </data>
-  <data name="TinDeregistrationReasonLiquidation" xml:space="preserve">
-    <value>Liquidation</value>
-  </data>
+ 
+ <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">     <value>Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?</value>   </data>   <data name="TinDeregistrationDetails" xml:space="preserve">     <value>Registration Details</value>   </data>   <data name="TinDeregistration" xml:space="preserve">     <value>إيقاف الرقم المميز</value>   </data>   <data name="TinDeregistrationReason" xml:space="preserve">     <value>الأسباب</value>   </data>   <data name="TinDeregistrationReasonBankruptcy" xml:space="preserve">     <value>إفلاس</value>   </data>   <data name="TinDeregistrationReasonDeath" xml:space="preserve">     <value>Death</value>   </data>   <data name="TinDeregistrationReasonLiquidation" xml:space="preserve">     <value>تصفية</value>   </data> 
+ 
   <data name="TinDeregistrationReasonEstablishmentToCompany" xml:space="preserve">
     <value>Establishment to Company</value>
   </data>

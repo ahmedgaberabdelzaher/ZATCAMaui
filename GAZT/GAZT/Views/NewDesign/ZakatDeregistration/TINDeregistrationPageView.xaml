@@ -114,7 +114,7 @@
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                    <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding SelectedReason.ReasonDesc}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
                                                HorizontalOptions="Start" VerticalOptions="Center">
@@ -136,39 +136,6 @@
                                 </StackLayout>
                             </border:SfBorder >
                     </StackLayout>
-
-                    <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
-                            HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
-                            HeaderTextColor="White"
-                            UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndexFR}"
-                            ColumnHeaderHeight="46"
-                            PickerMode="Dialog"
-                            HeaderBackgroundColor="#006450"
-                            SelectedItemTextColor="#006450"
-                            BorderColor="Black"
-                                        OKButtonTextColor="#006450"      
-                                        CancelButtonTextColor="#006450"
-                                        ShowColumnHeader="False"
-                                        ShowFooter="True"
-                                        OKButtonBackgroundColor="#EAF7CC"
-                                        CancelButtonBackgroundColor="#EAF7CC"
-                                        BackgroundColor="#EAF7CC"
-                            ItemHeight="40"
-                            DisplayMemberPath="Name" ItemsSource="{Binding IdTypeListFR}" Margin="10,0,10,0"
-                            PickerHeight="200"
-                            PickerWidth="270"
-                            FooterHeight="46">
-
-                         <!--DisplayMemberPath="Name" ItemsSource="{Binding IdTypeListFR}"  SelectionChanged="DDlIDType_SelectionChanged" Margin="10,0,10,0"
-                            PickerHeight="200"
-                            PickerWidth="270"
-                            FooterHeight="46" OkButtonClicked="DDlIDTypeFR_OkButtonClicked"  CancelButtonClicked="DDlIDTypeFR_CancelButtonClicked">-->
-
-                        <syncfusion:SfPicker.Behaviors>
-                            <custom1:SfPickerBehavior />
-                        </syncfusion:SfPicker.Behaviors>
-                    </syncfusion:SfPicker>
-
                 </Grid>
 
                  <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="Height" ItemSpacing="5"
@@ -210,7 +177,7 @@
 
                                 <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                    <Label Text="DD/MM/YYYY" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                    <Label Text="{Binding DeregistrationDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                         <Image Margin="5,0">
                                             <Image.Source>
@@ -260,7 +227,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                        <Label Text="MM/DD/YYYY" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding DeregistrationDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -327,6 +294,31 @@
 
                         </StackLayout>
 
+                        <StackLayout>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelGrey}" />   
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+
+                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                        
+                                        <Label Text="YYYY/MM/DD" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Image Margin="5,0">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </StackLayout>
+
+                                        <StackLayout.GestureRecognizers>
+                                             <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </border:SfBorder >
+                            </StackLayout>
+
                          <!--Display this view in both cases Transfer outlets to snigle transferee an sub selection all other id types except comapny id-!>-->
 
                         <StackLayout>
@@ -383,32 +375,7 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
-                             <StackLayout>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource CaptionLabelGrey}" />   
-                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
-
-                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
-                                        
-                                        <Label Text="YYYY/MM/DD" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
-                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                            <Image Margin="5,0">
-                                                <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                                </Image.Source>
-                                            </Image>
-                                        </StackLayout>
-
-                                        <StackLayout.GestureRecognizers>
-                                             <TapGestureRecognizer Command="{Binding OnTinRegisrtationDateClicked}" ></TapGestureRecognizer>
-                                         </StackLayout.GestureRecognizers>
-
-                                    </StackLayout>
-                                </border:SfBorder >
-                            </StackLayout>
-
-
+                             
                              <StackLayout>
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
