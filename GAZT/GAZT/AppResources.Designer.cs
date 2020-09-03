@@ -7854,6 +7854,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VATDeregInstructionsAndConditionsFirst {
+            get {
+                return ResourceManager.GetString("VATDeregInstructionsAndConditionsFirst", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregInstructionsAndConditionsSecond {
+            get {
+                return ResourceManager.GetString("VATDeregInstructionsAndConditionsSecond", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistrationAgreeTermsConditions {
             get {
                 return ResourceManager.GetString("VATDeregistrationAgreeTermsConditions", resourceCulture);
@@ -12075,6 +12087,12 @@ namespace EGAZT {
         public static string VoidReasonHint {
             get {
                 return ResourceManager.GetString("VoidReasonHint", resourceCulture);
+            }
+        }
+        
+        public static string ESTAttachmentSizeNotfication {
+            get {
+                return ResourceManager.GetString("ESTAttachmentSizeNotfication", resourceCulture);
             }
         }
     }

@@ -42,22 +42,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     case EstablishmentRegistrationTabsEnum.TaxpayerDetail:
                         SelectedTabText = AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationTabsEnum.PassportDetails:
                         SelectedTabText = AppResources.ESTPassportDetailsTabTitleLabel;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationTabsEnum.Outlets:
                         SelectedTabText = AppResources.ESTOutletsTabTitleLabel;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationTabsEnum.FinancialDetail:
                         SelectedTabText = AppResources.VATRFinancialDetails;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationTabsEnum.Declaration:
                         SelectedTabText = AppResources.ZVatSummary;
+                        NxtButtonLabel = AppResources.Submit;
                         break;
                     case EstablishmentRegistrationTabsEnum.RegistrationType:
                     default:
                         SelectedTabText = AppResources.ESTRegTaxTabTitleLabel;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                 }
                 fetchTabDataAndBind(_currentTab);
@@ -101,6 +107,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 _selectedTabText = value;
                 RaisePropertyChanged(nameof(SelectedTabText));
+            }
+        }
+
+        private string _nxtButtonLabel = AppResources.ZZNext;
+        public string NxtButtonLabel
+        {
+            get => _nxtButtonLabel;
+            set
+            {
+                _nxtButtonLabel = value;
+                RaisePropertyChanged(nameof(NxtButtonLabel));
             }
         }
 
@@ -1099,7 +1116,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             TappedOnAttachmentInformationIcon = new Command(() =>
             ShowValidationPopup(
-                AppResources.ZFilesizeshouldnotbemorethan5MB
+                AppResources.ESTAttachmentSizeNotfication
                 + System.Environment.NewLine
                 + AppResources.ZZChooseonlyfilewithextensionForZAKAT
                 + System.Environment.NewLine + AppResources.ZMaximumnoof5attachmentscanbeuploaded
@@ -1215,7 +1232,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
-                var failedMesage = "Failed to push the data to server";
+                var failedMesage = AppResources.Somethingwentwrong;
                 if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
                     if (FormValidation(currentTab))
@@ -1589,7 +1606,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("Something went wrong");
+                ShowValidationPopup(AppResources.Somethingwentwrong);
             }
             if (UploadedRentDocumentsList == null || UploadedRentDocumentsList.Count() == 0)
             {
@@ -1611,7 +1628,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("You can add max 5 attachments only");
+                ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
             }
 
         }
@@ -1626,7 +1643,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("Something went wrong");
+                ShowValidationPopup(AppResources.Somethingwentwrong);
             }
 
             if (UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count() == 0)
@@ -1649,7 +1666,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup("You can add max 5 attachments only");
+                ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
             }
         }
 
@@ -2115,6 +2132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
+            return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -2224,7 +2242,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-
+            return true;
             try
             {
                 IsLoading = true;

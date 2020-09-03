@@ -79,7 +79,7 @@
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCity}" />
                                     <Span Text="*" TextColor="{StaticResource Secondary}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
@@ -121,27 +121,31 @@
                         </buttons:SfButton>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainActivity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
-                            <syncfusion:SfSwitch VisualType="Material" IsOn="{Binding MainActivity}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <syncfusion:SfSwitch VisualType="Material" x:Name="CRMainActivity"  IsOn="{Binding MainActivity}" StateChanged="CRSwitch_StateChanged" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </StackLayout>
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Attachments}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTAttachmentTransferCopyOfCRLabel}"/>
+                                        <Span   Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyOfCRLabel}"/>
                                         <Span Text="*" TextColor="{StaticResource Secondary}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"/> 
+                                </Image.GestureRecognizers>
+                                </Image>
                         </StackLayout>
-                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG01"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
-                            <buttons:SfButton.ImageSource>
-                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                            </buttons:SfButton.ImageSource>
+                        <buttons:SfButton ShowIcon="True" ImageSource="ic_attachment" ImageAlignment="End"
+                                          Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG01"
+                                          Style="{StaticResource NoBackgroundButtonStyle}" FontSize="14"
+                                          Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                          BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
+                                          TextColor="{StaticResource NeutralGreay}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
+                            
                         </buttons:SfButton>
                         <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding CRsCopies}">
                             <BindableLayout.ItemTemplate>
@@ -165,14 +169,13 @@
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
-                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyOfCRLabel}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,15,0,0"/>
-                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG12"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
-                            <buttons:SfButton.ImageSource>
-                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                            </buttons:SfButton.ImageSource>
+                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTAttachmentTransferCopyOfCRLabel}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,15,0,0"/>
+                        <buttons:SfButton ShowIcon="True" ImageSource="ic_attachment" ImageAlignment="End"
+                                          Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG12"
+                                          Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}"
+                                          BorderWidth="1" CornerRadius="10" TextColor="{StaticResource NeutralGreay}" FontSize="14"
+                                          Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                          HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                         </buttons:SfButton>
                         <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding TransferCRsCopies}">
                             <BindableLayout.ItemTemplate>
@@ -327,7 +330,7 @@
                         </buttons:SfButton>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainActivity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
-                            <syncfusion:SfSwitch VisualType="Material" IsOn="{Binding MainActivity}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <syncfusion:SfSwitch VisualType="Material" x:Name="LicenseMainActivity" IsOn="{Binding MainActivity}" StateChanged="LicenseSwitch_StateChanged" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </StackLayout>
                         <custom:CustomLabel   Text="{x:Static ResourceManager:AppResources.Attachments}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="18" />
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
@@ -345,13 +348,14 @@
                                     </Image.GestureRecognizers>
                                     </Image>
                         </StackLayout>
-                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfLicenseChoiceButtonClick}"
-                                                       Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
-                                                       TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
-                            <buttons:SfButton.ImageSource>
-                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                             Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                            </buttons:SfButton.ImageSource>
+                        <buttons:SfButton ShowIcon="True"  ImageSource="ic_attachment"  ImageAlignment="End" Command="{Binding OnTransferCopyOfLicenseChoiceButtonClick}"
+                                          CommandParameter="RG02"  Style="{StaticResource NoBackgroundButtonStyle}"
+                                          BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
+                                          TextColor="{StaticResource NeutralGreay}"
+                                          FontSize="14"
+                                          Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                          HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
+                         
                         </buttons:SfButton>
                         <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding LicensesCopies}">
                             <BindableLayout.ItemTemplate>
@@ -441,7 +445,7 @@
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"/>
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
             </StackLayout>
-            <Grid Grid.Row="2" Padding="20,15" BackgroundColor="White">
+            <Grid Grid.Row="2" Padding="20,15" Margin="0,20,0,0" BackgroundColor="White">
                 <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="Next" Command="{Binding OnNextButtonClick}" />
             </Grid>
             <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"

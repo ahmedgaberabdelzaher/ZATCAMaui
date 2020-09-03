@@ -37,13 +37,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     case EstablishmentRegistrationOutletTabsEnum.ActivityDetails:
                         SelectedOutletTabText = AppResources.ESTActivityDetails;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                     case EstablishmentRegistrationOutletTabsEnum.AddressDetails:
                         SelectedOutletTabText = AppResources.ESTAddressDetails;
+                        NxtButtonLabel = AppResources.Save;
                         break;
                     case EstablishmentRegistrationOutletTabsEnum.OutletDetail:
                     default:
                         SelectedOutletTabText = AppResources.TinDeregistrationOutletDetails;
+                        NxtButtonLabel = AppResources.ZZNext;
                         break;
                 }
                 if (taxPayerDetails != null)
@@ -90,6 +93,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(SelectedOutletTabText));
             }
         }
+
+        private string _nxtButtonLabel = AppResources.ZZNext;
+        public string NxtButtonLabel
+        {
+            get => _nxtButtonLabel;
+            set
+            {
+                _nxtButtonLabel = value;
+                RaisePropertyChanged(nameof(NxtButtonLabel));
+            }
+        }
+
         private string _outletName = string.Empty;
         public string OutletName
         {
@@ -638,15 +653,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                         await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
+                        _navigationService.GoBack();
                     }
-                    catch (Exception e)
+                    catch (Exception ex)
                     {
                         IsLoading = false;
-                        Console.WriteLine(e.StackTrace);
-                    }
-                    finally
-                    {
-                        _navigationService.GoBack();
+                        Console.WriteLine(ex.StackTrace);
+                        if(ex is HTTPBadRequestException)
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        }
                     }
                 }
             }

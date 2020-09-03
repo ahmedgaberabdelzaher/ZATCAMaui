@@ -548,10 +548,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }, CanExecuteClickCommand);
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
             {
-                Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
-                await AddAttachment(type as string);
+                var typeValue = type as string;
+                if (CRsCopies.Count<5 && typeValue=="RG01")
+                {
+                    Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
+                    await AddAttachment(type as string);
+                }
+                else if (TransferCRsCopies.Count < 5 && typeValue == "RG12")
+                {
+                    Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
+                    await AddAttachment(type as string);
+                }
+                else if (TransferCRsCopies.Count == 5|| CRsCopies.Count ==5)
+                {
+                    await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                }
+
             });
-            OnTransferCopyOfLicenseChoiceButtonClick = new Command(async (type) => await AddAttachment("RG02"));
+            OnTransferCopyOfLicenseChoiceButtonClick = new Command(async (type) =>
+            {
+                if (LicensesCopies.Count < 5)//
+                {
+                    await AddAttachment(type as string);
+                }
+                else
+                {
+                await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                }
+            });
 
             OnMainGroupSelectButtonClick = new Command(() =>
             {
@@ -640,7 +664,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             TappedOnAttachmentInformationIcon = new Command(() =>
             ShowAlertPopup(
-                AppResources.ZFilesizeshouldnotbemorethan5MB
+                AppResources.ESTAttachmentSizeNotfication
                 + System.Environment.NewLine
                 + AppResources.ZZChooseonlyfilewithextensionForZAKAT
                 + System.Environment.NewLine + AppResources.ZMaximumnoof5attachmentscanbeuploaded
@@ -932,29 +956,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         private async void OnDeleteAttachment(Attachment item, string docType)
         {
-            IsLoading = true;
-            var delete = WebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
-            if(!string.IsNullOrEmpty(delete) && delete == "delete")
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            confirmPopup.OnSelect = async (str) =>
             {
-                if (docType == "RG01")
+                if (str == "Yes")
                 {
-                    CRsCopies.Remove(item);
+                    IsLoading = true;
+                    var delete = WebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
+                    if (!string.IsNullOrEmpty(delete) && delete == "delete")
+                    {
+                        if (docType == "RG01")
+                        {
+                            CRsCopies.Remove(item);
+                        }
+                        else if (docType == "RG12")
+                        {
+                            TransferCRsCopies.Remove(item);
+                        }
+                        else if (docType == "RG02")
+                        {
+                            LicensesCopies.Remove(item);
+                        }
+                        IsLoading = false;
+                    }
+                    else
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
+                    }
                 }
-                else if (docType == "RG12")
-                {
-                    TransferCRsCopies.Remove(item);
-                }
-                else if (docType == "RG02")
-                {
-                    LicensesCopies.Remove(item);
-                }
-                IsLoading = false;
-            }
-            else
-            {
-                IsLoading = false;
-                await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
-            }
+            };
+            await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
         private bool ValidateForm()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -53,6 +54,12 @@ namespace EGAZT.Models.EstablishmentRegistration
             throw new NotImplementedException();
         }
     }
+
+    public class HTTPBadRequestException : GAZTException
+    {
+        public HTTPBadRequestException(string expception) : base(expception) { }
+    }
+
     public class Metadata
     {
         public string id { get; set; }
