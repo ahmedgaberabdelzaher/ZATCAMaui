@@ -5,16 +5,18 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.Models.VATInstalmentModels;
 using EGAZT.Models.ZakatInstalationModels;
-using EGAZT.Models.ZakatInstalmentModels;
+using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using static EGAZT.Models.ZakatInstalationModels.ZakatInstalmentPlanRequestListModel;
 using static EGAZT.Models.ZakatInstalationModels.ZakatRequestDisplayModel;
@@ -27,13 +29,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
+        private bool _isZakatLandingPageVisible = true;
+        private bool _createZakatInstalmentBtnVisible = false;
+        private bool _isLoading = false;
+        private bool _isRevokZakatInstalmentVisible = true;
+        private bool _IsZakatSummaryVisible = false;
         #endregion
 
         #region commands
         public ICommand ReqInstalmentBtnTapped { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand CloseClick { get; set; }
+        public ICommand BankStatementsAttachmentTapped { get; set; }
+
+        public ICommand FinanceAttachmentTapped { get; set; }
 
         #endregion
 
@@ -97,7 +106,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             IsZakatSummaryVisible = false;
             IsRevokZakatInstalmentVisible = false;
 
-
         }
         public void EnableCreateZakatInstalment()
         {
@@ -123,9 +131,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         #endregion
 
-        #region Observables
 
-        private bool _isLoading = false;
+
+
+
         public bool IsLoading
         {
             get
@@ -139,7 +148,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        private bool _isZakatLandingPageVisible = true;
+
         public bool IsZakatLandingPageVisible
         {
             get
@@ -153,7 +162,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        private bool _createZakatInstalmentBtnVisible = false;
+
         public bool CreateZakatInstalmentBtnVisible
         {
             get
@@ -167,7 +176,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        private bool _IsZakatSummaryVisible = false;
+
         public bool IsZakatSummaryVisible
         {
             get
@@ -181,7 +190,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        private bool _isRevokZakatInstalmentVisible = true;
+
         public bool IsRevokZakatInstalmentVisible
         {
             get
@@ -313,7 +322,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
 
 
-        #endregion
+
 
         #region Lists
 
@@ -391,36 +400,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
 
         }
-        public void BindRevokList(ZakatRevokeList zakatRevokeList)
-        {
-            RevokList = new ObservableCollection<ZakatRevokeList.Result>();
+        //public void BindRevokList(ZakatRevokeList zakatRevokeList)
+        //{
+        //    RevokList = new ObservableCollection<ZakatRevokeList.Result>();
 
-            if (zakatRevokeList.d.WorklistSet.results != null)
-            {
-                for (int i = 0; i < zakatRevokeList.d.WorklistSet.results.Count; i++)
-                {
-                    RevokList.Add(zakatRevokeList.d.WorklistSet.results[i]);
-                }
-            }
-        }
+        //    if (zakatRevokeList.d.WorklistSet.results != null)
+        //    {
+        //        for (int i = 0; i < zakatRevokeList.d.WorklistSet.results.Count; i++)
+        //        {
+        //            RevokList.Add(zakatRevokeList.d.WorklistSet.results[i]);
+        //        }
+        //    }
+        //}
 
-        public ObservableCollection<ZakatRevokeList.Result> _revokList { get; set; }
-        public ObservableCollection<ZakatRevokeList.Result> RevokList
-        {
-            get
-            {
-                return _revokList;
-            }
-            set
-            {
-                if (_revokList == value)
-                {
-                    return;
-                }
-                _revokList = value;
-                RaisePropertyChanged("RevokList");
-            }
-        }
+        //public ObservableCollection<ZakatRevokeList.Result> _revokList { get; set; }
+        //public ObservableCollection<ZakatRevokeList.Result> RevokList
+        //{
+        //    get
+        //    {
+        //        return _revokList;
+        //    }
+        //    set
+        //    {
+        //        if (_revokList == value)
+        //        {
+        //            return;
+        //        }
+        //        _revokList = value;
+        //        RaisePropertyChanged("RevokList");
+        //    }
+        //}
         public ObservableCollection<ZakatSelectBillModel> summarySelectedBillsList { get; set; }
         public ObservableCollection<ZakatSelectBillModel> SummarySelectedBillsList
         {
@@ -511,7 +520,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     {
                         var item = ReqVatInstalmentPlanResponseList.d.WorklistSet.results[index];
 
-                        var itemDetails = await WebServiceManager.GAZTGetZakatRequestDisplayData(item.Fbnum, item.Fbsta);
+                        var itemDetails = await WebServiceManager.GAZTGetZakatRequestDisplayData(item.Fbnum, item.Fbtyp);
 
 
                         PopToRootPage();
@@ -713,24 +722,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     try
                     {
 
-                        ZakatRevokeList revokResult = await WebServiceManager.GAZTGetZakatRevokeList("", "", "");
+                        //ZakatRevokeList revokResult = await WebServiceManager.GAZTGetZakatRevokeList("", "", "");
                         // ReqVatInstalmentPlanResponseList = rEQVatInstalmentPlanResponse;
 
                         PopToRootPage();
 
 
-                        if (revokResult != null && revokResult.d != null)
-                        {
-                            BindRevokList(revokResult);
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
+                        //if (revokResult != null && revokResult.d != null)
+                        //{
+                        //   // BindRevokList(revokResult);
+                        //}
+                        //else
+                        //{
+                        //    Device.BeginInvokeOnMainThread(async () =>
+                        //    {
+                        //        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        //        _navigationService.GoBack();
+                        //    });
+                        //}
 
 
 

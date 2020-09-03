@@ -464,7 +464,7 @@
                                 </StackLayout>
                                 <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
-                                <!--<StackLayout Orientation="Horizontal" Spacing="20">
+                                <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="refund">
                                     </Image>
                                     <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TinDeregistrationDetails}" Style="{StaticResource ButtonLabelWhiteBold}"/>
@@ -472,7 +472,7 @@
                                         <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>-->
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="true"/>
 
                                  <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Image Source="ic_Installplan.png">

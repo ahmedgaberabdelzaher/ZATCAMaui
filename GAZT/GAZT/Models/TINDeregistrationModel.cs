@@ -374,13 +374,13 @@ namespace EGAZT.Models
     public partial class Set
     {
         [JsonProperty("results")]
-        public Result[] Results { get; set; }
+        public OutletSetResult[] Results { get; set; }
     }
 
-    public partial class Result
+    public partial class OutletSetResult
     {
         [JsonProperty("__metadata")]
-        public MetadataTinDeregistrationResponseModel Metadata { get; set; }
+        public Metadata Metadata { get; set; }
 
         [JsonProperty("AOutletCompAddr", NullValueHandling = NullValueHandling.Ignore)]
         public string AOutletCompAddr { get; set; }
@@ -623,15 +623,140 @@ namespace EGAZT.Models
         public string APermitDobCTb { get; set; }
     }
 
-    public partial class MetadataTinDeregistrationResponseModel
+    public partial class TinDeregistrationReasonSet
     {
-        [JsonProperty("id")]
-        public Uri Id { get; set; }
+        [JsonProperty("d")]
+        public TinDeregistrationReasonSetDataModel D { get; set; }
+    }
 
+    public partial class TinDeregistrationReasonSetDataModel
+    {
+        [JsonProperty("__metadata")]
+        public Metadata Metadata { get; set; }
+
+        [JsonProperty("Partner")]
+        public string Partner { get; set; }
+
+        [JsonProperty("Spars")]
+        public string Spars { get; set; }
+
+        [JsonProperty("OutletSet")]
+        public OutletSet OutletSet { get; set; }
+
+        [JsonProperty("REASONSet")]
+        public TinDeregReasonSet ReasonSet { get; set; }
+    }
+    
+    public partial class OutletSet
+    {
+        [JsonProperty("__deferred")]
+        public Deferred Deferred { get; set; }
+    }
+
+    public partial class Deferred
+    {
         [JsonProperty("uri")]
         public Uri Uri { get; set; }
+    }
 
-        [JsonProperty("type")]
-        public string Type { get; set; }
+    public partial class TinDeregReasonSet
+    {
+        [JsonProperty("results")]
+        public TinDeregReasonSetResult[] Results { get; set; }
+    }
+
+    public partial class TinDeregReasonSetResult
+    {
+        [JsonProperty("__metadata")]
+        public Metadata MetadataReasonSet { get; set; }
+
+        [JsonProperty("ReasonCd")]
+        public string ReasonCd { get; set; }
+
+        [JsonProperty("ReasonDesc")]
+        public string ReasonDesc { get; set; }
+    }
+
+    public partial class FieldValidations : INotifyPropertyChanged
+    {
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+
+        private string _fieldName { get; set; }
+        public string FieldName
+        {
+            get
+            {
+                return _fieldName;
+            }
+            set
+            {
+                _fieldName = value;
+                OnPropertyRaised("FieldName");
+            }
+        }
+
+        private string _fieldValue { get; set; }
+        public string FieldValue
+        {
+            get
+            {
+                return _fieldValue;
+            }
+            set
+            {
+                _fieldValue = value;
+                OnPropertyRaised("FieldValue");
+            }
+        }
+
+        private bool _isMandatory { get; set; }
+        public bool IsMandatory
+        {
+            get
+            {
+                return _isMandatory;
+            }
+            set
+            {
+                _isMandatory = value;
+                OnPropertyRaised("IsMandatory");
+            }
+        }
+
+        private bool _isVisible { get; set; }
+        public bool IsVisible
+        {
+            get
+            {
+                return _isVisible;
+            }
+            set
+            {
+                _isVisible = value;
+                OnPropertyRaised("IsVisible");
+            }
+        }
+
+        private bool _isEditable { get; set; }
+        public bool IsEditable
+        {
+            get
+            {
+                return _isEditable;
+            }
+            set
+            {
+                _isEditable = value;
+                OnPropertyRaised("IsEditable");
+            }
+        }
     }
 }

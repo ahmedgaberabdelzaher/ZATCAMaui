@@ -84,6 +84,7 @@
          <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid>
 
+                <!--Landing Page-->
                 <Grid IsVisible="{Binding IsZakatLandingPageVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid.RowDefinitions>
@@ -294,7 +295,7 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentSummary}" HorizontalOptions="StartAndExpand"
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatSummary}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource SectionTitleBlackBold}" />
                         <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
@@ -392,10 +393,6 @@
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" Grid.Row="1" HeightRequest="1" Grid.ColumnSpan="2"/>
 
-                               <!--  <Grid Grid.Row="2" Grid.ColumnSpan="2"  Margin="10,5,10,5"> 
-                                     <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="1" Text="{Binding PaymentFrequency}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel> 
-                                 </Grid>  -->
                                 <Grid Grid.Row="2" Grid.ColumnSpan="2"  Margin="10,5,10,5">
                                     <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentPlanDuration}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
                                     <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
@@ -485,25 +482,6 @@
                             </Frame>
                         </Grid>
 
-                     <!--   <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0">
-
-                            <Frame CornerRadius="10"  
-                               Style="{StaticResource SfStyleForZakatPlanGreen}"
-                                HasShadow="False"
-                                     Padding="0">
-                                <StackLayout Padding="10" Orientation="Horizontal">
-
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstallmentAgreementPenalty}" HorizontalOptions="Start"
-                                                VerticalOptions="Center"
-                                                Style="{StaticResource BodyLabelBlack}" />
-
-                                    <custom:CustomLabel Text="{Binding PenaltyAmount}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
-                                                Style="{StaticResource SectionTitleBlackBold}" />
-
-                                </StackLayout>
-                            </Frame>
-                        </Grid> -->
-
                         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0">
 
                             <Frame CornerRadius="10"  
@@ -561,7 +539,7 @@
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                         <listView:SfListView  Grid.Row="3"  HorizontalOptions="CenterAndExpand" IsScrollBarVisible="False" Margin="0" Padding="0"
-                                                  IsScrollingEnabled="False" VerticalOptions="StartAndExpand" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="SummaryattachmentsListView_ItemTapped"
+                                                  IsScrollingEnabled="False" VerticalOptions="StartAndExpand" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="RevokListView_ItemTapped"
                                       ItemsSource="{Binding RevokList}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>

@@ -246,8 +246,8 @@ namespace GAZT.Helper
 
 
         #region ZakatInstalment
-        public static string GetZAKATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet(";
-        public static string GetZAKATPostdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_INSTALLMENT_PLAN_SRV/z_installmentSet";
+        public static string GetZAKATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet(";
+        public static string GetZAKATPostdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/iprfhdrSet";
         public static string GetZAKATInvoices = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_M_SRV/invDtlsSet?$filter=";
         public static string GetZAKATSummaryInputURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IPRF_WI_SRV/UserFillSet(";
         #endregion
@@ -279,6 +279,8 @@ namespace GAZT.Helper
         #region TIN Deregistration
 
         public static string TinDeregistrationNewRequestUrl = BaseUrlOfODataServices + "/sap/opu/odata/sap/Z_DEREGISTRATION_NEW_SRV/DRG_HeaderSet(";
+        public static string TinDeregistrationReasonSetUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_DREGRESN_SRV/ZDS_DETSet(";
+
         
 
         #endregion

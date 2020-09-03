@@ -491,6 +491,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     EntryCRNumber.Focus();
                 }
             }
+            else
+            {
+                if(viewModel.IsCRChecked == false)
+                {
+                    viewModel.IsAllValidCRNumberEntered = true;
+                }
+            }
             viewModel.IsLoading = false;
 
         }
@@ -542,14 +549,21 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                      FrmPhoneNumber.HasError = false;
                 }
             }
+            else
+            {
+                if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
+                {
+                    viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
+                }
+            }
         }
 
         private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
         {
             if (string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
-
-                 FrmPhoneNumber.HasError = false;
+                viewModel.IsAllValidContactDataEnteredPhoneNbr = true;
+                FrmPhoneNumber.HasError = false;
             }
             if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
@@ -645,6 +659,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 popUp.Message = Message.ToString();
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
+
+            EntryPhoneNumber.Focus();
         }
 
         public bool IsValid(string emailaddress)
@@ -736,7 +752,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsAllValidDataEntered = true;
                                  FrmIDNumber.HasError = false;
-                                ValidateIDNumber();
+                               // ValidateIDNumber();
                             }
                         }
                     }
@@ -792,7 +808,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 // viewModel.IsAllValidDataEntered = true;
                                  FrmIDNumber.HasError = false;
-                                ValidateIDNumber();
+                               // ValidateIDNumber();
                             }
                         }
                     }
@@ -1634,6 +1650,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.ImgBackgroundCRNubmer = "FP_selected_tile";
             viewModel.ImgBackgroundLicenseNubmer = "FP_unselected_tile";
             viewModel.IsCRChecked = true;
+           
         }
 
         private void OnLicenseNumberTapped(object sender, EventArgs e)
@@ -1801,6 +1818,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             SiguupModel.AIdnumber = viewModel.TxtIDNumber;
             if (viewModel.IsCRChecked == true)
             {
+
                 SiguupModel.ACommId = viewModel.TxtCRNumber;
                 SiguupModel.ALicenceNo = "";
                 SiguupModel.AIssuedBy = "";
@@ -2138,7 +2156,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         {
                             if (viewModel.IsCRChecked == true)
                             {
-                                try
+                            viewModel.IsAllValidCRNumberEntered = false;
+                            try
                                 {
                                     //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
                                     DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
@@ -2377,6 +2396,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
 
                                     });
+
                                 }
 
 
@@ -2384,7 +2404,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
-                                try
+                            viewModel.IsAllValidCRNumberEntered = false;
+                            try
                                 {
                                     CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
                                     SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
@@ -3560,7 +3581,52 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
 
 
+        public void IndividualValidationCheck()
+        {
 
+            if (string.IsNullOrEmpty(EntryTIN.Text))
+            {
+                FrmTIN.HasError = true;
+            }
+
+            if (string.IsNullOrEmpty(EntryIDNumber.Text))
+            {
+                FrmIDNumber.HasError = true;
+            }
+
+            if (string.IsNullOrEmpty(DateEntry.Text))
+            {
+                FrmDBO.HasError = true;
+            }
+
+            if (string.IsNullOrEmpty(EntryName.Text))
+            {
+                FrmName.HasError = true;
+
+            }
+
+           if((FrmIDNumber.HasError == true)&&(FrmDBO.HasError == true)&&(FrmName.HasError == true))
+            {
+                viewModel.IsAllValidDataEntered = false;
+            }
+
+
+        }
+        public void BussinessValidationCheck()
+        {
+
+
+        }
+        public void ContactInformationValidationCheck()
+        {
+
+
+        }
+        public void OTPValidationCheck()
+        {
+
+
+        }
     }
 
 }

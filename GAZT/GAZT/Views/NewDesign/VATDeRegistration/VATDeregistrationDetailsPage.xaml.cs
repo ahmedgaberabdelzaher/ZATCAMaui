@@ -1531,7 +1531,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         async void voidTapped(System.Object sender, System.EventArgs e)
         {
-            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo, AppResources.ZYes);
+            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VatDeregistrationVoidMessage, AppResources.ZNo,AppResources.ZYes);
             if (!result)
             {
 

@@ -407,7 +407,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _desClaimerVisibility = true;
+        private bool _desClaimerVisibility = false;
         public bool DesClaimerVisibility
         {
             get
@@ -1730,7 +1730,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             SetConfirmButtonVisibility = false;
             ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
             DesClaimerVisibility = true;
-
             //if (isThresholdValueLessThanTotalVATSales)
             //{
             //    SetReadOnlyToOtherThanTotalVATSales = true;
