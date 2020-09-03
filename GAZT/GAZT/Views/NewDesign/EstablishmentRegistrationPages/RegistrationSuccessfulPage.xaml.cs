@@ -28,12 +28,24 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             if (Navigation.NavigationStack.Count > 0)
             {
-                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(pg);
-                Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                Navigation.RemovePage(pg1);
+                if (!string.IsNullOrEmpty(viewModel.taxPayerDetails?.Fbsta) && viewModel.taxPayerDetails?.Fbsta != "IP011")
+                {
+                    //Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                    //Navigation.RemovePage(pg);
+                    viewModel._navigationService.GoBack();
+
+                }
+                else
+                {
+                    Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                    Navigation.RemovePage(pg);
+                    viewModel._navigationService.GoBack();
+
+                    //Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                    //Navigation.RemovePage(pg1);
+                }
+
             }
-            viewModel._navigationService.GoBack();
         }
 
         private void SetLTR()
