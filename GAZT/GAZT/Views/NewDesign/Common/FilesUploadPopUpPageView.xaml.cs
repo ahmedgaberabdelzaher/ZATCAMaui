@@ -132,11 +132,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentBankStatements)
             {
-                viewModel.DocTypeString = "IPR1";
+                viewModel.DocTypeString = "ZIP2";
             }
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatInstalmentFinance)
             {
-                viewModel.DocTypeString = "IPR1";
+                viewModel.DocTypeString = "ZIP3";
             }
         }
 

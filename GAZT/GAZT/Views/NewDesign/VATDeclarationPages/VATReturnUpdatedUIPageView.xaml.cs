@@ -8225,5 +8225,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
                 
         }
+
+        private void OnEditPurcahseClicked(object sender, EventArgs e)
+        {
+            viewModel.currentTab = VATReturnUpdatedUITabEnum.Purchase;
+            viewModel.ManageButtonsNameOnViewModel();
+        }
+
+        private void OnEditSalesClicked(object sender, EventArgs e)
+        {
+            viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
+            viewModel.ManageButtonsNameOnViewModel();
+        }
     }
 }

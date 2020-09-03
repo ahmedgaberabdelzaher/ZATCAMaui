@@ -887,6 +887,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        App.HasToRefreshLoaderOnDashboard = true;
                     });
 
                     //if (App.IsOTPByPassed == true)
@@ -994,6 +995,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        App.HasToRefreshLoaderOnDashboard = true;
                         //TODO for continue work on EST added by ashwini
                         //_navigationService.NavigateTo(App.EstablishmentRegistrationPage);
                     });
