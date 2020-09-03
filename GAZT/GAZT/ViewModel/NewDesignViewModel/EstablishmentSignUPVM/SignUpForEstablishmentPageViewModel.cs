@@ -1691,8 +1691,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information); _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
-                        }
+                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information); 
+                                                }
                     
                     break;
 
