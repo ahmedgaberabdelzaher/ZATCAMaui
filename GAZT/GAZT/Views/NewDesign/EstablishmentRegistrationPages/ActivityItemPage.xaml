@@ -79,7 +79,7 @@
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCity}"/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
                                     <Span Text="*" TextColor="{StaticResource Secondary}"/>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
@@ -96,7 +96,7 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="0">
-                            <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" IsSpellCheckEnabled="false" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16">
+                            <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16">
 
                                   <customOne:GAZTBorderlessEntry.Behaviors>
                                        <custom:NumericValidationBehavior/>
@@ -184,8 +184,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                                            <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
+                                            <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
                                             <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center" >
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnDeleteTransferCRsCopyButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
@@ -301,7 +301,7 @@
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
 
-                            <custom:GAZTBorderlessEntry Text="{Binding LicenseNumber}" IsSpellCheckEnabled="false" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
+                            <custom:GAZTBorderlessEntry Text="{Binding LicenseNumber}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
 
                                   <customOne:GAZTBorderlessEntry.Behaviors>
                                        <custom:NumericValidationBehavior/>
@@ -363,8 +363,8 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.Column="0" Source="newui_ic_pdf.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                                            <custom:CustomLabel Grid.Column="1" Text="File 1.pdf" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
+                                            <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
                                             <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnDeleteLicenseCopyButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>

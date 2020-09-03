@@ -265,6 +265,7 @@
     <BundleResource Include="Resources\refund.png" />
     <BundleResource Include="Resources\refund%402x.png" />
     <BundleResource Include="Resources\refund%403x.png" />
+    <BundleResource Include="Resources\Generic_attachment_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -2010,9 +2011,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\amount_white%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Generic_attachment_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Generic_attachment_icon%402x.png" />

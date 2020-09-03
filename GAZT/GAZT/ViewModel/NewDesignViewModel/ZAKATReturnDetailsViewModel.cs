@@ -1190,14 +1190,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void SetEditImage()
         {
-            CapitalAmountEditImageSource = "ic_edit_gray.png";//"ic_Edit_red.png";
-            PurchaseValueEditImageSource = "ic_edit_gray.png";
-            ExportValueEditImageSource = "ic_edit_gray.png";
-            ContactFromETIMADSystemEditImageSource = "ic_edit_gray.png";
-            ImportFromPointOfSalesEditImageSource = "ic_edit_gray.png";
-            ImportValueEditImageSource = "ic_edit_gray.png";
-            AverageNumberOfLabourEditImageSource = "ic_edit_gray.png";
-            TotalVATSalesEditImageSource = "ic_edit_gray.png";
+            if(isThresholdValueLessThanTotalVATSales)
+            {
+                CapitalAmountEditImageSource = "";//"ic_Edit_red.png";
+                PurchaseValueEditImageSource = "";
+                ExportValueEditImageSource = "";
+                ContactFromETIMADSystemEditImageSource = "";
+                ImportFromPointOfSalesEditImageSource = "";
+                ImportValueEditImageSource = "";
+                AverageNumberOfLabourEditImageSource = "";
+                TotalVATSalesEditImageSource = "ic_edit_gray.png";
+            }
+            else
+            {
+                CapitalAmountEditImageSource = "ic_edit_gray.png";//"ic_Edit_red.png";
+                PurchaseValueEditImageSource = "ic_edit_gray.png";
+                ExportValueEditImageSource = "ic_edit_gray.png";
+                ContactFromETIMADSystemEditImageSource = "ic_edit_gray.png";
+                ImportFromPointOfSalesEditImageSource = "ic_edit_gray.png";
+                ImportValueEditImageSource = "ic_edit_gray.png";
+                AverageNumberOfLabourEditImageSource = "ic_edit_gray.png";
+                TotalVATSalesEditImageSource = "";
+            }
+           
 
         }
 

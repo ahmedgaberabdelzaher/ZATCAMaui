@@ -2185,7 +2185,25 @@
                             </StackLayout>
 
                             <Frame  BackgroundColor="LightBlue" Padding="10" CornerRadius="15" Margin="0">
-                                <StackLayout Spacing="10" Orientation="Horizontal" Padding="5,0,5,0">
+                                <Grid Padding="5,0,5,0" ColumnSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZZNetVAT}" Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center"/>
+                                    <custom:CustomLabel Grid.Column="1" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleSmallMediumBlack}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Margin="1,0,1,0" />
+                                    <Image Grid.Column="2" Source="ic_vat_info" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Margin="1,0,1,0">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnNewVatNetdueClicked" />
+                                        </Image.GestureRecognizers>
+
+                                    </Image>
+                                </Grid>
+                                <!--<StackLayout Spacing="10" Orientation="Horizontal" Padding="5,0,5,0">
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZNetVAT}" Style="{StaticResource BodyLabelBlack}" />
                                     <custom:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" />
                                     <Image Source="ic_vat_info">
@@ -2194,7 +2212,7 @@
                                         </Image.GestureRecognizers>
 
                                     </Image>
-                                </StackLayout>
+                                </StackLayout>-->
                             </Frame>
                         </StackLayout>
 
@@ -2353,7 +2371,7 @@
                                             </Image>
                                         </Frame>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
-                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
+                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsControlEnabled}" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnEditSalesClicked"/>
                                             </custom:CustomLabel.GestureRecognizers>
@@ -2424,7 +2442,7 @@
                                             </Image>
                                         </Frame>
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
-                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
+                                        <custom:CustomLabel  HorizontalOptions="EndAndExpand" IsEnabled="{Binding IsControlEnabled}" VerticalTextAlignment="Center" Text="{x:Static ResourceManager:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnEditPurcahseClicked"/>
                                             </custom:CustomLabel.GestureRecognizers>
@@ -2598,6 +2616,8 @@
 
 
             <StackLayout BackgroundColor="White" Grid.Row="1" Margin="15,0,15,0"  VerticalOptions="FillAndExpand" Padding="0,0,0,10">
+
+                <buttons:SfButton x:Name="btnamend"   VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnAmendButtonClicked" Text="{x:Static ResourceManager:AppResources.ZZAmend}" IsVisible="{Binding IsVisibleAmendButton}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
                 <buttons:SfButton x:Name="btnprimary" IsEnabled="{Binding IsMainButtonEnabled}"  VerticalOptions="CenterAndExpand" Margin="0,8,0,0"  Clicked="OnContinueButtonClicked" Text="{Binding ContinueText}" IsVisible="{Binding IsMainButtonVisible}"  Style="{StaticResource PrimaryButtonStyle}"/>
 
