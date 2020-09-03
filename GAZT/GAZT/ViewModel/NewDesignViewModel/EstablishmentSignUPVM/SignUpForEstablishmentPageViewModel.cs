@@ -1115,7 +1115,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("IsTINVisible");
             }
         }
-        private string _txtPhoneNumber = string.Empty;
+        private string _txtPhoneNumber = "";
         public string TxtPhoneNumber
         {
             get
