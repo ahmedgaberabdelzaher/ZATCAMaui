@@ -18,8 +18,7 @@ namespace GAZT
         }
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            if(args.NewTextValue.Length <= 4)
-            {
+            
                 if (!string.IsNullOrWhiteSpace(args.NewTextValue))
                 {
                     bool isValidNumber = UtilityManager.IsOTPNumberValid(args.NewTextValue);
@@ -28,14 +27,7 @@ namespace GAZT
                         ((Entry)sender).Text = isValidNumber ? args.NewTextValue : args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                     }
                 }
-                if(args.NewTextValue.Length == 4)
-                    ((Entry)sender).Unfocus();
-            }
-            else
-            {
-                ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-                ((Entry)sender).Unfocus();
-            }
+             
         }
     }
 }

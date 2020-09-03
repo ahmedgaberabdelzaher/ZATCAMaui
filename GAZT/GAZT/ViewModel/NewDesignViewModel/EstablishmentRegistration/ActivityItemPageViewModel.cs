@@ -456,7 +456,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ICommand OnSubGroupSelectButtonClick { get; set; }
         public ICommand OnAcitivitySelectButtonClick { get; set; }
         public ICommand OnNewLicenseButtonClick { get; private set; }
-
+        public ICommand TappedOnAttachmentInformationIcon { get; set; }
         public ICommand OnTransferCopyOfLicenseChoiceButtonClick { get; set; }
         public ICommand OnDeleteCRsCopyButtonClick { get; set; }
         public ICommand OnDeleteTransferCRsCopyButtonClick { get; set; }
@@ -638,6 +638,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 PopupNavigation.Instance.PushAsync(poupWindow);
             });
 
+            TappedOnAttachmentInformationIcon = new Command(() =>
+            ShowAlertPopup(
+                AppResources.ZFilesizeshouldnotbemorethan5MB
+                + System.Environment.NewLine
+                + AppResources.ZZChooseonlyfilewithextensionForZAKAT
+                + System.Environment.NewLine + AppResources.ZMaximumnoof5attachmentscanbeuploaded
+                ));
 
             OnDeleteCRsCopyButtonClick = new Command((item) => OnDeleteAttachment(item as Attachment, "RG01"));
             OnDeleteTransferCRsCopyButtonClick = new Command((item) => OnDeleteAttachment(item as Attachment, "RG12"));
@@ -990,6 +997,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
             return true;
+        }
+
+        private void ShowAlertPopup(string _message)
+        {
+            _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
         }
         #endregion
     }

@@ -7,6 +7,9 @@
              BackgroundImageSource="partials_background.png"
              xmlns:models="clr-namespace:EGAZT.Models"
              xmlns:custom="clr-namespace:GAZT"
+             xmlns:customOne="clr-namespace:GAZT"
+               xmlns:GAZTBehaviors="clr-namespace:EGAZT"
+
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
@@ -93,7 +96,12 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="0">
-                            <Entry Text="{Binding CRNumber}" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                            <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16">
+
+                                  <customOne:GAZTBorderlessEntry.Behaviors>
+                                       <custom:NumericValidationBehavior/>
+                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -292,7 +300,13 @@
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
-                            <Entry Text="{Binding LicenseNumber}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+
+                            <custom:GAZTBorderlessEntry Text="{Binding LicenseNumber}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
+
+                                  <customOne:GAZTBorderlessEntry.Behaviors>
+                                       <custom:NumericValidationBehavior/>
+                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
 
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -325,7 +339,11 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                            <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                 <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"></TapGestureRecognizer>
+                                    </Image.GestureRecognizers>
+                                    </Image>
                         </StackLayout>
                         <buttons:SfButton ShowIcon="True" ImageAlignment="End" Command="{Binding OnTransferCopyOfLicenseChoiceButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
@@ -432,7 +450,7 @@
 	                        EnableAnimation="True" 
 	                        AnimationType="SingleCircle" 
 	                        IsBusy="True" 
-	                        TextColor="#D99A29"
+	                        TextColor="#006450"
 	                        ViewBoxWidth="70"
                             ViewBoxHeight="70"
                             TitlePlacement="Bottom" />
