@@ -84,15 +84,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         public void OnDataLoad()
         {
-            if (viewModel != null)
-            {
-                viewModel.IsLoading = false;
-                // viewModel.MenuViewVisible = false;
-                // viewModel.HomeViewVisible = true;
-                //viewModel.StackMenuColor = Color.White;
-                //viewModel.TabbarColor = Color.DarkGray;
-                //viewModel.HomeIndicatorColor= Color.DarkGreen;
-            }
+              if (viewModel != null)
+                {
+                    viewModel.IsLoading = false;
+                    // viewModel.MenuViewVisible = false;
+                    // viewModel.HomeViewVisible = true;
+                    //viewModel.StackMenuColor = Color.White;
+                    //viewModel.TabbarColor = Color.DarkGray;
+                    //viewModel.HomeIndicatorColor= Color.DarkGreen;
+                }
             if (App.HasToRefreshLoaderOnDashboard == true)
             {
                 App.IsComingFromSleepMode = false;
@@ -504,6 +504,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.Contactus = AppResources.ZZZContactus;
                     viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
                     viewModel.Logout = AppResources.ZLogout;
+                    App.HasToRefreshLoaderOnDashboard = true;
                 }
                 else
                 {
@@ -521,6 +522,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     viewModel.Contactus = AppResources.ZZZContactus;
                     viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
                     viewModel.Logout = AppResources.ZLogout;
+                    App.HasToRefreshLoaderOnDashboard = true;
                 }
 
                 OnAppearing();
