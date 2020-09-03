@@ -638,15 +638,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                         await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
+                        _navigationService.GoBack();
                     }
-                    catch (Exception e)
+                    catch (Exception ex)
                     {
                         IsLoading = false;
-                        Console.WriteLine(e.StackTrace);
-                    }
-                    finally
-                    {
-                        _navigationService.GoBack();
+                        Console.WriteLine(ex.StackTrace);
+                        if(ex is HTTPBadRequestException)
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        }
                     }
                 }
             }

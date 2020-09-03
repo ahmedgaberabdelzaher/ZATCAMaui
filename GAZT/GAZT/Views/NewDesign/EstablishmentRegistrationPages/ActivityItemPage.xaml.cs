@@ -71,7 +71,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                     {
                         CRMainActivity.IsOn = str == "Yes";
                         if (str == "Yes") {
-                            _mainItem.Actcat = "S";
+                            viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
                         }
                     };
                     await PopupNavigation.Instance.PushAsync(confirmPopup);
@@ -95,7 +95,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                         LicenseMainActivity.IsOn = str == "Yes";
                         if (str == "Yes")
                         {
-                            _mainItem.Actcat = "S";
+                            viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
                         }
                     };
                     await PopupNavigation.Instance.PushAsync(confirmPopup);

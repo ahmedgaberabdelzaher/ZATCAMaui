@@ -9063,10 +9063,22 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
-                            taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                throw new HTTPBadRequestException(ErrorMessageForUnlockAccount);
+                            }
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            {
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                                taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                            }
                         }
                     }
                 }
