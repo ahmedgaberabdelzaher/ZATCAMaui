@@ -75,7 +75,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             if (viewModel.TINs != null && viewModel.TINs.Count > 0)
                 viewModel.TINs.Clear();
             viewModel.IDNumber = string.Empty;
-            viewModel.UserNameLabelText = AppResources.IDNumber;
+            viewModel.UserNameLabelText = AppResources.UserName;
 
             viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
 
