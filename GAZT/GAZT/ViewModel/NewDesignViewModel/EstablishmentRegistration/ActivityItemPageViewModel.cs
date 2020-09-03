@@ -932,29 +932,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         private async void OnDeleteAttachment(Attachment item, string docType)
         {
-            IsLoading = true;
-            var delete = WebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
-            if(!string.IsNullOrEmpty(delete) && delete == "delete")
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            confirmPopup.OnSelect = async (str) =>
             {
-                if (docType == "RG01")
+                if (str == "Yes")
                 {
-                    CRsCopies.Remove(item);
+                    IsLoading = true;
+                    var delete = WebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
+                    if (!string.IsNullOrEmpty(delete) && delete == "delete")
+                    {
+                        if (docType == "RG01")
+                        {
+                            CRsCopies.Remove(item);
+                        }
+                        else if (docType == "RG12")
+                        {
+                            TransferCRsCopies.Remove(item);
+                        }
+                        else if (docType == "RG02")
+                        {
+                            LicensesCopies.Remove(item);
+                        }
+                        IsLoading = false;
+                    }
+                    else
+                    {
+                        IsLoading = false;
+                        await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
+                    }
                 }
-                else if (docType == "RG12")
-                {
-                    TransferCRsCopies.Remove(item);
-                }
-                else if (docType == "RG02")
-                {
-                    LicensesCopies.Remove(item);
-                }
-                IsLoading = false;
-            }
-            else
-            {
-                IsLoading = false;
-                await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
-            }
+            };
+            await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
         private bool ValidateForm()

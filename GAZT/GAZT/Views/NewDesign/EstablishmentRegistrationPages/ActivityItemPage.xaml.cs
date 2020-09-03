@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
@@ -50,6 +53,54 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         void CREntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
             viewModel?.validateCRNumber();
+        }
+
+        async void CRSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
+        {
+            Console.WriteLine("CR Main " + CRMainActivity.IsOn);
+            if (CRMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
+            {
+                var _mainItem = viewModel?.NregActivityList?.FirstOrDefault(i => i.Actcat == "M");
+                if (_mainItem != null)
+                {
+                    var confirmPopup = new ZAKATOkCancelPopUpView("Are you sure you want to mark as main activity")
+                    {
+                        CloseWhenBackgroundIsClicked = false
+                    };
+                    confirmPopup.OnSelect = (str) =>
+                    {
+                        CRMainActivity.IsOn = str == "Yes";
+                        if (str == "Yes") {
+                            _mainItem.Actcat = "S";
+                        }
+                    };
+                    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                }
+            }
+        }
+        async void LicenseSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
+        {
+            Console.WriteLine("License Main " + LicenseMainActivity.IsOn);
+            if (LicenseMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
+            {
+                var _mainItem = viewModel?.NregActivityList?.FirstOrDefault(i => i.Actcat == "M");
+                if (_mainItem != null)
+                {
+                    var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText)
+                    {
+                        CloseWhenBackgroundIsClicked = false
+                    };
+                    confirmPopup.OnSelect = (str) =>
+                    {
+                        LicenseMainActivity.IsOn = str == "Yes";
+                        if (str == "Yes")
+                        {
+                            _mainItem.Actcat = "S";
+                        }
+                    };
+                    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                }
+            }
         }
     }
 }
