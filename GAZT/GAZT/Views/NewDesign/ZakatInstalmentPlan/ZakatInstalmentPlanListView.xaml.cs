@@ -100,10 +100,18 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         private void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-            /*  var item = e.ItemData as Result;
-              var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
-              viewModel.GetSummaryDetailsClickedAsync(index);
-              viewModel.EnableZakatInstalmentSummary();*/
+            var item = e.ItemData as Result;
+            var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
+            viewModel.GetSummaryDetailsClickedAsync(index);
+            viewModel.EnableZakatInstalmentSummary();
+        }
+
+        private void RevokListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+            /*var item = e.ItemData as Result;
+            var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
+            viewModel.GetSummaryDetailsClickedAsync(index);
+            viewModel.EnableZakatInstalmentSummary();*/
         }
 
 
