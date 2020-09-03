@@ -8237,5 +8237,17 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel.currentTab = VATReturnUpdatedUITabEnum.Sales;
             viewModel.ManageButtonsNameOnViewModel();
         }
+
+        private async void OnAmendButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                await viewModel.VATReturnAmendAsync();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
     }
 }

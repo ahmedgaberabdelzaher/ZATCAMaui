@@ -1693,6 +1693,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsNewLoading");
             }
         }
+
+        private bool _isVisibleAmendButton = false;
+        public bool IsVisibleAmendButton
+        {
+            get
+            {
+                return _isVisibleAmendButton;
+            }
+            set
+            {
+                _isVisibleAmendButton = value;
+                RaisePropertyChanged("IsVisibleAmendButton");
+            }
+        }
+
+        private bool _isAmendButtonAvailable = false;
+        public bool IsAmendButtonAvailable
+        {
+            get
+            {
+                return _isAmendButtonAvailable;
+            }
+            set
+            {
+                _isAmendButtonAvailable = value;
+                RaisePropertyChanged("IsAmendButtonAvailable");
+            }
+        }
+
         public static bool IsAmend = false;
         private bool _isAmendClicked = false;
         public bool IsAmendClicked
@@ -3008,6 +3037,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = false;
+                IsVisibleAmendButton = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             //else if(viewModel.currentTab == VATReturnUpdatedUITabEnum.TaxpayerDetails)
@@ -3022,6 +3052,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = false;
+                IsVisibleAmendButton = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Sales)
@@ -3030,6 +3061,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = false;
+                IsVisibleAmendButton = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Purchase)
@@ -3038,6 +3070,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = false;
+                IsVisibleAmendButton = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.TotalVat)
@@ -3046,11 +3079,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsMainButtonVisible = true;
                 IsRefundButtonVisible = false;
                 IsCreditForwardBtnVisible = true;
+                IsVisibleAmendButton = false;
                 ContinueText = AppResources.ZZZZContinue;
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Summery)
             {
                 IsCreditForwardBtnVisible = false;
+                if(IsAmendButtonAvailable)
+                {
+                    IsVisibleAmendButton = true;
+                }
+                else
+                {
+                    IsVisibleAmendButton = false;
+                }
                 if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058") && IsAmendClicked == false)
                 {
                     isBtnVisible = true;
@@ -5112,6 +5154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
+                bool Isamend = false;
                 List<ApplicableButton> VATApplicableButtons = await WebServiceManager.GAZTVATReturnGetApplicableButtons(VATDeclarationData.d.Fbnumz, VATDeclarationData.d.Langz, VATDeclarationData.d.Operationz, VATDeclarationData.d.Gpart, VATDeclarationData.d.Statusz, VATDeclarationData.d.TxnTpz, vATDeclarationData.d.Periodkeyz);
                 PopToRootPage();
                 ListOfActionButtonsApplicable = new List<string>();
@@ -5123,9 +5166,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     foreach (ApplicableButton button in VATApplicableButtons)
                     {
                         SetButtonStrings(button.buttonEnumId.ToString());
+
+                        if (button.buttonEnumId.ToString() == "Amend")
+                        {
+                            Isamend = true;
+                        }
                         // ListOfActionButtonsApplicable.Add(button.buttonEnumId.ToString());
                     }
                     ListOfActionButtonsApplicable = DummyListOfActionButtonsApplicable;
+                }
+                if(Isamend)
+                {
+                    IsVisibleAmendButton = true;
+                    IsAmendButtonAvailable = true;
+                }
+                else
+                {
+                    IsVisibleAmendButton = false;
+                    IsAmendButtonAvailable = false;
                 }
             }
             catch (InternetException ex)
@@ -5174,10 +5232,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //{
             //    DummyListOfActionButtonsApplicable.Add(AppResources.ZVATCreateNote);
             //}
-            else if (ButtonName == "Amend")
-            {
-                DummyListOfActionButtonsApplicable.Add(AppResources.ZZAmend);
-            }
+            //else if (ButtonName == "Amend")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZAmend);
+            //}
             else if (ButtonName == "Closed")
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZClose);
