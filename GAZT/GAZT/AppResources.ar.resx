@@ -301,7 +301,7 @@
     <value>بدء المحادثة</value>
   </data>
   <data name="Submit" xml:space="preserve">
-    <value>تقديم</value>
+    <value>تقديم</value> 
   </data>
   <data name="SubmittedReturn" xml:space="preserve">
     <value>إقرارات مقدمة</value>

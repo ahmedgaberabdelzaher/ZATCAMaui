@@ -306,7 +306,7 @@
   <data name="StartChatting" xml:space="preserve">
     <value>Start chatting</value>
   </data>
-  <data name="Submit" xml:space="preserve">
+  <data name="Submit" xml:space="preserve"> 
     <value>Submit</value>
   </data>
   <data name="SubmittedReturn" xml:space="preserve">
