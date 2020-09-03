@@ -152,7 +152,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         public void ClearFields()
         {
-            //viewModel.PkrDBO = string.Empty;
+          viewModel.PkrDBO = string.Empty;
             viewModel.TxtLOrCIssuedBy = string.Empty;
             viewModel.TxtLOrCIssuedByCity = string.Empty;
             viewModel.IDTypeIndex = 0;
@@ -179,7 +179,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
            viewModel.TxtCountryCode = "+966";
 
             viewModel.TxtMobileNumber = string.Empty;
-           // viewModel.TxtMobileNumberwithCountryCode = string.Empty;
+           viewModel.TxtMobileNumberwithCountryCode = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
 
             //iewModel.IDTypeModelRootObject = null;
@@ -369,7 +369,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     FrmCR.HasError = true;
                                     viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
-
+                                    EntryCRNumber.Text = string.Empty;
                                     return false;
                                 }
                                 else
@@ -538,7 +538,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
             {
-                    viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryPhoneNumber.Text;
+                  //  viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryPhoneNumber.Text;
                 if (EntryPhoneNumber.Text.Substring(0, 1) != "1")
                 {
                    // viewModel.IsAllValidContactDataEnteredPhoneNbr = false;
@@ -664,7 +664,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             //}
             if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
             {
-
+                viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryMobileNumber.Text;
                 FrmMobile.BorderColor = Color.LightGray;
             }
 
@@ -758,9 +758,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                             else
                             {
+                              
                                 viewModel.IsAllValidDataEntered = true;
                                  FrmIDNumber.HasError = false;
-                               // ValidateIDNumber();
+                                if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                                {
+                                    ValidateIDNumber();   
+                                }
+                                
                             }
                         }
                     }
@@ -816,7 +821,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             {
                                 // viewModel.IsAllValidDataEntered = true;
                                  FrmIDNumber.HasError = false;
-                               // ValidateIDNumber();
+                                if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                                {
+                                    ValidateIDNumber();
+                                }
                             }
                         }
                     }
@@ -863,7 +871,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     else
                     {
-                        ValidateIDNumber();
+                       // ValidateIDNumber();
                          viewModel.IsAllValidDataEntered = true;
                          FrmIDNumber.HasError = false;
                     }
@@ -927,14 +935,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                 FrmIDNumber.HasError = false;
+                                FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
                         else
                         {
                             viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                            EntryName.IsEnabled = false;
+                            //EntryName.IsEnabled = false;
                             viewModel.IsAllValidDataEntered = true;
                             FrmIDNumber.HasError = false;
                         }
@@ -954,7 +962,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = false;
+                                FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1047,7 +1055,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             else
                             {
                                 viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = false;
+                                FrmIDNumber.HasError = true;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1055,7 +1063,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         {
                             viewModel.IsAllValidDataEntered = true;
                             viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                            EntryName.IsEnabled = false;
+                           // EntryName.IsEnabled = false;
                             FrmIDNumber.HasError = false;
                         }
                     }
@@ -1195,6 +1203,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     string day = selectedItem[0].ToString();
                     string year = selectedItem[2].ToString();
                     viewModel.PkrDBO = year + "/" + month + "/" + day;
+                  
                 }
 
             }
@@ -1206,7 +1215,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private void DpDbo_Closed(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+            {
+                if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
+                {
+                    ValidateIDNumber();
+                }
 
+            }
         }
         private async void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -1274,7 +1290,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                     viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
                                                      FrmIDNumber.HasError = false;
                                                     viewModel.IsAllValidDataEntered = true;
-                                                    EntryName.IsEnabled = false;
+                                                   // EntryName.IsEnabled = false;
                                                 }
                                             }
                                         }
@@ -1409,7 +1425,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                                 else
                                                 {
                                                     viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                                                    EntryName.IsEnabled = false;
+                                                   // EntryName.IsEnabled = false;
                                                     viewModel.IsAllValidDataEntered = true;
                                                     FrmIDNumber.HasError = false;
                                                 }
@@ -1866,7 +1882,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
             SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-          //  viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+          // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
             SiguupModel.ACountry = viewModel.MobileCountryCode;
 
             // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
@@ -1943,17 +1959,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.ContactInformation)
             {
-                if (viewModel.IsAllValidContactDataEnteredEmail &&
-                        viewModel.IsAllValidContactDataEnteredMobileNbr &&
-                        viewModel.IsAllValidContactDataEnteredPhoneNbr)
-                {
-                    viewModel.PageTitle = AppResources.CRSummary;
-                    viewModel.BodyText = AppResources.CRReviewthebelowinformation;
-                    viewModel.NextBTN = AppResources.ZZZZContinue;
-                    viewModel.CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
-                    //viewModel.TimerStart(viewModel.numberOfSeconds);
-                    //EstablishmentSignUpDataAsync();
-                }
+                CheckValidationForContactInformation();
+                //if (viewModel.IsAllValidContactDataEnteredEmail &&
+                //        viewModel.IsAllValidContactDataEnteredMobileNbr &&
+                //        viewModel.IsAllValidContactDataEnteredPhoneNbr)
+                //{
+                //    viewModel.PageTitle = AppResources.CRSummary;
+                //    viewModel.BodyText = AppResources.CRReviewthebelowinformation;
+                //    viewModel.NextBTN = AppResources.ZZZZContinue;
+                //    viewModel.CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                //    //viewModel.TimerStart(viewModel.numberOfSeconds);
+                //EstablishmentSignUpDataAsync();
+                //}
             }
             else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.IndividualInformation)
             {
@@ -1994,10 +2011,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 flag = false;
                 txtEntryName.HasError = true;
             }
-            if (string.IsNullOrEmpty(viewModel.TxtIDNumber))
+            if (string.IsNullOrEmpty(viewModel.TxtIDNumber)||  FrmIDNumber.HasError)
             {
                 flag = false;
                 FrmIDNumber.HasError = true;
+                viewModel.TxtIDNumber = string.Empty;
+
             }
             if (string.IsNullOrEmpty(viewModel.PkrDBO))
             {
@@ -2026,7 +2045,31 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
 
         }
-
+        public void CheckValidationForContactInformation()
+        {
+            bool flag = true;
+            if (string.IsNullOrEmpty(viewModel.TxtMobileNumber))
+            {
+                FrmMobile.BorderColor = Color.DarkRed;
+                flag = false;
+            }
+            if (string.IsNullOrEmpty(viewModel.TxtEmailAddress))
+            {
+                FrmEmailAddress.HasError = true;
+                 flag = false;
+            }
+            if (flag)
+            {
+                viewModel.PageTitle = AppResources.CRSummary;
+                viewModel.BodyText = AppResources.CRReviewthebelowinformation;
+                viewModel.NextBTN = AppResources.ZZZZContinue;
+                viewModel.CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+            }
+            else
+            {
+                viewModel._dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+            }
+        }
         public void CheckValidationForBusinessStep()
         {
             //CRNumber Tile
@@ -2396,7 +2439,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
                                         string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                         SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
-                                   // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
+                                 //  viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
                                     SiguupModel.ACountry = viewModel.MobileCountryCode;
                                         // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                         if (viewModel.SelectedSignUpUsing.ID == 1)

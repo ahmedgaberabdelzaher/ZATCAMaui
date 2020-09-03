@@ -541,18 +541,20 @@
                 <!--Start step 5-->
                 <ScrollView Grid.Row="2" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.EmailVerification}}">
                     <StackLayout>
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                 <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}"
                                                          Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                                          VerticalTextAlignment="End" Keyboard="Email" 
-                                Text="{Binding TxtEmailAddress}"  IsEnabled="False">
+                                Text="{Binding TxtEmailAddress}" IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
                             </control:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
+                        </inputLayout:SfTextInputLayout>-->
 
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoemailaddress}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
 
-                        <StackLayout>
+                            <custom:CustomLabel Text="{Binding TxtEmailAddress}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
+
+                            <StackLayout>
                             <StackLayout Padding="0,0,0,0" >
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -693,20 +695,21 @@
 
                         <!--Verification Mobile Starts-->
                         <StackLayout>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                            <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZMobileNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                         <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                     <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" 
                                                              Placeholder="{x:Static ResourceManager:AppResources.ZZMobileNumber}" VerticalTextAlignment="End" Keyboard="Numeric" 
-                                                     Text="{Binding TxtMobileNumber}"  IsEnabled="False">
+                                                     Text="{Binding TxtMobileNumber}"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
                                    
                             </control:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
+                        </inputLayout:SfTextInputLayout>-->
 
                             
 
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmationcodesenttoMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
+                                <custom:CustomLabel  Text="{Binding TxtMobileNumber}" Style="{StaticResource CaptionLabelGrey}" HorizontalTextAlignment="Center"/>
 
-                        <StackLayout>
+                                <StackLayout>
                             <StackLayout Padding="0,0,0,0" >
                                 <Grid>
                                     <Grid.RowDefinitions>

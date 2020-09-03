@@ -2432,7 +2432,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 _txtEmailCode = value;
                 RaisePropertyChanged("TxtEmailCode");
             }
-        }
+        } 
         public async void CreateGaZTAccount()
         {
             try
