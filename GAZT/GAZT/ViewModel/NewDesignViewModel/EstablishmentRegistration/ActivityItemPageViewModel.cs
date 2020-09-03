@@ -983,7 +983,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool ValidateForm()
         {
-            return true;
             if(CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
             {
                 if(CRIssueCountry == null
