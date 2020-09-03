@@ -6203,7 +6203,7 @@ namespace GAZT.Manager
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message+" ";
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;

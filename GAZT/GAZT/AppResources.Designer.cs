@@ -7854,6 +7854,18 @@ namespace EGAZT {
             }
         }
         
+        public static string VATDeregInstructionsAndConditionsFirst {
+            get {
+                return ResourceManager.GetString("VATDeregInstructionsAndConditionsFirst", resourceCulture);
+            }
+        }
+        
+        public static string VATDeregInstructionsAndConditionsSecond {
+            get {
+                return ResourceManager.GetString("VATDeregInstructionsAndConditionsSecond", resourceCulture);
+            }
+        }
+        
         public static string VATDeregistrationAgreeTermsConditions {
             get {
                 return ResourceManager.GetString("VATDeregistrationAgreeTermsConditions", resourceCulture);

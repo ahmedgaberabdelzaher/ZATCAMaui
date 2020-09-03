@@ -1203,7 +1203,7 @@
     <value>25% of Disputed Amount</value>
   </data>
   <data name="ZChooseonlyfilewithextension" xml:space="preserve">
-    <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt</value>
+    <value>نوع الملف يجب أن يكون من أحد الأنواع التالية: Doc,Docx,Jpg,Pdf,Xlsx,Xls</value>
   </data>
   <data name="ZFilesizeshouldnotbemorethan5MB" xml:space="preserve">
     <value>حجم الملف لا يزيد عن 5 ميجا</value>
@@ -4582,25 +4582,31 @@
     <value>تأكيد</value>
   </data>
   <data name="VatDeregSuspendedStartDate" xml:space="preserve">
-    <value>بداية فترة الايقاف</value>
+    <value>فترة بداية تعليق الالتزام</value>
   </data>
   <data name="VatDeregSuspendedEndDate" xml:space="preserve">
     <value>نهاية فترة الايقاف</value>
   </data>
   <data name="VatDeregSuspendedFilingPeriod" xml:space="preserve">
-    <value>فترة الايداع الموقوف</value>
+    <value>فترة تعليق الالتزام</value>
   </data>
   <data name="VatDeregNextFilingPeriod" xml:space="preserve">
-    <value>فترة الايداع التالية</value>
+    <value>فترة تقديم الإقرار القادم</value>
   </data>
   <data name="VatDeregNextFilingDueDate" xml:space="preserve">
-    <value>تاريخ استحقاق الايداع التالي</value>
+    <value>تاريخ الاستحقاق القادم</value>
   </data>
   <data name="VatDeregSuspendedDateMismatchException" xml:space="preserve">
     <value>يقع تاريخ البدء وتاريخ الانتهاء في نفس الفترة</value>
   </data>
   <data name="VATDeregistrationInstructions" xml:space="preserve">
-    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -&gt; تعديل التسجيل -&gt; الايقاف (الايقاف النهائي للرقم المميز)- تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.- يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
+    <value>ملاحظة: في حالة إلغاء التسجيل بسبب الإفلاس أو التصفية أو الاندماج أو الاستحواذ أو أي سبب آخر من الأسباب التي تتعلق بجميع أنواع الضرائب،يجب القيام بعملية إلغاء التسجيل من لوحة التحكم في أيقونة الزكاة والضرائب المباشرة -> تعديل التسجيل -> الايقاف (الايقاف النهائي للرقم المميز).</value>
+  </data>
+          <data name="VATDeregInstructionsAndConditionsFirst" xml:space="preserve">
+    <value>تعبئة جميع المعلومات المطلوبة وإرفاق المستندات المؤيدة لذلك.</value>
+  </data>
+      <data name="VATDeregInstructionsAndConditionsSecond" xml:space="preserve">
+    <value>يجب على مقدم الطلب التأكد من عدم وجود اقرار معلق أو دفعة مطلوبة أو طلب معلق من جانبه قبل تقديم الطلب.</value>
   </data>
   <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
     <value>أوافق على التعليمات والشروط وإكمال الخطوات.</value>
