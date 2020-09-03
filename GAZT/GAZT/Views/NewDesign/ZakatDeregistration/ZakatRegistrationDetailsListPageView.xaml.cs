@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
+using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -58,6 +59,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             try
             {
                 viewModel.GetNewTinDeregistrationDataCliked();
+                var view = sender as SfListView;
+                view.SelectedItem = null;
             }
             catch(Exception ex)
             {

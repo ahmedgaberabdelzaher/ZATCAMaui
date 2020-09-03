@@ -279,6 +279,8 @@ namespace GAZT.Helper
         #region TIN Deregistration
 
         public static string TinDeregistrationNewRequestUrl = BaseUrlOfODataServices + "/sap/opu/odata/sap/Z_DEREGISTRATION_NEW_SRV/DRG_HeaderSet(";
+        public static string TinDeregistrationReasonSetUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_DREGRESN_SRV/ZDS_DETSet(";
+
         
 
         #endregion
