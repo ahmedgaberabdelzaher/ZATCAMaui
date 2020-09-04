@@ -26,6 +26,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
         }
 
@@ -176,25 +177,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
+
                                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                                //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
                                 viewModel.SelectedIdNumber = string.Empty;
                             }
                             else
                             {
-                                //FrmIDNumber.HasError = false;
                                 viewModel.FrameIDError = false;
                                 if (!string.IsNullOrEmpty(viewModel.SelectedDob))
                                 {
                                     viewModel.ValidateIDNumber();
-
                                 }
-
                             }
                         }
-
-
                     }
                     if (viewModel.SelectedIdtype == AppResources.ZZIqamaID)
                     {
@@ -212,7 +208,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 popUp.FlowDirections = "LeftToRight";
                             }
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                         }
