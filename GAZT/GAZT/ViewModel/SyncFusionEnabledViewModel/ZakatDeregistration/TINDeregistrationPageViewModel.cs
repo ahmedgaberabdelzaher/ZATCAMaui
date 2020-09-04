@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
@@ -23,7 +25,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public readonly IDialogService _dialogService;
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand CloseBtnTapped { get; set; }
-
+        public ICommand IdTypeTapped { get; set; }
+    
         #endregion
 
         #region Commands
@@ -392,6 +395,55 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        private string _selectedIdtype { get; set; }
+        public string SelectedIdtype
+        {
+            get
+            {
+                return _selectedIdtype;
+            }
+
+            set
+            {
+
+                _selectedIdtype = value;
+                RaisePropertyChanged("SelectedIdtype");
+            }
+        }
+
+        private string _selectedIdNumber { get; set; }
+        public string SelectedIdNumber
+        {
+            get
+            {
+                return _selectedIdNumber;
+            }
+
+            set
+            {
+
+                _selectedIdNumber = value;
+                RaisePropertyChanged("SelectedIdNumber");
+            }
+        }
+
+        private string _selectedIDTypeCode { get; set; }
+        public string SelectedIDTypeCode
+        {
+            get
+            {
+                return _selectedIDTypeCode;
+            }
+
+            set
+            {
+
+                _selectedIDTypeCode = value;
+                RaisePropertyChanged("SelectedIDTypeCode");
+            }
+        }
+
+
         public ObservableCollection<TinDeregReasonSetResult> _tinDeregReasons { get; set; }
         public ObservableCollection<TinDeregReasonSetResult> TinDeregReasons
         {
@@ -427,9 +479,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             SelectedReason = TinDeregReasons.Where(m => m.ReasonDesc == PickerModel.SelectedValue).FirstOrDefault();
                             AddOutletDecisionOptions();
                         }
-                        else
+                        else if(PickerModel.PickerId == "idTypePicker")
                         {
-                            //SelectedIdNumber = PickerModel.SelectedValue;
+                            SelectedIdtype = PickerModel.SelectedValue;
+                            IBANType idType = IBANTypesList.Where(m => m.Text == PickerModel.SelectedValue).FirstOrDefault();
+                            SelectedIDTypeCode = idType.key;
+
+                            if(SelectedIdtype == AppResources.ZIBANNationalID)
+                            {
+                                NationalTypeSelected();
+                            }
+                            else if (SelectedIdtype == AppResources.ZIBANCompanyID)
+                            {
+                                CompanyIdTypeSelected();
+                            }
+                            else if (SelectedIdtype == AppResources.ZZIqamaID)
+                            {
+                                IqamaTypeSelected();
+                            }
+                            else if (SelectedIdtype == AppResources.ZZGCCID)
+                            {
+                                GCCIdTypeSelected();
+                            }
                         }
                     }
                 }
@@ -512,7 +583,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-
         private FieldValidations _firstNameText { get; set; }
         public FieldValidations FirstNameText
         {
@@ -583,6 +653,63 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        private FieldValidations _name1Text { get; set; }
+        public FieldValidations Name1Text
+        {
+            get
+            {
+                return _name1Text;
+            }
+            set
+            {
+                _name1Text = value;
+                RaisePropertyChanged("Name1Text");
+            }
+        }
+
+        private FieldValidations _name2Text { get; set; }
+        public FieldValidations Name2Text
+        {
+            get
+            {
+                return _name2Text;
+            }
+            set
+            {
+                _name2Text = value;
+                RaisePropertyChanged("Name2Text");
+            }
+        }
+
+        private ObservableCollection<IBANType> _iBANTypesList;
+        public ObservableCollection<IBANType> IBANTypesList
+        {
+            get
+            {
+                return _iBANTypesList;
+            }
+            set
+            {
+                _iBANTypesList = value;
+                //if (_iBANTypesList != null && _iBANTypesList.Count != 0)
+                //{
+                //    if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && IsAmendClicked == false)
+                //    {
+                //        IsEnableIBANType = false;
+                //    }
+                //    else
+                //    {
+                //        IsEnableIBANType = true;
+                //    }
+                //}
+                //else
+                //{
+                //    IsEnableIBANType = false;
+                //}
+                RaisePropertyChanged("IBANTypesList");
+            }
+        }
+
         public void CompanyIdTypeSelected()
         {
             TinText.IsMandatory = false;
@@ -620,6 +747,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             FamilyNameText.IsMandatory = false;
             FamilyNameText.IsVisible = false;
             FamilyNameText.IsEditable = false;
+
+            Name1Text.IsMandatory = false;
+            Name1Text.IsVisible = true;
+            Name1Text.IsEditable = false;
+
+            Name2Text.IsMandatory = false;
+            Name2Text.IsVisible = true;
+            Name2Text.IsEditable = false;
         }
 
         public void NationalTypeSelected()
@@ -659,6 +794,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             FamilyNameText.IsMandatory = false;
             FamilyNameText.IsVisible = true;
             FamilyNameText.IsEditable = false;
+
+            Name1Text.IsMandatory = false;
+            Name1Text.IsVisible = false;
+            Name1Text.IsEditable = false;
+
+            Name2Text.IsMandatory = false;
+            Name2Text.IsVisible = false;
+            Name2Text.IsEditable = false;
         }
 
         public void GCCIdTypeSelected()
@@ -698,6 +841,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             FamilyNameText.IsMandatory = false;
             FamilyNameText.IsVisible = true;
             FamilyNameText.IsEditable = true;
+
+            Name1Text.IsMandatory = false;
+            Name1Text.IsVisible = false;
+            Name1Text.IsEditable = false;
+
+            Name2Text.IsMandatory = false;
+            Name2Text.IsVisible = false;
+            Name2Text.IsEditable = false;
         }
 
         public void IqamaTypeSelected()
@@ -737,6 +888,58 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             FamilyNameText.IsMandatory = false;
             FamilyNameText.IsVisible = true;
             FamilyNameText.IsEditable = false;
+
+            Name1Text.IsMandatory = false;
+            Name1Text.IsVisible = false;
+            Name1Text.IsEditable = false;
+
+            Name2Text.IsMandatory = false;
+            Name2Text.IsVisible = false;
+            Name2Text.IsEditable = false;
+        }
+
+        public void PopulateIdTypeTypeFromList()
+        {
+            IBANTypesList = new ObservableCollection<IBANType>();
+            ObservableCollection<IBANType> IBANTypesDummyList = new ObservableCollection<IBANType>();
+            IBANType iBANType = new IBANType();
+            iBANType.key = "ZS0001";
+            iBANType.Text = AppResources.ZIBANNationalID;
+            IBANTypesDummyList.Add(iBANType);
+
+            IBANType iBANType2 = new IBANType();
+            iBANType2.key = "ZS0005";
+            iBANType2.Text = AppResources.ZIBANCompanyID;
+            IBANTypesDummyList.Add(iBANType2);
+
+            IBANType iBANType3 = new IBANType();
+            iBANType3.key = "ZS0002";
+            iBANType3.Text = AppResources.ZZIqamaID;
+            IBANTypesDummyList.Add(iBANType3);
+
+            IBANType iBANType4 = new IBANType();
+            iBANType4.key = "ZS0003";
+            iBANType4.Text = AppResources.ZZGCCID;
+            IBANTypesDummyList.Add(iBANType4);
+
+            IBANTypesList = IBANTypesDummyList;
+        }
+
+        public async void OnIdTypeClicked()
+        {
+            ObservableCollection<string> idTypeData = new ObservableCollection<string>();
+
+            foreach (IBANType iBANType in IBANTypesList)
+            {
+                idTypeData.Add(iBANType.Text);
+            }
+
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = idTypeData;
+            genericPickerModel.PickerTitle = AppResources.ZZIDType;
+            genericPickerModel.PickerId = "idTypePicker";
+
+            await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
         #endregion
@@ -781,8 +984,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             FamilyNameText = new FieldValidations();
             GrandFathersNameText = new FieldValidations();
 
+            IdTypeTapped = new Command(OnIdTypeClicked);
+
             //AddOutletDecisionOptions();
             PopulateAttachmentsListViewTemplate();
+            PopulateIdTypeTypeFromList();
             PopulateSummaryReasonData();
             PopulateSummaryDeclarationData();
             EnableReasonView();
@@ -866,7 +1072,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
 
         }
-
 
         public void AddOutletDecisionOptions()
         {
@@ -1112,6 +1317,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
                 genericDatePickerModel.DatePickerTitle = AppResources.VatDeregStartDatePickerTitle;
                 genericDatePickerModel.PickerId = "DeregDatePicker";
+
                 try
                 {
                     await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
