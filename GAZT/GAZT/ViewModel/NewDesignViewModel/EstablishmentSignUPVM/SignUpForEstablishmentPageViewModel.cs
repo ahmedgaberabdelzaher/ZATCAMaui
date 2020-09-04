@@ -2322,8 +2322,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 CityList = null;
                 SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
                 List<SignupCityResult> CityR = new List<SignupCityResult>();
-                IsCRChecked = true;
-                IsLNChecked = false;
                 CityR = CityListSignup.d.city_dropdownSet.results;
                 CityList = CityR;
             }

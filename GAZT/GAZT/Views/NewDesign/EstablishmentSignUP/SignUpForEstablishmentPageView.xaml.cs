@@ -155,7 +155,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         public void ClearFields()
         {
-          viewModel.PkrDBO = string.Empty;
+          viewModel.PageTitle = AppResources.ZVatTermsAndConditions;
+            viewModel.BodyText = "";
+            viewModel.NextBTN = AppResources.ZZProceedtoindividualSignup;
+            viewModel.CurrentTab = EstablishmentSignUPTabEnum.TermsAndConditions;
+
+            viewModel.PkrDBO = string.Empty;
             viewModel.PickerDobToDisplay = string.Empty;
             viewModel.TxtLOrCIssuedBy = string.Empty;
             viewModel.TxtLOrCIssuedByCity = string.Empty;
@@ -181,11 +186,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtLicenseNumber = string.Empty;
             viewModel.TxtEmailAddress = string.Empty;
            viewModel.TxtCountryCode = "+966";
-
+            viewModel.TxtConfirmPassword=string.Empty;
+            viewModel.TxtPassword = string.Empty;
+            ResetPasswordValidationConditions();
             viewModel.TxtMobileNumber = string.Empty;
            viewModel.TxtMobileNumberwithCountryCode = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
-
+            viewModel.ImgBackgroundCRNubmer = "FP_selected_tile";
+            viewModel.ImgBackgroundLicenseNubmer = "FP_unselected_tile";
+            viewModel.IsCRChecked = true;
+            viewModel.TxtLicenseNumber = string.Empty;
             //iewModel.IDTypeModelRootObject = null;
             viewModel.SignUpFirstSubmitModel = null;
             //iewModel.MaximumxD = DateTime.Now;
