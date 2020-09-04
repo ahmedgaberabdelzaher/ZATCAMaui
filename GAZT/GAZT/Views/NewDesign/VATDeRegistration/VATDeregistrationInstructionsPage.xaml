@@ -29,7 +29,7 @@
                 <StackLayout Margin="8">
                     <StackLayout Orientation="Horizontal" Spacing="0">
                        <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
-                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="30,0,10,5"  HorizontalOptions="End"
+                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,10,5"  HorizontalOptions="End"
                             Style="{StaticResource ValueLabelBlack}"/>
                     </StackLayout>
                    <StackLayout Orientation="Vertical" Spacing="0">
@@ -49,7 +49,7 @@
                         </DataTrigger>
                     </CheckBox.Triggers>
                 </CheckBox>
-                <custom:CustomLabel Margin="30,10,0,15"  Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                <custom:CustomLabel Margin="5,10,0,15"  Style="{StaticResource GAZTMicroMediumGrayLabel}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  />
