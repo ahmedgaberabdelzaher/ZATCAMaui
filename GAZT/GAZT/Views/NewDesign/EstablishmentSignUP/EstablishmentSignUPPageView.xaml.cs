@@ -44,6 +44,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 backArrow.Rotation = 0;
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+            viewModel.PageTitle= AppResources.ZTERNewAccount;
+            viewModel.BodyText= AppResources.ZZZZSelectthetypeofEntity;
         }
 
         private async void OnEstablishmentTapped(object sender, EventArgs e)
