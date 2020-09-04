@@ -184,7 +184,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 _enableInputFields = value;
                 OnIssueCountrySelectButtonClick.ChangeCanExecute();
                 OnIssueCitySelectButtonClick.ChangeCanExecute();
-                OnValidFromButtonClick.ChangeCanExecute();
                 RaisePropertyChanged(nameof(EnableInputFields));
             }
         }
@@ -460,7 +459,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public Command OnIssueCountrySelectButtonClick { get; set; }
         public Command OnIssueBySelectButtonClick { get; set; }
         public Command OnIssueCitySelectButtonClick { get; set; }
-        public Command OnValidFromButtonClick { get; set; }
         public ICommand OnTransferCopyOfCRChoiceButtonClick { get; set; }
         public ICommand OnMainGroupSelectButtonClick { get; set; }
         public ICommand OnSubGroupSelectButtonClick { get; set; }
@@ -547,14 +545,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
-            }, CanExecuteClickCommand);
-            OnValidFromButtonClick = new Command((object o) =>
-            {
-                PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(new GenericDatePickerModel()
-                {
-                    DatePickerTitle = "Valid From",
-                    PickerId = (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails) ? "LicenseValidFromId" : "CRValidFromId"
-                }));
             }, CanExecuteClickCommand);
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
             {
@@ -748,22 +738,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public void OnAppearing()
         {
             //fetchTabDataAndBind();
-            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
-            {
-                Console.WriteLine(string.Format("Subscribe {0}, {1}", arg.PickerId, arg.SelectedValue));
-                if (arg.PickerId == "CRValidFromId")
-                {
-                    CRValidFrom = arg.SelectedValue;
-                }
-                else if (arg.PickerId == "LicenseValidFromId")
-                {
-                    ValidFrom = arg.SelectedValue;
-                }
-            });
         }
         public void OnDisappearing()
         {
-            MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
         }
         private async Task AddAttachment(string docType)
         {

@@ -23,6 +23,7 @@
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:syncfusiondatepicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
              x:Name="ESTActivityItemPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -111,7 +112,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Text="{Binding CRValidFrom}" Command="{Binding OnValidFromButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageAlignment="End" Text="{Binding CRValidFrom}" Clicked="crValidFromButtonClick"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
@@ -119,6 +120,13 @@
                                                              Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
+                        <syncfusiondatepicker:SfDatePicker x:Name="crValidFromPicker"
+                                                             ShowHeader="True"
+                                                             Format="dd_MMM_yyyy"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}"
+                                                             PickerMode="Dialog"
+                                                             IsOpen="False"
+                                                             DateSelected="crValidFromPicker_DateSelected" />
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainActivity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                             <syncfusion:SfSwitch VisualType="Material" x:Name="CRMainActivity"  IsOn="{Binding MainActivity}" StateChanged="CRSwitch_StateChanged" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -320,7 +328,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding ValidFrom}" Command="{Binding OnValidFromButtonClick}"
+                        <buttons:SfButton  ShowIcon="True" ImageAlignment="End" Text="{Binding ValidFrom}" Clicked="validFromButtonClick"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
                             <buttons:SfButton.ImageSource>
@@ -328,6 +336,13 @@
                                                              Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
                             </buttons:SfButton.ImageSource>
                         </buttons:SfButton>
+                        <syncfusiondatepicker:SfDatePicker x:Name="validFromPicker"
+                                                             ShowHeader="True"
+                                                             Format="dd_MMM_yyyy"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}"
+                                                             PickerMode="Dialog"
+                                                             IsOpen="False"
+                                                             DateSelected="validFromPicker_DateSelected" />
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="10,0" Margin="0,10,0,0">
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainActivity}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                             <syncfusion:SfSwitch VisualType="Material" x:Name="LicenseMainActivity" IsOn="{Binding MainActivity}" StateChanged="LicenseSwitch_StateChanged" HorizontalOptions="Center" VerticalOptions="Center"/>

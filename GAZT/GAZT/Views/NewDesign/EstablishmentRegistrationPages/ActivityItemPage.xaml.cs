@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
@@ -101,6 +102,34 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                     await PopupNavigation.Instance.PushAsync(confirmPopup);
                 }
             }
+        }
+
+        void validFromPicker_DateSelected(System.Object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        {
+            viewModel.ValidFrom = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+        }
+
+        void validFromButtonClick(System.Object sender, System.EventArgs e)
+        {
+            if (viewModel?.EnableInputFields == true)
+            {
+                validFromPicker.IsOpen = true;
+                validFromPicker.MaximumDate = DateTime.Now;
+            }
+        }
+
+        void crValidFromButtonClick(System.Object sender, System.EventArgs e)
+        {
+            if (viewModel?.EnableInputFields == true)
+            {
+                crValidFromPicker.IsOpen = true;
+                crValidFromPicker.MaximumDate = DateTime.Now;
+            }
+        }
+
+        void crValidFromPicker_DateSelected(System.Object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        {
+            viewModel.CRValidFrom = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
         }
     }
 }
