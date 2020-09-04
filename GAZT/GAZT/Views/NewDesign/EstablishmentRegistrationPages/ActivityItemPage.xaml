@@ -237,7 +237,7 @@
                 </ScrollView>
                 <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentOutletActivitiesTabsEnum.ActivityList}}">
                     <buttons:SfButton ShowIcon="True" Text="{x:Static ResourceManager:AppResources.ESTAddLicense}" ImageSource="ic_add_plus.png" Style="{StaticResource NoBackgroundButtonStyle}" HeightRequest="56" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" Command="{Binding OnNewLicenseButtonClick}" TextColor="{StaticResource NewDarkGreenColor}" HorizontalTextAlignment="Start" Padding="5" />
-                    <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding LicenseData}" AutoFitMode="Height" SelectionBackgroundColor="Transparent" ItemSpacing="5" SelectionMode="Single" Margin="0,15" IsScrollBarVisible="False">
+                    <listView:SfListView VerticalOptions="Start" HorizontalOptions="Fill" ItemsSource="{Binding LicenseData}" AutoFitMode="Height" SelectionBackgroundColor="Transparent" ItemSpacing="5" SelectionMode="Single" Margin="0,15" IsScrollBarVisible="False" SelectedItem="{Binding SelectedLicense}">
                         <listView:SfListView.LayoutManager>
                             <listView:LinearLayout />
                         </listView:SfListView.LayoutManager>
@@ -252,7 +252,12 @@
                                         </Grid.ColumnDefinitions>
                                         <custom:CustomLabel Grid.Column="0" Text="{Binding Idnumber}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
                                         <Image Grid.Column="1" Source="check_oval.png" IsVisible="{Binding Actcat, Converter={StaticResource isMainActivityConverter}}" HorizontalOptions="Center" VerticalOptions="Center" />
-                                        <Image Grid.Column="2" Source="arrowRight.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Image Grid.Column="2" Source="arrowRight.png" HorizontalOptions="Center" VerticalOptions="Center" >
+
+                                            <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnLicenseSelected}" CommandParameter="{Binding .}" ></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                        </Image>
                                     </Grid>
                                 </cards:SfCardView>
                             </DataTemplate>

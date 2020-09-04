@@ -19,5 +19,6 @@ namespace EGAZT.Models
         public ValidateCR validateCR { get; set; } = null;
         //public List<Nreg_ActivityItem> newActivityItems { get; set; } = new List<Nreg_ActivityItem>();
         public ActicityListDelegate goBackAction { get; set; } = null;
+        public bool EditEnabledMode { get; set; } = false;
     }
 }

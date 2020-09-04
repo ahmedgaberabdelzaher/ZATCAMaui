@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EGAZT.Models;
+using EGAZT.Models.EstablishmentRegistration;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Rg.Plugins.Popup.Services;
@@ -20,6 +21,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel = App.Locator.ActivityItemPage;
             viewModel.taxPayerDetails = _activityNavigation.taxPayerDetails;
             viewModel.newNumber = _activityNavigation.nextNumber;
+            viewModel.editModeEnabled = activityNavigation.EditEnabledMode;
             viewModel.validateCR = _activityNavigation.validateCR;
             //viewModel.cRActivityItem = _activityNavigation.cRActivityItem;
             viewModel.goBackAction = _activityNavigation.goBackAction;
@@ -78,6 +80,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 }
             }
         }
+
+        //private async void OnLicenseSelected(object sender, EventArgs e)
+        //{
+        //    Image ArraowImage = sender as Image;
+        //    Nreg_ActivityItem LicenseData = (Nreg_ActivityItem)ArraowImage.BindingContext;
+        //    if (LicenseData != null)
+        //    {
+        //        viewModel.OpenLicenseFormInEditMode(LicenseData);
+        //      //  await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText));
+
+        //    }
+        //}
+
+
         async void LicenseSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
         {
             Console.WriteLine("License Main " + LicenseMainActivity.IsOn);
