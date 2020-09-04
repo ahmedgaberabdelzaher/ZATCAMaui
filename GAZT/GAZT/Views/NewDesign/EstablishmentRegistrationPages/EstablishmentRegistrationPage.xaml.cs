@@ -33,6 +33,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 Console.WriteLine(arg);
                 //OnAppearing();
             });
+
+            viewModel.SetDefaultDate();
         }
 
         protected override void OnAppearing()
