@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Linq;
 using GAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -187,20 +188,36 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         
 
-        void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
+        async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
-            var item = sender as Image;
-            var data = item.BindingContext as Attachment;
-            viewModel.OnRentAttachmentDeleteButtonTapped(data);
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            confirmPopup.OnSelect = (str) =>
+            {
+                if (str == "Yes")
+                {
+                    var item = sender as Image;
+                    var data = item.BindingContext as Attachment;
+                    viewModel.OnRentAttachmentDeleteButtonTapped(data);
+                }
+            };
+            await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
 
 
-        void TapPassportDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
+        async void TapPassportDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
-            var item = sender as Image;
-            var data = item.BindingContext as Attachment;
-            viewModel.OnPassportAttachmentDeleteButtonTapped(data);
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            confirmPopup.OnSelect = (str) =>
+            {
+                if (str == "Yes")
+                {
+                    var item = sender as Image;
+                    var data = item.BindingContext as Attachment;
+                    viewModel.OnPassportAttachmentDeleteButtonTapped(data);
+                }
+            };
+            await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
     }
