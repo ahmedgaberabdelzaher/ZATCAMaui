@@ -263,5 +263,72 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
 
         }
+
+        private void OnPassportIssueDateClicked(object sender, EventArgs e)
+        {
+            PassportIssueDate.IsOpen = true;
+        }
+        private void PassportIssueDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            if (PassportIssueDate.SelectedItem != null)
+            {
+                var selectedItem = PassportIssueDate.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.PassportIssueDate = year + "/" + month + "/" + day;
+            }
+        }
+
+        private void PassportIssueDate_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void PassportIssueDate_Closed(object sender, EventArgs e)
+        {
+            if (PassportIssueDate.SelectedItem != null)
+            {
+                var selectedItem = PassportIssueDate.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.PassportIssueDate = year + "/" + month + "/" + day;
+            }
+        }
+
+        private void OnPassportExpiryDateClicked(object sender, EventArgs e)
+        {
+            PassportExpiryDate.IsOpen = true;
+        }
+
+        private void PassportExpiryDate_Closed(object sender, EventArgs e)
+        {
+            if (PassportExpiryDate.SelectedItem != null)
+            {
+                var selectedItem = PassportExpiryDate.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.PassportExpireDate = year + "/" + month + "/" + day;
+            }
+        }
+
+        private void PassportExpiryDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            if (PassportExpiryDate.SelectedItem != null)
+            {
+                var selectedItem = PassportExpiryDate.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.PassportExpireDate = year + "/" + month + "/" + day;
+            }
+        }
+
+        private void PassportExpiryDate_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
