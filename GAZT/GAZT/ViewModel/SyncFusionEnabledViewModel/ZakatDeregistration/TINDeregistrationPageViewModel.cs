@@ -93,7 +93,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private bool _isOutletViewEnabled = true;
+        private bool _isOutletViewEnabled = false;
         public bool IsOutletViewEnabled
         {
             get
@@ -107,7 +107,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private bool _isAttachmentsViewEnabled = true;
+        private bool _isAttachmentsViewEnabled = false;
         public bool IsAttachmentsViewEnabled
         {
             get
@@ -121,7 +121,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private bool _isDeclarationViewEnabled = true;
+        private bool _isDeclarationViewEnabled = false;
         public bool IsDeclarationViewEnabled
         {
             get
@@ -135,7 +135,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
-        private bool _isSummaryViewEnabled = true;
+        private bool _isSummaryViewEnabled = false;
         public bool IsSummaryViewEnabled
         {
             get
@@ -480,6 +480,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             string tempSelectedReason = PickerModel.SelectedValue;
                             SelectedReason = TinDeregReasons.Where(m => m.ReasonDesc == PickerModel.SelectedValue).FirstOrDefault();
+                            TinDeregistrationData.ADregReason = SelectedReason.ReasonCd;
+                            TinDeregistrationData.ADeregSelectedReasonValue = SelectedReason.ReasonDesc;
+
                             AddOutletDecisionOptions();
                         }
                         else if(PickerModel.PickerId == "idTypePicker")
@@ -767,6 +770,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        public ObservableCollection<OutletSetResult> _allOutlets { get; set; }
+        public ObservableCollection<OutletSetResult> AllOutlets
+        {
+            get
+            {
+                return _allOutlets;
+            }
+
+            set
+            {
+                _allOutlets = value;
+                RaisePropertyChanged("AllOutlets");
+            }
+        }
+
         public void CompanyIdTypeSelected()
         {
             TinText.IsMandatory = false;
@@ -976,7 +994,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             IBANType iBANType4 = new IBANType();
             iBANType4.key = "ZS0003";
-            iBANType4.Text = AppResources.ZZGCCID;
+            iBANType4.Text = AppResources.ZZGCCID;  
             IBANTypesDummyList.Add(iBANType4);
 
             IBANTypesList = IBANTypesDummyList;
@@ -1033,6 +1051,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             SelectedOutletOption = new TINDeregistrationModel();
             TinDeregistrationData = new TinDeregistrationResponseModel();
             TinDeregistrationReasonSetData = new TinDeregistrationReasonSetDataModel();
+
             TinText = new FieldValidations();
             IdTypeText = new FieldValidations();
             IdNumberText = new FieldValidations();
@@ -1064,6 +1083,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 TinDeregistrationReasonSetData = await WebServiceManager.GaztTinDeregistrationReasonData();
                 TinDeregReasons = new ObservableCollection<TinDeregReasonSetResult>(TinDeregistrationReasonSetData.ReasonSet.Results);
+
+                AllOutlets = new ObservableCollection<OutletSetResult>(TinDeregistrationData.OutletSet.Results);
+                List<OutletSetResult> allPermitTypes = new List<OutletSetResult>(TinDeregistrationData.PermitSet.Results);
+
+                if(!String.IsNullOrEmpty(TinDeregistrationData.ADregReason))
+                {
+                    SelectedReason = TinDeregReasons.Where(m => m.ReasonCd == TinDeregistrationData.ADregReason).FirstOrDefault();
+                    AddOutletDecisionOptions();
+                }
+
+                if (!String.IsNullOrEmpty(TinDeregistrationData.ADregOpt))
+                {
+                    SelectedOutletOption = OutletDecisionOptions.Where(m => m.OutletOptionIndex == TinDeregistrationData.ADregOpt).FirstOrDefault();
+                    SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
+                }
+
+                foreach (OutletSetResult outletInfo in AllOutlets)
+                {
+                    foreach(OutletSetResult permitInfo in allPermitTypes)
+                    {
+                        if(permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                        {
+                            if (outletInfo.PermitTypes == null)
+                                outletInfo.PermitTypes = new ObservableCollection<OutletSetResult>();
+
+                            outletInfo.PermitTypes.Add(permitInfo);
+                        }
+                    }
+                }
 
                 //TinDeregistrationReasonSetData.ReasonSet.Results.
                 await Task.Run(() =>
@@ -1158,13 +1206,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public async void ValidateIDNumber()
         {
            
-            //await Task.Run(() =>
-            //{
-            //    App.DisplayProgressView();
-            //});
-   
             string dob = SelectedDob.Replace("/", "");
-
             if (SelectedIdtype == AppResources.NationaID)
             {
                 if (!string.IsNullOrEmpty(SelectedIdNumber))
@@ -1177,9 +1219,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         if(IDTypeDataModel == null)
                         {
                             IDTypeDataModel = new VATSignUpD();
-
                         }
-                         string  _responseData = JObject.Parse(Result)["d"].ToString();
+
+                        string  _responseData = JObject.Parse(Result)["d"].ToString();
                         IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
                         if (_responseData == null)
                         {
@@ -1593,17 +1635,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 OutletDecisionOptions.Add(new TINDeregistrationModel
                 {
                     ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseAllOutlets,
-                    ActiveOutletDecisionOptionsIsSelected = true
-                });
+                    ActiveOutletDecisionOptionsIsSelected = true,
+                    OutletOptionIndex = "1"
+                }) ;
                 OutletDecisionOptions.Add(new TINDeregistrationModel
                 {
                     ActiveOutletDecisionOptions = AppResources.TinDeregistrationTransferAllOutletsToSingle,
-                    ActiveOutletDecisionOptionsIsSelected = false
+                    ActiveOutletDecisionOptionsIsSelected = false,
+                    OutletOptionIndex = "2"
                 });
                 OutletDecisionOptions.Add(new TINDeregistrationModel
                 {
                     ActiveOutletDecisionOptions = AppResources.TinDeregistrationCloseOutletsIndividually,
-                    ActiveOutletDecisionOptionsIsSelected = false
+                    ActiveOutletDecisionOptionsIsSelected = false,
+                    OutletOptionIndex = "3"
                 });
             }
             else
