@@ -36,12 +36,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             });
             if (App.IsArabic)
             {
+                backArrow.Rotation = 180;
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
             else
             {
+                backArrow.Rotation = 0;
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+            viewModel.PageTitle= AppResources.ZTERNewAccount;
+            viewModel.BodyText= AppResources.ZZZZSelectthetypeofEntity;
         }
 
         private async void OnEstablishmentTapped(object sender, EventArgs e)
