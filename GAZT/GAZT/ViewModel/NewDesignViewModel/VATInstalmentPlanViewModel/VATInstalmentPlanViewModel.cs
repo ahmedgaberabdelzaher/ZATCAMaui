@@ -917,7 +917,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     saadNumber = selectedList[i].SadadNo,
                     taxPeriod = selectedList[i].Taxperioddsc,
                     isSelected = false,
-                    billType = "VAT"
+                    billType = "Zakat"
                 });
             }
             SummarySelectedBillsList = summarySelectedBillsList;

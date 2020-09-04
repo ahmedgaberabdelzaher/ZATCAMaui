@@ -65,6 +65,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
+
                 });
                 await Task.Run(async () =>
                 {
@@ -316,7 +317,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, bool>(this, "InvoiceBillsLoaded", (sender, arg) =>
                 {
-                    if (arg != null)
+                    if (arg != null && viewModel.ZakatInvoicesList != null)
                     {
                         totalAmountDue = 0;
                         for (int i = 0; i < viewModel.ZakatInvoicesList.Count; i++)
@@ -335,6 +336,17 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                     }
                 });
+
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    //iOS stuff
+                    //BillsVATListVIew.IsScrollingEnabled = false;
+
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+
+                }
 
             }
             catch (Exception ex)

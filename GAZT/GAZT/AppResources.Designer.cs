@@ -12095,5 +12095,35 @@ namespace EGAZT {
                 return ResourceManager.GetString("ESTAttachmentSizeNotfication", resourceCulture);
             }
         }
+        
+        public static string ZakatInstalmentSrNo {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentSrNo", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentPeriodicInstalmentAmount {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentPeriodicInstalmentAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentCashRatio {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentCashRatio", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentDisplayInstalmentDetails {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentDisplayInstalmentDetails", resourceCulture);
+            }
+        }
+        
+        public static string ZakatInstalmentProfitabilityRatio {
+            get {
+                return ResourceManager.GetString("ZakatInstalmentProfitabilityRatio", resourceCulture);
+            }
+        }
     }
 }
