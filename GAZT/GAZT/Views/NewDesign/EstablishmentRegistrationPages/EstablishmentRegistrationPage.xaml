@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:ResourceManager="clr-namespace:EGAZT"
@@ -532,51 +533,7 @@
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
 
-
-                                    <Grid>
-                                        <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                            <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry"
-                                                         Text ="{Binding SelectedDOB}"   Placeholder="yyyy/MM/dd" 
-                                                             VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
-
-                                            </control:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
-                                        <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
-                                        </Button>
-                                        <custom1:CustomDatePicker 								x:Name="dob"
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                              BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#EAF7CC"
-                    SelectedItemTextColor="{StaticResource NeutralBlack}"
-                    BorderColor="Black"
-								ShowFooter="False"
-								 ShowColumnHeader="True"
-                                 ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
-                           SelectionChanged="dob_SelectionChanged"
-                             OKButtonTextColor="#006450" 
-                                
-                                             CancelButtonTextColor="#006450"
-                                Closed="dob_Closed"
-                            
-                            SelectedItem="{Binding TodayDate}"
-                            HorizontalOptions="FillAndExpand"
-                                
-                                OkButtonClicked="dob_OkButtonClicked"
-                                CancelButtonClicked="dob_CancelButtonClicked"
-								ItemHeight="40">
-                                            <custom1:CustomDatePicker.Behaviors>
-                                                <custom1:SfPickerBehavior />
-                                            </custom1:CustomDatePicker.Behaviors>
-                                        </custom1:CustomDatePicker>
-                                    </Grid>
-
-                                    <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
+                                    <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
 
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
 
@@ -595,7 +552,14 @@
                                             </StackLayout.GestureRecognizers>
 
                                         </StackLayout>
-                                    </border:SfBorder >-->
+                                    </border:SfBorder >
+
+                                    <syncfusion:SfDatePicker x:Name="dobPicker"
+                                 ShowHeader="False"
+                                                             Format="dd_MMM_yyyy"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
+                                                             PickerMode="Dialog"             IsOpen="False" DateSelected="dobPicker_DateSelected"
+                                                             />
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="PersonalDetails" Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
@@ -853,47 +817,7 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
 
-                                <Grid>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                        <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="{Binding PassportIssueDate}"   Placeholder="yyyy/MM/dd" VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
-
-                                        </control:BorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
-                                    <Button BackgroundColor="Transparent" Clicked="OnPassportIssueDateClicked" Margin="0,0,0,0" >
-                                    </Button>
-                                    <custom1:CustomDatePicker 								x:Name="PassportIssueDate"
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                              BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#EAF7CC"
-                    SelectedItemTextColor="{StaticResource NeutralBlack}"
-                    BorderColor="Black"
-								ShowFooter="False"
-								 ShowColumnHeader="True"
-                                 ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
-                           SelectionChanged="dob_SelectionChanged"
-                             OKButtonTextColor="#006450" 
-                         CancelButtonTextColor="#006450"
-                            SelectedItem="{Binding TodayDate}"
-                            HorizontalOptions="FillAndExpand"
-                                
-                                                                                                                                Closed="PassportIssueDate_Closed"                                
-                                OkButtonClicked="PassportIssueDate_OkButtonClicked"
-                                CancelButtonClicked="PassportIssueDate_CancelButtonClicked"
-								
-                                                                                                                                ItemHeight="40">
-                                        <custom1:CustomDatePicker.Behaviors>
-                                            <custom1:SfPickerBehavior />
-                                        </custom1:CustomDatePicker.Behaviors>
-                                    </custom1:CustomDatePicker>
-                                </Grid>
-
-                                <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
 
@@ -912,7 +836,14 @@
                                         </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
-                                </border:SfBorder >-->
+                                </border:SfBorder >
+
+                                <syncfusion:SfDatePicker x:Name="PassportIssueDatePicker"
+                                 IsOpen="False"
+                                                             Format="dd_MMM_yyyy"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+                                                         ShowHeader="False"  
+                                                         PickerMode="Dialog"                                                      DateSelected="PassportIssueDatePicker_DateSelected"/>
                             </StackLayout>
                             <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand">
                                 <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
@@ -923,44 +854,7 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-
-                                <Grid>
-                                    <inputLayout:SfTextInputLayout Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
-                                        <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text ="{Binding PassportExpireDate}"   Placeholder="yyyy/MM/dd" VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
-
-                                        </control:BorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
-                                    <Button BackgroundColor="Transparent" Clicked="OnPassportExpiryDateClicked" Margin="0,0,0,0" >
-                                    </Button>
-                                    <custom1:CustomDatePicker 								x:Name="PassportExpiryDate"
-								ShowHeader="False"
-								Margin="10,0,10,0" 
-                              BackgroundColor="White"
-                                OKButtonBackgroundColor="#EAF7CC"
-                                CancelButtonBackgroundColor="#EAF7CC"
-                                     HeaderBackgroundColor="#EAF7CC"
-                    SelectedItemTextColor="{StaticResource NeutralBlack}"
-                    BorderColor="Black"
-								ShowFooter="False"
-								 ShowColumnHeader="True"
-                                 ColumnHeaderBackgroundColor="White"
-								ColumnHeaderHeight="46"
-                                PickerMode="Dialog"
-								HeaderText="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
-                             OKButtonTextColor="#006450" 
-                                             CancelButtonTextColor="#006450"
-                            SelectedItem="{Binding TodayDate}"
-                            HorizontalOptions="FillAndExpand"
-                                Closed="PassportExpiryDate_Closed"
-                                OkButtonClicked="PassportExpiryDate_OkButtonClicked"
-                                CancelButtonClicked="PassportExpiryDate_CancelButtonClicked"
-								ItemHeight="40">
-                                        <custom1:CustomDatePicker.Behaviors>
-                                            <custom1:SfPickerBehavior />
-                                        </custom1:CustomDatePicker.Behaviors>
-                                    </custom1:CustomDatePicker>
-                                </Grid>
-                                <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
+                                <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
 
@@ -979,7 +873,13 @@
                                         </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
-                                </border:SfBorder >-->
+                                </border:SfBorder >
+                                <syncfusion:SfDatePicker x:Name="PassportExpiryDatePicker"
+                                 ShowHeader="False"
+                                                             Format="dd_MMM_yyyy"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
+                                                             PickerMode="Dialog"                                                            
+                                                             DateSelected="PassportExpiryDatePicker_DateSelected"/>
                             </StackLayout>
 
                             <StackLayout x:Name="PassportAttachmentsMainLayout"  Orientation="Vertical" Grid.Row="5" Margin="0,0,0,10">

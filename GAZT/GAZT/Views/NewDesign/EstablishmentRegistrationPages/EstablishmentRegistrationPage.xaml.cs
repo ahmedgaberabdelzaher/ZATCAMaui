@@ -14,6 +14,7 @@ using System.Linq;
 using GAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -35,6 +36,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             });
 
             viewModel.SetDefaultDate();
+            dobPicker.MaximumDate = DateTime.Now;
         }
 
         protected override void OnAppearing()
@@ -103,51 +105,55 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         async void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
+            dobPicker.MaximumDate = DateTime.Now;
+            dobPicker.IsOpen = true;
 
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.DatePickerTitle = "Select DOB";
-            genericPickerModel.PickerId = "DOBDateTypePicker";
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
+            //GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+            //genericPickerModel.DatePickerTitle = "Select DOB";
+            //genericPickerModel.PickerId = "DOBDateTypePicker";
+            //try
+            //{
+            //    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+            //}
+            //catch (GAZTUnlockAccountException ex)
+            //{
 
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    viewModel._navigationService.GoBack();
-                });
-            }
+            //}
+            //catch (InternetException ex)
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+            //        viewModel._navigationService.GoBack();
+            //    });
+            //}
 
         }
 
         async void PassportIssueDateClicked(System.Object sender, System.EventArgs e)
         {
+            PassportIssueDatePicker.MaximumDate = DateTime.Now;
+            PassportIssueDatePicker.IsOpen = true;
 
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.DatePickerTitle = "Issue Date";
-            genericPickerModel.PickerId = "PassportIssueDateTypePicker";
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
+            //GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+            //genericPickerModel.DatePickerTitle = "Issue Date";
+            //genericPickerModel.PickerId = "PassportIssueDateTypePicker";
+            //try
+            //{
+            //    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+            //}
+            //catch (GAZTUnlockAccountException ex)
+            //{
 
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    viewModel._navigationService.GoBack();
-                });
-            }
+            //}
+            //catch (InternetException ex)
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+            //        viewModel._navigationService.GoBack();
+            //    });
+            //}
 
         }
 
@@ -156,25 +162,27 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         async void PassportExpiryDateClicked(object sender, EventArgs e)
         {
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.DatePickerTitle = "Expiry Date";
-            genericPickerModel.PickerId = "PassportExpityDateTypePicker";
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
+            PassportExpiryDatePicker.MinimumDate = DateTime.Now;
+            PassportExpiryDatePicker.IsOpen = true;
+            //GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
+            //genericPickerModel.DatePickerTitle = "Expiry Date";
+            //genericPickerModel.PickerId = "PassportExpityDateTypePicker";
+            //try
+            //{
+            //    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
+            //}
+            //catch (GAZTUnlockAccountException ex)
+            //{
 
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    viewModel._navigationService.GoBack();
-                });
-            }
+            //}
+            //catch (InternetException ex)
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+            //        viewModel._navigationService.GoBack();
+            //    });
+            //}
 
 
         }
@@ -223,112 +231,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
-        private void OnDOBClicked(object sender, EventArgs e)
+        private void dobPicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
         {
-            dob.IsOpen = true;
+            viewModel.SelectedDOB = e.NewValue.ToString();
+            //viewModel.SelectedDOB = (e.NewValue as DateTime).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
         }
 
-        private void dob_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void PassportIssueDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
         {
-
+           viewModel.PassportIssueDate=e.NewValue.ToString();
         }
 
-        private void dob_Closed(object sender, EventArgs e)
+        private void PassportExpiryDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
         {
-            if (dob.SelectedItem != null)
-            {
-                var selectedItem = dob.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.SelectedDOB = year + "/" + month + "/" + day;
-
-            }
-        }
-
-        private void dob_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            if (dob.SelectedItem != null)
-            {
-                var selectedItem = dob.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.SelectedDOB = year + "/" + month + "/" + day;
-
-            }
-        }
-
-        private void dob_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void OnPassportIssueDateClicked(object sender, EventArgs e)
-        {
-            PassportIssueDate.IsOpen = true;
-        }
-        private void PassportIssueDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            if (PassportIssueDate.SelectedItem != null)
-            {
-                var selectedItem = PassportIssueDate.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.PassportIssueDate = year + "/" + month + "/" + day;
-            }
-        }
-
-        private void PassportIssueDate_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void PassportIssueDate_Closed(object sender, EventArgs e)
-        {
-            if (PassportIssueDate.SelectedItem != null)
-            {
-                var selectedItem = PassportIssueDate.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.PassportIssueDate = year + "/" + month + "/" + day;
-            }
-        }
-
-        private void OnPassportExpiryDateClicked(object sender, EventArgs e)
-        {
-            PassportExpiryDate.IsOpen = true;
-        }
-
-        private void PassportExpiryDate_Closed(object sender, EventArgs e)
-        {
-            if (PassportExpiryDate.SelectedItem != null)
-            {
-                var selectedItem = PassportExpiryDate.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.PassportExpireDate = year + "/" + month + "/" + day;
-            }
-        }
-
-        private void PassportExpiryDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            if (PassportExpiryDate.SelectedItem != null)
-            {
-                var selectedItem = PassportExpiryDate.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[1].ToString();
-                string day = selectedItem[0].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.PassportExpireDate = year + "/" + month + "/" + day;
-            }
-        }
-
-        private void PassportExpiryDate_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-
+            viewModel.PassportExpireDate = e.NewValue.ToString();
         }
     }
 }

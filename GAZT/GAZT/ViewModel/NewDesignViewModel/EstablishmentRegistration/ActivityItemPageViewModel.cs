@@ -442,10 +442,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(LicenseData));
             }
         }
+        private bool _canExecute = true;
+        public bool CanExecute
+        {
+            get => _canExecute;
+            set
+            {
+                _canExecute = value;
+                RaisePropertyChanged(nameof(CanExecute));
+            }
+        }
         #endregion
 
         #region commands
-        public ICommand OnNextButtonClick { get; private set; }
+        public Command OnNextButtonClick { get; private set; }
         public ICommand OnPreButtonClick { get; private set; }
         public Command OnIssueCountrySelectButtonClick { get; set; }
         public Command OnIssueBySelectButtonClick { get; set; }
@@ -466,7 +476,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public ActivityItemPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnNextButtonClick = new Command(() => navigateToNext());
+            OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() => navigationService.GoBack());
             OnNewLicenseButtonClick = new Command(() => CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails);
             OnIssueCountrySelectButtonClick = new Command((object o) =>
@@ -680,6 +690,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         private void navigateToNext()
         {
+            CanExecute = false;
             try
             {
                 if (ValidateForm())
@@ -709,11 +720,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             Crattfg = CRsCopies.Count > 0 ? "X" : string.Empty
                         };
 
+                        CanExecute = true;
                         NregActivityList.Add(item);
                         CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                     }
                     else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.ActivityList)
                     {
+                        CanExecute = true;
                         goBackAction?.Invoke(NregActivityList);
                         _navigationService.GoBack();
                     }
@@ -726,6 +739,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                CanExecute = true;
             }
         }
         public void OnAppearing()
@@ -841,6 +858,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     };
                     CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     EnableCRInputField = string.IsNullOrEmpty(validateCR?.Crname);
+                    validateCRNumber();
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {

@@ -964,11 +964,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
 
-
+        private bool _canExecute = true;
+        public bool CanExecute
+        {
+            get => _canExecute;
+            set
+            {
+                _canExecute = value;
+                RaisePropertyChanged(nameof(CanExecute));
+            }
+        }
         #region Commands
 
 
-        public ICommand OnNextButtonClick { get; set; }
+        public Command OnNextButtonClick { get; set; }
         public ICommand OnPreButtonClick { get; set; }
         public ICommand OnVoidOrSaveDraftClick { get; set; }
 
@@ -1054,7 +1063,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
 
-            OnNextButtonClick = new Command(() => navigateToNext());
+            OnNextButtonClick = new Command(() => navigateToNext(), ()=> CanExecute);
             OnPreButtonClick = new Command(() => navigateToPre());
 
             #region Registration Tab Variable initialization
@@ -1216,7 +1225,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                     taxPayerDetails?.off_notesSet.results?.Add(note);
                                     taxPayerDetails.Operationx = "04";
                                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
-                                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                                    var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                     IsLoading = false;
                                 }
                             };
@@ -1232,7 +1241,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Method
-        public async void OnAppearing()
+        public void OnAppearing()
         {
             //var branchTask = GetReportingBranchListFromServer();
             //var nationalityTask = GetPdNationalityListFromServer(null);
@@ -1263,6 +1272,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async void navigateToNext()
         {
+            CanExecute = false;
             try
             {
                 var failedMesage = AppResources.Somethingwentwrong;
@@ -1367,6 +1377,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception e)
             {
 
+            }
+            finally
+            {
+                CanExecute = true;
             }
         }
         private void navigateToPre()
@@ -2165,7 +2179,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
-            //return true;
+            return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -2275,7 +2289,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-            //return true;
+            return true;
             try
             {
                 IsLoading = true;
@@ -2407,6 +2421,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 ex.ToString();
+                if (ex is HTTPBadRequestException)
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                }
             }
             finally
             {
