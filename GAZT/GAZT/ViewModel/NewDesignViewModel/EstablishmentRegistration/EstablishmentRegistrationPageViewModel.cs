@@ -25,7 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
-        public int DefaultMonth;
+        //public int DefaultMonth;
         private TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private OutletNumber number;
@@ -514,21 +514,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private ObservableCollection<object> _todayDate;
-        public ObservableCollection<object> TodayDate
-        {
-            get
-            {
-                return _todayDate;
-            }
-            set
-            {
-                _todayDate = value;
-                RaisePropertyChanged("TodayDate");
-            }
-        }
+        //private ObservableCollection<object> _todayDate;
+        //public ObservableCollection<object> TodayDate
+        //{
+        //    get
+        //    {
+        //        return _todayDate;
+        //    }
+        //    set
+        //    {
+        //        _todayDate = value;
+        //        RaisePropertyChanged("TodayDate");
+        //    }
+        //}
 
-        private string _selectedDOB = "26/08/2020";
+        private string _selectedDOB = string.Empty;
         public string SelectedDOB
         {
             get => _selectedDOB;
@@ -1252,23 +1252,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        public async Task SetDefaultDate()
-        {
-            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-            //Select today dates
+        //public async Task SetDefaultDate()
+        //{
+        //    ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+        //    //Select today dates
 
-            if (DateTime.Now.Date.Day < 10)
-                todaycollection.Add("0" + DateTime.Now.Date.Day);
-            else
-                todaycollection.Add(DateTime.Now.Date.Day.ToString());
-            if (DateTime.Now.Date.Month < 10)
-                todaycollection.Add("0" + DateTime.Now.Date.Month);
-            else
-                todaycollection.Add(DateTime.Now.Date.Month.ToString());
-            todaycollection.Add(DateTime.Now.Date.Year.ToString());
-            TodayDate = todaycollection;
-            DefaultMonth = DateTime.Now.Date.Month;
-        }
+        //    if (DateTime.Now.Date.Day < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Day);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Day.ToString());
+        //    if (DateTime.Now.Date.Month < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Month);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Month.ToString());
+        //    todaycollection.Add(DateTime.Now.Date.Year.ToString());
+        //    TodayDate = todaycollection;
+        //    DefaultMonth = DateTime.Now.Date.Month;
+        //}
 
         private async void navigateToNext()
         {
@@ -2179,7 +2179,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
+            //return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -2289,7 +2289,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
+            //return true;
             try
             {
                 IsLoading = true;
