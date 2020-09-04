@@ -416,7 +416,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     FrmCR.HasError = true;
                     EntryCRNumber.Text = string.Empty;
 
-                    EntryCRNumber.Focus();
+                  //  EntryCRNumber.Focus();
                     return false;
                 }
             }
@@ -488,7 +488,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmCR.HasError = true;
                     EntryCRNumber.Text = string.Empty;
-                    EntryCRNumber.Focus();
+                   // EntryCRNumber.Focus();
                 }
             }
             else
@@ -601,7 +601,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     FrmPhoneNumber.HasError = true;
 
                     EntryPhoneNumber.Text = string.Empty;
-                    EntryPhoneNumber.Focus();
+                    //EntryPhoneNumber.Focus();
                 }
                 else
                 {
@@ -668,7 +668,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 FrmMobile.BorderColor = Color.LightGray;
             }
 
-            EntryPhoneNumber.Focus();
+           // EntryPhoneNumber.Focus();
         }
 
         public bool IsValid(string emailaddress)
@@ -1194,6 +1194,27 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             // FrmDBO.HasError = false;
+            //try
+            //{
+            //    if (DpDbo.SelectedItem != null)
+            //    {
+            //        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+            //        string month = selectedItem[1].ToString();
+            //        string day = selectedItem[0].ToString();
+            //        string year = selectedItem[2].ToString();
+            //        viewModel.PkrDBO = year + "/" + month + "/" + day;
+                  
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+        }
+
+
+        private void DpDbo_Closed(object sender, EventArgs e)
+        {
             try
             {
                 if (DpDbo.SelectedItem != null)
@@ -1203,18 +1224,13 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     string day = selectedItem[0].ToString();
                     string year = selectedItem[2].ToString();
                     viewModel.PkrDBO = year + "/" + month + "/" + day;
-                  
+
                 }
 
             }
             catch (Exception ex)
             {
             }
-        }
-
-
-        private void DpDbo_Closed(object sender, EventArgs e)
-        {
             if (!string.IsNullOrEmpty(viewModel.PkrDBO))
             {
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
@@ -1957,46 +1973,48 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
         private async void btnSubmitNext_Clicked(object sender, EventArgs e)
         {
-            if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.ContactInformation)
+            if (viewModel.IsNextButtonEnable)
             {
-                CheckValidationForContactInformation();
-                //if (viewModel.IsAllValidContactDataEnteredEmail &&
-                //        viewModel.IsAllValidContactDataEnteredMobileNbr &&
-                //        viewModel.IsAllValidContactDataEnteredPhoneNbr)
-                //{
-                //    viewModel.PageTitle = AppResources.CRSummary;
-                //    viewModel.BodyText = AppResources.CRReviewthebelowinformation;
-                //    viewModel.NextBTN = AppResources.ZZZZContinue;
-                //    viewModel.CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
-                //    //viewModel.TimerStart(viewModel.numberOfSeconds);
-                //EstablishmentSignUpDataAsync();
-                //}
+                if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.ContactInformation)
+                {
+                    CheckValidationForContactInformation();
+                    viewModel.TxtMobileNumberwithCountryCode = "(" + viewModel.TxtCountryCode + ")" + " " + EntryMobileNumber.Text;
+                    //if (viewModel.IsAllValidContactDataEnteredEmail &&
+                    //        viewModel.IsAllValidContactDataEnteredMobileNbr &&
+                    //        viewModel.IsAllValidContactDataEnteredPhoneNbr)
+                    //{
+                    //    viewModel.PageTitle = AppResources.CRSummary;
+                    //    viewModel.BodyText = AppResources.CRReviewthebelowinformation;
+                    //    viewModel.NextBTN = AppResources.ZZZZContinue;
+                    //    viewModel.CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                    //    //viewModel.TimerStart(viewModel.numberOfSeconds);
+                    //EstablishmentSignUpDataAsync();
+                    //}
+                }
+                else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.IndividualInformation)
+                {
+                    CheckValidationForIndividualStep();
+                }
+                else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.BusinessInformation)//EstablishmentSignUPTabEnum.BusinessInformation
+                {
+                    CheckValidationForBusinessStep();
+                }
+                //Final CreateGAZT Account   EstablishmentSignUPTabEnum.IndividualInformation:
+                else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.EmailVerification)
+                {
+                    CreateGAZTAccount();
+                }
+                else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.MobileVerification)
+                {
+                    //viewModel.TimerStart(viewModel.numberOfSeconds);
+                    EstablishmentSignUpDataAsync();
+                }
+                else
+                {
+                    viewModel.navigateToNext();
+                }
             }
-            else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.IndividualInformation)
-            {
-                CheckValidationForIndividualStep();
-            }
-            else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.BusinessInformation)//EstablishmentSignUPTabEnum.BusinessInformation
-            {
-                CheckValidationForBusinessStep();
-            }
-            //Final CreateGAZT Account   EstablishmentSignUPTabEnum.IndividualInformation:
-            else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.EmailVerification)
-            {
-                CreateGAZTAccount();
-            }
-            else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.MobileVerification)
-            {
-                viewModel.PageTitle = AppResources.VerificationCode;
-                viewModel.BodyText = AppResources.ZZPleaseenteraccessCode;
-                viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
-                viewModel.TimerStart(viewModel.numberOfSeconds);
-                EstablishmentSignUpDataAsync();
-            }
-            else
-            {
-                viewModel.navigateToNext();
-            }
+            
         }
         public void CheckValidationForIndividualStep()
         {
@@ -2317,18 +2335,26 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
                 });
+               // viewModel.otpTimer.Stop();
+                viewModel.StartOTPTimer();
                 viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
                 viewModel.ButtonDisableTextColor = Color.Gray;
                 viewModel.VerifyButtonDisableColor = Color.FromHex("#006450");
                 viewModel.VerifyButtonDisableTextColor = Color.White;
                 viewModel.IsResendOTPEnabled = false;
                 viewModel.IsOTPEntryEnable = true;
+                viewModel.IsNextButtonEnable = true;
+                viewModel.IsResendOTPEnabled = false;
 
                 viewModel.SignUpModelRootObjectM = ResultFirstSubmitModel;
                 viewModel.TxtEmailAddress = ResultFirstSubmitModel.d.AEmail;
                 string mobileno = ResultFirstSubmitModel.d.AMobile;
                 viewModel.TxtMobileNumberwithCountryCode = mobileno;
-               // viewModel.TxtMobileNumber = "XXXXXXXXXX" + mobileno.Substring(mobileno.Length - 4, 4);
+                viewModel.EncriptedMobileNumberforOtpscreen = "XXXXXXXXXX" + mobileno.Substring(mobileno.Length - 4, 4);
+
+                viewModel.PageTitle = AppResources.VerificationCode;
+                viewModel.BodyText = AppResources.ZZPleaseenteraccessCode;
+                viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
                 OTPFirstEntry.Focus();
             }
             catch(Exception ex)
@@ -2477,6 +2503,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         else
                                         {
+
+                                        
                                         NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
                                     }
@@ -3780,7 +3808,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if(EntryCRNumber.Text.Length == 10)
             {
-                EntryCRNumber.Unfocus();
+              //  EntryCRNumber.Unfocus();
             }
         }
 
@@ -3830,6 +3858,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
 
 
+        }
+
+        private void DateEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+            {
+                FrmDBO.HasError = false;
+            }
+                
         }
     }
 
