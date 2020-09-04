@@ -618,7 +618,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashBankY1 = "";
+        string cashBankY1 = "0.00";
         public string CashBankY1
         {
             get
@@ -632,7 +632,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashBankY2 = "";
+        string cashBankY2 = "0.00";
         public string CashBankY2
         {
             get
@@ -646,7 +646,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashBankY3 = "";
+        string cashBankY3 = "0.00";
         public string CashBankY3
         {
             get
@@ -660,7 +660,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashRatioY1 = "";
+        string cashRatioY1 = "0.00";
         public string CashRatioY1
         {
             get
@@ -674,7 +674,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashRatioY2 = "";
+        string cashRatioY2 = "0.00";
         public string CashRatioY2
         {
             get
@@ -688,7 +688,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string cashRatioY3 = "";
+        string cashRatioY3 = "0.00";
         public string CashRatioY3
         {
             get
@@ -702,7 +702,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string debitorsY1 = "";
+        string debitorsY1 = "0.00";
         public string DebitorsY1
         {
             get
@@ -716,7 +716,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string debitorsY2 = "";
+        string debitorsY2 = "0.00";
         public string DebitorsY2
         {
             get
@@ -729,7 +729,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("DebitorsY2");
             }
         }
-        string debitorsY3 = "";
+        string debitorsY3 = "0.00";
         public string DebitorsY3
         {
             get
@@ -743,7 +743,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string inventoryY1 = "";
+        string inventoryY1 = "0.00";
         public string InventoryY1
         {
             get
@@ -756,7 +756,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("InventoryY1");
             }
         }
-        string inventoryY2 = "";
+        string inventoryY2 = "0.00";
         public string InventoryY2
         {
             get
@@ -770,7 +770,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string inventoryY3 = "";
+        string inventoryY3 = "0.00";
         public string InventoryY3
         {
             get
@@ -784,7 +784,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string ncFlowY1 = "";
+        string ncFlowY1 = "0.00";
         public string NcFlowY1
         {
             get
@@ -798,7 +798,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string ncFlowY2 = "";
+        string ncFlowY2 = "0.00";
         public string NcFlowY2
         {
             get
@@ -812,7 +812,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string ncFlowY3 = "";
+        string ncFlowY3 = "0.00";
         public string NcFlowY3
         {
             get
@@ -826,7 +826,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string netIncomeY1 = "";
+        string netIncomeY1 = "0.00";
         public string NetIncomeY1
         {
             get
@@ -840,7 +840,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string netIncomeY2 = "";
+        string netIncomeY2 = "0.00";
         public string NetIncomeY2
         {
             get
@@ -854,7 +854,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string netIncomeY3 = "";
+        string netIncomeY3 = "0.00";
         public string NetIncomeY3
         {
             get
@@ -869,7 +869,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         }
 
 
-        string profitRatioY1 = "";
+        string profitRatioY1 = "0.00";
         public string ProfitRatioY1
         {
             get
@@ -883,7 +883,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string profitRatioY2 = "";
+        string profitRatioY2 = "0.00";
         public string ProfitRatioY2
         {
             get
@@ -897,7 +897,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string profitRatioY3 = "";
+        string profitRatioY3 = "0.00";
         public string ProfitRatioY3
         {
             get
@@ -911,7 +911,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string revenueY1 = "";
+        string revenueY1 = "0.00";
         public string RevenueY1
         {
             get
@@ -926,7 +926,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         }
 
-        string revenueY2 = "";
+        string revenueY2 = "0.00";
         public string RevenueY2
         {
             get
@@ -940,7 +940,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
 
         }
-        string revenueY3 = "";
+        string revenueY3 = "0.00";
         public string RevenueY3
         {
             get
@@ -955,7 +955,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         }
 
-        string stiY1 = "";
+        string stiY1 = "0.00";
         public string StiY1
         {
             get
@@ -968,12 +968,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("StiY1");
             }
         }
-        string stiY2 = "";
+        string stiY2 = "0.00";
         public string StiY2
         {
             get
             {
-                return StiY2;
+                return stiY2;
             }
             set
             {
@@ -981,7 +981,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("StiY2");
             }
         }
-        string stiY3 = "";
+        string stiY3 = "0.00";
         public string StiY3
         {
             get
@@ -996,7 +996,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         }
 
 
-        string tcAssetsY1 = "";
+        string tcAssetsY1 = "0.00";
         public string TcAssetsY1
         {
             get
@@ -1010,7 +1010,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string tcAssetsY2 = "";
+        string tcAssetsY2 = "0.00";
         public string TcAssetsY2
         {
             get
@@ -1024,7 +1024,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string tcAssetsY3 = "";
+        string tcAssetsY3 = "0.00";
         public string TcAssetsY3
         {
             get
@@ -1039,7 +1039,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         }
 
 
-        string tcLiabltyY1 = "";
+        string tcLiabltyY1 = "0.00";
         public string TcLiabltyY1
         {
             get
@@ -1053,7 +1053,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string tcLiabltyY2 = "";
+        string tcLiabltyY2 = "0.00";
         public string TcLiabltyY2
         {
             get
@@ -1066,7 +1066,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 RaisePropertyChanged("TcLiabltyY2");
             }
         }
-        string tcLiabltyY3 = "";
+        string tcLiabltyY3 = "0.00";
         public string TcLiabltyY3
         {
             get
@@ -1121,7 +1121,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string zakatY1 = "";
+        string zakatY1 = "0.00";
         public string ZakatY1
         {
             get
@@ -1135,7 +1135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
-        string zakatY2 = "";
+        string zakatY2 = "0.00";
         public string ZakatY2
         {
             get
@@ -1150,7 +1150,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         }
 
-        string zakatY3 = "";
+        string zakatY3 = "0.00";
         public string ZakatY3
         {
             get
@@ -1209,6 +1209,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
         }
 
+        private string _vATReferanceNumber = string.Empty;
+        public string VATReferanceNumber
+        {
+            get
+            {
+                return _vATReferanceNumber;
+            }
+            set
+            {
+                _vATReferanceNumber = value;
+                RaisePropertyChanged("VATReferanceNumber");
+            }
+        }
 
         public List<CorrespondanceModel> ListZAKATCorrespondance
         {
@@ -1709,7 +1722,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     EnableAgreementView();
                     break;
                 case (int)PagesEnum.ZakatAttachmentsView:
-                    EnableStatementsView();
+                    EnableInstalmentsScheduleView();
                     break;
                 case (int)PagesEnum.InstalmentPlanAgreementsVisible:
                     EnableDisplayInstalmentsView();
@@ -1870,7 +1883,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: "Zakat Instalment",
+                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle,
                     _dialogType: ZakatInstalmentViewModel.InstructionsBottomPopUpViewModel.DialogType
                         .Instructions));
                 EnableSlectionView();
@@ -2355,21 +2368,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 fdData.Year1 = Year1;
                 fdData.Year2 = Year2;
                 fdData.Year3 = Year3;
+                fdData.ZakatY1 = ZakatY1;
+                fdData.ZakatY2 = ZakatY2;
+                fdData.ZakatY3 = ZakatY3;
                 fdData.Euser = "";
-                fdData.Fbguid = "";
-                fdData.Fbnum = "";
-                fdData.FormGuid = "";
+                fdData.Fbguid = ZakatInstalments.d.Fbguid;
+                fdData.Fbnum = ZakatInstalments.d.Fbnum;
+                fdData.FormGuid = ZakatInstalments.d.FormGuid;
                 fdData.Formproc = "";
                 fdData.Gpart = "";
                 fdData.LineNo = 0;
                 fdData.Mandt = "";
                 fdData.ReturnId = "";
-                fdData.UserTyp = "TY";
-               
-    
+                fdData.UserTyp = "";
+                fdData.Status = "";
+                fdData.TxnTp = ""; 
+                fdData.RankingOrder = "";
+                fdData.ReturnId = ZakatInstalments.d.ReturnId;
+                fdData.DataVersion = "00001";
+                fdData.Waers = "";
 
-                    
 
+                var FDDetails = new FnDtlSetObject[1];
+                FDDetails[0] = fdData;
+                ZakatInstalments.d.FnDtlSet.results = FDDetails;
 
 
 
@@ -2489,14 +2511,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
             for (int i = 0; i < selectedList.Count; i++)
             {
+
+
+                DateTime dateStart = new DateTime();
+                CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                string apiDate = @"""" + selectedList[i].DueDt + @"""";
+                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                GregorianCalendar hjCalendar = new GregorianCalendar();
+                int year = hjCalendar.GetYear(dateStart);
+                int month = hjCalendar.GetMonth(dateStart);
+                int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                string dt1 = string.Empty;
+                string[] dts = null;
+                dts = dateStr.Split('/');
+                dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+               
                 summarySelectedBillsList.Add(new ZakatSelectBillModel()
                 {
                     billNumber = AppResources.Bill + (i + 1).ToString("00"),
                     amount = "0",
                     saadNumber = selectedList[i].InvNo.ToString(),
-                    taxPeriod = selectedList[i].DueDt,
+                    taxPeriod = dt1,
                     isSelected = false,
                     billType = AppResources.ZakatInstalmetSelectTypeZakat
+
+
+
+
+
                 });
             }
             SummarySelectedBillsList = summarySelectedBillsList;
@@ -2507,7 +2553,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             try
             {
 
-
+                ZakatInstalments = await SubmitClicked();
                 //Display Success Screen
                 //EnableSucessScreenAsync();
             }
@@ -2612,10 +2658,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             var attachmentsListViewData = new ObservableCollection<Attachment>();
 
+
+
             foreach (Attachment attachemnt in attachments)
             {
                 attachmentsListViewData.Add(attachemnt);
             }
+
+
 
             if (_bankStatementsAttachment)
             {
@@ -2626,23 +2676,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 FinanceAttachmentsListViewData = attachmentsListViewData;
             }
 
+
+
         }
 
         public async void BankStatementsAttachmentClicked()
         {
-            _bankStatementsAttachment = false;
+            _bankStatementsAttachment = true;
             if (BankStatementsAttachmentsListViewData == null)
             {
                 BankStatementsAttachmentsListViewData = new ObservableCollection<Attachment>();
             }
             try
             {
-                if (BankStatementsAttachmentsListViewData.Count == 0)
-                {
-                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                        BankStatementsAttachmentsListViewData.ToList(),
-                        WhichAttachment.ZakatInstalmentBankStatements, ZakatInstalments.d.ReturnId));
-                }
+
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    BankStatementsAttachmentsListViewData.ToList(),
+                    WhichAttachment.ZakatInstalmentBankStatements, ZakatInstalments.d.ReturnId));
+
+
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -2661,20 +2714,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 Console.WriteLine(ex.Message);
             }
         }
+
         public async void FinanceAttachmentClicked()
         {
+            _bankStatementsAttachment = false;
             if (FinanceAttachmentsListViewData == null)
             {
                 FinanceAttachmentsListViewData = new ObservableCollection<Attachment>();
             }
             try
             {
-                if (FinanceAttachmentsListViewData.Count == 0)
-                {
-                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                        FinanceAttachmentsListViewData.ToList(),
-                        WhichAttachment.ZakatInstalmentFinance, ZakatInstalments.d.ReturnId));
-                }
+
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    FinanceAttachmentsListViewData.ToList(),
+                    WhichAttachment.ZakatInstalmentFinance, ZakatInstalments.d.ReturnId));
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -2829,11 +2883,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                             }
 
                             EnableVATBillView();
-                            MessagingCenter.Send<Object, Boolean>(this, "InvoiceBillsLoaded", true);
-
                             TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " SAR";
                             VATBillDueAmount = string.Format("{0:N2}", totalAmountDue) + " SAR";
                             MaxAmount = Math.Round(totalAmountDue, 2);
+                            //MessagingCenter.Send<Object, Boolean>(this, "InvoiceBillsLoaded", true);
+
+                           
                         }
                         else
                         {
@@ -3157,29 +3212,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
             var invoicesList = ZakatInvoicesList.ToList();
 
-           
+
+
+
 
             if (invoicesList.Count != 0)
             {
 
-                
-
-                    for (int i = 0; i < invoicesList.Count; i++)
+                    string apiDate = invoicesList[0].DueDt;
+                    if (!apiDate.Contains("Date"))
                     {
 
-                        DateTime dt = Convert.ToDateTime(invoicesList[i].DueDt);
-                        JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                        for (int i = 0; i < invoicesList.Count; i++)
                         {
-                            DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                        };
-                        //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                        var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
-                        string[] dateList = jsonDateTime.Split('+');
-                        jsonDateTime = dateList[0].Replace("\"\\", "");
-                        jsonDateTime = jsonDateTime + ")/";
-                         invoicesList[i].DueDt = jsonDateTime;
 
+                            DateTime dt = Convert.ToDateTime(invoicesList[i].DueDt);
+                            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+                            {
+                                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+                            };
+                            //var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
+                            var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
+                            string[] dateList = jsonDateTime.Split('+');
+                            jsonDateTime = dateList[0].Replace("\"\\", "");
+                            jsonDateTime = jsonDateTime + ")/";
+                            invoicesList[i].DueDt = jsonDateTime;
+
+                        }
                     }
+                   
+
+
 
                 _postData.invDtlsSet = invoicesList.ToArray();
             }

@@ -4380,7 +4380,9 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>Dear Taxpayer, you have a Registration Change Application saved in draft mode, do you want to discard it and proceed for Deregistration Application?</value>
   </data>
-    <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">     <value>Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?</value>   </data>
+    <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">
+    <value>Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?</value>
+  </data>
   <data name="TinDeregistration" xml:space="preserve">
     <value>TIN Deregistration</value>
   </data>
@@ -6805,5 +6807,21 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   </data>
     <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
     <value>File size should not be more than 10 MB.</value>
+     </data>
+    <data name="ZakatInstalmentSrNo" xml:space="preserve">
+    <value>Sr. No.</value>
+  </data>
+    <data name="ZakatInstalmentPeriodicInstalmentAmount" xml:space="preserve">
+    <value>Periodic Instalment Amount</value>
+  </data>
+     <data name="ZakatInstalmentCashRatio" xml:space="preserve">
+    <value>Cash Ratio (2+3)/8</value>
+  </data>
+  <data name="ZakatInstalmentDisplayInstalmentDetails" xml:space="preserve">
+    <value>Display Instalment Details</value>
+  </data>
+  <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
+    <value>Profitability Ratio(10/9)</value>
   </data>
   </root>
+  

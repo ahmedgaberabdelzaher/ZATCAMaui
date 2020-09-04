@@ -22,7 +22,7 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
-    public class EstablishmentRegistrationPageViewModel : BaseViewModel, INotifyPropertyChanged
+    public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
         private TaxPayerDetails taxPayerDetails { get; set; } = null;
@@ -2132,7 +2132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
+            //return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -2242,7 +2242,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
+            //return true;
             try
             {
                 IsLoading = true;
