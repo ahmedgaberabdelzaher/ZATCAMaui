@@ -4491,6 +4491,9 @@
   <data name="TinDeregistrationRegistrationDetails" xml:space="preserve">
     <value>تفاصيل التسجيل</value>
   </data>
+         <data name="TinDeregistrationCompanyIDCheck" xml:space="preserve">
+    <value>Company ID should start with 7</value>
+  </data>
   <data name="VATDeregistration" xml:space="preserve">
     <value>إيقاف التسجيل في ضريبة القيمة المضافة</value>
   </data>
