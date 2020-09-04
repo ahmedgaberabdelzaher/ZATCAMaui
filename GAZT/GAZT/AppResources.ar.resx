@@ -5613,7 +5613,7 @@
     <value>Establishment Account</value>
   </data>
   <data name="NDEstablishments" xml:space="preserve">
-    <value>Establishments</value>
+    <value>المنشآت</value>
   </data>
   <data name="NDFacilityAddress" xml:space="preserve">
     <value>Facility Address</value>
@@ -5622,7 +5622,7 @@
     <value>Facility Branches</value>
   </data>
   <data name="NDIndividuals" xml:space="preserve">
-    <value>Individuals</value>
+    <value>الأفراد</value>
   </data>
   <data name="NDLegalEntity" xml:space="preserve">
     <value>Legal Entity</value>
