@@ -49,7 +49,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             viewModel.IsDeclarationCheckedForInstruction = false;
             ChangeAeroIcon();
             SetLTR();
-
+            ClearFields();
             loadPageData();
             viewModel.TxtLOrCIssuedBy = string.Empty;
             viewModel.TxtCountryCode = "+966";
@@ -61,7 +61,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 IntnlCodes.Margin = new Thickness(12, -12, 12, -12);
             }
-            ClearFields();
+          // ClearFields();
 
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -104,7 +104,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
 
             await viewModel.SetDefaultDate();
-            ClearFields();
+            //ClearFields();
             await viewModel.OnPageLoad();
             await viewModel.SetIssueIdList();
             await viewModel.SetCityList();
@@ -199,7 +199,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             //iewModel.IDTypeModelRootObject = null;
             viewModel.SignUpFirstSubmitModel = null;
             //iewModel.MaximumxD = DateTime.Now;
+            viewModel.IsNextButtonEnable = true;
 
+            viewModel.OTPFirstDigit = string.Empty;
+            viewModel.OTPSecondDigit = string.Empty;
+            viewModel.OTPThirdDigit = string.Empty;
+            viewModel.OTPFourthDigit = string.Empty;
+
+            viewModel.MOTPFirstDigit = string.Empty;
+            viewModel.MOTPSecondDigit = string.Empty;
+            viewModel.MOTPThirdDigit = string.Empty;
+            viewModel.MOTPFourthDigit = string.Empty;
         }
         private void SetLTR()
         {

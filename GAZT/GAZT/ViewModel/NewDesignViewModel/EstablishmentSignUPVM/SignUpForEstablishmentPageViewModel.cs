@@ -116,7 +116,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("MaxDigids");
             }
         }
-        private string _PickerDobToDisplay = "9";
+        private string _PickerDobToDisplay = string.Empty;
         public string PickerDobToDisplay
         {
             get
@@ -126,7 +126,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             set
             {
                 _PickerDobToDisplay = value;
-                RaisePropertyChanged("_PickerDobToDisplay");
+                RaisePropertyChanged("PickerDobToDisplay");
             }
         }
         private bool _IsNextButtonEnable = true;
@@ -2182,7 +2182,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     //UpUsingList = null;
                     IsCRVisible = true;
                     IsLicenseVisible = false;
-                    List<SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
+                    SignUpUsingList = new List<SignUpUsing>();
+                    List <SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
                     ListSignUpUsing.Add(new SignUpUsing { ID = 1, SUType = AppResources.ZZNationalID });
                     ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
                     ListSignUpUsing.Add(new SignUpUsing { ID = 3, SUType = AppResources.ZZGCCID });
@@ -2239,7 +2240,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             });
             try
             {
-                IssuedByList = null;
+                // IssuedByList = null;
+                IssuedByList = new List<IssuedByResponse>();
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
                 var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
                 IssuedByList = new List<IssuedByResponse>(IssuedBy);
