@@ -247,7 +247,7 @@
                         <Grid>
                                 <inputLayout:SfTextInputLayout x:Name="FrmDBO" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0">
                                     <control:BorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" x:Name="DateEntry"
-                                                         Text ="{Binding PkrDBO}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
+                                                         Text ="{Binding PickerDobToDisplay}" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged"
                                                          Focused="OnDateEntryFocussed"  Placeholder="yyyy/MM/dd" 
                                                              VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
@@ -1086,7 +1086,7 @@
 
                                     <StackLayout Orientation="Horizontal">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" Style="{StaticResource ValueLabelGrey}"/>
-                                        <custom:CustomLabel Text="{Binding PkrDBO}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                            <custom:CustomLabel Text="{Binding PickerDobToDisplay}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                     </StackLayout>
 
 

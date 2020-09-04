@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.Models.EnumModels;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -113,6 +114,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 _maxDigids = value;
                 RaisePropertyChanged("MaxDigids");
+            }
+        }
+        private string _PickerDobToDisplay = "9";
+        public string PickerDobToDisplay
+        {
+            get
+            {
+                return _PickerDobToDisplay;
+            }
+            set
+            {
+                _PickerDobToDisplay = value;
+                RaisePropertyChanged("_PickerDobToDisplay");
             }
         }
         private bool _IsNextButtonEnable = true;
@@ -1757,7 +1771,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        //  await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
                     }
 
                         
@@ -1772,8 +1787,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information); 
-                                                }
+                       //     _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                    }
                     
                     break;
 
@@ -1791,7 +1807,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                           // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                         }
                     }
                     //License Number Validation
@@ -1814,7 +1831,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                         }
                         else {
-                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+//                            //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                         }
                         
                     }
@@ -1840,7 +1858,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                     else
                     {
-                        _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                       // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                     }
 
                     break;
@@ -2098,14 +2117,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                                 SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                                  //  _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
                                 });
                             }
                             else
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou, AppResources.Information);
+                                   // _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
                                 });
                                 ButtonDisableColor = Color.FromHex("#9EA4A9");
                                 ButtonDisableTextColor = Color.Gray;
@@ -2125,14 +2146,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                               // _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
                     });
                 }
                 catch (InternetException ex)
                 {
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                    //await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 }
             }
             
@@ -2201,7 +2224,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     {
                         IsLoading = false;
                     });
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                 //   _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
             }
@@ -2246,7 +2270,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                   // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2259,7 +2284,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                  //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2271,7 +2297,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                   // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2326,7 +2353,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                   // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2338,7 +2366,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                   // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2350,7 +2379,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2529,7 +2559,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             IsLoading = false;
                         });
                         SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                        _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                       // _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                      PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+
 
                     }
                     else
@@ -2547,7 +2579,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
         }
