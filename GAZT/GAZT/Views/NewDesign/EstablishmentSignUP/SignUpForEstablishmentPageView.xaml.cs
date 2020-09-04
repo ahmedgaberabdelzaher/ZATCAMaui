@@ -70,6 +70,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 {
                     string url = Path.Combine(path, "TermsAndConditionsEN.html");
                    // TCWebView.Source = url;
+
                 }
                 else
                 {
@@ -81,7 +82,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 if (!App.IsArabic)
                 {
-                 //   TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
+                    //   TCWebView.Source = "file:///android_asset/TermsAndConditionsEN.html";
+                    
                 }
                 else
                 {
@@ -191,6 +193,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             if (App.IsArabic)
             {
+                
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;

@@ -252,7 +252,10 @@
                                                              VerticalTextAlignment="End"  IsReadOnly="True" TextColor="{StaticResource NeutralBlack}">
 
                             </control:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image Source="arrowDropdown.png"/>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
                             <Button BackgroundColor="Transparent" Clicked="OnDOBClicked" Margin="0,0,0,0" >
                         </Button>
                             <custom1:CustomDatePicker 
@@ -421,7 +424,10 @@
                                                      IsSpellCheckEnabled="False" Text="{Binding TxtLOrCIssuedBy}">
 
                             </control:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image Source="arrowDropdown.png"/>
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </inputLayout:SfTextInputLayout>
                                 <Button Clicked="LIssuedBy_Clicked" BackgroundColor="Transparent"/>
                                 <!--<syncfusion:SfPicker x:Name="ddlLIssuedBy" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
                         ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
@@ -467,7 +473,10 @@
                                                          VerticalTextAlignment="End" TextColor="{StaticResource NeutralBlack}" IsReadOnly="True" Text="{Binding TxtLOrCIssuedByCity}">
 
                                     </control:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image Source="arrowDropdown.png"/>
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </inputLayout:SfTextInputLayout>
                                 <Button Clicked="LIssuedByCity_Clicked" BackgroundColor="Transparent"/>
                                 <!--<syncfusion:SfPicker x:Name="ddlLIssuedByCity"
                                                      HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}" HeaderTextColor="White"
