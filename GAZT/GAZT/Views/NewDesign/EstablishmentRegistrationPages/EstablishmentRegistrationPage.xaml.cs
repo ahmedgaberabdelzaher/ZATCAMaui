@@ -13,6 +13,7 @@ using Xamarin.Forms.Xaml;
 using System.Linq;
 using GAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using System.Collections.ObjectModel;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -220,5 +221,45 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
+        private void OnDOBClicked(object sender, EventArgs e)
+        {
+            dob.IsOpen = true;
+        }
+
+        private void dob_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void dob_Closed(object sender, EventArgs e)
+        {
+            if (dob.SelectedItem != null)
+            {
+                var selectedItem = dob.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.SelectedDOB = year + "/" + month + "/" + day;
+
+            }
+        }
+
+        private void dob_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            if (dob.SelectedItem != null)
+            {
+                var selectedItem = dob.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.SelectedDOB = year + "/" + month + "/" + day;
+
+            }
+        }
+
+        private void dob_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
