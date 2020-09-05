@@ -59,6 +59,7 @@ namespace EGAZT
         public static string ZakatRegistrationDetailsListPageView = "ZakatRegistrationDetailsListPageView";
         public static string TINDeregistrationCloseIndividualOutletsPageView = "TINDeregistrationCloseIndividualOutletsPageView";
 
+
         public static string TaxpayersCertificatesPageView = "TaxpayersCertificatesPageView";
         public static string GAZTNewDesignRecoverUsername = nameof(GAZTNewDesignRecoverUsername);
         public static string GAZTNewDesignRecoverPasswordPageView = nameof(GAZTNewDesignRecoverPasswordPageView);

@@ -8,6 +8,7 @@ using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -1490,8 +1491,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public void AddOutletDecisionOptions()
         {
-            if(OutletDecisionOptions == null)
-            OutletDecisionOptions = new ObservableCollection<TINDeregistrationModel>();
+            if (OutletDecisionOptions == null)
+                OutletDecisionOptions = new ObservableCollection<TINDeregistrationModel>();
 
             OutletDecisionOptions.Clear();
 
@@ -1633,9 +1634,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DeregistrationDate).ToString();
                 //TinDeregistrationData.AEffectiveDt = TinDeregistrationData.ASubmissionDate;
                 //TinDeregistrationData.ADecDate = TinDeregistrationData.ASubmissionDate;
-
-                await SaveAsDraft();
-                EnableOutletDetaislView();
+                addPopUpPage();
+               // await SaveAsDraft();
+                //EnableOutletDetaislView();
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1651,6 +1652,31 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
         }
 
+        async void addPopUpPage()
+        {
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc));
+
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
         public static long ConvertDateTimeToTicks(DateTime dtInput)
         {
             long ticks = 0;
