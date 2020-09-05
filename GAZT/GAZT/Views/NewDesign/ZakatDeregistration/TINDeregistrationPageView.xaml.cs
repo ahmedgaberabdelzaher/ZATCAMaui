@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -23,6 +26,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
             this.BindingContext = viewModel;
         }
 
@@ -41,6 +45,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg.PickerId == "DeregDatePicker")
                 {
                     viewModel.DeregistrationDate = Convert.ToDateTime(arg.SelectedValue);
+                }
+                if (arg.PickerId == "DOBDateTypePicker")
+                {
+                    viewModel.SelectedDob = arg.SelectedValue;
                 }
                 Console.WriteLine(arg);
             });
@@ -112,9 +120,233 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             else
             {
-                attachmentsListView.SelectedItems.Clear();
+               // attachmentsListView.SelectedItems.Clear();
                 viewModel.AddAttachmentEx();
             }
-        }   
+        }
+
+        private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                PopUp popUp = new PopUp();
+                StringBuilder Messages = new StringBuilder();
+                if (!string.IsNullOrEmpty(viewModel.SelectedIdNumber))
+                {
+                    if (viewModel.SelectedIdtype == AppResources.NationaID)
+                    {
+                        if (viewModel.SelectedIdNumber.Substring(0, 1) != "1")
+                        {
+                            popUp.Message = AppResources.ZZNationalIDstartswith1;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            viewModel.FrameIDError = true;
+                            viewModel.SelectedIdNumber = string.Empty;
+                            //ZZPleaseenteravalidNationalID
+                        }
+                        else
+                        {
+                            if (viewModel.SelectedIdNumber.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZNationalIDlengthis10digit);
+                            }
+                            if (Messages.Length > 0)
+                            {
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                viewModel.FrameIDError = true;
+                                viewModel.SelectedIdNumber = string.Empty;
+                            }
+                            else
+                            {
+                                viewModel.FrameIDError = false;
+                                if (!string.IsNullOrEmpty(viewModel.SelectedDob))
+                                {
+                                    viewModel.ValidateIDNumber();
+                                }
+                            }
+                        }
+                    }
+                    if (viewModel.SelectedIdtype == AppResources.ZZIqamaID)
+                    {
+                        if (viewModel.SelectedIdNumber.Substring(0, 1) != "2")
+                        {
+                            popUp.Message = AppResources.ZZIqamaIDstartswith2;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            viewModel.FrameIDError = true;
+                            viewModel.SelectedIdNumber = string.Empty;
+                        }
+                        else
+                        {
+                            if (viewModel.SelectedIdNumber.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+                            }
+                            if (Messages.Length > 0)
+                            {
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //FrmIDNumber.HasError = true;
+                                viewModel.FrameIDError = true;
+                                viewModel.SelectedIdNumber = string.Empty;
+                            }
+                            else
+                            {
+                                //FrmIDNumber.HasError = false;
+                                viewModel.FrameIDError = false;
+                                if (!string.IsNullOrEmpty(viewModel.SelectedDob))
+                                {
+                                    viewModel.ValidateIDNumber();
+                                }
+                            }
+                        }
+
+
+                    }
+                    if (viewModel.SelectedIdtype == AppResources.ZZGCCID)
+                    {
+
+                        if (viewModel.SelectedIdNumber.Substring(0, 1) == "0")
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            viewModel.FrameIDError = true;
+                            viewModel.SelectedIdNumber = string.Empty;
+                        }
+                        else if (!(viewModel.SelectedIdNumber.Length <= 15 && viewModel.SelectedIdNumber.Length >= 7))
+                        {
+                            popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            viewModel.FrameIDError = true;
+                            viewModel.SelectedIdNumber = string.Empty;
+                            //EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
+                        }
+
+
+                    }
+                    if (viewModel.SelectedIdtype == AppResources.ZIBANCompanyID)
+                    {
+
+                        if (viewModel.SelectedIdNumber.Substring(0, 1) == "7")
+                        {
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.TinDeregistrationCompanyIDCheck;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            viewModel.FrameIDError = true;
+                            viewModel.SelectedIdNumber = string.Empty;
+                        }
+                      
+
+
+                    }
+
+                }
+                else
+                {
+                    // FrmIDNumber.HasError = false;
+                    viewModel.FrameIDError = true;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+
+
+        }
+
+        private void IDNumberEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.SelectedIdNumber))
+            {
+                viewModel.FrameIDError = false;
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace EGAZT.Models
 
         public string ActiveOutletDecisionOptions { get; set; }
         public bool ActiveOutletDecisionOptionsIsSelected { get; set; }
+        public string OutletOptionIndex { get; set; }
 
     }
 
@@ -256,6 +257,9 @@ namespace EGAZT.Models
         [JsonProperty("ADregReason")]
         public string ADregReason { get; set; }
 
+        [JsonIgnore]
+        public string ADeregSelectedReasonValue { get; set; }
+
         [JsonProperty("ADregOpt")]
         public string ADregOpt { get; set; }
 
@@ -369,6 +373,8 @@ namespace EGAZT.Models
 
         [JsonProperty("returnSet")]
         public Set ReturnSet { get; set; }
+
+       
     }
 
     public partial class Set
@@ -377,8 +383,18 @@ namespace EGAZT.Models
         public OutletSetResult[] Results { get; set; }
     }
 
-    public partial class OutletSetResult
+    public partial class OutletSetResult : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
@@ -621,6 +637,23 @@ namespace EGAZT.Models
 
         [JsonProperty("APermitDobCTb", NullValueHandling = NullValueHandling.Ignore)]
         public string APermitDobCTb { get; set; }
+
+        [JsonIgnore]
+        private ObservableCollection<OutletSetResult> _permitTypes { get; set; }
+        [JsonIgnore]
+        public ObservableCollection<OutletSetResult> PermitTypes
+        {
+            get
+            {
+                return _permitTypes;
+            }
+            set
+            {
+                _permitTypes = value;
+                OnPropertyRaised("PermitTypes");
+            }
+        }
+
     }
 
     public partial class TinDeregistrationReasonSet

@@ -546,7 +546,7 @@
 						        ContainerType="Outlined" UnfocusedColor="#B1B1B1"  x:Name="FrmIDNumber"
 						        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                 <Entry  x:Name="EntryIDNumber" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Micro"   Style="{StaticResource CaptionLabelBlack}" Text="{Binding TxtIDNumber}"
-                                                        TextColor="Black" HorizontalOptions="StartAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
+                                                        TextColor="Black" HorizontalOptions="FillAndExpand" Unfocused="EntryIDNo_Unfocused" TextChanged="IDNumberEntry_TextChanged">
                                     <Entry.Behaviors>
                                                             <custom1:OnlyNumericValuesBehaviour/>
                                                         </Entry.Behaviors> 
@@ -598,7 +598,7 @@
                 <StackLayout Margin="8">
                     <StackLayout Orientation="Horizontal" Spacing="0">
                        <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
-                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
+                       <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,10,5" HorizontalOptions="StartAndExpand"
                             Style="{StaticResource ValueLabelBlack}"/>
                     </StackLayout>
                     <Label Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationAgreement}" HorizontalOptions="StartAndExpand"
@@ -673,10 +673,10 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
-                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Micro"  HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
-                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Micro" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                             </Grid>
 			                        </DataTemplate>
@@ -725,7 +725,7 @@
                                                     <Label Text="{Binding FieldTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    <Label Text="{Binding AttachmentName}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                             </Grid>
 			                        </DataTemplate>
@@ -771,10 +771,10 @@
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
                                                 <StackLayout Grid.Row="0" Grid.Column="0">
-                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Small" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                                    <Label Text="{Binding SummaryTitle}" Style="{StaticResource BodyLabelGrey}" FontSize="Micro" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Small" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                                                    <Label Text="{Binding SummaryData}" Style="{StaticResource ValueLabelBlack}" FontSize="Micro" HorizontalTextAlignment="End" HorizontalOptions="StartAndExpand"/>
                                                 </StackLayout>
                                             </Grid>
 			                        </DataTemplate>

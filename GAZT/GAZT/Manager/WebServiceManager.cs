@@ -9068,8 +9068,8 @@ namespace GAZT.Manager
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
-                                ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-                                throw new HTTPBadRequestException(ErrorMessageForUnlockAccount);
+                                string ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
+                                throw new HTTPBadRequestException(ErrorMessageFormServer);
                             }
                         }
                         else

@@ -185,7 +185,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 _enableInputFields = value;
                 OnIssueCountrySelectButtonClick.ChangeCanExecute();
                 OnIssueCitySelectButtonClick.ChangeCanExecute();
-                OnValidFromButtonClick.ChangeCanExecute();
                 RaisePropertyChanged(nameof(EnableInputFields));
             }
         }
@@ -443,18 +442,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(LicenseData));
             }
         }
-
-       
-        
+        private bool _canExecute = true;
+        public bool CanExecute
+        {
+            get => _canExecute;
+            set
+            {
+                _canExecute = value;
+                RaisePropertyChanged(nameof(CanExecute));
+            }
+        }
         #endregion
 
         #region commands
-        public ICommand OnNextButtonClick { get; private set; }
+        public Command OnNextButtonClick { get; private set; }
         public ICommand OnPreButtonClick { get; private set; }
         public Command OnIssueCountrySelectButtonClick { get; set; }
         public Command OnIssueBySelectButtonClick { get; set; }
         public Command OnIssueCitySelectButtonClick { get; set; }
-        public Command OnValidFromButtonClick { get; set; }
         public ICommand OnTransferCopyOfCRChoiceButtonClick { get; set; }
         public ICommand OnMainGroupSelectButtonClick { get; set; }
         public ICommand OnSubGroupSelectButtonClick { get; set; }
@@ -471,7 +476,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public ActivityItemPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnNextButtonClick = new Command(() => navigateToNext());
+            OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() => navigationService.GoBack());
             OnNewLicenseButtonClick = new Command(() => CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails);
             OnIssueCountrySelectButtonClick = new Command((object o) =>
@@ -542,14 +547,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
-            }, CanExecuteClickCommand);
-            OnValidFromButtonClick = new Command((object o) =>
-            {
-                PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(new GenericDatePickerModel()
-                {
-                    DatePickerTitle = "Valid From",
-                    PickerId = (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails) ? "LicenseValidFromId" : "CRValidFromId"
-                }));
             }, CanExecuteClickCommand);
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
             {
@@ -687,6 +684,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Method
         private void navigateToNext()
         {
+            CanExecute = false;
             try
             {
                 if (ValidateForm())
@@ -716,11 +714,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             Crattfg = CRsCopies.Count > 0 ? "X" : string.Empty
                         };
 
+                        CanExecute = true;
                         NregActivityList.Add(item);
                         CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                     }
                     else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.ActivityList)
                     {
+                        CanExecute = true;
                         goBackAction?.Invoke(NregActivityList);
                         _navigationService.GoBack();
                     }
@@ -734,26 +734,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 Console.WriteLine(e.StackTrace);
             }
+            finally
+            {
+                CanExecute = true;
+            }
         }
         public void OnAppearing()
         {
             //fetchTabDataAndBind();
-            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
-            {
-                Console.WriteLine(string.Format("Subscribe {0}, {1}", arg.PickerId, arg.SelectedValue));
-                if (arg.PickerId == "CRValidFromId")
-                {
-                    CRValidFrom = arg.SelectedValue;
-                }
-                else if (arg.PickerId == "LicenseValidFromId")
-                {
-                    ValidFrom = arg.SelectedValue;
-                }
-            });
         }
         public void OnDisappearing()
         {
-            MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
         }
         private async Task AddAttachment(string docType)
         {

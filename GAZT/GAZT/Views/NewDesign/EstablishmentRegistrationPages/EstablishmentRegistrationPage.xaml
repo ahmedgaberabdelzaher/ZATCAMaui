@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:models="clr-namespace:EGAZT.Models"
@@ -529,6 +532,7 @@
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
+
                                     <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
 
                                         <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
@@ -549,6 +553,13 @@
 
                                         </StackLayout>
                                     </border:SfBorder >
+                                    <syncfusion:SfDatePicker x:Name="dobPicker"
+                                                             ShowHeader="False"
+                                                             Format="dd_MMM_yyyy"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
+                                                             PickerMode="Dialog"
+                                                             IsOpen="False"
+                                                             DateSelected="dobPicker_DateSelected" />
                                 </StackLayout>
                             </StackLayout>
                             <StackLayout x:Name="PersonalDetails" Orientation="Vertical" Grid.Row="1" Margin="0,0,0,10">
@@ -805,6 +816,7 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
+
                                 <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Style="{StaticResource GreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15" WidthRequest="160">
@@ -825,6 +837,13 @@
 
                                     </StackLayout>
                                 </border:SfBorder >
+
+                                <syncfusion:SfDatePicker x:Name="PassportIssueDatePicker" IsOpen="False"
+                                                         Format="dd_MMM_yyyy"
+                                                         HeaderText="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}"
+                                                         ShowHeader="False"  
+                                                         PickerMode="Dialog"
+                                                         DateSelected="PassportIssueDatePicker_DateSelected"/>
                             </StackLayout>
                             <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand">
                                 <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
@@ -855,6 +874,11 @@
 
                                     </StackLayout>
                                 </border:SfBorder >
+                                <syncfusion:SfDatePicker x:Name="PassportExpiryDatePicker" ShowHeader="False"
+                                                             Format="dd_MMM_yyyy"
+                                                             HeaderText="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
+                                                             PickerMode="Dialog"                                                            
+                                                             DateSelected="PassportExpiryDatePicker_DateSelected"/>
                             </StackLayout>
 
                             <StackLayout x:Name="PassportAttachmentsMainLayout"  Orientation="Vertical" Grid.Row="5" Margin="0,0,0,10">

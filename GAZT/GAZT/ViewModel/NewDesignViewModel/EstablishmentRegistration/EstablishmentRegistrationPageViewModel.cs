@@ -25,6 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
     public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
+        //public int DefaultMonth;
         private TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private OutletNumber number;
@@ -513,7 +514,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedDOB = "26/08/2020";
+        //private ObservableCollection<object> _todayDate;
+        //public ObservableCollection<object> TodayDate
+        //{
+        //    get
+        //    {
+        //        return _todayDate;
+        //    }
+        //    set
+        //    {
+        //        _todayDate = value;
+        //        RaisePropertyChanged("TodayDate");
+        //    }
+        //}
+
+        private string _selectedDOB = string.Empty;
         public string SelectedDOB
         {
             get => _selectedDOB;
@@ -949,11 +964,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
 
-
+        private bool _canExecute = true;
+        public bool CanExecute
+        {
+            get => _canExecute;
+            set
+            {
+                _canExecute = value;
+                RaisePropertyChanged(nameof(CanExecute));
+            }
+        }
         #region Commands
 
 
-        public ICommand OnNextButtonClick { get; set; }
+        public Command OnNextButtonClick { get; set; }
         public ICommand OnPreButtonClick { get; set; }
         public ICommand OnVoidOrSaveDraftClick { get; set; }
 
@@ -1039,7 +1063,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
 
-            OnNextButtonClick = new Command(() => navigateToNext());
+            OnNextButtonClick = new Command(() => navigateToNext(), ()=> CanExecute);
             OnPreButtonClick = new Command(() => navigateToPre());
 
             #region Registration Tab Variable initialization
@@ -1201,7 +1225,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                     taxPayerDetails?.off_notesSet.results?.Add(note);
                                     taxPayerDetails.Operationx = "04";
                                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
-                                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                                    var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                     IsLoading = false;
                                 }
                             };
@@ -1217,7 +1241,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Method
-        public async void OnAppearing()
+        public void OnAppearing()
         {
             //var branchTask = GetReportingBranchListFromServer();
             //var nationalityTask = GetPdNationalityListFromServer(null);
@@ -1228,8 +1252,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        //public async Task SetDefaultDate()
+        //{
+        //    ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+        //    //Select today dates
+
+        //    if (DateTime.Now.Date.Day < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Day);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Day.ToString());
+        //    if (DateTime.Now.Date.Month < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Month);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Month.ToString());
+        //    todaycollection.Add(DateTime.Now.Date.Year.ToString());
+        //    TodayDate = todaycollection;
+        //    DefaultMonth = DateTime.Now.Date.Month;
+        //}
+
         private async void navigateToNext()
         {
+            CanExecute = false;
             try
             {
                 var failedMesage = AppResources.Somethingwentwrong;
@@ -1334,6 +1377,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception e)
             {
 
+            }
+            finally
+            {
+                CanExecute = true;
             }
         }
         private void navigateToPre()
@@ -2374,6 +2421,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 ex.ToString();
+                if (ex is HTTPBadRequestException)
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                }
             }
             finally
             {
