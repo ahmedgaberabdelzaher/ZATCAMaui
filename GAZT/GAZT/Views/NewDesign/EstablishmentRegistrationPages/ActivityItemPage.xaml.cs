@@ -103,7 +103,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 var _mainItem = viewModel?.NregActivityList?.FirstOrDefault(i => i.Actcat == "M");
                 if (_mainItem != null)
                 {
-                    var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText)
+                    var confirmPopup = new ZAKATOkCancelPopUpView("Are you sure you want to mark as main activity")
                     {
                         CloseWhenBackgroundIsClicked = false
                     };
