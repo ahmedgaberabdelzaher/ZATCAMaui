@@ -690,10 +690,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (ValidateForm())
                 {
-                    if(editModeEnabled == true && CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                    {
-                        RemoveCRFromList();
-                    }
+                    //if(editModeEnabled == true && CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                    //{
+                    //    RemoveCRFromList();
+                    //}
 
                     if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
                     {
@@ -762,7 +762,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
-                decimal TotalAttachmentSize = 0;
+                //decimal TotalAttachmentSize = 0;
                 string[] filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
 
                 var fileData = await CrossFilePicker.Current.PickFile(filetypes);
@@ -955,8 +955,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                         LicenseNumber = SelectedLicenseItem?.Idnumber;
                         LicenseIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedLicenseItem?.Country).FirstOrDefault();
-                        CRIssueBy = EnIssueBy[SelectedLicenseItem?.Institute];
-                        CRValidFrom = SelectedLicenseItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                        LicenseIssueBy = EnIssueBy[SelectedLicenseItem?.Institute];
+                        ValidFrom = SelectedLicenseItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                         LicenseIssueCity = new CityDropdownItem()
                         {
                             CityName = SelectedLicenseItem?.City,
