@@ -19,7 +19,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         public System.Timers.Timer otpTimer;
         public int countDownSeconds;
         public string EnteredOTP = string.Empty;
-       
+
         #endregion
 
         #region Properties
@@ -67,7 +67,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 {
                     MaxDigids = "15";
                 }
-                
+
                 RaisePropertyChanged("CountryCode");
             }
         }
@@ -311,14 +311,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
             string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
             string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
-           string  MobileCountry = MobileCountryCode;
+            string MobileCountry = MobileCountryCode;
             try
             {
                 await Task.Run(async () =>
                 {
                     callAPIFlag = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin,
                                                                                 currentMobileNumber,
-                                                                                newMobileNumber,MobileCountry);
+                                                                                newMobileNumber, MobileCountry);
                     IsLoading = false;
                 });
             }
@@ -352,7 +352,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, EnteredOTP,
                                                                                 App.TP.Tin,
                                                                                 currentMobileNumber,
-                                                                                newMobileNumber,MobileCountry);
+                                                                                newMobileNumber, MobileCountry);
                     IsLoading = false;
                 });
             }
@@ -376,7 +376,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         private string NewMobileNumberFormate(string mobileNumber)
         {
             string formatedCountryCode = CountryCode.Replace("+", "");
-            return formatedCountryCode+ NewMobileNumberEntryText;
+            return formatedCountryCode + NewMobileNumberEntryText;
         }
     }
 }

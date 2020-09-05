@@ -5492,6 +5492,22 @@
   <data name="TPUpdatePassword" xml:space="preserve">
     <value>تغيير الرقم السري</value>
   </data>
+    
+    
+  <data name="TPOldPasswordEmpty" xml:space="preserve">
+    <value>الرجاء ادخال كلمة المرور القديمة</value>
+  </data>
+  <data name="TPNewPasswordEmpty" xml:space="preserve">
+    <value>ادخل كلمة المرور الجديدة</value>
+  </data>
+  <data name="TPNewMobileNumberEmpty" xml:space="preserve">
+    <value>Please enter new mobile number</value>
+  </data>
+  <data name="TPOTPSentToEmail" xml:space="preserve">
+    <value>الرجاء إدخال رمز التحقق المرسل الى بريدك الإلكتروني</value>
+  </data>
+    
+    
   <data name="NDAckReceiptForZakat" xml:space="preserve">
     <value>GAZT acknowledges the receipt of your Return of Zakat\Income Tax</value>
   </data>

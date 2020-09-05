@@ -33,21 +33,26 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private async void UpdatedClicked(object sender, EventArgs e)
         {
-
             // Call Update Mobile Number API + Go Success Page
             bool callAPIFlag = TaxpayerProfileEmailUpdateValidation(viewModel.CurrentEmailText,
                                                                     viewModel.NewEmailText,
                                                                     viewModel.ConfirmEmailText);
             if (callAPIFlag)
             {
-                //viewModel.LoadingStart();
+                bool flag = IsValid(viewModel.NewEmailText);
+                if (!flag)
+                {
+                    ShowValidationPopup(flag);
+                    return;
+                }
+
                 bool OTPSuccess = await viewModel.VarifyEmail();
                 System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", OTPSuccess);
 
                 if (OTPSuccess)
                 {
                     // Navigating to Verification Screen
-                    this.CloseAllPopup();
+                    this.CloseAllPopup();   
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
@@ -62,15 +67,22 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             }
         }
 
+        public bool IsValid(string emailaddress)
+        {
+            bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            if (isEmail)
+                return true;
+            else
+                return false;
+        }
+
         // * Password Validations
         private bool TaxpayerProfileEmailUpdateValidation(string CurrentEmail, string NewEmail, string ConfirmEmail)
         {
             string validationError = VerifyEmails(CurrentEmail, NewEmail, ConfirmEmail);
 
             if (validationError == string.Empty)
-            {
                 return true;
-            }
             else
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
@@ -83,32 +95,34 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private string VerifyEmails(string CurrentEmail, string NewEmail, string ConfirmEmail)
         {
-            bool compareStringFlag = false;
-            int iEmailCompared = String.Compare(NewEmail, ConfirmEmail,true);
-            
-            if (iEmailCompared == 0)
-                compareStringFlag = true;
+            int iEmailCompared = String.Compare(NewEmail, ConfirmEmail, true);
 
-            if (CurrentEmail == null || NewEmail == null
-                                        || ConfirmEmail == null
-                                        || CurrentEmail == string.Empty
-                                        || NewEmail == string.Empty
-                                        || ConfirmEmail == string.Empty)
-                return AppResources.InvalidEmail;
-            else if (!compareStringFlag)
+            if (string.IsNullOrEmpty(NewEmail))
+                return AppResources.ZZPleasefillallthemandatoryfields;
+            else if (iEmailCompared != 0)
                 return AppResources.NewEmailandRetypeEmailNotMatch;
-            else
+            else return string.Empty;
+        }
+
+        private void ShowValidationPopup(bool validEmailFlag)
+        {
+            if (!validEmailFlag)
             {
-                bool validateEmailFormateRegX = UtilityManager.IsValidEmailAddress(NewEmail);
-                if (validateEmailFormateRegX)
-                {
-                    return string.Empty;
-                }
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
+                popUp.IsLinkAvailable = false;
+
+                if (App.IsArabic)
+                    popUp.FlowDirections = "RightToLeft";
                 else
-                {
-                    return AppResources.InvalidEmailFormat;
-                }
+                    popUp.FlowDirections = "LeftToRight";
+
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                Frm_NewEmail.HasError = true;
+                viewModel.NewEmailText = string.Empty;
             }
+            else
+                Frm_NewEmail.HasError = false;
         }
 
         private async void CloseAllPopup()
@@ -142,44 +156,27 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private void NewEmail_Entry_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(viewModel.NewEmailText))
+            /*if (!string.IsNullOrEmpty(viewModel.NewEmailText))
             {
                 bool flag = IsValid(viewModel.NewEmailText);
                 if (!flag)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;//ZZPleaseenteravalidEmailAddress//ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;//ZZZInvalidEmailAddressMessage
+                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
                     popUp.IsLinkAvailable = false;
+
                     if (App.IsArabic)
-                    {
                         popUp.FlowDirections = "RightToLeft";
-                    }
                     else
-                    {
                         popUp.FlowDirections = "LeftToRight";
-                    }
+
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     Frm_NewEmail.HasError = true;
                     viewModel.NewEmailText = string.Empty;
                 }
                 else
-                {
                     Frm_NewEmail.HasError = false;
-                }
-            }
-        }
-
-        public bool IsValid(string emailaddress)
-        {
-            bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
-            if (isEmail)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            }*/
         }
 
         private void BorderlessEntry_Unfocused(object sender, FocusEventArgs e)
@@ -189,13 +186,13 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private void ConfirmEmail_Entry_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(viewModel.ConfirmEmailText))
+            /*if (!string.IsNullOrEmpty(viewModel.ConfirmEmailText))
             {
                 bool flag = IsValid(viewModel.ConfirmEmailText);
                 if (!flag)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;//ZZPleaseenteravalidEmailAddress//ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;//ZZZInvalidEmailAddressMessage
+                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
                     popUp.IsLinkAvailable = false;
                     if (App.IsArabic)
                     {
@@ -210,10 +207,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     viewModel.ConfirmEmailText = string.Empty;
                 }
                 else
-                {
                     Frm_confirmEmail.HasError = false;
-                }
-            }
+            }*/
         }
     }
 }

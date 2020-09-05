@@ -9540,6 +9540,30 @@ namespace EGAZT {
             }
         }
         
+        public static string TPOldPasswordEmpty {
+            get {
+                return ResourceManager.GetString("TPOldPasswordEmpty", resourceCulture);
+            }
+        }
+        
+        public static string TPNewPasswordEmpty {
+            get {
+                return ResourceManager.GetString("TPNewPasswordEmpty", resourceCulture);
+            }
+        }
+        
+        public static string TPNewMobileNumberEmpty {
+            get {
+                return ResourceManager.GetString("TPNewMobileNumberEmpty", resourceCulture);
+            }
+        }
+        
+        public static string TPOTPSentToEmail {
+            get {
+                return ResourceManager.GetString("TPOTPSentToEmail", resourceCulture);
+            }
+        }
+        
         public static string TPSuccessMobileUpdated {
             get {
                 return ResourceManager.GetString("TPSuccessMobileUpdated", resourceCulture);

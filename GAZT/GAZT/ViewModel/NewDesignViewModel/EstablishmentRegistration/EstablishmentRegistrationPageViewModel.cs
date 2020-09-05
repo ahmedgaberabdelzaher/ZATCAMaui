@@ -1807,18 +1807,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     string base64String = Convert.ToBase64String(attachmentByte, 0, attachmentByte.Length);
                     var attachmentName = fileData.FileName;
-
+                    bool isFileAlreayUploaded = IsFileAlreadyAttached(docType,attachmentName);
                     float sizemb = (attachmentByte.Length / 1024f) / 1024f;
                     decimal attachmentSize = 0;
                     attachmentSize = attachmentSize + (Decimal)sizemb;
-
-                    if (fileData.FileName.Contains("."))
+                    if (!isFileAlreayUploaded)
                     {
-                        string Extention = fileData.FileName.Split('.')[1];//pdf
-                        if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
+                        if (fileData.FileName.Contains("."))
                         {
-                            if (TotalAttachmentSize <= 30)
+                            string Extention = fileData.FileName.Split('.')[1];//pdf
+                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
                             {
+
                                 attachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 2);
                                 decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 4);
                                 if (Convert.ToDecimal(attachmentSize) <= 10)
@@ -1851,14 +1851,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         attachmentName = string.Empty;
                                         await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
+
+                                }
+                                else
+                                {
+                                    await _dialogService.ShowMessage("File size is with more 10 MB can not be uploaded", AppResources.Information);
                                 }
                             }
-                        }
-                        else
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            else
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            }
                         }
                     }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
+
+                            //await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
+                            IsLoading = false;
+                        });
+                    }
+                        
                 }
 
             }
@@ -2520,6 +2536,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+
+        private bool IsFileAlreadyAttached(string doctype, string FileName)
+        {
+            bool isFileAlreadyAttached = false;
+            if(doctype.Equals("RG16"))//Rent
+            {
+                if (UploadedRentDocumentsList != null && UploadedRentDocumentsList.Count > 0)
+                {
+                    for (int i = 0; i < UploadedRentDocumentsList.Count; i++)
+                    {
+                        if (UploadedRentDocumentsList[i].Filename.Equals(FileName))
+                            isFileAlreadyAttached = true;
+                        else
+                            isFileAlreadyAttached = false;
+                        if (isFileAlreadyAttached)
+                            break;
+                    }
+                }
+            }
+            else if(doctype.Equals("RG19"))//PAssport
+            {
+                if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
+                {
+                    for (int i = 0; i < UploadedPassportDocumentsList.Count; i++)
+                    {
+                        if (UploadedPassportDocumentsList[i].Filename.Equals(FileName))
+                            isFileAlreadyAttached = true;
+                        else
+                            isFileAlreadyAttached = false;
+                        if (isFileAlreadyAttached)
+                            break;
+                    }
+                }
+            }
+           
+            return isFileAlreadyAttached;
+        }
 
 
         #endregion
