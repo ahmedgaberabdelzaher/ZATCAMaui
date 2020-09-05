@@ -703,8 +703,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
             }
         }
-        private void addActivities(List<Nreg_ActivityItem> list)
+        private async void addActivities(List<Nreg_ActivityItem> list)
         {
+            IsLoading = true;
             try
             {
                 taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
@@ -722,10 +723,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 //    Actcat = "M"
                 //});
                 taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
+                var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                taxPayerDetails?.AttDetSet.results?.Clear();
+                taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         private void navigateToPre()
