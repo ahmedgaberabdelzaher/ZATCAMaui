@@ -397,7 +397,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             }
             return isFileAlreadyAttached;
-            return false;
         }
 
         public async Task DeleteSelectedAttachment(string filename, string dougUD)

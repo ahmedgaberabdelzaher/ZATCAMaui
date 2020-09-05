@@ -689,7 +689,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (ValidateForm())
                 {
-
+                    if(editModeEnabled == true && CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+                    {
+                        RemoveCRFromList();
+                    }
 
                     if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
                     {
@@ -754,15 +757,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 string[] filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
 
                 var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                if (AttachmentCount < 5)
-                {
-                    if (fileData != null)
+
+                if (fileData != null)
                     {
                         var attachmentByte = fileData.DataArray;
 
                         string base64String = Convert.ToBase64String(attachmentByte, 0, attachmentByte.Length);
                         var attachmentName = fileData.FileName;
-
+                        bool isFileAlreayUploaded = IsFileAlreadyAttached(docType, attachmentName);
+                    if (!isFileAlreayUploaded)
+                    {
                         float sizemb = (attachmentByte.Length / 1024f) / 1024f;
                         decimal attachmentSize = 0;
                         attachmentSize = attachmentSize + (Decimal)sizemb;
@@ -772,30 +776,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             string Extention = fileData.FileName.Split('.')[1];//pdf
                             if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
                             {
-                                if (TotalAttachmentSize <= 30)
+                                attachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 2);
+                                decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 4);
+                                if (Convert.ToDecimal(attachmentSize) <= 10)
                                 {
-                                    attachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 2);
-                                    decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 4);
-                                    if (Convert.ToDecimal(attachmentSize) <= 10)
+                                    if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                     {
-                                        if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
+                                        try
                                         {
-                                            try
-                                            {
-                                                string attachmentType = UtilityManager.GetContentType(Extention);
-                                                await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
-                                            }
-                                            catch (Exception ex)
-                                            {
-                                            }
+                                            string attachmentType = UtilityManager.GetContentType(Extention);
+                                            await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
                                         }
-                                        else
+                                        catch (Exception ex)
                                         {
-                                            attachmentName = string.Empty;
-                                            await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                         }
                                     }
+                                    else
+                                    {
+                                        attachmentName = string.Empty;
+                                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                    }
                                 }
+                                else
+                                {
+                                    await _dialogService.ShowMessage("File size is with more 10 MB can not be uploaded", AppResources.Information);
+                                }
+
                             }
                             else
                             {
@@ -803,7 +809,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             }
                         }
                     }
-                }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
+
+                            //await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
+                            IsLoading = false;
+                        });
+                    }
+                        
+                    }
+               
             }
             catch (Exception ex)
             {
@@ -841,7 +859,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     EnableCRInputField = string.IsNullOrEmpty(validateCR?.Crname);
                     if (editModeEnabled == true)
                     {
-                        RemoveCRFromList();
                         var CRItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "BUP002");
                         EnableIssueByDropDown = false;
                         CRNumber = CRItem.Idnumber;
@@ -1176,6 +1193,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }      
         }
 
+        private bool IsFileAlreadyAttached(string doctype, string FileName)
+        {
+            bool isFileAlreadyAttached = false;
+            if (doctype.Equals("RG01"))//Rent
+            {
+                if (CRsCopies != null && CRsCopies.Count > 0)
+                {
+                    for (int i = 0; i < CRsCopies.Count; i++)
+                    {
+                        if (CRsCopies[i].Filename.Equals(FileName))
+                            isFileAlreadyAttached = true;
+                        else
+                            isFileAlreadyAttached = false;
+                        if (isFileAlreadyAttached)
+                            break;
+                    }
+                }
+            }
+            else if (doctype.Equals("RG12"))//PAssport
+            {
+                if (TransferCRsCopies != null && TransferCRsCopies.Count > 0)
+                {
+                    for (int i = 0; i < TransferCRsCopies.Count; i++)
+                    {
+                        if (TransferCRsCopies[i].Filename.Equals(FileName))
+                            isFileAlreadyAttached = true;
+                        else
+                            isFileAlreadyAttached = false;
+                        if (isFileAlreadyAttached)
+                            break;
+                    }
+                }
+            }
+
+            else if (doctype.Equals("RG02"))//PAssport
+            {
+                if (LicensesCopies != null && LicensesCopies.Count > 0)
+                {
+                    for (int i = 0; i < LicensesCopies.Count; i++)
+                    {
+                        if (LicensesCopies[i].Filename.Equals(FileName))
+                            isFileAlreadyAttached = true;
+                        else
+                            isFileAlreadyAttached = false;
+                        if (isFileAlreadyAttached)
+                            break;
+                    }
+                }
+            }
+            return isFileAlreadyAttached;
+        }
 
         #endregion
     }
