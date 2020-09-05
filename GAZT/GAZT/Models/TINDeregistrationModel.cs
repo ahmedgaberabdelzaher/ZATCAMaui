@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Newtonsoft.Json;
@@ -57,6 +58,34 @@ namespace EGAZT.Models
             {
                 _isAttachmentAttached = value;
                 OnPropertyRaised("IsAttachmentAttached");
+            }
+        }
+
+        private bool _isMandatory { get; set; }
+        public bool IsMandatory
+        {
+            get
+            {
+                return _isMandatory;
+            }
+            set
+            {
+                _isMandatory = value;
+                OnPropertyRaised("IsMandatory");
+            }
+        }
+
+        private string _docType { get; set; }
+        public string DocType
+        {
+            get
+            {
+                return _docType;
+            }
+            set
+            {
+                _docType = value;
+                OnPropertyRaised("DocType");
             }
         }
 
@@ -369,13 +398,80 @@ namespace EGAZT.Models
         public Set OutletSet { get; set; }
 
         [JsonProperty("AttDetSet")]
-        public Set AttDetSet { get; set; }
+        public AttachmentSet AttDetSet { get; set; }
 
         [JsonProperty("returnSet")]
         public Set ReturnSet { get; set; }
 
        
     }
+
+    public partial class AttachmentSet
+    {
+        [JsonProperty("results")]
+        public List<Attachment> Results { get; set; }
+    }
+
+    public partial class AttDetSetResult
+    {
+        [JsonProperty("__metadata")]
+        public Metadata Metadata { get; set; }
+
+        [JsonProperty("DataVersion")]
+        public string DataVersion { get; set; }
+
+        [JsonProperty("DocUrl")]
+        public Uri DocUrl { get; set; }
+
+        [JsonProperty("RetGuid")]
+        public string RetGuid { get; set; }
+
+        [JsonProperty("Seqno")]
+        public string Seqno { get; set; }
+
+        [JsonProperty("SchGuid")]
+        public string SchGuid { get; set; }
+
+        [JsonProperty("Dotyp")]
+        public string Dotyp { get; set; }
+
+        [JsonProperty("Srno")]
+        public long Srno { get; set; }
+
+        [JsonProperty("Doguid")]
+        public string Doguid { get; set; }
+
+        [JsonProperty("AttBy")]
+        public string AttBy { get; set; }
+
+        [JsonProperty("Filename")]
+        public string Filename { get; set; }
+
+        [JsonProperty("FileExtn")]
+        public string FileExtn { get; set; }
+
+        [JsonProperty("Mimetype")]
+        public string Mimetype { get; set; }
+
+        [JsonProperty("Erfdt")]
+        public string Erfdt { get; set; }
+
+        [JsonProperty("Erftm")]
+        public string Erftm { get; set; }
+
+        [JsonProperty("Enbedit")]
+        public string Enbedit { get; set; }
+
+        [JsonProperty("Enbdele")]
+        public string Enbdele { get; set; }
+
+        [JsonProperty("Visedit")]
+        public string Visedit { get; set; }
+
+        [JsonProperty("Visdel")]
+        public string Visdel { get; set; }
+    }
+
 
     public partial class Set
     {

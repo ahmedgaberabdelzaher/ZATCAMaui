@@ -4479,6 +4479,18 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationAttachmentCopyOfContractAfterClosing" xml:space="preserve">
     <value>Attachments - Copy of Contract After Closing/Update</value>
   </data>
+  <data name="TinDeregistrationAttachmentCopyOfContractOfSaleAgreement" xml:space="preserve">
+    <value>Attachments - Copy of Contract of Sale Agreement</value>
+  </data>
+ <data name="TinDeregistrationAttachmentDeathCertificate" xml:space="preserve">
+    <value>Attachments - Death Certificate of Individual</value>
+  </data>
+   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
+    <value>Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall</value>
+  </data>
+  <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
+    <value>Attachments - Ministerial Resolution to approve the Acquisition process</value>
+  </data>
   <data name="TinDeregistrationAttachmentUploadYourDocument" xml:space="preserve">
     <value>Upload your Document</value>
   </data>

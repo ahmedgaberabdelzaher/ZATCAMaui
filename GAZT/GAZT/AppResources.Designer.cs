@@ -7554,6 +7554,30 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationAttachmentCopyOfContractOfSaleAgreement {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentCopyOfContractOfSaleAgreement", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentDeathCertificate {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentDeathCertificate", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentLiquidation {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentLiquidation", resourceCulture);
+            }
+        }
+        
+        public static string TinDeregistrationAttachmentMinisterialResponse {
+            get {
+                return ResourceManager.GetString("TinDeregistrationAttachmentMinisterialResponse", resourceCulture);
+            }
+        }
+        
         public static string TinDeregistrationAttachmentUploadYourDocument {
             get {
                 return ResourceManager.GetString("TinDeregistrationAttachmentUploadYourDocument", resourceCulture);

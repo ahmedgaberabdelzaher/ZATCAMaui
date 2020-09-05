@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using EGAZT.Models;
+using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -40,6 +42,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 Console.WriteLine(arg);
             });
 
+            Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
+            {
+                if (arg != null)
+                {
+                    viewModel.TinDeregistrationData.AttDetSet.Results = arg.results; 
+                }
+            });
+
             MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
             {
                 if (arg.PickerId == "DeregDatePicker")
@@ -54,6 +64,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             });
 
             viewModel.LoadReasonSet();
+            viewModel.PopulateAttachmentsListViewTemplate();
         }
 
         protected override void OnDisappearing()
@@ -112,17 +123,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             viewModel.SelectedAttachment = e.AddedItems[0] as TinDeregestrationAttachmentsModel;
             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
-
-            if(viewModel.SelectedAttachment.IsAttachmentAttached == true)
-            {
-                viewModel.SelectedAttachment.AttachmentName = string.Empty;
-                viewModel.SelectedAttachment.IsAttachmentAttached = false;
-            }
-            else
-            {
-               // attachmentsListView.SelectedItems.Clear();
-                viewModel.AddAttachmentEx();
-            }
+            viewModel.NewAttachmentClicked();
+            var view = sender as SfListView;
+            view.SelectedItem = null;
+            //if (viewModel.SelectedAttachment.IsAttachmentAttached == true)
+            //{
+            //    viewModel.SelectedAttachment.AttachmentName = string.Empty;
+            //    viewModel.SelectedAttachment.IsAttachmentAttached = false;
+            //}
+            //else
+            //{
+            //    //attachmentsListView.SelectedItems.Clear();
+            //    //viewModel.AddAttachmentEx();
+            //}
         }
 
         private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
@@ -192,6 +205,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             }
                         }
                     }
+
                     if (viewModel.SelectedIdtype == AppResources.ZZIqamaID)
                     {
                         if (viewModel.SelectedIdNumber.Substring(0, 1) != "2")
@@ -252,9 +266,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
                     }
+
                     if (viewModel.SelectedIdtype == AppResources.ZZGCCID)
                     {
-
                         if (viewModel.SelectedIdNumber.Substring(0, 1) == "0")
                         {
                             //Have to change to neww error message
@@ -293,9 +307,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             viewModel.SelectedIdNumber = string.Empty;
                             //EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
-
-
                     }
+
                     if (viewModel.SelectedIdtype == AppResources.ZIBANCompanyID)
                     {
 
@@ -318,11 +331,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                         }
-                      
-
-
                     }
-
                 }
                 else
                 {

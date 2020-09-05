@@ -10815,7 +10815,7 @@ namespace GAZT.Manager
                     /// sap / opu / odata / SAP / ZDP_ITAP_SRV / TPFILLSet(Euser1 = '00000001000008323131',
                     //Fbguid = 'undefined', Fbnum = '81000003264', Fbtyp = 'TPCV', Gpart = '3100088087', Lang = 'EN', Persl = '', Status = 'E0013', Dispflag = '')
 
-                    String url = Constants.TinDeregistrationNewRequestUrl + "Auditorz='',ADegister='1',Taxpayerz='"+ App.LoginDataRetrieved.TIN +"',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='"+ tinDeregistrationResponseModel.Approvez+"',Rejectz='"+tinDeregistrationResponseModel.Rejectz+"',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
+                    String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='"+ App.LoginDataRetrieved.TIN +"',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='"+ tinDeregistrationResponseModel.Approvez+"',Rejectz='"+tinDeregistrationResponseModel.Rejectz+"',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
                     var uri = new Uri(url);
 
                     HttpResponseMessage _tinDeregNewRequestResponse = await client.GetAsync(uri);
@@ -10901,6 +10901,102 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+        public static async Task<TinDeregistrationResponseModel> GaztTinDeregistrationSubmitRequestData(TinDeregistrationResponseModel tinDeregistrationResponseModel)
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                TinDeregistrationResponseModel _newRequestSummaryDataResponse = new TinDeregistrationResponseModel();
+                string NewToken = string.Empty;
+
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    string lang = GetLangZParameterAREN();
+                    string url = Constants.TinDeregistrationNewRequestUrl;
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+
+                    var uri = new Uri(url);
+                    var serilized = JsonConvert.SerializeObject(tinDeregistrationResponseModel);
+
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage tinDeregResponse = await client.PostAsync(uri, contentPost);
+
+                    if (tinDeregResponse != null)
+                    {
+                        if (tinDeregResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = tinDeregResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String TinDeregResponseJson = tinDeregResponse.Content.ReadAsStringAsync().Result;
+
+                        if (tinDeregResponse.StatusCode == HttpStatusCode.BadRequest)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(TinDeregResponseJson);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                ErrorMessageForUnlockAccount = WithReplacedString;
+                                //ErrorMessageForVAT
+                                //throw new GAZTUnlockAccountException(ErrorMessageForUnlockAccount);
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(TinDeregResponseJson))
+                        {
+                            TinDeregResponseJson = JObject.Parse(TinDeregResponseJson)["d"].ToString();
+                            _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregResponseJson);
+                            if (_newRequestSummaryDataResponse == null)
+                            {
+                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        }
+                    }
+                    return _newRequestSummaryDataResponse;
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    Console.WriteLine(ex);
+                    throw new GAZTUnlockAccountException(ex.Message);
+                }
+
+                catch (Exception ex)
+                {
+                    throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
 
         public async static Task<TinDeregistrationReasonSetDataModel> GaztTinDeregistrationReasonData()
         {

@@ -284,7 +284,7 @@
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
 							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                     <custom:BorderlessEntry IsEnabled="{Binding IdNumberText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.IDNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
                                                             VerticalTextAlignment="Start" 
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
@@ -577,13 +577,15 @@
                  <buttons:SfButton Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16"  x:Name="btnOutletContinue" Command="{Binding OutletContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                </Grid>
-              <Grid IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+               <ScrollView IsVisible="{Binding IsAttachmentsViewEnabled}">
+               <Grid IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                      <RowDefinition Height="auto"/>
                      <RowDefinition Height="auto"/>
+                     <RowDefinition Height="*"/>
                      <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
-                     <RowDefinition Height="auto"/>
+                     <RowDefinition Height="*"/>
                      <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -603,105 +605,108 @@
                         <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                 </Grid>
-                <listView:SfListView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                <listView:SfListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="attachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
                                       ItemsSource="{Binding AttachmentsListViewData}" SelectionMode="Single" SelectionBackgroundColor="Transparent" SelectionChanged="attachmentsListView_SelectionChanged" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
 					             <ViewCell>
-                                <StackLayout Spacing="2">
-                                        <!--<Label Text="{Binding FieldTitle}" HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />
-                                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                    <StackLayout Spacing="2">
+                                            <Label Text="{Binding FieldTitle}" HorizontalOptions="StartAndExpand"
+                                                                    Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Start" FlowDirection="LeftToRight" />
+                                                <!--<border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
 
-                                                <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                                    <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                                    <Image HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsAttachmentAttached}">
-                                                        <Image.Source>
-                                                            <FontImageSource FontFamily="UserIconFont" Color="Red" Size="20"
-                                                                     Glyph="{x:Static FontImage:IconFonts.FilePdf}"/>
-                                                        </Image.Source>
-                                                    </Image>
-
-                                                    <Label Style="{StaticResource GAZTCaptionBlackLabel}" Text="{Binding AttachmentName}" IsVisible="true">
-                                                    </Label>
-
-                                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                                        <Image Margin="5,0">
+                                                        <Image HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsAttachmentAttached}">
                                                             <Image.Source>
-                                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
-                                                                            Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="Red" Size="20"
+                                                                         Glyph="{x:Static FontImage:IconFonts.FilePdf}"/>
                                                             </Image.Source>
                                                         </Image>
+
+                                                        <Label Style="{StaticResource GAZTCaptionBlackLabel}" Text="{Binding AttachmentName}" IsVisible="true">
+                                                        </Label>
+
+                                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                            <Image Margin="5,0">
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
+                                                                </Image.Source>
+                                                            </Image>
+                                                        </StackLayout>
                                                     </StackLayout>
+                                                </border:SfBorder >-->
+                                            <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
+                                            ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+                                            OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Grid IsVisible="false" >
+                                                        <Image HorizontalOptions="Center" VerticalOptions="Center">
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="Red" Size="20"
+                                                                            Glyph="{x:Static FontImage:IconFonts.FilePdf}"/>
+                                                            </Image.Source>
+                                                        </Image>
+                                                        <Grid.Triggers>
+                                                                <DataTrigger TargetType="Grid" Binding="{Binding IsAttachmentAttached}" Value="true">
+                                                                    <Setter Property="IsVisible" Value="true"/>
+                                                                </DataTrigger>
+                                                        </Grid.Triggers>
+                                                    </Grid>
+                                                    <Entry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                                       HorizontalTextAlignment="Start" Text="{Binding AttachmentName}"  HeightRequest="20"/>
                                                 </StackLayout>
-                                            </border:SfBorder >-->
-                                        <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0" 
-                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
-                                        OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020">
-                                            <StackLayout Orientation="Horizontal">
-                                                <Grid IsVisible="false" >
-                                                    <Image HorizontalOptions="Center" VerticalOptions="Center">
-                                                        <Image.Source>
-                                                            <FontImageSource FontFamily="UserIconFont" Color="Red" Size="20"
-                                                                        Glyph="{x:Static FontImage:IconFonts.FilePdf}"/>
-                                                        </Image.Source>
-                                                    </Image>
-                                                    <Grid.Triggers>
-                                                            <DataTrigger TargetType="Grid" Binding="{Binding IsAttachmentAttached}" Value="true">
-                                                                <Setter Property="IsVisible" Value="true"/>
-                                                            </DataTrigger>
-                                                    </Grid.Triggers>
-                                                </Grid>
-                                                <Entry IsEnabled="False" Style="{StaticResource DefaultEntry}" Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
-                                                   HorizontalTextAlignment="Start" Text="{Binding AttachmentName}"  HeightRequest="20"/>
-                                            </StackLayout>
 
                                            
-                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Grid>
-                                                    <StackLayout>
-                                                        <Image HorizontalOptions="Center" VerticalOptions="Center" Rotation="90">
-                                                            <Image.Source>
-                                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="20"
-                                                                         Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                            </Image.Source>
-                                                        </Image>
-                                                        <StackLayout.Triggers>
-                                                            <DataTrigger TargetType="StackLayout" Binding="{Binding IsAttachmentAttached}" Value="true">
-                                                                <Setter Property="IsVisible" Value="false"/>
-                                                            </DataTrigger>
-                                                        </StackLayout.Triggers>
-                                                    </StackLayout>
-                                                    <StackLayout IsVisible="false">
-                                                        <Image HorizontalOptions="Center" VerticalOptions="Center" Rotation="90">
-                                                            <Image.Source>
-                                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="20"
-                                                                         Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                                                            </Image.Source>
-                                                        </Image>
-                                                        <StackLayout.Triggers>
-                                                            <DataTrigger TargetType="StackLayout" Binding="{Binding IsAttachmentAttached}" Value="true">
-                                                                <Setter Property="IsVisible" Value="true"/>
-                                                            </DataTrigger>
-                                                        </StackLayout.Triggers>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Grid>
+                                                        <StackLayout>
+                                                            <Image HorizontalOptions="Center" VerticalOptions="Center" Rotation="90">
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="20"
+                                                                             Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
+                                                                </Image.Source>
+                                                            </Image>
+                                                            <StackLayout.Triggers>
+                                                                <DataTrigger TargetType="StackLayout" Binding="{Binding IsAttachmentAttached}" Value="true">
+                                                                    <Setter Property="IsVisible" Value="false"/>
+                                                                </DataTrigger>
+                                                            </StackLayout.Triggers>
+                                                        </StackLayout>
+                                                        <StackLayout IsVisible="false">
+                                                            <Image HorizontalOptions="Center" VerticalOptions="Center" Rotation="90">
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="20"
+                                                                             Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                                                                </Image.Source>
+                                                            </Image>
+                                                            <StackLayout.Triggers>
+                                                                <DataTrigger TargetType="StackLayout" Binding="{Binding IsAttachmentAttached}" Value="true">
+                                                                    <Setter Property="IsVisible" Value="true"/>
+                                                                </DataTrigger>
+                                                            </StackLayout.Triggers>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
 
-                                        </inputLayout:SfTextInputLayout>
-                    <Label Text="{Binding FieldSubTitle}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
-                                                Style="{StaticResource CaptionLabelGrey}" /> 
-                 </StackLayout>
-                            </ViewCell>   
+                                            </inputLayout:SfTextInputLayout>
+                                            <Label Text="{Binding FieldSubTitle}" HorizontalOptions="StartAndExpand" Margin="0,-12,0,0"
+                                                    Style="{StaticResource CaptionLabelGrey}" /> 
+                                     </StackLayout>
+                                  </ViewCell>   
 			                </DataTemplate>
                         </listView:SfListView.ItemTemplate>
                  </listView:SfListView>
 
-                 <buttons:SfButton Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
+                 <buttons:SfButton Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,16" x:Name="btnAttachmentsContinue"
                                    Command="{Binding AttachmentsContinueBtnTapped}" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                    Style="{StaticResource PrimaryButtonStyle}"/>
 
             </Grid>
+
+               </ScrollView>
+
               <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
