@@ -5501,6 +5501,24 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TPPasswordUpdate" xml:space="preserve">
     <value>Password updated</value>
   </data>
+    
+    
+    
+  <data name="TPOldPasswordEmpty" xml:space="preserve">
+    <value>Please enter old pasword</value>
+  </data>
+  <data name="TPNewPasswordEmpty" xml:space="preserve">
+    <value>Please enter new pasword</value>
+  </data>
+  <data name="TPNewMobileNumberEmpty" xml:space="preserve">
+    <value>Please enter new mobile number</value>
+  </data>
+  <data name="TPOTPSentToEmail" xml:space="preserve">
+    <value>Please enter the verification code sent to your email</value>
+  </data>
+    
+    
+    
   <data name="TPSuccessMobileUpdated" xml:space="preserve">
     <value>New Mobile number updated Successfully</value>
   </data>

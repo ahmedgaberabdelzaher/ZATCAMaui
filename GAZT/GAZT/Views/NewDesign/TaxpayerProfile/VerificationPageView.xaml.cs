@@ -48,10 +48,18 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                                     + viewModel.OTPThirdDigit
                                     + viewModel.OTPFourthDigit;
 
+            if (viewModel.EnteredOTP.Length != 4)
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessageBox(AppResources.PleaseenterOTP, AppResources.Information);
+                });
+                return;
+            }
+
             bool callAPIFlag = TaxpayerProfileOTPEmailUpdateValidation(viewModel.CurrentPasswordEntry,
                                                                         viewModel.NewPasswordEntry,
                                                                         viewModel.ConfirmPasswordEntry);
-
             if (callAPIFlag)
             {
                 //viewModel.LoadingStart();
@@ -90,7 +98,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private string VerifyOTPPasswords(string CurrentPassword, string NewPassword, string ConfirmPassword)
         {
-            bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
+            /*bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
 
             if (CurrentPassword == null || NewPassword == null
                                         || ConfirmPassword == null
@@ -105,13 +113,26 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
                 bool passwordValidationRegXFlag = UtilityManager.ValidateNewPasswordForTP(NewPassword);
                 if (passwordValidationRegXFlag)
-                {
                     return string.Empty;
-                }
                 else
-                {
                     return AppResources.PasswordGuidelineText;
-                }
+            }*/
+
+            bool compareStringFlag = string.Equals(NewPassword, ConfirmPassword);
+
+            if (string.IsNullOrEmpty(CurrentPassword))
+                return AppResources.TPOldPasswordEmpty;
+            else if (string.IsNullOrEmpty(NewPassword))
+                return AppResources.TPNewPasswordEmpty;
+            else if (!compareStringFlag)
+                return AppResources.NewPasswordandRetypePasswordNotMatch;
+            else
+            {
+                bool passwordValidationRegXFlag = UtilityManager.ValidateNewPasswordForTP(NewPassword);
+                if (passwordValidationRegXFlag)
+                    return string.Empty;
+                else
+                    return AppResources.PasswordValidationMesseg;
             }
         }
 
@@ -207,6 +228,12 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
             // * Set
             OTPThirdEntry.Unfocus();
+
+            // * Show alert for OTP sent to given email id
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await viewModel._dialogService.ShowMessageBox(AppResources.TPOTPSentToEmail, AppResources.Information);
+            });
         }
 
         protected override void OnDisappearing()

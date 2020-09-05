@@ -101,8 +101,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             if (callAPIFlag)
             {
                 bool PWDSuccess = await viewModel.VarifyMobileNumber();
-                //bool PWDSuccess = await APIManager.VarifyMobileNumber(viewModel.CurrentMobileNumberEntryText, viewModel.NewMobileNumberEntryText);
-                System.Diagnostics.Debug.WriteLine("OTP SUCCESS: ", PWDSuccess);
 
                 if (PWDSuccess)
                 {
@@ -112,7 +110,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     btn.Text = AppResources.Verify;
 
                     var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
-                    viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
+
+                    if(App.IsArabic)
+                        viewModel.OTPSentOnThisMobileNumber = result + "******** " + AppResources.MobileNumber;
+                    else
+                        viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
 
                     // * Start timer period for valid OTP
                     viewModel.StartOTPTimer();
@@ -131,7 +133,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await viewModel._dialogService.ShowMessageBox(AppResources.EnterOTP, AppResources.Information);
+                    await viewModel._dialogService.ShowMessageBox(AppResources.PleaseenterOTP, AppResources.Information);
                 });
                 return;
             }
@@ -163,8 +165,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
                 if (PWDSuccess)
                 {
-                    var result = Regex.Match(viewModel.NewMobileNumberEntryText, UtilityManager.MobileNumberLastThreeDigitsRegX);
-                    viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
+                    //var result = Regex.Match(viewModel.NewMobileNumberEntryText, UtilityManager.MobileNumberLastThreeDigitsRegX);
+                    //viewModel.OTPSentOnThisMobileNumber = AppResources.MobileNumber + " ********" + result;
 
                     // * Start timer period for valid OTP
                     viewModel.StartOTPTimer();
@@ -189,10 +191,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
         private string VerifyCurrentAndNewMobilenNumbers(string CurrentMobileNumber, string NewMobileNumber)
         {
-            if (CurrentMobileNumber == null || NewMobileNumber == null
-                                            || CurrentMobileNumber == string.Empty
-                                            || NewMobileNumber == string.Empty)
-                return AppResources.EnterValidMobileNumber;
+            // * Append country code + mobile number : For comparison OLD + NEW
+            NewMobileNumber = Label_InternationalnoCode.Text + NewMobileNumber;
+            bool compareStringFlag = string.Equals(CurrentMobileNumber, NewMobileNumber);
+
+            if (string.IsNullOrEmpty(NewMobileNumber))
+                return AppResources.TPNewMobileNumberEmpty;
+            else if (compareStringFlag)
+                return AppResources.ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber;
             else
                 return string.Empty;
         }
@@ -232,7 +238,6 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             });
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
             {
-
                 viewModel.MobileCountryCode = arg;
             });
 
