@@ -29,7 +29,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ValidateCR validateCR { get; set; } = null;
         public bool editModeEnabled { get; set; } = false;
         public List<Nreg_ActivityItem> NregActivityList = new List<Nreg_ActivityItem>();
-        //public Nreg_ActivityItem cRActivityItem { get; set; } = null;
+        private Nreg_ActivityItem SelectedLicenseItem = null;
+        private Nreg_ActivityItem SelectedCRItem = null;
         public ActicityListDelegate goBackAction = null;
         private EstablishmentOutletActivitiesTabsEnum _currentTab = EstablishmentOutletActivitiesTabsEnum.CRDetails;
         public EstablishmentOutletActivitiesTabsEnum CurrentTab
@@ -45,11 +46,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         ActivityTitle = AppResources.ESTAddLicense;
                         break;
                     case EstablishmentOutletActivitiesTabsEnum.ActivityList:
-                        ActivityTitle = AppResources.ESTLicenseDetails; 
+                        ActivityTitle = AppResources.ESTLicenseDetails;
                         break;
                     case EstablishmentOutletActivitiesTabsEnum.CRDetails:
                     default:
-                        ActivityTitle = AppResources.ESTCommercialRegistration; 
+                        ActivityTitle = AppResources.ESTCommercialRegistration;
                         break;
                 }
                 fetchTabDataAndBind();
@@ -551,7 +552,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
             {
                 var typeValue = type as string;
-                if (CRsCopies.Count<5 && typeValue=="RG01")
+                if (CRsCopies.Count < 5 && typeValue == "RG01")
                 {
                     Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
                     await AddAttachment(type as string);
@@ -561,7 +562,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
                     await AddAttachment(type as string);
                 }
-                else if (TransferCRsCopies.Count == 5|| CRsCopies.Count ==5)
+                else if (TransferCRsCopies.Count == 5 || CRsCopies.Count == 5)
                 {
                     await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
                 }
@@ -575,7 +576,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else
                 {
-                await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
+                    await _dialogService.ShowError(AppResources.ZMaximumnoof5attachmentscanbeuploaded, "Information", "Ok", null);
                 }
             });
 
@@ -674,9 +675,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             OnDeleteCRsCopyButtonClick = new Command((item) => OnDeleteAttachment(item as Attachment, "RG01"));
             OnDeleteTransferCRsCopyButtonClick = new Command((item) => OnDeleteAttachment(item as Attachment, "RG12"));
-            OnDeleteLicenseCopyButtonClick =  new Command((item) => OnDeleteAttachment(item as Attachment, "RG02"));
+            OnDeleteLicenseCopyButtonClick = new Command((item) => OnDeleteAttachment(item as Attachment, "RG02"));
             OnLicenseSelected = new Command((item) => OpenLicenseFormInEditMode(item as Nreg_ActivityItem));
-            
+
         }
 
         #endregion
@@ -715,6 +716,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         };
 
                         CanExecute = true;
+                        if(SelectedCRItem != null) {
+                            NregActivityList.Remove(SelectedCRItem);
+                            SelectedCRItem = null;
+                        }
+                        if (SelectedLicenseItem != null) {
+                            NregActivityList.Remove(SelectedLicenseItem);
+                            SelectedLicenseItem = null;
+                        }
                         NregActivityList.Add(item);
                         CurrentTab = EstablishmentOutletActivitiesTabsEnum.ActivityList;
                     }
@@ -841,21 +850,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     EnableCRInputField = string.IsNullOrEmpty(validateCR?.Crname);
                     if (editModeEnabled == true)
                     {
-                        RemoveCRFromList();
-                        var CRItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "BUP002");
+                        //RemoveCRFromList();
+                        SelectedCRItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "BUP002");
                         EnableIssueByDropDown = false;
-                        CRNumber = CRItem.Idnumber;
-                        CRIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == CRItem.Country).FirstOrDefault();
-                        CRIssueBy = EnIssueBy[CRItem.Institute];
-                        CRValidFrom = CRItem.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                        CRNumber = SelectedCRItem?.Idnumber;
+                        CRIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedCRItem?.Country).FirstOrDefault();
+                        CRIssueBy = EnIssueBy[SelectedCRItem?.Institute];
+                        CRValidFrom = SelectedCRItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
 
                         CRIssueCity = new CityDropdownItem()
                         {
-                            CityName = CRItem?.City,
-                            CityCode = CRItem.CityCode
+                            CityName = SelectedCRItem?.City,
+                            CityCode = SelectedCRItem?.CityCode
                         };
 
-                        if (CRItem.Actcat.Equals("M"))
+                        if (SelectedCRItem.Actcat.Equals("M"))
                         {
                             MainActivity = true;
                         }
@@ -863,71 +872,80 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             MainActivity = false;
                         }
-                  updateActivityList(CRItem.Activity);
-                        CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == CRItem.Activity).FirstOrDefault();
-                        CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == CRItem.ActMgrp).FirstOrDefault();
-                        CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == CRItem.ActSgrp).FirstOrDefault();
-                        var docPassportResult = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG19").ToList();
+                        updateActivityList(SelectedCRItem?.Activity);
+                        CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedCRItem?.Activity).FirstOrDefault();
+                        CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActMgrp).FirstOrDefault();
+                        CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActSgrp).FirstOrDefault();
+                        //var docPassportResult = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG19").ToList();
                         List<Attachment> list = new List<Attachment>();
-                       var lists = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG01" && x.OutletRef == string.Format("{0}-{1}", CRItem.Actno, CRItem.Idnumber)).ToList();
-                        foreach (AttDetItem attDetItem in lists)
+                        var lists = taxPayerDetails.AttDetSet.results.Where(x => {
+                            var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, SelectedCRItem?.Idnumber);
+                            var outRef = x.OutletRef == docIdentifier;
+                            return x.Dotyp == "RG01" && outRef;
+                        }).ToList();
+                        if (lists.Count > 0)
                         {
-                            var obj = new Attachment();
-                            obj.Filename = attDetItem.Filename;
-                            obj.FileExtn = attDetItem.FileExtn;
-                            obj.Mimetype = attDetItem.Mimetype;
-                            obj.RetGuid = attDetItem.RetGuid;
-                            obj.DocUrl = attDetItem.DocUrl;
-                            obj.Dotyp = attDetItem.Dotyp;
-                            obj.Doguid = attDetItem.Doguid;
-                            obj.OutletRef = attDetItem.OutletRef;
-
-                            list.Add(obj);
+                            foreach (AttDetItem attDetItem in lists)
+                            {
+                                var obj = new Attachment();
+                                obj.Filename = attDetItem.Filename;
+                                obj.FileExtn = attDetItem.FileExtn;
+                                obj.Mimetype = attDetItem.Mimetype;
+                                obj.RetGuid = attDetItem.RetGuid;
+                                obj.DocUrl = attDetItem.DocUrl;
+                                obj.Dotyp = attDetItem.Dotyp;
+                                obj.Doguid = attDetItem.Doguid;
+                                list.Add(obj);
+                            }
+                            CRsCopies = new ObservableCollection<Attachment>(list);
                         }
 
-                        CRsCopies = new ObservableCollection<Attachment>(list);
-
-
-                         lists = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG12" && x.OutletRef == string.Format("{0}-{1}", CRItem.Actno, CRItem.Idnumber)).ToList();
-                        foreach (AttDetItem attDetItem in lists )
+                        lists = taxPayerDetails.AttDetSet.results.Where(x => {
+                            var docIdentifier = string.Format("{0}-{1}", SelectedCRItem?.Actno, SelectedCRItem?.Idnumber);
+                            var outRef = x.OutletRef == docIdentifier;
+                            return x.Dotyp == "RG12" && outRef;
+                        }).ToList();
+                        if (lists.Count > 0)
                         {
-                            var obj = new Attachment();
-                            obj.Filename = attDetItem.Filename;
-                            obj.FileExtn = attDetItem.FileExtn;
-                            obj.Mimetype = attDetItem.Mimetype;
-                            obj.RetGuid = attDetItem.RetGuid;
-                            obj.DocUrl = attDetItem.DocUrl;
-                            obj.Dotyp = attDetItem.Dotyp;
-                            obj.Doguid = attDetItem.Doguid;
-                            list.Add(obj);
+                            foreach (AttDetItem attDetItem in lists)
+                            {
+                                var obj = new Attachment();
+                                obj.Filename = attDetItem.Filename;
+                                obj.FileExtn = attDetItem.FileExtn;
+                                obj.Mimetype = attDetItem.Mimetype;
+                                obj.RetGuid = attDetItem.RetGuid;
+                                obj.DocUrl = attDetItem.DocUrl;
+                                obj.Dotyp = attDetItem.Dotyp;
+                                obj.Doguid = attDetItem.Doguid;
+                                list.Add(obj);
+                            }
+
+                            TransferCRsCopies = new ObservableCollection<Attachment>(list);
                         }
-
-                        TransferCRsCopies = new ObservableCollection<Attachment>(list);
-
-
-                        //  CRsCopies = new ObservableCollection<Attachment>(lists); 
                     }
+                    if(!string.IsNullOrEmpty(CRNumber))
+                        validateCRNumber();
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {
                     OutletDropDowns = await WebServiceManager.ESTOutletDropDowns();
                     activityList = await WebServiceManager.ESTOutletGetActivitySetsList();
 
-                    if (editModeEnabled == true)
+                    if (editModeEnabled == true && SelectedLicenseItem != null)
                     {
-                        var LicenseItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "ZS0004");
+                        //SelectedLicenseItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "ZS0004");
 
-                        LicenseNumber = LicenseItem.Idnumber;
-                        LicenseIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == LicenseItem.Country).FirstOrDefault();
-                        CRIssueBy = EnIssueBy[LicenseItem.Institute];
-                        CRValidFrom = LicenseItem.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                        LicenseNumber = SelectedLicenseItem?.Idnumber;
+                        LicenseIssueCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == SelectedLicenseItem?.Country).FirstOrDefault();
+                        CRIssueBy = EnIssueBy[SelectedLicenseItem?.Institute];
+                        CRValidFrom = SelectedLicenseItem?.ValidDateFrom?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                         LicenseIssueCity = new CityDropdownItem()
                         {
-                            CityName = LicenseItem?.City,
-                            CityCode = LicenseItem.CityCode
+                            CityName = SelectedLicenseItem?.City,
+                            CityCode = SelectedLicenseItem?.CityCode
                         };
 
-                        if (LicenseItem.Actcat.Equals("M"))
+                        if (SelectedLicenseItem.Actcat.Equals("M"))
                         {
                             MainActivity = true;
                         }
@@ -935,34 +953,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             MainActivity = false;
                         }
-                        updateActivityList(LicenseItem.Activity);
+                        updateActivityList(SelectedLicenseItem?.Activity);
                         var a = activityList;
-                        LicenseAcitivity = activityList.activitySet.results.Where(i => i.IndSector == LicenseItem.Activity).FirstOrDefault();
-                        LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == LicenseItem.ActMgrp).FirstOrDefault();
-                        LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == LicenseItem.ActSgrp).FirstOrDefault();
+                        LicenseAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedLicenseItem?.Activity).FirstOrDefault();
+                        LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActMgrp).FirstOrDefault();
+                        LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedLicenseItem?.ActSgrp).FirstOrDefault();
 
                         List<Attachment> list = new List<Attachment>();
-                        var lists = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG02" && x.OutletRef == string.Format("{0}-{1}", LicenseItem.Actno, LicenseItem.Idnumber)).ToList();
-                        foreach (AttDetItem attDetItem in lists)
+                        var lists = taxPayerDetails.AttDetSet.results.Where(x => x.Dotyp == "RG02" && x.OutletRef == string.Format("{0}-{1}", SelectedLicenseItem?.Actno, SelectedLicenseItem?.Idnumber)).ToList();
+                        if (lists.Count > 0)
                         {
-                            var obj = new Attachment();
-                            obj.Filename = attDetItem.Filename;
-                            obj.FileExtn = attDetItem.FileExtn;
-                            obj.Mimetype = attDetItem.Mimetype;
-                            obj.RetGuid = attDetItem.RetGuid;
-                            obj.DocUrl = attDetItem.DocUrl;
-                            obj.Dotyp = attDetItem.Dotyp;
-                            obj.Doguid = attDetItem.Doguid;
-                            list.Add(obj);
+                            foreach (AttDetItem attDetItem in lists)
+                            {
+                                var obj = new Attachment();
+                                obj.Filename = attDetItem.Filename;
+                                obj.FileExtn = attDetItem.FileExtn;
+                                obj.Mimetype = attDetItem.Mimetype;
+                                obj.RetGuid = attDetItem.RetGuid;
+                                obj.DocUrl = attDetItem.DocUrl;
+                                obj.Dotyp = attDetItem.Dotyp;
+                                obj.Doguid = attDetItem.Doguid;
+                                list.Add(obj);
+                            }
+
+                            LicensesCopies = new ObservableCollection<Attachment>(list);
                         }
-
-                        LicensesCopies = new ObservableCollection<Attachment>(list);
-
                     }
-                    else
-                    {
-                        LicenseData = NregActivityList.Where(i => i.Type == "ZS0004").ToList();
-                    }
+                }
+                else
+                {
+                    LicenseData = NregActivityList.Where(i => i.Type == "ZS0004").ToList();
                 }
             }
             catch (Exception e)
@@ -1104,10 +1124,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool ValidateForm()
         {
-            if(CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+            if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
             {
-                if(CRIssueCountry == null
-                    ||string.IsNullOrEmpty(CRIssueBy)
+                if (CRIssueCountry == null
+                    || string.IsNullOrEmpty(CRIssueBy)
                     || CRIssueCity == null
                     || string.IsNullOrEmpty(CRNumber)
                     || string.IsNullOrEmpty(CRValidFrom)
@@ -1122,7 +1142,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     return true;
                 }
             }
-            else if(CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+            else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
                 if (LicenseIssueCountry == null
                                    || string.IsNullOrEmpty(LicenseIssueBy)
@@ -1149,32 +1169,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             _dialogService.ShowError(_message, AppResources.Information, "Ok", null);
         }
 
-        
+
         public void OpenLicenseFormInEditMode(Nreg_ActivityItem LicenseData)
         {
-            if(editModeEnabled == true)
+            if (editModeEnabled == true)
             {
                 CurrentTab = EstablishmentOutletActivitiesTabsEnum.LicenseDetails;
-
+                SelectedLicenseItem = LicenseData;
             }
         }
 
-        private void PopulateExistingCR(Nreg_ActivityItem CRItem)
-        {
-          
-                
-        }
+        //private void PopulateExistingCR(Nreg_ActivityItem CRItem)
+        //{
 
-        private void RemoveCRFromList()
-        {
-            foreach(var obj in  NregActivityList)
-            {
-                if(obj.Type.Equals("BUP002"))
-                {
-                    NregActivityList.Remove(obj);
-                }
-            }      
-        }
+
+        //}
+
+        //private void RemoveCRFromList()
+        //{
+        //    foreach (var obj in NregActivityList)
+        //    {
+        //        if (obj.Type.Equals("BUP002"))
+        //        {
+        //            NregActivityList.Remove(obj);
+        //        }
+        //    }
+        //}
 
 
         #endregion

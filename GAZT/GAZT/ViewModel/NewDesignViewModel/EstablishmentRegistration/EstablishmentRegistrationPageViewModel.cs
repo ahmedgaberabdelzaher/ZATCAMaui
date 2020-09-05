@@ -1031,7 +1031,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public ICommand OnPassportAttachmentTapped { get; set; }
 
         public ICommand TappedOnAttachmentInformationIcon { get; set; }
-        
+
         public ICommand OnPassportCloseTapped { get; set; }
 
         public ICommand OnDeleteAttachmentClickedTapped { get; set; }
@@ -1063,7 +1063,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
 
-            OnNextButtonClick = new Command(() => navigateToNext(), ()=> CanExecute);
+            OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() => navigateToPre());
 
             #region Registration Tab Variable initialization
@@ -1185,7 +1185,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region Summary Tabs variable initialization
             OnExpendGridViewClick = new Command((_enum) => OnExpandCollapseGridViewClick(_enum));
-            OnEditPageViewClick = new Command((_enum) => {
+            OnEditPageViewClick = new Command((_enum) =>
+            {
                 currentTab = (EstablishmentRegistrationTabsEnum)_enum;
             });
             OutletList.Clear();
@@ -1202,10 +1203,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (actionName == AppResources.Save)
                     {
                         IsLoading = true;
-                        taxPayerDetails.Draftfg = "X";
-                        taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
-                        taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
-                        IsLoading = false;
+                        try
+                        {
+                            taxPayerDetails.Draftfg = "X";
+                            taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                            var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.StackTrace);
+                            if (e is HTTPBadRequestException)
+                            {
+                                await _dialogService.ShowMessage(e.Message, AppResources.Information);
+                            }
+                        }
+                        finally
+                        {
+                            IsLoading = false;
+                        }
                     }
                     if (actionName == AppResources.ZZVoid)
                     {
@@ -1216,17 +1231,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 OnVoidSelect = async (notes) =>
                                 {
                                     IsLoading = true;
-                                    OffNotes note = new OffNotes()
+                                    try
                                     {
-                                        Tdline = notes,
-                                        ByGpartz = App.LoginDataRetrieved.TIN
-                                    };
-                                    taxPayerDetails?.off_notesSet.results?.Clear();
-                                    taxPayerDetails?.off_notesSet.results?.Add(note);
-                                    taxPayerDetails.Operationx = "04";
-                                    taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
-                                    var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
-                                    IsLoading = false;
+                                        OffNotes note = new OffNotes()
+                                        {
+                                            Tdline = notes,
+                                            ByGpartz = App.LoginDataRetrieved.TIN
+                                        };
+                                        taxPayerDetails?.off_notesSet.results?.Clear();
+                                        taxPayerDetails?.off_notesSet.results?.Add(note);
+                                        taxPayerDetails.Operationx = "04";
+                                        taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                                        var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                                        navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        Console.WriteLine(e.StackTrace);
+                                        if (e is HTTPBadRequestException)
+                                        {
+                                            await _dialogService.ShowMessage(e.Message, AppResources.Information);
+                                        }
+                                    }
+                                    finally
+                                    {
+                                        IsLoading = false;
+                                    }
                                 }
                             };
                             await PopupNavigation.Instance.PushAsync(voidNotePop);
@@ -1325,15 +1355,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                   
-                        if (await PushDatatoServer(currentTab))
-                        {
-                            currentTab = EstablishmentRegistrationTabsEnum.Declaration;
-                        }
-                        else
-                        {
-                            ShowValidationPopup(failedMesage);
-                        }
+
+                    if (await PushDatatoServer(currentTab))
+                    {
+                        currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                    }
+                    else
+                    {
+                        ShowValidationPopup(failedMesage);
+                    }
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
@@ -1409,7 +1439,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 _navigationService.GoBack();
             }
-          
+
         }
 
 
@@ -1626,7 +1656,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             //if (ReportingBranchList == null || ReportingBranchList?.Count == 0)
             //{
-                ReportingBranchList = await WebServiceManager.ESTBranchesDropDown();
+            ReportingBranchList = await WebServiceManager.ESTBranchesDropDown();
             //}
 
         }

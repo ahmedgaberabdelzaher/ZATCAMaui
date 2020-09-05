@@ -99,9 +99,9 @@
                         <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="0">
                             <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16">
 
-                                  <customOne:GAZTBorderlessEntry.Behaviors>
-                                       <custom:NumericValidationBehavior/>
-                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+                                <customOne:GAZTBorderlessEntry.Behaviors>
+                                    <custom:NumericValidationBehavior/>
+                                </customOne:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -143,9 +143,9 @@
                             </custom:CustomLabel>
                             <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"/> 
+                                    <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"/>
                                 </Image.GestureRecognizers>
-                                </Image>
+                            </Image>
                         </StackLayout>
                         <buttons:SfButton ShowIcon="True" ImageSource="ic_attachment" ImageAlignment="End"
                                           Command="{Binding OnTransferCopyOfCRChoiceButtonClick}" CommandParameter="RG01"
@@ -153,7 +153,7 @@
                                           Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
                                           BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10"
                                           TextColor="{StaticResource NeutralGreay}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
-                            
+
                         </buttons:SfButton>
                         <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding CRsCopies}">
                             <BindableLayout.ItemTemplate>
@@ -261,10 +261,9 @@
                                         <custom:CustomLabel Grid.Column="0" Text="{Binding Idnumber}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="16" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
                                         <Image Grid.Column="1" Source="check_oval.png" IsVisible="{Binding Actcat, Converter={StaticResource isMainActivityConverter}}" HorizontalOptions="Center" VerticalOptions="Center" />
                                         <Image Grid.Column="2" Source="arrowRight.png" HorizontalOptions="Center" VerticalOptions="Center" >
-
                                             <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnLicenseSelected}" CommandParameter="{Binding .}" ></TapGestureRecognizer>
-                                        </Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnLicenseSelected}" CommandParameter="{Binding .}" ></TapGestureRecognizer>
+                                            </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
                                 </cards:SfCardView>
@@ -319,9 +318,9 @@
 
                             <custom:GAZTBorderlessEntry Text="{Binding LicenseNumber}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
 
-                                  <customOne:GAZTBorderlessEntry.Behaviors>
-                                       <custom:NumericValidationBehavior/>
-                                                        </customOne:GAZTBorderlessEntry.Behaviors>
+                                <customOne:GAZTBorderlessEntry.Behaviors>
+                                    <custom:NumericValidationBehavior/>
+                                </customOne:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
 
                         </inputLayout:SfTextInputLayout>
@@ -363,10 +362,10 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center">
-                                 <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"></TapGestureRecognizer>
-                                    </Image.GestureRecognizers>
-                                    </Image>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                            </Image>
                         </StackLayout>
                         <buttons:SfButton ShowIcon="True"  ImageSource="ic_attachment"  ImageAlignment="End" Command="{Binding OnTransferCopyOfLicenseChoiceButtonClick}"
                                           CommandParameter="RG02"  Style="{StaticResource NoBackgroundButtonStyle}"
@@ -375,7 +374,7 @@
                                           FontSize="14"
                                           Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
                                           HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0">
-                         
+
                         </buttons:SfButton>
                         <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding LicensesCopies}">
                             <BindableLayout.ItemTemplate>
