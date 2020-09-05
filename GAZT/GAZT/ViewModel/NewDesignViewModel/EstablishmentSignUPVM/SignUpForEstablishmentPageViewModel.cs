@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.Models.EnumModels;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -16,6 +17,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Input;
 using Xamarin.Forms;
 //MobileVerification = SummaryView
@@ -28,9 +30,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public int DefaultMonth;
+        public int countDownSeconds;
         public DateTime dateTime { get; set; }
         public int numberOfSeconds = 120;
         int TotalSec;
+        public System.Timers.Timer otpTimer;
         public bool StopTimer = false;
         public VATSignUpData vATSignUpData { get; set; }
         public VATSignUpCaseId SignUpCaseIdD { get; set; }
@@ -110,6 +114,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 _maxDigids = value;
                 RaisePropertyChanged("MaxDigids");
+            }
+        }
+        private string _PickerDobToDisplay = string.Empty;
+        public string PickerDobToDisplay
+        {
+            get
+            {
+                return _PickerDobToDisplay;
+            }
+            set
+            {
+                _PickerDobToDisplay = value;
+                RaisePropertyChanged("PickerDobToDisplay");
+            }
+        }
+        private bool _IsNextButtonEnable = true;
+        public bool IsNextButtonEnable
+        {
+            get
+            {
+                return _IsNextButtonEnable;
+            }
+            set
+            {
+                _IsNextButtonEnable = value;
+                RaisePropertyChanged("IsNextButtonEnable");
+            }
+        }
+        private string _EncriptedMobileNumberforOtpscreen = "xxxxxxxx6494";
+        public string EncriptedMobileNumberforOtpscreen
+        {
+            get
+            {
+                return _EncriptedMobileNumberforOtpscreen;
+            }
+            set
+            {
+                _EncriptedMobileNumberforOtpscreen = value;
+                RaisePropertyChanged("EncriptedMobileNumberforOtpscreen");
             }
         }
 
@@ -1728,7 +1771,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        //  await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
                     }
 
                         
@@ -1743,8 +1787,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information); 
-                                                }
+                       //     _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                    }
                     
                     break;
 
@@ -1762,7 +1807,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         }
                         else
                         {
-                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                           // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                         }
                     }
                     //License Number Validation
@@ -1785,7 +1831,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                         }
                         else {
-                            _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+//                            //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                         }
                         
                     }
@@ -1811,7 +1858,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                     else
                     {
-                        _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                       // _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                     }
 
                     break;
@@ -1851,7 +1899,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                                             PageTitle = AppResources.CRSummary;
                         BodyText = AppResources.CRReviewthebelowinformation;
                         NextBTN = AppResources.ZZZZContinue;
-                        CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                    IsNextButtonEnable = true; IsResendOTPEnabled = false;
+                    try
+                    {
+                        otpTimer.Stop();
+
+                    }
+                    catch (Exception ex)
+                    { 
+                    
+                    }
+                    
+                    CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
                     break;
 
                 case EstablishmentSignUPTabEnum.MobileVerification:
@@ -1892,7 +1951,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             IdNumber = string.Empty;
             Name = string.Empty;
             DOB = string.Empty;
-            
+            IsNextButtonEnable = true; 
+            IsResendOTPEnabled = false;
             Email = string.Empty;
             //ConfirmEmail = string.Empty;
             MobileNumber = string.Empty;
@@ -2010,83 +2070,95 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         private async Task ResendOTPAsync()
         {
-            OTPFirstDigit = string.Empty;
-            OTPSecondDigit = string.Empty;
-            OTPThirdDigit = string.Empty;
-            OTPFourthDigit = string.Empty;
-
-            MOTPFirstDigit = string.Empty;
-            MOTPSecondDigit = string.Empty;
-            MOTPThirdDigit = string.Empty;
-            MOTPFourthDigit = string.Empty;
-
-            try
+            if (IsResendOTPEnabled)
             {
-                await Task.Run(async () =>
+                
+                OTPFirstDigit = string.Empty;
+                OTPSecondDigit = string.Empty;
+                OTPThirdDigit = string.Empty;
+                OTPFourthDigit = string.Empty;
+
+                MOTPFirstDigit = string.Empty;
+                MOTPSecondDigit = string.Empty;
+                MOTPThirdDigit = string.Empty;
+                MOTPFourthDigit = string.Empty;
+
+                try
                 {
-                    try
+                    await Task.Run(async () =>
                     {
-                        SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
-                        CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
-                        CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
-                        CreateModel.ACityCode = SignUpModelRootObjectM.d.ACityCode;
-                        CreateModel.ACommId = SignUpModelRootObjectM.d.ACommId;
-                        CreateModel.AEmail = SignUpModelRootObjectM.d.AEmail;
-                        CreateModel.AFirstname = SignUpModelRootObjectM.d.AFirstname;
-                        CreateModel.AIdnumber = SignUpModelRootObjectM.d.AIdnumber;
-                        CreateModel.AIdtype = SignUpModelRootObjectM.d.AIdtype;
-                        CreateModel.AIssuedBy = SignUpModelRootObjectM.d.AIssuedBy;
-                        CreateModel.ALang = SignUpModelRootObjectM.d.ALang;
-                        CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
-                        CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
-                        CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
-                        CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
+                        try
+                        {
+                            SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
+                            CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
+                            CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
+                            CreateModel.ACityCode = SignUpModelRootObjectM.d.ACityCode;
+                            CreateModel.ACommId = SignUpModelRootObjectM.d.ACommId;
+                            CreateModel.AEmail = SignUpModelRootObjectM.d.AEmail;
+                            CreateModel.AFirstname = SignUpModelRootObjectM.d.AFirstname;
+                            CreateModel.AIdnumber = SignUpModelRootObjectM.d.AIdnumber;
+                            CreateModel.AIdtype = SignUpModelRootObjectM.d.AIdtype;
+                            CreateModel.AIssuedBy = SignUpModelRootObjectM.d.AIssuedBy;
+                            CreateModel.ALang = SignUpModelRootObjectM.d.ALang;
+                            CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
+                            CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
+                            CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
+                            CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
 
-                        CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
-                        CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
-                        CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
-                        CreateModel.AType = SignUpModelRootObjectM.d.AType;
-                        CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
-                        string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
-                        SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
-                        if (ResultFirstSubmitModel.d == null)
+                            CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
+                            CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
+                            CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
+                            CreateModel.AType = SignUpModelRootObjectM.d.AType;
+                            CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
+                            string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
+                            SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                            if (ResultFirstSubmitModel.d == null)
+                            {
+                                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                  //  _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+                                });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                   // _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou, AppResources.Information);
+                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
+                                });
+                                ButtonDisableColor = Color.FromHex("#9EA4A9");
+                                ButtonDisableTextColor = Color.Gray;
+                                VerifyButtonDisableColor = Color.FromHex("#006450");
+                                VerifyButtonDisableTextColor = Color.White;
+                                IsResendOTPEnabled = false;
+                                IsVerifyOTPEnabled = true;
+                                IsOTPEntryEnable = true;
+                                //numberOfSeconds = 120;
+                                //TimerStart(numberOfSeconds);
+                                StartOTPTimer();
+                                IsNextButtonEnable = true;
+                                IsResendOTPEnabled = false;
+                            }
+                        }
+                        catch (InternetException ex)
                         {
-                            SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                               // _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou, AppResources.Information);
-                            });
-                            ButtonDisableColor = Color.FromHex("#9EA4A9");
-                            ButtonDisableTextColor = Color.Gray;
-                            VerifyButtonDisableColor = Color.FromHex("#006450");
-                            VerifyButtonDisableTextColor = Color.White;
-                            IsResendOTPEnabled = false;
-                            IsVerifyOTPEnabled = true;
-                            IsOTPEntryEnable = true;
-                            numberOfSeconds = 120;
-                            TimerStart(numberOfSeconds);
-                        }
-                    }
-                    catch (InternetException ex)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        });
-                    }
-                });
+                    });
+                }
+                catch (InternetException ex)
+                {
+                    //await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                }
             }
-            catch (InternetException ex)
-            {
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-            }
+            
 
         }
 
@@ -2110,7 +2182,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     //UpUsingList = null;
                     IsCRVisible = true;
                     IsLicenseVisible = false;
-                    List<SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
+                    SignUpUsingList = new List<SignUpUsing>();
+                    List <SignUpUsing> ListSignUpUsing = new List<SignUpUsing>();
                     ListSignUpUsing.Add(new SignUpUsing { ID = 1, SUType = AppResources.ZZNationalID });
                     ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
                     ListSignUpUsing.Add(new SignUpUsing { ID = 3, SUType = AppResources.ZZGCCID });
@@ -2152,7 +2225,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     {
                         IsLoading = false;
                     });
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                 //   _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
             }
@@ -2166,7 +2240,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             });
             try
             {
-                IssuedByList = null;
+                // IssuedByList = null;
+                IssuedByList = new List<IssuedByResponse>();
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
                 var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
                 IssuedByList = new List<IssuedByResponse>(IssuedBy);
@@ -2197,7 +2272,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                   // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2210,7 +2286,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                  //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2222,7 +2299,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                   // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2246,8 +2324,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 CityList = null;
                 SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
                 List<SignupCityResult> CityR = new List<SignupCityResult>();
-                IsCRChecked = true;
-                IsLNChecked = false;
                 CityR = CityListSignup.d.city_dropdownSet.results;
                 CityList = CityR;
             }
@@ -2277,7 +2353,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                   // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2289,7 +2366,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                   // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2301,7 +2379,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     IsLoading = false;
 
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     //_navigationService.GoBack();
                 });
             }
@@ -2480,7 +2559,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             IsLoading = false;
                         });
                         SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                        _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                       // _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                      PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+
 
                     }
                     else
@@ -2498,9 +2579,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                   // _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
+        }
+
+
+
+        private void OnCountDownTimedOTPEvent(object sender, ElapsedEventArgs e)
+        {
+            countDownSeconds--;
+
+            /*if (countDownSeconds <= 9)
+                LblCountDownTimer = "0:0" + countDownSeconds.ToString();
+            else
+                LblCountDownTimer = "0:" + countDownSeconds.ToString();*/
+
+
+            if (countDownSeconds <= 9)
+                LblCountDownTimer = "0:0" + countDownSeconds.ToString();
+            else if (countDownSeconds > 60)
+            {
+                int countDownSecondsL = countDownSeconds - 60;
+                LblCountDownTimer = "1:" + countDownSecondsL.ToString();
+
+                if (countDownSecondsL <= 9)
+                    LblCountDownTimer = "1:0" + countDownSecondsL.ToString();
+            }
+            else
+                LblCountDownTimer = "0:" + countDownSeconds.ToString();
+
+
+            // Stop timer
+            if (countDownSeconds == 0)
+            {
+                //ContinueButtonEnability = false;
+                IsResendOTPEnabled = true;
+                IsNextButtonEnable = false;
+                otpTimer.Stop();
+            }
+        }
+
+        public void StartOTPTimer()
+        {
+            // Timer            
+            otpTimer = new System.Timers.Timer();
+            otpTimer.Interval = 1000;
+
+            // Event
+            otpTimer.Elapsed += OnCountDownTimedOTPEvent;
+
+            countDownSeconds = 120;
+            LblCountDownTimer = "0." + countDownSeconds.ToString();
+
+            otpTimer.Enabled = true;
         }
         #endregion
 

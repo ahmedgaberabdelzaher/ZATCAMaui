@@ -22,9 +22,10 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
-    public class EstablishmentRegistrationPageViewModel : BaseViewModel, INotifyPropertyChanged
+    public class EstablishmentRegistrationPageViewModel : BaseViewModel
     {
         #region Variable
+        //public int DefaultMonth;
         private TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
         private OutletNumber number;
@@ -513,7 +514,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private string _selectedDOB = "26/08/2020";
+        //private ObservableCollection<object> _todayDate;
+        //public ObservableCollection<object> TodayDate
+        //{
+        //    get
+        //    {
+        //        return _todayDate;
+        //    }
+        //    set
+        //    {
+        //        _todayDate = value;
+        //        RaisePropertyChanged("TodayDate");
+        //    }
+        //}
+
+        private string _selectedDOB = string.Empty;
         public string SelectedDOB
         {
             get => _selectedDOB;
@@ -949,11 +964,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
 
-
+        private bool _canExecute = true;
+        public bool CanExecute
+        {
+            get => _canExecute;
+            set
+            {
+                _canExecute = value;
+                RaisePropertyChanged(nameof(CanExecute));
+            }
+        }
         #region Commands
 
 
-        public ICommand OnNextButtonClick { get; set; }
+        public Command OnNextButtonClick { get; set; }
         public ICommand OnPreButtonClick { get; set; }
         public ICommand OnVoidOrSaveDraftClick { get; set; }
 
@@ -1039,7 +1063,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
 
-            OnNextButtonClick = new Command(() => navigateToNext());
+            OnNextButtonClick = new Command(() => navigateToNext(), ()=> CanExecute);
             OnPreButtonClick = new Command(() => navigateToPre());
 
             #region Registration Tab Variable initialization
@@ -1201,7 +1225,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                     taxPayerDetails?.off_notesSet.results?.Add(note);
                                     taxPayerDetails.Operationx = "04";
                                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
-                                    taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                                    var _taxPayerDetails = await WebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                     IsLoading = false;
                                 }
                             };
@@ -1217,7 +1241,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #endregion
 
         #region Method
-        public async void OnAppearing()
+        public void OnAppearing()
         {
             //var branchTask = GetReportingBranchListFromServer();
             //var nationalityTask = GetPdNationalityListFromServer(null);
@@ -1228,8 +1252,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        //public async Task SetDefaultDate()
+        //{
+        //    ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+        //    //Select today dates
+
+        //    if (DateTime.Now.Date.Day < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Day);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Day.ToString());
+        //    if (DateTime.Now.Date.Month < 10)
+        //        todaycollection.Add("0" + DateTime.Now.Date.Month);
+        //    else
+        //        todaycollection.Add(DateTime.Now.Date.Month.ToString());
+        //    todaycollection.Add(DateTime.Now.Date.Year.ToString());
+        //    TodayDate = todaycollection;
+        //    DefaultMonth = DateTime.Now.Date.Month;
+        //}
+
         private async void navigateToNext()
         {
+            CanExecute = false;
             try
             {
                 var failedMesage = AppResources.Somethingwentwrong;
@@ -1334,6 +1377,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception e)
             {
 
+            }
+            finally
+            {
+                CanExecute = true;
             }
         }
         private void navigateToPre()
@@ -1730,18 +1777,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     string base64String = Convert.ToBase64String(attachmentByte, 0, attachmentByte.Length);
                     var attachmentName = fileData.FileName;
-
+                    bool isFileAlreayUploaded = IsFileAlreadyAttached(docType,attachmentName);
                     float sizemb = (attachmentByte.Length / 1024f) / 1024f;
                     decimal attachmentSize = 0;
                     attachmentSize = attachmentSize + (Decimal)sizemb;
-
-                    if (fileData.FileName.Contains("."))
+                    if (!isFileAlreayUploaded)
                     {
-                        string Extention = fileData.FileName.Split('.')[1];//pdf
-                        if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
+                        if (fileData.FileName.Contains("."))
                         {
-                            if (TotalAttachmentSize <= 30)
+                            string Extention = fileData.FileName.Split('.')[1];//pdf
+                            if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
                             {
+
                                 attachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 2);
                                 decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 4);
                                 if (Convert.ToDecimal(attachmentSize) <= 10)
@@ -1774,14 +1821,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         attachmentName = string.Empty;
                                         await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
+
+                                }
+                                else
+                                {
+                                    await _dialogService.ShowMessage("File size is with more 10 MB can not be uploaded", AppResources.Information);
                                 }
                             }
-                        }
-                        else
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            else
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            }
                         }
                     }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
+
+                            //await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
+                            IsLoading = false;
+                        });
+                    }
+                        
                 }
 
             }
@@ -2132,7 +2195,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private bool FormValidation(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
+            //return true;
             try
             {
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
@@ -2242,7 +2305,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task<bool> PushDatatoServer(EstablishmentRegistrationTabsEnum _enum)
         {
-            return true;
+            //return true;
             try
             {
                 IsLoading = true;
@@ -2374,6 +2437,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 ex.ToString();
+                if (ex is HTTPBadRequestException)
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                }
             }
             finally
             {
@@ -2439,6 +2506,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+
+        private bool IsFileAlreadyAttached(string doctype, string FileName)
+        {
+            bool isFileAlreadyAttached = false;
+            if(doctype.Equals("RG16"))//Rent
+            {
+                if (UploadedRentDocumentsList != null && UploadedRentDocumentsList.Count > 0)
+                {
+                    for (int i = 0; i < UploadedRentDocumentsList.Count; i++)
+                    {
+                        if (UploadedRentDocumentsList[i].Filename.Equals(FileName))
+                            isFileAlreadyAttached = true;
+                        else
+                            isFileAlreadyAttached = false;
+                        if (isFileAlreadyAttached)
+                            break;
+                    }
+                }
+            }
+            else if(doctype.Equals("RG19"))//PAssport
+            {
+                if (UploadedPassportDocumentsList != null && UploadedPassportDocumentsList.Count > 0)
+                {
+                    for (int i = 0; i < UploadedPassportDocumentsList.Count; i++)
+                    {
+                        if (UploadedPassportDocumentsList[i].Filename.Equals(FileName))
+                            isFileAlreadyAttached = true;
+                        else
+                            isFileAlreadyAttached = false;
+                        if (isFileAlreadyAttached)
+                            break;
+                    }
+                }
+            }
+           
+            return isFileAlreadyAttached;
+        }
 
 
         #endregion

@@ -46,7 +46,11 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Row="0" Grid.Column="0">
-                            <Image Source="{Binding IndividualBackImg}"/>
+                            <Image Source="{Binding IndividualBackImg}">
+                              
+                            </Image>
+                            
+
                             <StackLayout VerticalOptions="End" Padding="15,0,16,16">
                                 <Image HorizontalOptions="Start" Source="individual_32White.png">
                                     <Image.Triggers>
@@ -151,7 +155,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0" Padding="0,8,0,0">
-                            <Image Source="arrowLeft.png" Rotation="270" HorizontalOptions="Start">
+                            <Image x:Name="backArrow" Source="arrowLeft.png" Rotation="0" HorizontalOptions="Start">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnBackArrowTapped"/>
                                 </Image.GestureRecognizers>

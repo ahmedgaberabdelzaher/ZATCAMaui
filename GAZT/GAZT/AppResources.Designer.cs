@@ -7608,6 +7608,12 @@ namespace EGAZT {
             }
         }
         
+        public static string TinDeregistrationCompanyIDCheck {
+            get {
+                return ResourceManager.GetString("TinDeregistrationCompanyIDCheck", resourceCulture);
+            }
+        }
+        
         public static string VatDeregDOBDatePickerTitle {
             get {
                 return ResourceManager.GetString("VatDeregDOBDatePickerTitle", resourceCulture);

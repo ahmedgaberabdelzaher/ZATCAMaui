@@ -1,5 +1,5 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration;
-﻿using EGAZT.Models;
+using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.GenericPickers;
 using GAZT.Helper;
@@ -12,6 +12,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Linq;
 using GAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -25,19 +28,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             SetLTR();
             viewModel = App.Locator.EstablishmentRegistrationPage;
             BindingContext = viewModel;
-
-            MessagingCenter.Subscribe<PickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) => {
-                viewModel.DatePickerModel = arg;
-                Console.WriteLine(arg);
-                //OnAppearing();
-            });
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             viewModel?.OnAppearing();
-            DateMessagingCenterSelector();
         }
 
         protected override void OnDisappearing()
@@ -45,48 +41,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             base.OnDisappearing();
         }
 
-        private void DateMessagingCenterSelector()
-        {
-            MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
-            {
-
-                if (App.IsArabic)
-                {
-                    if (arg.DatePickerTitle.Contains("Issue Date"))
-                    {
-                        viewModel.PassportIssueDate = arg.SelectedValue;
-                    }
-                    else if (arg.DatePickerTitle.Contains("Expiry Date"))
-                    {
-                        viewModel.PassportExpireDate = arg.SelectedValue;
-                    }
-                    else
-                    {
-                        viewModel.SelectedDOB = arg.SelectedValue;
-                    }
-                }
-                else
-                {
-                    if (arg.DatePickerTitle.Contains("Issue Date"))
-                    {
-                        viewModel.PassportIssueDate = arg.SelectedValue;
-                    }
-                    else if (arg.DatePickerTitle.Contains("Expiry Date"))
-                    {
-                        viewModel.PassportExpireDate = arg.SelectedValue;
-                    }
-                    else
-                    {
-                        viewModel.SelectedDOB = arg.SelectedValue;
-                    }
-                }
-            });
-
-        }
-
         private void SetLTR()
         {
-
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
@@ -97,82 +53,22 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
         }
 
-        async void dOBDateClicked(System.Object sender, System.EventArgs e)
+        void dOBDateClicked(System.Object sender, System.EventArgs e)
         {
-
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.DatePickerTitle = "Select DOB";
-            genericPickerModel.PickerId = "DOBDateTypePicker";
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    viewModel._navigationService.GoBack();
-                });
-            }
-
+            dobPicker.MaximumDate = DateTime.Now;
+            dobPicker.IsOpen = true;
         }
 
-        async void PassportIssueDateClicked(System.Object sender, System.EventArgs e)
+        void PassportIssueDateClicked(System.Object sender, System.EventArgs e)
         {
-
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.DatePickerTitle = "Issue Date";
-            genericPickerModel.PickerId = "PassportIssueDateTypePicker";
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    viewModel._navigationService.GoBack();
-                });
-            }
-
+            PassportIssueDatePicker.MaximumDate = DateTime.Now;
+            PassportIssueDatePicker.IsOpen = true;
         }
 
-
-        
-
-        async void PassportExpiryDateClicked(object sender, EventArgs e)
+        void PassportExpiryDateClicked(object sender, EventArgs e)
         {
-            GenericDatePickerModel genericPickerModel = new GenericDatePickerModel();
-            genericPickerModel.DatePickerTitle = "Expiry Date";
-            genericPickerModel.PickerId = "PassportExpityDateTypePicker";
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel));
-            }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    viewModel._navigationService.GoBack();
-                });
-            }
-
-
+            PassportExpiryDatePicker.MinimumDate = DateTime.Now;
+            PassportExpiryDatePicker.IsOpen = true;
         }
 
         void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
@@ -185,23 +81,49 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             catch (Exception) { }
         }
 
-        
-
-        void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
+        async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
-            var item = sender as Image;
-            var data = item.BindingContext as Attachment;
-            viewModel.OnRentAttachmentDeleteButtonTapped(data);
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            confirmPopup.OnSelect = (str) =>
+            {
+                if (str == "Yes")
+                {
+                    var item = sender as Image;
+                    var data = item.BindingContext as Attachment;
+                    viewModel.OnRentAttachmentDeleteButtonTapped(data);
+                }
+            };
+            await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
-
-
-        void TapPassportDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
+        async void TapPassportDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
-            var item = sender as Image;
-            var data = item.BindingContext as Attachment;
-            viewModel.OnPassportAttachmentDeleteButtonTapped(data);
+            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText);
+            confirmPopup.OnSelect = (str) =>
+            {
+                if (str == "Yes")
+                {
+                    var item = sender as Image;
+                    var data = item.BindingContext as Attachment;
+                    viewModel.OnPassportAttachmentDeleteButtonTapped(data);
+                }
+            };
+            await PopupNavigation.Instance.PushAsync(confirmPopup);
         }
 
+        private void dobPicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        {
+            viewModel.SelectedDOB = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+        }
+
+        private void PassportIssueDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        {
+            viewModel.PassportIssueDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+        }
+
+        private void PassportExpiryDatePicker_DateSelected(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e)
+        {
+            viewModel.PassportExpireDate = (e.NewValue as DateTime?)?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+        }
     }
 }
