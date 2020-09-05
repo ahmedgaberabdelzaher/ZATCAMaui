@@ -227,7 +227,7 @@ namespace EGAZT.Models
         public string Approvez { get; set; }
 
         [JsonProperty("AOffOrigin")]
-        public long AOffOrigin { get; set; }
+        public string AOffOrigin { get; set; }
 
         [JsonProperty("AOffAppNo")]
         public string AOffAppNo { get; set; }
@@ -281,7 +281,7 @@ namespace EGAZT.Models
         public string AEffectiveDtC { get; set; }
 
         [JsonProperty("AEffectiveDt")]
-        public object AEffectiveDt { get; set; }
+        public string AEffectiveDt { get; set; }
 
         [JsonProperty("ADregReason")]
         public string ADregReason { get; set; }
@@ -347,7 +347,7 @@ namespace EGAZT.Models
         public string ADobC { get; set; }
 
         [JsonProperty("ADob")]
-        public object ADob { get; set; }
+        public string ADob { get; set; }
 
         [JsonProperty("ADegister")]
         public string ADegister { get; set; }
@@ -494,244 +494,244 @@ namespace EGAZT.Models
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
-        [JsonProperty("AOutletCompAddr", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletCompAddr")]
         public string AOutletCompAddr { get; set; }
 
-        [JsonProperty("AOutletNewMainOutnumTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNewMainOutnumTb")]
         public string AOutletNewMainOutnumTb { get; set; }
 
         [JsonProperty("AOutletExpdtTb")]
-        public object AOutletExpdtTb { get; set; }
+        public string AOutletExpdtTb { get; set; }
 
-        [JsonProperty("AOutletFlag", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletFlag")]
         public string AOutletFlag { get; set; }
 
-        [JsonProperty("AOutletHouseNoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletHouseNoTb")]
         public string AOutletHouseNoTb { get; set; }
 
-        [JsonProperty("AOutletExpdtHTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletExpdtHTb")]
         public string AOutletExpdtHTb { get; set; }
 
-        [JsonProperty("AOutletMobileNoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletMobileNoTb")]
         public string AOutletMobileNoTb { get; set; }
 
-        [JsonProperty("AOutletExpdtCTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletExpdtCTb")]
         public string AOutletExpdtCTb { get; set; }
 
-        [JsonProperty("AOutletNm6Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNm6Tb")]
         public string AOutletNm6Tb { get; set; }
 
-        [JsonProperty("AOutletNoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNoTb")]
         public string AOutletNoTb { get; set; }
 
-        [JsonProperty("AOutletTitleTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletTitleTb")]
         public string AOutletTitleTb { get; set; }
 
-        [JsonProperty("OutletInPrcFg", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("OutletInPrcFg")]
         public string OutletInPrcFg { get; set; }
 
-        [JsonProperty("AOutletBuildingNoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletBuildingNoTb")]
         public string AOutletBuildingNoTb { get; set; }
 
-        [JsonProperty("AOutletComcdFlag", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletComcdFlag")]
         public string AOutletComcdFlag { get; set; }
 
-        [JsonProperty("AOutletEmailTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletEmailTb")]
         public string AOutletEmailTb { get; set; }
 
-        [JsonProperty("AOutletNameTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNameTb")]
         public string AOutletNameTb { get; set; }
 
-        [JsonProperty("AOutletNm5Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNm5Tb")]
         public string AOutletNm5Tb { get; set; }
 
-        [JsonProperty("AOutletNm7Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNm7Tb")]
         public string AOutletNm7Tb { get; set; }
 
-        [JsonProperty("AOutletMainFlagTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletMainFlagTb")]
         public string AOutletMainFlagTb { get; set; }
 
-        [JsonProperty("AOutletPoBoxTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletPoBoxTb")]
         public string AOutletPoBoxTb { get; set; }
 
-        [JsonProperty("AOutletStreet1Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletStreet1Tb")]
         public string AOutletStreet1Tb { get; set; }
 
-        [JsonProperty("AOutletToDeregTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletToDeregTb")]
         public string AOutletToDeregTb { get; set; }
 
-        [JsonProperty("AOutletDregOptTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletDregOptTb")]
         public string AOutletDregOptTb { get; set; }
 
-        [JsonProperty("AOutletStreet2Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletStreet2Tb")]
         public string AOutletStreet2Tb { get; set; }
 
         [JsonProperty("AOutletEffDtTb")]
-        public object AOutletEffDtTb { get; set; }
+        public string AOutletEffDtTb { get; set; }
 
-        [JsonProperty("AOutletProvinceTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletProvinceTb")]
         public string AOutletProvinceTb { get; set; }
 
-        [JsonProperty("AOutletCityTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletCityTb")]
         public string AOutletCityTb { get; set; }
 
-        [JsonProperty("AOutletEffDtHTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletEffDtHTb")]
         public string AOutletEffDtHTb { get; set; }
 
-        [JsonProperty("AOutletEffDtCTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletEffDtCTb")]
         public string AOutletEffDtCTb { get; set; }
 
-        [JsonProperty("AOutletQuarterTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletQuarterTb")]
         public string AOutletQuarterTb { get; set; }
 
-        [JsonProperty("AOutletCountryTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletCountryTb")]
         public string AOutletCountryTb { get; set; }
 
-        [JsonProperty("AOutletTransTinTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletTransTinTb")]
         public string AOutletTransTinTb { get; set; }
 
-        [JsonProperty("AOutletIdTypeTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletIdTypeTb")]
         public string AOutletIdTypeTb { get; set; }
 
-        [JsonProperty("AOutletPostalCodeTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletPostalCodeTb")]
         public string AOutletPostalCodeTb { get; set; }
 
-        [JsonProperty("AOutletIdentificationNoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletIdentificationNoTb")]
         public string AOutletIdentificationNoTb { get; set; }
 
-        [JsonProperty("AOutletIdNoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletIdNoTb")]
         public string AOutletIdNoTb { get; set; }
 
-        [JsonProperty("AOutletNm1Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNm1Tb")]
         public string AOutletNm1Tb { get; set; }
 
-        [JsonProperty("AOutletNm2Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNm2Tb")]
         public string AOutletNm2Tb { get; set; }
 
-        [JsonProperty("AOutletNm3Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNm3Tb")]
         public string AOutletNm3Tb { get; set; }
 
-        [JsonProperty("AOutletNm4Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletNm4Tb")]
         public string AOutletNm4Tb { get; set; }
 
         [JsonProperty("AOutletDobTb")]
         public object AOutletDobTb { get; set; }
 
-        [JsonProperty("AOutletDobHTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletDobHTb")]
         public string AOutletDobHTb { get; set; }
 
-        [JsonProperty("AOutletDobCTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("AOutletDobCTb")]
         public string AOutletDobCTb { get; set; }
 
-        [JsonProperty("APermitNewMainNoIdTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitNewMainNoIdTb")]
         public string APermitNewMainNoIdTb { get; set; }
 
-        [JsonProperty("APermitAdrFlag", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitAdrFlag")]
         public string APermitAdrFlag { get; set; }
 
-        [JsonProperty("APermitCbFlag", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitCbFlag")]
         public string APermitCbFlag { get; set; }
 
-        [JsonProperty("APermitConFlag", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitConFlag")]
         public string APermitConFlag { get; set; }
 
         [JsonProperty("APermitExpdtTb")]
         public object APermitExpdtTb { get; set; }
 
-        [JsonProperty("APermitGovFlag", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitGovFlag")]
         public string APermitGovFlag { get; set; }
 
-        [JsonProperty("APermitMainActFlagTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitMainActFlagTb")]
         public string APermitMainActFlagTb { get; set; }
 
-        [JsonProperty("APermitMainnoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitMainnoTb")]
         public string APermitMainnoTb { get; set; }
 
-        [JsonProperty("APermitNm6Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitNm6Tb")]
         public string APermitNm6Tb { get; set; }
 
-        [JsonProperty("APermitNoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitNoTb")]
         public string APermitNoTb { get; set; }
 
-        [JsonProperty("APermitTypTxt", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitTypTxt")]
         public string APermitTypTxt { get; set; }
 
-        [JsonProperty("PermitInPrcFg", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("PermitInPrcFg")]
         public string PermitInPrcFg { get; set; }
 
-        [JsonProperty("APermitExpdtHTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitExpdtHTb")]
         public string APermitExpdtHTb { get; set; }
 
-        [JsonProperty("APermitMainActNoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitMainActNoTb")]
         public string APermitMainActNoTb { get; set; }
 
-        [JsonProperty("APermitOutletnoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitOutletnoTb")]
         public string APermitOutletnoTb { get; set; }
 
-        [JsonProperty("APermitExpdtCTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitExpdtCTb")]
         public string APermitExpdtCTb { get; set; }
 
-        [JsonProperty("APermitTitleTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitTitleTb")]
         public string APermitTitleTb { get; set; }
 
-        [JsonProperty("APermitNm5Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitNm5Tb")]
         public string APermitNm5Tb { get; set; }
 
-        [JsonProperty("APermitNm7Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitNm7Tb")]
         public string APermitNm7Tb { get; set; }
 
-        [JsonProperty("APermitTypeTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitTypeTb")]
         public string APermitTypeTb { get; set; }
 
-        [JsonProperty("APermitValfrDtTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitValfrDtTb")]
         public string APermitValfrDtTb { get; set; }
 
-        [JsonProperty("APermitValfrDtHTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitValfrDtHTb")]
         public string APermitValfrDtHTb { get; set; }
 
-        [JsonProperty("APermitValfrDtCTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitValfrDtCTb")]
         public string APermitValfrDtCTb { get; set; }
 
         [JsonProperty("APermitEffDtTb")]
         public object APermitEffDtTb { get; set; }
 
-        [JsonProperty("APermitEffDtHTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitEffDtHTb")]
         public string APermitEffDtHTb { get; set; }
 
-        [JsonProperty("APermitEffDtCTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitEffDtCTb")]
         public string APermitEffDtCTb { get; set; }
 
-        [JsonProperty("APermitDregRsnTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitDregRsnTb")]
         public string APermitDregRsnTb { get; set; }
 
-        [JsonProperty("APermitTransTinTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitTransTinTb")]
         public string APermitTransTinTb { get; set; }
 
-        [JsonProperty("APermitIdTypeTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitIdTypeTb")]
         public string APermitIdTypeTb { get; set; }
 
-        [JsonProperty("APermitIdNoTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitIdNoTb")]
         public string APermitIdNoTb { get; set; }
 
-        [JsonProperty("APermitNm1Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitNm1Tb")]
         public string APermitNm1Tb { get; set; }
 
-        [JsonProperty("APermitNm2Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitNm2Tb")]
         public string APermitNm2Tb { get; set; }
 
-        [JsonProperty("APermitNm3Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitNm3Tb")]
         public string APermitNm3Tb { get; set; }
 
-        [JsonProperty("APermitNm4Tb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitNm4Tb")]
         public string APermitNm4Tb { get; set; }
 
         [JsonProperty("APermitDobTb")]
         public object APermitDobTb { get; set; }
 
-        [JsonProperty("APermitDobHTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitDobHTb")]
         public string APermitDobHTb { get; set; }
 
-        [JsonProperty("APermitDobCTb", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("APermitDobCTb")]
         public string APermitDobCTb { get; set; }
 
         [JsonIgnore]

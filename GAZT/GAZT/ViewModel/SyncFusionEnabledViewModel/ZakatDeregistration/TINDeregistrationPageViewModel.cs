@@ -1127,11 +1127,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     SelectedOutletOptionIndex = Convert.ToInt16(SelectedOutletOption.OutletOptionIndex) - 1;
                 }
 
+                if (TinDeregistrationData.ASubmissionDate != null)
+                    DeregistrationDate = Convert.ToDateTime(TinDeregistrationData.ASubmissionDate);
+
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
-                    foreach(OutletSetResult permitInfo in allPermitTypes)
+                    if (outletInfo.AOutletExpdtTb == null)
+                        outletInfo.AOutletExpdtTb = string.Empty;
+
+                    foreach (OutletSetResult permitInfo in allPermitTypes)
                     {
-                        if(permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
+                        if (permitInfo.APermitExpdtTb == null)
+                            permitInfo.APermitExpdtTb = string.Empty;
+
+                        if (permitInfo.APermitOutletnoTb == outletInfo.AOutletNoTb)
                         {
                             if (outletInfo.PermitTypes == null)
                                 outletInfo.PermitTypes = new ObservableCollection<OutletSetResult>();
@@ -1621,6 +1630,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
+                //TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DeregistrationDate).ToString();
+                //TinDeregistrationData.AEffectiveDt = TinDeregistrationData.ASubmissionDate;
+                //TinDeregistrationData.ADecDate = TinDeregistrationData.ASubmissionDate;
+
                 await SaveAsDraft();
                 EnableOutletDetaislView();
             }
@@ -1636,6 +1649,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     _navigationService.GoBack();
                 });
             }
+        }
+
+        public static long ConvertDateTimeToTicks(DateTime dtInput)
+        {
+            long ticks = 0;
+            ticks = dtInput.Ticks;
+            return ticks;
+        }
+        public static DateTime ConvertTicksToDateTime(long lticks)
+        {
+            DateTime dtresult = new DateTime(lticks);
+            return dtresult;
         }
 
         public async void OutletContinueBtnClicked()
@@ -2025,6 +2050,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             });
         }
 
+        private String ConvertDateFormat(DateTime newDate)
+        {
+            string ConvertedDate = string.Empty;
+            //DateTime newDate = Convert.ToDateTime(date);
+            //DateTime currentDate = DateTime.Now.ToLocalTime();
+            long ticks = newDate.Ticks;
+            //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
+            TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+            string unixTime = span.TotalSeconds.ToString("N0");
+            unixTime = unixTime.Replace(",", "");
+            ConvertedDate = "" + "/Date(" + unixTime + ")/";
+            return ConvertedDate;
+        }
+
         #endregion
 
         public async Task AddAttachmentEx()
@@ -2149,6 +2188,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     App.DisplayProgressView();
                 });
+
+                TinDeregistrationData.ASubmissionDate = DeregistrationDate.ToString();
+                TinDeregistrationData.ADob = SelectedDob;
+
+                TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DeregistrationDate);
+                TinDeregistrationData.ADob = ConvertDateFormat(Convert.ToDateTime(TinDeregistrationData.ADob));
+
+                TinDeregistrationData.AEffectiveDt = ConvertDateFormat(DeregistrationDate);
+                TinDeregistrationData.ADecDate = ConvertDateFormat(DeregistrationDate);
+                TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
 
                 TinDeregistrationData = await WebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
 

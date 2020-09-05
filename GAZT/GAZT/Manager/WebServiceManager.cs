@@ -10902,8 +10902,52 @@ namespace GAZT.Manager
             }
         }
 
+        private static String ConvertDateFormat(DateTime newDate)
+        {
+            string ConvertedDate = string.Empty;
+            //DateTime newDate = Convert.ToDateTime(date);
+            //DateTime currentDate = DateTime.Now.ToLocalTime();
+            long ticks = newDate.Ticks;
+            //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
+            TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+            string unixTime = span.TotalSeconds.ToString("N0");
+            unixTime = unixTime.Replace(",", "");
+            ConvertedDate = "" + "/Date(" + unixTime + ")/";
+            return ConvertedDate;
+        }
+
+
         public static async Task<TinDeregistrationResponseModel> GaztTinDeregistrationSubmitRequestData(TinDeregistrationResponseModel tinDeregistrationResponseModel)
         {
+            tinDeregistrationResponseModel.AEffectiveDtC = "G";
+            tinDeregistrationResponseModel.ASubmissionDateC = "G";
+            tinDeregistrationResponseModel.ADecDateC = "G";
+            tinDeregistrationResponseModel.ADobC = "G";
+
+            try
+            {
+
+
+                ObservableCollection<OutletSetResult> AllOutlets = new ObservableCollection<OutletSetResult>(tinDeregistrationResponseModel.OutletSet.Results);
+                List<OutletSetResult> allPermitTypes = new List<OutletSetResult>(tinDeregistrationResponseModel.PermitSet.Results);
+
+                foreach (OutletSetResult outletInfo in AllOutlets)
+                {
+                    outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb));
+                    outletInfo.AOutletEffDtCTb = "G";
+
+                    foreach (OutletSetResult permitInfo in allPermitTypes)
+                    {
+                        permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
+                        permitInfo.APermitEffDtCTb = "G";
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -10921,6 +10965,8 @@ namespace GAZT.Manager
 
                     var uri = new Uri(url);
                     var serilized = JsonConvert.SerializeObject(tinDeregistrationResponseModel);
+
+                    serilized = serilized.Replace("null","\"\"");
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage tinDeregResponse = await client.PostAsync(uri, contentPost);

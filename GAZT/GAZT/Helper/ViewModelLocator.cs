@@ -203,7 +203,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
             SimpleIoc.Default.Register<PickerPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
+            SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
 
+            //TINDeregistrationCloseIndividualOutletsPageView
             SimpleIoc.Default.Register<VATDeregistrationSuccessPageViewModel>();
 
             SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
