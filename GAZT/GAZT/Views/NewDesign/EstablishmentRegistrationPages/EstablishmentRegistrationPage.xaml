@@ -27,6 +27,12 @@
              x:Name="ESTRegistrationPage">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
             <converters:EstablishmentTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:EstablishmentFinanicalMethodsToVisibilityConverter x:Key="methodToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
@@ -1388,7 +1394,7 @@
                         <ColumnDefinition Width="70*"/>
                         <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Source="arrowLeft.png">
+                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Source="arrowLeft.png" Style="{DynamicResource BackButtonArrow}">
                         <!--<Image.Source>
                             <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="48" Glyph="{x:Static FontImage:IconFonts.ChevronLeft}"/>
                         </Image.Source>-->

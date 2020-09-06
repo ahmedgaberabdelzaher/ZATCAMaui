@@ -27,6 +27,12 @@
              x:Name="ESTActivityItemPage">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
             <converters:EstablishmentRegistrationActivityTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:EstablishmentMainActivityToVisibilityConverter x:Key="isMainActivityConverter" />
             <ResourceDictionary.MergedDictionaries>
@@ -444,10 +450,10 @@
                         <ColumnDefinition Width="70*"/>
                         <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image.Source>
+                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Source="arrowLeft" Style="{DynamicResource BackButtonArrow}">
+                        <!--<Image.Source>
                             <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="48" Glyph="{x:Static FontImage:IconFonts.ChevronLeft}"/>
-                        </Image.Source>
+                        </Image.Source>-->
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>
