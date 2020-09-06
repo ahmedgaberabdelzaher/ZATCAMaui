@@ -410,6 +410,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("NextFilingDueDate");
             }
         }
+        private bool _IsVisibleNextDueDate = false;
+        public bool IsVisibleNextDueDate
+        {
+            get
+            {
+                return _IsVisibleNextDueDate;
+            }
+            set
+            {
+                _IsVisibleNextDueDate = value;
+                RaisePropertyChanged("IsVisibleNextDueDate");
+            }
+        }
         private DateTime _startDate = DateTime.Now;
         public DateTime StartDate
         {
@@ -1059,6 +1072,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnVatRegistrationReasonTapped = new Command(this.OnVatRegistrationReasonClicked);
             OnVatRegistrationDateTapped = new Command(this.OnVatRegistrationReasonDateClicked);
+            
         }
 
         public async Task onPageLoad()
@@ -1071,6 +1085,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 SelectedDocumentOption = new ResultsAttachmentItemForElgblDocSet();
                 AddOutletDecisionOptions();
                 AddOutletDocumentOptions();
+
                 try
                 {
                     if (VATDeRegistrationDetailsData != null)
@@ -1085,6 +1100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             else
                             {
                                 SelectedOutletOption = OutletDecisionOptions[0];
+                                SelectedOutletOptionIndex = 0;
                             }
                         }
                         else

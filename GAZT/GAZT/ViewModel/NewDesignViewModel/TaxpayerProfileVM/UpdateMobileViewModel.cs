@@ -311,7 +311,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
             string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
             string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
-            string MobileCountry = MobileCountryCode;
+            string MobileCountry = string.Empty;
+            if (MobileCountryCode == string.Empty)
+            {
+                MobileCountry = "SA";
+            }
+            else
+            {
+                MobileCountry = MobileCountryCode;
+            }
             try
             {
                 await Task.Run(async () =>
@@ -348,7 +356,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 {
                     string currentMobileNumber = MobileNumberFormate(CurrentMobileNumberEntryText);
                     string newMobileNumber = NewMobileNumberFormate(NewMobileNumberEntryText);
-                    string MobileCountry = MobileCountryCode;
+                    string MobileCountry = string.Empty;
+                    if (MobileCountryCode == string.Empty)
+                    {
+                        MobileCountry = "SA";
+                    }
+                    else
+                    {
+                       MobileCountry = MobileCountryCode;
+                    }
                     TP = await WebServiceManager.GAZTValidateOTPForMobileNumber(lang, EnteredOTP,
                                                                                 App.TP.Tin,
                                                                                 currentMobileNumber,
@@ -371,6 +387,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
         private string MobileNumberFormate(string mobileNumber)
         {
+         
             return App.TP.Mobile;
         }
         private string NewMobileNumberFormate(string mobileNumber)

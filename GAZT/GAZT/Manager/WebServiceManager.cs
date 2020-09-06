@@ -491,7 +491,7 @@ namespace GAZT.Manager
                     NewMobileNumber = NewMobileNumber.Replace("+", "");
                     CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
                     NewMobileNumber = "00" + NewMobileNumber;
-                    CurrentMobileNumber = "00" + CurrentMobileNumber;
+                    //CurrentMobileNumber = "00" + CurrentMobileNumber;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTValidateOTPForMobile + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber +"',MobileCountry='"+mobileCountry+ "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
@@ -567,7 +567,7 @@ namespace GAZT.Manager
                     NewMobileNumber = NewMobileNumber.Replace("+", "");
                     CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
                     NewMobileNumber = "00" + NewMobileNumber;
-                    CurrentMobileNumber = "00" + CurrentMobileNumber;
+                   // CurrentMobileNumber = "00" + CurrentMobileNumber;
                     String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" +"',MobileCountry='" + mobileCountry + "',CurrMobile='" + CurrentMobileNumber +
                         "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
