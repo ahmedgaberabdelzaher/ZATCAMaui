@@ -29,7 +29,6 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
           
             ChangeAeroIcon();
             ZAKATReturnDetailsViewModel.Fbguid = fbguid;
-
             SetLTR();
 
 
@@ -45,7 +44,28 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             base.OnAppearing();
             //date.Text = viewModel.Abrzu;
            await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
+            if(viewModel.isThresholdValueLessThanTotalVATSales)
+            {
+                TotalVATSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
+                AverageNumberOfLabourInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+                ImportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+                SalesFromPointOfSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+                ContractFromETIMADSystemInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+                ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+                PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+            }
+            else
+            {
+                TotalVATSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+                AverageNumberOfLabourInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
+                ImportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
+                SalesFromPointOfSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
+                ContractFromETIMADSystemInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
+                ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
+                PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
 
+
+            }
             getYesCommandToReleaseTheReturn();
             getYesCommandToAmendTheReturn();
 
