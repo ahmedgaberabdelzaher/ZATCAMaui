@@ -111,7 +111,7 @@
                                 <Label  Style="{StaticResource forLightLabel}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="What is your Nationality?" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDWhatisYourNationality}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </Label.FormattedText>
