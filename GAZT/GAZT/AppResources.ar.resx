@@ -1940,7 +1940,7 @@
     <value>Revise Down Payment</value>
   </data>
   <data name="ZVATRevokeButton" xml:space="preserve">
-    <value>Revoke</value>
+    <value>إلغاء</value>
   </data>
   <data name="ZVATSalesdetailsButton" xml:space="preserve">
     <value>Sales details</value>
@@ -5709,9 +5709,6 @@
   <data name="ZakatInvoiceAmount" xml:space="preserve">
     <value>مبلغ الفاتورة</value>
   </data>
-  <data name="ZakatClearedAmount" xml:space="preserve">
-    <value>Cleared Amount</value>
-  </data>
   <data name="ZakatDueAmount" xml:space="preserve">
     <value>مبلغ الفاتورة</value>
   </data>
@@ -6732,8 +6729,20 @@
   <data name="ZakatYearTwo" xml:space="preserve">
     <value>سنة 2</value>
   </data>
-     <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
-    <value>لا توجد فواتير لإضافتها الى طلب خطة التقسيط</value>
+     <data name="ZakatRevokConfirmationText" xml:space="preserve">
+    <value>عزيزي المكلف، عندما تطلب إلغاء خطة التقسيط ، سيتم إعادة إصدار جميع الفواتير الأصلية بالمبلغ المتبقي الذي يجب دفعه ولا يمكن إضافة هذه الفواتير إلى أي خطة أقساط مستقبلية.</value>
+  </data>
+     <data name="ZakatInstalmentRevokNotes" xml:space="preserve">
+    <value>اكتب سبب الإلغاء</value>
+  </data>
+     <data name="ZakatInstalmentRevokedSuccessfully" xml:space="preserve">
+    <value>تم استلام طلب إلغاء خطة التقسيط بنجاح</value>
+  </data>
+     <data name="ZakatClearedAmount" xml:space="preserve">
+    <value>المبلغ المخلص.</value>
+  </data>
+    <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
+    <value>لا توجد فواتير يمكن إضافتها في طلب خطة الأقساط.</value>
   </data>
   </root>
 
