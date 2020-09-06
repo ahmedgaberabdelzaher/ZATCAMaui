@@ -1113,8 +1113,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             //AddOutletDecisionOptions();
             //PopulateAttachmentsListViewTemplate();
             PopulateIdTypeTypeFromList();
-            PopulateSummaryReasonData();
-            PopulateSummaryDeclarationData();
+           
             EnableReasonView();
         }
 
@@ -1718,6 +1717,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
+
                 EnableAttachmentsView();
             }
             catch (GAZTUnlockAccountException ex)
@@ -1758,6 +1758,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
+                PopulateSummaryReasonData();
+                PopulateSummaryDeclarationData();
                 EnableSummaryView();
             }
             catch (GAZTUnlockAccountException ex)
@@ -2057,19 +2059,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.TinDeregistrationReason,
-                SummaryData = "Bankruptcy",
+                SummaryData = SelectedReason.ReasonDesc,
                 IsEditVisible = true
             });
             TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.TinDeregistrationQuestionOutlets,
-                SummaryData = AppResources.TinDeregistrationCloseAllOutlets,
+                SummaryData = SelectedOutletOption.ActiveOutletDecisionOptions,
                 IsEditVisible = true
             });
             TinDeregistrationSummaryReasonData.Add(new TINDeregistrationSummaryModel
             {
+                //TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy/MM/dd");
+
                 SummaryTitle = AppResources.TinDeregistrationDate,
-                SummaryData = "04 August 2020",
+                SummaryData = DeregistrationDate.ToString("dd MMM yyyy"),
                 IsEditVisible = true
             });
         }
@@ -2080,25 +2084,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.TinDeregistrationContactPersonName,
-                SummaryData = "Hardy",
+                SummaryData = TinDeregistrationData.ADecName,
                 IsEditVisible = true
             });
             TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.TinDeregistrationDesignation,
-                SummaryData = "Senior Director",
+                SummaryData = TinDeregistrationData.ADecDesig,
                 IsEditVisible = true
             });
             TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.MobileNumber,
-                SummaryData = "+966 551 234 567",
+                SummaryData = TinDeregistrationData.ADecTelNo,
                 IsEditVisible = true
             });
             TinDeregistrationSummaryDeclarationData.Add(new TINDeregistrationSummaryModel
             {
                 SummaryTitle = AppResources.ZZDateofBirth,
-                SummaryData = "07 June 1995",
+                SummaryData = SubmissionDate.ToString("dd MMM yyyy"),
                 IsEditVisible = true
             });
         }
@@ -2278,9 +2282,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     TinDeregistrationData.ASubmissionDate = DeregistrationDate.ToString();
                     TinDeregistrationData.ADob = ConvertDateFormat(DeregistrationDate);
 
-                    TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DeregistrationDate);
+                    TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DateTime.Now);
                     TinDeregistrationData.ASubmissionDateH = DeregistrationDate.ToString("yyyy/MM/dd");
-
 
                     TinDeregistrationData.AEffectiveDt = ConvertDateFormat(DeregistrationDate);
 

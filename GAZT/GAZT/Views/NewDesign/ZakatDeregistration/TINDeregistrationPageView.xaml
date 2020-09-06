@@ -227,7 +227,7 @@
 
                                     <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
                                         
-                                        <Label Text="{Binding DeregistrationDate}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding DeregistrationDate,StringFormat='{0:dd MMM yyyy}'}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                             <Image Margin="5,0">
                                                 <Image.Source>
@@ -248,10 +248,10 @@
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TIN}" HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}" />     
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
-							        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+							        ContainerType="Outlined" UnfocusedColor="#B1B1B1" CharMaxLength="10"
 							        OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <custom:BorderlessEntry IsEnabled="{Binding TinText.IsEditable}" Placeholder="{x:Static ResourceManager:AppResources.TIN}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                            VerticalTextAlignment="Start"
+                                                            VerticalTextAlignment="Start" Unfocused="BorderlessTINEntry_Unfocused"
                                                             TextColor="#bbbbbb" HorizontalOptions="FillAndExpand">
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
@@ -578,7 +578,7 @@
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                </Grid>
 
-               <ScrollView IsVisible="{Binding IsAttachmentsViewEnabled}">
+              <ScrollView IsVisible="{Binding IsAttachmentsViewEnabled}">
                <Grid IsVisible="{Binding IsAttachmentsViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                      <RowDefinition Height="auto"/>
@@ -707,7 +707,8 @@
 
                </ScrollView>
 
-              <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <ScrollView IsVisible="{Binding IsDeclarationViewEnabled}">
+                  <Grid IsVisible="{Binding IsDeclarationViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                          <RowDefinition Height="auto"/>
                          <RowDefinition Height="auto"/>
@@ -758,7 +759,7 @@
 							            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 							            OutlineCornerRadius="13" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start"
+                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecDesig}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
@@ -778,7 +779,7 @@
                                         </inputLayout:SfTextInputLayout.LeadingView>
                                         
                                         <custom:BorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}" FontSize="Small"  HorizontalTextAlignment="Start"
-                                                                VerticalTextAlignment="Start"
+                                                                VerticalTextAlignment="Start" Text="{Binding TinDeregistrationData.ADecTelNo}" 
                                                                 TextColor="#bbbbbb" HorizontalOptions="StartAndExpand">
                                         </custom:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
@@ -808,6 +809,7 @@
                             </StackLayout>
                          </Grid>
                      </Grid>
+              </ScrollView>
               <ScrollView IsVisible="{Binding IsSummaryViewEnabled}">
                 <Grid IsVisible="{Binding IsSummaryViewEnabled}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>

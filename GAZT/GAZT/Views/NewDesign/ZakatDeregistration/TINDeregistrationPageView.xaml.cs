@@ -398,8 +398,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-
-
         }
 
         private void IDNumberEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -408,6 +406,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 viewModel.FrameIDError = false;
             }
+        }
+
+        void BorderlessTINEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+
         }
     }
 }
