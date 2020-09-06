@@ -135,6 +135,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
         public void ChangeAeroIcon()
         {
             if (!App.IsArabic)

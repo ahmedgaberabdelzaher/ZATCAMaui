@@ -122,7 +122,7 @@ namespace EGAZT.Models
         public Metadata Metadata { get; set; }
 
         [JsonProperty("Assignme")]
-        public string CaseidAssignme { get; set; }
+        public string Assignme { get; set; }
 
         [JsonProperty("Caseid")]
         public string Caseid { get; set; }

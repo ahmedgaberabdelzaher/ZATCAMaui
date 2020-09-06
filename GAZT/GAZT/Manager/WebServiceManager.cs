@@ -11089,15 +11089,29 @@ namespace GAZT.Manager
             string ConvertedDate = string.Empty;
             //DateTime newDate = Convert.ToDateTime(date);
             //DateTime currentDate = DateTime.Now.ToLocalTime();
-            long ticks = newDate.Ticks;
+            long ticks = newDate.Ticks - new DateTime(1970, 1, 1).Ticks;
+
             //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
             TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
             string unixTime = span.TotalSeconds.ToString("N0");
             unixTime = unixTime.Replace(",", "");
             ConvertedDate = "" + "/Date(" + unixTime + ")/";
+
+            long unixTimestamp = ((long)(newDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
+
+            unixTimestamp = unixTimestamp * 1000;
+
+            ConvertedDate = "" + "/Date(" + unixTimestamp + ")/";
+
+            //var dateTime = new DateTime(newDate.Year, newDate.Month, newDate.Day, newDate.Hour, newDate.Minute, newDate.Second, DateTimeKind.Local);
+            //var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            //var unixDateTime = (dateTime.ToUniversalTime() - epoch).TotalSeconds;
+            //string unixTimeNEw = span.TotalSeconds.ToString("N0");
+
+            //ConvertedDate = "" + "/Date(" + unixDateTime + ")/";
+
             return ConvertedDate;
         }
-
 
         public static async Task<TinDeregistrationResponseModel> GaztTinDeregistrationSubmitRequestData(TinDeregistrationResponseModel tinDeregistrationResponseModel)
         {
@@ -11117,15 +11131,14 @@ namespace GAZT.Manager
                 {
                     outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb));
                     outletInfo.AOutletEffDtCTb = "G";
-
                 }
 
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
+                    permitInfo.APermitDobTb = null;
                     permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
                     permitInfo.APermitEffDtCTb = "G";
                 }
-
             }
             catch(Exception ex)
             {
@@ -11133,6 +11146,8 @@ namespace GAZT.Manager
             }
 
             tinDeregistrationSendResponseModel.Metadata = tinDeregistrationResponseModel.Metadata;
+            tinDeregistrationSendResponseModel.Assignme = tinDeregistrationResponseModel.Assignme;
+
             tinDeregistrationSendResponseModel.Caseid = tinDeregistrationResponseModel.Caseid;
             tinDeregistrationSendResponseModel.Xvoidz = tinDeregistrationResponseModel.Xvoidz;
             tinDeregistrationSendResponseModel.TinInPrcFg = tinDeregistrationResponseModel.TinInPrcFg;
@@ -11223,6 +11238,8 @@ namespace GAZT.Manager
             tinDeregistrationSendResponseModel.OffNotesSet = new List<string>();
             tinDeregistrationSendResponseModel.AttDetSet = new List<string>();
             tinDeregistrationSendResponseModel.ReturnSet = new List<string>();
+            tinDeregistrationSendResponseModel.ADecName = "Rohith";
+            tinDeregistrationSendResponseModel.PermitTableSet = new List<string>();
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -11239,9 +11256,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
 
                     var uri = new Uri(url);
-                    var serilized = JsonConvert.SerializeObject(tinDeregistrationResponseModel);
-
-                    serilized = serilized.Replace("null","\"\"");
+                    var serilized = JsonConvert.SerializeObject(tinDeregistrationSendResponseModel);
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage tinDeregResponse = await client.PostAsync(uri, contentPost);
