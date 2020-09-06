@@ -6723,4 +6723,17 @@
   <data name="NDWhatisYourNationality" xml:space="preserve">
     <value>What is your Nationality?</value>
   </data>
-</root>
+    <data name="ZakatYearOne" xml:space="preserve">
+    <value>سنة 1</value>
+  </data>
+  <data name="ZakatYearThree" xml:space="preserve">
+    <value>سنة 3</value>
+  </data>
+  <data name="ZakatYearTwo" xml:space="preserve">
+    <value>سنة 2</value>
+  </data>
+     <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
+    <value>لا توجد فواتير لإضافتها الى طلب خطة التقسيط</value>
+  </data>
+  </root>
+
