@@ -1909,7 +1909,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             if (Preferences.Get("IsFromRevok", false))
             {
                 SuccessMessage = AppResources.ZakatInstalmentRevokedSuccessfully;
+                ZakatReferanceNumber = Preferences.Get("RevokeRef","");
             }
+
+
             else
             {
                 SuccessMessage = AppResources.VatInstalmentPlanSubmittedSuccess;
@@ -2497,6 +2500,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         public async Task EnableSucessScreenAsync()
         {
+            Preferences.Set("IsFromRevok", false);
+            Preferences.Set("RevokeRef", "");
 
             await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
 

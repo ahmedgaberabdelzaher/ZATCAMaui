@@ -1590,7 +1590,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         if (ZakatInstalments != null)
                         {
 
-                             await RevokeSubmitClicked();
+                             var isrevoked = await RevokeSubmitClicked();
+
+                            if(isrevoked != null && isrevoked.d !=null) {
+
+                                Preferences.Set("IsFromRevok", true);
+
+                                Preferences.Set("RevokeRef", isrevoked.d.Fbnum.ToString());
+
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
+
+                                });
+                            }
+
+                            
                         }
                         else
                         {
@@ -1762,8 +1778,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     try
                     {
-                           Preferences.Set("IsFromRevok", true);
-                            await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
+                          
                         
                         IsLoading = false;
                         return response;
@@ -1925,6 +1940,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public async Task ValidateOTPAsync()
         {
+
             await SendOTPToRegisterMobileNumber(SelectedFbNum, EnteredOTP);
         }
     }
