@@ -147,7 +147,7 @@
                                     <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="10" Style="{StaticResource GreyBorderFrame}">
 
                                         <custom:GAZTBorderlessEditor Text="{Binding Year1}" Keyboard="Numeric"
-                                                         PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand"
+                                                         PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="FillAndExpand" TextChanged="Year1Change_TextChanged"
                                                           HorizontalOptions="FillAndExpand" Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}"/>
                                     </border:SfBorder>
                                 </StackLayout>
@@ -385,7 +385,7 @@
                                  
                                     <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="10" Style="{StaticResource GreyBorderFrame}">
 
-                                        <custom:GAZTBorderlessEditor Text="{Binding Year2}" Keyboard="Numeric"
+                                        <custom:GAZTBorderlessEditor Text="{Binding Year2}" Keyboard="Numeric" TextChanged="Year1Change_TextChanged"
                                                          PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
                                                           HorizontalOptions="FillAndExpand" Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}" />
                                     </border:SfBorder>
@@ -625,7 +625,7 @@
                                     <border:SfBorder HorizontalOptions="FillAndExpand"  Padding="10" Style="{StaticResource GreyBorderFrame}">
 
                                         <custom:GAZTBorderlessEditor Text="{Binding Year3}" Keyboard="Numeric"
-                                                         PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center"
+                                                         PlaceholderColor="Gray" FontSize="Small" TextColor="Black" VerticalOptions="Center" TextChanged="Year1Change_TextChanged"
                                                           HorizontalOptions="FillAndExpand" Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}" />
                                     </border:SfBorder>
                                 </StackLayout>
@@ -1354,7 +1354,7 @@
                     <Grid Grid.Row="6" VerticalOptions="End" Grid.Column="0" Grid.ColumnSpan="2">
                         <StackLayout>
                             <buttons:SfButton  Margin="0,16,0,16"  x:Name="btnAttachmentContinue" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
-                                   Style="{StaticResource PrimaryButtonStyle}" Command="{Binding AttachmentsContinueBtnTapped}"/>
+                                   Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="{Binding DeclarationButtonBackGroundColor}" IsEnabled="{Binding IsDeclarationEnabled}" Command="{Binding AttachmentsContinueBtnTapped}"/>
                         </StackLayout>
                     </Grid>
 
@@ -1815,10 +1815,10 @@
                                     <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetNumberOfInstalments}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
                                     <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                 </Grid>
-                                 <!--<Grid Grid.Row="4" Grid.ColumnSpan="2" Padding="8">
+                                 <Grid Grid.Row="4" Grid.ColumnSpan="2" Padding="8">
                                     <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="1" Text="{Binding SelectedFrequencyType}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
-                                </Grid>-->
+                                    <custom:CustomLabel Grid.Column="1" Text="{Binding SelectedFrequencyName}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                </Grid>
                              
                             </StackLayout>
                         </border:SfBorder >
@@ -1958,24 +1958,7 @@
 
                        <StackLayout Grid.Row="1" Orientation="Vertical" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0">
 
-                            <Frame CornerRadius="10"  
-                               Style="{StaticResource SfStyleForZakatPlanGreen}"
-                                HasShadow="False"
-                                     Padding="0">
-                                <StackLayout Padding="10" Orientation="Horizontal">
-
-
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" HorizontalOptions="Start"
-                                                VerticalOptions="Center"
-                                                Style="{StaticResource BodyLabelBlack}" />
-
-                                    <custom:CustomLabel Text="{Binding VATBillDueAmount}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
-                                                Style="{StaticResource SectionTitleBlackBold}" />
-
- 
-
-                                </StackLayout>
-                            </Frame>
+                           
 
  
                             <Frame CornerRadius="10"  
@@ -2020,6 +2003,25 @@
 
                                     </StackLayout>
                                 </Frame>
+
+                            <Frame CornerRadius="10"  
+                               Style="{StaticResource SfStyleForZakatPlanGreen}"
+                                HasShadow="False"
+                                     Padding="0">
+                                <StackLayout Padding="10" Orientation="Horizontal">
+
+
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmetTotalAmount}" HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                Style="{StaticResource BodyLabelBlack}" />
+
+                                    <custom:CustomLabel Text="{Binding VATBillDueAmount}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
+                                                Style="{StaticResource SectionTitleBlackBold}" />
+
+ 
+
+                                </StackLayout>
+                            </Frame>
                             </StackLayout>
 
                         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,10">
