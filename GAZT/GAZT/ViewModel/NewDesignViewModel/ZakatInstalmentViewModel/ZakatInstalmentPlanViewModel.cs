@@ -3102,10 +3102,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                             TotalAmountSAR = string.Format("{0:N2}", totalAmount) + " SAR";
                             VATBillDueAmount = string.Format("{0:N2}", totalAmountDue) + " SAR";
 
+                            if(totalAmountDue > 0) {
+                                MaxAmount = Math.Round(totalAmountDue, 2);
 
-                            MaxAmount = Math.Round(totalAmountDue, 2);
-                            MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                            DownPaymentAmount = MinAmount;
+                            }
+                            if(totalAmountDue > 0) {
+                                MinAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
+                                DownPaymentAmount = MinAmount;
+
+                            }
+
+
                             //MessagingCenter.Send<Object, Boolean>(this, "InvoiceBillsLoaded", true);
 
 
