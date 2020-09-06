@@ -77,7 +77,7 @@
                                 <StackLayout >
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
                                         <Image Source="ic_vat_return"> </Image>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlack}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SummaryOfZakatCalculation}" Style="{StaticResource SectionTitleBlack}"/>
                                     </StackLayout>
 
                                     <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
