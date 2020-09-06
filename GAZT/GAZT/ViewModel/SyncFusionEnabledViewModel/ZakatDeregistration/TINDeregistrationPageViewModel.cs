@@ -1798,7 +1798,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             try
             {
-
+                PopulateAttachmentsListViewTemplate();
                 EnableAttachmentsView();
             }
             catch (GAZTUnlockAccountException ex)
@@ -2190,11 +2190,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         private String ConvertDateFormat(DateTime newDate)
         {
             string ConvertedDate = string.Empty;
-            //DateTime newDate = Convert.ToDateTime(date);
-            //DateTime currentDate = DateTime.Now.ToLocalTime();
-            long ticks = newDate.Ticks - new DateTime(1970, 1, 1).Ticks;
-
-            //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
             TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
             string unixTime = span.TotalSeconds.ToString("N0");
             unixTime = unixTime.Replace(",", "");
@@ -2205,13 +2200,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             unixTimestamp = unixTimestamp * 1000;
 
             ConvertedDate = "" + "/Date(" + unixTimestamp + ")/";
-
-            //var dateTime = new DateTime(newDate.Year, newDate.Month, newDate.Day, newDate.Hour, newDate.Minute, newDate.Second, DateTimeKind.Local);
-            //var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            //var unixDateTime = (dateTime.ToUniversalTime() - epoch).TotalSeconds;
-            //string unixTimeNEw = span.TotalSeconds.ToString("N0");
-
-            //ConvertedDate = "" + "/Date(" + unixDateTime + ")/";
 
             return ConvertedDate;
         }
@@ -2225,104 +2213,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
 
         #endregion
-
-        public async Task AddAttachmentEx()
-        {
-            try
-            {
-                try
-                {
-                    string[] filetypes;
-                    filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
-                    var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-
-                    if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
-                    {
-                        attachment = fileData.DataArray;
-                        AttachmentName = fileData.FileName;
-                        SelectedAttachment.AttachmentName = AttachmentName;
-                        SelectedAttachment.IsAttachmentAttached = true;
-                        AttachmentsListViewData.RemoveAt(SelectedOutletOptionIndex);
-                        AttachmentsListViewData.Insert(SelectedOutletOptionIndex, SelectedAttachment);
-
-                        //if (fileData.FileName.Contains("."))
-                        //{
-                        //    string Extention = fileData.FileName.Split('.')[1];
-                        //    if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"
-                        //        || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx"
-                        //        || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
-                        //    {
-                        //        if (TotalAttachmentSize <= 300)
-                        //        {
-                        //            AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
-                        //            decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
-
-                        //            if (Convert.ToDecimal(AttachmentSize) <= 5)
-                        //            {
-                        //                if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
-                        //                {
-                        //                    bool IsAttachmentPresent = false;
-
-                        //                    if (IsAttachmentPresent == false)
-                        //                    {
-                        //                        string attachmentType = UtilityManager.GetContentType(Extention);
-                        //                    }
-                        //                    else
-                        //                    {
-                        //                        AttachmentName = string.Empty;
-
-                        //                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-                        //                    }
-                        //                }
-                        //                else
-                        //                {
-                        //                    AttachmentName = string.Empty;
-
-                        //                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                        //                }
-                        //            }
-                        //            else
-                        //            {
-                        //                AttachmentName = string.Empty;
-
-                        //                await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
-                        //            }
-                        //        }
-                        //        else
-                        //        {
-                        //            AttachmentName = string.Empty;
-
-                        //            await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        AttachmentName = string.Empty;
-
-                        //        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    AttachmentName = string.Empty;
-
-                        //    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                        //}
-                    }
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
 
         public async Task SaveAsDraft()
         {
