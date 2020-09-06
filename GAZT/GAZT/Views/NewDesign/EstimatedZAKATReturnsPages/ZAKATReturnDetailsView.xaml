@@ -301,7 +301,7 @@
                                                 <custom:CustomLabel Text="{Binding TvtslE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
 
-                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                                                 <inputLayout:SfTextInputLayout x:Name="TotalVATSalesInputLayout" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
@@ -383,7 +383,7 @@
                                                 <custom:CustomLabel Text="{Binding LabnoE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
 
-                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
@@ -467,7 +467,7 @@
                                                 <custom:CustomLabel Text="{Binding ImpvalE}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
 
-                                           <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+                                           <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
@@ -550,7 +550,7 @@
                                                 <!--<custom:CustomLabel Text="{Binding PtoslI}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>-->
                                             </StackLayout>
 
-                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
@@ -630,7 +630,7 @@
                                                 <custom:CustomLabel Text="{Binding Sumcnt}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
 
-                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
                                                 <inputLayout:SfTextInputLayout x:Name="ContractFromETIMADSystemInputLayout" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
@@ -714,7 +714,7 @@
                                                 <!--<custom:CustomLabel Text="{Binding ExamtI}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>-->
                                             </StackLayout>
 
-                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
                                                 <inputLayout:SfTextInputLayout x:Name="ExportValueInputLayout" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
@@ -791,7 +791,7 @@
                                                 <custom:CustomLabel Text="{Binding PramtE}"   IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
 
-                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
+                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                                                 <inputLayout:SfTextInputLayout x:Name="PurchaseValueInputLayout" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="PurchaseValue" Keyboard="Numeric" Text="{Binding PramtI}"  IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"    Style="{StaticResource InputTableEntryLayoutStyle}" Focused="PurchaseValueInputFocused"  Unfocused="PurchaseValueUnFocused">
@@ -865,7 +865,7 @@
                                                 <custom:CustomLabel Text="{Binding Cpamt}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}" Style="{StaticResource SectionTitleBlackTopNegative10}"/>
                                             </StackLayout>
 
-                                              <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Information from related parties(New Value)" Style="{StaticResource CaptionLabelGrey}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}"></custom:CustomLabel>
+                                              <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                                                 <inputLayout:SfTextInputLayout IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="CapitalAmount" Keyboard="Numeric" Text="{Binding Cpamt}"     Style="{StaticResource InputTableEntryLayoutStyle}" Focused="CapitalAmountInputFocused"  Unfocused="CapitalAmountUnFocused">
