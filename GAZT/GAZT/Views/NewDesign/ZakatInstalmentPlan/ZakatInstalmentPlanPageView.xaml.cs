@@ -48,6 +48,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 GetZakatInstalmentData();
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
                 viewModel.ResetData();
+
+
             }
             catch (Exception ex)
             {
@@ -332,7 +334,9 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 if (Device.RuntimePlatform == Device.iOS)
                 {
                     //iOS stuff
-                    //BillsVATListVIew.IsScrollingEnabled = false;
+                    BillsVATListVIew.IsScrollingEnabled = false;
+                    VATInstalmentDisplayDetailsViewPage.IsScrollingEnabled = false;
+
 
                 }
                 else if (Device.RuntimePlatform == Device.Android)

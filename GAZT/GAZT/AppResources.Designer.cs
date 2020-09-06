@@ -12215,5 +12215,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("NDWhatisYourNationality", resourceCulture);
             }
         }
+        
+        public static string ZakatNoInvoicesToBeAdded {
+            get {
+                return ResourceManager.GetString("ZakatNoInvoicesToBeAdded", resourceCulture);
+            }
+        }
     }
 }

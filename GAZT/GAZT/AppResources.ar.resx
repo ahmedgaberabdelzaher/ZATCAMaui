@@ -6732,5 +6732,8 @@
   <data name="ZakatYearTwo" xml:space="preserve">
     <value>سنة 2</value>
   </data>
+     <data name="ZakatNoInvoicesToBeAdded" xml:space="preserve">
+    <value>لا توجد فواتير لإضافتها الى طلب خطة التقسيط</value>
+  </data>
   </root>
 
