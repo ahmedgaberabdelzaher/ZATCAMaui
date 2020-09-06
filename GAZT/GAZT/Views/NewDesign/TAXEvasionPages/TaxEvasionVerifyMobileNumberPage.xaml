@@ -323,7 +323,7 @@
                 </StackLayout>
 
                 <!--Continue button-->
-                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"      
+                <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"      Clicked="btn_Continue_ClickedAsync"
                                       Command="{Binding SendOTPCommand}"
                                       Grid.Row="2"
                                       HorizontalOptions="FillAndExpand"

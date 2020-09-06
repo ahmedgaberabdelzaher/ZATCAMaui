@@ -3184,7 +3184,7 @@
     <comment>VAT Form Label</comment>
   </data>
   <data name="ZReportStatusClose" xml:space="preserve">
-    <value>مغلق</value>
+    <value>مغلقة</value>
     <comment>Tax Evasion Service</comment>
   </data>
   <data name="ZReportStatusInprogress" xml:space="preserve">
@@ -5393,7 +5393,7 @@
     <value>معلومات المنشأة</value>
   </data>
   <data name="NDReporterInformation" xml:space="preserve">
-    <value>معلومات المبلغ</value>
+    <value>معلومات المُبلغ</value>
   </data>
   <data name="NDChangeToAccountBasis" xml:space="preserve">
     <value>تغير الى حساب أساسي</value>
@@ -5420,7 +5420,7 @@
     <value> إقرار زكاة</value>
   </data>
   <data name="NDTaxEvasionReport" xml:space="preserve">
-    <value>تقرير التهرب الضريبي</value>
+    <value>الإبلاغ عن التهرب الضريبي</value>
   </data>
   <data name="NDYourTaxEvasionReportissubmittedsuccessfully" xml:space="preserve">
     <value>تم استلام بلاغ التهرب الضريبي بنجاح</value>
@@ -5462,7 +5462,7 @@
     <value>العودة لصفحة تسجيل الدخول</value>
   </data>
   <data name="NDMyReports" xml:space="preserve">
-    <value>تقاريري</value>
+    <value>بلاغاتي</value>
   </data>
   <data name="NDOpen" xml:space="preserve">
     <value>افتح</value>
