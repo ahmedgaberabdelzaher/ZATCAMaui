@@ -25,6 +25,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         public EstablishmentRegistrationPage()
         {
             InitializeComponent();
+            ChangeAeroIcon();
             SetLTR();
             viewModel = App.Locator.EstablishmentRegistrationPage;
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
@@ -51,6 +52,20 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+            }
+        }
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                //Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                //Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

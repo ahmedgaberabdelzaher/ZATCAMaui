@@ -306,7 +306,7 @@
   <data name="StartChatting" xml:space="preserve">
     <value>Start chatting</value>
   </data>
-  <data name="Submit" xml:space="preserve"> 
+  <data name="Submit" xml:space="preserve">
     <value>Submit</value>
   </data>
   <data name="SubmittedReturn" xml:space="preserve">
@@ -4380,7 +4380,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationChangeApplicationInDraftError" xml:space="preserve">
     <value>Dear Taxpayer, you have a Registration Change Application saved in draft mode, do you want to discard it and proceed for Deregistration Application?</value>
   </data>
-    <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">
+  <data name="TinDeregistrationPermitApplicationInDraftError" xml:space="preserve">
     <value>Dear Taxpayer, you already have an application saved in draft mode for Permit/Outlet/TIN deregistration, do you want to discard it and proceed for new application?</value>
   </data>
   <data name="TinDeregistration" xml:space="preserve">
@@ -4482,10 +4482,10 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationAttachmentCopyOfContractOfSaleAgreement" xml:space="preserve">
     <value>Attachments - Copy of Contract of Sale Agreement</value>
   </data>
- <data name="TinDeregistrationAttachmentDeathCertificate" xml:space="preserve">
+  <data name="TinDeregistrationAttachmentDeathCertificate" xml:space="preserve">
     <value>Attachments - Death Certificate of Individual</value>
   </data>
-   <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
+  <data name="TinDeregistrationAttachmentLiquidation" xml:space="preserve">
     <value>Attachments - Ministerial Resolution to start liquidation proceedings indentify person liquidator shall</value>
   </data>
   <data name="TinDeregistrationAttachmentMinisterialResponse" xml:space="preserve">
@@ -4518,7 +4518,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TinDeregistrationRegistrationOutlets" xml:space="preserve">
     <value>Outlets</value>
   </data>
-      <data name="TinDeregistrationCompanyIDCheck" xml:space="preserve">
+  <data name="TinDeregistrationCompanyIDCheck" xml:space="preserve">
     <value>Company ID should start with 7</value>
   </data>
   <data name="VatDeregDOBDatePickerTitle" xml:space="preserve">
@@ -4644,13 +4644,12 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="VATDeregistrationInstructions" xml:space="preserve">
     <value>If you are deregistering due to Bankruptcy, Liquidation, Merger or Acquisition or any other Reason(s) which relates to all tax types, please proceed with the general Taxpayer's deregistration process which is available from GAZT Portal.</value>
   </data>
-      <data name="VATDeregInstructionsAndConditionsFirst" xml:space="preserve">
+  <data name="VATDeregInstructionsAndConditionsFirst" xml:space="preserve">
     <value>Please fill the requested information for each step. This application cannot be successfully submitted until all of the mandatory fields and attachments have been completed.</value>
   </data>
-      <data name="VATDeregInstructionsAndConditionsSecond" xml:space="preserve">
+  <data name="VATDeregInstructionsAndConditionsSecond" xml:space="preserve">
     <value>Applicant should ensure that there is no pending return filing or any outstanding payment or pending application from his side before submitting this application.</value>
   </data>
-    
   <data name="VATDeregistrationAgreeTermsConditions" xml:space="preserve">
     <value>I agree with these Instructions and Conditions and can not choose the checkbox to start submitting the form.</value>
   </data>
@@ -5516,9 +5515,6 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TPPasswordUpdate" xml:space="preserve">
     <value>Password updated</value>
   </data>
-    
-    
-    
   <data name="TPOldPasswordEmpty" xml:space="preserve">
     <value>Please enter old pasword</value>
   </data>
@@ -5531,9 +5527,6 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
   <data name="TPOTPSentToEmail" xml:space="preserve">
     <value>Please enter the verification code sent to your email</value>
   </data>
-    
-    
-    
   <data name="TPSuccessMobileUpdated" xml:space="preserve">
     <value>New Mobile number updated Successfully</value>
   </data>
@@ -6800,39 +6793,39 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
     <value>Reason for requesting Instalment</value>
   </data>
   <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-    <value>Net Cash Flow From Operation</value>
+    <value>11. Net Cash Flow From Operation</value>
   </data>
   <data name="ZakatInstalmentNetIncome" xml:space="preserve">
-    <value>Net Income</value>
+    <value>10. Net Income</value>
   </data>
   <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
-    <value>Total Current Assets</value>
+    <value>6. Total Current Assets</value>
   </data>
   <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>Total Current Liabilities</value>
+    <value>8. Total Current Liabilities</value>
   </data>
   <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
-    <value>Zakat and Tax</value>
+    <value>7. Zakat and Tax</value>
   </data>
-     <data name="ZakatInstalmentAttachmentBankSettlement" xml:space="preserve">
+  <data name="ZakatInstalmentAttachmentBankSettlement" xml:space="preserve">
     <value>Attachment - Bank Statements for the last 3 months</value>
   </data>
   <data name="ZakatInstalmentAttachmentFInancialStatement" xml:space="preserve">
     <value>Attachment - Financial Statements for the last 3 years</value>
   </data>
-    <data name="VoidReasonHint" xml:space="preserve">
+  <data name="VoidReasonHint" xml:space="preserve">
     <value>Reason for void</value>
   </data>
-    <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
+  <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
     <value>File size should not be more than 10 MB.</value>
-     </data>
-    <data name="ZakatInstalmentSrNo" xml:space="preserve">
+  </data>
+  <data name="ZakatInstalmentSrNo" xml:space="preserve">
     <value>Sr. No.</value>
   </data>
-    <data name="ZakatInstalmentPeriodicInstalmentAmount" xml:space="preserve">
+  <data name="ZakatInstalmentPeriodicInstalmentAmount" xml:space="preserve">
     <value>Periodic Instalment Amount</value>
   </data>
-     <data name="ZakatInstalmentCashRatio" xml:space="preserve">
+  <data name="ZakatInstalmentCashRatio" xml:space="preserve">
     <value>Cash Ratio (2+3)/8</value>
   </data>
   <data name="ZakatInstalmentDisplayInstalmentDetails" xml:space="preserve">
@@ -6841,7 +6834,7 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
     <value>Profitability Ratio(10/9)</value>
   </data>
-    <data name="ZakatYear" xml:space="preserve">
+  <data name="ZakatYear" xml:space="preserve">
     <value>1. Year</value>
   </data>
   <data name="ZakatCashBank" xml:space="preserve">
@@ -6856,25 +6849,10 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatInventory" xml:space="preserve">
     <value>5. Inventory</value>
   </data>
-<data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
-    <value>6. Total Current Assets</value>
-  </data>
-<data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
-    <value>7. Zakat and Tax</value>
-  </data>
-  <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>8. Total Current Liabilities</value>
-  </data>
- <data name="ZakatRevenue" xml:space="preserve">
+  <data name="ZakatRevenue" xml:space="preserve">
     <value>9. Revenue</value>
   </data>
- <data name="ZakatInstalmentNetIncome" xml:space="preserve">
-    <value>10. Net Income</value>
-  </data>
- <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-    <value>11. Net Cash Flow From Operation</value>
-  </data>
-    <data name="ZakatRevokCannotLeaveEmpty" xml:space="preserve">
+  <data name="ZakatRevokCannotLeaveEmpty" xml:space="preserve">
     <value>Cannot leave field empty</value>
   </data>
   <data name="ZakatRevokConfirmationText" xml:space="preserve">
@@ -6883,11 +6861,10 @@ Taxpayer is required to provide evidence that he has been filing for 2 years wit
   <data name="ZakatInstalmentRevokNotes" xml:space="preserve">
     <value>Write Your Revoke notes</value>
   </data>
-    <data name="ZakatInstalmentRevokedSuccessfully" xml:space="preserve">
+  <data name="ZakatInstalmentRevokedSuccessfully" xml:space="preserve">
     <value>Your Instalment Plan Revoked successfully</value>
   </data>
-  <data name="ZakatInstalmentRevokNotes" xml:space="preserve">
-    <value>Write Your Revoke notes</value>
+  <data name="NDWhatisYourNationality" xml:space="preserve">
+    <value>What is your Nationality?</value>
   </data>
-  </root>
-  
+</root>

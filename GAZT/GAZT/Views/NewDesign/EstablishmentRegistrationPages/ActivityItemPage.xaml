@@ -27,6 +27,12 @@
              x:Name="ESTActivityItemPage">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
             <converters:EstablishmentRegistrationActivityTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:EstablishmentMainActivityToVisibilityConverter x:Key="isMainActivityConverter" />
             <ResourceDictionary.MergedDictionaries>
@@ -96,7 +102,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="0">
+                        <inputLayout:SfTextInputLayout IsEnabled="{Binding EnableCRInputField}"  Style="{StaticResource InputTableTextInputLayoutStyle}"  Margin="0" InputViewPadding="10,0,10,0">
                             <custom:GAZTBorderlessEntry Text="{Binding CRNumber}" Unfocused="CREntry_Unfocused" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16">
 
                                 <customOne:GAZTBorderlessEntry.Behaviors>
@@ -314,7 +320,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="0">
+                        <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0" InputViewPadding="10,0,10,0">
 
                             <custom:GAZTBorderlessEntry Text="{Binding LicenseNumber}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
 
@@ -387,12 +393,14 @@
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
                                             <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
-                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
-                                            <Image Grid.Column="2" Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <custom:CustomLabel Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                                            <StackLayout Grid.Column="2">
+                                                <Image Source="closeGrey.png" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={Reference ESTActivityItemPage}, Path=BindingContext.OnDeleteLicenseCopyButtonClick}" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
                                                 </Image.GestureRecognizers>
                                             </Image>
+                                            </StackLayout>
                                         </Grid>
                                     </border:SfBorder>
                                 </DataTemplate>
@@ -442,10 +450,10 @@
                         <ColumnDefinition Width="70*"/>
                         <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
-                        <Image.Source>
+                    <Image Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Source="arrowLeft" Style="{DynamicResource BackButtonArrow}">
+                        <!--<Image.Source>
                             <FontImageSource Color="LightGray" FontFamily="UserIconFont" Size="48" Glyph="{x:Static FontImage:IconFonts.ChevronLeft}"/>
-                        </Image.Source>
+                        </Image.Source>-->
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnPreButtonClick}" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>
@@ -465,7 +473,7 @@
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
             </StackLayout>
             <Grid Grid.Row="2" Padding="20,15" Margin="0,20,0,0" BackgroundColor="White">
-                <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="Next" Command="{Binding OnNextButtonClick}" />
+                <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Text="{x:Static ResourceManager:AppResources.ZZNext}" Command="{Binding OnNextButtonClick}" />
             </Grid>
             <StackLayout IsVisible="{Binding IsLoading}" BackgroundColor="Black" Opacity="0.4"
                Grid.Row="0" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
