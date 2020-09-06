@@ -12221,5 +12221,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZakatNoInvoicesToBeAdded", resourceCulture);
             }
         }
+        
+        public static string InformationFromRelatedPartiesNewValue {
+            get {
+                return ResourceManager.GetString("InformationFromRelatedPartiesNewValue", resourceCulture);
+            }
+        }
     }
 }
