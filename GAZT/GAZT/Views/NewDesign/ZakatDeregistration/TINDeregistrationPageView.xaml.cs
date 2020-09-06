@@ -32,6 +32,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             this.BindingContext = viewModel;
         }
 
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -110,6 +111,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (arg.PickerId == "DOBDateTypePicker")
                 {
                     viewModel.SelectedDob = arg.SelectedValue;
+
+                    if (viewModel.SelectedIdtype == AppResources.NationaID || viewModel.SelectedIdtype == AppResources.ZZIqamaID)
+                    {
+                        if(!String.IsNullOrEmpty(viewModel.SelectedIdNumber))
+                        {
+                            viewModel.ValidateIDNumber();
+                        }
+                    }
                 }
                 Console.WriteLine(arg);
             });
@@ -196,7 +205,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             {
                 PopUp popUp = new PopUp();
                 StringBuilder Messages = new StringBuilder();
-                if (!string.IsNullOrEmpty(viewModel.SelectedIdNumber))
+                if (!string.IsNullOrEmpty(viewModel.SelectedIdtype))
                 {
                     if (viewModel.SelectedIdtype == AppResources.NationaID)
                     {
@@ -287,6 +296,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 }
                                 Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
                             }
+
                             if (Messages.Length > 0)
                             {
                                 popUp.Message = Messages.ToString();
@@ -315,8 +325,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                                 }
                             }
                         }
-
-
                     }
 
                     if (viewModel.SelectedIdtype == AppResources.ZZGCCID)
@@ -363,8 +371,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                     if (viewModel.SelectedIdtype == AppResources.ZIBANCompanyID)
                     {
-
-                        if (viewModel.SelectedIdNumber.Substring(0, 1) == "7")
+                        if (viewModel.SelectedIdNumber.Substring(0, 1) != "7")
                         {
                             //Have to change to neww error message
                             popUp.Message = AppResources.TinDeregistrationCompanyIDCheck;
@@ -383,19 +390,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                         }
+                        else
+                        {
+                            viewModel.FrameIDError = false;
+                            viewModel.ValidateIDNumber();
+                        }
                     }
                 }
                 else
                 {
-                    // FrmIDNumber.HasError = false;
                     viewModel.FrameIDError = true;
                 }
-
-
             }
             catch (Exception ex)
             {
-
 
             }
         }
@@ -410,7 +418,69 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         void BorderlessTINEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            PopUp popUp = new PopUp();
+            StringBuilder Messages = new StringBuilder();
+            if (!string.IsNullOrEmpty(EntryTIN.Text))
+            {
+                if (EntryTIN.Text.Substring(0, 1) != "3")
+                {
+                    Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+                    EntryTIN.Focus();
+                }
+                if (EntryTIN.Text.Length != 10)
+                {
+                    if (Messages.Length > 0)
+                    {
+                        Messages.Append(Environment.NewLine);
+                    }
+                    Messages.Append(AppResources.ZZTINnumberlengthcannotbelessthan10digits);
+                }
+                if (Messages.Length > 0)
+                {
+                    popUp.Message = Messages.ToString();
+                    popUp.IsLinkAvailable = false;
 
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    EntryTIN.Text = string.Empty;
+                }
+                else
+                {
+                    viewModel.FrameTinError = false;
+                    viewModel.ValidateIdNumberFromApi(EntryTIN.Text);
+                }
+            }
+            else
+            {
+                viewModel.FrameTinError = true;
+                Messages.Append(AppResources.AccountUnlockedCompleteRequiedFields);
+
+                popUp.Message = Messages.ToString();
+                popUp.IsLinkAvailable = false;
+
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                EntryTIN.Text = string.Empty;
+            }
         }
+
     }
 }

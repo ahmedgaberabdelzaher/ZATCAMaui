@@ -10595,6 +10595,103 @@ namespace GAZT.Manager
             }
         }
 
+        public async static Task<VATSignUp> GAZTGetTInNumberData(string tin)
+        {
+
+            VATSignUp _validateIDResponse = new VATSignUp();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATSignUp vATSignUp = new VATSignUp();
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                String SignUpCityList = string.Empty;
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    String Url = Constants.GAZTVATSignUpValidateId + "(Tin='"+ tin + "',Idtype='" + string.Empty + "',Idnum='" + string.Empty + "',Country='',PassExpDt='',TaxpDob='" + string.Empty + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
+
+                    /*String Url = string.Empty;
+                    Url = Constants.VATChangeFillingPeriodValidateIDnumberURL + "Tin='" + tin + "',Idtype='" + idType + "',Idnum='" + idnum + "',Country='" + country + "'" +
+                          ",PassExpDt = '" + passExpdt + "', TaxpDob = '" + taxpDOB + "')";*/
+                    var uri = new Uri(Url);
+                    HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
+                    if (VATSignUpIdValidateObject != null)
+                    {
+                        if (VATSignUpIdValidateObject.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = VATSignUpIdValidateObject.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
+                        _validateIDResponse = JsonConvert.DeserializeObject<VATSignUp>(SignUpCityList);
+                        if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //_validateIDResponse.errorMessage = errorMessage;
+                                //ErrorMessageForVAT
+                                //throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                            }
+                        }
+                    }
+                    return _validateIDResponse;// tINStatus;
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
 
         public async static Task<ValidateIDResponse> GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
         {
