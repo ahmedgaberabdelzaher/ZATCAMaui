@@ -34,7 +34,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
             try
             {
-                if (viewModel.VATReferanceNumber != null)
+                if (viewModel.ZakatReferanceNumber != null)
                 {
 
                     Device.BeginInvokeOnMainThread(() =>
@@ -42,7 +42,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         viewModel.IsLoading = true;
                     });
 
-                    await Clipboard.SetTextAsync(viewModel.VATReferanceNumber);
+                    await Clipboard.SetTextAsync(viewModel.ZakatReferanceNumber);
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
@@ -100,16 +100,16 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 }
 
-                //foreach (var item in _navigation.NavigationStack)
-                //{
-                //    if (item.GetType().Name == App.VatInstalmentPlanSuccessPage)
-                //    {
-                //        _navigation.RemovePage(item);
-                //        break;
-                //    }
-                //}
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.ZakatInstalmentPlanSuccessPage)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
 
-                viewModel._navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+                viewModel._navigationService.NavigateTo(App.ZakatInstalmentPlanListPageView);
 
                 MessagingCenter.Send<Object, Boolean>(this, "ISCallBackFromSuccess", true);
 

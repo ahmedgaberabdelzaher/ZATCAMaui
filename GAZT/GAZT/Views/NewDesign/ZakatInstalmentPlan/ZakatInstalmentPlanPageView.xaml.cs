@@ -9,6 +9,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -41,7 +42,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 viewModel = App.Locator.ZakatInstalmentPlanPageView;
                 this.BindingContext = viewModel;
-
+                viewModel.IsZakat = Preferences.Get("isZakat", false);
+                viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
                 viewModel.showInstructionsDialog();
                 GetZakatInstalmentData();
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
@@ -295,17 +297,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
                 base.OnAppearing();
 
-                Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
-                {
-                    if (arg != null)
-                    {
-
-                        // viewModel.VatInstalments.d.AttachmentSet.results = arg.results;
-                        viewModel.PopulateAttachments(arg.results);
-
-
-                    }
-                });
+             
 
                 Xamarin.Forms.MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
                 {
@@ -414,6 +406,19 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             {
 
             }
+        }
+
+        private void calculation_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.calculateYear1Data();
+        }
+        private void calculation2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.calculateYear2Data();
+        }
+        private void calculation3_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.calculateYear3Data();
         }
     }
 }

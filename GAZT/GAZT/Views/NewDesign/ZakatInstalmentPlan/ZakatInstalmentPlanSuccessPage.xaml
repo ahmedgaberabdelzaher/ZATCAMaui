@@ -27,7 +27,7 @@
                        Source="Forget_ic_success" />
                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" Margin="0,20,0,0"
                                     FontSize="Large" TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatInstalmentPlanSubmittedSuccess}"
+                <custom:CustomLabel Text="{Binding SuccessMessage}"
                                     Margin="0,15,0,0"
                                     TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
             </StackLayout>
@@ -52,9 +52,9 @@
                                                     VerticalOptions="Center" FontSize="12" TextColor="#909090"
                                                     HorizontalOptions="Start" />
 
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding VATReferanceNumber}" FontSize="16"
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding ZakatReferanceNumber}" FontSize="16"
                                                     VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" />
-
+                                     
                                 <Image Grid.Row="0" Grid.Column="2">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer

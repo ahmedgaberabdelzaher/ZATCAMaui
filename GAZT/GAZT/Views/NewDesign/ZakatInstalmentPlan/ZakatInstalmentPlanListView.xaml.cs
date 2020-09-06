@@ -6,6 +6,8 @@ using static EGAZT.Models.ZakatInstalationModels.ZakatInstalmentPlanRequestListM
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
+using EGAZT.Models.ZakatInstalationModels;
+using Xamarin.Forms.Internals;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
@@ -89,7 +91,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             try
             {
                 base.OnAppearing();
-                viewModel.EnableZakatLandingPage();
+                viewModel.EnableCreateZakatInstalment();
+                viewModel.GetZakatInstalmentPlanList();
             }
             catch (Exception e)
             {
@@ -100,8 +103,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         private void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-            var item = e.ItemData as Result;
-            var index = viewModel.RequestForInstalmentPlanList.IndexOf(item);
+            var item = e.ItemData as ZakatListModel;
+            var index = viewModel.ZakatListData.IndexOf(item);
             viewModel.GetSummaryDetailsClickedAsync(index);
             viewModel.EnableZakatInstalmentSummary();
         }
@@ -121,6 +124,37 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         }
 
 
+        void OtpFirstEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPFirstDigit.Length > 0)
+            {
+                OTPSecondEntry.Focus();
+            }
+        }
+
+        void OtpSecondEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPSecondDigit.Length > 0)
+            {
+                OTPThirdEntry.Focus();
+            }
+        }
+
+        void OtpThirdEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+            if (viewModel.OTPThirdDigit.Length > 0)
+            {
+                OTPFourthEntry.Focus();
+            }
+        }
+        void OtpFourthEntry_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
+        {
+
+        }
+        void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+
+        }
 
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
@@ -70,25 +71,31 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
         }
 
 
-        void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             //            viewModel.ReasonContinueBtnClicked();
 
 
+
+
             if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 0)
             {
                 viewModel.IsZakatSelected = true;
                 viewModel.IsIncomeTaxViewEnabled = false;
-
+                Preferences.Set("isZakat", true);
                 viewModel.ZakatBtnClicked();
             }
             else if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 1)
             {
                 viewModel.IsZakatSelected = false;
                 viewModel.IsIncomeTaxViewEnabled = true;
+                Preferences.Set("isZakat", false);
                 viewModel.IncomeTaxBtnClicked();
+
+
+
             }
             else
             //if (viewModel.OutletDecisionOptions.IndexOf(selectedItem) == 2)
@@ -96,12 +103,13 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
                 viewModel.IsZakatSelected = false;
                 viewModel.IsIncomeTaxViewEnabled = false;
 
+
+
                 viewModel.VatBtnClicked();
                 //PopupNavigation.Instance.PushAsync(new ZakatInstalmentPlanBottomPopup());
             }
- 
+
         }
-       
 
     }
 }

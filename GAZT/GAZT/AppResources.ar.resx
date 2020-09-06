@@ -5722,12 +5722,6 @@
   <data name="ZakatDueAmount" xml:space="preserve">
      <value>مبلغ الفاتورة</value>
   </data>
-   <data name="ZakatShortTermInvestment" xml:space="preserve">
-    <value>استثمار قصير المدى</value>
-  </data>
- <data name="ZakatInventory" xml:space="preserve">
-    <value>المخزون</value>
-  </data>
   <data name="ZZZDBMyCertificates" xml:space="preserve">
     <value>شهاداتي</value>
   </data>
@@ -6637,59 +6631,44 @@
   <data name="ZakatInstalmentSubmissionDate" xml:space="preserve">
     <value>تاريخ التقديم</value>
   </data>
-  <data name="ZakatInstalmentPlanSubTitle" xml:space="preserve">
-    <value>خطة تقسيط الزكاة</value>
-  </data>
-  <data name="ZakatInstalmentRequestCount" xml:space="preserve">
-    <value>طلب خطة تقسيط للزكاة</value>
-  </data>
-  <data name="ZakatInstalmentInvoiceNumber" xml:space="preserve">
-    <value>رقم الفاتورة</value>
-  </data>
-  <data name="ZakatInstalmentPlanDuration" xml:space="preserve">
-    <value>مدة الخطة</value>
-  </data>
-  <data name="ZakatInstalmentRevok" xml:space="preserve">
-    <value>إلغاء طلب الزكاة</value>
-  </data>
-  <data name="ZakatInstalmentRevokSubTitle" xml:space="preserve">
-    <value>خطة التقسيط القديمة</value>
-  </data>
-  <data name="ZakatInstalmentCreateNewRequest" xml:space="preserve">
-    <value>طلب جديد</value>
-  </data>
-  <data name="ZakatInstalmentFinancialInformation" xml:space="preserve">
-    <value>البيانات المالية</value>
-  </data>
-  <data name="ZakatInstalmentPleaseChooseOneReason" xml:space="preserve">
-    <value>الرجاء اختيار سبب واحد للمتابعة</value>
-  </data>
-  <data name="ZakatInstalmentReasonForRequestInstalment" xml:space="preserve">
-    <value>سبب طلب خطة التقسيط</value>
-  </data>
-    <data name="ZakatDebitors" xml:space="preserve">
-    <value>المدينون</value>
-  </data>
-<data name="ZakatCashBank" xml:space="preserve">
-    <value>المدينون</value>
-  </data>
      <data name="VoidReasonHint" xml:space="preserve">
     <value>Reason for void</value>
   </data>
      <data name="ESTAttachmentSizeNotfication" xml:space="preserve">
     <value>يجب أن يكون حجم الملف أقل من 10 ميجا بايت.</value>
   </data>
-    <data name="ZakatYear" xml:space="preserve">
-    <value>سنة</value>
+  <data name="ZakatYear" xml:space="preserve">
+    <value>سنة .1</value>
   </data>
- <data name="ZakatYearOne" xml:space="preserve">
-    <value>سنة 1</value>
+  <data name="ZakatCashBank" xml:space="preserve">
+    <value>المدينون .2 </value>
   </data>
-  <data name="ZakatYearTwo" xml:space="preserve">
-    <value>سنة 2</value>
+  <data name="ZakatShortTermInvestment" xml:space="preserve">
+    <value>استثمار قصير المدى .3</value>
   </data>
-  <data name="ZakatYearThree" xml:space="preserve">
-    <value>سنة 3</value>
+  <data name="ZakatDebitors" xml:space="preserve">
+    <value>المدينون .4</value>
+  </data>
+  <data name="ZakatInventory" xml:space="preserve">
+    <value>المخزون .5</value>
+  </data>
+ <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
+    <value>إجمالي الممتلكات الحالية .6</value>
+  </data>
+  <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
+    <value>الزكاة والضريبة .7</value>
+  </data>
+  <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
+    <value>إجمالي الطلبات الحالية .8</value>
+  </data>
+ <data name="ZakatRevenue" xml:space="preserve">
+    <value>الايرادات .9</value>
+  </data>
+  <data name="ZakatInstalmentNetIncome" xml:space="preserve">
+    <value>صافي الدخل .10</value>
+  </data>
+ <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
+    <value>صافي السيولة النقدية من العملية .11</value>
   </data>
     <data name="ZakatInstalmentPlanSubTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
@@ -6721,12 +6700,6 @@
   <data name="ZakatInstalmentReasonForRequestInstalment" xml:space="preserve">
     <value>سبب طلب خطة التقسيط</value>
   </data>
-  <data name="ZakatDebitors" xml:space="preserve">
-    <value>المدينون</value>
-  </data>
-  <data name="ZakatCashBank" xml:space="preserve">
-    <value>المدينون</value>
-  </data>
   <data name="BPInstructionsAndConditionsAlert" xml:space="preserve">
     <value>الرجاء الموافقة على الشروط والتعليمات</value>
   </data>
@@ -6742,23 +6715,8 @@
   <data name="ZakatInstalmentDisplayInstalmentDetails" xml:space="preserve">
     <value>عرض تفاصيل القسط</value>
   </data>
-  <data name="ZakatInstalmentNetCashFlowFromOperation" xml:space="preserve">
-    <value>صافي السيولة النقدية من العملية</value>
-  </data>
-  <data name="ZakatInstalmentNetIncome" xml:space="preserve">
-    <value>صافي الدخل</value>
-  </data>
   <data name="ZakatInstalmentProfitabilityRatio" xml:space="preserve">
     <value>نسبة الربحية (10/9)</value>
-  </data>
-  <data name="ZakatInstalmentTotalCurrentAssets" xml:space="preserve">
-    <value>إجمالي الممتلكات الحالية</value>
-  </data>
-  <data name="ZakatInstalmentTotalCurrentLiabilities" xml:space="preserve">
-    <value>إجمالي الطلبات الحالية</value>
-  </data>
-  <data name="ZakatInstalmentZakatAndTax" xml:space="preserve">
-    <value>الزكاة والضريبة</value>
   </data>
   <data name="ZakatInstalmetPlanTitle" xml:space="preserve">
     <value>خطة تقسيط الزكاة</value>
