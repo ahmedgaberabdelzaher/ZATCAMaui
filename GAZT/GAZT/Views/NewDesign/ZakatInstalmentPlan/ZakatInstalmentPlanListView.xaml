@@ -219,7 +219,7 @@
 
 
                                                 <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical">
-                                                    <custom:CustomLabel    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetSelectTypeZakat}" HorizontalOptions="StartAndExpand"
+                                                    <custom:CustomLabel    Text="{Binding SelectedType}" HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlack}" Margin="0" />
 
                                                     <Label  Text="{Binding referanceNumber}" Style="{StaticResource ValueLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" 
@@ -258,7 +258,7 @@
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <Label Text="{Binding downpayment}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                                    <Label Text="{Binding downpayment,StringFormat='{0:0,0.00} SAR'}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Spacing="-5">
                                                     <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSubmissionDate}" Style="{StaticResource CaptionLabelGrey}"/>
@@ -393,9 +393,13 @@
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" Grid.Row="1" HeightRequest="1" Grid.ColumnSpan="2"/>
 
-                                <Grid Grid.Row="2" Grid.ColumnSpan="2"  Margin="10,5,10,5">
-                                    <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentPlanDuration}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                <Grid Grid.Row="2" Grid.ColumnSpan="2"  Padding="15" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentPlanDuration}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" ></custom:CustomLabel>
+                                    <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
+                                </Grid>
+                                 <Grid Grid.Row="3" Grid.ColumnSpan="2" Padding="8">
+                                    <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}" Style="{StaticResource BodyLabelGrey}" LineHeight="0.7" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                    <custom:CustomLabel Grid.Column="1" Text="{Binding SelectedFrequencyName}" Style="{StaticResource ValueLabelBlack}" LineHeight="0.7" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                 </Grid>
                             </StackLayout>
                         </border:SfBorder >

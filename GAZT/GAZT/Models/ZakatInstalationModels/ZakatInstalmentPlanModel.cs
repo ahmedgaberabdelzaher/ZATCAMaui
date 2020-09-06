@@ -38,6 +38,9 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string downpayment { get; set; }
         public string dateOfSubmission { get; set; }
         public string Fbtyp { get; set; }
+        public string frequency { get; set; }
+        public string SelectedType { get; set; }
+
 
     }
     public class ZakatSelectBillModel
@@ -49,6 +52,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         public string taxPeriod { get; set; }
         public bool isSelected { get; set; }
         public string billType { get; set; }
+        public string frequency { get; set; }
     }
 
     public class ZakatSummaryViewModel

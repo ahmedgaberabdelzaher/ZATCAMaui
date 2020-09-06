@@ -1153,8 +1153,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 }
 
-                if (TinDeregistrationData.AEffectiveDtH != null)
-                    DeregistrationDate = Convert.ToDateTime(TinDeregistrationData.AEffectiveDtH);
+                if (TinDeregistrationData.AEffectiveDt != null)
+                    DeregistrationDate = Convert.ToDateTime(TinDeregistrationData.AEffectiveDt);
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
@@ -2108,13 +2108,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             string ConvertedDate = string.Empty;
             //DateTime newDate = Convert.ToDateTime(date);
             //DateTime currentDate = DateTime.Now.ToLocalTime();
-            long ticks = newDate.Ticks;
+            long ticks = newDate.Ticks - new DateTime(1970, 1, 1).Ticks;
+
             //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
             TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
             string unixTime = span.TotalSeconds.ToString("N0");
             unixTime = unixTime.Replace(",", "");
             ConvertedDate = "" + "/Date(" + unixTime + ")/";
 
+            long unixTimestamp = ((long)(newDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
+
+            unixTimestamp = unixTimestamp * 1000;
+
+            ConvertedDate = "" + "/Date(" + unixTimestamp + ")/";
 
             //var dateTime = new DateTime(newDate.Year, newDate.Month, newDate.Day, newDate.Hour, newDate.Minute, newDate.Second, DateTimeKind.Local);
             //var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
